@@ -1,0 +1,5 @@
+partialPressureLoss
+linearQuadraticPressureLoss
+laminarPressureLoss
+laminarTurbulentPressureLoss
+pleaseSelectPressureLoss

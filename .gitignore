@@ -1,0 +1,14 @@
+*.txt
+*.c
+*.mof
+*.exe
+*.mat
+*.csv
+*.bak
+*.bak-mo
+*.html
+*.png
+request
+status
+stop
+success
