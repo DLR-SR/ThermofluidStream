@@ -6,13 +6,19 @@ model CreateState "Create state signal as output"
 <p>Model of the medium for this thermodynamic state connector.</p>
 </html>"));
 
+  parameter Boolean setEnthalpy = false "Prescribe specific enthalpy instead of temperature?";
   parameter Boolean PFromInput = false "Use default T";
-  parameter Boolean TFromInput = false "Use default T";
+  parameter Boolean TFromInput = false "Use default T"
+    annotation(Dialog(enable = not setEnthalpy));
+  parameter Boolean hFromInput = false "Use input connector for specific enthalpy"
+    annotation(Dialog(enable = setEnthalpy));
   parameter Boolean XiFromInput = false "Use zero vector as Xi";
   parameter SI.Pressure p_par = Medium.p_default "Fixed temperature"
     annotation(Dialog(enable=not PFromInput));
   parameter SI.Temperature T_par = Medium.T_default "Fixed pressure"
-    annotation(Dialog(enable=not TFromInput));
+    annotation(Dialog(enable = not setEnthalpy and not TFromInput));
+  parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
+    annotation(Dialog(enable = setEnthalpy and not hFromInput));
   parameter Medium.MassFraction[Medium.nXi] Xi_par = Medium.X_default[1:Medium.nXi] "Fixed mass fractions"
     annotation(Dialog(enable=not XiFromInput));
 
@@ -24,6 +30,8 @@ model CreateState "Create state signal as output"
         iconTransformation(extent={{-120,80},{-80,120}})));
   Modelica.Blocks.Interfaces.RealInput T_inp(unit="K") = T if TFromInput "Input for Temperature [K]"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector [J/kg]"
+    annotation (Placement(transformation(extent={{-40,-40},{0,0}}),   iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput Xi_inp[Medium.nXi](each unit="kg/kg") = Xi if XiFromInput "Vector input for Mass fraction [kg/kg]"
     annotation (Placement(transformation(extent={{-120,-120},{-80,-80}}),
         iconTransformation(extent={{-120,-120},{-80,-80}})));
@@ -31,16 +39,20 @@ model CreateState "Create state signal as output"
 protected
   SI.Pressure p;
   SI.Temperature T;
+  SI.SpecificEnthalpy h;
   Medium.MassFraction Xi[Medium.nXi];
 
 equation
-  y.state = Medium.setState_pTX(p,T,Xi);
+  y.state = if not setEnthalpy then Medium.setState_pTX(p,T,Xi) else Medium.setState_phX(p, h, Xi);
 
+  if not PFromInput then
+    p = p_par;
+  end if;
   if not TFromInput then
     T = T_par;
   end if;
-  if not PFromInput then
-    p = p_par;
+  if not hFromInput then
+    h0 = h0_par;
   end if;
   if not XiFromInput then
     Xi = Xi_par;
