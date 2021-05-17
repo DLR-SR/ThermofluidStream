@@ -6,8 +6,7 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
 
 annotation (
   version="0.1",
-  uses(Modelica(version="3.2.3"),
-  UserInteraction(version="0.65")),
+  uses(Modelica(version="3.2.3")),
   Documentation(info="<html>
 
 </html>", revisions="<html>
