@@ -2,18 +2,20 @@ within ThermofluidStream.Sensors.Tests;
 model TestSensors "Test model for all sensors."
   extends Modelica.Icons.Example;
 
-  replaceable package Medium1 = myMedia.Water.ConstantPropertyLiquidWater constrainedby myMedia.Interfaces.PartialMedium
-                                     "Medium Model 1" annotation (Documentation(
+  replaceable package Medium1 = myMedia.Water.ConstantPropertyLiquidWater constrainedby
+    myMedia.Interfaces.PartialMedium "Medium Model 1" annotation (Documentation(
         info="<html>
 <p>Medium Model for the upper stream. It can be anything. </p>
 </html>"));
-  replaceable package Medium2 = myMedia.Water.StandardWater constrainedby myMedia.Interfaces.PartialTwoPhaseMedium
+  replaceable package Medium2 = myMedia.Water.StandardWater constrainedby
+    myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium Model 2" annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
 
    replaceable package Medium3 =
-      myMedia.IdealGases.MixtureGases.FlueGasSixComponents                            constrainedby myMedia.Interfaces.PartialMedium
+      myMedia.IdealGases.MixtureGases.FlueGasSixComponents                            constrainedby
+    myMedia.Interfaces.PartialMedium
     "Medium Model 3" annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));

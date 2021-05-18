@@ -3,10 +3,12 @@ model TestDiscretizedHEX
 
   extends Modelica.Icons.Example;
 
-  replaceable package mediumAir = myMedia.Air.MoistAir   constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package mediumAir = myMedia.Air.MoistAir   constrainedby
+    ThermofluidStream.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable package mediumRefrigerant = myMedia.R134a.R134a_ph constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package mediumRefrigerant = myMedia.R134a.R134a_ph constrainedby
+    ThermofluidStream.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
@@ -48,7 +50,8 @@ model TestDiscretizedHEX
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-70,14},{-50,34}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{74,74},{94,94}})));
   Modelica.Blocks.Sources.Ramp ramp1(
@@ -71,7 +74,8 @@ model TestDiscretizedHEX
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-2},{-72,18}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,

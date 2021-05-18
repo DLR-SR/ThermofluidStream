@@ -73,8 +73,8 @@ The package Air_pT can be used as any other medium model (see <a href=\"modelica
 </p>
 </html>"));
   end Air_pT;
-public
 
+public
   package Air_dT
     "ReferenceAir.Air_dT: Detailed dry air model (130 ... 2000 K) explicit in d and T"
     extends Modelica.Icons.MaterialProperty;
@@ -91,8 +91,8 @@ The package Air_dT can be used as any other medium model (see <a href=\"modelica
 </p>
 </html>"));
   end Air_dT;
-public
 
+public
   partial package Air_Base
     "Properties of dry air calculated using the equation of state by Lemmon et. al."
 

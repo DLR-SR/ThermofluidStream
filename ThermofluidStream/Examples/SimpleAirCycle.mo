@@ -3,9 +3,10 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
-  replaceable package medium_ram = ThermofluidStream.myMedia.Air.MoistAir constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
-                                                        annotation(choicesAllMatching = true);
-  replaceable package medium_bleed = ThermofluidStream.myMedia.Air.MoistAir constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package medium_ram = ThermofluidStream.myMedia.Air.MoistAir constrainedby
+    ThermofluidStream.myMedia.Interfaces.PartialMedium  annotation(choicesAllMatching = true);
+  replaceable package medium_bleed = ThermofluidStream.myMedia.Air.MoistAir constrainedby
+    ThermofluidStream.myMedia.Interfaces.PartialMedium
                                                      annotation(choicesAllMatching = true);
 
 
@@ -51,7 +52,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_compressor =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
+        (
         omega_ref=2000,
         skew=1,
         m_flow_ref=1,
@@ -68,7 +70,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     L=5e2,
     omega_from_input=false,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
+        (
         omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.36,
         skew=-0.2,
@@ -90,7 +93,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
+        (
         omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.39,
         skew=-0.2,
@@ -114,7 +118,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         rotation=270,
         origin={0,96})));
   Processes.Fan fan(redeclare package Medium = medium_ram, redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
+        (
         omega_ref=500,
         skew=1,
         m_flow_ref=0.21,
@@ -123,7 +128,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         rotation=270,
         origin={-80,-66})));
   Processes.Fan fan1(redeclare package Medium = medium_ram, redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
+        (
         omega_ref=1000,
         skew=1,
         eta=0.7)) annotation (Placement(transformation(

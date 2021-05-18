@@ -1469,7 +1469,8 @@ to the above list of assumptions</li>
 
   partial package PartialRealCondensingGases
     "Base class for mixtures of real condensing and non-condensing gases"
-    extends myMedia.Interfaces.PartialMixtureMedium(redeclare replaceable record FluidConstants =
+    extends myMedia.Interfaces.PartialMixtureMedium(redeclare replaceable
+        record                                                                   FluidConstants =
           myMedia.Interfaces.Types.TwoPhase.FluidConstants);
 
     replaceable partial function saturationPressure

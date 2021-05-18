@@ -29,7 +29,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare package Medium=Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare
+        package                                                                                   Medium=Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
     <p>This function computes the selected two-phase quantity from state.</p>
       </html>"));

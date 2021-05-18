@@ -45,12 +45,14 @@ model Piston "Test for Piston model"
     startTime=1)
     annotation (Placement(transformation(extent={{-64,46},{-44,66}})));
   ThermofluidStream.Utilities.showRealValue showRealValue annotation (Placement(transformation(extent={{32,-82},{52,-62}})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare package Medium =
+  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare
+      package                                                                    Medium =
                        Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,-20})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare package Medium =
+  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare
+      package                                                                     Medium =
                        Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

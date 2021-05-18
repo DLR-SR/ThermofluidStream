@@ -8065,8 +8065,8 @@ of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (
           region));
     annotation (Inline=false, LateInline=true);
   end isentropicExponent_dT;
-protected
 
+protected
   package ThermoFluidSpecial
     extends Modelica.Icons.FunctionsPackage;
     function water_ph
@@ -8211,8 +8211,8 @@ protected
       end if;
     end water_pT;
   end ThermoFluidSpecial;
-public
 
+public
   function hl_p = BaseIF97.Regions.hl_p
     "Compute the saturated liquid specific h(p)";
   function hv_p = BaseIF97.Regions.hv_p

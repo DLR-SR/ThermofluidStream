@@ -51,7 +51,8 @@ model ElementTwoPhase
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=2e4))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=2e4))
     annotation (Placement(transformation(extent={{18,-10},{38,10}})));
   Modelica.Blocks.Sources.Ramp ramp_temperature(
     height=20,

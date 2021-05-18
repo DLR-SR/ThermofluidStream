@@ -59,12 +59,14 @@ model SimpleEngine "Simple steam engine"
     m0_left=0.1,
     m0_right=0.1,
     x0=0.5) annotation (Placement(transformation(extent={{88,-92},{28,-32}})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare package Medium =
+  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare
+      package                                                                    Medium =
                        Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={70,34})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare package Medium =
+  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare
+      package                                                                     Medium =
                        Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

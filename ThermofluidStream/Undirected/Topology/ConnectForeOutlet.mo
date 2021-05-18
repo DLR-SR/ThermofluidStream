@@ -20,7 +20,8 @@ model ConnectForeOutlet
     annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   ConnectForeFore connectForeFore(redeclare package Medium=Medium, final L=L/2)
     annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
-  ThermofluidStream.Interfaces.StateInput state_rear(redeclare package Medium=Medium) if not useDefaultStateAsRear
+  ThermofluidStream.Interfaces.StateInput state_rear(redeclare package Medium=Medium)
+    if                                                                                   not useDefaultStateAsRear
     annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},

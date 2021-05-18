@@ -2,7 +2,8 @@ within ThermofluidStream.Undirected.Boundaries.Tests;
 model TestVolumes "Test for Bidirectional Volumes"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium "Medium package"
+  replaceable package Medium = myMedia.Air.SimpleAir constrainedby
+    myMedia.Interfaces.PartialMedium                                                                "Medium package"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
@@ -46,7 +47,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                         material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
@@ -54,7 +56,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                         material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-140,-60},{-120,-40}})));
   ThermofluidStream.Boundaries.Source
          source(redeclare package Medium = Medium, p0_par=200000)
@@ -105,7 +108,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                         material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
   .ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
@@ -113,7 +117,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                         material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-140,30},{-120,50}})));
   BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{-44,-60},{-24,-40}})));
   BoundaryFore boundary_fore1(redeclare package Medium = Medium,
@@ -149,8 +154,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e5))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e5))
     annotation (Placement(transformation(extent={{46,60},{66,80}})));
   .ThermofluidStream.Processes.FlowResistance flowResistance6(
     redeclare package Medium = MediumMix,
@@ -158,8 +163,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=2e5))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=2e5))
     annotation (Placement(transformation(extent={{46,20},{66,40}})));
   VolumeMix volumeMix2(
     redeclare package Medium = MediumMix,
@@ -184,8 +189,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e5))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e5))
     annotation (Placement(transformation(extent={{46,-30},{66,-10}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = MediumMix,
@@ -193,8 +198,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=2e5))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=2e5))
     annotation (Placement(transformation(extent={{46,-70},{66,-50}})));
   .ThermofluidStream.Processes.FlowResistance flowResistance8(
     redeclare package Medium = MediumMix,
@@ -202,8 +207,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e3))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e3))
     annotation (Placement(transformation(extent={{116,40},{136,60}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = MediumMix,
@@ -211,8 +216,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e3))
+        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e3))
     annotation (Placement(transformation(extent={{120,-80},{100,-60}})));
   Volume heatportVolume2(
     redeclare package Medium = Medium,
@@ -230,7 +235,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.05,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-80,-120},{-60,-100}})));
   BoundaryFore boundary_fore2(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{-44,-120},{-24,-100}})));
   Processes.FlowResistance flowResistance11(
@@ -239,7 +245,8 @@ model TestVolumes "Test for Bidirectional Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{40,-120},{60,-100}})));
   BoundaryRear boundary_rear5(redeclare package Medium = Medium, p0_par=200000) annotation (Placement(transformation(extent={{10,-120},{30,-100}})));
   Volume heatportVolume3(

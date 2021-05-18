@@ -20,7 +20,7 @@ model JunctionN "Junction with N inlets"
       iconTransformation(extent={{80,-20},{120,20}})));
 
   // these are needed by DynamicJunctionN
-  output Real w[N](unit="1") "regularized weighting factor for specific enthalpy";
+  output Real w[N](each unit="1") "regularized weighting factor for specific enthalpy";
   output SI.Density rho[N] = Medium.density(inlets.state) "density at inlets";
 
 protected
@@ -35,7 +35,7 @@ protected
   SI.SpecificEnthalpy h_mix "specific enthalpy at outlet";
   Medium.MassFraction Xi_mix[Medium.nXi] "medium composition at outlet";
 
-  Real w2[N](unit="1") "regularized weighting factor for steady mass flow pressure";
+  Real w2[N](each unit="1") "regularized weighting factor for steady mass flow pressure";
 
   SI.Pressure r_in[N];
 

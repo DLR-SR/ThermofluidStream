@@ -23,7 +23,8 @@ model TanValve "Test for bidirectional TanValve"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
@@ -50,7 +51,8 @@ model TanValve "Test for bidirectional TanValve"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{68,26},{88,46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -58,7 +60,8 @@ model TanValve "Test for bidirectional TanValve"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{64,-10},{84,10}})));
   Modelica.Blocks.Sources.Pulse    pulse(
     amplitude=4e4,

@@ -2,8 +2,8 @@ within ThermofluidStream.Boundaries.Tests;
 model SourceSink "Test for source and sink model"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium
-                                     "Medium package"
+  replaceable package Medium = myMedia.Air.SimpleAir constrainedby
+    myMedia.Interfaces.PartialMedium "Medium package"
       annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));

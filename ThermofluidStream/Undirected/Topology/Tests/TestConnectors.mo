@@ -2,8 +2,8 @@ within ThermofluidStream.Undirected.Topology.Tests;
 model TestConnectors "Test for the connectors"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium
-                                     "Medum model for the Test" annotation (Documentation(info="<html>
+  replaceable package Medium = myMedia.Air.SimpleAir constrainedby
+    myMedia.Interfaces.PartialMedium "Medum model for the Test" annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
 

@@ -2,7 +2,8 @@ within ThermofluidStream.Undirected.Processes.Tests;
 model TransportDelay "Test for transport delay"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.DryAirNasa constrainedby myMedia.Interfaces.PartialMedium "Medium Model"
+  replaceable package Medium = myMedia.Air.DryAirNasa constrainedby
+    myMedia.Interfaces.PartialMedium                                                                 "Medium Model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
 </html>"));
@@ -18,8 +19,8 @@ model TransportDelay "Test for transport delay"
     r=100,
     l(displayUnit="mm") = 0.008,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e4))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e4))
     annotation (Placement(transformation(extent={{-10,30},{10,50}})));
 
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium,
@@ -60,8 +61,8 @@ model TransportDelay "Test for transport delay"
     r=100,
     l(displayUnit="mm") = 0.008,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1e4))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1e4))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{70,-50},{90,-30}})));

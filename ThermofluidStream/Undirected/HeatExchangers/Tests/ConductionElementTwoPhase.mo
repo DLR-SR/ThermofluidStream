@@ -28,7 +28,8 @@ model ConductionElementTwoPhase
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-44,-10},{-24,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
         mediumRefrigerant,                                                              temperatureUnit="degC",
