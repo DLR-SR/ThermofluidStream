@@ -24,8 +24,10 @@ partial model PartialVolumeN "Partial parent class for Volumes with N_fore fores
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
   parameter SI.SpecificEnthalpy h_start = Medium.T_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
+  parameter Boolean initialize_Xi = true "If true: initialize mass fractions"
+     annotation(Dialog(tab= "Initialization"));
   parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
-    annotation(Dialog(tab= "Initialization"));
+    annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance at inlet and outlet"
     annotation (Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
@@ -46,7 +48,7 @@ partial model PartialVolumeN "Partial parent class for Volumes with N_fore fores
 
   SI.Volume V;
 
-  //setting the state is beneficial to make sure the non-linear system in the media model is always of size 1 (2 for some media models)
+  //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
   SI.Mass M(stateSelect=StateSelect.always) = V*medium.d;
   SI.Mass MXi[Medium.nXi](each stateSelect=StateSelect.always) = M*medium.Xi;
   SI.Energy U_med(stateSelect=StateSelect.always) = M*medium.u;
@@ -71,6 +73,8 @@ protected
   SI.Pressure r_damping = d*der(M);
 
 initial equation
+  assert(M > 0, "Volumes might not become empty");
+
   if initialize_pressure then
     medium.p=p_start;
   end if;
@@ -83,9 +87,13 @@ initial equation
     end if;
   end if;
 
-  medium.Xi = Xi_0;
+  if initialize_Xi then
+    medium.Xi = Xi_0;
+  end if;
 
 equation
+  assert(M > 0, "Volumes might not become empty");
+
   der(rear.m_flow)*L = rear.r - r_rear - r_damping*ones(N_rear);
   der(fore.m_flow)*L = fore.r - r_fore - r_damping*ones(N_fore);
 
