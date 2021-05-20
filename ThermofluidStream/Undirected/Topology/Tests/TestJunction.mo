@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Topology.Tests;
-model TestJunction "Test for the bidirectional junction"
+model TestJunction "Test for the undirected junction"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium
@@ -294,8 +294,8 @@ equation
   annotation (
   experiment(StopTime=10),
   Documentation(info="<html>
-<p>This model tests the bidirectional junction against the unidirectional junction. The states of the left two and the right two systems are expected to be the same, when the junctions have the same settings. </p>
-<p>Note that the unidirectional junctions have two times the inertance, since the bidirectional junction comes with a additional connector, which in turn adds inertance to each leave.</p>
+<p>This model tests the undirected junction against the unidirectional junction. The states of the left two and the right two systems are expected to be the same, when the junctions have the same settings. </p>
+<p>Note that the unidirectional junctions have two times the inertance, since the undirected junction comes with a additional connector, which in turn adds inertance to each leave.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-160,-80},{160,80}})),

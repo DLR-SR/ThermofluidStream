@@ -75,6 +75,6 @@ equation
           textString="%quantity")}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional sensor for a single selectable quantity. For some quatities several units are available.</p>
+<p>Undirected sensor for a single selectable quantity. For some quatities several units are available.</p>
 </html>"));
 end SingleSensorSelect;

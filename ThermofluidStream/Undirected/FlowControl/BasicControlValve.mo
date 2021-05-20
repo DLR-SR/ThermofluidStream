@@ -74,7 +74,7 @@ equation
           origin={0,-20},
           rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation of the Basic Control Valve.</p>
+<p>Undirected implementation of the Basic Control Valve.</p>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>
 <p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>
 <p>The three standard curve characteristics (linear, parabolic, equal-percentage) are implemented and can be chosen.</p>

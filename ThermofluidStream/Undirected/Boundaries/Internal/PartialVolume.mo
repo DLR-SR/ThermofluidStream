@@ -178,7 +178,7 @@ equation
           color={28,108,200},
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is the partial parent class for all bidirectional volumes with only one fore and rear. It is partial and is missing one equation for its volume or medium pressure and one for the volume work performed.</p>
+<p>This is the partial parent class for all undirected volumes with only one fore and rear. It is partial and is missing one equation for its volume or medium pressure and one for the volume work performed.</p>
 <p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
 <p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampeend out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
 </html>"));

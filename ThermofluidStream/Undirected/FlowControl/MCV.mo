@@ -97,7 +97,7 @@ equation
           color={28,108,200},
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation of MCV.</p>
+<p>Undirected implementation of MCV.</p>
 <p>This component can be used to emulate a mass-flow regulated valve. </p>
 <p><span style=\"color: #ff0000;\">Currently not working!</span></p>
 </html>"));

@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Topology;
-model JunctionMN "Generalized junction/splitter for bidirectional flow"
+model JunctionMN "Generalized junction/splitter for undirected flow"
 
   replaceable package Medium = myMedia.Interfaces.PartialMedium
     "Medium model for the Junction" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -110,7 +110,7 @@ equation
           fillPattern=FillPattern.Solid,
           textString="%N")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This model represents a generalized junction/splitter for bidirectional flow with N rear and M fore ports. </p>
-<p>Note that in the bidirectional case a distinction between junction and splitter is not possible, since the flow direction is unknown in advance. </p>
+<p>This model represents a generalized junction/splitter for undirected flow with N rear and M fore ports. </p>
+<p>Note that in the undirected case a distinction between junction and splitter is not possible, since the flow direction is unknown in advance. </p>
 </html>"));
 end JunctionMN;

@@ -74,6 +74,6 @@ equation
           textString="%quantity")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>A bidirectional sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>
+<p>A undirected sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>
 </html>"));
 end SingleFlowSensor;

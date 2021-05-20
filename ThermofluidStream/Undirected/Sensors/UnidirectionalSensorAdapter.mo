@@ -32,6 +32,6 @@ equation
                                                   Diagram(
      coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,-20}})),
     Documentation(info="<html>
-<p>A adapter to outputs the relevant state of the bidirectional flow, with r=0 at the outlet. It can be used to connect a unidirectional sensor to a bidirectional network.</p>
+<p>A adapter to outputs the relevant state of the undirected flow, with r=0 at the outlet. It can be used to connect a unidirectional sensor to a undirected network.</p>
 </html>"));
 end UnidirectionalSensorAdapter;

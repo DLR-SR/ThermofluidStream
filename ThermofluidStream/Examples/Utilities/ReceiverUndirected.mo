@@ -1,5 +1,5 @@
 within ThermofluidStream.Examples.Utilities;
-model ReceiverBidirectional "Bidirectional Receiver Model for vapor cycle applications"
+model ReceiverUndirected "Undirected Receiver Model for vapor cycle applications"
   extends Undirected.Boundaries.PhaseSeperator(   pipe_low=0.05, pipe_high=0.15);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -229,4 +229,4 @@ model ReceiverBidirectional "Bidirectional Receiver Model for vapor cycle applic
 <p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
 <p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
 </html>"));
-end ReceiverBidirectional;
+end ReceiverUndirected;

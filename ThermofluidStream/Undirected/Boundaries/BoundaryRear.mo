@@ -103,7 +103,7 @@ equation
           color={255,255,255},
           thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>A bidirectional boundary that can act as source and sink, depending on the rest of the system. The Boundary_rear has to be connected to the rear end of your model and therefore has a fore port.</p>
+<p>A undirected boundary that can act as source and sink, depending on the rest of the system. The Boundary_rear has to be connected to the rear end of your model and therefore has a fore port.</p>
 <p>At positive massflow the fore port acts as an outlet and therefore the boundary_rear is a source.</p>
 </html>"));
 end BoundaryRear;

@@ -7,5 +7,5 @@ Piston
 CupSink
 Receiver
 Accumulator
-ReceiverBidirectional
+ReceiverUndirected
 Tests

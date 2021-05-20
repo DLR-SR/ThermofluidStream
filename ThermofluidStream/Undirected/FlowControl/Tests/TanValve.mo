@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.FlowControl.Tests;
-model TanValve "Test for bidirectional TanValve"
+model TanValve "Test for undirected TanValve"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = myMedia.Air.SimpleAir

@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.FlowControl.Tests;
-model CheckValve "Test for bidirectional CheckValve"
+model CheckValve "Test for undirected CheckValve"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = myMedia.Air.SimpleAir
