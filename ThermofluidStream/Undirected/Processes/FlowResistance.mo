@@ -75,6 +75,6 @@ equation
           origin={0,25},
           rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation of the Flow Resistance with different selectable flow resistance functions (laminar, laminar-turbolent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
+<p>Undirected implementation of the Flow Resistance with different selectable flow resistance functions (laminar, laminar-turbolent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
 </html>"));
 end FlowResistance;

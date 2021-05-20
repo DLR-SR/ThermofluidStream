@@ -84,6 +84,6 @@ equation
           textString="%quantity")}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional sensor for a vapor quality. It must be seperate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
+<p>Undirected sensor for a vapor quality. It must be seperate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
 </html>"));
 end TwoPhaseSensorSelect;

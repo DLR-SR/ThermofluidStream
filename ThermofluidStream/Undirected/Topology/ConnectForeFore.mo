@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectForeFore "Bidirectional connector with fore and fore"
+model ConnectForeFore "Undirected connector with fore and fore"
 
   replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium of the connection"
     annotation (Documentation(info="<html>
@@ -33,7 +33,7 @@ equation
      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This connector can be used to connect two bidirectional rear ports. </p>
+<p>This connector can be used to connect two undirected rear ports. </p>
 <p>Basically the connector switches the names of output and input of the two ports.</p>
 </html>"));
 end ConnectForeFore;

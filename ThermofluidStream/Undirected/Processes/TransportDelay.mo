@@ -70,7 +70,7 @@ equation
   h_rear_out = u_rear_out + p_rear_out * v_rear_out;
   Xi_rear_out = Xi_fore_in;
   annotation (Documentation(info="<html>
-<p>Bidirectional implementation of the transport delay.</p>
+<p>Undirected implementation of the transport delay.</p>
 <p>Delays the temperature and massFraction, not pressure, since pressure differences propagate with speed of sound, and since delaying only steady state pressure p not inertial pressure r might lead to undesireable behaviour.</p>
 <p>Note that this component uses the spatialDistribution operator, that has some artefacts (see Fig. 1) for high and low non-dimensional speeds v (possibly due to inerpolation or extrapolation the function). Therefore minimum and maximum speed in the non-dimensional coodrinate x (inlet @ x=0, outlet @ x=1) is limited. The default limits are [0.01, 50], so the delay is limited by default to [0.02s, 100s]. This limit can be adjusted in the advanced parameters tab. Between [-v_min, v_min] the speed is set to v_min.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts2.PNG\"/> <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts.PNG\"/> </p>

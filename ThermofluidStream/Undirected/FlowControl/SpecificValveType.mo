@@ -95,7 +95,7 @@ equation
           origin={0,-20},
           rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation fo the Specific Valve Type.</p>
+<p>Undirected implementation fo the Specific Valve Type.</p>
 <p>This valve models the behaviour of specific valve types.</p>
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate or a flow-diameter can be set. </p>

@@ -3,8 +3,14 @@ model ConductionElement "Element with quasi-stationary mass and heatport"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
   parameter SI.Volume V(displayUnit="l")=0.001 "Volume of the element";
-  parameter SI.Area A = 1 "Contact area of element with medium";
-  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium";
+  parameter Boolean resistanceFromAU = true
+    annotation(Dialog(group="Thermal Conductance"));
+  parameter SI.Area A = 1 "Contact area of element with medium"
+    annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));
+  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
+    annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));
+  parameter SI.ThermalConductance k = 200 "Thermal conductance heatport->fluid"
+    annotation(Dialog(group="Thermal Conductance", enable=not resistanceFromAU));
   parameter Internal.InitializationMethodsCondElement init=Internal.InitializationMethodsCondElement.inlet "Initialization method for h"
     annotation (Dialog(tab="Initialization", group="Enthalpy"));
   parameter Medium.Temperature T_0 = Medium.T_default "Initial Temperature"
@@ -62,7 +68,7 @@ equation
     M*der(h) = Q_flow + m_flow*(h_in_norm - h);
   end if;
 
-  Q_flow = U*A*(T_heatPort - T);
+  Q_flow = (if noEvent(resistanceFromAU) then U*A else k)*(T_heatPort - T);
 
   dp = 0;
   h_out = h;
