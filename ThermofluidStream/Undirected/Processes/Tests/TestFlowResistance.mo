@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Processes.Tests;
-model TestFlowResistance "Test for the bidirectional flow resistance"
+model TestFlowResistance "Test for the undirected flow resistance"
   extends Modelica.Icons.Example;
 
   Processes.FlowResistance flowResistance(
@@ -76,7 +76,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=10),
     Documentation(info="<html>
-<p>Test for the bidirectional flow resistance.</p>
+<p>Test for the undirected flow resistance.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end TestFlowResistance;

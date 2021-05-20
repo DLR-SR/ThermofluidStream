@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Sensors.Tests;
-model TestSensors "Test for the bidirectional sensors"
+model TestSensors "Test for the undirected sensors"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = myMedia.Water.StandardWater
@@ -257,7 +257,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-60},{140,80}})),
     experiment(StopTime=10),
     Documentation(info="<html>
-<p>Test&nbsp;for&nbsp;the&nbsp;bidirectional&nbsp;sensors.</p>
+<p>Test&nbsp;for&nbsp;the&nbsp;undirected&nbsp;sensors.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end TestSensors;

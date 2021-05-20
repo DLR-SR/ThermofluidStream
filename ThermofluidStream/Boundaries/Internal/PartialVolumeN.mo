@@ -23,8 +23,10 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
   parameter SI.SpecificEnthalpy h_start = Medium.T_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
-  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
+  parameter Boolean initialize_Xi = true "If true: initialize mass fractions"
     annotation(Dialog(tab= "Initialization"));
+  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
+    annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance at inlet and outlet"
     annotation (Dialog(tab="Advanced"));
   parameter Real k_volume_damping(unit="1") = dropOfCommons.k_volume_damping "Damping factor multiplicator"
@@ -43,7 +45,7 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
 
   SI.Volume V;
 
-  //setting the state is beneficial to make sure the non-linear system in the media model is always of size 1 (2 for some media models)
+  //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
   SI.Mass M(stateSelect=StateSelect.always) = V*medium.d;
   SI.Mass MXi[Medium.nXi](each stateSelect=StateSelect.always) = M*medium.Xi;
   SI.Energy U_med(stateSelect=StateSelect.always) = M*medium.u;
@@ -85,13 +87,16 @@ initial equation
     end if;
   end if;
 
-  medium.Xi = Xi_0;
+  if initialize_Xi then
+    medium.Xi = Xi_0;
+  end if;
 
 equation
   for i in 1:N loop
     assert(m_flow_in[i] > m_flow_assert, "Negative massflow at Volume inlet", dropOfCommons.assertionLevel);
   end for;
   assert(-m_flow_out > m_flow_assert, "Positive massflow at Volume outlet", dropOfCommons.assertionLevel);
+  assert(M > 0, "Volumes might not become empty");
 
   der(inlet.m_flow)*L = inlet.r - r - r_damping*ones(N);
   der(outlet.m_flow)*L = outlet.r - r_damping;

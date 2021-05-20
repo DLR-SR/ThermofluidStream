@@ -59,7 +59,7 @@ equation
           color={28,108,200},
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation of CheckValve.</p>
+<p>Undirected implementation of CheckValve.</p>
 <p>Valve that allows positive mass_flow and builds up a large pressure difference against negative mass_flow.</p>
 </html>"));
 end CheckValve;

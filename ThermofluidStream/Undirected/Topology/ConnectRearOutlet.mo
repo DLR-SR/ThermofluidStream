@@ -1,6 +1,6 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectRearOutlet
-  "Uni/Bidirectional connector with rear and outlet"
+  "Directed/undirected connector with rear and outlet"
 
   replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium of the connection"
     annotation (Documentation(info="<html>
@@ -56,7 +56,7 @@ equation
      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This connector can be used to connect a unidirectional inlet to a bidirectional fore port. </p>
+<p>This connector can be used to connect a unidirectional inlet to a undirected fore port. </p>
 <p>The state from the forward direction of the rear port is handed to the outlet, the total pressure as well as the massflow of outlet and port are set equal. </p>
 <p>Note that when the flow is reversed, the resulting inertial pressure can be different on both sides of this connector. </p>
 <p>Since the unidirectional side of this connector is an oulet, there is no information about the rear state from this side. This information must be given by the StateInlet.</p>

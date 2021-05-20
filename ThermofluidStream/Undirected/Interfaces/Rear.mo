@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Interfaces;
-connector Rear "Bidirectional connector outputting the rearward state"
+connector Rear "Undirected connector outputting the rearward state"
 
   replaceable package Medium = myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -25,7 +25,7 @@ connector Rear "Bidirectional connector outputting the rearward state"
           fillPattern=FillPattern.Solid)}),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>One of the two bidirectional connectors. The state information flows in both directions, forward and backward. </p>
+<p>One of the two undirected connectors. The state information flows in both directions, forward and backward. </p>
 <p>At positive massflow, Rear is a input.</p>
 </html>"));
 end Rear;

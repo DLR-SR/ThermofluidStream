@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.HeatExchangers.Tests;
-model TestDiscretizedHEXvsUnidir
+model TestDiscretizedHEXvsDir
 
   extends Modelica.Icons.Example;
 
@@ -60,7 +60,7 @@ model TestDiscretizedHEXvsUnidir
     duration=1,
     offset=0.3,
     startTime=15) annotation (Placement(transformation(extent={{-34,126},{-14,146}})));
-  DiscretizedHEX discretizedHEXBidi(
+  DiscretizedHEX discretizedHEXUndir(
     redeclare package MediumAir = mediumAir,
     redeclare package MediumRefrigerant = mediumRefrigerant,
     nCells=10,
@@ -385,12 +385,12 @@ model TestDiscretizedHEXvsUnidir
     offset=1,
     startTime=15) annotation (Placement(transformation(extent={{-6,234},{14,254}})));
 equation
-  connect(discretizedHEXBidi.rearAir, multiSensor_Tpm.fore)
+  connect(discretizedHEXUndir.rearAir, multiSensor_Tpm.fore)
     annotation (Line(
       points={{-12,208},{-20,208}},
       color={28,108,200},
       thickness=0.5));
-  connect(discretizedHEXBidi.foreAir, multiSensor_Tpm1.rear)
+  connect(discretizedHEXUndir.foreAir, multiSensor_Tpm1.rear)
     annotation (Line(
       points={{8,208},{20,208}},
       color={28,108,200},
@@ -401,7 +401,7 @@ equation
       thickness=0.5));
   connect(PI1.y,limiter1. u) annotation (Line(points={{117,240},{138,240},{138,208},{129.2,208}},
                              color={0,0,127}));
-  connect(boundary_fore.p0_var, limiter1.y) annotation (Line(points={{98,208},{115.4,208}},
+  connect(boundary_fore.p0_var, limiter1.y) annotation (Line(points={{98,214},{106,214},{106,208},{115.4,208}},
                                                                                           color={0,0,127}));
   connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{40,212},{50,212},{50,232}},
                                                                                                         color={0,0,127}));
@@ -412,12 +412,12 @@ equation
       points={{94,176},{68,176},{68,192},{40,192}},
       color={28,108,200},
       thickness=0.5));
-  connect(discretizedHEXBidi.rearRef, multiSensor_Tpm2.fore)
+  connect(discretizedHEXUndir.rearRef, multiSensor_Tpm2.fore)
     annotation (Line(
       points={{8,192},{20,192}},
       color={28,108,200},
       thickness=0.5));
-  connect(discretizedHEXBidi.foreRef, multiSensor_Tpm3.rear)
+  connect(discretizedHEXUndir.foreRef, multiSensor_Tpm3.rear)
     annotation (Line(
       points={{-12,192},{-22,192}},
       color={28,108,200},
@@ -430,7 +430,7 @@ equation
     annotation (Line(points={{19,136},{40,136}},  color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{63,136},{78.8,136}}, color={0,0,127}));
-  connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{92.6,136},{114,136},{114,176},{106,176}},
+  connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{92.6,136},{114,136},{114,182},{106,182}},
                                                                                                               color={0,0,127}));
   connect(multiSensor_Tpm2.m_flow_out, feedback.u2) annotation (Line(points={{20,188},{10,188},{10,144}},
                                                                                                     color={0,0,127}));
@@ -447,7 +447,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(ramp1.y, feedback.u1) annotation (Line(points={{-13,136},{2,136}}, color={0,0,127}));
-  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-100,144},{-112,144},{-112,144},{-123,144}}, color={0,0,127}));
+  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-100,150},{-112,150},{-112,144},{-123,144}}, color={0,0,127}));
   connect(sinkA.inlet,multiSensor_Tpm5. outlet) annotation (Line(
       points={{-44,-64},{-32,-64}},
       color={28,108,200},
@@ -508,7 +508,8 @@ equation
       thickness=0.5));
   connect(multiSensor_Tpm7.m_flow_out, feedback2.u2) annotation (Line(points={{-18,-44},{-4,-44},{-4,8}}, color={0,0,127}));
   connect(feedback2.u1, refFlow_setPoint1.y) annotation (Line(points={{4,16},{15,16}}, color={0,0,127}));
-  connect(sourceB.p0_var, limiter2.y) annotation (Line(points={{-58,-18},{-58,-8.6}}, color={0,0,127}));
+  connect(sourceB.p0_var, limiter2.y) annotation (Line(points={{-52,-18},{-52,-14},{-58,-14},{-58,-8.6}},
+                                                                                      color={0,0,127}));
   connect(singleSensorSelect.inlet,evaporator. outletRef)
     annotation (Line(
       points={{26,-24},{22,-24},{22,-48},{12.2,-48}},
@@ -607,8 +608,8 @@ equation
       points={{22,-220},{14,-220},{14,-182},{8,-182}},
       color={28,108,200},
       thickness=0.5));
-  connect(limiter4.y, sourceB1.p0_var) annotation (Line(points={{74.6,-244},{80,-244},{80,-208}}, color={0,0,127}));
-  connect(rampPressure.y, boundary_rear.p0_var) annotation (Line(points={{-113,196},{-96,196},{-96,208},{-86,208}}, color={0,0,127}));
+  connect(limiter4.y, sourceB1.p0_var) annotation (Line(points={{74.6,-244},{86,-244},{86,-208}}, color={0,0,127}));
+  connect(rampPressure.y, boundary_rear.p0_var) annotation (Line(points={{-113,196},{-96,196},{-96,214},{-86,214}}, color={0,0,127}));
   connect(feedback1.u1, rampMassflow.y) annotation (Line(points={{42,240},{28,240},{28,244},{15,244}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
         graphics={
@@ -625,7 +626,7 @@ equation
         Text(
           extent={{-192,274},{-106,252}},
           lineColor={28,108,200},
-          textString="Bidirectional"),
+          textString="Undirected"),
         Rectangle(extent={{-208,276},{170,100}}, lineColor={28,108,200})}),
     experiment(StopTime=30, __Dymola_Algorithm="Dassl"),
     __Dymola_experimentSetupOutput,
@@ -637,4 +638,4 @@ equation
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));
-end TestDiscretizedHEXvsUnidir;
+end TestDiscretizedHEXvsDir;

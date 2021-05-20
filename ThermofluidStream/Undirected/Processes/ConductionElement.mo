@@ -111,10 +111,10 @@ equation
          color={238,46,47})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Bidirectional implementation of the Conduction Element.</p>
+<p>Undirected implementation of the Conduction Element.</p>
 <p>This Model is a Element with a fixed volume (fig. 1). The Mass in the volume is assumed quasi-stationary (statically computed with volume and density), and the fore massflow is coupled to the rear massflow. <span style=\"color: #f47d23;\">Because of this the ConductionElement cannot be used as a loop beaker</span><span style=\"color: #b83d00;\">. </span>The advantage is that multiple ConductionElements can be put behind each other without worrying about oscilations or fast eigenvalues between their masses. The Conduction Element implements conservation of mass and energy equations for over the Fluid mass contained within it.</p>
 <p>Different to the Unidirectional ConductionElement, the model for forward massflow (see fig. 1) is valid for both flow directions.</p>
-<p>Additionally the bidirectional Conduction Element offers more initialization methods for h. Additionally to initialize T or h by a paramter, one can choose to initialize with the incoming enthalpy from either one of the twp ports, or use the correct one, depending on the massflow (option 'port'). The last option can leed to large nonlinear initalzation problems, we advice to choose the port to initialize h from if known in advance (options 'rear' or 'fore').
+<p>Additionally the undirected Conduction Element offers more initialization methods for h. Additionally to initialize T or h by a paramter, one can choose to initialize with the incoming enthalpy from either one of the twp ports, or use the correct one, depending on the massflow (option 'port'). The last option can leed to large nonlinear initalzation problems, we advice to choose the port to initialize h from if known in advance (options 'rear' or 'fore').
 <p>The ConductionElement makes different assumptions:</p>
 <ul>
 <li>Quasistationary Mass:<br>m_flow_rear = - m_flow_fore &amp; M = rho * V (this assumption violates conservation of Mass for changing densities, since the mass in the element can change although inflow and outflow are the same)<br>der(H) = der(M*h) = M*der(h) (This assumption violates the conservation of Energy for changing densities, since then the mass M of fluid in the Element is no longer constant)</li>

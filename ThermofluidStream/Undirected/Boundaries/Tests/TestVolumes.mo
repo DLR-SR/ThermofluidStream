@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Boundaries.Tests;
-model TestVolumes "Test for Bidirectional Volumes"
+model TestVolumes "Test for undirected Volumes"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium "Medium package"
@@ -386,7 +386,7 @@ equation
   annotation (
   experiment(StopTime=1, __Dymola_NumberOfIntervals=15000, __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
-<p>Test&nbsp;for&nbsp;Bidirectional&nbsp;Volumes</p>
+<p>Test&nbsp;for&nbsp;undirected&nbsp;Volumes</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-180,-140},{180,100}})),

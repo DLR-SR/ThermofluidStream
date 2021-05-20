@@ -2,9 +2,12 @@ within ThermofluidStream.Processes.Internal.TurboComponent;
 function dp_tau_nominal_flow "Pump model with the nominal massflow model"
   extends partial_dp_tau;
 
-  parameter SI.Volume V_r = 0.0001 "Reference Volume of pump";
-  parameter Real k_p(unit="N.s/(m5)") = 1e5 "Linear pressure factor";
-  parameter Real k_fric(unit="N.s/(m2)") = 1e-2 "Linear friction factor";
+  input SI.Volume V_r = 0.0001 "Reference Volume of pump"
+    annotation(Dialog(enable=true));
+  input Real k_p(unit="N.s/(m5)") = 1e5 "Linear pressure factor"
+    annotation(Dialog(enable=true));
+  input Real k_fric(unit="N.s/(m2)") = 1e-2 "Linear friction factor"
+    annotation(Dialog(enable=true));
 
 protected
   SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
