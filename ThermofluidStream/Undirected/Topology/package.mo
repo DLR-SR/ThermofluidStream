@@ -1,10 +1,10 @@
 within ThermofluidStream.Undirected;
-package Topology "Junctions and Connectors for bidirectional thermofluid simulation"
+package Topology "Junctions and Connectors for undirected thermofluid simulation"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(info="<html>
-<p>This package contains the bidirectional junctions and nessesary connectors between two bidirectional components, as well as Unidirectional-Bidirectional connectors.</p>
-<p>Note that in the bidirectional case it a distinction between junction and splitter is not possible.</p>
+<p>This package contains the undirected junctions and nessesary connectors between two undirected components, as well as Directed-undirected connectors.</p>
+<p>Note that in the undirected case it a distinction between junction and splitter is not possible.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>"), Icon(graphics={

@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Interfaces;
-connector Fore "Bidirectional connector outputting the forward state"
+connector Fore "Undirected connector outputting the forward state"
 
   replaceable package Medium = myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -24,7 +24,7 @@ connector Fore "Bidirectional connector outputting the forward state"
           fillPattern=FillPattern.Solid)}),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>One of the two bidirectional connectors. The state information flows in both directions, forward and backward. </p>
+<p>One of the two undirected connectors. The state information flows in both directions, forward and backward. </p>
 <p>At positive massflow, Fore is a output. </p>
 </html>"));
 

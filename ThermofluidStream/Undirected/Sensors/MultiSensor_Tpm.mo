@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Sensors;
-model MultiSensor_Tpm "Bidirectional Sensor for Temperature, pressure and mass-flow"
+model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
   extends Internal.PartialSensor;
 
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit="K" "Unit for the temperature output"
@@ -135,6 +135,6 @@ equation
           textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
-<p>Bidirectional&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>
+<p>Undirected&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>
 </html>"));
 end MultiSensor_Tpm;

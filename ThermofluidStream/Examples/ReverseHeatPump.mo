@@ -162,7 +162,7 @@ model ReverseHeatPump
         rotation=0,
         origin={40,180})));
 
-  Utilities.ReceiverBidirectional         receiver(
+  Utilities.ReceiverUndirected receiver(
     redeclare package Medium = refrigerantMedium,
     p_start=1000000,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.h,
@@ -480,7 +480,7 @@ equation
   connect(PI1.u,feedback1. y) annotation (Line(points={{128,162},{130,162},{130,133}},
                                                                            color={0,0,127}));
   connect(feedback1.u1,realExpression5. y) annotation (Line(points={{130,116},{130,109}},        color={0,0,127}));
-  connect(limiter1.y, boundaryFore1.p0_var) annotation (Line(points={{87.4,162},{84,162},{84,146}},
+  connect(limiter1.y, boundaryFore1.p0_var) annotation (Line(points={{87.4,162},{78,162},{78,146}},
                                                                                              color={0,0,127}));
   connect(boundaryRear.fore, multiSensor_Tpm1.rear)
     annotation (Line(
@@ -499,7 +499,7 @@ equation
                                                                                                             color={0,0,127}));
   connect(feedback2.u1,realExpression4. y) annotation (Line(points={{-124,120},{-124,109}},
                                                                                           color={0,0,127}));
-  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-84,178},{-84,160}},               color={0,0,127}));
+  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-78,178},{-78,160}},               color={0,0,127}));
   connect(booleanToReal.y, firstOrder.u) annotation (Line(points={{-121,-6},{-112,-6}},
                                                                                       color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletHeating.u_in) annotation (Line(points={{-89,-6},{-76,-6}},color={0,0,127}));
@@ -623,8 +623,8 @@ equation
     experiment_X(StopTime=100, __Dymola_Algorithm="Dassl"),
     experiment(StopTime=200, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
-<p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a bidirectional receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>
-<p>The flow direction is controlled by a system of valves and bidirectional junctions. In the parameter settings it can be chosen between &quot;switching during simulation&quot; or manually switching between cooling and heating mode prior to the simulation.</p>
+<p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a undirected receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>
+<p>The flow direction is controlled by a system of valves and undirected junctions. In the parameter settings it can be chosen between &quot;switching during simulation&quot; or manually switching between cooling and heating mode prior to the simulation.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Examples.ReverseHeatPump.png\"/></p>
 <p>Fig. 1: Reversible heat pump</p>
 <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>

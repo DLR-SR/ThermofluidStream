@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Sensors.Internal;
-partial model PartialSensor "Partial bidirectional sensor"
+partial model PartialSensor "Partial undirected sensor"
   replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true, Documentation(
         info="<html>
 <p>Replaceable medium package for the sensor.</p>
@@ -39,6 +39,6 @@ equation
           thickness=0.5)}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Parent class of all bidirectional sensors.</p>
+<p>Parent class of all undirected sensors.</p>
 </html>"));
 end PartialSensor;

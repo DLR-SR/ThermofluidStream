@@ -4,7 +4,7 @@ partial model PartialValve "Partial implementation of a physical valve"
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
   parameter Boolean invertInput = false "Non-inverted: 0=closed, 1=open";
-  parameter Real k_min(unit="1", min = 0.01, max = 1) = 0.03 "Remaining flow at actuation signal u = 0 (fraction of maximum mass flow at u = 1)";
+  parameter Real k_min(unit="1", min = 0.001, max = 1) = 0.03 "Remaining flow at actuation signal u = 0 (fraction of maximum mass flow at u = 1)";
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control signal []"
     annotation (Placement(
@@ -14,11 +14,12 @@ partial model PartialValve "Partial implementation of a physical valve"
         origin={0,80})));
 
   Real u(unit="1") "actuation input for flow calculation";
+  parameter Modelica.SIunits.Pressure dp_ref = 1e5 "Reference pressure difference"
+    annotation(Dialog(tab="Advanced", group = "Reference values"));
+  parameter Modelica.SIunits.Density rho_ref = 1000 "Reference density"
+    annotation(Dialog(tab="Advanced", group = "Reference values"));
 
 protected
-  constant Modelica.SIunits.Pressure dp_ref = 1e5 "Reference pressure difference" annotation(Dialog(group = "Reference values"));
-  constant Modelica.SIunits.Density rho_ref = 1000 "Reference density" annotation(Dialog(group = "Reference values"));
-
   final constant Real secondsPerHour(final unit="s/h") = 3600 "Parameter for unit conversion";
 
   //Medium properties

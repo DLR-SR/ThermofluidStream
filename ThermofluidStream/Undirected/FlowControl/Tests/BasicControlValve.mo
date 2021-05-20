@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.FlowControl.Tests;
-model BasicControlValve "Test for bidirectional BasicControlValve"
+model BasicControlValve "Test for undirected BasicControlValve"
   extends Modelica.Icons.Example;
 
   replaceable package medium =
