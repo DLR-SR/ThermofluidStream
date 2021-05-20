@@ -3,21 +3,22 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
   extends partial_dp_tau;
   import R_m = Modelica.Constants.R "General gas constant";
 
-  parameter Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1"
-    annotation(Dialog(group="Pressure ratio curve"));
-  parameter Real skew(unit="1") = 0 "Scewness factor for mixed part of pr equation"
-    annotation(Dialog(group="Pressure ratio curve"));
-  parameter Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass_flow, that produces pr=-1"
-    annotation(Dialog(group="Pressure ratio curve"));
-  parameter Real eta(unit="1") = 1 "Isentropic efficenty";
-
-  parameter Real k(unit="1") = 2 "Exponetial factor used for pr<1"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
-    annotation(Dialog(tab="Advanced"));
-
-  parameter Boolean kappaFromMedia = true "Retrieve kappa from media model?" annotation(Dialog(group = "Isentropic exponent"));
-  parameter Real kappa_fixed(unit="1") "Fixed kappa value" annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
+  input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1"
+    annotation(Dialog(group="Pressure ratio curve", enable=true));
+  input Real skew(unit="1") = 0 "Scewness factor for mixed part of pr equation"
+    annotation(Dialog(group="Pressure ratio curve", enable=true));
+  input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass_flow, that produces pr=-1"
+    annotation(Dialog(group="Pressure ratio curve", enable=true));
+  input Real eta(unit="1") = 1 "Isentropic efficenty"
+    annotation(Dialog(enable=true));
+  input Real k(unit="1") = 2 "Exponetial factor used for pr<1"
+    annotation(Dialog(tab="Advanced", enable=true));
+  input SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
+    annotation(Dialog(tab="Advanced", enable=true));
+  input Boolean kappaFromMedia = true "Retrieve kappa from media model?"
+    annotation(Dialog(group = "Isentropic exponent", enable=true));
+  input Real kappa_fixed(unit="1") = 1.4 "Fixed kappa value"
+    annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
 
 protected
   SI.Pressure p_in = Medium.pressure(state_in) "pressure at inlet";
