@@ -116,6 +116,8 @@ model TestJunctionNM
     redeclare function pLoss =
         Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  inner DropOfCommons dropOfCommons annotation(
+    Placement(visible = true, transformation(origin = {-2, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-50,70},{-40,70}},

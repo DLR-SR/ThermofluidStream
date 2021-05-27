@@ -9,7 +9,7 @@ model PhaseSeperator
     enthalpyFromInput=true,
     p0_par=120000,
     h0_par=2000)                                            annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
-  .ThermofluidStream.Boundaries.PhaseSeperator receiver(
+  Boundaries.PhaseSeperator receiver(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -17,7 +17,7 @@ model PhaseSeperator
     pipe_high=0.15,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
                     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
-  .ThermofluidStream.Boundaries.PhaseSeperator accumulator(
+  Boundaries.PhaseSeperator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,

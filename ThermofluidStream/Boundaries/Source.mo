@@ -30,7 +30,7 @@ model Source "Boundary model of a source"
     annotation (Placement(transformation(extent={{-40,0},{0,40}}),  iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector [J/kg]"
     annotation (Placement(transformation(extent={{-40,-40},{0,0}}),   iconTransformation(extent={{-40,-20},{0,20}})));
-  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi]( unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{100,0},{120,20}}), iconTransformation(extent={{80,-20},{120,20}})));
