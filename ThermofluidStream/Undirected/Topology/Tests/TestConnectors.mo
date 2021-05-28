@@ -125,18 +125,18 @@ model TestConnectors "Test for the connectors"
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-40,-78},{-20,-58}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
-    redeclare package Medium = Medium,
-    r(displayUnit="mm") = 0.005,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+    r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(extent={{20,-78},{40,-58}})));
   Processes.FlowResistance flowResistance4(
-    redeclare package Medium = Medium,
-    r(displayUnit="mm") = 0.005,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+  r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

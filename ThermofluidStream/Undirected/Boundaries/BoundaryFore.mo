@@ -31,7 +31,7 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-20}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
-  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi]( unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60})));
   Interfaces.Rear rear(redeclare package Medium = Medium)

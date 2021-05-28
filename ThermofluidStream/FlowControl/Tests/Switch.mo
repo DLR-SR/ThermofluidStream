@@ -56,6 +56,7 @@ model Switch "Test for Switches"
     annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -71,6 +72,7 @@ model Switch "Test for Switches"
         origin={50,-30})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =

@@ -48,6 +48,8 @@ model Nozzle
     annotation (Placement(transformation(extent={{40,10},{60,30}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(redeclare package Medium = Medium, A_par=0.00015)
     annotation (Placement(transformation(extent={{40,-30},{60,-10}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons annotation(
+    Placement(visible = true, transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(nozzle.inlet, flowResistance.outlet) annotation (Line(
       points={{10,20},{-10,20}},
