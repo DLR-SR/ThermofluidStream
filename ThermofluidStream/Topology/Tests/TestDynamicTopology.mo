@@ -13,8 +13,8 @@ model TestDynamicTopology
     N=2,
     M=3,
     assumeConstantDensity=false,
-    A_in(displayUnit="cm2") = {0.0001,0.0002},
-    A_out(displayUnit="cm2") = {0.0001,0.0002,0.0003})
+    A_in(each displayUnit="cm2") = {0.0001,0.0002},
+    A_out(each displayUnit="cm2") = {0.0001,0.0002,0.0003})
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=100000)
                            annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
@@ -85,8 +85,8 @@ model TestDynamicTopology
     N=2,
     M=3,
     assumeConstantDensity=true,
-    A_in(displayUnit="cm2") = {0.0001,0.0002},
-    A_out(displayUnit="cm2") = {0.0001,0.0002,0.0003},
+    A_in(each displayUnit="cm2") = {0.0001,0.0002},
+    A_out(each displayUnit="cm2") = {0.0001,0.0002,0.0003},
     A_splitter=10)
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
   Boundaries.Source source2(redeclare package Medium = Medium, p0_par=100000)
@@ -156,6 +156,8 @@ model TestDynamicTopology
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0003,
     v_out_par=1) annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons annotation(
+    Placement(visible = true, transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(flowResistance1.outlet, dynamicJunctionNM.inlets[1])
     annotation (Line(

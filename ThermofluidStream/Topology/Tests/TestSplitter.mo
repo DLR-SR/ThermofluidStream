@@ -14,8 +14,7 @@ model TestSplitter
   Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=200000,
-    L=0,
-    outlet(m_flow(start=0, fixed=true)))
+    L=0)
          annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{44,18},{64,38}})));

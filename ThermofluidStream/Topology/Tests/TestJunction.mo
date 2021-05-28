@@ -8,8 +8,7 @@ model TestJunction
     annotation (Placement(transformation(extent={{42,-74},{62,-54}})));
   JunctionN junctionN(
     redeclare package Medium = Medium,
-    N=3,
-    outlet(m_flow(start=0, fixed=true)))
+    N=3)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.Source source(redeclare package Medium = Medium,
     p0_par=200000,
