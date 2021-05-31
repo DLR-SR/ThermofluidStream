@@ -169,6 +169,7 @@ model EspressoMachine "Get your simulated coffe!"
     omegaStateSelect=StateSelect.never,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        redeclare package Medium = Water,
         V_r(displayUnit="l") = 0.0001,
         k_p=1e5,
         k_fric=0))           annotation (Placement(transformation(
@@ -210,6 +211,7 @@ model EspressoMachine "Get your simulated coffe!"
     initPhi=false,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        redeclare package Medium = Water,
         V_r=0.1,
         k_p=1e6,
         k_fric=0))           annotation (Placement(transformation(

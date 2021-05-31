@@ -35,7 +35,7 @@ model Pump "Test for pumps"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
     m_acceleraton_0=0.2,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{-2,62},{18,82}})));
 
   Modelica.Blocks.Sources.Constant const(k=800)
@@ -48,7 +48,7 @@ model Pump "Test for pumps"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   tf.Processes.Tests.Power power1(P=8000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,2},{-4,22}})));
@@ -65,7 +65,7 @@ model Pump "Test for pumps"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     enableAccessHeatPort=true,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (                             V_r=0.0001, k_p=1e7))
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (redeclare package Medium = Medium, V_r=0.0001, k_p=1e7))
     annotation (Placement(transformation(extent={{-2,-18},{18,2}})));
   Modelica.Blocks.Sources.Constant const1(k=500)
     annotation (Placement(transformation(extent={{-24,-38},{-4,-18}})));
@@ -81,7 +81,7 @@ model Pump "Test for pumps"
     initPhi=true,
     phi_0=-1745.3292519943,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (                             V_r=0.0001, k_p=1e8))
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (redeclare package Medium = Medium, V_r=0.0001, k_p=1e8))
     annotation (Placement(transformation(extent={{-2,-56},{18,-36}})));
   tf.Processes.Tests.Power power2(P=5000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));

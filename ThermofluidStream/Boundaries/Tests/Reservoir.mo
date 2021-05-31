@@ -26,6 +26,7 @@ model Reservoir "Test for Reservoir"
     omega_from_input=true,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        redeclare package Medium=Medium,
         V_r=0.1,
         k_p=500,
         k_fric=0))
