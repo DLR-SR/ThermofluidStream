@@ -201,20 +201,19 @@ model EspressoMachine "Get your simulated coffe!"
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
   Processes.Pump pump1(
-    redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    omega_from_input=true,
-    enableOutput=false,
-    J_p=1e-3,
-    omegaStateSelect=StateSelect.default,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    initPhi=false,
+    
+    J_p=1e-3,redeclare package Medium = Water,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         redeclare package Medium = Water,
         V_r=0.1,
         k_p=1e6,
-        k_fric=0))           annotation (Placement(transformation(
+        k_fric=0),
+    enableOutput=false,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initPhi=false,
+    omegaStateSelect=StateSelect.default,
+    omega_from_input=true)           annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-110,-120})));
@@ -276,12 +275,12 @@ model EspressoMachine "Get your simulated coffe!"
         origin={-100,-30})));
   Modelica.Blocks.Continuous.LimPID
                                 PID3(
-    controllerType=Modelica.Blocks.Types.SimpleController.PI,
-    k=100,
-    Ti=3,
+    
+    Ti=3,controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    initType=.Modelica.Blocks.Types.InitPID.NoInit,
+    k=100, limitsAtInit = true,
     yMax=5000,
     yMin=0,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
     y_start=0)
     annotation (Placement(transformation(extent={{-170,-90},{-150,-110}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=8.5)
@@ -371,7 +370,6 @@ model EspressoMachine "Get your simulated coffe!"
         origin={90,-170})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.2,
     redeclare function pLoss =
