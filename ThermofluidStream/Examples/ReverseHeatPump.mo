@@ -19,6 +19,7 @@ model ReverseHeatPump
     omega_from_input=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        redeclare package Medium = refrigerantMedium,
         eta=0.8,
         kappaFromMedia=false,
         kappa_fixed=1.13))

@@ -38,6 +38,7 @@ model HeatPump
     initPhi=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        redeclare package Medium = Medium,
         omega_ref=200,
         m_flow_ref=1e-2,
         eta=0.8))
@@ -98,14 +99,16 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                            omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                           
+          redeclare package Medium = Air, omega_ref=100))
     annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                            omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                           
+          redeclare package Medium = Air, omega_ref=100))
                                                                  annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -254,7 +257,7 @@ model HeatPump
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_air/max(0.00001 + compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+    number=condenser.Q_flow_air/(0.00001 + abs(compressor.W_t))) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(
