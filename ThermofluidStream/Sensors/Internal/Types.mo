@@ -28,7 +28,7 @@ package Types "Types used in the Sensor Package"
       p_bar "Steadystate pressure (Bar)",
       r_Pa "Inertial pressure (Pa)",
       r_bar "Inertial pressure (Bar)",
-      p_total_Pa "Totoal pressure (Pa)",
+      p_total_Pa "Total pressure (Pa)",
       p_total_bar "Total pressure (Bar)",
       h_Jpkg "Specific enthalpy (J/kg)",
       s_JpkgK "Specific enthropy (J/(kg.K))",
