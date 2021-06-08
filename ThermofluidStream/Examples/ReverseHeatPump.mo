@@ -15,7 +15,7 @@ model ReverseHeatPump
 
   Processes.Compressor compressor(
     redeclare package Medium = refrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     omega_from_input=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
@@ -29,7 +29,7 @@ model ReverseHeatPump
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX(
     redeclare package MediumAir = secondaryMedium,
     redeclare package MediumRefrigerant = refrigerantMedium,
-    initRef=ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.fore,
+    initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.fore,
     nCells=5,
     initializeMassFlow=false,
     m_flow_0=0,
@@ -41,7 +41,7 @@ model ReverseHeatPump
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX1(
     redeclare package MediumAir = secondaryMedium,
     redeclare package MediumRefrigerant = refrigerantMedium,
-    initRef=ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.rear,
+    initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.rear,
     nCells=5,
     initializeMassFlow=false,
     m_flow_0=0,
@@ -52,7 +52,7 @@ model ReverseHeatPump
 
   FlowControl.BasicControlValve               valveCompressorOutletCooling(
     redeclare package Medium = refrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
         FlowControl.Internal.ControlValve.linearCharacteristics,
@@ -61,7 +61,7 @@ model ReverseHeatPump
         origin={-26,40})));
   FlowControl.BasicControlValve               valveCompressorOutletHeating(
     redeclare package Medium = refrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -187,6 +187,7 @@ model ReverseHeatPump
 
   Undirected.Processes.FlowResistance flowResistance(
     redeclare package Medium = secondaryMedium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -274,7 +275,8 @@ model ReverseHeatPump
         origin={-124,98})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal(realTrue=0, realFalse=1) annotation (Placement(transformation(extent={{-142,-16},{-122,4}})));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression(y=heatingMode) annotation (Placement(transformation(extent={{-212,-32},{-192,-12}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1) annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
+                                                        annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
   Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
     redeclare package Medium2Phase = refrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,

@@ -1,4 +1,4 @@
-within ThermofluidStream.HeatExchangers.Internal;
+within ThermofluidStream.Undirected.HeatExchangers.Internal;
 type InitializationMethodsCondElementHEX = enumeration(
     h0 "Fixed value h0",
     rear "Initialize from rear (h=h_in_rear)",
