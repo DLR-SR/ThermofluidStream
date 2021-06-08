@@ -9,11 +9,10 @@ model DiscretizedHEX
       ThermofluidStream.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX initRef=
-  ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0 "Initialization method for h (refrigerant side)"
-  annotation (Dialog(tab="Initialization", group="Enthalpy"));
+  parameter ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0
+    "Initialization method for h (refrigerant side)" annotation (Dialog(tab="Initialization", group="Enthalpy"));
   parameter SI.SpecificEnthalpy h0 = MediumRefrigerant.h_default "Initial enthalpy"
-   annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable = (initRef == ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0)));
+   annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable=(initRef == ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0)));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
   parameter Modelica.SIunits.Volume V_Hex = 0.001 "Volume for heat transfer calculation" annotation(Dialog(group = "Heat transfer parameters"));

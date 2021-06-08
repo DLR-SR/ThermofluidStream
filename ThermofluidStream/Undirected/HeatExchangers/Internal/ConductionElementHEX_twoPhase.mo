@@ -7,9 +7,10 @@ model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatpor
   replaceable package twoPhaseMedium =
       myMedia.Interfaces.PartialTwoPhaseMedium                                             annotation(choicesAllMatching=true);
 
-  parameter ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX init = ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0 "Initialization method for h"
-    annotation (Dialog(tab="Initialization", group="Enthalpy"));
-  parameter SI.SpecificEnthalpy h0 = Medium.h_default "Initial enthalpy" annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable = (init == ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0)));
+  parameter Internal.InitializationMethodsCondElementHEX init=Internal.InitializationMethodsCondElementHEX.h0
+    "Initialization method for h" annotation (Dialog(tab="Initialization", group="Enthalpy"));
+  parameter SI.SpecificEnthalpy h0 = Medium.h_default "Initial enthalpy" annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable=(init ==
+          ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0)));
   parameter SI.Volume V = 1 "Volume of the element";
   parameter SI.Area A = 1 "Contact area of element with medium";
   parameter SI.CoefficientOfHeatTransfer U_liq_nom "Nominal coefficient of heat transfer for liquid region";
@@ -61,11 +62,11 @@ protected
 
 initial equation
 
-  if init == ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0 then
+  if init == Internal.InitializationMethodsCondElementHEX.h0 then
     h = h0;
-  elseif init == ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.rear then
+  elseif init == Internal.InitializationMethodsCondElementHEX.rear then
     h = h_rear_in;
-  elseif init == ThermofluidStream.HeatExchangers.Internal.InitializationMethodsCondElementHEX.fore then
+  elseif init == Internal.InitializationMethodsCondElementHEX.fore then
     h = h_fore_in;
   end if;
 
