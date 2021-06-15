@@ -3,7 +3,7 @@ model VenturiPump "pumping of liquid water using the venturi effect"
 
     extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Water.StandardWater               constrainedby myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Water.StandardWater         constrainedby Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   parameter SI.Area A_in_hp=0.0002;

@@ -1,6 +1,7 @@
 within ThermofluidStream.Undirected.Internal;
 function regStepState "Apply regStep on State"
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
     annotation (choicesAllMatching=true, Documentation(
         info="<html>
 <p>Replaceable medium package for the function.</p>

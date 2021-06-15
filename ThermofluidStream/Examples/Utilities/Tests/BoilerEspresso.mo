@@ -2,7 +2,8 @@ within ThermofluidStream.Examples.Utilities.Tests;
 model BoilerEspresso "Test for the espresso boiler"
   extends Modelica.Icons.Example;
 
-  package Water = myMedia.Water.StandardWater "Medium Model"
+  package Water = Media.myMedia.Water.StandardWater
+                                              "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water, since we want to make espresso with it.</p>
 </html>"));

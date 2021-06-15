@@ -2,7 +2,8 @@ within ThermofluidStream.Examples.Utilities.Tests;
 model Piston "Test for Piston model"
   extends Modelica.Icons.Example;
 
-  package Medium = myMedia.Water.StandardWater "Medium Model"
+  package Medium = Media.myMedia.Water.StandardWater
+                                               "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water.</p>
 </html>"));

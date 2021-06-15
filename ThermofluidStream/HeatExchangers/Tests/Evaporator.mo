@@ -1,11 +1,11 @@
 within ThermofluidStream.HeatExchangers.Tests;
 model Evaporator
 
-  replaceable package mediumAir = myMedia.Air.MoistAir
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package mediumAir = Media.myMedia.Air.MoistAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package mediumRefrigerant = myMedia.R134a.R134a_ph
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 

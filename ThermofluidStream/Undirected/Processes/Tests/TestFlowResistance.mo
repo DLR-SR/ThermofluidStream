@@ -3,22 +3,21 @@ model TestFlowResistance "Test for the undirected flow resistance"
   extends Modelica.Icons.Example;
 
   Processes.FlowResistance flowResistance(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=1,
-    redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = .ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.BoundaryRear boundary_rear(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     T0_par=293.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-30,0})));
   Boundaries.BoundaryFore boundary_fore(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=303.15,
     p0_par=110000) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
@@ -29,23 +28,22 @@ model TestFlowResistance "Test for the undirected flow resistance"
     offset=140000,
     startTime=5)
     annotation (Placement(transformation(extent={{60,-6},{48,6}})));
-  FlowResistance           flowResistance1(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+  FlowResistance flowResistance1(
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Boundaries.BoundaryRear boundary_rear1(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=303.15) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-30,-40})));
   Boundaries.BoundaryFore boundary_fore1(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=false,
     T0_par=303.15,
     p0_par=100000) annotation (Placement(transformation(extent={{20,-50},{40,-30}})));

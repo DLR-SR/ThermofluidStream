@@ -2,8 +2,8 @@ within ThermofluidStream.HeatExchangers.Tests;
 model ElementTwoPhase
   extends Modelica.Icons.Example;
 
-  replaceable package mediumRefrigerant = myMedia.R134a.R134a_ph
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

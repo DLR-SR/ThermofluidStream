@@ -1,7 +1,8 @@
 within ThermofluidStream.Topology;
 model JunctionX1 "2 to 2 X-Junction"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
     annotation (choicesAllMatching=true);
   parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"

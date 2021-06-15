@@ -3,7 +3,8 @@ model Flow_Resistance "Test for flow resistance"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package medium = tf.myMedia.Air.SimpleAir "Medium model"
+  replaceable package medium = tf.Media.myMedia.Air.SimpleAir
+                                                        "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
 </html>"));

@@ -2,8 +2,8 @@ within ThermofluidStream.Examples;
 model HeatPump
   extends Modelica.Icons.Example;
 
-  package Medium = myMedia.R134a.R134a_ph;
-  package Air = myMedia.Air.DryAirNasa;
+  package Medium = Media.myMedia.R134a.R134a_ph;
+  package Air = Media.myMedia.Air.DryAirNasa;
 
   HeatExchangers.DiscretizedHEX                      condenser(
     redeclare package MediumAir = Air,

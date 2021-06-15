@@ -2,7 +2,7 @@ within ThermofluidStream.FlowControl;
 model Switch
 
   replaceable package Medium =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"

@@ -2,7 +2,7 @@ within ThermofluidStream.Boundaries.Tests;
 model DynamicBoundaries "Test for DynamicInflow and Outflow"
   extends Modelica.Icons.Example;
 
-  package Medium = myMedia.Water.StandardWater;
+  package Medium = Media.myMedia.Water.StandardWater;
 
   Source source(redeclare package Medium=Medium, p0_par=101000)
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));

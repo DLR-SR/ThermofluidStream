@@ -2,10 +2,10 @@
 model DiscretizedHEX "Discretized Heat Exchanger for two-phase working fluid"
 
   replaceable package MediumAir =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumRefrigerant =
-      ThermofluidStream.myMedia.Interfaces.PartialTwoPhaseMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
 //   MediumRefrigerant.BaseProperties ref_out;

@@ -2,12 +2,14 @@ within ThermofluidStream.Sensors;
 model DifferenceSensor_Tp
   "Sensor difference in Temperature and pressure"
 
-  replaceable package MediumA = myMedia.Interfaces.PartialMedium "Medium model A"
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
+                                                                 "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
-  replaceable package MediumB = myMedia.Interfaces.PartialMedium "Medium model B"
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
+                                                                 "Medium model B"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>

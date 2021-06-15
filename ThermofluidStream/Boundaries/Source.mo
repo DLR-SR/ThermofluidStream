@@ -1,7 +1,8 @@
 within ThermofluidStream.Boundaries;
 model Source "Boundary model of a source"
 
-   replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                 "Medium model"
      annotation (choicesAllMatching=true, Documentation(info="<html>
        <p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
        </html>"));
