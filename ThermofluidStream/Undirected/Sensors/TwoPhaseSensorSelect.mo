@@ -4,7 +4,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
 
-  replaceable package Medium2Phase = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium2Phase = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                              "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>

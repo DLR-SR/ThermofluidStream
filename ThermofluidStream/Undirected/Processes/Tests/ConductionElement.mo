@@ -2,8 +2,9 @@ within ThermofluidStream.Undirected.Processes.Tests;
 model ConductionElement "Test for ConductionElement"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Incompressible.Examples.Glycol47
-    constrainedby myMedia.Interfaces.PartialMedium "Medium Model"
+  replaceable package Medium = Media.myMedia.Incompressible.Examples.Glycol47
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                   "Medium Model"
       annotation(choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium Model for the test. Be aware that the Component is mainly ment for liquids with low compressablility.</span></p>
 </html>"));

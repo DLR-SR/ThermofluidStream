@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers.Internal;
 record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium;
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium;
 
   //In- and outlet temperatures
   Medium.Temperature Tin_air "Temperature at air outlet";

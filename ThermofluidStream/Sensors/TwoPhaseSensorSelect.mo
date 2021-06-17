@@ -2,7 +2,8 @@ within ThermofluidStream.Sensors;
 model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
 
-  replaceable package Medium = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                        "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Medium Model for the sensor. Make shure it is the same as for all lines the sensors input is connected. </p>

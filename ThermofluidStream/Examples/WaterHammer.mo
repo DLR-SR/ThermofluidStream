@@ -3,8 +3,8 @@ model WaterHammer "Pump water by using dynamic pressures"
   extends Modelica.Icons.Example;
 
   replaceable package Medium =
-      ThermofluidStream.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(stopOnFailedAssert=false)

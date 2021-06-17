@@ -2,7 +2,8 @@ within ThermofluidStream.Undirected.Topology.Tests;
 model TestJunction "Test for the undirected junction"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.SimpleAir constrainedby myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Air.SimpleAir
+                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
                                      "Medum model for the Test" annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
