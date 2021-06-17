@@ -2,7 +2,7 @@ within ThermofluidStream.Boundaries.Tests;
 model PhaseSeperator
   extends Modelica.Icons.Example;
 
-  package Medium = myMedia.Water.StandardWater;
+  package Medium = Media.myMedia.Water.StandardWater;
 
   Boundaries.Source source(redeclare package Medium=Medium,
     setEnthalpy=true,

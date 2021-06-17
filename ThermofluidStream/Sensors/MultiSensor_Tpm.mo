@@ -1,7 +1,8 @@
 within ThermofluidStream.Sensors;
 model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make shure it is the same as for all lines the sensors input is connected.</p>

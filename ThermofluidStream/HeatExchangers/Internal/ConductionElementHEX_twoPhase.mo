@@ -6,7 +6,7 @@ model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatpor
   extends Interfaces.SISOFlow(redeclare package Medium = twoPhaseMedium, clip_p_out=false);
 
     replaceable package twoPhaseMedium =
-      myMedia.Interfaces.PartialTwoPhaseMedium                                             annotation(choicesAllMatching=true);
+      Media.myMedia.Interfaces.PartialTwoPhaseMedium                                       annotation(choicesAllMatching=true);
 
   parameter SI.Volume V = 1 "Volume of the Model";
   parameter SI.Area A "Contact area of volume with medium";

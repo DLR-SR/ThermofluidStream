@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.FlowControl;
 model MCV "Massflow control valve"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
     <p>Medium package used in the Component. Make shure it is the same as the one both ports are connected to.</p>
 </html>"));

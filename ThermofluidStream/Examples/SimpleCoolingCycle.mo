@@ -3,11 +3,11 @@ model SimpleCoolingCycle "Basic cooling cycle with a load"
 extends Modelica.Icons.Example;
 
   replaceable package medium_liquid =
-      ThermofluidStream.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+      ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package medium_air = ThermofluidStream.myMedia.Air.DryAirNasa
-    constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package medium_air = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
     redeclare package MediumA = medium_air,

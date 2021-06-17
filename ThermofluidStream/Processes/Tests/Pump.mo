@@ -4,7 +4,8 @@ model Pump "Test for pumps"
 
   import tf = ThermofluidStream;
   replaceable package Medium =
-      tf.myMedia.CompressibleLiquids.LinearWater_pT_Ambient constrainedby myMedia.Interfaces.PartialMedium
+      tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+                                                            constrainedby tf.Media.myMedia.Interfaces.PartialMedium
                                                    "Medium model"
     annotation (
       choicesAllMatching=true,

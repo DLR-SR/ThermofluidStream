@@ -2,14 +2,15 @@ within ThermofluidStream.Undirected.Boundaries.Tests;
 model VolumesDirectCoupling "Test Volumes"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Water.StandardWater
-    constrainedby myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Water.StandardWater
+    constrainedby Media.myMedia.Interfaces.PartialMedium
                                      "Medium package"
       annotation (choicesAllMatching=true, Documentation(info="<html>
         <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
         </html>"));
 
-  package MediumMix = myMedia.IdealGases.MixtureGases.CombustionAir "Medium package"
+  package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
+                                                                    "Medium package"
       annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
 </html>"));

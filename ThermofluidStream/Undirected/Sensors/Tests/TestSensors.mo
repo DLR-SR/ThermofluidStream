@@ -2,14 +2,16 @@ within ThermofluidStream.Undirected.Sensors.Tests;
 model TestSensors "Test for the undirected sensors"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Water.StandardWater
-    constrainedby myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Water.StandardWater
+    constrainedby Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                           "Medium model"
     annotation (Documentation(info="<html>
 <p>Replaceable package with the medium model. Due to the vaporQuality sensor it must be a TwoPhaseMedium.</p>
 </html>"));
 
-  replaceable package Medium2 = myMedia.IdealGases.MixtureGases.CombustionAir
-    constrainedby myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium2 = Media.myMedia.IdealGases.MixtureGases.CombustionAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                   "Medium model"
     annotation (Documentation(info="<html>
 <p>Replaceable package with the medium model. Due to the vaporQuality sensor it must be a TwoPhaseMedium.</p>
 </html>"));

@@ -1,7 +1,8 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectRearRear "Undirected connector with rear and rear"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium of the connection"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make shure it fits the medium in all models connected to the ports of the Connector.</p>
 </html>"));
