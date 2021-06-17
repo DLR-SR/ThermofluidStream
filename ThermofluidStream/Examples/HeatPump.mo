@@ -2,8 +2,10 @@ within ThermofluidStream.Examples;
 model HeatPump
   extends Modelica.Icons.Example;
 
-  package Medium = Media.myMedia.R134a.R134a_ph;
-  package Air = Media.myMedia.Air.DryAirNasa;
+  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
+    annotation(choicesAllMatching=true);
+  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby Media.myMedia.Interfaces.PartialMedium "Air Medium"
+    annotation(choicesAllMatching=true);
 
   HeatExchangers.DiscretizedHEX                      condenser(
     redeclare package MediumAir = Air,
@@ -409,7 +411,8 @@ equation
                                                                                color={0,0,127}));
   connect(fan.omega_input, firstOrder2.y) annotation (Line(points={{-50,100},{-50,140},{-57,140}},
                                                                                                 color={0,0,127}));
-  connect(step2.y, source1.T0_var) annotation (Line(points={{41,-126},{2,-126}}, color={0,0,127}));
+  connect(step2.y, source1.T0_var) annotation (Line(points={{41,-126},{22,-126},{22,-120},{2,-120}},
+                                                                                 color={0,0,127}));
   connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{10,110},{114,110},{114,12}}, color={0,0,127}));
   connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-76,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
   annotation (experiment(StopTime=2500),
