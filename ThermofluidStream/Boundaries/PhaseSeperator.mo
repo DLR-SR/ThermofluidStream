@@ -1,8 +1,14 @@
 within ThermofluidStream.Boundaries;
 model PhaseSeperator "Parent to Reciever and Accumulator models"
-  extends Boundaries.Internal.PartialVolume(redeclare replaceable package Medium =
-        myMedia.Interfaces.PartialTwoPhaseMedium,
-    useHeatport=false, final useInlet=true, final useOutlet=true, final initialize_energy=false, final T_start=0, final h_start = 0, final use_hstart=false);
+  extends Boundaries.Internal.PartialVolume(
+    redeclare replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium,
+    useHeatport=false,
+    final useInlet=true,
+    final useOutlet=true,
+    final initialize_energy=false,
+    final T_start=0,
+    final h_start=0,
+    final use_hstart=false);
 
   import Init = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator;
 

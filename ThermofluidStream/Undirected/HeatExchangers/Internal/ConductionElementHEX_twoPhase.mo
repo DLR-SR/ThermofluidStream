@@ -5,7 +5,7 @@ model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatpor
   import Modelica.Math;
 
   replaceable package twoPhaseMedium =
-      myMedia.Interfaces.PartialTwoPhaseMedium                                             annotation(choicesAllMatching=true);
+      Media.myMedia.Interfaces.PartialTwoPhaseMedium                                       annotation(choicesAllMatching=true);
 
   parameter Internal.InitializationMethodsCondElementHEX init=Internal.InitializationMethodsCondElementHEX.h0
     "Initialization method for h" annotation (Dialog(tab="Initialization", group="Enthalpy"));

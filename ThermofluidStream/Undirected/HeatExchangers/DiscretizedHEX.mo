@@ -2,11 +2,11 @@
 model DiscretizedHEX
 
   replaceable package MediumAir =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable package MediumRefrigerant =
-      ThermofluidStream.myMedia.Interfaces.PartialTwoPhaseMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   parameter ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0

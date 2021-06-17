@@ -2,7 +2,8 @@ within ThermofluidStream.Sensors.Internal;
 function getTwoPhaseQuantity
   "Computes selected two-phase quantity from state"
 
-  replaceable package Medium = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                        "Medium model"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
       <p>Medium Model for the function. Make shure it implements the needed functions.</p>

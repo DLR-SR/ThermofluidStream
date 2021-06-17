@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model JunctionRRFF "Junction with two rears and two fores"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package for the Junction.</p>
 </html>"));

@@ -2,12 +2,14 @@ within ThermofluidStream.Sensors;
 model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapor quality"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
 
-  replaceable package MediumA = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model A"
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                         "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
-  replaceable package MediumB = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model B"
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                         "Medium model B"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>

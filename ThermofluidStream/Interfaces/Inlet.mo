@@ -1,7 +1,7 @@
 within ThermofluidStream.Interfaces;
 connector Inlet "Inlet port for a fluid"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium model defining the ThermodynamicState of the Inlet.</p>
 </html>"));

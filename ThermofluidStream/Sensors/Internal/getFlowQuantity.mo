@@ -1,7 +1,8 @@
 within ThermofluidStream.Sensors.Internal;
 function getFlowQuantity "Computes selected quantity from state and massflow"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
       <p>Medium Model for the function. Make shure it implements the needed functions.</p>

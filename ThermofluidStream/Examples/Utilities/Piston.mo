@@ -1,7 +1,8 @@
 within ThermofluidStream.Examples.Utilities;
 model Piston "Piston Model with steam on both sides"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium Model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium Model"
     annotation (Documentation(info="<html>
 <p>Model of the medium in the Piston. The medium is typically Two-phase.</p>
 </html>"));
