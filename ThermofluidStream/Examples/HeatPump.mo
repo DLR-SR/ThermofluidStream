@@ -2,9 +2,11 @@ within ThermofluidStream.Examples;
 model HeatPump
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
+  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                                    "Refrigerant Medium"
     annotation(choicesAllMatching=true);
-  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby Media.myMedia.Interfaces.PartialMedium "Air Medium"
+  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                                    "Air Medium"
     annotation(choicesAllMatching=true);
 
   HeatExchangers.DiscretizedHEX                      condenser(
@@ -256,7 +258,7 @@ model HeatPump
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_air/max(0.00001 + compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+    number=condenser.Q_flow_air/max(0.00001,compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(
