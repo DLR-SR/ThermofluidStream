@@ -18,7 +18,7 @@ model DropOfCommons "model for global parameters"
     annotation(Dialog(group="Regularization"));
   parameter SI.Acceleration g = Modelica.Constants.g_n "Acceleration of gravity";
 
-  AssertionLevel assertionLevel = if (stopOnFailedAssert) then AssertionLevel.error else AssertionLevel.warning;
+  parameter AssertionLevel assertionLevel = if (stopOnFailedAssert) then AssertionLevel.error else AssertionLevel.warning;
 
   annotation (defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",
