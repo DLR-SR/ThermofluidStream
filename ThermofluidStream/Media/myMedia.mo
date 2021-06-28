@@ -2659,13 +2659,15 @@ points, e.g., when an isentropic reference state is computed.
 
       model DryAir1 "Example 1 for dry air"
         extends Modelica.Icons.Example;
-        extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.ReferenceAir.Air_pT);
+        extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium =
+              myMedia.Air.ReferenceAir.Air_pT);
         annotation (experiment_X(StopTime=1.01));
       end DryAir1;
 
       model DryAir2 "Example 2 for dry air"
         extends Modelica.Icons.Example;
-        extends myMedia.Examples.Utilities.PartialTestModel2(redeclare package Medium = myMedia.Air.ReferenceAir.Air_pT);
+        extends myMedia.Examples.Utilities.PartialTestModel2(redeclare package Medium =
+              myMedia.Air.ReferenceAir.Air_pT);
         annotation (experiment_X(StopTime=1.01));
       end DryAir2;
 
@@ -2715,13 +2717,15 @@ points, e.g., when an isentropic reference state is computed.
 
       model MoistAir1 "Example 1 for moist air"
         extends Modelica.Icons.Example;
-        extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.ReferenceMoistAir);
+        extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium =
+              myMedia.Air.ReferenceMoistAir);
         annotation (experiment_X(StopTime=1.01));
       end MoistAir1;
 
       model MoistAir2 "Example 2 for moist air"
         extends Modelica.Icons.Example;
-        extends myMedia.Examples.Utilities.PartialTestModel2(redeclare package Medium = myMedia.Air.ReferenceMoistAir);
+        extends myMedia.Examples.Utilities.PartialTestModel2(redeclare package Medium =
+              myMedia.Air.ReferenceMoistAir);
         annotation (experiment_X(StopTime=1.01));
       end MoistAir2;
 
@@ -2979,7 +2983,8 @@ output window.
         "Solve h = h_T(T), s = s_T(T) for T, if h or s is given for ideal gas NASA"
         extends Modelica.Icons.Example;
 
-        replaceable package Medium = myMedia.Air.DryAirNasa constrainedby myMedia.IdealGases.Common.SingleGasNasa
+        replaceable package Medium = myMedia.Air.DryAirNasa constrainedby
+          myMedia.IdealGases.Common.SingleGasNasa
           "Medium model"
           annotation (choicesAllMatching=true);
 
@@ -3100,7 +3105,8 @@ output window.
         extends Modelica.Icons.Example;
 
         replaceable package Medium =
-            myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus constrainedby myMedia.IdealGases.Common.MixtureGasNasa
+            myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus constrainedby
+          myMedia.IdealGases.Common.MixtureGasNasa
           "Medium model" annotation (choicesAllMatching=true);
 
         parameter SI.Temperature T_min=300
@@ -4478,7 +4484,9 @@ no mass or energy is stored in the pipe.
           extends Modelica.Icons.ObsoleteModel;
           model SimpleAir "Test Modelica.Media.Air.SimpleAir"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.SimpleAir);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Air.SimpleAir);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4488,7 +4496,9 @@ no mass or energy is stored in the pipe.
 
           model DryAirNasa "Test Modelica.Media.Air.DryAirNasa"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.DryAirNasa);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Air.DryAirNasa);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4498,7 +4508,9 @@ no mass or energy is stored in the pipe.
 
           model MoistAir "Test Modelica.Media.Air.MoistAir"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.MoistAir);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Air.MoistAir);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4516,7 +4528,9 @@ no mass or energy is stored in the pipe.
 
           model Air "Test single gas Modelica.Media.IdealGases.SingleGases.Air"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Air.DryAirNasa);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Air.DryAirNasa);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4527,7 +4541,9 @@ no mass or energy is stored in the pipe.
           model Nitrogen
             "Test single gas Modelica.Media.IdealGases.SingleGases.N2"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.IdealGases.SingleGases.N2);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.IdealGases.SingleGases.N2);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4538,7 +4554,9 @@ no mass or energy is stored in the pipe.
           model SimpleNaturalGas
             "Test mixture gas Modelica.Media.IdealGases.MixtureGases.SimpleNaturalGas"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.IdealGases.MixtureGases.SimpleNaturalGas);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.IdealGases.MixtureGases.SimpleNaturalGas);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4549,7 +4567,8 @@ no mass or energy is stored in the pipe.
           model SimpleNaturalGasFixedComposition
             "Test mixture gas Modelica.Media.IdealGases.MixtureGases.SimpleNaturalGas"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium =
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
                   myMedia.IdealGases.MixtureGases.SimpleNaturalGasFixedComposition);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
@@ -4568,7 +4587,9 @@ no mass or energy is stored in the pipe.
           extends Modelica.Icons.ObsoleteModel;
           model Glycol47 "Test Modelica.Media.Incompressible.Examples.Glycol47"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Incompressible.Examples.Glycol47 (final
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Incompressible.Examples.Glycol47 (                                                                         final
                     singleState=true, final enthalpyOfT=true));
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
@@ -4580,7 +4601,9 @@ no mass or energy is stored in the pipe.
           model Essotherm650
             "Test Modelica.Media.Incompressible.Examples.Essotherm65"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Incompressible.Examples.Essotherm650);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Incompressible.Examples.Essotherm650);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4598,7 +4621,9 @@ no mass or energy is stored in the pipe.
           model ConstantPropertyLiquidWater
             "Test Modelica.Media.Water.ConstantPropertyLiquidWater"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Water.ConstantPropertyLiquidWater);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Water.ConstantPropertyLiquidWater);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4608,7 +4633,9 @@ no mass or energy is stored in the pipe.
 
           model IdealSteam "Test Modelica.Media.Water.IdealSteam"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Water.IdealSteam);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Water.IdealSteam);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4632,7 +4659,9 @@ no mass or energy is stored in the pipe.
 
           model WaterIF97_pT "Test Modelica.Media.Water.WaterIF97_pT"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.Water.WaterIF97_pT);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.Water.WaterIF97_pT);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4664,7 +4693,9 @@ no mass or energy is stored in the pipe.
           model LinearColdWater
             "Test Modelica.Media.Incompressible.Examples.Glycol47"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.CompressibleLiquids.LinearColdWater);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.CompressibleLiquids.LinearColdWater);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -4675,7 +4706,9 @@ no mass or energy is stored in the pipe.
           model LinearWater_pT
             "Test Modelica.Media.Incompressible.Examples.Essotherm65"
             extends Modelica.Icons.Example;
-            extends myMedia.Examples.Utilities.PartialTestModel(redeclare package Medium = myMedia.CompressibleLiquids.LinearWater_pT_Ambient);
+            extends myMedia.Examples.Utilities.PartialTestModel(redeclare
+                package                                                           Medium =
+                  myMedia.CompressibleLiquids.LinearWater_pT_Ambient);
             extends Modelica.Icons.ObsoleteModel;
             annotation (Documentation(info="<html>
 
@@ -6205,7 +6238,9 @@ to the above list of assumptions</li>
 
     partial package PartialRealCondensingGases
       "Base class for mixtures of real condensing and non-condensing gases"
-      extends myMedia.Interfaces.PartialMixtureMedium(redeclare replaceable record FluidConstants = myMedia.Interfaces.Types.TwoPhase.FluidConstants);
+      extends myMedia.Interfaces.PartialMixtureMedium(redeclare replaceable
+          record                                                                   FluidConstants =
+            myMedia.Interfaces.Types.TwoPhase.FluidConstants);
 
       replaceable partial function saturationPressure
         "Return saturation pressure of condensing fluid"
@@ -18622,6 +18657,13 @@ Temperature T (= "       + String(T) + " K) is not in the allowed range
           annotation(Inline=true,smoothOrder=2);
         end density_derX;
 
+        redeclare function extends density_derp_h
+          "Returns the partial derivative of density with respect to pressure at constant enthalpy"
+        algorithm
+          ddph := specificHeatCapacityCp(state)/(state.T*data.R*data.R);
+          annotation(Inline=true,smoothOrder=2);
+        end density_derp_h;
+
         redeclare replaceable function extends dynamicViscosity "Dynamic viscosity"
         algorithm
           assert(fluidConstants[1].hasCriticalData,
@@ -19612,11 +19654,18 @@ average of the pure component conductivities.
           annotation(Inline=true,smoothOrder=2);
         end density_derX;
 
-        redeclare function extends molarMass "Return molar mass of mixture"
+        redeclare function extends density_derp_h
+          "Returns the partial derivative of density with respect to pressure at constant enthalpy"
         algorithm
+          ddph := specificHeatCapacityCp(state)/(state.T*data.R*data.R);
+          annotation(Inline=true,smoothOrder=2);
+        end density_derp_h;
+
+          redeclare function extends molarMass "Return molar mass of mixture"
+          algorithm
           MM := 1/sum(state.X[j]/data[j].MM for j in 1:size(state.X, 1));
           annotation(Inline=true,smoothOrder=2);
-        end molarMass;
+          end molarMass;
 
         function T_hX "Return temperature from specific enthalpy and mass fraction"
           extends Modelica.Icons.Function;
