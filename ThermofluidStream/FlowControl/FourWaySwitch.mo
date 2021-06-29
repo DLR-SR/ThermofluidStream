@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model FourWaySwitch
   replaceable package Medium =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium;
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium;
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));

@@ -2,10 +2,10 @@
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true);
   replaceable package MediumB =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true);
 
   parameter Modelica.SIunits.Area A "Conductive Surface";

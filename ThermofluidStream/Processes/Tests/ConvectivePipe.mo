@@ -3,8 +3,8 @@ model ConvectivePipe
 
   extends Modelica.Icons.Example;
 
-replaceable package medium = myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+replaceable package medium = Media.myMedia.Water.ConstantPropertyLiquidWater
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   ThermalConvectionPipe    thermalConvection(redeclare package Medium =
         medium,

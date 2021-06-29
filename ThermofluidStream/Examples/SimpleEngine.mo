@@ -3,16 +3,16 @@ model SimpleEngine "Simple steam engine"
   extends Modelica.Icons.Example;
 
   package Water_dT
-    extends myMedia.Water.WaterIF97_base(
-    ThermoStates=myMedia.Interfaces.Choices.IndependentVariables.dTX,
-    ph_explicit=false,
-    dT_explicit=true,
-    pT_explicit=false,
-    smoothModel=false,
-    onePhase=false);
+    extends Media.myMedia.Water.WaterIF97_base(
+      ThermoStates=Media.myMedia.Interfaces.Choices.IndependentVariables.dTX,
+      ph_explicit=false,
+      dT_explicit=true,
+      pT_explicit=false,
+      smoothModel=false,
+      onePhase=false);
   end Water_dT;
 
-  package Water = myMedia.Water.StandardWater;
+  package Water = Media.myMedia.Water.StandardWater;
 
 
   inner DropOfCommons dropOfCommons(L=1e-3,

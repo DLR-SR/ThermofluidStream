@@ -2,10 +2,10 @@
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true);
   replaceable package MediumB =
-      ThermofluidStream.myMedia.Interfaces.PartialMedium
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true);
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)

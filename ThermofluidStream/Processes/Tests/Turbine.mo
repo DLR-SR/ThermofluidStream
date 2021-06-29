@@ -4,7 +4,8 @@ model Turbine "Test for turbines"
 
   import tf = ThermofluidStream;
 
-  replaceable package medium = ThermofluidStream.myMedia.Air.SimpleAir "Medium model"
+  replaceable package medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
+                                                                       "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be an ideal gas or close to that.</span></p>
 </html>"));

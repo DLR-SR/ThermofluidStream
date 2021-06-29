@@ -3,10 +3,12 @@ model TestDiscretizedHEXvsDir
 
   extends Modelica.Icons.Example;
 
-  replaceable package mediumAir = myMedia.Air.DryAirNasa constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package mediumAir = Media.myMedia.Air.DryAirNasa
+                                                         constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable package mediumRefrigerant = myMedia.R134a.R134a_ph constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+                                                                 constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(

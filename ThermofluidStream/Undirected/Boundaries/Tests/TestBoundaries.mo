@@ -3,16 +3,16 @@ model TestBoundaries "Tests for the rear and fore boundary"
   extends Modelica.Icons.Example;
 
   BoundaryRear boundary_rear(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     T0_par=293.15,
     p0_par=100000,
     fore(m_flow(start=0, fixed=true)))
-                   annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-30,40})));
   BoundaryFore boundary_fore(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=303.15,
     p0_par=110000) annotation (Placement(transformation(extent={{20,30},{40,50}})));
@@ -23,9 +23,10 @@ model TestBoundaries "Tests for the rear and fore boundary"
     offset=140000,
     startTime=5)
     annotation (Placement(transformation(extent={{60,34},{48,46}})));
-  TerminalRear terminal_rear(redeclare package Medium = myMedia.Air.SimpleAir) annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+  TerminalRear terminal_rear(redeclare package Medium = Media.myMedia.Air.SimpleAir)
+    annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
   BoundaryFore boundary_fore1(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=303.15,
     p0_par=110000) annotation (Placement(transformation(extent={{20,-20},{40,0}})));
@@ -35,14 +36,14 @@ model TestBoundaries "Tests for the rear and fore boundary"
     startTime=5)
     annotation (Placement(transformation(extent={{60,-16},{48,-4}})));
   BoundaryRear boundary_rear1(
-    redeclare package Medium = myMedia.Air.SimpleAir,
+    redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=293.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-30,-50})));
-  TerminalFore terminal_fore(redeclare package Medium = myMedia.Air.SimpleAir)
+  TerminalFore terminal_fore(redeclare package Medium = Media.myMedia.Air.SimpleAir)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

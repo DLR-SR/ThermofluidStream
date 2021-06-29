@@ -3,9 +3,11 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
-  replaceable package medium_ram = ThermofluidStream.myMedia.Air.MoistAir constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
+                                                                          constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                         annotation(choicesAllMatching = true);
-  replaceable package medium_bleed = ThermofluidStream.myMedia.Air.MoistAir constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package medium_bleed = ThermofluidStream.Media.myMedia.Air.MoistAir
+                                                                            constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                      annotation(choicesAllMatching = true);
 
 

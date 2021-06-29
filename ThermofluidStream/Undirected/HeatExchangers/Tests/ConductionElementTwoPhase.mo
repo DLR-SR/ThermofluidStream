@@ -2,7 +2,7 @@ within ThermofluidStream.Undirected.HeatExchangers.Tests;
 model ConductionElementTwoPhase
   extends Modelica.Icons.Example;
 
-  package mediumRefrigerant = myMedia.R134a.R134a_ph;
+  package mediumRefrigerant = Media.myMedia.R134a.R134a_ph;
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     redeclare package twoPhaseMedium = mediumRefrigerant,

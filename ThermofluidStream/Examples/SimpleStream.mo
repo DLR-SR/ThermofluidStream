@@ -2,8 +2,8 @@ within ThermofluidStream.Examples;
 model SimpleStream "Steam splitting and joining"
   extends Modelica.Icons.Example;
 
-  replaceable package medium = myMedia.Air.MoistAir
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package medium = Media.myMedia.Air.MoistAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   Boundaries.Source source(
     redeclare package Medium = medium, Xi0_par={0})

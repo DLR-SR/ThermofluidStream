@@ -2,8 +2,9 @@ within ThermofluidStream.Undirected.FlowControl.Tests;
 model TanValve "Test for undirected TanValve"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = myMedia.Air.SimpleAir
-    constrainedby myMedia.Interfaces.PartialMedium "Medium package"
+  replaceable package Medium = Media.myMedia.Air.SimpleAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                   "Medium package"
       annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));

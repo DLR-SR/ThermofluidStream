@@ -1,7 +1,8 @@
 within ThermofluidStream.Topology;
 model JunctionT2 "2 to 1 T-Junction"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));

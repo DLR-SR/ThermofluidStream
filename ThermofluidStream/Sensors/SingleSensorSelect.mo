@@ -2,7 +2,8 @@ within ThermofluidStream.Sensors;
 model SingleSensorSelect "Sensor with selectable measured quantity"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+                                                                "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make shure it is the same as for all lines the sensors input is connected.</p>

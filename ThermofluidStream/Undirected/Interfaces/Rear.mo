@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Interfaces;
 connector Rear "Undirected connector outputting the rearward state"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in Fore. Make shure it is the same as the other part of the connection.</p>
 </html>"));

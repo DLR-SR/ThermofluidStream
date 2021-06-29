@@ -2,7 +2,8 @@ within ThermofluidStream.Examples;
 model EspressoMachine "Get your simulated coffe!"
   extends Modelica.Icons.Example;
 
-  package Water = myMedia.Water.StandardWater "Medium Model for Water"
+  package Water = Media.myMedia.Water.StandardWater
+                                              "Medium Model for Water"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium&nbsp;Model&nbsp;for&nbsp;Water</span></p>
 </html>"));

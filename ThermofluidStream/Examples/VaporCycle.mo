@@ -2,12 +2,12 @@ within ThermofluidStream.Examples;
 model VaporCycle
     extends Modelica.Icons.Example;
 
-  replaceable package secondaryMedium = myMedia.Air.DryAirNasa
-    constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package secondaryMedium = Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
-  replaceable package refrigerantMedium = myMedia.R134a.R134a_ph
-    constrainedby ThermofluidStream.myMedia.Interfaces.PartialMedium
+  replaceable package refrigerantMedium = Media.myMedia.R134a.R134a_ph
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
 

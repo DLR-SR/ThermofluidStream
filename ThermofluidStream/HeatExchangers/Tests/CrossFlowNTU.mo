@@ -2,11 +2,11 @@ within ThermofluidStream.HeatExchangers.Tests;
 model CrossFlowNTU
 
   replaceable package mediumA =
-      myMedia.Incompressible.Examples.Glycol47
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+      Media.myMedia.Incompressible.Examples.Glycol47
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package mediumB = myMedia.Air.DryAirNasa
-    constrainedby myMedia.Interfaces.PartialMedium            annotation(choicesAllMatching = true);
+  replaceable package mediumB = Media.myMedia.Air.DryAirNasa
+    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 

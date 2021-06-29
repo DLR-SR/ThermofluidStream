@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries;
 model CreateState "Create state signal as output"
 
-  replaceable package Medium = myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
   "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Model of the medium for this thermodynamic state connector.</p>
 </html>"));

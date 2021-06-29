@@ -2,7 +2,8 @@ within ThermofluidStream.Examples.Utilities;
 model BoilerEspresso
   "Model of a boiler in a espresso machine."
 
-  replaceable package Medium = myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                                        "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the water in the boiler. We alwails want both phases of the water in the boiler.</span></p>
 </html>"));
