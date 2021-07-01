@@ -9,7 +9,7 @@ model Reservoir "Test for Reservoir"
 <p>Medium Model for the test. Be aware that the Component is manly ment for liquids with low compressablility.</p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   ThermofluidStream.Boundaries.Reservoir reservoir(redeclare package Medium=Medium,
     pEnvFromInput=true,

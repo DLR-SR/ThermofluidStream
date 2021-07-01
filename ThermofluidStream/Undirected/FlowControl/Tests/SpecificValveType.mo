@@ -10,7 +10,7 @@ model SpecificValveType "Test for undirected SpecificValveType"
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-170,94},{-150,114}})));
   Boundaries.BoundaryRear boundary_rear1(
     redeclare package Medium = medium,

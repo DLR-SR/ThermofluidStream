@@ -2,8 +2,7 @@ within ThermofluidStream.Examples;
 model SimpleCoolingCycle "Basic cooling cycle with a load"
 extends Modelica.Icons.Example;
 
-  replaceable package medium_liquid =
-      ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
+  replaceable package medium_liquid = Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   replaceable package medium_air =
@@ -42,8 +41,8 @@ extends Modelica.Icons.Example;
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=1e5))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+         k=1e5))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
                medium_liquid, temperatureUnit="degC")
@@ -89,8 +88,7 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{98,-70},{118,-50}})));
 
   ThermofluidStream.Processes.Fan fan(redeclare package Medium = medium_air,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,redeclare
-      function                                                                                  dp_tau_fan =
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,redeclare function dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
     annotation (Placement(transformation(extent={{140,-36},{160,-16}})));
   Modelica.Blocks.Sources.RealExpression pump_speed(y=80 + 273.15)

@@ -16,7 +16,7 @@ model SimpleEngine "Simple steam engine"
 
 
   inner DropOfCommons dropOfCommons(L=1e-3,
-                                    stopOnFailedAssert=false)
+                                    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{140,-34},{160,-14}})));
   Utilities.SteamSink
                   steamSink(

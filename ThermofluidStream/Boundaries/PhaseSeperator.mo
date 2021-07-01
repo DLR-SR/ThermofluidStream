@@ -16,10 +16,10 @@ model PhaseSeperator "Parent to Reciever and Accumulator models"
   parameter SI.Volume V_par(displayUnit="l")=0.01 "Volume of phase seperator";
   parameter Real pipe_low(unit="1", min=0, max=1) "Low end of pipe";
   parameter Real pipe_high(unit="1", min=0, max=1) "High end of pipe";
-//   parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
-//     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
-//   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure estimation; Approx. 1e-5 for air, 1e-7 for water"
-//     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
+  parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
+     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
+  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure estimation; Approx. 1e-5 for air, 1e-7 for water"
+     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization Method"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization"));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
@@ -45,9 +45,6 @@ protected
   SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(medium.p))-1 "Bubble Enthalpy of Medium";
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Dew Enthalpy of Medium";
 
-//   Modelica.Blocks.Interfaces.RealInput tmp_dddp(unit="s2/m2") = Medium.density_derp_h(medium.state) if density_derp_h_from_media;
-//   Modelica.Blocks.Interfaces.RealOutput tmp2_dddp(unit="s2/m2");
-
 initial equation
   if init_method == Init.h then
     medium.h = h_0;
@@ -61,14 +58,11 @@ initial equation
   end if;
 
 equation
-  //this workaround is necessary, because the method density_derp_h is not implemented in all media, and therefore has to be removed conditionally when not implemented"
-//   connect(tmp_dddp, tmp2_dddp);
-//   if density_derp_h_from_media then
-  density_derp_h = Medium.density_derp_h(medium.state);
-//   else
-//     density_derp_h = density_derp_h_set;
-//     tmp2_dddp = 0;
-//   end if;
+  if density_derp_h_from_media then
+    density_derp_h = Medium.density_derp_h(medium.state);
+  else
+    density_derp_h = density_derp_h_set;
+  end if;
 
   V = V_par;
   W_v = 0;
@@ -77,10 +71,10 @@ equation
   liquid_level_pipe = max(0, min(1, (liquid_level-pipe_low)/(pipe_high-pipe_low)));
 
   h_pipe = smooth(1,
-  if x < 0 then medium.h
-  elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
-  else medium.h);
-  state_out = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
+    if x < 0 then medium.h
+    elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
+    else medium.h);
+    state_out = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),

@@ -33,7 +33,7 @@ model ConductionElement "Test for ConductionElement"
     annotation (Placement(transformation(extent={{-100,-1},{-80,19}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=373.15)
     annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,70},{80,90}})));
   ThermofluidStream.Processes.ConductionElement conductionElement1(
     redeclare package Medium = Medium,

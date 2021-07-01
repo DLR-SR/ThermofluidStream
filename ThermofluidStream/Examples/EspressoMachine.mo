@@ -354,7 +354,7 @@ model EspressoMachine "Get your simulated coffe!"
         extent={{10,-10},{-10,10}},
         rotation=270,
         origin={-54,-90})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false, m_flow_reg=0.5e-5,
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, m_flow_reg=0.5e-5,
     p_min(displayUnit="Pa") = 700)
     annotation (Placement(transformation(extent={{182,82},{202,102}})));
   Topology.SplitterT1 splitterT1_1(redeclare package Medium = Water)

@@ -17,7 +17,7 @@ model Flow_Resistance "Test for flow resistance"
   tf.Boundaries.Sink sink(redeclare package Medium = medium, p0_par=100000)
     annotation (Placement(transformation(extent={{74,-10},{94,10}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, stopOnFailedAssert=false)
+  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 
   tf.Processes.FlowResistance flowResistance(

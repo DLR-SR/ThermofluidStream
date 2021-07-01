@@ -8,7 +8,7 @@ model Piston "Test for Piston model"
 <p>Typicaly some sort of water.</p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{66,48},{86,68}})));
   ThermofluidStream.Examples.Utilities.Piston piston2_1(
     redeclare package Medium = Medium,

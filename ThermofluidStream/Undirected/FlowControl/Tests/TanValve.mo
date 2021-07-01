@@ -9,7 +9,7 @@ model TanValve "Test for undirected TanValve"
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{52,-82},{72,-62}})));
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = Medium,

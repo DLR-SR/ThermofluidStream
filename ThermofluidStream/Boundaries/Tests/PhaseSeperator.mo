@@ -142,7 +142,7 @@ model PhaseSeperator
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,40},{84,60}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
                                     annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
 equation
   connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,14},{-90,14},{-90,-6},{-99,-6}}, color={0,0,127}));

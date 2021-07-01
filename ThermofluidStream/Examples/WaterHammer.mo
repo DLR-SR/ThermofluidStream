@@ -7,7 +7,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-170,94},{-150,114}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

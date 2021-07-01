@@ -4,8 +4,6 @@ model DropOfCommons "model for global parameters"
   parameter Utilities.Units.Inertance L = 0.01 "inertance of the flow"
       annotation(Dialog(tab="Advanced"));
 
-  parameter Boolean stopOnFailedAssert = true;
-
   parameter SI.MassFlowRate m_flow_reg = 0.01
     annotation(Dialog(group="Regularization"));
   parameter SI.AngularVelocity omega_reg = 1
@@ -18,7 +16,8 @@ model DropOfCommons "model for global parameters"
     annotation(Dialog(group="Regularization"));
   parameter SI.Acceleration g = Modelica.Constants.g_n "Acceleration of gravity";
 
-  parameter AssertionLevel assertionLevel = if (stopOnFailedAssert) then AssertionLevel.error else AssertionLevel.warning;
+  parameter AssertionLevel assertionLevel = AssertionLevel.error "Global assertion level"
+    annotation(choicesAllMatching=true);
 
   annotation (defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",

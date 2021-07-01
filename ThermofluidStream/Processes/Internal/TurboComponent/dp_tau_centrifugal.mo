@@ -64,7 +64,6 @@ protected
   constant Real v_i_ref(unit="N.m.s2/rad2") =      1.218e-6;
   constant Real v_s_ref(unit="N.m.s/rad") =        1.832e-4;
 
-// the next for were used in the input but why?
   constant Integer f_q_ref =             1;
   constant Real K_D_ref(unit="m3/rad") = 9.73e-06;
   constant SI.Density rho_ref_ref =      1.00e3;
