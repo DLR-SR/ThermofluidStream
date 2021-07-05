@@ -28,6 +28,8 @@ protected
   outer DropOfCommons dropOfCommons;
 
   Real direct_value[Medium.nX](each unit="kg/kg");
+  
+  function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 
 initial equation
   if filter_output then
@@ -35,7 +37,13 @@ initial equation
   end if;
 
 equation
-  direct_value[1:Medium.nXi] = Medium.massFraction(state);
+  //OM fix
+  //direct_value[1:Medium.nXi] = Medium.massFraction(state);
+  
+  for i in 1:Medium.nXi loop
+    direct_value[i] = mfk(state, i);
+  end for;
+  
   if Medium.reducedX then
     direct_value[end] = 1-sum(direct_value[1:Medium.nXi]);
   end if;

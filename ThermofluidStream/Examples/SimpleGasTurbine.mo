@@ -15,12 +15,14 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=100,
     redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                                   omega_ref=100, eta=0.8))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                                  
+        redeclare package Medium=Medium, omega_ref=100, eta=0.8))
     annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
   Processes.Turbine turbine(redeclare package Medium=Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
                                                              redeclare function dp_tau_turbine =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        redeclare package Medium=Medium,
         omega_ref=1000,
         m_flow_ref=1.2,
         eta=0.8))
