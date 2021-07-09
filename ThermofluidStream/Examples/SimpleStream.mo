@@ -127,8 +127,7 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-60},{160,
             60}})),
-    experiment(
-      StopTime=100),
+    experiment(StopTime=100, Tolerance=1e-5),
         Documentation(info="<html>
 <p>Very basic example if a stream that gets split and rejoins later. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

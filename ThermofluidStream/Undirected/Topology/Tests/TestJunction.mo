@@ -293,7 +293,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-  experiment(StopTime=10),
+  experiment(StopTime=10, Tolerance=1e-5),
   Documentation(info="<html>
 <p>This model tests the undirected junction against the unidirectional junction. The states of the left two and the right two systems are expected to be the same, when the junctions have the same settings. </p>
 <p>Note that the unidirectional junctions have two times the inertance, since the undirected junction comes with a additional connector, which in turn adds inertance to each leave.</p>

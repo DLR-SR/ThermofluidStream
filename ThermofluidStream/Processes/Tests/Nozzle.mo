@@ -95,7 +95,7 @@ equation
       points={{60,-20},{70,-20}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=10),
+  annotation (experiment(StopTime=10, Tolerance=1e-5),
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Test for the nozzle, that can be used to transfer between kinetic enegy and enthalpy of the fluid.</p>
