@@ -123,7 +123,7 @@ equation
   annotation (
     experiment(
       StopTime=2.5,
-      Tolerance=1e-05,
+      Tolerance=1e-5, 
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

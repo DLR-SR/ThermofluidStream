@@ -288,7 +288,7 @@ equation
           extent={{60,80},{118,72}},
           lineColor={28,108,200},
           textString="simple cycle")}),
-        experiment(StopTime=100),
+        experiment(StopTime=100, Tolerance=1e-5),
         Documentation(info="<html>
 <p>Very simple implementation of a bootstrap air cycle used in a aircraft ecs.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

@@ -90,7 +90,7 @@ equation
   connect(linearSpeedDependentTorque.flange, turbine1.flange)
     annotation (Line(points={{-34,-62},{2,-62},{2,-38}}, color={0,0,0}));
   annotation (
-    experiment(StopTime=30),
+    experiment(StopTime=30, Tolerance=1e-5),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

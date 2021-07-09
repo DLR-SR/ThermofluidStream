@@ -387,7 +387,7 @@ equation
       thickness=0.5));
   connect(heatportVolume2.heatPort, heatportVolume.heatPort) annotation (Line(points={{-100,-102},{-100,-58}}, color={191,0,0}));
   annotation (
-  experiment(StopTime=1, __Dymola_NumberOfIntervals=15000, __Dymola_Algorithm="Dassl"),
+  experiment(StopTime=1, Tolerance=1e-5, __Dymola_NumberOfIntervals=15000, __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Test&nbsp;for&nbsp;undirected&nbsp;Volumes</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
