@@ -48,7 +48,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=1, __Dymola_NumberOfIntervals=5000, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=1, Tolerance=1e-5, __Dymola_NumberOfIntervals=5000, __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
         Documentation(info="<html>

@@ -265,7 +265,7 @@ equation
           textString="Piston and Crank Drive"),
         Rectangle(extent={{-118,-32},{90,-100}},
                                               lineColor={28,108,200})}),
-        experiment(StopTime=25),
+        experiment(StopTime=25, Tolerance=1e-5),
         Documentation(info="<html>
 <p>Basic model of a steam engine. STEAM AND POWER!</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

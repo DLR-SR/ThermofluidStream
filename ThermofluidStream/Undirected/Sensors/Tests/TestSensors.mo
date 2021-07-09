@@ -257,7 +257,7 @@ equation
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-60},{140,80}})),
-    experiment(StopTime=10),
+    experiment(StopTime=10, Tolerance=1e-5),
     Documentation(info="<html>
 <p>Test&nbsp;for&nbsp;the&nbsp;undirected&nbsp;sensors.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

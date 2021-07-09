@@ -37,7 +37,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(source.p0_var, sink2.p0_var) annotation (Line(points={{-18,-16},{-26,-16},{-26,0},{26,0},{26,14},{20,14}}, color={0,0,127}));
-  annotation (experiment(StopTime=10),
+  annotation (experiment(StopTime=10, Tolerance=1e-5),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
