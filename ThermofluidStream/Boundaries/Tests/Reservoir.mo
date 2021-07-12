@@ -9,7 +9,7 @@ model Reservoir "Test for Reservoir"
 <p>Medium Model for the test. Be aware that the Component is manly ment for liquids with low compressablility.</p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   ThermofluidStream.Boundaries.Reservoir reservoir(redeclare package Medium=Medium,
     pEnvFromInput=true,
@@ -119,7 +119,7 @@ equation
   connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-46}}, color={0,0,127}));
   annotation (experiment(
       StopTime=10,
-	  Tolerance=1e-5, 
+   Tolerance=1e-5,
       __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

@@ -15,7 +15,7 @@ model VolumesDirectCoupling "Test Volumes"
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{70,-148},{90,-128}})));
   Volume heatportVolume2(
     redeclare package Medium = Medium,
@@ -225,7 +225,7 @@ equation
       thickness=0.5));
   annotation (experiment(
       StopTime=0.05,
-	  Tolerance=1e-5, 
+   Tolerance=1e-5,
       __Dymola_NumberOfIntervals=1500,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
