@@ -124,7 +124,7 @@ model SimpleEngine "Simple steam engine"
     annotation (Placement(transformation(extent={{8,8},{-8,-8}},
         rotation=180,
         origin={-40,-16})));
-  Boundaries.PhaseSeperator boiler(
+  Boundaries.PhaseSeparator boiler(
     redeclare package Medium = Water,
     useHeatport=true,
     A=20,

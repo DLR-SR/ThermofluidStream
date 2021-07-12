@@ -323,7 +323,7 @@ equation
           extent={{-180,-100},{160,100}})),
     experiment(
       StopTime=10,
-	  Tolerance=1e-5, 
+   Tolerance=1e-5,
       __Dymola_NumberOfIntervals=1500,
       __Dymola_Algorithm="Dassl"));
 end TestXRGMedia;

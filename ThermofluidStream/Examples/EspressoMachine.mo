@@ -596,7 +596,7 @@ equation
       thickness=0.5));
   annotation(experiment(
       StopTime=1500,
-      Tolerance=1e-5, 
+      Tolerance=1e-5,
       __Dymola_Algorithm="Dassl"),
     Diagram(coordinateSystem(extent={{-220,-200},{220,200}}), graphics={Text(
           extent={{-21,3},{21,-3}},
