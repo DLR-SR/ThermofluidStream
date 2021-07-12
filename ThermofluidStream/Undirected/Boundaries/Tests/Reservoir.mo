@@ -119,7 +119,7 @@ equation
   connect(reservoir2.pEnv_input, ramp.y) annotation (Line(points={{10,40},{10,68},{-45,68}}, color={0,0,127}));
 
 annotation (
-  experiment(StopTime=10),
+  experiment(StopTime=10, Tolerance=1e-5),
   Documentation(info="<html>
     <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
     </html>"));

@@ -116,7 +116,7 @@ equation
       thickness=0.5));
   connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-117,0},{-98,0}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
-    experiment(StopTime=100, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=100, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));

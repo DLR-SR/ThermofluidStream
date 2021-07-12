@@ -97,7 +97,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=30),
+    experiment(StopTime=30, Tolerance=1e-5),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

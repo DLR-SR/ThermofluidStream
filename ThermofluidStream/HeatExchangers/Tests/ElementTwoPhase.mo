@@ -104,7 +104,7 @@ equation
           -94,-2},{-94,-6},{-84,-6}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=60, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=60, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
       <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"));
 end ElementTwoPhase;

@@ -222,6 +222,7 @@ equation
     experiment(
       StopTime=20,
       Interval=0.001,
+	  Tolerance=1e-5, 
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>
