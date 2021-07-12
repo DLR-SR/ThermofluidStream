@@ -16,7 +16,7 @@ model Volumes "Test Volumes"
 </html>"));
 
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{70,-170},{90,-150}})));
   Source source(redeclare package Medium = Medium,
     p0_par=200000,

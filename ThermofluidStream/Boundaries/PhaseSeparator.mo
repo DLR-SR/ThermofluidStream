@@ -1,7 +1,8 @@
 within ThermofluidStream.Boundaries;
-model PhaseSeperator "Parent to Reciever and Accumulator models"
+model PhaseSeparator "Parent to Reciever and Accumulator models"
   extends Boundaries.Internal.PartialVolume(
-    redeclare replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium,
+    redeclare replaceable package Medium =
+        Media.myMedia.Interfaces.PartialTwoPhaseMedium,
     useHeatport=false,
     final useInlet=true,
     final useOutlet=true,
@@ -16,9 +17,9 @@ model PhaseSeperator "Parent to Reciever and Accumulator models"
   parameter Real pipe_low(unit="1", min=0, max=1) "Low end of pipe";
   parameter Real pipe_high(unit="1", min=0, max=1) "High end of pipe";
   parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
-    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
-  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure estimation; Approx. 1e-5 for air, 1e-7 for water"
-    annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
+     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
+  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
+     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization Method"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization"));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
@@ -44,9 +45,6 @@ protected
   SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(medium.p))-1 "Bubble Enthalpy of Medium";
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Dew Enthalpy of Medium";
 
-  Modelica.Blocks.Interfaces.RealInput tmp_dddp(unit="s2/m2") = Medium.density_derp_h(medium.state) if density_derp_h_from_media;
-  Modelica.Blocks.Interfaces.RealOutput tmp2_dddp(unit="s2/m2");
-
 initial equation
   if init_method == Init.h then
     medium.h = h_0;
@@ -60,13 +58,10 @@ initial equation
   end if;
 
 equation
-  //this workaround is necessary, because the method density_derp_h is not implemented in all media, and therefore has to be removed conditionally when not implemented"
-  connect(tmp_dddp, tmp2_dddp);
   if density_derp_h_from_media then
-    density_derp_h = tmp2_dddp;
+    density_derp_h = Medium.density_derp_h(medium.state);
   else
     density_derp_h = density_derp_h_set;
-    tmp2_dddp = 0;
   end if;
 
   V = V_par;
@@ -76,15 +71,15 @@ equation
   liquid_level_pipe = max(0, min(1, (liquid_level-pipe_low)/(pipe_high-pipe_low)));
 
   h_pipe = smooth(1,
-  if x < 0 then medium.h
-  elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
-  else medium.h);
-  state_out = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
+    if x < 0 then medium.h
+    elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
+    else medium.h);
+    state_out = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
+<p>This Volume is the parent class for Accumulator and Receiver models that seperate the two phases and are able and output gas, liquid or two-phase medium, dependin on its liquid level and the height of the outlet. </p>
+<p>Since there is no formula to compute density_derp_h for this volume, a upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
 </html>"));
-end PhaseSeperator;
+end PhaseSeparator;

@@ -7,7 +7,7 @@ DynamicPressureOutflow
 Volume
 VolumeFlex
 VolumeMix
-PhaseSeperator
+PhaseSeparator
 Reservoir
 CreateState
 Tests

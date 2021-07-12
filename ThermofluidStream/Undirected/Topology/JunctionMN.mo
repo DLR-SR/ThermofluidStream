@@ -75,16 +75,16 @@ equation
   sum(rears.m_flow) + sum(fores.m_flow) = 0;
   //compute p_mix for rs computation
   if assumeConstantDensity then
-    p_mix =sum(ps*inflows)/sum(inflows);
+    p_mix =(ps*inflows)/sum(inflows);
   else
-    p_mix =sum(ps*(inflows./rhos))/sum((inflows./rhos));
+    p_mix =(ps*(inflows./rhos))/sum((inflows./rhos));
   end if;
 
   // compute output quantities
   for i in 1:M+N loop
     Xis_out[:,i] = (Xis*inflows - Xis[:,i]*inflows[i]) /(sum(inflows) - inflows[i]);
-    hs_out[i] = (sum(hs*inflows) - hs[i]*inflows[i]) /(sum(inflows) - inflows[i]);
-    ps_out[i] = (sum(ps*inflows) - ps[i]*inflows[i]) /(sum(inflows) - inflows[i]);
+    hs_out[i] = (hs*inflows - hs[i]*inflows[i]) /(sum(inflows) - inflows[i]);
+    ps_out[i] = (ps*inflows - ps[i]*inflows[i]) /(sum(inflows) - inflows[i]);
   end for;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
