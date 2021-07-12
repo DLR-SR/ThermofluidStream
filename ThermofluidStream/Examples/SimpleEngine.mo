@@ -16,7 +16,7 @@ model SimpleEngine "Simple steam engine"
 
 
   inner DropOfCommons dropOfCommons(L=1e-3,
-                                    stopOnFailedAssert=false)
+                                    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{140,-34},{160,-14}})));
   Utilities.SteamSink
                   steamSink(
@@ -124,7 +124,7 @@ model SimpleEngine "Simple steam engine"
     annotation (Placement(transformation(extent={{8,8},{-8,-8}},
         rotation=180,
         origin={-40,-16})));
-  Boundaries.PhaseSeperator boiler(
+  Boundaries.PhaseSeparator boiler(
     redeclare package Medium = Water,
     useHeatport=true,
     A=20,

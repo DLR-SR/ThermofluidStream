@@ -150,7 +150,8 @@ model TestSensors "Test for the undirected sensors"
   SensorState sensorState(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{20,-32},{40,-12}})));
 equation
   connect(step.y, boundary_fore.p0_var)
-    annotation (Line(points={{107.4,2},{96,2}},    color={0,0,127}));
+    annotation (Line(points={{107.4,2},{102,2},{102,8},{96,8}},
+                                                   color={0,0,127}));
   connect(singleSensorSelect.rear, flowResistance.fore) annotation (Line(
       points={{-10,2},{-20,2}},
       color={28,108,200},
@@ -187,7 +188,8 @@ equation
       points={{-110,2},{-100,2}},
       color={28,108,200},
       thickness=0.5));
-  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{107.4,62},{96,62}},   color={0,0,127}));
+  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{107.4,62},{102,62},{102,68},{96,68}},
+                                                                                          color={0,0,127}));
   connect(singleSensorSelect1.rear, flowResistance1.fore)
     annotation (Line(
       points={{-10,62},{-20,62}},
