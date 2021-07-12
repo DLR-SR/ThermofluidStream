@@ -130,7 +130,7 @@ equation
     experiment(
       StopTime=100,
       Interval=0.1,
-      tolerance=1e-5,
+      tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>Very basic example if a stream that gets split and rejoins later. </p>

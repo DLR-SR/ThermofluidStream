@@ -116,7 +116,7 @@ equation
   connect(ramp.y, tanValve.u)
     annotation (Line(points={{9,74},{26,74},{26,44}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
-    experiment(StopTime=100, tolerance=1e-5, Interval=0.1, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=100, tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Test for the TanValve.</p>
 <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>

@@ -156,7 +156,7 @@ equation
     experiment(
       StopTime=20,
       Interval=0.02,
-   tolerance=1e-5,
+   tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

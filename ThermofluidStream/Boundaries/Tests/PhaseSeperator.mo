@@ -262,7 +262,7 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
-    experiment(StopTime=125, tolerance=1e-5, Interval=0.125, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=125, tolerance=1e-6, Interval=0.125, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

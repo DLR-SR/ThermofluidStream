@@ -147,7 +147,7 @@ equation
       points={{76,6},{70,6},{70,-10},{60,-10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=100, tolerance=1e-5, Interval=0.1),Diagram(coordinateSystem(extent={{-140,
+  annotation (experiment(StopTime=100, tolerance=1e-6, Interval=0.1),Diagram(coordinateSystem(extent={{-140,
             -80},{140,80}}), graphics={Rectangle(extent={{-64,76},{36,-26}},
             lineColor={28,108,200}),
         Text(

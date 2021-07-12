@@ -99,7 +99,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=30, tolerance=1e-5, Interval=0.03),
+    experiment(StopTime=30, tolerance=1e-6, Interval=0.03),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

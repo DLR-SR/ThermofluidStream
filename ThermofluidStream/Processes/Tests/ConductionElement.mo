@@ -188,7 +188,7 @@ equation
       points={{60,-90},{40,-90}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, tolerance=1e-5, Interval=0.001),
+  annotation (experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

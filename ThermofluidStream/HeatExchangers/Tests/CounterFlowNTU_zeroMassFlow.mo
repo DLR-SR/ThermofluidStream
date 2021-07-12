@@ -134,7 +134,7 @@ equation
             false, extent={{-160,-100},{160,100}})),
     experiment(
       StopTime=100,
-   tolerance=1e-5,
+   tolerance=1e-6,
    Interval=0.1,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>

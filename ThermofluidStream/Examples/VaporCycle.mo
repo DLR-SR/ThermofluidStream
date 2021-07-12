@@ -457,7 +457,7 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-160},{240,100}})),
     experiment(
       StopTime=1500,
-   tolerance=1e-5,
+   tolerance=1e-6,
    Interval=1.5,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

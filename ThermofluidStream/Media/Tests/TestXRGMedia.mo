@@ -323,7 +323,7 @@ equation
           extent={{-180,-100},{160,100}})),
     experiment(
       StopTime=10,
-   tolerance=1e-5,
+   tolerance=1e-6,
    Interval=0.01,
       __Dymola_Algorithm="Dassl"),
     __Dymola_experimentSetupOutput(

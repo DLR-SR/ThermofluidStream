@@ -138,7 +138,7 @@ equation
     annotation (Line(points={{36,34},{36,10}}, color={191,0,0}));
     annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=1000, tolerance=1e-5, Interval=1),
+    experiment(StopTime=1000, tolerance=1e-6, Interval=1),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"),

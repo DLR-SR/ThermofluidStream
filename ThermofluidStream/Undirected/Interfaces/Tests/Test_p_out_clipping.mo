@@ -117,7 +117,7 @@ equation
       points={{10,50},{40,50}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, tolerance=1e-5, Interval=0.001), Documentation(info="<html>
+  annotation (experiment(StopTime=1, tolerance=1e-6, Interval=0.001), Documentation(info="<html>
 <p>Test for the lower limit of p_out in SISOFlow components</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

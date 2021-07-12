@@ -263,7 +263,7 @@ equation
   connect(ramp.y, boundary_fore5.p0_var) annotation (Line(points={{79,-90},{72,-90},{72,-84},{66,-84}},
                                                                                       color={0,0,127}));
   annotation (
-  experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
+  experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
   Documentation(info="<html>
 <p>This model tests the connectors against the case when source is directly connected to sink. All massflows are expected to be the same, when the sources and sinks have the same settings. </p>
 <p>Note that the sources and sinks without a connector have 1.5 times the inertance, since the additional connector adds inertance to each other path.</p>

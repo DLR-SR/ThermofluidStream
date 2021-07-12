@@ -142,7 +142,7 @@ equation
   connect(fixedTemperature.port, pump2.heatport)
     annotation (Line(points={{40,10},{8,10},{8,2}}, color={191,0,0}));
   annotation (
-    experiment(StopTime=30, tolerance=1e-5, Interval=0.03),
+    experiment(StopTime=30, tolerance=1e-6, Interval=0.03),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

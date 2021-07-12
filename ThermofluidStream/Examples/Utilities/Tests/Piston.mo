@@ -196,7 +196,7 @@ equation
       thickness=0.5));
   connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}},  color={0,0,127}));
     annotation (
-      experiment(StopTime=15, tolerance=1e-5, Interval=0.015),
+      experiment(StopTime=15, tolerance=1e-6, Interval=0.015),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

@@ -77,7 +77,7 @@ equation
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
+    experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
     Documentation(info="<html>
 <p>Tests for the rear and fore boundary.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
