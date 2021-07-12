@@ -156,8 +156,8 @@ model PhaseSeperator
   Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter6(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{100,-18},{120,-26}})));
   Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter7(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-100,-18},{-80,-26}})));
 equation
-  connect(boundaryRear.h0_var, timeTable.y) annotation (Line(points={{-112,14},{-124,14},{-124,0},{-133,0}}, color={0,0,127}));
-  connect(boundaryRear1.h0_var, timeTable.y) annotation (Line(points={{-122,-26},{-128,-26},{-128,0},{-133,0}}, color={0,0,127}));
+  connect(boundaryRear.h0_var, timeTable.y) annotation (Line(points={{-112,20},{-124,20},{-124,0},{-133,0}}, color={0,0,127}));
+  connect(boundaryRear1.h0_var, timeTable.y) annotation (Line(points={{-122,-20},{-128,-20},{-128,0},{-133,0}}, color={0,0,127}));
   connect(boundaryRear.fore, unidirectionalSensorAdapter.rear)
     annotation (Line(
       points={{-100,20},{-90,20}},
@@ -328,8 +328,14 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,100}})),
-    experiment(StopTime=125, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=125, tolerance=1e-5, Interval=0.125, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end PhaseSeperator;

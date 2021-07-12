@@ -293,12 +293,18 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-  experiment(StopTime=10, Tolerance=1e-5),
+  experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
   Documentation(info="<html>
 <p>This model tests the undirected junction against the unidirectional junction. The states of the left two and the right two systems are expected to be the same, when the junctions have the same settings. </p>
 <p>Note that the unidirectional junctions have two times the inertance, since the undirected junction comes with a additional connector, which in turn adds inertance to each leave.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-160,-80},{160,80}})),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestJunction;

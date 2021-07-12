@@ -100,11 +100,17 @@ equation
       points={{-58,0},{-72,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp_enthalpy.y, source.h0_var) annotation (Line(points={{-105,-2},{
-          -94,-2},{-94,-6},{-84,-6}}, color={0,0,127}));
+  connect(ramp_enthalpy.y, source.h0_var) annotation (Line(points={{-105,-2},{-94,-2},{-94,0},{-84,0}},
+                                      color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=60, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=60, tolerance=1e-5, Interval=0.06, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
-      <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"));
+      <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end ElementTwoPhase;

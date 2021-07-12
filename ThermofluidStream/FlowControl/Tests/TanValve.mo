@@ -95,7 +95,7 @@ equation
       points={{44,36},{36,36}},
       color={28,108,200},
       thickness=0.5));
-  connect(source.p0_var, const.y) annotation (Line(points={{-98,0},{-102,0},{-102,30},{-105,30}},
+  connect(source.p0_var, const.y) annotation (Line(points={{-98,6},{-102,6},{-102,30},{-105,30}},
                           color={0,0,127}));
   connect(sink1.inlet, flowResistance1.outlet) annotation (Line(
       points={{96,36},{88,36}},
@@ -116,9 +116,15 @@ equation
   connect(ramp.y, tanValve.u)
     annotation (Line(points={{9,74},{26,74},{26,44}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
-    experiment(StopTime=100, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=100, tolerance=1e-5, Interval=0.1, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Test for the TanValve.</p>
 <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TanValve;

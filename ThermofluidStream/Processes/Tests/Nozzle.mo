@@ -50,7 +50,7 @@ model Nozzle
     annotation (Placement(transformation(extent={{40,10},{60,30}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(redeclare package Medium = Medium, A_par=0.00015)
     annotation (Placement(transformation(extent={{40,-30},{60,-10}})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons annotation (
     Placement(visible = true, transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(nozzle.inlet, flowResistance.outlet) annotation (Line(
@@ -97,10 +97,16 @@ equation
       points={{60,-20},{70,-20}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=10, Tolerance=1e-5),
+  annotation (experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
   Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Test for the nozzle, that can be used to transfer between kinetic enegy and enthalpy of the fluid.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Nozzle;

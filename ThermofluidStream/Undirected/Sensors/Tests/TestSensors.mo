@@ -259,9 +259,15 @@ equation
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-60},{140,80}})),
-    experiment(StopTime=10, Tolerance=1e-5),
+    experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
     Documentation(info="<html>
 <p>Test&nbsp;for&nbsp;the&nbsp;undirected&nbsp;sensors.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestSensors;

@@ -212,7 +212,7 @@ equation
   connect(feedback.u1, refFlow_setPoint.y)
     annotation (Line(points={{4,84},{15,84}}, color={0,0,127}));
   connect(sourceB.p0_var, limiter.y)
-    annotation (Line(points={{-60,62},{-60,62},{-60,65.4}}, color={0,0,127}));
+    annotation (Line(points={{-54,62},{-60,62},{-60,65.4}}, color={0,0,127}));
   connect(singleSensorSelect.inlet, evaporator.outletRef)
     annotation (Line(
       points={{24,34},{20,34},{20,10},{10.2,10}},
@@ -237,10 +237,16 @@ equation
             false, extent={{-160,-100},{160,100}})),
     experiment(
       StopTime=10,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-5,
+   Interval=0.01,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Evaporator;

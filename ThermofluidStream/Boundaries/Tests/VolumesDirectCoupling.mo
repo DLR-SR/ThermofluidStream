@@ -225,13 +225,19 @@ equation
       thickness=0.5));
   annotation (experiment(
       StopTime=0.05,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1500,
+   tolerance=1e-5,
+   Interval=5e-5,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-160},{100,160}})),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end VolumesDirectCoupling;

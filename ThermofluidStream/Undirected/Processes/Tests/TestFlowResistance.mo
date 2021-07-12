@@ -57,7 +57,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(step.y, boundary_fore.p0_var)
-    annotation (Line(points={{47.4,0},{32,0}},     color={0,0,127}));
+    annotation (Line(points={{47.4,0},{40,0},{40,6},{32,6}},
+                                                   color={0,0,127}));
   connect(boundary_rear1.fore, flowResistance1.rear) annotation (Line(
       points={{-20,-40},{-10,-40}},
       color={28,108,200},
@@ -67,14 +68,20 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boundary_rear1.p0_var, boundary_fore.p0_var)
-    annotation (Line(points={{-32,-40},{-40,-40},{-40,-20},{40,-20},{40,0},{32,0}}, color={0,0,127}));
+    annotation (Line(points={{-32,-46},{-40,-46},{-40,-20},{40,-20},{40,6},{32,6}}, color={0,0,127}));
   annotation (
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=10, Tolerance=1e-5),
+    experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
     Documentation(info="<html>
 <p>Test for the undirected flow resistance.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestFlowResistance;

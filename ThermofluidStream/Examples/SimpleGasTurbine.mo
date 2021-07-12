@@ -15,7 +15,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=100,
     redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                                  
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         redeclare package Medium=Medium, omega_ref=100, eta=0.8))
     annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
   Processes.Turbine turbine(redeclare package Medium=Medium,
@@ -147,7 +147,7 @@ equation
       points={{76,6},{70,6},{70,-10},{60,-10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=100, Tolerance=1e-5),Diagram(coordinateSystem(extent={{-140,
+  annotation (experiment(StopTime=100, tolerance=1e-5, Interval=0.1),Diagram(coordinateSystem(extent={{-140,
             -80},{140,80}}), graphics={Rectangle(extent={{-64,76},{36,-26}},
             lineColor={28,108,200}),
         Text(
@@ -159,5 +159,11 @@ equation
 <p>A very basic model of a regulated gas turbine. GASTASTIC!</p>
 <p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is prortional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end SimpleGasTurbine;

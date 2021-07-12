@@ -96,8 +96,14 @@ equation
       thickness=0.5));
 
   annotation (
-    experiment(StopTime=10, Tolerance=1e-5),
+    experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Flow_Resistance;

@@ -202,7 +202,6 @@ model EspressoMachine "Get your simulated coffe!"
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
   Processes.Pump pump1(
-    
     J_p=1e-3,redeclare package Medium = Water,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
@@ -218,6 +217,7 @@ model EspressoMachine "Get your simulated coffe!"
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-110,-120})));
+
   Topology.SplitterT2 splitterT2_2(redeclare package Medium = Water)
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -276,7 +276,6 @@ model EspressoMachine "Get your simulated coffe!"
         origin={-100,-30})));
   Modelica.Blocks.Continuous.LimPID
                                 PID3(
-    
     Ti=3,controllerType=Modelica.Blocks.Types.SimpleController.PI,
     initType=.Modelica.Blocks.Types.InitPID.NoInit,
     k=100, limitsAtInit = true,
@@ -284,6 +283,7 @@ model EspressoMachine "Get your simulated coffe!"
     yMin=0,
     y_start=0)
     annotation (Placement(transformation(extent={{-170,-90},{-150,-110}})));
+
   Modelica.Blocks.Sources.RealExpression realExpression3(y=8.5)
                                                                annotation (Placement(transformation(extent={{-200,-90},{-180,-110}})));
   FlowControl.TanValve     tanValve6(redeclare package Medium = Water,
@@ -596,7 +596,8 @@ equation
       thickness=0.5));
   annotation(experiment(
       StopTime=1500,
-      Tolerance=1e-5,
+      tolerance=1e-5,
+      Interval=1.5,
       __Dymola_Algorithm="Dassl"),
     Diagram(coordinateSystem(extent={{-220,-200},{220,200}}), graphics={Text(
           extent={{-21,3},{21,-3}},
@@ -639,5 +640,11 @@ equation
     Documentation(info="<html>
 <p>A espresso in the morning drives out sorrow and concerns. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end EspressoMachine;

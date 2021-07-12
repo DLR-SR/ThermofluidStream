@@ -165,7 +165,7 @@ model ConductionElement "Test for ConductionElement"
     startTime=0.33)
     annotation (Placement(transformation(extent={{-70,-90},{-50,-70}})));
 equation
-  connect(step.y, boundary_rear.p0_var) annotation (Line(points={{-49,70},{-32,70}},
+  connect(step.y, boundary_rear.p0_var) annotation (Line(points={{-49,70},{-40,70},{-40,76},{-32,76}},
                                           color={0,0,127}));
   connect(conductionElement.rear, boundary_rear.fore) annotation (Line(
       points={{-10,70},{-20,70}},
@@ -175,7 +175,8 @@ equation
       points={{10,70},{20,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, boundary_rear1.p0_var) annotation (Line(points={{-49,40},{-32,40}},   color={0,0,127}));
+  connect(ramp.y, boundary_rear1.p0_var) annotation (Line(points={{-49,40},{-40,40},{-40,46},{-32,46}},
+                                                                                        color={0,0,127}));
   connect(conductionElement1.rear, boundary_rear1.fore)
     annotation (Line(
       points={{-10,40},{-20,40}},
@@ -185,7 +186,8 @@ equation
       points={{10,40},{20,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(step1.y, boundary_rear2.p0_var) annotation (Line(points={{-49,10},{-32,10}}, color={0,0,127}));
+  connect(step1.y, boundary_rear2.p0_var) annotation (Line(points={{-49,10},{-40,10},{-40,16},{-32,16}},
+                                                                                       color={0,0,127}));
   connect(conductionElement2.rear, boundary_rear2.fore) annotation (Line(
       points={{-10,10},{-20,10}},
       color={28,108,200},
@@ -194,7 +196,8 @@ equation
       points={{10,10},{20,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(step2.y, boundary_rear3.p0_var) annotation (Line(points={{-49,-20},{-32,-20}}, color={0,0,127}));
+  connect(step2.y, boundary_rear3.p0_var) annotation (Line(points={{-49,-20},{-40,-20},{-40,-14},{-32,-14}},
+                                                                                         color={0,0,127}));
   connect(conductionElement3.rear, boundary_rear3.fore)
     annotation (Line(
       points={{-10,-20},{-20,-20}},
@@ -204,7 +207,8 @@ equation
       points={{10,-20},{20,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(step3.y, boundary_rear4.p0_var) annotation (Line(points={{-49,-50},{-32,-50}}, color={0,0,127}));
+  connect(step3.y, boundary_rear4.p0_var) annotation (Line(points={{-49,-50},{-40,-50},{-40,-44},{-32,-44}},
+                                                                                         color={0,0,127}));
   connect(conductionElement4.rear, boundary_rear4.fore)
     annotation (Line(
       points={{-10,-50},{-20,-50}},
@@ -214,7 +218,8 @@ equation
       points={{10,-50},{20,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(step4.y, boundary_rear5.p0_var) annotation (Line(points={{-49,-80},{-32,-80}}, color={0,0,127}));
+  connect(step4.y, boundary_rear5.p0_var) annotation (Line(points={{-49,-80},{-40,-80},{-40,-74},{-32,-74}},
+                                                                                         color={0,0,127}));
   connect(conductionElement5.rear, boundary_rear5.fore)
     annotation (Line(
       points={{-10,-80},{-20,-80}},
@@ -235,8 +240,14 @@ equation
     annotation (Line(points={{0,-40.2},{0,-34},{40,-34},{40,56},{0,56},{0,49.8}}, color={191,0,0}));
   connect(conductionElement5.heatPort, conductionElement1.heatPort)
     annotation (Line(points={{0,-70.2},{0,-66},{40,-66},{40,56},{0,56},{0,49.8}}, color={191,0,0}));
-  annotation (experiment(StopTime=1, Tolerance=1e-5),
+  annotation (experiment(StopTime=1, tolerance=1e-5, Interval=0.01),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end ConductionElement;

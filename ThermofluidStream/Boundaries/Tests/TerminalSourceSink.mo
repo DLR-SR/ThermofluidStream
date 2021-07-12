@@ -36,11 +36,17 @@ equation
       points={{-6,-16},{8,-16}},
       color={28,108,200},
       thickness=0.5));
-  connect(source.p0_var, sink2.p0_var) annotation (Line(points={{-18,-16},{-26,-16},{-26,0},{26,0},{26,14},{20,14}}, color={0,0,127}));
-  annotation (experiment(StopTime=10, Tolerance=1e-5),
+  connect(source.p0_var, sink2.p0_var) annotation (Line(points={{-18,-10},{-26,-10},{-26,0},{26,0},{26,14},{20,14}}, color={0,0,127}));
+  annotation (experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TerminalSourceSink;

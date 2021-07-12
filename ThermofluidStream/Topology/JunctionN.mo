@@ -38,7 +38,7 @@ protected
   Real w2[N](each unit="1") "regularized weighting factor for steady mass flow pressure";
 
   SI.Pressure r_in[N];
-  
+
   function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 
 equation
@@ -46,14 +46,14 @@ equation
 
   for i in 1:N loop
     der(inlets[i].m_flow) * L = inlets[i].r - r_in[i];
-    
+
     // OM_WORKAROUND
     for j in 1:Medium.nXi loop
       Xi[j,i] = mfk(inlets[i].state, j);
     end for;
-    //instad of 
+    //instad of
     /* Xi[:,i] = Medium.massFraction(inlets[i].state); */
-   
+
     p[i] + r_in[i] = p_mix + r_mix;
     w[i] = (abs(inlets[i].m_flow)+m_flow_eps) / (sum(abs(inlets.m_flow))+N*m_flow_eps);
     w2[i] = ((abs(inlets[i].m_flow) + m_flow_eps)/rho[i]) / (sum((abs(inlets.m_flow) + m_flow_eps*ones(N))./rho));

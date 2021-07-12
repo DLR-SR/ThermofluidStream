@@ -55,7 +55,8 @@ model TestBoundaries "Tests for the rear and fore boundary"
     annotation (Placement(transformation(extent={{-56,-56},{-44,-44}})));
 equation
   connect(step.y, boundary_fore.p0_var)
-    annotation (Line(points={{47.4,40},{32,40}},   color={0,0,127}));
+    annotation (Line(points={{47.4,40},{40,40},{40,46},{32,46}},
+                                                   color={0,0,127}));
   connect(boundary_fore.rear, boundary_rear.fore) annotation (Line(
       points={{20,40},{-20,40}},
       color={28,108,200},
@@ -64,8 +65,10 @@ equation
       points={{20,-10},{-20,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{47.4,-10},{32,-10}}, color={0,0,127}));
-  connect(step2.y, boundary_rear1.p0_var) annotation (Line(points={{-43.4,-50},{-32,-50}}, color={0,0,127}));
+  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{47.4,-10},{40,-10},{40,-4},{32,-4}},
+                                                                                         color={0,0,127}));
+  connect(step2.y, boundary_rear1.p0_var) annotation (Line(points={{-43.4,-50},{-38,-50},{-38,-56},{-32,-56}},
+                                                                                           color={0,0,127}));
   connect(boundary_rear1.fore, terminal_fore.rear) annotation (Line(
       points={{-20,-50},{20,-50}},
       color={28,108,200},
@@ -74,9 +77,15 @@ equation
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=10, Tolerance=1e-5),
+    experiment(StopTime=10, tolerance=1e-5, Interval=0.01),
     Documentation(info="<html>
 <p>Tests for the rear and fore boundary.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestBoundaries;

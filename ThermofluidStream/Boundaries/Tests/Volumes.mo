@@ -421,11 +421,17 @@ equation
       points={{12,170},{20,170}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, Tolerance=1e-5),
+  annotation (experiment(StopTime=1, tolerance=1e-5, Interval=0.001),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-200},{100,200}})),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Volumes;

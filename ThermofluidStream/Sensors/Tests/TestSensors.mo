@@ -554,12 +554,18 @@ equation
       points={{4,-124},{0,-124},{0,-100},{50,-100}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, Tolerance=1e-5),
+  annotation (experiment(StopTime=1, tolerance=1e-5, Interval=0.001),
   Documentation(info="<html>
 <p>This model should test all sensors with all selecable quantities.</p>
 
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-100,-140},{100,140}})),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestSensors;

@@ -223,15 +223,21 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(limiter.y, sourceB.p0_var)
-    annotation (Line(points={{76.6,-88},{82,-88},{82,-56}}, color={0,0,127}));
+    annotation (Line(points={{76.6,-88},{88,-88},{88,-56}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),                                  Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-160,-100},{220,100}})),
     experiment(
       StopTime=10,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-5,
+   Interval=0.01,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Condenser;

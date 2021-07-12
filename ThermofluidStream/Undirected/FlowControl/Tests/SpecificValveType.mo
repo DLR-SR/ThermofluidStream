@@ -102,8 +102,9 @@ equation
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(slideValve.u_in, ramp.y) annotation (Line(points={{0,68},{0,90},{120,
           90},{120,20},{153,20}}, color={0,0,127}));
-  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-149,0},{-108,0}}, color={0,0,127}));
-  connect(boundary_rear1.p0_var, boundary_rear.p0_var) annotation (Line(points={{-108,60},{-130,60},{-130,0},{-108,0}}, color={0,0,127}));
+  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-149,0},{-128,0},{-128,6},{-108,6}},
+                                                                                      color={0,0,127}));
+  connect(boundary_rear1.p0_var, boundary_rear.p0_var) annotation (Line(points={{-108,66},{-130,66},{-130,6},{-108,6}}, color={0,0,127}));
   connect(boundary_rear1.fore, flowResistance.rear)
     annotation (Line(
       points={{-96,60},{-90,60},{-90,60},{-80,60}},
@@ -158,11 +159,17 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=20,
-      Interval=0.001,
-   Tolerance=1e-5,
+   tolerance=1e-5,
+   Interval=0.02,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end SpecificValveType;

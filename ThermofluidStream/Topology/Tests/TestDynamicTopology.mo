@@ -158,7 +158,7 @@ model TestDynamicTopology
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0003,
     v_out_par=1) annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons annotation (
     Placement(visible = true, transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(flowResistance1.outlet, dynamicJunctionNM.inlets[1])
@@ -304,9 +304,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=1, Tolerance=1e-5),
+    experiment(StopTime=1, tolerance=1e-5, Interval=0.001),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestDynamicTopology;

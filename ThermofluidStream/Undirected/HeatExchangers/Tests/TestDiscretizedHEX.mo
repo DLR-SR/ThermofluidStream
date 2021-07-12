@@ -133,14 +133,16 @@ equation
       points={{6,24},{18,24}},
       color={28,108,200},
       thickness=0.5));
-  connect(boundary_rear.p0_var, const1.y) annotation (Line(points={{-88,24},{-99,24}}, color={0,0,127}));
+  connect(boundary_rear.p0_var, const1.y) annotation (Line(points={{-88,30},{-94,30},{-94,24},{-99,24}},
+                                                                                       color={0,0,127}));
   connect(boundary_fore1.rear, flowResistanceB.fore) annotation (Line(
       points={{-90,-40},{-84,-40},{-84,8},{-72,8}},
       color={28,108,200},
       thickness=0.5));
   connect(PI1.y,limiter1. u) annotation (Line(points={{115,56},{136,56},{136,24},{127.2,24}},
                              color={0,0,127}));
-  connect(boundary_fore.p0_var, limiter1.y) annotation (Line(points={{96,24},{113.4,24}}, color={0,0,127}));
+  connect(boundary_fore.p0_var, limiter1.y) annotation (Line(points={{96,30},{104,30},{104,24},{113.4,24}},
+                                                                                          color={0,0,127}));
   connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{38,28},{48,28},{48,48}}, color={0,0,127}));
   connect(feedback1.y, PI1.u) annotation (Line(points={{57,56},{92,56}}, color={0,0,127}));
   connect(boundary_rear1.fore, multiSensor_Tpm2.rear)
@@ -164,7 +166,7 @@ equation
     annotation (Line(points={{17,-48},{38,-48}},  color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{61,-48},{76.8,-48}}, color={0,0,127}));
-  connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{90.6,-48},{112,-48},{112,-8},{104,-8}}, color={0,0,127}));
+  connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{90.6,-48},{112,-48},{112,-2},{104,-2}}, color={0,0,127}));
   connect(multiSensor_Tpm2.m_flow_out, feedback.u2) annotation (Line(points={{18,4},{8,4},{8,-40}}, color={0,0,127}));
   connect(multiSensor_Tpm1.fore, boundary_fore.rear) annotation (Line(
       points={{38,24},{84,24}},
@@ -178,12 +180,18 @@ equation
       points={{-42,24},{-50,24}},
       color={28,108,200},
       thickness=0.5));
-  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-102,-40},{-113,-40}},                       color={0,0,127}));
+  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-102,-34},{-108,-34},{-108,-40},{-113,-40}}, color={0,0,127}));
   connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}},              color={0,0,127}));
   connect(feedback.u1, ramp1.y) annotation (Line(points={{0,-48},{-19,-48}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=40, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=40, tolerance=1e-5, Interval=0.04, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end TestDiscretizedHEX;

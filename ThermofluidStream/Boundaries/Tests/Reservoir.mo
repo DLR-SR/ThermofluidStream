@@ -120,9 +120,16 @@ equation
   connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-46}}, color={0,0,127}));
   annotation (experiment(
       StopTime=10,
-   Tolerance=1e-5,
+   tolerance=1e-5,
+   Interval=0.01,
       __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Reservoir;

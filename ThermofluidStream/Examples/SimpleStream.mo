@@ -127,9 +127,19 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-60},{160,
             60}})),
-    experiment(StopTime=100, Tolerance=1e-5),
+    experiment(
+      StopTime=100,
+      Interval=0.1,
+      tolerance=1e-5,
+      __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
 <p>Very basic example if a stream that gets split and rejoins later. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end SimpleStream;

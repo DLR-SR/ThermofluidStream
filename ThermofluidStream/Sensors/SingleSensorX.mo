@@ -24,7 +24,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
 
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
-  
+
   function mfk =  ThermofluidStream.Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 
 protected
@@ -41,7 +41,7 @@ equation
   inlet.m_flow = 0;
   for i in 1:Medium.nXi loop
     direct_value[i] = mfk(inlet.state, i);
-  end for; 
+  end for;
   //direct_value[1:Medium.nXi] = Medium.massFraction(inlet.state);
   if Medium.reducedX then
     direct_value[end] = 1-sum(direct_value[1:Medium.nXi]);

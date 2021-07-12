@@ -33,7 +33,7 @@ model CheckValve "Test for undirected CheckValve"
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 equation
-  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,0},{-42,0}}, color={0,0,127}));
+  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,6},{-42,6}}, color={0,0,127}));
 
   connect(boundary_rear.fore, checkValve.rear) annotation (Line(
       points={{-30,0},{-22,0}},
@@ -48,10 +48,16 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=1, Tolerance=1e-5, __Dymola_NumberOfIntervals=5000, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=1, tolerance=1e-5, Interval=0.001, __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end CheckValve;

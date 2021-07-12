@@ -429,7 +429,8 @@ equation
   connect(firstOrderValve.u, PI_Valve.y) annotation (Line(points={{-103.2,0},{-109,0}}, color={0,0,127}));
   connect(PI_CompressorTemperature.u_m, multiSensor_Tpm1.T_out)
     annotation (Line(points={{194,-12},{194,-90},{-46,-90},{-46,-76}},   color={0,0,127}));
-  connect(step.y, source.T0_var) annotation (Line(points={{-149,74},{-86,74}}, color={0,0,127}));
+  connect(step.y, source.T0_var) annotation (Line(points={{-149,74},{-118,74},{-118,68},{-86,68}},
+                                                                               color={0,0,127}));
   connect(firstOrderValve.y, controlValve.u_in) annotation (Line(points={{-89.4,0},{-72,0}}, color={0,0,127}));
   connect(singleFlowSensor.outlet, condenser.inletRef) annotation (Line(
       points={{90,52},{12,52}},
@@ -456,10 +457,16 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-160},{240,100}})),
     experiment(
       StopTime=1500,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-5,
+   Interval=1.5,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end VaporCycle;

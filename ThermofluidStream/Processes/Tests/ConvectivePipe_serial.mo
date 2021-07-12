@@ -138,8 +138,14 @@ equation
     annotation (Line(points={{36,34},{36,10}}, color={191,0,0}));
     annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=1000, Tolerance=1e-5),
+    experiment(StopTime=1000, tolerance=1e-5, Interval=1),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end ConvectivePipe_serial;

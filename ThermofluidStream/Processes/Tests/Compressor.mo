@@ -37,7 +37,7 @@ model Compressor "Test for compressors"
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         redeclare package Medium = medium,
-		omega_ref=3000,
+  omega_ref=3000,
         skew=1,
         m_flow_ref=1))
                 annotation (Placement(transformation(extent={{-6,10},{14,30}})));
@@ -55,7 +55,7 @@ model Compressor "Test for compressors"
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         redeclare package Medium = medium,
-		omega_ref=500,
+  omega_ref=500,
         skew=1,
         m_flow_ref=0.01,
         eta=0.8,
@@ -99,8 +99,14 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=30, Tolerance=1e-5),
+    experiment(StopTime=30, tolerance=1e-5, Interval=0.03),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"));
+</html>"),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end Compressor;

@@ -192,9 +192,15 @@ equation
       thickness=0.5));
   connect(boilerEspresso.y_out, hysteresis.u) annotation (Line(points={{-10,-12},{-30,-12},{-30,-40},{-100,-40},{-100,-70},{-92,-70}},
         color={0,0,127}));
-  annotation(experiment(StopTime=1000, Tolerance=1e-5), Documentation(info="<html>
+  annotation(experiment(StopTime=1000, tolerance=1e-5, Interval=1), Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    __Dymola_experimentSetupOutput(
+      derivatives=false,
+      inputs=false,
+      outputs=true,
+      auxiliaries=false,
+      events=false));
 end BoilerEspresso;
