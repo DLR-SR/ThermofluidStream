@@ -113,24 +113,21 @@ equation
         Text(
           extent={{-60,80},{60,30}},
           lineColor={28,108,200},
-          textString=DynamicSelect("T", realString(
-                  T,
-                  1,
-                  integer(digits)))),
+          textString=DynamicSelect("T", String(
+              T,
+              format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,30},{60,-20}},
           lineColor={28,108,200},
-          textString=DynamicSelect("p", realString(
-                  p,
-                  1,
-                  integer(digits)))),
+          textString=DynamicSelect("p", String(
+              p,
+              format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-20},{60,-70}},
           lineColor={28,108,200},
-          textString=DynamicSelect("m", realString(
-                  m_flow,
-                  2,
-                  integer(digits)))),
+          textString=DynamicSelect("m", String(
+              m_flow,
+              format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,80},{-60,28}},
           lineColor={175,175,175},

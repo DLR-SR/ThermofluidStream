@@ -10,7 +10,7 @@ model PhaseSeperator
     enthalpyFromInput=true,
     p0_par=120000,
     h0_par=2000) annotation (Placement(transformation(extent={{-120,10},{-100,30}})));
-  ThermofluidStream.Undirected.Boundaries.PhaseSeperator receiver(
+  ThermofluidStream.Undirected.Boundaries.PhaseSeparator receiver(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -142,7 +142,7 @@ model PhaseSeperator
   Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-30,18},{-10,26}})));
   Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{30,18},{50,26}})));
   Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{90,18},{110,26}})));
-  ThermofluidStream.Undirected.Boundaries.PhaseSeperator accumulator(
+  ThermofluidStream.Undirected.Boundaries.PhaseSeparator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,

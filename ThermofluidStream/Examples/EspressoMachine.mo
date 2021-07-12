@@ -355,7 +355,7 @@ model EspressoMachine "Get your simulated coffe!"
         extent={{10,-10},{-10,10}},
         rotation=270,
         origin={-54,-90})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false, m_flow_reg=0.5e-5,
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, m_flow_reg=0.5e-5,
     p_min(displayUnit="Pa") = 700)
     annotation (Placement(transformation(extent={{182,82},{202,102}})));
   Topology.SplitterT1 splitterT1_1(redeclare package Medium = Water)
@@ -596,7 +596,7 @@ equation
       thickness=0.5));
   annotation(experiment(
       StopTime=1500,
-      Tolerance=1e-5, 
+      Tolerance=1e-5,
       __Dymola_Algorithm="Dassl"),
     Diagram(coordinateSystem(extent={{-220,-200},{220,200}}), graphics={Text(
           extent={{-21,3},{21,-3}},

@@ -37,7 +37,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{90,-20},{110,0}})));
   Boundaries.Source source(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-140,-20},{-120,0}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-130,50},{-110,70}})));
   Modelica.Mechanics.Rotational.Components.Inertia inertia(J=1, phi(fixed=true, start=0))
     annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));

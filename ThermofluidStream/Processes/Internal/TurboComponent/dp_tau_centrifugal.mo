@@ -78,10 +78,10 @@ protected
   Real v_i(unit="N.m.s2/rad2") =     if parametrizeByScaling then sqrt(alpha)*gamma/beta*              v_i_ref else v_i_input;
   Real v_s(unit="N.m.s/rad") =       if parametrizeByScaling then alpha^(-1/4)*beta^(1/2)*gamma^(3/2)* v_s_ref else v_s_input;
 
-  constant Integer f_q =             if parametrizeByScaling then                 f_q_ref else f_q_input;
-  constant Real K_D(unit="m3/rad") = if parametrizeByScaling then gamma/beta*     K_D_ref else f_q_input;
-  constant SI.Density rho_ref =      if parametrizeByScaling then             rho_ref_ref else rho_ref_input;
-  constant SI.Length r =             if parametrizeByScaling then sqrt(alpha)/beta* r_ref else r_input;
+  Integer f_q =             if parametrizeByScaling then                 f_q_ref else f_q_input;
+  Real K_D(unit="m3/rad") = if parametrizeByScaling then gamma/beta*     K_D_ref else f_q_input;
+  SI.Density rho_ref =      if parametrizeByScaling then             rho_ref_ref else rho_ref_input;
+  SI.Length r =             if parametrizeByScaling then sqrt(alpha)/beta* r_ref else r_input;
 
   Real omega_s(unit="1") = ((K_D/f_q)^0.5)/((g_n*( a_h+b_h*K_D+c_h*K_D^2)) ^0.75);
   SI.VolumeFlowRate V_flow_BEP "optimal volume flow at omega";

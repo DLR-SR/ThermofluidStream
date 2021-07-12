@@ -82,17 +82,15 @@ equation
         Text(
           extent={{-60,55},{60,5}},
           lineColor={28,108,200},
-          textString=DynamicSelect("T", realString(
-                  T,
-                  1,
-                  integer(digits)))),
+          textString=DynamicSelect("T", String(
+              T,
+              format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-5},{60,-55}},
           lineColor={28,108,200},
-          textString=DynamicSelect("p", realString(
-                  p,
-                  1,
-                  integer(digits)))),
+          textString=DynamicSelect("p", String(
+              p,
+              format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,55},{-60,5}},
           lineColor={175,175,175},

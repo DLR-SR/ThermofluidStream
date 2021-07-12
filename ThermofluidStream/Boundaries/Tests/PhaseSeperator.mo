@@ -9,7 +9,7 @@ model PhaseSeperator
     enthalpyFromInput=true,
     p0_par=120000,
     h0_par=2000)                                            annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
-  Boundaries.PhaseSeperator receiver(
+  Boundaries.PhaseSeparator receiver(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -17,7 +17,7 @@ model PhaseSeperator
     pipe_high=0.15,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
                     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
-  Boundaries.PhaseSeperator accumulator(
+  Boundaries.PhaseSeparator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -142,7 +142,7 @@ model PhaseSeperator
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,40},{84,60}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
                                     annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
 equation
   connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,14},{-90,14},{-90,-6},{-99,-6}}, color={0,0,127}));

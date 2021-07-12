@@ -21,7 +21,7 @@ model Turbine "Test for turbines"
     p0_par=100000)
     annotation (Placement(transformation(extent={{86,6},{106,26}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, stopOnFailedAssert=false)
+  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={68,-78})));

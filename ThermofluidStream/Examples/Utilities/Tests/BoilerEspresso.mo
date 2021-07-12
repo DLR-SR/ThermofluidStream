@@ -14,7 +14,7 @@ model BoilerEspresso "Test for the espresso boiler"
     V(displayUnit="l") = 0.001,
     x_0=0.001)
     annotation (Placement(transformation(extent={{-10,-20},{30,20}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false, p_min(displayUnit="Pa") = 650)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, p_min(displayUnit="Pa") = 650)
     annotation (Placement(transformation(extent={{70,-90},{90,-70}})));
   Boundaries.Source source(
     redeclare package Medium = Water,

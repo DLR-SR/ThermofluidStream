@@ -136,7 +136,7 @@ model HeatPump
     offset=250,
     startTime=800)
     annotation (Placement(transformation(extent={{-122,130},{-102,150}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false, m_flow_reg=0.001)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, m_flow_reg=0.001)
     annotation (Placement(transformation(extent={{152,130},{172,150}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-56,-54},{-76,-34}})));
@@ -259,7 +259,7 @@ model HeatPump
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_air/(0.00001 + abs(compressor.W_t))) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+    number=condenser.Q_flow_air/max(0.00001, compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(

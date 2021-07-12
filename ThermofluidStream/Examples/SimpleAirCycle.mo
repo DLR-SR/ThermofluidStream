@@ -62,7 +62,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-68,8})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-136,4},
             {-116,24}})));
 

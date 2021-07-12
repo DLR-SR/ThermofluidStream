@@ -79,7 +79,7 @@ model Reservoir "Test for Reservoir"
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{40,-20},{60,0}})));
 equation
 

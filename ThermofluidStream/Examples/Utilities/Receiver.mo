@@ -1,6 +1,6 @@
 within ThermofluidStream.Examples.Utilities;
 model Receiver "Receiver Model for vapor cycle applications"
-  extends Boundaries.PhaseSeperator(pipe_low=0.05, pipe_high=0.15);
+  extends Boundaries.PhaseSeparator(pipe_low=0.05, pipe_high=0.15);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Ellipse(

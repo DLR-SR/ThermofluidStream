@@ -10,7 +10,7 @@ model SpecificValveType "Test for SpecificValveType"
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-170,94},{-150,114}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = medium,
@@ -156,7 +156,7 @@ equation
     experiment(
       StopTime=20,
       Interval=0.001,
-	  Tolerance=1e-5, 
+   Tolerance=1e-5,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

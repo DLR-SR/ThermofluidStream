@@ -2,7 +2,7 @@ within ThermofluidStream.Media.Tests;
 model TestXRGMedia "Test for five XRG Media with various components"
   extends Modelica.Icons.Example;
 
-  inner DropOfCommons dropOfCommons(stopOnFailedAssert=false)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
                                     annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
   HeatExchangers.DiscretizedHEX discretizedHEX(redeclare package MediumAir = XRGMedia.R134a_ph, redeclare package MediumRefrigerant =
         XRGMedia.NH3_ph,
@@ -323,7 +323,7 @@ equation
           extent={{-180,-100},{160,100}})),
     experiment(
       StopTime=10,
-	  Tolerance=1e-5, 
+   Tolerance=1e-5,
       __Dymola_NumberOfIntervals=1500,
       __Dymola_Algorithm="Dassl"));
 end TestXRGMedia;
