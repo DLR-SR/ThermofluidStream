@@ -122,7 +122,7 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=25,
-      Interval=0.01,
+      Interval=0.025,
    tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
@@ -130,7 +130,7 @@ equation
 <p>This water hammer pumps water up by using the dynamic pressure when closing a valve. </p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

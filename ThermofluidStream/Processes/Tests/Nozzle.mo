@@ -103,7 +103,7 @@ equation
 <p>Test for the nozzle, that can be used to transfer between kinetic enegy and enthalpy of the fluid.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

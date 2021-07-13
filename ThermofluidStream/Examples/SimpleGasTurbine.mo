@@ -160,7 +160,7 @@ equation
 <p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is prortional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

@@ -326,7 +326,7 @@ equation
    tolerance=1e-6,
    Interval=0.01,
       __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

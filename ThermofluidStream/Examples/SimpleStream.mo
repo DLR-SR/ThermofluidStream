@@ -136,7 +136,7 @@ equation
 <p>Very basic example if a stream that gets split and rejoins later. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

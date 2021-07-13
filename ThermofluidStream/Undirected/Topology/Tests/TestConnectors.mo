@@ -271,7 +271,7 @@ equation
 </html>"),
     Diagram(coordinateSystem(extent={{-100,-140},{100,120}})),
     Icon(coordinateSystem(extent={{-100,-140},{100,120}})),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,

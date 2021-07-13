@@ -264,7 +264,7 @@ equation
 <p>Test&nbsp;for&nbsp;the&nbsp;undirected&nbsp;sensors.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
-    __Dymola_experimentSetupOutput(
+    __Dymola_experimentSetupOutput_X(
       derivatives=false,
       inputs=false,
       outputs=true,
