@@ -36,9 +36,9 @@ package XRGMedia "A medium property library"
       Modelica.SIunits.SpecificHeatCapacity cv "heat capacity at constant volume";
       Modelica.SIunits.IsothermalCompressibility kappa "isentropic exponent";
       Modelica.SIunits.Velocity a "velocity of sound";
-      Modelica.Media.Interfaces.PartialMedium.IsobaricExpansionCoefficient beta
+      Modelica.Media.Interfaces.Types.IsobaricExpansionCoefficient beta
         "isobaric expansion coefficient";
-      Modelica.Media.Interfaces.PartialMedium.IsentropicExponent gamma
+      Modelica.Media.Interfaces.Types.IsentropicExponent gamma
         "isentropic exponent";
       Real pt "derivative of pressure wrt temperature";
       Real pd "derivative of pressure wrt density";
