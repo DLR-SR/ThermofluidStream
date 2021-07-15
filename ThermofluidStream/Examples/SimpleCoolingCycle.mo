@@ -257,11 +257,5 @@ equation
         Documentation(info="<html>
 <p>This cooling cycle is regulated to hit a temperature target. The load is a prescribed heatflow and comes from a table.</p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end SimpleCoolingCycle;

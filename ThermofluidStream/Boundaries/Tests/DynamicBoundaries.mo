@@ -294,11 +294,5 @@ equation
     experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end DynamicBoundaries;

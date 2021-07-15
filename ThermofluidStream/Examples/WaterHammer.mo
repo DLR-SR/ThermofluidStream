@@ -129,11 +129,5 @@ equation
     Documentation(info="<html>
 <p>This water hammer pumps water up by using the dynamic pressure when closing a valve. </p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end WaterHammer;

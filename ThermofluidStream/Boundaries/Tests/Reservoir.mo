@@ -125,11 +125,5 @@ equation
       __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end Reservoir;

@@ -393,11 +393,5 @@ equation
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-180,-140},{180,100}})),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
 end TestVolumes;

@@ -125,11 +125,5 @@ equation
     Documentation(info="<html>
 <p>Test for the Transport Delay, that can be used to delay the thermodynamic state of the flow. </p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end TransportDelay;

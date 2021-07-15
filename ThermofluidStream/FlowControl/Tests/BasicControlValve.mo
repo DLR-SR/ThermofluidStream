@@ -228,11 +228,5 @@ equation
     Documentation(info="<html>
 <p>Test for the BasicControlValve.</p>
 <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end BasicControlValve;

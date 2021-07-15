@@ -174,11 +174,5 @@ equation
     Documentation(info="<html>
 <p>Test for the Swithces.</p>
 <p>Owner: Michael Mei&szlig;ner</p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end Switch;

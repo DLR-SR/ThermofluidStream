@@ -141,8 +141,8 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Processes.Pump pump(
     redeclare package Medium = XRGMedia.R134a_ph,
     omega_from_input=true,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow
-      (redeclare package Medium = XRGMedia.R134a_ph))
+    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+       redeclare package Medium = XRGMedia.R134a_ph))
     annotation (Placement(transformation(extent={{-80,42},{-100,22}})));
   Modelica.Blocks.Sources.Constant const(k=1000) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
   Processes.FlowResistance flowResistance8(
@@ -326,11 +326,5 @@ equation
       StopTime=10,
    tolerance=1e-6,
    Interval=0.01,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+      __Dymola_Algorithm="Dassl"));
 end TestXRGMedia;

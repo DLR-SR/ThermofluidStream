@@ -269,11 +269,5 @@ equation
         Documentation(info="<html>
 <p>Basic model of a steam engine. STEAM AND POWER!</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
-</html>"),
-    __Dymola_experimentSetupOutput_X(
-      derivatives=false,
-      inputs=false,
-      outputs=true,
-      auxiliaries=false,
-      events=false));
+</html>"));
 end SimpleEngine;
