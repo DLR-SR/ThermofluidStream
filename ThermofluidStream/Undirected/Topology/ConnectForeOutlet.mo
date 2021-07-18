@@ -5,7 +5,7 @@ model ConnectForeOutlet
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
                                                                 "Medium of the connection"
     annotation (Documentation(info="<html>
-<p>This is the replaceable package that determines the medium of the Connector. Make shure it fits the medium in all models connected to the ports of the Connector.</p>
+<p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to the ports of the Connector.</p>
 </html>"));
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
