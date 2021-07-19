@@ -6,17 +6,17 @@ model DifferenceSensor_Tp
                                                                  "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
-        <p>Medium Model for the positive input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>
+        <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
   replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
                                                                  "Medium model B"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
-    <p>Medium Model for the negative input of the sensor. Make shure it is the same for the stream the sensors inputs are connected.</p>
+    <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Unit for temperaure measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Unit for temperature measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);

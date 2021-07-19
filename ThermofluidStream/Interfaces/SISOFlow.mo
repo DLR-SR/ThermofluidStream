@@ -6,7 +6,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
                                                                 "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
-    <p>Medium package used in the Component. Make shure it is the same as the components connected to both ports are using.</p>
+    <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
       </html>"));
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"

@@ -3,7 +3,7 @@ model JunctionNM "N to M splitter"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
-<p>Medium package used in the Component. Make shure it is the same one as all the components connected to all fluid ports are using. </p>
+<p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
   parameter Integer N(min=1) = 1 "Number of inputs";
   parameter Integer M(min=1) = 1 "Number of outputs";

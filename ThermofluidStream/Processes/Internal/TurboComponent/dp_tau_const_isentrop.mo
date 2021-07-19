@@ -36,7 +36,7 @@ protected
 algorithm
   // calc pr from characteristic curve
   pr  := abs(omega)*omega/(omega_ref^2) - skew*omega*m_flow/(omega_ref*m_flow_ref) - abs(m_flow)*m_flow/(m_flow_ref^2) + 1;
-  // make shure pressure ratio is alwails positive
+  // make sure pressure ratio is alwails positive
   if pr < 1 then
     pr := k^(pr-1);
   end if;
