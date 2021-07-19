@@ -6,7 +6,7 @@ function getTwoPhaseQuantity
                                                                         "Medium model"
   annotation (choicesAllMatching=true,
     Documentation(info="<html>
-      <p>Medium Model for the function. Make shure it implements the needed functions.</p>
+      <p>Medium Model for the function. Make sure it implements the needed functions.</p>
         </html>"));
 
   input Medium.ThermodynamicState state;
