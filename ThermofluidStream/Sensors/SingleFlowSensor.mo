@@ -7,7 +7,7 @@ model SingleFlowSensor
                                                                 "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
-        <p>Medium Model for the sensor. Make shure it is the same as for all lines the sensors input is connected.</p>
+        <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
