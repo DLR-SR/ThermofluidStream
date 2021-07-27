@@ -27,6 +27,7 @@ model Reservoir "Test for Reservoir"
     omega_from_input=true,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        redeclare package Medium=Medium,
         V_r=0.1,
         k_p=500,
         k_fric=0))
@@ -119,7 +120,8 @@ equation
   connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-46}}, color={0,0,127}));
   annotation (experiment(
       StopTime=10,
-   Tolerance=1e-5,
+   tolerance=1e-6,
+   Interval=0.01,
       __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

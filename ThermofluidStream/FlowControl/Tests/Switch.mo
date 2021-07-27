@@ -56,6 +56,7 @@ model Switch "Test for Switches"
     annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -71,6 +72,7 @@ model Switch "Test for Switches"
         origin={50,-30})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -167,7 +169,7 @@ equation
       thickness=0.5));
   connect(pulse1.y, fourWaySwitch.u) annotation (Line(points={{-19,-60},{-10,-60},{-10,-30}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
-    experiment(StopTime=10, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=10, tolerance=1e-6, Interval=0.01, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Test for the Swithces.</p>
 <p>Owner: Michael Mei&szlig;ner</p>

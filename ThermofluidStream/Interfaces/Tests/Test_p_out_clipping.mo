@@ -36,7 +36,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     omega_0=1,
     initPhi=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop)
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+   redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   FlowControl.BasicControlValve basicControlValve(redeclare package Medium = Medium,
     L=1000,
@@ -143,7 +144,7 @@ equation
       points={{12,8},{30,8},{30,0.333333},{50,0.333333}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, Tolerance=1e-5), Documentation(info="<html>
+  annotation (experiment(StopTime=1, tolerance=1e-6, Interval=0.001), Documentation(info="<html>
 <p>Test for the lower limit of p_out in SISOFlow components</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

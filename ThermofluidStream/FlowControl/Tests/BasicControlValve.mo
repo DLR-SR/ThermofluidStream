@@ -162,19 +162,19 @@ equation
       points={{26,-60},{10,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(source2.p0_var, const2.y) annotation (Line(points={{-108,-60},{-140,-60},{-140,0},{-149,0}},
+  connect(source2.p0_var, const2.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,0},{-149,0}},
                                 color={0,0,127}));
   connect(ramp.y, valveParabolic.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(ramp.y, valveEqualPercentage.u_in) annotation (Line(points={{153,20},
           {120,20},{120,-40},{0,-40},{0,-52}}, color={0,0,127}));
-  connect(source.p0_var, const2.y) annotation (Line(points={{-108,60},{-108,60},{-140,60},{-140,0},{-149,0}},
+  connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,0},{-149,0}},
                                                 color={0,0,127}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-96,60},{-80,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,0},{-124,0},{-124,0},{-108,0}},
+  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,0},{-124,0},{-124,6},{-108,6}},
                                color={0,0,127}));
   connect(multiSensor_Tpm3.outlet, flowResistance6.inlet) annotation (Line(
       points={{46,60},{66,60}},
@@ -221,8 +221,8 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=20,
-      Interval=0.001,
-   Tolerance=1e-5,
+      Interval=0.02,
+   tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

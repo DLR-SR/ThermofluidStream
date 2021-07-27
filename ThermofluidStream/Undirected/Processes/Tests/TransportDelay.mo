@@ -88,9 +88,9 @@ model TransportDelay "Test for transport delay"
     startTime=0.3)
     annotation (Placement(transformation(extent={{-94,-30},{-74,-10}})));
 equation
-  connect(ramp1.y, source.T0_var) annotation (Line(points={{-73,60},{-60,60},{-60,46},{-40,46}},
+  connect(ramp1.y, source.T0_var) annotation (Line(points={{-73,60},{-60,60},{-60,40},{-40,40}},
                            color={0,0,127}));
-  connect(trapezoid.y, source.p0_var) annotation (Line(points={{-73,20},{-60,20},{-60,40},{-40,40}},
+  connect(trapezoid.y, source.p0_var) annotation (Line(points={{-73,20},{-60,20},{-60,46},{-40,46}},
                                   color={0,0,127}));
   connect(flowResistance.inlet, source.outlet) annotation (Line(
       points={{-10,40},{-28,40}},
@@ -104,10 +104,10 @@ equation
       points={{50,40},{70,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp2.y, boundary_rear.T0_var) annotation (Line(points={{-73,-20},
-          {-60,-20},{-60,-34},{-40,-34}}, color={0,0,127}));
-  connect(trapezoid1.y, boundary_rear.p0_var) annotation (Line(points={{-73,
-          -60},{-60,-60},{-60,-40},{-40,-40}}, color={0,0,127}));
+  connect(ramp2.y, boundary_rear.T0_var) annotation (Line(points={{-73,-20},{-60,-20},{-60,-40},{-40,-40}},
+                                          color={0,0,127}));
+  connect(trapezoid1.y, boundary_rear.p0_var) annotation (Line(points={{-73,-60},{-60,-60},{-60,-34},{-40,-34}},
+                                               color={0,0,127}));
   connect(flowResistance1.rear, boundary_rear.fore) annotation (Line(
       points={{-10,-40},{-28,-40}},
       color={28,108,200},
@@ -123,7 +123,8 @@ equation
   annotation (
     experiment(
       StopTime=2.5,
-      Tolerance=1e-5,
+      tolerance=1e-6,
+      Interval=0.0025,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

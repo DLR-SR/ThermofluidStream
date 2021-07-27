@@ -146,8 +146,8 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
       StopTime=1,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-6,
+   Interval=1e-3,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

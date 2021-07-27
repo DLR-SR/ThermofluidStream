@@ -40,6 +40,7 @@ model HeatPump
     initPhi=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        redeclare package Medium = Medium,
         omega_ref=200,
         m_flow_ref=1e-2,
         eta=0.8))
@@ -100,15 +101,16 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                            omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+          redeclare package Medium = Air, omega_ref=100))
     annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (                            omega_ref=100))
-                                                                 annotation (
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+          redeclare package Medium = Air, omega_ref=100))        annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -415,7 +417,7 @@ equation
                                                                                  color={0,0,127}));
   connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{10,110},{114,110},{114,12}}, color={0,0,127}));
   connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-76,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
-  annotation (experiment(StopTime=2500, Tolerance=1e-5),
+  annotation (experiment(StopTime=2500, tolerance=1e-6, Interval=2.5),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-160},{200,160}})),
     Documentation(info="<html>

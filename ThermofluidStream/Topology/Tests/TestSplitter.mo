@@ -15,9 +15,7 @@ model TestSplitter
   Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=200000,
-    L=0,
-    outlet(m_flow(start=0, fixed=true)))
-         annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
+    L=0) annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{44,18},{64,38}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=200000)
@@ -47,7 +45,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-             experiment(StopTime=1, Tolerance=1e-5),
+             experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

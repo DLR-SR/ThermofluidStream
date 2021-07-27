@@ -81,11 +81,12 @@ equation
   connect(PI.y,limiter. u)
     annotation (Line(points={{101,34},{110,34},{110,0},{95.2,0}},
                                                    color={0,0,127}));
-  connect(boundary_fore.p0_var, limiter.y) annotation (Line(points={{72,0},{81.4,0}}, color={0,0,127}));
+  connect(boundary_fore.p0_var, limiter.y) annotation (Line(points={{72,6},{76,6},{76,0},{81.4,0}},
+                                                                                      color={0,0,127}));
   connect(multiSensor_Tpm.m_flow_out, feedback.u2) annotation (Line(points={{44,4},{50,4},{50,38}}, color={0,0,127}));
   connect(ramp1.y, feedback.u1) annotation (Line(points={{17,46},{42,46}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=100, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=100, tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));

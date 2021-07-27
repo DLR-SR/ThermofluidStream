@@ -126,18 +126,18 @@ model TestConnectors "Test for the connectors"
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-40,-78},{-20,-58}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
-    redeclare package Medium = Medium,
-    r(displayUnit="mm") = 0.005,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+    r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(extent={{20,-78},{40,-58}})));
   Processes.FlowResistance flowResistance4(
-    redeclare package Medium = Medium,
-    r(displayUnit="mm") = 0.005,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+  r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -190,12 +190,12 @@ equation
       thickness=0.5));
   connect(pulse.y, sink1.p0_var) annotation (Line(points={{61,60},{46,60},{46,110},{32,110}},
                                                                                           color={0,0,127}));
-  connect(pulse.y, boundary_fore3.p0_var) annotation (Line(points={{61,60},{46,60},{46,90},{32,90}},
+  connect(pulse.y, boundary_fore3.p0_var) annotation (Line(points={{61,60},{46,60},{46,96},{32,96}},
                                                                                                    color={0,0,127}));
-  connect(pulse.y, boundary_rear1.p0_var) annotation (Line(points={{61,60},{46,60},{46,70},{32,70}},
+  connect(pulse.y, boundary_rear1.p0_var) annotation (Line(points={{61,60},{46,60},{46,76},{32,76}},
                                                                                                  color={0,0,127}));
-  connect(pulse.y, boundary_fore1.p0_var) annotation (Line(points={{61,60},{46,60},{46,50},{32,50}}, color={0,0,127}));
-  connect(pulse.y, boundary_fore2.p0_var) annotation (Line(points={{61,60},{46,60},{46,30},{32,30}}, color={0,0,127}));
+  connect(pulse.y, boundary_fore1.p0_var) annotation (Line(points={{61,60},{46,60},{46,56},{32,56}}, color={0,0,127}));
+  connect(pulse.y, boundary_fore2.p0_var) annotation (Line(points={{61,60},{46,60},{46,36},{32,36}}, color={0,0,127}));
   connect(pulse.y, sink.p0_var) annotation (Line(points={{61,60},{46,60},{46,10},{32,10}}, color={0,0,127}));
   connect(connectInletFore1.inlet, source2.outlet) annotation (Line(
       points={{-23,-30},{-30,-30}},
@@ -223,7 +223,7 @@ equation
       points={{10,-50},{30,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(boundary_fore4.p0_var, sink.p0_var) annotation (Line(points={{42,-50},{46,-50},{46,10},{32,10}},
+  connect(boundary_fore4.p0_var, sink.p0_var) annotation (Line(points={{42,-44},{46,-44},{46,10},{32,10}},
                                         color={0,0,127}));
   connect(createState.y, connectRearOutlet.state_rear) annotation (Line(points={{32,-8},{12,-8},{12,20},{0,20},{0,14}},
                                                                         color={
@@ -260,14 +260,15 @@ equation
       points={{20,-90},{0,-90},{0,-78}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, boundary_fore5.p0_var) annotation (Line(points={{79,-90},{66,-90}}, color={0,0,127}));
+  connect(ramp.y, boundary_fore5.p0_var) annotation (Line(points={{79,-90},{72,-90},{72,-84},{66,-84}},
+                                                                                      color={0,0,127}));
   annotation (
-  experiment(StopTime=10, Tolerance=1e-5),
+  experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
   Documentation(info="<html>
 <p>This model tests the connectors against the case when source is directly connected to sink. All massflows are expected to be the same, when the sources and sinks have the same settings. </p>
 <p>Note that the sources and sinks without a connector have 1.5 times the inertance, since the additional connector adds inertance to each other path.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-100,-140},{100,120}})),
-    Icon(coordinateSystem(extent={{-100,-140},{100,120}})));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
 end TestConnectors;

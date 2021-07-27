@@ -36,7 +36,7 @@ equation
       points={{-22,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, source.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,0},{-42,0}},
+  connect(pulse.y, source.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,6},{-42,6}},
                          color={0,0,127}));
   connect(sink.inlet, flowResistance.outlet) annotation (Line(
       points={{52,0},{34,0}},
@@ -49,7 +49,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-             experiment(StopTime=1, Tolerance=1e-5),
+             experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
         Documentation(info="<html>
 <p>Test for the CheckValve.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

@@ -15,8 +15,8 @@ model TestDynamicTopology
     N=2,
     M=3,
     assumeConstantDensity=false,
-    A_in(displayUnit="cm2") = {0.0001,0.0002},
-    A_out(displayUnit="cm2") = {0.0001,0.0002,0.0003})
+    A_in(each displayUnit="cm2") = {0.0001,0.0002},
+    A_out(each displayUnit="cm2") = {0.0001,0.0002,0.0003})
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=100000)
                            annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
@@ -87,8 +87,8 @@ model TestDynamicTopology
     N=2,
     M=3,
     assumeConstantDensity=true,
-    A_in(displayUnit="cm2") = {0.0001,0.0002},
-    A_out(displayUnit="cm2") = {0.0001,0.0002,0.0003},
+    A_in(each displayUnit="cm2") = {0.0001,0.0002},
+    A_out(each displayUnit="cm2") = {0.0001,0.0002,0.0003},
     A_splitter=10)
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
   Boundaries.Source source2(redeclare package Medium = Medium, p0_par=100000)
@@ -158,6 +158,8 @@ model TestDynamicTopology
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0003,
     v_out_par=1) annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons annotation (
+    Placement(visible = true, transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(flowResistance1.outlet, dynamicJunctionNM.inlets[1])
     annotation (Line(
@@ -302,7 +304,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=1, Tolerance=1e-5),
+    experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

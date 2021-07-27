@@ -14,7 +14,7 @@ model BoilerEspresso "Test for the espresso boiler"
     V(displayUnit="l") = 0.001,
     x_0=0.001)
     annotation (Placement(transformation(extent={{-10,-20},{30,20}})));
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, p_min(displayUnit="Pa") = 650)
     annotation (Placement(transformation(extent={{70,-90},{90,-70}})));
   Boundaries.Source source(
     redeclare package Medium = Water,
@@ -25,6 +25,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={10,-100})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Water,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss =
@@ -46,7 +47,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{-90,-80},{-70,-60}})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal(realTrue=0.0, realFalse=1.0)
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1)
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
@@ -75,6 +76,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={30,100})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Water,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss =
@@ -90,7 +92,7 @@ model BoilerEspresso "Test for the espresso boiler"
     offset=0,
     startTime=350)
     annotation (Placement(transformation(extent={{100,60},{80,80}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=1)
+  Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=1, initType=Modelica.Blocks.Types.Init.SteadyState)
     annotation (Placement(transformation(extent={{70,60},{50,80}})));
   FlowControl.TanValve     tanValve2(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
@@ -104,6 +106,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={-10,100})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Water,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss =
@@ -119,7 +122,7 @@ model BoilerEspresso "Test for the espresso boiler"
     offset=0,
     startTime=550)
     annotation (Placement(transformation(extent={{-82,60},{-62,80}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=1)
+  Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=1, initType=Modelica.Blocks.Types.Init.SteadyState)
     annotation (Placement(transformation(extent={{-50,60},{-30,80}})));
 equation
   connect(boilerEspresso.inlet, flowResistance.outlet) annotation (Line(
@@ -189,7 +192,7 @@ equation
       thickness=0.5));
   connect(boilerEspresso.y_out, hysteresis.u) annotation (Line(points={{-10,-12},{-30,-12},{-30,-40},{-100,-40},{-100,-70},{-92,-70}},
         color={0,0,127}));
-  annotation(experiment(StopTime=1000, Tolerance=1e-5), Documentation(info="<html>
+  annotation(experiment(StopTime=1000, tolerance=1e-6, Interval=1), Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),

@@ -28,7 +28,7 @@ model BoundaryRear "Generic Boundary model (may act as source or sink)"
     annotation (Placement(transformation(extent={{-40,0},{0,40}}),  iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector"
     annotation (Placement(transformation(extent={{-40,-40},{0,0}}),   iconTransformation(extent={{-40,-20},{0,20}})));
-  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi]( unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),

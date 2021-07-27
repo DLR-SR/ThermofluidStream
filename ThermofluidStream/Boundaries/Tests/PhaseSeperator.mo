@@ -9,7 +9,7 @@ model PhaseSeperator
     enthalpyFromInput=true,
     p0_par=120000,
     h0_par=2000)                                            annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
-  .ThermofluidStream.Boundaries.PhaseSeparator receiver(
+  Boundaries.PhaseSeparator receiver(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -17,7 +17,7 @@ model PhaseSeperator
     pipe_high=0.15,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
                     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
-  .ThermofluidStream.Boundaries.PhaseSeparator accumulator(
+  Boundaries.PhaseSeparator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
     V_par(displayUnit="l") = 0.01,
@@ -145,7 +145,7 @@ model PhaseSeperator
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
                                     annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
 equation
-  connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,14},{-90,14},{-90,-6},{-99,-6}}, color={0,0,127}));
+  connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,20},{-90,20},{-90,-6},{-99,-6}}, color={0,0,127}));
   connect(twoPhaseSensorSelect1.inlet, accumulator.outlet)
     annotation (Line(
       points={{20,-40},{16,-40},{16,-20},{10,-20}},
@@ -211,7 +211,7 @@ equation
       points={{-70,-20},{-56,-20},{-56,-20},{-40,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(source1.h0_var, timeTable.y) annotation (Line(points={{-82,-26},{-90,-26},{-90,-6},{-99,-6}}, color={0,0,127}));
+  connect(source1.h0_var, timeTable.y) annotation (Line(points={{-82,-20},{-90,-20},{-90,-6},{-99,-6}}, color={0,0,127}));
   connect(twoPhaseSensorSelect.inlet, flowResistance2.inlet)
     annotation (Line(
       points={{-56,-28},{-60,-28},{-60,-20},{-40,-20}},
@@ -262,7 +262,7 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
-    experiment(StopTime=125, Tolerance=1e-5, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=125, tolerance=1e-6, Interval=0.125, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

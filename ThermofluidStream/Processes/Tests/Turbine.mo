@@ -33,7 +33,7 @@ model Turbine "Test for turbines"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=1e-5,
     redeclare function dp_tau_turbine =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (                                omega_ref=1e6))
+        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (redeclare package Medium = medium, omega_ref=1e6))
     annotation (Placement(transformation(extent={{-6,10},{14,30}})));
   Modelica.Blocks.Sources.Constant const(k=1000)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
@@ -51,7 +51,7 @@ model Turbine "Test for turbines"
     omega_0=-1,
     initPhi=true,
     redeclare function dp_tau_turbine =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (                                omega_ref=1e6, eta=1))
+        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (redeclare package Medium = medium, omega_ref=1e6, eta=1))
     annotation (Placement(transformation(extent={{-8,-38},{12,-18}})));
   Modelica.Mechanics.Rotational.Sources.LinearSpeedDependentTorque
     linearSpeedDependentTorque(
@@ -90,7 +90,7 @@ equation
   connect(linearSpeedDependentTorque.flange, turbine1.flange)
     annotation (Line(points={{-34,-62},{2,-62},{2,-38}}, color={0,0,0}));
   annotation (
-    experiment(StopTime=30, Tolerance=1e-5),
+    experiment(StopTime=30, tolerance=1e-6, Interval=0.03),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

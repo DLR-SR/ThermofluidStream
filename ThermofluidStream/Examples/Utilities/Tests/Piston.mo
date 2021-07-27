@@ -183,7 +183,8 @@ equation
       points={{84,-20},{104,-20},{104,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, source.p0_var) annotation (Line(points={{-113,10},{-98,10}},  color={0,0,127}));
+  connect(ramp.y, source.p0_var) annotation (Line(points={{-113,10},{-106,10},{-106,16},{-98,16}},
+                                                                                color={0,0,127}));
   connect(firstOrder.y, tanValve.u) annotation (Line(points={{-9,56},{16,56},{16,28},{58,28},{58,-4},{74,-4},{74,2}}, color={0,0,127}));
   connect(switch.outletA, flowResistance.inlet) annotation (Line(
       points={{-56,10},{-46,10}},
@@ -195,7 +196,7 @@ equation
       thickness=0.5));
   connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}},  color={0,0,127}));
     annotation (
-      experiment(StopTime=15, Tolerance=1e-5),
+      experiment(StopTime=15, tolerance=1e-6, Interval=0.015),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),

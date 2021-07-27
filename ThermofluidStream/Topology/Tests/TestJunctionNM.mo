@@ -118,6 +118,8 @@ model TestJunctionNM
     redeclare function pLoss =
         Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  inner DropOfCommons dropOfCommons annotation (
+    Placement(visible = true, transformation(origin = {-2, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-50,70},{-40,70}},
@@ -209,7 +211,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    experiment(StopTime=1, Tolerance=1e-5),
+    experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
     Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

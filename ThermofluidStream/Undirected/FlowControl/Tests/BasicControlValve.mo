@@ -132,13 +132,14 @@ model BasicControlValve "Test for undirected BasicControlValve"
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
     annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
 equation
-  connect(boundary_rear1.p0_var, pulse.y) annotation (Line(points={{-108,-60},{-140,-60},{-140,0},{-151,0}}, color={0,0,127}));
+  connect(boundary_rear1.p0_var, pulse.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,0},{-151,0}}, color={0,0,127}));
   connect(ramp.y, valveParabolic.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(ramp.y, valveEqualPercentage.u_in) annotation (Line(points={{153,20},
           {120,20},{120,-40},{0,-40},{0,-52}}, color={0,0,127}));
-  connect(boundary_rear.p0_var, pulse.y) annotation (Line(points={{-108,60},{-140,60},{-140,0},{-151,0}}, color={0,0,127}));
-  connect(pulse.y, boundary_rear2.p0_var) annotation (Line(points={{-151,0},{-108,0}}, color={0,0,127}));
+  connect(boundary_rear.p0_var, pulse.y) annotation (Line(points={{-108,66},{-140,66},{-140,0},{-151,0}}, color={0,0,127}));
+  connect(pulse.y, boundary_rear2.p0_var) annotation (Line(points={{-151,0},{-130,0},{-130,6},{-108,6}},
+                                                                                       color={0,0,127}));
   connect(valveLinear.u_in, ramp.y) annotation (Line(points={{0,68},{0,90},{120,
           90},{120,20},{153,20}}, color={0,0,127}));
   connect(flowResistance.rear, boundary_rear.fore) annotation (Line(
@@ -220,8 +221,8 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=20,
-      Interval=0.001,
-   Tolerance=1e-5,
+   tolerance=1e-6,
+   Interval=0.02,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

@@ -30,7 +30,7 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Processes.FlowResistance flowResistance2(
@@ -39,7 +39,7 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
   ThermofluidStream.Boundaries.Reservoir reservoir2(
@@ -61,22 +61,22 @@ model Reservoir "Test for Reservoir"
     offset=1e5,
     startTime=3)
     annotation (Placement(transformation(extent={{-66,58},{-46,78}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance4(
+  ThermofluidStream.Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{-32,20},{-12,40}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance5(
+  ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -119,7 +119,7 @@ equation
   connect(reservoir2.pEnv_input, ramp.y) annotation (Line(points={{10,40},{10,68},{-45,68}}, color={0,0,127}));
 
 annotation (
-  experiment(StopTime=10, Tolerance=1e-5),
+  experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
   Documentation(info="<html>
     <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
     </html>"));

@@ -201,8 +201,8 @@ equation
             false, extent={{-160,-100},{160,100}})),
     experiment(
       StopTime=100,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-6,
+   Interval=0.1,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>

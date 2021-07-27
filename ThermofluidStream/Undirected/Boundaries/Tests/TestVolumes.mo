@@ -49,7 +49,7 @@ model TestVolumes "Test for undirected Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
@@ -57,7 +57,7 @@ model TestVolumes "Test for undirected Volumes"
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-140,-60},{-120,-40}})));
   ThermofluidStream.Boundaries.Source
          source(redeclare package Medium = Medium, p0_par=200000)
@@ -102,21 +102,21 @@ model TestVolumes "Test for undirected Volumes"
     annotation (Placement(transformation(extent={{-110,30},{-90,50}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature1(T(displayUnit="K") = 500)
     annotation (Placement(transformation(extent={{-148,0},{-128,20}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance2(
+  ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance3(
+  ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-140,30},{-120,50}})));
   BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{-44,-60},{-24,-40}})));
   BoundaryFore boundary_fore1(redeclare package Medium = Medium,
@@ -146,22 +146,22 @@ model TestVolumes "Test for undirected Volumes"
   ThermofluidStream.Boundaries.Sink
        sink3(redeclare package Medium = MediumMix, p0_par=100000)
             annotation (Placement(transformation(extent={{142,40},{162,60}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance5(
+  ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1e5))
     annotation (Placement(transformation(extent={{46,60},{66,80}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance6(
+  ThermofluidStream.Processes.FlowResistance flowResistance6(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=2e5))
     annotation (Placement(transformation(extent={{46,20},{66,40}})));
   VolumeMix volumeMix2(
@@ -187,7 +187,7 @@ model TestVolumes "Test for undirected Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1e5))
     annotation (Placement(transformation(extent={{46,-30},{66,-10}})));
   Processes.FlowResistance flowResistance7(
@@ -196,16 +196,16 @@ model TestVolumes "Test for undirected Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=2e5))
     annotation (Placement(transformation(extent={{46,-70},{66,-50}})));
-  .ThermofluidStream.Processes.FlowResistance flowResistance8(
+  ThermofluidStream.Processes.FlowResistance flowResistance8(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1e3))
     annotation (Placement(transformation(extent={{116,40},{136,60}})));
   Processes.FlowResistance flowResistance9(
@@ -214,7 +214,7 @@ model TestVolumes "Test for undirected Volumes"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1e3))
     annotation (Placement(transformation(extent={{120,-80},{100,-60}})));
   Volume heatportVolume2(
@@ -387,7 +387,7 @@ equation
       thickness=0.5));
   connect(heatportVolume2.heatPort, heatportVolume.heatPort) annotation (Line(points={{-100,-102},{-100,-58}}, color={191,0,0}));
   annotation (
-  experiment(StopTime=1, Tolerance=1e-5, __Dymola_NumberOfIntervals=15000, __Dymola_Algorithm="Dassl"),
+  experiment(StopTime=1, tolerance=1e-6, Interval=0.001, __Dymola_Algorithm="Dassl"),
   Documentation(info="<html>
 <p>Test&nbsp;for&nbsp;undirected&nbsp;Volumes</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

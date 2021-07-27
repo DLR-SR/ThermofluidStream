@@ -16,18 +16,28 @@ partial model PartialSensor "Partial undirected sensor"
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80})));
 
-  function regStep = Undirected.Internal.regStepState (redeclare package Medium =
+/*  function regStepSt = Undirected.Internal.regStepState (redeclare package Medium =
           Medium)                                                                         "RegStep function for a state"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">RegStep function for a state. The medium of the sensor is used and given to the function.</span></p>
 </html>"));
-
-  Medium.ThermodynamicState state = regStep(rear.m_flow, rear.state_forwards, rear.state_rearwards, m_flow_reg);
+*/
+  Medium.ThermodynamicState state = Medium.setState_phX(p_reg, h_reg, Xi_reg); //= regStepSt(rear.m_flow, rear.state_forwards, rear.state_rearwards, m_flow_reg);
 
 protected
   outer DropOfCommons dropOfCommons;
+ SI.Pressure p_reg= Undirected.Internal.regStep(rear.m_flow, Medium.pressure(rear.state_forwards), Medium.pressure(rear.state_rearwards), m_flow_reg);
+  SI.SpecificEnthalpy h_reg = Undirected.Internal.regStep(rear.m_flow, Medium.specificEnthalpy(rear.state_forwards), Medium.specificEnthalpy(rear.state_rearwards), m_flow_reg);
+  Medium.MassFraction Xi_reg[Medium.nXi];
+
+  Medium.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(rear.state_forwards);
+  Medium.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(rear.state_rearwards);
 
 equation
+  for i in 1:Medium.nXi loop
+    Xi_reg[i] = Undirected.Internal.regStep(rear.m_flow, Xi_forwards[i], Xi_rearwards[i], m_flow_reg);
+  end for;
+
   fore.state_forwards = rear.state_forwards;
   rear.state_rearwards = fore.state_rearwards;
   fore.r = rear.r;

@@ -118,7 +118,7 @@ model ConductionElement "Test for ConductionElement"
         Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
-  connect(step.y, source.p0_var) annotation (Line(points={{-79,9},{-74,9},{-74,10},{-70,10}},
+  connect(step.y, source.p0_var) annotation (Line(points={{-79,9},{-74,9},{-74,16},{-70,16}},
                          color={0,0,127}));
   connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-40,80},{-20,80},{-20,70},{0,70},{0,61.8}}, color={191,0,0}));
   connect(conductionElement1.inlet, splitterX.outletC) annotation (Line(
@@ -177,7 +177,8 @@ equation
       thickness=0.5));
   connect(conductionElement4.heatPort, conductionElement.heatPort)
     annotation (Line(points={{0,-80.2},{0,-72},{-20,-72},{-20,70},{0,70},{0,61.8}}, color={191,0,0}));
-  connect(source2.p0_var, ramp.y) annotation (Line(points={{-72,-90},{-79,-90}}, color={0,0,127}));
+  connect(source2.p0_var, ramp.y) annotation (Line(points={{-72,-84},{-76,-84},{-76,-90},{-79,-90}},
+                                                                                 color={0,0,127}));
   connect(conductionElement4.outlet, flowResistance.inlet)
     annotation (Line(
       points={{10,-90},{20,-90}},
@@ -187,7 +188,7 @@ equation
       points={{60,-90},{40,-90}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=1, Tolerance=1e-5),
+  annotation (experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

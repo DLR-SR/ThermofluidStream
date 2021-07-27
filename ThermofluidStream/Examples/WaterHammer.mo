@@ -85,7 +85,7 @@ equation
       points={{-82,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(source.p0_var, const2.y) annotation (Line(points={{-132,0},{-132,0},{-149,0}},
+  connect(source.p0_var, const2.y) annotation (Line(points={{-132,6},{-132,0},{-149,0}},
                                                 color={0,0,127}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-120,0},{-102,0}},
@@ -122,8 +122,8 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=25,
-      Interval=0.01,
-   Tolerance=1e-5,
+      Interval=0.025,
+   tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

@@ -279,7 +279,7 @@ equation
       points={{-70,8},{-84,8},{-84,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(limiter.y, sourceB.p0_var) annotation (Line(points={{135.4,20},{128,20},{128,20},{122,20}},
+  connect(limiter.y, sourceB.p0_var) annotation (Line(points={{135.4,20},{128,20},{128,26},{122,26}},
                      color={0,0,127}));
   connect(feedback.u1, airFlow_setPoint.y)
     annotation (Line(points={{128,52},{123,52}}, color={0,0,127}));
@@ -332,8 +332,8 @@ equation
             false, extent={{-160,-100},{160,100}})),
     experiment(
       StopTime=100,
-   Tolerance=1e-5,
-      __Dymola_NumberOfIntervals=1000,
+   tolerance=1e-6,
+   Interval=0.1,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
