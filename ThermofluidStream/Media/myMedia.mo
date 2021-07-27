@@ -39176,10 +39176,16 @@ which is only exactly true for a fluid with constant density d=d0.
       end density;
 
       redeclare function extends density_derp_T
-        "Return density derivative w.r.t. pressure at const specific enthalpy"
+        "Return density derivative w.r.t. pressure at const temperature"
       algorithm
         ddph :=0; //incompressable
       end density_derp_T;
+
+      redeclare function extends density_derp_h
+        "Return density derivative w.r.t. pressure at const specific enthalpy"
+      algorithm
+        ddph :=0; //incompressable and h = cp*T; h=const; -> T=const
+      end density_derp_h;
 
       redeclare function extends specificEnthalpy
         "Return specific enthalpy as a function of the thermodynamic state record"

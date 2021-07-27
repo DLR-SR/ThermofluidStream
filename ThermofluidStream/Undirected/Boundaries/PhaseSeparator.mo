@@ -45,9 +45,6 @@ protected
   SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(medium.p))-1 "Bubble Enthalpy of Medium";
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Dew Enthalpy of Medium";
 
-  Modelica.Blocks.Interfaces.RealInput tmp_dddp(unit="s2/m2") = Medium.density_derp_h(medium.state) if density_derp_h_from_media;
-  Modelica.Blocks.Interfaces.RealOutput tmp2_dddp(unit="s2/m2");
-
 initial equation
   if init_method == Init.h then
     medium.h = h_0;
@@ -61,13 +58,10 @@ initial equation
   end if;
 
 equation
-  //this workaround is necessary, because the method density_derp_h is not implemented in all media, and therefore has to be removed conditionally when not implemented"
-  connect(tmp_dddp, tmp2_dddp);
   if density_derp_h_from_media then
-    density_derp_h = tmp2_dddp;
+    density_derp_h = Medium.density_derp_h(medium.state);
   else
     density_derp_h = density_derp_h_set;
-    tmp2_dddp = 0;
   end if;
 
   V = V_par;

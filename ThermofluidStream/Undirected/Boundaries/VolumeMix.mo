@@ -8,17 +8,13 @@ model VolumeMix "Volume with N_fore fores and N_rear rears that allows mixing"
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
 
-protected
-  Modelica.Blocks.Interfaces.RealInput tmp_dddp(unit="s2/m2") = Medium.density_derp_h(medium.state) if density_derp_h_from_media;
-  Modelica.Blocks.Interfaces.RealOutput tmp2_dddp(unit="s2/m2");
 equation
-  //this workaround is necessary, because the method density_derp_h is not implemented in all media, and therefore has to be removed conditionally when not implemented"
-  connect(tmp_dddp, tmp2_dddp);
+  assert(abs(Medium.density_derp_h(medium.state)) > 1e-12, "The simple Volume model should not be used with incompressible or nearly incompressible media. Consider using the FlexVolume instead.");
+
   if density_derp_h_from_media then
-    density_derp_h = tmp2_dddp;
+    density_derp_h = Medium.density_derp_h(medium.state);
   else
     density_derp_h = density_derp_h_set;
-    tmp2_dddp = 0;
   end if;
 
   V = V_par;
