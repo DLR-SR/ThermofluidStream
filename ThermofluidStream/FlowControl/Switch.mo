@@ -11,6 +11,8 @@ model Switch
   parameter SI.Pressure p_ref = 1e5 "Rreference pressurre";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
   parameter Boolean invertInput = false "Invert input meaning";
+  parameter Boolean initializeOneMassflowSplit = false "Initialize mass-flow ratio (one initial equation)"
+    annotation(Dialog(tab="Initialization"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
@@ -27,7 +29,8 @@ model Switch
                                                   final invertInput=invertInput,
                                                   final m_flow_ref=m_flow_ref,
                                                   final p_ref=p_ref,
-                                                  final relativeLeakiness=relativeLeakiness)
+                                                  final relativeLeakiness=relativeLeakiness,
+                                  outlet(m_flow(stateSelect=StateSelect.prefer)))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -50,6 +53,15 @@ model Switch
 protected
   outer ThermofluidStream.DropOfCommons dropOfCommons;
   constant Real delta(unit="1") = 0.1;
+
+initial equation
+  if initializeOneMassflowSplit then
+    if not invertInput then
+      outletA.m_flow = - inlet.m_flow * u;
+    else
+      outletB.m_flow = - inlet.m_flow * u;
+    end if;
+  end if;
 
 equation
 

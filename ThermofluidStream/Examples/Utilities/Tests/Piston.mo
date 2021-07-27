@@ -56,7 +56,8 @@ model Piston "Test for Piston model"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={16,10})));
-  FlowControl.Switch switch(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+  FlowControl.Switch switch(redeclare package Medium = Medium, initializeOneMassflowSplit=true)
+                                                               annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-66,10})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Medium)
@@ -82,7 +83,6 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=false,
     L_value=1e-3,
     r=0.1,

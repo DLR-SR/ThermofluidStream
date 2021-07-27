@@ -26,7 +26,8 @@ model FourWaySwitch
     final m_flow_ref=m_flow_ref,
     final p_ref=p_ref,
     final relativeLeakiness=relativeLeakiness,
-    invertInput=true)
+    invertInput=true,
+    initializeOneMassflowSplit=true)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -36,7 +37,8 @@ model FourWaySwitch
     final m_flow_ref=m_flow_ref,
     final p_ref=p_ref,
     final relativeLeakiness=relativeLeakiness,
-    invertInput=true)
+    invertInput=true,
+    initializeOneMassflowSplit=true)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
