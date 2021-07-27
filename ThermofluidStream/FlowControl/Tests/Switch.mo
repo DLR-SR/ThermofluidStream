@@ -19,6 +19,7 @@ model Switch "Test for Switches"
     annotation (Placement(transformation(extent={{46,60},{66,80}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -32,7 +33,6 @@ model Switch "Test for Switches"
     annotation (Placement(transformation(extent={{-10,60},{10,80}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -40,7 +40,6 @@ model Switch "Test for Switches"
     annotation (Placement(transformation(extent={{20,80},{40,100}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
     redeclare function pLoss =
