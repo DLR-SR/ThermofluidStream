@@ -2,16 +2,6 @@ within ThermofluidStream.Examples;
 model SimpleEngine "Simple steam engine"
   extends Modelica.Icons.Example;
 
-  package Water_dT
-    extends Media.myMedia.Water.WaterIF97_base(
-      ThermoStates=Media.myMedia.Interfaces.Choices.IndependentVariables.dTX,
-      ph_explicit=false,
-      dT_explicit=true,
-      pT_explicit=false,
-      smoothModel=false,
-      onePhase=false);
-  end Water_dT;
-
   package Water = Media.myMedia.Water.StandardWater;
 
 

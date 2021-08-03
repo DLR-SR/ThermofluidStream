@@ -4,7 +4,7 @@ model Compressor "Test for compressors"
 
   import tf = ThermofluidStream;
 
-  replaceable package medium =
+  replaceable package Medium =
       ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
                                                                            "Medium model" annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be an ideal gas or close to that.</span></p>
@@ -12,12 +12,12 @@ model Compressor "Test for compressors"
 
 
   tf.Boundaries.Source source(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     T0_par=300,
     p0_par=100000)
     annotation (Placement(transformation(extent={{-100,6},{-80,26}})));
   tf.Boundaries.Sink sink(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     pressureFromInput=false,
     p0_par=300000)
     annotation (Placement(transformation(extent={{86,6},{106,26}})));
@@ -28,7 +28,7 @@ model Compressor "Test for compressors"
         origin={68,-78})));
 
   tf.Processes.Compressor compressor(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     L=1e6,
     m_flowStateSelect=StateSelect.never,
     omega_from_input=true,
@@ -36,7 +36,7 @@ model Compressor "Test for compressors"
     m_flow_0=-1,
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium,
+        redeclare package Medium = Medium,
   omega_ref=3000,
         skew=1,
         m_flow_ref=1))
@@ -44,7 +44,7 @@ model Compressor "Test for compressors"
   Modelica.Blocks.Sources.Constant const(k=6000)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
   tf.Processes.Compressor compressor1(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     omega_from_input=false,
     J_p=2,
     m_flow_reg=0.001,
@@ -54,7 +54,7 @@ model Compressor "Test for compressors"
     initPhi=true,
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium,
+        redeclare package Medium = Medium,
   omega_ref=500,
         skew=1,
         m_flow_ref=0.01,
@@ -62,9 +62,9 @@ model Compressor "Test for compressors"
         V_ref=0.0001)) annotation (Placement(transformation(extent={{-6,-30},{14,-10}})));
   Power power1(P=50000, tau_max=300)
     annotation (Placement(transformation(extent={{-28,-50},{-8,-30}})));
-  tf.Topology.SplitterN splitterN(N=2, redeclare package Medium = medium)
+  tf.Topology.SplitterN splitterN(N=2, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-74,6},{-54,26}})));
-  tf.Topology.JunctionN junctionN(N=2, redeclare package Medium = medium)
+  tf.Topology.JunctionN junctionN(N=2, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{60,6},{80,26}})));
 
 equation

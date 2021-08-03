@@ -1,29 +1,29 @@
 within ThermofluidStream.HeatExchangers.Tests;
 model CounterFlowNTU_parallel
 
-  replaceable package mediumA =
+  replaceable package MediumA =
       Media.myMedia.Incompressible.Examples.Glycol47
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package mediumB = Media.myMedia.Air.DryAirNasa
+  replaceable package MediumB = Media.myMedia.Air.DryAirNasa
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
   ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        mediumA, T0_par=333.15)
+        MediumA, T0_par=333.15)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-132,-20})));
 
   ThermofluidStream.Boundaries.Sink sinkA(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     pressureFromInput=true,
     p0_par=100000) annotation (Placement(transformation(extent={{110,-30},{130,-10}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               mediumA,
+               MediumA,
     digits=3,
       outputMassFlowRate=true,
     temperatureUnit="degC")   annotation (Placement(transformation(
@@ -32,26 +32,26 @@ model CounterFlowNTU_parallel
         origin={80,-30})));
 
   ThermofluidStream.Boundaries.Source sourceB(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     temperatureFromInput=false,
     pressureFromInput=true,
     T0_par=293.15,
     p0_par=100000)
                annotation (Placement(transformation(extent={{130,10},{110,30}})));
   ThermofluidStream.Boundaries.Sink sinkB(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     pressureFromInput=false,
     p0_par=100000)
     annotation (Placement(transformation(extent={{-150,10},{-170,30}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               mediumB,
+               MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-100,20},{-120,40}})));
   Modelica.Blocks.Sources.RealExpression airFlow_setPoint(y=1)
     annotation (Placement(transformation(extent={{102,42},{122,62}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               mediumB,
+               MediumB,
     outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{90,20},{70,40}})));
@@ -80,44 +80,44 @@ model CounterFlowNTU_parallel
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{142,-26},{130,-14}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
-    redeclare package MediumA = mediumA,
-    redeclare package MediumB = mediumB,
+    redeclare package MediumA = MediumA,
+    redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-38,-8},{-18,12}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU1(
-    redeclare package MediumA = mediumA,
-    redeclare package MediumB = mediumB,
+    redeclare package MediumA = MediumA,
+    redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-38,48},{-18,28}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-74,-30})));
   Topology.SplitterT1 splitterT1_1(redeclare package Medium =
-        mediumB)
+        MediumB)
     annotation (Placement(transformation(extent={{56,10},{36,30}})));
-  Topology.JunctionT1 junctionT1_1(redeclare package Medium = mediumB)
+  Topology.JunctionT1 junctionT1_1(redeclare package Medium = MediumB)
     annotation (Placement(transformation(extent={{-94,10},{-74,30}})));
-  Boundaries.Source                   sourceA2(redeclare package Medium = mediumA, T0_par=
+  Boundaries.Source                   sourceA2(redeclare package Medium = MediumA, T0_par=
        333.15)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-128,78})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-96,88})));
   Boundaries.Sink                   sinkA2(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     pressureFromInput=true,
     p0_par=100000) annotation (Placement(transformation(extent={{48,50},{68,70}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm6(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     digits=3,
     outputMassFlowRate=true,
     temperatureUnit="degC")   annotation (Placement(transformation(
@@ -137,34 +137,34 @@ model CounterFlowNTU_parallel
   Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{80,54},{68,66}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm7(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{40,32},{20,52}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm8(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{40,8},{20,28}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm9(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-50,32},{-70,52}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm10(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-50,8},{-70,28}})));
   Processes.FlowResistance flowResistanceB2(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     r=0.05,
     l=1,
     redeclare function pLoss =
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-126,10},{-146,30}})));
   Processes.FlowResistance flowResistanceB(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -172,7 +172,7 @@ model CounterFlowNTU_parallel
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{8,22},{-12,42}})));
   Processes.FlowResistance flowResistanceB1(
-    redeclare package Medium = mediumB,
+    redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -180,7 +180,7 @@ model CounterFlowNTU_parallel
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{8,-2},{-12,18}})));
   Processes.FlowResistance flowResistanceA2(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -188,7 +188,7 @@ model CounterFlowNTU_parallel
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-78,68},{-58,88}})));
   Processes.FlowResistance flowResistanceA(
-    redeclare package Medium = mediumA,
+    redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,

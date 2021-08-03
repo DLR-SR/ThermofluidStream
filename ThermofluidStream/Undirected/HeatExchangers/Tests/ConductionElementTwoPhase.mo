@@ -2,28 +2,28 @@ within ThermofluidStream.Undirected.HeatExchangers.Tests;
 model ConductionElementTwoPhase
   extends Modelica.Icons.Example;
 
-  package mediumRefrigerant = Media.myMedia.R134a.R134a_ph;
+  package MediumRefrigerant = Media.myMedia.R134a.R134a_ph;
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
-    redeclare package twoPhaseMedium = mediumRefrigerant,
+    redeclare package twoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.001,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
     U_tp_nom=1000)                                                     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.BoundaryRear boundary_rear(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     enthalpyFromInput=false,
     h0_par=200e3,
     p0_par=500000) annotation (Placement(transformation(extent={{-82,-10},{-62,10}})));
   Boundaries.BoundaryFore boundary_fore(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     pressureFromInput=true,
     h0_par=450e3) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.FlowResistance flowResistance(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -31,7 +31,7 @@ model ConductionElementTwoPhase
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-44,-10},{-24,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        mediumRefrigerant,                                                              temperatureUnit="degC",
+        MediumRefrigerant,                                                              temperatureUnit="degC",
     outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{24,-2},{44,18}})));
   Modelica.Blocks.Continuous.PI PI(

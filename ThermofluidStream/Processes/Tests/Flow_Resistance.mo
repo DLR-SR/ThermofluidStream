@@ -3,25 +3,25 @@ model Flow_Resistance "Test for flow resistance"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package medium = tf.Media.myMedia.Air.SimpleAir
+  replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
                                                         "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
 </html>"));
 
   tf.Boundaries.Source source(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-94,-10},{-74,10}})));
-  tf.Boundaries.Sink sink(redeclare package Medium = medium, p0_par=100000)
+  tf.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{74,-10},{94,10}})));
 
   inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 
   tf.Processes.FlowResistance flowResistance(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=true,
@@ -32,7 +32,7 @@ model Flow_Resistance "Test for flow resistance"
           k2=100))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   tf.Processes.FlowResistance flowResistance1(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=false,
@@ -43,7 +43,7 @@ model Flow_Resistance "Test for flow resistance"
         tf.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   tf.Processes.FlowResistance flowResistance2(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
     computeL=false,
@@ -53,9 +53,9 @@ model Flow_Resistance "Test for flow resistance"
     redeclare function pLoss =
         tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
-  tf.Topology.SplitterX splitterX(redeclare package Medium = medium)
+  tf.Topology.SplitterX splitterX(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
-  tf.Topology.JunctionX3 junctionX3_2(redeclare package Medium = medium)
+  tf.Topology.JunctionX3 junctionX3_2(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={40,0})));

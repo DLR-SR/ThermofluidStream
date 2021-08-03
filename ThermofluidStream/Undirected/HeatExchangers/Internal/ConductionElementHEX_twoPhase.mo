@@ -1,10 +1,10 @@
 within ThermofluidStream.Undirected.HeatExchangers.Internal;
 model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatport"
-  extends Interfaces.SISOBiFlow(redeclare package Medium = twoPhaseMedium, final clip_p_out=false);
+  extends Interfaces.SISOBiFlow(redeclare package Medium = TwoPhaseMedium, final clip_p_out=false);
 
   import Modelica.Math;
 
-  replaceable package twoPhaseMedium =
+  replaceable package TwoPhaseMedium =
       Media.myMedia.Interfaces.PartialTwoPhaseMedium                                       annotation(choicesAllMatching=true);
 
   parameter Internal.InitializationMethodsCondElementHEX init=Internal.InitializationMethodsCondElementHEX.h0

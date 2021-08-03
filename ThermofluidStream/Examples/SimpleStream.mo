@@ -2,40 +2,40 @@ within ThermofluidStream.Examples;
 model SimpleStream "Steam splitting and joining"
   extends Modelica.Icons.Example;
 
-  replaceable package medium = Media.myMedia.Air.MoistAir
+  replaceable package Medium = Media.myMedia.Air.MoistAir
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   Boundaries.Source source(
-    redeclare package Medium = medium, Xi0_par={0})
+    redeclare package Medium = Medium, Xi0_par={0})
     annotation (Placement(transformation(extent={{-150,-20},{-130,0}})));
-  Boundaries.Sink sink(redeclare package Medium = medium,
+  Boundaries.Sink sink(redeclare package Medium = Medium,
       p0_par=80000)
     annotation (Placement(transformation(extent={{130,-20},{150,0}})));
   Topology.SplitterT1 splitterT1_1(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
   Topology.JunctionT1 junctionrT1_1(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{60,-20},{40,0}})));
   Processes.ConductionElement       thermalConduction(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     L=100) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=4e2, T(start=368.15, fixed=true))
     annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package Medium =
-        medium)
+        Medium)
     annotation (Placement(transformation(extent={{10,-30},{30,-50}})));
   Processes.FlowResistance flowResistance1(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
@@ -43,7 +43,7 @@ model SimpleStream "Steam splitting and joining"
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,0},{40,20}})));
   Processes.FlowResistance flowResistance2(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1000,
@@ -51,14 +51,14 @@ model SimpleStream "Steam splitting and joining"
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-30,-40},{-10,-20}})));
   Processes.FlowResistance flowResistance3(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.1,
     l=10,
     redeclare function pLoss =
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-120,-20},{-100,0}})));
   Processes.FlowResistance flowResistance4(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.1,
     l=20,
     redeclare function pLoss =

@@ -3,22 +3,22 @@ model ConvectivePipe
 
   extends Modelica.Icons.Example;
 
-replaceable package medium = Media.myMedia.Water.ConstantPropertyLiquidWater
+replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   ThermalConvectionPipe    thermalConvection(redeclare package Medium =
-        medium,
+        Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.003,
     l=6.65)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.Source source(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=100100)
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Boundaries.Sink sink(redeclare package Medium = medium,
+  Boundaries.Sink sink(redeclare package Medium = Medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(Q_flow=2000)
@@ -27,7 +27,7 @@ replaceable package medium = Media.myMedia.Water.ConstantPropertyLiquidWater
         rotation=270,
         origin={0,70})));
   FlowResistance flowResistance(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -39,12 +39,12 @@ replaceable package medium = Media.myMedia.Water.ConstantPropertyLiquidWater
         rotation=270,
         origin={12,34})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        medium,
+        Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        medium,
+        Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-40,0},{-20,20}})));

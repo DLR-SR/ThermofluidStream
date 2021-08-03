@@ -2,7 +2,7 @@ within ThermofluidStream.Undirected.FlowControl.Tests;
 model BasicControlValve "Test for undirected BasicControlValve"
   extends Modelica.Icons.Example;
 
-  replaceable package medium =
+  replaceable package Medium =
       ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                                      "Medium package"
@@ -13,11 +13,11 @@ model BasicControlValve "Test for undirected BasicControlValve"
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-170,94},{-150,114}})));
   Boundaries.BoundaryRear boundary_rear(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,50},{-96,70}})));
   FlowControl.BasicControlValve                          valveLinear(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=5,
@@ -26,20 +26,20 @@ model BasicControlValve "Test for undirected BasicControlValve"
     annotation (Placement(transformation(extent={{-10,50},{10,70}})));
 
   Processes.FlowResistance                   flowResistance(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
                                                                        k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
-  Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = medium, p0_par=100000)
+  Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{-40,58},{-20,78}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{26,58},{46,78}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
@@ -48,11 +48,11 @@ model BasicControlValve "Test for undirected BasicControlValve"
     startTime=5)
     annotation (Placement(transformation(extent={{174,10},{154,30}})));
   Boundaries.BoundaryRear boundary_rear2(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,-10},{-96,10}})));
   FlowControl.BasicControlValve valveParabolic(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
@@ -62,20 +62,20 @@ model BasicControlValve "Test for undirected BasicControlValve"
     m_flow_ref_set=0.1)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
-  Boundaries.BoundaryFore boundary_fore2(redeclare package Medium = medium, p0_par=100000)
+  Boundaries.BoundaryFore boundary_fore2(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{-40,-2},{-20,18}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{26,-2},{46,18}})));
   Boundaries.BoundaryRear boundary_rear1(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,-70},{-96,-50}})));
   FlowControl.BasicControlValve                          valveEqualPercentage(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=5,
@@ -83,13 +83,13 @@ model BasicControlValve "Test for undirected BasicControlValve"
         ThermofluidStream.FlowControl.Internal.ControlValve.equalPercentageCharacteristics)
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
 
-  Boundaries.BoundaryFore boundary_fore(redeclare package Medium = medium, p0_par=100000)
+  Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,-70},{116,-50}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm7(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{-40,-62},{-20,-42}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm8(redeclare package Medium =
-               medium)
+               Medium)
     annotation (Placement(transformation(extent={{26,-62},{46,-42}})));
   Modelica.Blocks.Sources.Pulse    pulse(
     amplitude=2e4,
@@ -97,35 +97,35 @@ model BasicControlValve "Test for undirected BasicControlValve"
     offset=0.9e5)
     annotation (Placement(transformation(extent={{-172,-10},{-152,10}})));
   Processes.FlowResistance                   flowResistance6(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   Processes.FlowResistance                   flowResistance1(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.FlowResistance                   flowResistance2(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   Processes.FlowResistance                   flowResistance3(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
     annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
   Processes.FlowResistance                   flowResistance4(
-    redeclare package Medium = medium,
+    redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =

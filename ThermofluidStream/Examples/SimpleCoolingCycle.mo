@@ -2,42 +2,42 @@ within ThermofluidStream.Examples;
 model SimpleCoolingCycle "Basic cooling cycle with a load"
 extends Modelica.Icons.Example;
 
-  replaceable package medium_liquid = Media.myMedia.Water.ConstantPropertyLiquidWater
+  replaceable package Medium_liquid = Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package medium_air =
+  replaceable package Medium_air =
       ThermofluidStream.Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
-    redeclare package MediumA = medium_air,
-    redeclare package MediumB = medium_liquid,
+    redeclare package MediumA = Medium_air,
+    redeclare package MediumB = Medium_liquid,
     A=10) annotation (Placement(transformation(extent={{84,-30},{104,-10}})));
   Boundaries.VolumeFlex                   flexVolume(
     redeclare package Medium =
-        medium_liquid,
+        Medium_liquid,
     V_ref=0.02,
     p_start=100000,
     T_start=278.15)
     annotation (Placement(transformation(extent={{24,-24},{4,-4}})));
   ThermofluidStream.Processes.Pump          pump(
     redeclare package Medium =
-        medium_liquid,
+        Medium_liquid,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
                        redeclare function dp_tau_pump =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = medium_liquid))
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = Medium_liquid))
            annotation (Placement(transformation(extent={{-34,-24},{-54,-4}})));
   ThermofluidStream.Processes.ThermalConvectionPipe
                                                 thermalConvectionPipe(
       redeclare package Medium =
-        medium_liquid,
+        Medium_liquid,
     r=0.005,
     l=1)     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-92,20})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
-    redeclare package Medium = medium_liquid,
+    redeclare package Medium = Medium_liquid,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -45,24 +45,24 @@ extends Modelica.Icons.Example;
          k=1e5))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               medium_liquid, temperatureUnit="degC")
+               Medium_liquid, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{50,-14},{30,6}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               medium_liquid, temperatureUnit="degC")
+               Medium_liquid, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-6,-14},{-26,6}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               medium_liquid,
+               Medium_liquid,
     digits=2,
     outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-60,-14},{-80,-34}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package Medium =
-               medium_liquid, temperatureUnit="degC")
+               Medium_liquid, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,70})));
   ThermofluidStream.Boundaries.Source source(redeclare package Medium =
-        medium_air,
+        Medium_air,
     T0_par=283.15,
     p0_par=101300)
                annotation (Placement(transformation(
@@ -70,14 +70,14 @@ extends Modelica.Icons.Example;
         rotation=180,
         origin={8,-46})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package Medium =
-               medium_air, temperatureUnit="degC")
+               Medium_air, temperatureUnit="degC")
                                               annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={48,-36})));
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium =
-        medium_air, p0_par=101300)                    annotation (Placement(
+        Medium_air, p0_par=101300)                    annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -87,9 +87,9 @@ extends Modelica.Icons.Example;
   Modelica.Mechanics.Rotational.Sources.Speed speed1
     annotation (Placement(transformation(extent={{98,-70},{118,-50}})));
 
-  ThermofluidStream.Processes.Fan fan(redeclare package Medium = medium_air,
+  ThermofluidStream.Processes.Fan fan(redeclare package Medium = Medium_air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (redeclare package Medium = medium_air, omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (redeclare package Medium = Medium_air, omega_ref=100))
     annotation (Placement(transformation(extent={{140,-36},{160,-16}})));
   Modelica.Blocks.Sources.RealExpression pump_speed(y=80 + 273.15)
     annotation (Placement(transformation(extent={{-258,-70},{-238,-50}})));
@@ -104,12 +104,12 @@ extends Modelica.Icons.Example;
   inner ThermofluidStream.DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{150,76},{170,96}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm6(redeclare package Medium =
-               medium_liquid, temperatureUnit="degC")
+               Medium_liquid, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
         origin={124,-4})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm7(redeclare package Medium =
-               medium_air, temperatureUnit="degC")
+               Medium_air, temperatureUnit="degC")
                                               annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},

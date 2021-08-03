@@ -1,16 +1,16 @@
 within ThermofluidStream.HeatExchangers.Tests;
 model Condenser
 
-  replaceable package mediumAir = Media.myMedia.Air.MoistAir
+  replaceable package MediumAir = Media.myMedia.Air.MoistAir
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
-  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+  replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
   ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        mediumAir,
+        MediumAir,
     T0_par=311.15,
     p0_par=100000)
     annotation (Placement(transformation(
@@ -19,12 +19,12 @@ model Condenser
         origin={-142,10})));
 
   ThermofluidStream.Boundaries.Sink sinkA(
-    redeclare package Medium = mediumAir,
+    redeclare package Medium = MediumAir,
     pressureFromInput=true,
     p0_par=100000) annotation (Placement(transformation(extent={{104,0},{124,20}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-               mediumAir,
+               MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
       Placement(transformation(
@@ -32,7 +32,7 @@ model Condenser
         rotation=0,
         origin={-35,20})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               mediumAir,
+               MediumAir,
     digits=3,
       outputMassFlowRate=true,
     temperatureUnit="degC")   annotation (Placement(transformation(
@@ -41,7 +41,7 @@ model Condenser
         origin={54,20})));
 
   ThermofluidStream.Boundaries.Source sourceB(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
     pressureFromInput=true,
@@ -53,14 +53,14 @@ model Condenser
         origin={82,-54})));
 
   ThermofluidStream.Boundaries.Sink sinkB(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par(displayUnit="bar") = 3000000)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-74,-52})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               mediumRefrigerant,
+               MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-22,-6},{-42,-26}})));
@@ -69,7 +69,7 @@ model Condenser
         rotation=0,
         origin={-12,-88})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               mediumRefrigerant,
+               MediumRefrigerant,
     digits=3,
     outputMassFlowRate=true,
     temperatureUnit="degC")
@@ -109,11 +109,11 @@ model Condenser
     initializeMassFlow=true,
     m_flow_0=0,
     nCells=20,
-    redeclare package MediumAir = mediumAir,
-    redeclare package MediumRefrigerant = mediumRefrigerant,
+    redeclare package MediumAir = MediumAir,
+    redeclare package MediumRefrigerant = MediumRefrigerant,
     k_wall=150)                                              annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
   Processes.FlowResistance flowResistanceA(
-    redeclare package Medium = mediumAir,
+    redeclare package Medium = MediumAir,
     m_flow_0=0.5,
     r=0.05,
     l=1,
@@ -122,7 +122,7 @@ model Condenser
     annotation (Placement(transformation(extent={{-82,0},{-62,20}})));
 
   Processes.FlowResistance flowResistanceB(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     m_flow_0=0.3,
     r=0.05,
@@ -134,16 +134,16 @@ model Condenser
         rotation=270,
         origin={-74,-26})));
   Sensors.SingleSensorSelect singleSensorSelect(redeclare package Medium =
-        mediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+        MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-22,-42},{-42,-22}})));
   Sensors.SingleSensorSelect singleSensorSelect1(redeclare package Medium =
-        mediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+        MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{24,-40},{44,-20}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(redeclare package Medium =
-        mediumRefrigerant,                                                                      quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+        MediumRefrigerant,                                                                      quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-22,-54},{-42,-34}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium =
-        mediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{24,-54},{44,-34}})));
 equation
   connect(sinkA.inlet, multiSensor_Tpm1.outlet) annotation (Line(

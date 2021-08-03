@@ -2,28 +2,28 @@ within ThermofluidStream.HeatExchangers.Tests;
 model ElementTwoPhase
   extends Modelica.Icons.Example;
 
-  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+  replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.5,
-    redeclare package twoPhaseMedium = mediumRefrigerant,
+    redeclare package twoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.0005,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
     U_tp_nom=1000) annotation (Placement(transformation(extent={{-28,-16},{4,16}})));
   Boundaries.Sink sink(redeclare package Medium =
-        mediumRefrigerant,
+        MediumRefrigerant,
     pressureFromInput=true,
     p0_par=390000)
     annotation (Placement(transformation(extent={{78,-10},{98,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        mediumRefrigerant, temperatureUnit="degC")
+        MediumRefrigerant, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-58,0},{-38,20}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        mediumRefrigerant, outputMassFlowRate=true,
+        MediumRefrigerant, outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{46,0},{66,20}})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=35e5, uMin=20e5)
@@ -47,7 +47,7 @@ model ElementTwoPhase
   Modelica.Blocks.Sources.Constant const(k=458610)
     annotation (Placement(transformation(extent={{-148,46},{-128,66}})));
   Processes.FlowResistance flowResistance(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     r=0.05,
     l=1,
     redeclare function pLoss =
@@ -60,7 +60,7 @@ model ElementTwoPhase
     startTime=20)
     annotation (Placement(transformation(extent={{-92,44},{-72,64}})));
   Boundaries.Source source(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
     enthalpyFromInput=true,

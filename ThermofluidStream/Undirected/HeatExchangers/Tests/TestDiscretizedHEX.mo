@@ -3,48 +3,48 @@ model TestDiscretizedHEX
 
   extends Modelica.Icons.Example;
 
-  replaceable package mediumAir = Media.myMedia.Air.MoistAir
+  replaceable package MediumAir = Media.myMedia.Air.MoistAir
                                                          constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable package mediumRefrigerant = Media.myMedia.R134a.R134a_ph
+  replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
                                                                  constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
-    redeclare package Medium = mediumAir,
+    redeclare package Medium = MediumAir,
     pressureFromInput=true,
     T0_par=311.15) annotation (Placement(transformation(extent={{-96,14},{-76,34}})));
   Boundaries.BoundaryFore boundary_fore(
-    redeclare package Medium = mediumAir,
+    redeclare package Medium = MediumAir,
     pressureFromInput=true,
     T0_par=311.15,
     p0_par=100000) annotation (Placement(transformation(extent={{84,14},{104,34}})));
   Boundaries.BoundaryFore boundary_fore1(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     pressureFromInput=true,
     h0_par=300e3,
     T0_par=278.15,
     p0_par=400000) annotation (Placement(transformation(extent={{-90,-50},{-110,-30}})));
   Boundaries.BoundaryRear boundary_rear1(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
     pressureFromInput=true,
     h0_par=450e3,
     T0_par=268.15) annotation (Placement(transformation(extent={{112,-18},{92,2}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium = mediumAir,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-42,22},{-22,42}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium = mediumAir,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{18,22},{38,42}})));
   Processes.FlowResistance flowResistanceA(
-    redeclare package Medium = mediumAir,
+    redeclare package Medium = MediumAir,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=1,
     r=0.05,
@@ -60,14 +60,14 @@ model TestDiscretizedHEX
     startTime=15) annotation (Placement(transformation(extent={{-40,-58},{-20,-38}})));
   Modelica.Blocks.Sources.Constant const1(k=1e5)    annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
   DiscretizedHEX discretizedHEX(
-    redeclare package MediumAir = mediumAir,
-    redeclare package MediumRefrigerant = mediumRefrigerant,
+    redeclare package MediumAir = MediumAir,
+    redeclare package MediumRefrigerant = MediumRefrigerant,
     nCells=10,
     V_Hex(displayUnit="m3"),
     k_wall=300)
           annotation (Placement(transformation(extent={{-14,6},{6,26}})));
   Processes.FlowResistance flowResistanceB(
-    redeclare package Medium = mediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.3,
     r=0.05,
@@ -93,12 +93,12 @@ model TestDiscretizedHEX
     offset=1,
     startTime=30) annotation (Placement(transformation(extent={{-22,54},{-2,74}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        mediumRefrigerant,
+        MediumRefrigerant,
     temperatureUnit="degC",
     pressureUnit="bar",                                                                  outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{38,10},{18,-10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        mediumRefrigerant,
+        MediumRefrigerant,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-24,10},{-44,-10}})));

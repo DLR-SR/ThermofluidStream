@@ -3,58 +3,58 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
-  replaceable package medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
+  replaceable package Medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
                                                                           constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                         annotation(choicesAllMatching = true);
-  replaceable package medium_bleed = ThermofluidStream.Media.myMedia.Air.MoistAir
+  replaceable package Medium_bleed = ThermofluidStream.Media.myMedia.Air.MoistAir
                                                                             constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                      annotation(choicesAllMatching = true);
 
 
-  Boundaries.Source source(redeclare package Medium=medium_ram,
+  Boundaries.Source source(redeclare package Medium=Medium_ram,
     T0_par=243.15,
     p0_par=30000,
     Xi0_par={0})
     annotation (Placement(transformation(extent={{-144,96},{-124,116}})));
-  Boundaries.Sink sink(redeclare package Medium=medium_ram,pressureFromInput=false,
+  Boundaries.Sink sink(redeclare package Medium=Medium_ram,pressureFromInput=false,
     p0_par=22000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={104,-100})));
-  Boundaries.Source source1(redeclare package Medium=medium_bleed,
+  Boundaries.Source source1(redeclare package Medium=Medium_bleed,
     T0_par=493.15,
     p0_par=250000,
     Xi0_par={0})
     annotation (Placement(transformation(extent={{-142,-64},{-122,-42}})));
-  Boundaries.Sink sink1(redeclare package Medium=medium_bleed, p0_par=75000)
+  Boundaries.Sink sink1(redeclare package Medium=Medium_bleed, p0_par=75000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={152,80})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
-    redeclare package MediumA = medium_ram,
-    redeclare package MediumB = medium_bleed,
+    redeclare package MediumA = Medium_ram,
+    redeclare package MediumB = Medium_bleed,
     A=7,
     L=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-74,36})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU1(
-    redeclare package MediumA = medium_ram,
-    redeclare package MediumB = medium_bleed,
+    redeclare package MediumA = Medium_ram,
+    redeclare package MediumB = Medium_bleed,
     A=3,
     L=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-74,-26})));
   Processes.Compressor compressor(
-    redeclare package Medium = medium_bleed,
+    redeclare package Medium = Medium_bleed,
     omega_from_input=false,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_compressor =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-  redeclare package Medium = medium_bleed,
+  redeclare package Medium = Medium_bleed,
         omega_ref=2000,
         skew=1,
         m_flow_ref=1,
@@ -67,12 +67,12 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
             {-116,24}})));
 
   Processes.Turbine turbine(
-    redeclare package Medium = medium_bleed,
+    redeclare package Medium = Medium_bleed,
     L=5e2,
     omega_from_input=false,
     redeclare function dp_tau_turbine =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium_bleed,
+        redeclare package Medium = Medium_bleed,
   omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.36,
         skew=-0.2,
@@ -80,47 +80,47 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         eta=0.93))
     annotation (Placement(transformation(extent={{-58,48},{-38,68}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU2(
-    redeclare package MediumA = medium_ram,
-    redeclare package MediumB = medium_bleed,
+    redeclare package MediumA = Medium_ram,
+    redeclare package MediumB = Medium_bleed,
     A=10,
     L=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={62,6})));
   Processes.Turbine turbine1(
-    redeclare package Medium = medium_bleed,
+    redeclare package Medium = Medium_bleed,
     L=5e2,
     omega_from_input=false,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_turbine =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium_bleed,
+        redeclare package Medium = Medium_bleed,
   omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.39,
         skew=-0.2,
         k=2,
         eta=0.93))
     annotation (Placement(transformation(extent={{82,48},{102,68}})));
-  Topology.SplitterT1 splitterT1_1(redeclare package Medium=medium_bleed) annotation (Placement(transformation(
+  Topology.SplitterT1 splitterT1_1(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-44})));
-  Topology.JunctionT1 junctionT1_1(redeclare package Medium=medium_ram) annotation (Placement(transformation(
+  Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-84})));
-  Topology.JunctionT2 junctionT2_1(redeclare package Medium=medium_bleed) annotation (Placement(transformation(
+  Topology.JunctionT2 junctionT2_1(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={116,80})));
-  Topology.SplitterT1 splitterT1_2(redeclare package Medium=medium_ram) annotation (Placement(transformation(
+  Topology.SplitterT1 splitterT1_2(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,96})));
-  Processes.Fan fan(redeclare package Medium = medium_ram, redeclare function dp_tau_fan =
+  Processes.Fan fan(redeclare package Medium = Medium_ram, redeclare function dp_tau_fan =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium_ram,
+        redeclare package Medium = Medium_ram,
   omega_ref=500,
         skew=1,
         m_flow_ref=0.21,
@@ -128,9 +128,9 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-80,-66})));
-  Processes.Fan fan1(redeclare package Medium = medium_ram, redeclare function dp_tau_fan =
+  Processes.Fan fan1(redeclare package Medium = Medium_ram, redeclare function dp_tau_fan =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = medium_ram,
+        redeclare package Medium = Medium_ram,
   omega_ref=1000,
         skew=1,
         eta=0.7)) annotation (Placement(transformation(
@@ -138,14 +138,14 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         rotation=270,
         origin={56,-60})));
   Processes.FlowResistance flowResistance(
-    redeclare package Medium = medium_ram,
+    redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
     redeclare function pLoss =
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,-94},{-20,-74}})));
   Processes.FlowResistance flowResistance1(
-    redeclare package Medium = medium_ram,
+    redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
     redeclare function pLoss =

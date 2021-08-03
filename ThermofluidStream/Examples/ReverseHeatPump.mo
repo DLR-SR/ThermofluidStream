@@ -5,21 +5,21 @@ model ReverseHeatPump
   parameter Boolean switchDuringSimulation = true;
   parameter Boolean heatingMode = false annotation(Dialog(enable = not switchDuringSimulation));
 
-  replaceable package secondaryMedium = Media.myMedia.Air.DryAirNasa
+  replaceable package SecondaryMedium = Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
-  replaceable package refrigerantMedium = Media.myMedia.R134a.R134a_ph
+  replaceable package RefrigerantMedium = Media.myMedia.R134a.R134a_ph
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   Processes.Compressor compressor(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     omega_from_input=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = refrigerantMedium,
+        redeclare package Medium = RefrigerantMedium,
         eta=0.8,
         kappaFromMedia=false,
         kappa_fixed=1.13))
@@ -28,8 +28,8 @@ model ReverseHeatPump
         rotation=90,
         origin={0,14})));
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX(
-    redeclare package MediumAir = secondaryMedium,
-    redeclare package MediumRefrigerant = refrigerantMedium,
+    redeclare package MediumAir = SecondaryMedium,
+    redeclare package MediumRefrigerant = RefrigerantMedium,
     initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.fore,
     nCells=5,
     initializeMassFlow=false,
@@ -40,8 +40,8 @@ model ReverseHeatPump
         origin={-76,92})));
 
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX1(
-    redeclare package MediumAir = secondaryMedium,
-    redeclare package MediumRefrigerant = refrigerantMedium,
+    redeclare package MediumAir = SecondaryMedium,
+    redeclare package MediumRefrigerant = RefrigerantMedium,
     initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.rear,
     nCells=5,
     initializeMassFlow=false,
@@ -52,7 +52,7 @@ model ReverseHeatPump
         origin={76,90})));
 
   FlowControl.BasicControlValve               valveCompressorOutletCooling(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -61,7 +61,7 @@ model ReverseHeatPump
         rotation=180,
         origin={-26,40})));
   FlowControl.BasicControlValve               valveCompressorOutletHeating(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -71,12 +71,12 @@ model ReverseHeatPump
         rotation=0,
         origin={26,40})));
   Undirected.Topology.JunctionRRF2 junctionRRF2_1(redeclare package Medium =
-        refrigerantMedium) annotation (Placement(transformation(
+        RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={68,40})));
   FlowControl.BasicControlValve               valveCompressorInletHeating(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -87,7 +87,7 @@ model ReverseHeatPump
         rotation=90,
         origin={-68,-6})));
   FlowControl.BasicControlValve               valveCompressorInletCooling(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -97,28 +97,28 @@ model ReverseHeatPump
         rotation=90,
         origin={68,-6})));
   Undirected.Boundaries.BoundaryRear boundaryRear(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     pressureFromInput=true,
     T0_par=303.15) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-84,158})));
   Undirected.Boundaries.BoundaryFore boundaryFore(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     T0_par=311.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-142,56})));
   Undirected.Boundaries.BoundaryFore boundaryFore1(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     pressureFromInput=true,
     p0_par=100000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={84,144})));
   Undirected.Processes.FlowResistance flowResistance1(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -130,29 +130,29 @@ model ReverseHeatPump
         rotation=90,
         origin={84,64})));
   Undirected.Boundaries.BoundaryRear boundaryRear1(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     T0_par=303.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={134,54})));
   Topology.SplitterT1 compressorSplitter(redeclare package Medium =
-        refrigerantMedium,                                                             L=1e6)
+        RefrigerantMedium,                                                             L=1e6)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,40})));
-  Topology.JunctionT1 junctionT1_1(redeclare package Medium = refrigerantMedium, L=1e6)
+  Topology.JunctionT1 junctionT1_1(redeclare package Medium = RefrigerantMedium, L=1e6)
                                                                                  annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={0,-38})));
   Undirected.Topology.ConnectRearOutlet connectRearOutlet(redeclare package Medium =
-               refrigerantMedium, useDefaultStateAsRear=true) annotation (
+               RefrigerantMedium, useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={68,14})));
   Undirected.FlowControl.BasicControlValve TEVcooling(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -164,18 +164,18 @@ model ReverseHeatPump
         origin={40,180})));
 
   Utilities.ReceiverUndirected receiver(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     p_start=1000000,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.h,
     h_0=260e3,
     V_par=0.005) annotation (Placement(transformation(extent={{-10,170},{10,190}})));
   Undirected.Topology.JunctionRFF junctionRFFleft(redeclare package Medium =
-        refrigerantMedium) annotation (Placement(transformation(
+        RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-68,40})));
   Undirected.FlowControl.BasicControlValve TEVheating(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -187,7 +187,7 @@ model ReverseHeatPump
         origin={-40,180})));
 
   Undirected.Processes.FlowResistance flowResistance(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
@@ -199,7 +199,7 @@ model ReverseHeatPump
         rotation=90,
         origin={-84,66})));
   Utilities.Accumulator accumulator(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     p_start=200000,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.h,
     h_0=380e3,
@@ -208,24 +208,24 @@ model ReverseHeatPump
         origin={0,-10})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.001) annotation (Placement(transformation(extent={{96,10},{116,30}})));
   Undirected.Topology.ConnectInletFore connectInletFore(redeclare package Medium =
-               refrigerantMedium) annotation (Placement(transformation(
+               RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-44,40})));
   Undirected.Topology.ConnectInletFore connectInletFore1(redeclare package Medium =
-               refrigerantMedium) annotation (Placement(transformation(
+               RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={46,40})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{104,-64},{160,-8}})));
   Undirected.Topology.ConnectRearOutlet connectRearOutlet1(redeclare package Medium =
-               refrigerantMedium, useDefaultStateAsRear=true) annotation (
+               RefrigerantMedium, useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-68,14})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=true) annotation (Placement(transformation(
@@ -250,7 +250,7 @@ model ReverseHeatPump
         rotation=90,
         origin={130,98})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=true) annotation (Placement(transformation(
@@ -279,7 +279,7 @@ model ReverseHeatPump
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
                                                         annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
   Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
-    redeclare package Medium2Phase = refrigerantMedium,
+    redeclare package Medium2Phase = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
     outputValue=true,
     filter_output=true) annotation (Placement(transformation(
@@ -288,7 +288,7 @@ model ReverseHeatPump
         origin={60,66})));
 
   Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect1(
-    redeclare package Medium2Phase = refrigerantMedium,
+    redeclare package Medium2Phase = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
     outputValue=true,
     filter_output=true) annotation (Placement(transformation(
@@ -342,7 +342,7 @@ model ReverseHeatPump
                                                                              annotation (Placement(transformation(extent={{-212,-16},{-192,4}})));
   Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=50) annotation (Placement(transformation(extent={{-212,8},{-192,28}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=false) annotation (Placement(transformation(
@@ -350,7 +350,7 @@ model ReverseHeatPump
         rotation=180,
         origin={-112,64})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm4(
-    redeclare package Medium = secondaryMedium,
+    redeclare package Medium = SecondaryMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=false) annotation (Placement(transformation(
@@ -358,7 +358,7 @@ model ReverseHeatPump
         rotation=180,
         origin={106,62})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm5(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=false) annotation (Placement(transformation(
@@ -366,7 +366,7 @@ model ReverseHeatPump
         rotation=270,
         origin={-60,120})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm6(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar",
     outputMassFlowRate=false) annotation (Placement(transformation(
@@ -374,15 +374,15 @@ model ReverseHeatPump
         rotation=270,
         origin={60,120})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar") annotation (Placement(transformation(extent={{-50,-38},{-30,-58}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm7(
-    redeclare package Medium = refrigerantMedium,
+    redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar") annotation (Placement(transformation(extent={{50,-38},{30,-58}})));
   Sensors.SingleSensorSelect singleSensorSelect(redeclare package Medium =
-        refrigerantMedium,                                                                    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
+        RefrigerantMedium,                                                                    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,

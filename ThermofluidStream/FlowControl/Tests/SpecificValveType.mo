@@ -21,7 +21,7 @@ model SpecificValveType "Test for SpecificValveType"
     redeclare package Medium = medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
-    redeclare record zetaValueRecord = Internal.Curves.slideValveZetaCurve,
+    redeclare record zetaValueRecord = Internal.Curves.SlideValveZetaCurve,
     Kvs=5) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
 
   ThermofluidStream.Processes.FlowResistance flowResistance(
@@ -56,7 +56,7 @@ model SpecificValveType "Test for SpecificValveType"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
-    redeclare record zetaValueRecord = Internal.Curves.slideValveZetaCurve,
+    redeclare record zetaValueRecord = Internal.Curves.SlideValveZetaCurve,
     d_valve=0.005,
     Kvs=5,
     m_flow_ref_set=0.1)

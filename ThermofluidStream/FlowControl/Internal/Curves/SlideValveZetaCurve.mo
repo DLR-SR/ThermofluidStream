@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl.Internal.Curves;
-record slideValveZetaCurve "Basic Slide Valve"
+record SlideValveZetaCurve "Basic Slide Valve"
 
-  extends Curves.partialCharacteristicZetaCurves(zetaTable=
+  extends PartialCharacteristicZetaCurves(       zetaTable=
   [0.0, 10000000000.0;
   0.1, 100.0;
   0.12, 97.8;
@@ -15,7 +15,6 @@ record slideValveZetaCurve "Basic Slide Valve"
   0.9, 0.06;
   1.0, 1e-5]);
 
-
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end slideValveZetaCurve;
+end SlideValveZetaCurve;

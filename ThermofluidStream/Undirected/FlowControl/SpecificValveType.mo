@@ -5,9 +5,9 @@ model SpecificValveType "Specific technical valve types"
   import FlowCoeffType =
          ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
 
-  replaceable record zetaValueRecord =
-      ThermofluidStream.FlowControl.Internal.Curves.slideValveZetaCurve
-    constrainedby ThermofluidStream.FlowControl.Internal.Curves.partialCharacteristicZetaCurves "Select Valve Type"
+  replaceable record ZetaValueRecord =
+      ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve
+    constrainedby ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves "Select Valve Type"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
@@ -26,7 +26,7 @@ model SpecificValveType "Specific technical valve types"
   Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  constant zetaValueRecord valveData;
+  constant ZetaValueRecord valveData;
   Modelica.SIunits.Area A_valve = 0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional valve area";
 
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";

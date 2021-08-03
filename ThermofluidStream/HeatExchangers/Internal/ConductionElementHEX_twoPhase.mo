@@ -3,9 +3,9 @@ model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatpor
 
   import Modelica.Math;
 
-  extends Interfaces.SISOFlow(redeclare package Medium = twoPhaseMedium, clip_p_out=false);
+  extends Interfaces.SISOFlow(redeclare package Medium = TwoPhaseMedium, clip_p_out=false);
 
-    replaceable package twoPhaseMedium =
+    replaceable package TwoPhaseMedium =
       Media.myMedia.Interfaces.PartialTwoPhaseMedium                                       annotation(choicesAllMatching=true);
 
   parameter SI.Volume V = 1 "Volume of the Model";
