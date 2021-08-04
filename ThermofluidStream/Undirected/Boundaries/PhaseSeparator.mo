@@ -46,6 +46,8 @@ protected
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Dew Enthalpy of Medium";
 
 initial equation
+  assert(pipe_high > pipe_low, "Upper pipe end must be higher then lower end.", AssertionLevel.error);
+
   if init_method == Init.h then
     medium.h = h_0;
   elseif init_method == Init.M then

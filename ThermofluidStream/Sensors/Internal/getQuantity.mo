@@ -43,6 +43,10 @@ algorithm
     value := Medium.specificHeatCapacityCv(state);
   elseif quantity == Types.Quantities.cp_JpkgK then
     value := Medium.specificHeatCapacityCp(state);
+  elseif quantity == Types.Quantities.kappa_1 then
+    value := Medium.isentropicExponent(state);
+  elseif quantity == Types.Quantities.MM_kgpmol then
+    value := Medium.molarMass(state);
   else
     value :=0;
   end if;

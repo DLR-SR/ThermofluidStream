@@ -8,7 +8,7 @@ model ElementTwoPhase
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.5,
-    redeclare package twoPhaseMedium = MediumRefrigerant,
+    redeclare package TwoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.0005,
     A=10,
     U_liq_nom=700,
@@ -104,7 +104,7 @@ equation
                                       color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=60, tolerance=1e-6, Interval=0.06, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=60, Tolerance=1e-6, Interval=0.06, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
       <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"));
 end ElementTwoPhase;

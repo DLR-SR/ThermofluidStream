@@ -123,7 +123,7 @@ equation
     experiment(
       StopTime=25,
       Interval=0.025,
-   tolerance=1e-6,
+   Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>

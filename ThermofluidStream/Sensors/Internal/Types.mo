@@ -35,7 +35,9 @@ package Types "Types used in the Sensor Package"
       rho_kgpm3 "Density (kg/m2)",
       v_m3pkg "Specific volume (m3/kg)",
       cv_JpkgK "Specific isochoric heatcapacity (J/(kg.K))",
-      cp_JpkgK "Specific isoparic heatcapacity (J/(kg.K))");
+      cp_JpkgK "Specific isoparic heatcapacity (J/(kg.K))",
+      kappa_1 "Isentropic Exponent (1))",
+      MM_kgpmol "Molar Mass (kg/Mol)");
   type MassFlowQuantities = enumeration(
       m_flow_kgps "Mass flow (kg/s)",
       m_flow_gps "Mass flow (g/s)",

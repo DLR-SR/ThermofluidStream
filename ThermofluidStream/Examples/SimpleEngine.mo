@@ -120,8 +120,8 @@ model SimpleEngine "Simple steam engine"
     A=20,
     p_start=400000,
     V_par=0.1,
-    pipe_low=0.95,
-    pipe_high=0.9,
+    pipe_low=0.9,
+    pipe_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
                    annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
   Modelica.Blocks.Continuous.LimPID PI1(
@@ -255,7 +255,7 @@ equation
           textString="Piston and Crank Drive"),
         Rectangle(extent={{-118,-32},{90,-100}},
                                               lineColor={28,108,200})}),
-        experiment(StopTime=25, tolerance=1e-6, Interval=0.025),
+        experiment(StopTime=25, Tolerance=1e-6, Interval=0.025),
         Documentation(info="<html>
 <p>Basic model of a steam engine. STEAM AND POWER!</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

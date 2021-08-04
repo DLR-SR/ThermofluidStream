@@ -33,6 +33,10 @@ algorithm
     unit :="J/(kg.K)";
   elseif quantity == Types.Quantities.cp_JpkgK then
     unit :="J/(kg.K)";
+  elseif quantity == Types.Quantities.kappa_1 then
+    unit :="1";
+  elseif quantity == Types.Quantities.MM_kgpmol then
+    unit := "(kg/mol)";
   else
     unit :="";
   end if;

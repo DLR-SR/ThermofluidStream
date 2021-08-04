@@ -49,7 +49,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-             experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
+             experiment(StopTime=1, Tolerance=1e-6, Interval=0.001),
         Documentation(info="<html>
 <p>Test for the CheckValve.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

@@ -17,12 +17,11 @@ model ReverseHeatPump
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     omega_from_input=true,
-    redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = RefrigerantMedium,
-        eta=0.8,
+    redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
-        kappa_fixed=1.13))
+        kappa_fixed=1.13,
+        redeclare package Medium = RefrigerantMedium,
+        eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -623,7 +622,7 @@ equation
           lineColor={28,108,200},
           textString="Ambient Air")}),
     Icon(coordinateSystem),
-    experiment(StopTime=200, tolerance=1e-6, Interval=0.2, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=200, Tolerance=1e-6, Interval=0.2, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a undirected receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>
 <p>The flow direction is controlled by a system of valves and undirected junctions. In the parameter settings it can be chosen between &quot;switching during simulation&quot; or manually switching between cooling and heating mode prior to the simulation.</p>

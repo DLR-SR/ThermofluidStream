@@ -210,7 +210,7 @@ equation
       thickness=0.5));
   annotation (experiment(
       StopTime=0.05,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=5e-5,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

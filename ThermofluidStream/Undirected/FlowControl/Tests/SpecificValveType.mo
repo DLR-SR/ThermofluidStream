@@ -19,9 +19,8 @@ model SpecificValveType "Test for undirected SpecificValveType"
   FlowControl.SpecificValveType slideValve(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare record ZetaValueRecord = ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
-    redeclare record zetaValueRecord =
-        ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     Kvs=5) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
 
   Processes.FlowResistance                   flowResistance(
@@ -54,9 +53,8 @@ model SpecificValveType "Test for undirected SpecificValveType"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
+    redeclare record ZetaValueRecord = ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
-    redeclare record zetaValueRecord =
-        ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     d_valve=0.005,
     Kvs=5,
     m_flow_ref_set=0.1)
@@ -159,7 +157,7 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=20,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=0.02,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),

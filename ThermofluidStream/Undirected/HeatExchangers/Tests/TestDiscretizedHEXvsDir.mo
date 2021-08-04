@@ -630,7 +630,7 @@ equation
           lineColor={28,108,200},
           textString="Undirected"),
         Rectangle(extent={{-208,276},{170,100}}, lineColor={28,108,200})}),
-    experiment(StopTime=30, tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=30, Tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));

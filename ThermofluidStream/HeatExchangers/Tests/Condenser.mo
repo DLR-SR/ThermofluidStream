@@ -228,7 +228,7 @@ equation
             false, extent={{-160,-100},{220,100}})),
     experiment(
       StopTime=10,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=0.01,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>

@@ -417,7 +417,7 @@ equation
                                                                                  color={0,0,127}));
   connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{10,110},{114,110},{114,12}}, color={0,0,127}));
   connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-76,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
-  annotation (experiment(StopTime=2500, tolerance=1e-6, Interval=2.5),
+  annotation (experiment(StopTime=2500, Tolerance=1e-6, Interval=2.5),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-160},{200,160}})),
     Documentation(info="<html>

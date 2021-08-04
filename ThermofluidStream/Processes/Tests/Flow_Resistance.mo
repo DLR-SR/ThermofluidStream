@@ -96,7 +96,7 @@ equation
       thickness=0.5));
 
   annotation (
-    experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
+    experiment(StopTime=10, Tolerance=1e-6, Interval=0.01),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

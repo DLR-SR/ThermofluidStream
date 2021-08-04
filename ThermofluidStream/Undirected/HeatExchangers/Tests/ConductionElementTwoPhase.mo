@@ -5,12 +5,12 @@ model ConductionElementTwoPhase
   package MediumRefrigerant = Media.myMedia.R134a.R134a_ph;
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
-    redeclare package twoPhaseMedium = MediumRefrigerant,
+    redeclare package TwoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.001,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
-    U_tp_nom=1000)                                                     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    U_tp_nom=1000)                                                     annotation (Placement(transformation(extent={{-12,-10},{8,10}})));
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
@@ -63,12 +63,12 @@ equation
       thickness=0.5));
   connect(flowResistance.fore, conductionElementHEX_twoPhase.rear)
     annotation (Line(
-      points={{-24,0},{-10,0}},
+      points={{-24,0},{-12,0}},
       color={28,108,200},
       thickness=0.5));
   connect(conductionElementHEX_twoPhase.fore, multiSensor_Tpm.rear)
     annotation (Line(
-      points={{10,0},{24,0}},
+      points={{8,0},{24,0}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_fore.rear, multiSensor_Tpm.fore) annotation (Line(
@@ -86,7 +86,7 @@ equation
   connect(multiSensor_Tpm.m_flow_out, feedback.u2) annotation (Line(points={{44,4},{50,4},{50,38}}, color={0,0,127}));
   connect(ramp1.y, feedback.u1) annotation (Line(points={{17,46},{42,46}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=100, tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),
+    experiment(StopTime=100, Tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
         <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));

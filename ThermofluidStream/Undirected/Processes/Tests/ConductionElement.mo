@@ -240,7 +240,7 @@ equation
     annotation (Line(points={{0,-40.2},{0,-34},{40,-34},{40,56},{0,56},{0,49.8}}, color={191,0,0}));
   connect(conductionElement5.heatPort, conductionElement1.heatPort)
     annotation (Line(points={{0,-70.2},{0,-66},{40,-66},{40,56},{0,56},{0,49.8}}, color={191,0,0}));
-  annotation (experiment(StopTime=1, tolerance=1e-6, Interval=0.001),
+  annotation (experiment(StopTime=1, Tolerance=1e-6, Interval=0.001),
   Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

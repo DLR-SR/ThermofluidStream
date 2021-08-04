@@ -15,18 +15,18 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
     annotation(Dialog(tab="Advanced", enable=true));
   input SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
     annotation(Dialog(tab="Advanced", enable=true));
+
   input Boolean kappaFromMedia = true "Retrieve kappa from media model?"
     annotation(Dialog(group = "Isentropic exponent", enable=true));
   input Real kappa_fixed(unit="1") = 1.4 "Fixed kappa value"
     annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
 
+
 protected
   SI.Pressure p_in = Medium.pressure(state_in) "pressure at inlet";
   SI.Temperature T_in = Medium.temperature(state_in) "temperatur at inlet";
 
-  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in)
-  else kappa_fixed "isentropic coefficient at inlet";
-
+  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "isentropic coefficient at inlet";
   Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "medium gas constant";
 
   SI.SpecificEnergy w_t_is "ideal specific technical work";
@@ -46,7 +46,9 @@ algorithm
   // compute w_t_is for isenthalpic compression
   // ideal gas assuptions
   if pr >= 0 then
-    w_t_is :=kappa/(kappa - 1)*(R*T_in*(abs(pr)^((kappa - 1)/kappa) - 1));
+    // use this instead of  h_in - Medium.isentropicEnthalpy(p_in+dp, state_in);
+    // to make it more robust, isentropicEnthalpy failes to solve often
+    w_t_is := kappa/(kappa - 1)*(R*T_in*(abs(pr)^((kappa - 1)/kappa) - 1));
   end if;
 
   //constant isenthalpic coefficient for compression and expansion

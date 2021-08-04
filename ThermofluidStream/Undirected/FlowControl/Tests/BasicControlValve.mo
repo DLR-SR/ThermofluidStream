@@ -221,7 +221,7 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
       StopTime=20,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=0.02,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),

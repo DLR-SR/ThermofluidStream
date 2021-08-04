@@ -73,7 +73,7 @@ equation
     Icon(graphics,
          coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=10, tolerance=1e-6, Interval=0.01),
+    experiment(StopTime=10, Tolerance=1e-6, Interval=0.01),
     Documentation(info="<html>
 <p>Test for the undirected flow resistance.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

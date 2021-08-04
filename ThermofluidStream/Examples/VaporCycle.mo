@@ -190,12 +190,11 @@ model VaporCycle
   Processes.Compressor compressor(
     redeclare package Medium = RefrigerantMedium,
     omega_from_input=true,
-    redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = RefrigerantMedium,
-        eta=0.8,
+    redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
-        kappa_fixed=1.13))
+        kappa_fixed=1.13,
+        redeclare package Medium = RefrigerantMedium,
+        eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -457,7 +456,7 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-160},{240,100}})),
     experiment(
       StopTime=1500,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=1.5,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

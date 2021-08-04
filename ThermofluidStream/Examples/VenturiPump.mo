@@ -146,7 +146,7 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
       StopTime=1,
-   tolerance=1e-6,
+   Tolerance=1e-6,
    Interval=1e-3,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

@@ -39178,7 +39178,7 @@ which is only exactly true for a fluid with constant density d=d0.
       redeclare function extends density_derp_T
         "Return density derivative w.r.t. pressure at const temperature"
       algorithm
-        ddph :=0; //incompressable
+        ddpT :=0; //incompressable
       end density_derp_T;
 
       redeclare function extends density_derp_h
