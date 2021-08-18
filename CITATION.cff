@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: The DLR Thermofluid Stream Library
+abstract: The DLR Thermofluid Stream Library is a free open-source library for the robust modeling of complex thermofluid architectures. Designed to be easy to use and easy to adapt and enriched by a number of examples, this library can be used as basis for many different applications such as thermal management of electric cars, power plants, or building physics.
+authors:
+  - family-names: Zimmer
+    given-names: Dirk
+  - family-names: Mei{\ss}ner
+    given-names: Michael
+    orcid: "https://orcid.org/0000-0001-7092-7520"
+  - family-names: Weber
+    given-names: Niels
+version: 0.2
+date-released: "2021-07-28"
+license: 3-Clause BSD License
+repository-code: "https://github.com/DLR-SR/ThermofluidStream"
