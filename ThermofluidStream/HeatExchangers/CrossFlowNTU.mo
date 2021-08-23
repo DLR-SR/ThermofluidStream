@@ -78,13 +78,18 @@ protected
   Real C_B(unit="J/(K.s)") "Heat capacity rate of Medium B";
   Real C_min(unit="J/(K.s)") "minimum heat capacity rate";
   Real C_max(unit="J/(K.s)") "maximum heat capacity rate";
-  Real C_r(unit="J/(K.s)") "Cmin/Cmax (ratio of heat capacity rates)";
+  Real C_r(unit="1") "Cmin/Cmax (ratio of heat capacity rates)";
 
   Modelica.SIunits.SpecificHeatCapacityAtConstantPressure cp_A "specific heat capacity of Medium A";
   Modelica.SIunits.SpecificHeatCapacityAtConstantPressure cp_B "specific heat capacity of Medium B";
 
   Modelica.SIunits.MassFlowRate m_flow_A = inletA.m_flow "Mass flow on side A";
   Modelica.SIunits.MassFlowRate m_flow_B = inletB.m_flow "Mass flow on side B";
+
+  SI.SpecificHeatCapacity cpA_in = MediumA.specificHeatCapacityCp(inletA.state);
+  SI.SpecificHeatCapacity cpA_out = MediumA.specificHeatCapacityCp(outletA.state);
+  SI.SpecificHeatCapacity cpB_in = MediumB.specificHeatCapacityCp(inletB.state);
+  SI.SpecificHeatCapacity cpB_out = MediumB.specificHeatCapacityCp(outletB.state);
 
 protected
   constant Real eps(unit="kg/s") = Modelica.Constants.eps;
@@ -101,8 +106,8 @@ equation
   inletB.r - outletB.r  = der(inletB.m_flow) * L;
 
   //Specific heat capacities
-  cp_A = MediumA.specificHeatCapacityCp(inletA.state);
-  cp_B = MediumB.specificHeatCapacityCp(inletB.state);
+  cp_A = (cpA_in + cpA_out)/2;
+  cp_B = (cpB_in + cpB_out)/2;
 
   //Heat capacity rates
   C_A = (abs(inletA.m_flow)+eps)*cp_A;
