@@ -1,3 +1,5 @@
 FlowCoefficientTypesBasic
 FlowCoefficientTypes
 CurveTypes
+PressureControlValveMode
+MassflowControlValveMode
