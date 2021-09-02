@@ -1,6 +1,8 @@
 within ThermofluidStream.Sensors;
 model SingleSensorX "Sensor for mass fraction of mixture"
 
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
                                                                 "Medium model"
     annotation (choicesAllMatching=true,
@@ -15,6 +17,10 @@ model SingleSensorX "Sensor for mass fraction of mixture"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Initial output state of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of mass fraction vector to display";
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
@@ -33,8 +39,10 @@ protected
   Real direct_value[Medium.nX](each unit="kg/kg");
 
 initial equation
-  if filter_output then
-    direct_value = value;
+  if filter_output and init==InitMode.steadyState then
+    value= direct_value;
+  elseif filter_output then
+    value = value_0;
   end if;
 
 equation

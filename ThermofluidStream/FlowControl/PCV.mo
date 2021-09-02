@@ -22,19 +22,23 @@ model PCV "Pressure and pressure-drop control valve"
 
 protected
   SI.AbsolutePressure pressure_set;
-  SI.Pressure dp_unnorm;
+  SI.Pressure dp_raw "Not normalized desired dp";
 
 equation
   if not pressureFromInput then
     pressure_set = pressure_set_par;
   end if;
 
-  dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg,  min(0, dp_unnorm), 0, m_flow_reg);
+  // normalize dp: upper limit=0: because valve should not create pressure.
+  // if reversed flow condition, dp is set to 0, such that the valve will also not create pressure in this condition.
+  // for the flow-direction-normalization regstep is used in a way, that dp=0 for m_flow = 0 (m_flow - m_flow_reg).
+  // the motherclass will further normalize dp, such that p_out >= dp_min.
+  dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg,  min(0, dp_raw), 0, m_flow_reg);
 
   if mode ==Mode.drop then
-    dp_unnorm = -pressure_set;
+    dp_raw = -pressure_set;
   else
-    dp_unnorm = pressure_set - p_in;
+    dp_raw = pressure_set - p_in;
   end if;
 
   h_out = h_in;

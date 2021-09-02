@@ -1,6 +1,7 @@
 within ThermofluidStream.Undirected.Sensors;
 model SingleSensorSelect "Sensor with selectable measured quantity"
   extends Internal.PartialSensor;
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   parameter ThermofluidStream.Sensors.Internal.Types.Quantities quantity "Quantity to be measured"
     annotation (choicesAllMatching=true);
@@ -10,6 +11,10 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
@@ -29,9 +34,12 @@ protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity));
 
 initial equation
-  if filter_output then
-    direct_value = value;
+  if filter_output and init==InitMode.steadyState then
+    value= direct_value;
+  elseif filter_output then
+    value = value_0;
   end if;
+
 
 equation
 

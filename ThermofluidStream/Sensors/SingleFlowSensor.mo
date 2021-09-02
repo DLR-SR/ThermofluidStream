@@ -2,6 +2,7 @@ within ThermofluidStream.Sensors;
 model SingleFlowSensor
   "Sensor for a selectable quantity associated with the massflow"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
                                                                 "Medium model"
@@ -19,6 +20,10 @@ model SingleFlowSensor
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real value_0(unit=Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
@@ -46,8 +51,10 @@ protected
       </html>"));
 
 initial equation
-  if filter_output then
-    direct_value = value;
+  if filter_output and init==InitMode.steadyState then
+    value= direct_value;
+  elseif filter_output then
+    value = value_0;
   end if;
 
 equation

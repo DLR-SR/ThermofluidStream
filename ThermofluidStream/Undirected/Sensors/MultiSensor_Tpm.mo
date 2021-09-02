@@ -2,6 +2,8 @@ within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
   extends Internal.PartialSensor;
 
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
+
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit="K" "Unit for the temperature output"
     annotation (
     Dialog(group="Units"),
@@ -22,6 +24,14 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
+  parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Initial output massflow of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure or outputMassFlowRate) and filter_output));
 
@@ -46,10 +56,14 @@ protected
   Real direct_m_flow; // unit intentionally not set to avoid Warning
 
 initial equation
-  if filter_output then
-    direct_T = T;
-    direct_p = p;
-    direct_m_flow = m_flow;
+  if filter_output and init==InitMode.steadyState then
+    p=direct_p;
+    T=direct_T;
+    m_flow=direct_m_flow;
+  elseif filter_output then
+    p=p_0;
+    T=T_0;
+    m_flow=m_flow_0;
   end if;
 
 equation

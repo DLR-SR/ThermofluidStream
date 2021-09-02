@@ -9,10 +9,16 @@ model DiscretizedHEX
       ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0
-    "Initialization method for h (refrigerant side)" annotation (Dialog(tab="Initialization", group="Enthalpy"));
+  parameter ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement initRef=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h
+    "Initialization method for h (refrigerant side)"
+    annotation (Dialog(tab="Initialization", group="Enthalpy"),
+      choices(
+        choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h "h0",
+        choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "rear",
+        choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore "fore"));
+
   parameter SI.SpecificEnthalpy h0 = MediumRefrigerant.h_default "Initial enthalpy"
-   annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable=(initRef == ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.h0)));
+   annotation(Dialog(tab = "Initialization", group = "Enthalpy", enable=(initRef == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
   parameter Modelica.SIunits.Volume V_Hex = 0.001 "Volume for heat transfer calculation" annotation(Dialog(group = "Heat transfer parameters"));
@@ -25,6 +31,8 @@ model DiscretizedHEX
   parameter SI.MassFlowRate m_flow_nom_ref = 0.3 "Nominal mass-flow rate working fluid" annotation(Dialog(group = "Heat transfer parameters"));
   parameter SI.MassFlowRate m_flow_nom_air = 1.0 "Nominal mass-flow rate secondary fluid" annotation(Dialog(group = "Heat transfer parameters"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization massflow to switch between positive- and negative-massflow model"
+    annotation(Dialog(tab="Advanced"));
+  parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
 
 //Parameterization of HEX Wall
@@ -41,16 +49,19 @@ public
   Internal.ConductionElementHEX conductionElementAir[nCells](
     redeclare package Medium = MediumAir,
     each V=V_Hex/nCells,
+    each enforce_global_energy_conservation=enforce_global_energy_conservation,
     each A=A/nCells,
     each U_nom=U_nom,
     each m_flow_nom=m_flow_nom_air)
                       annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   Internal.ConductionElementHEX_twoPhase conductionElementRefrigerant[nCells](
     each init=initRef,
+    each enforce_global_energy_conservation=enforce_global_energy_conservation,
     each U_liq_nom=U_liq_nom,
     each U_vap_nom=U_vap_nom,
     each U_tp_nom=U_tp_nom,
     each m_flow_nom=m_flow_nom_ref,
+    each h_0 = h0,
     redeclare package Medium = MediumRefrigerant,
     each V=V_Hex/nCells,
     each A=A/nCells)
@@ -64,6 +75,8 @@ public
 
   SI.HeatFlowRate Q_flow_Air=sum(conductionElementAir.heatPort.Q_flow);
   SI.HeatFlowRate Q_flow_Ref=sum(conductionElementRefrigerant.heatPort.Q_flow);
+  SI.Energy deltaE_system = sum(conductionElementAir.deltaE_system) + sum(conductionElementRefrigerant.deltaE_system);
+  SI.Mass M_ref = sum(conductionElementRefrigerant.M);
 
   //Relevant variables
   SI.SpecificEnthalpy h_out_ref = Undirected.Internal.regStep(   rearRef.m_flow,

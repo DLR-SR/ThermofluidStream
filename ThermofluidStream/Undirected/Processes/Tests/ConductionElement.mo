@@ -17,9 +17,8 @@ model ConductionElement "Test for ConductionElement"
     V(displayUnit="l") = 0.001,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.T,
-    T_0=263.15)
-    annotation (Placement(transformation(extent={{-10,60},{10,80}})));
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.T,
+    T_0=263.15) annotation (Placement(transformation(extent={{-10,60},{10,80}})));
 
   Boundaries.BoundaryFore boundary_fore(
     redeclare package Medium = Medium,
@@ -45,11 +44,10 @@ model ConductionElement "Test for ConductionElement"
     V(displayUnit="l") = 0.001,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.h,
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h,
     T_0=263.15,
     h_0=1000,
-    neglectPressureChanges=false)
-    annotation (Placement(transformation(extent={{-10,30},{10,50}})));
+    neglectPressureChanges=false) annotation (Placement(transformation(extent={{-10,30},{10,50}})));
 
   Boundaries.BoundaryFore boundary_fore1(
     redeclare package Medium = Medium,
@@ -71,9 +69,10 @@ model ConductionElement "Test for ConductionElement"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=-1,
     V(displayUnit="l") = 0.001,
+    enforce_global_energy_conservation=true,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.fore,
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
     T_0=263.15) annotation (Placement(transformation(extent={{-10,0},{10,20}})));
 
   Boundaries.BoundaryFore boundary_fore2(
@@ -97,9 +96,8 @@ model ConductionElement "Test for ConductionElement"
     V(displayUnit="l") = 0.001,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.rear,
-    T_0=263.15)
-    annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
+    T_0=263.15) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
 
   Boundaries.BoundaryFore boundary_fore3(
     redeclare package Medium = Medium,
@@ -120,11 +118,11 @@ model ConductionElement "Test for ConductionElement"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0,
     V(displayUnit="l") = 0.001,
+    enforce_global_energy_conservation=true,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.port,
-    T_0=263.15)
-    annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.port,
+    T_0=263.15) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
 
   Boundaries.BoundaryFore boundary_fore4(
     redeclare package Medium = Medium,
@@ -147,9 +145,8 @@ model ConductionElement "Test for ConductionElement"
     V(displayUnit="l") = 0.001,
     A=35,
     U=500,
-    init=ThermofluidStream.Undirected.Internal.InitializationMethodsCondElement.port,
-    T_0=263.15)
-    annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.port,
+    T_0=263.15) annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
 
   Boundaries.BoundaryFore boundary_fore5(
     redeclare package Medium = Medium,

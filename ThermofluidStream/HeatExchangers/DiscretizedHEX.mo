@@ -13,7 +13,7 @@ model DiscretizedHEX "Discretized Heat Exchanger for two-phase working fluid"
 //   SI.Pressure p_out_ref = MediumRefrigerant.pressure(outletRef.state);
 //   SI.Temperature T_out_ref = MediumRefrigerant.temperature(outletRef.state);
 
-  parameter Boolean initializeMassFlow = true "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
+  parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0 = 0.01 "Initial mass flow" annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
@@ -26,6 +26,8 @@ model DiscretizedHEX "Discretized Heat Exchanger for two-phase working fluid"
   parameter SI.MassFlowRate m_flow_nom_air = 1.0 "Nominal mass-flow rate secondary fluid" annotation(Dialog(group = "Heat transfer parameters"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
+  parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
+    annotation(Dialog(tab="Advanced"));
 
   //Parameterization of HEX Wall
   parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for pipe wall" annotation(Dialog(group = "Wall parameters"));
@@ -37,6 +39,7 @@ public
   Internal.ConductionElementHEX thermalElementAir[nCells](
     redeclare package Medium = MediumAir,
     each V(displayUnit="l") = V_Hex/nCells,
+    each enforce_global_energy_conservation=enforce_global_energy_conservation,
     each A=A/nCells,
     each U_nom=U_nom,
     each m_flow_nom=m_flow_nom_air)
@@ -44,6 +47,7 @@ public
 
   Internal.ConductionElementHEX_twoPhase thermalElementRefrigerant[nCells](
     each V(displayUnit="l") = V_Hex/nCells,
+    each enforce_global_energy_conservation=enforce_global_energy_conservation,
     each A=A/nCells,
     each U_liq_nom=U_liq_nom,
     each U_vap_nom=U_vap_nom,
@@ -67,6 +71,8 @@ public
 
   SI.HeatFlowRate Q_flow_ref=sum(thermalElementRefrigerant.heatPort.Q_flow);
   SI.HeatFlowRate Q_flow_air=sum(thermalElementAir.heatPort.Q_flow);
+  SI.Energy deltaE_system = sum(thermalElementAir.deltaE_system) + sum(thermalElementRefrigerant.deltaE_system);
+  SI.Mass M_ref = sum(thermalElementRefrigerant.M);
 
   Real x_in(unit="1") = thermalElementRefrigerant[1].x;
   Real x_out(unit="1") = thermalElementRefrigerant[nCells].x;

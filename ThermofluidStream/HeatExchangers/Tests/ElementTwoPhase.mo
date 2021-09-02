@@ -6,104 +6,245 @@ model ElementTwoPhase
     constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.5,
     redeclare package TwoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.0005,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
-    U_tp_nom=1000) annotation (Placement(transformation(extent={{-28,-16},{4,16}})));
+    U_tp_nom=1000) annotation (Placement(transformation(extent={{-10,70},{10,90}})));
   Boundaries.Sink sink(redeclare package Medium =
         MediumRefrigerant,
-    pressureFromInput=true,
-    p0_par=390000)
-    annotation (Placement(transformation(extent={{78,-10},{98,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        MediumRefrigerant, temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-58,0},{-38,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        MediumRefrigerant, outputMassFlowRate=true,
-    temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{46,0},{66,20}})));
-  Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=35e5, uMin=20e5)
-    annotation (Placement(transformation(extent={{112,-6},{100,6}})));
-  Modelica.Blocks.Continuous.PI PI1(
-    k=-10000,
-    T=0.01,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=30e5)
-    annotation (Placement(transformation(extent={{84,32},{104,52}})));
-  Modelica.Blocks.Math.Feedback feedback1
-    annotation (Placement(transformation(extent={{52,32},{72,52}})));
-  Modelica.Blocks.Sources.RealExpression airFlow_setPoint1(y=0.5)
-    annotation (Placement(transformation(extent={{22,32},{42,52}})));
-  Modelica.Blocks.Sources.Ramp ramp_enthalpy(
-    height=140e3,
-    duration=30,
-    offset=300e3,
-    startTime=20)
-    annotation (Placement(transformation(extent={{-126,-12},{-106,8}})));
-  Modelica.Blocks.Sources.Constant const(k=458610)
-    annotation (Placement(transformation(extent={{-148,46},{-128,66}})));
-  Processes.FlowResistance flowResistance(
+    pressureFromInput=false,
+    p0_par=1900000)
+    annotation (Placement(transformation(extent={{50,70},{70,90}})));
+  FlowControl.MCV          mCV(
     redeclare package Medium = MediumRefrigerant,
-    r=0.05,
-    l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=2e4))
-    annotation (Placement(transformation(extent={{18,-10},{38,10}})));
-  Modelica.Blocks.Sources.Ramp ramp_temperature(
-    height=20,
-    duration=30,
-    offset=-10 + 273.15,
-    startTime=20)
-    annotation (Placement(transformation(extent={{-92,44},{-72,64}})));
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0.1,
+    massFlow_set_par=0.1)
+    annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Boundaries.Source source(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
     enthalpyFromInput=true,
-    p0_par=3000000)
-    annotation (Placement(transformation(extent={{-92,-10},{-72,10}})));
+    p0_par=2000000)
+    annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
+  Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase1(
+    m_flow_0=0.5,
+    redeclare package TwoPhaseMedium = MediumRefrigerant,
+    V(displayUnit="l") = 0.0005,
+    A=10,
+    U_liq_nom=700,
+    U_vap_nom=500,
+    U_tp_nom=750)  annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+  Boundaries.Sink sink1(
+    redeclare package Medium = MediumRefrigerant,
+    pressureFromInput=false,
+    p0_par=1900000)
+    annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
+  FlowControl.MCV          mCV1(
+    redeclare package Medium = MediumRefrigerant,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0.1,
+    massFlow_set_par=0.1)
+    annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
+  Boundaries.Source source1(
+    redeclare package Medium = MediumRefrigerant,
+    setEnthalpy=true,
+    temperatureFromInput=false,
+    enthalpyFromInput=false,
+    p0_par=2000000,
+    h0_par=330e3)
+    annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature prescribedTemperature
+    annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
+  Modelica.Blocks.Sources.Trapezoid
+                               trapezoid(
+    amplitude=50,
+    rising=20,
+    width=10,
+    falling=20,
+    period=60,
+    offset=300,
+    startTime=5)
+    annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
+  Boundaries.Volume                      volume(
+    redeclare package Medium = MediumRefrigerant,
+    p_start=3000000,
+    use_hstart=true,
+    h_start=270e3,
+    V(displayUnit="l"),
+    A=10,
+    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,40},{10,60}})));
+  Boundaries.Sink sink2(
+    redeclare package Medium = MediumRefrigerant,
+    pressureFromInput=false,
+    p0_par=1900000)
+    annotation (Placement(transformation(extent={{50,40},{70,60}})));
+  FlowControl.MCV          mCV2(
+    redeclare package Medium = MediumRefrigerant,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0.1,
+    massFlow_set_par=0.1)
+    annotation (Placement(transformation(extent={{20,40},{40,60}})));
+  Boundaries.Source source2(
+    redeclare package Medium = MediumRefrigerant,
+    setEnthalpy=true,
+    temperatureFromInput=false,
+    enthalpyFromInput=true,
+    p0_par=2000000)
+    annotation (Placement(transformation(extent={{-70,40},{-50,60}})));
+  Boundaries.Volume                      volume1(
+    redeclare package Medium = MediumRefrigerant,
+    useHeatport=true,
+    U=700,
+    p_start=3000000,
+    use_hstart=true,
+    h_start=270e3,
+    V(displayUnit="l"),
+    A=10,
+    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,-70},{10,-90}})));
+  Boundaries.Sink sink3(
+    redeclare package Medium = MediumRefrigerant,
+    pressureFromInput=false,
+    p0_par=1900000)
+    annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
+  FlowControl.MCV          mCV3(
+    redeclare package Medium = MediumRefrigerant,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0.1,
+    massFlow_set_par=0.1)
+    annotation (Placement(transformation(extent={{20,-90},{40,-70}})));
+  Boundaries.Source source3(
+    redeclare package Medium = MediumRefrigerant,
+    setEnthalpy=true,
+    temperatureFromInput=false,
+    enthalpyFromInput=false,
+    p0_par=2000000,
+    h0_par=330e3)
+    annotation (Placement(transformation(extent={{-70,-90},{-50,-70}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature prescribedTemperature1
+    annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
+  inner DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning) annotation (Placement(transformation(extent={{20,0},{40,20}})));
+  Processes.FlowResistance flowResistance(
+    redeclare package Medium = MediumRefrigerant,
+    r(displayUnit="mm") = 0.01,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
+    annotation (Placement(transformation(extent={{-40,70},{-20,90}})));
+  Processes.FlowResistance flowResistance1(
+    redeclare package Medium = MediumRefrigerant,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    r(displayUnit="mm") = 0.01,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
+    annotation (Placement(transformation(extent={{-38,40},{-18,60}})));
+  Processes.FlowResistance flowResistance2(
+    redeclare package Medium = MediumRefrigerant,
+    r(displayUnit="mm") = 0.01,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
+    annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
+  Processes.FlowResistance flowResistance3(
+    redeclare package Medium = MediumRefrigerant,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    r(displayUnit="mm") = 0.01,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
+    annotation (Placement(transformation(extent={{-40,-90},{-20,-70}})));
+  Modelica.Blocks.Sources.Trapezoid
+                               trapezoid2(
+    amplitude=200e3,
+    rising=20,
+    width=10,
+    falling=20,
+    period=60,
+    offset=270e3,
+    startTime=5)
+    annotation (Placement(transformation(extent={{-100,70},{-80,90}})));
 equation
-  connect(conductionElementHEX_twoPhase.inlet, multiSensor_Tpm.outlet)
+  connect(conductionElementHEX_twoPhase.outlet, mCV.inlet)
     annotation (Line(
-      points={{-28,0},{-38,0}},
+      points={{10,80},{20,80}},
       color={28,108,200},
       thickness=0.5));
-  connect(sink.inlet, multiSensor_Tpm1.outlet) annotation (Line(
-      points={{78,0},{66,0}},
+  connect(mCV.outlet, sink.inlet) annotation (Line(
+      points={{40,80},{50,80}},
       color={28,108,200},
       thickness=0.5));
-  connect(PI1.y,limiter1. u) annotation (Line(points={{105,42},{118,42},{118,0},
-          {113.2,0}},        color={0,0,127}));
-  connect(PI1.u, feedback1.y)
-    annotation (Line(points={{82,42},{71,42}}, color={0,0,127}));
-  connect(airFlow_setPoint1.y, feedback1.u1)
-    annotation (Line(points={{43,42},{54,42}}, color={0,0,127}));
-  connect(multiSensor_Tpm1.m_flow_out, feedback1.u2)
-    annotation (Line(points={{66,4},{66,22},{62,22},{62,34}},
-                                               color={0,0,127}));
-  connect(conductionElementHEX_twoPhase.outlet, flowResistance.inlet)
+  connect(conductionElementHEX_twoPhase1.outlet, mCV1.inlet)
     annotation (Line(
-      points={{4,0},{18,0}},
+      points={{10,-30},{20,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm1.inlet, flowResistance.outlet) annotation (Line(
-      points={{46,0},{38,0}},
+  connect(mCV1.outlet, sink1.inlet) annotation (Line(
+      points={{40,-30},{50,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(sink.p0_var, limiter1.y)
-    annotation (Line(points={{90,0},{99.4,0}}, color={0,0,127}));
-  connect(multiSensor_Tpm.inlet, source.outlet) annotation (Line(
-      points={{-58,0},{-72,0}},
+  connect(prescribedTemperature.port, conductionElementHEX_twoPhase1.heatPort)
+    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}},  color={191,0,0}));
+  connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}},              color={0,0,127}));
+  connect(volume.outlet, mCV2.inlet) annotation (Line(
+      points={{10,50},{20,50}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp_enthalpy.y, source.h0_var) annotation (Line(points={{-105,-2},{-94,-2},{-94,0},{-84,0}},
-                                      color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+  connect(mCV2.outlet, sink2.inlet) annotation (Line(
+      points={{40,50},{50,50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(volume1.outlet, mCV3.inlet) annotation (Line(
+      points={{10,-80},{20,-80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mCV3.outlet, sink3.inlet) annotation (Line(
+      points={{40,-80},{50,-80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(prescribedTemperature1.port, volume1.heatPort) annotation (Line(points={{-20,-60},{0,-60},{0,-72}},        color={191,0,0}));
+  connect(source.outlet, flowResistance.inlet) annotation (Line(
+      points={{-50,80},{-40,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance.outlet, conductionElementHEX_twoPhase.inlet)
+    annotation (Line(
+      points={{-20,80},{-10,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source2.outlet, flowResistance1.inlet) annotation (Line(
+      points={{-50,50},{-38,50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance1.outlet, volume.inlet) annotation (Line(
+      points={{-18,50},{-10,50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source1.outlet, flowResistance2.inlet) annotation (Line(
+      points={{-50,-30},{-40,-30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance2.outlet, conductionElementHEX_twoPhase1.inlet)
+    annotation (Line(
+      points={{-20,-30},{-10,-30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source3.outlet, flowResistance3.inlet) annotation (Line(
+      points={{-50,-80},{-40,-80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance3.outlet, volume1.inlet) annotation (Line(
+      points={{-20,-80},{-10,-80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(trapezoid2.y, source.h0_var) annotation (Line(points={{-79,80},{-62,80}},                         color={0,0,127}));
+  connect(source2.h0_var, source.h0_var)
+    annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}},                                               color={0,0,127}));
+  connect(prescribedTemperature1.T, prescribedTemperature.T)
+    annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}},                                   color={0,0,127}));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
+                                                                 Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
     experiment(StopTime=60, Tolerance=1e-6, Interval=0.06, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
       <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"));

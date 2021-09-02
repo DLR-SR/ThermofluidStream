@@ -1,6 +1,7 @@
 within ThermofluidStream.Sensors;
 model DifferenceSensor_Tp
   "Sensor difference in Temperature and pressure"
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
                                                                  "Medium model A"
@@ -26,6 +27,12 @@ model DifferenceSensor_Tp
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure)));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));
 
@@ -51,9 +58,12 @@ protected
   Real TB; //unit intentional not given to avoid warning
 
 initial equation
-  if filter_output then
-    direct_p = p;
-    direct_T = T;
+  if filter_output and init==InitMode.steadyState then
+    p=direct_p;
+    T=direct_T;
+  elseif filter_output then
+    p=p_0;
+    T=T_0;
   end if;
 
 equation

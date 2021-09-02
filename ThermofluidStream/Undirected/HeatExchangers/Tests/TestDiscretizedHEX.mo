@@ -64,6 +64,7 @@ model TestDiscretizedHEX
     redeclare package MediumRefrigerant = MediumRefrigerant,
     nCells=10,
     V_Hex(displayUnit="m3"),
+    initializeMassFlow=false,
     k_wall=300)
           annotation (Placement(transformation(extent={{-14,6},{6,26}})));
   Processes.FlowResistance flowResistanceB(

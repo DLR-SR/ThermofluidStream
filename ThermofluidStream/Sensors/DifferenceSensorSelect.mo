@@ -2,6 +2,7 @@ within ThermofluidStream.Sensors;
 model DifferenceSensorSelect
   "Sensor to compute difference in selectable measured quantity"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
                                                                  "Medium model A"
@@ -25,6 +26,10 @@ model DifferenceSensorSelect
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
+  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
+    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
@@ -57,8 +62,10 @@ protected
       </html>"));
 
 initial equation
-  if filter_output then
-    direct_value = value;
+  if filter_output and init==InitMode.steadyState then
+    value= direct_value;
+  elseif filter_output then
+    value = value_0;
   end if;
 
 equation

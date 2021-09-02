@@ -29,7 +29,7 @@ model ReverseHeatPump
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX(
     redeclare package MediumAir = SecondaryMedium,
     redeclare package MediumRefrigerant = RefrigerantMedium,
-    initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.fore,
+    initRef=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
     nCells=5,
     initializeMassFlow=false,
     m_flow_0=0,
@@ -41,7 +41,7 @@ model ReverseHeatPump
   Undirected.HeatExchangers.DiscretizedHEX discretizedHEX1(
     redeclare package MediumAir = SecondaryMedium,
     redeclare package MediumRefrigerant = RefrigerantMedium,
-    initRef=ThermofluidStream.Undirected.HeatExchangers.Internal.InitializationMethodsCondElementHEX.rear,
+    initRef=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
     nCells=5,
     initializeMassFlow=false,
     m_flow_0=0,

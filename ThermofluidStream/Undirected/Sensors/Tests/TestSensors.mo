@@ -97,8 +97,9 @@ model TestSensors "Test for the undirected sensors"
     redeclare package Medium = Medium,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
-    filter_output=true)
-    annotation (Placement(transformation(extent={{-10,60},{10,80}})));
+    filter_output=true,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
+    value_0=1) annotation (Placement(transformation(extent={{-10,60},{10,80}})));
   SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Medium,
     outputValue=true,

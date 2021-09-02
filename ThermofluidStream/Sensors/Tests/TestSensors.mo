@@ -94,9 +94,13 @@ model TestSensors "Test model for all sensors."
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3,
     filter_output=true)
     annotation (Placement(transformation(extent={{-74,18},{-54,38}})));
-  SingleSensorSelect singleSensorSelect11(redeclare package Medium = Medium2,
-      quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg)
-    annotation (Placement(transformation(extent={{-74,8},{-54,28}})));
+  SingleSensorSelect singleSensorSelect11(
+    redeclare package Medium = Medium2,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg,
+    outputValue=true,
+    filter_output=true,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
+    value_0=1) annotation (Placement(transformation(extent={{-74,8},{-54,28}})));
   SingleSensorSelect singleSensorSelect12(redeclare package Medium = Medium2,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK)
     annotation (Placement(transformation(extent={{-74,-2},{-54,18}})));
@@ -175,14 +179,17 @@ model TestSensors "Test model for all sensors."
     redeclare package Medium = Medium1,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation (Placement(transformation(extent={{44,70},{64,90}})));
-  SingleFlowSensor singleFlowSensor2(redeclare package Medium = Medium1, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs)
+  SingleFlowSensor singleFlowSensor2(redeclare package Medium = Medium1, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs,
+    outputValue=true,
+    filter_output=true)
     annotation (Placement(transformation(extent={{20,54},{40,74}})));
   SingleFlowSensor singleFlowSensor3(
     redeclare package Medium = Medium1,
     digits=5,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps,
-    filter_output=true) annotation (Placement(transformation(extent={{44,54},{64,74}})));
+    filter_output=true,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state) annotation (Placement(transformation(extent={{44,54},{64,74}})));
   SingleFlowSensor singleFlowSensor4(
     redeclare package Medium = Medium1,
     digits=5,
@@ -256,8 +263,8 @@ model TestSensors "Test model for all sensors."
     outputPressure=true,
     temperatureUnit="degC",
     pressureUnit="bar",
-    filter_output=true)
-    annotation (Placement(transformation(extent={{-8,2},{12,22}})));
+    filter_output=true,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state) annotation (Placement(transformation(extent={{-8,2},{12,22}})));
   DifferenceSensorSelect differenceSensorSelect3(
     redeclare package MediumA = Medium1,
     redeclare package MediumB = Medium1,

@@ -14,6 +14,7 @@ model VaporCycle
   HeatExchangers.DiscretizedHEX condenser(
     redeclare package MediumAir = SecondaryMedium,
     redeclare package MediumRefrigerant = RefrigerantMedium,
+    initializeMassFlow=true,
     nCells=10,
     A=30,
     V_Hex(displayUnit="m3"),

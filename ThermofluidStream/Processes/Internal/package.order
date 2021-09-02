@@ -1,5 +1,6 @@
 FlowResistance
 TurboComponent
 PartialTurboComponent
+PartialConductionElement
 InitializationMethodsCondElement
 Material

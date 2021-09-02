@@ -6,6 +6,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
                                     annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
   HeatExchangers.DiscretizedHEX discretizedHEX(redeclare package MediumAir = XRGMedia.R134a_ph, redeclare package MediumRefrigerant =
         XRGMedia.NH3_ph,
+    initializeMassFlow=true,
     m_flow_0=0)          annotation (Placement(transformation(extent={{-28,62},{-8,82}})));
   HeatExchangers.DiscretizedHEX discretizedHEX1(redeclare package MediumAir = XRGMedia.NH3_ph, redeclare package MediumRefrigerant =
         XRGMedia.CO2_ph,
@@ -13,6 +14,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
                          annotation (Placement(transformation(extent={{40,46},{20,66}})));
   HeatExchangers.DiscretizedHEX discretizedHEX2(redeclare package MediumAir = XRGMedia.CO2_ph, redeclare package MediumRefrigerant =
         XRGMedia.R134a_ph,
+    initializeMassFlow=true,
     m_flow_0=0)            annotation (Placement(transformation(extent={{-28,30},{-8,50}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
@@ -28,6 +30,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Boundaries.Sink sink1(redeclare package Medium = XRGMedia.NH3_ph) annotation (Placement(transformation(extent={{-38,54},{-58,74}})));
   HeatExchangers.DiscretizedHEX discretizedHEX4(redeclare package MediumAir = XRGMedia.R1234yf_ph, redeclare package MediumRefrigerant =
         XRGMedia.R134a_ph,
+    initializeMassFlow=true,
     m_flow_0=0)            annotation (Placement(transformation(extent={{-44,-2},{-24,18}})));
   Boundaries.Sink sink2(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{84,38},{104,58}})));
   Boundaries.Source source1(redeclare package Medium = XRGMedia.CO2_ph, p0_par=130000)
