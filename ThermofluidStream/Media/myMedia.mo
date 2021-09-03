@@ -38992,6 +38992,17 @@ which is only exactly true for a fluid with constant density d=d0.
         annotation(smoothOrder=3);
       end setState_pT;
 
+      redeclare function extends isentropicExponent
+        //TODO: check if that is correct
+      algorithm
+        gamma :=1;
+      end isentropicExponent;
+
+      redeclare function extends molarMass
+      algorithm
+        MM :=MM_const;
+      end molarMass;
+
       redeclare function extends setState_phX
         "Returns state record, given pressure and specific enthalpy"
       algorithm
