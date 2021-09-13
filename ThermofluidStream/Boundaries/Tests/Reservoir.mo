@@ -25,12 +25,11 @@ model Reservoir "Test for Reservoir"
   Processes.Pump pump(redeclare package Medium=Medium,
     initM_flow= ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
-    redeclare function dp_tau_pump =
-        Processes.Internal.TurboComponent.dp_tau_nominal_flow (
-        redeclare package Medium=Medium,
-        V_r=0.1,
-        k_p=500,
-        k_fric=0))
+    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        V_r_input(displayUnit="m3") = 0.1,
+        k_p_input=500,
+        k_fric_input=0,
+        redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{34,10},{54,30}})));
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
     r=0.03,
@@ -42,7 +41,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-74,-66},{-54,-46}})));
   Sink sink(redeclare package Medium=Medium, p0_par=101000)
     annotation (Placement(transformation(extent={{44,-66},{64,-46}})));
-  Modelica.Blocks.Sources.Constant const(k=50)
+  Modelica.Blocks.Sources.Constant const(k=320)
     annotation (Placement(transformation(extent={{8,-12},{28,8}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=2e2,

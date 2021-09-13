@@ -2,32 +2,53 @@ within ThermofluidStream.Processes.Internal.TurboComponent;
 function dp_tau_nominal_flow "Pump model with the nominal massflow model"
   extends partial_dp_tau;
 
-  input SI.Volume V_r = 0.0001 "Reference Volume of pump"
+  input Boolean parametrizeByDesignPoint= false "If true scale by scaling parameters"
     annotation(Dialog(enable=true));
-  input Real k_p(unit="N.s/(m5)") = 1e5 "Linear pressure factor"
-    annotation(Dialog(enable=true));
-  input Real k_fric(unit="N.s/(m2)") = 1e-2 "Linear friction factor"
-    annotation(Dialog(enable=true));
+  input SI.Pressure dp_D=500000 "Design pressure difference"
+    annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
+  input SI.VolumeFlowRate V_flow_D(displayUnit="l/min")=0.0016666666666667 "Design Volume flow"
+    annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
+  input SI.AngularVelocity omega_D(displayUnit="1/s")=314.15926535898   "Design angular velocity"
+    annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
+  input Real slip_D(unit="1", min=0, max=1) = 0.5 "Design slip ((V_flow_nominal-V_flow)/V_flow_nominal)"
+    annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
+  input Real eta_D(unit="1", min=0.001, max=1) = 0.75 "Design efficciency"
+    annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
+
+  input SI.Volume V_r_input=0.0001   "Reference Volume of pump"
+    annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
+  input Real k_p_input(unit="N.s/(m5)") = 1e5 "Linear pressure factor"
+    annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
+  input Real k_fric_input(unit="N.s/(m2)") = 1e-2 "Linear friction factor"
+    annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
 
 protected
   SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
 
-  SI.VolumeFlowRate V_dot_nominal "nominal volume flow though pump";
-  SI.VolumeFlowRate V_dot "actual volume flow though pump";
+  SI.VolumeFlowRate V_flow_nominal "nominal volume flow though pump";
+  SI.VolumeFlowRate V_flow "actual volume flow though pump";
+  //slip = (V_flow_nominal - V_flow)/V_flow_nominal
+
+  SI.Volume V_r =  if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
+  Real k_p(unit="N.s/(m5)") =  if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
+  Real k_fric(unit="N.s/(m2)") =   if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
+
+  constant Real radPrevolution(unit="rad") = 2*Modelica.Constants.pi;
 
 algorithm
   // calc nominal and actual flow through pump
-  V_dot :=v_in*m_flow;
-  V_dot_nominal := omega*V_r;
+  V_flow := v_in*m_flow;
+  V_flow_nominal := omega*V_r/radPrevolution;
 
   //calc dp as linear resistance model and w_t as volume change work in positive flow direction
-  dp := k_p*(V_dot_nominal - V_dot);
+  dp := k_p*(V_flow_nominal - V_flow);
   // for positive dp, if fluid goes against pressure gradient, Work performed is positive, else negative.
   // additionaly a linear friction is added.
-  tau_st := V_dot*dp*omega/(omega^2 + omega_norm^2) + k_fric*(V_dot_nominal - V_dot);
+  tau_st := V_flow*dp*omega/(omega^2 + omega_norm^2) + k_fric*(V_flow_nominal - V_flow);
 
   annotation (Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Model that computes nominal volume flow and has a linar factor that determines the pressure generataed linearly from the difference of actual volume flow </span></span><span style=\"font-family: Courier New;\">V_dot<span style=\"font-family: Courier New; font-size: 12pt;\"> and nominal volume flow </span>V_dot_nominal = A*l*omega = V_r*omega<span style=\"font-family: Courier New; font-size: 12pt;\">.</span></p>
-<p><span style=\"font-size: 12pt;\">The static moment has two parts. the first part is the work performed on the fluid. The second term describes linear friction with the friction factor </span></span><span style=\"font-family: Courier New;\">k_fric.</p>
+<p>Model that computes nominal volume flow and has a linear factor that determines the pressure generated linearly from the difference of actual volume flow V_flow and nominal volume flow V_flow_nominal = A*l*omega = V_r*omega. </p>
+<p>The static moment has two parts. The first is the work performed on the fluid. The second term describes linear friction with the friction factor k_fric. </p>
+<p>Parameters V_r &quot;Reference Volume&quot;, k_fric &quot;friction coefficient&quot; and k_p &quot;pressure coefficient&quot; can be set directly or by setting a design point of operation (angular velocity, pressure head, volume flow, slip and efficiency). </p>
 </html>"));
 end dp_tau_nominal_flow;

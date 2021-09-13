@@ -65,10 +65,12 @@ model Pump "Test for pumps"
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     enableAccessHeatPort=true,
-    redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (redeclare package Medium = Medium, V_r=0.0001, k_p=1e7))
+    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        parametrizeByDesignPoint=false,
+        k_p_input=1e7,
+        redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{-2,-18},{18,2}})));
-  Modelica.Blocks.Sources.Constant const1(k=500)
+  Modelica.Blocks.Sources.Constant const1(k=3200)
     annotation (Placement(transformation(extent={{-24,-38},{-4,-18}})));
   tf.Processes.Pump pump3(
     redeclare package Medium = Medium,
@@ -81,14 +83,43 @@ model Pump "Test for pumps"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (redeclare package Medium = Medium, V_r=0.0001, k_p=1e8))
+    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        parametrizeByDesignPoint=false,
+        V_r_input=0.0006,
+        k_p_input=1e8,
+        redeclare package Medium = Medium))
     annotation (Placement(transformation(extent={{-2,-56},{18,-36}})));
   tf.Processes.Tests.Power power2(P=5000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
         283.15) annotation (Placement(transformation(extent={{60,0},{40,20}})));
+  tf.Processes.Pump pump4(
+    redeclare package Medium = Medium,
+    L=10000,
+    omega_from_input=true,
+    enableOutput=true,
+    outputQuantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin,
+    J_p=10,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    phi_0=-1745.3292519943,
+    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+        parametrizeByDesignPoint=true,
+        omega_D(displayUnit="rad/s") = 100,
+        redeclare package Medium = Medium))
+    annotation (Placement(transformation(extent={{-10,130},{10,150}})));
+  Modelica.Blocks.Sources.Constant const2(k=100)
+    annotation (Placement(transformation(extent={{-36,102},{-16,122}})));
+  tf.Boundaries.Source source1(
+    redeclare package Medium = Medium,
+    T0_par=300,
+    p0_par=100000)
+    annotation (Placement(transformation(extent={{-58,130},{-38,150}})));
+  tf.Boundaries.Sink sink1(
+    redeclare package Medium = Medium,
+    pressureFromInput=false,
+    p0_par=600000)
+    annotation (Placement(transformation(extent={{34,130},{54,150}})));
 equation
 
   connect(pump.omega_input, const.y)
@@ -141,6 +172,15 @@ equation
       thickness=0.5));
   connect(fixedTemperature.port, pump2.heatport)
     annotation (Line(points={{40,10},{8,10},{8,2}}, color={191,0,0}));
+  connect(const2.y, pump4.omega_input) annotation (Line(points={{-15,112},{0,112},{0,130}}, color={0,0,127}));
+  connect(source1.outlet, pump4.inlet) annotation (Line(
+      points={{-38,140},{-10,140}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(pump4.outlet, sink1.inlet) annotation (Line(
+      points={{10,140},{34,140}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (
     experiment(StopTime=30, Tolerance=1e-6, Interval=0.03),
         Documentation(info="<html>

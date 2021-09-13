@@ -60,10 +60,6 @@ protected
   outer ThermofluidStream.DropOfCommons dropOfCommons;
   constant Real delta(unit="1") = 0.1;
 
-initial equation
-  switch.outletA.m_flow = 0.5*switch.inlet.m_flow;
-  switch1.outletA.m_flow = 0.5*switch1.inlet.m_flow;
-
 equation
   connect(switch.inlet, inletA) annotation (Line(
       points={{-70,60},{-100,60}},

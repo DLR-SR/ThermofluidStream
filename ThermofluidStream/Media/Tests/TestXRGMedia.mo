@@ -147,7 +147,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
        redeclare package Medium = XRGMedia.R134a_ph))
     annotation (Placement(transformation(extent={{-80,42},{-100,22}})));
-  Modelica.Blocks.Sources.Constant const(k=1000) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
+  Modelica.Blocks.Sources.Constant const(k=6300) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = XRGMedia.R134a_ph,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

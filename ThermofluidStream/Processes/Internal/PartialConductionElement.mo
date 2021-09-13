@@ -17,6 +17,8 @@ partial model PartialConductionElement "Element with quasi-stationary mass and h
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
+  parameter SI.Time T_e = 100 "Factor for feeding back energy."
+    annotation(Dialog(tab="Advanced", enable = enforce_global_energy_conservation));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
     annotation (Placement(transformation(extent={{-10,88},{10,108}})));
@@ -66,10 +68,10 @@ equation
   // therefore energy that is accumulated with system border around the component (deltaE_system) is slowly fed back into the sytem when enforce_global_energy_conservation is true
   //(then energy stored in the system e.g. by evaproation/condension, while still being visible short-term, neglegted in logterm)
   if not neglectPressureChanges then
-    M*der(h) = Q_flow + m_flow*(h_in_norm - h) + V*der(p_in) + (if enforce_global_energy_conservation then deltaE_system*0.01 else 0);
+    M*der(h) = Q_flow + m_flow*(h_in_norm - h) + V*der(p_in) + (if enforce_global_energy_conservation then deltaE_system/T_e else 0);
   else
     //neglegt V*der(p), since p might not be smooth -> to notice a difference der(p) must be about 1e7 Pa/s. see documentation/information
-    M*der(h) = Q_flow + m_flow*(h_in_norm - h)+ (if enforce_global_energy_conservation then deltaE_system*0.01 else 0);
+    M*der(h) = Q_flow + m_flow*(h_in_norm - h)+ (if enforce_global_energy_conservation then deltaE_system/T_e else 0);
   end if;
   der(deltaE_system) = Q_flow + m_flow*(h_in_norm - h);
 
