@@ -34,6 +34,8 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
     annotation(Dialog(tab="Advanced", group="Damping"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
+  parameter Boolean usePreferredMediumStates=false "Use medium states instead of the ones differentiated in this component"
+    annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet[N](redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -42,14 +44,14 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) if useHeatport
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
 
-  Medium.BaseProperties medium(preferredMediumStates=false);
+  Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
   SI.Volume V;
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
-  SI.Mass M(stateSelect=StateSelect.always) = V*medium.d;
-  SI.Mass MXi[Medium.nXi](each stateSelect=StateSelect.always) = M*medium.Xi;
-  SI.Energy U_med(stateSelect=StateSelect.always) = M*medium.u;
+  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d;
+  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi;
+  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u;
 
   SI.HeatFlowRate Q_flow;
   SI.Power W_v;
@@ -184,5 +186,6 @@ equation
 <p>Conceptually&nbsp;a&nbsp;Volume&nbsp;is&nbsp;a&nbsp;Sink&nbsp;and&nbsp;a&nbsp;Source.&nbsp;It&nbsp;therefore&nbsp;defines&nbsp;the&nbsp;Level&nbsp;of&nbsp;inertial&nbsp;pressure&nbsp;r&nbsp;in&nbsp;a&nbsp;closed&nbsp;loop&nbsp;and&nbsp;acts&nbsp;as&nbsp;a&nbsp;Loop&nbsp;breaker.</p>
 <p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampend out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
 <p>For to stability reasons, mass-flows in the wrong direction (fluid entering the outlet or exiting the inlet) is considered to have the enthalpy and mass-fractions of the medium in the volume. This results in a stable steady-state solution, since this method effectiveley removes the parts of the energy and mass-fraction differential equations, that are associated with mass-flows. </p>
+<p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these Systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states prefered by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
 </html>"));
 end PartialVolumeN;
