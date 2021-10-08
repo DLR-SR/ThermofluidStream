@@ -5,8 +5,9 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ![](/doc/example.svg)
 
 ## Highlights
+- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
 - Robust modeling of even complex architectures due to new computational scheme
-- Easy to initialize good support for switching bypasses and other configuration changes
+- Easy to initialize and good support for switching bypasses and other configuration changes
 - Many examples that enable an easy start to working with this library.
 - Many base components that are easy to read, understand and to adapt to your own needs
 - Support for systems that reverse their flow direction such as combined heat-pump/vapour cycle
@@ -22,7 +23,7 @@ Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermodlu
 
 If you publish work that is based on this library, please cite the following two papers. We also welcome feedback in form of issues raised here on GitHub. Also when you have positive feedback, you can feel free to raise an issue to share your experience. Have fun!
 
-- Accepted for publication: Zimmer, D., M. Meissner, N. Weber: The DLR Thermofluid Stream Library. International Modelica Conference, Linköping Sweden.
+- Zimmer, D., M. Meissner, N. Weber (2021) [The DLR Thermofluid Stream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199/159). International Modelica Conference, Linköping Sweden.
 - Zimmer, D. (2020) [Robust object-oriented formulation of directed thermofluid stream networks](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726). Mathematical and Computer Modelling of Dynamical Systems 26(3):204-233 
 
 ## Tool compatibility 
