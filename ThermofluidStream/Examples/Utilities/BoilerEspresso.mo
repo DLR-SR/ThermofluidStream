@@ -14,36 +14,39 @@ model BoilerEspresso
   parameter SI.ThermalConductance UA_heat = 200 "Heat transfer coefficient times contact area to medium to left Heatport";
   parameter Medium.MassFraction x_0 = 0.05 "Initial vapor quality of steam.";
 
+
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_heat "heatport to add heat"
     annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={-60,0},  rotation=0),
       iconTransformation(extent={{-10,-10}, {10,10}}, origin={-60,0},  rotation=0)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_HX "heatport to add heat"
     annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={60,0},   rotation=0),
     iconTransformation(extent={{-10,-10}, {10,10}}, origin={60,0},   rotation=0)));
+
   Interfaces.Outlet steam_out(redeclare package Medium = Medium) "ontlet for steam"
     annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        origin={40,100},
-        rotation=90), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        origin={40,100},
-        rotation=90)));
+         extent={{-20,-20},{20,20}},
+         origin={40,100},
+         rotation=90), iconTransformation(
+         extent={{-20,-20},{20,20}},
+         origin={40,100},
+         rotation=90)));
   Interfaces.Outlet water_out(redeclare package Medium = Medium) "ontlet for hot water"
-    annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        origin={-60,100},
-        rotation=90), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        origin={-40,100},
-        rotation=90)));
+     annotation (Placement(transformation(
+         extent={{-20,-20},{20,20}},
+         origin={-40,100},
+         rotation=90), iconTransformation(
+         extent={{-20,-20},{20,20}},
+         origin={-40,100},
+         rotation=90)));
   Interfaces.Inlet inlet(redeclare package Medium=Medium) "inlet for fresh water"
-    annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-100}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-100})));
+     annotation (Placement(transformation(
+         extent={{-20,-20},{20,20}},
+         rotation=90,
+         origin={0,-100}), iconTransformation(
+         extent={{-20,-20},{20,20}},
+         rotation=90,
+         origin={0,-100})));
+
   Modelica.Blocks.Interfaces.RealOutput y_out(unit="") "Water level percentage []"
     annotation (Placement(
         transformation(
@@ -57,46 +60,53 @@ model BoilerEspresso
         rotation=180,
         origin={-100,60})));
 
-  Medium.BaseProperties medium(preferredMediumStates=true, u(stateSelect=StateSelect.always)) "Medium in boiler";
-  Medium.MassFraction x = Medium.vapourQuality(medium.state) "vapour quality of medium in boiler";
+  Boundaries.PhaseSeparator2 phaseSeparator2_1(
+    redeclare package Medium = Medium,
+    useHeatport=true,
+    A=2e5,
+    U=2e5,
+    p_start=p_0,
+    V_par=V,
+    pipe1_low=0.05,
+    pipe1_high=0.1,
+    pipe2_low=0.9,
+    pipe2_high=0.95,
+    init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.x,
+    x_0=x_0)         annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={0,0})));
 
-  SI.Mass m(stateSelect=StateSelect.always) "mass of fluid in boiler";
-  SI.Energy U = m*medium.u;
 
-protected
-  outer DropOfCommons dropOfCommons;
-
-initial equation
-  medium.p = p_0;
-  x = x_0;
-
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor(G=UA_heat)
+    annotation (Placement(transformation(extent={{-38,-10},{-18,10}})));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor1(G=UA_HX)
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+  Modelica.Blocks.Sources.RealExpression p(y=phaseSeparator2_1.medium.p) annotation (Placement(transformation(extent={{-50,50},{-70,70}})));
+  Modelica.Blocks.Sources.RealExpression p1(y=phaseSeparator2_1.liquid_level) annotation (Placement(transformation(extent={{-50,-70},{-70,-50}})));
 equation
-  assert( noEvent(steam_out.m_flow <= 0), "boiler massflow must be positive", dropOfCommons.assertionLevel);
-  assert( noEvent(water_out.m_flow <= 0), "boiler massflow must be positive", dropOfCommons.assertionLevel);
-  assert( noEvent(inlet.m_flow <= 0), "boiler massflow must be positive", dropOfCommons.assertionLevel);
-  assert( noEvent(0<x and x<1), "boiler must alwails contain steam and water", dropOfCommons.assertionLevel);
-  assert( noEvent(inlet.m_flow <= 0), "boiler massflow must be positive", dropOfCommons.assertionLevel);
-
-  medium.d = m/V;
-  der(m) =inlet.m_flow + steam_out.m_flow +water_out.m_flow;
-  der(U) =heatport_HX.Q_flow + heatport_heat.Q_flow
-    + inlet.m_flow * Medium.specificEnthalpy(inlet.state)
-    + steam_out.m_flow * Medium.specificEnthalpy(steam_out.state)
-    + water_out.m_flow * Medium.specificEnthalpy(water_out.state);
-
-  steam_out.state = Medium.setDewState(Medium.setSat_T(medium.T));
-  water_out.state = Medium.setBubbleState(Medium.setSat_T(medium.T));
-
-  steam_out.r = 0;
-  water_out.r = 0;
-  inlet.r = medium.p - Medium.pressure(inlet.state);
-
-  y_out = m*(1 - x)/Medium.bubbleDensity(Medium.setSat_T(medium.T))/V;
-  p_out = medium.p;
-
-  heatport_heat.Q_flow = UA_heat*(heatport_heat.T - medium.T);
-  heatport_HX.Q_flow = UA_HX*(heatport_HX.T - medium.T);
-
+  connect(phaseSeparator2_1.outlet[1], water_out)
+    annotation (Line(
+      points={{0,10},{-1,10},{-1,40},{-40,40},{-40,100}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(phaseSeparator2_1.outlet[2], steam_out)
+    annotation (Line(
+      points={{0,10},{1,10},{1,40},{40,40},{40,100}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(inlet, phaseSeparator2_1.inlet)
+    annotation (Line(
+      points={{0,-100},{0,-10},{-6.66134e-16,-10}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(heatport_HX, thermalConductor1.port_b) annotation (Line(points={{60,0},{40,0}}, color={191,0,0}));
+  connect(thermalConductor1.port_a, phaseSeparator2_1.heatPort) annotation (Line(points={{20,0},{8,0}}, color={191,0,0}));
+  connect(thermalConductor.port_b, phaseSeparator2_1.heatPort)
+    annotation (Line(points={{-18,0},{-12,0},{-12,-22},{14,-22},{14,0},{8,0},{8,-4.44089e-16}}, color={191,0,0}));
+  connect(thermalConductor.port_a, heatport_heat) annotation (Line(points={{-38,0},{-60,0}}, color={191,0,0}));
+  connect(p.y, p_out) annotation (Line(points={{-71,60},{-100,60}}, color={0,0,127}));
+  connect(p1.y, y_out) annotation (Line(points={{-71,-60},{-79.5,-60},{-79.5,-60},{-100,-60}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
           points={{0,-100},{0,0}},
@@ -156,7 +166,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,24},{40,100}},
+          points={{40,54},{40,100}},
           color={28,108,200},
           thickness=0.5),
         Line(

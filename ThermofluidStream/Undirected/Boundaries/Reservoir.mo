@@ -38,7 +38,8 @@ equation
     p_env = p_env_par;
   end if;
 
-  state_out = medium.state;
+  state_out_rear = medium.state;
+  state_out_fore = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
        Ellipse(

@@ -20,6 +20,14 @@ equation
   V = V_par;
   W_v = 0;
 
+  for i in 1:N_rear loop
+    state_out_rear[i] = medium.state;
+  end for;
+
+  for i in 1:N_fore loop
+    state_out_fore[i] = medium.state;
+  end for;
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                             Text(
           extent={{-60,8},{60,-52}},

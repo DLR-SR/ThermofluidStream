@@ -12,7 +12,8 @@ equation
   medium.p = p_ref + K*(V/V_ref-1);
   W_v = 0;
 
-  state_out = medium.state;
+  state_out_rear = medium.state;
+  state_out_fore = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(

@@ -20,7 +20,8 @@ equation
   V = V_par;
   W_v = 0;
 
-  state_out = medium.state;
+  state_out_rear = medium.state;
+  state_out_fore = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>

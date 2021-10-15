@@ -20,6 +20,8 @@ equation
   V = V_par;
   W_v = 0;
 
+  state_out = medium.state;
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                             Text(
           extent={{-60,8},{60,-52}},
