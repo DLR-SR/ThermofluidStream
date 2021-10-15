@@ -73,7 +73,11 @@ equation
     //neglegt V*der(p), since p might not be smooth -> to notice a difference der(p) must be about 1e7 Pa/s. see documentation/information
     M*der(h) = Q_flow + m_flow*(h_in_norm - h)+ (if enforce_global_energy_conservation then deltaE_system/T_e else 0);
   end if;
-  der(deltaE_system) = Q_flow + m_flow*(h_in_norm - h);
+  if enforce_global_energy_conservation then
+    der(deltaE_system) = Q_flow + m_flow*(h_in_norm - h);
+  else
+    deltaE_system = 0;
+  end if;
 
   Q_flow = k*(T_heatPort - T);
 
