@@ -1,29 +1,33 @@
 ﻿within ThermofluidStream.HeatExchangers;
-model DiscretizedHEX "Discretized Heat Exchanger for two-phase working fluid"
+model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for two-phase working fluid"
 
-  replaceable package MediumAir =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumRefrigerant =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium
+  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-//   MediumRefrigerant.BaseProperties ref_out;
-//
-//   SI.Pressure p_out_ref = MediumRefrigerant.pressure(outletRef.state);
-//   SI.Temperature T_out_ref = MediumRefrigerant.temperature(outletRef.state);
+  replaceable model ConductionElementA = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium=MediumA,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation)
+    "Conduction element model for side A"
+      annotation(choicesAllMatching=true);
+  replaceable model ConductionElementB = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium=MediumB,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation)
+    "Conduction element model for side B"
+      annotation(choicesAllMatching=true);
 
   parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0 = 0.01 "Initial mass flow" annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
   parameter Modelica.SIunits.Volume V_Hex = 0.001 "Volume for heat transfer calculation" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.CoefficientOfHeatTransfer U_nom = 3000 "Nominal coefficient of heat transfer for single-phase side" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.CoefficientOfHeatTransfer U_liq_nom = 700 "Nominal coefficient of heat transfer for liquid region" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.CoefficientOfHeatTransfer U_vap_nom = 500 "Nominal coefficient of heat transfer for vapour region" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.CoefficientOfHeatTransfer U_tp_nom = 1000 "Nominal coefficient of heat transfer for two-phase region" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.MassFlowRate m_flow_nom_ref = 0.3 "Nominal mass-flow rate working fluid" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter SI.MassFlowRate m_flow_nom_air = 1.0 "Nominal mass-flow rate secondary fluid" annotation(Dialog(group = "Heat transfer parameters"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
@@ -34,106 +38,112 @@ model DiscretizedHEX "Discretized Heat Exchanger for two-phase working fluid"
 protected
   parameter Modelica.SIunits.ThermalConductance G = k_wall*A "Wall thermal conductance" annotation(Dialog(group = "Wall parameters"));
 
-
 public
-  Internal.ConductionElementHEX thermalElementAir[nCells](
-    redeclare package Medium = MediumAir,
-    each V(displayUnit="l") = V_Hex/nCells,
-    each enforce_global_energy_conservation=enforce_global_energy_conservation,
-    each A=A/nCells,
-    each U_nom=U_nom,
-    each m_flow_nom=m_flow_nom_air)
-                                annotation (Placement(transformation(extent={{-10,90},{10,70}})));
+  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));
 
-  Internal.ConductionElementHEX_twoPhase thermalElementRefrigerant[nCells](
-    each V(displayUnit="l") = V_Hex/nCells,
-    each enforce_global_energy_conservation=enforce_global_energy_conservation,
-    each A=A/nCells,
-    each U_liq_nom=U_liq_nom,
-    each U_vap_nom=U_vap_nom,
-    each U_tp_nom=U_tp_nom,
-    each m_flow_nom=m_flow_nom_ref,
-    redeclare package Medium = MediumRefrigerant) annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
+  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));
-  Interfaces.Inlet inletAir(redeclare package Medium = MediumAir)
-    annotation (Placement(transformation(extent={{-110,70},{-90,90}})));
-  Interfaces.Outlet outletAir(redeclare package Medium = MediumAir)
-    annotation (Placement(transformation(extent={{92,70},{112,90}})));
-  Interfaces.Inlet inletRef(redeclare package Medium = MediumRefrigerant)
-    annotation (Placement(transformation(extent={{110,-90},{90,-70}})));
-  Interfaces.Outlet outletRef(redeclare package Medium = MediumRefrigerant)
-    annotation (Placement(transformation(extent={{-92,-90},{-112,-70}})));
+  Interfaces.Inlet inletA(redeclare package Medium = MediumA)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-98,80}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,100})));
+  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{92,70},{112,90}}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,-100})));
+  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{110,-90},{90,-70}})));
+  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-92,-90},{-112,-70}})));
 
-  SI.HeatFlowRate Q_flow_ref=sum(thermalElementRefrigerant.heatPort.Q_flow);
-  SI.HeatFlowRate Q_flow_air=sum(thermalElementAir.heatPort.Q_flow);
-  SI.Energy deltaE_system = sum(thermalElementAir.deltaE_system) + sum(thermalElementRefrigerant.deltaE_system);
-  SI.Mass M_ref = sum(thermalElementRefrigerant.M);
-
-  Real x_in(unit="1") = thermalElementRefrigerant[1].x;
-  Real x_out(unit="1") = thermalElementRefrigerant[nCells].x;
-
-  SI.SpecificEnthalpy dh_ref = MediumRefrigerant.specificEnthalpy(outletRef.state) - MediumRefrigerant.specificEnthalpy(inletRef.state);
-  SI.SpecificEnthalpy dh_air = MediumAir.specificEnthalpy(outletAir.state) - MediumAir.specificEnthalpy(inletAir.state);
-
-  //SI.Temperature T_sat;
+  SI.HeatFlowRate Q_flow_ref=sum(thermalElementB.heatPort.Q_flow);
+  SI.HeatFlowRate Q_flow_air=sum(thermalElementA.heatPort.Q_flow);
+  SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system);
+  SI.Mass M_ref=sum(thermalElementB.M);
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
+  Processes.FlowResistance flowResistanceA[nCells](
+    redeclare package Medium = MediumA,
+    each r(each displayUnit="mm") = 0.025,
+    each l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50))
+      annotation (Placement(transformation(extent={{20,70},{40,90}})));
+  Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
+  Topology.SplitterN splitterN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
 protected
   outer DropOfCommons dropOfCommons;
 
 initial equation
 
   if initializeMassFlow then
-   inletRef.m_flow = m_flow_0;
-   inletAir.m_flow = m_flow_0;
+    inletB.m_flow = m_flow_0;
+    flowResistanceA.m_flow = m_flow_0/nCells*ones(nCells);
   else
+    for i in 1:nCells-1 loop
+      flowResistanceA[i + 1].m_flow = flowResistanceA[1].m_flow;
+    end for;
   end if;
 
 equation
-  assert(inletAir.m_flow > m_flow_assert, "Negative massflow at Air inlet", dropOfCommons.assertionLevel);
-  assert(inletRef.m_flow > m_flow_assert, "Negative massflow at Refigerant inlet", dropOfCommons.assertionLevel);
+  assert(inletA.m_flow > m_flow_assert,"Negative massflow at Air inlet",dropOfCommons.assertionLevel);
+  assert(inletB.m_flow > m_flow_assert,"Negative massflow at Refigerant inlet",dropOfCommons.assertionLevel);
 
-
-//Summary record
- summary.Tin_air = MediumAir.temperature(inletAir.state);
- summary.Tin_ref = MediumRefrigerant.temperature(inletRef.state);
- summary.Tout_air = MediumAir.temperature(outletAir.state);
- summary.Tout_ref = MediumRefrigerant.temperature(outletRef.state);
-
- summary.hin_air = MediumAir.specificEnthalpy(inletAir.state);
- summary.hin_ref = MediumRefrigerant.specificEnthalpy(inletRef.state);
- summary.hout_air = MediumAir.specificEnthalpy(outletAir.state);
- summary.hout_ref = MediumRefrigerant.specificEnthalpy(outletRef.state);
+  //Summary record
+  summary.Tin_B =MediumB.temperature(inletB.state);
+  summary.Tin_A =MediumA.temperature(inletA.state);
+  summary.Tout_B =MediumB.temperature(outletB.state);
+  summary.Tout_A =MediumA.temperature(outletA.state);
+  summary.hin_B =MediumB.specificEnthalpy(inletB.state);
+  summary.hin_A =MediumA.specificEnthalpy(inletA.state);
+  summary.hout_B =MediumB.specificEnthalpy(outletB.state);
+  summary.hout_A =MediumA.specificEnthalpy(outletA.state);
+  summary.dT_A = summary.Tout_A - summary.Tin_A;
+  summary.dT_B = summary.Tout_B - summary.Tin_B;
+  summary.dh_A = summary.hout_A - summary.hin_A;
+  summary.dh_B = summary.hout_B - summary.hin_B;
 
   //Connecting equations (to interconnect pipes)
-  //Fluid Side A
-  connect(inletAir, thermalElementAir[1].inlet) annotation (Line(points={{-100,80},{-10,80}}, color={28,108,200}));
-  for i in 1:nCells-1 loop
-    connect(thermalElementAir[i].outlet, thermalElementAir[i + 1].inlet);
-  end for;
-  connect(thermalElementAir[nCells].outlet, outletAir) annotation (Line(points={{10,80},{10,80},{10,80},{102,80}}, color={28,108,200}));
 
   //Fluid Side B
-  connect(inletRef, thermalElementRefrigerant[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200}));
+  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200}));
   for i in 1:nCells-1 loop
-    connect(thermalElementRefrigerant[i].outlet, thermalElementRefrigerant[i + 1].inlet);
+    connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(thermalElementRefrigerant[nCells].outlet, outletRef) annotation (Line(points={{-10,-80},{-102,-80}}, color={28,108,200}));
+  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{-10,-80},{-102,-80}}, color={28,108,200}));
 
-  connect(thermalElementAir.heatPort, thermalConductor.port_b) annotation(Line(points={{4.44089e-16,70.2},{4.44089e-16,40},{0,40},{0,10}}, color={191,0,0}));
+  connect(thermalElementB.heatPort, thermalConductor.port_a)
+    annotation (Line(points={{4.44089e-16,-70.2},{4.44089e-16,-40},{0,-40},{0,-10}}, color={191,0,0}));
+  connect(thermalElementA.heatPort, thermalConductor.port_b)
+    annotation (Line(points={{4.44089e-16,70.2},{4.44089e-16,40},{0,40},{0,10}}, color={191,0,0}));
 
-  for i in 1:nCells loop
-    connect(thermalElementRefrigerant[i].heatPort, thermalConductor[nCells+1-i].port_a)
-    annotation(Line(points={{-6.66134e-16,-70.2},{-6.66134e-16,-10},{0,-10}},color={191,0,0}));
-  end for;
-
-
+  connect(inletA, splitterN.inlet) annotation (Line(
+      points={{-98,80},{-60,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
+      points={{-40,80},{-10,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(thermalElementA.outlet, flowResistanceA.inlet) annotation (Line(
+      points={{10,80},{20,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistanceA.outlet, junctionN.inlets) annotation (Line(
+      points={{40,80},{50,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(junctionN.outlet, outletA) annotation (Line(
+      points={{70,80},{102,80}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
                                                                 graphics={
         Rectangle(
@@ -143,34 +153,34 @@ equation
           fillPattern=FillPattern.Solid,
           radius=25),
         Polygon(points={{-80,-92},{70,-92},{70,-62},{-80,-62},{-70,-52},{80,-52},{80,-82},{70,-92},{70,-62},{80,-52},{-70,-52},{-80,-62},{-80,-92}},
-            lineColor={5,188,185}),
-        Line(points={{-40,-52},{-50,-62},{-50,-92}}, color={5,188,185}),
-        Line(points={{-10,-52},{-20,-62},{-20,-92}},color={5,188,185}),
-        Line(points={{20,-52},{10,-62},{10,-92}}, color={5,188,185}),
-        Line(points={{50,-52},{40,-62},{40,-92}}, color={5,188,185}),
+            lineColor={28,108,200}),
+        Line(points={{-40,-52},{-50,-62},{-50,-92}}, color={28,108,200}),
+        Line(points={{-10,-52},{-20,-62},{-20,-92}},color={28,108,200}),
+        Line(points={{20,-52},{10,-62},{10,-92}}, color={28,108,200}),
+        Line(points={{50,-52},{40,-62},{40,-92}}, color={28,108,200}),
         Text(
           extent={{-70,-72},{-58,-84}},
-          lineColor={5,188,185},
+          lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="N"),
         Text(
           extent={{52,-72},{64,-84}},
-          lineColor={5,188,185},
+          lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="1"),
         Text(
           extent={{20,-72},{32,-84}},
-          lineColor={5,188,185},
+          lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="2"),
         Text(
           extent={{-10,-72},{2,-84}},
-          lineColor={5,188,185},
+          lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="..."),
         Text(
           extent={{-40,-72},{-28,-84}},
-          lineColor={5,188,185},
+          lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="..."),
         Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}}, lineColor={28,
@@ -180,12 +190,12 @@ equation
         Line(points={{20,96},{10,86},{10,56}}, color={28,108,200}),
         Line(points={{50,96},{40,86},{40,56}}, color={28,108,200}),
         Text(
-          extent={{50,76},{62,64}},
+          extent={{-72,76},{-60,64}},
           lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="N"),
         Text(
-          extent={{20,76},{32,64}},
+          extent={{-42,76},{-30,64}},
           lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="..."),
@@ -195,12 +205,12 @@ equation
           pattern=LinePattern.Dash,
           textString="..."),
         Text(
-          extent={{-42,76},{-30,64}},
+          extent={{20,76},{32,64}},
           lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="2"),
         Text(
-          extent={{-72,76},{-60,64}},
+          extent={{50,76},{62,64}},
           lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="1"),
@@ -266,4 +276,4 @@ equation
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
-end DiscretizedHEX;
+end DiscretizedCrossFlowHEX;

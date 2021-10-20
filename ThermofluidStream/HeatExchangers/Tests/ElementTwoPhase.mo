@@ -7,12 +7,14 @@ model ElementTwoPhase
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     m_flow_0=0.5,
-    redeclare package TwoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.0005,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
-    U_tp_nom=1000) annotation (Placement(transformation(extent={{-10,70},{10,90}})));
+    U_tp_nom=1000,
+    m_flow_nom=0.5,
+    redeclare package Medium = MediumRefrigerant)
+                   annotation (Placement(transformation(extent={{-10,70},{10,90}})));
   Boundaries.Sink sink(redeclare package Medium =
         MediumRefrigerant,
     pressureFromInput=false,
@@ -33,12 +35,14 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase1(
     m_flow_0=0.5,
-    redeclare package TwoPhaseMedium = MediumRefrigerant,
     V(displayUnit="l") = 0.0005,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
-    U_tp_nom=750)  annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+    U_tp_nom=750,
+    m_flow_nom=0.5,
+    redeclare package Medium = MediumRefrigerant)
+                   annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   Boundaries.Sink sink1(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
@@ -242,9 +246,9 @@ equation
     annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}},                                               color={0,0,127}));
   connect(prescribedTemperature1.T, prescribedTemperature.T)
     annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}},                                   color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
+  annotation (
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-120},{100,100}})),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
     experiment(StopTime=60, Tolerance=1e-6, Interval=0.06, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
       <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p> </html>"));

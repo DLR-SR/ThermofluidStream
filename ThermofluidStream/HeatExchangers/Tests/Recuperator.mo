@@ -40,14 +40,16 @@ model Recuperator
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{132,-64},{152,-44}})));
-  DiscretizedHEXAB                                evaporator(
+  DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = MediumRefrigerant,
     redeclare package MediumB = MediumRefrigerant,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     m_flow_0=0,
     nCells=20,
     A=10,
-    k_wall=250)    annotation (Placement(transformation(extent={{10,12},{-10,-8}})));
+    k_wall=250) annotation (Placement(transformation(extent={{10,12},{-10,-8}})));
 
   FlowControl.PCV          pCV(
     redeclare package Medium = MediumRefrigerant,

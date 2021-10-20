@@ -7,26 +7,32 @@ model HeatPump
   replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby Media.myMedia.Interfaces.PartialMedium "Air Medium"
     annotation(choicesAllMatching=true);
 
-  HeatExchangers.DiscretizedHEX                      condenser(
-    redeclare package MediumAir = Air,
-    redeclare package MediumRefrigerant = Medium,
+  HeatExchangers.DiscretizedCounterFlowHEX
+                                         condenser(
+    redeclare package MediumA = Air,
+    redeclare package MediumB = Medium,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,
     V_Hex(displayUnit="l"),
-    k_wall=150)
-           annotation (Placement(transformation(extent={{-90,72},{-70,92}})));
-  HeatExchangers.DiscretizedHEX                      evaporator(
-    redeclare package MediumAir = Air,
-    redeclare package MediumRefrigerant = Medium,
+    k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-80,82})));
+  HeatExchangers.DiscretizedCounterFlowHEX
+                                         evaporator(
+    redeclare package MediumA = Air,
+    redeclare package MediumB = Medium,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,
     V_Hex(displayUnit="l") = 0.001,
-    k_wall=150)
-    annotation (Placement(transformation(
+    k_wall=150) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=180,
+        rotation=0,
         origin={-80,-82})));
   Processes.Compressor compressor(
     redeclare package Medium = Medium,
@@ -265,12 +271,13 @@ equation
       points={{-10,-120},{-30,-120}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance2.outlet,evaporator. inletAir) annotation (Line(
+  connect(flowResistance2.outlet, evaporator.inletA)
+    annotation (Line(
       points={{-50,-120},{-60,-120},{-60,-90},{-70,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outletAir, fan1.inlet) annotation (Line(
-      points={{-90.2,-90},{-100,-90}},
+  connect(evaporator.outletA, fan1.inlet) annotation (Line(
+      points={{-90.2,-90},{-90,-90},{-90,-90},{-100,-90}},
       color={28,108,200},
       thickness=0.5));
   connect(fan1.outlet, sink1.inlet) annotation (Line(
@@ -281,12 +288,12 @@ equation
       points={{-140,90},{-120,90}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance1.outlet,condenser. inletAir) annotation (Line(
-      points={{-100,90},{-90,90}},
+  connect(flowResistance1.outlet, condenser.inletA) annotation (Line(
+      points={{-100,90},{-90,90},{-90,90},{-90,90}},
       color={28,108,200},
       thickness=0.5));
-  connect(condenser.outletAir, fan.inlet) annotation (Line(
-      points={{-69.8,90},{-60,90}},
+  connect(condenser.outletA, fan.inlet) annotation (Line(
+      points={{-69.8,90},{-70,90},{-70,90},{-60,90}},
       color={28,108,200},
       thickness=0.5));
   connect(fan.outlet, sink.inlet) annotation (Line(
@@ -296,8 +303,8 @@ equation
   connect(realExpression2.y, fan1.omega_input)
     annotation (Line(points={{-91,-110},{-110,-110},{-110,-100}},
                                                             color={0,0,127}));
-  connect(condenser.outletRef, receiver.inlet) annotation (Line(
-      points={{-90.2,74},{-120,74}},
+  connect(condenser.outletB, receiver.inlet) annotation (Line(
+      points={{-90.2,74},{-94,74},{-94,74},{-120,74}},
       color={28,108,200},
       thickness=0.5));
   connect(receiver.outlet, controlValve.inlet) annotation (Line(
@@ -320,12 +327,12 @@ equation
       points={{-104,54},{-110,54},{-110,74},{-120,74}},
       color={28,108,200},
       thickness=0.5));
-  connect(condenser.inletRef, singleFlowSensor.outlet) annotation (Line(
-      points={{-70,74},{-40,74}},
+  connect(condenser.inletB, singleFlowSensor.outlet) annotation (Line(
+      points={{-70,74},{-66,74},{-66,74},{-40,74}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outletRef, accumulator.inlet) annotation (Line(
-      points={{-69.8,-74},{-40,-74}},
+  connect(evaporator.outletB, accumulator.inlet) annotation (Line(
+      points={{-69.8,-74},{-66,-74},{-66,-74},{-40,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp3.inlet, singleFlowSensor.outlet) annotation (Line(
@@ -383,12 +390,12 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(const.y, PI.u_s) annotation (Line(points={{-71,0},{-88,0}}, color={0,0,127}));
-  connect(multiSensor_Tp.inlet,evaporator. inletRef)
+  connect(multiSensor_Tp.inlet, evaporator.inletB)
     annotation (Line(
       points={{-124,-54},{-130,-54},{-130,-74},{-90,-74}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorVaporQuality6.inlet,evaporator. inletRef)
+  connect(sensorVaporQuality6.inlet, evaporator.inletB)
     annotation (Line(
       points={{-124,-44},{-130,-44},{-130,-74},{-90,-74}},
       color={28,108,200},
@@ -398,7 +405,7 @@ equation
       points={{0,10},{0,74},{-20,74}},
       color={28,108,200},
       thickness=0.5));
-  connect(controlValve.outlet,evaporator. inletRef)
+  connect(controlValve.outlet, evaporator.inletB)
     annotation (Line(
       points={{-160,-10},{-160,-74},{-90,-74}},
       color={28,108,200},

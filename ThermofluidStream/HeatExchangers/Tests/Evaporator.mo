@@ -105,18 +105,22 @@ model Evaporator
     annotation (Placement(transformation(extent={{132,-64},{152,-44}})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{-78,-12},{-66,0}})));
-  ThermofluidStream.HeatExchangers.DiscretizedHEX evaporator(
+  DiscretizedCounterFlowHEX evaporator(
+    redeclare package MediumA = MediumAir,
+    redeclare package MediumB = MediumRefrigerant,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
+        U_liq_nom=1000,
+        U_vap_nom=1400,
+        U_tp_nom=3000),
     initializeMassFlow=true,
     m_flow_0=0,
     nCells=20,
-    redeclare package MediumAir = MediumAir,
-    redeclare package MediumRefrigerant = MediumRefrigerant,
     A=10,
-    k_wall=250,
-    U_nom=4000,
-    U_liq_nom=1000,
-    U_vap_nom=1400,
-    U_tp_nom=3000) annotation (Placement(transformation(extent={{10,12},{-10,-8}})));
+    k_wall=250) annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={2,2})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumAir,
     m_flow_0=1,
@@ -186,25 +190,26 @@ equation
   connect(PI.y, limiter.u)
     annotation (Line(points={{-45,84},{-60,84},{-60,79.2}},
                                                    color={0,0,127}));
-  connect(multiSensor_Tpm.outlet, evaporator.inletAir) annotation (Line(
-      points={{36,-6},{10,-6}},
+  connect(multiSensor_Tpm.outlet, evaporator.inletA)
+    annotation (Line(
+      points={{36,-6},{18,-6},{18,-6},{12,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outletAir, multiSensor_Tpm1.inlet)
+  connect(evaporator.outletA, multiSensor_Tpm1.inlet)
     annotation (Line(
-      points={{-10.2,-6},{-14,-6}},
+      points={{-8.2,-6},{-8.2,-6},{-6,-6},{-14,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.p0_var, limiter1.y)
     annotation (Line(points={{-58,-6},{-65.4,-6}}, color={0,0,127}));
   connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{-34,-10},
           {-42,-10},{-42,-76},{-126,-76},{-126,-14}},      color={0,0,127}));
-  connect(evaporator.outletRef, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{10.2,10},{24,10}},
+  connect(evaporator.outletB, multiSensor_Tpm2.inlet) annotation (Line(
+      points={{12.2,10},{24,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm3.outlet, evaporator.inletRef) annotation (Line(
-      points={{-20,10},{-10,10}},
+  connect(multiSensor_Tpm3.outlet, evaporator.inletB) annotation (Line(
+      points={{-20,10},{-8,10}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.m_flow_out, feedback.u2)
@@ -213,24 +218,24 @@ equation
     annotation (Line(points={{4,84},{15,84}}, color={0,0,127}));
   connect(sourceB.p0_var, limiter.y)
     annotation (Line(points={{-54,62},{-60,62},{-60,65.4}}, color={0,0,127}));
-  connect(singleSensorSelect.inlet, evaporator.outletRef)
+  connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
-      points={{24,34},{20,34},{20,10},{10.2,10}},
+      points={{24,34},{20,34},{20,10},{12.2,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(singleSensorSelect1.inlet, evaporator.inletRef)
+  connect(singleSensorSelect1.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,34},{-16,34},{-16,10},{-10,10}},
+      points={{-20,34},{-16,34},{-16,10},{-8,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorVaporQuality.inlet, evaporator.inletRef)
+  connect(sensorVaporQuality.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,2},{-12,2},{-12,10},{-10,10}},
+      points={{-20,2},{-12,2},{-12,10},{-8,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorVaporQuality1.inlet, evaporator.outletRef)
+  connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{24,2},{14,2},{14,10},{10.2,10}},
+      points={{24,2},{14,2},{14,10},{12.2,10}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=
