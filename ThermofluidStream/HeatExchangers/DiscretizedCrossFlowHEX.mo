@@ -63,10 +63,11 @@ public
   Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{110,-90},{90,-70}})));
   Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-92,-90},{-112,-70}})));
 
-  SI.HeatFlowRate Q_flow_ref=sum(thermalElementB.heatPort.Q_flow);
-  SI.HeatFlowRate Q_flow_air=sum(thermalElementA.heatPort.Q_flow);
+  SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow);
+  SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow);
+  SI.Mass M_A=sum(thermalElementA.M);
+  SI.Mass M_B=sum(thermalElementB.M);
   SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system);
-  SI.Mass M_ref=sum(thermalElementB.M);
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
