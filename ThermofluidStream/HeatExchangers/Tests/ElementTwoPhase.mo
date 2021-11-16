@@ -247,7 +247,7 @@ equation
   connect(prescribedTemperature1.T, prescribedTemperature.T)
     annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}},                                   color={0,0,127}));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-120},{100,100}})),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
     experiment(StopTime=60, Tolerance=1e-6, Interval=0.06, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

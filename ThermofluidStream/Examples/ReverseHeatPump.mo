@@ -26,28 +26,32 @@ model ReverseHeatPump
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,14})));
-  Undirected.HeatExchangers.DiscretizedHEX discretizedHEX(
-    redeclare package MediumAir = SecondaryMedium,
-    redeclare package MediumRefrigerant = RefrigerantMedium,
-    initRef=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX
+                                           discretizedHEX(
+    redeclare package MediumA = SecondaryMedium,
+    redeclare package MediumB = RefrigerantMedium,
+    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
     nCells=5,
     initializeMassFlow=false,
-    m_flow_0=0,
     k_wall=300) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
-        rotation=90,
+        rotation=270,
         origin={-76,92})));
 
-  Undirected.HeatExchangers.DiscretizedHEX discretizedHEX1(
-    redeclare package MediumAir = SecondaryMedium,
-    redeclare package MediumRefrigerant = RefrigerantMedium,
-    initRef=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX
+                                           discretizedHEX1(
+    redeclare package MediumA = SecondaryMedium,
+    redeclare package MediumB = RefrigerantMedium,
+    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
     nCells=5,
     initializeMassFlow=false,
-    m_flow_0=0,
     k_wall=300) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
-        rotation=90,
+        rotation=270,
         origin={76,90})));
 
   FlowControl.BasicControlValve               valveCompressorOutletCooling(
@@ -431,14 +435,6 @@ equation
       points={{0,0},{0,4}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance.rear, discretizedHEX.foreAir) annotation (Line(
-      points={{-84,76},{-84,82}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance1.fore, discretizedHEX1.rearAir) annotation (Line(
-      points={{84,74},{84,80}},
-      color={28,108,200},
-      thickness=0.5));
   connect(TEVcooling.rear, receiver.fore) annotation (Line(
       points={{30,180},{10,180}},
       color={28,108,200},
@@ -466,11 +462,6 @@ equation
       points={{-68,11},{-68,4}},
       color={28,108,200},
       thickness=0.5));
-  connect(discretizedHEX1.foreAir, multiSensor_Tpm2.rear)
-    annotation (Line(
-      points={{84,100},{84,104}},
-      color={28,108,200},
-      thickness=0.5));
   connect(multiSensor_Tpm2.fore, boundaryFore1.rear)
     annotation (Line(
       points={{84,124},{84,134}},
@@ -489,11 +480,6 @@ equation
       points={{-84,148},{-84,136}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm1.fore, discretizedHEX.rearAir)
-    annotation (Line(
-      points={{-84,116},{-84,102}},
-      color={28,108,200},
-      thickness=0.5));
   connect(limiter2.u,PI2. y) annotation (Line(points={{-113.2,178},{-124,178},{-124,167}},color={0,0,127}));
   connect(PI2.u,feedback2. y) annotation (Line(points={{-124,144},{-124,137}},
                                                                              color={0,0,127}));
@@ -510,19 +496,9 @@ equation
   connect(firstOrder.y, valveCompressorOutletHeating.u_in) annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{26,-24},{26,32}},  color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletCooling.u_in)
     annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{40,-24},{40,-6},{60,-6}},color={0,0,127}));
-  connect(discretizedHEX.rearRef, twoPhaseSensorSelect1.fore)
-    annotation (Line(
-      points={{-68,82},{-68,76}},
-      color={28,108,200},
-      thickness=0.5));
   connect(junctionRFFleft.foreB, twoPhaseSensorSelect1.rear)
     annotation (Line(
       points={{-68,50},{-68,56}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEX1.foreRef, twoPhaseSensorSelect.rear)
-    annotation (Line(
-      points={{68,80},{68,76}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionRRF2_1.rearB, twoPhaseSensorSelect.fore)
@@ -561,19 +537,9 @@ equation
       points={{84,54},{96,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(discretizedHEX.foreRef, multiSensor_Tpm5.rear)
-    annotation (Line(
-      points={{-68,102},{-68,110}},
-      color={28,108,200},
-      thickness=0.5));
   connect(multiSensor_Tpm5.fore, TEVheating.rear)
     annotation (Line(
       points={{-68,130},{-68,180},{-50,180}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEX1.rearRef, multiSensor_Tpm6.fore)
-    annotation (Line(
-      points={{68,100},{68,110}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm6.rear, TEVcooling.fore)
@@ -602,6 +568,42 @@ equation
       thickness=0.5));
   connect(singleSensorSelect.inlet, compressor.outlet) annotation (Line(
       points={{-14,24},{0,24}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX.rearA, multiSensor_Tpm1.fore)
+    annotation (Line(
+      points={{-84,102},{-84,116}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX.foreA, flowResistance.rear) annotation (Line(
+      points={{-84,82},{-84,76}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(twoPhaseSensorSelect1.fore, discretizedHEX.rearB)
+    annotation (Line(
+      points={{-68,76},{-68,82}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX.foreB, multiSensor_Tpm5.rear)
+    annotation (Line(
+      points={{-68,102.2},{-68,110},{-68,110}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX1.rearB, multiSensor_Tpm6.fore) annotation (Line(
+      points={{68,100},{68,110}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX1.foreB, twoPhaseSensorSelect.rear)
+    annotation (Line(
+      points={{68,79.8},{68,76}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance1.fore, discretizedHEX1.rearA) annotation (Line(
+      points={{84,74},{84,80}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX1.foreA, multiSensor_Tpm2.rear) annotation (Line(
+      points={{84,100},{84,104}},
       color={28,108,200},
       thickness=0.5));
   annotation (Diagram(coordinateSystem(extent={{-260,-80},{180,220}}), graphics={

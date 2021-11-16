@@ -15,6 +15,7 @@ record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
   SI.SpecificEnthalpy hout_A "Enthalpy at A outlet";
   SI.SpecificEnthalpy hin_B "Enthalpy at B inlet";
   SI.SpecificEnthalpy hout_B "Enthalpy at B outlet";
+
   SI.SpecificEnthalpy dh_A "Enthalpy differnce A";
   SI.SpecificEnthalpy dh_B "Enthalpy  differnce B";
 

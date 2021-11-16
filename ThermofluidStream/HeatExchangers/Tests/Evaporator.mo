@@ -19,9 +19,8 @@ model Evaporator
         origin={110,-6})));
 
   ThermofluidStream.Boundaries.Sink sinkA(
-    redeclare package Medium = MediumAir,
-    pressureFromInput=true,
-    p0_par=100000) annotation (Placement(transformation(extent={{-46,-16},{-66,4}})));
+    redeclare package Medium = MediumAir, p0_par=150000)
+                   annotation (Placement(transformation(extent={{-74,-16},{-94,4}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
                MediumAir,
@@ -34,7 +33,6 @@ model Evaporator
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
                MediumAir,
     digits=3,
-      outputMassFlowRate=true,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -44,9 +42,8 @@ model Evaporator
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
-    pressureFromInput=true,
     T0_par=283.15,
-    p0_par=200000,
+    p0_par=500000,
     h0_par=300e3)
                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
@@ -64,47 +61,13 @@ model Evaporator
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{24,10},{44,30}})));
-  Modelica.Blocks.Sources.RealExpression refFlow_setPoint(y=0.2)
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
-        rotation=0,
-        origin={26,84})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
                MediumRefrigerant,
     digits=3,
-    outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
-  Modelica.Blocks.Sources.RealExpression airFlow_setPoint1(y=1)
-    annotation (Placement(transformation(extent={{-162,0},{-142,20}})));
-  Modelica.Blocks.Continuous.PI PI(
-    k=10000,
-    T=0.1,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    x_start=40,
-    y_start=4e5)
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
-        rotation=0,
-        origin={-34,84})));
-  Modelica.Blocks.Math.Feedback feedback
-    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
-        rotation=0,
-        origin={-4,84})));
-  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=10e5, uMin=1e5)
-    annotation (Placement(transformation(extent={{6,6},{-6,-6}},
-        rotation=90,
-        origin={-60,72})));
-  Modelica.Blocks.Continuous.PI PI1(
-    k=-10000,
-    T=0.1,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=1e5)
-    annotation (Placement(transformation(extent={{-108,-16},{-88,4}})));
-  Modelica.Blocks.Math.Feedback feedback1
-    annotation (Placement(transformation(extent={{-136,-16},{-116,4}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{132,-64},{152,-44}})));
-  Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=5e5, uMin=100)
-    annotation (Placement(transformation(extent={{-78,-12},{-66,0}})));
   DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
@@ -114,7 +77,6 @@ model Evaporator
         U_vap_nom=1400,
         U_tp_nom=3000),
     initializeMassFlow=true,
-    m_flow_0=0,
     nCells=20,
     A=10,
     k_wall=250) annotation (Placement(transformation(
@@ -153,20 +115,18 @@ model Evaporator
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium =
         MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{24,-8},{44,12}})));
+  FlowControl.MCV mCV(
+    redeclare package Medium = MediumAir,
+    m_flow_0=0,
+    massFlow_set_par=1) annotation (Placement(transformation(extent={{-44,-16},{-64,4}})));
+  FlowControl.MCV mCV1(
+    redeclare package Medium = MediumRefrigerant,
+    m_flow_0=1,
+    massFlow_set_par=0.2) annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={-60,30})));
 equation
-  connect(sinkA.inlet, multiSensor_Tpm1.outlet) annotation (Line(
-      points={{-46,-6},{-34,-6}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(feedback.y, PI.u)
-    annotation (Line(points={{-13,84},{-22,84}},  color={0,0,127}));
-  connect(PI1.u, feedback1.y)
-    annotation (Line(points={{-110,-6},{-117,-6}}, color={0,0,127}));
-  connect(feedback1.u1, airFlow_setPoint1.y)
-    annotation (Line(points={{-134,-6},{-140,-6},{-140,10},{-141,10}},
-                                                 color={0,0,127}));
-  connect(PI1.y, limiter1.u) annotation (Line(points={{-87,-6},{-79.2,-6}},
-                             color={0,0,127}));
   connect(sourceA.outlet, flowResistanceA.inlet) annotation (Line(
       points={{100,-6},{88,-6}},
       color={28,108,200},
@@ -183,13 +143,6 @@ equation
       points={{62,22},{62,10},{44,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(sourceB.outlet, multiSensor_Tpm3.inlet) annotation (Line(
-      points={{-60,50},{-60,10},{-40,10}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(PI.y, limiter.u)
-    annotation (Line(points={{-45,84},{-60,84},{-60,79.2}},
-                                                   color={0,0,127}));
   connect(multiSensor_Tpm.outlet, evaporator.inletA)
     annotation (Line(
       points={{36,-6},{18,-6},{18,-6},{12,-6}},
@@ -200,10 +153,6 @@ equation
       points={{-8.2,-6},{-8.2,-6},{-6,-6},{-14,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(sinkA.p0_var, limiter1.y)
-    annotation (Line(points={{-58,-6},{-65.4,-6}}, color={0,0,127}));
-  connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{-34,-10},
-          {-42,-10},{-42,-76},{-126,-76},{-126,-14}},      color={0,0,127}));
   connect(evaporator.outletB, multiSensor_Tpm2.inlet) annotation (Line(
       points={{12.2,10},{24,10}},
       color={28,108,200},
@@ -212,12 +161,6 @@ equation
       points={{-20,10},{-8,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm3.m_flow_out, feedback.u2)
-    annotation (Line(points={{-20,14},{-4,14},{-4,76}}, color={0,0,127}));
-  connect(feedback.u1, refFlow_setPoint.y)
-    annotation (Line(points={{4,84},{15,84}}, color={0,0,127}));
-  connect(sourceB.p0_var, limiter.y)
-    annotation (Line(points={{-54,62},{-60,62},{-60,65.4}}, color={0,0,127}));
   connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
       points={{24,34},{20,34},{20,10},{12.2,10}},
@@ -236,6 +179,22 @@ equation
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
       points={{24,2},{14,2},{14,10},{12.2,10}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(sinkA.inlet, mCV.outlet) annotation (Line(
+      points={{-74,-6},{-64,-6}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mCV.inlet, multiSensor_Tpm1.outlet) annotation (Line(
+      points={{-44,-6},{-34,-6}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(sourceB.outlet, mCV1.inlet) annotation (Line(
+      points={{-60,50},{-60,40}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mCV1.outlet, multiSensor_Tpm3.inlet) annotation (Line(
+      points={{-60,20},{-60,10},{-40,10}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=

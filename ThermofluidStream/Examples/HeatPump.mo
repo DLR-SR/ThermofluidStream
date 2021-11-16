@@ -264,7 +264,7 @@ model HeatPump
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_air/max(0.00001, compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+    number=condenser.Q_flow_A/max(0.00001, compressor.W_t))   annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(

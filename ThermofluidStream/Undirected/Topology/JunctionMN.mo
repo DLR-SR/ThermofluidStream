@@ -98,13 +98,13 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-100,20},{-60,60}},
+          extent={{60,20},{100,60}},
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           textString="%M"),
         Text(
-          extent={{60,20},{100,60}},
+          extent={{-100,20},{-60,60}},
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,

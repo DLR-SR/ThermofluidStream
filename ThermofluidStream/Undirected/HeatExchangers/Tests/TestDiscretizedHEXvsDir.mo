@@ -62,14 +62,18 @@ model TestDiscretizedHEXvsDir
     duration=1,
     offset=0.3,
     startTime=15) annotation (Placement(transformation(extent={{-34,126},{-14,146}})));
-  DiscretizedHEX discretizedHEXUndir(
-    redeclare package MediumAir = MediumAir,
-    redeclare package MediumRefrigerant = MediumRefrigerant,
+  DiscretizedCounterFlowHEX discretizedHEXUndir(
+    redeclare package MediumA = MediumAir,
+    redeclare package MediumB = MediumRefrigerant,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     nCells=10,
     V_Hex(displayUnit="m3"),
     initializeMassFlow=true,
-    m_flow_0=0,
-    k_wall=300) annotation (Placement(transformation(extent={{-12,190},{8,210}})));
+    k_wall=300) annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-2,200})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
     m_flow_0=0,
@@ -212,7 +216,6 @@ model TestDiscretizedHEXvsDir
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
-    m_flow_0=0,
     nCells=10,
     k_wall=300) annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
@@ -348,7 +351,6 @@ model TestDiscretizedHEXvsDir
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
-    m_flow_0=0,
     nCells=10,
     k_wall=300) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -395,16 +397,6 @@ model TestDiscretizedHEXvsDir
     offset=1,
     startTime=15) annotation (Placement(transformation(extent={{-6,234},{14,254}})));
 equation
-  connect(discretizedHEXUndir.rearAir, multiSensor_Tpm.fore)
-    annotation (Line(
-      points={{-12,208},{-20,208}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEXUndir.foreAir, multiSensor_Tpm1.rear)
-    annotation (Line(
-      points={{8,208},{20,208}},
-      color={28,108,200},
-      thickness=0.5));
   connect(boundary_fore1.rear, flowResistanceB.fore) annotation (Line(
       points={{-88,144},{-82,144},{-82,192},{-70,192}},
       color={28,108,200},
@@ -420,16 +412,6 @@ equation
   connect(boundary_rear1.fore, multiSensor_Tpm2.rear)
     annotation (Line(
       points={{94,176},{68,176},{68,192},{40,192}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEXUndir.rearRef, multiSensor_Tpm2.fore)
-    annotation (Line(
-      points={{8,192},{20,192}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEXUndir.foreRef, multiSensor_Tpm3.rear)
-    annotation (Line(
-      points={{-12,192},{-22,192}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.fore, flowResistanceB.rear) annotation (Line(
@@ -622,6 +604,22 @@ equation
   connect(limiter4.y, sourceB1.p0_var) annotation (Line(points={{74.6,-244},{86,-244},{86,-208}}, color={0,0,127}));
   connect(rampPressure.y, boundary_rear.p0_var) annotation (Line(points={{-113,196},{-96,196},{-96,214},{-86,214}}, color={0,0,127}));
   connect(feedback1.u1, rampMassflow.y) annotation (Line(points={{42,240},{28,240},{28,244},{15,244}}, color={0,0,127}));
+  connect(discretizedHEXUndir.rearA, multiSensor_Tpm.fore) annotation (Line(
+      points={{-12,208},{-20,208}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEXUndir.foreB, multiSensor_Tpm3.rear) annotation (Line(
+      points={{-12.2,192},{-22,192}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEXUndir.rearB, multiSensor_Tpm2.fore) annotation (Line(
+      points={{8,192},{20,192}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEXUndir.foreA, multiSensor_Tpm1.rear) annotation (Line(
+      points={{8,208},{20,208}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
         graphics={
         Rectangle(extent={{-208,-104},{170,-280}}, lineColor={28,108,200}),

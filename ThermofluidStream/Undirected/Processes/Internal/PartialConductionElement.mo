@@ -3,12 +3,12 @@ partial model PartialConductionElement "Partial volume with quasisationary mass 
   extends Interfaces.SISOBiFlow(final clip_p_out=false);
 
   parameter SI.Volume V = 1 "Volume of the element";
-  parameter Internal.InitializationMethodsCondElement init=Internal.InitializationMethodsCondElement.rear "Initialization method for h"
+  parameter ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "Initialization method for h"
     annotation (Dialog(tab="Initialization", group="Enthalpy"));
   parameter SI.Temperature T_0 = Medium.T_default "Initial Temperature"
-    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == .ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.T)));
+    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.T)));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
-    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == .ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
+    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean neglectPressureChanges = true "Neglect pressure changes in energy equation"

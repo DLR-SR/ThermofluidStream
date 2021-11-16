@@ -1,5 +1,5 @@
 within ThermofluidStream.HeatExchangers.Internal;
-model ConductionElementHEX "Conductionelement for single-phase fluids"
+model ConductionElementHEX "ConductionElement for single-phase fluids"
   extends PartialConductionElementHEX;
 
   parameter SI.CoefficientOfHeatTransfer U_nom = 3000 "Nominal coefficient of heat transfer";

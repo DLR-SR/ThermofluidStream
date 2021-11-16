@@ -46,7 +46,6 @@ model Recuperator
     redeclare model ConductionElementA = Internal.ConductionElementHEX_twoPhase,
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
-    m_flow_0=0,
     nCells=20,
     A=10,
     k_wall=250) annotation (Placement(transformation(extent={{10,12},{-10,-8}})));

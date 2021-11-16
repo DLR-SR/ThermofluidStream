@@ -7,11 +7,11 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX
                                          discretizedHEX(
     redeclare package MediumA = XRGMedia.R134a_ph,
-    redeclare package MediumB = XRGMedia.R134a_ph,
+    redeclare package MediumB = XRGMedia.NH3_ph,
     redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
     redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
-    initializeMassFlow=true,
-    m_flow_0=0) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    initializeMassFlow=true)
+                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-18,72})));
   HeatExchangers.DiscretizedCounterFlowHEX
@@ -28,8 +28,8 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package MediumA = XRGMedia.CO2_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
     redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
-    initializeMassFlow=true,
-    m_flow_0=0) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    initializeMassFlow=true)
+                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-18,40})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
@@ -49,8 +49,8 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
     redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
-    initializeMassFlow=true,
-    m_flow_0=0) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    initializeMassFlow=true)
+                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-34,8})));
   Boundaries.Sink sink2(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{84,38},{104,58}})));

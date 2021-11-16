@@ -1,10 +1,10 @@
 ﻿within ThermofluidStream.HeatExchangers;
-model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for two-phase working fluid"
+model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+    annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+    annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
@@ -12,19 +12,22 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for two-phase wor
       final V=V_Hex/nCells,
       redeclare package Medium=MediumA,
       final enforce_global_energy_conservation=enforce_global_energy_conservation)
-    "Conduction element model for side A"
-      annotation(choicesAllMatching=true);
+    "Heat transfer element model for side A"
+      annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium=MediumB,
       final enforce_global_energy_conservation=enforce_global_energy_conservation)
-    "Conduction element model for side B"
-      annotation(choicesAllMatching=true);
+    "Heat transfer element model for side B"
+      annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
-  parameter SI.MassFlowRate m_flow_0 = 0.01 "Initial mass flow" annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
+  parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
+    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
+  parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
+    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
   parameter Modelica.SIunits.Volume V_Hex = 0.001 "Volume for heat transfer calculation" annotation(Dialog(group = "Heat transfer parameters"));
@@ -32,17 +35,23 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for two-phase wor
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
-  parameter Real k1A = 0 "linear flowRes A"
-    annotation(Dialog(group="flowRes"));
-  parameter Real k2A = 0 "quadratic flowRes A"
-    annotation(Dialog(group="flowRes"));
-  parameter Real k1B = 0 "linear flowRes B"
-    annotation(Dialog(group="flowRes"));
-  parameter Real k2B = 0 "quadratic flowRes B"
-    annotation(Dialog(group="flowRes"));
+
+  parameter SI.Length l_A = 1 "Length of pipe A"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
+  parameter SI.Length r_A = 0.01 "Radius of pipe A"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
+  parameter SI.Length ks_A = 1e-7 "Roughness of pipe A"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
+  parameter SI.Length l_B = 1 "Length of pipe B"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
+  parameter SI.Length r_B = 0.01 "Radius of pipe B"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
+  parameter SI.Length ks_B = 1e-7 "Roughness of pipe B"
+    annotation(Dialog(group="laminar-turbolent flowRes"));
 
   //Parameterization of HEX Wall
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for pipe wall" annotation(Dialog(group = "Wall parameters"));
+  parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for pipe wall"
+    annotation(Dialog(group = "Heat transfer parameters"));
 protected
   parameter Modelica.SIunits.ThermalConductance G = k_wall*A "Wall thermal conductance" annotation(Dialog(group = "Wall parameters"));
 
@@ -53,19 +62,17 @@ public
     annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
-    each r = 0.1,
-    each l=1,
+    each r = r_A,
+    each l=l_A/nCells,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-       each k=k1A, each k2=k2A))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(each ks_input=ks_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
-    each r = 0.1,
-    each l=1,
+    each r = r_B,
+    each l=l_B/nCells,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-       each k=k1B, each k2=k2B))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(each ks_input=ks_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)
@@ -83,15 +90,14 @@ public
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
-
 protected
   outer DropOfCommons dropOfCommons;
 
 initial equation
 
   if initializeMassFlow then
-    inletA.m_flow = m_flow_0;
-    inletB.m_flow = m_flow_0;
+    inletA.m_flow = m_flow_0_A;
+    inletB.m_flow = m_flow_0_B;
   end if;
 
 equation
@@ -196,7 +202,8 @@ equation
           lineColor={28,108,200},
           pattern=LinePattern.Dash,
           textString="..."),
-        Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}}, lineColor={28,
+        Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
+            lineColor =                                                                                             {28,
               108,200}),
         Line(points={{-40,96},{-50,86},{-50,56}}, color={28,108,200}),
         Line(points={{-10,96},{-20,86},{-20,56}}, color={28,108,200}),
@@ -281,11 +288,16 @@ equation
           textString="«",
           origin={-3,-36},
           rotation=90),
-        Polygon(points={{-82,-16},{68,-16},{68,4},{-82,4},{-72,14},{78,14},{78,-6},{68,-16},{68,4},{78,14},{-72,14},{-82,4},{-82,-16}}, lineColor={188,
+        Polygon(points={{-82,-16},{68,-16},{68,4},{-82,4},{-72,14},{78,14},{78,-6},{68,-16},{68,4},{78,14},{-72,14},{-82,4},{-82,-16}},
+            lineColor =                                                                                             {188,
               36,38}),
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
         Line(points={{18,14},{8,4},{8,-16}},   color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+    Documentation(info="<html>
+<p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differes from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
+<p>The flowResistances are parametrized by the parameters in the group laminar-turbolent flowRes.</p>
+</html>"));
 end DiscretizedCounterFlowHEX_FR;
