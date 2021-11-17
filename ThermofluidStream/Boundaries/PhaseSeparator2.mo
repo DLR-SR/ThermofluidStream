@@ -1,24 +1,26 @@
-within ThermofluidStream.Undirected.Boundaries;
-model PhaseSeparator "Parent to Reciever and Accumulator models"
-  extends Internal.PartialVolume(
-    redeclare replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium,
+within ThermofluidStream.Boundaries;
+model PhaseSeparator2 "Phase separator with two outlets"
+  extends Boundaries.Internal.PartialVolumeM(
+    redeclare replaceable package Medium =
+        Media.myMedia.Interfaces.PartialTwoPhaseMedium,
     useHeatport=false,
-    final useRear=true,
-    final useFore=true,
     final initialize_energy=false,
     final T_start=0,
     final h_start=0,
-    final use_hstart=false);
+    final use_hstart=false,
+    final M_outlets=2);
 
   import Init = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator;
 
   parameter SI.Volume V_par(displayUnit="l")=0.01 "Volume of phase seperator";
-  parameter Real pipe_low(unit="1", min=0, max=1) "Low end of pipe";
-  parameter Real pipe_high(unit="1", min=0, max=1) "High end of pipe";
-  parameter Boolean density_derp_h_from_media = false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
-    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
+  parameter Real pipe1_low(unit="1", min=0, max=1) "Low end of pipe";
+  parameter Real pipe1_high(unit="1", min=0, max=1) "High end of pipe";
+  parameter Real pipe2_low(unit="1", min=0, max=1) "Low end of pipe";
+  parameter Real pipe2_high(unit="1", min=0, max=1) "High end of pipe";
+  parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
+     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
-    annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
+     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization Method"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization"));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
@@ -32,12 +34,13 @@ model PhaseSeparator "Parent to Reciever and Accumulator models"
 
   //Variables to calculate h_pipe
   Real liquid_level(unit="1") "level of liquid line";
-  Real liquid_level_pipe(unit="1") "level of liquid line in pipe";
+  Real liquid_level_pipe1(unit="1") "level of liquid line in pipe1";
+  Real liquid_level_pipe2(unit="1") "level of liquid line in pipe2";
 
 protected
-  Medium.MassFraction x = (medium.h-h_bubble)/(h_dew - h_bubble) "Calculated quality of medium that can go below zero and above one";
-
-  SI.SpecificEnthalpy h_pipe;
+  Medium.MassFraction x = (medium.h-h_bubble)/(h_dew - h_bubble) "Calculated vapor quality of medium that can go below zero and above one";
+  SI.SpecificEnthalpy h_pipe1;
+  SI.SpecificEnthalpy h_pipe2;
 
   SI.Density d_liq = Medium.bubbleDensity(Medium.setSat_p(medium.p)) "bubble density at saturation";
   SI.Density d_gas = Medium.dewDensity(Medium.setSat_p(medium.p)) "dew density at saturation";
@@ -46,7 +49,8 @@ protected
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Dew Enthalpy of Medium";
 
 initial equation
-  assert(pipe_high > pipe_low, "Upper pipe end must be higher then lower end.", AssertionLevel.error);
+  assert(pipe1_high > pipe1_low, "Upper pipe end must be higher then lower end.", AssertionLevel.error);
+  assert(pipe2_high > pipe2_low, "Upper pipe end must be higher then lower end.", AssertionLevel.error);
 
   if init_method == Init.h then
     medium.h = h_0;
@@ -70,15 +74,21 @@ equation
   W_v = 0;
 
   liquid_level = max(0, min(1, M*(1-x)/d_liq/V));
-  liquid_level_pipe = max(0, min(1, (liquid_level-pipe_low)/(pipe_high-pipe_low)));
+  liquid_level_pipe1 = max(0, min(1, (liquid_level-pipe1_low)/(pipe1_high-pipe1_low)));
+  liquid_level_pipe2 = max(0, min(1, (liquid_level-pipe2_low)/(pipe2_high-pipe2_low)));
 
-  h_pipe = smooth(1,
-  if x < 0 then medium.h
-  elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
-  else medium.h);
+  h_pipe1 = smooth(1,
+    if x < 0 then medium.h
+    elseif x <= 1 then liquid_level_pipe1*h_bubble + (1-liquid_level_pipe1)*h_dew
+    else medium.h);
 
-  state_out_fore = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
-  state_out_rear = state_out_fore;
+  h_pipe2 = smooth(1,
+    if x < 0 then medium.h
+    elseif x <= 1 then liquid_level_pipe2*h_bubble + (1-liquid_level_pipe2)*h_dew
+    else medium.h);
+
+  state_out[1] = Medium.setState_phX(medium.p, h_pipe1, medium.Xi);
+  state_out[2] = Medium.setState_phX(medium.p, h_pipe2, medium.Xi);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
@@ -86,4 +96,4 @@ equation
 <p>This Volume is the parent class for Accumulator and Receiver models that seperate the two phases and are able and output gas, liquid or two-phase medium, dependin on its liquid level and the height of the outlet. </p>
 <p>Since there is no formula to compute density_derp_h for this volume, a upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
 </html>"));
-end PhaseSeparator;
+end PhaseSeparator2;

@@ -2,18 +2,15 @@ within ThermofluidStream.Undirected.Boundaries.Tests;
 model TestVolumes "Test for undirected Volumes"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                                                                    "Medium package"
+  replaceable package Medium = Media.myMedia.Air.SimpleAir constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
     annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
-</html>"));
+      <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+      </html>"));
 
-  package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
-                                                                    "Medium package"
+  package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir "Medium package"
       annotation (Documentation(info="<html>
-<p>Medium package used in the Test of the MixVolumes. </p>
-</html>"));
+        <p>Medium package used in the Test of the MixVolumes. </p>
+        </html>"));
 
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{140,-12},{160,8}})));

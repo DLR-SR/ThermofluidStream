@@ -40,10 +40,10 @@ partial model PartialVolume "Partial parent class for Volumes with one fore and 
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) if useHeatport
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
-  Interfaces.Rear rear(redeclare package Medium=Medium, m_flow=m_flow_rear, r=r_rear_port, state_rearwards=state_out, state_forwards=state_in_rear) if useRear
+  Interfaces.Rear rear(redeclare package Medium=Medium, m_flow=m_flow_rear, r=r_rear_port, state_rearwards=state_out_rear, state_forwards=state_in_rear) if useRear
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Interfaces.Fore fore(redeclare package Medium=Medium, m_flow=m_flow_fore, r=r_fore_port, state_forwards=state_out, state_rearwards=state_in_fore) if useFore
+  Interfaces.Fore fore(redeclare package Medium=Medium, m_flow=m_flow_fore, r=r_fore_port, state_forwards=state_out_fore, state_rearwards=state_in_fore) if useFore
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
 
@@ -65,18 +65,20 @@ protected
   SI.Temperature T_heatPort;
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)
-  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_rear, p_out - Medium.pressure(state_in_rear), 0, m_flow_reg);
-  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_fore, p_out - Medium.pressure(state_in_fore), 0, m_flow_reg);
+  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
+  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
   // dont regstep variables that are only in der(state), to increase accuracy
-  SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out) * m_flow_rear;
-  SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out) * m_flow_fore;
-  SI.MassFlowRate Xi_flow_rear[Medium.nXi] = (if m_flow_rear >= 0 then Medium.massFraction(state_in_rear) else Xi_out) * m_flow_rear;
-  SI.MassFlowRate Xi_flow_fore[Medium.nXi] = (if m_flow_fore >= 0 then Medium.massFraction(state_in_fore) else Xi_out) * m_flow_fore;
+  SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear;
+  SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore;
+  SI.MassFlowRate Xi_flow_rear[Medium.nXi] = (if m_flow_rear >= 0 then Medium.massFraction(state_in_rear) else Xi_out_rear) * m_flow_rear;
+  SI.MassFlowRate Xi_flow_fore[Medium.nXi] = (if m_flow_fore >= 0 then Medium.massFraction(state_in_fore) else Xi_out_fore) * m_flow_fore;
 
-  Medium.ThermodynamicState state_out;
-  SI.SpecificEnthalpy h_out = Medium.specificEnthalpy(state_out);
-  Medium.MassFraction Xi_out[Medium.nXi] = Medium.massFraction(state_out);
-  SI.Pressure p_out = Medium.pressure(state_out);
+  Medium.ThermodynamicState state_out_rear;
+  SI.SpecificEnthalpy h_out_rear = Medium.specificEnthalpy(state_out_rear);
+  Medium.MassFraction Xi_out_rear[Medium.nXi] = Medium.massFraction(state_out_rear);
+  Medium.ThermodynamicState state_out_fore;
+  SI.SpecificEnthalpy h_out_fore = Medium.specificEnthalpy(state_out_fore);
+  Medium.MassFraction Xi_out_fore[Medium.nXi] = Medium.massFraction(state_out_fore);
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
   SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";

@@ -1,5 +1,8 @@
 CounterFlowNTU
 CrossFlowNTU
-DiscretizedHEX
+DiscretizedCrossFlowHEX
+DiscretizedCounterFlowHEX
+DiscretizedCrossFlowHEX_FR
+DiscretizedCounterFlowHEX_FR
 Tests
 Internal

@@ -59,14 +59,18 @@ model TestDiscretizedHEX
     offset=0.3,
     startTime=15) annotation (Placement(transformation(extent={{-40,-58},{-20,-38}})));
   Modelica.Blocks.Sources.Constant const1(k=1e5)    annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
-  DiscretizedHEX discretizedHEX(
-    redeclare package MediumAir = MediumAir,
-    redeclare package MediumRefrigerant = MediumRefrigerant,
+  DiscretizedCounterFlowHEX discretizedHEX(
+    redeclare package MediumA = MediumAir,
+    redeclare package MediumB = MediumRefrigerant,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     nCells=10,
     V_Hex(displayUnit="m3"),
     initializeMassFlow=false,
-    k_wall=300)
-          annotation (Placement(transformation(extent={{-14,6},{6,26}})));
+    k_wall=300) annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-4,16})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -126,14 +130,6 @@ model TestDiscretizedHEX
     offset=30e5,
     startTime=15) annotation (Placement(transformation(extent={{-134,-50},{-114,-30}})));
 equation
-  connect(discretizedHEX.rearAir, multiSensor_Tpm.fore) annotation (Line(
-      points={{-14,24},{-22,24}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEX.foreAir, multiSensor_Tpm1.rear) annotation (Line(
-      points={{6,24},{18,24}},
-      color={28,108,200},
-      thickness=0.5));
   connect(boundary_rear.p0_var, const1.y) annotation (Line(points={{-88,30},{-94,30},{-94,24},{-99,24}},
                                                                                        color={0,0,127}));
   connect(boundary_fore1.rear, flowResistanceB.fore) annotation (Line(
@@ -149,14 +145,6 @@ equation
   connect(boundary_rear1.fore, multiSensor_Tpm2.rear)
     annotation (Line(
       points={{92,-8},{66,-8},{66,8},{38,8}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEX.rearRef, multiSensor_Tpm2.fore) annotation (Line(
-      points={{6,8},{18,8}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedHEX.foreRef, multiSensor_Tpm3.rear) annotation (Line(
-      points={{-14,8},{-24,8}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.fore, flowResistanceB.rear) annotation (Line(
@@ -184,6 +172,22 @@ equation
   connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-102,-34},{-108,-34},{-108,-40},{-113,-40}}, color={0,0,127}));
   connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}},              color={0,0,127}));
   connect(feedback.u1, ramp1.y) annotation (Line(points={{0,-48},{-19,-48}}, color={0,0,127}));
+  connect(discretizedHEX.foreB, multiSensor_Tpm3.rear) annotation (Line(
+      points={{-14.2,8},{-24,8}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(multiSensor_Tpm.fore, discretizedHEX.rearA) annotation (Line(
+      points={{-22,24},{-14,24}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedHEX.foreA, multiSensor_Tpm1.rear) annotation (Line(
+      points={{6,24},{18,24}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(multiSensor_Tpm2.fore, discretizedHEX.rearB) annotation (Line(
+      points={{18,8},{6,8}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=40, Tolerance=1e-6, Interval=0.04, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

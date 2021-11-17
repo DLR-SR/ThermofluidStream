@@ -5,8 +5,13 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
   import SI = Modelica.SIunits;
 
 annotation (
-  version="0.2.1",
+  version="0.3.0",
   uses(Modelica(version="3.2.3")),
+  conversion(
+    from(
+      version="0.2.1",
+      to="0.3.0",
+      script="modelica://ThermofluidStream/Resources/ConversionSkripts/convert0_2_1to0_3_0.mos")),
   Documentation(info="<html>
 
 </html>", revisions="<html>

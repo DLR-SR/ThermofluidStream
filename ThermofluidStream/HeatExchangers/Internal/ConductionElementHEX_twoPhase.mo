@@ -1,31 +1,22 @@
 within ThermofluidStream.HeatExchangers.Internal;
-model ConductionElementHEX_twoPhase "Volume with quasisationary mass and heatport"
-  extends Processes.Internal.PartialConductionElement(
-    redeclare package Medium = TwoPhaseMedium,
-    final init= Processes.Internal.InitializationMethodsCondElement.inlet,
-    final neglectPressureChanges=true);
+model ConductionElementHEX_twoPhase "ConductionElement for two-phase fluids"
+  extends PartialConductionElementHEX(redeclare package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium);
 
   import Modelica.Math;
 
-  replaceable package TwoPhaseMedium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
-    annotation(choicesAllMatching=true);
+  parameter SI.CoefficientOfHeatTransfer U_liq_nom = 700 "Nominal coefficient of heat transfer for liquid region";
+  parameter SI.CoefficientOfHeatTransfer U_vap_nom = 500 "Nominal coefficient of heat transfer for vapour region";
+  parameter SI.CoefficientOfHeatTransfer U_tp_nom = 1000 "Nominal coefficient of heat transfer for two-phase region";
 
-  parameter SI.Area A "Contact area of volume with medium";
-  parameter SI.CoefficientOfHeatTransfer U_liq_nom "Nominal coefficient of heat transfer for liquid region";
-  parameter SI.CoefficientOfHeatTransfer U_vap_nom "Nominal coefficient of heat transfer for vapour region";
-  parameter SI.CoefficientOfHeatTransfer U_tp_nom "Nominal coefficient of heat transfer for two-phase region";
-
-  parameter SI.MassFlowRate m_flow_nom = 0.5 "Nominal mass-flow rate for heat transfer calculation";
+  parameter SI.MassFlowRate m_flow_nom = 0.3 "Nominal mass-flow rate for heat transfer calculation";
   parameter SI.MassFraction delta_x = 0.05 "Value for interpolation width";
 
   constant Real Re_exp_cond(unit="1") = 0.4 "Reynolds-Exponent for heat transfer calculation at condensation (Yan&Lin, 1999)";
   constant Real Re_exp_evap(unit="1") = 0.5 "Reynolds-Exponent for heat transfer calculation at evaporation (Yan&Lin, 1999)";
-  constant SI.CoefficientOfHeatTransfer U_min = 1 "Minimum heat transfer coefficient for temperature adaption at zero massflow";
 
   Real x "Vapor quality calculated from enthalpies";
 
 protected
-  SI.CoefficientOfHeatTransfer U "Heat transfer coefficient to medium";
   SI.CoefficientOfHeatTransfer U_liq "Coefficient of heat transfer for liquid region";
   SI.CoefficientOfHeatTransfer U_tp "Coefficient of heat transfer for two-phase region";
   SI.CoefficientOfHeatTransfer U_vap "Coefficient of heat transfer for vapour region";
@@ -49,8 +40,6 @@ equation
       elseif x < 1 - delta_x then U_tp
       elseif x < 1 + delta_x then U_tp + 0.5*(U_vap - U_tp)*(1 + Math.sin((x - 1)*Modelica.Constants.pi/(2*delta_x)))
       else U_vap));
-
-  k = U*A;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
        Line(

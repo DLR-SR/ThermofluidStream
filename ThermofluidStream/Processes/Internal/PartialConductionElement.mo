@@ -3,7 +3,7 @@ partial model PartialConductionElement "Element with quasi-stationary mass and h
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
   parameter SI.Volume V(displayUnit="l")=0.001 "Volume of the element";
-  parameter Internal.InitializationMethodsCondElement init=Internal.InitializationMethodsCondElement.inlet "Initialization method for h"
+  parameter Internal.InitializationMethodsCondElement init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.inlet "Initialization method for h"
     annotation (Dialog(tab="Initialization", group="Enthalpy"));
   parameter Medium.Temperature T_0 = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == Internal.InitializationMethodsCondElement.T)));
@@ -73,7 +73,11 @@ equation
     //neglegt V*der(p), since p might not be smooth -> to notice a difference der(p) must be about 1e7 Pa/s. see documentation/information
     M*der(h) = Q_flow + m_flow*(h_in_norm - h)+ (if enforce_global_energy_conservation then deltaE_system/T_e else 0);
   end if;
-  der(deltaE_system) = Q_flow + m_flow*(h_in_norm - h);
+  if enforce_global_energy_conservation then
+    der(deltaE_system) = Q_flow + m_flow*(h_in_norm - h);
+  else
+    deltaE_system = 0;
+  end if;
 
   Q_flow = k*(T_heatPort - T);
 
