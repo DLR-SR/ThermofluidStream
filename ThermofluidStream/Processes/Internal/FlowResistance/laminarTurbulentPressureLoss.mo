@@ -51,7 +51,7 @@ algorithm
   // add eps to Re to avoid 0^0 error in computation of lambda_aux for Re=0 (-> a=1).
   Re :=abs(u)*rho*2*r/mu + eps;
 
-  // chang 2008. Formulas for Friction Factor in Transitional Regimes. Journal of Hydraulic Engineering.
+  // cheng 2008. Formulas for Friction Factor in Transitional Regimes. Journal of Hydraulic Engineering.
   a := 1/(1+(Re/2720)^9);
   b := 1/(1+(Re/(160*2*r/ks))^2);
   //compute lambda_aux = Re*lambda to avoid devision by zero at Re=0 and to avoid if-else
