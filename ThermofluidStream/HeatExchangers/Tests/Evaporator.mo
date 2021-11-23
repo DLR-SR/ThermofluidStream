@@ -71,11 +71,20 @@ model Evaporator
   DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
-        U_liq_nom=1000,
-        U_vap_nom=1400,
-        U_tp_nom=3000),
+    redeclare model ConductionElementA = Internal.ConductionElementHEX(
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=MediumAir,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation,
+      U_nom=4000),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=MediumRefrigerant,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation,
+      U_liq_nom=1000,
+      U_vap_nom=1400,
+      U_tp_nom=3000),
     initializeMassFlow=true,
     nCells=20,
     A=10,

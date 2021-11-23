@@ -65,8 +65,20 @@ model TestDiscretizedHEXvsDir
   DiscretizedCounterFlowHEX discretizedHEXUndir(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX(
+      A=discretizedHEXUndir.A/discretizedHEXUndir.nCells,
+      V=discretizedHEXUndir.V_Hex/discretizedHEXUndir.nCells,
+      redeclare package Medium = MediumAir,
+      enforce_global_energy_conservation=discretizedHEXUndir.enforce_global_energy_conservation,
+      init=discretizedHEXUndir.init_A,
+      h_0= discretizedHEXUndir.h0_A),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEXUndir.A/discretizedHEXUndir.nCells,
+      V=discretizedHEXUndir.V_Hex/discretizedHEXUndir.nCells,
+      redeclare package Medium = MediumRefrigerant,
+      enforce_global_energy_conservation=discretizedHEXUndir.enforce_global_energy_conservation,
+      init=discretizedHEXUndir.init_B,
+      h_0= discretizedHEXUndir.h0_B),
     nCells=10,
     V_Hex(displayUnit="m3"),
     initializeMassFlow=true,
@@ -210,11 +222,14 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(extent={{-134,-74},{-114,-54}})));
   Modelica.Blocks.Nonlinear.Limiter limiter3(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{-76,-70},{-64,-58}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX
-                                                           evaporator(
+  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
+    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=MediumRefrigerant,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=10,
     k_wall=300) annotation (Placement(transformation(extent={{10,10},{-10,-10}},
@@ -345,11 +360,14 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(extent={{68,-140},{88,-120}})));
   Modelica.Blocks.Nonlinear.Limiter limiter5(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{140,-172},{128,-160}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX
-                                                           condenser(
+  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=condenser.A/condenser.nCells,
+      V=condenser.V_Hex/condenser.nCells,
+      redeclare package Medium=MediumRefrigerant,
+      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
     initializeMassFlow=true,
     nCells=10,
     k_wall=300) annotation (Placement(transformation(extent={{-10,-10},{10,10}},

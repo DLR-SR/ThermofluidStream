@@ -62,8 +62,20 @@ model TestDiscretizedHEX
   DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX(
+      A=discretizedHEX.A/discretizedHEX.nCells,
+      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
+      redeclare package Medium = MediumAir,
+      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation,
+      init=discretizedHEX.init_A,
+      h_0= discretizedHEX.h0_A),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEX.A/discretizedHEX.nCells,
+      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
+      redeclare package Medium = MediumRefrigerant,
+      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation,
+      init=discretizedHEX.init_B,
+      h_0= discretizedHEX.h0_B),
     nCells=10,
     V_Hex(displayUnit="m3"),
     initializeMassFlow=false,

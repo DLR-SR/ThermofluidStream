@@ -43,8 +43,16 @@ model Recuperator
   DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = MediumRefrigerant,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX_twoPhase,
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX_twoPhase(
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=MediumRefrigerant,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=MediumRefrigerant,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
     initializeMassFlow=false,
     nCells=20,
     A=10,

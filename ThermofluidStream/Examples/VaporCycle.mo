@@ -11,12 +11,19 @@ model VaporCycle
     annotation(choicesAllMatching=true);
 
 
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         condenser(
+  HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
+      A=condenser.A/condenser.nCells,
+      V=condenser.V_Hex/condenser.nCells,
+      redeclare package Medium=SecondaryMedium,
+      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
+      A=condenser.A/condenser.nCells,
+      V=condenser.V_Hex/condenser.nCells,
+      redeclare package Medium=RefrigerantMedium,
+      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
     initializeMassFlow=true,
     nCells=10,
     A=30,
@@ -24,12 +31,19 @@ model VaporCycle
     k_wall=50) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={2,60})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         evaporator(
+  HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=SecondaryMedium,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=RefrigerantMedium,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
     initializeMassFlow=false,
     nCells=10,
     A=30,

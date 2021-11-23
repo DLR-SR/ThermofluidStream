@@ -4,30 +4,47 @@ model TestXRGMedia "Test for five XRG Media with various components"
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
                                     annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         discretizedHEX(
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = XRGMedia.R134a_ph,
     redeclare package MediumB = XRGMedia.NH3_ph,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX(
+      A=discretizedHEX.A/discretizedHEX.nCells,
+      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
+      redeclare package Medium=XRGMedia.R134a_ph,
+      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEX.A/discretizedHEX.nCells,
+      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
+      redeclare package Medium=XRGMedia.NH3_ph,
+      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation),
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-18,72})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         discretizedHEX1(
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX1(
     redeclare package MediumA = XRGMedia.NH3_ph,
     redeclare package MediumB = XRGMedia.CO2_ph,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX(
+      A=discretizedHEX1.A/discretizedHEX1.nCells,
+      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
+      redeclare package Medium=XRGMedia.NH3_ph,
+      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEX1.A/discretizedHEX1.nCells,
+      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
+      redeclare package Medium=XRGMedia.CO2_ph,
+      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation),
     initializeMassFlow=false) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={30,56})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         discretizedHEX2(
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX2(
     redeclare package MediumA = XRGMedia.CO2_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEX2.A/discretizedHEX2.nCells,
+      V=discretizedHEX2.V_Hex/discretizedHEX2.nCells,
+      redeclare package Medium=XRGMedia.R134a_ph,
+      enforce_global_energy_conservation=discretizedHEX2.enforce_global_energy_conservation),
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -44,11 +61,14 @@ model TestXRGMedia "Test for five XRG Media with various components"
     p_start=200000,
     V_par=0.1) annotation (Placement(transformation(extent={{102,54},{82,74}})));
   Boundaries.Sink sink1(redeclare package Medium = XRGMedia.NH3_ph) annotation (Placement(transformation(extent={{-38,54},{-58,74}})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         discretizedHEX4(
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX4(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
+      A=discretizedHEX4.A/discretizedHEX4.nCells,
+      V=discretizedHEX4.V_Hex/discretizedHEX4.nCells,
+      redeclare package Medium=XRGMedia.R134a_ph,
+      enforce_global_energy_conservation=discretizedHEX4.enforce_global_energy_conservation),
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,

@@ -11,8 +11,16 @@ model HeatPump
                                          condenser(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
+      A=condenser.A/condenser.nCells,
+      V=condenser.V_Hex/condenser.nCells,
+      redeclare package Medium=Air,
+      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
+      A=condenser.A/condenser.nCells,
+      V=condenser.V_Hex/condenser.nCells,
+      redeclare package Medium=Medium,
+      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
     initializeMassFlow=false,
     nCells=10,
     A=10,
@@ -20,12 +28,19 @@ model HeatPump
     k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-80,82})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         evaporator(
+  HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=Air,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
+      A=evaporator.A/evaporator.nCells,
+      V=evaporator.V_Hex/evaporator.nCells,
+      redeclare package Medium=Medium,
+      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
     initializeMassFlow=false,
     nCells=10,
     A=10,
