@@ -144,7 +144,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   for i in 1:nCells-1 loop
-    connect(thermalElementA[i].outlet, thermalElementA[i + 1].inlet);
+    connect(flowResistanceA[i].outlet, thermalElementA[i + 1].inlet);
   end for;
   connect(flowResistanceA[nCells].outlet, outletA)
     annotation (Line(

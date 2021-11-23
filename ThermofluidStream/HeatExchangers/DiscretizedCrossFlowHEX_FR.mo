@@ -150,7 +150,7 @@ equation
   for i in 1:nCells-1 loop
     connect(flowResistanceB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(flowResistanceB[1].outlet, outletB)
+  connect(flowResistanceB[nCells].outlet, outletB)
     annotation (Line(
       points={{-62,-80},{-82,-80},{-82,-80},{-102,-80}},
       color={28,108,200},
