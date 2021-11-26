@@ -40,30 +40,16 @@ model BoilerEspresso "Test for the espresso boiler"
         rotation=90,
         origin={10,-70})));
 
-  Modelica.Blocks.Logical.Hysteresis hysteresis(
-    uLow=0.25,
-    uHigh=0.30,
-    pre_y_start=false)
-    annotation (Placement(transformation(extent={{-90,-80},{-70,-60}})));
-  Modelica.Blocks.Math.BooleanToReal booleanToReal(realTrue=0.0, realFalse=1.0)
-    annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
-    annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  Modelica.Blocks.Logical.Hysteresis hysteresis1(
-    uLow=1.1e5,
-    uHigh=1.2e5,
-    pre_y_start=false)
-    annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
-  Modelica.Blocks.Math.BooleanToReal booleanToReal1(realTrue=0.0, realFalse=1000.0)
-    annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow1
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={52,8})));
+        origin={50,0})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=-300)
-    annotation (Placement(transformation(extent={{62,-24},{82,-4}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={80,0})));
   FlowControl.TanValve     tanValve1(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
@@ -124,6 +110,32 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{-82,60},{-62,80}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=1, initType=Modelica.Blocks.Types.Init.SteadyState)
     annotation (Placement(transformation(extent={{-50,60},{-30,80}})));
+  Modelica.Blocks.Continuous.FirstOrder firstOrder3(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={-20,-70})));
+  Modelica.Blocks.Continuous.LimPID
+                                PID2(
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    k=1,
+    Ti=1,
+    yMax=0.005,
+    yMin=0.00001,
+    y_start=0)
+    annotation (Placement(transformation(extent={{-70,-60},{-50,-80}})));
+  Modelica.Blocks.Sources.RealExpression realExpression2(y=0.3)
+                                                               annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
+  Modelica.Blocks.Continuous.LimPID
+                                PID1(
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    k=1,
+    Ti=2,
+    yMax=3000,
+    yMin=0,
+    y_start=0)
+    annotation (Placement(transformation(extent={{-70,10},{-50,-10}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=1.25e5)
+                                                               annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
   connect(boilerEspresso.inlet, flowResistance.outlet) annotation (Line(
       points={{10,-20},{10,-30}},
@@ -137,26 +149,14 @@ equation
       points={{10,-60},{10,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(booleanToReal.u, hysteresis.y)
-    annotation (Line(points={{-62,-70},{-69,-70}},   color={255,0,255}));
-  connect(booleanToReal.y, firstOrder.u)
-    annotation (Line(points={{-39,-70},{-32,-70}},   color={0,0,127}));
   connect(boilerEspresso.heatport_heat, prescribedHeatFlow.port) annotation (
       Line(points={{-2,0},{-20,0}},                      color={191,0,0}));
-  connect(booleanToReal1.u, hysteresis1.y)
-    annotation (Line(points={{-72,0},{-81,0}},     color={255,0,255}));
-  connect(booleanToReal1.y, prescribedHeatFlow.Q_flow) annotation (Line(points={{-49,0},{-40,0}},
-                                                color={0,0,127}));
-  connect(boilerEspresso.p_out, hysteresis1.u) annotation (Line(points={{-10,12},{-30,12},{-30,20},{-110,20},{-110,0},{-104,0}},
-                                                            color={0,0,127}));
 
-  connect(tanValve.u, firstOrder.y)
-    annotation (Line(points={{2,-70},{-9,-70}},              color={0,0,127}));
   connect(prescribedHeatFlow1.port, boilerEspresso.heatport_HX)
-    annotation (Line(points={{42,8},{32,8},{32,0},{22,0}},
+    annotation (Line(points={{40,1.33227e-15},{32,1.33227e-15},{32,0},{22,0}},
                                                color={191,0,0}));
   connect(realExpression.y, prescribedHeatFlow1.Q_flow)
-    annotation (Line(points={{83,-14},{94,-14},{94,8},{62,8}},
+    annotation (Line(points={{69,1.33227e-15},{66,1.33227e-15},{66,0},{64,0},{64,-1.33227e-15},{60,-1.33227e-15}},
                                                              color={0,0,127}));
   connect(tanValve1.outlet, sink.inlet) annotation (Line(
       points={{30,80},{30,90}},
@@ -190,8 +190,13 @@ equation
       points={{-8,30},{-8,26},{2,26},{2,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(boilerEspresso.y_out, hysteresis.u) annotation (Line(points={{-10,-12},{-30,-12},{-30,-40},{-100,-40},{-100,-70},{-92,-70}},
-        color={0,0,127}));
+  connect(boilerEspresso.p_out, PID1.u_m) annotation (Line(points={{-10,12},{-20,12},{-20,20},{-60,20},{-60,12}}, color={0,0,127}));
+  connect(PID1.y, prescribedHeatFlow.Q_flow) annotation (Line(points={{-49,0},{-40,0}}, color={0,0,127}));
+  connect(realExpression1.y, PID1.u_s) annotation (Line(points={{-79,0},{-72,0}}, color={0,0,127}));
+  connect(boilerEspresso.y_out, PID2.u_m) annotation (Line(points={{-10,-12},{-20,-12},{-20,-50},{-60,-50},{-60,-58}}, color={0,0,127}));
+  connect(realExpression2.y, PID2.u_s) annotation (Line(points={{-79,-70},{-72,-70}}, color={0,0,127}));
+  connect(PID2.y, firstOrder3.u) annotation (Line(points={{-49,-70},{-40,-70},{-40,-70},{-32,-70}}, color={0,0,127}));
+  connect(firstOrder3.y, tanValve.u) annotation (Line(points={{-9,-70},{2,-70}}, color={0,0,127}));
   annotation(experiment(StopTime=1000, Tolerance=1e-6, Interval=1), Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
