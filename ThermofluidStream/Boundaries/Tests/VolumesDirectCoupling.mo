@@ -226,13 +226,14 @@ equation
       thickness=0.5));
   annotation (experiment(
       StopTime=0.05,
-   Tolerance=1e-6,
-   Interval=5e-5,
+      Interval=5e-06,
+      Tolerance=1e-07,
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-160},{100,160}})),
         Documentation(info="<html>
-<p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
+<p>This test uses deceased tolerance and saves more points (smaller output interval) because of the different time-scales and relative stiff equation system.</p>
+<p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end VolumesDirectCoupling;
