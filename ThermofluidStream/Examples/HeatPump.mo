@@ -11,16 +11,8 @@ model HeatPump
                                          condenser(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=Air,
-      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=Medium,
-      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,
@@ -31,16 +23,8 @@ model HeatPump
   HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=Air,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=Medium,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,
@@ -61,7 +45,6 @@ model HeatPump
     initPhi=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = Medium,
         omega_ref=200,
         m_flow_ref=1e-2,
         eta=0.8))
@@ -122,16 +105,14 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-          redeclare package Medium = Air, omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
     annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-          redeclare package Medium = Air, omega_ref=100))        annotation (
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))        annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,

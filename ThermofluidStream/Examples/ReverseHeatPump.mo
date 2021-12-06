@@ -20,7 +20,6 @@ model ReverseHeatPump
     redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
-        redeclare package Medium = RefrigerantMedium,
         eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -30,20 +29,8 @@ model ReverseHeatPump
                                            discretizedHEX(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX (
-      A=discretizedHEX.A/discretizedHEX.nCells,
-      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
-      redeclare package Medium = SecondaryMedium,
-      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation,
-      init=discretizedHEX.init_A,
-      h_0= discretizedHEX.h0_A),
-    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=discretizedHEX.A/discretizedHEX.nCells,
-      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
-      redeclare package Medium = RefrigerantMedium,
-      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation,
-      init=discretizedHEX.init_B,
-      h_0= discretizedHEX.h0_B),
+    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
     nCells=5,
     initializeMassFlow=false,
@@ -56,20 +43,8 @@ model ReverseHeatPump
                                            discretizedHEX1(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX (
-      A=discretizedHEX1.A/discretizedHEX1.nCells,
-      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
-      redeclare package Medium = SecondaryMedium,
-      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation,
-      init=discretizedHEX1.init_A,
-      h_0= discretizedHEX1.h0_A),
-    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=discretizedHEX1.A/discretizedHEX1.nCells,
-      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
-      redeclare package Medium = RefrigerantMedium,
-      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation,
-      init=discretizedHEX1.init_B,
-      h_0= discretizedHEX1.h0_B),
+    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
     nCells=5,
     initializeMassFlow=false,

@@ -7,21 +7,21 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
-    A=A/nCells,
-    V=V_Hex/nCells,
+    final A=A/nCells,
+    final V=V_Hex/nCells,
     redeclare package Medium = MediumA,
-    enforce_global_energy_conservation=enforce_global_energy_conservation,
-    init=init_A,
-    h_0= h0_A)
+    final enforce_global_energy_conservation=enforce_global_energy_conservation,
+    final init=init_A,
+    final h_0= h0_A)
     "Heat transfer element model for side A"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
-    A=A/nCells,
-    V=V_Hex/nCells,
+    final A=A/nCells,
+    final V=V_Hex/nCells,
     redeclare package Medium = MediumB,
-    enforce_global_energy_conservation=enforce_global_energy_conservation,
-    init=init_B,
-    h_0= h0_B)
+    final enforce_global_energy_conservation=enforce_global_energy_conservation,
+    final init=init_B,
+    final h_0= h0_B)
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 

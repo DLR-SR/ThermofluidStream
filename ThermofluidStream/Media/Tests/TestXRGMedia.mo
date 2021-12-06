@@ -7,16 +7,8 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = XRGMedia.R134a_ph,
     redeclare package MediumB = XRGMedia.NH3_ph,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX(
-      A=discretizedHEX.A/discretizedHEX.nCells,
-      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
-      redeclare package Medium=XRGMedia.R134a_ph,
-      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
-      A=discretizedHEX.A/discretizedHEX.nCells,
-      V=discretizedHEX.V_Hex/discretizedHEX.nCells,
-      redeclare package Medium=XRGMedia.NH3_ph,
-      enforce_global_energy_conservation=discretizedHEX.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -24,27 +16,15 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX1(
     redeclare package MediumA = XRGMedia.NH3_ph,
     redeclare package MediumB = XRGMedia.CO2_ph,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX(
-      A=discretizedHEX1.A/discretizedHEX1.nCells,
-      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
-      redeclare package Medium=XRGMedia.NH3_ph,
-      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
-      A=discretizedHEX1.A/discretizedHEX1.nCells,
-      V=discretizedHEX1.V_Hex/discretizedHEX1.nCells,
-      redeclare package Medium=XRGMedia.CO2_ph,
-      enforce_global_energy_conservation=discretizedHEX1.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={30,56})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX2(
     redeclare package MediumA = XRGMedia.CO2_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
-      A=discretizedHEX2.A/discretizedHEX2.nCells,
-      V=discretizedHEX2.V_Hex/discretizedHEX2.nCells,
-      redeclare package Medium=XRGMedia.R134a_ph,
-      enforce_global_energy_conservation=discretizedHEX2.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -64,11 +44,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX4(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase(
-      A=discretizedHEX4.A/discretizedHEX4.nCells,
-      V=discretizedHEX4.V_Hex/discretizedHEX4.nCells,
-      redeclare package Medium=XRGMedia.R134a_ph,
-      enforce_global_energy_conservation=discretizedHEX4.enforce_global_energy_conservation),
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true)
                 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -185,8 +161,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Processes.Pump pump(
     redeclare package Medium = XRGMedia.R134a_ph,
     omega_from_input=true,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
-       redeclare package Medium = XRGMedia.R134a_ph))
+    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow)
     annotation (Placement(transformation(extent={{-80,42},{-100,22}})));
   Modelica.Blocks.Sources.Constant const(k=6300) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
   Processes.FlowResistance flowResistance8(

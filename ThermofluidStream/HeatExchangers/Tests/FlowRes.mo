@@ -78,17 +78,8 @@ model FlowRes
   DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX(
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=MediumAir,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation,
-      U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=MediumRefrigerant,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -185,17 +176,8 @@ model FlowRes
   DiscretizedCounterFlowHEX_FR evaporator1(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX(
-      A=evaporator1.A/evaporator1.nCells,
-      V=evaporator1.V_Hex/evaporator1.nCells,
-      redeclare package Medium=MediumAir,
-      enforce_global_energy_conservation=evaporator1.enforce_global_energy_conservation,
-      U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
-      A=evaporator1.A/evaporator1.nCells,
-      V=evaporator1.V_Hex/evaporator1.nCells,
-      redeclare package Medium=MediumRefrigerant,
-      enforce_global_energy_conservation=evaporator1.enforce_global_energy_conservation,
+    redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -292,16 +274,8 @@ model FlowRes
   DiscretizedCrossFlowHEX   condenser(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX(
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=MediumAir,
-      enforce_global_energy_conservation=evaporator1.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=MediumRefrigerant,
-      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=nCells,
     k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -417,16 +391,8 @@ model FlowRes
   DiscretizedCrossFlowHEX_FR condenser1(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementA = Internal.ConductionElementHEX(
-      A=condenser1.A/condenser1.nCells,
-      V=condenser1.V_Hex/condenser1.nCells,
-      redeclare package Medium=MediumAir,
-      enforce_global_energy_conservation=condenser1.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase(
-      A=condenser1.A/condenser1.nCells,
-      V=condenser1.V_Hex/condenser1.nCells,
-      redeclare package Medium=MediumRefrigerant,
-      enforce_global_energy_conservation=condenser1.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=nCells,
     l_A=10,

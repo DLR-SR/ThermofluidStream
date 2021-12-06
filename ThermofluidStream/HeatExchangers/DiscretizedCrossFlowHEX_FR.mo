@@ -8,18 +8,18 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
-      A=A/nCells,
-      V=V_Hex/nCells,
+      final A=A/nCells,
+      final V=V_Hex/nCells,
       redeclare package Medium=MediumA,
-      enforce_global_energy_conservation=enforce_global_energy_conservation)
+      final enforce_global_energy_conservation=enforce_global_energy_conservation)
     "Heat transfer element model for side A"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
-      A=A/nCells,
-      V=V_Hex/nCells,
+      final A=A/nCells,
+      final V=V_Hex/nCells,
       redeclare package Medium=MediumB,
-      enforce_global_energy_conservation=enforce_global_energy_conservation)
+      final enforce_global_energy_conservation=enforce_global_energy_conservation)
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 

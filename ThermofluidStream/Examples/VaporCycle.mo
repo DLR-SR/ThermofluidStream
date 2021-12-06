@@ -14,16 +14,8 @@ model VaporCycle
   HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=SecondaryMedium,
-      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=condenser.A/condenser.nCells,
-      V=condenser.V_Hex/condenser.nCells,
-      redeclare package Medium=RefrigerantMedium,
-      enforce_global_energy_conservation=condenser.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=10,
     A=30,
@@ -34,16 +26,8 @@ model VaporCycle
   HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX (
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=SecondaryMedium,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase (
-      A=evaporator.A/evaporator.nCells,
-      V=evaporator.V_Hex/evaporator.nCells,
-      redeclare package Medium=RefrigerantMedium,
-      enforce_global_energy_conservation=evaporator.enforce_global_energy_conservation),
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=30,
@@ -218,7 +202,6 @@ model VaporCycle
     redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
-        redeclare package Medium = RefrigerantMedium,
         eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
