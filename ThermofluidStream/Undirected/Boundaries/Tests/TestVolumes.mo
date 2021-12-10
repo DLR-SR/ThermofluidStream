@@ -18,7 +18,6 @@ model TestVolumes "Test for undirected Volumes"
     redeclare package Medium = Medium,
     p_start=100000,
     T_start=293.15,
-    k_volume_damping=0,
     V_ref(displayUnit="m3") = 1,
     rear(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
@@ -26,7 +25,6 @@ model TestVolumes "Test for undirected Volumes"
     redeclare package Medium = Medium,
     p_start=150000,
     T_start=313.15,
-    k_volume_damping=0,
     rear(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-130,-30},{-110,-10}})));
   Volume heatportVolume(
@@ -69,7 +67,6 @@ model TestVolumes "Test for undirected Volumes"
     redeclare package Medium = Medium,
     p_start=100000,
     T_start=293.15,
-    k_volume_damping=0,
     V_ref(displayUnit="m3") = 1,
     inlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-90,60},{-70,80}})));
@@ -78,7 +75,6 @@ model TestVolumes "Test for undirected Volumes"
     redeclare package Medium = Medium,
     p_start=150000,
     T_start=313.15,
-    k_volume_damping=0,
     inlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-130,60},{-110,80}})));
   ThermofluidStream.Boundaries.Source

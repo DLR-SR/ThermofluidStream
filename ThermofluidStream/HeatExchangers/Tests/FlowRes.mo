@@ -173,8 +173,7 @@ model FlowRes
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-160,-50},{-140,-30}})));
-  DiscretizedCounterFlowHEX_FR
-                            evaporator1(
+  DiscretizedCounterFlowHEX_FR evaporator1(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),

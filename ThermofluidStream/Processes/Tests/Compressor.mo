@@ -36,7 +36,6 @@ model Compressor "Test for compressors"
     m_flow_0=-1,
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = Medium,
   omega_ref=3000,
         skew=1,
         m_flow_ref=1))
@@ -54,7 +53,6 @@ model Compressor "Test for compressors"
     initPhi=true,
     redeclare function dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = Medium,
   omega_ref=500,
         skew=1,
         m_flow_ref=0.01,

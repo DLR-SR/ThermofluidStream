@@ -73,9 +73,9 @@ model Evaporator
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
-        U_liq_nom=1000,
-        U_vap_nom=1400,
-        U_tp_nom=3000),
+      U_liq_nom=1000,
+      U_vap_nom=1400,
+      U_tp_nom=3000),
     initializeMassFlow=true,
     nCells=20,
     A=10,

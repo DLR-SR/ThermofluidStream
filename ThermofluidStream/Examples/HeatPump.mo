@@ -20,8 +20,7 @@ model HeatPump
     k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-80,82})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         evaporator(
+  HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
     redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
@@ -46,7 +45,6 @@ model HeatPump
     initPhi=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        redeclare package Medium = Medium,
         omega_ref=200,
         m_flow_ref=1e-2,
         eta=0.8))
@@ -107,16 +105,14 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-          redeclare package Medium = Air, omega_ref=100))
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
     annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-          redeclare package Medium = Air, omega_ref=100))        annotation (
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))        annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,

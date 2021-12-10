@@ -11,8 +11,7 @@ model VaporCycle
     annotation(choicesAllMatching=true);
 
 
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         condenser(
+  HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
     redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
@@ -24,8 +23,7 @@ model VaporCycle
     k_wall=50) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={2,60})));
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         evaporator(
+  HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
     redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
@@ -204,7 +202,6 @@ model VaporCycle
     redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
-        redeclare package Medium = RefrigerantMedium,
         eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

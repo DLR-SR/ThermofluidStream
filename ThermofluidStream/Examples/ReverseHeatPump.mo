@@ -20,7 +20,6 @@ model ReverseHeatPump
     redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
-        redeclare package Medium = RefrigerantMedium,
         eta=0.8))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

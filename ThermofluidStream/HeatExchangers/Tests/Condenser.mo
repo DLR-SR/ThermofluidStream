@@ -73,13 +73,13 @@ model Condenser
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{212,-94},{232,-74}})));
   DiscretizedCrossFlowHEX   condenser(
-    redeclare package MediumA = MediumAir,
-    redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX,
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
+    redeclare package MediumA = MediumAir,
+    redeclare package MediumB = MediumRefrigerant,
     initializeMassFlow=true,
-    nCells=20,
-    k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    k_wall=150,
+    nCells=20) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={2,10})));
   Processes.FlowResistance flowResistanceA(
