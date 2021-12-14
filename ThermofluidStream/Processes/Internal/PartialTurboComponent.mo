@@ -89,7 +89,7 @@ initial equation
   end if;
 
 equation
-  // compute dp, tau_st from characterisit curve
+  // compute dp, tau_st from characteristic curve
   (dp, tau_st) = dp_tau(m_flow, omega, inlet.state, m_flow_reg, omega_reg, rho_min);
   h_out = h_in + dh;
   Xi_out = Xi_in;

@@ -3,9 +3,9 @@ function linearQuadraticPressureLoss
   "Linear-quadratic pressure loss function"
   extends Internal.FlowResistance.partialPressureLoss;
 
-  input Real k(unit="Pa.s/kg") = 0 "Linear resitance coefficient"
+  input Real k(unit="Pa.s/kg") = 0 "Linear resistance coefficient"
     annotation(Dialog(enable=true));
-  input Real k2(unit="(Pa.s.s)/(kg.kg)") = 0 "Quadratic resitance coefficient"
+  input Real k2(unit="(Pa.s.s)/(kg.kg)") = 0 "Quadratic resistance coefficient"
     annotation(Dialog(enable=true));
 
 algorithm

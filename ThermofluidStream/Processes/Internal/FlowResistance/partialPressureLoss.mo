@@ -11,6 +11,6 @@ partial function partialPressureLoss
 
   annotation(Inline=true, smoothOrder=100,
     Documentation(info="<html>
-<p>Interface definition for a pressure loss in a pipe. Inputs are inforamtion about flow condition and the medium as well as the geometry of the pipe, output is the lost pressure.</p>
+<p>Interface definition for a pressure loss in a pipe. Inputs are information about flow condition and the medium as well as the geometry of the pipe, output is the lost pressure.</p>
 </html>"));
 end partialPressureLoss;
