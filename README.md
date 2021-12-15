@@ -5,6 +5,9 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ![](/doc/example.svg)
 
 ## Highlights
+
+<img align="right" width="200" src="/doc/Santa_Award_final.png">
+
 - **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
 - Robust modeling of even complex architectures due to new computational scheme
 - Easy to initialize and good support for switching bypasses and other configuration changes
