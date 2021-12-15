@@ -36,7 +36,7 @@ model Pump "Test for pumps"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
     m_acceleraton_0=0.2,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = Medium))
+        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
     annotation (Placement(transformation(extent={{-2,62},{18,82}})));
 
   Modelica.Blocks.Sources.Constant const(k=800)
@@ -49,7 +49,7 @@ model Pump "Test for pumps"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal(redeclare package Medium = Medium))
+        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   tf.Processes.Tests.Power power1(P=8000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,2},{-4,22}})));
@@ -67,8 +67,7 @@ model Pump "Test for pumps"
     enableAccessHeatPort=true,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
-        k_p_input=1e7,
-        redeclare package Medium = Medium))
+        k_p_input=1e7))
     annotation (Placement(transformation(extent={{-2,-18},{18,2}})));
   Modelica.Blocks.Sources.Constant const1(k=3200)
     annotation (Placement(transformation(extent={{-24,-38},{-4,-18}})));
@@ -86,8 +85,7 @@ model Pump "Test for pumps"
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input=0.0006,
-        k_p_input=1e8,
-        redeclare package Medium = Medium))
+        k_p_input=1e8))
     annotation (Placement(transformation(extent={{-2,-56},{18,-36}})));
   tf.Processes.Tests.Power power2(P=5000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));
@@ -105,8 +103,7 @@ model Pump "Test for pumps"
     phi_0=-1745.3292519943,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=true,
-        omega_D(displayUnit="rad/s") = 100,
-        redeclare package Medium = Medium))
+        omega_D(displayUnit="rad/s") = 100))
     annotation (Placement(transformation(extent={{-10,130},{10,150}})));
   Modelica.Blocks.Sources.Constant const2(k=100)
     annotation (Placement(transformation(extent={{-36,102},{-16,122}})));

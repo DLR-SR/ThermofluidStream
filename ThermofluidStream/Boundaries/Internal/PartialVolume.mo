@@ -77,7 +77,6 @@ protected
   Medium.MassFraction Xi_in[Medium.nXi] = if noEvent(m_flow_in >= 0) then Medium.massFraction(state_in) else medium.Xi;
 
   Medium.ThermodynamicState state_out;
-  SI.Pressure p_out = Medium.pressure(state_out);
   // fix potential instabilities by setting the incoming enthalpy and mass fraction inlet ones,
   // effectiveley removing the mass-flow related parts of the differential equations for U and MXi
   SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out >= 0) then Medium.specificEnthalpy(state_out) else medium.h;
@@ -112,7 +111,7 @@ equation
   der(m_flow_in)*L = r_in - r - r_damping;
   der(m_flow_out)*L = r_out - r_damping;
 
-  r + p_in = p_out;
+  r + p_in = medium.p;
 
   der(M) = m_flow_in + m_flow_out;
   der(U_med) = W_v + Q_flow + h_in*m_flow_in + h_out*m_flow_out;

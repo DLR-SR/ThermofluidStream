@@ -1,0 +1,33 @@
+﻿// changes to the heat discretized exchanger
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedHEX","ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","inletAir","inletB");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","outletAir","outletB");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","inletRef","inletA");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","outletRef","outletA");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","MediumAir","MediumB");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","MediumRefrigerant","MediumA");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","Q_flow_ref","Q_flow_A");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","Q_flow_air","Q_flow_B");
+convertElement("ThermofluidStream.HeatExchangers.DiscretizedHEX","M_ref","M_B");
+convertModifiers("ThermofluidStream.HeatExchangers.DiscretizedHEX",{"m_flow_0"},{"m_flow_0_A=%m_flow_0%", "m_flow_0_B=%m_flow_0%"},false);
+convertModifiers("ThermofluidStream.HeatExchangers.DiscretizedHEX",fill("",0),{"redeclare model ConductionElementA = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase","redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX"} ,false);
+convertModifiers("ThermofluidStream.HeatExchangers.DiscretizedHEX",{"U_nom", "U_liq_nom", "U_vap_nom", "U_tp_nom", "m_flow_nom_ref", "m_flow_nom_air"},{"ConductionElementA(U_liq_nom=%U_liq_nom%, U_vap_nom=%U_vap_nom%, U_tp_nom=%U_tp_nom%, m_flow_nom=%m_flow_nom_ref%)", "ConductionElementB(m_flow_nom=%m_flow_nom_air%, U_nom=%U_nom%)"} ,true);
+// changes to the undi discretized heat exchanger
+convertClass("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","rearAir","rearB");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","foreAir","foreB");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","rearRef","rearA");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","foreRef","foreA");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","MediumAir","MediumB");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","MediumRefrigerant","MediumA");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","Q_flow_ref","Q_flow_A");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","Q_flow_air","Q_flow_B");
+convertElement("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX","M_ref","M_B");
+convertModifiers("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX",{"m_flow_0"},{"m_flow_0_A=%m_flow_0%", "m_flow_0_B=%m_flow_0%"},false);
+convertModifiers("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX",{"initRef"},{"init_A=%initRef%", "init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear"},false);
+convertModifiers("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX",{"h0"},{"h0_A=%h0%"},false);
+convertModifiers("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX",fill("",0),{"redeclare model ConductionElementA = ThermofluidStream.Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase","redeclare model ConductionElementB = ThermofluidStream.Undirected.HeatExchangers.Internal.ConductionElementHEX"} ,false);
+convertModifiers("ThermofluidStream.Undirected.HeatExchangers.DiscretizedHEX",{"U_nom", "U_liq_nom", "U_vap_nom", "U_tp_nom", "m_flow_nom_ref", "m_flow_nom_air"},{"ConductionElementA(U_liq_nom=%U_liq_nom%, U_vap_nom=%U_vap_nom%, U_tp_nom=%U_tp_nom%, m_flow_nom=%m_flow_nom_ref%)", "ConductionElementB(m_flow_nom=%m_flow_nom_air%, U_nom=%U_nom%)"} ,true);
+
+
+

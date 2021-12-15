@@ -28,7 +28,6 @@ model Volumes "Test Volumes"
     redeclare package Medium = Medium,
     p_start=100000,
     T_start=293.15,
-    k_volume_damping=0,
     V_ref(displayUnit="m3") = 1,
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{10,-60},{30,-40}})));
@@ -36,7 +35,6 @@ model Volumes "Test Volumes"
     redeclare package Medium = Medium,
     p_start=150000,
     T_start=313.15,
-    k_volume_damping=0,
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-30,-60},{-10,-40}})));
   Source source1(redeclare package Medium = Medium, p0_par=200000)
@@ -426,6 +424,7 @@ equation
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-200},{100,200}})),
         Documentation(info="<html>
-<p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
+<p>This test purposely violates the asserts for reversed mass-flows to test the behaviour of volumes for prolonged reversed massflow for some of the volumes. The assert is set to warning.</p>
+<p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end Volumes;

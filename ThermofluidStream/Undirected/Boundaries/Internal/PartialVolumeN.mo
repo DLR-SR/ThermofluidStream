@@ -64,6 +64,10 @@ protected
 
   SI.Temperature T_heatPort;
 
+
+  Medium.ThermodynamicState state_out_rear[N_rear];
+  Medium.ThermodynamicState state_out_fore[N_fore];
+
   SI.Pressure r_rear[N_rear];
   SI.Pressure r_fore[N_fore];
   SI.SpecificEnthalpy h_rear[N_rear];
@@ -107,8 +111,8 @@ equation
       0,
       m_flow_reg);
     // dont regstep variables that are only in der(state), to increase accuracy
-    h_rear[i] = if rear[i].m_flow >= 0 then Medium.specificEnthalpy(rear[i].state_forwards) else medium.h;
-    Xi_rear[:, i] = if rear[i].m_flow >= 0 then Medium.massFraction(rear[i].state_forwards) else medium.Xi;
+    h_rear[i] = if rear[i].m_flow >= 0 then Medium.specificEnthalpy(rear[i].state_forwards) else Medium.specificEnthalpy(state_out_rear[i]);
+    Xi_rear[:, i] = if rear[i].m_flow >= 0 then Medium.massFraction(rear[i].state_forwards) else Medium.massFraction(state_out_rear[i]);
 
     rear[i].state_rearwards = medium.state;
   end for;
@@ -119,8 +123,8 @@ equation
       0,
       m_flow_reg);
     // dont regstep variables that are only in der(state), to increase accuracy
-    h_fore[i] = if fore[i].m_flow >= 0 then Medium.specificEnthalpy(fore[i].state_rearwards) else medium.h;
-    Xi_fore[:, i] = if fore[i].m_flow >= 0 then Medium.massFraction(fore[i].state_rearwards) else medium.Xi;
+    h_fore[i] = if fore[i].m_flow >= 0 then Medium.specificEnthalpy(fore[i].state_rearwards) else Medium.specificEnthalpy(state_out_fore[i]);
+    Xi_fore[:, i] = if fore[i].m_flow >= 0 then Medium.massFraction(fore[i].state_rearwards) else Medium.massFraction(state_out_fore[i]);
 
     fore[i].state_forwards = medium.state;
   end for;

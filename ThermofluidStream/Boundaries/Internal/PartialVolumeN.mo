@@ -6,7 +6,7 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
 <p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the inlets and outlets the volume is connected to.</span></p>
 </html>"));
 
-  parameter Integer N = 1 "Number if inputs";
+  parameter Integer N = 1 "Number if inlets";
   parameter Boolean useHeatport = false "If true heatport is added";
   parameter SI.Area A = 1 "Contact area of volume with medium"
     annotation(Dialog(enable=useHeatport));
@@ -63,8 +63,10 @@ protected
   SI.SpecificEnthalpy h_in[N];
   Medium.MassFraction Xi_in[Medium.nXi,N];
 
-  SI.SpecificEnthalpy h_out = if  noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(medium.state) else medium.h;
-  Medium.MassFraction Xi_out[Medium.nXi] = if  noEvent(-m_flow_out >= 0) then Medium.massFraction(medium.state) else  medium.Xi;
+  Medium.ThermodynamicState state_out;
+  // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
+  SI.SpecificEnthalpy h_out = if  noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(state_out)  else medium.h;
+  Medium.MassFraction Xi_out[Medium.nXi] = if  noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else  medium.Xi;
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
   SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";
@@ -113,12 +115,12 @@ equation
   end for;
 
   der(M) = sum(inlet.m_flow) + sum(outlet.m_flow);
-  der(U_med) = W_v + Q_flow + sum(inlet.m_flow.*h_in) + outlet.m_flow*medium.h;
-  der(MXi) = Xi_in*inlet.m_flow + medium.Xi*outlet.m_flow;
+  der(U_med) = W_v + Q_flow + sum(inlet.m_flow.*h_in) + outlet.m_flow*h_out;
+  der(MXi) = Xi_in*inlet.m_flow + Xi_out*outlet.m_flow;
 
   Q_flow = U*A*(T_heatPort - medium.T);
 
-  outlet.state = medium.state;
+  outlet.state = state_out;
 
   if not useHeatport then
     T_heatPort = medium.T;

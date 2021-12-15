@@ -28,8 +28,7 @@ model Reservoir "Test for Reservoir"
     redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         V_r_input(displayUnit="m3") = 0.1,
         k_p_input=500,
-        k_fric_input=0,
-        redeclare package Medium = Medium))
+        k_fric_input=0))
     annotation (Placement(transformation(extent={{34,10},{54,30}})));
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
     r=0.03,

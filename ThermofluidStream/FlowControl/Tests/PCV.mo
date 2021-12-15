@@ -189,7 +189,7 @@ equation
   connect(ramp1.y, pCV3.pressure_set_var) annotation (Line(points={{-49,40},{-10,40},{-10,28}}, color={0,0,127}));
   connect(ramp.y, pCV4.pressure_set_var) annotation (Line(points={{-49,80},{-10,80},{-10,68}},    color={0,0,127}));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{120,100}})),
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     experiment(
       StopTime=1,

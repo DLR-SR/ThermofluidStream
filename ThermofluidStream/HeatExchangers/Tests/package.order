@@ -7,3 +7,5 @@ CrossFlowNTU_zeroMassFlow
 Condenser
 Evaporator
 ElementTwoPhase
+Recuperator
+FlowRes

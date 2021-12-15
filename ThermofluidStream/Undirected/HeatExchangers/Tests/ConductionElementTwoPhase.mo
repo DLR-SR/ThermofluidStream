@@ -5,8 +5,9 @@ model ConductionElementTwoPhase
   package MediumRefrigerant = Media.myMedia.R134a.R134a_ph;
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
-    redeclare package TwoPhaseMedium = MediumRefrigerant,
+    redeclare package Medium = MediumRefrigerant,
     V(displayUnit="l") = 0.001,
+    init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h,
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,

@@ -76,7 +76,9 @@ equation
   if x < 0 then medium.h
   elseif x <= 1 then liquid_level_pipe*h_bubble + (1-liquid_level_pipe)*h_dew
   else medium.h);
-  state_out = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
+
+  state_out_fore = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
+  state_out_rear = state_out_fore;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
