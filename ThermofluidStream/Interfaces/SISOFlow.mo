@@ -64,7 +64,7 @@ initial equation
 equation
 
   inlet.m_flow + outlet.m_flow = 0;
-  outlet.r  =  inlet.r + dr_corr - der(inlet.m_flow) * L;
+  outlet.r  =  inlet.r + dr_corr - der(inlet.m_flow) * L; // inertial pressure outlet.r , inlet.r
 
   if clip_p_out then
     p_out = max(p_min, p_in + dp);
