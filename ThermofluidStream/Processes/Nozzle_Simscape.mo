@@ -47,7 +47,7 @@ protected
   // Mach Number
   Real Mach_R = velocity_R/a_R;
   
-    // Enthalpy Losses
+  // Enthalpy Losses
   SI.Enthalpy dh = 0.5 * (v_A^2 - v_B^2);
   
     
