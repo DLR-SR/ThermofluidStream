@@ -10,8 +10,8 @@ model Nozzle_Simscape "Model for dynamic pressure difference"
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
     annotation(Dialog(tab="Advanced"));
   parameter Real B_lam = 0.999;
-  constant Real R(unit="J/K/mol") = 8.31446261815324;
-  constant Real molarMass(unit="kg/mol") = 0.0289647;
+  parameter Real R(unit="J/K/mol") = 8.31446261815324;
+  parameter Real molarMass(unit="kg/mol") = 0.0289647;
 
 protected
   outer DropOfCommons dropOfCommons;
