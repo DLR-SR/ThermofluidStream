@@ -10,6 +10,8 @@ model Nozzle_Simscape "Model for dynamic pressure difference"
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
     annotation(Dialog(tab="Advanced"));
   parameter Real B_lam = 0.999;
+  constant Real R(unit="J/K/mol") = 8.31446261815324;
+  constant Real molarMass(unit="kg/mol") = 0.0289647;
 
 protected
   outer DropOfCommons dropOfCommons;
@@ -40,7 +42,7 @@ protected
   
   // for Flow Mach = 1
   SI.Temperature T_R_limited = T_R;
-  SI.Velocity a_R = sqrt(Medium.isentropicExponent(inlet.state) * Medium.density_pTX(phat_R, T_R, Xi_in) * T_R_limited);
+  SI.Velocity a_R = sqrt(Medium.isentropicExponent(inlet.state) * R / molarMass * T_R_limited);
   Real K_choked = sqrt((K_tur_AB*a_R)^2 + (1-area_ratio)^2*2*Dp_lam/rho_R);
   SI.Pressure dp_choked = 0.5 * rho_R * K_choked * a_R;
   
