@@ -8,8 +8,6 @@ model Nozzle "Model for dynamic pressure difference"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean assumeConstantDensity=true    "if true only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
-    annotation(Dialog(tab="Advanced"));
 
 protected
   SI.Density rho_in = Medium.density(inlet.state) "density of medium entering";
