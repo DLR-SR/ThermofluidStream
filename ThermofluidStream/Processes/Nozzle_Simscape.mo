@@ -13,45 +13,40 @@ model Nozzle_Simscape "Model for dynamic pressure difference"
   parameter Real R(unit="J/K/mol") = 8.31446261815324;
   parameter Real molarMass(unit="kg/mol") = 0.0289647;
 
-protected
   outer DropOfCommons dropOfCommons;
-
-  SI.Temperature T_R;
-  SI.Pressure phat_R;
   
+  public
   SI.Density rho_A = Medium.density(inlet.state) "density at port A";
   SI.Density rho_B = Medium.density(outlet.state) "density at port B";
-  SI.Density rho_R = Medium.density_pTX(phat_R, T_R, Xi_in)"density at Restriction";
   
   SI.Velocity v_A "velocity at port A";
   SI.Velocity v_B "velocity at port B";
-  SI.Velocity velocity_R "Velocity at Restriction";
   
   Real area_ratio = A_in/A_out;
   
-  Real rho_ratio_RA = rho_R/rho_A;
-  Real rho_ratio_RB = rho_R/rho_B;
+  Real rho_ratio_RA = rho_B/rho_A;
+  Real rho_ratio_RB = rho_B/rho_B;
   
-  SI.Pressure p_avg = abs(Medium.pressure(inlet.state) + Medium.pressure(outlet.state))/2;
+  SI.Pressure p_avg = abs(p_in + p_out)/2;
   SI.Pressure Dp_lam = p_avg * (1-B_lam);
   Real K_tur_AB = (1+area_ratio)*(1-rho_ratio_RA*area_ratio) - 2*area_ratio*(1-rho_ratio_RB*area_ratio);
   
   // for Flow Mach <1
-  Real K_unchoked = sqrt((K_tur_AB * velocity_R)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_R+1e-10));
-  SI.Pressure dp_unchoked = 0.5 * rho_R * velocity_R * K_unchoked;
+  Real K_unchoked = sqrt((K_tur_AB * v_B)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_B+1e-10));
+  SI.Pressure dp_unchoked = 0.5 * rho_B * v_B * K_unchoked;
   
   // for Flow Mach = 1
-  SI.Temperature T_R_limited = T_R;
+  SI.Temperature T_R_limited = Medium.temperature(outlet.state);
   SI.Velocity a_R = sqrt(Medium.isentropicExponent(inlet.state) * R / molarMass * T_R_limited);
-  Real K_choked = sqrt((K_tur_AB*a_R)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_R+1e-10));
-  SI.Pressure dp_choked = 0.5 * rho_R * K_choked * a_R;
+  Real K_choked = sqrt((K_tur_AB*a_R)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_B+1e-10));
+  SI.Pressure dp_choked = 0.5 * rho_B * K_choked * a_R;
   
   // Mach Number
-  Real Mach_R = velocity_R/a_R;
+  Real Mach_R = v_B/a_R;
   
   // Enthalpy Losses
   SI.Enthalpy dh = 0.5 * (v_A^2 - v_B^2);
-  
+ protected
     
 equation 
 
@@ -64,23 +59,16 @@ equation
     
     // Inlet and outlet velocities
     v_A = m_flow/(rho_A*A_in);
-    v_B = m_flow/(rho_B*A_out);
     
     // Enthalpy and Massfraction
     h_out = h_in + 1/2*(v_A^2 - v_B^2);
     Xi_out = Xi_in;
     
     // Velocity at Restriction
-    if abs(v_A*area_ratio^(-1))>a_R then
-      velocity_R = a_R;
+    if abs(v_A * area_ratio) > a_R then
+      abs(v_B) = a_R;
     else
-      velocity_R = v_A * area_ratio^(-1);
+      v_B = - v_A * area_ratio;
     end if;
-    
-    // Temperature at Restriction
-    T_R = Medium.temperature(inlet.state);
-    
-    // Pressure at Restriction
-    phat_R = Medium.pressure(inlet.state);
    
 end Nozzle_Simscape;
