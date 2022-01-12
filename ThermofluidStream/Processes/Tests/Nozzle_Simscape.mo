@@ -89,7 +89,7 @@ equation
   connect(sum1.y, source.p0_var) annotation(
     Line(points = {{-92, 22}, {-82, 22}, {-82, 26}, {-76, 26}}, color = {0, 0, 127}));
   annotation(
-    experiment(StopTime = 10, Tolerance = 1e-6, Interval = 0.01),
+    experiment(StopTime = 100, Tolerance = 1e-6, Interval = 0.01),
     Icon(coordinateSystem(preserveAspectRatio = false)),
     Diagram(coordinateSystem(preserveAspectRatio = false)),
     Documentation(info = "<html>
