@@ -55,7 +55,7 @@ model Nozzle_Simscape
 // dynamicPressureOutflow
   ThermofluidStream.Boundaries.DynamicPressureOutflow dynamicPressureOutflow (
   redeclare package Medium = Medium, 
-  L = 10 / (Modelica.Constants.pi * 4.25 ^ 2 / 4 * 4) * 1e3, 
+  L = 10 / (Modelica.Constants.pi * (15.312 ^ 2 - 15.30 ^ 2)) * 1e3, 
   A_par = Modelica.Constants.pi * (15.312 ^ 2 - 15.30 ^ 2) * 1e-6)
   annotation(
     Placement(visible = true, transformation(origin = {50, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
