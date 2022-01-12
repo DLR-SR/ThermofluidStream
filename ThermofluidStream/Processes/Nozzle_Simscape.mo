@@ -37,13 +37,13 @@ protected
   Real K_tur_AB = (1+area_ratio)*(1-rho_ratio_RA*area_ratio) - 2*area_ratio*(1-rho_ratio_RB*area_ratio);
   
   // for Flow Mach <1
-  Real K_unchoked = sqrt((K_tur_AB * velocity_R)^2 + (1-area_ratio)^2*2*Dp_lam/rho_R);
+  Real K_unchoked = sqrt((K_tur_AB * velocity_R)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_R+1e-10));
   SI.Pressure dp_unchoked = 0.5 * rho_R * velocity_R * K_unchoked;
   
   // for Flow Mach = 1
   SI.Temperature T_R_limited = T_R;
   SI.Velocity a_R = sqrt(Medium.isentropicExponent(inlet.state) * R / molarMass * T_R_limited);
-  Real K_choked = sqrt((K_tur_AB*a_R)^2 + (1-area_ratio)^2*2*Dp_lam/rho_R);
+  Real K_choked = sqrt((K_tur_AB*a_R)^2 + (1-area_ratio)^2*2*Dp_lam/(rho_R+1e-10));
   SI.Pressure dp_choked = 0.5 * rho_R * K_choked * a_R;
   
   // Mach Number
@@ -71,7 +71,7 @@ equation
     Xi_out = Xi_in;
     
     // Velocity at Restriction
-    if v_A*area_ratio^(-1)>a_R then
+    if abs(v_A*area_ratio^(-1))>a_R then
       velocity_R = a_R;
     else
       velocity_R = v_A * area_ratio^(-1);
