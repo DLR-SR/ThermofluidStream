@@ -20,7 +20,7 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ## Technical Background
 The DLR ThermoFluid Stream Library uses a [innovative computational scheme](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726) that has been developed for the object-oriented formulation of even complex system architectures. Key is the decomposition of pressure into a steady-flow component and an inertial component driving the balance of mass-flows. Using this decomposition all non-linear equations can be brought into explicit form and what remains to be solved is a purely linear equation system. 
 
-Watch the introductory video from the 2021 Modelica Conference:
+Watch the introductory video from the 2021 Modelica Conference and read the <a href="https://ecp.ep.liu.se/index.php/modelica/article/view/199/159" target="_blank">corresponding paper</a>:
 
 <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.PNG" 
 alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
