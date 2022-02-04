@@ -14,6 +14,16 @@ model MCV "Massflow and volume control valve"
         rotation=270,
         origin={0,80})));
 
+  Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
+    annotation (Placement(
+        transformation(extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,-80}),                          iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,-80})));
+
+
   parameter Mode mode = Mode.mass_flow "Valve mode";
   parameter Boolean setpointFromInput = false "Enable desired massFlow input";
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
@@ -27,6 +37,7 @@ model MCV "Massflow and volume control valve"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
+  parameter Boolean enableClippingOutput = false;
 
   SI.Density rho_in = Medium.density(inlet.state);
   SI.VolumeFlowRate V_flow = m_flow/rho_in;
