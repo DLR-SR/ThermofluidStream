@@ -10,6 +10,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       Documentation(info="<html>
 <p>A splitter with prescribed split ratio that acts as a pressure control valve on both outlets. Pressure is reduced on the outlets in order to follow the mass-flow split prescription. </p>
 <p>For reversed mass-flow the component might create work in form of increasing pressure of the fluid flowing from outlet to inlet. </p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RatioControl;
 
@@ -19,7 +20,9 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p><br>A switch with a fixed split ratio that is indended as a switch between two paths. Therefore the input sould be 1 or 0 for the most part. </p><p><br>Otherwise will create work in the form of pressure on one of the two paths in order to fulfill the prescribed splitratio. </p>
+<p>A switch with a fixed split ratio that is indended as a switch between two paths. Therefore the input sould be 1 or 0 for the most part. </p>
+<p><br>Otherwise will create work in the form of pressure on one of the two paths in order to fulfill the prescribed splitratio. </p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RTSwitch;
 
@@ -30,6 +33,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is nessesary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end LeakageA;
 
@@ -87,7 +91,8 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     SI.Pressure r_in[2];
 
-    function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
+    function mfk = Utilities.Functions.massFractionK(redeclare package Medium
+          =                                                                     Medium);
 
     Real splitRatioLim(unit="1");
     parameter Real eps(unit="1") = 1e-5 "Numerical minimal distance of input to 0 and 1";
@@ -166,10 +171,21 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             lineColor={175,175,175},
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid,
-            textString="B")}),    Diagram(coordinateSystem(preserveAspectRatio=
+            textString="B"),
+          Text(
+            extent={{-96,34},{88,4}},
+            lineColor={0,0,0},
+            textString="JunctionRatio")}),
+                                  Diagram(coordinateSystem(preserveAspectRatio=
               false)),
       Documentation(info="<html>
 <p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (as in through dynamic pressure).</p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end JunctionRatio;
+  annotation (Documentation(info="<html>
+<p>This package contains topology elements that have non-physical assumtions or constraints like mass-flow splits. </p>
+<p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicilty modeling the phenomena like a controlled valve.</p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><b>or</b></u> Junction.</p>
+</html>"));
 end NonPhysical;
