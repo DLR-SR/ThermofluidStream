@@ -3,7 +3,8 @@ model TestConnectors "Test for the connectors"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                     constrainedby
+    Media.myMedia.Interfaces.PartialMedium
                                      "Medum model for the Test" annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
@@ -99,8 +100,8 @@ model TestConnectors "Test for the connectors"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={40,-50})));
-  ThermofluidStream.Boundaries.CreateState createState(redeclare package Medium =
-        Medium, PFromInput=true)
+  ThermofluidStream.Boundaries.CreateState createState(redeclare package Medium
+      = Medium, PFromInput=true)
     annotation (Placement(transformation(extent={{38,-12},{32,-4}})));
   ConnectorInletOutletFore connectorInletOutletFore(redeclare package Medium = Medium)
     annotation (Placement(transformation(

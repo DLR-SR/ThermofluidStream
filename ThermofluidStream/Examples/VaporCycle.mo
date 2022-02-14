@@ -14,8 +14,10 @@ model VaporCycle
   HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=10,
     A=30,
@@ -26,8 +28,10 @@ model VaporCycle
   HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=30,
@@ -199,7 +203,8 @@ model VaporCycle
   Processes.Compressor compressor(
     redeclare package Medium = RefrigerantMedium,
     omega_from_input=true,
-    redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+    redeclare function dp_tau_compressor =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
         eta=0.8))

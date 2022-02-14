@@ -22,16 +22,16 @@ model Evaporator
     redeclare package Medium = MediumAir, p0_par=150000)
                    annotation (Placement(transformation(extent={{-74,-16},{-94,4}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
+      Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
         origin={47,-16})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
+      Medium = MediumAir,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -56,13 +56,13 @@ model Evaporator
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={62,60})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{24,10},{44,30}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
@@ -72,7 +72,8 @@ model Evaporator
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
+        (
       U_liq_nom=1000,
       U_vap_nom=1400,
       U_tp_nom=3000),
@@ -89,7 +90,8 @@ model Evaporator
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,-16},{68,4}})));
 
   Processes.FlowResistance flowResistanceB(
@@ -98,7 +100,8 @@ model Evaporator
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,

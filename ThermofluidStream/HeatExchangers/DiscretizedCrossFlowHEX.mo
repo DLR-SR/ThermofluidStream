@@ -2,9 +2,11 @@ within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-phase working fluid without pressure drop"
   extends Internal.DiscretizedHexIcon;
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+  replaceable package MediumA =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+  replaceable package MediumB =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
@@ -81,7 +83,8 @@ public
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50))
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       each k=50))
       annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
   Topology.SplitterN splitterN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,70},{-40,90}})));

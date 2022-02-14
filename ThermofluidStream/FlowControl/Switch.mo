@@ -44,7 +44,8 @@ model Switch
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={40,0})));
-  ThermofluidStream.Topology.SplitterT2 splitterT2_1(redeclare package Medium = Medium, L=0)
+  ThermofluidStream.Topology.SplitterT2 splitterT2_1(redeclare package Medium
+      =                                                                         Medium, L=0)
                                                      annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
   // for dynamic select of graphics only

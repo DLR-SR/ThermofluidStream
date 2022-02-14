@@ -3,14 +3,17 @@ model TestJunction "Test for the undirected junction"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                     constrainedby
+    Media.myMedia.Interfaces.PartialMedium
                                      "Medum model for the Test" annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
 
   replaceable function pLoss =
-      ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                         material=ThermofluidStream.Processes.Internal.Material.wood)
-    constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
+      ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+      (                                                                                                          material=ThermofluidStream.Processes.Internal.Material.wood)
+    constrainedby
+    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
        "Pressure loss function for all Flow resistances"
     annotation(choicesAllMatching = true, Documentation(info="<html>
 <p>This is the pressure loss function used for all resistances except the two on the outlets of the right two cases.</p>
@@ -159,8 +162,8 @@ model TestJunction "Test for the undirected junction"
     r=0.1,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1000))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1000))
     annotation (Placement(transformation(extent={{116,-50},{136,-30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
@@ -168,8 +171,8 @@ model TestJunction "Test for the undirected junction"
     r=0.1,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=1000))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=1000))
     annotation (Placement(transformation(extent={{116,30},{136,50}})));
 equation
   connect(sink.inlet, flowResistance.outlet) annotation (Line(

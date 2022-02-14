@@ -22,16 +22,16 @@ model Condenser
     redeclare package Medium = MediumAir, p0_par=90000)
                    annotation (Placement(transformation(extent={{104,0},{124,20}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
+      Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
         origin={-35,20})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
+      Medium = MediumAir,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -56,15 +56,15 @@ model Condenser
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={10,-80})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={20,-24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
@@ -88,7 +88,8 @@ model Condenser
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-82,0},{-62,20}})));
 
   Processes.FlowResistance flowResistanceB(
@@ -98,7 +99,8 @@ model Condenser
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

@@ -2,7 +2,8 @@ within ThermofluidStream.Undirected.Boundaries.Tests;
 model Reservoir "Test for Reservoir"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.CompressibleLiquids.LinearColdWater
+  replaceable package Medium =
+      Media.myMedia.CompressibleLiquids.LinearColdWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
                                                    "Medium Model"
       annotation(choicesAllMatching=true, Documentation(info="<html>
@@ -30,8 +31,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=100))
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -39,8 +40,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=100))
     annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
   ThermofluidStream.Boundaries.Reservoir reservoir2(
     redeclare package Medium = Medium,
@@ -67,8 +68,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=100))
     annotation (Placement(transformation(extent={{-32,20},{-12,40}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
@@ -76,8 +77,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-         k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (k=100))
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{40,-20},{60,0}})));

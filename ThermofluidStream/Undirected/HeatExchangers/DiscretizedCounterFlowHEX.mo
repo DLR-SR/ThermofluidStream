@@ -1,12 +1,15 @@
 ﻿within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+  replaceable package MediumA =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+  replaceable package MediumB =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby
+    Internal.PartialConductionElementHEX(
     final A=A/nCells,
     final V=V_Hex/nCells,
     redeclare package Medium = MediumA,
@@ -15,7 +18,8 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
     final h_0= h0_A)
     "Heat transfer element model for side A"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby
+    Internal.PartialConductionElementHEX(
     final A=A/nCells,
     final V=V_Hex/nCells,
     redeclare package Medium = MediumB,

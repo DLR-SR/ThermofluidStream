@@ -3,7 +3,8 @@ model VenturiPump "pumping of liquid water using the venturi effect"
 
     extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Water.StandardWater         constrainedby Media.myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Water.StandardWater         constrainedby
+    Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   parameter SI.Area A_in_hp=0.0002;
@@ -59,11 +60,14 @@ model VenturiPump "pumping of liquid water using the venturi effect"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package Medium = Medium, A_par=A_in_hp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
+      Medium =                                                                      Medium, A_par=A_in_hp)
     annotation (Placement(transformation(extent={{-60,-70},{-40,-50}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package Medium = Medium, A_par=A_out)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
+      Medium =                                                                        Medium, A_par=A_out)
     annotation (Placement(transformation(extent={{40,-70},{60,-50}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow2(redeclare package Medium = Medium, A_par=A_in_lp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow2(redeclare package
+      Medium =                                                                       Medium, A_par=A_in_lp)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

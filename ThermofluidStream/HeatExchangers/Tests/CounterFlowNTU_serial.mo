@@ -21,8 +21,8 @@ model CounterFlowNTU_serial
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
                    annotation (Placement(transformation(extent={{136,-14},{156,6}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
+      Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -38,12 +38,12 @@ model CounterFlowNTU_serial
   ThermofluidStream.Boundaries.Sink sinkB(
     redeclare package Medium = MediumB, p0_par=90000)
     annotation (Placement(transformation(extent={{-128,-2},{-148,18}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumB,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumB,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-50,8},{-70,28}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumB,                       outputMassFlowRate=false,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumB,                       outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{90,20},{70,40}})));
   inner DropOfCommons dropOfCommons

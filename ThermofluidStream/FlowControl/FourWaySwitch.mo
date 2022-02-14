@@ -43,9 +43,11 @@ model FourWaySwitch
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={60,-60})));
-  ThermofluidStream.Topology.JunctionT2 junctionT2_1(redeclare package Medium = Medium)
+  ThermofluidStream.Topology.JunctionT2 junctionT2_1(redeclare package Medium
+      =                                                                         Medium)
     annotation (Placement(transformation(extent={{-70,-70},{-50,-50}})));
-  ThermofluidStream.Topology.JunctionT2 junctionT2_2(redeclare package Medium = Medium)
+  ThermofluidStream.Topology.JunctionT2 junctionT2_2(redeclare package Medium
+      =                                                                         Medium)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

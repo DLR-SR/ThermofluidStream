@@ -3,8 +3,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                                                                    "Medium package"
+                                                     constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                          "Medium package"
     annotation (Documentation(info="<html>
       <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
       </html>"));
@@ -21,7 +21,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     L_value=100,
     computeL=false,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=100, k2=50))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   FlowControl.BasicControlValve basicControlValve(
     redeclare package Medium = Medium,
@@ -58,7 +59,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     L_value=100,
     computeL=false,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=100, k2=50))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.BoundaryRear boundary_rear1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   Boundaries.BoundaryRear boundary_rear2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-60,0},{-40,20}})));
