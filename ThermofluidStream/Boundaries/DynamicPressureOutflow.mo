@@ -29,7 +29,7 @@ model DynamicPressureOutflow
         rotation=270,
         origin={-60,100})));
 
-protected
+public
   SI.Area A "Cross-section area of outlet boundary";
 
   SI.Velocity v_in;
@@ -41,6 +41,7 @@ protected
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
+protected
 
 equation
    if not areaFromInput then

@@ -29,7 +29,7 @@ model DynamicPressureInflow
         rotation=270,
         origin={0,100})));
 
-protected
+public
   SI.Area A "Cross-section area of inlet boundary";
 
   SI.Velocity v_in "Reference velocity for p0. Positive velocity points from outside the boundary to inside";
@@ -40,6 +40,7 @@ protected
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
+protected
 
 equation
    if not areaFromInput then
@@ -112,7 +113,7 @@ equation
           thickness=0.5)}), Documentation(info="<html>
 <p>This Inflow Boundary is supposed to start a area of the model where dynamic pressure is taken into account. The area is ended with DynamicPressureOutflows. </p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>
-<p>The components input velocity can be set to a fixed Value or given by a signal. From this reference inflow velocity the medium is accelerated to fit the outflow velocity, that is computed by the Area of the Component. </p>
+<p>The components input velocity can be set to a fixed value or given by a signal. From this reference inflow velocity the medium is accelerated to fit the outflow velocity, that is computed by the Area of the Component. </p>
 <p>The pressure difference resulting from the velocity difference is based on the total pressure balance, implicitly assuming a nozzle/diffusor of suitable area ratio. When the sign of the velocity does not match the sign of the mass-flow rate, this assumption cannot be upheld. The model then extrapolates the dyanmic pressure difference in order to maintain a stable and well-natured behavior but its validity is lost. </p>
 <p>The area can be set to a fixed value or given by a signal, representing a variable-area inlets.</p>
 <p>In general the component has a non-linear equation system of size 1, because it computes the outlet velocity based on the outlet density. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false), because then only the inlet density is used in the whole component.</p>

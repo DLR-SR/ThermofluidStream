@@ -39,7 +39,7 @@ SI.Pressure dr_corr; // delta = out - in
 SI.Pressure dp; // delta = out - in
 
 
-protected
+public
   outer DropOfCommons dropOfCommons;
 
   // inlet state quantities
@@ -51,6 +51,7 @@ protected
   SI.Pressure p_out "pressure of medium exiting";
   SI.SpecificEnthalpy h_out "enthaply of medium exiting";
   Medium.MassFraction Xi_out[Medium.nXi] "mass fraction of medium exiting";
+protected
 
 initial equation
   if initM_flow == InitializationMethods.state then
