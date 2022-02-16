@@ -61,6 +61,7 @@ partial model PartialVolume "Partial parent class for Volumes with one inlet and
   SI.HeatFlowRate Q_flow;
   SI.Power W_v;
 
+  protected
   outer DropOfCommons dropOfCommons;
 
   SI.Temperature T_heatPort;
