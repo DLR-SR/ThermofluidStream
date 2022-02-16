@@ -95,7 +95,7 @@ equation
  connect(sum1.y, source2.p0_var) annotation(
     Line(points = {{-48, 0}, {-25, 0}, {-25, -24}, {-24, -24}, {-24, -25}, {-4, -25}, {-4, -26}}, color = {0, 0, 127}));
   annotation(
-    experiment(StopTime = 10, Tolerance = 1e-06, Interval = 0.0001, StartTime = 0),
+    experiment(StopTime = 10, Tolerance = 1e-06, Interval = 0.01, StartTime = 0),
     Documentation(info = "<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
