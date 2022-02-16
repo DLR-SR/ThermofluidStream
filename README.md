@@ -5,7 +5,10 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ![](/doc/example.svg)
 
 ## Highlights
-- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
+
+
+
+- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference** ![](/doc/LibraryAward.svg)
 - Robust modeling of even complex architectures due to new computational scheme
 - Easy to initialize and good support for switching bypasses and other configuration changes
 - Many examples that enable an easy start to working with this library.
@@ -17,6 +20,11 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ## Technical Background
 The DLR ThermoFluid Stream Library uses a [innovative computational scheme](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726) that has been developed for the object-oriented formulation of even complex system architectures. Key is the decomposition of pressure into a steady-flow component and an inertial component driving the balance of mass-flows. Using this decomposition all non-linear equations can be brought into explicit form and what remains to be solved is a purely linear equation system. 
 
+Watch the <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank">introductory video</a> from the 2021 Modelica Conference and read the <a href="https://ecp.ep.liu.se/index.php/modelica/article/view/199/159" target="_blank">corresponding paper</a>:
+
+<a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.PNG" 
+alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
+
 ## License, Terms of Use, Literature
 
 Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermodluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
@@ -25,6 +33,10 @@ If you publish work that is based on this library, please cite the following two
 
 - Zimmer, D., M. Meissner, N. Weber (2021) [The DLR Thermofluid Stream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199/159). International Modelica Conference, Linköping Sweden.
 - Zimmer, D. (2020) [Robust object-oriented formulation of directed thermofluid stream networks](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726). Mathematical and Computer Modelling of Dynamical Systems 26(3):204-233 
+
+Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
+
+- Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
 
 ## Tool compatibility 
 - [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pendantic checking has been applied to all components in order to improve cross-tool compatibility. 

@@ -114,7 +114,7 @@ equation
     Xi_in[:,i] = if noEvent(m_flow_in[i]) >= 0 then Medium.massFraction(inlet[i].state) else medium.Xi;
   end for;
 
-  der(M) = sum(inlet.m_flow) + sum(outlet.m_flow);
+  der(M) = sum(inlet.m_flow) + outlet.m_flow;
   der(U_med) = W_v + Q_flow + sum(inlet.m_flow.*h_in) + outlet.m_flow*h_out;
   der(MXi) = Xi_in*inlet.m_flow + Xi_out*outlet.m_flow;
 
