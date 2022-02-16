@@ -29,7 +29,7 @@ model DynamicPressureInflow
         rotation=270,
         origin={0,100})));
 
-public
+protected
   SI.Area A "Cross-section area of inlet boundary";
 
   SI.Velocity v_in "Reference velocity for p0. Positive velocity points from outside the boundary to inside";
@@ -40,7 +40,6 @@ public
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
-protected
 
 equation
    if not areaFromInput then

@@ -39,7 +39,7 @@ SI.Pressure dr_corr; // delta = out - in
 SI.Pressure dp; // delta = out - in
 
 
-public
+protected
   outer DropOfCommons dropOfCommons;
 
   // inlet state quantities
@@ -51,7 +51,6 @@ public
   SI.Pressure p_out "pressure of medium exiting";
   SI.SpecificEnthalpy h_out "enthaply of medium exiting";
   Medium.MassFraction Xi_out[Medium.nXi] "mass fraction of medium exiting";
-protected
 
 initial equation
   if initM_flow == InitializationMethods.state then
@@ -65,7 +64,7 @@ initial equation
 equation
 
   inlet.m_flow + outlet.m_flow = 0;
-  outlet.r  =  inlet.r + dr_corr - der(inlet.m_flow) * L; // inertial pressure outlet.r , inlet.r
+  outlet.r  =  inlet.r + dr_corr - der(inlet.m_flow) * L;
 
   if clip_p_out then
     p_out = max(p_min, p_in + dp);

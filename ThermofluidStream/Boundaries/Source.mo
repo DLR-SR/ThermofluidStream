@@ -62,7 +62,7 @@ equation
      h0 = h0_par;
    end if;
 
-  L*der(outlet.m_flow) = outlet.r - 0; // outlet.r -> inertial pressrue, pressure setpoint is zero
+  L*der(outlet.m_flow) = outlet.r - 0;
   outlet.state =  if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0, h0, Xi0);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

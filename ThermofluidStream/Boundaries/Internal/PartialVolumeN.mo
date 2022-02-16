@@ -106,7 +106,7 @@ equation
   der(inlet.m_flow)*L = inlet.r - r - r_damping*ones(N);
   der(outlet.m_flow)*L = outlet.r - r_damping;
 
-  for i in 1:N loop // definition of pressure set point
+  for i in 1:N loop
     r[i] + p_in[i] = medium.p;
 
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state

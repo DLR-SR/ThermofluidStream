@@ -61,7 +61,6 @@ partial model PartialVolume "Partial parent class for Volumes with one inlet and
   SI.HeatFlowRate Q_flow;
   SI.Power W_v;
 
-public
   outer DropOfCommons dropOfCommons;
 
   SI.Temperature T_heatPort;
@@ -82,10 +81,9 @@ public
   SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out >= 0) then Medium.specificEnthalpy(state_out) else medium.h;
   Medium.MassFraction Xi_out[Medium.nXi] = if noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else medium.Xi;
 
-  SI.Pressure r_in, r_out; // inertial pressure
+  SI.Pressure r_in, r_out;
   SI.MassFlowRate m_flow_in, m_flow_out;
   Medium.ThermodynamicState state_in;
-protected
 
 initial equation
   if initialize_pressure then
@@ -109,10 +107,10 @@ equation
   assert(-m_flow_out > m_flow_assert, "Positive massflow at Volume outlet", dropOfCommons.assertionLevel);
   assert(M > 0, "Volumes might not become empty");
 
-  der(m_flow_in)*L = r_in - r - r_damping; // r_in equals the inertial pressure, r equals the pressure set point
-  der(m_flow_out)*L = r_out - r_damping; // r_out equals the inertial pressure, r equals the pressure set point
+  der(m_flow_in)*L = r_in - r - r_damping;
+  der(m_flow_out)*L = r_out - r_damping;
 
-  r + p_in = medium.p; // basically p_r_A = p_vol - p_A_vol
+  r + p_in = medium.p;
 
   der(M) = m_flow_in + m_flow_out;
   der(U_med) = W_v + Q_flow + h_in*m_flow_in + h_out*m_flow_out;
