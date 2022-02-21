@@ -1,7 +1,8 @@
 within ThermofluidStream.Undirected.Boundaries;
 model PhaseSeparator "Parent to Reciever and Accumulator models"
   extends Internal.PartialVolume(
-    redeclare replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium,
+    redeclare replaceable package Medium =
+        Media.myMedia.Interfaces.PartialTwoPhaseMedium,
     useHeatport=false,
     final useRear=true,
     final useFore=true,

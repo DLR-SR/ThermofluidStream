@@ -1,12 +1,15 @@
 ﻿within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-phase working fluid without pressure drop"
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+  replaceable package MediumA =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+  replaceable package MediumB =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby
+    Internal.PartialConductionElementHEX(
     final A=A/nCells,
     final V=V_Hex/nCells,
     redeclare package Medium = MediumA,
@@ -15,7 +18,8 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
     final h_0= h0_A)
     "Heat transfer element model for side A"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby
+    Internal.PartialConductionElementHEX(
     final A=A/nCells,
     final V=V_Hex/nCells,
     redeclare package Medium = MediumB,
@@ -101,7 +105,9 @@ public
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50))
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       each k=50))
     annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionMN junctionMN(redeclare package Medium = MediumA,
     N=1,
@@ -139,6 +145,8 @@ equation
   summary.dT_B = summary.Tout_B - summary.Tin_B;
   summary.dh_A = summary.hout_A - summary.hin_A;
   summary.dh_B = summary.hout_B - summary.hin_B;
+  summary.Q_flow_A = Q_flow_A;
+  summary.Q_flow_B = Q_flow_B;
 
   //Connecting equations (to interconnect pipes)
 

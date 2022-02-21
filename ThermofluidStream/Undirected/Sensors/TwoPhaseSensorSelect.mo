@@ -5,8 +5,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  replaceable package Medium2Phase = Media.myMedia.Interfaces.PartialTwoPhaseMedium
-                                                                              "Medium model"
+  replaceable package Medium2Phase =
+      Media.myMedia.Interfaces.PartialTwoPhaseMedium                          "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>
@@ -35,7 +35,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare package Medium=Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare
+        package Medium =                                                                                 Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
     <p>This function computes the selected two-phase quantity from state.</p>
       </html>"));

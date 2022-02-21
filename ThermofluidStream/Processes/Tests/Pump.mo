@@ -5,8 +5,8 @@ model Pump "Test for pumps"
   import tf = ThermofluidStream;
   replaceable package Medium =
       tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                            constrainedby tf.Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium model"
+                                                            constrainedby
+    tf.Media.myMedia.Interfaces.PartialMedium      "Medium model"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>
@@ -65,7 +65,8 @@ model Pump "Test for pumps"
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     enableAccessHeatPort=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump =
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         k_p_input=1e7))
     annotation (Placement(transformation(extent={{-2,-18},{18,2}})));
@@ -82,7 +83,8 @@ model Pump "Test for pumps"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump =
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input=0.0006,
         k_p_input=1e8))
@@ -101,7 +103,8 @@ model Pump "Test for pumps"
     J_p=10,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump =
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=true,
         omega_D(displayUnit="rad/s") = 100))
     annotation (Placement(transformation(extent={{-10,130},{10,150}})));

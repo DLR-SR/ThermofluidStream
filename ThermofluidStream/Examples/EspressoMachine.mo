@@ -168,7 +168,8 @@ model EspressoMachine "Get your simulated coffe!"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     omegaStateSelect=StateSelect.never,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (k_fric_input=0))
+    redeclare function dp_tau_pump =
+        Processes.Internal.TurboComponent.dp_tau_nominal_flow (                             k_fric_input=0))
                              annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -199,7 +200,8 @@ model EspressoMachine "Get your simulated coffe!"
     annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
   Processes.Pump pump1(
     J_p=1e-3,redeclare package Medium = Water,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump =
+        Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input(displayUnit="m3") = 0.1,
         k_p_input=1e6,

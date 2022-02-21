@@ -17,7 +17,8 @@ model ReverseHeatPump
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     omega_from_input=true,
-    redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+    redeclare function dp_tau_compressor =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,
         eta=0.8))
@@ -29,8 +30,10 @@ model ReverseHeatPump
                                            discretizedHEX(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore,
     nCells=5,
     initializeMassFlow=false,
@@ -43,8 +46,10 @@ model ReverseHeatPump
                                            discretizedHEX1(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
-    redeclare model ConductionElementA = Undirected.HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        Undirected.HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     init_B=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear,
     nCells=5,
     initializeMassFlow=false,
@@ -147,8 +152,8 @@ model ReverseHeatPump
                                                                                  annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={0,-38})));
-  Undirected.Topology.ConnectRearOutlet connectRearOutlet(redeclare package Medium =
-               RefrigerantMedium, useDefaultStateAsRear=true) annotation (
+  Undirected.Topology.ConnectRearOutlet connectRearOutlet(redeclare package
+      Medium = RefrigerantMedium, useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -209,19 +214,19 @@ model ReverseHeatPump
         rotation=90,
         origin={0,-10})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.001) annotation (Placement(transformation(extent={{96,10},{116,30}})));
-  Undirected.Topology.ConnectInletFore connectInletFore(redeclare package Medium =
-               RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectInletFore connectInletFore(redeclare package
+      Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-44,40})));
-  Undirected.Topology.ConnectInletFore connectInletFore1(redeclare package Medium =
-               RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectInletFore connectInletFore1(redeclare package
+      Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={46,40})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{104,-64},{160,-8}})));
-  Undirected.Topology.ConnectRearOutlet connectRearOutlet1(redeclare package Medium =
-               RefrigerantMedium, useDefaultStateAsRear=true) annotation (
+  Undirected.Topology.ConnectRearOutlet connectRearOutlet1(redeclare package
+      Medium = RefrigerantMedium, useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

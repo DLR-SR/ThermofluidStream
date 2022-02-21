@@ -25,8 +25,8 @@ model FlowRes
     pressureFromInput=false,
     p0_par=100000) annotation (Placement(transformation(extent={{-202,24},{-222,44}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
+      Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
@@ -34,8 +34,8 @@ model FlowRes
         extent={{11,10},{-11,-10}},
         rotation=0,
         origin={-93,24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
+      Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")       annotation (Placement(transformation(
@@ -61,14 +61,14 @@ model FlowRes
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-26,50})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-98,50},{-78,70}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")
@@ -79,7 +79,8 @@ model FlowRes
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
+        (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -177,7 +178,8 @@ model FlowRes
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
+        (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -191,13 +193,17 @@ model FlowRes
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-118,-58})));
-  Sensors.SingleSensorSelect singleSensorSelect2(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect2(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-96,-36},{-76,-16}})));
-  Sensors.SingleSensorSelect singleSensorSelect3(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect3(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-140,-36},{-160,-16}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-140,-26},{-160,-6}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-96,-26},{-76,-6}})));
   FlowControl.MCV mCV2(
     redeclare package Medium = MediumRefrigerant,
@@ -286,7 +292,8 @@ model FlowRes
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{62,32},{82,52}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
@@ -294,24 +301,29 @@ model FlowRes
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={88,14})));
-  Sensors.SingleSensorSelect singleSensorSelect4(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect4(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={150,22})));
-  Sensors.SingleSensorSelect singleSensorSelect5(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect5(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={108,76})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={150,14})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality5(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality5(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={100,76})));
@@ -409,7 +421,8 @@ model FlowRes
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{44,-72},{64,-52}})));
   Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumRefrigerant,
@@ -417,24 +430,29 @@ model FlowRes
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,-90})));
-  Sensors.SingleSensorSelect singleSensorSelect6(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect6(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={132,-82})));
-  Sensors.SingleSensorSelect singleSensorSelect7(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect7(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={90,-28})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={132,-90})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality7(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality7(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={82,-28})));

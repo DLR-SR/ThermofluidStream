@@ -2,17 +2,21 @@ within ThermofluidStream.Examples;
 model HeatPump
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
+  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                                    "Refrigerant Medium"
     annotation(choicesAllMatching=true);
-  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby Media.myMedia.Interfaces.PartialMedium "Air Medium"
+  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                                    "Air Medium"
     annotation(choicesAllMatching=true);
 
   HeatExchangers.DiscretizedCounterFlowHEX
                                          condenser(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,
@@ -23,8 +27,10 @@ model HeatPump
   HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
-    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementA =
+        HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB =
+        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false,
     nCells=10,
     A=10,

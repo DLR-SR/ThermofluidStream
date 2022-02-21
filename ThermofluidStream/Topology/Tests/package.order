@@ -2,3 +2,4 @@ TestJunction
 TestSplitter
 TestDynamicTopology
 TestJunctionNM
+TestNonPhysical

@@ -3,8 +3,8 @@ model TestDynamicTopology
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.MoistAir
-                                                    constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                                                                   "Medium Model"
+                                                    constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                         "Medium Model"
     annotation (choicesAllMatching=
        true, Documentation(info =                          "<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
@@ -76,7 +76,8 @@ model TestDynamicTopology
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0001,
     v_out_par=-1) annotation (Placement(transformation(extent={{50,70},{70,90}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(redeclare package Medium = Medium, A_par(displayUnit="cm2") = 0.0002)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(redeclare package
+      Medium =                                                                         Medium, A_par(displayUnit="cm2") = 0.0002)
     annotation (Placement(transformation(extent={{50,40},{70,60}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow2(
     redeclare package Medium = Medium,
@@ -152,7 +153,8 @@ model TestDynamicTopology
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0001,
     v_out_par=-1) annotation (Placement(transformation(extent={{50,-30},{70,-10}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow4(redeclare package Medium = Medium, A_par(displayUnit="cm2") = 0.0002)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow4(redeclare package
+      Medium =                                                                         Medium, A_par(displayUnit="cm2") = 0.0002)
     annotation (Placement(transformation(extent={{50,-60},{70,-40}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow5(
     redeclare package Medium = Medium,

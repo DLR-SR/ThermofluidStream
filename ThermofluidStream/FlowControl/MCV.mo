@@ -42,6 +42,8 @@ model MCV "Massflow and volume control valve"
   SI.Density rho_in = Medium.density(inlet.state);
   SI.VolumeFlowRate V_flow = m_flow/rho_in;
 
+  constant SI.Pressure eps = 1;
+
 protected
   outer ThermofluidStream.DropOfCommons dropOfCommons;
 
@@ -51,7 +53,7 @@ protected
 
   SI.Pressure dr = outlet.r - inlet.r;
   SI.Pressure dr_set;
-
+public
   SI.Pressure dp_int(start=-1e5);
   // dp corr for anti windup "back calculation" compensation after "Integrator windup and how to avoid it" 1989 Astrom
   SI.Pressure dp_corr = k2*(dp - dp_int);
@@ -121,10 +123,17 @@ equation
         Line(
           points={{0,0},{0,60}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5),
+        Ellipse(
+          extent={{40,-60},{60,-80}},
+          lineColor={0,0,0},
+          fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
+          fillPattern=FillPattern.Solid)}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
-<p>The mass- or volume-flow-setpoint can be set or given by a real signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min.</p>
-<p>Documentation of the used equations:</p><p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.PNG\"/></p>
+<p>The mass- or volume-flow-setpoint can be set or given by a real signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpint cannot be reached, an optional output leaves it&apos;s &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>
+<p>Documentation of the used equations:</p>
+<p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.PNG\"/></p>
 </html>"));
 end MCV;

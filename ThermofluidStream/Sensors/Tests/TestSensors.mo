@@ -3,19 +3,22 @@ model TestSensors "Test model for all sensors."
   extends Modelica.Icons.Example;
 
   replaceable package Medium1 = Media.myMedia.Water.ConstantPropertyLiquidWater
-                                                                          constrainedby Media.myMedia.Interfaces.PartialMedium
+                                                                          constrainedby
+    Media.myMedia.Interfaces.PartialMedium
                                      "Medium Model 1" annotation (Documentation(
         info="<html>
 <p>Medium Model for the upper stream. It can be anything. </p>
 </html>"));
   replaceable package Medium2 = Media.myMedia.Water.StandardWater
-                                                            constrainedby Media.myMedia.Interfaces.PartialTwoPhaseMedium
+                                                            constrainedby
+    Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium Model 2" annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
 
    replaceable package Medium3 =
-      Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents                      constrainedby Media.myMedia.Interfaces.PartialMedium
+      Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents                      constrainedby
+    Media.myMedia.Interfaces.PartialMedium
     "Medium Model 3" annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));

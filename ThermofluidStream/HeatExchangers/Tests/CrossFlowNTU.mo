@@ -22,16 +22,16 @@ model CrossFlowNTU
                    annotation (Placement(transformation(extent={{116,-10},{136,
             10}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-               MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
+      Medium = MediumA,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
       Placement(transformation(
         extent={{-11,10},{11,-10}},
         rotation=0,
         origin={-43,-10})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
+      Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -52,14 +52,14 @@ model CrossFlowNTU
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,-84})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumB,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumB,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,-24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumB,                       outputMassFlowRate=false,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumB,                       outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,

@@ -26,14 +26,14 @@ model Recuperator
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-60,-6})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{24,10},{44,30}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")
@@ -76,9 +76,11 @@ model Recuperator
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-22,-6},{-42,-26}})));
-  Sensors.SingleSensorSelect singleSensorSelect2(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect2(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-22,-18},{-42,-38}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-22,-46},{-42,-26}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
     redeclare package Medium = MediumRefrigerant,
@@ -86,9 +88,11 @@ model Recuperator
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{44,-6},{24,-26}})));
-  Sensors.SingleSensorSelect singleSensorSelect3(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect3(redeclare package Medium =
+        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{44,-28},{24,-48}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium = MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium =
+        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{44,-40},{24,-20}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,

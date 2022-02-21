@@ -23,7 +23,8 @@ model TestBoundaries "Tests for the rear and fore boundary"
     offset=140000,
     startTime=5)
     annotation (Placement(transformation(extent={{60,34},{48,46}})));
-  TerminalRear terminal_rear(redeclare package Medium = Media.myMedia.Air.SimpleAir)
+  TerminalRear terminal_rear(redeclare package Medium =
+        Media.myMedia.Air.SimpleAir)
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
   BoundaryFore boundary_fore1(
     redeclare package Medium = Media.myMedia.Air.SimpleAir,
@@ -43,7 +44,8 @@ model TestBoundaries "Tests for the rear and fore boundary"
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-30,-50})));
-  TerminalFore terminal_fore(redeclare package Medium = Media.myMedia.Air.SimpleAir)
+  TerminalFore terminal_fore(redeclare package Medium =
+        Media.myMedia.Air.SimpleAir)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

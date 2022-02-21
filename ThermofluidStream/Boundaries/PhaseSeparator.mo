@@ -35,6 +35,8 @@ model PhaseSeparator "Parent to Reciever and Accumulator models"
   Real liquid_level(unit="1") "level of liquid line";
   Real liquid_level_pipe(unit="1") "level of liquid line in pipe";
 
+  Real vapor_quality = max(0,min(1,x));
+
 protected
   Medium.MassFraction x = (medium.h-h_bubble)/(h_dew - h_bubble) "Calculated vapor quality of medium that can go below zero and above one";
   SI.SpecificEnthalpy h_pipe;

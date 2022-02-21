@@ -33,25 +33,26 @@ model WaterHammer "Pump water by using dynamic pressures"
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = Medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               Medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               Medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
 
   Modelica.Blocks.Sources.Constant const2(k=1.5e5)
     annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
   Topology.SplitterT2 splitterT2_1(redeclare package Medium =
                Medium)    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium = Medium, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium
+      =                                                                          Medium, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
                                                                                          annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,30})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package Medium =
-               Medium)
+  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-40,70})));
