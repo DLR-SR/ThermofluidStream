@@ -19,6 +19,9 @@ record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
   SI.SpecificEnthalpy dh_A "Enthalpy differnce A";
   SI.SpecificEnthalpy dh_B "Enthalpy  differnce B";
 
+  SI.Power Q_flow_A "Heat going into A";
+  SI.Power Q_flow_B "Heat going into B";
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end DiscretizedHEXSummary;

@@ -118,6 +118,9 @@ equation
   summary.dh_A = summary.hout_A - summary.hin_A;
   summary.dh_B = summary.hout_B - summary.hin_B;
 
+  summary.Q_flow_A = Q_flow_A;
+  summary.Q_flow_B = Q_flow_B;
+
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(rearB, thermalElementB[1].rear) annotation (Line(points={{-100,80},{-10,80}}, color={28,108,200}));
