@@ -60,6 +60,26 @@ model Flow_Resistance "Test for flow resistance"
         rotation=180,
         origin={40,0})));
 
+  tf.Boundaries.Source source1(
+    redeclare package Medium = Medium,
+    T0_par(displayUnit="K") = 300,
+    p0_par=300000)
+    annotation (Placement(transformation(extent={{-92,-70},{-72,-50}})));
+  tf.Processes.FlowResistance flowResistance3(
+    redeclare package Medium = Medium,
+    m_flowStateSelect=StateSelect.prefer,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
+
+    computeL=false,
+    L_value=30000,
+    r=0.075,
+    l=10,
+    redeclare function pLoss =
+        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+          material=ThermofluidStream.Processes.Internal.Material.steel))
+    annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
+  tf.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
+    annotation (Placement(transformation(extent={{76,-70},{96,-50}})));
 equation
 
   connect(splitterX.outletA, flowResistance.inlet) annotation (Line(
@@ -95,6 +115,14 @@ equation
       color={28,108,200},
       thickness=0.5));
 
+  connect(source1.outlet, flowResistance3.inlet) annotation (Line(
+      points={{-72,-60},{-10,-60}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance3.outlet, sink1.inlet) annotation (Line(
+      points={{10,-60},{76,-60}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (
     experiment(StopTime=10, Tolerance=1e-6, Interval=0.01),
         Documentation(info="<html>
