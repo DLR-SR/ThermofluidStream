@@ -43,6 +43,8 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
   //Parameterization of HEX Wall
   parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for wall"
     annotation(Dialog(group = "Heat transfer parameters"));
+
+  parameter Boolean calculate_efficency= false "Enable calculation of efficency";
 protected
   parameter Modelica.SIunits.ThermalConductance G = k_wall*A "Wall thermal conductance" annotation(Dialog(group = "Wall parameters"));
 
@@ -91,6 +93,10 @@ public
 protected
   outer DropOfCommons dropOfCommons;
 
+  function efficency = Internal.calculateEfficency (
+    redeclare package MediumA = MediumA,
+    redeclare package MediumB = MediumB);
+
 initial equation
 
   if initializeMassFlow then
@@ -121,6 +127,7 @@ equation
   summary.dh_B = summary.hout_B - summary.hin_B;
   summary.Q_flow_A=Q_flow_A;
   summary.Q_flow_B=Q_flow_B;
+  summary.efficency = efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A, calculate_efficency);
 
   //Connecting equations (to interconnect pipes)
 

@@ -5591,7 +5591,8 @@ are described in
 </p>
 </html>",   revisions="<html>
 
-</html>"));
+</html>"),     Diagram(graphics={Polygon(points={{-54,32},{-54,32}}, lineColor={28,108,
+                  200})}));
     end PartialMedium;
 
     partial package PartialPureSubstance
@@ -6335,8 +6336,8 @@ to the above list of assumptions</li>
 
     partial package PartialTwoPhaseMedium
       "Base class for two phase medium of one substance"
-      extends PartialPureSubstance(redeclare replaceable record FluidConstants
-          = myMedia.Interfaces.Types.TwoPhase.FluidConstants);
+      extends PartialPureSubstance(redeclare replaceable record FluidConstants =
+            myMedia.Interfaces.Types.TwoPhase.FluidConstants);
       constant Boolean smoothModel=false
         "True if the (derived) model should not generate state events";
       constant Boolean onePhase=false
