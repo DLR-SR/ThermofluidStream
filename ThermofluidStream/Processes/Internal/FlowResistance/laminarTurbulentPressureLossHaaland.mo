@@ -51,7 +51,7 @@ if Re_abs > 1 then
 friction_factor := 1 / (-1.8 * log10(6.9/Re_abs_limited + (relative_roughness/3.7)^1.11))^2;
 
 pressureLossLaminar := m_flow * mu * shape_factor * l /(2 * rho * diameter^2 * area);
-pressureLossTurbulent := m_flow * mu * friction_factor * l /(2 * rho * diameter * area^2);
+pressureLossTurbulent := m_flow *abs(m_flow) * mu * friction_factor * l /(2 * rho * diameter * area^2);
 
 pressureLoss := Utilities.Functions.blendFunction(y1=pressureLossLaminar, y2=pressureLossTurbulent, x1=Re_laminar, x2=Re_turbulent, x=Re_abs);
 
