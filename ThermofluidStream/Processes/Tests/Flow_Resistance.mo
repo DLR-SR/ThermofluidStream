@@ -13,9 +13,9 @@ model Flow_Resistance "Test for flow resistance"
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
-    annotation (Placement(transformation(extent={{-94,-10},{-74,10}})));
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   tf.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
-    annotation (Placement(transformation(extent={{74,-10},{94,10}})));
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
 
   inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
@@ -23,7 +23,7 @@ model Flow_Resistance "Test for flow resistance"
   tf.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
     computeL=true,
     r=0.1,
     l=100,
@@ -34,7 +34,9 @@ model Flow_Resistance "Test for flow resistance"
   tf.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
+
+    m_acceleraton_0=1,
     computeL=false,
     L_value=1000,
     r=0.02,
@@ -45,7 +47,7 @@ model Flow_Resistance "Test for flow resistance"
   tf.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=false,
     L_value=30000,
     r=0.075,
@@ -53,74 +55,73 @@ model Flow_Resistance "Test for flow resistance"
     redeclare function pLoss =
         tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
-  tf.Topology.SplitterX splitterX(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
-  tf.Topology.JunctionX3 junctionX3_2(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={40,0})));
 
   tf.Boundaries.Source source1(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
-    annotation (Placement(transformation(extent={{-92,-70},{-72,-50}})));
+    annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
   tf.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
-
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=false,
     L_value=30000,
     r=0.075,
     l=10,
     redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-          material=ThermofluidStream.Processes.Internal.Material.steel))
+        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
+        (material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
+
   tf.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
-    annotation (Placement(transformation(extent={{76,-70},{96,-50}})));
+    annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
+  tf.Boundaries.Source source2(
+    redeclare package Medium = Medium,
+    T0_par(displayUnit="K") = 300,
+    p0_par=300000)
+    annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+  tf.Boundaries.Sink sink2(redeclare package Medium = Medium, p0_par=100000)
+    annotation (Placement(transformation(extent={{20,20},{40,40}})));
+  tf.Boundaries.Source source3(
+    redeclare package Medium = Medium,
+    T0_par(displayUnit="K") = 300,
+    p0_par=300000)
+    annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
+  tf.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
+    annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
 equation
 
-  connect(splitterX.outletA, flowResistance.inlet) annotation (Line(
-      points={{-40,10},{-40,30},{-10,30}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance1.inlet, splitterX.outletC) annotation (Line(
-      points={{-10,0},{-30,0}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance2.inlet, splitterX.outletB) annotation (Line(
-      points={{-10,-30},{-40,-30},{-40,-10}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(splitterX.inlet, source.outlet) annotation (Line(
-      points={{-50,0},{-74,0}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(sink.inlet, junctionX3_2.outlet) annotation (Line(
-      points={{74,0},{62,0},{62,-1.33227e-15},{50,-1.33227e-15}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance1.outlet, junctionX3_2.inletB) annotation (Line(
-      points={{10,0},{30,0}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(junctionX3_2.inletC, flowResistance.outlet) annotation (Line(
-      points={{40,10},{40,30},{10,30}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(junctionX3_2.inletA, flowResistance2.outlet) annotation (Line(
-      points={{40,-10},{40,-30},{10,-30}},
-      color={28,108,200},
-      thickness=0.5));
-
   connect(source1.outlet, flowResistance3.inlet) annotation (Line(
-      points={{-72,-60},{-10,-60}},
+      points={{-20,-60},{-10,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, sink1.inlet) annotation (Line(
-      points={{10,-60},{76,-60}},
+      points={{10,-60},{20,-60}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source3.outlet, flowResistance2.inlet) annotation (Line(
+      points={{-20,-30},{-10,-30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance2.outlet, sink3.inlet) annotation (Line(
+      points={{10,-30},{20,-30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source.outlet, flowResistance1.inlet) annotation (Line(
+      points={{-20,0},{-10,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(sink.inlet, flowResistance1.outlet) annotation (Line(
+      points={{20,0},{10,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source2.outlet, flowResistance.inlet) annotation (Line(
+      points={{-20,30},{-10,30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance.outlet, sink2.inlet) annotation (Line(
+      points={{10,30},{20,30}},
       color={28,108,200},
       thickness=0.5));
   annotation (

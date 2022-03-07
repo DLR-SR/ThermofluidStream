@@ -31,7 +31,7 @@ model FlowResistance "Flow resistance model"
                                                                                              "laminar-turbulent Cheng2008"),
         choice(redeclare function pLoss =
             ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-                                                                                             "laminar-turbulent")),
+                                                                                             "laminar-turbulent Haaland1983")),
       Documentation(info="<html>
         <p><span style=\"font-size: 12pt;\">This function computes the pressure loss of the fluid depending on the massflow, some medium properties and the geometry of the pipe.</span></p>
         </html>"));
