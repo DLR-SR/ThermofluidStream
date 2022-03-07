@@ -58,10 +58,6 @@ pressureLoss := Utilities.Functions.blendFunction(y1=pressureLossLaminar, y2=pre
 
 annotation(Documentation(info="<html>
 <p><span style=\font-family: Courier New;\">Pressure loss after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes.
-<<<<<<< HEAD
 <p><span style=\font-family: Courier New;\">The friction factor is based on Haaland 1983. The transition coefficient increases the abruptness of the smooth-rough transition (n=1 - Colebrook-White type transition, n=3 close to complete abrupt transition).
-=======
-<p><span style=\font-family: Courier New;\">The friction factor is based on Haaland 1983. The transition coefficient increases the abruptness of the smooth-rough transition (n=1 - Colebrook-White type transition, n=3 close to complete abrupt transition of the smooth rough regimes).
->>>>>>> 97ba439ad85f3dedae89a25c46fff3130b42bd41
 <p><span style=\font-family: Courier New;\">Haaland, S. E. Simple and Explicit Formulas for the Friction Factor in Turbulent Pipe Flow. Journal of Fluids Engineering 105, 89–90; 10.1115/1.3240948 (1983).<html>"));
 end laminarTurbulentPressureLossHaaland;
