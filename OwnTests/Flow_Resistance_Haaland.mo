@@ -39,7 +39,7 @@ model Flow_Resistance "Test for flow resistance"
 
   ThermofluidStream.Processes.FlowResistance flowResistance(
   redeclare package Medium = Medium,
-  redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland(Re_laminar = 200, Re_turbulent = 4000, shape_factor = 64, es = 15e-6), 
+  redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland(Re_laminar = 200, Re_turbulent = 4000, shape_factor = 64, es = 15e-6, n=1), 
   computeL = false,
   initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
   l = 100,
