@@ -16,7 +16,6 @@ function calculateEfficency "calculates efficency for a general HEX"
 
   input SI.Power Q_flow;
 
-  input Boolean calculate_efficency = true;
 
   output Real efficency(unit="1") = 0;
 
@@ -33,7 +32,7 @@ protected
   SI.Temperature T_A_in = MediumA.temperature(state_A_in);
   SI.Temperature T_B_in = MediumB.temperature(state_B_in);
 
-  constant SI.SpecificEnthalpy dh_0 = 1e5;
+  constant SI.SpecificEnthalpy dh_0 = 1e4;
   constant SI.SpecificEnthalpy dh_fin = 1e1;
   constant Real devisor(unit="1") = 3.5;
   SI.SpecificEnthalpy dh;
@@ -44,10 +43,6 @@ protected
   constant SI.Power eps = 1e-8;
 
 algorithm
-  if not calculate_efficency then
-    return;
-  end if;
-
   if T_A_in == T_B_in then
     return;
   end if;

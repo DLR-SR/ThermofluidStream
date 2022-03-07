@@ -127,7 +127,7 @@ equation
   summary.dh_B = summary.hout_B - summary.hin_B;
   summary.Q_flow_A=Q_flow_A;
   summary.Q_flow_B=Q_flow_B;
-  summary.efficency = efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A, calculate_efficency);
+  summary.efficency = if calculate_efficency then efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
 
   //Connecting equations (to interconnect pipes)
 

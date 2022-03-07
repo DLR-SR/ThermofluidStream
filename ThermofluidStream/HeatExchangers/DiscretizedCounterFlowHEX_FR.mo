@@ -39,18 +39,15 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
 
-  parameter SI.Length l_A = 1 "Length of pipe A"
+  parameter Real k1_A= 1 "Liner flowres factor A"
     annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter SI.Length r_A = 0.01 "Radius of pipe A"
+  parameter Real k2_A = 0.01 "Quadratic flowres factor A"
     annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter SI.Length ks_A = 1e-7 "Roughness of pipe A"
+  parameter Real k1_B = 1e-7 "Liner flowres factor B"
     annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter SI.Length l_B = 1 "Length of pipe B"
+  parameter Real k2_B = 1 "Quadratic flowres factor B"
     annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter SI.Length r_B = 0.01 "Radius of pipe B"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter SI.Length ks_B = 1e-7 "Roughness of pipe B"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
+
 
   //Parameterization of HEX Wall
   parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for pipe wall"
@@ -67,19 +64,21 @@ public
     annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
-    each r = r_A,
-    each l=l_A/nCells,
+    each r = 1,
+    each l= 1,
     each computeL=false,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                      each ks_input=ks_A))
+        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+          each k=k1_A, each k2=k2_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
-    each r = r_B,
-    each l=l_B/nCells,
+    each r=1,
+    each l=1,
     each computeL=false,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                      each ks_input=ks_B))
+        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+          each k=k1_B, each k2=k2_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)
@@ -129,7 +128,8 @@ equation
   summary.dh_B = summary.hout_B - summary.hin_B;
   summary.Q_flow_A=Q_flow_A;
   summary.Q_flow_B=Q_flow_B;
-  summary.efficency = efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A, calculate_efficency);
+  summary.efficency = if calculate_efficency and not initial() then
+    efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
 
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
