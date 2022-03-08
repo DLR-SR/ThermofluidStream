@@ -1,29 +1,19 @@
 within ThermofluidStream.Utilities.Functions;
+function blendFunction "Smooth step between two values at two support points"
+  extends Modelica.Icons.Function;
+  import ThermofluidStream.Undirected.Internal.regStep;
 
-function blendFunction
-extends Modelica.Icons.Function;
-
-input Real y1;
-input Real y2;
-input Real x1;
-input Real x2;
-input Real x;
-output Real y;
+  input Real y1 "Value of y at x1";
+  input Real y2 "Value of y at x2";
+  input Real x1;
+  input Real x2;
+  input Real x;
+  output Real y;
 
 protected
-Real u;
-Real transition;
+  Real u;
 
-algorithm // inspired by the MATLAB Simscape Foundation Library
-  u := (x-x1)/(x2-x1);
-  transition := 3*u^2 - 2*u^3;
-
-  if x < x1 then
-    y := y1;
-  elseif x > x2 then
-    y := y2;
-  else
-    y := (1-transition)*y1 + transition*y2;
-  end if;
-
+algorithm
+  u := (2*x - (x1 + x2))/(x2 - x1);
+  y := regStep(u, y2, y1, 1);
 end blendFunction;
