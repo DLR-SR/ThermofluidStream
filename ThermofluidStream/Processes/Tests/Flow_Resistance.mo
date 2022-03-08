@@ -23,7 +23,7 @@ model Flow_Resistance "Test for flow resistance"
   tf.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
     computeL=true,
     r=0.1,
     l=100,
@@ -35,7 +35,6 @@ model Flow_Resistance "Test for flow resistance"
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-
     m_acceleraton_0=1,
     computeL=false,
     L_value=1000,
@@ -44,6 +43,7 @@ model Flow_Resistance "Test for flow resistance"
     redeclare function pLoss =
         tf.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+
   tf.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
