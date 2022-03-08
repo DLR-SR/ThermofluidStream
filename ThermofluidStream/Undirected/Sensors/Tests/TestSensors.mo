@@ -9,7 +9,8 @@ model TestSensors "Test for the undirected sensors"
 <p>Replaceable package with the medium model. Due to the vaporQuality sensor it must be a TwoPhaseMedium.</p>
 </html>"));
 
-  replaceable package Medium2 = Media.myMedia.IdealGases.MixtureGases.CombustionAir
+  replaceable package Medium2 =
+      Media.myMedia.IdealGases.MixtureGases.CombustionAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
                                                    "Medium model"
     annotation (Documentation(info="<html>
@@ -22,7 +23,8 @@ model TestSensors "Test for the undirected sensors"
     r=0.01,
     l=100,
     redeclare function pLoss =
-        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        .ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                         material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,-8},{-20,12}})));
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = Medium,
@@ -51,9 +53,11 @@ model TestSensors "Test for the undirected sensors"
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar)
     annotation (Placement(transformation(extent={{-10,0},{10,20}})));
-  UnidirectionalSensorAdapter unidirectionalSensorAdapter(redeclare package Medium = Medium)
+  UnidirectionalSensorAdapter unidirectionalSensorAdapter(redeclare package
+      Medium =                                                                       Medium)
     annotation (Placement(transformation(extent={{20,0},{40,8}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensor_vaporQuality1(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensor_vaporQuality1(redeclare
+      package Medium =                                                                           Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{50,12},{70,32}})));
   SingleFlowSensor singleFlowSensor(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps)
     annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
@@ -67,7 +71,8 @@ model TestSensors "Test for the undirected sensors"
     r=0.01,
     l=100,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,52},{-20,72}})));
   Boundaries.BoundaryRear boundary_rear1(
     redeclare package Medium = Medium,
@@ -111,7 +116,8 @@ model TestSensors "Test for the undirected sensors"
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
     filter_output=true,
     redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,60},{70,80}})));
-  UnidirectionalSensorAdapter unidirectionalSensorAdapter1(redeclare package Medium = Medium)
+  UnidirectionalSensorAdapter unidirectionalSensorAdapter1(redeclare package
+      Medium =                                                                        Medium)
     annotation (Placement(transformation(extent={{20,64},{40,56}})));
   ThermofluidStream.Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect(
     redeclare package MediumA = Medium,
@@ -139,7 +145,8 @@ model TestSensors "Test for the undirected sensors"
     r=0.01,
     l=100,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
   SingleSensorX singleSensorX(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{-100,-32},{-80,-12}})));
   SingleSensorX singleSensorX1(

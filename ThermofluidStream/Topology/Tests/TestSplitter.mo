@@ -3,7 +3,8 @@ model TestSplitter
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium;
+                                                     constrainedby
+    Media.myMedia.Interfaces.PartialMedium;
 
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{60,-80},{80,-60}})));

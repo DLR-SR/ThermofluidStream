@@ -34,11 +34,11 @@ model SpecificValveType "Test for SpecificValveType"
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-               medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
+      Medium = medium)
     annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-               medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = medium)
     annotation (Placement(transformation(extent={{26,60},{46,80}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
@@ -65,11 +65,11 @@ model SpecificValveType "Test for SpecificValveType"
   ThermofluidStream.Boundaries.Sink sink2(redeclare package Medium = medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package Medium =
-               medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package
+      Medium = medium)
     annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package Medium =
-               medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package
+      Medium = medium)
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
 
   Modelica.Blocks.Sources.Constant const2(k=1.1e5)

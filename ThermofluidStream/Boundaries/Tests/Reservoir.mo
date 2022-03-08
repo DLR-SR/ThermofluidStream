@@ -2,7 +2,8 @@ within ThermofluidStream.Boundaries.Tests;
 model Reservoir "Test for Reservoir"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.CompressibleLiquids.LinearColdWater
+  replaceable package Medium =
+      Media.myMedia.CompressibleLiquids.LinearColdWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
                                                    "Medium Model"
       annotation(choicesAllMatching=true, Documentation(info="<html>
@@ -25,7 +26,8 @@ model Reservoir "Test for Reservoir"
   Processes.Pump pump(redeclare package Medium=Medium,
     initM_flow= ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump =
+        Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         V_r_input(displayUnit="m3") = 0.1,
         k_p_input=500,
         k_fric_input=0))

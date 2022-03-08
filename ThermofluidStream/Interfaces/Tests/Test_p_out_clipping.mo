@@ -3,8 +3,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                                                                    "Medium package"
+                                                     constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                          "Medium package"
     annotation (Documentation(info="<html>
       <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
       </html>"));

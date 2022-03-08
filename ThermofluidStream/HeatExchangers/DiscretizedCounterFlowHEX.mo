@@ -2,9 +2,11 @@ within ThermofluidStream.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
   extends Internal.DiscretizedHexIcon;
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+  replaceable package MediumA =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+  replaceable package MediumB =
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
@@ -95,6 +97,8 @@ equation
   summary.dT_B = summary.Tout_B - summary.Tin_B;
   summary.dh_A = summary.hout_A - summary.hin_A;
   summary.dh_B = summary.hout_B - summary.hin_B;
+  summary.Q_flow_A=Q_flow_A;
+  summary.Q_flow_B=Q_flow_B;
 
   //Connecting equations (to interconnect pipes)
   //Fluid Side B

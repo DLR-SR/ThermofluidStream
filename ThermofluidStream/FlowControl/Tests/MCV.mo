@@ -2,7 +2,8 @@ within ThermofluidStream.FlowControl.Tests;
 model MCV "Test for MCV"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                    "Medium package"
       annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
@@ -30,7 +31,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
@@ -51,7 +53,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Sources.Pulse pulse1(
     amplitude=2e5,
@@ -78,7 +81,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   Modelica.Blocks.Sources.Trapezoid
                                 trapezoid(
@@ -109,7 +113,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
   Modelica.Blocks.Sources.Pulse pulse3(
     amplitude=2e5,
@@ -136,7 +141,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
   Modelica.Blocks.Sources.Trapezoid
                                 trapezoid1(
@@ -168,7 +174,8 @@ model MCV "Test for MCV"
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss =
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Pulse pulse5(
     amplitude=0.2,
@@ -186,6 +193,23 @@ model MCV "Test for MCV"
     offset=1,
     startTime=0)
     annotation (Placement(transformation(extent={{-80,80},{-60,100}})));
+  Boundaries.Source                   source6(
+    redeclare package Medium = Medium,
+    pressureFromInput=false,
+    T0_par(displayUnit="K") = 300,
+    p0_par=100000) annotation (Placement(transformation(extent={{-38,130},{-18,
+            150}})));
+  Boundaries.Sink                   sink6(redeclare package Medium = Medium,
+      p0_par=100000)
+    annotation (Placement(transformation(extent={{52,130},{72,150}})));
+  ThermofluidStream.FlowControl.MCV mCV6(
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
+
+    massFlow_set_par=1,
+    volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-8,130},
+            {12,150}})));
 equation
   connect(mCV.inlet, source.outlet) annotation (Line(
       points={{-10,30},{-20,30}},
@@ -267,6 +291,14 @@ equation
       thickness=0.5));
   connect(pulse5.y, mCV.setpoint_var) annotation (Line(points={{-59,50},{0,50},{0,38}},       color={0,0,127}));
   connect(trapezoid2.y, mCV5.setpoint_var) annotation (Line(points={{-59,90},{0,90},{0,78}},        color={0,0,127}));
+  connect(mCV6.inlet,source6. outlet) annotation (Line(
+      points={{-8,140},{-18,140}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mCV6.outlet, sink6.inlet) annotation (Line(
+      points={{12,140},{52,140}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram( coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),

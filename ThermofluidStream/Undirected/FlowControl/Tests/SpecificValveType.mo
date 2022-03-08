@@ -19,7 +19,8 @@ model SpecificValveType "Test for undirected SpecificValveType"
   FlowControl.SpecificValveType slideValve(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare record ZetaValueRecord = ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
+    redeclare record ZetaValueRecord =
+        ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
     Kvs=5) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
 
@@ -28,16 +29,16 @@ model SpecificValveType "Test for undirected SpecificValveType"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-                                                                       k=1e3))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                              k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package Medium =
-               Medium)
+  Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-40,58},{-20,78}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package Medium =
-               Medium)
+  Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{26,58},{46,78}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
@@ -53,7 +54,8 @@ model SpecificValveType "Test for undirected SpecificValveType"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
-    redeclare record ZetaValueRecord = ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
+    redeclare record ZetaValueRecord =
+        ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
     d_valve=0.005,
     Kvs=5,
@@ -62,11 +64,11 @@ model SpecificValveType "Test for undirected SpecificValveType"
 
   Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(redeclare package Medium =
-               Medium)
+  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-2},{-20,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(redeclare package Medium =
-               Medium)
+  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{26,-2},{46,18}})));
 
   Processes.FlowResistance                   flowResistance6(
@@ -74,21 +76,24 @@ model SpecificValveType "Test for undirected SpecificValveType"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=1e3))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   Processes.FlowResistance                   flowResistance1(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=1e3))
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.FlowResistance                   flowResistance2(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e3))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+        (                                                                                                       k=1e3))
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   Modelica.Blocks.Sources.Pulse    pulse(
     amplitude=2e4,

@@ -4,11 +4,13 @@ model TestDiscretizedHEXvsDir
   extends Modelica.Icons.Example;
 
   replaceable package MediumAir = Media.myMedia.Air.DryAirNasa
-                                                         constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+                                                         constrainedby
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-                                                                 constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+                                                                 constrainedby
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
@@ -49,7 +51,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-68,198},{-48,218}})));
   Modelica.Blocks.Sources.Ramp rampPressure(
     height=1e5,
@@ -80,7 +83,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-50,182},{-70,202}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,
@@ -211,7 +215,8 @@ model TestDiscretizedHEXvsDir
   Modelica.Blocks.Nonlinear.Limiter limiter3(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{-76,-70},{-64,-58}})));
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
-    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB =
+        ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     initializeMassFlow=true,
@@ -225,7 +230,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{90,-74},{70,-54}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumRefrigerant,
@@ -233,7 +239,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
@@ -347,7 +354,8 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
-    redeclare model ConductionElementB = ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB =
+        ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=10,
     k_wall=300) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -359,7 +367,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-84,-176},{-64,-156}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB2(
     redeclare package Medium = MediumRefrigerant,
@@ -368,7 +377,8 @@ model TestDiscretizedHEXvsDir
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

@@ -3,8 +3,8 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.DryAirNasa
-                                                      constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                                                                     "Medium Model"
+                                                      constrainedby
+    Media.myMedia.Interfaces.PartialMedium                                                           "Medium Model"
     annotation (Documentation(
         info="<html>
 <p>Medium used for this Example. Should be a gas.</p>
@@ -19,7 +19,8 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
   Processes.Turbine turbine(redeclare package Medium=Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-                                                             redeclare function dp_tau_turbine =
+                                                             redeclare function
+      dp_tau_turbine =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=1000,
         m_flow_ref=1.2,
