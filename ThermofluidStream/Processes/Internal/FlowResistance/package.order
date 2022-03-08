@@ -2,4 +2,5 @@ partialPressureLoss
 linearQuadraticPressureLoss
 laminarPressureLoss
 laminarTurbulentPressureLoss
+laminarTurbulentPressureLossHaaland
 pleaseSelectPressureLoss
