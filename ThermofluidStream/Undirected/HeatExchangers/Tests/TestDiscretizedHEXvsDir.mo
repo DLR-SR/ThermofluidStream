@@ -73,7 +73,9 @@ model TestDiscretizedHEXvsDir
     nCells=10,
     V_Hex(displayUnit="m3"),
     initializeMassFlow=true,
-    k_wall=300) annotation (Placement(transformation(
+    k_wall=300,
+    calculate_efficency=true)
+                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,200})));
@@ -221,7 +223,9 @@ model TestDiscretizedHEXvsDir
     redeclare package MediumB = MediumRefrigerant,
     initializeMassFlow=true,
     nCells=10,
-    k_wall=300) annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    k_wall=300,
+    calculate_efficency=true)
+                annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={2,-56})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA1(
@@ -358,7 +362,9 @@ model TestDiscretizedHEXvsDir
         ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=10,
-    k_wall=300) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    k_wall=300,
+    calculate_efficency=true)
+                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-174})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA2(

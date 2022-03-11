@@ -185,10 +185,6 @@ model FlowRes
         U_tp_nom=3000),
     nCells=nCells,
     A=10,
-    l_A=nCells*10,
-    r_A=0.03,
-    l_B=nCells*10,
-    r_B=0.03,
     k_wall=250) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
@@ -407,10 +403,6 @@ model FlowRes
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=nCells,
-    l_A=10,
-    r_A=nCells*0.01,
-    l_B=nCells*10,
-    r_B=0.003,
     k_wall=150)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

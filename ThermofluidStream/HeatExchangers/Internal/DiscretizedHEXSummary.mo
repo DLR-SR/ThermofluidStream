@@ -22,6 +22,8 @@ record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
   SI.Power Q_flow_A "Heat going into A";
   SI.Power Q_flow_B "Heat going into B";
 
+  Real efficency(unit="1") "Heat exchanger efficency";
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end DiscretizedHEXSummary;

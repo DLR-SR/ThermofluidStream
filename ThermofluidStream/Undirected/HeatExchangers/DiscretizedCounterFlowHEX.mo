@@ -63,6 +63,9 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
   //Parameterization of HEX Wall
   parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for wall"
     annotation(Dialog(group = "Heat transfer parameters"));
+
+  parameter Boolean calculate_efficency= false "Enable calculation of efficency";
+
 protected
   parameter Modelica.SIunits.ThermalConductance G = k_wall*A "Wall thermal conductance" annotation(Dialog(group = "Wall parameters"));
 
@@ -95,6 +98,16 @@ public
 
 protected
   outer DropOfCommons dropOfCommons;
+  function efficency =
+      ThermofluidStream.HeatExchangers.Internal.calculateEfficency (
+    redeclare package MediumA = MediumA,
+    redeclare package MediumB = MediumB);
+
+  // no regstep since this is only used as a output
+  MediumA.ThermodynamicState stateA_in = if noEvent(rearA.m_flow) > 0 then rearA.state_forwards else foreA.state_rearwards;
+  MediumA.ThermodynamicState stateA_out = if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
+  MediumB.ThermodynamicState stateB_in = if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
+  MediumB.ThermodynamicState stateB_out = if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
 
 initial equation
 
@@ -105,18 +118,20 @@ initial equation
 
 equation
   //Summary record
-  summary.Tin_A =Undirected.Internal.regStep(m_flow_A,MediumA.temperature(rearA.state_forwards),MediumA.temperature(foreA.state_rearwards),m_flow_reg);
-  summary.Tin_B = Undirected.Internal.regStep(m_flow_B, MediumB.temperature(rearB.state_forwards), MediumB.temperature(foreB.state_rearwards), m_flow_reg);
-  summary.Tout_A =Undirected.Internal.regStep(m_flow_A,MediumA.temperature(foreA.state_forwards),MediumA.temperature(rearA.state_rearwards),m_flow_reg);
-  summary.Tout_B = Undirected.Internal.regStep(m_flow_B, MediumB.temperature(foreB.state_forwards), MediumB.temperature(rearB.state_rearwards), m_flow_reg);
-  summary.hin_A =Undirected.Internal.regStep(m_flow_A,MediumA.specificEnthalpy(rearA.state_forwards),MediumA.specificEnthalpy(foreA.state_rearwards),m_flow_reg);
-  summary.hin_B = Undirected.Internal.regStep(m_flow_B, MediumB.specificEnthalpy(rearB.state_forwards), MediumB.specificEnthalpy(foreB.state_rearwards), m_flow_reg);
-  summary.hout_A =Undirected.Internal.regStep(m_flow_A,MediumA.specificEnthalpy(foreA.state_forwards),MediumA.specificEnthalpy(rearA.state_rearwards),m_flow_reg);
-  summary.hout_B = Undirected.Internal.regStep(m_flow_B, MediumB.specificEnthalpy(foreB.state_forwards), MediumB.specificEnthalpy(rearB.state_rearwards), m_flow_reg);
+  summary.Tin_A = MediumA.temperature(stateA_in);
+  summary.Tin_B = MediumB.temperature(stateB_in);
+  summary.Tout_A = MediumA.temperature(stateA_out);
+  summary.Tout_B = MediumB.temperature(stateB_out);
+  summary.hin_A = MediumA.specificEnthalpy(stateA_in);
+  summary.hin_B = MediumB.specificEnthalpy(stateB_in);
+  summary.hout_A = MediumA.specificEnthalpy(stateA_out);
+  summary.hout_B = MediumB.specificEnthalpy(stateB_out);
   summary.dT_A = summary.Tout_A - summary.Tin_A;
   summary.dT_B = summary.Tout_B - summary.Tin_B;
   summary.dh_A = summary.hout_A - summary.hin_A;
   summary.dh_B = summary.hout_B - summary.hin_B;
+
+  summary.efficency = if calculate_efficency then efficency(stateA_in, stateB_in, stateA_out, stateB_out, rearA.m_flow, rearB.m_flow, Q_flow_A) else 0;
 
   summary.Q_flow_A = Q_flow_A;
   summary.Q_flow_B = Q_flow_B;
