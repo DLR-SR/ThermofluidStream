@@ -20,7 +20,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   parameter Utilities.Units.MassFlowAcceleration m_acceleraton_0 = 0 "Initial value for der(m_flow)"
     annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.derivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
-  parameter Boolean clip_p_out "If true, set dr_corr to zero"
+  parameter Boolean clip_p_out "If false, set dr_corr to zero"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced", enable=clip_p_out));
