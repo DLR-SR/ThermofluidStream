@@ -108,7 +108,13 @@ model Accumulator "Accumulator Model for vapor cycle applications"
           fillPattern=FillPattern.Solid)}),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
+<p>Model of an accumulator for application in vapor-cycle systems.</p>
+<p><br>It inherits the basic balance equations from the volume model.</p>
+<p><br>The purpose of this model is to separate the phases and provide gaseous phase to the compressor. The gas is extracted through a pipe. The low and high end of the pipe can be set by the respective parameters. Depending on the liquid level of the accumulator, the outlet enthalpy is set:</p>
+<p><br>If the liquid level is higher than the upper end of the pipe, liquid is extracted.</p>
+<p>If the liquid level is lower then the lower end of the pipe, the actual enthalpy of the medium in the accumulator is extracted.</p>
+<p>If the liquid level is between the lower and the upper end of the pipe, the outlet enthalpy is weighted on the liquid level in the pipe.</p>
+<p>Known problems: full phaseSeparator is very stiff, therefore simulation might get slow then, especially at the moment when the separator fills up. Consider changing the timeconstant and check if the mass-flow dynamic is fast enough.</p>
+<p><br><img src=\"modelica://ThermofluidStream/Resources/Doku/accumulator.png\"/></p>
 </html>"));
 end Accumulator;

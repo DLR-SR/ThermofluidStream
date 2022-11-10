@@ -226,7 +226,13 @@ model ReceiverUndirected "Undirected Receiver Model for vapor cycle applications
           fillPattern=FillPattern.Solid)}),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
+<p>Model of an undirected receiver for application in reversible heat pump systems.</p>
+<p><br>It inherits the basic balance equations from the volume model.</p>
+<p><br>The only difference to the directed <a href=\"ThermofluidStream.Examples.Utilities.Receiver\">Receiver</a> model is, that it has outlet pipes on <b>both</b> sides of the volume. Hence the liquid phase is extracted from the respective pipe, depending on the flow direction.</p>
+<p><br>The purpose of this model is to separate the phases and provide liquid phase to the expansion valve in both flow directions. The liquid is extracted through a pipe on each side of the receiver. The low and high end of the pipes can be set by the respective parameters. Depending on the liquid level of the receiver, the outlet enthalpy is set:</p>
+<p><br>If the liquid level is higher than the upper end of the pipe, liquid is extracted.</p>
+<p>If the liquid level is lower then the lower end of the pipe, the actual enthalpy of the medium in the receiver is extracted.</p>
+<p>If the liquid level is between the lower and the upper end of the pipe, the outlet enthalpy is weighted on the liquid level in the pipe.</p>
+<p>Known problems: full phaseSeparator is very stiff, therefore simulation might get slow then, especially at the moment when the separator fills up. Consider changing the timeconstant and check if the mass-flow dynamic is fast enough.</p>
 </html>"));
 end ReceiverUndirected;
