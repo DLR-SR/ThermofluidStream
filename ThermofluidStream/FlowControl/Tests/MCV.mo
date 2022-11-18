@@ -206,10 +206,10 @@ model MCV "Test for MCV"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
-
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-8,130},
             {12,150}})));
+
 equation
   connect(mCV.inlet, source.outlet) annotation (Line(
       points={{-10,30},{-20,30}},

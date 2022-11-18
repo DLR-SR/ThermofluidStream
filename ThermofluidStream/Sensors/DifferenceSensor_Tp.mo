@@ -74,16 +74,16 @@ equation
     TA =  MediumA.temperature(inletA.state);
     TB =  MediumB.temperature(inletB.state);
   elseif temperatureUnit == "degC" then
-    TA = SI.Conversions.to_degC(MediumA.temperature(inletA.state));
-    TB = SI.Conversions.to_degC(MediumB.temperature(inletB.state));
+    TA =Modelica.Units.Conversions.to_degC(MediumA.temperature(inletA.state));
+    TB =Modelica.Units.Conversions.to_degC(MediumB.temperature(inletB.state));
   end if;
 
   if pressureUnit == "Pa" then
     pA = MediumA.pressure(inletA.state);
     pB = MediumB.pressure(inletB.state);
   elseif pressureUnit == "bar" then
-    pA = SI.Conversions.to_bar(MediumA.pressure(inletA.state));
-    pB = SI.Conversions.to_bar(MediumB.pressure(inletB.state));
+    pA =Modelica.Units.Conversions.to_bar(MediumA.pressure(inletA.state));
+    pB =Modelica.Units.Conversions.to_bar(MediumB.pressure(inletB.state));
   end if;
 
   direct_T = TA - TB;

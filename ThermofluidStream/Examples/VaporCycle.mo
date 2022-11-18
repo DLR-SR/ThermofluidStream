@@ -261,8 +261,9 @@ model VaporCycle
     Ti=3,
     yMax=-0.001,
     yMin=-38,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
-    y_start=-4) annotation (Placement(transformation(extent={{204,-10},{184,10}})));
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=-4)
+    annotation (Placement(transformation(extent={{204,-10},{184,10}})));
   Modelica.Blocks.Math.Gain gain(k=1)
     annotation (Placement(transformation(extent={{120,-6},{108,6}})));
   Modelica.Blocks.Sources.Step step(
@@ -284,8 +285,9 @@ model VaporCycle
     Ti=0.3,
     yMax=10000,
     yMin=1,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
-    y_start=3000) annotation (Placement(transformation(extent={{148,10},{128,-10}})));
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=3000)
+    annotation (Placement(transformation(extent={{148,10},{128,-10}})));
   Modelica.Blocks.Math.Gain gain1(k=-1)
     annotation (Placement(transformation(extent={{172,-6},{160,6}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{-180,-128},{-160,-108}})));

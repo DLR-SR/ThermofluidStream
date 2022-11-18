@@ -8,14 +8,14 @@ model SpecificValveType "Specific technical valve types"
   replaceable record ZetaValueRecord =
       ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve
     constrainedby
-    ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves
-                                                                                                "Select Valve Type"
+    ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves               "Select Valve Type"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
   //Set valve data as parameter
-  parameter Modelica.SIunits.Diameter d_valve "Flow diameter" annotation(Evaluate = true, Dialog(group = "Valve parameters",
-  enable = (flowCoefficient == FlowCoeffType.flowDiameter)));
+  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter" annotation (
+      Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient
+           == FlowCoeffType.flowDiameter)));
   //Reference Values
   parameter Real Kvs( unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
     Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
@@ -29,7 +29,8 @@ model SpecificValveType "Specific technical valve types"
 
 protected
   constant ZetaValueRecord valveData;
-  Modelica.SIunits.Area A_valve = 0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional valve area";
+  Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2
+    "Cross-sectional valve area";
 
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";
   Real k_u_zeta(unit="1") "Kv/Kvs respecting zeta curve";

@@ -259,11 +259,11 @@ model MCV "Test for undirected MCV"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
-
     setpointFromInput=false,
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-2,158},
             {18,178}})));
+
   Boundaries.BoundaryFore           boundaryFore3(redeclare package Medium =
         Medium, p0_par=200000)
     annotation (Placement(transformation(extent={{30,158},{50,178}})));
@@ -281,11 +281,11 @@ model MCV "Test for undirected MCV"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
-
     setpointFromInput=false,
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-2,116},
             {18,136}})));
+
   Boundaries.BoundaryFore             boundaryFore10(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -299,13 +299,13 @@ model MCV "Test for undirected MCV"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
-
     setpointFromInput=false,
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,10},
             {10,-10}},
         rotation=180,
         origin={94,168})));
+
   Boundaries.BoundaryRear           boundaryRear8(redeclare package Medium =
         Medium, p0_par=200000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -329,13 +329,13 @@ model MCV "Test for undirected MCV"
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
-
     setpointFromInput=false,
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,10},
             {10,-10}},
         rotation=180,
         origin={94,126})));
+
 equation
 
   connect(pulse1.y, boundaryRear3.p0_var) annotation (Line(points={{-49,10},{-30,

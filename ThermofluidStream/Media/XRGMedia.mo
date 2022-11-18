@@ -9,7 +9,7 @@ package XRGMedia "A medium property library"
     record HelmholtzDerivs
       "derivatives of dimensionless Helmholtz-function w.r.t. dimensionless pressuredensity and temperature"
       extends Modelica.Icons.Record;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       SI.Density d "density";
       SI.Temperature T "temperature";
       SI.SpecificHeatCapacity R "specific heat capacity";
@@ -28,14 +28,16 @@ package XRGMedia "A medium property library"
       "thermodynamic base properties on the phase boundary"
       extends Modelica.Icons.Record;
 
-      Modelica.SIunits.Density d "density";
-      Modelica.SIunits.SpecificEnthalpy h "enthalpy";
-      Modelica.SIunits.SpecificEnergy u "inner energy";
-      Modelica.SIunits.SpecificEntropy s "entropy";
-      Modelica.SIunits.SpecificHeatCapacity cp "heat capacity at constant pressure";
-      Modelica.SIunits.SpecificHeatCapacity cv "heat capacity at constant volume";
-      Modelica.SIunits.IsothermalCompressibility kappa "isentropic exponent";
-      Modelica.SIunits.Velocity a "velocity of sound";
+      Modelica.Units.SI.Density d "density";
+      Modelica.Units.SI.SpecificEnthalpy h "enthalpy";
+      Modelica.Units.SI.SpecificEnergy u "inner energy";
+      Modelica.Units.SI.SpecificEntropy s "entropy";
+      Modelica.Units.SI.SpecificHeatCapacity cp
+        "heat capacity at constant pressure";
+      Modelica.Units.SI.SpecificHeatCapacity cv
+        "heat capacity at constant volume";
+      Modelica.Units.SI.IsothermalCompressibility kappa "isentropic exponent";
+      Modelica.Units.SI.Velocity a "velocity of sound";
       Modelica.Media.Interfaces.Types.IsobaricExpansionCoefficient beta
         "isobaric expansion coefficient";
       Modelica.Media.Interfaces.Types.IsentropicExponent gamma
@@ -47,7 +49,7 @@ package XRGMedia "A medium property library"
 
     record NewtonDerivatives_pT
       "Derivatives for fast inverse calculations of Helmholtz functions:p & T"
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       extends Modelica.Icons.Record;
       SI.Pressure p "Pressure";
       SI.DerPressureByDensity pd "Derivative of pressure w.r.t. density";
@@ -57,7 +59,7 @@ package XRGMedia "A medium property library"
       "derivatives for fast inverse calculations of Helmholtz functions: p & h"
 
       extends Modelica.Icons.Record;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       SI.Pressure p "pressure";
       SI.SpecificEnthalpy h "specific enthalpy";
       Real pd "derivative of pressure w.r.t. density";
@@ -72,7 +74,7 @@ package XRGMedia "A medium property library"
       "derivatives for fast inverse calculation of Helmholtz functions: p & s"
 
       extends Modelica.Icons.Record;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       SI.Pressure p "pressure";
       SI.SpecificEntropy s "specific entropy";
       Real pd "derivative of pressure w.r.t. density";
@@ -88,11 +90,11 @@ package XRGMedia "A medium property library"
       extends Modelica.Icons.Record;
 
       Integer phase "number of phases";
-      Modelica.SIunits.Pressure p "pressure";
-      Modelica.SIunits.Temperature T "kelvin-temperature";
-      Modelica.SIunits.Density rho "density";
-      Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-      Modelica.SIunits.SpecificHeatCapacity cv
+      Modelica.Units.SI.Pressure p "pressure";
+      Modelica.Units.SI.Temperature T "kelvin-temperature";
+      Modelica.Units.SI.Density rho "density";
+      Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
+      Modelica.Units.SI.SpecificHeatCapacity cv
         "specific heat capacity at constant volume";
       Real pt "derivative of pressure wrt temperature";
       Real pd "derivative of pressure wrt density";
@@ -154,7 +156,7 @@ package XRGMedia "A medium property library"
       "compute isochoric specific heat capacity inside the two-phase region"
       extends Modelica.Icons.Function;
 
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       input PhaseBoundaryProperties liq "properties on the boiling curve";
       input PhaseBoundaryProperties vap "properties on the condensation curve";
       input SI.MassFraction x "vapour mass fraction";
@@ -215,7 +217,7 @@ package XRGMedia "A medium property library"
     function Helmholtz_ph
       "function to calculate analytic derivatives for computing d and t given p and h"
       extends Modelica.Icons.Function;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output NewtonDerivatives_ph nderivs
         "derivatives for Newton iteration to calculate d and t from p and h";
@@ -236,7 +238,7 @@ package XRGMedia "A medium property library"
       "function to calculate analytic derivatives for computing d and t given p and s"
 
       extends Modelica.Icons.Function;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output NewtonDerivatives_ps nderivs
         "derivatives for Newton iteration to compute d and t from p and s";
@@ -257,7 +259,7 @@ package XRGMedia "A medium property library"
       "calulate phase boundary property record from dimensionless Helmholtz function"
 
       extends Modelica.Icons.Function;
-      import SI = Modelica.SIunits;
+      import      Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output PhaseBoundaryProperties sat "phase boundary property record";
     protected
@@ -402,8 +404,9 @@ package XRGMedia "A medium property library"
     protected
      SaturationProperties sat(psat=p, Tsat=0)
       "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat) "liquid enthalpy";
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
+        "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
     state.p :=p;
@@ -436,10 +439,10 @@ Example:
       "set state for density and temperature (X not used since single substance)"
     protected
        Common.HelmholtzDerivs f "helmholtz derivatives";
-       Modelica.SIunits.SpecificHeatCapacity R "specific gas constant";
+      Modelica.Units.SI.SpecificHeatCapacity R "specific gas constant";
        SaturationProperties sat "saturation temperature and pressure";
-       Modelica.SIunits.Density dl "liquid density";
-       Modelica.SIunits.Density dv "vapor density";
+      Modelica.Units.SI.Density dl "liquid density";
+      Modelica.Units.SI.Density dv "vapor density";
 
     algorithm
        R := R134aData.R;
@@ -491,8 +494,9 @@ Example:
     "set state for pressure and specific entropy (X not used since single substance)"
 
     protected
-      Modelica.SIunits.Pressure delp=1e-2 "iteration accuracy for pressure";
-      Modelica.SIunits.SpecificEntropy dels=1e-1 "iteration accuracy for entropy";
+      Modelica.Units.SI.Pressure delp=1e-2 "iteration accuracy for pressure";
+      Modelica.Units.SI.SpecificEntropy dels=1e-1
+        "iteration accuracy for entropy";
       Integer error "if newton iteration fails (too many calls)";
       Common.HelmholtzDerivs f "helmholtz derivatives";
       SaturationProperties sat "saturation temperature and pressure";
@@ -749,7 +753,7 @@ Example:
       SaturationProperties sat "saturation temperature and pressure";
       Common.PhaseBoundaryProperties vap "properties on vapor phase boundary";
 
-      Modelica.SIunits.MassFraction x "vapor quality";
+      Modelica.Units.SI.MassFraction x "vapor quality";
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -835,7 +839,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       "time derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       input Real der_p "time derivative of pressure";
       output Real der_Tsat "time derivative of saturation temperature";
     protected
@@ -1506,7 +1510,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       SaturationProperties sat "saturation temperature and pressure";
       Common.PhaseBoundaryProperties vap "properties on vapor phase boundary";
 
-      Modelica.SIunits.MassFraction x "vapor quality";
+      Modelica.Units.SI.MassFraction x "vapor quality";
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -1538,8 +1542,10 @@ Please note, that the function can also be called in the two-phase region, but t
       Real omega "collision integral";
 
       constant Real K=0.021357 "Constant for low density term eta_star";
-      constant Modelica.SIunits.Length sigma=0.50647e-09 "Hard-sphere diameter";
-      constant Modelica.SIunits.Temperature epsilon_k=288.82 "empirical factor";
+      constant Modelica.Units.SI.Length sigma=0.50647e-09
+        "Hard-sphere diameter";
+      constant Modelica.Units.SI.Temperature epsilon_k=288.82
+        "empirical factor";
       constant Real a[5]={2.218816e-01,-5.079322e-01,1.285776e-01,-8.328165e-02,-2.713173e-02}
       "Coefficients for term of collision integral";
       constant Real b[13]={-1.7999496,4.6692621e+01,-5.3460794e+02,3.3604074e+03,
@@ -1599,26 +1605,26 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
       Common.HelmholtzDerivs f_ref "helmholtz derivatives for reference state";
-      Modelica.SIunits.ThermalConductivity lambda_dg
-      "dilute gas contribution to lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_dg
+        "dilute gas contribution to lambda";
       R134aData.CoeffsThermalConductivity coeff "coefficients of thermal conductivity model";
-      Modelica.SIunits.ThermalConductivity lambda_reduced "reduced lambda";
-      Modelica.SIunits.ThermalConductivity lambda_crit
-      "enhancement of lambda in the critical region";
-      Modelica.SIunits.ThermalConductivity chi_star "correlation length";
-      Modelica.SIunits.ThermalConductivity chi_star_ref "correlation length";
-      Modelica.SIunits.ThermalConductivity delta_chi "chi_star - chi_star_ref";
+      Modelica.Units.SI.ThermalConductivity lambda_reduced "reduced lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_crit
+        "enhancement of lambda in the critical region";
+      Modelica.Units.SI.ThermalConductivity chi_star "correlation length";
+      Modelica.Units.SI.ThermalConductivity chi_star_ref "correlation length";
+      Modelica.Units.SI.ThermalConductivity delta_chi "chi_star - chi_star_ref";
       Real rho_molar "molar density [mol/l]";
       Real dddp "derivative of density w.r.t. pressure";
       Real dddp_ref "derivative of density w.r.t. pressure for reference state";
-      Modelica.SIunits.Length xi "correlation length";
-      Modelica.SIunits.SpecificHeatCapacity cp
-      "specific heat capacity at constant pressure";
-      Modelica.SIunits.SpecificHeatCapacity cv
-      "specific heat capacity at constant volume";
-      Modelica.SIunits.DynamicViscosity eta "dynamic viscosity";
-      Modelica.SIunits.ThermalConductivity omega "crossover function";
-      Modelica.SIunits.ThermalConductivity omega_0 "crossover function";
+      Modelica.Units.SI.Length xi "correlation length";
+      Modelica.Units.SI.SpecificHeatCapacity cp
+        "specific heat capacity at constant pressure";
+      Modelica.Units.SI.SpecificHeatCapacity cv
+        "specific heat capacity at constant volume";
+      Modelica.Units.SI.DynamicViscosity eta "dynamic viscosity";
+      Modelica.Units.SI.ThermalConductivity omega "crossover function";
+      Modelica.Units.SI.ThermalConductivity omega_0 "crossover function";
 
     algorithm
       f:= f_R134a(state.d, state.T);
@@ -1681,7 +1687,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     protected
       Real tau "reduced temperatur";
       R134aData.CoeffsSurfaceTension coeff "polynomial coefficients";
-      Modelica.SIunits.Temperature Tc=374.21 "critical temperature";
+      Modelica.Units.SI.Temperature Tc=374.21 "critical temperature";
 
     algorithm
       if sat.Tsat > Tc then
@@ -1947,13 +1953,13 @@ The isentropic efficiency function should not be applied in liquid region.
     protected
       SaturationProperties sat(psat=p, Tsat=0)
         "saturation temperature and pressure";
-      Modelica.SIunits.Pressure delp=1.0e-2 "relative error in p in iteration";
-      Modelica.SIunits.SpecificEnthalpy delh=1.0e-2
+      Modelica.Units.SI.Pressure delp=1.0e-2 "relative error in p in iteration";
+      Modelica.Units.SI.SpecificEnthalpy delh=1.0e-2
         "relative error in h in iteration";
-      Modelica.SIunits.SpecificEnthalpy hvapor=
-          dewEnthalpy(sat=sat) "vapor enthalpy";
-      Modelica.SIunits.SpecificEnthalpy hliquid=
-          bubbleEnthalpy(sat=sat) "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hvapor=dewEnthalpy(sat=sat)
+        "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hliquid=bubbleEnthalpy(sat=sat)
+        "liquid enthalpy";
       Integer error "iteration error";
       Real x "vapor quality";
       Real vvap "specific volume vapor";
@@ -2008,7 +2014,7 @@ The function cannot be inverted in a numerical way. Please use functions <a href
       constant Real dv_coef[:, 4]=XRGMedia.R134aData.dvcoef
         "coefficients of cubic spline for rho_vap(p)";
 
-      Modelica.SIunits.SpecificEnthalpy hl "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl "liquid enthalpy";
       Boolean liquid "is liquid";
       Boolean supercritical "is supercritcal";
       Integer int "interval number";
@@ -2330,8 +2336,9 @@ This function computes the residual helmholtz derivatives of the fundamental equ
 
     protected
      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat) "liquid enthalpy";
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
+        "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
     phase := if ((h < hl) or (h > hv) or (p > R134aData.data.FPCRIT)) then 1 else 2;
@@ -2351,8 +2358,8 @@ This function computes the number of phases for R134a depending on the inputs fo
 
     protected
      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEntropy sl=bubbleEntropy(sat) "liquid entropy";
-     Modelica.SIunits.SpecificEntropy sv=dewEntropy(sat) "vapor entropy";
+      Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat) "liquid entropy";
+      Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat) "vapor entropy";
 
     algorithm
     phase := if ((s < sl) or (s > sv) or (p > R134aData.data.FPCRIT)) then 1 else 2;
@@ -2373,11 +2380,11 @@ This function computes the number of phases for R134a depending on the inputs fo
 
     protected
       SaturationProperties sat "saturation temperature and pressure";
-      Modelica.SIunits.MassFraction x "vapor quality";
-      Modelica.SIunits.SpecificEntropy sl "liquid entropy";
-      Modelica.SIunits.SpecificEntropy sv "vapor entropy";
-      Modelica.SIunits.SpecificEnthalpy hl "liquid enthalpy";
-      Modelica.SIunits.SpecificEnthalpy hv "vapor enthalpy";
+      Modelica.Units.SI.MassFraction x "vapor quality";
+      Modelica.Units.SI.SpecificEntropy sl "liquid entropy";
+      Modelica.Units.SI.SpecificEntropy sv "vapor entropy";
+      Modelica.Units.SI.SpecificEnthalpy hl "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv "vapor enthalpy";
     algorithm
       sat.psat := p;
       // dummy
@@ -2465,8 +2472,8 @@ This deprecated function (which will be removed in future) adds the ideal gas co
 
       output Common.PhaseBoundaryProperties liq "properties on liquid boundary phase";
     protected
-      Modelica.SIunits.Temperature T_liq "liquid temperature";
-      Modelica.SIunits.Density d_liq "liquid density";
+      Modelica.Units.SI.Temperature T_liq "liquid temperature";
+      Modelica.Units.SI.Density d_liq "liquid density";
       Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
       if T < R134aData.data.TCRIT then
@@ -2490,8 +2497,8 @@ This deprecated function (which will be removed in future) adds the ideal gas co
 
       output Common.PhaseBoundaryProperties vap "properties on vapor boundary phase";
     protected
-      Modelica.SIunits.Temperature T_vap "vapor temperature";
-      Modelica.SIunits.Density d_vap "vapor density";
+      Modelica.Units.SI.Temperature T_vap "vapor temperature";
+      Modelica.Units.SI.Density d_vap "vapor density";
       Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
       if T < R134aData.data.TCRIT then
@@ -2533,10 +2540,10 @@ This function calculates the derivative of density w.r.t. time. It is used as de
     function rho_props_ph "density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs "record for the calculation of rho_ph_der";
-      output Modelica.SIunits.Density d "density";
+      output Modelica.Units.SI.Density d "density";
     algorithm
       d := derivs.rho;
 
@@ -2770,7 +2777,8 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
   end R134a_ph;
 
   package R134aData "R134a data required by package R134a_ph"
-  import Modelica.SIunits;
+  import SIunits =
+         Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;
@@ -7749,8 +7757,8 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     "set state for pressure and specific enthalpy (X not used since single substance)"
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat);
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat);
 
     algorithm
     state.p :=p;
@@ -7767,10 +7775,10 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     "set state for density and temperature (X not used since single substance)"
     protected
       XRGMedia.Common.HelmholtzDerivs f;
-      Modelica.SIunits.SpecificHeatCapacity R;
+      Modelica.Units.SI.SpecificHeatCapacity R;
       NH3_ph.SaturationProperties sat;
-      Modelica.SIunits.Density dl;
-      Modelica.SIunits.Density dv;
+      Modelica.Units.SI.Density dl;
+      Modelica.Units.SI.Density dv;
 
     algorithm
        R := NH3Data.R;
@@ -7801,8 +7809,9 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     "set state for pressure and specific entropy (X not used since single substance)"
 
     protected
-      Modelica.SIunits.Pressure delp=1e-2 "iteration accuracy for pressure";
-      Modelica.SIunits.SpecificEntropy dels=1e-1 "iteration accuracy for entropy";
+      Modelica.Units.SI.Pressure delp=1e-2 "iteration accuracy for pressure";
+      Modelica.Units.SI.SpecificEntropy dels=1e-1
+        "iteration accuracy for entropy";
       Integer error;
       //this can be avoided with special function to get h
       Common.HelmholtzDerivs f;
@@ -7827,8 +7836,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     redeclare function extends setState_pTX   "Set state for pressure and temperature (X not used since single substance)"
 
     protected
-        Modelica.SIunits.Pressure delp=1.0e-2
-        "Relative error in p in iteration";
+      Modelica.Units.SI.Pressure delp=1.0e-2 "Relative error in p in iteration";
 
     algorithm
       phaseBoundaryAssert(p, T);
@@ -7956,11 +7964,11 @@ Example:
     "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Integer phase =   0
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Temperature T "temperature";
     algorithm
       T := T_props_ph(p, h,
         derivsOf_ph(p, h, getPhase_ph(p,h)));
@@ -8006,7 +8014,7 @@ Example:
       SaturationProperties sat;
       Common.PhaseBoundaryProperties vap;
 
-      Modelica.SIunits.MassFraction x;
+      Modelica.Units.SI.MassFraction x;
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -8028,8 +8036,8 @@ Example:
     "saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
-      output Modelica.SIunits.Temperature T "saturation temperature";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
+      output Modelica.Units.SI.Temperature T "saturation temperature";
     protected
       constant Real T_coef[:,:] = NH3Data.Tcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
@@ -8050,7 +8058,7 @@ Example:
     redeclare function saturationTemperature_derp
     "derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       output Real dTp "derivative of saturation temperature w.r.t pressure";
     protected
       constant Real T_coef[:,:] = NH3Data.Tcoef;
@@ -8073,7 +8081,7 @@ Example:
     function saturationTemperature_der_p
       "derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       input Real der_p "pressure derivative";
       output Real der_Tsat "derivative of saturation temperature w.r.t pressure";
     protected
@@ -8099,7 +8107,7 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.Density dl "liquid density";
+      output Modelica.Units.SI.Density dl "liquid density";
     protected
       constant Real dl_coef[:,:] = NH3Data.dlcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
@@ -8174,7 +8182,7 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.Density dv "vapor phase density";
+      output Modelica.Units.SI.Density dv "vapor phase density";
     protected
       constant Real dv_coef[:,:] = NH3Data.dvcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
@@ -8249,12 +8257,12 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEnthalpy hl
-      "specific enthalpy of liquid fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hl
+        "specific enthalpy of liquid fraction";
     protected
       constant Real hl_coef[:,:] = NH3Data.hlcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
-      constant Modelica.SIunits.SpecificEnthalpy dh_ref=0;
+      constant Modelica.Units.SI.SpecificEnthalpy dh_ref=0;
       //constant Modelica.SIunits.SpecificEnthalpy dh_ref = -143200;
       Integer int;
       Integer error;
@@ -8329,12 +8337,12 @@ Example:
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
        // Update: Unit changed. S.W.
-      output Modelica.SIunits.SpecificEnthalpy hv
-      "specific enthalpy of vapor fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hv
+        "specific enthalpy of vapor fraction";
     protected
       constant Real hv_coef[:,:] = NH3Data.hvcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
-      constant Modelica.SIunits.SpecificEnthalpy dh_ref=0;
+      constant Modelica.Units.SI.SpecificEnthalpy dh_ref=0;
       //constant Modelica.SIunits.SpecificEnthalpy dh_ref = -143200;
       Integer int;
       Integer error;
@@ -8407,16 +8415,16 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sv
-      "specific entropy of vapor phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sv
+        "specific entropy of vapor phase w.r.t saturation pressure";
     protected
       constant Real sv_coef[:,:] = NH3Data.svcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
     /*  constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
     "offset of boundary coefficients and fundamental equation reference point";
 */
-      constant Modelica.SIunits.SpecificEntropy ds_ref = 0
-      "offset of boundary coefficients and fundamental equation reference point";
+      constant Modelica.Units.SI.SpecificEntropy ds_ref=0
+        "offset of boundary coefficients and fundamental equation reference point";
 
       Integer int;
       Integer error;
@@ -8498,16 +8506,16 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sl
-      "specific entropy of liquid phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sl
+        "specific entropy of liquid phase w.r.t saturation pressure";
     protected
       constant Real sl_coef[:,:] = NH3Data.slcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
       /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
     "offset of boundary coefficients and fundamental equation reference point";
 */
-      constant Modelica.SIunits.SpecificEntropy ds_ref = 0
-      "offset of boundary coefficients and fundamental equation reference point";
+      constant Modelica.Units.SI.SpecificEntropy ds_ref=0
+        "offset of boundary coefficients and fundamental equation reference point";
       Integer int;
       Integer error;
       Real localx;
@@ -8622,7 +8630,7 @@ Example:
       SaturationProperties sat;
       Common.PhaseBoundaryProperties vap;
 
-      Modelica.SIunits.MassFraction x;
+      Modelica.Units.SI.MassFraction x;
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -8646,8 +8654,8 @@ Example:
       Real omega "collision integral";
 
       constant Real K=0.021357 "Constant for low density term eta_star";
-      constant Modelica.SIunits.Length sigma=0.2957e-09 "Hard-sphere diameter";
-      constant Modelica.SIunits.Temperature epsilon_k=386 "empirical factor";
+      constant Modelica.Units.SI.Length sigma=0.2957e-09 "Hard-sphere diameter";
+      constant Modelica.Units.SI.Temperature epsilon_k=386 "empirical factor";
       constant Real a[5]={4.99318220,-6.1122364e-1,0,1.8535124e-1,-1.1160946e-1}
       "Coefficients for term of collision integral";
       constant Real b[13]={-1.7999496,4.6692621e+01,-5.3460794e+02,3.3604074e+03,
@@ -8711,18 +8719,18 @@ Example:
 
       Real d_red "reduced density";
       Real T_red "reduced temperature";
-      Modelica.SIunits.ThermalConductivity lam_0 "ideal gas term";
-      Modelica.SIunits.ThermalConductivity del_lam
-      "excess density-dependent thermal conductivity";
-      Modelica.SIunits.ThermalConductivity del_lam_c
-      "excess term of thermal conductivity around critical region";
-      Modelica.SIunits.ThermalConductivity del_lam_L
-      "excess term of thermal conductivity in liquid phase";
-      Modelica.SIunits.SpecificHeatCapacity cp
-      "specific heat capacity at constant pressure";
-      Modelica.SIunits.SpecificHeatCapacity cv
-      "specific heat capacity at constant volume";
-      Modelica.SIunits.DynamicViscosity eta "dynamic viscosity";
+      Modelica.Units.SI.ThermalConductivity lam_0 "ideal gas term";
+      Modelica.Units.SI.ThermalConductivity del_lam
+        "excess density-dependent thermal conductivity";
+      Modelica.Units.SI.ThermalConductivity del_lam_c
+        "excess term of thermal conductivity around critical region";
+      Modelica.Units.SI.ThermalConductivity del_lam_L
+        "excess term of thermal conductivity in liquid phase";
+      Modelica.Units.SI.SpecificHeatCapacity cp
+        "specific heat capacity at constant pressure";
+      Modelica.Units.SI.SpecificHeatCapacity cv
+        "specific heat capacity at constant volume";
+      Modelica.Units.SI.DynamicViscosity eta "dynamic viscosity";
 
       Common.HelmholtzDerivs f "helmholtz derivatives";
       Common.HelmholtzDerivs f_ref "helmholtz derivatives";
@@ -8936,8 +8944,8 @@ Example:
     function derivsOf_ph
 
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p;
-      input Modelica.SIunits.SpecificEnthalpy h;
+      input Modelica.Units.SI.Pressure p;
+      input Modelica.Units.SI.SpecificEnthalpy h;
       input Integer phase;
       output Common.InverseDerivatives_rhoT derivs;
 
@@ -8986,21 +8994,19 @@ Example:
     function dt_ph "density and temperature w.r.t. pressure and specific enthalpy"
 
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
     protected
       SaturationProperties sat(psat=p, Tsat=0);
-      Modelica.SIunits.Pressure delp=1.0e-2 "relative error in p in iteration";
-      Modelica.SIunits.SpecificEnthalpy delh=1.0e-2
+      Modelica.Units.SI.Pressure delp=1.0e-2 "relative error in p in iteration";
+      Modelica.Units.SI.SpecificEnthalpy delh=1.0e-2
         "relative error in h in iteration";
       //constant NH3Data.Ideal idc "ideal gas coefficients";
       //constant NH3Data.Residual resc "residual coefficients";
-      Modelica.SIunits.SpecificEnthalpy hvapor=
-          dewEnthalpy(sat=sat);
-      Modelica.SIunits.SpecificEnthalpy hliquid=
-          bubbleEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hvapor=dewEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hliquid=bubbleEnthalpy(sat=sat);
       Integer error "iteration error";
       Real x "steam quality";
       Real vvap "specifiv volume vapour";
@@ -9025,19 +9031,19 @@ Example:
       "density and temperature w.r.t. pressure and specific enthalpy in one-phase region"
 
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "enthalpy";
-      input Modelica.SIunits.Pressure delp "relative error in p in iteration";
-      input Modelica.SIunits.SpecificEnthalpy delh
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "enthalpy";
+      input Modelica.Units.SI.Pressure delp "relative error in p in iteration";
+      input Modelica.Units.SI.SpecificEnthalpy delh
         "relative error in h in iteration";
 
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
       output Integer error "1 if had not converged";
 
       //constant Modelica.SIunits.SpecificEnthalpy dh_ref = -143200;
     protected
-      constant Modelica.SIunits.SpecificEnthalpy dh_ref = 0;
+      constant Modelica.Units.SI.SpecificEnthalpy dh_ref=0;
 
       constant Real p_breaks[:]=XRGMedia.NH3Data.pbreaks;
       constant Real hl_coef[:, 4]=XRGMedia.NH3Data.hlcoef;
@@ -9045,7 +9051,7 @@ Example:
       constant Real T_coef[:, 4]=XRGMedia.NH3Data.Tcoef;
       constant Real dv_coef[:, 4]=XRGMedia.NH3Data.dvcoef;
 
-      Modelica.SIunits.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hl;
       Boolean liquid;
       Boolean supercritical;
       Integer int;
@@ -9145,14 +9151,14 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Pressure delp "iteration accuracy";
-      input Modelica.SIunits.SpecificEntropy dels "iteration accuracy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure delp "iteration accuracy";
+      input Modelica.Units.SI.SpecificEntropy dels "iteration accuracy";
     //   input NH3Data.Ideal idc "ideal coefficients";
     //   input NH3Data.Residual resc "residual coefficients";
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature (K)";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature (K)";
       output Integer error "error flag: trouble if different from 0";
 
     protected
@@ -9162,7 +9168,7 @@ Example:
       constant Real sl_coef[:, 4]=XRGMedia.NH3Data.slcoef;
       constant Real sv_coef[:, 4]=XRGMedia.NH3Data.svcoef;
       constant Real T_coef[:, 4]=XRGMedia.NH3Data.Tcoef;
-      constant Modelica.SIunits.SpecificEntropy ds_ref = 0
+      constant Modelica.Units.SI.SpecificEntropy ds_ref=0
         "offset of boundary coefficients and fundamental equation reference point";
 
       /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
@@ -9256,8 +9262,8 @@ Example:
     function f_NH3
       "calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Density d "density";
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.HelmholtzDerivs f "helmholtz derivatives";
     protected
       Real delta;
@@ -9370,14 +9376,14 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
       output Integer phase "number of phases";
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat);
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat);
 
     algorithm
     phase := if ((h < hl) or (h > hv) or (p > NH3Data.data.FPCRIT)) then 1 else 2;
@@ -9389,13 +9395,13 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
       output Integer phase "number of phases";
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEntropy sl=bubbleEntropy(sat);
-     Modelica.SIunits.SpecificEntropy sv=dewEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat);
 
     algorithm
     phase := if ((s < sl) or (s > sv) or (p > NH3Data.data.FPCRIT)) then 1 else 2;
@@ -9408,16 +9414,16 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      output Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     protected
       SaturationProperties sat;
-      Modelica.SIunits.MassFraction x;
-      Modelica.SIunits.SpecificEntropy sl;
-      Modelica.SIunits.SpecificEntropy sv;
-      Modelica.SIunits.SpecificEnthalpy hl;
-      Modelica.SIunits.SpecificEnthalpy hv;
+      Modelica.Units.SI.MassFraction x;
+      Modelica.Units.SI.SpecificEntropy sl;
+      Modelica.Units.SI.SpecificEntropy sv;
+      Modelica.Units.SI.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hv;
     algorithm
       sat.psat := p;
       // dummy
@@ -9435,13 +9441,13 @@ Example:
     function NH3_liqofdT "properties on liquid boundary phase"
 
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties liq
         "properties on liquid boundary phase";
     protected
-      Modelica.SIunits.Temperature T_liq;
-      Modelica.SIunits.Density d_liq;
+      Modelica.Units.SI.Temperature T_liq;
+      Modelica.Units.SI.Density d_liq;
       Common.HelmholtzDerivs f;
     algorithm
       if T < NH3Data.data.FTCRIT then
@@ -9460,13 +9466,13 @@ Example:
     function NH3_vapofdT "properties on vapor boundary phase"
 
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties vap
         "properties on vapor boundary phase";
     protected
-      Modelica.SIunits.Temperature T_vap;
-      Modelica.SIunits.Density d_vap;
+      Modelica.Units.SI.Temperature T_vap;
+      Modelica.Units.SI.Density d_vap;
       Common.HelmholtzDerivs f;
     algorithm
       if T < NH3Data.data.FTCRIT then
@@ -9484,8 +9490,8 @@ Example:
 
     function rho_ph_der "derivative function of rho_ph"
     extends Modelica.Icons.Function;
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "record for derivatives";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -9505,11 +9511,11 @@ Example:
 
     function rho_props_ph "density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of rho_ph_der";
-      output Modelica.SIunits.Density d "density";
+      output Modelica.Units.SI.Density d "density";
     algorithm
       d := derivs.rho;
 
@@ -9521,8 +9527,8 @@ Example:
 
     function T_ph_der "derivative function of T_ph"
     extends Modelica.Icons.Function;
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "auxiliary record";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -9541,11 +9547,11 @@ Example:
 
     function T_props_ph "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of T_ph_der";
-      output Modelica.SIunits.Temperature T "density";
+      output Modelica.Units.SI.Temperature T "density";
     algorithm
       T := derivs.T;
 
@@ -9730,7 +9736,8 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
   end NH3_ph;
 
   package NH3Data "NH3 data required by package NH3_ph"
-  import Modelica.SIunits;
+  import SIunits =
+         Modelica.Units.SI;
 
   extends Modelica.Icons.Package;
 
@@ -14588,12 +14595,12 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
     record CoeffsThermalConductivity
       extends Modelica.Icons.Record;
       constant Real q_d=1/0.28e-9 "Modified effective cutoff wave number, [1/m]";
-      constant Modelica.SIunits.Length xi_0=1.5e-10 "Critical Amplitude";
+      constant Modelica.Units.SI.Length xi_0=1.5e-10 "Critical Amplitude";
       constant Real GAMMA=0.063 "Amplitude";
-      constant Modelica.SIunits.Temperature T_ref=1.5*crit.TCRIT
+      constant Modelica.Units.SI.Temperature T_ref=1.5*crit.TCRIT
         "Arbitrary reference temperature";
-      constant Modelica.SIunits.Pressure p_crit=crit.PCRIT "Critical pressure";
-      constant Modelica.SIunits.Density rho_crit=crit.DCRIT "Critical density";
+      constant Modelica.Units.SI.Pressure p_crit=crit.PCRIT "Critical pressure";
+      constant Modelica.Units.SI.Density rho_crit=crit.DCRIT "Critical density";
       constant Real nu=0.63 "Universal exponent";
       constant Real gamma=1.239 "Universal exponent";
       constant Real R_0=1.01 "Universal amplitude";
@@ -14715,8 +14722,8 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
 
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat);
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat);
 
     algorithm
     state.p :=p;
@@ -14733,10 +14740,10 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
     "set state for density and temperature (X not used since single substance)"
     protected
       XRGMedia.Common.HelmholtzDerivs f;
-      Modelica.SIunits.SpecificHeatCapacity R;
+      Modelica.Units.SI.SpecificHeatCapacity R;
       CO2_ph.SaturationProperties sat;
-      Modelica.SIunits.Density dl;
-      Modelica.SIunits.Density dv;
+      Modelica.Units.SI.Density dl;
+      Modelica.Units.SI.Density dv;
 
     algorithm
        R := CO2Data.R;
@@ -14767,8 +14774,9 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
     "set state for pressure and specific entropy (X not used since single substance)"
 
     protected
-      Modelica.SIunits.Pressure delp=1e-2 "iteration accuracy for pressure";
-      Modelica.SIunits.SpecificEntropy dels=1e-1 "iteration accuracy for entropy";
+      Modelica.Units.SI.Pressure delp=1e-2 "iteration accuracy for pressure";
+      Modelica.Units.SI.SpecificEntropy dels=1e-1
+        "iteration accuracy for entropy";
       Integer error;
       //this can be avoided with special function to get h
       Common.HelmholtzDerivs f;
@@ -14795,8 +14803,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
     redeclare function extends setState_pTX "Set state for pressure and temperature (X not used since single substance)"
 
     protected
-        Modelica.SIunits.Pressure delp=1.0e-2
-        "Relative error in p in iteration";
+      Modelica.Units.SI.Pressure delp=1.0e-2 "Relative error in p in iteration";
 
     algorithm
       phaseBoundaryAssert(p, T);
@@ -14923,11 +14930,11 @@ Example:
     redeclare function temperature_ph
     "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Integer phase =   0
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Temperature T "temperature";
 
     algorithm
       T := T_props_ph(p, h,
@@ -14977,7 +14984,7 @@ Example:
       SaturationProperties sat;
       Common.PhaseBoundaryProperties vap;
 
-      Modelica.SIunits.MassFraction x;
+      Modelica.Units.SI.MassFraction x;
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -14998,8 +15005,8 @@ Example:
     redeclare function saturationTemperature
     "saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.AbsolutePressure p "pressure";
-      output Modelica.SIunits.Temperature T "saturation temperature";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
+      output Modelica.Units.SI.Temperature T "saturation temperature";
 
     protected
       constant Real T_coef[:,:] = CO2Data.Tcoef;
@@ -15022,7 +15029,7 @@ Example:
     "derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       output Real dTp "derivative of saturation temperature w.r.t pressure";
     protected
       constant Real T_coef[:,:] = CO2Data.Tcoef;
@@ -15046,7 +15053,7 @@ Example:
       "derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       input Real der_p "pressure derivative";
       output Real der_Tsat "derivative of saturation temperature w.r.t pressure";
     protected
@@ -15073,7 +15080,7 @@ Example:
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.Density dl "liquid density";
+      output Modelica.Units.SI.Density dl "liquid density";
     protected
       constant Real dl_coef[:,:] = CO2Data.dlcoef;
       constant Real p_breaks[:] = CO2Data.pbreaks;
@@ -15151,7 +15158,7 @@ Example:
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.Density dv "vapor phase density";
+      output Modelica.Units.SI.Density dv "vapor phase density";
     protected
       constant Real dv_coef[:,:] = CO2Data.dvcoef;
       constant Real p_breaks[:] = CO2Data.pbreaks;
@@ -15229,8 +15236,8 @@ Example:
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEnthalpy hl
-      "specific enthalpy of liquid fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hl
+        "specific enthalpy of liquid fraction";
     protected
       constant Real hl_coef[:,:] = CO2Data.hlcoef;
       constant Real p_breaks[:] = CO2Data.pbreaks;
@@ -15308,8 +15315,8 @@ Example:
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEnthalpy hv
-      "specific enthalpy of vapor fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hv
+        "specific enthalpy of vapor fraction";
     protected
       constant Real hv_coef[:,:] = CO2Data.hvcoef;
       constant Real p_breaks[:] = CO2Data.pbreaks;
@@ -15387,8 +15394,8 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sv
-      "specific entropy of vapor phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sv
+        "specific entropy of vapor phase w.r.t saturation pressure";
 
     protected
       constant Real sv_coef[:,:] = CO2Data.svcoef;
@@ -15474,8 +15481,8 @@ Example:
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sl
-      "specific entropy of liquid phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sl
+        "specific entropy of liquid phase w.r.t saturation pressure";
     protected
       constant Real sl_coef[:,:] = CO2Data.slcoef;
       constant Real p_breaks[:] = CO2Data.pbreaks;
@@ -15595,7 +15602,7 @@ Example:
       SaturationProperties sat;
       Common.PhaseBoundaryProperties vap;
 
-      Modelica.SIunits.MassFraction x;
+      Modelica.Units.SI.MassFraction x;
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -15622,8 +15629,8 @@ Example:
       Real omega_log "log of effective cross section";
       Real omega "effective cross section";
 
-      constant Modelica.SIunits.Temperature epsilon_k=251.196
-      "energy scaling parameter";
+      constant Modelica.Units.SI.Temperature epsilon_k=251.196
+        "energy scaling parameter";
       constant Real a[5]={2.35156e-01,-4.91266e-01,5.211155e-02,5.347906e-02,-1.537102e-02}
       "Coefficients for term of effective cross section";
       constant Real d[8,4]=[0.4071119e-2, 0, 0, 0;
@@ -15665,36 +15672,36 @@ Example:
       Common.HelmholtzDerivs f;
       Common.HelmholtzDerivs f_ref;
 
-      Modelica.SIunits.ThermalConductivity lambda_crit;
-      Modelica.SIunits.ThermalConductivity chi_star;
-      Modelica.SIunits.ThermalConductivity chi_star_ref;
-      Modelica.SIunits.ThermalConductivity delta_chi;
+      Modelica.Units.SI.ThermalConductivity lambda_crit;
+      Modelica.Units.SI.ThermalConductivity chi_star;
+      Modelica.Units.SI.ThermalConductivity chi_star_ref;
+      Modelica.Units.SI.ThermalConductivity delta_chi;
       Real dddp;
       Real dddp_ref;
-      Modelica.SIunits.Length xi;
-      Modelica.SIunits.SpecificHeatCapacity cp;
-      Modelica.SIunits.SpecificHeatCapacity cv;
-      Modelica.SIunits.DynamicViscosity eta;
-      Modelica.SIunits.ThermalConductivity omega;
-      Modelica.SIunits.ThermalConductivity omega_0;
+      Modelica.Units.SI.Length xi;
+      Modelica.Units.SI.SpecificHeatCapacity cp;
+      Modelica.Units.SI.SpecificHeatCapacity cv;
+      Modelica.Units.SI.DynamicViscosity eta;
+      Modelica.Units.SI.ThermalConductivity omega;
+      Modelica.Units.SI.ThermalConductivity omega_0;
 
-      constant Modelica.SIunits.Temperature epsilon_k=251.196
-      "energy scaling parameter";
+      constant Modelica.Units.SI.Temperature epsilon_k=251.196
+        "energy scaling parameter";
       constant Real c[5]={2.387869e-2, 4.350794, -10.33404, 7.981590, -1.940558};
       Real r;
       Real sigma_star;
       constant Real b[8]={0.4226159, 0.6280115, -0.5387661, 0.6735941, 0.0, 0.0, -0.4362677, 0.2255388};
       constant Real d[4]={2.447164e-2, 8.705605e-5, -6.547950e-8, 6.594919e-11};
       Real T_star "reduced temperature";
-      Modelica.SIunits.ThermalConductivity lambda_0;
-      Modelica.SIunits.ThermalConductivity lambda_d;
+      Modelica.Units.SI.ThermalConductivity lambda_0;
+      Modelica.Units.SI.ThermalConductivity lambda_d;
       Real c_k;
 
       constant Real q_d = 1/4.0e-10;
-      constant Modelica.SIunits.Density rho_crit = 467.69;
-      constant Modelica.SIunits.Pressure p_crit = 7.3721e6;
-      constant Modelica.SIunits.Temperature T_crit = 304.107;
-      constant Modelica.SIunits.Temperature T_ref = 450;
+      constant Modelica.Units.SI.Density rho_crit=467.69;
+      constant Modelica.Units.SI.Pressure p_crit=7.3721e6;
+      constant Modelica.Units.SI.Temperature T_crit=304.107;
+      constant Modelica.Units.SI.Temperature T_ref=450;
       constant Real xi_0 = 1.5e-10;
       constant Real nu = 0.63;
       constant Real gamma = 1.2415;
@@ -15908,8 +15915,8 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p;
-      input Modelica.SIunits.SpecificEnthalpy h;
+      input Modelica.Units.SI.Pressure p;
+      input Modelica.Units.SI.SpecificEnthalpy h;
       input Integer phase;
       output Common.InverseDerivatives_rhoT derivs;
 
@@ -15959,21 +15966,19 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
     protected
       SaturationProperties sat(psat=p, Tsat=0);
-      Modelica.SIunits.Pressure delp=1.0e-2 "relative error in p in iteration";
-      Modelica.SIunits.SpecificEnthalpy delh=1.0e-2
+      Modelica.Units.SI.Pressure delp=1.0e-2 "relative error in p in iteration";
+      Modelica.Units.SI.SpecificEnthalpy delh=1.0e-2
         "relative error in h in iteration";
       constant XRGMedia.CO2Data.Ideal idc "ideal gas coefficients";
       constant XRGMedia.CO2Data.Residual resc "residual coefficients";
-      Modelica.SIunits.SpecificEnthalpy hvapor=
-          dewEnthalpy(sat=sat);
-      Modelica.SIunits.SpecificEnthalpy hliquid=
-          bubbleEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hvapor=dewEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hliquid=bubbleEnthalpy(sat=sat);
       Integer error "iteration error";
       Real x "steam quality";
       Real vvap "specifiv volume vapour";
@@ -16004,14 +16009,14 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "enthalpy";
-      input Modelica.SIunits.Pressure delp "relative error in p in iteration";
-      input Modelica.SIunits.SpecificEnthalpy delh
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "enthalpy";
+      input Modelica.Units.SI.Pressure delp "relative error in p in iteration";
+      input Modelica.Units.SI.SpecificEnthalpy delh
         "relative error in h in iteration";
 
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
       output Integer error "1 if had not converged";
 
     protected
@@ -16025,7 +16030,7 @@ Example:
       Real a_rho_start[6]={3.533899e2,-1.37164e-3,3.48988e-9,2.29267e-15, 1.01064e-20,1.1411e-26};
       Real a_T_start[6]={4.1554e2,5.69608e-4,6.7811e-11,2.0382e-16,-2.0541e-21,7.0334e-28};
 
-      Modelica.SIunits.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hl;
       Boolean liquid;
       Boolean supercritical;
       Integer int;
@@ -16127,13 +16132,13 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Pressure delp "iteration accuracy";
-      input Modelica.SIunits.SpecificEntropy dels "iteration accuracy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure delp "iteration accuracy";
+      input Modelica.Units.SI.SpecificEntropy dels "iteration accuracy";
 
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature (K)";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature (K)";
       output Integer error "error flag: trouble if different from 0";
       output Integer i;
 
@@ -16224,8 +16229,8 @@ Example:
       "calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Density d "density";
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.HelmholtzDerivs f "helmholtz derivatives";
     protected
       Real delta;
@@ -16405,15 +16410,15 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat);
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat);
 
     algorithm
     phase := if ((h < hl) or (h > hv) or (p > CO2Data.data.FPCRIT)) then 1 else 2;
@@ -16425,14 +16430,14 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEntropy sl=bubbleEntropy(sat);
-     Modelica.SIunits.SpecificEntropy sv=dewEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat);
 
     algorithm
     phase := if ((s < sl) or (s > sv) or (p > CO2Data.data.FPCRIT)) then 1 else 2;
@@ -16445,17 +16450,17 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      output Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
     protected
       SaturationProperties sat;
-      Modelica.SIunits.MassFraction x;
-      Modelica.SIunits.SpecificEntropy sl;
-      Modelica.SIunits.SpecificEntropy sv;
-      Modelica.SIunits.SpecificEnthalpy hl;
-      Modelica.SIunits.SpecificEnthalpy hv;
+      Modelica.Units.SI.MassFraction x;
+      Modelica.Units.SI.SpecificEntropy sl;
+      Modelica.Units.SI.SpecificEntropy sv;
+      Modelica.Units.SI.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hv;
     algorithm
       sat.psat := p;
       // dummy
@@ -16474,13 +16479,13 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties liq
         "properties on liquid boundary phase";
     protected
-      Modelica.SIunits.Temperature T_liq;
-      Modelica.SIunits.Density d_liq;
+      Modelica.Units.SI.Temperature T_liq;
+      Modelica.Units.SI.Density d_liq;
       Common.HelmholtzDerivs f;
     algorithm
       if T < CO2Data.data.FTCRIT then
@@ -16503,13 +16508,13 @@ Example:
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties vap
         "properties on vapor boundary phase";
     protected
-      Modelica.SIunits.Temperature T_vap;
-      Modelica.SIunits.Density d_vap;
+      Modelica.Units.SI.Temperature T_vap;
+      Modelica.Units.SI.Density d_vap;
       Common.HelmholtzDerivs f;
     algorithm
       if T < CO2Data.data.FTCRIT then
@@ -16531,8 +16536,8 @@ Example:
     function rho_ph_der "derivative function of rho_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "record for derivatives";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -16553,11 +16558,11 @@ Example:
     function rho_props_ph "density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of rho_ph_der";
-      output Modelica.SIunits.Density d "density";
+      output Modelica.Units.SI.Density d "density";
     algorithm
       d := derivs.rho;
 
@@ -16570,8 +16575,8 @@ Example:
     function T_ph_der "derivative function of T_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "auxiliary record";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -16591,11 +16596,11 @@ Example:
     function T_props_ph "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of T_ph_der";
-      output Modelica.SIunits.Temperature T "density";
+      output Modelica.Units.SI.Temperature T "density";
     algorithm
       T := derivs.T;
 
@@ -16780,15 +16785,16 @@ The functions provided by this package shall be used inside of the restricted li
   end CO2_ph;
 
   package CO2Data "CO2 (R744) data required by package CO2_ph"
-  import Modelica.SIunits;
+  import SIunits =
+         Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;
     constant Integer Npoints=478;
     constant Integer Ninterval=Npoints - 1;
-    constant Modelica.SIunits.SpecificEnthalpy h_offset=506.778e3;
-    constant Modelica.SIunits.SpecificInternalEnergy u_offset=503.020e3;
-    constant Modelica.SIunits.SpecificEntropy s_offset=2.739e3;
+    constant Modelica.Units.SI.SpecificEnthalpy h_offset=506.778e3;
+    constant Modelica.Units.SI.SpecificInternalEnergy u_offset=503.020e3;
+    constant Modelica.Units.SI.SpecificEntropy s_offset=2.739e3;
     constant Real[Npoints] pbreaks={7.021015968662282e-002, 7.053659622388628e-002, 7.081165865137355e-002, 7.144076152515623e-002, 7.207833502110553e-002, 7.272450977542642e-002, 7.337945901267051e-002, 7.404333187402537e-002, 7.471629380691874e-002, 7.539849935225054e-002, 7.609011960102413e-002, 7.679131464231040e-002, 7.750227554011570e-002, 7.822318269070905e-002, 7.895420542032645e-002, 7.969554474021336e-002, 8.044737643912703e-002, 8.120990857356041e-002, 8.198333820944606e-002, 8.276786622454246e-002, 8.354771098298068e-002, 8.429577560955064e-002, 8.504886633628400e-002, 8.580700441273058e-002, 8.657021114416662e-002, 8.733850776453903e-002, 8.811191563235363e-002, 8.889045603569432e-002, 8.967415038294056e-002, 9.046302005888701e-002, 9.125708642415456e-002, 9.205637100166134e-002, 9.286089524067284e-002, 9.367068061393190e-002, 9.448574862296025e-002, 9.530612088971509e-002, 9.613181889991282e-002, 9.696286429581123e-002, 9.779927868116463e-002, 9.864108374347390e-002, 9.948830107540578e-002, 1.003409524803612e-001, 1.011990595987061e-001, 1.020626441910413e-001, 1.029317280449241e-001, 1.038063329673694e-001, 1.046864807945966e-001, 1.055721933272012e-001, 1.064634924787062e-001, 1.073604000993502e-001, 1.082629381856388e-001, 1.091711286351995e-001, 1.100849934337919e-001, 1.110045545623002e-001, 1.119298340820502e-001, 1.128608539943808e-001, 1.137976364138621e-001, 1.147402034168887e-001, 1.156885771202562e-001, 1.166427796790404e-001, 1.176028332775298e-001, 1.185687600960764e-001, 1.195405823335022e-001, 1.205183222791851e-001, 1.215020021868998e-001, 1.224916443305387e-001, 1.234872710442062e-001, 1.244889047133239e-001, 1.254965676300238e-001, 1.265102822583044e-001, 1.275300709739129e-001, 1.285559562564901e-001, 1.295879605315062e-001, 1.306261063336599e-001, 1.316704161335227e-001, 1.327209125423982e-001, 1.337776180593319e-001, 1.348405553395511e-001, 1.359097469336515e-001, 1.369852155768759e-001, 1.380669838382744e-001, 1.391550744786455e-001, 1.402495102021822e-001, 1.413503137063968e-001, 1.424575078270900e-001, 1.435711153432784e-001, 1.446911590574732e-001, 1.458176618369937e-001, 1.469506465083357e-001, 1.480901360312694e-001, 1.492361532629388e-001, 1.503887212093474e-001, 1.515478628045653e-001, 1.527136010598159e-001, 1.538859590071518e-001, 1.550649596835211e-001, 1.562506261783517e-001, 1.574429815749823e-001, 1.586420490156128e-001, 1.598478516669065e-001, 1.610604126922567e-001, 1.622797553108011e-001, 1.635059027683088e-001, 1.647388782839964e-001, 1.659787051807556e-001, 1.672254067842222e-001, 1.684790063935580e-001, 1.697395273880218e-001, 1.710069931747510e-001, 1.722814271811958e-001, 1.735628528446566e-001, 1.748512936534963e-001, 1.761467730690065e-001, 1.774493146927267e-001, 1.787589420180619e-001, 1.800756786678643e-001, 1.813995482683353e-001, 1.827305744206975e-001, 1.840687808086932e-001, 1.854141911657989e-001, 1.867668291796628e-001, 1.881267186182907e-001, 1.894938832780244e-001, 1.908683469788491e-001, 1.922501335290678e-001, 1.936392668133334e-001, 1.950357707611364e-001, 1.964396692698628e-001, 1.978509863120732e-001, 1.992697458838444e-001, 2.006959719953717e-001, 2.021296887087748e-001, 2.035709201107639e-001, 2.050196902811905e-001, 2.064760233960687e-001, 2.079399436130121e-001, 2.094114751483414e-001, 2.108906422287182e-001, 2.123774691060097e-001, 2.138719801132477e-001, 2.153741995726786e-001, 2.168841518335916e-001, 2.184018613129551e-001, 2.199273524466741e-001, 2.214606496464498e-001, 2.230017774830203e-001, 2.245507604294654e-001, 2.261076230620545e-001, 2.276723900111101e-001, 2.292450858736628e-001, 2.308257353093450e-001, 2.324143630718171e-001, 2.340109938655858e-001, 2.356156524558863e-001, 2.372283636842315e-001, 2.388491523626383e-001, 2.404780434058529e-001, 2.421150617066800e-001, 2.437602322475066e-001, 2.454135799976152e-001, 2.470751300390190e-001, 2.487449073932699e-001, 2.504229371830894e-001, 2.521092445896599e-001, 2.538038547706599e-001, 2.555067929683598e-001, 2.572180844659786e-001, 2.589377545429458e-001, 2.606658286103752e-001, 2.624023319941594e-001, 2.641472901998487e-001, 2.659007286643744e-001, 2.676626729163130e-001, 2.694331485356247e-001, 2.712121811453794e-001, 2.729997963710876e-001, 2.747960199437521e-001, 2.766008776049443e-001, 2.784143951350832e-001, 2.802365983864248e-001, 2.820675132582442e-001, 2.839071656553643e-001, 2.857555815911254e-001, 2.876127870928247e-001, 2.894788082292031e-001, 2.913536711281314e-001, 2.932374020172421e-001, 2.951300270851979e-001, 2.970315726299937e-001, 2.989420650171392e-001, 3.008615306106174e-001, 3.027899958496921e-001, 3.047274872631849e-001, 3.066740313764978e-001, 3.086296548279514e-001, 3.105943842637421e-001, 3.125682464271941e-001, 3.145512680873121e-001, 3.165434760879498e-001, 3.185448973069908e-001, 3.205555587469284e-001, 3.225754873994992e-001, 3.246047103404765e-001, 3.266432547354133e-001, 3.286911477696480e-001, 3.307484167192276e-001, 3.328150889273028e-001, 3.348911917773146e-001, 3.369767527392257e-001, 3.390717993540320e-001, 3.411763592056393e-001, 3.432904599683165e-001, 3.454141293867942e-001, 3.475473952532589e-001, 3.496902854522560e-001, 3.518428279401969e-001, 3.540050507266404e-001, 3.561769819147778e-001, 3.583586496823406e-001, 3.605500822600505e-001, 3.627513079811062e-001, 3.649623552515214e-001, 3.671832525365443e-001, 3.694140284095679e-001, 3.716547114944992e-001, 3.739053305224792e-001, 3.761659143016777e-001, 3.784364917056273e-001, 3.807170917143360e-001, 3.830077433947435e-001, 3.853084758747426e-001, 3.876193183998510e-001, 3.899403002966187e-001, 3.922714509659735e-001, 3.946127999228323e-001, 3.969643767708638e-001, 3.993262111909653e-001, 4.016983329799335e-001, 4.040807720290948e-001, 4.064735583118564e-001, 4.088767218793651e-001, 4.112902929967525e-001, 4.137143019117578e-001, 4.161487790170967e-001, 4.185937548124941e-001, 4.210492599084949e-001, 4.235153250337874e-001, 4.259919810448885e-001, 4.284792589425029e-001, 4.309771898932027e-001, 4.334858035802967e-001, 4.360051333223644e-001, 4.385352097246380e-001, 4.410760643074498e-001, 4.436277287135379e-001, 4.461902347096856e-001, 4.487636141889829e-001, 4.513478991725486e-001, 4.539431218117099e-001, 4.565493143899304e-001, 4.591665093251637e-001, 4.617947391716735e-001, 4.644340366226604e-001, 4.670844345120162e-001, 4.697459658173289e-001, 4.724186636615658e-001, 4.751025613161054e-001, 4.777976922028328e-001, 4.805040898969746e-001, 4.832217881295374e-001, 4.859508207902519e-001, 4.886912219303096e-001, 4.914430257651006e-001, 4.942062666775990e-001, 4.969809792210453e-001, 4.997671981225862e-001, 5.025649582864934e-001, 5.053742947978540e-001, 5.081952429263431e-001, 5.110278381304986e-001, 5.138721160616697e-001, 5.167281125692699e-001, 5.195958637054240e-001, 5.224754038603412e-001, 5.253667725127880e-001, 5.282700049651653e-001, 5.311851380608891e-001, 5.341122088578428e-001, 5.370512546325980e-001, 5.400023128845493e-001, 5.429654213397834e-001, 5.459406179557739e-001, 5.489279409255130e-001, 5.519274286819076e-001, 5.549391199025342e-001, 5.579630535141730e-001, 5.609992686976566e-001, 5.640478048925131e-001, 5.671087018022094e-001, 5.701819993990264e-001, 5.732677379293532e-001, 5.763659579188132e-001, 5.794767001778287e-001, 5.826000058071249e-001, 5.857359162033540e-001, 5.888844730647951e-001, 5.920457183974784e-001, 5.952196945210641e-001, 5.984064440750987e-001, 6.016060100255415e-001, 6.048184356710915e-001, 6.080437646500172e-001, 6.112820409469850e-001, 6.145333089003596e-001, 6.177976132093288e-001, 6.210749989415113e-001, 6.243655115409189e-001, 6.276691968358646e-001, 6.309861010474298e-001, 6.343162707982117e-001, 6.376597531214028e-001, 6.410165954702760e-001, 6.443868457280405e-001, 6.477705522184963e-001, 6.511677637168036e-001, 6.545785294612128e-001, 6.580028991654617e-001, 6.614409230320385e-001, 6.648926517661467e-001, 6.683581344111897e-001, 6.718374262977721e-001, 6.753305780750759e-001, 6.788376425396038e-001, 6.823586730560819e-001, 6.858937235742144e-001, 6.894428486465963e-001, 6.930061034474803e-001, 6.965835437926351e-001, 7.001752261604799e-001, 7.037812077142182e-001, 7.074015463253933e-001, 7.110363005987404e-001, 7.146855298986565e-001, 7.183492943768114e-001, 7.220276550018503e-001, 7.257206735904185e-001, 7.294284128401657e-001, 7.331509363645535e-001, 7.368883087296186e-001, 7.407023994886293e-001, 7.444762478978346e-001, 7.482020316166073e-001, 7.518801285426167e-001, 7.555109220696569e-001, 7.590948006859818e-001, 7.626321575858831e-001, 7.661233902945419e-001, 7.695689003053768e-001, 7.729690927302360e-001, 7.763243759615830e-001, 7.796351613468794e-001, 7.829018628746054e-001, 7.861248968718254e-001, 7.893046817131169e-001, 7.924416375404879e-001, 7.955361859940454e-001, 7.985887499536274e-001, 8.015997532904766e-001, 8.045696206294428e-001, 8.074987751319189e-001, 8.103876454862811e-001, 8.132366557547353e-001, 8.160462313184426e-001, 8.188167972493742e-001, 8.215487781256172e-001, 8.242425978547341e-001, 8.268986795055471e-001, 8.295174451471477e-001, 8.320993156959989e-001, 8.346447107699347e-001, 8.371540485494795e-001, 8.396277456459270e-001, 8.420662169759995e-001, 8.444698756430072e-001, 8.468391328240736e-001, 8.491743976634102e-001, 8.514760771712588e-001, 8.537445761283860e-001, 8.559802969960114e-001, 8.581836398306761e-001, 8.603550022041782e-001, 8.624947791282536e-001, 8.646033629837652e-001, 8.666811434543370e-001, 8.687285074641012e-001, 8.707458391196318e-001, 8.727335196556342e-001, 8.746919273844499e-001, 8.766214376490804e-001, 8.785224227796511e-001, 8.803952520533021e-001, 8.822402916569861e-001, 8.840579046536019e-001, 8.858484509508277e-001, 8.876122872729220e-001, 8.893497671350422e-001, 8.910612408204799e-001, 8.927470553599765e-001, 8.944075545138560e-001, 8.960430787562601e-001, 8.978035477906898e-001, 8.995670772714669e-001, 9.013336769488126e-001, 9.031033631992252e-001, 9.048761468872223e-001, 9.066520409231118e-001, 9.084310585097370e-001, 9.102132131579134e-001, 9.119985187030015e-001, 9.137869893227092e-001, 9.155786395561864e-001, 9.173734843242962e-001, 9.191715389516939e-001, 9.209728191900954e-001, 9.227773412435014e-001, 9.245851217952128e-001, 9.263961780368104e-001, 9.282105276993707e-001, 9.300281890870148e-001, 9.318491811131732e-001, 9.336735233395954e-001, 9.355012360188555e-001, 9.373323401403243e-001, 9.391668574804317e-001, 9.410048106578860e-001, 9.428462231947069e-001, 9.446911195847180e-001, 9.465395253714061e-001, 9.483914672383850e-001, 9.502469731180305e-001, 9.521060702083984e-001, 9.539687919173771e-001, 9.558351691524953e-001, 9.577052356744491e-001, 9.595790270923484e-001, 9.614565810572543e-001, 9.633379374898563e-001, 9.652231388508131e-001, 9.671122304662633e-001, 9.690052609243522e-001, 9.709022825678724e-001, 9.728033521225357e-001, 9.747085315359323e-001, 9.766178891917902e-001, 9.785314972526502e-001, 9.804494440125665e-001, 9.823718238961468e-001, 9.842987474848474e-001, 9.862303447851883e-001, 9.881667724988856e-001, 9.901082224663096e-001, 9.915677533380150e-001, 9.930303818468828e-001, 9.945564372744679e-001, 9.960227762723833e-001, 9.971250349734946e-001, 9.978611859939195e-001, 9.984140521919537e-001, 9.988937809949887e-001, 9.993371396481319e-001, 9.995220430324233e-001, 9.995960359555428e-001, 9.997070607614770e-001, 9.998060059093646e-001, 9.999049925932212e-001, 9.999545030808417e-001, 9.999792640202215e-001, 1.0};
     constant Real[Npoints] Tbreaks={0.712173353210916, 0.712524294724927, 0.712819053484217, 0.713489964870819, 0.714165369187667, 0.714845294603604, 0.715529811540735, 0.716218962252321, 0.716912803076046, 0.717611376265172, 0.718314738157383, 0.719022931005941, 0.719736025232951, 0.720454077176096, 0.721177129088638, 0.721905251392682, 0.722638486341490, 0.723376904357166, 0.724120561777393, 0.724869514939856, 0.725608721683099, 0.726312942724981, 0.727017163766863, 0.727721384808745, 0.728425605850628, 0.729129826892510, 0.729834047934392, 0.730538268976274, 0.731242490018157, 0.731946711060039, 0.732650932101921, 0.733355153143803, 0.734059374185685, 0.734763595227568, 0.735467816269450, 0.736172037311332, 0.736876258353214, 0.737580479395096, 0.738284700436979, 0.738988921478861, 0.739693142520743, 0.740397363562625, 0.741101584604507, 0.741805805646390, 0.742510026688272, 0.743214247730154, 0.743918468772036, 0.744622689813918, 0.745326910855801, 0.746031131897683, 0.746735352939565, 0.747439573981447, 0.748143795023330, 0.748848016065212, 0.749552237107094, 0.750256458148976, 0.750960679190858, 0.751664900232741, 0.752369121274623, 0.753073342316505, 0.753777563358387, 0.754481784400269, 0.755186005442152, 0.755890226484034, 0.756594447525916, 0.757298668567798, 0.758002889609681, 0.758707110651563, 0.759411331693445, 0.760115552735327, 0.760819773777209, 0.761523994819092, 0.762228215860974, 0.762932436902856, 0.763636657944738, 0.764340878986620, 0.765045100028503, 0.765749321070385, 0.766453542112267, 0.767157763154149, 0.767861984196031, 0.768566205237914, 0.769270426279796, 0.769974647321678, 0.770678868363560, 0.771383089405443, 0.772087310447325, 0.772791531489207, 0.773495752531089, 0.774199973572971, 0.774904194614854, 0.775608415656736, 0.776312636698618, 0.777016857740500, 0.777721078782382, 0.778425299824265, 0.779129520866147, 0.779833741908029, 0.780537962949911, 0.781242183991793, 0.781946405033676, 0.782650626075558, 0.783354847117440, 0.784059068159322, 0.784763289201205, 0.785467510243087, 0.786171731284969, 0.786875952326851, 0.787580173368733, 0.788284394410616, 0.788988615452498, 0.789692836494380, 0.790397057536262, 0.791101278578145, 0.791805499620027, 0.792509720661909, 0.793213941703791, 0.793918162745673, 0.794622383787555, 0.795326604829438, 0.796030825871320, 0.796735046913202, 0.797439267955084, 0.798143488996967, 0.798847710038849, 0.799551931080731, 0.800256152122613, 0.800960373164495, 0.801664594206378, 0.802368815248260, 0.803073036290142, 0.803777257332024, 0.804481478373906, 0.805185699415789, 0.805889920457671, 0.806594141499553, 0.807298362541435, 0.808002583583318, 0.808706804625200, 0.809411025667082, 0.810115246708964, 0.810819467750846, 0.811523688792729, 0.812227909834611, 0.812932130876493, 0.813636351918375, 0.814340572960257, 0.815044794002140, 0.815749015044022, 0.816453236085904, 0.817157457127786, 0.817861678169668, 0.818565899211551, 0.819270120253433, 0.819974341295315, 0.820678562337197, 0.821382783379080, 0.822087004420962, 0.822791225462844, 0.823495446504726, 0.824199667546608, 0.824903888588491, 0.825608109630373, 0.826312330672255, 0.827016551714137, 0.827720772756019, 0.828424993797902, 0.829129214839784, 0.829833435881666, 0.830537656923548, 0.831241877965430, 0.831946099007313, 0.832650320049195, 0.833354541091077, 0.834058762132959, 0.834762983174842, 0.835467204216724, 0.836171425258606, 0.836875646300488, 0.837579867342370, 0.838284088384253, 0.838988309426135, 0.839692530468017, 0.840396751509899, 0.841100972551782, 0.841805193593664, 0.842509414635546, 0.843213635677428, 0.843917856719310, 0.844622077761192, 0.845326298803075, 0.846030519844957, 0.846734740886839, 0.847438961928721, 0.848143182970604, 0.848847404012486, 0.849551625054368, 0.850255846096250, 0.850960067138132, 0.851664288180015, 0.852368509221897, 0.853072730263779, 0.853776951305661, 0.854481172347544, 0.855185393389426, 0.855889614431308, 0.856593835473190, 0.857298056515072, 0.858002277556955, 0.858706498598837, 0.859410719640719, 0.860114940682601, 0.860819161724483, 0.861523382766366, 0.862227603808248, 0.862931824850130, 0.863636045892012, 0.864340266933894, 0.865044487975777, 0.865748709017659, 0.866452930059541, 0.867157151101423, 0.867861372143306, 0.868565593185188, 0.869269814227070, 0.869974035268952, 0.870678256310835, 0.871382477352717, 0.872086698394599, 0.872790919436481, 0.873495140478363, 0.874199361520245, 0.874903582562128, 0.875607803604010, 0.876312024645892, 0.877016245687774, 0.877720466729657, 0.878424687771539, 0.879128908813421, 0.879833129855303, 0.880537350897185, 0.881241571939067, 0.881945792980950, 0.882650014022832, 0.883354235064714, 0.884058456106596, 0.884762677148479, 0.885466898190361, 0.886171119232243, 0.886875340274125, 0.887579561316007, 0.888283782357890, 0.888988003399772, 0.889692224441654, 0.890396445483536, 0.891100666525419, 0.891804887567301, 0.892509108609183, 0.893213329651065, 0.893917550692947, 0.894621771734830, 0.895325992776712, 0.896030213818594, 0.896734434860476, 0.897438655902359, 0.898142876944241, 0.898847097986123, 0.899551319028005, 0.900255540069887, 0.900959761111769, 0.901663982153652, 0.902368203195534, 0.903072424237416, 0.903776645279298, 0.904480866321180, 0.905185087363063, 0.905889308404945, 0.906593529446827, 0.907297750488709, 0.908001971530592, 0.908706192572474, 0.909410413614356, 0.910114634656238, 0.910818855698120, 0.911523076740003, 0.912227297781885, 0.912931518823767, 0.913635739865649, 0.914339960907532, 0.915044181949414, 0.915748402991296, 0.916452624033178, 0.917156845075060, 0.917861066116943, 0.918565287158825, 0.919269508200707, 0.919973729242589, 0.920677950284471, 0.921382171326354, 0.922086392368236, 0.922790613410118, 0.923494834452000, 0.924199055493882, 0.924903276535765, 0.925607497577647, 0.926311718619529, 0.927015939661411, 0.927720160703293, 0.928424381745176, 0.929128602787058, 0.929832823828940, 0.930537044870822, 0.931241265912705, 0.931945486954587, 0.932649707996469, 0.933353929038351, 0.934058150080234, 0.934762371122116, 0.935466592163998, 0.936170813205880, 0.936875034247762, 0.937579255289644, 0.938283476331527, 0.938987697373409, 0.939691918415291, 0.940396139457173, 0.941100360499055, 0.941804581540938, 0.942508802582820, 0.943213023624702, 0.943917244666584, 0.944621465708467, 0.945325686750349, 0.946029907792231, 0.946734128834113, 0.947438349875996, 0.948142570917878, 0.948846791959760, 0.949551013001642, 0.950255234043524, 0.950959455085407, 0.951663676127289, 0.952367897169171, 0.953072118211053, 0.953776339252935, 0.954480560294818, 0.955184781336700, 0.955889002378582, 0.956593223420464, 0.957309020248766, 0.958014422847513, 0.958708088829500, 0.959390213470694, 0.960060988798020, 0.960720603643428, 0.961369243697047, 0.962007091559457, 0.962634326793101, 0.963251125972825, 0.963857662735595, 0.964454107829368, 0.965040629161171, 0.965617391844360, 0.966184558245106, 0.966742288028102, 0.967290738201511, 0.967830063161165, 0.968360414734030, 0.968881942220948, 0.969394792438667, 0.969899109761171, 0.970395036160320, 0.970882711245826, 0.971362272304545, 0.971833854339131, 0.972297590106039, 0.972753610152898, 0.973202042855262, 0.973643014452749, 0.974076649084578, 0.974503068824520, 0.974922393715258, 0.975334741802183, 0.975740229166627, 0.976138969958538, 0.976531076428618, 0.976916658959920, 0.977295826098923, 0.977668684586093, 0.978035339385926, 0.978395893716500, 0.978750449078533, 0.979099105283955, 0.979441960484005, 0.979779111196868, 0.980110652334839, 0.980436677231045, 0.980757277665719, 0.981072543892040, 0.981382564661538, 0.981687427249075, 0.981987217477423, 0.982282019741417, 0.982571917031714, 0.982856990958159, 0.983137321772757, 0.983412988392267, 0.983684068420414, 0.983950638169740, 0.984212772683085, 0.984494461099837, 0.984776149516590, 0.985057837933343, 0.985339526350096, 0.985621214766849, 0.985902903183602, 0.986184591600355, 0.986466280017108, 0.986747968433861, 0.987029656850614, 0.987311345267366, 0.987593033684119, 0.987874722100872, 0.988156410517625, 0.988438098934378, 0.988719787351131, 0.989001475767884, 0.989283164184637, 0.989564852601389, 0.989846541018142, 0.990128229434895, 0.990409917851648, 0.990691606268401, 0.990973294685154, 0.991254983101907, 0.991536671518660, 0.991818359935412, 0.992100048352165, 0.992381736768918, 0.992663425185671, 0.992945113602424, 0.993226802019177, 0.993508490435930, 0.993790178852683, 0.994071867269436, 0.994353555686188, 0.994635244102941, 0.994916932519694, 0.995198620936447, 0.995480309353200, 0.995761997769953, 0.996043686186706, 0.996325374603458, 0.996607063020212, 0.996888751436964, 0.997170439853717, 0.997452128270470, 0.997733816687223, 0.998015505103976, 0.998297193520729, 0.998578881937482, 0.998790148250046, 0.999001414562611, 0.999221339977107, 0.999432144320668, 0.999590247578339, 0.999695649750119, 0.999774701378955, 0.999843212790612, 0.999906454093681, 0.999932804636626, 0.999943344853804, 0.999959155179571, 0.999973239600408, 0.999987324021246, 0.999994366231665, 0.999997887336874, 1.0};
     constant Real[Ninterval, 4] Tcoef={{1.466157356216828e+004, -1.763722663459683e+003, 3.275327130069820e+002, 2.165920000000000e+002},
@@ -21760,8 +21766,9 @@ The functions provided by this package shall be used inside of the restricted li
     protected
      SaturationProperties sat(psat=p, Tsat=0)
       "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat) "liquid enthalpy";
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
+        "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
     state.p :=p;
@@ -21794,10 +21801,10 @@ Example:
     "set state for density and temperature (X not used since single substance)"
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
-      Modelica.SIunits.SpecificHeatCapacity R "specific gas constant";
+      Modelica.Units.SI.SpecificHeatCapacity R "specific gas constant";
       SaturationProperties sat "saturation temperature and pressure";
-      Modelica.SIunits.Density dl "liquid density";
-      Modelica.SIunits.Density dv "vapor density";
+      Modelica.Units.SI.Density dl "liquid density";
+      Modelica.Units.SI.Density dv "vapor density";
 
     algorithm
        R := R1234yfData.R;
@@ -21847,8 +21854,9 @@ Example:
     "set state for pressure and specific entropy (X not used since single substance)"
 
     protected
-      Modelica.SIunits.Pressure delp=1e-2 "iteration accuracy for pressure";
-      Modelica.SIunits.SpecificEntropy dels=1e-1 "iteration accuracy for entropy";
+      Modelica.Units.SI.Pressure delp=1e-2 "iteration accuracy for pressure";
+      Modelica.Units.SI.SpecificEntropy dels=1e-1
+        "iteration accuracy for entropy";
       Integer error "if newton iteration fails (too many calls)";
       Common.HelmholtzDerivs f "helmholtz derivatives";
       SaturationProperties sat "saturation temperature and pressure";
@@ -22026,11 +22034,11 @@ Example:
     redeclare function temperature_ph
     "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Integer phase =   0
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Temperature T "temperature";
 
     algorithm
       T := T_props_ph(p, h,
@@ -22101,7 +22109,7 @@ Example:
       SaturationProperties sat "saturation temperature and pressure";
       Common.PhaseBoundaryProperties vap "properties on vapor phase boundary";
 
-      Modelica.SIunits.MassFraction x "vapor quality";
+      Modelica.Units.SI.MassFraction x "vapor quality";
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -22186,7 +22194,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
       "time derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       input Real der_p "time derivative of pressure";
       output Real der_Tsat "time derivative of saturation temperature";
     protected
@@ -22855,7 +22863,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
       SaturationProperties sat "saturation temperature and pressure";
       Common.PhaseBoundaryProperties vap "properties on vapor phase boundary";
 
-      Modelica.SIunits.MassFraction x "vapor quality";
+      Modelica.Units.SI.MassFraction x "vapor quality";
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -22891,14 +22899,14 @@ Please note, that the function can also be called in the two-phase region, but t
       constant Real K0=0.021357
       "Constant for low density term eta_star for R134a";
       constant Real beta=0.98791 "correction factor";
-      constant Modelica.SIunits.Length sigma=0.53280e-09
-      "Hard-sphere diameter for R1234yf";
-      constant Modelica.SIunits.Length sigma0=0.50647e-09
-      "Hard-sphere diameter for R134a";
-      constant Modelica.SIunits.Temperature epsilon_k=281.14
-      "empirical factor for R1234yf";
-      constant Modelica.SIunits.Temperature epsilon_k0=288.82
-      "empirical factor for R134a";
+      constant Modelica.Units.SI.Length sigma=0.53280e-09
+        "Hard-sphere diameter for R1234yf";
+      constant Modelica.Units.SI.Length sigma0=0.50647e-09
+        "Hard-sphere diameter for R134a";
+      constant Modelica.Units.SI.Temperature epsilon_k=281.14
+        "empirical factor for R1234yf";
+      constant Modelica.Units.SI.Temperature epsilon_k0=288.82
+        "empirical factor for R134a";
       constant Real a[6]={1.16145, -0.14874, 0.52487, -0.77320, 2.16178, -2.43787}
       "Coefficients for term of collision integral of R1234yf";
       constant Real a0[5]={2.218816e-01,-5.079322e-01,1.285776e-01,-8.328165e-02,-2.713173e-02}
@@ -23006,27 +23014,27 @@ Please note, that the function can also be called in the two-phase region, but t
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
       Common.HelmholtzDerivs f_ref "helmholtz derivatives for reference state";
-      Modelica.SIunits.ThermalConductivity lambda_dg
-      "dilute gas contribution to lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_dg
+        "dilute gas contribution to lambda";
       R1234yfData.CoeffsThermalConductivity coeff
       "coefficients of thermal conductivity model";
-      Modelica.SIunits.ThermalConductivity lambda_reduced "reduced lambda";
-      Modelica.SIunits.ThermalConductivity lambda_crit
-      "enhancement of lambda in the critical region";
-      Modelica.SIunits.ThermalConductivity chi_star "correlation length";
-      Modelica.SIunits.ThermalConductivity chi_star_ref "correlation length";
-      Modelica.SIunits.ThermalConductivity delta_chi "chi_star - chi_star_ref";
+      Modelica.Units.SI.ThermalConductivity lambda_reduced "reduced lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_crit
+        "enhancement of lambda in the critical region";
+      Modelica.Units.SI.ThermalConductivity chi_star "correlation length";
+      Modelica.Units.SI.ThermalConductivity chi_star_ref "correlation length";
+      Modelica.Units.SI.ThermalConductivity delta_chi "chi_star - chi_star_ref";
       Real rho_molar "molar density [mol/l]";
       Real dddp "derivative of density w.r.t. pressure";
       Real dddp_ref "derivative of density w.r.t. pressure for reference state";
-      Modelica.SIunits.Length xi "correlation length";
-      Modelica.SIunits.SpecificHeatCapacity cp
-      "specific heat capacity at constant pressure";
-      Modelica.SIunits.SpecificHeatCapacity cv
-      "specific heat capacity at constant volume";
-      Modelica.SIunits.DynamicViscosity eta "dynamic viscosity";
-      Modelica.SIunits.ThermalConductivity omega "crossover function";
-      Modelica.SIunits.ThermalConductivity omega_0 "crossover function";
+      Modelica.Units.SI.Length xi "correlation length";
+      Modelica.Units.SI.SpecificHeatCapacity cp
+        "specific heat capacity at constant pressure";
+      Modelica.Units.SI.SpecificHeatCapacity cv
+        "specific heat capacity at constant volume";
+      Modelica.Units.SI.DynamicViscosity eta "dynamic viscosity";
+      Modelica.Units.SI.ThermalConductivity omega "crossover function";
+      Modelica.Units.SI.ThermalConductivity omega_0 "crossover function";
 
     algorithm
       f := XRGMedia.R1234yf_ph.f_R1234yf(state.d, state.T);
@@ -23090,8 +23098,8 @@ Please note, that the function can also be called in the two-phase region, but t
     protected
       Real tau "reduced temp.";
       R1234yfData.CoeffsSurfaceTension coeff "polynomial coefficients";
-      Modelica.SIunits.Temperature Tc=R1234yfData.data.TCRIT
-      "critical temperature";
+      Modelica.Units.SI.Temperature Tc=R1234yfData.data.TCRIT
+        "critical temperature";
 
     algorithm
       if sat.Tsat > Tc then
@@ -23349,13 +23357,13 @@ The isentropic efficiency function should not be applied in liquid region.
     protected
       SaturationProperties sat(psat=p, Tsat=0)
         "saturation temperature and pressure";
-      Modelica.SIunits.Pressure delp=1.0e-2 "relative error in p in iteration";
-      Modelica.SIunits.SpecificEnthalpy delh=1.0e-2
+      Modelica.Units.SI.Pressure delp=1.0e-2 "relative error in p in iteration";
+      Modelica.Units.SI.SpecificEnthalpy delh=1.0e-2
         "relative error in h in iteration";
-      Modelica.SIunits.SpecificEnthalpy hvapor=
-          dewEnthalpy(sat=sat) "vapor enthalpy";
-      Modelica.SIunits.SpecificEnthalpy hliquid=
-          bubbleEnthalpy(sat=sat) "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hvapor=dewEnthalpy(sat=sat)
+        "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hliquid=bubbleEnthalpy(sat=sat)
+        "liquid enthalpy";
       Integer error "iteration error";
       Real x "steam quality";
       Real vvap "specifiv volume vapour";
@@ -23391,8 +23399,8 @@ The function cannot be inverted in a numerical way. Please use functions <a href
       input AbsolutePressure delp "absolute error in p in iteration";
       input SpecificEnthalpy delh "absolute error in h in iteration";
 
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
       output Integer error "1 if had not converge";
 
     protected
@@ -23407,7 +23415,7 @@ The function cannot be inverted in a numerical way. Please use functions <a href
       constant Real dv_coef[:, 4]=XRGMedia.R1234yfData.dvcoef
         "coefficients of cubic spline for rho_vap(p)";
 
-      Modelica.SIunits.SpecificEnthalpy hl "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl "liquid enthalpy";
       Boolean liquid "is liquid";
       Boolean supercritical "is supercritcal";
       Integer int "interval number";
@@ -23611,8 +23619,8 @@ The function shall only be used for one-phase inputs since the fundamental equat
       "calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Density d "density";
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.HelmholtzDerivs f "helmholtz derivatives";
     protected
       Real delta "reduced density";
@@ -23752,15 +23760,16 @@ This function computes the ideal gas helmholtz derivatives of the fundamental eq
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat) "liquid enthalpy";
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
+        "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
     phase := if ((h < hl) or (h > hv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
@@ -23774,14 +23783,14 @@ This function computes the number of phases for R1234yf depending on the inputs 
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEntropy sl=bubbleEntropy(sat) "liquid entropy";
-     Modelica.SIunits.SpecificEntropy sv=dewEntropy(sat) "vapor entropy";
+      Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat) "liquid entropy";
+      Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat) "vapor entropy";
 
     algorithm
     phase := if ((s < sl) or (s > sv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
@@ -23796,17 +23805,17 @@ This function computes the number of phases for R1234yf depending on the inputs 
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      output Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
     protected
       SaturationProperties sat "saturation temperature and pressure";
-      Modelica.SIunits.MassFraction x "vapor quality";
-      Modelica.SIunits.SpecificEntropy sl "liquid entropy";
-      Modelica.SIunits.SpecificEntropy sv "vapor entropy";
-      Modelica.SIunits.SpecificEnthalpy hl "liquid enthalpy";
-      Modelica.SIunits.SpecificEnthalpy hv "vapor enthalpy";
+      Modelica.Units.SI.MassFraction x "vapor quality";
+      Modelica.Units.SI.SpecificEntropy sl "liquid entropy";
+      Modelica.Units.SI.SpecificEntropy sv "vapor entropy";
+      Modelica.Units.SI.SpecificEnthalpy hl "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv "vapor enthalpy";
     algorithm
       sat.psat := p;
       // dummy
@@ -23827,12 +23836,12 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.PhaseBoundaryProperties liq
         "properties on liquid boundary phase";
     protected
-      Modelica.SIunits.Temperature T_liq "liquid temperature";
-      Modelica.SIunits.Density d_liq "liquid density";
+      Modelica.Units.SI.Temperature T_liq "liquid temperature";
+      Modelica.Units.SI.Density d_liq "liquid density";
       Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
       if T < R1234yfData.data.FTCRIT then
@@ -23852,12 +23861,12 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.PhaseBoundaryProperties vap
         "properties on vapor boundary phase";
     protected
-      Modelica.SIunits.Temperature T_vap "vapor temperature";
-      Modelica.SIunits.Density d_vap "vapor density";
+      Modelica.Units.SI.Temperature T_vap "vapor temperature";
+      Modelica.Units.SI.Density d_vap "vapor density";
       Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
       if T < R1234yfData.data.FTCRIT then
@@ -23876,8 +23885,8 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
     function rho_ph_der "time derivative function of rho_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "record for derivatives";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -23900,11 +23909,11 @@ This function calculates the derivative of density w.r.t. time. It is used as de
     function rho_props_ph "density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of rho_ph_der";
-      output Modelica.SIunits.Density d "density";
+      output Modelica.Units.SI.Density d "density";
     algorithm
       d := derivs.rho;
 
@@ -23920,8 +23929,8 @@ This function integrates the derivative of density w.r.t. time in order to allow
     function T_ph_der "time derivative function of T_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "auxiliary record";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -23943,11 +23952,11 @@ This function calculates the derivative of temperature w.r.t. time. It is used a
     function T_props_ph "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of T_ph_der";
-      output Modelica.SIunits.Temperature T "density";
+      output Modelica.Units.SI.Temperature T "density";
     algorithm
       T := derivs.T;
 
@@ -24134,7 +24143,8 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Ch
   end R1234yf_ph;
 
   package R1234yfData "R1234yf data required by package R1234yf_ph"
-  import Modelica.SIunits;
+  import SIunits =
+         Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;
@@ -29134,8 +29144,9 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Ch
     protected
      SaturationProperties sat(psat=p, Tsat=0)
       "saturation temperature and pressure";
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat) "liquid enthalpy";
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
+        "liquid enthalpy";
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
     state.p :=p;
@@ -29169,10 +29180,10 @@ Example:
     "set state for density and temperature (X not used since single substance)"
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
-      Modelica.SIunits.SpecificHeatCapacity R "specific gas constant";
+      Modelica.Units.SI.SpecificHeatCapacity R "specific gas constant";
       SaturationProperties sat "saturation temperature and pressure";
-      Modelica.SIunits.Density dl "liquid density";
-      Modelica.SIunits.Density dv "vapor density";
+      Modelica.Units.SI.Density dl "liquid density";
+      Modelica.Units.SI.Density dv "vapor density";
 
     algorithm
        R := R245faData.R;
@@ -29222,8 +29233,9 @@ Example:
     "set state for pressure and specific entropy (X not used since single substance)"
 
     protected
-      Modelica.SIunits.Pressure delp=1e-2 "iteration accuracy for pressure";
-      Modelica.SIunits.SpecificEntropy dels=1e-1 "iteration accuracy for entropy";
+      Modelica.Units.SI.Pressure delp=1e-2 "iteration accuracy for pressure";
+      Modelica.Units.SI.SpecificEntropy dels=1e-1
+        "iteration accuracy for entropy";
       Integer error "if newton iteration fails (too many calls)";
       Common.HelmholtzDerivs f "helmholtz derivatives";
       SaturationProperties sat "saturation temperature and pressure";
@@ -29266,8 +29278,7 @@ Example:
       "Set state for pressure and temperature (X not used since single substance)"
 
     protected
-        Modelica.SIunits.Pressure delp=1.0e-2
-        "Relative error in p in iteration";
+      Modelica.Units.SI.Pressure delp=1.0e-2 "Relative error in p in iteration";
 
     algorithm
       phaseBoundaryAssert(p, T);
@@ -29485,7 +29496,7 @@ Example:
       SaturationProperties sat "saturation temperature and pressure";
       Common.PhaseBoundaryProperties vap "properties on vapor phase boundary";
 
-      Modelica.SIunits.MassFraction x "vapor quality";
+      Modelica.Units.SI.MassFraction x "vapor quality";
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -29571,7 +29582,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       "derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.Units.SI.AbsolutePressure p "pressure";
       input Real der_p "time derivative of pressure";
       output Real der_Tsat "time derivative of saturation temperature";
     protected
@@ -29703,7 +29714,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.Density dv "vapor phase density";
+      output Modelica.Units.SI.Density dv "vapor phase density";
     protected
       constant Real dv_coef[:,:] = R245faData.dvcoef;
       constant Real p_breaks[:] = R245faData.pbreaks;
@@ -29781,8 +29792,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEnthalpy hl
-      "specific enthalpy of liquid fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hl
+        "specific enthalpy of liquid fraction";
     protected
       constant Real hl_coef[:,:] = R245faData.hlcoef;
       constant Real p_breaks[:] = R245faData.pbreaks;
@@ -29860,8 +29871,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEnthalpy hv
-      "specific enthalpy of vapor fraction";
+      output Modelica.Units.SI.SpecificEnthalpy hv
+        "specific enthalpy of vapor fraction";
     protected
       constant Real hv_coef[:,:] = R245faData.hvcoef;
       constant Real p_breaks[:] = R245faData.pbreaks;
@@ -29939,8 +29950,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sv
-      "specific entropy of vapor phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sv
+        "specific entropy of vapor phase w.r.t saturation pressure";
 
     protected
       constant Real sv_coef[:,:] = R245faData.svcoef;
@@ -30023,8 +30034,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
-      output Modelica.SIunits.SpecificEntropy sl
-      "specific entropy of liquid phase w.r.t saturation pressure";
+      output Modelica.Units.SI.SpecificEntropy sl
+        "specific entropy of liquid phase w.r.t saturation pressure";
     protected
       constant Real sl_coef[:,:] = R245faData.slcoef;
       constant Real p_breaks[:] = R245faData.pbreaks;
@@ -30140,7 +30151,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       SaturationProperties sat;
       Common.PhaseBoundaryProperties vap;
 
-      Modelica.SIunits.MassFraction x;
+      Modelica.Units.SI.MassFraction x;
 
     algorithm
       if getPhase_ph(state.p, state.h)==2 then
@@ -30166,14 +30177,14 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       constant Real K0=0.021357
       "Constant for low density term eta_star for R134a";
       constant Real beta=1 "correction factor";
-      constant Modelica.SIunits.Length sigma=0.5529e-09
-      "Hard-sphere diameter for R245fa";
-      constant Modelica.SIunits.Length sigma0=0.50647e-09
-      "Hard-sphere diameter for R134a";
-      constant Modelica.SIunits.Temperature epsilon_k=329.72
-      "empirical factor for R245fa";
-      constant Modelica.SIunits.Temperature epsilon_k0=288.82
-      "empirical factor for R134a";
+      constant Modelica.Units.SI.Length sigma=0.5529e-09
+        "Hard-sphere diameter for R245fa";
+      constant Modelica.Units.SI.Length sigma0=0.50647e-09
+        "Hard-sphere diameter for R134a";
+      constant Modelica.Units.SI.Temperature epsilon_k=329.72
+        "empirical factor for R245fa";
+      constant Modelica.Units.SI.Temperature epsilon_k0=288.82
+        "empirical factor for R134a";
       constant Real a[6]={1.16145, -0.14874, 0.52487, -0.77320, 2.16178, -2.43787}
       "Coefficients for term of collision integral";
       constant Real a0[5]={2.218816e-01,-5.079322e-01,1.285776e-01,-8.328165e-02,-2.713173e-02}
@@ -30323,26 +30334,26 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
       Common.HelmholtzDerivs f_ref "helmholtz derivatives for reference state";
-      Modelica.SIunits.ThermalConductivity lambda_dg
-      "dilute gas contribution to lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_dg
+        "dilute gas contribution to lambda";
       XRGMedia.R245faData.CoeffsThermalConductivity coeff "coefficients of thermal conductivity model";
-      Modelica.SIunits.ThermalConductivity lambda_reduced "reduced lambda";
-      Modelica.SIunits.ThermalConductivity lambda_crit
-      "enhancement of lambda in the critical region";
-      Modelica.SIunits.ThermalConductivity chi_star "correlation length";
-      Modelica.SIunits.ThermalConductivity chi_star_ref "correlation length";
-      Modelica.SIunits.ThermalConductivity delta_chi "chi_star - chi_star_ref";
+      Modelica.Units.SI.ThermalConductivity lambda_reduced "reduced lambda";
+      Modelica.Units.SI.ThermalConductivity lambda_crit
+        "enhancement of lambda in the critical region";
+      Modelica.Units.SI.ThermalConductivity chi_star "correlation length";
+      Modelica.Units.SI.ThermalConductivity chi_star_ref "correlation length";
+      Modelica.Units.SI.ThermalConductivity delta_chi "chi_star - chi_star_ref";
       Real rho_molar "molar density [mol/l]";
       Real dddp "derivative of density w.r.t. pressure";
       Real dddp_ref "derivative of density w.r.t. pressure for reference state";
-      Modelica.SIunits.Length xi "correlation length";
-      Modelica.SIunits.SpecificHeatCapacity cp
-      "specific heat capacity at constant pressure";
-      Modelica.SIunits.SpecificHeatCapacity cv
-      "specific heat capacity at constant volume";
-      Modelica.SIunits.DynamicViscosity eta "dynamic viscosity";
-      Modelica.SIunits.ThermalConductivity omega "crossover function";
-      Modelica.SIunits.ThermalConductivity omega_0 "crossover function";
+      Modelica.Units.SI.Length xi "correlation length";
+      Modelica.Units.SI.SpecificHeatCapacity cp
+        "specific heat capacity at constant pressure";
+      Modelica.Units.SI.SpecificHeatCapacity cv
+        "specific heat capacity at constant volume";
+      Modelica.Units.SI.DynamicViscosity eta "dynamic viscosity";
+      Modelica.Units.SI.ThermalConductivity omega "crossover function";
+      Modelica.Units.SI.ThermalConductivity omega_0 "crossover function";
 
     algorithm
       f := XRGMedia.R245fa_ph.f_R245fa(state.d, state.T);
@@ -30540,8 +30551,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p;
-      input Modelica.SIunits.SpecificEnthalpy h;
+      input Modelica.Units.SI.Pressure p;
+      input Modelica.Units.SI.SpecificEnthalpy h;
       input Integer phase;
       output Common.InverseDerivatives_rhoT derivs;
 
@@ -30589,19 +30600,17 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
     protected
       SaturationProperties sat(psat=p, Tsat=0);
-      Modelica.SIunits.Pressure delp=1.0e-2 "relative error in p in iteration";
-      Modelica.SIunits.SpecificEnthalpy delh=1.0e-2
+      Modelica.Units.SI.Pressure delp=1.0e-2 "relative error in p in iteration";
+      Modelica.Units.SI.SpecificEnthalpy delh=1.0e-2
         "relative error in h in iteration";
-      Modelica.SIunits.SpecificEnthalpy hvapor=
-          dewEnthalpy(sat=sat);
-      Modelica.SIunits.SpecificEnthalpy hliquid=
-          bubbleEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hvapor=dewEnthalpy(sat=sat);
+      Modelica.Units.SI.SpecificEnthalpy hliquid=bubbleEnthalpy(sat=sat);
       Integer error "iteration error";
       Real x "steam quality";
       Real vvap "specifiv volume vapour";
@@ -30627,14 +30636,14 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "enthalpy";
-      input Modelica.SIunits.Pressure delp "relative error in p in iteration";
-      input Modelica.SIunits.SpecificEnthalpy delh
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "enthalpy";
+      input Modelica.Units.SI.Pressure delp "relative error in p in iteration";
+      input Modelica.Units.SI.SpecificEnthalpy delh
         "relative error in h in iteration";
 
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature";
       output Integer error "1 if had not converged";
 
     protected
@@ -30644,7 +30653,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       constant Real T_coef[:, 4]=XRGMedia.R245faData.Tcoef;
       constant Real dv_coef[:, 4]=XRGMedia.R245faData.dvcoef;
 
-      Modelica.SIunits.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hl;
       Boolean liquid;
       Boolean supercritical;
       Integer int;
@@ -30735,13 +30744,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Pressure delp "iteration accuracy";
-      input Modelica.SIunits.SpecificEntropy dels "iteration accuracy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure delp "iteration accuracy";
+      input Modelica.Units.SI.SpecificEntropy dels "iteration accuracy";
     //   input R245faData.Residual resc "residual coefficients";
-      output Modelica.SIunits.Density d "density";
-      output Modelica.SIunits.Temperature T "temperature (K)";
+      output Modelica.Units.SI.Density d "density";
+      output Modelica.Units.SI.Temperature T "temperature (K)";
       output Integer error "error flag: trouble if different from 0";
 
     protected
@@ -30838,8 +30847,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       "calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Density d "density";
-      input Modelica.SIunits.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
       output Common.HelmholtzDerivs f "helmholtz derivatives";
     protected
       Real delta;
@@ -30959,15 +30968,15 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEnthalpy hl=bubbleEnthalpy(sat);
-     Modelica.SIunits.SpecificEnthalpy hv=dewEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat);
+      Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat);
 
     algorithm
     phase := if ((h < hl) or (h > hv) or (p > R245faData.data.FPCRIT)) then 1 else 2;
@@ -30979,14 +30988,14 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
       output Integer phase "number of phases";
 
     protected
      SaturationProperties sat(psat=p, Tsat=0);
-     Modelica.SIunits.SpecificEntropy sl=bubbleEntropy(sat);
-     Modelica.SIunits.SpecificEntropy sv=dewEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat);
+      Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat);
 
     algorithm
     phase := if ((s < sl) or (s > sv) or (p > R245faData.data.FPCRIT)) then 1 else 2;
@@ -30999,17 +31008,17 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEntropy s "specific entropy";
+      output Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
 
     protected
       SaturationProperties sat;
-      Modelica.SIunits.MassFraction x;
-      Modelica.SIunits.SpecificEntropy sl;
-      Modelica.SIunits.SpecificEntropy sv;
-      Modelica.SIunits.SpecificEnthalpy hl;
-      Modelica.SIunits.SpecificEnthalpy hv;
+      Modelica.Units.SI.MassFraction x;
+      Modelica.Units.SI.SpecificEntropy sl;
+      Modelica.Units.SI.SpecificEntropy sv;
+      Modelica.Units.SI.SpecificEnthalpy hl;
+      Modelica.Units.SI.SpecificEnthalpy hv;
     algorithm
       sat.psat := p;
       // dummy
@@ -31028,13 +31037,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties liq
         "properties on liquid boundary phase";
     protected
-      Modelica.SIunits.Temperature T_liq;
-      Modelica.SIunits.Density d_liq;
+      Modelica.Units.SI.Temperature T_liq;
+      Modelica.Units.SI.Density d_liq;
       Common.HelmholtzDerivs f;
     algorithm
       if T < R245faData.data.FTCRIT then
@@ -31054,13 +31063,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Temperature T "temperature";
-      input Modelica.SIunits.Density d "density";
+      input Modelica.Units.SI.Temperature T "temperature";
+      input Modelica.Units.SI.Density d "density";
       output Common.PhaseBoundaryProperties vap
         "properties on vapor boundary phase";
     protected
-      Modelica.SIunits.Temperature T_vap;
-      Modelica.SIunits.Density d_vap;
+      Modelica.Units.SI.Temperature T_vap;
+      Modelica.Units.SI.Density d_vap;
       Common.HelmholtzDerivs f;
     algorithm
       if T < R245faData.data.FTCRIT then
@@ -31079,8 +31088,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     function rho_ph_der "derivative function of rho_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "record for derivatives";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -31101,11 +31110,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     function rho_props_ph "density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of rho_ph_der";
-      output Modelica.SIunits.Density d "density";
+      output Modelica.Units.SI.Density d "density";
     algorithm
       d := derivs.rho;
 
@@ -31118,8 +31127,8 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     function T_ph_der "derivative function of T_ph"
     extends Modelica.Icons.Function;
 
-    input Modelica.SIunits.Pressure p "pressure";
-    input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
     input Common.InverseDerivatives_rhoT derivs "auxiliary record";
     input Real p_der "derivative of pressure";
     input Real h_der "derivative of specific enthalpy";
@@ -31139,11 +31148,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     function T_props_ph "temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      input Modelica.Units.SI.Pressure p "pressure";
+      input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
       input Common.InverseDerivatives_rhoT derivs
         "record for the calculation of T_ph_der";
-      output Modelica.SIunits.Temperature T "density";
+      output Modelica.Units.SI.Temperature T "density";
     algorithm
       T := derivs.T;
 
@@ -31324,7 +31333,8 @@ The functions provided by this package shall be used inside of the restricted li
   end R245fa_ph;
 
   package R245faData "R245fa data required by package R245fa_ph"
-  import Modelica.SIunits;
+  import SIunits =
+         Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;

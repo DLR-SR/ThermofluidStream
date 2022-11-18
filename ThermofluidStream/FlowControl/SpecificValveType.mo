@@ -11,8 +11,9 @@ model SpecificValveType "Specific technical valve types"
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
   //Set valve data as parameter
-  parameter Modelica.SIunits.Diameter d_valve "Flow diameter" annotation(Evaluate = true, Dialog(group = "Valve parameters",
-  enable = (flowCoefficient == FlowCoeffType.flowDiameter)));
+  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter" annotation (
+      Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient
+           == FlowCoeffType.flowDiameter)));
   //Reference Values
   parameter Real Kvs( unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
     Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
@@ -25,7 +26,8 @@ model SpecificValveType "Specific technical valve types"
   Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  Modelica.SIunits.Area A_valve = 0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional valve area";
+  Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2
+    "Cross-sectional valve area";
   constant zetaValueRecord valveData;
 
   SI.VolumeFlowRate V_flow_ref=

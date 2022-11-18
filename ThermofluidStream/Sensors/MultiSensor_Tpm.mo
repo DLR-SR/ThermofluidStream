@@ -75,13 +75,13 @@ equation
   if temperatureUnit == "K" then
     direct_T =  Medium.temperature(inlet.state);
   elseif temperatureUnit == "degC" then
-    direct_T = SI.Conversions.to_degC(Medium.temperature(inlet.state));
+    direct_T =Modelica.Units.Conversions.to_degC(Medium.temperature(inlet.state));
   end if;
 
   if pressureUnit == "Pa" then
     direct_p = Medium.pressure(inlet.state);
   elseif pressureUnit == "bar" then
-    direct_p = SI.Conversions.to_bar(Medium.pressure(inlet.state));
+    direct_p =Modelica.Units.Conversions.to_bar(Medium.pressure(inlet.state));
   end if;
 
   if massFlowUnit == "(kg/s)" then

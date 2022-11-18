@@ -32,8 +32,11 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
   parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow side B"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter Integer nCells = 3 "Number of discretization elements";
-  parameter Modelica.SIunits.Area A = 10 "Conductive area of heat exchanger" annotation(Dialog(group = "Heat transfer parameters"));
-  parameter Modelica.SIunits.Volume V_Hex = 0.001 "Volume for heat transfer calculation" annotation(Dialog(group = "Heat transfer parameters"));
+  parameter Modelica.Units.SI.Area A=10 "Conductive area of heat exchanger"
+    annotation (Dialog(group="Heat transfer parameters"));
+  parameter Modelica.Units.SI.Volume V_Hex=0.001
+    "Volume for heat transfer calculation"
+    annotation (Dialog(group="Heat transfer parameters"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
@@ -50,12 +53,14 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
 
 
   //Parameterization of HEX Wall
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer k_wall = 100 "Coefficient of heat transfer for pipe wall"
-    annotation(Dialog(group = "Heat transfer parameters"));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100
+    "Coefficient of heat transfer for pipe wall"
+    annotation (Dialog(group="Heat transfer parameters"));
 
   parameter Boolean calculate_efficency= false "Enable calculation of efficency";
 protected
-  parameter Modelica.SIunits.ThermalConductance G = k_wall*A "Wall thermal conductance" annotation(Dialog(group = "Wall parameters"));
+  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A
+    "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
 
 public
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));

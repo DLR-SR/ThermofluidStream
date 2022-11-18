@@ -2,11 +2,11 @@ within ;
 package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
   extends Modelica.Icons.Package;
 
-  import SI = Modelica.SIunits;
+  import      Modelica.Units.SI;
 
 annotation (
   version="0.4.1",
-  uses(Modelica(version="3.2.3")),
+  uses(Modelica(version="3.2.3"), ObsoleteModelica4(version="4.0.0")),
   conversion(
     from(
       version="0.2.1",

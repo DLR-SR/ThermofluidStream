@@ -91,8 +91,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     SI.Pressure r_in[2];
 
-    function mfk = Utilities.Functions.massFractionK(redeclare package Medium
-          =                                                                     Medium);
+    function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 
     Real splitRatioLim(unit="1");
     parameter Real eps(unit="1") = 1e-5 "Numerical minimal distance of input to 0 and 1";
