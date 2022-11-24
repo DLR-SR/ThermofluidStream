@@ -389,7 +389,7 @@ package XRGMedia "A medium property library"
       quality = vapourQuality(state);
 
       u = h - p/d;
-      R = R134aData.data.R;
+      R_s = R134aData.data.R;
       h = state.h;
       p = state.p;
       T = state.T;
@@ -7744,7 +7744,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       quality = vapourQuality(state);
 
       u = h - p/d;
-      R = NH3Data.data.R;
+      R_s = NH3Data.data.R;
       h = state.h;
       p = state.p;
       T = state.T;
@@ -14708,7 +14708,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
       quality = vapourQuality(state);
 
       u = h - p/d;
-      R = CO2Data.data.R;
+      R_s = CO2Data.data.R;
       h = state.h;
       p = state.p;
       T = state.T;
@@ -21751,7 +21751,7 @@ The functions provided by this package shall be used inside of the restricted li
       quality = vapourQuality(state);
 
       u = h - p/d;
-      R = R1234yfData.data.R;
+      R_s = R1234yfData.data.R;
       h = state.h;
       p = state.p;
       T = state.T;
@@ -29129,7 +29129,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Ch
       quality = vapourQuality(state);
 
       u = h - p/d;
-      R = R245faData.data.R;
+      R_s = R245faData.data.R;
       h = state.h;
       p = state.p;
       T = state.T;
