@@ -7,7 +7,6 @@ partial package MixtureGasNasa
 
   extends ThermofluidStream.Media.myMedia.Interfaces.PartialMixtureMedium(
     ThermoStates=ThermofluidStream.Media.myMedia.Interfaces.Choices.IndependentVariables.pTX,
-
     substanceNames=data[:].name,
     reducedX=false,
     singleState=false,

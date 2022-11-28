@@ -48,7 +48,6 @@ public
     extends Modelica.Icons.MaterialProperty;
     extends ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Base(
       ThermoStates=ThermofluidStream.Media.myMedia.Interfaces.Choices.IndependentVariables.ph,
-
       final ph_explicit=true,
       final dT_explicit=false,
       final pT_explicit=false);
@@ -66,7 +65,6 @@ The package Air_ph can be used as any other medium model (see <a href=\"modelica
     extends Modelica.Icons.MaterialProperty;
     extends ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Base(
       ThermoStates=ThermofluidStream.Media.myMedia.Interfaces.Choices.IndependentVariables.pT,
-
       final ph_explicit=false,
       final dT_explicit=false,
       final pT_explicit=true);
@@ -85,7 +83,6 @@ public
     extends Modelica.Icons.MaterialProperty;
     extends ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Base(
       ThermoStates=ThermofluidStream.Media.myMedia.Interfaces.Choices.IndependentVariables.dTX,
-
       final ph_explicit=false,
       final dT_explicit=true,
       final pT_explicit=false);

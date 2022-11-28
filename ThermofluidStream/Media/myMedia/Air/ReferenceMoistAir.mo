@@ -1786,8 +1786,8 @@ package ReferenceMoistAir
         ThermofluidStream.Media.myMedia.Common.GibbsDerivs g;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         h := g.R_s*T*g.tau*g.gtau;
         annotation (
           derivative(noDerivative=region) = h_pT_der,
@@ -1806,8 +1806,8 @@ package ReferenceMoistAir
         ThermofluidStream.Media.myMedia.Common.GibbsDerivs g;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         s := g.R_s*(g.tau*g.gtau - g.g);
       end s_pT;
 
@@ -1824,8 +1824,8 @@ package ReferenceMoistAir
         ThermofluidStream.Media.myMedia.Common.GibbsDerivs g;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         cp := -g.R_s*g.tau*g.tau*g.gtautau;
       end cp_pT;
 
@@ -1842,8 +1842,8 @@ package ReferenceMoistAir
         ThermofluidStream.Media.myMedia.Common.GibbsDerivs g;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         cv := g.R_s*(-g.tau*g.tau*g.gtautau + ((g.gpi - g.tau*g.gtaupi)*(g.gpi -
           g.tau*g.gtaupi)/g.gpipi));
       end cv_pT;
@@ -1857,8 +1857,8 @@ package ReferenceMoistAir
         ThermofluidStream.Media.myMedia.Common.GibbsDerivs g;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         rho := p/(g.R_s*T*g.pi*g.gpi);
         annotation (
           derivative=rho_pT_der,
@@ -1880,8 +1880,8 @@ package ReferenceMoistAir
         Real vt;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         vt := g.R_s/p*(g.pi*g.gpi - g.tau*g.pi*g.gtaupi);
         vp := g.R_s*T/(p*p)*g.pi*g.pi*g.gpipi;
         d := p/(g.R_s*T*g.pi*g.gpi);
@@ -1920,8 +1920,8 @@ package ReferenceMoistAir
         Real vt;
       algorithm
         g :=
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2
-          (p, T);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.IF97_new.g2(
+           p, T);
         vt := g.R_s/p*(g.pi*g.gpi - g.tau*g.pi*g.gtaupi);
         rho := max(p/(g.R_s*T*g.pi*g.gpi), 1e-9);
         h_der := (1/rho - T*vt)*p_der - g.R_s*g.tau*g.tau*g.gtautau*T_der;
@@ -2414,7 +2414,6 @@ for region 2.
         rho := rho_props_pT(
                 p,
                 T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2457,7 +2456,6 @@ for region 2.
         h := h_props_pT(
                 p,
                 T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2496,7 +2494,6 @@ for region 2.
         s := s_props_pT(
                 p,
                 T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -2526,7 +2523,6 @@ for region 2.
         kappa := kappa_props_pT(
                 p,
                 T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
             p, T));
 
@@ -3108,61 +3104,61 @@ for region 2.
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
         uges := 1 +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y);
         u := -T^2*(
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           2] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           3] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           4] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           5] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           6])/uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end h_dis_pTX;
@@ -3289,57 +3285,57 @@ for region 2.
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
         uges := 1 +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y);
         u := (
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2
-          (T) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(
+           T) +
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3
-          (T) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(
+           T) +
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4
-          (T) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(
+           T) +
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5
-          (T) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(
+           T) +
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6
-          (T))/uges*sum(massFraction[j]/MMX[j] for j in 1:4);
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(
+           T))/uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end cp_dis_pTX;
 
@@ -3370,61 +3366,61 @@ for region 2.
           Y[i] := Mmix*massFraction[i]/MMX[i];
         end for;
         uges := 1 +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y) +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y);
         u := -T*(
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U2(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V2(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           2] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U3(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V3(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           3] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U4(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V4(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           4] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U5(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V5(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           5] +
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6
-          (   p,
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.U6(
+              p,
               T,
               Y)*
-          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6
-          (T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
+          ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.V6(
+           T)/ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.ReactionIndices.BB[
           6])/uges*sum(massFraction[j]/MMX[j] for j in 1:4);
       end if;
     end s_dis_pTX;
@@ -3577,11 +3573,11 @@ for region 2.
           ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.rho_pT_der(
               p,
               T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
             p, T),
               p_der,
               T_der);
+
       else
         xw := X[1]/(1 - X[1]);
         xw_der := (X_der[1])/(1 - X[1])^2;
@@ -3611,7 +3607,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.rho_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 pl, T),
                   pl_der,
@@ -3624,7 +3619,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.rho_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 pl, T),
                   pl_der,
@@ -3653,7 +3647,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.rho_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 p, T),
                   p_der,
@@ -3665,7 +3658,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
                 p, T),
                   p_der,
@@ -3673,7 +3665,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.rho_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
                 p, T),
                   p_der,
@@ -3695,7 +3686,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.rho_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 p, T),
                   p_der,
@@ -3709,7 +3699,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Water.IF97_Utilities.rho_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Water.IF97_Utilities.waterBaseProp_pT(
                 p, T),
                   p_der,
@@ -3717,11 +3706,11 @@ for region 2.
               ThermofluidStream.Media.myMedia.Water.IF97_Utilities.rho_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Water.IF97_Utilities.waterBaseProp_pT(
                 p, T),
                   p_der,
                   T_der))/o[2]^2;
+
             d_der := (xw_der*o[3] - (1 + xw)*o[5])/o[3]^2;
           end if;
         end if;
@@ -3949,11 +3938,11 @@ for region 2.
           ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.h_pT_der(
               p,
               T,
-
             ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
             p, T),
               p_der,
               T_der);
+
       else
         pd :=
           ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.pd_pTX(
@@ -3986,7 +3975,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.h_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 pl, T),
                   pl_der,
@@ -4016,7 +4004,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.h_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 pl, T),
                   pl_der,
@@ -4037,7 +4024,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.h_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 pl, T),
                   pl_der,
@@ -4055,7 +4041,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
                 p, T),
                   p_der,
@@ -4065,7 +4050,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.h_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir.Utilities.Ice09_Utilities.ice09BaseProp_pT(
                 p, T),
                   p_der,
@@ -4076,7 +4060,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.h_pT_der(
                   pl,
                   T,
-
                 ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_Utilities.airBaseProp_pT(
                 p, T),
                   pl_der,
@@ -4094,7 +4077,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Water.IF97_Utilities.h_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Water.IF97_Utilities.waterBaseProp_pT(
                 p, T),
                   p_der,
@@ -4104,7 +4086,6 @@ for region 2.
               ThermofluidStream.Media.myMedia.Water.IF97_Utilities.h_pT_der(
                   p,
                   T,
-
                 ThermofluidStream.Media.myMedia.Water.IF97_Utilities.waterBaseProp_pT(
                 p, T),
                   p_der,

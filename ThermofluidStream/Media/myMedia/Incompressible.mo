@@ -74,7 +74,7 @@ package Incompressible
   equation
     medium.p = 1.013e5;
     medium.T = Medium.T_min + time/timeUnit*Ta;
-      annotation (experiment(StopTime=1.01));
+      annotation (experiment_X(StopTime=1.01));
   end TestGlycol;
 
   annotation (
