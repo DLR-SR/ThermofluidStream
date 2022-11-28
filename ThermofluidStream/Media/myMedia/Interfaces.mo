@@ -2404,6 +2404,12 @@ This function computes the specific internal energy of the fluid, but neglects t
       ddpT := 0;
     end density_derp_T;
 
+    redeclare function extends density_derp_h
+      "Returns the partial derivative of density with respect to pressure at constant specific enthalpy"
+    algorithm
+      ddph := 0;
+    end density_derp_h;
+
     redeclare function extends density_derT_p
       "Returns the partial derivative of density with respect to temperature at constant pressure"
     algorithm
@@ -2712,6 +2718,13 @@ quantities are assumed to be constant.
     */
       ddpT := 1/(R_gas*state.T);
     end density_derp_T;
+
+    redeclare function extends density_derp_h
+      "Returns the partial derivative of density with respect to pressure at constant enthalpy"
+    algorithm
+     // h = f(T) -> h=const -> T = const
+      ddph := 1/(R_gas*state.T);
+    end density_derp_h;
 
     redeclare function extends density_derT_p
       "Returns the partial derivative of density with respect to temperature at constant pressure"
