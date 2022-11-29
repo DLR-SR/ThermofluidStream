@@ -20,7 +20,6 @@ partial package SingleGasNasa
     AbsolutePressure p "Absolute pressure of medium";
     Temperature T "Temperature of medium";
   end ThermodynamicState;
-
   import Modelica.Math;
   import ThermofluidStream.Media.myMedia.Interfaces.Choices.ReferenceEnthalpy;
 
@@ -281,6 +280,13 @@ Temperature T (= " + String(T) + " K) is not in the allowed range
     annotation(Inline=true,smoothOrder=2);
   end density_derX;
 
+  redeclare function extends density_derp_h
+    "Returns the partial derivative of density with respect to pressure at constant enthalpy"
+  algorithm
+    ddph := specificHeatCapacityCp(state)/(state.T*data.R_s*data.R_s);
+    annotation(Inline=true,smoothOrder=2);
+  end density_derp_h;
+
   redeclare replaceable function extends dynamicViscosity "Dynamic viscosity"
   algorithm
     assert(fluidConstants[1].hasCriticalData,
@@ -360,7 +366,6 @@ Temperature T (= " + String(T) + " K) is not in the allowed range
     T := Modelica.Math.Nonlinear.solveOneNonlinearEquation(
       function f_nonlinear(data=data, p=p, s=s), 200, 6000);
   end T_ps;
-
 // the functions below are not strictly necessary, there are just here for compatibility reasons
 
   function dynamicViscosityLowPressure
@@ -446,7 +451,6 @@ thermal conductivity (lambda) at low temperatures.
 </p>
 </html>"));
   end thermalConductivityEstimate;
-
   annotation (
     Documentation(info="<html>
 <p>

@@ -24,7 +24,6 @@ partial package MixtureGasNasa
 
     redeclare record extends ThermodynamicState "Thermodynamic state variables"
     end ThermodynamicState;
-
 //   redeclare record extends FluidConstants "Fluid constants"
 //   end FluidConstants;
 
@@ -731,6 +730,13 @@ end lowPressureThermalConductivity;
     annotation(Inline=true,smoothOrder=2);
   end density_derX;
 
+  redeclare function extends density_derp_h
+    "Returns the partial derivative of density with respect to pressure at constant enthalpy"
+  algorithm
+    ddph := specificHeatCapacityCp(state)/(state.T*data.R_s*data.R_s);
+    annotation(Inline=true,smoothOrder=2);
+  end density_derp_h;
+
   redeclare function extends molarMass "Return molar mass of mixture"
   algorithm
     MM := 1/sum(state.X[j]/data[j].MM for j in 1:size(state.X, 1));
@@ -792,8 +798,8 @@ end lowPressureThermalConductivity;
       function f_nonlinear(p=p, s=s, X=X), 200, 6000);
     annotation(inverse(s = specificEntropyOfpTX(p,T,X)));
   end T_psX;
-
 protected
+
     function specificEntropyOfpTX
       "Return specific entropy from pressure, temperature and mass fractions"
       extends Modelica.Icons.Function;
@@ -809,7 +815,6 @@ protected
         Modelica.Math.log(Y[i]*p/reference_p)) for i in 1:nX);
       annotation(Inline=true,smoothOrder=2);
     end specificEntropyOfpTX;
-
   annotation (Documentation(info="<html>
 <p>
 This model calculates the medium properties for single component ideal gases.
