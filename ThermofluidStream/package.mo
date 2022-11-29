@@ -6,7 +6,7 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
 
 annotation (
   version="0.4.1",
-  uses(Modelica(version="3.2.3"), ObsoleteModelica4(version="4.0.0"),
+  uses(Modelica(version="4.0.0"), ObsoleteModelica4(version="4.0.0"),
     Complex(version="4.0.0")),
   conversion(
     from(
