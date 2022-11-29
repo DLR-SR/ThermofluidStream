@@ -540,6 +540,17 @@ package ReferenceMoistAir
 
   end density;
 
+  redeclare function extends density_derp_h
+    "This is a crude approximation taken from MoistAir."
+
+  algorithm
+  ddph := 1/(gasConstant(state)*temperature(state));
+
+  annotation (Documentation(revisions="<html>
+  <p>This is a crude approximation taken from MoistAir.</p>
+</html>"));
+  end density_derp_h;
+
   redeclare function extends specificEnthalpy
     "Return specific enthalpy of moist air as a function of the thermodynamic state record"
 
