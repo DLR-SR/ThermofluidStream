@@ -19,15 +19,18 @@ algorithm
   elseif quantity == Types.TwoPhaseQuantities.p_sat_Pa then
     value := Medium.saturationPressure(Medium.temperature(state));
   elseif quantity == Types.TwoPhaseQuantities.p_sat_bar then
-    value := SI.Conversions.to_bar(Medium.saturationPressure(Medium.temperature(state)));
+    value :=Modelica.Units.Conversions.to_bar(Medium.saturationPressure(
+      Medium.temperature(state)));
   elseif quantity == Types.TwoPhaseQuantities.T_sat_K then
     value := Medium.saturationTemperature(Medium.pressure(state));
   elseif quantity == Types.TwoPhaseQuantities.T_sat_C then
-    value := SI.Conversions.to_degC(Medium.saturationTemperature(Medium.pressure(state)));
+    value :=Modelica.Units.Conversions.to_degC(Medium.saturationTemperature(
+      Medium.pressure(state)));
   elseif quantity == Types.TwoPhaseQuantities.p_oversat_Pa then
     value := Medium.pressure(state) - Medium.saturationPressure(Medium.temperature(state));
   elseif quantity == Types.TwoPhaseQuantities.p_oversat_bar then
-    value := SI.Conversions.to_bar(Medium.pressure(state) - Medium.saturationPressure(Medium.temperature(state)));
+    value :=Modelica.Units.Conversions.to_bar(Medium.pressure(state) -
+      Medium.saturationPressure(Medium.temperature(state)));
   elseif quantity == Types.TwoPhaseQuantities.T_oversat_K then
     value :=  Medium.temperature(state) - Medium.saturationTemperature(Medium.pressure(state));
   else

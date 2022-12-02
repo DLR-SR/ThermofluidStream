@@ -25,7 +25,7 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")= p0 if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60})));
-  Modelica.Blocks.Interfaces.RealInput T0_var( unit = "K") = T0 if  temperatureFromInput "Temperature input connector [K]"
+  Modelica.Blocks.Interfaces.RealInput T0_var( unit = "K") = T0  if temperatureFromInput "Temperature input connector [K]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,20}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector"

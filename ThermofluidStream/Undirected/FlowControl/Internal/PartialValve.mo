@@ -14,17 +14,18 @@ partial model PartialValve "Partial implementation of a physical valve"
 
   Real u(unit="1") "actuation input for flow calculation";
 
-  parameter Modelica.SIunits.Pressure dp_ref = 1e5 "Reference pressure difference"
-    annotation(Dialog(tab="Advanced", group = "Reference values"));
-  parameter Modelica.SIunits.Density rho_ref = 1000 "Reference density"
-    annotation(Dialog(tab="Advanced", group = "Reference values"));
+  parameter Modelica.Units.SI.Pressure dp_ref=1e5
+    "Reference pressure difference"
+    annotation (Dialog(tab="Advanced", group="Reference values"));
+  parameter Modelica.Units.SI.Density rho_ref=1000 "Reference density"
+    annotation (Dialog(tab="Advanced", group="Reference values"));
 
 protected
   constant Real secondsPerHour(final unit="s/h") = 3600 "Parameter for unit conversion";
 
   //Medium properties
-  Modelica.SIunits.Density rho_rear_in = Medium.density(rear.state_forwards);
-  Modelica.SIunits.Density rho_fore_in = Medium.density(fore.state_rearwards);
+  Modelica.Units.SI.Density rho_rear_in=Medium.density(rear.state_forwards);
+  Modelica.Units.SI.Density rho_fore_in=Medium.density(fore.state_rearwards);
 
   SI.MassFlowRate m_flow_ref "Reference mass flow derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";

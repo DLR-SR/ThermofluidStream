@@ -22,7 +22,7 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
   parameter Boolean use_hstart = false "True: spedific enthalpy contition instead of Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
-  parameter SI.SpecificEnthalpy h_start = Medium.T_default "Initial specific enthalpy"
+  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
   parameter Boolean initialize_Xi = true "If true: initialize mass fractions"
     annotation(Dialog(tab= "Initialization"));

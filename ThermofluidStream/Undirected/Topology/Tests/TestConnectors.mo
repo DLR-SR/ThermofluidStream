@@ -100,8 +100,8 @@ model TestConnectors "Test for the connectors"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={40,-50})));
-  ThermofluidStream.Boundaries.CreateState createState(redeclare package Medium
-      = Medium, PFromInput=true)
+  ThermofluidStream.Boundaries.CreateState createState(redeclare package Medium =
+        Medium, PFromInput=true)
     annotation (Placement(transformation(extent={{38,-12},{32,-4}})));
   ConnectorInletOutletFore connectorInletOutletFore(redeclare package Medium = Medium)
     annotation (Placement(transformation(

@@ -70,13 +70,13 @@ equation
   if temperatureUnit == "K" then
     direct_T =Medium.temperature(state);
   elseif temperatureUnit == "degC" then
-    direct_T = SI.Conversions.to_degC(Medium.temperature(state));
+    direct_T =Modelica.Units.Conversions.to_degC(Medium.temperature(state));
   end if;
 
   if pressureUnit == "Pa" then
     direct_p =Medium.pressure(state);
   elseif pressureUnit == "bar" then
-    direct_p = SI.Conversions.to_bar(Medium.pressure(state));
+    direct_p =Modelica.Units.Conversions.to_bar(Medium.pressure(state));
   end if;
 
   if massFlowUnit == "(kg/s)" then

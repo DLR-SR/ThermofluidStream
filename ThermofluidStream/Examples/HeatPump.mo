@@ -229,8 +229,9 @@ model HeatPump
     Ti=0.3,
     yMax=1,
     yMin=0,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
-    y_start=1) annotation (Placement(transformation(extent={{-90,-10},{-110,10}})));
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=1)
+    annotation (Placement(transformation(extent={{-90,-10},{-110,10}})));
   Modelica.Blocks.Sources.Constant const(k=5) annotation (Placement(transformation(extent={{-50,-10},{-70,10}})));
   Modelica.Blocks.Continuous.LimPID PI1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -238,9 +239,10 @@ model HeatPump
     Ti=20,
     yMax=1,
     yMin=0.0001,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
     xi_start=0,
-    y_start=0.0001) annotation (Placement(transformation(extent={{124,10},{104,-10}})));
+    y_start=0.0001)
+    annotation (Placement(transformation(extent={{124,10},{104,-10}})));
   Modelica.Blocks.Sources.Step     step(
     height=10,
     offset=25,
@@ -251,7 +253,7 @@ model HeatPump
     Ti=0.5,
     yMax=10,
     yMin=-10,
-    initType=Modelica.Blocks.Types.InitPID.InitialOutput,
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
     xi_start=0,
     y_start=0) annotation (Placement(transformation(extent={{82,-10},{62,10}})));
   Modelica.Mechanics.Rotational.Sources.Torque torque annotation (Placement(transformation(extent={{44,-10},{24,10}})));

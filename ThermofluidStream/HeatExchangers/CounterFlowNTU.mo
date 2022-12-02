@@ -35,19 +35,22 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
         rotation=180,
         origin={-110,60})));
 
-  parameter Modelica.SIunits.Area A "Conductive Surface";
+  parameter Modelica.Units.SI.Area A "Conductive Surface";
   parameter Utilities.Units.Inertance L = dropOfCommons.L "inertance of the flow"
     annotation(Dialog(tab="Advanced"));
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer k_NTU = 50 "overall heat transfer coefficient";
-  parameter Modelica.SIunits.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "nominal mass flow for regularisation"
-    annotation(Dialog(tab = "Advanced", group = "Regularisation parameters"));
-  parameter Modelica.SIunits.Time TC = 0.01 "time constant for dh"
-    annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50
+    "overall heat transfer coefficient";
+  parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg
+    "nominal mass flow for regularisation"
+    annotation (Dialog(tab="Advanced", group="Regularisation parameters"));
+  parameter Modelica.Units.SI.Time TC=0.01 "time constant for dh"
+    annotation (Dialog(tab="Advanced"));
 
-  Modelica.SIunits.TemperatureDifference Delta_T_max "Maximum Temperature Difference";
+  Modelica.Units.SI.TemperatureDifference Delta_T_max
+    "Maximum Temperature Difference";
 
-  Modelica.SIunits.SpecificEnthalpy dh_A "Enthalpy difference Medium A";
-  Modelica.SIunits.SpecificEnthalpy dh_B "Enthalpy difference Medium B";
+  Modelica.Units.SI.SpecificEnthalpy dh_A "Enthalpy difference Medium A";
+  Modelica.Units.SI.SpecificEnthalpy dh_B "Enthalpy difference Medium B";
 
   SI.HeatFlowRate q_flow "actual heat flow rate";
   Real effectiveness(unit="1") "effectiveness derived from NTU correlation";
@@ -60,17 +63,17 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 protected
   outer DropOfCommons dropOfCommons;
 
-  Modelica.SIunits.Pressure p_A = MediumA.pressure(inletA.state);
-  Modelica.SIunits.Pressure p_B = MediumB.pressure(inletB.state);
+  Modelica.Units.SI.Pressure p_A=MediumA.pressure(inletA.state);
+  Modelica.Units.SI.Pressure p_B=MediumB.pressure(inletB.state);
 
   MediumA.MassFraction Xi_A[MediumA.nXi] = MediumA.massFraction(inletA.state);
   MediumB.MassFraction Xi_B[MediumB.nXi] = MediumB.massFraction(inletB.state);
 
   //In- and outlet enthalpies and enthalpy differences
-  Modelica.SIunits.SpecificEnthalpy h_in_A "Enthalpy at inlet A";
-  Modelica.SIunits.SpecificEnthalpy h_in_B "Enthalpy at Inlet B";
-  Modelica.SIunits.SpecificEnthalpy h_out_A "Enthalpy at inlet A";
-  Modelica.SIunits.SpecificEnthalpy h_out_B "Enthalpy at Inlet B";
+  Modelica.Units.SI.SpecificEnthalpy h_in_A "Enthalpy at inlet A";
+  Modelica.Units.SI.SpecificEnthalpy h_in_B "Enthalpy at Inlet B";
+  Modelica.Units.SI.SpecificEnthalpy h_out_A "Enthalpy at inlet A";
+  Modelica.Units.SI.SpecificEnthalpy h_out_B "Enthalpy at Inlet B";
 
   SI.HeatFlowRate q_max "Maximum heat flow rate";
   SI.HeatFlowRate q_flowA "Heat flow rate side A";
@@ -82,11 +85,13 @@ protected
   Real C_max(unit="J/(K.s)") "maximum heat capacity rate";
   Real C_r(unit="1") "Cmin/Cmax (ratio of heat capacity rates)";
 
-  Modelica.SIunits.SpecificHeatCapacityAtConstantPressure cp_A "specific heat capacity of Medium A";
-  Modelica.SIunits.SpecificHeatCapacityAtConstantPressure cp_B "specific heat capacity of Medium B";
+  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_A
+    "specific heat capacity of Medium A";
+  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_B
+    "specific heat capacity of Medium B";
 
-  Modelica.SIunits.MassFlowRate m_flow_A = inletA.m_flow "Mass flow on side A";
-  Modelica.SIunits.MassFlowRate m_flow_B = inletB.m_flow "Mass flow on side B";
+  Modelica.Units.SI.MassFlowRate m_flow_A=inletA.m_flow "Mass flow on side A";
+  Modelica.Units.SI.MassFlowRate m_flow_B=inletB.m_flow "Mass flow on side B";
 
   SI.SpecificHeatCapacity cpA_in = MediumA.specificHeatCapacityCp(inletA.state);
   SI.SpecificHeatCapacity cpA_out = MediumA.specificHeatCapacityCp(outletA.state);

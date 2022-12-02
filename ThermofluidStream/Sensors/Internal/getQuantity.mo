@@ -18,19 +18,19 @@ algorithm
   if quantity == Types.Quantities.T_K then
     value := Medium.temperature(state);
   elseif quantity == Types.Quantities.T_C then
-    value := SI.Conversions.to_degC(Medium.temperature(state));
+    value :=Modelica.Units.Conversions.to_degC(Medium.temperature(state));
   elseif quantity == Types.Quantities.p_Pa then
     value := Medium.pressure(state);
   elseif quantity == Types.Quantities.p_bar then
-    value := SI.Conversions.to_bar(Medium.pressure(state));
+    value :=Modelica.Units.Conversions.to_bar(Medium.pressure(state));
   elseif quantity == Types.Quantities.r_Pa then
     value := r;
   elseif quantity == Types.Quantities.r_bar then
-    value := SI.Conversions.to_bar(r);
+    value :=Modelica.Units.Conversions.to_bar(r);
   elseif quantity == Types.Quantities.p_total_Pa then
     value := Medium.pressure(state)+r;
   elseif quantity == Types.Quantities.p_total_bar then
-    value := SI.Conversions.to_bar(Medium.pressure(state)+r);
+    value :=Modelica.Units.Conversions.to_bar(Medium.pressure(state) + r);
   elseif quantity == Types.Quantities.h_Jpkg then
     value := Medium.specificEnthalpy(state);
   elseif quantity == Types.Quantities.s_JpkgK then

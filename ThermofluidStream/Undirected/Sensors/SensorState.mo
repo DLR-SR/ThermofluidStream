@@ -9,8 +9,7 @@ model SensorState "Sensor for whole state"
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
-  ThermofluidStream.Interfaces.StateOutput state_out(redeclare package Medium
-      =                                                                         Medium) "Measured value [variable]"
+  ThermofluidStream.Interfaces.StateOutput state_out(redeclare package Medium = Medium) "Measured value [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
 equation

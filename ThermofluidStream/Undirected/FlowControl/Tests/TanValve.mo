@@ -30,8 +30,7 @@ model TanValve "Test for undirected TanValve"
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
   Topology.JunctionRFF2                 junctionRFF2_1(
-                                                     redeclare package Medium
-      =                                                                         Medium)
+                                                     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
   Sensors.MultiSensor_Tpm                   multiSensor_Tpm(redeclare package
       Medium =                                                                         Medium)

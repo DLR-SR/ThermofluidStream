@@ -271,11 +271,11 @@ model EspressoMachine "Get your simulated coffe!"
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-100,-30})));
-  Modelica.Blocks.Continuous.LimPID
-                                PID3(
-    Ti=3,controllerType=Modelica.Blocks.Types.SimpleController.PI,
-    initType=.Modelica.Blocks.Types.InitPID.NoInit,
-    k=100, limitsAtInit = true,
+  Modelica.Blocks.Continuous.LimPID PID3(
+    Ti=3,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    initType=.Modelica.Blocks.Types.Init.NoInit,
+    k=100,
     yMax=5000,
     yMin=0,
     y_start=0)
