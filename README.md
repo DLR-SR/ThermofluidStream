@@ -20,7 +20,7 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ## Technical Background
 The DLR ThermoFluid Stream Library uses a [innovative computational scheme](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726) that has been developed for the object-oriented formulation of even complex system architectures. Key is the decomposition of pressure into a steady-flow component and an inertial component driving the balance of mass-flows. Using this decomposition all non-linear equations can be brought into explicit form and what remains to be solved is a purely linear equation system. 
 
-Watch the <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank">introductory video</a> from the 2021 Modelica Conference and read the <a href="https://ecp.ep.liu.se/index.php/modelica/article/view/199/159" target="_blank">corresponding paper</a>:
+Watch the <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank">introductory video</a> from the 2021 Modelica Conference and read the <a href="https://www.mdpi.com/2079-9292/11/22/3790" target="_blank">corresponding paper in MDPI electronics</a>  (<a href="https://ecp.ep.liu.se/index.php/modelica/article/view/199/159" target="_blank">short version</a>):
 
 <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.PNG" 
 alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
@@ -29,14 +29,45 @@ alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
 
 Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermodluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
 
-If you publish work that is based on this library, please cite the following two papers. We also welcome feedback in form of issues raised here on GitHub. Also when you have positive feedback, you can feel free to raise an issue to share your experience. Have fun!
+If you publish work that is based on this library, please cite the following two papers. 
 
-- Zimmer, D., M. Meissner, N. Weber (2021) [The DLR Thermofluid Stream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199/159). International Modelica Conference, Linköping Sweden.
-- Zimmer, D. (2020) [Robust object-oriented formulation of directed thermofluid stream networks](https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726). Mathematical and Computer Modelling of Dynamical Systems 26(3):204-233 
+```
+@article{TFS2022,
+author = {Zimmer, Dirk and Meißner, Michael and Weber, Niels},
+title = {The DLR ThermoFluid Stream Library},
+journal = {Electronics},
+volume = {11},
+year = {2022},
+number = {22},
+doi = {10.3390/electronics11223790},
+URL = {https://www.mdpi.com/2079-9292/11/22/3790},
+ISSN = {2079-9292}
+}
+
+@article{RobustZimmer2020,
+author = {Dirk Zimmer},
+title = {Robust object-oriented formulation of directed thermofluid stream networks},
+journal = {Mathematical and Computer Modelling of Dynamical Systems},
+volume = {26},
+number = {3},
+pages = {204-233},
+year  = {2020},
+publisher = {Taylor & Francis},
+doi = {10.1080/13873954.2020.1757726},
+URL = {https://doi.org/10.1080/13873954.2020.1757726}
+}
+
+```
+
+We also welcome feedback in form of issues raised here on GitHub. Also when you have positive feedback, you can feel free to raise an issue to share your experience. Have fun!
 
 Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
 
 - Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
+
+More details on the modeling of various types of volumes can be found in:
+ 
+- M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks] (https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20. 
 
 ## Tool compatibility 
 - [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pendantic checking has been applied to all components in order to improve cross-tool compatibility. 
