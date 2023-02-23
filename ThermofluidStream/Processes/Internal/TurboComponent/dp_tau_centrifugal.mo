@@ -111,12 +111,12 @@ algorithm
   dp :=g_n*TDH/v_in;
 
   annotation (Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Centrifugal pump with HQ and TQ characteristic curve. </span></p>
-<p><span style=\"font-size: 12pt;\">HQ curve: </span></span><span style=\"font-family: Courier New;\">TDH&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;f_H&nbsp;*(a_h*omega*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)&nbsp;-&nbsp;b_h*omega*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)&nbsp;-&nbsp;c_h*V_flow*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow));</p>
-<p><span style=\"font-size: 12pt;\">TQ curve: </span></span><span style=\"font-family: Courier New;\">tau_st&nbsp;:=&nbsp;(f_Q*f_H/f_eta)*(&nbsp;v_ref/v_in*a_t*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)*V_flow&nbsp;-&nbsp;v_ref/v_in*b_t*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)*V_flow&nbsp;+&nbsp;v_i*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)*omega&nbsp;+&nbsp;v_s*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega));</p>
-<p><span style=\"font-size: 12pt;\">Both characteristics are generalized to all four quadrants of the V_flow/omega plot.</span></p>
-<p><span style=\"font-size: 12pt;\">The parameters a,b,c,v can be set directly or by three scaling factors alpha, beta and gamma, which scale the reference pump.</span></p>
-<p><span style=\"font-size: 12pt;\">Reference pump:</span></p>
+<p>Centrifugal pump with HQ and TQ characteristic curve. </p>
+<p>HQ curve: <span style=\"font-family: Courier New;\">TDH&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;f_H&nbsp;*(a_h*omega*<span style=\"color: #ff0000;\">abs</span>(omega)&nbsp;-&nbsp;b_h*omega*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)&nbsp;-&nbsp;c_h*V_flow*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow));</p>
+<p>TQ curve: <span style=\"font-family: Courier New;\">tau_st&nbsp;:=&nbsp;(f_Q*f_H/f_eta)*(&nbsp;v_ref/v_in*a_t*<span style=\"color: #ff0000;\">abs</span>(omega)*V_flow&nbsp;-&nbsp;v_ref/v_in*b_t*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)*V_flow&nbsp;+&nbsp;v_i*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)*omega&nbsp;+&nbsp;v_s*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega));</p>
+<p>Both characteristics are generalized to all four quadrants of the V_flow/omega plot.</p>
+<p>The parameters a,b,c,v can be set directly or by three scaling factors alpha, beta and gamma, which scale the reference pump.</p>
+<p>Reference pump:</p>
 <p><span style=\"font-family: Courier New;\">omega_D = 314.2 rad/s</span></p>
 <p><span style=\"font-family: Courier New;\">V_flow_D = 3.06e-3 m3/s</span></p>
 <p><span style=\"font-family: Courier New;\">TDH_D&nbsp;=&nbsp;3.6610&nbsp;m</span></p>
@@ -131,6 +131,6 @@ algorithm
 <p><span style=\"font-family: Courier New;\">K_D_ref&nbsp; =&nbsp;9.73e-06 m3/rad;</span></p>
 <p><span style=\"font-family: Courier New;\">rho_ref_ref&nbsp;=&nbsp;1.00e3 kg/m3;</span></p>
 <p><span style=\"font-family: Courier New;\">r_ref&nbsp; =&nbsp;1.60e-2 m;</span></p>
-<p><br><span style=\"font-size: 12pt;\">The cahracteristic curves are getting scaled to accomodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</span></p>
+<p><br>The characteristic curves are getting scaled to accomodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
 </html>"));
 end dp_tau_centrifugal;

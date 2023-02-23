@@ -37,11 +37,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(source2.outlet, junctionN.inlets[1]) annotation (Line(
-      points={{-38,-28},{-24,-28},{-24,-1.33333},{-10,-1.33333}},
+      points={{-38,-28},{-24,-28},{-24,-0.666667},{-10,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, junctionN.inlets[3]) annotation (Line(
-      points={{-38,28},{-24,28},{-24,1.33333},{-10,1.33333}},
+      points={{-38,28},{-24,28},{-24,0.666667},{-10,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, junctionN.outlet) annotation (Line(

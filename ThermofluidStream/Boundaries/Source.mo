@@ -98,7 +98,7 @@ equation
           color={255,255,255},
           thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Source of a Therofluid Stream. The state can be given as fix values or as a real signal. </p>
-<p>Before its inertance the source has a inertial pressure of 0 by definition.</p>
+<p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
+<p>Before its inertance the source has an inertial pressure of 0 by definition.</p>
 </html>"));
 end Source;

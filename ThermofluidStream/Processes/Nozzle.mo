@@ -64,6 +64,6 @@ equation
           lineThickness=0.5)}),
                            Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbolent, linear-quadratic).</span></p>
+<p>Implementation of nozzle taking gas dynamic effects into account.</p>
 </html>"));
 end Nozzle;

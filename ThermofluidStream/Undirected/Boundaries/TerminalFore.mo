@@ -67,7 +67,7 @@ equation
           origin={-50,0},
           rotation=360)}),                                       Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Fore Boundary that terminates the flow.  The Boundary has to be connected to the fore end of your model and therefore has a rear port.</p>
-<p>It imposes a m_flow=0 boundary and with a time constant, adapts the pressure sucht, that inertal pressure r goes to zero.</p>
+<p>Fore Boundary that terminates the flow. The boundary has to be connected to the fore end of your model and therefore has a rear port.</p>
+<p>It imposes a m_flow=0 boundary and with a time constant, adapts the pressure such, that inertial pressure r goes to zero.</p>
 </html>"));
 end TerminalFore;

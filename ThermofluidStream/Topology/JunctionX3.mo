@@ -41,11 +41,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(inletC, junctionN.inlets[3]) annotation (Line(
-      points={{0,-100},{0,-1.33333},{-30,-1.33333}},
+      points={{0,-100},{0,-0.666667},{-30,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionN.inlets[1]) annotation (Line(
-      points={{0,100},{0,1.33333},{-30,1.33333}},
+      points={{0,100},{0,0.666667},{-30,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outlet) annotation (Line(

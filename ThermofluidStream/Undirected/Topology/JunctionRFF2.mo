@@ -37,11 +37,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[2], foreA) annotation (Line(
-      points={{-30,1},{-30,1},{0,1},{0,100}},
+      points={{-30,0.5},{-30,1},{0,1},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(foreB, junctionMN.fores[1]) annotation (Line(
-      points={{100,0},{20,0},{20,-1},{-30,-1}},
+      points={{100,0},{20,0},{20,-0.5},{-30,-0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

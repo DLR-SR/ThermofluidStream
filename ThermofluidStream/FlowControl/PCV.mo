@@ -81,8 +81,8 @@ equation
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on its mode.</p>
-<p>dp or p_out can be set directly, depending on the valve mode. mass-flow will be determined by its usual dynamic.</p>
-<p>Setting dp instead of p_out has advantages, when p_out is determined by a volume at the outlet (as say an accumulator).</p>
+<p>dp or p_out can be set directly, depending on the valve mode. Mass-flow will be determined by its usual dynamic.</p>
+<p>Setting dp instead of p_out has advantages, when p_out is determined by a volume at the outlet (for instance an accumulator).</p>
 <p>dp is normalized, such that it cannot create pressure and it is zero for zero or negative massflow. </p>
 </html>"));
 end PCV;

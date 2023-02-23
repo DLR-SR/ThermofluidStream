@@ -117,18 +117,18 @@ equation
          color={238,46,47})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This model is an element with a fixed volume (fig. 1). The mass in the volume is assumed quasi-stationary (statically computed with volume and density), and the fore massflow is coupled to the rear massflow. <span style=\"color: #f47d23;\">Because of this the ConductionElement cannot be used as a loop breaker</span><span style=\"color: #b83d00;\">. </span>The advantage is that multiple ConductionElements can be put behind each other without worrying about oscilations or fast eigenvalues between their masses. The ConductionElement implements equations for conservation of mass and energy for the Fluid mass contained within it.</p>
-<p>Initialization can be done by initial Temperature, initial enthalpy or by using the inlet state.</p>
+<p>This model is an element with a fixed volume (fig. 1). The mass in the volume is assumed quasi-stationary (statically computed with volume and density), and the fore massflow is coupled to the rear massflow. <span style=\"color: #f47d23;\">Because of this the ConductionElement cannot be used as a loop breaker</span><span style=\"color: #b83d00;\">. </span>The advantage is that multiple ConductionElements can be put behind each other without worrying about oscillations or fast eigenvalues between their masses. The ConductionElement implements equations for conservation of mass and energy for the fluid mass contained within it.</p>
+<p>Initialization can be done by initial temperature, initial enthalpy or by using the inlet state.</p>
 <p>The ConductionElement makes different assumptions:</p>
 <ul>
-<li>Quasistationary Mass:<br>m_flow_rear = - m_flow_fore &amp; M = rho * V (this assumption violates conservation of mass for changing densities, since the mass in the element can change although inflow and outflow are the same)<br>der(H) = der(M*h) = M*der(h) (This assumption violates the conservation of energy for changing densities, since then the mass M of fluid in the element is no longer constant)</li>
+<li>Quasistationary mass:<br>m_flow_rear = - m_flow_fore &amp; M = rho * V (this assumption violates the conservation of mass for changing densities, since the mass in the element can change although inflow and outflow are the same)<br>der(H) = der(M*h) = M*der(h) (This assumption violates the conservation of energy for changing densities, since then the mass M of fluid in the element is no longer constant)</li>
 <li>Neglection of der(p) in the energy equation<br>V*der(p) = 0 (this assumption violates the conservation of energy for changing pressures. For a noticable difference in the testcase the der(p) must be in the order of 1e5 Pa/s). <br>This assumption can be turned off by setting neglectPressureChanges=false (true by default) in the Advanced tab. <span style=\"color: #f47d23;\">This option requires the fore and rear input pressures to be smooth.</span><br></li>
 <li>Due to stability reasons the component exhibits a different behavior for negative massflows (see fig. 2). For negative massflows, the ingoing and outgoing massflows get decoupled from the fluid remaining in the component. The fluid exits with the same state as it enters, and the heatport is connected to the fluid left in the volume (which is decoupled to the mass flowing).<br></li>
 </ul>
 <p>Due to these assumptions minor violations in the global energy conservation can occur. With the flag enforce_global_energy_conservation in the &quot;Advanced&quot; tab is set true (Default: false), long-term energy storage in the ConductionElement is sacrificed to hold global energy conservation.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.ConductionElement_positive.png\"/></p>
-<p><span style=\"font-size: 12pt;\">fig. 1: positive massflow model</span></p>
+<p>fig. 1: positive massflow model</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.ConductionElement_negative.png\"/></p>
-<p><span style=\"font-size: 12pt;\">fig. 2: negative massflow model</span> </p>
+<p>fig. 2: negative massflow model </p>
 </html>"));
 end PartialConductionElement;

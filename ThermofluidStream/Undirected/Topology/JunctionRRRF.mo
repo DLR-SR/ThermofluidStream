@@ -38,11 +38,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(rearB, junctionMN.rears[1]) annotation (Line(
-      points={{-100,0},{0,0},{0,-1.33333}},
+      points={{-100,0},{0,0},{0,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(rearC, junctionMN.rears[3]) annotation (Line(
-      points={{0,-100},{0,1.33333}},
+      points={{0,-100},{0,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[1], fore) annotation (Line(

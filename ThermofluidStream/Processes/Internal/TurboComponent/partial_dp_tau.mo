@@ -18,6 +18,6 @@ partial function partial_dp_tau "Compute dp and tau_st of a TurboComponent from 
 
   annotation(Inline=true, Documentation(info="<html>
 <p>This function computes the pressure differential and the moment needed for static operation of a partialTurboComponent in its current state. </p>
-<p>By changing this function the partialTurboComponent implemnts different kinds of torbo components like fans, pumps, compressors, turbines ect.</p>
+<p>By changing this function the partialTurboComponent implements different kinds of turbo components like fans, pumps, compressors, turbines ect.</p>
 </html>"));
 end partial_dp_tau;

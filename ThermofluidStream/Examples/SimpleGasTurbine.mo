@@ -156,7 +156,7 @@ equation
           Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>A very basic model of a regulated gas turbine. GASTASTIC!</p>
-<p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is prortional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
+<p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is proportional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end SimpleGasTurbine;

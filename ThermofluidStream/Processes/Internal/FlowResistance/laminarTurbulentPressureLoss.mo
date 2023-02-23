@@ -60,11 +60,11 @@ algorithm
   pressureLoss := lambda_aux*l*mu*u/(8*r^2);
 
   annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Pressure loss after after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes. </span></p>
-<p><span style=\"font-family: Courier New;\">In order to avoid a 0^0 for Re=0 (and therefore a = 1) in the computation of lambda_aux, we add epsilon=0.01 to Re to lower bound it in a smooth way.</span></p>
-<p><span style=\"font-family: Courier New;\">ks_input defines the pipe roughness. It can be selected from a list of materials or given directly.</span></p>
+<p>Pressure loss after after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes. </span></p>
+<p>In order to avoid a 0^0 for Re=0 (and therefore a = 1) in the computation of lambda_aux, we add epsilon=0.01 to Re to lower bound it in a smooth way.</span></p>
+<p>ks_input defines the pipe roughness. It can be selected from a list of materials or given directly.</span></p>
 <p><img src=\"modelica://Thermofluidstream/Resources/Doku/ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss.PNG\"/></p>
 <p><br><span style=\"font-family: sans-serif;\">Cheng, Nian-Sheng (2008). Formulas for friction factor in transitional regimes. In:Journal of Hydraulic Engineering134.9, pp. 1357-1362</span></p>
-<p><span style=\"font-family: sans-serif;\">Elmqvist, Hilding, Hubertus Tummescheit, and Martin Otter (2003). Object-orientedmodeling of thermo-fluid systems. In:3rd International Modelica Conference,pp. 269-286.</span></p>
+<p>Elmqvist, Hilding, Hubertus Tummescheit, and Martin Otter (2003). Object-orientedmodeling of thermo-fluid systems. In:3rd International Modelica Conference,pp. 269-286.</span></p>
 </html>"));
 end laminarTurbulentPressureLoss;

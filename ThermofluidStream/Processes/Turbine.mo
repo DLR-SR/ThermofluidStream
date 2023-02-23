@@ -22,7 +22,7 @@ protected
 
 equation
   // test for idel gas
-  assert(abs(R_in- R_in)/R_in < max_rel_R, "medium in turbine is assumed ot be idel gas, but check failed", dropOfCommons.assertionLevel);
+  assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in turbine is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
@@ -35,7 +35,7 @@ equation
           thickness=0.5)}),
           Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">This model works under and asserts the ideal gas assumption.</span></p>
-<p><span style=\"font-size: 12pt;\">Currently the only turbine model is a turbine with constant polytropic coefficient. It this is used the turbine should have a very high a_h (e.g. Inf)</span></p>
+<p>This model works under ideal gas assumption and throws an assert if it is violated.</p>
+<p>Currently the only turbine model is a turbine with constant polytropic coefficient. It this is used, the turbine should have a very high a_h (e.g. Inf).</p>
 </html>"));
 end Turbine;

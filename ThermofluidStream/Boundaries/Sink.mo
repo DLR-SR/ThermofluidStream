@@ -75,7 +75,7 @@ equation
         Line(points={{-44,80},{-44,-80}}, color={255,255,255})}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Sink for a thermofluid stream. Ther pressure can be set or given by a real signal.</span></p>
-<p><span style=\"font-family: Courier New;\">The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink akts therefore by definition as the origin of the energy to accelerate the stream. </span></p>
+<p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>
+<p>The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink therefore acts by definition as the origin of the energy to accelerate the stream. </p>
 </html>"));
 end Sink;

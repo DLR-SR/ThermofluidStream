@@ -127,7 +127,7 @@ equation
       __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem),
     Documentation(info="<html>
-<p>This water hammer pumps water up by using the dynamic pressure when closing a valve. </p>
+<p>This water hammer pumps water into a reservoir by using the dynamic pressure when closing a valve. </p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));
 end WaterHammer;

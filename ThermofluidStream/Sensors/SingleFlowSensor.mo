@@ -105,7 +105,7 @@ equation
           textString="%quantity")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>A Sensor measuring a selectable flow quantity associated with the massflow.</p>
+<p>A sensor measuring a selectable flow quantity associated with the massflow.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>
 </html>"));
 end SingleFlowSensor;

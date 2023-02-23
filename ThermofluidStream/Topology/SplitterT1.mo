@@ -30,11 +30,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], outletA) annotation (Line(
-      points={{-8,1},{0,1},{0,100}},
+      points={{-8,0.5},{0,0.5},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(outletB, splitterN.outlets[1]) annotation (Line(
-      points={{0,-100},{0,-1},{-8,-1}},
+      points={{0,-100},{0,-0.5},{-8,-0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

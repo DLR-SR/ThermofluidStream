@@ -131,12 +131,12 @@ equation
       thickness=0.5));
   connect(flowResistance1.outlet, junctionNM.inlets[1])
     annotation (Line(
-      points={{-20,30},{-14,30},{-14,49},{-10,49}},
+      points={{-20,30},{-14,30},{-14,49.5},{-10,49.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, junctionNM.inlets[2])
     annotation (Line(
-      points={{-20,70},{-14,70},{-14,51},{-10,51}},
+      points={{-20,70},{-14,70},{-14,50.5},{-10,50.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.outlets[2], flowResistance2.inlet) annotation (Line(
@@ -145,12 +145,12 @@ equation
       thickness=0.5));
   connect(flowResistance3.inlet, junctionNM.outlets[1])
     annotation (Line(
-      points={{20,20},{14,20},{14,48.6667},{10,48.6667}},
+      points={{20,20},{14,20},{14,49.3333},{10,49.3333}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance4.inlet, junctionNM.outlets[3])
     annotation (Line(
-      points={{20,80},{14,80},{14,51.3333},{10,51.3333}},
+      points={{20,80},{14,80},{14,50.6667},{10,50.6667}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, sink2.inlet) annotation (Line(
@@ -175,12 +175,12 @@ equation
       thickness=0.5));
   connect(flowResistance6.outlet, junctionNM1.inlets[1])
     annotation (Line(
-      points={{-20,-70},{-14,-70},{-14,-51},{-10,-51}},
+      points={{-20,-70},{-14,-70},{-14,-50.5},{-10,-50.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, junctionNM1.inlets[2])
     annotation (Line(
-      points={{-20,-30},{-14,-30},{-14,-49},{-10,-49}},
+      points={{-20,-30},{-14,-30},{-14,-49.5},{-10,-49.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM1.outlets[2], flowResistance7.inlet)
@@ -190,12 +190,12 @@ equation
       thickness=0.5));
   connect(flowResistance8.inlet, junctionNM1.outlets[1])
     annotation (Line(
-      points={{20,-80},{14,-80},{14,-51.3333},{10,-51.3333}},
+      points={{20,-80},{14,-80},{14,-50.6667},{10,-50.6667}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance9.inlet, junctionNM1.outlets[3])
     annotation (Line(
-      points={{20,-20},{14,-20},{14,-48.6667},{10,-48.6667}},
+      points={{20,-20},{14,-20},{14,-49.3333},{10,-49.3333}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance8.outlet, sink5.inlet) annotation (Line(
