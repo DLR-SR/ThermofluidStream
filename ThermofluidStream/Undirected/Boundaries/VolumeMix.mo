@@ -35,8 +35,8 @@ equation
           textString="Mix")}),                                   Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A volume with N_fore fores and N_rear rears.</p>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker. </p>
-<p>This mixing volume doesnt approximate mixing like a junction, but rather does it without approximation.</p>
-<p>Since there is no formula to compute density_derp_h for this volume, a upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
+<p>Conceptually a Volume is a Sink and a Source. It therefore defines the level of inertial pressure r in a closed loop and serves as a loop breaker. </p>
+<p>This mixing volume doesn&apos;t approximate mixing like a junction, but rather does it without approximation.</p>
+<p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
 </html>"));
 end VolumeMix;

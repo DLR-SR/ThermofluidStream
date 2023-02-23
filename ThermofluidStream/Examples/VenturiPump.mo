@@ -95,12 +95,12 @@ equation
       thickness=0.5));
   connect(flowResistance.outlet, dynamicJunctionN2_1.inlets[1])
     annotation (Line(
-      points={{-10,-60},{-2,-60},{-2,-61},{10,-61}},
+      points={{-10,-60},{-2,-60},{-2,-60.5},{10,-60.5}},
       color={28,108,200},
       thickness=0.5));
   connect(checkValve.outlet, dynamicJunctionN2_1.inlets[2])
     annotation (Line(
-      points={{0,-50},{0,-59},{10,-59}},
+      points={{0,-50},{0,-59.5},{10,-59.5}},
       color={28,108,200},
       thickness=0.5));
   connect(dynamicJunctionN2_1.outlet, dynamicPressureOutflow.inlet)

@@ -81,19 +81,19 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(compressor.inlet, splitterN.outlets[2]) annotation (Line(
-      points={{-6,20},{-30,20},{-30,17},{-54,17}},
+      points={{-6,20},{-30,20},{-30,16.5},{-54,16.5}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor1.inlet, splitterN.outlets[1]) annotation (Line(
-      points={{-6,-20},{-32,-20},{-32,15},{-54,15}},
+      points={{-6,-20},{-32,-20},{-32,15.5},{-54,15.5}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor1.outlet, junctionN.inlets[1]) annotation (Line(
-      points={{14,-20},{38,-20},{38,15},{60,15}},
+      points={{14,-20},{38,-20},{38,15.5},{60,15.5}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outlet, junctionN.inlets[2]) annotation (Line(
-      points={{14,20},{38,20},{38,17},{60,17}},
+      points={{14,20},{38,20},{38,16.5},{60,16.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (

@@ -38,11 +38,11 @@ equation
           thickness=0.5)}),
           Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New; font-size: 12pt;\">This model is&nbsp;working&nbsp;under&nbsp;the&nbsp;assuption&nbsp;of&nbsp;incompressable&nbsp;fluids and performs an assert for this. </span></p>
-<p><span style=\"font-family: Courier New; font-size: 12pt;\">It can be chooses between</span></p>
+<p>This model is&nbsp;working&nbsp;under&nbsp;the&nbsp;assumption&nbsp;of&nbsp;incompressible&nbsp;fluids and performs an assert for this. </p>
+<p>It can be chosen between</p>
 <ul>
-<li><span style=\"font-family: Courier New; font-size: 12pt;\">Nominal-flow pump, where a nominal flow is computed and the difference between it and the actual flow is linearly producing a pressure</span></li>
-<li><span style=\"font-family: Courier New; font-size: 12pt;\">Centrifugal pump, which implements the equations of a scalable centrifugal pump.</span></li>
+<li>Nominal-flow pump, where a nominal flow is computed and the difference between it and the actual flow is linearly producing a pressure</li>
+<li>Centrifugal pump, which implements the equations of a scalable centrifugal pump.</li>
 </ul>
 </html>"));
 end Pump;

@@ -635,7 +635,7 @@ equation
           textString="Water and Steam Valves")}),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
-<p>A espresso in the morning drives out sorrow and concerns. </p>
+<p>An espresso in the morning drives out sorrow and concerns. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end EspressoMachine;

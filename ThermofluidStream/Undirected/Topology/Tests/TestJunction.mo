@@ -240,11 +240,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(connectRearOutlet2.rear, junctionMN.fores[2]) annotation (Line(
-      points={{-59,-20},{-66,-20},{-66,-39},{-74,-39}},
+      points={{-59,-20},{-66,-20},{-66,-39.5},{-74,-39.5}},
       color={28,108,200},
       thickness=0.5));
   connect(connectRearOutlet3.rear, junctionMN.fores[1]) annotation (Line(
-      points={{-59,-60},{-66,-60},{-66,-41},{-74,-41}},
+      points={{-59,-60},{-66,-60},{-66,-40.5},{-74,-40.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.rears[1], connectInletFore1.fore) annotation (Line(
@@ -256,11 +256,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(connectInletRear2.rear, junctionMN1.fores[2]) annotation (Line(
-      points={{59,-20},{66,-20},{66,-39},{74,-39}},
+      points={{59,-20},{66,-20},{66,-39.5},{74,-39.5}},
       color={28,108,200},
       thickness=0.5));
   connect(connectInletRear3.rear, junctionMN1.fores[1]) annotation (Line(
-      points={{59,-60},{66,-60},{66,-41},{74,-41}},
+      points={{59,-60},{66,-60},{66,-40.5},{74,-40.5}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, flowResistance2.inlet) annotation (Line(
@@ -299,7 +299,7 @@ equation
   experiment(StopTime=10, Tolerance=1e-6, Interval=0.01),
   Documentation(info="<html>
 <p>This model tests the undirected junction against the unidirectional junction. The states of the left two and the right two systems are expected to be the same, when the junctions have the same settings. </p>
-<p>Note that the unidirectional junctions have two times the inertance, since the undirected junction comes with a additional connector, which in turn adds inertance to each leave.</p>
+<p>Note that the unidirectional junctions have two times the inertance, since the undirected junction comes with a additional connector, which in turn adds inertance to each outlet.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
     Diagram(coordinateSystem(extent={{-160,-80},{160,80}})),

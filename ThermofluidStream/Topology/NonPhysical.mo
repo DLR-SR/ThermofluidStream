@@ -10,7 +10,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       Documentation(info="<html>
 <p>A splitter with prescribed split ratio that acts as a pressure control valve on both outlets. Pressure is reduced on the outlets in order to follow the mass-flow split prescription. </p>
 <p>For reversed mass-flow the component might create work in form of increasing pressure of the fluid flowing from outlet to inlet. </p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RatioControl;
 
@@ -20,9 +20,9 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p>A switch with a fixed split ratio that is indended as a switch between two paths. Therefore the input sould be 1 or 0 for the most part. </p>
-<p><br>Otherwise will create work in the form of pressure on one of the two paths in order to fulfill the prescribed splitratio. </p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>A switch with a fixed split ratio that is intended as a switch between two paths. Therefore the input should be 1 or 0 for the most part. </p>
+<p><br>Otherwise it will create work in the form of pressure on one of the two paths in order to fulfill the prescribed split ratio. </p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RTSwitch;
 
@@ -33,7 +33,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is nessesary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end LeakageA;
 
@@ -178,7 +178,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
                                   Diagram(coordinateSystem(preserveAspectRatio=
               false)),
       Documentation(info="<html>
-<p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (as in through dynamic pressure).</p>
+<p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (likely to dynamic pressure effects).</p>
 <p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end JunctionRatio;

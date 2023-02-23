@@ -24,8 +24,8 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
-<p>This simple volume will become singular for incompressible Fluids and close to singular for Fluids with very low compressibility. For both cases we advise to use VolumeFlex or a Reservoir instead.</p>
-<p>Since there is no formula to compute density_derp_h for this volume, a upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
+<p>Conceptually a Volume is a Sink and a Source. It therefore defines the level of inertial pressure r in a closed loop and serves as a loop breaker.</p>
+<p>This simple volume will become singular for incompressible fluids and close to singular for fluids with very low compressibility. For both cases we advise to use VolumeFlex or a Reservoir instead.</p>
+<p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false).</p>
 </html>"));
 end Volume;

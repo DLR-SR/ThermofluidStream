@@ -72,19 +72,19 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.inlets[2], turbine.outlet) annotation (Line(
-      points={{46,17},{30,17},{30,20},{14,20}},
+      points={{46,16.5},{30,16.5},{30,20},{14,20}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], turbine.inlet) annotation (Line(
-      points={{-46,17},{-26,17},{-26,20},{-6,20}},
+      points={{-46,16.5},{-26,16.5},{-26,20},{-6,20}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine1.inlet, splitterN.outlets[1]) annotation (Line(
-      points={{-8,-28},{-34,-28},{-34,15},{-46,15}},
+      points={{-8,-28},{-34,-28},{-34,15.5},{-46,15.5}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine1.outlet, junctionN.inlets[1]) annotation (Line(
-      points={{12,-28},{30,-28},{30,15},{46,15}},
+      points={{12,-28},{30,-28},{30,15.5},{46,15.5}},
       color={28,108,200},
       thickness=0.5));
   connect(linearSpeedDependentTorque.flange, turbine1.flange)

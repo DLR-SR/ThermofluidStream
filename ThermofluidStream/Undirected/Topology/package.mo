@@ -3,7 +3,7 @@ package Topology "Junctions and Connectors for undirected thermofluid simulation
   extends Modelica.Icons.Package;
 
 annotation (Documentation(info="<html>
-<p>This package contains the undirected junctions and nessesary connectors between two undirected components, as well as Directed-undirected connectors.</p>
+<p>This package contains the undirected junctions and necessary connectors between two undirected components, as well as directed-undirected connectors.</p>
 <p>Note that in the undirected case it a distinction between junction and splitter is not possible.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>

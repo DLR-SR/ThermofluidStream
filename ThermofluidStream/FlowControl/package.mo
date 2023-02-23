@@ -5,7 +5,7 @@ package FlowControl "Package for flow control components"
 annotation (Documentation(revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>", info="<html>
-<p>These include physical Valves, as well as fow-control valves, that are not physical models, but rather numerical boundaries on the flow.</p>
+<p>The package includes physical valves, as well as flow-control valves, that are not physical models, but rather numerical boundaries on the flow.</p>
 </html>"), Icon(graphics={
         Line(
           points={{-94,0},{-40,0}},

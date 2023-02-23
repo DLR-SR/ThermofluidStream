@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model SplitterX "Splits a flow into tree subflows"
+model SplitterX "Splits a flow into three subflows"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
                                                                 "Medium model"
@@ -34,7 +34,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[3], outletA) annotation (Line(
-      points={{-12,1.33333},{0,1.33333},{0,100}},
+      points={{-12,0.666667},{0,0.666667},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], outletC) annotation (Line(
@@ -42,7 +42,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[1], outletB) annotation (Line(
-      points={{-12,-1.33333},{0,-1.33333},{0,-100},{3.55271e-15,-100}},
+      points={{-12,-0.666667},{0,-0.666667},{0,-100},{3.55271e-15,-100}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

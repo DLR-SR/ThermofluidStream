@@ -286,7 +286,7 @@ equation
         Text(
           extent={{-96,78},{-38,70}},
           lineColor={28,108,200},
-          textString="three weel bootsrap"),
+          textString="three wheel bootstrap"),
         Rectangle(extent={{32,72},{112,-72}}, lineColor={28,108,200}),
         Text(
           extent={{60,80},{118,72}},

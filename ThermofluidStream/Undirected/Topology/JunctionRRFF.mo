@@ -34,19 +34,19 @@ protected
 
 equation
   connect(foreB, junctionMN.fores[2]) annotation (Line(
-      points={{100,0},{40,0},{40,1},{10,1}},
+      points={{100,0},{40,0},{40,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(foreA, junctionMN.fores[1]) annotation (Line(
-      points={{0,-100},{0,-20},{10,-20},{10,-1}},
+      points={{0,-100},{0,-20},{10,-20},{10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.rears[1], reara) annotation (Line(
-      points={{-10,-1},{-40,-1},{-40,0},{-100,0}},
+      points={{-10,-0.5},{-40,-0.5},{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(rearb, junctionMN.rears[2]) annotation (Line(
-      points={{0,100},{0,20},{-10,20},{-10,1}},
+      points={{0,100},{0,20},{-10,20},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

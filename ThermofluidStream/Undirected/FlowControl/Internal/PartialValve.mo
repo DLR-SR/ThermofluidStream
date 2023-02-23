@@ -52,6 +52,6 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Partial&nbsp;implementation&nbsp;of&nbsp;a&nbsp;physical&nbsp;valve</p>
+<p>Partial&nbsp;implementation&nbsp;of&nbsp;a&nbsp;physical&nbsp;valve.</p>
 </html>"));
 end PartialValve;

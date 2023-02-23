@@ -80,7 +80,7 @@ equation
           rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation of the Tan valve. </p>
-<p>The TanValve is the most basic valve and can be used when there is no valve type is set yet. </p>
-<p>It adjusts its flow resistance koefficient according to a tangesn of the input. The pole of the tan function can lead to numerical problems.</p>
+<p>The TanValve is the most basic valve and can be used when no valve type is set yet. </p>
+<p>It adjusts its flow resistance coefficient according to a tangens of the input. The pole of the tan function can lead to numerical problems.</p>
 </html>"));
 end TanValve;

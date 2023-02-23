@@ -37,19 +37,19 @@ protected
 equation
 
   connect(junctionNM.outlets[1], outleta) annotation (Line(
-      points={{-1,10},{-1,10},{-1,0},{-100,0}},
+      points={{-0.5,10},{-1,10},{-1,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.outlets[2], outletb) annotation (Line(
-      points={{1,10},{1,10},{1,0},{100,0}},
+      points={{0.5,10},{1,10},{1,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.inlets[1], inletA) annotation (Line(
-      points={{-1,30},{-1,66},{0,66},{0,100}},
+      points={{-0.5,30},{-0.5,66},{0,66},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(inletB, junctionNM.inlets[2]) annotation (Line(
-      points={{0,-100},{0,-40},{40,-40},{40,52},{1,52},{1,30}},
+      points={{0,-100},{0,-40},{40,-40},{40,52},{0.5,52},{0.5,30}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

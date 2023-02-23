@@ -3,8 +3,8 @@ package Undirected "Components for undirected flow"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(info="<html>
-<p>This package contains models to implement undirected parts of the Models, where the flow direction is not known in advance. </p>
-<p>Note that a unidirectional component should be taken if possible, since undirected components alwails require a bigger equation system and are conceptionally more complex.</p>
+<p>This package contains models to implement undirected parts of the models, where the flow direction is not known in advance. </p>
+<p>Note that an unidirectional component should be taken if possible, since undirected components always require a bigger equation system and are conceptionally more complex.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>"), Icon(graphics={                                                Ellipse(

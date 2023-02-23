@@ -33,19 +33,19 @@ protected
 
 equation
   connect(inletB, junctionNM.inlets[2]) annotation (Line(
-      points={{98,0},{54,0},{54,-1},{10,-1}},
+      points={{98,0},{54,0},{54,-0.5},{10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.outlets[1], outleta) annotation (Line(
-      points={{-10,1},{-54,1},{-54,0},{-102,0}},
+      points={{-10,0.5},{-54,0.5},{-54,0},{-102,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionNM.inlets[1]) annotation (Line(
-      points={{0,100},{0,40},{40,40},{40,1},{10,1}},
+      points={{0,100},{0,40},{40,40},{40,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(outletb, junctionNM.outlets[2]) annotation (Line(
-      points={{0,-100},{0,-40},{-40,-40},{-40,-1},{-10,-1}},
+      points={{0,-100},{0,-40},{-40,-40},{-40,-0.5},{-10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -97,6 +97,6 @@ equation
           textString="b")}),
      Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
+<p>Medium package used in the component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
 end JunctionX1;

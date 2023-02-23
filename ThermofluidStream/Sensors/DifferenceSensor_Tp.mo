@@ -169,7 +169,7 @@ equation
           lineThickness=0.5)}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Sensor for measuring difference in temperature, pressure at once.</p>
+<p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
 end DifferenceSensor_Tp;

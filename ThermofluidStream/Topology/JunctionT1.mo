@@ -38,11 +38,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionN.inlets[1]) annotation (Line(
-      points={{0,100},{0,1},{-24,1}},
+      points={{0,100},{0,0.5},{-24,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.inlets[2], inletB) annotation (Line(
-      points={{-24,-1},{0,-1},{0,-100}},
+      points={{-24,-0.5},{0,-0.5},{0,-100}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

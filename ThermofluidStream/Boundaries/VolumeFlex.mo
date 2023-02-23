@@ -24,7 +24,7 @@ equation
           color={28,108,200},
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>The Volume has V_ref at p_ref and expands linearly with its bulk modulus. It can be used reduce stiffness of the ODE system for loops with incompressible mediums or mediums with very low compressibility.</p>
+<p>The volume has V_ref at p_ref and expands linearly with its bulk modulus. It can be used to reduce stiffness of the ODE system for loops with incompressible mediums or mediums with very low compressibility.</p>
 <p>Currently the volume change work, the volume performs on the environment is neglected.</p>
 </html>"));
 end VolumeFlex;

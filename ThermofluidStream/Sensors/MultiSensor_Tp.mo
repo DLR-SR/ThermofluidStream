@@ -112,7 +112,7 @@ equation
           textString="%pressureUnit")}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Sensor for measuring temperature, pressure at once.</p>
+<p>Sensor for measuring temperature and pressure at once.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>
 </html>"));
 end MultiSensor_Tp;

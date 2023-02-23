@@ -325,11 +325,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, volumeMix.inlet[1]) annotation (Line(
-      points={{-20,-20},{-16,-20},{-16,-1},{-10,-1}},
+      points={{-20,-20},{-16,-20},{-16,-0.5},{-10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, volumeMix.inlet[2]) annotation (Line(
-      points={{-20,20},{-16,20},{-16,1},{-10,1}},
+      points={{-20,20},{-16,20},{-16,0.5},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(source4.outlet,flowResistance5. inlet) annotation (Line(
@@ -341,11 +341,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance6.outlet, volumeMix1.inlet[1]) annotation (Line(
-      points={{-20,50},{-16,50},{-16,69},{-10,69}},
+      points={{-20,50},{-16,50},{-16,69.5},{-10,69.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, volumeMix1.inlet[2]) annotation (Line(
-      points={{-20,90},{-16,90},{-16,71},{-10,71}},
+      points={{-20,90},{-16,90},{-16,70.5},{-10,70.5}},
       color={28,108,200},
       thickness=0.5));
   connect(sink3.inlet, flowResistance8.outlet) annotation (Line(
@@ -404,12 +404,12 @@ equation
       thickness=0.5));
   connect(flowResistance13.outlet, volumeMix3.inlet[1])
     annotation (Line(
-      points={{-20,150},{-14,150},{-14,169},{-8,169}},
+      points={{-20,150},{-14,150},{-14,169.5},{-8,169.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance12.outlet, volumeMix3.inlet[2])
     annotation (Line(
-      points={{-20,190},{-14,190},{-14,171},{-8,171}},
+      points={{-20,190},{-14,190},{-14,170.5},{-8,170.5}},
       color={28,108,200},
       thickness=0.5));
   connect(sink6.inlet, flowResistance14.outlet) annotation (Line(

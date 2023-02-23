@@ -8,5 +8,5 @@ type Material = enumeration(
     steel,
     drawnPipe) "Material list with known roughnesses: todo make record of it" annotation (
     Documentation(info="<html>
-<p>Enumeration of materials where the roughness is approximatly known. Used for a dropdown of selectable materials.</p>
+<p>Enumeration of materials where the roughness is approximately known. Used for a dropdown of selectable materials.</p>
 </html>"));

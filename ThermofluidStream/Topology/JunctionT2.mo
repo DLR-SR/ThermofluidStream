@@ -34,11 +34,11 @@ protected
 equation
 
   connect(junctionN.inlets[2], inletB) annotation (Line(
-      points={{-10,-1},{36,-1},{36,0},{100,0}},
+      points={{-10,-0.5},{36,-0.5},{36,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionN.inlets[1]) annotation (Line(
-      points={{0,100},{0,1},{-10,1}},
+      points={{0,100},{0,0.5},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outlet) annotation (Line(

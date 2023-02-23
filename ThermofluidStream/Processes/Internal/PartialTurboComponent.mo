@@ -50,8 +50,8 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"
       annotation(choicesAllMatching=true,
         Documentation(info="<html>
-        <p>This functions computes the pressure difference over the component, as well as the moment that leeds to stationary operation in the current state.</p>
-        </html>"));
+<p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
+</html>"));
 
 function getQuantity = Sensors.Internal.getFlowQuantity(redeclare package
         Medium =                                                                 Medium) "Function to compute a selectable quantitiy"
@@ -137,17 +137,17 @@ equation
           fillPattern=FillPattern.Solid)}),
           Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, a optional heatport to dump heat that the fluid cannot take on, and a optional output for a measureable quantity.</p>
+<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, an optional heatport to dump heat that the fluid cannot take on, and an optional output for a measureable quantity.</p>
 <p>The component does the following:</p>
 <ol>
 <li>Compute the pressure differential and the moment on the flange, that would result in static operation from characteristic curves (static moment). These curves differ for different components.</li>
-<li>Regularize dh for low mass-flows. If the fluid is receiving energy, the heat that cannot given to the fluid, is given to an access heatport. If the fluid is giving away energy, the static moment is reduced until dh is small enough within the regularization. </li>
-<li>Compute mechanics of system if omega is not direct input of the system. The ifference between the static moment and the moment at the flange leeds to angular acceleration against the Inertia of the system. </li>
+<li>Regularize dh for low mass-flows. If the fluid is receiving energy, the heat that cannot be given to the fluid, is given to an accessible heatport. If the fluid is giving away energy, the static moment is reduced until dh is small enough within the regularization. </li>
+<li>Compute mechanics of system if omega is not direct input of the system. The ifference between the static moment and the moment at the flange leeds to angular acceleration against the inertia of the system. </li>
 </ol>
-<p><br>An output can be enabled that measures one of multiple selectable quantities. Different initial conditions and state selects for the component can be selected.</p>
-<p><br>Usefull hints:</p>
+<p><br>An output can be enabled that measures one of multiple selectable quantities. Different initial conditions and state selections for the component can be selected.</p>
+<p><br>Useful hints:</p>
 <ul>
-<li>The optional output might be usefull for simplifying the overall model in a control loop, since no additional sensor is required. </li>
+<li>The optional output might be useful for simplifying the overall model in a control loop, since no additional sensor is required. </li>
 <li>If one wants to prescribe a speed of the component, instead of being interested in the omega dynamics, enable omegaFromInput.</li>
 <li>The heatport is only of interest, if the overall energy of the system must be conserved.</li>
 </ul>

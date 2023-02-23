@@ -133,7 +133,7 @@ equation
       Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>
-<p>Very basic example if a stream that gets split and rejoins later. </p>
+<p>Very basic example of a stream that gets split and rejoins later. </p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end SimpleStream;
