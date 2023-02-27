@@ -1591,7 +1591,8 @@ Please note, that the function can also be called in the two-phase region, but t
 <p>This property is only defined in one-phase region.
 </p>  
 <h3>References</h3>
-<dl><dt>Klein, McLinden and Laesecke: </dt>
+<dl>
+<dt>Klein, McLinden and Laesecke: </dt>
 <dd><b>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</b>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
@@ -9721,7 +9722,8 @@ The functions provided by this package shall be used inside of the restricted li
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
+<dl>
+<dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><b>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 <dt>Fenghour, A. et al.: </dt>
@@ -16769,7 +16771,8 @@ The functions provided by this package shall be used inside of the restricted li
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Span,R.and W. Wagner: </dt>
+<dl>
+<dt>Span,R.and W. Wagner: </dt>
 <dd><b>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</b>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
 <dt>Pfafferott,T.: </dt>
 <dd><b>Dynamische Simulation von CO2-Kaelteprozessen fuer mobile Anwendungen</b>. PhD thesis at Institute of ThermoFluidDynamics, Hamburg University of Technology, Shaker Verlag, Aachen(Germany), 2005.</dd>
@@ -22997,7 +23000,8 @@ Please note, that the function can also be called in the two-phase region, but t
 <p>This property is only defined in one-phase region.
 </p>  
 <h3>References</h3>
-<dl><dt>Akasaka, R.: </dt>
+<dl>
+<dt>Akasaka, R.: </dt>
 <dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"/> </p> 
@@ -23085,7 +23089,8 @@ Please note, that the function can also be called in the two-phase region, but t
 <p>This property is only defined in one-phase region.
 </p>  
 <h3>References</h3>
-<dl><dt>Perkins A., Huber M.: </dt>
+<dl>
+<dt>Perkins A., Huber M.: </dt>
 <dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"/> </p> 
@@ -24127,12 +24132,13 @@ The functions provided by this package shall be used inside of the restricted li
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
+<dl>
+<dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
 <dd><b>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
 Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Chemical and Engineering Data 2011, 56, 3254-3264.</dd>
-<dl><dt>Akasaka, R.: </dt>
+<dt>Akasaka, R.: </dt>
 <dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
-<dl><dt>Perkins A., Huber M.: </dt>
+<dt>Perkins A., Huber M.: </dt>
 <dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 
@@ -31322,7 +31328,8 @@ The functions provided by this package shall be used inside of the restricted li
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Lemmon, E.W. and W. Span: </dt>
+<dl>
+<dt>Lemmon, E.W. and W. Span: </dt>
 <dd><b>Short Fundamental Equations of State for 20 Industrial Fluids</b>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
 
