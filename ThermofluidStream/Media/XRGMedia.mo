@@ -420,6 +420,7 @@ package XRGMedia "A medium property library"
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 3e5;
      parameter Medium.SpecificEnthalpy h = 4.2e5;
@@ -430,7 +431,6 @@ Example:
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
-</p>
 
 </html>"));
     end setState_phX;
@@ -466,7 +466,7 @@ Example:
        state.d := d;
 
        annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
 <p>2012-08-01  Stefan Wischhusen: Corrected passing-error of inputs.</p>
 </html>",     info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
@@ -476,6 +476,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.Density d = 4;
      parameter Medium.Temperature T = 298;
@@ -486,7 +487,6 @@ Example:
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_dTX;
 
@@ -521,6 +521,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 3e5;
      parameter Medium.SpecficEntropy s = 1.7e3;
@@ -531,7 +532,6 @@ Example:
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_psX;
 
@@ -590,6 +590,7 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the liquid phase boundary
@@ -622,6 +623,7 @@ Example:
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the vapor phase boundary
@@ -1863,6 +1865,7 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
 <p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p> 
 <p>
 Example:
+</p>
 <pre>
      Medium.AbsolutePressure p_downstream=10e5;
      Medium.SpecificEnthalpy h_downstream=4.1e5;
@@ -1879,6 +1882,7 @@ Example:
      eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
 </pre>
 <h4>Restrictions</h4>
+<p>
 The isentropic efficiency function should not be applied in liquid region. 
 </p>
 </html>"));
@@ -7888,6 +7892,7 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the liquid phase boundary
@@ -7920,6 +7925,7 @@ Example:
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the vapor phase boundary
@@ -9252,12 +9258,13 @@ Example:
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p> For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_NH3
@@ -14856,6 +14863,7 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the liquid phase boundary
@@ -14888,6 +14896,7 @@ Example:
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the vapor phase boundary
@@ -16219,12 +16228,13 @@ Example:
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p> For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_CO2
@@ -21786,6 +21796,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 3e5;
      parameter Medium.SpecificEnthalpy h = 4.2e5;
@@ -21796,7 +21807,6 @@ Example:
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_phX;
 
@@ -21830,8 +21840,12 @@ Example:
        state.T := T;
        state.d := d;
 
-       annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>",     info="<html>
+       annotation (
+         Documentation(
+           revisions="<html>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+</html>",
+           info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul> 
 <li>pressure</li>
@@ -21839,6 +21853,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.Density d = 4;
      parameter Medium.Temperature T = 298;
@@ -21849,7 +21864,6 @@ Example:
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_dTX;
 
@@ -21884,6 +21898,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 3e5;
      parameter Medium.SpecficEntropy s = 1.7e3;
@@ -21894,7 +21909,6 @@ Example:
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_psX;
 
@@ -21950,6 +21964,7 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the liquid phase boundary
@@ -21982,6 +21997,7 @@ Example:
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=3e5;
     // Viscosity on the vapor phase boundary
@@ -29167,6 +29183,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Ch
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 0.5e5;
      parameter Medium.SpecificEnthalpy h = 4.2e5;
@@ -29177,8 +29194,6 @@ Example:
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
-</p>
-
 </html>"));
     end setState_phX;
 
@@ -29212,8 +29227,12 @@ Example:
        state.T := T;
        state.d := d;
 
-       annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>",     info="<html>
+       annotation (
+         Documentation(
+           revisions="<html>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+</html>",
+           info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul> 
 <li>pressure</li>
@@ -29221,6 +29240,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.Density d = 4;
      parameter Medium.Temperature T = 298;
@@ -29231,7 +29251,6 @@ Example:
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_dTX;
 
@@ -29266,6 +29285,7 @@ Example:
 </ul>
 <p>
 Example:
+</p>
 <pre>
      parameter Medium.AbsolutePressure p = 0.5e5;
      parameter Medium.SpecficEntropy s = 1.8e3;
@@ -29276,7 +29296,6 @@ Example:
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
-</p>
 </html>"));
     end setState_psX;
 
@@ -29335,6 +29354,7 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=0.5e5;
     // Viscosity on the liquid phase boundary
@@ -29367,6 +29387,7 @@ Example:
 </p>
 <p>
 Example:
+</p>
 <pre>
     Medium.AbsolutePressure p=0.5e5;
     // Viscosity on the vapor phase boundary
@@ -30841,12 +30862,14 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p>
+For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_R245fa
@@ -31254,9 +31277,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 <p> This function calculates the density of R245fa from absolute pressure and temperature. The function can only be executed in one-phase region. The safety margin to the phase boundary is 1[K] and 1000[Pa].
 </p>
 <h4>Restrictions</h4>
+<p>
 The function cannot be inverted in a numerical way. Please use functions <a href=\"modelica://XRG_Media.R245fa_ph.rho_props_ph\">rho_props_ph</a> and <a href=\"modelica://XRG_Media.R245fa_ph.T_props_ph\">T_props_ph</a> for this purpose.
+</p>
 </html>",     revisions="<html>
+<p>
 2020-01-08 Stefan Wischhusen: Iteration converges better with guesses of rho_liq(T) and rho_vap(T).
+</p>
 </html>"));
     end dofpT;
 
