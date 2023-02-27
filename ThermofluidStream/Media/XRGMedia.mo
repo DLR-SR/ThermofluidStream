@@ -9710,9 +9710,8 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Ammonia (R717) in the fluid region of 0.0606 bar (Triple pressure) to 10000 bar and 195.5 Kelvin (Triple temperature) to 700 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
@@ -9728,7 +9727,7 @@ The functions provided by this package shall be used inside of the restricted li
   </li> 
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<h4>References</h4>
 <dl>
 <dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
@@ -16762,9 +16761,8 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Carbon Dioxide (R744) in the fluid region of 5.18 bar (Triple pressure) to 8000 bar and 216.6 Kelvin (Triple temperature) to 1100 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
@@ -16780,7 +16778,7 @@ The functions provided by this package shall be used inside of the restricted li
   </li> 
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<h4>References</h4>
 <dl>
 <dt>Span,R.and W. Wagner: </dt>
 <dd><strong>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</strong>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
@@ -24128,9 +24126,8 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Tetrafluoroprop-1-ene (R1234yf) in the fluid region of 0.315 bar (Triple pressure) to 300 bar and 220 Kelvin to 410 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
@@ -24146,7 +24143,7 @@ The functions provided by this package shall be used inside of the restricted li
   </li> 
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<h4>References</h4>
 <dl>
 <dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
 <dd><strong>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
@@ -31334,9 +31331,8 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Pentafluoropropane (R245fa) in the fluid region of 0.000125 bar (Triple pressure) to 2000 bar and 171.5 Kelvin to 440 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
@@ -31352,12 +31348,11 @@ The functions provided by this package shall be used inside of the restricted li
   </li> 
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<h4>References</h4>
 <dl>
 <dt>Lemmon, E.W. and W. Span: </dt>
 <dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
-
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
@@ -36259,13 +36254,15 @@ The functions provided by this package shall be used inside of the restricted li
 </html>"));
   end R245faData;
   annotation ( preferedView="info",        Documentation(info="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/> </p>
-<p><b><span style=\"font-size: 14pt; color: #ef9b13;\">Library description </span></b></p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/></p>
+
+<h4>Library description</h4>
 <p>This library contains property functions written in Modelica for the refrigerants <strong>R134a</strong>, <strong>NH3</strong> (R717), <strong>CO2</strong> (R744), <strong>R1234yf</strong> and <strong>R245fa</strong>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
 <p>The library is a product of XRG Simulation GmbH. It makes use of external, non-commercial models supplied by Modelica standard library. In order to work correctly, ensure that this library is always loaded with Modelica Standard Library version 3.2.3</p>
 <p>Some parts of this library refer to the ThermoFluid library developed at Lund University (<a href=\"http://sourceforge.net\">http://sourceforge.net</a>). </p>
 <p><br>Please refer to Modelica.Media&apos;s <a href=\"Modelica.Media.UsersGuide\">User Guide</a> for detailed usage information.</p>
-<p><br><b><span style=\"font-size: 14pt; color: #ef9b13;\">Contact </span></b></p>
+
+<h4>Contact </h4>
 <p>XRG Simulation GmbH<br>Harburger Schlossstra&szlig;e 6-12<br>21079 Hamburg<br>Germany</p>
 <p><a href=\"mailto:info@xrg-simulation.de\">info@xrg-simulation.de</a> </p>
 </html>", revisions="<html>

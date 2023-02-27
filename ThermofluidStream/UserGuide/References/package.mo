@@ -21,7 +21,9 @@ Nomenclature used in this library
 </ul>
 
 <h4>Literature</h4>
-<p><b>References reffering directly to this library</b></p>
+<p>
+<strong>References reffering directly to this library</strong>
+</p>
 <ul>
   <li>
     Zimmer, Dirk (2020).
@@ -37,7 +39,9 @@ Nomenclature used in this library
   </li>
 </ul>
 
-<p><b>Further background references on the methodology</b></p>
+<p>
+<strong>Further background references on the methodology</strong>
+</p>
 <ul>
   <li>
     Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018).
