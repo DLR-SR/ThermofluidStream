@@ -185,6 +185,6 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   annotation (Documentation(info="<html>
 <p>This package contains topology elements that have non-physical assumtions or constraints like mass-flow splits. </p>
 <p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicilty modeling the phenomena like a controlled valve.</p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><b>or</b></u> Junction.</p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><strong>or</strong></u> Junction.</p>
 </html>"));
 end NonPhysical;

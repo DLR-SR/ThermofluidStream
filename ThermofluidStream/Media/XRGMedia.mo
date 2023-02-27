@@ -427,7 +427,7 @@ Example:
 
      Medium.Density rho;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
@@ -483,7 +483,7 @@ Example:
 
      Medium.SpecficEntropy s;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
@@ -528,7 +528,7 @@ Example:
 
      Medium.SpecficEnthalpy h;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
@@ -562,7 +562,7 @@ Example:
 
      Medium.Density rho;
 
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre>
@@ -1495,7 +1495,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R134a at <b>constant pressure</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
+<p> This function calculates the specific heat capacity of R134a at <strong>constant pressure</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
 <h3> Restrictions</h3>
 <p>This property is only defined in one-phase region.
 </p>  
@@ -1528,7 +1528,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R134a at <b>constant volume</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
+<p> This function calculates the specific heat capacity of R134a at <strong>constant volume</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition (see Tillner-Roth and Baehr, 1994). Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
 </p>  
@@ -1595,7 +1595,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <h3>References</h3>
 <dl>
 <dt>Klein, McLinden and Laesecke: </dt>
-<dd><b>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</b>.
+<dd><strong>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)eta-Diagram-R134a.png\"/> </p> 
@@ -1676,8 +1676,8 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </p>  
 <h3>References</h3>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
-<dd><b>An extended corresponding states model for the thermal conductivity
-of refrigerants and refrigerant mixtures</b>.
+<dd><strong>An extended corresponding states model for the thermal conductivity
+of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)lambda-Diagram-R134a.png\"/> </p> 
@@ -1711,7 +1711,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
 </p>  
 <h3>References</h3>
 <dl><dt>Okada and Higashi: </dt>
-<dd><b>Surface tension correlation of HFC-134a and HCFC-123</b>.
+<dd><strong>Surface tension correlation of HFC-134a and HCFC-123</strong>.
 Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, Italy, pp. 541-548, 1994.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/Tsigma-Diagram-R134a.png\"/> </p> 
@@ -2761,18 +2761,18 @@ The functions provided by this package shall be used inside of the restricted li
   </li> 
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<p><strong><font style=\"color: #ef9b13; \">References</font></strong> </p>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
-<dd><b>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
-Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Springer-Verlag, Berlin (Germany), 1994.</dd>
+<dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
+Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 </dl>
 <dl><dt>Klein, McLinden and Laesecke: </dt>
-<dd><b>An improved extended corresponding states methode for estimation of visocsity of pure refrigerants and mixtures</b>.
+<dd><strong>An improved extended corresponding states methode for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
-<dd><b>An extended corresponding states model for the thermal conductivity
-of refrigerants and refrigerant mixtures</b>.
+<dd><strong>An extended corresponding states model for the thermal conductivity
+of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
 </html>",  revisions="<html>
@@ -7864,7 +7864,7 @@ Example:
 
      Medium.Density rho;
 
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre>
@@ -9731,12 +9731,12 @@ The functions provided by this package shall be used inside of the restricted li
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
 <dl>
 <dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
-<dd><b>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
-Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Springer-Verlag, Berlin (Germany), 1994.</dd>
+<dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
+Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 <dt>Fenghour, A. et al.: </dt>
-<dd><b>The Viscosity of Ammonia</b>. J. Phys. Chem. Ref. Data, Vol. 24, No. 5, 1995. </dd>
+<dd><strong>The Viscosity of Ammonia</strong>. J. Phys. Chem. Ref. Data, Vol. 24, No. 5, 1995. </dd>
 <dt>Yata et al.: </dt>
-<dd><b>Equations of Thermal Conductivity of Natural Refrigerants</b>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
+<dd><strong>Equations of Thermal Conductivity of Natural Refrigerants</strong>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
 </dl>
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
@@ -14835,7 +14835,7 @@ Example:
 
      Medium.Density rho;
 
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre>
@@ -16783,13 +16783,13 @@ The functions provided by this package shall be used inside of the restricted li
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
 <dl>
 <dt>Span,R.and W. Wagner: </dt>
-<dd><b>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</b>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
+<dd><strong>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</strong>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
 <dt>Pfafferott,T.: </dt>
-<dd><b>Dynamische Simulation von CO2-Kaelteprozessen fuer mobile Anwendungen</b>. PhD thesis at Institute of ThermoFluidDynamics, Hamburg University of Technology, Shaker Verlag, Aachen(Germany), 2005.</dd>
+<dd><strong>Dynamische Simulation von CO2-Kaelteprozessen fuer mobile Anwendungen</strong>. PhD thesis at Institute of ThermoFluidDynamics, Hamburg University of Technology, Shaker Verlag, Aachen(Germany), 2005.</dd>
 <dt>Fenghour, A. et al.: </dt>
-<dd><b>The Viscosity of Carbon Dioxide</b>. J. Phys. Chem. Ref. Data, Vol. 27, No. 1, 1998. </dd>
+<dd><strong>The Viscosity of Carbon Dioxide</strong>. J. Phys. Chem. Ref. Data, Vol. 27, No. 1, 1998. </dd>
 <dt>Vesovic, V. et al.: </dt>
-<dd><b>The Transport Properties of Carbon Dioxide</b>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
+<dd><strong>The Transport Properties of Carbon Dioxide</strong>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
 </dl>
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
@@ -21803,7 +21803,7 @@ Example:
 
      Medium.Density rho;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
@@ -21859,7 +21859,7 @@ Example:
 
      Medium.SpecficEntropy s;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
@@ -21904,7 +21904,7 @@ Example:
 
      Medium.SpecficEnthalpy h;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
@@ -21937,7 +21937,7 @@ Example:
 
      Medium.Density rho;
 
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre>
@@ -22864,7 +22864,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R1234yf at <b>constant pressure</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
+<p> This function calculates the specific heat capacity of R1234yf at <strong>constant pressure</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
 <h3> Restrictions</h3>
 <p>This property is only defined in one-phase region.
 </p>  
@@ -22897,7 +22897,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R1234yf at <b>constant volume</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
+<p> This function calculates the specific heat capacity of R1234yf at <strong>constant volume</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition. Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
 </p>  
@@ -23017,7 +23017,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <h3>References</h3>
 <dl>
 <dt>Akasaka, R.: </dt>
-<dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
+<dd><strong>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</strong>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"/> </p> 
 </html>"));
@@ -23106,7 +23106,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <h3>References</h3>
 <dl>
 <dt>Perkins A., Huber M.: </dt>
-<dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
+<dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
 </dl>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"/> </p> 
 </html>"));
@@ -24149,12 +24149,12 @@ The functions provided by this package shall be used inside of the restricted li
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
 <dl>
 <dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
-<dd><b>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
-Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Chemical and Engineering Data 2011, 56, 3254-3264.</dd>
+<dd><strong>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
+Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal of Chemical and Engineering Data 2011, 56, 3254-3264.</dd>
 <dt>Akasaka, R.: </dt>
-<dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
+<dd><strong>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</strong>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
 <dt>Perkins A., Huber M.: </dt>
-<dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
+<dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 
 </html>",   revisions="<html>
@@ -29189,7 +29189,7 @@ Example:
 
      Medium.Density rho;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
 </pre>
@@ -29245,7 +29245,7 @@ Example:
 
      Medium.SpecficEntropy s;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre>
@@ -29290,7 +29290,7 @@ Example:
 
      Medium.SpecficEnthalpy h;
      
-     <b>equation</b>
+     <strong>equation</strong>
 
      h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre>
@@ -29324,7 +29324,7 @@ Example:
 
      Medium.Density rho;
 
-     <b>equation</b>
+     <strong>equation</strong>
 
      rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre>
@@ -31355,7 +31355,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
 <dl>
 <dt>Lemmon, E.W. and W. Span: </dt>
-<dd><b>Short Fundamental Equations of State for 20 Industrial Fluids</b>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
+<dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
 
 </html>",   revisions="<html>
@@ -36261,7 +36261,7 @@ The functions provided by this package shall be used inside of the restricted li
   annotation ( preferedView="info",        Documentation(info="<html>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/> </p>
 <p><b><span style=\"font-size: 14pt; color: #ef9b13;\">Library description </span></b></p>
-<p>This library contains property functions written in Modelica for the refrigerants <b>R134a</b>, <b>NH3</b> (R717), <b>CO2</b> (R744), <b>R1234yf </b>and <b>R245fa</b>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
+<p>This library contains property functions written in Modelica for the refrigerants <strong>R134a</strong>, <strong>NH3</strong> (R717), <strong>CO2</strong> (R744), <strong>R1234yf</strong> and <strong>R245fa</strong>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
 <p>The library is a product of XRG Simulation GmbH. It makes use of external, non-commercial models supplied by Modelica standard library. In order to work correctly, ensure that this library is always loaded with Modelica Standard Library version 3.2.3</p>
 <p>Some parts of this library refer to the ThermoFluid library developed at Lund University (<a href=\"http://sourceforge.net\">http://sourceforge.net</a>). </p>
 <p><br>Please refer to Modelica.Media&apos;s <a href=\"Modelica.Media.UsersGuide\">User Guide</a> for detailed usage information.</p>

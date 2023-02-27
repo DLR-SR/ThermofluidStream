@@ -5,12 +5,12 @@ package UserGuide "User Guide to the DLR Thermofluid Stream Library"
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
-This is the <b>DLR Thermofluid Stream Library</b> for the robust modeling
+This is the <strong>DLR Thermofluid Stream Library</strong> for the robust modeling
 of complex thermal architectures.
 </p>
 
 <p>
-<b>Version: Public Beta 1.0</b>
+<strong>Version: Public Beta 1.0</strong>
 </p>
 <p>
 More information on license and content in the sub-packages.
