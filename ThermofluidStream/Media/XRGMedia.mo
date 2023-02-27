@@ -2750,15 +2750,15 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.0039 bar &le; p &le; 700 bar </b>
- </li>
- <li> 
-      <b> 169.85 Kelvin &le; T &le; 455 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li> 
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+  </li> 
+  <li> 
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li> 
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
@@ -9717,15 +9717,15 @@ Calculation of fluid properties for Ammonia (R717) in the fluid region of 0.0606
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.0606 bar &le; p &le; 10000 bar </b>
- </li>
- <li> 
-      <b> 195.5 Kelvin &le; T &le; 700 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.0606 bar &le; p &le; 10000 bar </strong>
+  </li>
+  <li> 
+    <strong> 195.5 Kelvin &le; T &le; 700 Kelvin  </strong>
+  </li> 
+  <li> 
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li> 
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
@@ -16769,15 +16769,15 @@ Calculation of fluid properties for Carbon Dioxide (R744) in the fluid region of
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 5.18 bar &le; p &le; 8000 bar </b>
- </li>
- <li> 
-      <b> 216.6 Kelvin &le; T &le; 1100 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 5.18 bar &le; p &le; 8000 bar </strong>
+  </li>
+  <li> 
+    <strong> 216.6 Kelvin &le; T &le; 1100 Kelvin  </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li> 
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
@@ -21844,8 +21844,7 @@ Example:
          Documentation(
            revisions="<html>
 <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
-</html>",
-           info="<html>
+</html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul> 
 <li>pressure</li>
@@ -24136,15 +24135,15 @@ Calculation of fluid properties for Tetrafluoroprop-1-ene (R1234yf) in the fluid
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.315 bar &le; p &le; 300 bar </b>
- </li>
- <li> 
-      <b> 220 Kelvin &le; T &le; 410 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.315 bar &le; p &le; 300 bar </strong>
+  </li>
+  <li> 
+    <strong> 220 Kelvin &le; T &le; 410 Kelvin</strong>
+  </li> 
+  <li> 
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li> 
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
@@ -29231,8 +29230,7 @@ Example:
          Documentation(
            revisions="<html>
 <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
-</html>",
-           info="<html>
+</html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul> 
 <li>pressure</li>
@@ -31343,15 +31341,15 @@ Calculation of fluid properties for Pentafluoropropane (R245fa) in the fluid reg
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.000125 bar &le; p &le; 2000 bar </b>
- </li>
- <li> 
-      <b> 171.5 Kelvin &le; T &le; 440 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.000125 bar &le; p &le; 2000 bar </strong>
+  </li>
+  <li> 
+    <strong> 171.5 Kelvin &le; T &le; 440 Kelvin  </strong>
+  </li> 
+  <li> 
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li> 
 </ul>
 
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
