@@ -619,9 +619,7 @@ beta is defined as  1/v * der(v,T), with v = 1/d, at constant pressure p.
       output SI.IsothermalCompressibility kappa "Isothermal compressibility";
       annotation (Documentation(info="<html>
 <blockquote><pre>
-
 kappa is defined as - 1/v * der(v,p), with v = 1/d at constant temperature T.
-
 </pre></blockquote>
 </html>"));
     end isothermalCompressibility;
