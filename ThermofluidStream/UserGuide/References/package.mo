@@ -24,11 +24,11 @@ package References "Nomenclature, Literature References"
 </ul>
 <p><b><span style=\"font-size: 9pt;\">Further background references on the methodology:</span></b></p>
 <ul>
-<li>Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018). &ldquo;Robust Modeling of Directed Thermofluid Flows in Complex Networks&rdquo;. In: Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).<br><a href=\"
+<li>Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018). &quot;Robust Modeling of Directed Thermofluid Flows in Complex Networks&quot;. In: Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).<br><a href=\"
 https://elib.dlr.de/120701/1/Japan2018Robust.pdf\">https://elib.dlr.de/120701/1/Japan2018Robust.pdf</a></li>
-<li>Zimmer, Dirk (2019a). &ldquo;Robust Simulation of StreamDominated Thermo-Fluid Systems: From Unidirectional to Bidirectional Applications&rdquo;. In.</li>
-<li>Zimmer, Dirk (2019b). &ldquo;Towards hard real-time simulation ofcomplex fluid networks&rdquo;. In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Link&ouml;ping University Electronic Press, Link&ouml;pings universitet, pp. 579&ndash;587. <br><a href=\"https://ep.liu.se/ecp/157/059/ecp19157059.pdf\">https://ep.liu.se/ecp/157/059/ecp19157059.pdf</a></li>
-<li>Otter, M. et al. (2019). &ldquo;Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs&rdquo;. In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Link&ouml;ping University Electronic Press, Link&ouml;pings universitet <br><a href=\"https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf</a></li>
+<li>Zimmer, Dirk (2019a). &quot;Robust Simulation of StreamDominated Thermo-Fluid Systems: From Unidirectional to Bidirectional Applications&quot;. In.</li>
+<li>Zimmer, Dirk (2019b). &quot;Towards hard real-time simulation of complex fluid networks&quot;. In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Link&ouml;ping University Electronic Press, Link&ouml;pings universitet, pp. 579&ndash;587. <br><a href=\"https://ep.liu.se/ecp/157/059/ecp19157059.pdf\">https://ep.liu.se/ecp/157/059/ecp19157059.pdf</a></li>
+<li>Otter, M. et al. (2019). &quot;Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs&quot;. In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Link&ouml;ping University Electronic Press, Link&ouml;pings universitet <br><a href=\"https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf</a></li>
 </ul>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
