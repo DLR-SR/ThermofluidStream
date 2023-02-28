@@ -11,28 +11,28 @@ model SimpleStream "Steam splitting and joining"
   Boundaries.Sink sink(redeclare package Medium = Medium,
       p0_par=80000)
     annotation (Placement(transformation(extent={{130,-20},{150,0}})));
-  Topology.SplitterT1 splitterT1_1(redeclare package Medium =
-        Medium)
+  Topology.SplitterT1 splitterT1_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-  Topology.JunctionT1 junctionrT1_1(redeclare package Medium =
-        Medium)
+  Topology.JunctionT1 junctionrT1_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{60,-20},{40,0}})));
   Processes.ConductionElement thermalConduction(
     redeclare package Medium = Medium,
     L=100) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=4e2, T(start=368.15, fixed=true))
     annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{70,-10},{90,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{10,-30},{30,-50}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,

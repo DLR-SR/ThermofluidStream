@@ -58,8 +58,8 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,70})));
-  ThermofluidStream.Boundaries.Source source(redeclare package Medium =
-        Medium_air,
+  ThermofluidStream.Boundaries.Source source(
+    redeclare package Medium = Medium_air,
     T0_par=283.15,
     p0_par=101300)
     annotation (Placement(transformation(
@@ -73,8 +73,9 @@ extends Modelica.Icons.Example;
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={48,-36})));
-  ThermofluidStream.Boundaries.Sink sink(redeclare package Medium =
-        Medium_air, p0_par=101300) annotation (Placement(
+  ThermofluidStream.Boundaries.Sink sink(
+    redeclare package Medium = Medium_air,
+    p0_par=101300) annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,

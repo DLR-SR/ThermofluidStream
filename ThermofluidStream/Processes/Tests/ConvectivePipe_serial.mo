@@ -38,13 +38,13 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,34})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        Medium,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{54,0},{74,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        Medium,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-58,0},{-38,20}})));

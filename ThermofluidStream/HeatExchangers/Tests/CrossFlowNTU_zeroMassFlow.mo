@@ -10,8 +10,8 @@ model CrossFlowNTU_zeroMassFlow
 
   extends Modelica.Icons.Example;
 
-  ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        MediumA,
+  ThermofluidStream.Boundaries.Source sourceA(
+    redeclare package Medium = MediumA,
     T0_par=333.15,
     p0_par=100000)
     annotation (Placement(transformation(

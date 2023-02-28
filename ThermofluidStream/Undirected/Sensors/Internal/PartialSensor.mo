@@ -16,8 +16,8 @@ partial model PartialSensor "Partial undirected sensor"
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80})));
 
-/*  function regStepSt = Undirected.Internal.regStepState (redeclare package Medium =
-          Medium)                                                                         "RegStep function for a state"
+/*  function regStepSt = Undirected.Internal.regStepState (
+    redeclare package Medium = Medium) "RegStep function for a state"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">RegStep function for a state. The medium of the sensor is used and given to the function.</span></p>
 </html>"));

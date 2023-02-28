@@ -9,8 +9,8 @@ model Condenser
 
   extends Modelica.Icons.Example;
 
-  ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        MediumAir,
+  ThermofluidStream.Boundaries.Source sourceA(
+    redeclare package Medium = MediumAir,
     T0_par=311.15,
     p0_par=100000)
     annotation (Placement(transformation(

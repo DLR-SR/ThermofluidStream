@@ -100,8 +100,8 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumRefrigerant,
     outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{40,194},{20,174}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        MediumRefrigerant)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumRefrigerant)
     annotation (Placement(transformation(extent={{-22,194},{-42,174}})));
   Modelica.Blocks.Continuous.PI PI(
     k=10000,

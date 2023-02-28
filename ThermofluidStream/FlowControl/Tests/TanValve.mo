@@ -26,20 +26,20 @@ model TanValve "Test for TanValve"
     annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
-  Topology.SplitterT2 splitterT2_1(redeclare package Medium =
-        Medium)
+  Topology.SplitterT2 splitterT2_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-78,0},{-58,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-12,36},{8,56}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{44,36},{64,56}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,

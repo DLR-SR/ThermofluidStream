@@ -10,8 +10,9 @@ model CounterFlowNTU_parallel
 
   extends Modelica.Icons.Example;
 
-  ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        MediumA, T0_par=333.15)
+  ThermofluidStream.Boundaries.Source sourceA(
+    redeclare package Medium = MediumA,
+    T0_par=333.15)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -66,8 +67,8 @@ model CounterFlowNTU_parallel
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-74,-30})));
-  Topology.SplitterT1 splitterT1_1(redeclare package Medium =
-        MediumB)
+  Topology.SplitterT1 splitterT1_1(
+    redeclare package Medium = MediumB)
     annotation (Placement(transformation(extent={{56,10},{36,30}})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium = MediumB)
     annotation (Placement(transformation(extent={{-94,10},{-74,30}})));
