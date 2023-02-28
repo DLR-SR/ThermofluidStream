@@ -9,12 +9,10 @@ model TestJunction "Test for the undirected junction"
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
 
-  replaceable function pLoss =
-      ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-      (                                                                                                          material=ThermofluidStream.Processes.Internal.Material.wood)
-    constrainedby
-    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
-       "Pressure loss function for all Flow resistances"
+  replaceable function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    material=ThermofluidStream.Processes.Internal.Material.wood)
+    constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
+    "Pressure loss function for all Flow resistances"
     annotation(choicesAllMatching = true, Documentation(info="<html>
 <p>This is the pressure loss function used for all resistances except the two on the outlets of the right two cases.</p>
 </html>"));

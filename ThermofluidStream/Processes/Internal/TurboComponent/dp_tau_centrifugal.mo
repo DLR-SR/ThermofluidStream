@@ -83,7 +83,7 @@ protected
   SI.Density rho_ref =      if parametrizeByScaling then             rho_ref_ref else rho_ref_input;
   SI.Length r =             if parametrizeByScaling then sqrt(alpha)/beta* r_ref else r_input;
 
-  Real omega_s(unit="1") = ((K_D/f_q)^0.5)/((g_n*( a_h+b_h*K_D+c_h*K_D^2)) ^0.75);
+  Real omega_s(unit="1") = ((K_D/f_q)^0.5)/((g_n*(a_h+b_h*K_D+c_h*K_D^2)) ^0.75);
   SI.VolumeFlowRate V_flow_BEP "optimal volume flow at omega";
   SI.AngularVelocity omega_hat "abs omega clipped Re_mod_min";
   Real Re_mod(unit="1");

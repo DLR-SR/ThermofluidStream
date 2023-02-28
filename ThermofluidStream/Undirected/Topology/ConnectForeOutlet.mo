@@ -49,7 +49,8 @@ equation
           10,12},{0,12},{0,40}},      color={162,29,33}));
   annotation (Icon(
       graphics={
-        Line( points={{-20,0},{20,0}},
+        Line(
+          points={{-20,0},{20,0}},
           color={28,108,200},
           thickness=0.5), Line(
           points={{0,0},{0,60}},

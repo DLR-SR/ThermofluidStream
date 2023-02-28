@@ -143,15 +143,15 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,-94},{-20,-74}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{40,-94},{20,-74}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{118,-120},{158,-80}})));
 initial equation

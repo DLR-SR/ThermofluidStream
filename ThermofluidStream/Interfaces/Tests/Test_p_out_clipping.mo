@@ -25,8 +25,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=100, k2=50))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Processes.Fan fan(redeclare package Medium = Medium,
     L=1000,

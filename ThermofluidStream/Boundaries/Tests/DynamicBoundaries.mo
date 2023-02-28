@@ -22,8 +22,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Source source1(redeclare package Medium=Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
@@ -45,8 +44,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 
   Modelica.Blocks.Sources.Ramp ramp(
@@ -82,8 +80,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   Modelica.Blocks.Sources.Ramp ramp2(
     height=1,
@@ -117,8 +114,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
   Source source4(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-70}})));
@@ -143,8 +139,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
   Source source5(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
@@ -169,8 +164,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
 equation
   connect(source.outlet, dynamicPressureInflow.inlet) annotation (Line(

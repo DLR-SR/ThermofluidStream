@@ -18,8 +18,8 @@ model TransportDelay "Test for transport delay "
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss =
-        Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-10,30},{10,50}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{70,30},{90,50}})));
@@ -28,8 +28,7 @@ model TransportDelay "Test for transport delay "
     temperatureFromInput=true,
     pressureFromInput=true)
     annotation (Placement(transformation(extent={{-48,30},{-28,50}})));
-  Modelica.Blocks.Sources.SawTooth
-                               sawTooth(
+  Modelica.Blocks.Sources.SawTooth sawTooth(
     amplitude=-6e3,
     period=0.8,
     offset=1.04e5,
@@ -44,8 +43,7 @@ model TransportDelay "Test for transport delay "
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
 
-  ThermofluidStream.Processes.TransportDelay
-                           transportDelay1(
+  ThermofluidStream.Processes.TransportDelay transportDelay1(
     redeclare package Medium = Medium,
     l=10,
     r(displayUnit="mm") = 0.008,
@@ -57,8 +55,8 @@ model TransportDelay "Test for transport delay "
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss =
-        Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{70,-50},{90,-30}})));
@@ -67,8 +65,7 @@ model TransportDelay "Test for transport delay "
     temperatureFromInput=true,
     pressureFromInput=true)
     annotation (Placement(transformation(extent={{-48,-50},{-28,-30}})));
-  Modelica.Blocks.Sources.SawTooth
-                               sawTooth1(
+  Modelica.Blocks.Sources.SawTooth sawTooth1(
     amplitude=-6e3,
     period=0.8,
     offset=1.04e5,

@@ -297,7 +297,7 @@ equation
       thickness=0.5));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
-    Diagram( coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),
     experiment(
       StopTime=10,
       __Dymola_NumberOfIntervals=1500,

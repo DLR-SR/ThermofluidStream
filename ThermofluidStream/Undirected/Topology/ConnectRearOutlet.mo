@@ -44,7 +44,8 @@ equation
 
   annotation (Icon(
       graphics={
-        Line( points={{-20,0},{20,0}},
+        Line(
+          points={{-20,0},{20,0}},
           color={28,108,200},
           thickness=0.5),
         Line(points={{2,58},{0,58}}, color={28,108,200}),

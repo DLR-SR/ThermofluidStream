@@ -72,18 +72,19 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_A, each k2=k2_A))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=k1_A,
+      each k2=k2_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_B, each k2=k2_B))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      
+      each k=k1_B,
+      each k2=k2_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)

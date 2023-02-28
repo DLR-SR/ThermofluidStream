@@ -27,8 +27,8 @@ model WaterHammer "Pump water by using dynamic pressures"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.025,
     l=25,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = Medium,
       p0_par=100000)

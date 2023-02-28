@@ -65,8 +65,8 @@ protected
   SI.Temperature T_heatPort;
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)
-  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
-  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
+  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
+  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
   // dont regstep variables that are only in der(state), to increase accuracy
   SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear;
   SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore;

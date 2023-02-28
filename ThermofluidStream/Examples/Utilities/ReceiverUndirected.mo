@@ -1,6 +1,6 @@
 within ThermofluidStream.Examples.Utilities;
 model ReceiverUndirected "Undirected Receiver Model for vapor cycle applications"
-  extends Undirected.Boundaries.PhaseSeparator(   pipe_low=0.05, pipe_high=0.15);
+  extends Undirected.Boundaries.PhaseSeparator(pipe_low=0.05, pipe_high=0.15);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Ellipse(

@@ -39,30 +39,26 @@ model SimpleStream "Steam splitting and joining"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,0},{40,20}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1000,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-30,-40},{-10,-20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-120,-20},{-100,0}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     r=0.1,
     l=20,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{100,-20},{120,0}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-140,20},{-120,40}})));

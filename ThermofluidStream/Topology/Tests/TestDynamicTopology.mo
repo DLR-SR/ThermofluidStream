@@ -33,37 +33,32 @@ model TestDynamicTopology
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,40},{40,60}})));
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,40},{40,60}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,10},{40,30}})));
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,10},{40,30}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,70},{40,90}})));
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Boundaries.DynamicPressureInflow dynamicPressureInflow(
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0001,
@@ -108,39 +103,34 @@ model TestDynamicTopology
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{20,-90},{40,-70}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   Boundaries.DynamicPressureInflow dynamicPressureInflow2(
     redeclare package Medium = Medium,

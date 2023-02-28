@@ -64,8 +64,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.NH3_ph,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -74,8 +73,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.CO2_ph,
     r(displayUnit="mm") = 0.005,
     l=15,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -85,8 +83,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.002,
     l=50,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -95,8 +92,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R134a_ph,
     r(displayUnit="mm") = 0.02,
     l=5,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -106,8 +102,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -140,8 +135,8 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R1234yf_ph,
     r(displayUnit="mm") = 0.02,
     l=20,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=500, k2=500))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=500, k2=500))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -152,8 +147,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R245fa_ph,
     r(displayUnit="mm") = 0.02,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -188,8 +182,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.02,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

@@ -7,7 +7,7 @@ model TerminalSink "Sink that imposes m_flow=0"
 <p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
 </html>"));
 
-  Interfaces.Inlet inlet( redeclare package Medium=Medium)
+  Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{-80,20}})));
 
 equation

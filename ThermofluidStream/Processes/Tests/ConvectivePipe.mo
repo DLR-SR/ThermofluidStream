@@ -30,8 +30,8 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=0.0001, T(fixed=true))
     annotation (Placement(transformation(

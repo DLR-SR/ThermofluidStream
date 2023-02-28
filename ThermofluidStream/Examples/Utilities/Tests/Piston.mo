@@ -77,8 +77,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{-46,0},{-26,20}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -87,8 +87,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{-46,-30},{-26,-10}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
@@ -98,8 +98,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{34,0},{54,20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
@@ -109,8 +109,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{34,-30},{54,-10}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Medium, invertInput=false) annotation (Placement(transformation(extent={{64,20},{84,0}})));
   FlowControl.TanValve tanValve1(redeclare package Medium = Medium, invertInput=true) annotation (Placement(transformation(extent={{64,-30},{84,-10}})));

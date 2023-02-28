@@ -29,8 +29,8 @@ model CupSink "Sink with fancy cup animation"
     redeclare package Medium = Medium,
     r(displayUnit="cm") = 0.05,
     l(displayUnit="cm") = 0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

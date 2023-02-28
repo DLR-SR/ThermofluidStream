@@ -60,16 +60,16 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{20,-90},{40,-70}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-40,-90},{-20,-70}})));
   VolumeMix volumeMix(
     redeclare package Medium = MediumMix,
@@ -86,24 +86,24 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   VolumeMix volumeMix1(
     redeclare package Medium = MediumMix,
@@ -128,24 +128,24 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e5))
     annotation (Placement(transformation(extent={{-40,80},{-20,100}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=2e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=2e5))
     annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e1))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e1))
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Volume heatportVolume1(
     redeclare package Medium = Medium,
@@ -176,16 +176,16 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{-40,-160},{-20,-140}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.wood))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.wood))
     annotation (Placement(transformation(extent={{20,-200},{40,-180}})));
   Volume heatportVolume3(
     redeclare package Medium = Medium,
@@ -223,16 +223,16 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e5))
     annotation (Placement(transformation(extent={{20,110},{40,130}})));
   Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e5))
     annotation (Placement(transformation(extent={{-40,110},{-20,130}})));
   VolumeMix volumeMix3(
     redeclare package Medium = MediumMix,
@@ -257,24 +257,24 @@ model Volumes "Test Volumes"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e5))
     annotation (Placement(transformation(extent={{-40,180},{-20,200}})));
   Processes.FlowResistance flowResistance13(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=2e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=2e5))
     annotation (Placement(transformation(extent={{-40,140},{-20,160}})));
   Processes.FlowResistance flowResistance14(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e1))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e1))
     annotation (Placement(transformation(extent={{20,160},{40,180}})));
 equation
   connect(volume.inlet, source.outlet) annotation (Line(

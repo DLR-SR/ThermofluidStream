@@ -15,8 +15,8 @@ model ElementTwoPhase
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
     annotation (Placement(transformation(extent={{-10,70},{10,90}})));
-  Boundaries.Sink sink(redeclare package Medium =
-        MediumRefrigerant,
+  Boundaries.Sink sink(
+    redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,70},{70,90}})));
@@ -135,31 +135,27 @@ model ElementTwoPhase
     redeclare package Medium = MediumRefrigerant,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,70},{-20,90}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-38,40},{-18,60}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = MediumRefrigerant,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-90},{-20,-70}})));
   Modelica.Blocks.Sources.Trapezoid
                                trapezoid2(

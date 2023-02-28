@@ -76,9 +76,8 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=5000))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=5000))
     annotation (Placement(transformation(extent={{72,-30},{92,-10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(
     redeclare package Medium = Medium,

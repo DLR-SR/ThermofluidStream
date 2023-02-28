@@ -19,8 +19,8 @@ model EspressoMachine "Get your simulated coffe!"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=3e8,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=3e8,
           k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -54,8 +54,8 @@ model EspressoMachine "Get your simulated coffe!"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
           k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -95,13 +95,13 @@ model EspressoMachine "Get your simulated coffe!"
     r(displayUnit="mm") = 0.003,
     l=0.3,
     computeL=true,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e7, k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-20,-60})));
-  Utilities.CupSink
-                  Tasse(redeclare package Medium = Water)
+  Utilities.CupSink Tasse(redeclare package Medium = Water)
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
@@ -168,8 +168,8 @@ model EspressoMachine "Get your simulated coffe!"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     omegaStateSelect=StateSelect.never,
-    redeclare function dp_tau_pump =
-        Processes.Internal.TurboComponent.dp_tau_nominal_flow (                             k_fric_input=0))
+    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow(
+      k_fric_input=0))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -301,8 +301,8 @@ model EspressoMachine "Get your simulated coffe!"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
           k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -359,8 +359,9 @@ model EspressoMachine "Get your simulated coffe!"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={110,-140})));
-  Utilities.CupSink
-                  Tasse1(redeclare package Medium = Water, flowResistance(initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state))
+  Utilities.CupSink Tasse1(
+    redeclare package Medium = Water, flowResistance(
+      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state))
     annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
@@ -369,17 +370,15 @@ model EspressoMachine "Get your simulated coffe!"
     redeclare package Medium = Water,
     r(displayUnit="mm") = 0.003,
     l=0.2,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e4))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-20})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{156,138},{212,194}})));
 equation
   connect(boiler.heatport_heat, heating_element.port)
-    annotation (Line(points={{-72,10},{-90,10}},
-                                               color={191,0,0}));
-
+    annotation (Line(points={{-72,10},{-90,10}}, color={191,0,0}));
   connect(boiler.steam_out, flowResistance1.inlet) annotation (Line(
       points={{-52,30},{-52,128}},
       color={28,108,200},
@@ -389,8 +388,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boiler.heatport_HX, hex.heatPort)
-    annotation (Line(points={{-48,10},{-28,10}},
-                                             color={191,0,0}));
+    annotation (Line(points={{-48,10},{-28,10}}, color={191,0,0}));
   connect(singleFlowSensor.outlet, tanValve2.inlet) annotation (Line(
       points={{110,-60},{110,-70}},
       color={28,108,200},

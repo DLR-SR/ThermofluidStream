@@ -11,7 +11,7 @@ partial model PartialSensor "Partial undirected sensor"
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
-  Interfaces.Rear rear( redeclare package Medium = Medium)
+  Interfaces.Rear rear(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-80})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80})));

@@ -6,7 +6,6 @@ model BasicControlValve
   import FlowCoeffType =
          ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
-
   replaceable function valveCharacteristics =
       Internal.ControlValve.linearCharacteristics
     constrainedby Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
@@ -17,7 +16,7 @@ model BasicControlValve
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
   //Reference Values
-  parameter Real Kvs( unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
+  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
     Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
           Kvs)));
   parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,

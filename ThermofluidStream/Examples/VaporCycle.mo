@@ -85,11 +85,12 @@ model VaporCycle
     redeclare package Medium = SecondaryMedium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-66,58},{-46,78}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        SecondaryMedium, outputMassFlowRate=true,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = SecondaryMedium,
+    outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{36,68},{56,88}})));
   Processes.FlowResistance flowResistance1(
@@ -97,8 +98,8 @@ model VaporCycle
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{82,-70},{62,-50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(
     redeclare package Medium = SecondaryMedium,

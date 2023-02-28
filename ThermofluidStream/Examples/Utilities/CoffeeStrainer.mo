@@ -15,8 +15,8 @@ model CoffeeStrainer "Holds coffee in the machine."
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=8e8,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=8e8,
           k2=0)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

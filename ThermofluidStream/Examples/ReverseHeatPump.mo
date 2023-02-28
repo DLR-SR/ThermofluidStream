@@ -26,8 +26,7 @@ model ReverseHeatPump
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,14})));
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX
-                                           discretizedHEX(
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
     redeclare model ConductionElementA =
@@ -129,9 +128,8 @@ model ReverseHeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-          material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -198,9 +196,8 @@ model ReverseHeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-          material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,

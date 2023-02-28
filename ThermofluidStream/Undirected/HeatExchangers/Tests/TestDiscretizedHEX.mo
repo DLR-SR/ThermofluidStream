@@ -79,9 +79,8 @@ model TestDiscretizedHEX
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-2},{-72,18}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,
@@ -100,13 +99,14 @@ model TestDiscretizedHEX
     duration=1,
     offset=1,
     startTime=30) annotation (Placement(transformation(extent={{-22,54},{-2,74}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        MediumRefrigerant,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
-    pressureUnit="bar",                                                                  outputMassFlowRate=true)
+    pressureUnit="bar",
+    outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{38,10},{18,-10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        MediumRefrigerant,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-24,10},{-44,-10}})));

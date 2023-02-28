@@ -100,9 +100,9 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_A, each k2=k2_A))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=k1_A,
+      each k2=k2_A))
       annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
   Topology.SplitterN splitterN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
@@ -111,9 +111,9 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_B, each k2=k2_B))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=k1_B,
+      each k2=k2_B))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

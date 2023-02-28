@@ -17,8 +17,8 @@ model SimpleEngine "Simple steam engine"
         rotation=90,
         origin={190,90})));
 
-  Processes.ConductionElement conductionElement(    redeclare package
-      Medium = Water,
+  Processes.ConductionElement conductionElement(
+    redeclare package Medium = Water,
     A=20,
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,
     T_0=573.15)
@@ -73,8 +73,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,44},{30,64}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Water,
@@ -82,8 +82,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-2,24},{18,44}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Water,
@@ -91,8 +91,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{70,44},{90,64}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Water,
@@ -100,8 +100,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,24},{108,44}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Water, invertInput=false) annotation (Placement(transformation(extent={{100,64},{120,44}})));
   FlowControl.TanValve tanValve1(redeclare package Medium = Water, invertInput=true) annotation (Placement(transformation(extent={{120,24},{140,44}})));

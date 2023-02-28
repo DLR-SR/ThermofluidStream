@@ -40,8 +40,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-10,64},{10,84}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium2,
@@ -51,8 +51,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-40,-16},{-20,4}})));
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium1,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K)
@@ -288,8 +288,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{50,-110},{70,-90}})));
   Boundaries.Sink sink2(redeclare package Medium = Medium3)
     annotation (Placement(transformation(extent={{80,-110},{100,-90}})));

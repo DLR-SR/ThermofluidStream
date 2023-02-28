@@ -28,9 +28,9 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e8,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e8,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={10,-40})));
@@ -65,9 +65,9 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={30,40})));
@@ -95,9 +95,9 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-8,40})));
