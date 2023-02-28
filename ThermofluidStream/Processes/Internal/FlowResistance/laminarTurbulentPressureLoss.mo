@@ -25,7 +25,7 @@ protected
   Real b(unit="1") "turbolent flow factor for DarcyWeisbach equation (1=fully smooth turbolent flow; 0= fully rough turbolent flow)";
   Real lambda_aux(unit="1") "darcy friction factor for DarcyWeisbach equation";
 
-  SI.Velocity u  "median flow velocity";
+  SI.Velocity u "median flow velocity";
   Real Re(unit="1") "Reynolds number for flow though the pipe";
   constant Real eps(unit="1") = 0.001;
 algorithm

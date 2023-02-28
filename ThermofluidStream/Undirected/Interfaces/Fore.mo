@@ -7,7 +7,7 @@ connector Fore "Undirected connector outputting the forward state"
 </html>"));
 
   SI.Pressure r "inertial pressure";
-  flow  SI.MassFlowRate m_flow "mass flow rate";
+  flow SI.MassFlowRate m_flow "mass flow rate";
 
   input Medium.ThermodynamicState state_rearwards "thermodynamic state in rearwards direction";
   output Medium.ThermodynamicState state_forwards "thermodynamic state in forwards direction";

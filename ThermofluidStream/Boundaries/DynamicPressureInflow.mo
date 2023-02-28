@@ -16,7 +16,7 @@ model DynamicPressureInflow
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A  if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={60,100}),            iconTransformation(extent={{-20,-20},{20,20}},

@@ -723,7 +723,7 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy  w.r.t. thermodynamic state"
+    "specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
@@ -1668,7 +1668,7 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
         xi)*(omega - omega_0);
 
       // conclusion
-      lambda := max(lambda_dg  + lambda_reduced + lambda_crit, 1e-8);
+      lambda := max(lambda_dg + lambda_reduced + lambda_crit, 1e-8);
 
       annotation ( Documentation(info="<html>
 <p> This function calculates the thermal conductivity of R134a from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the corresponding states model of McLinden, Klein. and Perkins (2000). </p>
@@ -2757,7 +2757,7 @@ The functions provided by this package shall be used inside of the restricted li
     <strong> 0.0039 bar &le; p &le; 700 bar </strong>
   </li>
   <li>
-    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
   </li>
   <li>
     <strong> explicit for pressure and specific enthalpy </strong>
@@ -7841,7 +7841,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       annotation ( smoothOrder=2);
     end setState_psX;
 
-    redeclare function extends setState_pTX   "Set state for pressure and temperature (X not used since single substance)"
+    redeclare function extends setState_pTX "Set state for pressure and temperature (X not used since single substance)"
 
     protected
       Modelica.Units.SI.Pressure delp=1.0e-2 "Relative error in p in iteration";
@@ -8002,7 +8002,7 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy  w.r.t. thermodynamic state"
+    "specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
@@ -9723,7 +9723,7 @@ The functions provided by this package shall be used inside of the restricted li
     <strong> 0.0606 bar &le; p &le; 10000 bar </strong>
   </li>
   <li>
-    <strong> 195.5 Kelvin &le; T &le; 700 Kelvin  </strong>
+    <strong> 195.5 Kelvin &le; T &le; 700 Kelvin </strong>
   </li>
   <li>
     <strong> explicit for pressure and specific enthalpy </strong>
@@ -14972,7 +14972,7 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy  w.r.t. thermodynamic state"
+    "specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
@@ -16774,7 +16774,7 @@ The functions provided by this package shall be used inside of the restricted li
     <strong> 5.18 bar &le; p &le; 8000 bar </strong>
   </li>
   <li>
-    <strong> 216.6 Kelvin &le; T &le; 1100 Kelvin  </strong>
+    <strong> 216.6 Kelvin &le; T &le; 1100 Kelvin </strong>
   </li>
   <li>
     <strong> explicit for pressure and specific enthalpy </strong>
@@ -21912,7 +21912,7 @@ Example:
 </html>"));
     end setState_psX;
 
-    redeclare function extends setState_pTX   "Set state for pressure and temperature (X not used since single substance)"
+    redeclare function extends setState_pTX "Set state for pressure and temperature (X not used since single substance)"
 
     protected
         AbsolutePressure delp=1.0e-2
@@ -22096,7 +22096,7 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy  w.r.t. thermodynamic state"
+    "specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
@@ -29491,7 +29491,7 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy  w.r.t. thermodynamic state"
+    "specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
@@ -31346,7 +31346,7 @@ The functions provided by this package shall be used inside of the restricted li
     <strong> 0.000125 bar &le; p &le; 2000 bar </strong>
   </li>
   <li>
-    <strong> 171.5 Kelvin &le; T &le; 440 Kelvin  </strong>
+    <strong> 171.5 Kelvin &le; T &le; 440 Kelvin </strong>
   </li>
   <li>
     <strong> explicit for pressure and specific enthalpy </strong>

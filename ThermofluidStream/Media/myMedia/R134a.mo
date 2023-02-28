@@ -2647,7 +2647,7 @@ The functions provided by this package shall be used inside of the restricted li
       <strong> 0.0039 bar &le; p &le; 700 bar </strong>
  </li>
  <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
  </li>
  <li>
       <strong> explicit for pressure and specific enthalpy </strong>
@@ -9427,7 +9427,7 @@ The functions provided by this package shall be used inside of the restricted li
       <strong> 0.0039 bar &le; p &le; 700 bar </strong>
  </li>
  <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
  </li>
  <li>
       <strong> explicit for pressure and specific enthalpy </strong>

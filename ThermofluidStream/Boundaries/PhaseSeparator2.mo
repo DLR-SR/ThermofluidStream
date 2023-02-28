@@ -17,7 +17,7 @@ model PhaseSeparator2 "Phase separator with two outlets"
   parameter Real pipe1_high(unit="1", min=0, max=1) "High end of pipe";
   parameter Real pipe2_low(unit="1", min=0, max=1) "Low end of pipe";
   parameter Real pipe2_high(unit="1", min=0, max=1) "High end of pipe";
-  parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
+  parameter Boolean density_derp_h_from_media=false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
      annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
      annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));

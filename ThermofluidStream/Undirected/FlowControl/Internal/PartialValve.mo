@@ -2,7 +2,7 @@ within ThermofluidStream.Undirected.FlowControl.Internal;
 partial model PartialValve "Partial implementation of a physical valve"
   extends Interfaces.SISOBiFlow(final clip_p_out=true);
 
-  parameter Boolean invertInput = false  "Non-inverted: 0=closed, 1=open";
+  parameter Boolean invertInput = false "Non-inverted: 0=closed, 1=open";
   parameter Real k_min(unit="1", min = 0.001, max = 1) = 0.03 "Remaining flow at actuation signal u = 0 (fraction of maximum mass flow at u = 1)";
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve contol signal []"

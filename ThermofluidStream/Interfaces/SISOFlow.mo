@@ -32,7 +32,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
       iconTransformation(extent={{80,-20},{120,20}})));
 
-SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow  "mass flow through component";
+SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow "mass flow through component";
 
 // changing pressure calculation
 SI.Pressure dr_corr; // delta = out - in

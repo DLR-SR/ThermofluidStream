@@ -23,7 +23,7 @@ package Internal
     parameter Boolean invert = false "Invert split-ratio input?";
     parameter SI.Time TC_input = 0.05 "Time constnat for PT1 on split-ratio input"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.Power P_thresh = 1 "Power threshold  for \"create-pressure-warning\""
+    parameter SI.Power P_thresh = 1 "Power threshold for \"create-pressure-warning\""
       annotation(Dialog(tab="Advanced"));
 
     ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)

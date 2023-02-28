@@ -273,7 +273,7 @@ model FlowRes
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={122,76})));
-  DiscretizedCrossFlowHEX   condenser(
+  DiscretizedCrossFlowHEX condenser(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX,

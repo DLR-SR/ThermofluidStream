@@ -13,7 +13,7 @@ model PCV "Pressure and pressure-drop control valve"
         rotation=270,
         origin={0,80})));
 
-  parameter Mode mode=Mode.drop   "Valve mode";
+  parameter Mode mode=Mode.drop "Valve mode";
   parameter Boolean pressureFromInput = false "Enable pressure difference input";
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure difference"
     annotation(Dialog(enable=not pressureFromInput));

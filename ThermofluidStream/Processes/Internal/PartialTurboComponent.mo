@@ -9,7 +9,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation(Dialog(group="Input/Output"));
   parameter Boolean enableOutput = false "Include output for selectable quantity"
     annotation(Dialog(group="Input/Output"));
-  parameter Quantity outputQuantity=Quantity.m_flow_kgps   "Quantitiy to output"
+  parameter Quantity outputQuantity=Quantity.m_flow_kgps "Quantitiy to output"
     annotation(choicesAllMatching=true, Dialog(group="Input/Output", enable=enableOutput));
   parameter Boolean enableAccessHeatPort = false "Include access heatport"
     annotation(Dialog(group="Input/Output"));

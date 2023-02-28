@@ -16,10 +16,10 @@ model JunctionX1 "2 to 2 X-Junction"
   Interfaces.Outlet outletb(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=-90,origin={0,-100})));
-  Interfaces.Inlet  inletA( redeclare package Medium = Medium)
+  Interfaces.Inlet inletA( redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
-  Interfaces.Inlet  inletB( redeclare package Medium = Medium)
+  Interfaces.Inlet inletB( redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={98,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={98,0})));
   JunctionNM junctionNM(N=2, M=2, redeclare package Medium = Medium, final L=L,

@@ -130,7 +130,7 @@ equation
   end for;
 
   der(M) = sum(rear.m_flow) + sum(fore.m_flow);
-  der(U_med) = W_v + Q_flow + h_rear*rear.m_flow  +h_fore*fore.m_flow;
+  der(U_med) = W_v + Q_flow + h_rear*rear.m_flow +h_fore*fore.m_flow;
   der(MXi) = Xi_rear*rear.m_flow + Xi_fore*fore.m_flow;
 
   Q_flow = U*A*(T_heatPort - medium.T);

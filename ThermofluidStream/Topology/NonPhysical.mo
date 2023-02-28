@@ -55,10 +55,10 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),
         iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={-100,0})));
-    Interfaces.Inlet  inletA( redeclare package Medium = Medium)
+    Interfaces.Inlet inletA( redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
         iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
-    Interfaces.Inlet  inletB( redeclare package Medium = Medium)
+    Interfaces.Inlet inletB( redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0}),
         iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={100,0})));
 

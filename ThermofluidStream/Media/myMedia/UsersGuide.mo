@@ -293,8 +293,8 @@ equations for code generation (note the equations related to X are
 removed, because SimpleAir consists of a single substance only):
 </p>
 <blockquote><pre>
-M  = V*medium.d;
-U  = M*medium.u;
+M = V*medium.d;
+U = M*medium.u;
 
 // balance equations
 <strong>der</strong>(M)  = port.m_flow;
@@ -380,12 +380,12 @@ Modelica.Media.Examples.Utilities.ShortPipe</a>):
   Medium.BaseProperties medium_b \"Medium properties in port_b\";
 <strong>equation</strong>
   // define media models of the ports
-  medium_a.p   = port_a.p;
-  medium_a.h   = port_a.h;
+  medium_a.p  = port_a.p;
+  medium_a.h  = port_a.h;
   medium_a.Xi = port_a.Xi;
 
-  medium_b.p   = port_b.p;
-  medium_b.h   = port_b.h;
+  medium_b.p  = port_b.p;
+  medium_b.h  = port_b.h;
   medium_b.Xi = port_b.Xi;
 
   // Handle reverse and zero flow (semiLinear is a built-in Modelica operator)

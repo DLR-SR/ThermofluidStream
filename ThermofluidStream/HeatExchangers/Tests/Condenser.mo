@@ -72,7 +72,7 @@ model Condenser
         origin={0,44})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{212,-94},{232,-74}})));
-  DiscretizedCrossFlowHEX   condenser(
+  DiscretizedCrossFlowHEX condenser(
     redeclare model ConductionElementA = Internal.ConductionElementHEX,
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     redeclare package MediumA = MediumAir,

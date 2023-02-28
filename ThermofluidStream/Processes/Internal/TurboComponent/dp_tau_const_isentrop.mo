@@ -35,7 +35,7 @@ protected
 
 algorithm
   // calc pr from characteristic curve
-  pr  := abs(omega)*omega/(omega_ref^2) - skew*omega*m_flow/(omega_ref*m_flow_ref) - abs(m_flow)*m_flow/(m_flow_ref^2) + 1;
+  pr := abs(omega)*omega/(omega_ref^2) - skew*omega*m_flow/(omega_ref*m_flow_ref) - abs(m_flow)*m_flow/(m_flow_ref^2) + 1;
   // make sure pressure ratio is alwails positive
   if pr < 1 then
     pr := k^(pr-1);
@@ -46,7 +46,7 @@ algorithm
   // compute w_t_is for isenthalpic compression
   // ideal gas assuptions
   if pr >= 0 then
-    // use this instead of  h_in - Medium.isentropicEnthalpy(p_in+dp, state_in);
+    // use this instead of h_in - Medium.isentropicEnthalpy(p_in+dp, state_in);
     // to make it more robust, isentropicEnthalpy failes to solve often
     w_t_is := kappa/(kappa - 1)*(R*T_in*(abs(pr)^((kappa - 1)/kappa) - 1));
   end if;
@@ -58,7 +58,7 @@ algorithm
     w_t :=eta*w_t_is;
   end if;
 
-  if sign(m_flow) == 1 and  sign(omega) == 1 then
+  if sign(m_flow) == 1 and sign(omega) == 1 then
     tau_st := w_t*m_flow*omega/(omega^2 + omega_norm^2);
   else
     tau_st := +V_ref*dp* omega^2/(omega^2 + omega_norm^2) * m_flow^2/(m_flow^2 + m_flow_norm^2);
