@@ -142,7 +142,7 @@ model ReverseHeatPump
         rotation=0,
         origin={134,54})));
   Topology.SplitterT1 compressorSplitter(redeclare package Medium =
-        RefrigerantMedium,                                                             L=1e6)
+        RefrigerantMedium, L=1e6)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,40})));
@@ -385,8 +385,9 @@ model ReverseHeatPump
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar") annotation (Placement(transformation(extent={{50,-38},{30,-58}})));
-  Sensors.SingleSensorSelect singleSensorSelect(redeclare package Medium =
-        RefrigerantMedium,                                                                    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
+  Sensors.SingleSensorSelect singleSensorSelect(
+    redeclare package Medium = RefrigerantMedium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -468,12 +469,12 @@ equation
       points={{84,124},{84,134}},
       color={28,108,200},
       thickness=0.5));
-  connect(limiter1.u,PI1. y) annotation (Line(points={{101.2,162},{105,162}},        color={0,0,127}));
+  connect(limiter1.u,PI1. y) annotation (Line(points={{101.2,162},{105,162}}, color={0,0,127}));
   connect(multiSensor_Tpm2.m_flow_out,feedback1. u2)
-    annotation (Line(points={{88,124},{122,124}},                                    color={0,0,127}));
+    annotation (Line(points={{88,124},{122,124}}, color={0,0,127}));
   connect(PI1.u,feedback1. y) annotation (Line(points={{128,162},{130,162},{130,133}},
                                                                            color={0,0,127}));
-  connect(feedback1.u1,realExpression5. y) annotation (Line(points={{130,116},{130,109}},        color={0,0,127}));
+  connect(feedback1.u1,realExpression5. y) annotation (Line(points={{130,116},{130,109}}, color={0,0,127}));
   connect(limiter1.y, boundaryFore1.p0_var) annotation (Line(points={{87.4,162},{78,162},{78,146}},
                                                                                              color={0,0,127}));
   connect(boundaryRear.fore, multiSensor_Tpm1.rear)
@@ -488,13 +489,13 @@ equation
                                                                                                             color={0,0,127}));
   connect(feedback2.u1,realExpression4. y) annotation (Line(points={{-124,120},{-124,109}},
                                                                                           color={0,0,127}));
-  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-78,178},{-78,160}},               color={0,0,127}));
+  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-78,178},{-78,160}}, color={0,0,127}));
   connect(booleanToReal.y, firstOrder.u) annotation (Line(points={{-121,-6},{-112,-6}},
                                                                                       color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletHeating.u_in) annotation (Line(points={{-89,-6},{-76,-6}},color={0,0,127}));
   connect(firstOrder.y, valveCompressorOutletCooling.u_in)
-    annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{-26,-24},{-26,32}},  color={0,0,127}));
-  connect(firstOrder.y, valveCompressorOutletHeating.u_in) annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{26,-24},{26,32}},  color={0,0,127}));
+    annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{-26,-24},{-26,32}}, color={0,0,127}));
+  connect(firstOrder.y, valveCompressorOutletHeating.u_in) annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{26,-24},{26,32}}, color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletCooling.u_in)
     annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{40,-24},{40,-6},{60,-6}},color={0,0,127}));
   connect(junctionRFFleft.foreB, twoPhaseSensorSelect1.rear)
@@ -509,7 +510,7 @@ equation
       thickness=0.5));
   connect(realExpression8.y, TEVcooling.u_in) annotation (Line(points={{23,160},{40,160},{40,172}}, color={0,0,127}));
   connect(realExpression9.y, TEVheating.u_in) annotation (Line(points={{-23,160},{-40,160},{-40,172}}, color={0,0,127}));
-  connect(switch1.y,feedback_valve. u2) annotation (Line(points={{2,86.6},{2,95.4},{1,95.4}},    color={0,0,127}));
+  connect(switch1.y,feedback_valve. u2) annotation (Line(points={{2,86.6},{2,95.4},{1,95.4}}, color={0,0,127}));
   connect(feedback_valve.u1,realExpression6. y) annotation (Line(points={{-4.6,101},{-4,101},{-4,102},{-17,102}},
                                                                                                             color={0,0,127}));
   connect(twoPhaseSensorSelect1.value_out, switch1.u1) annotation (Line(points={{-60,76},{-18,76},{-18,72.8},{-2.8,72.8}}, color={0,0,127}));

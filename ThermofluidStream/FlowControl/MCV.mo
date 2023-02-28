@@ -9,7 +9,7 @@ model MCV "Massflow and volume control valve"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -18,7 +18,7 @@ model MCV "Massflow and volume control valve"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,-80}),                          iconTransformation(
+        origin={0,-80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,-80})));

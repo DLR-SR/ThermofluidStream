@@ -7,22 +7,26 @@ annotation (Documentation(info="<html>
 <p>Note that an unidirectional component should be taken if possible, since undirected components always require a bigger equation system and are conceptionally more complex.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
-</html>"), Icon(graphics={                                                Ellipse(
+</html>"), Icon(graphics={
+	      Ellipse(
           extent={{-96,32},{-30,-34}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid), Ellipse(
+          fillPattern=FillPattern.Solid),
+        Ellipse(
           extent={{-76,12},{-50,-14}},
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None),                                      Ellipse(
+          pattern=LinePattern.None),
+        Ellipse(
           extent={{32,32},{98,-34}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid), Ellipse(
+          fillPattern=FillPattern.Solid),
+        Ellipse(
           extent={{52,12},{78,-14}},
           lineColor={170,213,255},
           lineThickness=0.5,

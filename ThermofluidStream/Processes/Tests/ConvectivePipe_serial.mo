@@ -107,7 +107,7 @@ equation
     annotation (Line(points={{-20,10},{-20,34}},
                                              color={191,0,0}));
   connect(fixedHeatFlow.port, heatCapacitor.port) annotation (Line(points={{-20,60},
-          {-20,34}},                                        color={191,0,0}));
+          {-20,34}}, color={191,0,0}));
   connect(sink.inlet, multiSensor_Tpm.outlet) annotation (Line(
       points={{90,0},{74,0}},
       color={28,108,200},

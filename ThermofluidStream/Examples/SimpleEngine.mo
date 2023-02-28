@@ -145,7 +145,7 @@ model SimpleEngine "Simple steam engine"
   Boundaries.TerminalSource terminalSource(redeclare package Medium = Water) annotation (Placement(transformation(extent={{-130,44},{-110,64}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{156,-118},{212,-62}})));
 equation
-  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}},  color={191,0,0}));
+  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}}, color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, crankDrive.flange_a)
     annotation (Line(points={{-130,-65},{-85.5,-65}},
                                                  color={0,0,0}));
@@ -202,7 +202,7 @@ equation
       points={{-10,44},{-10,34},{-2,34}},
       color={28,108,200},
       thickness=0.5));
-  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-85.5,-32},{-85.5,-16},{-79.6,-16}},   color={255,0,255}));
+  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-85.5,-32},{-85.5,-16},{-79.6,-16}}, color={255,0,255}));
   connect(steamSink.inlet, junctionT2_1.outlet) annotation (Line(
       points={{190,80},{190,54},{160,54}},
       color={28,108,200},
@@ -239,7 +239,7 @@ equation
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
         graphics={
-        Rectangle(extent={{-192,96},{-38,6}},    lineColor={28,108,200}),
+        Rectangle(extent={{-192,96},{-38,6}}, lineColor={28,108,200}),
         Text(
           extent={{-188,94},{-96,82}},
           lineColor={28,108,200},

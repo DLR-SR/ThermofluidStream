@@ -12,7 +12,7 @@ model TransportDelay "Delay Thermofluid state depending on fluid speed"
   parameter Real v_max(unit="1/s", min=0) = 50 "Maximum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
 
-  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default,  Medium.h_default, Medium.X_default[1:Medium.nXi]);
+  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
   constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0);
   constant SI.SpecificVolume v_0 = 1/Medium.density(state_0);
 

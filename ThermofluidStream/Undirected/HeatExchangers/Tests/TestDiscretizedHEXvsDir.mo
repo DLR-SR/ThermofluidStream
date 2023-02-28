@@ -428,7 +428,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
-    annotation (Line(points={{19,136},{40,136}},  color={0,0,127}));
+    annotation (Line(points={{19,136},{40,136}}, color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{63,136},{78.8,136}}, color={0,0,127}));
   connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{92.6,136},{114,136},{114,182},{106,182}},

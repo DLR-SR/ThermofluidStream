@@ -27,7 +27,7 @@ protected
 
 initial equation
   assert(init <> Processes.Internal.InitializationMethodsCondElement.port, "This initialization will lead to large nonlinear equation systems. Please choose 'h0', 'rear' or 'fore'.");
-  assert(init <> Processes.Internal.InitializationMethodsCondElement.T,  "Temperature might is not independent of pressrue in the 2-phase area. Please choose 'h0', 'rear' or 'fore'.");
+  assert(init <> Processes.Internal.InitializationMethodsCondElement.T, "Temperature might is not independent of pressrue in the 2-phase area. Please choose 'h0', 'rear' or 'fore'.");
 
 equation
   //1) Calculated from enthalpies --> can go below zero and above one (needed for heat transfer calculations)!

@@ -92,6 +92,6 @@ equation
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="C")}),    Diagram(coordinateSystem(preserveAspectRatio=
+          textString="C")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)));
 end JunctionX3;

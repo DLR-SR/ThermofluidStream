@@ -16,11 +16,11 @@ model BoilerEspresso
 
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_heat "heatport to add heat"
-    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={-60,0},  rotation=0),
-      iconTransformation(extent={{-10,-10}, {10,10}}, origin={-60,0},  rotation=0)));
+    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={-60,0}, rotation=0),
+      iconTransformation(extent={{-10,-10}, {10,10}}, origin={-60,0}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_HX "heatport to add heat"
-    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={60,0},   rotation=0),
-    iconTransformation(extent={{-10,-10}, {10,10}}, origin={60,0},   rotation=0)));
+    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={60,0}, rotation=0),
+    iconTransformation(extent={{-10,-10}, {10,10}}, origin={60,0}, rotation=0)));
 
   Interfaces.Outlet steam_out(redeclare package Medium = Medium) "ontlet for steam"
     annotation (Placement(transformation(

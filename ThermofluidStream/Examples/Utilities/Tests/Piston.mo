@@ -140,7 +140,7 @@ equation
       points={{16,0},{16,-44.4},{16.6,-44.4}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}},   color={0,0,127}));
+  connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}}, color={0,0,127}));
   connect(flowResistance.outlet, switchConnector1.inlet) annotation (Line(
       points={{-26,10},{6,10}},
       color={28,108,200},
@@ -174,7 +174,7 @@ equation
       points={{64,-20},{54,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, tanValve.u) annotation (Line(points={{74,-12},{74,2}},         color={0,0,127}));
+  connect(tanValve1.u, tanValve.u) annotation (Line(points={{74,-12},{74,2}}, color={0,0,127}));
   connect(junctionT2_1.inletB, tanValve.outlet) annotation (Line(
       points={{94,10},{84,10}},
       color={28,108,200},
@@ -194,7 +194,7 @@ equation
       points={{-66,0},{-66,-20},{-46,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}},  color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}}, color={0,0,127}));
     annotation (
       experiment(StopTime=15, Tolerance=1e-6, Interval=0.015),
         Documentation(info="<html>

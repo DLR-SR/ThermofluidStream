@@ -395,13 +395,13 @@ equation
         points={{50,57},{50,50},{-120,50},{-120,57}},
                                                     color={0,0,127}));
   connect(rTSwitch.splitRatio, ratioControl.splitRatio) annotation (Line(points={{-120,7},
-          {-120,-2},{-160,-2},{-160,50},{-120,50},{-120,57}},     color={0,0,127}));
+          {-120,-2},{-160,-2},{-160,50},{-120,50},{-120,57}}, color={0,0,127}));
   connect(rTSwitch1.splitRatio, ratioControl.splitRatio) annotation (Line(
         points={{50,7},{50,-2},{-160,-2},{-160,50},{-120,50},{-120,57}},
                                                                       color={0,0,
           127}));
   connect(leakageA.splitRatio, ratioControl.splitRatio) annotation (Line(points={{-120,
-          -43},{-120,-50},{-160,-50},{-160,50},{-120,50},{-120,57}},   color={0,
+          -43},{-120,-50},{-160,-50},{-160,50},{-120,50},{-120,57}}, color={0,
           0,127}));
   connect(leakageA1.splitRatio, ratioControl.splitRatio) annotation (Line(
         points={{50,-43},{50,-50},{-160,-50},{-160,50},{-120,50},{-120,57}},
@@ -488,7 +488,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(step.y, source.p0_var) annotation (Line(points={{-169,90},{-164,90},{
-          -164,66},{-152,66}},  color={0,0,127}));
+          -164,66},{-152,66}}, color={0,0,127}));
   connect(source1.p0_var, source.p0_var) annotation (Line(points={{-152,16},{
           -164,16},{-164,66},{-152,66}},
                                     color={0,0,127}));
@@ -499,9 +499,9 @@ equation
           -164,-84},{-164,66},{-152,66}},
                                      color={0,0,127}));
   connect(source4.p0_var, source.p0_var) annotation (Line(points={{18,66},{8,66},
-          {8,90},{-164,90},{-164,66},{-152,66}},   color={0,0,127}));
+          {8,90},{-164,90},{-164,66},{-152,66}}, color={0,0,127}));
   connect(source5.p0_var, source.p0_var) annotation (Line(points={{18,16},{8,16},
-          {8,90},{-164,90},{-164,66},{-152,66}},   color={0,0,127}));
+          {8,90},{-164,90},{-164,66},{-152,66}}, color={0,0,127}));
   connect(source6.p0_var, source.p0_var) annotation (Line(points={{18,-34},{8,
           -34},{8,90},{-164,90},{-164,66},{-152,66}},
                                                    color={0,0,127}));

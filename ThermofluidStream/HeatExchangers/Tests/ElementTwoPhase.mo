@@ -187,8 +187,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(prescribedTemperature.port, conductionElementHEX_twoPhase1.heatPort)
-    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}},  color={191,0,0}));
-  connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}},              color={0,0,127}));
+    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}}, color={191,0,0}));
+  connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}}, color={0,0,127}));
   connect(volume.outlet, mCV2.inlet) annotation (Line(
       points={{10,50},{20,50}},
       color={28,108,200},
@@ -205,7 +205,7 @@ equation
       points={{40,-80},{50,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(prescribedTemperature1.port, volume1.heatPort) annotation (Line(points={{-20,-60},{0,-60},{0,-72}},        color={191,0,0}));
+  connect(prescribedTemperature1.port, volume1.heatPort) annotation (Line(points={{-20,-60},{0,-60},{0,-72}}, color={191,0,0}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-50,80},{-40,80}},
       color={28,108,200},
@@ -240,11 +240,11 @@ equation
       points={{-20,-80},{-10,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid2.y, source.h0_var) annotation (Line(points={{-79,80},{-62,80}},                         color={0,0,127}));
+  connect(trapezoid2.y, source.h0_var) annotation (Line(points={{-79,80},{-62,80}}, color={0,0,127}));
   connect(source2.h0_var, source.h0_var)
-    annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}},                                               color={0,0,127}));
+    annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}}, color={0,0,127}));
   connect(prescribedTemperature1.T, prescribedTemperature.T)
-    annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}},                                   color={0,0,127}));
+    annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}}, color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),

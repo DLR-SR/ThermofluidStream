@@ -211,7 +211,7 @@ equation
       points={{74,10},{64,10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),                                  Diagram(coordinateSystem(preserveAspectRatio=
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-160,-100},{220,100}})),
     experiment(
       StopTime=10,

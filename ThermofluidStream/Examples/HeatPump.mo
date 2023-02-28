@@ -387,7 +387,7 @@ equation
       points={{-124,-118},{-130,-118},{-130,-90},{-140,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}},                 color={191,0,0}));
+  connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}}, color={191,0,0}));
   connect(sensorVaporQuality8.inlet, accumulator.inlet)
     annotation (Line(
       points={{-56,-36},{-50,-36},{-50,-74},{-40,-74}},
@@ -416,7 +416,7 @@ equation
       thickness=0.5));
   connect(PI.y, controlValve.u_in) annotation (Line(points={{-111,0},{-152,0}}, color={0,0,127}));
   connect(step.y, PI1.u_s) annotation (Line(points={{147,0},{126,0}}, color={0,0,127}));
-  connect(torque.flange, compressor.flange) annotation (Line(points={{24,0},{10,0}},  color={0,0,0}));
+  connect(torque.flange, compressor.flange) annotation (Line(points={{24,0},{10,0}}, color={0,0,0}));
   connect(PI2.y, torque.tau) annotation (Line(points={{61,0},{46,0}}, color={0,0,127}));
   connect(compressor.output_val, PI2.u_m) annotation (Line(points={{10,-8},{26,-8},{26,-26},{72,-26},{72,-12}}, color={0,0,127}));
   connect(PI2.u_s, PI1.y) annotation (Line(points={{84,0},{103,0}}, color={0,0,127}));

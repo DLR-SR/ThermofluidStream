@@ -115,6 +115,6 @@ equation
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}),                 Diagram(
+          lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end Switch;

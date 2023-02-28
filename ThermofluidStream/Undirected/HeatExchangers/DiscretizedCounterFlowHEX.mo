@@ -157,7 +157,7 @@ equation
   connect(thermalElementA[nCells].fore,foreA) annotation (Line(points={{-10,-80},{-100,-80}}, color={28,108,200}));
 
   connect(thermalElementB.heatPort, thermalConductor.port_b)
-    annotation (Line(points={{0,70.2},{0,10}},                                   color={191,0,0}));
+    annotation (Line(points={{0,70.2},{0,10}}, color={191,0,0}));
 
   for i in 1:nCells loop
     connect(thermalElementA[i].heatPort, thermalConductor[nCells + 1 - i].port_a)
@@ -292,7 +292,7 @@ equation
             lineColor = {188,36,38}),
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
-        Line(points={{18,14},{8,4},{8,-16}},   color={188,36,38}),
+        Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
     Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

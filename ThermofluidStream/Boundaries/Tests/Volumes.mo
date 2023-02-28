@@ -291,7 +291,7 @@ equation
       thickness=0.5));
 
   connect(fixedTemperature.port,heatportVolume. heatPort)
-    annotation (Line(points={{-28,-110},{0,-110},{0,-88}},   color={191,0,0}));
+    annotation (Line(points={{-28,-110},{0,-110},{0,-88}}, color={191,0,0}));
   connect(heatportVolume.outlet,flowResistance. inlet) annotation (Line(
       points={{10,-80},{20,-80}},
       color={28,108,200},

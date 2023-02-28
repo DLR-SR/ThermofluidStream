@@ -341,9 +341,9 @@ equation
   connect(pulse3.y, boundaryFore8.p0_var) annotation (Line(points={{-49,-50},{-30,
           -50},{-30,-56},{-22,-56}}, color={0,0,127}));
   connect(pulse5.y,mCV. setpoint_var) annotation (Line(points={{-49,60},{10,60},
-          {10,48}},                                                                           color={0,0,127}));
+          {10,48}}, color={0,0,127}));
   connect(trapezoid2.y,mCV5. setpoint_var) annotation (Line(points={{-49,100},{10,
-          100},{10,88}},                                                                            color={0,0,127}));
+          100},{10,88}}, color={0,0,127}));
   connect(boundaryRear.fore, mCV5.rear) annotation (Line(
       points={{-10,80},{0,80}},
       color={28,108,200},

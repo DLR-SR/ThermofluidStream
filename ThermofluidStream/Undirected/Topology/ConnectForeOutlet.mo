@@ -46,7 +46,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(connectRearOutlet.state_rear, state_rear) annotation (Line(points={{10,4},{
-          10,12},{0,12},{0,40}},      color={162,29,33}));
+          10,12},{0,12},{0,40}}, color={162,29,33}));
   annotation (Icon(
       graphics={
         Line(

@@ -152,7 +152,7 @@ equation
         Text(
           extent={{-120,-20},{-60,-72}},
           lineColor={175,175,175},
-          textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
+          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>

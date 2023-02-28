@@ -28,7 +28,7 @@ model TerminalSourceSink "Test for Terminal source and sink model"
   Source source(redeclare package Medium = Medium, pressureFromInput=true) annotation (Placement(transformation(extent={{-26,-26},{-6,-6}})));
 equation
 
-  connect(pulse.y, sink2.p0_var) annotation (Line(points={{-39,0},{26,0},{26,14},{20,14}},  color={0,0,127}));
+  connect(pulse.y, sink2.p0_var) annotation (Line(points={{-39,0},{26,0},{26,14},{20,14}}, color={0,0,127}));
   connect(sink2.inlet, terminalSource.outlet) annotation (Line(
       points={{8,14},{-6,14}},
       color={28,108,200},

@@ -238,7 +238,7 @@ equation
   connect(gain1.y, feedback.u1)
     annotation (Line(points={{-163,-60},{-142,-60}}, color={0,0,127}));
   connect(multiSensor_Tpm3.m_flow_out, feedback.u2) annotation (Line(points={{-80,-18},
-          {-134,-18},{-134,-52}},          color={0,0,127}));
+          {-134,-18},{-134,-52}}, color={0,0,127}));
   connect(PI.y, speed.w_ref)
     annotation (Line(points={{-89,-60},{-70,-60}}, color={0,0,127}));
   connect(feedback.y, PI.u)
@@ -249,7 +249,7 @@ equation
           -152.5,-38},{-146,-38},{-146,-60},{-142,-60}}, color={0,0,127}));
   connect(prescribedHeatFlow.Q_flow, combiTimeTable.y[1])
     annotation (Line(points={{-154,20},{-167,20}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),        Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-200,-120},{180,100}})),
     experiment(StopTime=10000, Tolerance=1e-6, Interval=10, __Dymola_Algorithm="Dassl"),
         Documentation(info="<html>

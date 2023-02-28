@@ -178,7 +178,7 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5), Text(
           extent={{-92,46},{-66,4}},
           lineColor={116,116,116},
           textString="%N")}),

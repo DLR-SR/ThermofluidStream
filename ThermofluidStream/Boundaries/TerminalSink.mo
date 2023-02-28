@@ -39,7 +39,7 @@ equation
         Line(
           points={{-60,30},{-20,-30}},
           color={28,108,200},
-          thickness=0.5)}),                                      Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sink that terminates the flow. </p>
 <p>It imposes a m_flow=0 boundary.</p>

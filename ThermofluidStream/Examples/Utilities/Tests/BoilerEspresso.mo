@@ -150,7 +150,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boilerEspresso.heatport_heat, prescribedHeatFlow.port) annotation (
-      Line(points={{-2,0},{-20,0}},                      color={191,0,0}));
+      Line(points={{-2,0},{-20,0}}, color={191,0,0}));
 
   connect(prescribedHeatFlow1.port, boilerEspresso.heatport_HX)
     annotation (Line(points={{40,1.33227e-15},{32,1.33227e-15},{32,0},{22,0}},
@@ -171,9 +171,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(tanValve1.u, firstOrder1.y)
-    annotation (Line(points={{38,70},{49,70}},    color={0,0,127}));
+    annotation (Line(points={{38,70},{49,70}}, color={0,0,127}));
   connect(firstOrder1.u, pulse.y)
-    annotation (Line(points={{72,70},{79,70}},     color={0,0,127}));
+    annotation (Line(points={{72,70},{79,70}}, color={0,0,127}));
   connect(tanValve2.outlet, sink1.inlet) annotation (Line(
       points={{-10,80},{-10,90}},
       color={28,108,200},
@@ -183,9 +183,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(tanValve2.u,firstOrder2. y)
-    annotation (Line(points={{-18,70},{-29,70}},  color={0,0,127}));
+    annotation (Line(points={{-18,70},{-29,70}}, color={0,0,127}));
   connect(firstOrder2.u, pulse1.y)
-    annotation (Line(points={{-52,70},{-61,70}},     color={0,0,127}));
+    annotation (Line(points={{-52,70},{-61,70}}, color={0,0,127}));
   connect(flowResistance2.inlet, boilerEspresso.water_out) annotation (Line(
       points={{-8,30},{-8,26},{2,26},{2,20}},
       color={28,108,200},

@@ -19,13 +19,13 @@ model DynamicPressureOutflow
   Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,100}),             iconTransformation(extent={{-20,-20},{20,20}},
+        origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100})));
   Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s")=v_out if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={-60,100}),           iconTransformation(extent={{-20,-20},{20,20}},
+        origin={-60,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-60,100})));
 

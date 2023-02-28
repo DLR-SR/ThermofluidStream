@@ -82,7 +82,7 @@ equation
     annotation (Line(points={{0,10},{0,34},{2,34}},
                                              color={191,0,0}));
   connect(fixedHeatFlow.port, heatCapacitor.port) annotation (Line(points={{
-          -1.77636e-15,60},{0,60},{0,34},{2,34}},           color={191,0,0}));
+          -1.77636e-15,60},{0,60},{0,34},{2,34}}, color={191,0,0}));
   connect(thermalConvection.outlet, multiSensor_Tpm.inlet) annotation (Line(
       points={{10,0},{40,0}},
       color={28,108,200},

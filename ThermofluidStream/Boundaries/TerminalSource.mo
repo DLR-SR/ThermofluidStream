@@ -54,7 +54,7 @@ equation
         Line(
           points={{30,30},{70,-30}},
           color={28,108,200},
-          thickness=0.5)}),                                      Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Source that terminates the flow. </p>
 <p>It imposes a m_flow=0 boundary and with a time constant, adapts the pressure such that the inertial pressure r goes to zero.</p>

@@ -56,7 +56,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(extent={{-86,38},{-66,58}})));
   Boundaries.VolumeFlex volumeFlex(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{-4,38},{16,58}})));
   Examples.Utilities.Receiver receiver(redeclare package Medium =
-        XRGMedia.R134a_ph,                                                           p_start=200000)
+        XRGMedia.R134a_ph, p_start=200000)
     annotation (Placement(transformation(extent={{-36,22},{-56,42}})));
   Boundaries.Sink sink3(redeclare package Medium = XRGMedia.R134a_ph, p0_par=180000)
     annotation (Placement(transformation(extent={{-156,-10},{-176,10}})));
@@ -124,11 +124,11 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Boundaries.Source source2(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{-102,6},{-82,26}})));
   Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
       Medium =
-        XRGMedia.R1234yf_ph,                                                                             v_in_par=1)
+        XRGMedia.R1234yf_ph, v_in_par=1)
     annotation (Placement(transformation(extent={{-74,6},{-54,26}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
       Medium =
-        XRGMedia.R1234yf_ph,                                                                               A_par=2)
+        XRGMedia.R1234yf_ph, A_par=2)
     annotation (Placement(transformation(extent={{52,6},{72,26}})));
   Boundaries.Sink sink(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{112,6},{132,26}})));
   Processes.FlowResistance flowResistance6(
@@ -164,7 +164,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     m_flow_ref_set=1)
     annotation (Placement(transformation(extent={{-4,-18},{16,-38}})));
   Processes.ConductionElement conductionElement1(redeclare package Medium =
-        XRGMedia.R245fa_ph,                                                                     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+        XRGMedia.R245fa_ph, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
@@ -315,7 +315,7 @@ equation
       points={{72,-28},{88,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, basicControlValve.u_in) annotation (Line(points={{-17,-50},{6,-50},{6,-36}},     color={0,0,127}));
+  connect(ramp.y, basicControlValve.u_in) annotation (Line(points={{-17,-50},{6,-50},{6,-36}}, color={0,0,127}));
   connect(flowResistance5.inlet, pump.outlet) annotation (Line(
       points={{-108,32},{-100,32}},
       color={28,108,200},

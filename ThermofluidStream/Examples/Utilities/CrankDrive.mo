@@ -84,7 +84,7 @@ equation
           lineColor={162,29,33},
           lineThickness=0.5,
           fillColor={255,221,224},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{300,
             100}})),
     Documentation(info="<html>

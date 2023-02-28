@@ -99,11 +99,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(inertia.flange_b, turbine.flange)
-    annotation (Line(points={{0,-60},{50,-60},{50,-20}},  color={0,0,0}));
+    annotation (Line(points={{0,-60},{50,-60},{50,-20}}, color={0,0,0}));
   connect(inertia.flange_a, compressor.flange)
     annotation (Line(points={{-20,-60},{-80,-60},{-80,-20}}, color={0,0,0}));
   connect(prescribedHeatFlow.port, volume.heatPort)
-    annotation (Line(points={{-10,8},{-10,-2}},    color={191,0,0}));
+    annotation (Line(points={{-10,8},{-10,-2}}, color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, compressor.flange)
     annotation (Line(points={{-110,-60},{-80,-60},{-80,-20}},
                                                            color={0,0,0}));

@@ -81,7 +81,7 @@ equation
           points={{-70,-60},{80,-60}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{0,-26},{0,-60}},  color={0,0,0}),
+        Line(points={{0,-26},{0,-60}}, color={0,0,0}),
         Ellipse(
           extent={{-6,-54},{6,-66}},
           lineColor={28,108,200},

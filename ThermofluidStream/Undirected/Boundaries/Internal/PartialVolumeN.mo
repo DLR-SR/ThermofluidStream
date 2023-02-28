@@ -191,10 +191,10 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5), Text(
           extent={{-90,48},{-64,6}},
           lineColor={116,116,116},
-          textString="%N_rear"),                                          Text(
+          textString="%N_rear"), Text(
           extent={{66,48},{92,6}},
           lineColor={116,116,116},
           textString="%N_fore")}),

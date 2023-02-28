@@ -43,7 +43,7 @@ model CounterFlowNTU_serial
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-50,8},{-70,28}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = MediumB,                       outputMassFlowRate=false,
+      Medium = MediumB, outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{90,20},{70,40}})));
   inner DropOfCommons dropOfCommons

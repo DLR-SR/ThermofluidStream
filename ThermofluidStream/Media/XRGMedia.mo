@@ -468,7 +468,7 @@ Example:
        annotation (Documentation(revisions="<html>
 <p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
 <p>2012-08-01 Stefan Wischhusen: Corrected passing-error of inputs.</p>
-</html>",     info="<html>
+</html>", info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
 <li>pressure</li>
@@ -727,7 +727,7 @@ Example:
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
-      annotation (Inline = true,  Documentation(info="<html>
+      annotation (Inline = true, Documentation(info="<html>
 <p> This function calculates the specific internal energy of R134a from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)u-Diagram-R134a.png\"/> </p>
 
@@ -740,7 +740,7 @@ Example:
     algorithm
      h:=state.h;
 
-      annotation (Inline = true,  Documentation(info="<html>
+      annotation (Inline = true, Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
 </html>"));
@@ -2692,7 +2692,7 @@ This function integrates the derivative of temperature w.r.t. time in order to a
 </p>
 <h4>Restrictions</h4>
 The function cannot be inverted in a numerical way. Please use functions <a href=\"modelica://XRG_Media.R134a.R134a_ph.rho_props_ph\">rho_props_ph</a> and <a href=\"modelica://XRG_Media.R134a.R134a_ph.T_props_ph\">T_props_ph</a> for this purpose.
-</html>",     revisions="<html>
+</html>", revisions="<html>
 2020-01-08 Stefan Wischhusen: Iteration converges better with guesses of rho_liq(T) and rho_vap(T).
 </html>"));
     end dofpT;
@@ -2778,7 +2778,7 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
-</html>",  revisions="<html>
+</html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
@@ -7856,7 +7856,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
               p=p,
               phase=1);
 
-       annotation (Inline=true,   Documentation(info="<html>
+       annotation (Inline=true, Documentation(info="<html>
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
@@ -9740,7 +9740,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
 <dt>Yata et al.: </dt>
 <dd><strong>Equations of Thermal Conductivity of Natural Refrigerants</strong>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
 </dl>
-</html>",   revisions="<html>
+</html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
@@ -14826,7 +14826,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
               p=p,
               phase=1);
 
-       annotation (Inline=true,   Documentation(info="<html>
+       annotation (Inline=true, Documentation(info="<html>
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
@@ -16792,7 +16792,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dt>Vesovic, V. et al.: </dt>
 <dd><strong>The Transport Properties of Carbon Dioxide</strong>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
 </dl>
-</html>",   revisions="<html>
+</html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
@@ -21845,7 +21845,7 @@ Example:
          Documentation(
            revisions="<html>
 <p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
-</html>",  info="<html>
+</html>", info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
 <li>pressure</li>
@@ -24159,7 +24159,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
 <dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 
-</html>",   revisions="<html>
+</html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
@@ -29232,7 +29232,7 @@ Example:
          Documentation(
            revisions="<html>
 <p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
-</html>",  info="<html>
+</html>", info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
 <li>pressure</li>
@@ -29315,7 +29315,7 @@ Example:
               p=p,
               phase=1);
 
-       annotation (Inline=true,   Documentation(info="<html>
+       annotation (Inline=true, Documentation(info="<html>
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
@@ -29495,7 +29495,7 @@ Example:
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
-      annotation (Inline = true,  Documentation(info="<html>
+      annotation (Inline = true, Documentation(info="<html>
 <p> This function calculates the specific internal energy of R245fa from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Lemmon (2006). </p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"/> </p>
 
@@ -29508,7 +29508,7 @@ Example:
     algorithm
       h:=state.h;
 
-      annotation (Inline = true,  Documentation(info="<html>
+      annotation (Inline = true, Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
 </html>"));
@@ -31262,7 +31262,7 @@ when on the other side of a phase boundary)
 <p>
 The function cannot be inverted in a numerical way. Please use functions <a href=\"modelica://XRG_Media.R245fa_ph.rho_props_ph\">rho_props_ph</a> and <a href=\"modelica://XRG_Media.R245fa_ph.T_props_ph\">T_props_ph</a> for this purpose.
 </p>
-</html>",     revisions="<html>
+</html>", revisions="<html>
 <p>
 2020-01-08 Stefan Wischhusen: Iteration converges better with guesses of rho_liq(T) and rho_vap(T).
 </p>
@@ -31340,7 +31340,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dt>Lemmon, E.W. and W. Span: </dt>
 <dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
-</html>",   revisions="<html>
+</html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
@@ -36240,7 +36240,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245faData;
-  annotation (preferedView="info",        Documentation(info="<html>
+  annotation (preferedView="info", Documentation(info="<html>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/></p>
 
 <h4>Library description</h4>

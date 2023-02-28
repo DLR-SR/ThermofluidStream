@@ -96,7 +96,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation fo the Specific Valve Type.</p>
 <p>This valve models the behaviour of specific valve types.</p>

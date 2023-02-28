@@ -155,7 +155,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
-    annotation (Line(points={{17,-48},{38,-48}},  color={0,0,127}));
+    annotation (Line(points={{17,-48},{38,-48}}, color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{61,-48},{76.8,-48}}, color={0,0,127}));
   connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{90.6,-48},{112,-48},{112,-2},{104,-2}}, color={0,0,127}));
@@ -173,7 +173,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-102,-34},{-108,-34},{-108,-40},{-113,-40}}, color={0,0,127}));
-  connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}},              color={0,0,127}));
+  connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}}, color={0,0,127}));
   connect(feedback.u1, ramp1.y) annotation (Line(points={{0,-48},{-19,-48}}, color={0,0,127}));
   connect(discretizedHEX.foreB, multiSensor_Tpm3.rear) annotation (Line(
       points={{-14.2,8},{-24,8}},

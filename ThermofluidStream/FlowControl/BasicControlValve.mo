@@ -72,7 +72,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>
 <p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>

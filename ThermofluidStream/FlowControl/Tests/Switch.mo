@@ -128,7 +128,7 @@ equation
       points={{10,70},{20,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, switch.u) annotation (Line(points={{-9,40},{0,40},{0,62}},        color={0,0,127}));
+  connect(pulse.y, switch.u) annotation (Line(points={{-9,40},{0,40},{0,62}}, color={0,0,127}));
   connect(flowResistance6.outlet, sink3.inlet) annotation (Line(
       points={{-50,-30},{-60,-30}},
       color={28,108,200},

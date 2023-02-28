@@ -107,7 +107,7 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,-60},{0,-80}},  color={0,0,0}),
+        Line(points={{0,-60},{0,-80}}, color={0,0,0}),
         Ellipse(
           extent={{-6,-74},{6,-86}},
           lineColor={28,108,200},
@@ -143,7 +143,7 @@ equation
         Text(
           extent={{-120,0},{-60,-52}},
           lineColor={175,175,175},
-          textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
+          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
 <p>Undirected&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>

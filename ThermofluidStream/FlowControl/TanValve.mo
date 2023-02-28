@@ -6,7 +6,7 @@ model TanValve "Valve with tan-shaped flow resistance"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -70,7 +70,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>The TanValve is the most basic valve and can be used when no valve type is set yet. </p>
 <p>It adjusts its flow resistance coefficient according to a tangens of the input. The pole of the tan function can lead to numerical problems.</p>

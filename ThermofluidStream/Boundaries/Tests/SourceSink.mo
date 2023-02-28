@@ -13,7 +13,7 @@ model SourceSink "Test for source and sink model"
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{58,-74},{78,-54}})));
   Source source(redeclare package Medium=Medium,
-    p0_par=200000,                                              L=0,
+    p0_par=200000, L=0,
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-32,10},{-12,30}})));
   Sink sink(redeclare package Medium=Medium, p0_par=100000)

@@ -232,7 +232,7 @@ equation
       points={{10,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse1.y, source1.p0_var) annotation (Line(points={{-59,0},{-40,0},{-40,6},{-32,6}},     color={0,0,127}));
+  connect(pulse1.y, source1.p0_var) annotation (Line(points={{-59,0},{-40,0},{-40,6},{-32,6}}, color={0,0,127}));
   connect(mCV2.inlet, source2.outlet) annotation (Line(
       points={{-10,-30},{-20,-30}},
       color={28,108,200},
@@ -285,8 +285,8 @@ equation
       points={{10,70},{20,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse5.y, mCV.setpoint_var) annotation (Line(points={{-59,50},{0,50},{0,38}},       color={0,0,127}));
-  connect(trapezoid2.y, mCV5.setpoint_var) annotation (Line(points={{-59,90},{0,90},{0,78}},        color={0,0,127}));
+  connect(pulse5.y, mCV.setpoint_var) annotation (Line(points={{-59,50},{0,50},{0,38}}, color={0,0,127}));
+  connect(trapezoid2.y, mCV5.setpoint_var) annotation (Line(points={{-59,90},{0,90},{0,78}}, color={0,0,127}));
   connect(mCV6.inlet,source6. outlet) annotation (Line(
       points={{-8,140},{-18,140}},
       color={28,108,200},

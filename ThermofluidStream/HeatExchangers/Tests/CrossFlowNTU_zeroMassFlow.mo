@@ -56,7 +56,7 @@ model CrossFlowNTU_zeroMassFlow
         rotation=90,
         origin={-10,-24})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = MediumB,                       outputMassFlowRate=false,
+      Medium = MediumB, outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,

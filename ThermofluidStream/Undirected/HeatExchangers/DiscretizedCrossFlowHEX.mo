@@ -330,7 +330,7 @@ equation
             lineColor = {188,36,38}),
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
-        Line(points={{18,14},{8,4},{8,-16}},   color={188,36,38}),
+        Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

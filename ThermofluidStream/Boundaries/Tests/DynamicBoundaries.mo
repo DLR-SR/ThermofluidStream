@@ -225,8 +225,8 @@ equation
       points={{30,60},{10,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{21,90},{34,90},{34,70}},    color={0,0,127}));
-  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{59,90},{40,90},{40,70}},    color={0,0,127}));
+  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{21,90},{34,90},{34,70}}, color={0,0,127}));
+  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{59,90},{40,90},{40,70}}, color={0,0,127}));
   connect(source3.outlet,dynamicPressureInflow3. inlet)
     annotation (Line(
       points={{-60,-60},{-50,-60}},

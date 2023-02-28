@@ -117,7 +117,7 @@ equation
   for i in 1:nCells-1 loop
     connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{102,80}},                 color={28,108,200}));
+  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{102,80}}, color={28,108,200}));
 
   //Fluid Side A
   connect(inletA, thermalElementA[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200}));
@@ -127,7 +127,7 @@ equation
   connect(thermalElementA[nCells].outlet, outletA) annotation (Line(points={{-10,-80},{-102,-80}}, color={28,108,200}));
 
   connect(thermalElementB.heatPort, thermalConductor.port_b)
-    annotation (Line(points={{0,70.2},{0,10}},                                   color={191,0,0}));
+    annotation (Line(points={{0,70.2},{0,10}}, color={191,0,0}));
 
   for i in 1:nCells loop
     connect(thermalElementA[i].heatPort, thermalConductor[nCells + 1 - i].port_a)

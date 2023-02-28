@@ -122,7 +122,7 @@ equation
   end if;
   if not useRear then
     m_flow_rear = 0;
-    state_in_rear = Medium.setState_phX(Medium.p_default,  Medium.h_default, Medium.X_default[1:Medium.nXi]);
+    state_in_rear = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
     end if;
   if not useFore then
     m_flow_fore = 0;

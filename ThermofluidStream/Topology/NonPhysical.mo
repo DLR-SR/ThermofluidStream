@@ -64,7 +64,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
           rotation=90,
-          origin={0,-100}),                                                                                                          iconTransformation(
+          origin={0,-100}), iconTransformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,-30})));

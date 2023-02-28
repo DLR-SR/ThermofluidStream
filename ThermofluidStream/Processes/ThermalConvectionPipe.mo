@@ -107,7 +107,7 @@ equation
         Line(points={{-84,-44},{88,-44}}, color={238,46,47}),
         Line(
           points={{-60,0},{64,0}},
-          color={28,108,200})}),       Diagram(coordinateSystem(
+          color={28,108,200})}), Diagram(coordinateSystem(
           preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component models the convective heat transfer in a pipe element with constant heat flux. </p>

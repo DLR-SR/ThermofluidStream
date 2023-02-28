@@ -422,9 +422,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(PI.y, pump.omega_input)
-    annotation (Line(points={{19,0},{10,0},{10,-10}},      color={0,0,127}));
+    annotation (Line(points={{19,0},{10,0},{10,-10}}, color={0,0,127}));
   connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{16,34},{38.8,34}}, color={0,0,127}));
-  connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{70,-14}},                  color={0,0,127}));
+  connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{70,-14}}, color={0,0,127}));
   connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{119.8,20}}, color={191,0,0}));
   connect(splitterT2_1.inlet, conductionElement1.outlet)
     annotation (Line(
@@ -444,13 +444,13 @@ equation
       points={{-60,-10},{-60,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(gain.y, feedback.u1) annotation (Line(points={{52.6,34},{80,34},{80,0},{68,0}},                         color={0,0,127}));
+  connect(gain.y, feedback.u1) annotation (Line(points={{52.6,34},{80,34},{80,0},{68,0}}, color={0,0,127}));
   connect(tanValve1.u, firstOrder1.y) annotation (Line(points={{-22,150},{-11,150}},
                                      color={0,0,127}));
   connect(thermalResistor.port_a, brewing_head.port)
-    annotation (Line(points={{160,20},{140,20}},         color={191,0,0}));
+    annotation (Line(points={{160,20},{140,20}}, color={191,0,0}));
   connect(environment.port, thermalResistor.port_b)
-    annotation (Line(points={{190,20},{180,20}},          color={191,0,0}));
+    annotation (Line(points={{190,20},{180,20}}, color={191,0,0}));
   connect(tanValve1.outlet, singleFlowSensor2.inlet) annotation (Line(
       points={{-30,140},{-30,130}},
       color={28,108,200},
@@ -462,7 +462,7 @@ equation
   connect(steam_valve.y, firstOrder1.u)
     annotation (Line(points={{29,150},{12,150}}, color={0,0,127}));
   connect(PI.u, feedback.y)
-    annotation (Line(points={{42,0},{51,0}},       color={0,0,127}));
+    annotation (Line(points={{42,0},{51,0}}, color={0,0,127}));
   connect(pump1.outlet, splitterT2_2.inlet) annotation (Line(
       points={{-100,-120},{-70,-120}},
       color={28,108,200},
@@ -605,7 +605,7 @@ equation
           textString="Steam",
           origin={-56,77},
           rotation=90),
-        Rectangle(extent={{96,52},{218,-86}},    lineColor={28,108,200}),
+        Rectangle(extent={{96,52},{218,-86}}, lineColor={28,108,200}),
         Text(
           extent={{152,-72},{218,-84}},
           lineColor={28,108,200},
@@ -615,7 +615,7 @@ equation
           lineColor={28,108,200},
           textString="Coffee strainer and Cups"),
         Rectangle(extent={{62,-110},{162,-184}}, lineColor={28,108,200}),
-        Rectangle(extent={{-210,48},{-6,-48}},   lineColor={28,108,200}),
+        Rectangle(extent={{-210,48},{-6,-48}}, lineColor={28,108,200}),
         Text(
           extent={{-208,46},{-116,34}},
           lineColor={28,108,200},
@@ -625,7 +625,7 @@ equation
           extent={{-116,-134},{-80,-146}},
           lineColor={28,108,200},
           textString="Pump"),
-        Rectangle(extent={{-176,188},{60,52}},   lineColor={28,108,200}),
+        Rectangle(extent={{-176,188},{60,52}}, lineColor={28,108,200}),
         Text(
           extent={{-174,184},{-68,174}},
           lineColor={28,108,200},
