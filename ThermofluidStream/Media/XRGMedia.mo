@@ -466,8 +466,8 @@ Example:
        state.d := d;
 
        annotation ( Documentation(revisions="<html>
-<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
-<p>2012-08-01  Stefan Wischhusen: Corrected passing-error of inputs.</p>
+<p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2012-08-01 Stefan Wischhusen: Corrected passing-error of inputs.</p>
 </html>",     info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
@@ -7810,7 +7810,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
        state.d := d;
 
        annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>"));
+   <p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p></html>"));
     end setState_dTX;
 
     redeclare function extends setState_psX
@@ -14778,7 +14778,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
        state.d := d;
 
        annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>"));
+   <p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p></html>"));
     end setState_dTX;
 
     redeclare function extends setState_psX
@@ -21844,7 +21844,7 @@ Example:
        annotation (
          Documentation(
            revisions="<html>
-<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
 </html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
@@ -29231,7 +29231,7 @@ Example:
        annotation (
          Documentation(
            revisions="<html>
-<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2019-12-17 Stefan Wischhusen: Two-phase calculation corrected.</p>
 </html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
