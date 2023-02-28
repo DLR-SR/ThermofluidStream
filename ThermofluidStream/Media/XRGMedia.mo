@@ -1674,7 +1674,7 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 <p> This function calculates the thermal conductivity of R134a from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the corresponding states model of McLinden, Klein. and Perkins (2000). </p>
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>               
+</p>
 
 <h4>References</h4>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
@@ -1710,7 +1710,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
 <p> This function calculates the surface tension of R134a from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p>
 <h4>Restrictions</h4>
 <p>This property is only defined in two-phase region.
-</p>                        
+</p>
 
 <h4>References</h4>
 <dl><dt>Okada and Higashi: </dt>
@@ -23014,7 +23014,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <p> This function calculates the dynamic viscosity of R1234yf from the state record (e.g., use setState_phX function for input). The dynamic viscosity is modelled by the corresponding states method of Akasaka (2010). </p>
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>               
+</p>
 
 <h4>References</h4>
 <dl>
@@ -23104,7 +23104,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <p> This function calculates the thermal conductivity of R1234yf from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the a model of Perkins and Huber (2011). </p>
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>                  
+</p>
 
 <h4>References</h4>
 <dl>

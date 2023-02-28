@@ -82,8 +82,8 @@ equation
       Diagram(coordinateSystem(preserveAspectRatio=false), graphics={Text(
           extent={{-40,60},{40,40}},
           lineColor={28,108,200},
-          textString="Use of dynamicInflow instead of nozzle, 
-because velocity can directly be set, instead of A, 
+          textString="Use of dynamicInflow instead of nozzle,
+because velocity can directly be set, instead of A,
 that will need regularization for low massflow.")}),
     Documentation(info="<html>
 <p>Junction that takes into account dynamic pressure.</p>

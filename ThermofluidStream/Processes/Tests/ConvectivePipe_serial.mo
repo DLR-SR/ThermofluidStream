@@ -60,7 +60,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
   Utilities.showRealValue showRealValue1(
     use_numberPort=false,
     description="v_m",
-    number=thermalConvection.v_m) 
+    number=thermalConvection.v_m)
     annotation (Placement(transformation(extent={{10,-8},{30,-28}})));
     */
   Utilities.showRealValue showRealValue2(
