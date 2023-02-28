@@ -9,7 +9,7 @@ initial equation
   x = 0;
 
 equation
-  der(x)*0.1 =  max(0, inlet.m_flow/m_flow_animate) -x;
+  der(x)*0.1 = max(0, inlet.m_flow/m_flow_animate) -x;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Polygon(

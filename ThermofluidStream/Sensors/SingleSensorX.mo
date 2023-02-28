@@ -31,8 +31,8 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
 
-  function mfk =  ThermofluidStream.Utilities.Functions.massFractionK(redeclare
-        package Medium =                                                                         Medium);
+  function mfk = ThermofluidStream.Utilities.Functions.massFractionK(
+    redeclare package Medium = Medium);
 
 protected
   outer DropOfCommons dropOfCommons;

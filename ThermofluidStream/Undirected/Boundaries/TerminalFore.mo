@@ -2,15 +2,15 @@ within ThermofluidStream.Undirected.Boundaries;
 model TerminalFore "Rear Boundary that impoeses m_flow = 0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info =              "<html>
+    "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info = "<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
 </html>"));
 
   parameter SI.Time TC = 0.1 "Time constant for pressure adaption"
     annotation(Dialog(tab="Advanced"));
   parameter SI.SpecificEnthalpy h = Medium.h_default "Source enthaply";
-  parameter Medium.MassFraction[Medium.nXi] Xi =  Medium.X_default[1:Medium.nXi] "Source mass fraction";
+  parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Source mass fraction";
   parameter SI.Pressure p_0 = Medium.p_default "Initial pressure";
 
   Interfaces.Rear rear(redeclare package Medium = Medium)

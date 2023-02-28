@@ -53,8 +53,8 @@ partial model PartialTurboComponent "Partial of components that exchange work be
 <p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
 </html>"));
 
-function getQuantity = Sensors.Internal.getFlowQuantity(redeclare package
-        Medium =                                                                 Medium) "Function to compute a selectable quantitiy"
+function getQuantity = Sensors.Internal.getFlowQuantity(
+  redeclare package Medium = Medium) "Function to compute a selectable quantitiy"
   annotation (
       Documentation(info="<html>
       <p>Function to compute a selectable quantitiy to output. The quantity is associated to the mass flow. </p>

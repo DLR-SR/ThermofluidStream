@@ -107,8 +107,8 @@ equation
   //Balance Equations
   inletA.m_flow + outletA.m_flow = 0;
   inletB.m_flow + outletB.m_flow = 0;
-  inletA.r - outletA.r  = der(inletA.m_flow) * L;
-  inletB.r - outletB.r  = der(inletB.m_flow) * L;
+  inletA.r - outletA.r = der(inletA.m_flow) * L;
+  inletB.r - outletB.r = der(inletB.m_flow) * L;
 
   //Specific heat capacities
   cp_A = (cpA_in + cpA_out)/2;

@@ -23,8 +23,8 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
         transformation(extent={{80,-20},{120,20}}),
           iconTransformation(extent={{80,-20},{120,20}})));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity(redeclare
-        package Medium =                                                                         Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity(
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
       <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
       </html>"));

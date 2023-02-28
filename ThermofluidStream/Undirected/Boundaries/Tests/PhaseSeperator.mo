@@ -142,14 +142,14 @@ model PhaseSeperator
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{104,40},{124,60}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter(redeclare
-      package Medium =                                                                       Medium) annotation (Placement(transformation(extent={{-90,18},{-70,26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter1(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{-30,18},{-10,26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter2(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{30,18},{50,26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter3(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{90,18},{110,26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-90,18},{-70,26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter1(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-30,18},{-10,26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter2(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{30,18},{50,26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter3(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{90,18},{110,26}})));
   ThermofluidStream.Undirected.Boundaries.PhaseSeparator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
@@ -159,14 +159,14 @@ model PhaseSeperator
     annotation (Placement(transformation(extent={{20,-30},{0,-10}})));
   Topology.ConnectForeFore connectForeFore(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   Topology.ConnectRearRear connectRearRear(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter4(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{-40,-18},{-20,-26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter5(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{40,-18},{60,-26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter6(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{100,-18},{120,-26}})));
-  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter7(redeclare
-      package Medium =                                                                        Medium) annotation (Placement(transformation(extent={{-100,-18},{-80,-26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter4(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-40,-18},{-20,-26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter5(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,-18},{60,-26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter6(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{100,-18},{120,-26}})));
+  Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter7(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-100,-18},{-80,-26}})));
 equation
   connect(boundaryRear.h0_var, timeTable.y) annotation (Line(points={{-112,20},{-124,20},{-124,0},{-133,0}}, color={0,0,127}));
   connect(boundaryRear1.h0_var, timeTable.y) annotation (Line(points={{-122,-20},{-128,-20},{-128,0},{-133,0}}, color={0,0,127}));

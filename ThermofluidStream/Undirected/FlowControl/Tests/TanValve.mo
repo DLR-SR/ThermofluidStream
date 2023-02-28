@@ -24,25 +24,25 @@ model TanValve "Test for undirected TanValve"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+      ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
-  Topology.JunctionRFF2                 junctionRFF2_1(
-                                                     redeclare package Medium = Medium)
+  Topology.JunctionRFF2 junctionRFF2_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm(redeclare package
-      Medium =                                                                         Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-78,-2},{-58,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{26,-2},{46,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-12,34},{8,54}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{42,34},{62,54}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,

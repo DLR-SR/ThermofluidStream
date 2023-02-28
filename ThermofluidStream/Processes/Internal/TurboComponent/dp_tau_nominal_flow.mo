@@ -29,9 +29,9 @@ protected
   SI.VolumeFlowRate V_flow "actual volume flow though pump";
   //slip = (V_flow_nominal - V_flow)/V_flow_nominal
 
-  SI.Volume V_r =  if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
-  Real k_p(unit="N.s/(m5)") =  if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
-  Real k_fric(unit="N.s/(m2)") =   if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
+  SI.Volume V_r = if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
+  Real k_p(unit="N.s/(m5)") = if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
+  Real k_fric(unit="N.s/(m2)") = if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
 
   constant Real radPrevolution(unit="rad") = 2*Modelica.Constants.pi;
 

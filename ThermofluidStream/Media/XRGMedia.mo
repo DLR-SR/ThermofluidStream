@@ -680,7 +680,7 @@ Example:
       extends Modelica.Icons.Function;
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Temperature T "temperature";
 
@@ -1524,7 +1524,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
        cv := Common.cv2Phase(liq=liq, vap=vap, x=x, T=state.T, p=state.p);
       else
        f := f_R134a(state.d, state.T);
-       cv :=  R134aData.R*(-f.tau*f.tau*f.ftautau);
+       cv := R134aData.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
       annotation ( Documentation(info="<html>
@@ -7951,7 +7951,7 @@ Example:
 
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Density d "density";
     algorithm
@@ -7976,7 +7976,7 @@ Example:
 
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Modelica.Units.SI.Temperature T "temperature";
     algorithm
@@ -8652,7 +8652,7 @@ Example:
        cv := Common.cv2Phase(   liq=liq, vap=vap, x=x, p=state.p, T=state.T);
       else
        f := f_NH3(state.d, state.T);
-       cv :=  NH3Data.R*(-f.tau*f.tau*f.ftautau);
+       cv := NH3Data.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
     end specificHeatCapacityCv;
@@ -14920,7 +14920,7 @@ Example:
       extends Modelica.Icons.Function;
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Density d "density";
 
@@ -14945,7 +14945,7 @@ Example:
       extends Modelica.Icons.Function;
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Modelica.Units.SI.Temperature T "temperature";
 
@@ -15627,7 +15627,7 @@ Example:
        cv := Common.cv2Phase(   liq=liq, vap=vap, x=x, p=state.p, T=state.T);
       else
         f := XRGMedia.CO2_ph.f_CO2(state.d, state.T);
-       cv :=  CO2Data.R*(-f.tau*f.tau*f.ftautau);
+       cv := CO2Data.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
 
@@ -22019,7 +22019,7 @@ Example:
       extends Modelica.Icons.Function;
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Density d "density";
 
@@ -22055,7 +22055,7 @@ Example:
       extends Modelica.Icons.Function;
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Modelica.Units.SI.Temperature T "temperature";
 
@@ -22894,7 +22894,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
        cv := Common.cv2Phase(   liq=liq, vap=vap, x=x, p=state.p, T=state.T);
       else
         f := XRGMedia.R1234yf_ph.f_R1234yf(state.d, state.T);
-       cv :=  R1234yfData.R*(-f.tau*f.tau*f.ftautau);
+       cv := R1234yfData.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
       annotation ( Documentation(info="<html>
@@ -29409,7 +29409,7 @@ Example:
       extends Modelica.Icons.Function;
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Density d "density";
 
@@ -29446,7 +29446,7 @@ Example:
       extends Modelica.Icons.Function;
       input AbsolutePressure p "pressure";
       input SpecificEnthalpy h "specific enthalpy";
-      input Integer phase =   0
+      input Integer phase = 0
       "2 for two-phase, 1 for one-phase, 0 if not known";
       output Temperature T "temperature";
 
@@ -30190,7 +30190,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
        cv := Common.cv2Phase(   liq=liq, vap=vap, x=x, p=state.p, T=state.T);
       else
         f := XRGMedia.R245fa_ph.f_R245fa(state.d, state.T);
-       cv :=  R245faData.R*(-f.tau*f.tau*f.ftautau);
+       cv := R245faData.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
 

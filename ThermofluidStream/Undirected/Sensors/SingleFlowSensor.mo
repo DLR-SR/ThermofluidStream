@@ -28,8 +28,8 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity (redeclare
-        package Medium =                                                                              Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity(
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
         <p>This function computes the selected quantity from state and massflow. rho_min is neddet for the computation of v. </p>
         </html>"));

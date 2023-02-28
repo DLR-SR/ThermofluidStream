@@ -3,8 +3,8 @@ model Fan "Fan under ideal gas assumption"
   extends Internal.PartialTurboComponent(redeclare function dp_tau=dp_tau_fan);
 
   replaceable function dp_tau_fan = Internal.TurboComponent.pleaseSelect_dp_tau
-    constrainedby Internal.TurboComponent.partial_dp_tau(redeclare package
-      Medium =                                                                    Medium) "Fan characteristic curve"
+    constrainedby Internal.TurboComponent.partial_dp_tau(
+      redeclare package Medium = Medium) "Fan characteristic curve"
       annotation(choices(
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficency"),
