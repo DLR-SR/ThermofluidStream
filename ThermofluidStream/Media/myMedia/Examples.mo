@@ -837,9 +837,8 @@ output window.
       "Solve h = h_T(T), s = s_T(T) for T, if h or s is given for ideal gas NASA"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-        ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+        constrainedby ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
         "Medium model"
         annotation (choicesAllMatching=true);
 
@@ -903,9 +902,8 @@ The numerical computation of the inverse function is performed by function <a hr
       "Inverse computation for incompressible media"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
-                                                          "Medium model"
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
+        "Medium model"
         annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=Medium.T_min

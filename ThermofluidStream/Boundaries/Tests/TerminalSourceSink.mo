@@ -23,7 +23,7 @@ model TerminalSourceSink "Test for Terminal source and sink model"
     offset=0.8e5,
     startTime=0.2)
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  TerminalSource terminalSource(redeclare package Medium = Medium, TC=0.1)  annotation (Placement(transformation(extent={{-26,4},{-6,24}})));
+  TerminalSource terminalSource(redeclare package Medium = Medium, TC=0.1) annotation (Placement(transformation(extent={{-26,4},{-6,24}})));
   TerminalSink terminalSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{8,-26},{28,-6}})));
   Source source(redeclare package Medium = Medium, pressureFromInput=true) annotation (Placement(transformation(extent={{-26,-26},{-6,-6}})));
 equation

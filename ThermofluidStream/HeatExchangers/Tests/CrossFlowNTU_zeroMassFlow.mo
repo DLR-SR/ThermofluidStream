@@ -28,7 +28,7 @@ model CrossFlowNTU_zeroMassFlow
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={60,-10})));
@@ -38,7 +38,7 @@ model CrossFlowNTU_zeroMassFlow
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=100000)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,80})));
 
@@ -95,7 +95,7 @@ model CrossFlowNTU_zeroMassFlow
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-44,-10})));

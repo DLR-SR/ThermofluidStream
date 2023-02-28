@@ -30,7 +30,7 @@ model VolumesDirectCoupling "Test Volumes"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   BoundaryFore
        boundaryFore(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-10},{56,10}})));
+    annotation (Placement(transformation(extent={{36,-10},{56,10}})));
   Volume heatportVolume1(
     redeclare package Medium = Medium,
     useHeatport=false,
@@ -104,7 +104,7 @@ model VolumesDirectCoupling "Test Volumes"
     annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   BoundaryFore
        boundaryFore1(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
+    annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
   VolumeFlex
          heatportVolume8(
     redeclare package Medium = Medium,
@@ -155,7 +155,7 @@ model VolumesDirectCoupling "Test Volumes"
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   BoundaryFore
        boundaryFore2(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
+    annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
   ThermofluidStream.Undirected.Boundaries.Reservoir
          heatportVolume12(
     redeclare package Medium = Medium,
@@ -181,7 +181,7 @@ model VolumesDirectCoupling "Test Volumes"
     annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
   BoundaryFore
        boundaryFore3(redeclare package Medium = Medium, p0_par=101000)
-            annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
+    annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
 equation
 
   connect(heatportVolume13.rear, heatportVolume12.fore)

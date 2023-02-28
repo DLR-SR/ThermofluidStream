@@ -149,7 +149,7 @@ model ReverseHeatPump
         rotation=90,
         origin={0,40})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium = RefrigerantMedium, L=1e6)
-                                                                                 annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={0,-38})));
   Undirected.Topology.ConnectRearOutlet connectRearOutlet(redeclare package
@@ -253,7 +253,7 @@ model ReverseHeatPump
         origin={130,124})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{100,156},{88,168}})));
-  Modelica.Blocks.Sources.RealExpression realExpression5(y=1)   annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression5(y=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={130,98})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
@@ -278,13 +278,13 @@ model ReverseHeatPump
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=270,
         origin={-124,128})));
-  Modelica.Blocks.Sources.RealExpression realExpression4(y=1)   annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression4(y=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-124,98})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal(realTrue=0, realFalse=1) annotation (Placement(transformation(extent={{-142,-16},{-122,4}})));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression(y=heatingMode) annotation (Placement(transformation(extent={{-212,-32},{-192,-12}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
-                                                        annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
+    annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
   Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
     redeclare package Medium2Phase = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
@@ -304,11 +304,11 @@ model ReverseHeatPump
         origin={-60,66})));
 
   Modelica.Blocks.Sources.RealExpression realExpression9(y=(1 - booleanToReal.y)*limiterValve.y + booleanToReal.y)
-                                                                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-12,160})));
   Modelica.Blocks.Sources.RealExpression realExpression8(y=booleanToReal.y*(limiterValve.y - 1) + 1)
-                                                                annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={12,160})));
   Modelica.Blocks.Continuous.PI PI_Valve(
@@ -324,7 +324,7 @@ model ReverseHeatPump
     annotation (Placement(transformation(extent={{-7,-7},{7,7}},
         rotation=0,
         origin={1,101})));
-  Modelica.Blocks.Sources.RealExpression realExpression6(y=5)   annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression6(y=5) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-28,102})));
   Modelica.Blocks.Logical.Switch switch1
@@ -338,7 +338,7 @@ model ReverseHeatPump
         rotation=90,
         origin={18,140})));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression1(y=logicalSwitch.y)
-                                                                             annotation (Placement(transformation(extent={{-34,54},{-14,74}})));
+    annotation (Placement(transformation(extent={{-34,54},{-14,74}})));
   Modelica.Blocks.Sources.RealExpression omega_compr(y=3000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -346,7 +346,7 @@ model ReverseHeatPump
         origin={20,-6})));
   Modelica.Blocks.Logical.LogicalSwitch logicalSwitch annotation (Placement(transformation(extent={{-176,-16},{-156,4}})));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression2(y=switchDuringSimulation)
-                                                                             annotation (Placement(transformation(extent={{-212,-16},{-192,4}})));
+    annotation (Placement(transformation(extent={{-212,-16},{-192,4}})));
   Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=50) annotation (Placement(transformation(extent={{-212,8},{-192,28}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
     redeclare package Medium = SecondaryMedium,

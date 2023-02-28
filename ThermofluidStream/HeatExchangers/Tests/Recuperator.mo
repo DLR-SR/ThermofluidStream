@@ -15,7 +15,7 @@ model Recuperator
     T0_par=283.15,
     p0_par=500000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-92,10})));
 

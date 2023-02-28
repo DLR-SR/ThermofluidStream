@@ -19,12 +19,12 @@ model CounterFlowNTU
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
-                   annotation (Placement(transformation(extent={{116,-30},{136,-10}})));
+    annotation (Placement(transformation(extent={{116,-30},{136,-10}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
       Medium = MediumA,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,10},{11,-10}},
         rotation=0,
@@ -32,7 +32,7 @@ model CounterFlowNTU
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={60,-30})));
@@ -42,7 +42,7 @@ model CounterFlowNTU
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=100000)
-               annotation (Placement(transformation(extent={{136,10},{116,30}})));
+    annotation (Placement(transformation(extent={{136,10},{116,30}})));
   ThermofluidStream.Boundaries.Sink sinkB(
     redeclare package Medium = MediumB, p0_par=90000)
     annotation (Placement(transformation(extent={{-118,10},{-138,30}})));

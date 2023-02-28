@@ -14,7 +14,7 @@ model ElementTwoPhase
     U_tp_nom=1000,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-                   annotation (Placement(transformation(extent={{-10,70},{10,90}})));
+    annotation (Placement(transformation(extent={{-10,70},{10,90}})));
   Boundaries.Sink sink(redeclare package Medium =
         MediumRefrigerant,
     pressureFromInput=false,
@@ -80,7 +80,7 @@ model ElementTwoPhase
     h_start=270e3,
     V(displayUnit="l"),
     A=10,
-    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,40},{10,60}})));
+    V_par=0.0005) annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.Sink sink2(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
@@ -108,7 +108,7 @@ model ElementTwoPhase
     h_start=270e3,
     V(displayUnit="l"),
     A=10,
-    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,-70},{10,-90}})));
+    V_par=0.0005) annotation (Placement(transformation(extent={{-10,-70},{10,-90}})));
   Boundaries.Sink sink3(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,

@@ -44,7 +44,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90),
       iconTransformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90)));
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [varable]"
-        annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"

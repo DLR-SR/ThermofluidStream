@@ -176,7 +176,7 @@ equation
   for i in 1:nCells-1 loop
     connect(thermalElementB[i].fore, thermalElementB[i + 1].rear);
   end for;
-  connect(thermalElementB[nCells].fore, foreB)  annotation (Line(points={{-10,-80},{-100,-80}}, color={28,108,200}));
+  connect(thermalElementB[nCells].fore, foreB) annotation (Line(points={{-10,-80},{-100,-80}}, color={28,108,200}));
 
   connect(thermalElementB.heatPort, thermalConductor.port_a)
     annotation (Line(points={{4.44089e-16,-70.2},{4.44089e-16,-40},{0,-40},{0,-10}}, color={191,0,0}));

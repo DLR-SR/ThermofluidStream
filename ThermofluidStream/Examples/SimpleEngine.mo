@@ -63,7 +63,7 @@ model SimpleEngine "Simple steam engine"
         rotation=0,
         origin={-10,54})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Water)
-                                   annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={150,54})));
@@ -123,7 +123,7 @@ model SimpleEngine "Simple steam engine"
     pipe_low=0.9,
     pipe_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
-                   annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
+    annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
   Modelica.Blocks.Continuous.LimPID PI1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=1e6,
@@ -133,7 +133,7 @@ model SimpleEngine "Simple steam engine"
     y_start=0) annotation (Placement(transformation(extent={{-150,24},{-130,44}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
     annotation (Placement(transformation(extent={{-120,24},{-100,44}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=4)  annotation (Placement(transformation(extent={{-180,24},{-160,44}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=4) annotation (Placement(transformation(extent={{-180,24},{-160,44}})));
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = Water,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,

@@ -6,7 +6,7 @@ model SpecificValveType "Test for SpecificValveType"
       ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
                                                                      "Medium package"
-        annotation (choicesAllMatching=true, Documentation(info="<html>
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 

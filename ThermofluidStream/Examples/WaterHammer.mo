@@ -43,9 +43,9 @@ model WaterHammer "Pump water by using dynamic pressures"
   Modelica.Blocks.Sources.Constant const2(k=1.5e5)
     annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
   Topology.SplitterT2 splitterT2_1(redeclare package Medium =
-               Medium)    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+               Medium) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium = Medium, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
-                                                                                         annotation (Placement(
+    annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,

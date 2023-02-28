@@ -1859,10 +1859,10 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
     end density_derp_h;
 
     redeclare function extends isentropicEnthalpy
-    "isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
+      "Isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
-         annotation ( Documentation(info="<html>
+      annotation ( Documentation(info="<html>
 <p> This function calculates the specific enthalpy of R134a for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
 </p>
 <p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
@@ -22096,11 +22096,11 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy w.r.t. thermodynamic state"
+    "Specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
-         annotation ( Documentation(info="<html>
+      annotation ( Documentation(info="<html>
 <p> This function calculates the specific internal energy of R1234yf from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Richter et al (2011). </p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)u-Diagram-R1234yf.png\"/> </p>
 
@@ -23136,7 +23136,7 @@ Please note, that the function can also be called in the two-phase region, but t
         end for;
       end if;
 
-         annotation ( Documentation(info="<html>
+      annotation ( Documentation(info="<html>
 <p> This function calculates the surface tension of R1234yf from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p>
 <h4>Restrictions</h4>
 <p>This property is only defined in two-phase region.
@@ -23287,10 +23287,10 @@ Please note, that the function can also be called in the two-phase region, but t
     end density_derp_h;
 
     redeclare function extends isentropicEnthalpy
-    "isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
+      "Isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
-         annotation ( Documentation(info="<html>
+      annotation ( Documentation(info="<html>
 <p> This function calculates the specific enthalpy of R1234yf for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
 </p>
 <p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
@@ -29491,11 +29491,11 @@ Example:
     end pressure;
 
     redeclare function extends specificInternalEnergy
-    "specific internal energy w.r.t. thermodynamic state"
+      "Specific internal energy w.r.t. thermodynamic state"
     algorithm
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
-         annotation (Inline = true,  Documentation(info="<html>
+      annotation (Inline = true,  Documentation(info="<html>
 <p> This function calculates the specific internal energy of R245fa from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Lemmon (2006). </p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"/> </p>
 
@@ -29503,10 +29503,10 @@ Example:
     end specificInternalEnergy;
 
     redeclare function extends specificEnthalpy
-    "specific enthalpy w.r.t. thermodynamic state | use setState_phX function for input"
+      "Specific enthalpy w.r.t. thermodynamic state | use setState_phX function for input"
 
     algorithm
-     h:=state.h;
+      h:=state.h;
 
       annotation (Inline = true,  Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
@@ -29515,7 +29515,7 @@ Example:
     end specificEnthalpy;
 
     redeclare function extends specificEntropy
-    "specific entropy w.r.t. thermodynamic state | use setState_phX function for input if necessary"
+      "Specific entropy w.r.t. thermodynamic state | use setState_phX function for input if necessary"
 
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
@@ -29546,7 +29546,7 @@ Example:
     end specificEntropy;
 
     redeclare function extends saturationTemperature
-    "saturation temperature in two-phase region"
+      "Saturation temperature in two-phase region"
 
     protected
       constant Real T_coef[:,:] = R245faData.Tcoef
@@ -29564,8 +29564,8 @@ Example:
       localx := pred - p_breaks[int];
       T := Common.CubicSplineEval(localx, T_coef[int, :]);
 
-       annotation (derivative=saturationTemperature_der_p,
-      Documentation(info="<html>
+      annotation (derivative=saturationTemperature_der_p,
+        Documentation(info="<html>
 <p>This function calculates the saturation temperature of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 </p>
@@ -29577,7 +29577,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end saturationTemperature;
 
     redeclare function extends saturationTemperature_derp
-    "derivative of saturation temperature in two-phase region"
+      "Derivative of saturation temperature in two-phase region"
 
     protected
       constant Real T_coef[:,:] = R245faData.Tcoef
@@ -29606,7 +29606,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end saturationTemperature_derp;
 
     function saturationTemperature_der_p
-      "derivative of saturation temperature in two-phase region"
+      "Derivative of saturation temperature in two-phase region"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.AbsolutePressure p "pressure";
@@ -29640,7 +29640,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end saturationTemperature_der_p;
 
     redeclare function extends bubbleDensity
-    "density of liquid phase w.r.t saturation pressure"
+      "Density of liquid phase w.r.t saturation pressure"
 
     protected
       constant Real dl_coef[:,:] = R245faData.dlcoef
@@ -29660,7 +29660,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         Common.CubicSplineEval(localx, dl_coef[int, 1:4]);
 
     // annotation(smoothOrder=5);
-       annotation (derivative=dBubbleDensity_dPressure_der_sat,
+      annotation (derivative=dBubbleDensity_dPressure_der_sat,
       Documentation(info="<html>
 <p>This function calculates the liquid phase density of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
@@ -29672,7 +29672,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end bubbleDensity;
 
     redeclare function extends dBubbleDensity_dPressure
-    "derivative of liquid density in two-phase region w.r.t pressure"
+      "Derivative of liquid density in two-phase region w.r.t pressure"
 
     protected
       constant Real dl_coef[:,:] = R245faData.dlcoef
@@ -29701,7 +29701,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dBubbleDensity_dPressure;
 
     function dBubbleDensity_dPressure_der_sat
-      "time derivative of liquid density in two-phase region w.r.t pressure"
+      "Time derivative of liquid density in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29736,7 +29736,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dBubbleDensity_dPressure_der_sat;
 
     redeclare function dewDensity
-    "density of vapor phase w.r.t saturation pressure"
+      "Density of vapor phase w.r.t saturation pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29761,7 +29761,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dewDensity;
 
     redeclare function dDewDensity_dPressure
-    "derivative of vapor density in two-phase region w.r.t pressure"
+      "Derivative of vapor density in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29783,11 +29783,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       ddvdp := R245faData.data.FDCRIT*
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R245faData.data.FPCRIT;
 
-
     end dDewDensity_dPressure;
 
     function dDewDensity_dPressure_der_sat
-      "derivative of vapor density in two-phase region w.r.t pressure"
+      "Derivative of vapor density in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29810,11 +29809,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       ddvdp := R245faData.data.FDCRIT*
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R245faData.data.FPCRIT*der_sat.psat;
 
-
     end dDewDensity_dPressure_der_sat;
 
     redeclare function bubbleEnthalpy
-    "specific enthalpy of liquid phase w.r.t saturation pressure"
+      "Dpecific enthalpy of liquid phase w.r.t saturation pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29840,7 +29838,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end bubbleEnthalpy;
 
     redeclare function dBubbleEnthalpy_dPressure
-    "derivative of liquid specific enthalpy in two-phase region w.r.t pressure"
+      "Derivative of liquid specific enthalpy in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29862,11 +29860,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       dhldp := R245faData.data.HCRIT*
         Common.CubicSplineDerEval(localx, hl_coef[int, 1:4])/R245faData.data.FPCRIT;
 
-
     end dBubbleEnthalpy_dPressure;
 
     function dBubbleEnthalpy_dPressure_der_sat
-      "derivative of liquid specific enthalpy in two-phase region w.r.t pressure"
+      "Derivative of liquid specific enthalpy in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29893,7 +29890,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dBubbleEnthalpy_dPressure_der_sat;
 
     redeclare function dewEnthalpy
-    "specific enthalpy of vapor phase w.r.t saturation pressure"
+      "Specific enthalpy of vapor phase w.r.t saturation pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29919,7 +29916,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dewEnthalpy;
 
     redeclare function dDewEnthalpy_dPressure
-    "derivative of vapor specific enthalpy in two-phase region w.r.t pressure"
+      "Derivative of vapor specific enthalpy in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29942,11 +29939,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       dhvdp := R245faData.data.HCRIT*
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R245faData.data.FPCRIT;
 
-
     end dDewEnthalpy_dPressure;
 
     function dDewEnthalpy_dPressure_der_sat
-      "derivative of vapor specific enthalpy in two-phase region w.r.t pressure"
+      "Derivative of vapor specific enthalpy in two-phase region w.r.t pressure"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -29969,11 +29965,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       dhvdp := R245faData.data.HCRIT*
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R245faData.data.FPCRIT*der_sat.psat;
 
-
     end dDewEnthalpy_dPressure_der_sat;
 
     redeclare function dewEntropy
-    "specific entropy of vapor phase w.r.t saturation pressure"
+      "Specific entropy of vapor phase w.r.t saturation pressure"
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
@@ -29999,7 +29994,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dewEntropy;
 
     function dDewEntropy_dPressure
-      "derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
+      "Derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -30022,11 +30017,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       dsvdp := R245faData.data.SCRIT*
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/R245faData.data.FPCRIT;
 
-
     end dDewEntropy_dPressure;
 
     function dDewEntropy_dPressure_der_sat
-      "time derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
+      "Time derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -30057,7 +30051,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dDewEntropy_dPressure_der_sat;
 
     redeclare function bubbleEntropy
-    "specific entropy of liquid phase w.r.t saturation pressure"
+      "Specific entropy of liquid phase w.r.t saturation pressure"
       extends Modelica.Icons.Function;
       input SaturationProperties sat
       "saturation properties | pressure is used for interpolation";
@@ -30082,7 +30076,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end bubbleEntropy;
 
     function dBubbleEntropy_dPressure
-      "derivative of liquid specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
+      "Derivative of liquid specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
       extends Modelica.Icons.Function;
       input SaturationProperties sat
         "saturation properties | pressure is used for interpolation";
@@ -30108,7 +30102,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dBubbleEntropy_dPressure;
 
     function dBubbleEntropy_dPressure_der_sat
-      "time derivative of liquid specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
+      "Time derivative of liquid specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
       extends Modelica.Icons.Function;
       input SaturationProperties sat
         "saturation properties | pressure is used for interpolation";
@@ -30137,7 +30131,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dBubbleEntropy_dPressure_der_sat;
 
     redeclare function extends saturationPressure
-    "saturation pressure w.r.t. temperature"
+      "Saturation pressure w.r.t. temperature"
 
     protected
       constant Real pt_coef[:,:] = R245faData.ptcoef;
@@ -30156,7 +30150,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end saturationPressure;
 
     redeclare function extends specificHeatCapacityCp
-    "specific heat capacity at constant pressure | turns inifity in two-phase region! | use setState_phX function for input "
+      "Specific heat capacity at constant pressure | turns inifity in two-phase region! | use setState_phX function for input "
 
     protected
       Common.HelmholtzDerivs f;
@@ -30166,11 +30160,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
      cp := if getPhase_ph(state.p, state.h) == 2 then 0 else R245faData.R*(-f.tau*f.tau*f.ftautau + (f.delta*f.fdelta - f.delta*f.tau
         *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
 
-
     end specificHeatCapacityCp;
 
     redeclare function extends specificHeatCapacityCv
-    "specific heat capacity at constant volume | use setState_phX function for input"
+      "Specific heat capacity at constant volume | use setState_phX function for input"
 
     protected
       Common.HelmholtzDerivs f;
@@ -30193,11 +30186,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
        cv := R245faData.R*(-f.tau*f.tau*f.ftautau);
       end if;
 
-
     end specificHeatCapacityCv;
 
     redeclare function extends dynamicViscosity
-    "dynamic viscosity w.r.t. temperature and density | use setState_phX function for input"
+      "Dynamic viscosity w.r.t. temperature and density | use setState_phX function for input"
 
     protected
       constant Real K=0.026692 "Constant for low density term eta_star";
@@ -30356,7 +30348,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end dynamicViscosity;
 
     redeclare function extends thermalConductivity
-    "thermal conductivity w.r.t. thermodynamic state | use setState_phX function for input"
+      "Thermal conductivity w.r.t. thermodynamic state | use setState_phX function for input"
 
     protected
       Common.HelmholtzDerivs f "helmholtz derivatives";
@@ -30423,11 +30415,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       //lambda := lambda_dg;
       lambda := max(lambda_dg + lambda_reduced + lambda_crit, 1e-8);
 
-
     end thermalConductivity;
 
     redeclare function extends surfaceTension
-    "surface tension as a function of temperature (below critical point)"
+      "Surface tension as a function of temperature (below critical point)"
 
     protected
       Real tau "reduced temp.";
@@ -30446,11 +30437,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         end for;
       end if;
 
-
     end surfaceTension;
 
     redeclare function extends velocityOfSound
-    "velocity of sound w.r.t. thermodynamic state (only valid for one-phase)"
+      "Velocity of sound w.r.t. thermodynamic state (only valid for one-phase)"
     protected
       XRGMedia.Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
@@ -30470,7 +30460,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end velocityOfSound;
 
     redeclare function extends isothermalCompressibility
-    "isothermal compressibility w.r.t. thermodynamic state (only valid for one-phase)"
+      "Isothermal compressibility w.r.t. thermodynamic state (only valid for one-phase)"
     protected
       XRGMedia.Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
@@ -30487,7 +30477,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end isothermalCompressibility;
 
     redeclare function extends isobaricExpansionCoefficient
-    "isobaric expansion coefficient w.r.t. thermodynamic state (only valid for one-phase)"
+      "Isobaric expansion coefficient w.r.t. thermodynamic state (only valid for one-phase)"
     protected
       XRGMedia.Common.HelmholtzDerivs f "helmholtz derivatives";
     algorithm
@@ -30505,7 +30495,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end isobaricExpansionCoefficient;
 
     redeclare function extends isentropicExponent
-    "isentropic exponent gamma w.r.t. thermodynamic state | not defined in two-phase region | use setState_phX function for input"
+      "Isentropic exponent gamma w.r.t. thermodynamic state | not defined in two-phase region | use setState_phX function for input"
 
     algorithm
        gamma := density(state)/(if pressure(state)>1e-6 then pressure(state) else 1e-6)*velocityOfSound(state)^2;
@@ -30514,22 +30504,22 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end isentropicExponent;
 
     redeclare function extends specificGibbsEnergy
-    "specific gibbs energy w.r.t. thermodynamic state"
+      "Specific gibbs energy w.r.t. thermodynamic state"
     algorithm
      g:= state.h - state.T*specificEntropy(state);
 
     end specificGibbsEnergy;
 
-  redeclare function extends specificHelmholtzEnergy
-    "helmholtz energy w.r.t. thermodynamic state"
-    extends Modelica.Icons.Function;
-  algorithm
-    f := state.h - state.p/state.d - state.T*specificEntropy(state);
+    redeclare function extends specificHelmholtzEnergy
+      "Helmholtz energy w.r.t. thermodynamic state"
+      extends Modelica.Icons.Function;
+    algorithm
+      f := state.h - state.p/state.d - state.T*specificEntropy(state);
 
-  end specificHelmholtzEnergy;
+    end specificHelmholtzEnergy;
 
     redeclare function extends density_derh_p
-    "density derivative by specific enthalpy | use setState_phX function for input"
+      "Density derivative by specific enthalpy | use setState_phX function for input"
 
     protected
        Common.InverseDerivatives_rhoT derivs;
@@ -30545,7 +30535,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end density_derh_p;
 
     redeclare function extends density_derp_h
-    "density derivative by pressure | use setState_phX function for input"
+      "Density derivative by pressure | use setState_phX function for input"
 
     protected
        Common.InverseDerivatives_rhoT derivs;
@@ -30561,15 +30551,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     end density_derp_h;
 
     redeclare function extends isentropicEnthalpy
-    "isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
+      "Isentropic enthalpy of downstream pressure and upstream thermodynamic state (specific entropy)"
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
 
     end isentropicEnthalpy;
 
     redeclare function extends specificEnthalpy_psX
-
-
 
     end specificEnthalpy_psX;
        //each dipoleMoment=-1,
@@ -30620,10 +30608,9 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         derivs.dpT := 0;
       end if;
 
-
     end derivsOf_ph;
 
-    function dt_ph "density and temperature w.r.t. pressure and specific enthalpy"
+    function dt_ph "Density and temperature w.r.t. pressure and specific enthalpy"
 
       extends Modelica.Icons.Function;
 
@@ -30655,11 +30642,10 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         d := 1/(vliq + x*(vvap - vliq));
       end if;
 
-
     end dt_ph;
 
     function dtofphOnePhase
-      "density and temperature w.r.t. pressure and specific enthalpy in one-phase region"
+      "Density and temperature w.r.t. pressure and specific enthalpy in one-phase region"
 
       extends Modelica.Icons.Function;
 
@@ -30764,10 +30750,9 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         i := i + 1;
       end while;
 
-
     end dtofphOnePhase;
 
-    function dtofpsOnePhase "inverse iteration in one phase region (d,T) = f(p,s)"
+    function dtofpsOnePhase "Inverse iteration in one phase region (d,T) = f(p,s)"
 
       extends Modelica.Icons.Function;
 
@@ -30873,7 +30858,7 @@ when on the other side of a phase boundary)
     end dtofpsOnePhase;
 
     function f_R245fa
-      "calculation of helmholtz derivatives by density and temperature"
+      "Calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Density d "density";
@@ -30902,7 +30887,7 @@ when on the other side of a phase boundary)
 
     end f_R245fa;
 
-    function fid_R245fa "helmholtz coefficients of ideal part"
+    function fid_R245fa "Helmholtz coefficients of ideal part"
       extends Modelica.Icons.Function;
 
       input Real delta "dimensionless density";
@@ -30938,7 +30923,7 @@ when on the other side of a phase boundary)
 
     end fid_R245fa;
 
-    function fres_R245fa "calculation of helmholtz derivatives"
+    function fres_R245fa "Calculation of helmholtz derivatives"
       extends Modelica.Icons.Function;
 
       input Real delta "dimensionless density";
@@ -30993,7 +30978,7 @@ when on the other side of a phase boundary)
 
     end fres_R245fa;
 
-    function getPhase_ph "number of phases by pressure and specific enthalpy"
+    function getPhase_ph "Number of phases by pressure and specific enthalpy"
 
       extends Modelica.Icons.Function;
 
@@ -31013,7 +30998,7 @@ when on the other side of a phase boundary)
 
     end getPhase_ph;
 
-    function getPhase_ps "number of phases by pressure and entropy"
+    function getPhase_ps "Number of phases by pressure and entropy"
 
       extends Modelica.Icons.Function;
 
@@ -31033,7 +31018,7 @@ when on the other side of a phase boundary)
     end getPhase_ps;
 
     function hofpsTwoPhase
-      "isentropic specific enthalpy in two phase region h(p,s)"
+      "Isentropic specific enthalpy in two phase region h(p,s)"
 
       extends Modelica.Icons.Function;
 
@@ -31062,7 +31047,7 @@ when on the other side of a phase boundary)
 
     end hofpsTwoPhase;
 
-    function R245fa_liqofdT "properties on liquid boundary phase"
+    function R245fa_liqofdT "Properties on liquid boundary phase"
 
       extends Modelica.Icons.Function;
 
@@ -31088,7 +31073,7 @@ when on the other side of a phase boundary)
 
     end R245fa_liqofdT;
 
-    function R245fa_vapofdT "properties on vapor boundary phase"
+    function R245fa_vapofdT "Properties on vapor boundary phase"
 
       extends Modelica.Icons.Function;
 
@@ -31111,32 +31096,30 @@ when on the other side of a phase boundary)
       f := XRGMedia.R245fa_ph.f_R245fa(d_vap, T_vap);
       vap := Common.helmholtzToBoundaryProps(f);
 
-
     end R245fa_vapofdT;
 
-    function rho_ph_der "derivative function of rho_ph"
-    extends Modelica.Icons.Function;
+    function rho_ph_der "Derivative function of rho_ph"
+      extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "record for derivatives";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real d_der "derivative of density";
+      input Common.InverseDerivatives_rhoT derivs "record for derivatives";
+      input Real p_der "derivative of pressure";
+      input Real h_der "derivative of specific enthalpy";
+      output Real d_der "derivative of density";
     algorithm
-    if (derivs.phase == 2) then
-      d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
-        p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
-    else
-      d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
-        *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
-
+      if (derivs.phase == 2) then
+        d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
+          p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
+      else
+        d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
+          *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+      -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
     end rho_ph_der;
 
-    function rho_props_ph "density as function of pressure and specific enthalpy"
+    function rho_props_ph "Density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
@@ -31153,28 +31136,27 @@ when on the other side of a phase boundary)
         LateInline=true);
     end rho_props_ph;
 
-    function T_ph_der "derivative function of T_ph"
-    extends Modelica.Icons.Function;
+    function T_ph_der "Derivative function of T_ph"
+      extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "auxiliary record";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real T_der "derivative of temperature";
+      input Common.InverseDerivatives_rhoT derivs "auxiliary record";
+      input Real p_der "derivative of pressure";
+      input Real h_der "derivative of specific enthalpy";
+      output Real T_der "derivative of temperature";
     algorithm
-    if (derivs.phase == 2) then
-      T_der := 1/derivs.dpT*p_der;
-    else
-      T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
-        cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
-
+      if (derivs.phase == 2) then
+        T_der := 1/derivs.dpT*p_der;
+      else
+        T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
+          cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+      (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
     end T_ph_der;
 
-    function T_props_ph "temperature as function of pressure and specific enthalpy"
+    function T_props_ph "Temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
@@ -31192,7 +31174,7 @@ when on the other side of a phase boundary)
     end T_props_ph;
 
     redeclare function extends setSmoothState
-    "smooth transition function between state_a and state_b"
+      "Smooth transition function between state_a and state_b"
     protected
       Integer phase;
 
@@ -31215,51 +31197,51 @@ when on the other side of a phase boundary)
       output Density d "Density";
 
     protected
-    constant Real T_breaks[:]=R245faData.Tbreaks
-      "Grid points of reduced temperature";
-    constant Real dlt_coef[:, 4]=R245faData.dltcoef
-      "Coefficients of cubic spline for rho_liq(T)";
-    constant Real dvt_coef[:, 4]=R245faData.dvtcoef
-      "Coefficients of cubic spline for rho_vap(T)";
+      constant Real T_breaks[:]=R245faData.Tbreaks
+        "Grid points of reduced temperature";
+      constant Real dlt_coef[:, 4]=R245faData.dltcoef
+        "Coefficients of cubic spline for rho_liq(T)";
+      constant Real dvt_coef[:, 4]=R245faData.dvtcoef
+        "Coefficients of cubic spline for rho_vap(T)";
 
-    Boolean liquid "Is liquid";
-    Boolean supercritical "Is supercritcal";
-    Integer int "Interval number";
-    Real Tred "Reduced temperature";
-    Real localx "Oordinate of local spline";
-    Integer i "Newton iteration number";
-    Real dp "Pressure difference";
-    Density deld "Density step";
-    Common.HelmholtzDerivs f
-      "Dimensionless Helmholtz function and dervatives w.r.t. delta and tau";
-    Common.NewtonDerivatives_pT nDerivs
-      "Derivatives needed in Newton iteration";
-    Boolean found "Flag for iteration success";
-    Integer error "1 if did not converged";
+      Boolean liquid "Is liquid";
+      Boolean supercritical "Is supercritcal";
+      Integer int "Interval number";
+      Real Tred "Reduced temperature";
+      Real localx "Oordinate of local spline";
+      Integer i "Newton iteration number";
+      Real dp "Pressure difference";
+      Density deld "Density step";
+      Common.HelmholtzDerivs f
+        "Dimensionless Helmholtz function and dervatives w.r.t. delta and tau";
+      Common.NewtonDerivatives_pT nDerivs
+        "Derivatives needed in Newton iteration";
+      Boolean found "Flag for iteration success";
+      Integer error "1 if did not converged";
 
     algorithm
-    phaseBoundaryAssert(p, T);
-    i := 0;
-    error := 0;
-    found := false;
-    Tred := T/R245faData.data.FTCRIT;
-    (int,error) := Common.FindInterval(Tred, T_breaks);
-    localx := Tred - T_breaks[int];
-    // set decent initial guesses for d and T
-    supercritical := p > R245faData.data.FPCRIT;
-    if supercritical then
-      // iteration seems to work better if coming from high densities
-      d := R245faData.data.FDCRIT*3.0;
-    else
-      liquid := T <= saturationTemperature(p);
-      if liquid then
-        d := R245faData.data.FDCRIT*Common.CubicSplineEval(localx, dlt_coef[int,
-          1:4])*1.02;
+      phaseBoundaryAssert(p, T);
+      i := 0;
+      error := 0;
+      found := false;
+      Tred := T/R245faData.data.FTCRIT;
+      (int,error) := Common.FindInterval(Tred, T_breaks);
+      localx := Tred - T_breaks[int];
+      // set decent initial guesses for d and T
+      supercritical := p > R245faData.data.FPCRIT;
+      if supercritical then
+        // iteration seems to work better if coming from high densities
+        d := R245faData.data.FDCRIT*3.0;
       else
-        d := R245faData.data.FDCRIT*Common.CubicSplineEval(localx, dvt_coef[int,
-          1:4])*0.95;
+        liquid := T <= saturationTemperature(p);
+        if liquid then
+          d := R245faData.data.FDCRIT*Common.CubicSplineEval(localx, dlt_coef[int,
+            1:4])*1.02;
+        else
+          d := R245faData.data.FDCRIT*Common.CubicSplineEval(localx, dvt_coef[int,
+            1:4])*0.95;
+        end if;
       end if;
-    end if;
 
       while ((i < 100) and not found) loop
         f := f_R245fa(d, T);

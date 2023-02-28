@@ -24,7 +24,7 @@ model Volumes "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-70,-60},{-50,-40}})));
   Sink sink(redeclare package Medium = Medium, p0_par=100000)
-            annotation (Placement(transformation(extent={{50,-60},{70,-40}})));
+    annotation (Placement(transformation(extent={{50,-60},{70,-40}})));
   VolumeFlex flexVolume1(
     redeclare package Medium = Medium,
     p_start=100000,
@@ -41,7 +41,7 @@ model Volumes "Test Volumes"
   Source source1(redeclare package Medium = Medium, p0_par=200000)
     annotation (Placement(transformation(extent={{-70,-90},{-50,-70}})));
   Sink sink1(redeclare package Medium = Medium, p0_par=100000)
-            annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
+    annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
   Volume heatportVolume(
     redeclare package Medium = Medium,
     useHeatport=true,
@@ -80,7 +80,7 @@ model Volumes "Test Volumes"
   Source source3(redeclare package Medium = MediumMix, p0_par=200000)
     annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
   Sink sink2(redeclare package Medium = MediumMix, p0_par=100000)
-            annotation (Placement(transformation(extent={{50,-10},{70,10}})));
+    annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -122,7 +122,7 @@ model Volumes "Test Volumes"
     Xi0_par={0,1})
     annotation (Placement(transformation(extent={{-70,40},{-50,60}})));
   Sink sink3(redeclare package Medium = MediumMix, p0_par=100000)
-            annotation (Placement(transformation(extent={{50,60},{70,80}})));
+    annotation (Placement(transformation(extent={{50,60},{70,80}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -170,7 +170,7 @@ model Volumes "Test Volumes"
   Source source6(redeclare package Medium = Medium, p0_par=180000)
     annotation (Placement(transformation(extent={{-70,-160},{-50,-140}})));
   Sink sink4(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{50,-200},{70,-180}})));
+    annotation (Placement(transformation(extent={{50,-200},{70,-180}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -211,7 +211,7 @@ model Volumes "Test Volumes"
   Source source7(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-70,110},{-50,130}})));
   Sink sink5(redeclare package Medium = Medium, p0_par=200000)
-            annotation (Placement(transformation(extent={{50,110},{70,130}})));
+    annotation (Placement(transformation(extent={{50,110},{70,130}})));
   Volume volume1(
     redeclare package Medium = Medium,
     p_start=150000,
@@ -251,7 +251,7 @@ model Volumes "Test Volumes"
     Xi0_par={0,1})
     annotation (Placement(transformation(extent={{-70,140},{-50,160}})));
   Sink sink6(redeclare package Medium = MediumMix, p0_par=300000)
-            annotation (Placement(transformation(extent={{50,160},{70,180}})));
+    annotation (Placement(transformation(extent={{50,160},{70,180}})));
   Processes.FlowResistance flowResistance12(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

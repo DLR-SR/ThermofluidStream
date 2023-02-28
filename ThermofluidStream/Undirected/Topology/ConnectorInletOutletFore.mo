@@ -19,12 +19,12 @@ model ConnectorInletOutletFore
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Fore fore(redeclare package Medium = Medium)
-                       annotation (Placement(transformation(extent={{-20,-120},{20,-80}}), iconTransformation(extent={{-20,-120},{20,-80}})));
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}}), iconTransformation(extent={{-20,-120},{20,-80}})));
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
-                                           annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{
             -80,20}})));
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium)
-                                             annotation (Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(extent={{80,-20},{120,
+    annotation (Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(extent={{80,-20},{120,
             20}})));
   ThermofluidStream.FlowControl.CheckValve checkValve(
     redeclare package Medium = Medium,

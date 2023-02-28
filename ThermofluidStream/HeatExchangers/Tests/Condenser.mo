@@ -20,12 +20,12 @@ model Condenser
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumAir, p0_par=90000)
-                   annotation (Placement(transformation(extent={{104,0},{124,20}})));
+    annotation (Placement(transformation(extent={{104,0},{124,20}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
       Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -33,7 +33,7 @@ model Condenser
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumAir,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={54,20})));
@@ -45,7 +45,7 @@ model Condenser
     T0_par=283.15,
     p0_par=3200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={10,110})));
 

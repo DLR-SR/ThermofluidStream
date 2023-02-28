@@ -25,7 +25,7 @@ model TestJunction
     p0_par=200000,
     L=0,
     outlet(m_flow(start=0, fixed=true)))
-         annotation (Placement(transformation(extent={{-58,-38},{-38,-18}})));
+    annotation (Placement(transformation(extent={{-58,-38},{-38,-18}})));
   Boundaries.Sink sink(
     redeclare package Medium = Medium,
     L=0,

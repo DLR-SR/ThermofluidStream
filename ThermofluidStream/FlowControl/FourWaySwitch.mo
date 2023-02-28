@@ -74,7 +74,7 @@ equation
       points={{-60,50},{-60,50},{-60,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(junctionT2_1.outlet,outletB)  annotation (Line(
+  connect(junctionT2_1.outlet,outletB) annotation (Line(
       points={{-70,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));

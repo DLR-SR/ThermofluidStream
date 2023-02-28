@@ -29,7 +29,7 @@ model FlowRes
       Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
@@ -38,7 +38,7 @@ model FlowRes
       Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")       annotation (Placement(transformation(
+    pressureUnit="bar") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-146,24})));
@@ -50,7 +50,7 @@ model FlowRes
     T0_par=283.15,
     p0_par=400000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-182,50})));
 
@@ -132,7 +132,7 @@ model FlowRes
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
@@ -141,7 +141,7 @@ model FlowRes
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")       annotation (Placement(transformation(
+    pressureUnit="bar") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-144,-76})));
@@ -152,7 +152,7 @@ model FlowRes
     T0_par=283.15,
     p0_par=400000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-180,-50})));
   Boundaries.Sink sinkB1(
@@ -223,11 +223,11 @@ model FlowRes
         rotation=180,
         origin={46,42})));
   Boundaries.Sink sinkA2(redeclare package Medium = MediumAir, p0_par=90000)
-                   annotation (Placement(transformation(extent={{200,32},{220,52}})));
+    annotation (Placement(transformation(extent={{200,32},{220,52}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -236,7 +236,7 @@ model FlowRes
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")       annotation (Placement(transformation(
+    pressureUnit="bar") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={154,52})));
@@ -247,7 +247,7 @@ model FlowRes
     T0_par=283.15,
     p0_par=3200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={188,94})));
   Boundaries.Sink sinkB2(
@@ -346,11 +346,11 @@ model FlowRes
         rotation=180,
         origin={28,-62})));
   Boundaries.Sink sinkA3(redeclare package Medium = MediumAir, p0_par=90000)
-                   annotation (Placement(transformation(extent={{182,-72},{202,-52}})));
+    annotation (Placement(transformation(extent={{182,-72},{202,-52}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm12(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -359,7 +359,7 @@ model FlowRes
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
-    pressureUnit="bar")       annotation (Placement(transformation(
+    pressureUnit="bar") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={136,-52})));
@@ -370,7 +370,7 @@ model FlowRes
     T0_par=283.15,
     p0_par=3200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={170,-10})));
   Boundaries.Sink sinkB3(

@@ -54,7 +54,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     duration=0.5,
     startTime=0.4) annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.01)
-                                    annotation (Placement(transformation(extent={{60,20},{80,40}})));
+    annotation (Placement(transformation(extent={{60,20},{80,40}})));
   Modelica.Blocks.Sources.Ramp ramp1(
     height=-0.98e-3,
     duration=0.4,

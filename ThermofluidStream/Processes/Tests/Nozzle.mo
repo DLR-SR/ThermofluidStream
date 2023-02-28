@@ -12,7 +12,7 @@ model Nozzle
   ThermofluidStream.Processes.Nozzle nozzle(
     redeclare package Medium = Medium,
     A_in=0.00015,
-    A_out=0.01)                             annotation (Placement(transformation(extent={{10,10},{30,30}})));
+    A_out=0.01) annotation (Placement(transformation(extent={{10,10},{30,30}})));
   FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -22,13 +22,13 @@ model Nozzle
         Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=110000)
-                           annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
+    annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{70,10},{90,30}})));
+    annotation (Placement(transformation(extent={{70,10},{90,30}})));
   ThermofluidStream.Processes.Nozzle nozzle1(
     redeclare package Medium = Medium,
     A_in=0.01,
-    A_out=0.00015)                          annotation (Placement(transformation(extent={{10,-30},{30,-10}})));
+    A_out=0.00015) annotation (Placement(transformation(extent={{10,-30},{30,-10}})));
   FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

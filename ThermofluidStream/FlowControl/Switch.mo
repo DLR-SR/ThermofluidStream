@@ -45,7 +45,7 @@ model Switch
         rotation=0,
         origin={40,0})));
   ThermofluidStream.Topology.SplitterT2 splitterT2_1(redeclare package Medium = Medium, L=0)
-                                                     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
   // for dynamic select of graphics only
   Real u2 = (if not invertInput then u else 1-u);

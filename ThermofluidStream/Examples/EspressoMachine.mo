@@ -142,7 +142,7 @@ model EspressoMachine "Get your simulated coffe!"
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-4,20},{16,40}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor brewing_head(C=500, T(start=298.15, fixed=true))
-                       annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={140,30})));
@@ -170,7 +170,7 @@ model EspressoMachine "Get your simulated coffe!"
     omegaStateSelect=StateSelect.never,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (                             k_fric_input=0))
-                             annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={10,-20})));
@@ -182,7 +182,7 @@ model EspressoMachine "Get your simulated coffe!"
   Modelica.Blocks.Math.Feedback feedback
     annotation (Placement(transformation(extent={{70,-10},{50,10}})));
   Modelica.Blocks.Math.Gain gain(k=10e-4)
-                                         annotation (Placement(transformation(extent={{40,28},{52,40}})));
+    annotation (Placement(transformation(extent={{40,28},{52,40}})));
   Sensors.SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Water,
     digits=3,
@@ -210,7 +210,7 @@ model EspressoMachine "Get your simulated coffe!"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=false,
     omegaStateSelect=StateSelect.default,
-    omega_from_input=true)           annotation (Placement(transformation(
+    omega_from_input=true) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-110,-120})));
@@ -255,7 +255,7 @@ model EspressoMachine "Get your simulated coffe!"
     y_start=0)
     annotation (Placement(transformation(extent={{-150,20},{-130,0}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=1.25e5)
-                                                               annotation (Placement(transformation(extent={{-180,0},{-160,20}})));
+    annotation (Placement(transformation(extent={{-180,0},{-160,20}})));
   Modelica.Blocks.Continuous.LimPID
                                 PID2(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -266,7 +266,7 @@ model EspressoMachine "Get your simulated coffe!"
     y_start=0)
     annotation (Placement(transformation(extent={{-150,-20},{-130,-40}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=0.3)
-                                                               annotation (Placement(transformation(extent={{-180,-40},{-160,-20}})));
+    annotation (Placement(transformation(extent={{-180,-40},{-160,-20}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder3(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,

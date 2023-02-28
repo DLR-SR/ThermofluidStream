@@ -19,12 +19,12 @@ model CounterFlowNTU_parallel
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
-                   annotation (Placement(transformation(extent={{110,-30},{130,-10}})));
+    annotation (Placement(transformation(extent={{110,-30},{130,-10}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={80,-30})));
@@ -34,7 +34,7 @@ model CounterFlowNTU_parallel
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=150000)
-               annotation (Placement(transformation(extent={{148,10},{128,30}})));
+    annotation (Placement(transformation(extent={{148,10},{128,30}})));
   ThermofluidStream.Boundaries.Sink sinkB(
     redeclare package Medium = MediumB,
     pressureFromInput=false,
@@ -62,7 +62,7 @@ model CounterFlowNTU_parallel
   Sensors.MultiSensor_Tpm multiSensor_Tpm5(
     redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-74,-30})));
@@ -80,17 +80,17 @@ model CounterFlowNTU_parallel
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-96,88})));
   Boundaries.Sink sinkA2(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
-                   annotation (Placement(transformation(extent={{54,50},{74,70}})));
+    annotation (Placement(transformation(extent={{54,50},{74,70}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm6(
     redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={10,70})));

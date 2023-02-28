@@ -30,7 +30,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Sink sink4(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-10},{56,10}})));
+    annotation (Placement(transformation(extent={{36,-10},{56,10}})));
   Volume heatportVolume1(
     redeclare package Medium = Medium,
     useHeatport=false,
@@ -104,7 +104,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Sink sink1(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
+    annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
   VolumeFlex
          heatportVolume8(
     redeclare package Medium = Medium,
@@ -154,7 +154,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Sink sink2(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
+    annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
   ThermofluidStream.Boundaries.Reservoir
          heatportVolume12(
     redeclare package Medium = Medium,
@@ -180,7 +180,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
   Sink sink3(redeclare package Medium = Medium, p0_par=101000)
-            annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
+    annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
 equation
 
   connect(heatportVolume2.outlet, sink4.inlet) annotation (Line(

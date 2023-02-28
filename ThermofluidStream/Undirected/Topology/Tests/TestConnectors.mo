@@ -3,9 +3,8 @@ model TestConnectors "Test for the connectors"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-                                     "Medum model for the Test" annotation (Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medum model for the Test"
+    annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
 
@@ -57,7 +56,7 @@ model TestConnectors "Test for the connectors"
     pressureFromInput=true,
     L=1.5*dropOfCommons.L,
     rear(m_flow(start=0, fixed=true)))
-                           annotation (Placement(transformation(extent={{20,80},{40,100}})));
+    annotation (Placement(transformation(extent={{20,80},{40,100}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-88,80},{-68,100}})));
   Modelica.Blocks.Sources.Pulse pulse(

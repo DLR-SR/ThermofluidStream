@@ -33,7 +33,7 @@ model DynamicJunctionN "Dynamic pressure junction with N inlets"
     A_par=A_out,
     assumeConstantDensity=assumeConstantDensity,
     extrapolateQuadratic=true)
-                          annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Sources.RealExpression v_mix(y=sqrt(sum(junction.w .* (junction.inlets.m_flow ./ (junction.rho.*A)) .^ 2)))
     "conservation of kinetik energy over mixing" annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
 

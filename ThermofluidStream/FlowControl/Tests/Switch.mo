@@ -3,9 +3,8 @@ model Switch "Test for Switches"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-        annotation (choicesAllMatching=true, Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
@@ -46,7 +45,7 @@ model Switch "Test for Switches"
         Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Pulse pulse(period=1)
-                                      annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
+    annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
   FourWaySwitch fourWaySwitch(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
   Boundaries.Source source1(
     redeclare package Medium = Medium,
@@ -103,7 +102,7 @@ model Switch "Test for Switches"
         rotation=180,
         origin={-40,-30})));
   Modelica.Blocks.Sources.Pulse pulse1(period=1)
-                                      annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
+    annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
 equation
   connect(flowResistance.outlet, switch.inlet) annotation (Line(
       points={{-22,70},{-10,70}},

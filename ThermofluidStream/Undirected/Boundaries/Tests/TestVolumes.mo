@@ -64,7 +64,7 @@ model TestVolumes "Test for undirected Volumes"
        sink(redeclare package Medium = Medium,
     p0_par=100000,
     inlet(m_flow(start=0, fixed=true)))
-            annotation (Placement(transformation(extent={{-44,60},{-24,80}})));
+    annotation (Placement(transformation(extent={{-44,60},{-24,80}})));
   ThermofluidStream.Boundaries.VolumeFlex
              flexVolume2(
     redeclare package Medium = Medium,
@@ -85,7 +85,7 @@ model TestVolumes "Test for undirected Volumes"
     annotation (Placement(transformation(extent={{-176,30},{-156,50}})));
   ThermofluidStream.Boundaries.Sink
        sink1(redeclare package Medium = Medium, p0_par=100000)
-            annotation (Placement(transformation(extent={{-44,30},{-24,50}})));
+    annotation (Placement(transformation(extent={{-44,30},{-24,50}})));
   ThermofluidStream.Boundaries.Volume
          heatportVolume1(
     redeclare package Medium = Medium,
@@ -119,7 +119,7 @@ model TestVolumes "Test for undirected Volumes"
   BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{-44,-60},{-24,-40}})));
   BoundaryFore boundary_fore1(redeclare package Medium = Medium,
     p0_par=100000,
-    rear(m_flow(start=0, fixed=true)))                                          annotation (Placement(transformation(extent={{-44,-30},{-24,-10}})));
+    rear(m_flow(start=0, fixed=true))) annotation (Placement(transformation(extent={{-44,-30},{-24,-10}})));
   BoundaryRear boundary_rear(redeclare package Medium = Medium, p0_par=200000) annotation (Placement(transformation(extent={{-176,-30},{-156,-10}})));
   BoundaryRear boundary_rear1(redeclare package Medium = Medium, p0_par=200000) annotation (Placement(transformation(extent={{-176,-60},{-156,-40}})));
   ThermofluidStream.Boundaries.VolumeMix
@@ -143,7 +143,7 @@ model TestVolumes "Test for undirected Volumes"
     annotation (Placement(transformation(extent={{10,20},{30,40}})));
   ThermofluidStream.Boundaries.Sink
        sink3(redeclare package Medium = MediumMix, p0_par=100000)
-            annotation (Placement(transformation(extent={{142,40},{162,60}})));
+    annotation (Placement(transformation(extent={{142,40},{162,60}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = MediumMix,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

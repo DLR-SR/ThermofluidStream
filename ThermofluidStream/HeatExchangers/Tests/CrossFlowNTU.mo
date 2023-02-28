@@ -19,13 +19,13 @@ model CrossFlowNTU
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
-                   annotation (Placement(transformation(extent={{116,-10},{136,
+    annotation (Placement(transformation(extent={{116,-10},{136,
             10}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
       Medium = MediumA,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,10},{11,-10}},
         rotation=0,
@@ -33,7 +33,7 @@ model CrossFlowNTU
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={42,-10})));
@@ -43,7 +43,7 @@ model CrossFlowNTU
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=100000)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,94})));
 

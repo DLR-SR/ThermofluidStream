@@ -10,7 +10,7 @@ model MCV "Test for undirected MCV"
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel=
-        AssertionLevel.warning)                                                 annotation (Placement(transformation(extent={{100,0},
+        AssertionLevel.warning) annotation (Placement(transformation(extent={{100,0},
             {120,20}})));
   Boundaries.BoundaryRear boundaryRear2(
     redeclare package Medium = Medium,

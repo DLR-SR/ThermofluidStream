@@ -57,16 +57,16 @@ model Piston "Test for Piston model"
         rotation=0,
         origin={16,10})));
   FlowControl.Switch switch(redeclare package Medium = Medium, initializeOneMassflowSplit=true)
-                                                               annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-66,10})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Medium)
-                                   annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={104,10})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.1, initType=Modelica.Blocks.Types.Init.SteadyState)
-                                                          annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-20,56})));
   Processes.FlowResistance flowResistance(

@@ -11,7 +11,7 @@ model ConductionElementTwoPhase
     A=10,
     U_liq_nom=700,
     U_vap_nom=500,
-    U_tp_nom=1000)                                                     annotation (Placement(transformation(extent={{-12,-10},{8,10}})));
+    U_tp_nom=1000) annotation (Placement(transformation(extent={{-12,-10},{8,10}})));
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,

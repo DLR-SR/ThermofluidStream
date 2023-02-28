@@ -72,7 +72,7 @@ model BoilerEspresso
     pipe2_low=0.9,
     pipe2_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.x,
-    x_0=x_0)         annotation (Placement(transformation(
+    x_0=x_0) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));

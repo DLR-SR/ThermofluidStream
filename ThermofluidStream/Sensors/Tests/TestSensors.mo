@@ -150,7 +150,7 @@ model TestSensors "Test model for all sensors."
     annotation (Placement(transformation(extent={{-16,-26},{-6,-16}})));
   Processes.ConductionElement conductionElement(
     redeclare package Medium = Medium2, V=1)
-          annotation (Placement(transformation(extent={{-10,4},{10,-16}})));
+    annotation (Placement(transformation(extent={{-10,4},{10,-16}})));
   DifferenceSensor_Tp differenceSensor_Tp(
     redeclare package MediumA = Medium1,
     redeclare package MediumB = Medium2,

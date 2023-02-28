@@ -124,7 +124,7 @@ model BoilerEspresso "Test for the espresso boiler"
     y_start=0)
     annotation (Placement(transformation(extent={{-70,-60},{-50,-80}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=0.3)
-                                                               annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
+    annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Blocks.Continuous.LimPID
                                 PID1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -135,7 +135,7 @@ model BoilerEspresso "Test for the espresso boiler"
     y_start=0)
     annotation (Placement(transformation(extent={{-70,10},{-50,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=1.25e5)
-                                                               annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
   connect(boilerEspresso.inlet, flowResistance.outlet) annotation (Line(
       points={{10,-20},{10,-30}},

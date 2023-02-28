@@ -75,7 +75,7 @@ model TestDiscretizedHEXvsDir
     initializeMassFlow=true,
     k_wall=300,
     calculate_efficency=true)
-                annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,200})));
@@ -141,7 +141,7 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
@@ -150,7 +150,7 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumAir,
     digits=3,
     outputMassFlowRate=true,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-22,-74})));
@@ -162,7 +162,7 @@ model TestDiscretizedHEXvsDir
     T0_par=283.15,
     p0_par=200000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-58,-20})));
   ThermofluidStream.Boundaries.Sink sinkB(
@@ -225,7 +225,7 @@ model TestDiscretizedHEXvsDir
     nCells=10,
     k_wall=300,
     calculate_efficency=true)
-                annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={2,-56})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA1(
@@ -280,7 +280,7 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -289,7 +289,7 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumAir,
     digits=3,
     outputMassFlowRate=true,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={52,-156})));
@@ -301,7 +301,7 @@ model TestDiscretizedHEXvsDir
     T0_par=283.15,
     p0_par=200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
         origin={80,-206})));
   ThermofluidStream.Boundaries.Sink sinkB1(
@@ -364,7 +364,7 @@ model TestDiscretizedHEXvsDir
     nCells=10,
     k_wall=300,
     calculate_efficency=true)
-                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-174})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA2(

@@ -53,7 +53,7 @@ model VaporCycle
         FlowControl.Internal.ControlValve.linearCharacteristics,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     Kvs=0.5,
-    m_flow_ref_set=0.2)    annotation (Placement(transformation(
+    m_flow_ref_set=0.2) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-64,0})));
@@ -274,7 +274,7 @@ model VaporCycle
     height=1,
     offset=1,
     startTime=1200)
-                   annotation (Placement(transformation(extent={{202,58},{182,78}})));
+    annotation (Placement(transformation(extent={{202,58},{182,78}})));
   Modelica.Blocks.Sources.Step target_step(
     height=-7,
     offset=7,

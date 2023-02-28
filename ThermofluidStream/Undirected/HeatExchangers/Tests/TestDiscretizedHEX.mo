@@ -51,9 +51,8 @@ model TestDiscretizedHEX
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-70,14},{-50,34}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{74,74},{94,94}})));
   Modelica.Blocks.Sources.Ramp ramp1(
@@ -61,7 +60,7 @@ model TestDiscretizedHEX
     duration=10,
     offset=0.3,
     startTime=15) annotation (Placement(transformation(extent={{-40,-58},{-20,-38}})));
-  Modelica.Blocks.Sources.Constant const1(k=1e5)    annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
+  Modelica.Blocks.Sources.Constant const1(k=1e5) annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
   DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,

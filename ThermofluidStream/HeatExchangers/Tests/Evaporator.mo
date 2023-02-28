@@ -20,12 +20,12 @@ model Evaporator
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumAir, p0_par=150000)
-                   annotation (Placement(transformation(extent={{-74,-16},{-94,4}})));
+    annotation (Placement(transformation(extent={{-74,-16},{-94,4}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
       Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
@@ -33,7 +33,7 @@ model Evaporator
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumAir,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-24,-16})));
@@ -45,7 +45,7 @@ model Evaporator
     T0_par=283.15,
     p0_par=500000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-60,60})));
 

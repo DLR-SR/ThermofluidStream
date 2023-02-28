@@ -19,15 +19,15 @@ model TestDynamicTopology
     A_out(each displayUnit="cm2") = {0.0001,0.0002,0.0003})
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=100000)
-                           annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
+    annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,70},{96,90}})));
+    annotation (Placement(transformation(extent={{76,70},{96,90}})));
   Boundaries.Source source1(redeclare package Medium = Medium, p0_par=100000)
-                           annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
+    annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,40},{96,60}})));
+    annotation (Placement(transformation(extent={{76,40},{96,60}})));
   Boundaries.Sink sink2(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,10},{96,30}})));
+    annotation (Placement(transformation(extent={{76,10},{96,30}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -49,21 +49,21 @@ model TestDynamicTopology
     r(displayUnit="mm") = 0.005,
     l=10,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)                        annotation (Placement(transformation(extent={{20,40},{40,60}})));
+        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,40},{40,60}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)                        annotation (Placement(transformation(extent={{20,10},{40,30}})));
+        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,10},{40,30}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=10,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)                        annotation (Placement(transformation(extent={{20,70},{40,90}})));
+        Processes.Internal.FlowResistance.laminarPressureLoss) annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Boundaries.DynamicPressureInflow dynamicPressureInflow(
     redeclare package Medium = Medium,
     A_par(displayUnit="cm2") = 0.0001,
@@ -94,15 +94,15 @@ model TestDynamicTopology
     A_splitter=10)
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
   Boundaries.Source source2(redeclare package Medium = Medium, p0_par=100000)
-                           annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
+    annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,-30},{96,-10}})));
+    annotation (Placement(transformation(extent={{76,-30},{96,-10}})));
   Boundaries.Source source3(redeclare package Medium = Medium, p0_par=100000)
-                           annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
+    annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
   Boundaries.Sink sink4(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,-60},{96,-40}})));
+    annotation (Placement(transformation(extent={{76,-60},{96,-40}})));
   Boundaries.Sink sink5(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{76,-90},{96,-70}})));
+    annotation (Placement(transformation(extent={{76,-90},{96,-70}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

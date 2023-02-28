@@ -118,7 +118,7 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))        annotation (
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100)) annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -126,7 +126,7 @@ model HeatPump
   Boundaries.Source source1(redeclare package Medium = Air,
     temperatureFromInput=true,
     T0_par=268.15,
-    p0_par=100000)                                          annotation (
+    p0_par=100000) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -246,7 +246,7 @@ model HeatPump
   Modelica.Blocks.Sources.Step step(
     height=10,
     offset=25,
-    startTime=500)                              annotation (Placement(transformation(extent={{168,-10},{148,10}})));
+    startTime=500) annotation (Placement(transformation(extent={{168,-10},{148,10}})));
   Modelica.Blocks.Continuous.LimPID PI2(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=10,
@@ -264,11 +264,11 @@ model HeatPump
   Modelica.Blocks.Sources.Step step2(
     height=-35,
     offset=10 + 273.15,
-    startTime=300)                              annotation (Placement(transformation(extent={{62,-136},{42,-116}})));
+    startTime=300) annotation (Placement(transformation(extent={{62,-136},{42,-116}})));
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_A/max(0.00001, compressor.W_t))   annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+    number=condenser.Q_flow_A/max(0.00001, compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(

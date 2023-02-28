@@ -34,12 +34,11 @@ model Compressor "Test for compressors"
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=-1,
-    redeclare function dp_tau_compressor =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-  omega_ref=3000,
-        skew=1,
-        m_flow_ref=1))
-                annotation (Placement(transformation(extent={{-6,10},{14,30}})));
+    redeclare function dp_tau_compressor = tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+      omega_ref=3000,
+      skew=1,
+      m_flow_ref=1))
+    annotation (Placement(transformation(extent={{-6,10},{14,30}})));
   Modelica.Blocks.Sources.Constant const(k=6000)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
   tf.Processes.Compressor compressor1(

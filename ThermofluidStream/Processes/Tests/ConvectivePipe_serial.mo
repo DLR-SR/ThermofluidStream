@@ -21,7 +21,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
       p0_par=100000)
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(Q_flow=2000)
-               annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-20,70})));
@@ -84,7 +84,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{0,0},{20,20}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow1(Q_flow=
-        2000)  annotation (Placement(transformation(
+        2000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={36,70})));
