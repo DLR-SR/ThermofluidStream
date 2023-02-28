@@ -3,10 +3,10 @@ model HeatPump
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                                    "Refrigerant Medium"
+    Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
     annotation(choicesAllMatching=true);
   replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                                    "Air Medium"
+    Media.myMedia.Interfaces.PartialMedium "Air Medium"
     annotation(choicesAllMatching=true);
 
   HeatExchangers.DiscretizedCounterFlowHEX
@@ -138,7 +138,7 @@ model HeatPump
         origin={-150,-90})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=250)
     annotation (Placement(transformation(extent={{-70,-120},{-90,-100}})));
-  Modelica.Blocks.Sources.Step           step1(
+  Modelica.Blocks.Sources.Step step1(
     height=-200,
     offset=250,
     startTime=800)
@@ -243,7 +243,7 @@ model HeatPump
     xi_start=0,
     y_start=0.0001)
     annotation (Placement(transformation(extent={{124,10},{104,-10}})));
-  Modelica.Blocks.Sources.Step     step(
+  Modelica.Blocks.Sources.Step step(
     height=10,
     offset=25,
     startTime=500)                              annotation (Placement(transformation(extent={{168,-10},{148,10}})));
@@ -261,7 +261,7 @@ model HeatPump
     k=1,
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState) annotation (Placement(transformation(extent={{-78,130},{-58,150}})));
-  Modelica.Blocks.Sources.Step     step2(
+  Modelica.Blocks.Sources.Step step2(
     height=-35,
     offset=10 + 273.15,
     startTime=300)                              annotation (Placement(transformation(extent={{62,-136},{42,-116}})));

@@ -3,8 +3,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.DryAirNasa
-                                                      constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                           "Medium Model"
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (Documentation(
         info="<html>
 <p>Medium used for this Example. Should be a gas.</p>

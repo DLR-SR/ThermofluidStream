@@ -3,10 +3,10 @@ model CounterFlowNTU_serial
 
   replaceable package MediumA =
       Media.myMedia.Incompressible.Examples.Glycol47
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumB = Media.myMedia.Air.DryAirNasa
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
@@ -56,19 +56,19 @@ model CounterFlowNTU_serial
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{18,-8},{38,12}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,8},{-10,28}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm5(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-74,-30})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm6(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm6(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(

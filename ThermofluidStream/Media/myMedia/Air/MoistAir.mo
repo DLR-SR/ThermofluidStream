@@ -775,7 +775,7 @@ Specific enthalpy of moist air is computed from the thermodynamic state record. 
     X_liquid := max(X[Water] - X_sat, 0.0);
     X_steam := X[Water] - X_liquid;
     X_air := 1 - X[Water];
-    /* h        := {SingleGasNasa.h_Tlow(data=steam,  T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=46479.819+2501014.5),
+    /* h := {SingleGasNasa.h_Tlow(data=steam,  T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=46479.819+2501014.5),
                SingleGasNasa.h_Tlow(data=dryair, T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=25104.684)}*
     {X_steam, X_air} + enthalpyOfLiquid(T)*X_liquid;*/
     h := {ThermofluidStream.Media.myMedia.IdealGases.Common.Functions.h_Tlow(

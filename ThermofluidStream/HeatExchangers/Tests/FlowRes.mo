@@ -2,10 +2,10 @@ within ThermofluidStream.HeatExchangers.Tests;
 model FlowRes
 
   replaceable package MediumAir = Media.myMedia.Air.MoistAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumRefrigerant = Media.XRGMedia.R1234yf_ph
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
@@ -116,7 +116,7 @@ model FlowRes
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-186,34})));
-  Boundaries.Source                   sourceA1(
+  Boundaries.Source sourceA1(
     redeclare package Medium = MediumAir,
     T0_par=303.15,
     p0_par=200000)
@@ -124,11 +124,11 @@ model FlowRes
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-48,-66})));
-  Boundaries.Sink                   sinkA1(
+  Boundaries.Sink sinkA1(
     redeclare package Medium = MediumAir,
     pressureFromInput=false,
     p0_par=100000) annotation (Placement(transformation(extent={{-200,-76},{-220,-56}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
@@ -137,7 +137,7 @@ model FlowRes
         extent={{11,10},{-11,-10}},
         rotation=0,
         origin={-91,-76})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm5(
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
@@ -145,7 +145,7 @@ model FlowRes
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-144,-76})));
-  Boundaries.Source                   sourceB1(
+  Boundaries.Source sourceB1(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
@@ -155,20 +155,20 @@ model FlowRes
                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-180,-50})));
-  Boundaries.Sink                   sinkB1(
+  Boundaries.Sink sinkB1(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par(displayUnit="bar") = 300000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-24,-50})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm6(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm6(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-96,-50},{-76,-30}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm7(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm7(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
@@ -214,7 +214,7 @@ model FlowRes
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-184,-66})));
-  Boundaries.Source                   sourceA2(
+  Boundaries.Source sourceA2(
     redeclare package Medium = MediumAir,
     T0_par=311.15,
     p0_par=100000)
@@ -222,9 +222,9 @@ model FlowRes
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={46,42})));
-  Boundaries.Sink                   sinkA2(redeclare package Medium = MediumAir, p0_par=90000)
+  Boundaries.Sink sinkA2(redeclare package Medium = MediumAir, p0_par=90000)
                    annotation (Placement(transformation(extent={{200,32},{220,52}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm8(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
@@ -232,7 +232,7 @@ model FlowRes
         extent={{-11,-10},{11,10}},
         rotation=0,
         origin={99,52})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm9(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm9(
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
@@ -240,7 +240,7 @@ model FlowRes
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={154,52})));
-  Boundaries.Source                   sourceB2(
+  Boundaries.Source sourceB2(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
@@ -250,14 +250,14 @@ model FlowRes
                annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={188,94})));
-  Boundaries.Sink                   sinkB2(
+  Boundaries.Sink sinkB2(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par(displayUnit="bar") = 3000000)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={56,14})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm10(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm10(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
@@ -265,7 +265,7 @@ model FlowRes
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
         origin={114,24})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm11(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm11(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
@@ -337,7 +337,7 @@ model FlowRes
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={156,94})));
-  Boundaries.Source                   sourceA3(
+  Boundaries.Source sourceA3(
     redeclare package Medium = MediumAir,
     T0_par=311.15,
     p0_par=100000)
@@ -345,9 +345,9 @@ model FlowRes
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={28,-62})));
-  Boundaries.Sink                   sinkA3(redeclare package Medium = MediumAir, p0_par=90000)
+  Boundaries.Sink sinkA3(redeclare package Medium = MediumAir, p0_par=90000)
                    annotation (Placement(transformation(extent={{182,-72},{202,-52}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm12(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm12(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar")                                         annotation (
@@ -355,7 +355,7 @@ model FlowRes
         extent={{-11,-10},{11,10}},
         rotation=0,
         origin={81,-52})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm13(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm13(
     redeclare package Medium = MediumAir,
     digits=3,
     temperatureUnit="degC",
@@ -363,7 +363,7 @@ model FlowRes
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={136,-52})));
-  Boundaries.Source                   sourceB3(
+  Boundaries.Source sourceB3(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
     temperatureFromInput=false,
@@ -373,14 +373,14 @@ model FlowRes
                annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={170,-10})));
-  Boundaries.Sink                   sinkB3(
+  Boundaries.Sink sinkB3(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par(displayUnit="bar") = 3000000)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={38,-90})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm14(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm14(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
@@ -388,7 +388,7 @@ model FlowRes
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
         origin={96,-80})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm15(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm15(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",

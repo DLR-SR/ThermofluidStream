@@ -17,7 +17,7 @@ model SimpleEngine "Simple steam engine"
         rotation=90,
         origin={190,90})));
 
-  Processes.ConductionElement     conductionElement(    redeclare package
+  Processes.ConductionElement conductionElement(    redeclare package
       Medium = Water,
     A=20,
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,

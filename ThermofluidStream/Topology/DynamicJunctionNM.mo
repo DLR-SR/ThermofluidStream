@@ -9,7 +9,7 @@ model DynamicJunctionNM "Dynamic pressure N to M splitter"
 
   parameter Integer N(min=1) = 1 "Number of inputs";
   parameter Integer M(min=1) = 1 "Number of outputs";
-  parameter Boolean assumeConstantDensity=true    "If true only mass-flow rate will determine the mixing"
+  parameter Boolean assumeConstantDensity=true "If true only mass-flow rate will determine the mixing"
     annotation(Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
     annotation (Dialog(tab="Advanced"));

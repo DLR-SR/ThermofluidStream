@@ -108,7 +108,7 @@ algorithm
   tau_st := (f_Q*f_H/f_eta) * (v_ref/v_in* (a_t*V_flow*abs(omega) - b_t*V_flow*abs(V_flow) + v_i*omega*abs(omega))) + v_s*abs(omega); // v_s is mechanical and does not scale with medium
 
   //compute dp
-  dp :=g_n*TDH/v_in;
+  dp := g_n*TDH/v_in;
 
   annotation (Documentation(info="<html>
 <p>Centrifugal pump with HQ and TQ characteristic curve. </p>

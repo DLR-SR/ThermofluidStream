@@ -14,7 +14,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-140,-10},{-120,10}})));
-  FlowControl.BasicControlValve              valveLinear(
+  FlowControl.BasicControlValve valveLinear(
     redeclare package Medium = Medium,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=10,
@@ -50,7 +50,7 @@ model WaterHammer "Pump water by using dynamic pressures"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,30})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,

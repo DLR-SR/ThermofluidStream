@@ -2,10 +2,10 @@ within ThermofluidStream.HeatExchangers.Tests;
 model Condenser
 
   replaceable package MediumAir = Media.myMedia.Air.MoistAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 

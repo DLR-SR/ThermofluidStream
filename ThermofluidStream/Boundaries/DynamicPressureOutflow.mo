@@ -9,7 +9,7 @@ model DynamicPressureOutflow
     annotation(Dialog(enable=not areaFromInput));
   parameter SI.Velocity v_out_par = 0 "Reference velocity for p0. Positive velocity points from inside the boundary to outside"
     annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean extrapolateQuadratic = false "If true extrapolation for neagive velocities is done purly quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));

@@ -25,7 +25,7 @@ model EspressoMachine "Get your simulated coffe!"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-60,-60})));
-  FlowControl.TanValve     tanValve(
+  FlowControl.TanValve tanValve(
     redeclare package Medium = Water,
     invertInput=false,
     relativeLeakiness=1e-8)
@@ -35,7 +35,7 @@ model EspressoMachine "Get your simulated coffe!"
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
     annotation (Placement(transformation(extent={{-110,0},{-90,20}})));
-  FlowControl.TanValve     tanValve1(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve1(redeclare package Medium = Water,
       relativeLeakiness=1e-6)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
@@ -119,7 +119,7 @@ model EspressoMachine "Get your simulated coffe!"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={116,-50})));
-  FlowControl.TanValve     tanValve2(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve2(redeclare package Medium = Water,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
       relativeLeakiness=1e-7)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
@@ -282,15 +282,14 @@ model EspressoMachine "Get your simulated coffe!"
     annotation (Placement(transformation(extent={{-170,-90},{-150,-110}})));
 
   Modelica.Blocks.Sources.RealExpression realExpression3(y=8.5)
-                                                               annotation (Placement(transformation(extent={{-200,-90},{-180,-110}})));
-  FlowControl.TanValve     tanValve6(redeclare package Medium = Water,
+    annotation (Placement(transformation(extent={{-200,-90},{-180,-110}})));
+  FlowControl.TanValve tanValve6(redeclare package Medium = Water,
       relativeLeakiness=1e-6)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-88,150})));
-  Utilities.WaterSink
-                  waterSink(
-                        redeclare package Medium = Water,
+  Utilities.WaterSink waterSink(
+    redeclare package Medium = Water,
     p0_par=100000,
     m_flow_animate=2.5e-3)
     annotation (Placement(transformation(

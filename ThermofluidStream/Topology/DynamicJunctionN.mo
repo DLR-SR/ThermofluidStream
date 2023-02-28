@@ -13,7 +13,7 @@ model DynamicJunctionN "Dynamic pressure junction with N inlets"
     annotation (Dialog(tab="Advanced"));
   parameter SI.Area A[N] "Cross section area of inlets";
   parameter SI.Area A_out "Cross section area of outlet";
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "vector of N inlets"

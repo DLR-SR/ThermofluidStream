@@ -33,14 +33,14 @@ model Piston "Test for Piston model"
     T0_par(displayUnit="K") = 500,
     p0_par=1000000)
     annotation (Placement(transformation(extent={{-106,0},{-86,20}})));
-  SteamSink       steamSink(
+  SteamSink steamSink(
                        redeclare package Medium = Medium,
     p0_par=200000,
     m_flow_animate=1.3)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={124,36})));
-  Modelica.Blocks.Sources.Pulse             pulse(
+  Modelica.Blocks.Sources.Pulse pulse(
     period=4,
     offset=0,
     startTime=1)

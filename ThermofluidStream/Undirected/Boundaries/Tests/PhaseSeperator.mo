@@ -4,7 +4,7 @@ model PhaseSeperator
 
   package Medium = Media.myMedia.Water.StandardWater;
 
-  BoundaryRear                        boundaryRear(
+  BoundaryRear boundaryRear(
     redeclare package Medium = Medium,
     setEnthalpy=true,
     enthalpyFromInput=true,
@@ -18,8 +18,8 @@ model PhaseSeperator
     pipe_high=0.15,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
     annotation (Placement(transformation(extent={{0,10},{20,30}})));
-  BoundaryFore                      boundaryFore1(
-                                         redeclare package Medium = Medium, p0_par=100000)
+  BoundaryFore boundaryFore1(
+    redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{130,-30},{150,-10}})));
 
   ThermofluidStream.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
@@ -38,43 +38,39 @@ model PhaseSeperator
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{116,-52},{136,-32}})));
-  Modelica.Blocks.Sources.TimeTable
-                               timeTable(
+  Modelica.Blocks.Sources.TimeTable timeTable(
     table=[0.0,1500e3; 24.9,1500e3; 25.1,3500e3; 49.9,3500e3; 50.1,1500e3; 74.9,1500e3; 75.1,410e3; 99.9,410e3; 100.1,1500e3; 124.9,1500e3; 1e10,
         1500e3],
     offset=0,
     startTime=0) annotation (Placement(transformation(extent={{-154,-10},{-134,10}})));
-  Processes.FlowResistance                   flowResistance1(
+  Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=5000))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=5000))
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Processes.FlowResistance                   flowResistance2(
+  Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=5000))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=5000))
     annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
-  Processes.FlowResistance                   flowResistance(
+  Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=5000))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=5000))
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
-  Processes.FlowResistance                   flowResistance3(
+  Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="cm") = 0.05,
@@ -116,7 +112,7 @@ model PhaseSeperator
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-84,-60},{-64,-40}})));
-  BoundaryRear                        boundaryRear1(
+  BoundaryRear boundaryRear1(
     redeclare package Medium = Medium,
     setEnthalpy=true,
     enthalpyFromInput=true,
@@ -130,7 +126,7 @@ model PhaseSeperator
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-76,40},{-56,60}})));
-  BoundaryFore                      boundaryFore(
+  BoundaryFore boundaryFore(
                                           redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{120,10},{140,30}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect7(

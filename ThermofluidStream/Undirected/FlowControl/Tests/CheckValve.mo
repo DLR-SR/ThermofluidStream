@@ -25,7 +25,7 @@ model CheckValve "Test for undirected CheckValve"
     period=0.5,
     offset=1e5)
     annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
-  Processes.FlowResistance                   flowResistance(
+  Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,

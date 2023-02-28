@@ -3,10 +3,10 @@ model CounterFlowNTU_parallel
 
   replaceable package MediumA =
       Media.myMedia.Incompressible.Examples.Glycol47
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumB = Media.myMedia.Air.DryAirNasa
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
@@ -59,7 +59,7 @@ model CounterFlowNTU_parallel
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-38,48},{-18,28}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm5(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
@@ -71,45 +71,45 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(extent={{56,10},{36,30}})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium = MediumB)
     annotation (Placement(transformation(extent={{-94,10},{-74,30}})));
-  Boundaries.Source                   sourceA2(redeclare package Medium = MediumA, T0_par=
+  Boundaries.Source sourceA2(redeclare package Medium = MediumA, T0_par=
        333.15)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-128,78})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-96,88})));
-  Boundaries.Sink                   sinkA2(
+  Boundaries.Sink sinkA2(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
                    annotation (Placement(transformation(extent={{54,50},{74,70}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm6(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm6(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC")   annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={10,70})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm7(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm7(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{40,32},{20,52}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm8(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{40,8},{20,28}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm9(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm9(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-50,32},{-70,52}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm10(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm10(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")

@@ -2,9 +2,8 @@ within ThermofluidStream.Processes.Tests;
 model Nozzle
   extends Modelica.Icons.Example;
 
-   replaceable package Medium = Media.myMedia.Air.MoistAir
-                                                       constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                            "Medium Model"
+  replaceable package Medium = Media.myMedia.Air.MoistAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (choicesAllMatching=true,Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
 </html>"));

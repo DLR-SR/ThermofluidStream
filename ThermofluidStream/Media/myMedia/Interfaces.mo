@@ -801,7 +801,7 @@ kappa is defined as - 1/v * der(v,p), with v = 1/d at constant temperature T.
 
     // Only for backwards compatibility to version 3.2 (
     // (do not use these definitions in new models, but use Modelica.Media.Interfaces.Choices instead)
-    package Choices = myMedia.Interfaces.Choices        annotation (obsolete=
+    package Choices = myMedia.Interfaces.Choices annotation (obsolete=
           "Use Modelica.Media.Interfaces.Choices");
 
     annotation (Documentation(info="<html>

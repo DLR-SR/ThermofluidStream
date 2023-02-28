@@ -6068,7 +6068,7 @@ Th.</em> The IAPWS Industrial Formulation 1997 for the Thermodynamic Properties
 of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (2000), 150 - 182.
 </p>
 <hr size=\"3\" width=\"90%\">
-<h4>2. Calculable Properties      </h4>
+<h4>2. Calculable Properties </h4>
 <table border=\"1\" cellpadding=\"2\" cellspacing=\"0\">
        <tbody>
        <tr>

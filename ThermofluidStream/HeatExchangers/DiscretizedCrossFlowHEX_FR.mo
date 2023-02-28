@@ -3,10 +3,10 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumB =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX

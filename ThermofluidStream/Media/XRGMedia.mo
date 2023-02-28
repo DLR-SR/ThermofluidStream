@@ -9,7 +9,7 @@ package XRGMedia "A medium property library"
     record HelmholtzDerivs
       "derivatives of dimensionless Helmholtz-function w.r.t. dimensionless pressuredensity and temperature"
       extends Modelica.Icons.Record;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       SI.Density d "density";
       SI.Temperature T "temperature";
       SI.SpecificHeatCapacity R "specific heat capacity";
@@ -49,7 +49,7 @@ package XRGMedia "A medium property library"
 
     record NewtonDerivatives_pT
       "Derivatives for fast inverse calculations of Helmholtz functions:p & T"
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       extends Modelica.Icons.Record;
       SI.Pressure p "Pressure";
       SI.DerPressureByDensity pd "Derivative of pressure w.r.t. density";
@@ -59,7 +59,7 @@ package XRGMedia "A medium property library"
       "derivatives for fast inverse calculations of Helmholtz functions: p & h"
 
       extends Modelica.Icons.Record;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       SI.Pressure p "pressure";
       SI.SpecificEnthalpy h "specific enthalpy";
       Real pd "derivative of pressure w.r.t. density";
@@ -74,7 +74,7 @@ package XRGMedia "A medium property library"
       "derivatives for fast inverse calculation of Helmholtz functions: p & s"
 
       extends Modelica.Icons.Record;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       SI.Pressure p "pressure";
       SI.SpecificEntropy s "specific entropy";
       Real pd "derivative of pressure w.r.t. density";
@@ -156,7 +156,7 @@ package XRGMedia "A medium property library"
       "compute isochoric specific heat capacity inside the two-phase region"
       extends Modelica.Icons.Function;
 
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       input PhaseBoundaryProperties liq "properties on the boiling curve";
       input PhaseBoundaryProperties vap "properties on the condensation curve";
       input SI.MassFraction x "vapour mass fraction";
@@ -217,7 +217,7 @@ package XRGMedia "A medium property library"
     function Helmholtz_ph
       "function to calculate analytic derivatives for computing d and t given p and h"
       extends Modelica.Icons.Function;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output NewtonDerivatives_ph nderivs
         "derivatives for Newton iteration to calculate d and t from p and h";
@@ -238,7 +238,7 @@ package XRGMedia "A medium property library"
       "function to calculate analytic derivatives for computing d and t given p and s"
 
       extends Modelica.Icons.Function;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output NewtonDerivatives_ps nderivs
         "derivatives for Newton iteration to compute d and t from p and s";
@@ -259,7 +259,7 @@ package XRGMedia "A medium property library"
       "calulate phase boundary property record from dimensionless Helmholtz function"
 
       extends Modelica.Icons.Function;
-      import      Modelica.Units.SI;
+      import Modelica.Units.SI;
       input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
       output PhaseBoundaryProperties sat "phase boundary property record";
     protected

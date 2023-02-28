@@ -14,7 +14,7 @@ model DynamicSplitterN "Dynamic pressure 1 to N splitter"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
     annotation (Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "inlet"

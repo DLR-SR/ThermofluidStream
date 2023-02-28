@@ -3,10 +3,8 @@ model Pump "Test for pumps"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package Medium =
-      tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                            constrainedby
-    tf.Media.myMedia.Interfaces.PartialMedium      "Medium model"
+  replaceable package Medium = tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    constrainedby tf.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>

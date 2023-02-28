@@ -34,7 +34,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={10,-40})));
-  FlowControl.TanValve     tanValve(
+  FlowControl.TanValve tanValve(
     redeclare package Medium = Water, relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -50,7 +50,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={80,0})));
-  FlowControl.TanValve     tanValve1(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve1(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=90,
@@ -80,7 +80,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{100,60},{80,80}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=1, initType=Modelica.Blocks.Types.Init.SteadyState)
     annotation (Placement(transformation(extent={{70,60},{50,80}})));
-  FlowControl.TanValve     tanValve2(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve2(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,

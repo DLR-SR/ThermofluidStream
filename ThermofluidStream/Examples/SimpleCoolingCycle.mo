@@ -2,26 +2,26 @@ within ThermofluidStream.Examples;
 model SimpleCoolingCycle "Basic cooling cycle with a load"
 extends Modelica.Icons.Example;
 
-  replaceable package Medium_liquid =
-      Media.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+  replaceable package Medium_liquid = Media.myMedia.Water.ConstantPropertyLiquidWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    annotation(choicesAllMatching = true);
 
-  replaceable package Medium_air =
-      ThermofluidStream.Media.myMedia.Air.DryAirNasa
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+  replaceable package Medium_air = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    annotation(choicesAllMatching = true);
 
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
     redeclare package MediumA = Medium_air,
     redeclare package MediumB = Medium_liquid,
     A=10) annotation (Placement(transformation(extent={{84,-30},{104,-10}})));
-  Boundaries.VolumeFlex                   flexVolume(
+  Boundaries.VolumeFlex flexVolume(
     redeclare package Medium =
         Medium_liquid,
     V_ref=0.02,
     p_start=100000,
     T_start=278.15)
     annotation (Placement(transformation(extent={{24,-24},{4,-4}})));
-  ThermofluidStream.Processes.Pump          pump(
+  ThermofluidStream.Processes.Pump pump(
     redeclare package Medium =
         Medium_liquid,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

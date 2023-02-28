@@ -50,7 +50,7 @@ model Recuperator
     A=10,
     k_wall=250) annotation (Placement(transformation(extent={{10,12},{-10,-8}})));
 
-  FlowControl.PCV          pCV(
+  FlowControl.PCV pCV(
     redeclare package Medium = MediumRefrigerant,
     m_flow_0=0.3,
     pressure_set_par=50000)
@@ -70,7 +70,7 @@ model Recuperator
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium =
         MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{24,32},{44,52}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",
@@ -82,7 +82,7 @@ model Recuperator
   Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium =
         MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-22,-46},{-42,-26}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC",

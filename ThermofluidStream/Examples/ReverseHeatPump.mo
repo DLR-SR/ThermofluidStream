@@ -58,7 +58,7 @@ model ReverseHeatPump
         rotation=270,
         origin={76,90})));
 
-  FlowControl.BasicControlValve               valveCompressorOutletCooling(
+  FlowControl.BasicControlValve valveCompressorOutletCooling(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -67,7 +67,7 @@ model ReverseHeatPump
     m_flow_ref_set=0.2) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-26,40})));
-  FlowControl.BasicControlValve               valveCompressorOutletHeating(
+  FlowControl.BasicControlValve valveCompressorOutletHeating(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     invertInput=true,
@@ -82,7 +82,7 @@ model ReverseHeatPump
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={68,40})));
-  FlowControl.BasicControlValve               valveCompressorInletHeating(
+  FlowControl.BasicControlValve valveCompressorInletHeating(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
@@ -93,7 +93,7 @@ model ReverseHeatPump
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-68,-6})));
-  FlowControl.BasicControlValve               valveCompressorInletCooling(
+  FlowControl.BasicControlValve valveCompressorInletCooling(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,

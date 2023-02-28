@@ -1490,14 +1490,14 @@ in the Modelica.Fluid library:</p>
 <blockquote><pre>
 <strong>connector</strong> FluidPort
   <strong>replaceable package</strong> Medium = Modelica.Media.Interfaces.PartialMedium;
-  Medium.AbsolutePressure      p;
-  <strong>flow</strong> Medium.MassFlowRate     m_flow;
+  Medium.AbsolutePressure p;
+  <strong>flow</strong> Medium.MassFlowRate m_flow;
 
-  Medium.SpecificEnthalpy      h;
+  Medium.SpecificEnthalpy h;
   <strong>flow</strong> Medium.EnthalpyFlowRate H_flow;
 
-  Medium.MassFraction          Xi    [Medium.nXi];
-  <strong>flow</strong> Medium.MassFlowRate     mX_flow[Medium.nXi];
+  Medium.MassFraction Xi [Medium.nXi];
+  <strong>flow</strong> Medium.MassFlowRate mX_flow[Medium.nXi];
 <strong>end</strong> FluidPort;
 </pre></blockquote>
 <p>
@@ -1601,14 +1601,14 @@ is used in all components:
 <blockquote><pre>
 <strong>connector</strong> FluidPort
   <strong>replaceable package</strong> Medium = Modelica.Media.Interfaces.PartialMedium;
-  Medium.AbsolutePressure      p;
-  <strong>flow</strong> Medium.MassFlowRate     m_flow;
+  Medium.AbsolutePressure p;
+  <strong>flow</strong> Medium.MassFlowRate m_flow;
 
-  Medium.SpecificEnthalpy      h;
+  Medium.SpecificEnthalpy h;
   <strong>flow</strong> Medium.EnthalpyFlowRate H_flow;
 
-  Medium.MassFraction          Xi    [Medium.nXi];
-  <strong>flow</strong> Medium.MassFlowRate     mX_flow[Medium.nXi];
+  Medium.MassFraction Xi [Medium.nXi];
+  <strong>flow</strong> Medium.MassFlowRate mX_flow[Medium.nXi];
 <strong>end</strong> FluidPort;
 </pre></blockquote>
 

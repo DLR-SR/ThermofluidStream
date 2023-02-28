@@ -2,15 +2,14 @@ within ThermofluidStream.FlowControl.Tests;
 model MCV "Test for MCV"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning)
-                                                                                annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -84,8 +83,7 @@ model MCV "Test for MCV"
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
-  Modelica.Blocks.Sources.Trapezoid
-                                trapezoid(
+  Modelica.Blocks.Sources.Trapezoid trapezoid(
     amplitude=2e5,
     rising=0.5,
     width=0.75,
@@ -144,8 +142,7 @@ model MCV "Test for MCV"
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
-  Modelica.Blocks.Sources.Trapezoid
-                                trapezoid1(
+  Modelica.Blocks.Sources.Trapezoid trapezoid1(
     amplitude=2e5,
     rising=0.5,
     width=1.5,
@@ -183,8 +180,7 @@ model MCV "Test for MCV"
     offset=0.1,
     startTime=0)
     annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
-  Modelica.Blocks.Sources.Trapezoid
-                                trapezoid2(
+  Modelica.Blocks.Sources.Trapezoid trapezoid2(
     amplitude=5,
     rising=0.5,
     width=0.75,
@@ -193,13 +189,13 @@ model MCV "Test for MCV"
     offset=1,
     startTime=0)
     annotation (Placement(transformation(extent={{-80,80},{-60,100}})));
-  Boundaries.Source                   source6(
+  Boundaries.Source source6(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
     p0_par=100000) annotation (Placement(transformation(extent={{-38,130},{-18,
             150}})));
-  Boundaries.Sink                   sink6(redeclare package Medium = Medium,
+  Boundaries.Sink sink6(redeclare package Medium = Medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{52,130},{72,150}})));
   ThermofluidStream.FlowControl.MCV mCV6(

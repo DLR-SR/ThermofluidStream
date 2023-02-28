@@ -3,7 +3,7 @@ model ElementTwoPhase
   extends Modelica.Icons.Example;
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     m_flow_0=0.5,
@@ -20,7 +20,7 @@ model ElementTwoPhase
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,70},{70,90}})));
-  FlowControl.MCV          mCV(
+  FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -42,13 +42,13 @@ model ElementTwoPhase
     U_tp_nom=750,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-                   annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+    annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   Boundaries.Sink sink1(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
-  FlowControl.MCV          mCV1(
+  FlowControl.MCV mCV1(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -64,8 +64,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature prescribedTemperature
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-  Modelica.Blocks.Sources.Trapezoid
-                               trapezoid(
+  Modelica.Blocks.Sources.Trapezoid trapezoid(
     amplitude=50,
     rising=20,
     width=10,
@@ -74,7 +73,7 @@ model ElementTwoPhase
     offset=300,
     startTime=5)
     annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
-  Boundaries.Volume                      volume(
+  Boundaries.Volume volume(
     redeclare package Medium = MediumRefrigerant,
     p_start=3000000,
     use_hstart=true,
@@ -87,7 +86,7 @@ model ElementTwoPhase
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,40},{70,60}})));
-  FlowControl.MCV          mCV2(
+  FlowControl.MCV mCV2(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -100,7 +99,7 @@ model ElementTwoPhase
     enthalpyFromInput=true,
     p0_par=2000000)
     annotation (Placement(transformation(extent={{-70,40},{-50,60}})));
-  Boundaries.Volume                      volume1(
+  Boundaries.Volume volume1(
     redeclare package Medium = MediumRefrigerant,
     useHeatport=true,
     U=700,
@@ -115,7 +114,7 @@ model ElementTwoPhase
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
-  FlowControl.MCV          mCV3(
+  FlowControl.MCV mCV3(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,

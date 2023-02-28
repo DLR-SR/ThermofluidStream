@@ -3,8 +3,7 @@ model TransportDelay "Test for transport delay "
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.DryAirNasa
-                                                      constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                           "Medium Model"
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
 </html>"));

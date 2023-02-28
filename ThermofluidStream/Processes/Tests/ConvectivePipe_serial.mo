@@ -4,10 +4,10 @@ model ConvectivePipe_serial
   extends Modelica.Icons.Example;
 
 replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
-  ThermalConvectionPipe    thermalConvection(redeclare package Medium =
-        Medium,
+  ThermalConvectionPipe thermalConvection(
+    redeclare package Medium = Medium,
     r=0.005,
     l=1)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
@@ -73,7 +73,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     offset=10 + 273.15,
     startTime=500)
     annotation (Placement(transformation(extent={{-96,36},{-76,56}})));
-  ThermalConvectionPipe    thermalConvection1(
+  ThermalConvectionPipe thermalConvection1(
     redeclare package Medium = Medium,
     r=0.005,
     l=1)
