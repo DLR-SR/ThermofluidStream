@@ -1,7 +1,7 @@
 within ThermofluidStream.Examples;
 model VenturiPump "pumping of liquid water using the venturi effect"
 
-    extends Modelica.Icons.Example;
+  extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby
     Media.myMedia.Interfaces.PartialMedium
@@ -26,7 +26,8 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     p0_par=150000)
     annotation (Placement(transformation(extent={{-120,-70},{-100,-50}})));
   Boundaries.Sink sink2_1(
-    redeclare package Medium = Medium, p0_par=110000)
+    redeclare package Medium = Medium,
+    p0_par=110000)
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,

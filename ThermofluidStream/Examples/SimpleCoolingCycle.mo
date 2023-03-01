@@ -15,8 +15,7 @@ extends Modelica.Icons.Example;
     redeclare package MediumB = Medium_liquid,
     A=10) annotation (Placement(transformation(extent={{84,-30},{104,-10}})));
   Boundaries.VolumeFlex flexVolume(
-    redeclare package Medium =
-        Medium_liquid,
+    redeclare package Medium = Medium_liquid,
     V_ref=0.02,
     p_start=100000,
     T_start=278.15)
@@ -38,23 +37,26 @@ extends Modelica.Icons.Example;
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=1e5))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e5))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
-      Medium = Medium_liquid, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium_liquid,
+    temperatureUnit="degC")
     annotation (Placement(transformation(extent={{50,-14},{30,6}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
-      Medium = Medium_liquid, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium_liquid,
+    temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-6,-14},{-26,6}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = Medium_liquid,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = Medium_liquid,
     digits=2,
     outputMassFlowRate=true,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-60,-14},{-80,-34}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package
-      Medium = Medium_liquid, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(
+    redeclare package Medium = Medium_liquid,
+    temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,70})));
@@ -66,8 +68,9 @@ extends Modelica.Icons.Example;
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={8,-46})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package
-      Medium = Medium_air, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(
+    redeclare package Medium = Medium_air,
+    temperatureUnit="degC")
     annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
@@ -85,10 +88,12 @@ extends Modelica.Icons.Example;
   Modelica.Mechanics.Rotational.Sources.Speed speed1
     annotation (Placement(transformation(extent={{98,-70},{118,-50}})));
 
-  ThermofluidStream.Processes.Fan fan(redeclare package Medium = Medium_air,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,redeclare
-      function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
+  ThermofluidStream.Processes.Fan fan(
+    redeclare package Medium = Medium_air,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare function dp_tau_fan =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=100))
     annotation (Placement(transformation(extent={{140,-36},{160,-16}})));
   Modelica.Blocks.Sources.RealExpression pump_speed(y=80 + 273.15)
     annotation (Placement(transformation(extent={{-258,-70},{-238,-50}})));
@@ -102,23 +107,25 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{-190,70},{-170,90}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{150,76},{170,96}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm6(redeclare package
-      Medium = Medium_liquid, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm6(
+    redeclare package Medium = Medium_liquid, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
         origin={124,-4})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm7(redeclare package
-      Medium = Medium_air, temperatureUnit="degC")
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm7(
+    redeclare package Medium = Medium_air,
+    temperatureUnit="degC")
     annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={124,-36})));
-  Modelica.Blocks.Sources.RealExpression actual_heatPortTemp(y=
-        thermalConvectionPipe.heatPort.T)
+  Modelica.Blocks.Sources.RealExpression actual_heatPortTemp(
+    y=thermalConvectionPipe.heatPort.T)
     annotation (Placement(transformation(extent={{-258,-42},{-238,-22}})));
-  Modelica.Blocks.Interaction.Show.RealValue realValue(use_numberPort=false,
-      number=thermalConvectionPipe.heatPort.T - 273.15)
+  Modelica.Blocks.Interaction.Show.RealValue realValue(
+    use_numberPort=false,
+    number=thermalConvectionPipe.heatPort.T - 273.15)
     annotation (Placement(transformation(extent={{-232,-6},{-252,-26}})));
   ThermofluidStream.Utilities.showRealValue showRealValue
     annotation (Placement(transformation(extent={{-192,-48},{-172,-28}})));
@@ -127,7 +134,8 @@ extends Modelica.Icons.Example;
     description="eff",
     number=heatExchange_CounterFlowNTU.effectiveness)
     annotation (Placement(transformation(extent={{84,-14},{104,6}})));
-  Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(table=[0,5000; 2000,5000;
+  Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(
+    table=[0,5000; 2000,5000;
         2000.01,10000; 4000,10000; 4000.01,25000; 6000,25000; 6000.01,5000; 10000,
         5000])
     annotation (Placement(transformation(extent={{-188,10},{-168,30}})));
@@ -144,8 +152,9 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{-184,-70},{-164,-50}})));
   Modelica.Blocks.Math.Feedback feedback
     annotation (Placement(transformation(extent={{-144,-50},{-124,-70}})));
-  Modelica.Blocks.Continuous.PI PI(k=3000,
-                                         T=0.1,
+  Modelica.Blocks.Continuous.PI PI(
+    k=3000,
+    T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState)
     annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
   ThermofluidStream.Utilities.showRealValue showRealValue2

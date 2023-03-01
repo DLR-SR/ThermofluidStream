@@ -6,10 +6,12 @@ model SimpleStream "Steam splitting and joining"
     constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   Boundaries.Source source(
-    redeclare package Medium = Medium, Xi0_par={0})
+    redeclare package Medium = Medium,
+    Xi0_par={0})
     annotation (Placement(transformation(extent={{-150,-20},{-130,0}})));
-  Boundaries.Sink sink(redeclare package Medium = Medium,
-      p0_par=80000)
+  Boundaries.Sink sink(
+    redeclare package Medium = Medium,
+    p0_par=80000)
     annotation (Placement(transformation(extent={{130,-20},{150,0}})));
   Topology.SplitterT1 splitterT1_1(
     redeclare package Medium = Medium)
@@ -20,7 +22,9 @@ model SimpleStream "Steam splitting and joining"
   Processes.ConductionElement thermalConduction(
     redeclare package Medium = Medium,
     L=100) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=4e2, T(start=368.15, fixed=true))
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(
+    C=4e2,
+    T(start=368.15, fixed=true))
     annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(
     redeclare package Medium = Medium)

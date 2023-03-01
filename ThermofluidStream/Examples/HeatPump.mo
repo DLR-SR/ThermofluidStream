@@ -9,8 +9,7 @@ model HeatPump
     Media.myMedia.Interfaces.PartialMedium "Air Medium"
     annotation(choicesAllMatching=true);
 
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         condenser(
+  HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
     redeclare model ConductionElementA =
@@ -58,7 +57,8 @@ model HeatPump
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));
-  FlowControl.BasicControlValve controlValve(redeclare package Medium = Medium,
+  FlowControl.BasicControlValve controlValve(
+    redeclare package Medium = Medium,
     L=5000,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
@@ -123,7 +123,8 @@ model HeatPump
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-110,-90})));
-  Boundaries.Source source1(redeclare package Medium = Air,
+  Boundaries.Source source1(
+    redeclare package Medium = Air,
     temperatureFromInput=true,
     T0_par=268.15,
     p0_par=100000) annotation (
@@ -131,7 +132,8 @@ model HeatPump
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={0,-120})));
-  Boundaries.Sink sink1(redeclare package Medium = Air) annotation (Placement(
+  Boundaries.Sink sink1(
+    redeclare package Medium = Air) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -143,31 +145,46 @@ model HeatPump
     offset=250,
     startTime=800)
     annotation (Placement(transformation(extent={{-122,130},{-102,150}})));
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, m_flow_reg=0.001)
+  inner DropOfCommons dropOfCommons(
+    assertionLevel = AssertionLevel.warning,
+    m_flow_reg=0.001)
     annotation (Placement(transformation(extent={{152,130},{172,150}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-56,-54},{-76,-34}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-56,34},{-36,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-104,34},{-84,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-144,34},{-124,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-124,-54},{-104,-34}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
     digits=4,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps) annotation (Placement(transformation(extent={{-20,78},{-40,58}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-124,-64},{-104,-44}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp1(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp1(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-144,44},{-124,64}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp2(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp2(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-104,44},{-84,64}})));
@@ -176,7 +193,8 @@ model HeatPump
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-56,44},{-36,64}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp4(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp4(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-56,-64},{-76,-44}})));
@@ -194,7 +212,9 @@ model HeatPump
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{4,-64},{24,-44}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{4,-54},{24,-34}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = Air,

@@ -5,11 +5,11 @@ model SimpleEngine "Simple steam engine"
   package Water = Media.myMedia.Water.StandardWater;
 
 
-  inner DropOfCommons dropOfCommons(L=1e-3,
-                                    assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(
+    L=1e-3,
+    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{140,-34},{160,-14}})));
-  Utilities.SteamSink
-                  steamSink(
+  Utilities.SteamSink steamSink(
     redeclare package Medium = Water,
     p0_par=100000,
     m_flow_animate=0.25)
@@ -23,7 +23,8 @@ model SimpleEngine "Simple steam engine"
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,
     T_0=573.15)
     annotation (Placement(transformation(extent={{-60,44},{-40,64}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T(displayUnit="degC") = 873.15)
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(
+    T(displayUnit="degC") = 873.15)
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
   Utilities.CrankDrive crankDrive(
     rodLength=3,
@@ -49,13 +50,13 @@ model SimpleEngine "Simple steam engine"
     m0_left=0.1,
     m0_right=0.1,
     x0=0.5) annotation (Placement(transformation(extent={{88,-92},{28,-32}})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare
-      package Medium = Water) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector(
+    redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={70,34})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare
-      package Medium = Water) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector1(
+    redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,54})));

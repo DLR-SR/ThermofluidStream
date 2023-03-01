@@ -9,21 +9,24 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
 <p>Medium used for this Example. Should be a gas.</p>
 </html>"));
 
-  Processes.Compressor compressor(redeclare package Medium=Medium,
+  Processes.Compressor compressor(
+    redeclare package Medium=Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=100,
     redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100, eta=0.8))
-    annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
-  Processes.Turbine turbine(redeclare package Medium=Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-                                                             redeclare function
-      dp_tau_turbine =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        omega_ref=1000,
-        m_flow_ref=1.2,
-        eta=0.8))
+      omega_ref=100,
+      eta=0.8))
+    annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
+  Processes.Turbine turbine(
+    redeclare package Medium=Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare function dp_tau_turbine =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+      omega_ref=1000,
+      m_flow_ref=1.2,
+      eta=0.8))
     annotation (Placement(transformation(extent={{40,-20},{60,0}})));
   Boundaries.Volume volume(redeclare package Medium=Medium,
     useHeatport=true,
@@ -37,7 +40,9 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{-140,-20},{-120,0}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-130,50},{-110,70}})));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J=1, phi(fixed=true, start=0))
+  Modelica.Mechanics.Rotational.Components.Inertia inertia(
+    J=1,
+    phi(fixed=true, start=0))
     annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
   Modelica.Mechanics.Rotational.Sources.LinearSpeedDependentTorque
     linearSpeedDependentTorque(
@@ -45,8 +50,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     TorqueDirection=false,
     w_nominal=100)
     annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow
-                                                      prescribedHeatFlow
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,18})));
