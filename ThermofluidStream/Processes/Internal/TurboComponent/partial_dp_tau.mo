@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
 partial function partial_dp_tau "Compute dp and tau_st of a TurboComponent from the current state"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model needet to compute properties from the inlet_state.</span></p>
 </html>"));

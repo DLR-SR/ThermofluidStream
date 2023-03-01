@@ -4,7 +4,7 @@ model MCV "Test for undirected MCV"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
+    "Medium package"
       annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));

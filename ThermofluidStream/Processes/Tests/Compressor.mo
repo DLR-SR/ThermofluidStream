@@ -4,11 +4,10 @@ model Compressor "Test for compressors"
 
   import tf = ThermofluidStream;
 
-  replaceable package Medium =
-      ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                                           "Medium model" annotation (Documentation(info="<html>
+  replaceable package Medium = ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    "Medium model" annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be an ideal gas or close to that.</span></p>
-</html>"));                                                                                         // ThermofluidStream.myMedia.Air.SimpleAir;
+</html>"));  // ThermofluidStream.myMedia.Air.SimpleAir;
 
 
   tf.Boundaries.Source source(

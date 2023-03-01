@@ -13,9 +13,9 @@ model TestSensors "Test model for all sensors."
     annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
-   replaceable package Medium3 =  Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents
-     constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model 3"
-     annotation (Documentation(info="<html>
+  replaceable package Medium3 =  Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model 3"
+    annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
 

@@ -4,14 +4,16 @@ model TestDiscretizedHEX
   extends Modelica.Icons.Example;
 
   replaceable package MediumAir = Media.myMedia.Air.MoistAir
-                                                         constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-                                                                 constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = MediumAir,

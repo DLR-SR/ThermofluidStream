@@ -5,8 +5,8 @@ model BasicControlValve "Test for undirected BasicControlValve"
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                                     "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 

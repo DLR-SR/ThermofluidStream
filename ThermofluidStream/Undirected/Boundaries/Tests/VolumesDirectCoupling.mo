@@ -4,14 +4,14 @@ model VolumesDirectCoupling "Test Volumes"
 
   replaceable package Medium = Media.myMedia.Water.StandardWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
         <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
         </html>"));
 
   package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
-                                                                    "Medium package"
-      annotation (Documentation(info="<html>
+    "Medium package"
+    annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
 </html>"));
 

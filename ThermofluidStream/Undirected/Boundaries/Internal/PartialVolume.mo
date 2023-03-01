@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the fores and rears the volume is connected to.</span></p>
 </html>"));

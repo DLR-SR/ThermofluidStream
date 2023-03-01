@@ -3,10 +3,9 @@ model SourceSink "Test for source and sink model"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+    "Medium package"
+    annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 

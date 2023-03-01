@@ -3,7 +3,7 @@ model BoilerEspresso "Test for the espresso boiler"
   extends Modelica.Icons.Example;
 
   package Water = Media.myMedia.Water.StandardWater
-                                              "Medium Model"
+    "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water, since we want to make espresso with it.</p>
 </html>"));

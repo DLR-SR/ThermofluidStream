@@ -7,11 +7,13 @@ model BasicControlValve
          ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
   replaceable function valveCharacteristics =
-      ThermofluidStream.FlowControl.Internal.ControlValve.linearCharacteristics
-      constrainedby
-    ThermofluidStream.FlowControl.Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
-    annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"),
-    Documentation(info="<html>
+    ThermofluidStream.FlowControl.Internal.ControlValve.linearCharacteristics
+    constrainedby ThermofluidStream.FlowControl.Internal.ControlValve.partialValveCharacteristics
+    "Select valve characteristics"
+    annotation(
+      choicesAllMatching = true,
+      Dialog(group = "Valve parameters"),
+      Documentation(info="<html>
 <p>Characterisic curve of the valve.</p>
 </html>"));
 

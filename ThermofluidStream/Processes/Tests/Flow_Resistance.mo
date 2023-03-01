@@ -4,7 +4,7 @@ model Flow_Resistance "Test for flow resistance"
 
   import tf = ThermofluidStream;
   replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
-                                                        "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
 </html>"));

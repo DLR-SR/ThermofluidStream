@@ -4,15 +4,14 @@ model TestSensors "Test for the undirected sensors"
 
   replaceable package Medium = Media.myMedia.Water.StandardWater
     constrainedby Media.myMedia.Interfaces.PartialTwoPhaseMedium
-                                                           "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p>Replaceable package with the medium model. Due to the vaporQuality sensor it must be a TwoPhaseMedium.</p>
 </html>"));
 
-  replaceable package Medium2 =
-      Media.myMedia.IdealGases.MixtureGases.CombustionAir
+  replaceable package Medium2 = Media.myMedia.IdealGases.MixtureGases.CombustionAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p>Replaceable package with the medium model. Due to the vaporQuality sensor it must be a TwoPhaseMedium.</p>
 </html>"));

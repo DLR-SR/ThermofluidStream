@@ -4,7 +4,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   import ThermofluidStream.Utilities.Types.InitializationMethods;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
     <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
       </html>"));

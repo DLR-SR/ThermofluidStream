@@ -2,7 +2,7 @@ within ThermofluidStream.Topology;
 model DynamicSplitterN "Dynamic pressure 1 to N splitter"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));

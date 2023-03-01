@@ -4,8 +4,8 @@ model CheckValve "Test for CheckValve"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 

@@ -40,8 +40,8 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   model JunctionRatio "Split-ratio Junction for a bypass"
 
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                  "Medium model"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
     parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";

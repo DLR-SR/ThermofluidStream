@@ -3,16 +3,14 @@ model Volumes "Test Volumes"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+    "Medium package" annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
   package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
-                                                                    "Medium package"
-      annotation (Documentation(info="<html>
+    "Medium package"
+    annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
 </html>"));
 

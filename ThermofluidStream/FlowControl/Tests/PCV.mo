@@ -2,10 +2,10 @@ within ThermofluidStream.FlowControl.Tests;
 model PCV "Test for PCV"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 

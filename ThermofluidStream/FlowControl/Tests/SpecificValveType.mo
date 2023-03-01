@@ -2,10 +2,9 @@ within ThermofluidStream.FlowControl.Tests;
 model SpecificValveType "Test for SpecificValveType"
   extends Modelica.Icons.Example;
 
-  replaceable package medium =
-      ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
+  replaceable package medium = ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                                     "Medium package"
+    "Medium package"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));

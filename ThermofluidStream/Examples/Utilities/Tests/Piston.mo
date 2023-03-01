@@ -3,7 +3,7 @@ model Piston "Test for Piston model"
   extends Modelica.Icons.Example;
 
   package Medium = Media.myMedia.Water.StandardWater
-                                               "Medium Model"
+    "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water.</p>
 </html>"));

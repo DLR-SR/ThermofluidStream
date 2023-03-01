@@ -3,7 +3,7 @@ model ConnectInletRear
   "Directed/undirected connector with input and rear"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium of the connection"
+    "Medium of the connection"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));

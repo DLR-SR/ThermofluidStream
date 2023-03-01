@@ -42,7 +42,7 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,20}),
         iconTransformation(extent={{80,0},{120,40}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate
-                                                                                              "Measured mass-flow [kg/s]"
+    "Measured mass-flow [kg/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-60}),
         iconTransformation(extent={{80,-60},{120,-20}})));
 

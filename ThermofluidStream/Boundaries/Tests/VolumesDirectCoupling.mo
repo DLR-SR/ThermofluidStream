@@ -4,19 +4,20 @@ model VolumesDirectCoupling "Test Volumes"
 
   replaceable package Medium = Media.myMedia.Water.StandardWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
         <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
         </html>"));
 
   package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
-                                                                    "Medium package"
-      annotation (Documentation(info="<html>
+    "Medium package"
+    annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(k_volume_damping=0.5,
-                                    assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(
+    k_volume_damping=0.5,
+    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{70,-148},{90,-128}})));
   Volume heatportVolume2(
     redeclare package Medium = Medium,
