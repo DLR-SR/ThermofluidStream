@@ -417,20 +417,20 @@ package XRGMedia "A medium property library"
     state.d := density_ph(p, h);
     state.T := temperature_ph(p, h);
       annotation ( Documentation(info="<html>
-<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
+<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecificEnthalpy h = 4.2e5;
-
-     Medium.Density rho;
-     
-     <b>equation</b>
-
-     rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEnthalpy h = 4.2e5;
+
+  Medium.Density rho;
+
+<strong>equation</strong>
+
+  rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
+</pre></blockquote>
 
 </html>"));
     end setState_phX;
@@ -466,27 +466,27 @@ Example:
        state.d := d;
 
        annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
 <p>2012-08-01  Stefan Wischhusen: Corrected passing-error of inputs.</p>
 </html>",     info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.Density d = 4;
-     parameter Medium.Temperature T = 298;
-
-     Medium.SpecficEntropy s;
-     
-     <b>equation</b>
-
-     s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.Density d = 4;
+  parameter Medium.Temperature T = 298;
+
+  Medium.SpecficEntropy s;
+
+<strong>equation</strong>
+
+  s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_dTX;
 
@@ -514,24 +514,24 @@ Example:
 
       annotation ( Documentation(info="<html>
 <p>This function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>density</li>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecficEntropy s = 1.7e3;
-
-     Medium.SpecficEnthalpy h;
-     
-     <b>equation</b>
-
-     h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecficEntropy s = 1.7e3;
+
+  Medium.SpecficEnthalpy h;
+
+<strong>equation</strong>
+
+  h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_psX;
 
@@ -556,16 +556,16 @@ Example:
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.Temperature T = 290;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.Temperature T = 290;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <b>equation</b>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
-</pre>
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+</pre></blockquote>
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -586,23 +586,24 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
         assert(sat.psat < XRGMedia.R134aData.data.FPCRIT, "function setBubbleState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the liquid phase boundary
-    Modelica.SIunits.DynamicViscosity eta_liq;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  Modelica.SIunits.DynamicViscosity eta_liq;
 
-    eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setBubbleState;
 
@@ -618,23 +619,24 @@ Example:
         assert(sat.psat < XRGMedia.R134aData.data.FPCRIT, "function setDewState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the vapor phase boundary
-    Modelica.SIunits.DynamicViscosity eta_vap;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  Modelica.SIunits.DynamicViscosity eta_vap;
 
-    eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setDewState;
 
@@ -652,9 +654,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the density of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>  
+<p> This function calculates the density of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p>
 
 </html>"));
     end density_ph;
@@ -667,9 +669,9 @@ Example:
 
       annotation(Inline=true,
         Documentation(info="<html>
-<p> This function calculates the density of R134a from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>  
+<p> This function calculates the density of R134a from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p>
 </html>"));
     end density;
 
@@ -688,9 +690,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>  
+<p> This function calculates the Kelvin temperature of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
 
 
 </html>"));
@@ -704,8 +706,8 @@ Example:
 
       annotation(Inline=true,
         Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R134a from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p> 
+<p> This function calculates the Kelvin temperature of R134a from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
 </html>"));
     end temperature;
 
@@ -716,7 +718,7 @@ Example:
         Inline=true,
         Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
 </html>"));
     end pressure;
 
@@ -726,8 +728,8 @@ Example:
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
       annotation (Inline = true,  Documentation(info="<html>
-<p> This function calculates the specific internal energy of R134a from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)u-Diagram-R134a.png\"/> </p> 
+<p> This function calculates the specific internal energy of R134a from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)u-Diagram-R134a.png\"/> </p>
 
 </html>"));
     end specificInternalEnergy;
@@ -740,7 +742,7 @@ Example:
 
       annotation (Inline = true,  Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
 </html>"));
     end specificEnthalpy;
 
@@ -769,8 +771,8 @@ Example:
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific entropy of R134a from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)s-Diagram-R134a.png\"/> </p> 
+<p> This function calculates the specific entropy of R134a from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)s-Diagram-R134a.png\"/> </p>
 </html>"));
     end specificEntropy;
 
@@ -796,13 +798,13 @@ Example:
     // annotation(smoothOrder=5);
        annotation (derivative=saturationTemperature_der_p,
       Documentation(info="<html>
-<p>This function calculates the saturation temperature of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the saturation temperature of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p>
 </html>"));
     end saturationTemperature;
 
@@ -827,11 +829,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         T_coef[int, :])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of saturation temperature of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the derivative of saturation temperature of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_derp;
 
@@ -861,11 +863,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 
       annotation (
         Documentation(info="<html>
-<p>This function calculates the time derivative of saturation temperature of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the time derivative of saturation temperature of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_der_p;
 
@@ -892,12 +894,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dBubbleDensity_dPressure_der_sat,
       Documentation(info="<html>
-<p>This function calculates the liquid phase density of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase density of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleDensity;
 
@@ -922,11 +924,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid density of R134a in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the derivative of liquid density of R134a in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure;
 
@@ -957,11 +959,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid density of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the time derivative of liquid density of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure_der_sat;
 
@@ -988,12 +990,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dDewDensity_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the vapor phase density of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase density of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewDensity;
 
@@ -1018,11 +1020,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor density of R134a in two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewDensity\"> dewDensity</a>. 
+<p>This function calculates the derivative of vapor density of R134a in two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewDensity\"> dewDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewDensity_dPressure;
 
@@ -1053,11 +1055,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor density of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewDensity\"> dewDensity</a>. 
+<p>This function calculates the time derivative of vapor density of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewDensity\"> dewDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewDensity_dPressure_der_sat;
 
@@ -1084,12 +1086,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dBubbleEnthalpy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the liquid phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleEnthalpy;
 
@@ -1114,11 +1116,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, hl_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid enthalpy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>. 
+<p>This function calculates the derivative of liquid enthalpy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEnthalpy_dPressure;
 
@@ -1149,11 +1151,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, hl_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific enthalpy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>. 
+<p>This function calculates the time derivative of liquid specific enthalpy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEnthalpy_dPressure_der_sat;
 
@@ -1180,12 +1182,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dDewEnthalpy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the vapor phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewEnthalpy;
 
@@ -1210,11 +1212,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor enthalpy of R134a in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEnthalpy\"> dewEnthalpy</a>. 
+<p>This function calculates the derivative of vapor enthalpy of R134a in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEnthalpy\"> dewEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEnthalpy_dPressure;
 
@@ -1245,11 +1247,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor enthalpy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEnthalpy\"> dewEnthalpy</a>. 
+<p>This function calculates the time derivative of vapor enthalpy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEnthalpy\"> dewEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEnthalpy_dPressure_der_sat;
 
@@ -1276,12 +1278,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dDewEntropy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the vapor phase entropy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase entropy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewEntropy;
 
@@ -1311,11 +1313,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor entropy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the derivative of vapor entropy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure;
 
@@ -1346,11 +1348,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor specific entropy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the time derivative of vapor specific entropy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure_der_sat;
 
@@ -1376,12 +1378,12 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
     // annotation(smoothOrder=5);
        annotation (derivative=dBubbleEntropy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the liquid phase entropy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase entropy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleEntropy;
 
@@ -1410,11 +1412,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/R134aData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid entropy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the derivative of liquid entropy of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure;
 
@@ -1444,11 +1446,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/R134aData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific entropy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the time derivative of liquid specific entropy of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R134a_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure_der_sat;
 
@@ -1474,10 +1476,10 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       annotation(smoothOrder=5, Documentation(info="<html>
 <p>This function calculates the saturation pressure of R134a from the state variable T (temperature). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p>
 </html>"));
     end saturationPressure;
 
@@ -1493,11 +1495,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R134a at <b>constant pressure</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the specific heat capacity of R134a at <strong>constant pressure</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cp-Diagram-R134a.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cp-Diagram-R134a.png\"/> </p>
 </html>"));
     end specificHeatCapacityCp;
 
@@ -1526,11 +1528,11 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R134a at <b>constant volume</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
+<p> This function calculates the specific heat capacity of R134a at <strong>constant volume</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition (see Tillner-Roth and Baehr, 1994). Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cv-Diagram-R134a.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cv-Diagram-R134a.png\"/> </p>
 </html>"));
     end specificHeatCapacityCv;
 
@@ -1586,16 +1588,18 @@ Please note, that the function can also be called in the two-phase region, but t
       eta := (eta_star + eta_res*1e3)*1e-06;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the dynamic viscosity of R134a from the state record (e.g., use setState_phX function for input). The dynamic viscosity is modelled by the corresponding states method of Klein, McLinden and Laesecke (1997). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the dynamic viscosity of R134a from the state record (e.g., use setState_phX function for input). The dynamic viscosity is modelled by the corresponding states method of Klein, McLinden and Laesecke (1997). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<h3>References</h3>
-<dl><dt>Klein, McLinden and Laesecke: </dt>
-<dd><b>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</b>.
+</p>
+
+<h4>References</h4>
+<dl>
+<dt>Klein, McLinden and Laesecke: </dt>
+<dd><strong>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)eta-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)eta-Diagram-R134a.png\"/> </p>
 </html>"));
     end dynamicViscosity;
 
@@ -1667,17 +1671,18 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
       lambda := max(lambda_dg  + lambda_reduced + lambda_crit, 1e-8);
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the thermal conductivity of R134a from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the corresponding states model of McLinden, Klein. and Perkins (2000). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the thermal conductivity of R134a from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the corresponding states model of McLinden, Klein. and Perkins (2000). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<h3>References</h3>
+</p>               
+
+<h4>References</h4>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
-<dd><b>An extended corresponding states model for the thermal conductivity
-of refrigerants and refrigerant mixtures</b>.
+<dd><strong>An extended corresponding states model for the thermal conductivity
+of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)lambda-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)lambda-Diagram-R134a.png\"/> </p>
 </html>"));
     end thermalConductivity;
 
@@ -1702,16 +1707,17 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       end if;
 
        annotation ( Documentation(info="<html>
-<p> This function calculates the surface tension of R134a from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the surface tension of R134a from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in two-phase region.
-</p>  
-<h3>References</h3>
+</p>                        
+
+<h4>References</h4>
 <dl><dt>Okada and Higashi: </dt>
-<dd><b>Surface tension correlation of HFC-134a and HCFC-123</b>.
+<dd><strong>Surface tension correlation of HFC-134a and HCFC-123</strong>.
 Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, Italy, pp. 541-548, 1994.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/Tsigma-Diagram-R134a.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/Tsigma-Diagram-R134a.png\"/> </p>
 </html>"));
     end surfaceTension;
 
@@ -1731,11 +1737,11 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
         fdelta - f.delta*f.tau*f.fdeltatau))/(f.tau*f.tau*f.ftautau)))^0.5;
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the velocity of sound of R134a from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the velocity of sound of R134a from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)a-Diagram-R134a.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)a-Diagram-R134a.png\"/> </p>
 </html>"));
     end velocityOfSound;
 
@@ -1752,10 +1758,10 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
       kappa := 1/(state.d*R134aData.data.R*state.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta));
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isothermal compressibility of R134a from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isothermal compressibility of R134a from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isothermalCompressibility;
 
@@ -1772,10 +1778,10 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
       beta:= R134aData.data.R*state.d*f.delta*(f.fdelta - f.tau*f.fdeltatau)*isothermalCompressibility(state);
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isobaric expansion coefficient of R134a from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isobaric expansion coefficient of R134a from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isobaricExpansionCoefficient;
 
@@ -1787,10 +1793,10 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
 
       annotation(Inline=true,
         Documentation(info="<html>
-<p> This function calculates the isentropic exponent of R134a from the state record (e.g., use setState_phX function for input). The isentropic exponent is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isentropic exponent of R134a from the state record (e.g., use setState_phX function for input). The isentropic exponent is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isentropicExponent;
 
@@ -1857,28 +1863,30 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
          annotation ( Documentation(info="<html>
-<p> This function calculates the specific enthalpy of R134a for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState). 
+<p> This function calculates the specific enthalpy of R134a for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
 </p>
-<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p> 
+<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
 <p>
 Example:
-<pre>
-     Medium.AbsolutePressure p_downstream=10e5;
-     Medium.SpecificEnthalpy h_downstream=4.1e5;
-     Medium.AbsolutePressure p_upstream=3e5;
-     Medium.SpecificEnthalpy h_upstream=4.0e5;
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p_downstream=10e5;
+  Medium.SpecificEnthalpy h_downstream=4.1e5;
+  Medium.AbsolutePressure p_upstream=3e5;
+  Medium.SpecificEnthalpy h_upstream=4.0e5;
 
-     // Isentropic efficiency of a compressor:
-     Real eta_is;    
+  // Isentropic efficiency of a compressor:
+  Real eta_is;
 
-    equation
-     
-     h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
-    
-     eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
-</pre>
+<strong>equation</strong>
+
+  h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
+
+  eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
+</pre></blockquote>
 <h4>Restrictions</h4>
-The isentropic efficiency function should not be applied in liquid region. 
+<p>
+The isentropic efficiency function should not be applied in liquid region.
 </p>
 </html>"));
     end isentropicEnthalpy;
@@ -2202,7 +2210,7 @@ The function shall only be used for one-phase inputs since the fundamental equat
 <p> This function calculates the density and temperature of R134a from absolute pressure and specific entropy in one-phase region. The function calls the fundamental helmholtz equation of Tillner-Roth (1994) which is requiring density and temperature for input. Thus, a newton iteration is performed to determine density and temperature. The newton iteration stops if the inputs for pressure difference delp and specific entropy difference dels are larger than the actual differences derived from the newton iteration.
 </p>
 <h4>Restrictions</h4>
-The function shall only be used for one-phase inputs since the fundamental equation is not valid for two-phase states. The iteration could fail for liquid states with high pressures. 
+The function shall only be used for one-phase inputs since the fundamental equation is not valid for two-phase states. The iteration could fail for liquid states with high pressures.
 </html>"));
     end dtofpsOnePhase;
 
@@ -2533,7 +2541,7 @@ This deprecated function (which will be removed in future) adds the ideal gas co
     end if;
 
       annotation ( Documentation(info="<html>
-This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.rho_props_ph> rho_props_ph</a>. 
+This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.rho_props_ph> rho_props_ph</a>.
 </html>"));
     end rho_ph_der;
 
@@ -2552,7 +2560,7 @@ This function calculates the derivative of density w.r.t. time. It is used as de
         Inline=false,
         LateInline=true,
         Documentation(info="<html>
-This function integrates the derivative of density w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state. 
+This function integrates the derivative of density w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state.
 </html>"));
     end rho_props_ph;
 
@@ -2575,7 +2583,7 @@ This function integrates the derivative of density w.r.t. time in order to allow
     end if;
 
       annotation ( Documentation(info="<html>
-This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.T_props_ph> T_props_ph</a>. 
+This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.T_props_ph> T_props_ph</a>.
 </html>"));
     end T_ph_der;
 
@@ -2594,7 +2602,7 @@ This function calculates the derivative of temperature w.r.t. time. It is used a
         Inline=false,
         LateInline=true,
         Documentation(info="<html>
-This function integrates the derivative of temperature w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state. 
+This function integrates the derivative of temperature w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state.
 </html>"));
     end T_props_ph;
 
@@ -2745,29 +2753,29 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.0039 bar &le; p &le; 700 bar </b>
- </li>
- <li> 
-      <b> 169.85 Kelvin &le; T &le; 455 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
+<p><strong><font style=\"color: #ef9b13; \">References</font></strong> </p>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
-<dd><b>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
-Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Springer-Verlag, Berlin (Germany), 1994.</dd>
+<dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
+Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 </dl>
 <dl><dt>Klein, McLinden and Laesecke: </dt>
-<dd><b>An improved extended corresponding states methode for estimation of visocsity of pure refrigerants and mixtures</b>.
+<dd><strong>An improved extended corresponding states methode for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
-<dd><b>An extended corresponding states model for the thermal conductivity
-of refrigerants and refrigerant mixtures</b>.
+<dd><strong>An extended corresponding states model for the thermal conductivity
+of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
 </html>",  revisions="<html>
@@ -7853,16 +7861,16 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 10.0e5;
-     parameter Medium.Temperature T = 300;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 10.0e5;
+  parameter Medium.Temperature T = 300;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <b>equation</b>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
-</pre>
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+</pre></blockquote>
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -7883,23 +7891,24 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
         assert(sat.psat < XRGMedia.NH3Data.data.FPCRIT, "function setBubbleState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the liquid phase boundary
-    Modelica.SIunits.DynamicViscosity eta_liq;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  Modelica.SIunits.DynamicViscosity eta_liq;
 
-    eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setBubbleState;
 
@@ -7915,23 +7924,24 @@ Example:
         assert(sat.psat < XRGMedia.NH3Data.data.FPCRIT, "function setDewState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the vapor phase boundary
-    Modelica.SIunits.DynamicViscosity eta_vap;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  Modelica.SIunits.DynamicViscosity eta_vap;
 
-    eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setDewState;
 
@@ -8420,7 +8430,7 @@ Example:
     protected
       constant Real sv_coef[:,:] = NH3Data.svcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
-    /*  constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
+    /*  constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584
     "offset of boundary coefficients and fundamental equation reference point";
 */
       constant Modelica.Units.SI.SpecificEntropy ds_ref=0
@@ -8493,11 +8503,11 @@ Example:
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/NH3Data.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor specific entropy of NH3 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.NH3_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the time derivative of vapor specific entropy of NH3 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.NH3_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure_der_sat;
 
@@ -8511,7 +8521,7 @@ Example:
     protected
       constant Real sl_coef[:,:] = NH3Data.slcoef;
       constant Real p_breaks[:] = NH3Data.pbreaks;
-      /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
+      /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584
     "offset of boundary coefficients and fundamental equation reference point";
 */
       constant Modelica.Units.SI.SpecificEntropy ds_ref=0
@@ -8582,11 +8592,11 @@ Example:
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/NH3Data.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific entropy of NH3 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.NH3_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the time derivative of liquid specific entropy of NH3 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.NH3_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure_der_sat;
 
@@ -8829,10 +8839,10 @@ Example:
         fdelta - f.delta*f.tau*f.fdeltatau))/(f.tau*f.tau*f.ftautau)))^0.5;
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the velocity of sound of NH3 from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the velocity of sound of NH3 from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
+</p>
 </html>"));
     end velocityOfSound;
 
@@ -8849,10 +8859,10 @@ Example:
       kappa := 1/(state.d*f.R*state.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta));
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isothermal compressibility of NH3 from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isothermal compressibility of NH3 from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isothermalCompressibility;
 
@@ -8870,10 +8880,10 @@ Example:
           NH3_ph.isothermalCompressibility(state);
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isobaric expansion coefficient of NH3 from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isobaric expansion coefficient of NH3 from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isobaricExpansionCoefficient;
 
@@ -9171,7 +9181,7 @@ Example:
       constant Modelica.Units.SI.SpecificEntropy ds_ref=0
         "offset of boundary coefficients and fundamental equation reference point";
 
-      /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584 
+      /*constant Modelica.SIunits.SpecificEntropy ds_ref = -471.584
     "offset of boundary coefficients and fundamental equation reference point";
   */
       Integer i;
@@ -9251,12 +9261,13 @@ Example:
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p> For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_NH3
@@ -9702,32 +9713,32 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Ammonia (R717) in the fluid region of 0.0606 bar (Triple pressure) to 10000 bar and 195.5 Kelvin (Triple temperature) to 700 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.0606 bar &le; p &le; 10000 bar </b>
- </li>
- <li> 
-      <b> 195.5 Kelvin &le; T &le; 700 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.0606 bar &le; p &le; 10000 bar </strong>
+  </li>
+  <li>
+    <strong> 195.5 Kelvin &le; T &le; 700 Kelvin  </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
-<dd><b>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
-Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Springer-Verlag, Berlin (Germany), 1994.</dd>
+<h4>References</h4>
+<dl>
+<dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
+<dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
+Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 <dt>Fenghour, A. et al.: </dt>
-<dd><b>The Viscosity of Ammonia</b>. J. Phys. Chem. Ref. Data, Vol. 24, No. 5, 1995. </dd>
+<dd><strong>The Viscosity of Ammonia</strong>. J. Phys. Chem. Ref. Data, Vol. 24, No. 5, 1995. </dd>
 <dt>Yata et al.: </dt>
-<dd><b>Equations of Thermal Conductivity of Natural Refrigerants</b>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
+<dd><strong>Equations of Thermal Conductivity of Natural Refrigerants</strong>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
 </dl>
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
@@ -14820,16 +14831,16 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</b>. Spri
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 10.0e5;
-     parameter Medium.Temperature T = 300;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 10.0e5;
+  parameter Medium.Temperature T = 300;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <b>equation</b>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
-</pre>
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+</pre></blockquote>
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -14850,23 +14861,24 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
         assert(sat.psat < XRGMedia.CO2Data.data.FPCRIT, "function setBubbleState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the liquid phase boundary
-    Modelica.SIunits.DynamicViscosity eta_liq;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  Modelica.SIunits.DynamicViscosity eta_liq;
 
-    eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setBubbleState;
 
@@ -14882,23 +14894,24 @@ Example:
         assert(sat.psat < XRGMedia.CO2Data.data.FPCRIT, "function setDewState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the vapor phase boundary
-    Modelica.SIunits.DynamicViscosity eta_vap;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  Modelica.SIunits.DynamicViscosity eta_vap;
 
-    eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setDewState;
 
@@ -15468,11 +15481,11 @@ Example:
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/CO2Data.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor specific entropy of CO2 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.CO2_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the time derivative of vapor specific entropy of CO2 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.CO2_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure_der_sat;
 
@@ -15552,11 +15565,11 @@ Example:
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/CO2Data.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific entropy of CO2 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.CO2_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the time derivative of liquid specific entropy of CO2 with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.CO2_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure_der_sat;
 
@@ -15793,10 +15806,10 @@ Example:
         fdelta - f.delta*f.tau*f.fdeltatau))/(f.tau*f.tau*f.ftautau)))^0.5;
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the velocity of sound of CO2 from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the velocity of sound of CO2 from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
+</p>
 
 </html>"));
     end velocityOfSound;
@@ -15814,10 +15827,10 @@ Example:
       kappa := 1/(state.d*f.R*state.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta));
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isothermal compressibility of CO2 from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isothermal compressibility of CO2 from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isothermalCompressibility;
 
@@ -15835,10 +15848,10 @@ Example:
           CO2_ph.isothermalCompressibility(state);
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isobaric expansion coefficient of CO2 from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isobaric expansion coefficient of CO2 from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isobaricExpansionCoefficient;
 
@@ -16217,12 +16230,13 @@ Example:
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p> For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_CO2
@@ -16750,33 +16764,33 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Carbon Dioxide (R744) in the fluid region of 5.18 bar (Triple pressure) to 8000 bar and 216.6 Kelvin (Triple temperature) to 1100 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 5.18 bar &le; p &le; 8000 bar </b>
- </li>
- <li> 
-      <b> 216.6 Kelvin &le; T &le; 1100 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 5.18 bar &le; p &le; 8000 bar </strong>
+  </li>
+  <li>
+    <strong> 216.6 Kelvin &le; T &le; 1100 Kelvin  </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Span,R.and W. Wagner: </dt>
-<dd><b>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</b>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
+<h4>References</h4>
+<dl>
+<dt>Span,R.and W. Wagner: </dt>
+<dd><strong>A New Equation of State for Carbon Dioxide Covering Fluid Region from Triple Point Temperature to 1100 K at Pressures up to 800 MPa</strong>. J. Phys. Chem. Ref. Data, Vol. 25, No. 6, 1996.</dd>
 <dt>Pfafferott,T.: </dt>
-<dd><b>Dynamische Simulation von CO2-Kaelteprozessen fuer mobile Anwendungen</b>. PhD thesis at Institute of ThermoFluidDynamics, Hamburg University of Technology, Shaker Verlag, Aachen(Germany), 2005.</dd>
+<dd><strong>Dynamische Simulation von CO2-Kaelteprozessen fuer mobile Anwendungen</strong>. PhD thesis at Institute of ThermoFluidDynamics, Hamburg University of Technology, Shaker Verlag, Aachen(Germany), 2005.</dd>
 <dt>Fenghour, A. et al.: </dt>
-<dd><b>The Viscosity of Carbon Dioxide</b>. J. Phys. Chem. Ref. Data, Vol. 27, No. 1, 1998. </dd>
+<dd><strong>The Viscosity of Carbon Dioxide</strong>. J. Phys. Chem. Ref. Data, Vol. 27, No. 1, 1998. </dd>
 <dt>Vesovic, V. et al.: </dt>
-<dd><b>The Transport Properties of Carbon Dioxide</b>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
+<dd><strong>The Transport Properties of Carbon Dioxide</strong>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
 </dl>
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
@@ -21780,20 +21794,20 @@ The functions provided by this package shall be used inside of the restricted li
     state.T := temperature_ph(p, h);
 
       annotation ( Documentation(info="<html>
-<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
+<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecificEnthalpy h = 4.2e5;
-
-     Medium.Density rho;
-     
-     <b>equation</b>
-
-     rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEnthalpy h = 4.2e5;
+
+  Medium.Density rho;
+
+<strong>equation</strong>
+
+  rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_phX;
 
@@ -21827,26 +21841,29 @@ Example:
        state.T := T;
        state.d := d;
 
-       annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>",     info="<html>
+       annotation (
+         Documentation(
+           revisions="<html>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+</html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.Density d = 4;
-     parameter Medium.Temperature T = 298;
-
-     Medium.SpecficEntropy s;
-     
-     <b>equation</b>
-
-     s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.Density d = 4;
+  parameter Medium.Temperature T = 298;
+
+  Medium.SpecficEntropy s;
+
+<strong>equation</strong>
+
+  s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_dTX;
 
@@ -21874,24 +21891,24 @@ Example:
 
       annotation ( Documentation(info="<html>
 <p>This function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>density</li>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecficEntropy s = 1.7e3;
-
-     Medium.SpecficEnthalpy h;
-     
-     <b>equation</b>
-
-     h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecficEntropy s = 1.7e3;
+
+  Medium.SpecficEnthalpy h;
+
+<strong>equation</strong>
+
+  h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_psX;
 
@@ -21915,16 +21932,16 @@ Example:
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.Temperature T = 290;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.Temperature T = 290;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <b>equation</b>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
-</pre>
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+</pre></blockquote>
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -21943,23 +21960,24 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
         assert(sat.psat < XRGMedia.R1234yfData.data.FPCRIT, "function setBubbleState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the liquid phase boundary
-    Modelica.SIunits.DynamicViscosity eta_liq;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  Modelica.SIunits.DynamicViscosity eta_liq;
 
-    eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setBubbleState;
 
@@ -21975,23 +21993,24 @@ Example:
         assert(sat.psat < XRGMedia.R1234yfData.data.FPCRIT, "function setDewState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=3e5;
-    // Viscosity on the vapor phase boundary
-    Modelica.SIunits.DynamicViscosity eta_vap;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  Modelica.SIunits.DynamicViscosity eta_vap;
 
-    eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setDewState;
 
@@ -22010,9 +22029,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the density of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>  
+<p> This function calculates the density of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p>
 
 </html>"));
     end density_ph;
@@ -22025,9 +22044,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the density of R1234yf from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>  
+<p> This function calculates the density of R1234yf from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end density;
 
@@ -22046,9 +22065,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Richter (2011). </p>  
+<p> This function calculates the Kelvin temperature of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Richter (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
 
 
 </html>"));
@@ -22062,8 +22081,8 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R1234yf from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Richter et al (2011). </p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p> 
+<p> This function calculates the Kelvin temperature of R1234yf from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Richter et al (2011). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end temperature;
 
@@ -22072,7 +22091,7 @@ Example:
     p := state.p;
       annotation ( Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end pressure;
 
@@ -22082,8 +22101,8 @@ Example:
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
          annotation ( Documentation(info="<html>
-<p> This function calculates the specific internal energy of R1234yf from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Richter et al (2011). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)u-Diagram-R1234yf.png\"/> </p> 
+<p> This function calculates the specific internal energy of R1234yf from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Richter et al (2011). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)u-Diagram-R1234yf.png\"/> </p>
 
 </html>"));
     end specificInternalEnergy;
@@ -22096,7 +22115,7 @@ Example:
 
       annotation ( Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end specificEnthalpy;
 
@@ -22125,8 +22144,8 @@ Example:
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific entropy of R1234yf from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Richter et al (2011). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)s-Diagram-R1234yf.png\"/> </p> 
+<p> This function calculates the specific entropy of R1234yf from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Richter et al (2011). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)s-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end specificEntropy;
 
@@ -22151,13 +22170,13 @@ Example:
 
       annotation (derivative=saturationTemperature_der_p,
         Documentation(info="<html>
-<p>This function calculates the saturation temperature of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the saturation temperature of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end saturationTemperature;
 
@@ -22182,11 +22201,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         T_coef[int, :])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of saturation temperature of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the derivative of saturation temperature of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_derp;
 
@@ -22215,11 +22234,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         T_coef[int, :])/R1234yfData.data.FPCRIT*der_p;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of saturation temperature of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the time derivative of saturation temperature of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_der_p;
 
@@ -22246,12 +22265,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dBubbleDensity_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the liquid phase density of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase density of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleDensity;
 
@@ -22277,11 +22296,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid density of R1234yf in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the derivative of liquid density of R1234yf in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure;
 
@@ -22312,11 +22331,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid density of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the time derivative of liquid density of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure_der_sat;
 
@@ -22341,12 +22360,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dDewDensity_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the vapor phase density of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase density of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewDensity;
 
@@ -22371,11 +22390,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor density of R1234yf in two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewDensity\"> dewDensity</a>. 
+<p>This function calculates the derivative of vapor density of R1234yf in two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewDensity\"> dewDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewDensity_dPressure;
 
@@ -22406,11 +22425,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, dv_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor density of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewDensity\"> dewDensity</a>. 
+<p>This function calculates the time derivative of vapor density of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewDensity\"> dewDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewDensity_dPressure_der_sat;
 
@@ -22436,12 +22455,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dBubbleEnthalpy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the liquid phase enthalpy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase enthalpy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleEnthalpy;
 
@@ -22466,11 +22485,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, hl_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid enthalpy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>. 
+<p>This function calculates the derivative of liquid enthalpy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEnthalpy_dPressure;
 
@@ -22501,11 +22520,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, hl_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific enthalpy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>. 
+<p>This function calculates the time derivative of liquid specific enthalpy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEnthalpy\"> bubbleEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEnthalpy_dPressure_der_sat;
 
@@ -22532,12 +22551,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dDewEnthalpy_dPressure_der_sat,
         Documentation(info="<html>
-<p>This function calculates the vapor phase enthalpy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase enthalpy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewEnthalpy;
 
@@ -22562,11 +22581,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor enthalpy of R1234yf in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEnthalpy\"> dewEnthalpy</a>. 
+<p>This function calculates the derivative of vapor enthalpy of R1234yf in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEnthalpy\"> dewEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEnthalpy_dPressure;
 
@@ -22597,11 +22616,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, hv_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor enthalpy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEnthalpy\"> dewEnthalpy</a>. 
+<p>This function calculates the time derivative of vapor enthalpy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEnthalpy\"> dewEnthalpy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEnthalpy_dPressure_der_sat;
 
@@ -22627,12 +22646,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dDewEntropy_dPressure,
         Documentation(info="<html>
-<p>This function calculates the vapor phase entropy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the vapor phase entropy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dewEntropy;
 
@@ -22663,11 +22682,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of vapor entropy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the derivative of vapor entropy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure;
 
@@ -22698,11 +22717,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, sv_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of vapor specific entropy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEntropy\"> dewEntropy</a>. 
+<p>This function calculates the time derivative of vapor specific entropy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.dewEntropy\"> dewEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dDewEntropy_dPressure_der_sat;
 
@@ -22727,12 +22746,12 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 
       annotation (derivative=dBubbleEntropy_dPressure,
         Documentation(info="<html>
-<p>This function calculates the liquid phase entropy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase entropy of R1234yf from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleEntropy;
 
@@ -22762,11 +22781,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/R1234yfData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid entropy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the derivative of liquid entropy of R1234yf with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure;
 
@@ -22796,11 +22815,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         Common.CubicSplineDerEval(localx, sl_coef[int, 1:4])/R1234yfData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid specific entropy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEntropy\"> bubbleEntropy</a>. 
+<p>This function calculates the time derivative of liquid specific entropy of R1234yf with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R1234yf_ph.bubbleEntropy\"> bubbleEntropy</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleEntropy_dPressure_der_sat;
 
@@ -22827,10 +22846,10 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
       annotation ( Documentation(info="<html>
 <p>This function calculates the saturation pressure of R1234yf from the state variable T (temperature). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from the fundamental equation of state of Richter et al (2011) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end saturationPressure;
 
@@ -22846,11 +22865,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
         *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R1234yf at <b>constant pressure</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the specific heat capacity of R1234yf at <strong>constant pressure</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cp-Diagram-R1234yf.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cp-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end specificHeatCapacityCp;
 
@@ -22879,11 +22898,11 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific heat capacity of R1234yf at <b>constant volume</b> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p> 
+<p> This function calculates the specific heat capacity of R1234yf at <strong>constant volume</strong> from the state record (e.g., use setState_phX function for input). The specific heat capacity is modelled by the fundamental equation of state of Richter et al (2011). </p>
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition. Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cv-Diagram-R1234yf.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cv-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end specificHeatCapacityCv;
 
@@ -22992,15 +23011,17 @@ Please note, that the function can also be called in the two-phase region, but t
       eta := (eta_star + eta_res*1e3*F_eta)*1e-06;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the dynamic viscosity of R1234yf from the state record (e.g., use setState_phX function for input). The dynamic viscosity is modelled by the corresponding states method of Akasaka (2010). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the dynamic viscosity of R1234yf from the state record (e.g., use setState_phX function for input). The dynamic viscosity is modelled by the corresponding states method of Akasaka (2010). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<h3>References</h3>
-<dl><dt>Akasaka, R.: </dt>
-<dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
+</p>               
+
+<h4>References</h4>
+<dl>
+<dt>Akasaka, R.: </dt>
+<dd><strong>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</strong>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end dynamicViscosity;
 
@@ -23080,15 +23101,17 @@ Please note, that the function can also be called in the two-phase region, but t
       lambda := max(lambda_dg + lambda_reduced + lambda_crit, 1e-8);
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the thermal conductivity of R1234yf from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the a model of Perkins and Huber (2011). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the thermal conductivity of R1234yf from the state record (e.g., use setState_phX function for input). The thermal conductivity is modelled by the a model of Perkins and Huber (2011). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
-<h3>References</h3>
-<dl><dt>Perkins A., Huber M.: </dt>
-<dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
+</p>                  
+
+<h4>References</h4>
+<dl>
+<dt>Perkins A., Huber M.: </dt>
+<dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end thermalConductivity;
 
@@ -23114,11 +23137,11 @@ Please note, that the function can also be called in the two-phase region, but t
       end if;
 
          annotation ( Documentation(info="<html>
-<p> This function calculates the surface tension of R1234yf from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the surface tension of R1234yf from the saturation record (e.g., use setSat_T function for input). The property is modelled by an approach of Okada and Higashi (1994). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in two-phase region.
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/Tsigma-Diagram-R1234yf.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/Tsigma-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end surfaceTension;
 
@@ -23138,10 +23161,10 @@ Please note, that the function can also be called in the two-phase region, but t
         fdelta - f.delta*f.tau*f.fdeltatau))/(f.tau*f.tau*f.ftautau)))^0.5;
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the velocity of sound of R1234yf from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the velocity of sound of R1234yf from the state record (e.g., use setState_phX function for input). The velocity of sound is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p>  
+</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)a-Diagram-R1234yf.png\"/> </p>
 </html>"));
     end velocityOfSound;
@@ -23159,10 +23182,10 @@ Please note, that the function can also be called in the two-phase region, but t
       kappa := 1/(state.d*f.R*state.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta));
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isothermal compressibility of R1234yf from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isothermal compressibility of R1234yf from the state record (e.g., use setState_phX function for input). The isothermal compressibility is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isothermalCompressibility;
 
@@ -23180,10 +23203,10 @@ Please note, that the function can also be called in the two-phase region, but t
           R1234yf_ph.isothermalCompressibility(state);
       end if;
       annotation ( Documentation(info="<html>
-<p> This function calculates the isobaric expansion coefficient of R1234yf from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isobaric expansion coefficient of R1234yf from the state record (e.g., use setState_phX function for input). The isobaric expansion coefficient is modelled by the fundamental equation of state. </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isobaricExpansionCoefficient;
 
@@ -23195,10 +23218,10 @@ Please note, that the function can also be called in the two-phase region, but t
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the isentropic exponent of R1234yf from the state record (e.g., use setState_phX function for input). The isentropic exponent is modelled by the fundamental equation of state of Richter et al (2011). </p> 
-<h3> Restrictions</h3>
+<p> This function calculates the isentropic exponent of R1234yf from the state record (e.g., use setState_phX function for input). The isentropic exponent is modelled by the fundamental equation of state of Richter et al (2011). </p>
+<h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
-</p> 
+</p>
 </html>"));
     end isentropicExponent;
 
@@ -23268,28 +23291,28 @@ Please note, that the function can also be called in the two-phase region, but t
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
          annotation ( Documentation(info="<html>
-<p> This function calculates the specific enthalpy of R1234yf for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState). 
+<p> This function calculates the specific enthalpy of R1234yf for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
 </p>
-<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p> 
+<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
 <p>
 Example:
-<pre>
-     Medium.AbsolutePressure p_downstream=10e5;
-     Medium.SpecificEnthalpy h_downstream=3.8e5;
-     Medium.AbsolutePressure p_upstream=3e5;
-     Medium.SpecificEnthalpy h_upstream=3.7e5;
+<blockquote><pre>
+  Medium.AbsolutePressure p_downstream=10e5;
+  Medium.SpecificEnthalpy h_downstream=3.8e5;
+  Medium.AbsolutePressure p_upstream=3e5;
+  Medium.SpecificEnthalpy h_upstream=3.7e5;
 
-     // Isentropic efficiency of a compressor:
-     Real eta_is;    
+  // Isentropic efficiency of a compressor:
+  Real eta_is;
 
-    equation
-     
-     h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
-    
-     eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
-</pre>
+<strong>equation</strong>
+
+  h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
+
+  eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
+</pre></blockquote>
 <h4>Restrictions</h4>
-The isentropic efficiency function should not be applied in liquid region. 
+The isentropic efficiency function should not be applied in liquid region.
 </p>
 </html>"));
     end isentropicEnthalpy;
@@ -23902,7 +23925,7 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
     end if;
 
       annotation ( Documentation(info="<html>
-This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.rho_props_ph> rho_props_ph</a>. 
+This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.rho_props_ph> rho_props_ph</a>.
 </html>"));
     end rho_ph_der;
 
@@ -23922,7 +23945,7 @@ This function calculates the derivative of density w.r.t. time. It is used as de
         Inline=false,
         LateInline=true,
         Documentation(info="<html>
-This function integrates the derivative of density w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state. 
+This function integrates the derivative of density w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state.
 </html>"));
     end rho_props_ph;
 
@@ -23945,7 +23968,7 @@ This function integrates the derivative of density w.r.t. time in order to allow
     end if;
 
       annotation ( Documentation(info="<html>
-This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.T_props_ph> T_props_ph</a>. 
+This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.T_props_ph> T_props_ph</a>.
 </html>"));
     end T_ph_der;
 
@@ -23965,7 +23988,7 @@ This function calculates the derivative of temperature w.r.t. time. It is used a
         Inline=false,
         LateInline=true,
         Documentation(info="<html>
-This function integrates the derivative of temperature w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state. 
+This function integrates the derivative of temperature w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state.
 </html>"));
     end T_props_ph;
 
@@ -24108,32 +24131,32 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Tetrafluoroprop-1-ene (R1234yf) in the fluid region of 0.315 bar (Triple pressure) to 300 bar and 220 Kelvin to 410 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.315 bar &le; p &le; 300 bar </b>
- </li>
- <li> 
-      <b> 220 Kelvin &le; T &le; 410 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.315 bar &le; p &le; 300 bar </strong>
+  </li>
+  <li>
+    <strong> 220 Kelvin &le; T &le; 410 Kelvin</strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
-<dd><b>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
-Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Chemical and Engineering Data 2011, 56, 3254-3264.</dd>
-<dl><dt>Akasaka, R.: </dt>
-<dd><b>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</b>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
-<dl><dt>Perkins A., Huber M.: </dt>
-<dd><b>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</b>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
+<h4>References</h4>
+<dl>
+<dt>Richter, M.; McLinden, M. and E. Lemmon: </dt>
+<dd><strong>Thermodynamic Properties 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf):
+Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal of Chemical and Engineering Data 2011, 56, 3254-3264.</dd>
+<dt>Akasaka, R.: </dt>
+<dd><strong>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</strong>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
+<dt>Perkins A., Huber M.: </dt>
+<dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 
 </html>",   revisions="<html>
@@ -29158,21 +29181,20 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</b>. Journal of Ch
     state.T := temperature_ph(p, h);
 
       annotation ( Documentation(info="<html>
-<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p> 
+<p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 0.5e5;
-     parameter Medium.SpecificEnthalpy h = 4.2e5;
-
-     Medium.Density rho;
-     
-     <b>equation</b>
-
-     rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 0.5e5;
+  parameter Medium.SpecificEnthalpy h = 4.2e5;
 
+  Medium.Density rho;
+
+<strong>equation</strong>
+
+  rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_phX;
 
@@ -29206,26 +29228,29 @@ Example:
        state.T := T;
        state.d := d;
 
-       annotation ( Documentation(revisions="<html>
-   <p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p></html>",     info="<html>
+       annotation (
+         Documentation(
+           revisions="<html>
+<p>2019-12-17  Stefan Wischhusen: Two-phase calculation corrected.</p>
+</html>",  info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.Density d = 4;
-     parameter Medium.Temperature T = 298;
-
-     Medium.SpecficEntropy s;
-     
-     <b>equation</b>
-
-     s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.Density d = 4;
+  parameter Medium.Temperature T = 298;
+
+  Medium.SpecficEntropy s;
+
+<strong>equation</strong>
+
+  s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_dTX;
 
@@ -29253,24 +29278,24 @@ Example:
 
       annotation ( Documentation(info="<html>
 <p>This function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
-<ul> 
+<ul>
 <li>density</li>
 <li>pressure</li>
 <li>specific enthalpy</li>
 </ul>
 <p>
 Example:
-<pre>
-     parameter Medium.AbsolutePressure p = 0.5e5;
-     parameter Medium.SpecficEntropy s = 1.8e3;
-
-     Medium.SpecficEnthalpy h;
-     
-     <b>equation</b>
-
-     h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
-</pre>
 </p>
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 0.5e5;
+  parameter Medium.SpecficEntropy s = 1.8e3;
+
+  Medium.SpecficEnthalpy h;
+
+<strong>equation</strong>
+
+  h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_psX;
 
@@ -29295,16 +29320,16 @@ Example:
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 0.5e5;
-     parameter Medium.Temperature T = 320;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 0.5e5;
+  parameter Medium.Temperature T = 320;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <b>equation</b>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
-</pre>
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+</pre></blockquote>
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -29325,23 +29350,24 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
         assert(sat.psat < XRGMedia.R245faData.data.FPCRIT, "function setBubbleState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the liquid phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=0.5e5;
-    // Viscosity on the liquid phase boundary
-    Modelica.SIunits.DynamicViscosity eta_liq;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=0.5e5;
+  // Viscosity on the liquid phase boundary
+  Modelica.SIunits.DynamicViscosity eta_liq;
 
-    eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setBubbleState;
 
@@ -29357,23 +29383,24 @@ Example:
         assert(sat.psat < XRGMedia.R245faData.data.FPCRIT, "function setDewState is only valid in two-phase regime");
       end if;
       annotation ( Documentation(info="<html>
-<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T: 
+<p>This function shall be used in order to calculate the thermodynamic state record for the vapor phase boundary. It requires the saturation record as input which can be determined by both functions setSat_p and setSat_T:
 </p>
 <p>
 Example:
-<pre>
-    Medium.AbsolutePressure p=0.5e5;
-    // Viscosity on the vapor phase boundary
-    Modelica.SIunits.DynamicViscosity eta_vap;
-    
-    equation
+</p>
+<blockquote><pre>
+  Medium.AbsolutePressure p=0.5e5;
+  // Viscosity on the vapor phase boundary
+  Modelica.SIunits.DynamicViscosity eta_vap;
 
-    eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
-</pre>
-        
-<h3> Restrictions</h3>
+<strong>equation</strong>
+
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+</pre></blockquote>
+
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end setDewState;
 
@@ -29392,9 +29419,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>  
+<p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p>
 
 </html>"));
     end density_ph;
@@ -29407,9 +29434,9 @@ Example:
 
       annotation(Inline=true,
       Documentation(info="<html>
-<p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>  
+<p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p>
 
 </html>"));
     end density;
@@ -29429,9 +29456,9 @@ Example:
 
       annotation(Inline=true,
         Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>  
+<p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
 
 
 </html>"));
@@ -29445,9 +29472,9 @@ Example:
 
       annotation(Inline=true,
                       Documentation(info="<html>
-<p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>  
+<p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
 
 
 </html>"));
@@ -29459,7 +29486,7 @@ Example:
       annotation (
         Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
 </html>"));
     end pressure;
 
@@ -29469,8 +29496,8 @@ Example:
       u := specificEnthalpy(state) - pressure(state)/density(state);
 
          annotation (Inline = true,  Documentation(info="<html>
-<p> This function calculates the specific internal energy of R245fa from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Lemmon (2006). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"/> </p> 
+<p> This function calculates the specific internal energy of R245fa from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Lemmon (2006). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"/> </p>
 
 </html>"));
     end specificInternalEnergy;
@@ -29483,7 +29510,7 @@ Example:
 
       annotation (Inline = true,  Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p> 
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
 </html>"));
     end specificEnthalpy;
 
@@ -29513,8 +29540,8 @@ Example:
       end if;
 
       annotation ( Documentation(info="<html>
-<p> This function calculates the specific entropy of R245fa from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Lemmon (2006). </p> 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)s-Diagram-R245fa.png\"/> </p> 
+<p> This function calculates the specific entropy of R245fa from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Lemmon (2006). </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)s-Diagram-R245fa.png\"/> </p>
 </html>"));
     end specificEntropy;
 
@@ -29539,13 +29566,13 @@ Example:
 
        annotation (derivative=saturationTemperature_der_p,
       Documentation(info="<html>
-<p>This function calculates the saturation temperature of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the saturation temperature of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)Tsat-Diagram-R245fa.png\"/> </p> 
+</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)Tsat-Diagram-R245fa.png\"/> </p>
 </html>"));
     end saturationTemperature;
 
@@ -29570,11 +29597,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         T_coef[int, :])/R245faData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of saturation temperature of R245fa with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the derivative of saturation temperature of R245fa with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_derp;
 
@@ -29604,11 +29631,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       annotation (
         Documentation(info="<html>
-<p>This function calculates the time derivative of saturation temperature of R245fa with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.saturationTemperature\"> saturatuionTemperature</a>. 
+<p>This function calculates the time derivative of saturation temperature of R245fa with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end saturationTemperature_der_p;
 
@@ -29635,12 +29662,12 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
     // annotation(smoothOrder=5);
        annotation (derivative=dBubbleDensity_dPressure_der_sat,
       Documentation(info="<html>
-<p>This function calculates the liquid phase density of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from 
+<p>This function calculates the liquid phase density of R245fa from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end bubbleDensity;
 
@@ -29665,11 +29692,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R245faData.data.FPCRIT;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the derivative of liquid density of R245fa in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the derivative of liquid density of R245fa in the two-phase region with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure;
 
@@ -29700,11 +29727,11 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         Common.CubicSplineDerEval(localx, dl_coef[int, 1:4])/R245faData.data.FPCRIT*der_sat.psat;
 
       annotation ( Documentation(info="<html>
-<p>This function calculates the time derivative of liquid density of R245fa with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.bubbleDensity\"> bubbleDensity</a>. 
+<p>This function calculates the time derivative of liquid density of R245fa with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://XRG_Media.R245fa_ph.bubbleDensity\"> bubbleDensity</a>.
 </p>
-<h3> Restrictions</h3>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
-</p>  
+</p>
 </html>"));
     end dBubbleDensity_dPressure_der_sat;
 
@@ -30835,12 +30862,14 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
       end if;
 
       annotation (Documentation(info="<HTML>
-        <p> For the calcualtion of density and temperature from pressure and specific
-        entropy, there is always a fairly good starting guess available form the adjacent CV,
-        so e.g. the values in the downstream connector are very good guesses. Giving these as
-        starting values for the iteration should always converge quickly. (Possible exception:
-        when on the other side of a phase boundary)
-        </HTML>"));
+<p>
+For the calcualtion of density and temperature from pressure and specific
+entropy, there is always a fairly good starting guess available form the adjacent CV,
+so e.g. the values in the downstream connector are very good guesses. Giving these as
+starting values for the iteration should always converge quickly. (Possible exception:
+when on the other side of a phase boundary)
+</p>
+</HTML>"));
     end dtofpsOnePhase;
 
     function f_R245fa
@@ -31248,9 +31277,13 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 <p> This function calculates the density of R245fa from absolute pressure and temperature. The function can only be executed in one-phase region. The safety margin to the phase boundary is 1[K] and 1000[Pa].
 </p>
 <h4>Restrictions</h4>
+<p>
 The function cannot be inverted in a numerical way. Please use functions <a href=\"modelica://XRG_Media.R245fa_ph.rho_props_ph\">rho_props_ph</a> and <a href=\"modelica://XRG_Media.R245fa_ph.T_props_ph\">T_props_ph</a> for this purpose.
+</p>
 </html>",     revisions="<html>
+<p>
 2020-01-08 Stefan Wischhusen: Iteration converges better with guesses of rho_liq(T) and rho_vap(T).
+</p>
 </html>"));
     end dofpT;
 
@@ -31303,29 +31336,28 @@ This function is used as a guard for property functions using pTX as an input. P
 <p>
 Calculation of fluid properties for Pentafluoropropane (R245fa) in the fluid region of 0.000125 bar (Triple pressure) to 2000 bar and 171.5 Kelvin to 440 Kelvin.
 </p>
-<p>
-<h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
+
+<h4>Restriction</h4>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <b> 0.000125 bar &le; p &le; 2000 bar </b>
- </li>
- <li> 
-      <b> 171.5 Kelvin &le; T &le; 440 Kelvin  </i>
- </li> 
- <li> 
-      <b> explicit for pressure and specific enthalpy </i>
- </li> 
+  <li>
+    <strong> 0.000125 bar &le; p &le; 2000 bar </strong>
+  </li>
+  <li>
+    <strong> 171.5 Kelvin &le; T &le; 440 Kelvin  </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Lemmon, E.W. and W. Span: </dt>
-<dd><b>Short Fundamental Equations of State for 20 Industrial Fluids</b>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
+<h4>References</h4>
+<dl>
+<dt>Lemmon, E.W. and W. Span: </dt>
+<dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
-
 </html>",   revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
@@ -36227,13 +36259,15 @@ The functions provided by this package shall be used inside of the restricted li
 </html>"));
   end R245faData;
   annotation ( preferedView="info",        Documentation(info="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/> </p>
-<p><b><span style=\"font-size: 14pt; color: #ef9b13;\">Library description </span></b></p>
-<p>This library contains property functions written in Modelica for the refrigerants <b>R134a</b>, <b>NH3</b> (R717), <b>CO2</b> (R744), <b>R1234yf </b>and <b>R245fa</b>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/></p>
+
+<h4>Library description</h4>
+<p>This library contains property functions written in Modelica for the refrigerants <strong>R134a</strong>, <strong>NH3</strong> (R717), <strong>CO2</strong> (R744), <strong>R1234yf</strong> and <strong>R245fa</strong>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
 <p>The library is a product of XRG Simulation GmbH. It makes use of external, non-commercial models supplied by Modelica standard library. In order to work correctly, ensure that this library is always loaded with Modelica Standard Library version 3.2.3</p>
 <p>Some parts of this library refer to the ThermoFluid library developed at Lund University (<a href=\"http://sourceforge.net\">http://sourceforge.net</a>). </p>
 <p><br>Please refer to Modelica.Media&apos;s <a href=\"Modelica.Media.UsersGuide\">User Guide</a> for detailed usage information.</p>
-<p><br><b><span style=\"font-size: 14pt; color: #ef9b13;\">Contact </span></b></p>
+
+<h4>Contact </h4>
 <p>XRG Simulation GmbH<br>Harburger Schlossstra&szlig;e 6-12<br>21079 Hamburg<br>Germany</p>
 <p><a href=\"mailto:info@xrg-simulation.de\">info@xrg-simulation.de</a> </p>
 </html>", revisions="<html>

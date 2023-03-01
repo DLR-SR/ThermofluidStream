@@ -302,18 +302,16 @@ package R134a "R134a: Medium model for R134a"
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecificEnthalpy h = 4.2e5;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEnthalpy h = 4.2e5;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <strong>equation</strong>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
-</pre>
-
-
+  rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_phX;
 
@@ -370,14 +368,14 @@ Example:
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.Density d = 4;
-parameter Medium.Temperature T = 298;
+  parameter Medium.Density d = 4;
+  parameter Medium.Temperature T = 298;
 
-Medium.SpecificEntropy s;
+  Medium.SpecificEntropy s;
 
 <strong>equation</strong>
 
-s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
+  s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre></blockquote>
 
 </html>"));
@@ -421,14 +419,14 @@ s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.AbsolutePressure p = 3e5;
-parameter Medium.SpecificEntropy s = 1.7e3;
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEntropy s = 1.7e3;
 
-Medium.SpecificEnthalpy h;
+  Medium.SpecificEnthalpy h;
 
 <strong>equation</strong>
 
-h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
+  h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre></blockquote>
 </html>", revisions="<html>
 <p>2020-02-05 Stefan Wischhusen: Added missing property calculation for d and T.</p>
@@ -457,15 +455,16 @@ h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.AbsolutePressure p = 3e5;
-parameter Medium.Temperature T = 290;
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.Temperature T = 290;
 
-Medium.Density rho;
+  Medium.Density rho;
 
 <strong>equation</strong>
 
-rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre></blockquote>
+
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -491,13 +490,13 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 Example:
 </p>
 <blockquote><pre>
-Medium.AbsolutePressure p=3e5;
-// Viscosity on the liquid phase boundary
-SI.DynamicViscosity eta_liq;
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  SI.DynamicViscosity eta_liq;
 
-equation
+<strong>equation</strong>
 
-eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 </pre></blockquote>
 
 <h4> Restrictions</h4>
@@ -525,13 +524,13 @@ eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 Example:
 </p>
 <blockquote><pre>
-Medium.AbsolutePressure p=3e5;
-// Viscosity on the vapor phase boundary
-SI.DynamicViscosity eta_vap;
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  SI.DynamicViscosity eta_vap;
 
-equation
+<strong>equation</strong>
 
-eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 </pre></blockquote>
 
 <h4> Restrictions</h4>
@@ -1791,7 +1790,7 @@ Example:
   // Isentropic efficiency of a compressor:
   Real eta_is;
 
-equation
+<strong>equation</strong>
 
   h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
 
