@@ -5,7 +5,9 @@ model TransportDelay "Test for transport delay "
   replaceable package Medium = Media.myMedia.Air.DryAirNasa
     constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
+<p>
+Medium model for the test. Can be anything.
+</p>
 </html>"));
 
   Processes.TransportDelay transportDelay(

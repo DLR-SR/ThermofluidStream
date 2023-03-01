@@ -52,7 +52,12 @@ equation
           endAngle=80,
           closure=EllipseClosure.None)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Sink&nbsp;with&nbsp;fancy&nbsp;steam&nbsp;animation.</span></p>
-<p><span style=\"font-family: Courier New;\">x is a nondimensional mass flow. @x=1 the animation is at original size. It is low-passed to look better at very high flow peaks.</span></p>
+<p>
+Sink with fancy steam animation.
+</p>
+<p>
+x is a nondimensional mass flow. @x=1 the animation is at original size.
+It is low-passed to look better at very high flow peaks.
+</p>
 </html>"));
 end SteamSink;

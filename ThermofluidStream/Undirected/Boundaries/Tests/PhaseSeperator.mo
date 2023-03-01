@@ -126,7 +126,8 @@ model PhaseSeperator
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-76,40},{-56,60}})));
   BoundaryFore boundaryFore(
-                                          redeclare package Medium = Medium, p0_par=100000)
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{120,10},{140,30}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect7(
     redeclare package Medium = Medium,

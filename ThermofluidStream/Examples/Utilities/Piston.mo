@@ -151,9 +151,19 @@ equation
     Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>In a piston a different pressure of fluids perform mechanical linar work. </p>
-<p>Depending on <span style=\"font-family: Courier New;\">push_left, the left (when pushleft is true) side or the right (when pushleft is false) side is connected to the input, and the other side is connected to the output. </span></p>
-<p><span style=\"font-family: Courier New;\">x is a nondimensional piston position, 0 being left and 1 being right. </span></p>
-<p><span style=\"font-family: Courier New;\">The piston has soft stops and a dead volume at both ends.</span></p>
+<p>
+In a piston a different pressure of fluids perform mechanical linar work.
+</p>
+<p>
+Depending on <code>push_left</code>, the left (when pushleft is true) side or
+the right (when pushleft is false) side is connected to the input, and the other
+side is connected to the output.
+</p>
+<p>
+<code>x</code> is a nondimensional piston position, 0 being left and 1 being right.
+</p>
+<p>
+The piston has soft stops and a dead volume at both ends.
+</p>
 </html>"));
 end Piston;

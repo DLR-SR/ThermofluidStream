@@ -30,7 +30,7 @@ If you have used this library for your publication, please cite the following tw
     Zimmer, Dirk (2020).
     &quot;Robust object-oriented formulation of directed thermofluid stream networks&quot;.
     In: Mathematical and Computer Modelling of Dynamical Systems 26.3, pp. 204&ndash; 233.
-    <span style=\"font-size: 8pt;\">DOI</span>: 10.1080/13873954.2020.1757726.
+    DOI: 10.1080/13873954.2020.1757726.
   </li>
   <li>
     Zimmer, Dirk, Michael Mei&szlig;ner, Niels Weber (in review 2021).

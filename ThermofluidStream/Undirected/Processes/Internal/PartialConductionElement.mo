@@ -128,17 +128,72 @@ equation
          color={238,46,47})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Undirected implementation of the Conduction Element.</p>
-<p>This model is an element with a fixed volume (fig. 1). The mass in the volume is assumed quasi-stationary (statically computed with volume and density), and the fore massflow is coupled to the rear massflow. <span style=\"color: #f47d23;\">Because of this the ConductionElement cannot be used as a loop breaker</span><span style=\"color: #b83d00;\">. </span>The advantage is that multiple ConductionElements can be put behind each other without worrying about oscillations or fast eigenvalues between their masses. The ConductionElement implements equations for conservation of mass and energy for the fluid mass contained within it.</p>
-<p>Different to the unidirectional ConductionElement, the model for forward massflow (see fig. 1) is valid for both flow directions.</p>
-<p>Additionally the undirected Conduction Element offers more initialization methods for h. Additionally to initialize T or h by a parameter, one can choose to initialize with the incoming enthalpy from either one of the two ports, or use the correct one, depending on the massflow (option &apos;port&apos;). The last option can lead to large nonlinear initialization problems, we advice to choose the port to initialize h from if known in advance (options &apos;rear&apos; or &apos;fore&apos;). </p>
-<p>The ConductionElement makes different assumptions:</p>
+<p>
+Undirected implementation of the Conduction Element.
+</p>
+<p>
+This model is an element with a fixed volume (fig. 1). The mass in the volume is 
+assumed quasi-stationary (statically computed with volume and density), and the 
+fore massflow is coupled to the rear massflow. <strong>Because of this the 
+ConductionElement cannot be used as a loop breaker</strong>.
+The advantage is that multiple ConductionElements can be put behind each other 
+without worrying about oscillations or fast eigenvalues between their masses. 
+The ConductionElement implements equations for conservation of mass and energy 
+for the fluid mass contained within it.
+</p>
+<p>
+Different to the unidirectional ConductionElement, the model for forward massflow
+(see fig. 1) is valid for both flow directions.
+</p>
+<p>
+Additionally the undirected Conduction Element offers more initialization methods 
+for h. Additionally to initialize T or h by a parameter, one can choose to 
+initialize with the incoming enthalpy from either one of the two ports, or use the 
+correct one, depending on the massflow (option &apos;port&apos;). The last option 
+can lead to large nonlinear initialization problems, we advice to choose the port 
+to initialize h from if known in advance (options &apos;rear&apos; or &apos;fore&apos;).
+</p>
+<p>
+The ConductionElement makes different assumptions:
+</p>
 <ul>
-<li>Quasistationary Mass:<br>m_flow_rear = - m_flow_fore &amp; M = rho * V (this assumption violates the conservation of mass for changing densities, since the mass in the element can change although inflow and outflow are the same)<br>der(H) = der(M*h) = M*der(h) (This assumption violates the conservation of energy for changing densities, since then the mass M of fluid in the element is no longer constant)</li>
-<li>Neglection of der(p) in the energy equation<br>V*der(p) = 0 (this assumption violates the conservation of energy for changing pressures. For a noticable difference in the testcase the der(p) must be in the order of 1e5 Pa/s). <br>This assumption can be turned off by setting neglectPressureChanges=false (true by default) in the Advanced tab. <span style=\"color: #f47d23;\">This option requires the fore and rear input pressures to be smooth.</span><br></li>
+  <li>
+    Quasistationary Mass:
+    <br>
+    m_flow_rear = - m_flow_fore &amp; M = rho * V
+    (this assumption violates the conservation of mass for changing densities,
+    since the mass in the element can change although inflow and outflow are the
+    same)
+    <br>
+    der(H) = der(M*h) = M*der(h)
+    (This assumption violates the conservation of energy for changing densities,
+    since then the mass M of fluid in the element is no longer constant)
+  </li>
+  <li>
+    Neglection of der(p) in the energy equation
+    <br>
+    V*der(p) = 0
+    (this assumption violates the conservation of energy for changing pressures.
+    For a noticable difference in the testcase the der(p) must be in the
+    order of 1e5 Pa/s).
+    <br>
+    This assumption can be turned off by setting neglectPressureChanges=false
+    (true by default) in the Advanced tab. <strong>This option requires the 
+    fore and rear input pressures to be smooth.</strong>
+  </li>
 </ul>
-<p>Due to these assumptions minor violations in the global energy conservation can occur. With the flag enforce_global_energy_conservation in the &quot;Advanced&quot; tab is set true (Default: false), long-term energy storage in the ConductionElement is sacrificed to hold global energy conservation.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.ConductionElement_positive.png\"/></p>
-<p>fig. 1: positive massflow model</p>
+<p>
+Due to these assumptions minor violations in the global energy conservation can 
+occur.
+With the flag enforce_global_energy_conservation in the &quot;Advanced&quot; tab 
+is set true (Default: false), long-term energy storage in the ConductionElement 
+is sacrificed to hold global energy conservation.
+</p>
+<div>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.ConductionElement_positive.png\"/>
+</div>
+<p>
+fig. 1: positive massflow model
+</p>
 </html>"));
 end PartialConductionElement;

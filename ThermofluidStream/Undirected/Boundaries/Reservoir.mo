@@ -70,9 +70,23 @@ equation
           fillPattern=FillPattern.Solid)}),
             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is a volume, that is open at the top and therefore maintains environmental pressure at the top and adds pressure depending on fill height. </p>
-<p>Conceptually it is a Sink and a Source. It therefore defines the level of inertial pressure r and acts as a loop breaker in a closed loop.</p>
-<p>This component uses a simplification (medium.p is set to p_env + height*g, which is only correct at the bottom of the reservoir) which is intended to hold for media with low compressibility. </p>
-<p><span style=\"color: #ff5500;\">Note that the energy equation requires the mass in the system to be positive and will not give valid results otherwise (if the assert of height &gt; 0 fails).</span></p>
+<p>
+This is a volume, that is open at the top and therefore maintains environmental
+pressure at the top and adds pressure depending on fill height.
+</p>
+<p>
+Conceptually it is a Sink and a Source. It therefore defines the level of inertial
+pressure r and acts as a loop breaker in a closed loop.
+</p>
+<p>
+This component uses a simplification (medium.p is set to p_env + height*g, which
+is only correct at the bottom of the reservoir) which is intended to hold for
+media with low compressibility.
+</p>
+<p>
+<strong>Note that the energy equation requires the mass in the system to be 
+positive and will not give valid results otherwise (if the assert of 
+height &gt; 0 fails).</strong>
+</p>
 </html>"));
 end Reservoir;

@@ -3,7 +3,9 @@ partial function partial_dp_tau "Compute dp and tau_st of a TurboComponent from 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Medium model needet to compute properties from the inlet_state.</span></p>
+<p>
+Medium model needet to compute properties from the inlet_state.
+</p>
 </html>"));
 
   input SI.MassFlowRate m_flow "Mass flow through component";

@@ -6,7 +6,10 @@ model ConductionElement "Test for ConductionElement"
     constrainedby Media.myMedia.Interfaces.PartialMedium
     "Medium Model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Medium Model for the test. Be aware that the Component is mainly ment for liquids with low compressablility.</span></p>
+<p>
+Medium Model for the test. Be aware that the Component is mainly
+ment for liquids with low compressablility.
+</p>
 </html>"));
 
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement(

@@ -7,7 +7,9 @@ model SpecificValveType "Test for undirected SpecificValveType"
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium package"
     annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)

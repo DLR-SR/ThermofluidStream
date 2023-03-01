@@ -3,6 +3,9 @@ package Interfaces "Interfaces package for undirected thermofluid simulation"
 extends Modelica.Icons.InterfacesPackage;
 
 annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New; color: #006400;\">Interfaces&nbsp;package&nbsp;for&nbsp;undirected&nbsp;thermofluid&nbsp;simulation. It contains the connectors and base classes.</span></p>
+<p>
+Interfaces package for undirected thermofluid simulation. It contains the connectors
+and base classes.
+</p>
 </html>"));
 end Interfaces;

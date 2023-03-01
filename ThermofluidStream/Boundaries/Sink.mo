@@ -2,7 +2,10 @@ within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Sink. Make sure it is the same as the one the outlet the sink is connected to.</span></p>
+<p>
+Medium package used in the Sink. Make sure it is the same as the one
+the outlet the sink is connected to.
+</p>
 </html>"));
 
   parameter Boolean pressureFromInput = false "If true pressure comes from real input";

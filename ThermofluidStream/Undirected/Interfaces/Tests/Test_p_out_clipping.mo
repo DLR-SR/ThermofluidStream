@@ -5,8 +5,10 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
     annotation (Documentation(info="<html>
-      <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
-      </html>"));
+<p>
+Medium package used in the Test.
+</p>
+</html>"));
 
   Boundaries.BoundaryRear boundary_rear(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,40},{60,60}})));

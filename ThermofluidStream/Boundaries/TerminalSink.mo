@@ -3,8 +3,11 @@ model TerminalSink "Sink that imposes m_flow=0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info = "<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Source. Make sure it is the same as the one
+the inlet the source is connected to.
+</p>
 </html>"));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)

@@ -15,8 +15,10 @@ model Pump "A simple pump model"
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal "Centrifugal Pump",
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow "Nominal Flow Pump"),
     Documentation(info="<html>
-      <p><span style=\"font-size: 12pt;\">Selectable function to choose beween different pump models.</span></p>
-      </html>"));
+<p>
+Selectable function to choose beween different pump models.
+</p>
+</html>"));
 
   Real eta(unit="1") = if noEvent(abs(W_t)>1e-4) then dp*v_in*m_flow/W_t else 0.0;
 

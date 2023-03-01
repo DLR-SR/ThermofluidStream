@@ -9,8 +9,10 @@ model Fan "Fan under ideal gas assumption"
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficency"),
         Documentation(info="<html>
-          <p><span style=\"font-size: 12pt;\">Selectable function to choose beween different fan models.</span></p>
-          </html>"));
+<p>
+Selectable function to choose beween different fan models.
+</p>
+</html>"));
 
   parameter Real max_rel_R(min=0, max=1, unit="1") = 0.05 "Maximum relative allowed divergence from ideal gas"
     annotation(Dialog(tab="Advanced"));

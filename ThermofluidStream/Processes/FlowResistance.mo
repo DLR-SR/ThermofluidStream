@@ -87,6 +87,9 @@ equation
           origin={0,25},
           rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic).</span></p>
+<p>
+Implementation of a flow resistance pipe with different selectable
+flow resistance functions (laminar, laminar-turbulent, linear-quadratic).
+</p>
 </html>"));
 end FlowResistance;

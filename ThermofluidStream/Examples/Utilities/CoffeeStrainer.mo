@@ -2,7 +2,10 @@ within ThermofluidStream.Examples.Utilities;
 model CoffeeStrainer "Holds coffee in the machine."
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium model for the coffee strainer. It is expected to be water of some sorts.</span></p>
+<p>
+Medium model for the coffee strainer. It is expected to be
+water of some sorts.
+</p>
 </html>"));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
@@ -62,6 +65,8 @@ equation
           pattern=LinePattern.None)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">This is a flow resistance, with the icon of a coffee strainer.</span></p>
+<p>
+This is a flow resistance, with the icon of a coffee strainer.
+</p>
 </html>"));
 end CoffeeStrainer;

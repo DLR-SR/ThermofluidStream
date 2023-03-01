@@ -77,6 +77,8 @@ equation
           textString="B")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
-<p><span style=\"font-family: MS Shell Dlg 2;\">Junction with a rear and two fores in a lying T shape.</span></p>
+<p>
+Junction with a rear and two fores in a lying T shape.
+</p>
 </html>"));
 end JunctionRFF;

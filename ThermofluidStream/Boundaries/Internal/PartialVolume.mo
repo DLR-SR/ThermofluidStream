@@ -4,7 +4,10 @@ partial model PartialVolume "Partial parent class for Volumes with one inlet and
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the inlets and outlets the volume is connected to.</span></p>
+<p>
+Medium package used in the Volume. Make sure it is the same as the
+inlets and outlets the volume is connected to.
+</p>
 </html>"));
 
   parameter Boolean useHeatport = false "If true heatport is added";

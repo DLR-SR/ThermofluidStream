@@ -68,6 +68,8 @@ package Types "Types used in the Sensor Package"
       steadyState "Steady state initialization",
       state "Initial output state") "Initaization modes for sensor lowpass";
    annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Types used in the Sensor Package. </span></p>
+<p>
+Types used in the Sensor Package.
+</p>
 </html>"));
 end Types;

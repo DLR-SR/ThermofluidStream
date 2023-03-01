@@ -88,7 +88,12 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{300,
             100}})),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">This model is a equation based model of a crank drive. It can be ised to convet linear motion into circular motion.</span></p>
-<p><span style=\"font-family: Courier New;\">Phi is the angle of the flyweel, 0 is the right-most position. </span></p>
+<p>
+This model is a equation based model of a crank drive. It can be ised to convet
+linear motion into circular motion.
+</p>
+<p>
+Phi is the angle of the flyweel, 0 is the right-most position.
+</p>
 </html>"));
 end CrankDrive;

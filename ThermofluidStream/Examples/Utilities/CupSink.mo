@@ -4,7 +4,9 @@ model CupSink "Sink with fancy cup animation"
   replaceable package Medium=Media.myMedia.Interfaces.PartialMedium
     "Medium Model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium&nbsp;Model in cup. </span></p>
+<p>
+Medium model in cup.
+</p>
 </html>"));
 
   parameter SI.Mass M = 3.448e-2 "Mass of medium that fits in the cup";
@@ -79,7 +81,11 @@ equation
           pattern=LinePattern.None)}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Sink with fancy cup animation. </p>
-<p><span style=\"font-family: Courier New;\">x is the level of medium in the cup for the animation.</span></p>
+<p>
+Sink with fancy cup animation.
+</p>
+<p>
+x is the level of medium in the cup for the animation.
+</p>
 </html>"));
 end CupSink;

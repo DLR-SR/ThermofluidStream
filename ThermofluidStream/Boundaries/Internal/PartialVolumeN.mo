@@ -3,7 +3,10 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the inlets and outlets the volume is connected to.</span></p>
+<p>
+Medium package used in the Volume. Make sure it is the same as the
+inlets and outlets the volume is connected to.
+</p>
 </html>"));
 
   parameter Integer N = 1 "Number if inlets";
