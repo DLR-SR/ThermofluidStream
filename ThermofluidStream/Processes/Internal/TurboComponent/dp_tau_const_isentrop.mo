@@ -70,7 +70,7 @@ algorithm
 <p>The isentropic exponent (kappa) by default is retrieved from the media model at the inlet. It can be set to a fixed value to allow compressor operation in two-phase region.</p>
 <p><br>The computation is as follows:</p>
 <ol>
-<li>with the scaling factors <span style=\"font-family: Courier New;\">omega_ref, m_flow_ref </span>and the scewness factor<span style=\"font-family: Courier New;\"> skew, </span>the pressure ratio<span style=\"font-family: Courier New;\"> pr=p_outlet/p_inlet </span>is computed as quadratic function of<span style=\"font-family: Courier New;\"> omega/omega_ref, m_flow/m_flow_ref: </span></li>
+<li>with the scaling factors <code>omega_ref</code>, <code>m_flow_ref</code> and the scewness factor <code>skew</code>, the pressure ratio <code> pr=p_outlet/p_inlet</code> is computed as quadratic function of <code>omega/omega_ref</code>, <code>m_flow/m_flow_ref:</code></li>
 <p><span style=\"font-family: Courier New;\">pr&nbsp;&nbsp;:=<span style=\"color: #ff0000;\">&nbsp;abs</span>(omega)*omega/(omega_ref^2)&nbsp;-&nbsp;skew*omega*m_flow/(omega_ref*m_flow_ref)&nbsp;-<span style=\"font-family: Courier New; color: #ff0000;\">&nbsp;abs</span>(m_flow)*m_flow/(m_flow_ref^2)&nbsp;+&nbsp;1;</p>
 <li>if the pressure ratio is smaller then 1 (expansion of gas), to limit it to 0 compute:</li>
 <p><span style=\"font-family: Courier New;\">pr&nbsp;:=&nbsp;k^(pr-1);</span></p>
@@ -78,7 +78,7 @@ algorithm
 <li>apply constant isentropic efficency </li>
 <li>compute static moment by the following law: <br>- if m_dot and omega both &gt; 0 (nominal operation): W_t = w_t*m_flow = tau*omega<br>- else (not nominal operation; with area of fluid A and radius of pump r) tau = F*r = dp*A*r = dp*V_ref<br>both are scaled so they are smooth at the border to nominal operation. Additionally for small omega, a small tau is added, so the standing pump can be pushed by the fluid.</li>
 </ol>
-<p><span style=\"font-family: Courier New;\">omega_ref</span> and <span style=\"font-family: Courier New;\">m_flow_ref</span> are supposed to be scaling factors for omega and m_flow respectiveley. <span style=\"font-family: Courier New;\">omega_ref</span> is the angular velocity that produces a pressure ratio of 2 at m_flow=0. <span style=\"font-family: Courier New;\">m_flow_ref</span> is the massflow, that produces a negative pressure ratio of 1 at <span style=\"font-family: Courier New;\">omega=omega_ref</span>. The skewness factor can be used to shape the characteristic curve inbetween (see fig. 1).</p>
+<p><code>omega_ref</code> and <code>m_flow_ref</code> are supposed to be scaling factors for omega and m_flow respectiveley. <code>omega_ref</code> is the angular velocity that produces a pressure ratio of 2 at m_flow=0. <code>m_flow_ref</code> is the massflow, that produces a negative pressure ratio of 1 at <code>omega=omega_ref</code>. The skewness factor can be used to shape the characteristic curve inbetween (see fig. 1).</p>
 <p>When pr &lt; 1, the reciprocal pressure ratio 1/pr = p_inlet/p_outlet is more interesting. It can be seen for different values of skew in fig. 2.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Internal.dp_tau_const_polytrop_skewness.PNG\"/> </p>
 <p>Fig. 1: different skewness factors for omega/omega_ref=1. pressure ratio pr over m_dot/m_dot_ref</p>
