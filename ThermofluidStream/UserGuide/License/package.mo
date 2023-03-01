@@ -1,6 +1,6 @@
 within ThermofluidStream.UserGuide;
 package License "License, Contact and Citation Information"
-    extends Modelica.Icons.Information;
+  extends Modelica.Icons.Information;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <h4>License</h4>

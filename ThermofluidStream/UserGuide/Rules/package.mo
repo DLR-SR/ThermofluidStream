@@ -1,6 +1,6 @@
 within ThermofluidStream.UserGuide;
 package Rules "Basic Composition Rules"
-    extends Modelica.Icons.Information;
+  extends Modelica.Icons.Information;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>

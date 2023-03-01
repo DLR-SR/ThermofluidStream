@@ -1,6 +1,6 @@
 within ThermofluidStream.FlowControl;
 model TanValve "Valve with tan-shaped flow resistance"
-    extends Interfaces.SISOFlow(final clip_p_out=true);
+  extends Interfaces.SISOFlow(final clip_p_out=true);
 
   Modelica.Blocks.Interfaces.RealInput u(unit="1") "Valve control signal []"
     annotation (Placement(
