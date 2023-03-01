@@ -100,7 +100,7 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,24},{108,44}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Water, invertInput=false) annotation (Placement(transformation(extent={{100,64},{120,44}})));
