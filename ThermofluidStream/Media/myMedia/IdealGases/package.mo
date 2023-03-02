@@ -5,14 +5,15 @@ package IdealGases "Data and models of ideal gases (single, fixed and dynamic mi
   annotation (Documentation(info="<html>
 <p>This package contains data for the 1241 ideal gases from</p>
 <blockquote>
-  <p>McBride B.J., Zehe M.J., and Gordon S. (2002): <strong>NASA Glenn Coefficients
+  McBride B.J., Zehe M.J., and Gordon S. (2002): <strong>NASA Glenn Coefficients
   for Calculating Thermodynamic Properties of Individual Species</strong>. NASA
-  report TP-2002-211556</p>
+  report TP-2002-211556
 </blockquote>
 <p>Medium models for some of these gases are available in package
 <a href=\"modelica://Modelica.Media.IdealGases.SingleGases\">IdealGases.SingleGases</a>
 and some examples for mixtures are available in package <a href=\"modelica://Modelica.Media.IdealGases.MixtureGases\">IdealGases.MixtureGases</a>
 </p>
+
 <h4>Using and Adapting Medium Models</h4>
 <p>
 The data records allow computing the ideal gas specific enthalpy, specific entropy and heat capacity of the substances listed below. From them, even the Gibbs energy and equilibrium constants for reactions can be computed. Critical data that is needed for computing the viscosity and thermal conductivity is not included. In order to add mixtures or single substance medium packages that are

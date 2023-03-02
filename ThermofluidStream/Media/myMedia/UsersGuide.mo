@@ -1979,12 +1979,14 @@ TemplateMedium package is given here:
     annotation (Documentation(info="<html>
 <h4>Version included in Modelica 3.0</h4>
 <p> See top-level release notes for MSL.</p>
+
 <h4>Version 1.0, 2005-03-01</h4>
 <p>
 Many improvements in the library, e.g., providing mixtures
 of the ideal gases, table based media, test suite for all media, improved and
 updated User's Guide.
 </p>
+
 <h4>Version 0.9, 2004-10-18</h4>
 <ul>
 <li> Changed the redeclaration/extends within packages from the
@@ -1996,6 +1998,7 @@ updated User's Guide.
 <li> Started to improve the documentation in
      Modelica.Media.UsersGuide.MediumDefinition.BasicStructure</li>
 </ul>
+
 <h4>Version 0.792, 2003-10-28</h4>
 <p>
 This is the first version made available for the public

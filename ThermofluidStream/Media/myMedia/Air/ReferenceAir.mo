@@ -2117,12 +2117,12 @@ The functions provided by this package shall be used inside of the restricted li
 </p>
 
 <ul>
-<li>
-<strong>p &le; 2000 MPa</strong>
-</li>
-<li>
-<strong>130 K &le; T &le; 2000 K</strong>
-</li>
+  <li>
+    <strong>p &le; 2000 MPa</strong>
+  </li>
+  <li>
+    <strong>130 K &le; T &le; 2000 K</strong>
+  </li>
 </ul>
 
 <h4>References</h4>

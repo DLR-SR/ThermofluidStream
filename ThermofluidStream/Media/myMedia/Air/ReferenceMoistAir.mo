@@ -4192,12 +4192,12 @@ The functions provided by this package shall be used inside of the restricted li
 </p>
 
 <ul>
-<li>
-<strong>611.2 Pa &le; p &le; 10 MPa</strong>
-</li>
-<li>
-<strong>143.15 K &le; T &le; 2000 K</strong>
-</li>
+  <li>
+    <strong>611.2 Pa &le; p &le; 10 MPa</strong>
+  </li>
+  <li>
+    <strong>143.15 K &le; T &le; 2000 K</strong>
+  </li>
 </ul>
 
 <h4>Usage</h4>
@@ -4225,30 +4225,30 @@ The package MoistAir can be used as any other medium model (see <a href=\"modeli
 <h4>Calculation algorithms</h4>
 <h5>Nomenclature</h5>
 <table width=\"25%\">
-<colgroup>
-<col width=\"1*\">
-<col width=\"2*\">
-</colgroup>
-<tr>
-<td>p</td>
-<td>Mixture pressure in Pa</td>
-</tr>
-<tr>
-<td>T</td>
-<td>Temperature in K</td>
-</tr>
-<tr>
-<td>x<sub>w</sub></td>
-<td>Absolute humidity in kg(water)/kg(dry air)</td>
-</tr>
-<tr>
-<td>x<sub>ws</sub></td>
-<td>Absolute humidity on saturation boundary in kg(water)/kg(dry air)</td>
-</tr>
-<tr>
-<td>&phi;</td>
-<td>Relative humidity (only defined for unsaturated humid air)</td>
-</tr>
+  <colgroup>
+  <col width=\"1*\">
+  <col width=\"2*\">
+  </colgroup>
+  <tr>
+    <td>p</td>
+    <td>Mixture pressure in Pa</td>
+  </tr>
+  <tr>
+    <td>T</td>
+    <td>Temperature in K</td>
+  </tr>
+  <tr>
+    <td>x<sub>w</sub></td>
+    <td>Absolute humidity in kg(water)/kg(dry air)</td>
+  </tr>
+  <tr>
+    <td>x<sub>ws</sub></td>
+    <td>Absolute humidity on saturation boundary in kg(water)/kg(dry air)</td>
+  </tr>
+  <tr>
+    <td>&phi;</td>
+    <td>Relative humidity (only defined for unsaturated humid air)</td>
+  </tr>
 </table>
 
 <h5>Unsaturated and saturated humid air (0 &le; x<sub>w</sub> &le; x<sub>ws</sub>)</h5>

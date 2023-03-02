@@ -1284,11 +1284,11 @@ one, which would require a numeric solution.
 <p>This linear compressibility fluid model is based on the assumptions that:
 </p>
 <ul>
-<li>The specific heat capacity at constant pressure (cp) is constant</li>
-<li>The isobaric expansion coefficient (beta) is constant</li>
-<li>The isothermal compressibility (kappa) is constant</li>
-<li>Pressure and temperature are used as states</li>
-<li>The influence of density on specific enthalpy (h), entropy (s), inner energy (u) and heat capacity (cv) at constant volume is neglected.</li>
+  <li>The specific heat capacity at constant pressure (cp) is constant</li>
+  <li>The isobaric expansion coefficient (beta) is constant</li>
+  <li>The isothermal compressibility (kappa) is constant</li>
+  <li>Pressure and temperature are used as states</li>
+  <li>The influence of density on specific enthalpy (h), entropy (s), inner energy (u) and heat capacity (cv) at constant volume is neglected.</li>
 </ul>
 <p>
 That means that the density is a linear function in temperature and in pressure.
@@ -1298,9 +1298,9 @@ be interpreted as a linearization of a full non-linear fluid model (but it is no
 thermodynamic coordinates). Reference values are needed for
 </p>
 <ol>
-<li>the density (reference_d),</li>
-<li>the specific enthalpy (reference_h),</li>
-<li>the specific entropy (reference_s).</li>
+  <li>the density (reference_d),</li>
+  <li>the specific enthalpy (reference_h),</li>
+  <li>the specific entropy (reference_s).</li>
 </ol>
 <p>
 Apart from that, a user needs to define the molar mass, MM_const.
@@ -1319,17 +1319,27 @@ and cv would be replaced by a call to density(state). That would require a numer
 in simulations. There are a number of possible compromises and possibilities to improve performance.
 Some of them can be influenced by a flag. The following rules where used in this model:</p>
 <ul>
-<li>All forward evaluations (using the ThermodynamicState record as input) are exactly following
-the assumptions above.</li>
-<li>If the flag <strong>constantJacobian</strong> is set to true in the package, all functions that
-typically appear in thermodynamic Jacobians (specificHeatCapacityCv, density_derp_h, density_derh_p,
-density_derp_T, density_derT_p) are evaluated at reference conditions (that means using the reference
-density) instead of the density of the current pressure and temperature. This makes it possible to evaluate
-the thermodynamic Jacobian at compile time.</li>
-<li>For inverse functions using other inputs than the states (e.g pressure p and specific enthalpy h),
-the inversion is using the reference state whenever that is necessary to achieve a symbolic inversion.</li>
-<li>If <strong>constantJacobian</strong> is set to false, the above list of functions is computed exactly according
-to the above list of assumptions</li>
+  <li>
+    All forward evaluations (using the ThermodynamicState record as input) are exactly
+    following the assumptions above.
+  </li>
+  <li>
+    If the flag <strong>constantJacobian</strong> is set to true in the package, all
+    functions that typically appear in thermodynamic Jacobians (specificHeatCapacityCv,
+    density_derp_h, density_derh_p, density_derp_T, density_derT_p) are evaluated at
+    reference conditions (that means using the reference density) instead of the
+    density of the current pressure and temperature. This makes it possible to evaluate
+    the thermodynamic Jacobian at compile time.
+  </li>
+  <li>
+    For inverse functions using other inputs than the states (e.g pressure p and specific 
+    enthalpy h), the inversion is using the reference state whenever that is necessary to 
+    achieve a symbolic inversion.
+  </li>
+  <li>
+    If <strong>constantJacobian</strong> is set to false, the above list of functions is 
+    computed exactly according to the above list of assumptions.
+  </li>
 </ul>
 <dl>
 <dt><strong>Authors:</strong></dt>
