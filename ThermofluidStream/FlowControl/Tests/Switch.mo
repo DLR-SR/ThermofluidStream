@@ -3,9 +3,8 @@ model Switch "Test for Switches"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-        annotation (choicesAllMatching=true, Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
@@ -22,31 +21,30 @@ model Switch "Test for Switches"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-42,60},{-22,80}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{46,80},{66,100}})));
-  ThermofluidStream.FlowControl.Switch
-                      switch(      redeclare package Medium =
-        Medium)
+  ThermofluidStream.FlowControl.Switch switch(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,60},{10,80}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{20,80},{40,100}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Pulse pulse(period=1)
-                                      annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
+    annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
   FourWaySwitch fourWaySwitch(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
   Boundaries.Source source1(
     redeclare package Medium = Medium,
@@ -59,8 +57,8 @@ model Switch "Test for Switches"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-50,-20},{-30,0}})));
   Boundaries.Source source2(
     redeclare package Medium = Medium,
@@ -75,8 +73,8 @@ model Switch "Test for Switches"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={20,-30})));
@@ -86,8 +84,8 @@ model Switch "Test for Switches"
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,-20},{30,0}})));
   Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -97,13 +95,13 @@ model Switch "Test for Switches"
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-40,-30})));
   Modelica.Blocks.Sources.Pulse pulse1(period=1)
-                                      annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
+    annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
 equation
   connect(flowResistance.outlet, switch.inlet) annotation (Line(
       points={{-22,70},{-10,70}},
@@ -130,7 +128,7 @@ equation
       points={{10,70},{20,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, switch.u) annotation (Line(points={{-9,40},{0,40},{0,62}},        color={0,0,127}));
+  connect(pulse.y, switch.u) annotation (Line(points={{-9,40},{0,40},{0,62}}, color={0,0,127}));
   connect(flowResistance6.outlet, sink3.inlet) annotation (Line(
       points={{-50,-30},{-60,-30}},
       color={28,108,200},

@@ -4,14 +4,16 @@ model TestDiscretizedHEX
   extends Modelica.Icons.Example;
 
   replaceable package MediumAir = Media.myMedia.Air.MoistAir
-                                                         constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-                                                                 constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = MediumAir,
@@ -51,9 +53,8 @@ model TestDiscretizedHEX
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-70,14},{-50,34}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{74,74},{94,94}})));
   Modelica.Blocks.Sources.Ramp ramp1(
@@ -61,7 +62,7 @@ model TestDiscretizedHEX
     duration=10,
     offset=0.3,
     startTime=15) annotation (Placement(transformation(extent={{-40,-58},{-20,-38}})));
-  Modelica.Blocks.Sources.Constant const1(k=1e5)    annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
+  Modelica.Blocks.Sources.Constant const1(k=1e5) annotation (Placement(transformation(extent={{-120,14},{-100,34}})));
   DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
@@ -80,9 +81,8 @@ model TestDiscretizedHEX
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-2},{-72,18}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,
@@ -101,13 +101,14 @@ model TestDiscretizedHEX
     duration=1,
     offset=1,
     startTime=30) annotation (Placement(transformation(extent={{-22,54},{-2,74}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        MediumRefrigerant,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
-    pressureUnit="bar",                                                                  outputMassFlowRate=true)
+    pressureUnit="bar",
+    outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{38,10},{18,-10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        MediumRefrigerant,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-24,10},{-44,-10}})));
@@ -156,7 +157,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
-    annotation (Line(points={{17,-48},{38,-48}},  color={0,0,127}));
+    annotation (Line(points={{17,-48},{38,-48}}, color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{61,-48},{76.8,-48}}, color={0,0,127}));
   connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{90.6,-48},{112,-48},{112,-2},{104,-2}}, color={0,0,127}));
@@ -174,7 +175,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-102,-34},{-108,-34},{-108,-40},{-113,-40}}, color={0,0,127}));
-  connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}},              color={0,0,127}));
+  connect(ramp2.y, feedback1.u1) annotation (Line(points={{-1,64},{24,64},{24,56},{40,56}}, color={0,0,127}));
   connect(feedback.u1, ramp1.y) annotation (Line(points={{0,-48},{-19,-48}}, color={0,0,127}));
   connect(discretizedHEX.foreB, multiSensor_Tpm3.rear) annotation (Line(
       points={{-14.2,8},{-24,8}},

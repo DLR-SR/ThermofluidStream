@@ -5,14 +5,14 @@ model DifferenceSensorSelect
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
-                                                                 "Medium model A"
+    "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
   replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
-                                                                 "Medium model B"
-  annotation (choicesAllMatching=true,
+    "Medium model B"
+    annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
@@ -26,7 +26,7 @@ model DifferenceSensorSelect
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));

@@ -2,15 +2,15 @@ within ThermofluidStream.FlowControl.Tests;
 model PCV "Test for PCV"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning)
-                                                                                annotation (Placement(transformation(extent={{70,-88},{90,-68}})));
+    annotation (Placement(transformation(extent={{70,-88},{90,-68}})));
   ThermofluidStream.FlowControl.PCV pCV(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -23,7 +23,7 @@ model PCV "Test for PCV"
     p_start=200000,
     T_start=373.15,
     p_ref=100000,
-    V_ref=0.1)     annotation (Placement(transformation(extent={{-50,-50},{-30,-30}})));
+    V_ref=0.1) annotation (Placement(transformation(extent={{-50,-50},{-30,-30}})));
   ThermofluidStream.Boundaries.VolumeFlex
                                     volumeFlex(
     redeclare package Medium = Medium,
@@ -56,7 +56,7 @@ model PCV "Test for PCV"
     p_start=200000,
     T_start=373.15,
     p_ref=100000,
-    V_ref=0.1)     annotation (Placement(transformation(extent={{-50,-20},{-30,0}})));
+    V_ref=0.1) annotation (Placement(transformation(extent={{-50,-20},{-30,0}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.02,
@@ -122,13 +122,13 @@ model PCV "Test for PCV"
     height=0.5e5,
     duration=0.6,
     offset=1.5e5,
-    startTime=0.1)                  annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
+    startTime=0.1) annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
   Modelica.Blocks.Sources.Ramp ramp1(
     height=-0.2e5,
     duration=0.6,
     offset=0.2e5,
     startTime=0.1)
-                  annotation (Placement(transformation(extent={{-70,30},{-50,50}})));
+    annotation (Placement(transformation(extent={{-70,30},{-50,50}})));
 equation
 
   connect(volumeFlex2.outlet, pCV1.inlet) annotation (Line(
@@ -193,7 +193,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(ramp1.y, pCV3.pressure_set_var) annotation (Line(points={{-49,40},{-10,40},{-10,28}}, color={0,0,127}));
-  connect(ramp.y, pCV4.pressure_set_var) annotation (Line(points={{-49,80},{-10,80},{-10,68}},    color={0,0,127}));
+  connect(ramp.y, pCV4.pressure_set_var) annotation (Line(points={{-49,80},{-10,80},{-10,68}}, color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

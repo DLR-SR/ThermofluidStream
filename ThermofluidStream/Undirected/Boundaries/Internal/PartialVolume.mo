@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the fores and rears the volume is connected to.</span></p>
 </html>"));
@@ -65,8 +65,8 @@ protected
   SI.Temperature T_heatPort;
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)
-  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
-  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
+  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
+  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
   // dont regstep variables that are only in der(state), to increase accuracy
   SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear;
   SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore;
@@ -122,7 +122,7 @@ equation
   end if;
   if not useRear then
     m_flow_rear = 0;
-    state_in_rear = Medium.setState_phX(Medium.p_default,  Medium.h_default, Medium.X_default[1:Medium.nXi]);
+    state_in_rear = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
     end if;
   if not useFore then
     m_flow_fore = 0;

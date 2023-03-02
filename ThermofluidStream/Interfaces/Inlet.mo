@@ -8,7 +8,7 @@ connector Inlet "Inlet port for a fluid"
 
 
   SI.Pressure r "inertial pressure";
-  flow  SI.MassFlowRate m_flow "mass flow rate";
+  flow SI.MassFlowRate m_flow "mass flow rate";
 
   input Medium.ThermodynamicState state "thermodynamic state assuming steady mass flow pressure";
 

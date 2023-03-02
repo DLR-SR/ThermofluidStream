@@ -4,7 +4,7 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -21,7 +21,7 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure)));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));

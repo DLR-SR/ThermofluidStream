@@ -775,7 +775,7 @@ Specific enthalpy of moist air is computed from the thermodynamic state record. 
     X_liquid := max(X[Water] - X_sat, 0.0);
     X_steam := X[Water] - X_liquid;
     X_air := 1 - X[Water];
-    /* h        := {SingleGasNasa.h_Tlow(data=steam,  T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=46479.819+2501014.5),
+    /* h := {SingleGasNasa.h_Tlow(data=steam, T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=46479.819+2501014.5),
                SingleGasNasa.h_Tlow(data=dryair, T=T, refChoice=ReferenceEnthalpy.UserDefined, h_off=25104.684)}*
     {X_steam, X_air} + enthalpyOfLiquid(T)*X_liquid;*/
     h := {ThermofluidStream.Media.myMedia.IdealGases.Common.Functions.h_Tlow(
@@ -1175,7 +1175,7 @@ end thermalConductivity;
   algorithm
     a := sqrt(isentropicExponent(state)*gasConstant(state)*temperature(state));
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end velocityOfSound;
 
@@ -1184,7 +1184,7 @@ end thermalConductivity;
   algorithm
     beta := 1/temperature(state);
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end isobaricExpansionCoefficient;
 
@@ -1193,7 +1193,7 @@ end thermalConductivity;
   algorithm
     kappa := 1/pressure(state);
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end isothermalCompressibility;
 
@@ -1203,7 +1203,7 @@ end thermalConductivity;
     ddph := 1/(gasConstant(state)*temperature(state));
 
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end density_derp_h;
 
@@ -1212,7 +1212,7 @@ end thermalConductivity;
   algorithm
     ddhp := -density(state)/(specificHeatCapacityCp(state)*temperature(state));
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end density_derh_p;
 
@@ -1222,7 +1222,7 @@ end thermalConductivity;
     ddpT := 1/(gasConstant(state)*temperature(state));
 
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end density_derp_T;
 
@@ -1231,7 +1231,7 @@ end thermalConductivity;
   algorithm
     ddTp := -density(state)/temperature(state);
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end density_derT_p;
 
@@ -1244,8 +1244,8 @@ end thermalConductivity;
       state.X[Air])^2*temperature(state));
 
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
-<p>2019-05-14        Stefan Wischhusen: Corrected derivatives.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
+<p>2019-05-14 Stefan Wischhusen: Corrected derivatives.</p>
 </html>"));
   end density_derX;
 
@@ -1254,7 +1254,7 @@ end thermalConductivity;
     MM := Modelica.Constants.R/
       ThermofluidStream.Media.myMedia.Air.MoistAir.gasConstant(state);
     annotation (Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end molarMass;
 
@@ -1283,7 +1283,7 @@ end thermalConductivity;
 Temperature is computed from pressure, specific entropy and composition via numerical inversion of function <a href=\"modelica://Modelica.Media.Air.MoistAir.s_pTX\">s_pTX</a>.
 </html>",
         revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end T_psX;
 
@@ -1309,7 +1309,7 @@ Temperature is computed from pressure, specific entropy and composition via nume
 The <a href=\"modelica://Modelica.Media.Air.MoistAir.ThermodynamicState\">thermodynamic state record</a> is computed from pressure p, specific enthalpy h and composition X.
 </html>",
         revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end setState_psX;
 
@@ -1344,9 +1344,9 @@ The <a href=\"modelica://Modelica.Media.Air.MoistAir.ThermodynamicState\">thermo
 Specific entropy of moist air is computed from pressure, temperature and composition with X[1] as the total water mass fraction.
 </html>",
         revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
-<p>2019-05-14        Stefan Wischhusen: Corrected calculation.</p>
-<p>2019-09-10        Stefan Wischhusen: Corrected pressure influence (p &lt; p_ref).</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
+<p>2019-05-14 Stefan Wischhusen: Corrected calculation.</p>
+<p>2019-09-10 Stefan Wischhusen: Corrected pressure influence (p &lt; p_ref).</p>
 </html>"),
       Icon(graphics={Text(
             extent={{-100,100},{100,-100}},
@@ -1412,9 +1412,9 @@ Specific entropy of moist air is computed from pressure, temperature and composi
 Specific entropy of moist air is computed from pressure, temperature and composition with X[1] as the total water mass fraction.
 </html>",
         revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
-<p>2019-05-14        Stefan Wischhusen: Corrected calculation.</p>
-<p>2019-09-10        Stefan Wischhusen: Corrected pressure influence (p &lt; p_ref).</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
+<p>2019-05-14 Stefan Wischhusen: Corrected calculation.</p>
+<p>2019-09-10 Stefan Wischhusen: Corrected pressure influence (p &lt; p_ref).</p>
 </html>"),
       Icon(graphics={Text(
             extent={{-100,100},{100,-100}},
@@ -1438,7 +1438,7 @@ Specific entropy of moist air is computed from pressure, temperature and composi
             extent={{-100,100},{100,-100}},
             textColor={255,127,0},
             textString="f")}), Documentation(revisions="<html>
-<p>2012-01-12        Stefan Wischhusen: Initial Release.</p>
+<p>2012-01-12 Stefan Wischhusen: Initial Release.</p>
 </html>"));
   end isentropicEnthalpy;
 

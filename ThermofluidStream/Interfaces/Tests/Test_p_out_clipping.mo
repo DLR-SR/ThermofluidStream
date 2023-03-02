@@ -3,8 +3,7 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                          "Medium package"
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
     annotation (Documentation(info="<html>
       <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
       </html>"));
@@ -25,8 +24,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=100, k2=50))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Processes.Fan fan(redeclare package Medium = Medium,
     L=1000,
@@ -63,7 +62,7 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
 
   Modelica.Blocks.Sources.RealExpression realExpression annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
-  Processes.Nozzle              nozzle(
+  Processes.Nozzle nozzle(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

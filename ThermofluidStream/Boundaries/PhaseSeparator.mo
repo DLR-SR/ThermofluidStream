@@ -16,7 +16,7 @@ model PhaseSeparator "Parent to Reciever and Accumulator models"
   parameter SI.Volume V_par(displayUnit="l")=0.01 "Volume of phase seperator";
   parameter Real pipe_low(unit="1", min=0, max=1) "Low end of pipe";
   parameter Real pipe_high(unit="1", min=0, max=1) "High end of pipe";
-  parameter Boolean density_derp_h_from_media=false   "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
+  parameter Boolean density_derp_h_from_media=false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
      annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
      annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
@@ -53,7 +53,7 @@ initial equation
   if init_method == Init.h then
     medium.h = h_0;
   elseif init_method == Init.M then
-    x/d_gas+(1-x)/d_liq  = V/M_0;
+    x/d_gas+(1-x)/d_liq = V/M_0;
     assert(x>=0 and x<=1, "Initialization by Mass might be inaccurate outside the two-phase region", AssertionLevel.warning);
   elseif init_method == Init.l then
     x = (d_gas*(1-l_0))/(d_liq*l_0+d_gas*(1-l_0));

@@ -9,7 +9,7 @@ connector Outlet "Outlet port for a fluid"
 
 
   SI.Pressure r "Inertial pressure";
-  flow  SI.MassFlowRate m_flow "Mass flow rate";
+  flow SI.MassFlowRate m_flow "Mass flow rate";
 
   output Medium.ThermodynamicState state "Thermodynamic state assuming steady mass flow pressure";
 

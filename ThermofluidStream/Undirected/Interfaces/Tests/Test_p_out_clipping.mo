@@ -3,8 +3,7 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                          "Medium package"
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
     annotation (Documentation(info="<html>
       <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
       </html>"));
@@ -20,9 +19,8 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=100, k2=50))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   FlowControl.BasicControlValve basicControlValve(
     redeclare package Medium = Medium,
@@ -58,9 +56,9 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=100, k2=50))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100,
+      k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.BoundaryRear boundary_rear1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   Boundaries.BoundaryRear boundary_rear2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-60,0},{-40,20}})));
@@ -72,7 +70,7 @@ model Test_p_out_clipping "Test for the lower limit of p_out in SISOFlow compone
   Boundaries.BoundaryFore boundary_fore4(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
 equation
   connect(realExpression.y, tanValve.u) annotation (Line(points={{-51,-50},{-30,-50},{-30,-18},{0,-18},{0,-22}}, color={0,0,127}));
-  connect(specificValveType.u_in, tanValve.u) annotation (Line(points={{0,-2},{0,2},{-30,2},{-30,-18},{0,-18},{0,-22}},      color={0,0,127}));
+  connect(specificValveType.u_in, tanValve.u) annotation (Line(points={{0,-2},{0,2},{-30,2},{-30,-18},{0,-18},{0,-22}}, color={0,0,127}));
   connect(basicControlValve.u_in, tanValve.u) annotation (Line(points={{0,18},{0,22},{-30,22},{-30,-18},{0,-18},{0,-22}},
                                                                                                                         color={0,0,127}));
   connect(boundary_rear.fore, flowResistance1.rear) annotation (Line(

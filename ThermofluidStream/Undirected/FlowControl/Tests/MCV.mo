@@ -4,21 +4,22 @@ model MCV "Test for undirected MCV"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
+    "Medium package"
       annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
-  inner DropOfCommons                   dropOfCommons(assertionLevel=
-        AssertionLevel.warning)                                                 annotation (Placement(transformation(extent={{100,0},
+  inner DropOfCommons dropOfCommons(assertionLevel=
+        AssertionLevel.warning) annotation (Placement(transformation(extent={{100,0},
             {120,20}})));
-  Boundaries.BoundaryRear             boundaryRear2(
+  Boundaries.BoundaryRear boundaryRear2(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
     p0_par=200000) annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
-  Boundaries.BoundaryFore           boundaryFore(redeclare package Medium =
-        Medium, p0_par=100000)
+  Boundaries.BoundaryFore boundaryFore(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{60,30},{80,50}})));
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV(
@@ -30,13 +31,14 @@ model MCV "Test for undirected MCV"
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{0,30},{20,
             50}})));
 
-  Boundaries.BoundaryRear             boundaryRear3(
+  Boundaries.BoundaryRear boundaryRear3(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300,
     p0_par=200000) annotation (Placement(transformation(extent={{-30,0},{-10,20}})));
-  Boundaries.BoundaryFore           boundaryFore2(redeclare package Medium =
-        Medium, p0_par=100000)
+  Boundaries.BoundaryFore boundaryFore2(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{60,0},{80,20}})));
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV1(
@@ -53,7 +55,7 @@ model MCV "Test for undirected MCV"
     offset=0.5e5,
     startTime=0)
     annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
-  Boundaries.BoundaryFore             boundaryFore6(
+  Boundaries.BoundaryFore boundaryFore6(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300,
@@ -61,13 +63,13 @@ model MCV "Test for undirected MCV"
         rotation=180,
         origin={-20,-20})));
 
-  Boundaries.BoundaryRear           boundaryRear1(redeclare package Medium =
-        Medium, p0_par=100000)
+  Boundaries.BoundaryRear boundaryRear1(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,-20})));
-  ThermofluidStream.Undirected.FlowControl.MCV
-                                    mCV2(
+  ThermofluidStream.Undirected.FlowControl.MCV mCV2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
@@ -77,8 +79,7 @@ model MCV "Test for undirected MCV"
         rotation=180,
         origin={10,-20})));
 
-  Modelica.Blocks.Sources.Trapezoid
-                                trapezoid(
+  Modelica.Blocks.Sources.Trapezoid trapezoid(
     amplitude=2e5,
     rising=0.5,
     width=0.75,
@@ -87,7 +88,7 @@ model MCV "Test for undirected MCV"
     offset=0.5e5,
     startTime=0)
     annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
-  Boundaries.BoundaryFore             boundaryFore8(
+  Boundaries.BoundaryFore boundaryFore8(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300,
@@ -95,8 +96,9 @@ model MCV "Test for undirected MCV"
         rotation=180,
         origin={-20,-50})));
 
-  Boundaries.BoundaryRear           boundaryRear5(redeclare package Medium =
-        Medium, p0_par=100000)
+  Boundaries.BoundaryRear boundaryRear5(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,-50})));
@@ -117,7 +119,7 @@ model MCV "Test for undirected MCV"
     offset=0.5e5,
     startTime=0)
     annotation (Placement(transformation(extent={{-70,-60},{-50,-40}})));
-  Boundaries.BoundaryFore             boundaryFore7(
+  Boundaries.BoundaryFore boundaryFore7(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
@@ -125,8 +127,8 @@ model MCV "Test for undirected MCV"
         rotation=180,
         origin={-20,-80})));
 
-  Boundaries.BoundaryRear           boundaryRear4(redeclare package Medium =
-        Medium,
+  Boundaries.BoundaryRear boundaryRear4(
+    redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=573.15,
     p0_par=100000)
@@ -154,13 +156,14 @@ model MCV "Test for undirected MCV"
     offset=0.5e5,
     startTime=0)
     annotation (Placement(transformation(extent={{112,-88},{92,-68}})));
-  Boundaries.BoundaryRear             boundaryRear(
+  Boundaries.BoundaryRear boundaryRear(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
     p0_par=200000) annotation (Placement(transformation(extent={{-30,70},{-10,90}})));
-  Boundaries.BoundaryFore           boundaryFore1(redeclare package Medium =
-        Medium, p0_par=100000)
+  Boundaries.BoundaryFore boundaryFore1(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{60,70},{80,90}})));
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV5(
@@ -178,8 +181,7 @@ model MCV "Test for undirected MCV"
     offset=0.1,
     startTime=0)
     annotation (Placement(transformation(extent={{-70,50},{-50,70}})));
-  Modelica.Blocks.Sources.Trapezoid
-                                trapezoid2(
+  Modelica.Blocks.Sources.Trapezoid trapezoid2(
     amplitude=5,
     rising=0.5,
     width=0.75,
@@ -188,7 +190,7 @@ model MCV "Test for undirected MCV"
     offset=1,
     startTime=0)
     annotation (Placement(transformation(extent={{-70,90},{-50,110}})));
-  Processes.FlowResistance                   flowResistance5(
+  Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -197,7 +199,7 @@ model MCV "Test for undirected MCV"
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{28,70},{48,90}})));
-  Processes.FlowResistance                   flowResistance(
+  Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -206,7 +208,7 @@ model MCV "Test for undirected MCV"
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{30,30},{50,50}})));
-  Processes.FlowResistance                   flowResistance1(
+  Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -215,7 +217,7 @@ model MCV "Test for undirected MCV"
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{28,0},{48,20}})));
-  Processes.FlowResistance                   flowResistance2(
+  Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -226,7 +228,7 @@ model MCV "Test for undirected MCV"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={40,-20})));
-  Processes.FlowResistance                   flowResistance3(
+  Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -237,7 +239,7 @@ model MCV "Test for undirected MCV"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={40,-50})));
-  Processes.FlowResistance                   flowResistance4(
+  Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,
@@ -248,14 +250,13 @@ model MCV "Test for undirected MCV"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={40,-80})));
-  Boundaries.BoundaryRear             boundaryRear6(
+  Boundaries.BoundaryRear boundaryRear6(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
     p0_par=200000) annotation (Placement(transformation(extent={{-32,158},{-12,
             178}})));
-  ThermofluidStream.Undirected.FlowControl.MCV
-                                    mCV6(
+  ThermofluidStream.Undirected.FlowControl.MCV mCV6(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
@@ -264,17 +265,19 @@ model MCV "Test for undirected MCV"
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-2,158},
             {18,178}})));
 
-  Boundaries.BoundaryFore           boundaryFore3(redeclare package Medium =
-        Medium, p0_par=200000)
+  Boundaries.BoundaryFore boundaryFore3(
+    redeclare package Medium = Medium,
+    p0_par=200000)
     annotation (Placement(transformation(extent={{30,158},{50,178}})));
-  Boundaries.BoundaryRear             boundaryRear7(
+  Boundaries.BoundaryRear boundaryRear7(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
     p0_par=500000) annotation (Placement(transformation(extent={{-32,116},{-12,
             136}})));
-  Boundaries.BoundaryFore           boundaryFore4(redeclare package Medium =
-        Medium, p0_par=0.001)
+  Boundaries.BoundaryFore boundaryFore4(
+    redeclare package Medium = Medium,
+    p0_par=0.001)
     annotation (Placement(transformation(extent={{30,116},{50,136}})));
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV7(
@@ -286,7 +289,7 @@ model MCV "Test for undirected MCV"
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-2,116},
             {18,136}})));
 
-  Boundaries.BoundaryFore             boundaryFore10(
+  Boundaries.BoundaryFore boundaryFore10(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
@@ -306,12 +309,13 @@ model MCV "Test for undirected MCV"
         rotation=180,
         origin={94,168})));
 
-  Boundaries.BoundaryRear           boundaryRear8(redeclare package Medium =
-        Medium, p0_par=200000)
+  Boundaries.BoundaryRear boundaryRear8(
+    redeclare package Medium = Medium,
+    p0_par=200000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={126,168})));
-  Boundaries.BoundaryFore             boundaryFore11(
+  Boundaries.BoundaryFore boundaryFore11(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     T0_par(displayUnit="K") = 300,
@@ -319,8 +323,9 @@ model MCV "Test for undirected MCV"
             10}},
         rotation=180,
         origin={64,126})));
-  Boundaries.BoundaryRear           boundaryRear9(redeclare package Medium =
-        Medium, p0_par=0.001)
+  Boundaries.BoundaryRear boundaryRear9(
+    redeclare package Medium = Medium,
+    p0_par=0.001)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={126,126})));
@@ -345,9 +350,9 @@ equation
   connect(pulse3.y, boundaryFore8.p0_var) annotation (Line(points={{-49,-50},{-30,
           -50},{-30,-56},{-22,-56}}, color={0,0,127}));
   connect(pulse5.y,mCV. setpoint_var) annotation (Line(points={{-49,60},{10,60},
-          {10,48}},                                                                           color={0,0,127}));
+          {10,48}}, color={0,0,127}));
   connect(trapezoid2.y,mCV5. setpoint_var) annotation (Line(points={{-49,100},{10,
-          100},{10,88}},                                                                            color={0,0,127}));
+          100},{10,88}}, color={0,0,127}));
   connect(boundaryRear.fore, mCV5.rear) annotation (Line(
       points={{-10,80},{0,80}},
       color={28,108,200},

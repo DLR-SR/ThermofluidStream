@@ -4,32 +4,35 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   extends Modelica.Icons.Example;
 
   replaceable package Medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
-                                                                          constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                        annotation(choicesAllMatching = true);
-  replaceable package Medium_bleed =
-      ThermofluidStream.Media.myMedia.Air.MoistAir                          constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                     annotation(choicesAllMatching = true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    annotation(choicesAllMatching = true);
+  replaceable package Medium_bleed = ThermofluidStream.Media.myMedia.Air.MoistAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    annotation(choicesAllMatching = true);
 
-
-  Boundaries.Source source(redeclare package Medium=Medium_ram,
+  Boundaries.Source source(
+    redeclare package Medium=Medium_ram,
     T0_par=243.15,
     p0_par=30000,
     Xi0_par={0})
     annotation (Placement(transformation(extent={{-144,96},{-124,116}})));
-  Boundaries.Sink sink(redeclare package Medium=Medium_ram,pressureFromInput=false,
+  Boundaries.Sink sink(
+    redeclare package Medium=Medium_ram,
+    pressureFromInput=false,
     p0_par=22000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={104,-100})));
-  Boundaries.Source source1(redeclare package Medium=Medium_bleed,
+  Boundaries.Source source1(
+    redeclare package Medium=Medium_bleed,
     T0_par=493.15,
     p0_par=250000,
     Xi0_par={0})
     annotation (Placement(transformation(extent={{-142,-64},{-122,-42}})));
-  Boundaries.Sink sink1(redeclare package Medium=Medium_bleed, p0_par=75000)
+  Boundaries.Sink sink1(
+    redeclare package Medium=Medium_bleed,
+    p0_par=75000)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={152,80})));
@@ -55,12 +58,11 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_compressor =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
-        (
-        omega_ref=2000,
-        skew=1,
-        m_flow_ref=1,
-        eta=0.9)) annotation (Placement(transformation(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=2000,
+      skew=1,
+      m_flow_ref=1,
+      eta=0.9)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-68,8})));
@@ -73,13 +75,12 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     L=5e2,
     omega_from_input=false,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
-        (
-  omega_ref=Modelica.Constants.inf,
-        m_flow_ref=0.36,
-        skew=-0.2,
-        k=2,
-        eta=0.93))
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=Modelica.Constants.inf,
+      m_flow_ref=0.36,
+      skew=-0.2,
+      k=2,
+      eta=0.93))
     annotation (Placement(transformation(extent={{-58,48},{-38,68}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU2(
     redeclare package MediumA = Medium_ram,
@@ -96,13 +97,12 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
-        (
-  omega_ref=Modelica.Constants.inf,
-        m_flow_ref=0.39,
-        skew=-0.2,
-        k=2,
-        eta=0.93))
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=Modelica.Constants.inf,
+      m_flow_ref=0.39,
+      skew=-0.2,
+      k=2,
+      eta=0.93))
     annotation (Placement(transformation(extent={{82,48},{102,68}})));
   Topology.SplitterT1 splitterT1_1(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -120,24 +120,24 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,96})));
-  Processes.Fan fan(redeclare package Medium = Medium_ram, redeclare function
-      dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
-        (
-  omega_ref=500,
-        skew=1,
-        m_flow_ref=0.21,
-        eta=0.7)) annotation (Placement(transformation(
+  Processes.Fan fan(
+    redeclare package Medium = Medium_ram,
+    redeclare function dp_tau_fan =
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=500,
+      skew=1,
+      m_flow_ref=0.21,
+      eta=0.7)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-80,-66})));
-  Processes.Fan fan1(redeclare package Medium = Medium_ram, redeclare function
-      dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop
-        (
-  omega_ref=1000,
-        skew=1,
-        eta=0.7)) annotation (Placement(transformation(
+  Processes.Fan fan1(
+    redeclare package Medium = Medium_ram,
+    redeclare function dp_tau_fan =
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+      omega_ref=1000,
+      skew=1,
+      eta=0.7)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={56,-60})));
@@ -146,14 +146,15 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     r=0.05,
     l=40,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,-94},{-20,-74}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{40,-94},{20,-74}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{118,-120},{158,-80}})));
 initial equation

@@ -4,7 +4,7 @@ model Flow_Resistance "Test for flow resistance"
 
   import tf = ThermofluidStream;
   replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
-                                                        "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
 </html>"));
@@ -27,9 +27,9 @@ model Flow_Resistance "Test for flow resistance"
     computeL=true,
     r=0.1,
     l=100,
-    redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1000,
-          k2=100))
+    redeclare function pLoss = tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1000,
+      k2=100))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   tf.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
@@ -52,8 +52,8 @@ model Flow_Resistance "Test for flow resistance"
     L_value=30000,
     r=0.075,
     l=10,
-    redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 
   tf.Boundaries.Source source1(

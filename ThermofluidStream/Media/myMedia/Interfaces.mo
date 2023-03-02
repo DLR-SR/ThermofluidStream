@@ -235,7 +235,7 @@ Modelica source.
       Density d "Density of medium";
       Temperature T "Temperature of medium";
       MassFraction[nX] X(start=reference_X)
-        "Mass fractions (= (component mass)/total mass  m_i/m)";
+        "Mass fractions (= (component mass)/total mass m_i/m)";
       SpecificInternalEnergy u "Specific internal energy of medium";
       SpecificHeatCapacity R_s "Gas constant (of mixture if applicable)";
       MolarMass MM "Molar mass (of mixture or single fluid)";
@@ -458,7 +458,6 @@ sum(X) = c*(sum(X_a) - sum(X_b)) + (sum(X_a) + sum(X_b))/2
        = c*(1 - 1) + (1 + 1)/2
        = 1
 </pre></blockquote>
-
 </html>"));
     end setSmoothState;
 
@@ -604,7 +603,7 @@ This function computes an isentropic state transformation:
       output IsobaricExpansionCoefficient beta "Isobaric expansion coefficient";
       annotation (Documentation(info="<html>
 <blockquote><pre>
-beta is defined as  1/v * der(v,T), with v = 1/d, at constant pressure p.
+beta is defined as 1/v * der(v,T), with v = 1/d, at constant pressure p.
 </pre></blockquote>
 </html>"));
     end isobaricExpansionCoefficient;
@@ -801,7 +800,7 @@ kappa is defined as - 1/v * der(v,p), with v = 1/d at constant temperature T.
 
     // Only for backwards compatibility to version 3.2 (
     // (do not use these definitions in new models, but use Modelica.Media.Interfaces.Choices instead)
-    package Choices = myMedia.Interfaces.Choices        annotation (obsolete=
+    package Choices = myMedia.Interfaces.Choices annotation (obsolete=
           "Use Modelica.Media.Interfaces.Choices");
 
     annotation (Documentation(info="<html>
@@ -1361,7 +1360,7 @@ to the above list of assumptions</li>
       AbsolutePressure p "Absolute pressure of medium";
       Temperature T "Temperature of medium";
       MassFraction[nX] X(start=reference_X)
-        "Mass fractions (= (component mass)/total mass  m_i/m)";
+        "Mass fractions (= (component mass)/total mass m_i/m)";
     end ThermodynamicState;
 
     redeclare replaceable function massFraction "Return independent mass Fraction"

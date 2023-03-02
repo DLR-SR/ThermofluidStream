@@ -3,23 +3,19 @@ model TestSensors "Test model for all sensors."
   extends Modelica.Icons.Example;
 
   replaceable package Medium1 = Media.myMedia.Water.ConstantPropertyLiquidWater
-                                                                          constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-                                     "Medium Model 1" annotation (Documentation(
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model 1"
+    annotation (Documentation(
         info="<html>
 <p>Medium Model for the upper stream. It can be anything. </p>
 </html>"));
   replaceable package Medium2 = Media.myMedia.Water.StandardWater
-                                                            constrainedby
-    Media.myMedia.Interfaces.PartialTwoPhaseMedium
-    "Medium Model 2" annotation (Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium Model 2"
+    annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
-
-   replaceable package Medium3 =
-      Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents                      constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-    "Medium Model 3" annotation (Documentation(info="<html>
+  replaceable package Medium3 =  Media.myMedia.IdealGases.MixtureGases.FlueGasSixComponents
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model 3"
+    annotation (Documentation(info="<html>
 <p>Medium Model for the lower stream. It must be a TwoPhaseMedium to test the vapor quantity sensors.</p>
 </html>"));
 
@@ -44,8 +40,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-10,64},{10,84}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium2,
@@ -55,8 +51,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-40,-16},{-20,4}})));
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium1,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K)
@@ -142,8 +138,7 @@ model TestSensors "Test model for all sensors."
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-30,34})));
-  DifferenceTwoPhaseSensorSensorSelect
-                               differenceSensorVaporQuality(
+  DifferenceTwoPhaseSensorSensorSelect differenceSensorVaporQuality(
     redeclare package MediumA = Medium2,
     redeclare package MediumB = Medium2,
     digits=2,
@@ -153,9 +148,9 @@ model TestSensors "Test model for all sensors."
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
         353.15)
     annotation (Placement(transformation(extent={{-16,-26},{-6,-16}})));
-  Processes.ConductionElement     conductionElement(
+  Processes.ConductionElement conductionElement(
     redeclare package Medium = Medium2, V=1)
-          annotation (Placement(transformation(extent={{-10,4},{10,-16}})));
+    annotation (Placement(transformation(extent={{-10,4},{10,-16}})));
   DifferenceSensor_Tp differenceSensor_Tp(
     redeclare package MediumA = Medium1,
     redeclare package MediumB = Medium2,
@@ -293,8 +288,8 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{50,-110},{70,-90}})));
   Boundaries.Sink sink2(redeclare package Medium = Medium3)
     annotation (Placement(transformation(extent={{80,-110},{100,-90}})));

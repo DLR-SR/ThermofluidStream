@@ -3,7 +3,7 @@ model BoilerEspresso
   "Model of a boiler in a espresso machine."
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
-                                                                        "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium model for the water in the boiler. We alwails want both phases of the water in the boiler.</span></p>
 </html>"));
@@ -16,11 +16,11 @@ model BoilerEspresso
 
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_heat "heatport to add heat"
-    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={-60,0},  rotation=0),
-      iconTransformation(extent={{-10,-10}, {10,10}}, origin={-60,0},  rotation=0)));
+    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={-60,0}, rotation=0),
+      iconTransformation(extent={{-10,-10}, {10,10}}, origin={-60,0}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport_HX "heatport to add heat"
-    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={60,0},   rotation=0),
-    iconTransformation(extent={{-10,-10}, {10,10}}, origin={60,0},   rotation=0)));
+    annotation(Placement(transformation(extent={{-20,-20}, {20,20}}, origin={60,0}, rotation=0),
+    iconTransformation(extent={{-10,-10}, {10,10}}, origin={60,0}, rotation=0)));
 
   Interfaces.Outlet steam_out(redeclare package Medium = Medium) "ontlet for steam"
     annotation (Placement(transformation(
@@ -72,7 +72,7 @@ model BoilerEspresso
     pipe2_low=0.9,
     pipe2_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.x,
-    x_0=x_0)         annotation (Placement(transformation(
+    x_0=x_0) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));

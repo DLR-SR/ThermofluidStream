@@ -2,7 +2,7 @@ within ThermofluidStream.Topology;
 model JunctionX2 "2 to 2 X-Junction"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
@@ -18,10 +18,10 @@ model JunctionX2 "2 to 2 X-Junction"
   Interfaces.Outlet outletb(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
-  Interfaces.Inlet  inletA( redeclare package Medium = Medium)
+  Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
-  Interfaces.Inlet  inletB( redeclare package Medium = Medium)
+  Interfaces.Inlet inletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-100})));
   JunctionNM junctionNM(N=2, M=2, redeclare package Medium = Medium, final L=L,

@@ -3,10 +3,8 @@ model TerminalSourceSink "Test for Terminal source and sink model"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (Documentation(info="<html>
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+    "Medium package" annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
@@ -23,12 +21,12 @@ model TerminalSourceSink "Test for Terminal source and sink model"
     offset=0.8e5,
     startTime=0.2)
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  TerminalSource terminalSource(redeclare package Medium = Medium, TC=0.1)  annotation (Placement(transformation(extent={{-26,4},{-6,24}})));
+  TerminalSource terminalSource(redeclare package Medium = Medium, TC=0.1) annotation (Placement(transformation(extent={{-26,4},{-6,24}})));
   TerminalSink terminalSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{8,-26},{28,-6}})));
   Source source(redeclare package Medium = Medium, pressureFromInput=true) annotation (Placement(transformation(extent={{-26,-26},{-6,-6}})));
 equation
 
-  connect(pulse.y, sink2.p0_var) annotation (Line(points={{-39,0},{26,0},{26,14},{20,14}},  color={0,0,127}));
+  connect(pulse.y, sink2.p0_var) annotation (Line(points={{-39,0},{26,0},{26,14},{20,14}}, color={0,0,127}));
   connect(sink2.inlet, terminalSource.outlet) annotation (Line(
       points={{8,14},{-6,14}},
       color={28,108,200},

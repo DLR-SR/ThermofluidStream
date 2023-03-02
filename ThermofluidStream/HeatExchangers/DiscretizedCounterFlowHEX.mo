@@ -3,10 +3,10 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumB =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
@@ -26,7 +26,7 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
+  parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
@@ -117,7 +117,7 @@ equation
   for i in 1:nCells-1 loop
     connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{102,80}},                 color={28,108,200}));
+  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{102,80}}, color={28,108,200}));
 
   //Fluid Side A
   connect(inletA, thermalElementA[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200}));
@@ -127,7 +127,7 @@ equation
   connect(thermalElementA[nCells].outlet, outletA) annotation (Line(points={{-10,-80},{-102,-80}}, color={28,108,200}));
 
   connect(thermalElementB.heatPort, thermalConductor.port_b)
-    annotation (Line(points={{0,70.2},{0,10}},                                   color={191,0,0}));
+    annotation (Line(points={{0,70.2},{0,10}}, color={191,0,0}));
 
   for i in 1:nCells loop
     connect(thermalElementA[i].heatPort, thermalConductor[nCells + 1 - i].port_a)

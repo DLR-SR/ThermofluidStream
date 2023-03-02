@@ -25,7 +25,7 @@ protected
   Real b(unit="1") "turbolent flow factor for DarcyWeisbach equation (1=fully smooth turbolent flow; 0= fully rough turbolent flow)";
   Real lambda_aux(unit="1") "darcy friction factor for DarcyWeisbach equation";
 
-  SI.Velocity u  "median flow velocity";
+  SI.Velocity u "median flow velocity";
   Real Re(unit="1") "Reynolds number for flow though the pipe";
   constant Real eps(unit="1") = 0.001;
 algorithm
@@ -60,11 +60,11 @@ algorithm
   pressureLoss := lambda_aux*l*mu*u/(8*r^2);
 
   annotation (Documentation(info="<html>
-<p>Pressure loss after after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes. </span></p>
-<p>In order to avoid a 0^0 for Re=0 (and therefore a = 1) in the computation of lambda_aux, we add epsilon=0.01 to Re to lower bound it in a smooth way.</span></p>
-<p>ks_input defines the pipe roughness. It can be selected from a list of materials or given directly.</span></p>
+<p>Pressure loss after after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes.</p>
+<p>In order to avoid a 0^0 for Re=0 (and therefore a = 1) in the computation of lambda_aux, we add epsilon=0.01 to Re to lower bound it in a smooth way.</p>
+<p>ks_input defines the pipe roughness. It can be selected from a list of materials or given directly.</p>
 <p><img src=\"modelica://Thermofluidstream/Resources/Doku/ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss.PNG\"/></p>
-<p><br><span style=\"font-family: sans-serif;\">Cheng, Nian-Sheng (2008). Formulas for friction factor in transitional regimes. In:Journal of Hydraulic Engineering134.9, pp. 1357-1362</span></p>
-<p>Elmqvist, Hilding, Hubertus Tummescheit, and Martin Otter (2003). Object-orientedmodeling of thermo-fluid systems. In:3rd International Modelica Conference,pp. 269-286.</span></p>
+<p><br>Cheng, Nian-Sheng (2008). Formulas for friction factor in transitional regimes. In:Journal of Hydraulic Engineering134.9, pp. 1357-1362</p>
+<p>Elmqvist, Hilding, Hubertus Tummescheit, and Martin Otter (2003). Object-orientedmodeling of thermo-fluid systems. In:3rd International Modelica Conference,pp. 269-286.</p>
 </html>"));
 end laminarTurbulentPressureLoss;

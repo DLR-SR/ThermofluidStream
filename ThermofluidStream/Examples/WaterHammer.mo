@@ -14,7 +14,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-140,-10},{-120,10}})));
-  FlowControl.BasicControlValve              valveLinear(
+  FlowControl.BasicControlValve valveLinear(
     redeclare package Medium = Medium,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=10,
@@ -27,36 +27,39 @@ model WaterHammer "Pump water by using dynamic pressures"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.025,
     l=25,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
-  ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = Medium,
-      p0_par=100000)
+  ThermofluidStream.Boundaries.Sink sink1(
+    redeclare package Medium = Medium,
+    p0_par=100000)
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
-      Medium = Medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = Medium)
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
 
   Modelica.Blocks.Sources.Constant const2(k=1.5e5)
     annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
-  Topology.SplitterT2 splitterT2_1(redeclare package Medium =
-               Medium)    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium = Medium, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
-                                                                                         annotation (Placement(
+  Topology.SplitterT2 splitterT2_1(
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+  ThermofluidStream.FlowControl.CheckValve checkValve(
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+    annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,30})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package
-      Medium = Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-40,70})));
-  Boundaries.Reservoir reservoir(redeclare package Medium =
-               Medium,
+  Boundaries.Reservoir reservoir(
+    redeclare package Medium = Medium,
     A_surf=0.00025,
     p_env_par=100000,
     height_0=0.1)

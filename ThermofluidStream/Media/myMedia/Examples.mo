@@ -288,7 +288,7 @@ is given to compare the approximation.
   model PsychrometricData "Produces plot data for psychrometric charts"
     extends Modelica.Icons.Example;
     package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
-                                                 "Used medium package";
+      "Used medium package";
     parameter SI.Pressure p_const=1e5 "Pressure";
     parameter Integer n_T=11 "Number of isotherms";
     parameter SI.Temperature T_min=253.15 "Lowest isotherm";
@@ -547,7 +547,7 @@ points, e.g., when an isentropic reference state is computed.
       parameter SI.Pressure p_start=1e5
         "Initial guess value for pressure";
       package Medium = ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir
-                                                            "Medium model";
+        "Medium model";
       Medium.BaseProperties medium(
         T(start=T_start, fixed=true),
         X(start={0.95,0.05}),
@@ -608,7 +608,7 @@ points, e.g., when an isentropic reference state is computed.
       extends Modelica.Icons.Example;
 
       import Medium = ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_pT
-                                                             "Medium model";
+        "Medium model";
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -675,7 +675,7 @@ points, e.g., when an isentropic reference state is computed.
       extends Modelica.Icons.Example;
 
       import Medium = ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir
-                                                           "Medium model";
+        "Medium model";
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -837,11 +837,9 @@ output window.
       "Solve h = h_T(T), s = s_T(T) for T, if h or s is given for ideal gas NASA"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-        ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
-        "Medium model"
-        annotation (choicesAllMatching=true);
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+        constrainedby ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
+        "Medium model" annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -903,9 +901,8 @@ The numerical computation of the inverse function is performed by function <a hr
       "Inverse computation for incompressible media"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
-                                                          "Medium model"
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
+        "Medium model"
         annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=Medium.T_min
@@ -969,10 +966,8 @@ The numerical computation of the inverse function is performed by function <a hr
       "Solve h = h_TX(TX) for T, if h is given for ideal gas NASA"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus
-        constrainedby
-        ThermofluidStream.Media.myMedia.IdealGases.Common.MixtureGasNasa
+      replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus
+        constrainedby ThermofluidStream.Media.myMedia.IdealGases.Common.MixtureGasNasa
         "Medium model" annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=300

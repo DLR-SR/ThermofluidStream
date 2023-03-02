@@ -3,10 +3,10 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumB =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
@@ -26,7 +26,7 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
+  parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
@@ -72,18 +72,19 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_A, each k2=k2_A))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=k1_A,
+      each k2=k2_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
-          each k=k1_B, each k2=k2_B))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      
+      each k=k1_B,
+      each k2=k2_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)

@@ -11,7 +11,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -23,8 +23,8 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
         transformation(extent={{80,-20},{120,20}}),
           iconTransformation(extent={{80,-20},{120,20}})));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity(redeclare
-        package Medium =                                                                         Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity(
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
       <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
       </html>"));

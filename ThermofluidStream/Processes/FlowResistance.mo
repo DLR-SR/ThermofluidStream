@@ -16,25 +16,28 @@ model FlowResistance "Flow resistance model"
   replaceable function pLoss = Internal.FlowResistance.pleaseSelectPressureLoss
     constrainedby Internal.FlowResistance.partialPressureLoss "Pressure loss function"
     annotation (
-       choices(
-        choice(redeclare function pLoss =
-            ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
-                                                                                         "no function selected"),
-        choice(redeclare function pLoss =
-            ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-                                                                                            "linear-quadratic"),
-        choice(redeclare function pLoss =
-            ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss
-                                                                                    "laminar"),
-        choice(redeclare function pLoss =
-            ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-                                                                                             "laminar-turbulent Cheng2008"),
-        choice(redeclare function pLoss =
-            ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-                                                                                             "laminar-turbulent Haaland1983")),
+      choices(
+        choice(
+          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
+          "no function selected"),
+        choice(
+          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+          "linear-quadratic"),
+        choice(
+          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss
+          "laminar"),
+        choice(
+          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+          "laminar-turbulent Cheng2008"),
+        choice(
+          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
+          "laminar-turbulent Haaland1983")),
       Documentation(info="<html>
-        <p>This function computes the pressure loss of the fluid depending on the massflow, some medium properties and the geometry of the pipe.</span></p>
-        </html>"));
+<p>
+This function computes the pressure loss of the fluid depending on the massflow,
+some medium properties and the geometry of the pipe.
+</p>
+</html>"));
 
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state))

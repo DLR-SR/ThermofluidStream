@@ -67,6 +67,6 @@ equation
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="B")}),    Diagram(coordinateSystem(preserveAspectRatio=
+          textString="B")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)));
 end SplitterT1;

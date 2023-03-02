@@ -43,8 +43,7 @@ model DiscretizedHexIcon
           pattern=LinePattern.Dash,
           textString="..."),
         Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
-            lineColor =                                                                                             {28,
-              108,200}),
+            lineColor = {28,108,200}),
         Line(points={{-40,96},{-50,86},{-50,56}}, color={28,108,200}),
         Line(points={{-10,96},{-20,86},{-20,56}}, color={28,108,200}),
         Line(points={{20,96},{10,86},{10,56}}, color={28,108,200}),
@@ -104,11 +103,10 @@ model DiscretizedHexIcon
           origin={-3,-36},
           rotation=90),
         Polygon(points={{-82,-16},{68,-16},{68,4},{-82,4},{-72,14},{78,14},{78,-6},{68,-16},{68,4},{78,14},{-72,14},{-82,4},{-82,-16}},
-            lineColor =                                                                                             {188,
-              36,38}),
+            lineColor = {188,36,38}),
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
-        Line(points={{18,14},{8,4},{8,-16}},   color={188,36,38}),
+        Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
 end DiscretizedHexIcon;

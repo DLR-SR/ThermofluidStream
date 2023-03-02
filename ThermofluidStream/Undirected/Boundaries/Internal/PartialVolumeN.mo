@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolumeN "Partial parent class for Volumes with N_fore fores and N_rear rears"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the fores and rears the volume is connected to.</span></p>
 </html>"));
@@ -130,7 +130,7 @@ equation
   end for;
 
   der(M) = sum(rear.m_flow) + sum(fore.m_flow);
-  der(U_med) = W_v + Q_flow + h_rear*rear.m_flow  +h_fore*fore.m_flow;
+  der(U_med) = W_v + Q_flow + h_rear*rear.m_flow +h_fore*fore.m_flow;
   der(MXi) = Xi_rear*rear.m_flow + Xi_fore*fore.m_flow;
 
   Q_flow = U*A*(T_heatPort - medium.T);
@@ -191,10 +191,10 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5), Text(
           extent={{-90,48},{-64,6}},
           lineColor={116,116,116},
-          textString="%N_rear"),                                          Text(
+          textString="%N_rear"), Text(
           extent={{66,48},{92,6}},
           lineColor={116,116,116},
           textString="%N_fore")}),

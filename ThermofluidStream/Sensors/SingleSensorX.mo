@@ -4,7 +4,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -17,7 +17,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -31,8 +31,8 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
 
-  function mfk =  ThermofluidStream.Utilities.Functions.massFractionK(redeclare
-        package Medium =                                                                         Medium);
+  function mfk = ThermofluidStream.Utilities.Functions.massFractionK(
+    redeclare package Medium = Medium);
 
 protected
   outer DropOfCommons dropOfCommons;

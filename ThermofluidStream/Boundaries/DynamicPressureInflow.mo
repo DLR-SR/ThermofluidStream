@@ -9,23 +9,23 @@ model DynamicPressureInflow
     annotation(Dialog(enable=not areaFromInput));
   parameter SI.Velocity v_in_par = 0 "Parameter for reference velocity for p0. Positive velocity points from outside the boundary to inside"
     annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean extrapolateQuadratic = false "If true extrapolation for negative velocities is done purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A  if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={60,100}),            iconTransformation(extent={{-20,-20},{20,20}},
+        origin={60,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={60,100})));
   Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s")=v_in if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,100}),             iconTransformation(extent={{-20,-20},{20,20}},
+        origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100})));
 

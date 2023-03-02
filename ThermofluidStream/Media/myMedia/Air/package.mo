@@ -1,6 +1,6 @@
 within ThermofluidStream.Media.myMedia;
 package Air "Medium models for air"
-    extends Modelica.Icons.VariantsPackage;
+  extends Modelica.Icons.VariantsPackage;
 
   annotation (Documentation(info="<html>
   <p>This package contains different medium models for air:</p>

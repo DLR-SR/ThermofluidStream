@@ -3,10 +3,8 @@ model Pump "Test for pumps"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package Medium =
-      tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                            constrainedby
-    tf.Media.myMedia.Interfaces.PartialMedium      "Medium model"
+  replaceable package Medium = tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    constrainedby tf.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>
@@ -123,9 +121,9 @@ model Pump "Test for pumps"
 equation
 
   connect(pump.omega_input, const.y)
-    annotation (Line(points={{8,62},{8,52},{-3,52}},     color={0,0,127}));
+    annotation (Line(points={{8,62},{8,52},{-3,52}}, color={0,0,127}));
   connect(power1.flange, pump1.flange)
-    annotation (Line(points={{-6.4,12},{8,12},{8,22}},     color={0,0,0}));
+    annotation (Line(points={{-6.4,12},{8,12},{8,22}}, color={0,0,0}));
   connect(splitterN.inlet, source.outlet) annotation (Line(
       points={{-70,68},{-82,68}},
       color={28,108,200},
@@ -139,9 +137,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(pump2.omega_input, const1.y)
-    annotation (Line(points={{8,-18},{8,-28},{-3,-28}},  color={0,0,127}));
+    annotation (Line(points={{8,-18},{8,-28},{-3,-28}}, color={0,0,127}));
   connect(power2.flange,pump3. flange)
-    annotation (Line(points={{-6.4,-68},{8,-68},{8,-56}},  color={0,0,0}));
+    annotation (Line(points={{-6.4,-68},{8,-68},{8,-56}}, color={0,0,0}));
   connect(pump1.inlet, splitterN.outlets[3]) annotation (Line(
       points={{-2,32},{-30,32},{-30,68.25},{-50,68.25}},
       color={28,108,200},

@@ -16,7 +16,7 @@ model FlowResistance "Flow resistance model"
   replaceable function pLoss =
       ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
     constrainedby
-    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss               "Pressure loss function"
+    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss "Pressure loss function"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>Pressure loss function used in the flow resistance.</p>
 </html>"));

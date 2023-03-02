@@ -356,8 +356,8 @@ Example:
       state.T := T;
       state.d := d;
       annotation (Documentation(revisions="<html>
-<p>2019-12-20  Francesco Casella and Stefan Wischhusen: Two-phase calculation corrected.</p>
-<p>2012-08-01  Stefan Wischhusen: Corrected passing-error of inputs.</p>
+<p>2019-12-20 Francesco Casella and Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2012-08-01 Stefan Wischhusen: Corrected passing-error of inputs.</p>
 </html>", info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
@@ -2647,7 +2647,7 @@ The functions provided by this package shall be used inside of the restricted li
       <strong> 0.0039 bar &le; p &le; 700 bar </strong>
  </li>
  <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
  </li>
  <li>
       <strong> explicit for pressure and specific enthalpy </strong>
@@ -9427,7 +9427,7 @@ The functions provided by this package shall be used inside of the restricted li
       <strong> 0.0039 bar &le; p &le; 700 bar </strong>
  </li>
  <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
+      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
  </li>
  <li>
       <strong> explicit for pressure and specific enthalpy </strong>

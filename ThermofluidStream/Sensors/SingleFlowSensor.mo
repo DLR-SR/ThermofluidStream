@@ -5,7 +5,7 @@ model SingleFlowSensor
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -20,7 +20,7 @@ model SingleFlowSensor
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -81,7 +81,7 @@ equation
           points={{-70,-60},{80,-60}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{0,-26},{0,-60}},  color={0,0,0}),
+        Line(points={{0,-26},{0,-60}}, color={0,0,0}),
         Ellipse(
           extent={{-6,-54},{6,-66}},
           lineColor={28,108,200},

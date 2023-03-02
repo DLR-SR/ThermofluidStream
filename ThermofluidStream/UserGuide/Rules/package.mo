@@ -1,6 +1,6 @@
 within ThermofluidStream.UserGuide;
 package Rules "Basic Composition Rules"
-    extends Modelica.Icons.Information;
+  extends Modelica.Icons.Information;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
@@ -37,13 +37,13 @@ equation system to be sure.
 <h4>Noteworthy comments</h4>
 <ul>
   <li>
-    Some classes implement asserts. Most of them represent checks that when not 
-    fulfilled result in a non-physical, but well behaved (numerically stable) 
-    simulation (e.g. reversed flow conditions for directed components), and some result 
-    in stopping of the simulation (e.g. zero/negative mass in a volume). While asserts 
-    for the latter always are done with AssertionLevel.error, the assertion level for 
-    the former can be set in the DropOfCommons globally. So if the simulation stops 
-    because one of the former asserts is violated, insert a DropOfCommons model and 
+    Some classes implement asserts. Most of them represent checks that when not
+    fulfilled result in a non-physical, but well behaved (numerically stable)
+    simulation (e.g. reversed flow conditions for directed components), and some result
+    in stopping of the simulation (e.g. zero/negative mass in a volume). While asserts
+    for the latter always are done with AssertionLevel.error, the assertion level for
+    the former can be set in the DropOfCommons globally. So if the simulation stops
+    because one of the former asserts is violated, insert a DropOfCommons model and
     set the globalAssertionLevel to warning.
   </li>
   <li>

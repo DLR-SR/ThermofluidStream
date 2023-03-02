@@ -3,7 +3,7 @@ model BoilerEspresso "Test for the espresso boiler"
   extends Modelica.Icons.Example;
 
   package Water = Media.myMedia.Water.StandardWater
-                                              "Medium Model"
+    "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water, since we want to make espresso with it.</p>
 </html>"));
@@ -28,13 +28,13 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e8,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e8,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={10,-40})));
-  FlowControl.TanValve     tanValve(
+  FlowControl.TanValve tanValve(
     redeclare package Medium = Water, relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -50,7 +50,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={80,0})));
-  FlowControl.TanValve     tanValve1(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve1(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=90,
@@ -65,9 +65,9 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={30,40})));
@@ -80,7 +80,7 @@ model BoilerEspresso "Test for the espresso boiler"
     annotation (Placement(transformation(extent={{100,60},{80,80}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=1, initType=Modelica.Blocks.Types.Init.SteadyState)
     annotation (Placement(transformation(extent={{70,60},{50,80}})));
-  FlowControl.TanValve     tanValve2(redeclare package Medium = Water,
+  FlowControl.TanValve tanValve2(redeclare package Medium = Water,
       relativeLeakiness=1e-5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
@@ -95,9 +95,9 @@ model BoilerEspresso "Test for the espresso boiler"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e7,
-          k2=0))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e7,
+      k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-8,40})));
@@ -124,7 +124,7 @@ model BoilerEspresso "Test for the espresso boiler"
     y_start=0)
     annotation (Placement(transformation(extent={{-70,-60},{-50,-80}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=0.3)
-                                                               annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
+    annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Blocks.Continuous.LimPID
                                 PID1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -135,7 +135,7 @@ model BoilerEspresso "Test for the espresso boiler"
     y_start=0)
     annotation (Placement(transformation(extent={{-70,10},{-50,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=1.25e5)
-                                                               annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
   connect(boilerEspresso.inlet, flowResistance.outlet) annotation (Line(
       points={{10,-20},{10,-30}},
@@ -150,7 +150,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(boilerEspresso.heatport_heat, prescribedHeatFlow.port) annotation (
-      Line(points={{-2,0},{-20,0}},                      color={191,0,0}));
+      Line(points={{-2,0},{-20,0}}, color={191,0,0}));
 
   connect(prescribedHeatFlow1.port, boilerEspresso.heatport_HX)
     annotation (Line(points={{40,1.33227e-15},{32,1.33227e-15},{32,0},{22,0}},
@@ -171,9 +171,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(tanValve1.u, firstOrder1.y)
-    annotation (Line(points={{38,70},{49,70}},    color={0,0,127}));
+    annotation (Line(points={{38,70},{49,70}}, color={0,0,127}));
   connect(firstOrder1.u, pulse.y)
-    annotation (Line(points={{72,70},{79,70}},     color={0,0,127}));
+    annotation (Line(points={{72,70},{79,70}}, color={0,0,127}));
   connect(tanValve2.outlet, sink1.inlet) annotation (Line(
       points={{-10,80},{-10,90}},
       color={28,108,200},
@@ -183,9 +183,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(tanValve2.u,firstOrder2. y)
-    annotation (Line(points={{-18,70},{-29,70}},  color={0,0,127}));
+    annotation (Line(points={{-18,70},{-29,70}}, color={0,0,127}));
   connect(firstOrder2.u, pulse1.y)
-    annotation (Line(points={{-52,70},{-61,70}},     color={0,0,127}));
+    annotation (Line(points={{-52,70},{-61,70}}, color={0,0,127}));
   connect(flowResistance2.inlet, boilerEspresso.water_out) annotation (Line(
       points={{-8,30},{-8,26},{2,26},{2,20}},
       color={28,108,200},

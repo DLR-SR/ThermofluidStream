@@ -52,7 +52,7 @@ initial equation
   if init_method == Init.h then
     medium.h = h_0;
   elseif init_method == Init.M then
-    x/d_gas+(1-x)/d_liq  = V/M_0;
+    x/d_gas+(1-x)/d_liq = V/M_0;
     assert(x>=0 and x<=1, "Initialization by Mass might be inaccurate outside the two-phase region", AssertionLevel.warning);
   elseif init_method == Init.l then
     x = (d_gas*(1-l_0))/(d_liq*l_0+d_gas*(1-l_0));

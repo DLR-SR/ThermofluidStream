@@ -2,7 +2,7 @@ within ThermofluidStream.Topology;
 model JunctionX3 "3 to 1 X-Junction"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
@@ -15,13 +15,13 @@ model JunctionX3 "3 to 1 X-Junction"
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={-100,0})));
-  Interfaces.Inlet  inletA( redeclare package Medium = Medium)
+  Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
-  Interfaces.Inlet  inletB( redeclare package Medium = Medium)
+  Interfaces.Inlet inletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={100,0})));
-  Interfaces.Inlet  inletC( redeclare package Medium = Medium)
+  Interfaces.Inlet inletC(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-100})));
   JunctionN junctionN(final N=3, redeclare package Medium = Medium, final L=L,
@@ -92,6 +92,6 @@ equation
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="C")}),    Diagram(coordinateSystem(preserveAspectRatio=
+          textString="C")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)));
 end JunctionX3;

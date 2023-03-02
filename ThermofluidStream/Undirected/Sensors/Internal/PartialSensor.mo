@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Sensors.Internal;
 partial model PartialSensor "Partial undirected sensor"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (choicesAllMatching=true, Documentation(
+    "Medium model" annotation (choicesAllMatching=true, Documentation(
         info="<html>
 <p>Replaceable medium package for the sensor.</p>
 </html>"));
@@ -11,13 +11,13 @@ partial model PartialSensor "Partial undirected sensor"
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
-  Interfaces.Rear rear( redeclare package Medium = Medium)
+  Interfaces.Rear rear(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-80})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80})));
 
-/*  function regStepSt = Undirected.Internal.regStepState (redeclare package Medium =
-          Medium)                                                                         "RegStep function for a state"
+/*  function regStepSt = Undirected.Internal.regStepState (
+    redeclare package Medium = Medium) "RegStep function for a state"
     annotation (Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">RegStep function for a state. The medium of the sensor is used and given to the function.</span></p>
 </html>"));

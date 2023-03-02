@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model DynamicJunctionN "Dynamic pressure junction with N inlets"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
@@ -13,7 +13,7 @@ model DynamicJunctionN "Dynamic pressure junction with N inlets"
     annotation (Dialog(tab="Advanced"));
   parameter SI.Area A[N] "Cross section area of inlets";
   parameter SI.Area A_out "Cross section area of outlet";
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "vector of N inlets"
@@ -33,7 +33,7 @@ model DynamicJunctionN "Dynamic pressure junction with N inlets"
     A_par=A_out,
     assumeConstantDensity=assumeConstantDensity,
     extrapolateQuadratic=true)
-                          annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Sources.RealExpression v_mix(y=sqrt(sum(junction.w .* (junction.inlets.m_flow ./ (junction.rho.*A)) .^ 2)))
     "conservation of kinetik energy over mixing" annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
 
@@ -82,8 +82,8 @@ equation
       Diagram(coordinateSystem(preserveAspectRatio=false), graphics={Text(
           extent={{-40,60},{40,40}},
           lineColor={28,108,200},
-          textString="Use of dynamicInflow instead of nozzle, 
-because velocity can directly be set, instead of A, 
+          textString="Use of dynamicInflow instead of nozzle,
+because velocity can directly be set, instead of A,
 that will need regularization for low massflow.")}),
     Documentation(info="<html>
 <p>Junction that takes into account dynamic pressure.</p>

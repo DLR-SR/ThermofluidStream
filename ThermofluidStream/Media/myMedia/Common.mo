@@ -225,14 +225,14 @@ package Common "Data structures and fundamental functions for fluid properties"
         max=MOLMAX,
         nominal=MOLNOM) "Mole vector";
       annotation (Documentation(info="<html>
-                         <h4>Model description</h4>
-                              <p>
-                              <strong>ThermoBaseVars</strong> is inherited by all medium property models
-                              and by all models defining the dynamic states for the conservation
-                              of mass and energy. Thus it is a good choice as a restricting class
-                              for any medium model or dynamic state model.
-                           </p>
-                              </html>"));
+<h4>Model description</h4>
+<p>
+<strong>ThermoBaseVars</strong> is inherited by all medium property models
+and by all models defining the dynamic states for the conservation
+of mass and energy. Thus it is a good choice as a restricting class
+for any medium model or dynamic state model.
+</p>
+</html>"));
     end ThermoBaseVars;
 
     record ThermoProperties

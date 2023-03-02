@@ -9,14 +9,14 @@ model CoffeeStrainer "Holds coffee in the machine."
      annotation (Placement(transformation(extent={{-60,-20},{-20,20}}),
                         iconTransformation(extent={{-60,-20},{-20,20}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium) annotation (Placement(transformation(extent={{20,-20},
-            {60,20}}),  iconTransformation(extent={{20,-20},{60,20}})));
+            {60,20}}), iconTransformation(extent={{20,-20},{60,20}})));
 
   Processes.FlowResistance coffeeStrainer(
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=8e8,
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=8e8,
           k2=0)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -59,7 +59,7 @@ equation
           extent={{8,-100},{-6,30}},
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None)}),                           Diagram(
+          pattern=LinePattern.None)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">This is a flow resistance, with the icon of a coffee strainer.</span></p>

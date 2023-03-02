@@ -5,8 +5,8 @@ model SpecificValveType "Test for undirected SpecificValveType"
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                                     "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
 </html>"));
 
@@ -24,20 +24,19 @@ model SpecificValveType "Test for undirected SpecificValveType"
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
     Kvs=5) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
 
-  Processes.FlowResistance                   flowResistance(
+  Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                              k=1e3))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{-40,58},{-20,78}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{26,58},{46,78}})));
   Modelica.Blocks.Sources.Ramp ramp(
@@ -64,38 +63,35 @@ model SpecificValveType "Test for undirected SpecificValveType"
 
   Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(redeclare package
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-2},{-20,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm5(redeclare package
+  Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{26,-2},{46,18}})));
 
-  Processes.FlowResistance                   flowResistance6(
+  Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=1e3))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
-  Processes.FlowResistance                   flowResistance1(
+  Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=1e3))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-  Processes.FlowResistance                   flowResistance2(
+  Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       k=1e3))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
-  Modelica.Blocks.Sources.Pulse    pulse(
+  Modelica.Blocks.Sources.Pulse pulse(
     amplitude=2e4,
     period=2,
     offset=0.9e5)

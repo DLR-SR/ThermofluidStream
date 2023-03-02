@@ -3,7 +3,7 @@ model Piston "Test for Piston model"
   extends Modelica.Icons.Example;
 
   package Medium = Media.myMedia.Water.StandardWater
-                                               "Medium Model"
+    "Medium Model"
     annotation (Documentation(info="<html>
 <p>Typicaly some sort of water.</p>
 </html>"));
@@ -33,14 +33,14 @@ model Piston "Test for Piston model"
     T0_par(displayUnit="K") = 500,
     p0_par=1000000)
     annotation (Placement(transformation(extent={{-106,0},{-86,20}})));
-  SteamSink       steamSink(
+  SteamSink steamSink(
                        redeclare package Medium = Medium,
     p0_par=200000,
     m_flow_animate=1.3)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={124,36})));
-  Modelica.Blocks.Sources.Pulse             pulse(
+  Modelica.Blocks.Sources.Pulse pulse(
     period=4,
     offset=0,
     startTime=1)
@@ -57,16 +57,16 @@ model Piston "Test for Piston model"
         rotation=0,
         origin={16,10})));
   FlowControl.Switch switch(redeclare package Medium = Medium, initializeOneMassflowSplit=true)
-                                                               annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-66,10})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Medium)
-                                   annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={104,10})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.1, initType=Modelica.Blocks.Types.Init.SteadyState)
-                                                          annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-20,56})));
   Processes.FlowResistance flowResistance(
@@ -77,8 +77,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{-46,0},{-26,20}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -87,8 +87,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{-46,-30},{-26,-10}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
@@ -98,8 +98,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{34,0},{54,20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
@@ -109,8 +109,8 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=10))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=10))
     annotation (Placement(transformation(extent={{34,-30},{54,-10}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Medium, invertInput=false) annotation (Placement(transformation(extent={{64,20},{84,0}})));
   FlowControl.TanValve tanValve1(redeclare package Medium = Medium, invertInput=true) annotation (Placement(transformation(extent={{64,-30},{84,-10}})));
@@ -140,7 +140,7 @@ equation
       points={{16,0},{16,-44.4},{16.6,-44.4}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}},   color={0,0,127}));
+  connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}}, color={0,0,127}));
   connect(flowResistance.outlet, switchConnector1.inlet) annotation (Line(
       points={{-26,10},{6,10}},
       color={28,108,200},
@@ -174,7 +174,7 @@ equation
       points={{64,-20},{54,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, tanValve.u) annotation (Line(points={{74,-12},{74,2}},         color={0,0,127}));
+  connect(tanValve1.u, tanValve.u) annotation (Line(points={{74,-12},{74,2}}, color={0,0,127}));
   connect(junctionT2_1.inletB, tanValve.outlet) annotation (Line(
       points={{94,10},{84,10}},
       color={28,108,200},
@@ -194,7 +194,7 @@ equation
       points={{-66,0},{-66,-20},{-46,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}},  color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}}, color={0,0,127}));
     annotation (
       experiment(StopTime=15, Tolerance=1e-6, Interval=0.015),
         Documentation(info="<html>

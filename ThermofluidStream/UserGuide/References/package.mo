@@ -1,6 +1,6 @@
 within ThermofluidStream.UserGuide;
 package References "Nomenclature, Literature References"
-    extends Modelica.Icons.Information;
+  extends Modelica.Icons.Information;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <h4>Nomenclature</h4>

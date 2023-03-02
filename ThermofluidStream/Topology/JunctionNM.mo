@@ -21,14 +21,18 @@ model JunctionNM "N to M splitter"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
   SplitterN splitterN(
-    final N=M,                   redeclare package Medium = Medium, final L=L)
+    final N=M,
+    redeclare package Medium = Medium, final L=L)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={18,0})));
   JunctionN junctionN(
-    final N=N,                   redeclare package Medium = Medium, final L=L,
-    final m_flow_eps=m_flow_eps, final assumeConstantDensity = assumeConstantDensity)
+    final N=N,
+    redeclare package Medium = Medium,
+    final L=L,
+    final m_flow_eps=m_flow_eps,
+    final assumeConstantDensity = assumeConstantDensity)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

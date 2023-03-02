@@ -24,8 +24,8 @@ model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,10}), iconTransformation(extent={{-120,-20},{-80,20}})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium =
-        MediumA) annotation (Placement(transformation(extent={{100,0},{120,20}}),
+  ThermofluidStream.Interfaces.Outlet outletA(
+    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{100,0},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
@@ -35,8 +35,8 @@ model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100})));
-  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium =
-        MediumB) annotation (Placement(transformation(
+  ThermofluidStream.Interfaces.Outlet outletB(
+    redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-108,60}),iconTransformation(
@@ -107,8 +107,8 @@ equation
   //Balance Equations
   inletA.m_flow + outletA.m_flow = 0;
   inletB.m_flow + outletB.m_flow = 0;
-  inletA.r - outletA.r  = der(inletA.m_flow) * L;
-  inletB.r - outletB.r  = der(inletB.m_flow) * L;
+  inletA.r - outletA.r = der(inletA.m_flow) * L;
+  inletB.r - outletB.r = der(inletB.m_flow) * L;
 
   //Specific heat capacities
   cp_A = (cpA_in + cpA_out)/2;

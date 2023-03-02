@@ -9,7 +9,7 @@ initial equation
   x = 0;
 
 equation
-  der(x)*0.1 =  max(0, inlet.m_flow/m_flow_animate) -x;
+  der(x)*0.1 = max(0, inlet.m_flow/m_flow_animate) -x;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Polygon(
@@ -20,7 +20,7 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
           origin={100,0},
-          rotation=90)}),                                          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=90)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Sink with fancy water animation.</span></p>
 <p><span style=\"font-family: Courier New;\">x is a nondimensional mass flow. @x=1 the animation looks best.</span></p>

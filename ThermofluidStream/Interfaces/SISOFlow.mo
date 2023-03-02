@@ -4,7 +4,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   import ThermofluidStream.Utilities.Types.InitializationMethods;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
     <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
       </html>"));
@@ -32,7 +32,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
       iconTransformation(extent={{80,-20},{120,20}})));
 
-SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow  "mass flow through component";
+SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow "mass flow through component";
 
 // changing pressure calculation
 SI.Pressure dr_corr; // delta = out - in
@@ -64,7 +64,7 @@ initial equation
 equation
 
   inlet.m_flow + outlet.m_flow = 0;
-  outlet.r  =  inlet.r + dr_corr - der(inlet.m_flow) * L;
+  outlet.r = inlet.r + dr_corr - der(inlet.m_flow) * L;
 
   if clip_p_out then
     p_out = max(p_min, p_in + dp);

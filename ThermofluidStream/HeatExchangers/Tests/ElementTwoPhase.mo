@@ -3,7 +3,7 @@ model ElementTwoPhase
   extends Modelica.Icons.Example;
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   Internal.ConductionElementHEX_twoPhase conductionElementHEX_twoPhase(
     m_flow_0=0.5,
@@ -14,13 +14,13 @@ model ElementTwoPhase
     U_tp_nom=1000,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-                   annotation (Placement(transformation(extent={{-10,70},{10,90}})));
-  Boundaries.Sink sink(redeclare package Medium =
-        MediumRefrigerant,
+    annotation (Placement(transformation(extent={{-10,70},{10,90}})));
+  Boundaries.Sink sink(
+    redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,70},{70,90}})));
-  FlowControl.MCV          mCV(
+  FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -42,13 +42,13 @@ model ElementTwoPhase
     U_tp_nom=750,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-                   annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+    annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   Boundaries.Sink sink1(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
-  FlowControl.MCV          mCV1(
+  FlowControl.MCV mCV1(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -64,8 +64,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature prescribedTemperature
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
-  Modelica.Blocks.Sources.Trapezoid
-                               trapezoid(
+  Modelica.Blocks.Sources.Trapezoid trapezoid(
     amplitude=50,
     rising=20,
     width=10,
@@ -74,20 +73,20 @@ model ElementTwoPhase
     offset=300,
     startTime=5)
     annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
-  Boundaries.Volume                      volume(
+  Boundaries.Volume volume(
     redeclare package Medium = MediumRefrigerant,
     p_start=3000000,
     use_hstart=true,
     h_start=270e3,
     V(displayUnit="l"),
     A=10,
-    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,40},{10,60}})));
+    V_par=0.0005) annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Boundaries.Sink sink2(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,40},{70,60}})));
-  FlowControl.MCV          mCV2(
+  FlowControl.MCV mCV2(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -100,7 +99,7 @@ model ElementTwoPhase
     enthalpyFromInput=true,
     p0_par=2000000)
     annotation (Placement(transformation(extent={{-70,40},{-50,60}})));
-  Boundaries.Volume                      volume1(
+  Boundaries.Volume volume1(
     redeclare package Medium = MediumRefrigerant,
     useHeatport=true,
     U=700,
@@ -109,13 +108,13 @@ model ElementTwoPhase
     h_start=270e3,
     V(displayUnit="l"),
     A=10,
-    V_par=0.0005)  annotation (Placement(transformation(extent={{-10,-70},{10,-90}})));
+    V_par=0.0005) annotation (Placement(transformation(extent={{-10,-70},{10,-90}})));
   Boundaries.Sink sink3(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
     p0_par=1900000)
     annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
-  FlowControl.MCV          mCV3(
+  FlowControl.MCV mCV3(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0.1,
@@ -136,31 +135,27 @@ model ElementTwoPhase
     redeclare package Medium = MediumRefrigerant,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,70},{-20,90}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-38,40},{-18,60}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = MediumRefrigerant,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-40,-90},{-20,-70}})));
   Modelica.Blocks.Sources.Trapezoid
                                trapezoid2(
@@ -192,8 +187,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(prescribedTemperature.port, conductionElementHEX_twoPhase1.heatPort)
-    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}},  color={191,0,0}));
-  connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}},              color={0,0,127}));
+    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}}, color={191,0,0}));
+  connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}}, color={0,0,127}));
   connect(volume.outlet, mCV2.inlet) annotation (Line(
       points={{10,50},{20,50}},
       color={28,108,200},
@@ -210,7 +205,7 @@ equation
       points={{40,-80},{50,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(prescribedTemperature1.port, volume1.heatPort) annotation (Line(points={{-20,-60},{0,-60},{0,-72}},        color={191,0,0}));
+  connect(prescribedTemperature1.port, volume1.heatPort) annotation (Line(points={{-20,-60},{0,-60},{0,-72}}, color={191,0,0}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-50,80},{-40,80}},
       color={28,108,200},
@@ -245,11 +240,11 @@ equation
       points={{-20,-80},{-10,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid2.y, source.h0_var) annotation (Line(points={{-79,80},{-62,80}},                         color={0,0,127}));
+  connect(trapezoid2.y, source.h0_var) annotation (Line(points={{-79,80},{-62,80}}, color={0,0,127}));
   connect(source2.h0_var, source.h0_var)
-    annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}},                                               color={0,0,127}));
+    annotation (Line(points={{-62,50},{-70,50},{-70,80},{-62,80}}, color={0,0,127}));
   connect(prescribedTemperature1.T, prescribedTemperature.T)
-    annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}},                                   color={0,0,127}));
+    annotation (Line(points={{-42,-60},{-68,-60},{-68,-10},{-42,-10}}, color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},{120,120}})),

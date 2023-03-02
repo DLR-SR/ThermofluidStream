@@ -2,10 +2,10 @@
 model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-phase working fluid without pressure drop"
 
   replaceable package MediumA =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumB =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby
@@ -29,7 +29,7 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
+  parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
@@ -108,13 +108,12 @@ public
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
-  Processes.FlowResistance                   flowResistanceA[nCells](
+  Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (                                                                                                       each k=50))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=50))
     annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionMN junctionMN(redeclare package Medium = MediumA,
     N=1,
@@ -176,7 +175,7 @@ equation
   for i in 1:nCells-1 loop
     connect(thermalElementB[i].fore, thermalElementB[i + 1].rear);
   end for;
-  connect(thermalElementB[nCells].fore, foreB)  annotation (Line(points={{-10,-80},{-100,-80}}, color={28,108,200}));
+  connect(thermalElementB[nCells].fore, foreB) annotation (Line(points={{-10,-80},{-100,-80}}, color={28,108,200}));
 
   connect(thermalElementB.heatPort, thermalConductor.port_a)
     annotation (Line(points={{4.44089e-16,-70.2},{4.44089e-16,-40},{0,-40},{0,-10}}, color={191,0,0}));
@@ -243,8 +242,7 @@ equation
           pattern=LinePattern.Dash,
           textString="..."),
         Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
-            lineColor =                                                                                             {28,
-              108,200}),
+            lineColor = {28,108,200}),
         Line(points={{-40,96},{-50,86},{-50,56}}, color={28,108,200}),
         Line(points={{-10,96},{-20,86},{-20,56}}, color={28,108,200}),
         Line(points={{20,96},{10,86},{10,56}}, color={28,108,200}),
@@ -329,11 +327,10 @@ equation
           origin={-3,-36},
           rotation=90),
         Polygon(points={{-82,-16},{68,-16},{68,4},{-82,4},{-72,14},{78,14},{78,-6},{68,-16},{68,4},{78,14},{-72,14},{-82,4},{-82,-16}},
-            lineColor =                                                                                             {188,
-              36,38}),
+            lineColor = {188,36,38}),
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
-        Line(points={{18,14},{8,4},{8,-16}},   color={188,36,38}),
+        Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

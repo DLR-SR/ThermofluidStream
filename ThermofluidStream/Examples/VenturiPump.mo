@@ -1,9 +1,9 @@
 within ThermofluidStream.Examples;
 model VenturiPump "pumping of liquid water using the venturi effect"
 
-    extends Modelica.Icons.Example;
+  extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Water.StandardWater         constrainedby
+  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby
     Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
@@ -17,16 +17,17 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.25,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,-70},{-10,-50}})));
-  Boundaries.Source  source2_1(
+  Boundaries.Source source2_1(
     redeclare package Medium = Medium,
     T0_par=293.15,
     p0_par=150000)
     annotation (Placement(transformation(extent={{-120,-70},{-100,-50}})));
-  Boundaries.Sink  sink2_1(
-    redeclare package Medium = Medium, p0_par=110000)
+  Boundaries.Sink sink2_1(
+    redeclare package Medium = Medium,
+    p0_par=110000)
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
@@ -38,7 +39,7 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps)
     annotation (Placement(transformation(extent={{70,-64},{90,-44}})));
-  Boundaries.Source  source2_2(
+  Boundaries.Source source2_2(
     redeclare package Medium = Medium,
     T0_par=293.15,
     p0_par=100000)
@@ -50,8 +51,8 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-10})));
@@ -60,19 +61,22 @@ model VenturiPump "pumping of liquid water using the venturi effect"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
-      Medium =                                                                      Medium, A_par=A_in_hp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow(
+    redeclare package Medium = Medium,
+    A_par=A_in_hp)
     annotation (Placement(transformation(extent={{-60,-70},{-40,-50}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
-      Medium =                                                                        Medium, A_par=A_out)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(
+    redeclare package Medium = Medium,
+    A_par=A_out)
     annotation (Placement(transformation(extent={{40,-70},{60,-50}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow2(redeclare package
-      Medium =                                                                       Medium, A_par=A_in_lp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow2(
+    redeclare package Medium = Medium,
+    A_par=A_in_lp)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,20})));
-  Topology.DynamicJunctionN  dynamicJunctionN2_1(
+  Topology.DynamicJunctionN dynamicJunctionN2_1(
     redeclare package Medium = Medium,
     N=2,
     A={A_in_hp,A_in_lp},

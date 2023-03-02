@@ -293,8 +293,8 @@ equations for code generation (note the equations related to X are
 removed, because SimpleAir consists of a single substance only):
 </p>
 <blockquote><pre>
-M  = V*medium.d;
-U  = M*medium.u;
+M = V*medium.d;
+U = M*medium.u;
 
 // balance equations
 <strong>der</strong>(M)  = port.m_flow;
@@ -380,12 +380,12 @@ Modelica.Media.Examples.Utilities.ShortPipe</a>):
   Medium.BaseProperties medium_b \"Medium properties in port_b\";
 <strong>equation</strong>
   // define media models of the ports
-  medium_a.p   = port_a.p;
-  medium_a.h   = port_a.h;
+  medium_a.p  = port_a.p;
+  medium_a.h  = port_a.h;
   medium_a.Xi = port_a.Xi;
 
-  medium_b.p   = port_b.p;
-  medium_b.h   = port_b.h;
+  medium_b.p  = port_b.p;
+  medium_b.h  = port_b.h;
   medium_b.Xi = port_b.Xi;
 
   // Handle reverse and zero flow (semiLinear is a built-in Modelica operator)
@@ -1490,14 +1490,14 @@ in the Modelica.Fluid library:</p>
 <blockquote><pre>
 <strong>connector</strong> FluidPort
   <strong>replaceable package</strong> Medium = Modelica.Media.Interfaces.PartialMedium;
-  Medium.AbsolutePressure      p;
-  <strong>flow</strong> Medium.MassFlowRate     m_flow;
+  Medium.AbsolutePressure p;
+  <strong>flow</strong> Medium.MassFlowRate m_flow;
 
-  Medium.SpecificEnthalpy      h;
+  Medium.SpecificEnthalpy h;
   <strong>flow</strong> Medium.EnthalpyFlowRate H_flow;
 
-  Medium.MassFraction          Xi    [Medium.nXi];
-  <strong>flow</strong> Medium.MassFlowRate     mX_flow[Medium.nXi];
+  Medium.MassFraction Xi [Medium.nXi];
+  <strong>flow</strong> Medium.MassFlowRate mX_flow[Medium.nXi];
 <strong>end</strong> FluidPort;
 </pre></blockquote>
 <p>
@@ -1601,14 +1601,14 @@ is used in all components:
 <blockquote><pre>
 <strong>connector</strong> FluidPort
   <strong>replaceable package</strong> Medium = Modelica.Media.Interfaces.PartialMedium;
-  Medium.AbsolutePressure      p;
-  <strong>flow</strong> Medium.MassFlowRate     m_flow;
+  Medium.AbsolutePressure p;
+  <strong>flow</strong> Medium.MassFlowRate m_flow;
 
-  Medium.SpecificEnthalpy      h;
+  Medium.SpecificEnthalpy h;
   <strong>flow</strong> Medium.EnthalpyFlowRate H_flow;
 
-  Medium.MassFraction          Xi    [Medium.nXi];
-  <strong>flow</strong> Medium.MassFlowRate     mX_flow[Medium.nXi];
+  Medium.MassFraction Xi [Medium.nXi];
+  <strong>flow</strong> Medium.MassFlowRate mX_flow[Medium.nXi];
 <strong>end</strong> FluidPort;
 </pre></blockquote>
 

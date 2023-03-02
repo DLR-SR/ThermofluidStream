@@ -24,7 +24,7 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -42,7 +42,7 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,20}),
         iconTransformation(extent={{80,0},{120,40}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate
-                                                                                              "Measured mass-flow [kg/s]"
+    "Measured mass-flow [kg/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-60}),
         iconTransformation(extent={{80,-60},{120,-20}})));
 
@@ -107,7 +107,7 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,-60},{0,-80}},  color={0,0,0}),
+        Line(points={{0,-60},{0,-80}}, color={0,0,0}),
         Ellipse(
           extent={{-6,-74},{6,-86}},
           lineColor={28,108,200},
@@ -143,7 +143,7 @@ equation
         Text(
           extent={{-120,0},{-60,-52}},
           lineColor={175,175,175},
-          textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
+          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
 <p>Undirected&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>

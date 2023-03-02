@@ -32,7 +32,7 @@ equation
                             Text(
           extent={{-60,8},{60,-52}},
           lineColor={28,108,200},
-          textString="Mix")}),                                   Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textString="Mix")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A volume with N_fore fores and N_rear rears.</p>
 <p>Conceptually a Volume is a Sink and a Source. It therefore defines the level of inertial pressure r in a closed loop and serves as a loop breaker. </p>

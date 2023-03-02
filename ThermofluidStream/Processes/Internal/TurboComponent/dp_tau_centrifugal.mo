@@ -83,7 +83,7 @@ protected
   SI.Density rho_ref =      if parametrizeByScaling then             rho_ref_ref else rho_ref_input;
   SI.Length r =             if parametrizeByScaling then sqrt(alpha)/beta* r_ref else r_input;
 
-  Real omega_s(unit="1") = ((K_D/f_q)^0.5)/((g_n*( a_h+b_h*K_D+c_h*K_D^2)) ^0.75);
+  Real omega_s(unit="1") = ((K_D/f_q)^0.5)/((g_n*(a_h+b_h*K_D+c_h*K_D^2)) ^0.75);
   SI.VolumeFlowRate V_flow_BEP "optimal volume flow at omega";
   SI.AngularVelocity omega_hat "abs omega clipped Re_mod_min";
   Real Re_mod(unit="1");
@@ -108,7 +108,7 @@ algorithm
   tau_st := (f_Q*f_H/f_eta) * (v_ref/v_in* (a_t*V_flow*abs(omega) - b_t*V_flow*abs(V_flow) + v_i*omega*abs(omega))) + v_s*abs(omega); // v_s is mechanical and does not scale with medium
 
   //compute dp
-  dp :=g_n*TDH/v_in;
+  dp := g_n*TDH/v_in;
 
   annotation (Documentation(info="<html>
 <p>Centrifugal pump with HQ and TQ characteristic curve. </p>
@@ -117,20 +117,23 @@ algorithm
 <p>Both characteristics are generalized to all four quadrants of the V_flow/omega plot.</p>
 <p>The parameters a,b,c,v can be set directly or by three scaling factors alpha, beta and gamma, which scale the reference pump.</p>
 <p>Reference pump:</p>
-<p><span style=\"font-family: Courier New;\">omega_D = 314.2 rad/s</span></p>
-<p><span style=\"font-family: Courier New;\">V_flow_D = 3.06e-3 m3/s</span></p>
-<p><span style=\"font-family: Courier New;\">TDH_D&nbsp;=&nbsp;3.6610&nbsp;m</span></p>
-<p><br><span style=\"font-family: Courier New;\">a_h_ref&nbsp; =&nbsp;&nbsp;4.864e-5 m.s2/rad2;</span></p>
-<p><span style=\"font-family: Courier New;\">b_h_ref&nbsp; =&nbsp;-2.677 s2/(m2.rad);</span></p>
-<p><span style=\"font-family: Courier New;\">c_h_ref&nbsp; =&nbsp;&nbsp;3.967e+5 s2/m5;</span></p>
-<p><span style=\"font-family: Courier New;\">a_t_ref&nbsp; =&nbsp;&nbsp;5.427e-1 N.m.s2/(rad.m3);</span></p>
-<p><span style=\"font-family: Courier New;\">b_t_ref&nbsp; =&nbsp;&nbsp;2.777e+4 N.m.s2/m6;</span></p>
-<p><span style=\"font-family: Courier New;\">v_i_ref&nbsp; =&nbsp;&nbsp;1.218e-6 N.m.s2/rad2;</span></p>
-<p><span style=\"font-family: Courier New;\">v_s_ref &nbsp;=&nbsp;&nbsp;1.832e-4 N.m.s/rad;</span></p>
-<p><span style=\"font-family: Courier New;\">f_q_ref&nbsp; =&nbsp;1;</span></p>
-<p><span style=\"font-family: Courier New;\">K_D_ref&nbsp; =&nbsp;9.73e-06 m3/rad;</span></p>
-<p><span style=\"font-family: Courier New;\">rho_ref_ref&nbsp;=&nbsp;1.00e3 kg/m3;</span></p>
-<p><span style=\"font-family: Courier New;\">r_ref&nbsp; =&nbsp;1.60e-2 m;</span></p>
-<p><br>The characteristic curves are getting scaled to accomodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
+<blockquote><pre>
+omega_D = 314.2 rad/s
+V_flow_D = 3.06e-3 m3/s
+TDH_D = 3.6610 m
+
+a_h_ref =  4.864e-5 m.s2/rad2;
+b_h_ref = -2.677 s2/(m2.rad);
+c_h_ref =  3.967e+5 s2/m5;
+a_t_ref =  5.427e-1 N.m.s2/(rad.m3);
+b_t_ref =  2.777e+4 N.m.s2/m6;
+v_i_ref =  1.218e-6 N.m.s2/rad2;
+v_s_ref =  1.832e-4 N.m.s/rad;
+f_q_ref =  1;
+K_D_ref =  9.73e-06 m3/rad;
+rho_ref_ref = 1.00e3 kg/m3;
+r_ref   =  1.60e-2 m;
+</pre></blockquote>
+<p>The characteristic curves are getting scaled to accomodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
 </html>"));
 end dp_tau_centrifugal;

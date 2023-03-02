@@ -2,15 +2,15 @@ within ThermofluidStream.HeatExchangers.Tests;
 model Condenser
 
   replaceable package MediumAir = Media.myMedia.Air.MoistAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
-  ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        MediumAir,
+  ThermofluidStream.Boundaries.Source sourceA(
+    redeclare package Medium = MediumAir,
     T0_par=311.15,
     p0_par=100000)
     annotation (Placement(transformation(
@@ -20,12 +20,12 @@ model Condenser
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumAir, p0_par=90000)
-                   annotation (Placement(transformation(extent={{104,0},{124,20}})));
+    annotation (Placement(transformation(extent={{104,0},{124,20}})));
 
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
       Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -33,7 +33,7 @@ model Condenser
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumAir,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={54,20})));
@@ -45,7 +45,7 @@ model Condenser
     T0_par=283.15,
     p0_par=3200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={10,110})));
 
@@ -72,7 +72,7 @@ model Condenser
         origin={0,44})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{212,-94},{232,-74}})));
-  DiscretizedCrossFlowHEX   condenser(
+  DiscretizedCrossFlowHEX condenser(
     redeclare model ConductionElementA = Internal.ConductionElementHEX,
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     redeclare package MediumA = MediumAir,
@@ -87,9 +87,8 @@ model Condenser
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-82,0},{-62,20}})));
 
   Processes.FlowResistance flowResistanceB(
@@ -98,30 +97,33 @@ model Condenser
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={10,-54})));
-  Sensors.SingleSensorSelect singleSensorSelect(redeclare package Medium =
-        MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={42,-24})));
-  Sensors.SingleSensorSelect singleSensorSelect1(redeclare package Medium =
-        MediumRefrigerant, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  Sensors.SingleSensorSelect singleSensorSelect1(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-14,44})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality(redeclare package Medium =
-        MediumRefrigerant,                                                                      quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={34,-24})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium =
-        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-22,44})));
@@ -209,7 +211,7 @@ equation
       points={{74,10},{64,10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),                                  Diagram(coordinateSystem(preserveAspectRatio=
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-160,-100},{220,100}})),
     experiment(
       StopTime=10,

@@ -74,7 +74,7 @@ equation
           lineColor={175,175,175},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="B")}),    Diagram(coordinateSystem(preserveAspectRatio=
+          textString="B")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
 <p>Junction with two rears and a fore in a standing T shape.</p>

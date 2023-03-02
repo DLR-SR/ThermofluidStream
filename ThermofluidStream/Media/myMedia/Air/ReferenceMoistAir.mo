@@ -1937,8 +1937,7 @@ package ReferenceMoistAir
         rho := max(p/(g.R_s*T*g.pi*g.gpi), 1e-9);
         h_der := (1/rho - T*vt)*p_der - g.R_s*g.tau*g.tau*g.gtautau*T_der;
       end h_pT_der;
-      annotation (Documentation(info=
-                                 "<html>
+      annotation (Documentation(info="<html>
 <p>
 This is a makeshift package avoiding the region validity checks of the IF97 utility functions
 <a href=\"modelica://Modelica.Media.Water.IF97_Utilities.BaseIF97.Basic.g2\">BaseIF97.Basic.g2</a>,
@@ -2062,7 +2061,7 @@ for region 2.
         output Real p_der "Derivative of pressure w.r.t. temperature";
 
       protected
-        Real theta_s,        theta_s_der;
+        Real theta_s,  theta_s_der;
         Real A,        A_der;
         Real B,        B_der;
         Real C,        C_der,        o_der[3];
@@ -2097,7 +2096,7 @@ for region 2.
         output Real T_der "Temperature derivative";
 
       protected
-        Real beta,        beta_der;
+        Real beta,     beta_der;
         Real D,        D_der;
         Real E,        E_der;
         Real F,        F_der;
@@ -3449,9 +3448,9 @@ for region 2.
       output Real pd_der "Derivative of partial pressure";
 
     protected
-      Real xw,      xw_der;
+      Real xw,  xw_der;
       Real xws;
-      Real pds,      pds_der;
+      Real pds, pds_der;
 
     algorithm
       if (X[1] == 0) then
@@ -3491,7 +3490,7 @@ for region 2.
       output Real xws_der "Derivative of absolute humidity ratio";
 
     protected
-      Real pds,      pds_der;
+      Real pds, pds_der;
       Real Tlim;
 
     algorithm
@@ -3572,10 +3571,10 @@ for region 2.
       output Real d_der "Derivative of density";
 
     protected
-      Real pd,      pd_der;
-      Real pl,      pl_der;
-      Real xw,      xw_der;
-      Real xws,      xws_der;
+      Real pd,  pd_der;
+      Real pl,  pl_der;
+      Real xw,  xw_der;
+      Real xws, xws_der;
       Real o[5];
 
     algorithm
@@ -3740,7 +3739,7 @@ for region 2.
       input Real X_der[:] "Derivative of mass fractions";
       output Real u_der "Derivative of reaction index";
     protected
-      Real uges,      uges_der,      o[7],      l;
+      Real uges, uges_der, o[7], l;
       Real invMMX[4] "Inverses of molar weights";
       SI.MolarMass Mmix "Molar mass of mixture";
       Real Mmix_der "Derivative of molar mass of mixture";
@@ -3938,10 +3937,10 @@ for region 2.
 
     protected
       SI.SpecificEnthalpy h;
-      Real xw,      xw_der;
-      Real xws,      xws_der;
-      Real pd,      pd_der;
-      Real pl,      pl_der;
+      Real xw,  xw_der;
+      Real xws, xws_der;
+      Real pd,  pd_der;
+      Real pl,  pl_der;
 
     algorithm
       if (X[1] == 0) then

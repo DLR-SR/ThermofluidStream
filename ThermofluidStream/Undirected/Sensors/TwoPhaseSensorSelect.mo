@@ -6,7 +6,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium2Phase =
-      Media.myMedia.Interfaces.PartialTwoPhaseMedium                          "Medium model"
+      Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>
@@ -18,7 +18,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -35,8 +35,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare
-        package Medium =                                                                                 Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
     <p>This function computes the selected two-phase quantity from state.</p>
       </html>"));

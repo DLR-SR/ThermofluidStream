@@ -8,8 +8,8 @@ model Pump "A simple pump model"
 
   replaceable function dp_tau_pump =
       Internal.TurboComponent.pleaseSelect_dp_tau
-    constrainedby Internal.TurboComponent.partial_dp_tau(redeclare package
-      Medium =                                                                    Medium) "Pump characteristic curve"
+    constrainedby Internal.TurboComponent.partial_dp_tau(
+      redeclare package Medium = Medium) "Pump characteristic curve"
     annotation(choices(
        choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal "Centrifugal Pump",

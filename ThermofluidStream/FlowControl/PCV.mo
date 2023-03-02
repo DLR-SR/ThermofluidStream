@@ -8,12 +8,12 @@ model PCV "Pressure and pressure-drop control valve"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
 
-  parameter Mode mode=Mode.drop   "Valve mode";
+  parameter Mode mode=Mode.drop "Valve mode";
   parameter Boolean pressureFromInput = false "Enable pressure difference input";
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure difference"
     annotation(Dialog(enable=not pressureFromInput));
@@ -33,7 +33,7 @@ equation
   // if reversed flow condition, dp is set to 0, such that the valve will also not create pressure in this condition.
   // for the flow-direction-normalization regstep is used in a way, that dp=0 for m_flow = 0 (m_flow - m_flow_reg).
   // the motherclass will further normalize dp, such that p_out >= dp_min.
-  dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg,  min(0, dp_raw), 0, m_flow_reg);
+  dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg, min(0, dp_raw), 0, m_flow_reg);
 
   if mode ==Mode.drop then
     dp_raw = -pressure_set;

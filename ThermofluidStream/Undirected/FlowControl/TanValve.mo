@@ -7,7 +7,7 @@ model TanValve "Valve with tan-shaped flow resistance"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -67,17 +67,17 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation of the Tan valve. </p>
 <p>The TanValve is the most basic valve and can be used when no valve type is set yet. </p>

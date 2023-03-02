@@ -3,10 +3,10 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side A"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable package MediumB =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium                           "Medium model side B"
+      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
@@ -26,7 +26,7 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
     "Heat transfer element model for side B"
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  parameter Boolean initializeMassFlow=false  "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
+  parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
@@ -89,9 +89,9 @@ public
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       each k=50))
-      annotation (Placement(transformation(extent={{20,70},{40,90}})));
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      each k=50))
+    annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
   Topology.SplitterN splitterN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
 protected

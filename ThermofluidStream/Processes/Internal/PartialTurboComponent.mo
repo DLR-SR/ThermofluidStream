@@ -9,7 +9,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation(Dialog(group="Input/Output"));
   parameter Boolean enableOutput = false "Include output for selectable quantity"
     annotation(Dialog(group="Input/Output"));
-  parameter Quantity outputQuantity=Quantity.m_flow_kgps   "Quantitiy to output"
+  parameter Quantity outputQuantity=Quantity.m_flow_kgps "Quantitiy to output"
     annotation(choicesAllMatching=true, Dialog(group="Input/Output", enable=enableOutput));
   parameter Boolean enableAccessHeatPort = false "Include access heatport"
     annotation(Dialog(group="Input/Output"));
@@ -44,7 +44,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90),
       iconTransformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90)));
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [varable]"
-        annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"
@@ -53,8 +53,8 @@ partial model PartialTurboComponent "Partial of components that exchange work be
 <p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
 </html>"));
 
-function getQuantity = Sensors.Internal.getFlowQuantity(redeclare package
-        Medium =                                                                 Medium) "Function to compute a selectable quantitiy"
+function getQuantity = Sensors.Internal.getFlowQuantity(
+  redeclare package Medium = Medium) "Function to compute a selectable quantitiy"
   annotation (
       Documentation(info="<html>
       <p>Function to compute a selectable quantitiy to output. The quantity is associated to the mass flow. </p>

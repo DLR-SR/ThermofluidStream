@@ -3,7 +3,7 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -24,7 +24,7 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -152,7 +152,7 @@ equation
         Text(
           extent={{-120,-20},{-60,-72}},
           lineColor={175,175,175},
-          textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
+          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
             false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>

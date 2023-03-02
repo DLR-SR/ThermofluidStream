@@ -30,7 +30,8 @@ equation
           textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))), Text(
           extent={{-52,76},{54,28}},
           lineColor={28,108,200},
-          textString="%description")}),                                                                       Documentation(info="<html>
+          textString="%description")}),
+    Documentation(info="<html>
 <p>
 This block visualizes a Real number in a diagram animation.
 The number to be visualized can be defined in the following ways:

@@ -25,14 +25,14 @@ annotation (Documentation(revisions="<html>
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
           rotation=180)}));

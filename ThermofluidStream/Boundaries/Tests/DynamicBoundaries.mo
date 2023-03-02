@@ -22,8 +22,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Source source1(redeclare package Medium=Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
@@ -45,8 +44,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 
   Modelica.Blocks.Sources.Ramp ramp(
@@ -54,7 +52,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     duration=0.5,
     startTime=0.4) annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.01)
-                                    annotation (Placement(transformation(extent={{60,20},{80,40}})));
+    annotation (Placement(transformation(extent={{60,20},{80,40}})));
   Modelica.Blocks.Sources.Ramp ramp1(
     height=-0.98e-3,
     duration=0.4,
@@ -82,8 +80,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   Modelica.Blocks.Sources.Ramp ramp2(
     height=1,
@@ -117,8 +114,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
   Source source4(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-70}})));
@@ -143,8 +139,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
   Source source5(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
@@ -169,8 +164,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     l=10,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
 equation
   connect(source.outlet, dynamicPressureInflow.inlet) annotation (Line(
@@ -231,8 +225,8 @@ equation
       points={{30,60},{10,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{21,90},{34,90},{34,70}},    color={0,0,127}));
-  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{59,90},{40,90},{40,70}},    color={0,0,127}));
+  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{21,90},{34,90},{34,70}}, color={0,0,127}));
+  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{59,90},{40,90},{40,70}}, color={0,0,127}));
   connect(source3.outlet,dynamicPressureInflow3. inlet)
     annotation (Line(
       points={{-60,-60},{-50,-60}},

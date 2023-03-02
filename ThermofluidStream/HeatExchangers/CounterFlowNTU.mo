@@ -14,8 +14,8 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
         rotation=0,
         origin={-102,-50}),
                           iconTransformation(extent={{-132,-80},{-92,-40}})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium =
-        MediumA) annotation (Placement(transformation(extent={{110,-60},{130,
+  ThermofluidStream.Interfaces.Outlet outletA(
+    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{110,-60},{130,
             -40}}),
         iconTransformation(extent={{90,-80},{130,-40}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
@@ -108,8 +108,8 @@ equation
   //Balance Equations
   inletA.m_flow + outletA.m_flow = 0;
   inletB.m_flow + outletB.m_flow = 0;
-  inletA.r - outletA.r  = der(inletA.m_flow) * L;
-  inletB.r - outletB.r  = der(inletB.m_flow) * L;
+  inletA.r - outletA.r = der(inletA.m_flow) * L;
+  inletB.r - outletB.r = der(inletB.m_flow) * L;
 
   //Specific heat capacities
   cp_A = (cpA_in + cpA_out)/2;

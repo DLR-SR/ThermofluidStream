@@ -110,8 +110,8 @@ equation
   for i in 1:M_outlets loop
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
 
-    h_out[i] = if  noEvent(-m_flow_out[i]) >= 0 then Medium.specificEnthalpy(state_out[i])  else medium.h;
-    Xi_out[:,i] = if  noEvent(-m_flow_out[i] >= 0) then Medium.massFraction(state_out[i]) else  medium.Xi;
+    h_out[i] = if noEvent(-m_flow_out[i]) >= 0 then Medium.specificEnthalpy(state_out[i])  else medium.h;
+    Xi_out[:,i] = if noEvent(-m_flow_out[i] >= 0) then Medium.massFraction(state_out[i]) else medium.Xi;
   end for;
 
   der(M) = inlet.m_flow + sum(outlet.m_flow);
@@ -178,7 +178,7 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5), Text(
           extent={{68,48},{94,6}},
           lineColor={116,116,116},
           textString="%M_out")}),

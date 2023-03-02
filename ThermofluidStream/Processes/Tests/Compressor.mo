@@ -4,11 +4,10 @@ model Compressor "Test for compressors"
 
   import tf = ThermofluidStream;
 
-  replaceable package Medium =
-      ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                                           "Medium model" annotation (Documentation(info="<html>
+  replaceable package Medium = ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    "Medium model" annotation (Documentation(info="<html>
 <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be an ideal gas or close to that.</span></p>
-</html>"));                                                                                         // ThermofluidStream.myMedia.Air.SimpleAir;
+</html>"));  // ThermofluidStream.myMedia.Air.SimpleAir;
 
 
   tf.Boundaries.Source source(
@@ -34,12 +33,11 @@ model Compressor "Test for compressors"
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=-1,
-    redeclare function dp_tau_compressor =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-  omega_ref=3000,
-        skew=1,
-        m_flow_ref=1))
-                annotation (Placement(transformation(extent={{-6,10},{14,30}})));
+    redeclare function dp_tau_compressor = tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+      omega_ref=3000,
+      skew=1,
+      m_flow_ref=1))
+    annotation (Placement(transformation(extent={{-6,10},{14,30}})));
   Modelica.Blocks.Sources.Constant const(k=6000)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
   tf.Processes.Compressor compressor1(
@@ -68,7 +66,7 @@ model Compressor "Test for compressors"
 equation
 
   connect(compressor.omega_input, const.y)
-    annotation (Line(points={{4,10},{4,0},{-7,0}},    color={0,0,127}));
+    annotation (Line(points={{4,10},{4,0},{-7,0}}, color={0,0,127}));
   connect(power1.flange, compressor1.flange)
     annotation (Line(points={{-10.4,-40},{4,-40},{4,-30}},
                                                         color={0,0,0}));

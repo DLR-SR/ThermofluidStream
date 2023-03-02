@@ -1433,7 +1433,7 @@ package IF97_Utilities
             elseif T < data.TLIMIT1 then
               region := 1;
             else
-              // d  < d2n(p23, T) and T > data.TLIMIT1
+              // d < d2n(p23, T) and T > data.TLIMIT1
               region := 2;
             end if;
             // below critical, check for regions 1, 2, 3 or 4
@@ -1558,9 +1558,9 @@ package IF97_Utilities
  <li>Function <strong>hv_p</strong> computes the vapour specific enthalpy as a function of pressure. For overcritical pressures,
  the critical specific enthalpy is returned. An approximation is used for temperatures > 623.15 K.</li>
  <li>Function <strong>sl_p</strong> computes the liquid specific entropy as a function of pressure. For overcritical pressures,
- the critical  specific entropy is returned. An approximation is used for temperatures > 623.15 K.</li>
- <li>Function <strong>sv_p</strong> computes the vapour  specific entropy as a function of pressure. For overcritical pressures,
- the critical  specific entropy is returned. An approximation is used for temperatures > 623.15 K.</li>
+ the critical specific entropy is returned. An approximation is used for temperatures > 623.15 K.</li>
+ <li>Function <strong>sv_p</strong> computes the vapour specific entropy as a function of pressure. For overcritical pressures,
+ the critical specific entropy is returned. An approximation is used for temperatures > 623.15 K.</li>
  <li>Function <strong>rhol_T</strong> computes the liquid density as a function of temperature. For overcritical temperatures,
  the critical density is returned. An approximation is used for temperatures > 623.15 K.</li>
  <li>Function <strong>rhol_T</strong> computes the vapour density as a function of temperature. For overcritical temperatures,
@@ -3672,12 +3672,12 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           <ul>
           <li>Function <strong>g1</strong> computes the dimensionless Gibbs function for region 1 and all derivatives up
           to order 2 w.r.t. pi and tau. Inputs: p and T.</li>
-          <li>Function <strong>g2</strong> computes the dimensionless Gibbs function  for region 2 and all derivatives up
+          <li>Function <strong>g2</strong> computes the dimensionless Gibbs function for region 2 and all derivatives up
           to order 2 w.r.t. pi and tau. Inputs: p and T.</li>
           <li>Function <strong>g2metastable</strong> computes the dimensionless Gibbs function for metastable vapour
           (adjacent to region 2 but 2-phase at equilibrium) and all derivatives up
           to order 2 w.r.t. pi and tau. Inputs: p and T.</li>
-          <li>Function <strong>f3</strong> computes the dimensionless Helmholtz function  for region 3 and all derivatives up
+          <li>Function <strong>f3</strong> computes the dimensionless Helmholtz function for region 3 and all derivatives up
           to order 2 w.r.t. delta and tau. Inputs: d and T.</li>
           <li>Function <strong>g5</strong>computes the dimensionless Gibbs function for region 5 and all derivatives up
           to order 2 w.r.t. pi and tau. Inputs: p and T.</li>
@@ -4173,7 +4173,7 @@ Ordinary Water Substance<br>
           <li>Function <strong>visc_dTp</strong> implements a function to compute the industrial formulation of the
           dynamic viscosity of water as a function of density and temperature.
           The details are described in the document <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/visc.pdf\">visc.pdf</a>.</li>
-          <li>Function <strong>cond_dTp</strong> implements a function to compute  the industrial formulation of the thermal conductivity of water as
+          <li>Function <strong>cond_dTp</strong> implements a function to compute the industrial formulation of the thermal conductivity of water as
           a function of density, temperature and pressure. <strong>Important note</strong>: Obviously only two of the three
           inputs are really needed, but using three inputs speeds up the computation and the three variables are known in most models anyways.
           The inputs d,T and p have to be consistent.
@@ -5550,10 +5550,10 @@ Ordinary Water Substance<br>
           </p>
           <h4>Package contents</h4>
           <ul>
-          <li>Function <strong>waterR1_pT</strong> computes dynamic properties for region 1 using  (p,T) as inputs</li>
-          <li>Function <strong>waterR2_pT</strong> computes dynamic properties for region 2 using  (p,T) as inputs</li>
-          <li>Function <strong>waterR3_dT</strong> computes dynamic properties for region 3 using  (d,T) as inputs</li>
-          <li>Function <strong>waterR5_pT</strong> computes dynamic properties for region 5 using  (p,T) as inputs</li>
+          <li>Function <strong>waterR1_pT</strong> computes dynamic properties for region 1 using (p,T) as inputs</li>
+          <li>Function <strong>waterR2_pT</strong> computes dynamic properties for region 2 using (p,T) as inputs</li>
+          <li>Function <strong>waterR3_dT</strong> computes dynamic properties for region 3 using (d,T) as inputs</li>
+          <li>Function <strong>waterR5_pT</strong> computes dynamic properties for region 5 using (p,T) as inputs</li>
           </ul>
           <h4>Version Info and Revision history
           </h4>
@@ -6068,7 +6068,7 @@ Th.</em> The IAPWS Industrial Formulation 1997 for the Thermodynamic Properties
 of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (2000), 150 - 182.
 </p>
 <hr size=\"3\" width=\"90%\">
-<h4>2. Calculable Properties      </h4>
+<h4>2. Calculable Properties </h4>
 <table border=\"1\" cellpadding=\"2\" cellspacing=\"0\">
        <tbody>
        <tr>
@@ -8422,9 +8422,9 @@ public
       <li>Function <strong>hv_p</strong> computes the vapour specific enthalpy as a function of pressure. For overcritical pressures,
       the critical specific enthalpy is returned</li>
       <li>Function <strong>sl_p</strong> computes the liquid specific entropy as a function of pressure. For overcritical pressures,
-      the critical  specific entropy is returned</li>
-      <li>Function <strong>sv_p</strong> computes the vapour  specific entropy as a function of pressure. For overcritical pressures,
-      the critical  specific entropy is returned</li>
+      the critical specific entropy is returned</li>
+      <li>Function <strong>sv_p</strong> computes the vapour specific entropy as a function of pressure. For overcritical pressures,
+      the critical specific entropy is returned</li>
       <li>Function <strong>rhol_T</strong> computes the liquid density as a function of temperature. For overcritical temperatures,
       the critical density is returned</li>
       <li>Function <strong>rhol_T</strong> computes the vapour density as a function of temperature. For overcritical temperatures,

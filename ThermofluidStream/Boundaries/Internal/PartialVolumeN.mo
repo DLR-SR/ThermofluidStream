@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolumeN "Partial parent class for Volumes with N inlets and one outlet"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the inlets and outlets the volume is connected to.</span></p>
 </html>"));
@@ -65,8 +65,8 @@ protected
 
   Medium.ThermodynamicState state_out;
   // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-  SI.SpecificEnthalpy h_out = if  noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(state_out)  else medium.h;
-  Medium.MassFraction Xi_out[Medium.nXi] = if  noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else  medium.Xi;
+  SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(state_out) else medium.h;
+  Medium.MassFraction Xi_out[Medium.nXi] = if noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else medium.Xi;
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
   SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";
@@ -178,7 +178,7 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5), Text(
           extent={{-92,46},{-66,4}},
           lineColor={116,116,116},
           textString="%N")}),

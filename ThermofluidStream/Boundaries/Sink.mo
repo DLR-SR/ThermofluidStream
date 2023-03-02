@@ -20,7 +20,7 @@ model Sink "Boundary model of sink"
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=180,
-        origin={20,0}),  iconTransformation(
+        origin={20,0}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=180,
         origin={20,0})));
