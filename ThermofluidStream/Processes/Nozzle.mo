@@ -62,7 +62,7 @@ equation
           extent={{-40,44},{40,-44}},
           lineColor={0,140,72},
           lineThickness=0.5)}),
-                           Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Implementation of nozzle taking gas dynamic effects into account.</p>
 </html>"));

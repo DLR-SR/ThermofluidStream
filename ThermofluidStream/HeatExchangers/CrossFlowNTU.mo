@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.HeatExchangers;
+within ThermofluidStream.HeatExchangers;
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
@@ -16,7 +16,7 @@ model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg
     "Nominal mass flow for regularisation"
     annotation (Dialog(tab="Advanced", group="Regularisation parameters"));
-  parameter Modelica.Units.SI.Time TC=0.01 "time constant for dh"
+  parameter Modelica.Units.SI.Time TC=0.01 "Time constant for dh"
     annotation (Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)

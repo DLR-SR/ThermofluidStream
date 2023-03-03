@@ -1,7 +1,7 @@
 within ThermofluidStream;
 model DropOfCommons "Model for global parameters"
 
-  parameter Utilities.Units.Inertance L = 0.01 "inertance of the flow"
+  parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
       annotation(Dialog(tab="Advanced"));
 
   parameter SI.MassFlowRate m_flow_reg = 0.01

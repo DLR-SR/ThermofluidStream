@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.HeatExchangers;
+within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
@@ -36,14 +36,14 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
         origin={-110,60})));
 
   parameter Modelica.Units.SI.Area A "Conductive Surface";
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "inertance of the flow"
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50
-    "overall heat transfer coefficient";
+    "Overall heat transfer coefficient";
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg
-    "nominal mass flow for regularisation"
+    "Nominal mass flow for regularisation"
     annotation (Dialog(tab="Advanced", group="Regularisation parameters"));
-  parameter Modelica.Units.SI.Time TC=0.01 "time constant for dh"
+  parameter Modelica.Units.SI.Time TC=0.01 "Time constant for dh"
     annotation (Dialog(tab="Advanced"));
 
   Modelica.Units.SI.TemperatureDifference Delta_T_max

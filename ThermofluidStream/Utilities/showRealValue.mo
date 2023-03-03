@@ -3,7 +3,7 @@ block showRealValue
   "Show Real value from numberPort or from number input field in diagram layer dynamically"
   parameter Boolean use_numberPort = true "= true, if numberPort enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter String description = "" "add description (in quotes!)";
+  parameter String description = "" "Add description (in quotes!)";
   input Real number = 0.0
     "Number to visualize if use_numberPort=false (time varying)"
     annotation(Dialog(enable=not use_numberPort), HideResult=true);
