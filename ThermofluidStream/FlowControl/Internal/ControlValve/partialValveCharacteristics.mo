@@ -1,5 +1,5 @@
 within ThermofluidStream.FlowControl.Internal.ControlValve;
-partial function partialValveCharacteristics "partial function for control valve characteristics"
+partial function partialValveCharacteristics "Partial function for control valve characteristics"
 
   input Real u(unit="1");
   input Real k_min(unit="1");

@@ -1,5 +1,5 @@
 within ThermofluidStream.Examples;
-model VenturiPump "pumping of liquid water using the venturi effect"
+model VenturiPump "Pumping of liquid water using the venturi effect"
 
   extends Modelica.Icons.Example;
 

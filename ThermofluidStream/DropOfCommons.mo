@@ -1,5 +1,5 @@
 within ThermofluidStream;
-model DropOfCommons "model for global parameters"
+model DropOfCommons "Model for global parameters"
 
   parameter Utilities.Units.Inertance L = 0.01 "inertance of the flow"
       annotation(Dialog(tab="Advanced"));
