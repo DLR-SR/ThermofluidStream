@@ -9492,23 +9492,22 @@ when on the other side of a phase boundary)
     end NH3_vapofdT;
 
     function rho_ph_der "Derivative function of rho_ph"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "record for derivatives";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real d_der "derivative of density";
+      input Common.InverseDerivatives_rhoT derivs "record for derivatives";
+      input Real p_der "derivative of pressure";
+      input Real h_der "derivative of specific enthalpy";
+      output Real d_der "derivative of density";
     algorithm
-    if (derivs.phase == 2) then
-      d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
-        p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
-    else
-      d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
-        *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
-
+      if (derivs.phase == 2) then
+        d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
+          p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
+      else
+        d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
+          *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+      -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
     end rho_ph_der;
 
@@ -9529,22 +9528,21 @@ when on the other side of a phase boundary)
     end rho_props_ph;
 
     function T_ph_der "Derivative function of T_ph"
-    extends Modelica.Icons.Function;
+      extends Modelica.Icons.Function;
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "auxiliary record";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real T_der "derivative of temperature";
+     input Common.InverseDerivatives_rhoT derivs "auxiliary record";
+     input Real p_der "derivative of pressure";
+     input Real h_der "derivative of specific enthalpy";
+     output Real T_der "derivative of temperature";
     algorithm
-    if (derivs.phase == 2) then
-      T_der := 1/derivs.dpT*p_der;
-    else
-      T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
-        cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
-
+      if (derivs.phase == 2) then
+        T_der := 1/derivs.dpT*p_der;
+      else
+        T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
+          cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+      (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
     end T_ph_der;
 
@@ -21687,7 +21685,7 @@ The functions provided by this package shall be used inside of the restricted li
     redeclare record extends SaturationProperties
     end SaturationProperties;
 
-    redeclare record extends ThermodynamicState "thermodynamic state"
+    redeclare record extends ThermodynamicState "Thermodynamic state"
       SpecificEnthalpy h "specific enthalpy";
       Density d "density";
       Temperature T "temperature";
@@ -22044,9 +22042,9 @@ Example:
 </html>"));
     end temperature;
 
-    redeclare function extends pressure "pressure w.r.t. thermodynamic state"
+    redeclare function extends pressure "Pressure w.r.t. thermodynamic state"
     algorithm
-    p := state.p;
+      p := state.p;
       annotation (Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
@@ -22614,7 +22612,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
     end dewEntropy;
 
     function dDewEntropy_dPressure
-      "derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
+      "Derivative of vapor specific entropy in two-phase region w.r.t pressure | use setState_phX function for input"
       extends Modelica.Icons.Function;
 
       input SaturationProperties sat
@@ -23193,16 +23191,16 @@ Please note, that the function can also be called in the two-phase region, but t
 </html>"));
     end specificGibbsEnergy;
 
-  redeclare function extends specificHelmholtzEnergy
-    "helmholtz energy w.r.t. thermodynamic state"
-    extends Modelica.Icons.Function;
-  algorithm
-    f := state.h - state.p/state.d - state.T*specificEntropy(state);
-       annotation (Documentation(info="<html>
+    redeclare function extends specificHelmholtzEnergy
+      "Helmholtz energy w.r.t. thermodynamic state"
+      extends Modelica.Icons.Function;
+    algorithm
+      f := state.h - state.p/state.d - state.T*specificEntropy(state);
+      annotation (Documentation(info="<html>
 <p> This function calculates the specific Helmholtz energy of R1234yf from the state record (e.g., use setState_phX function for input). The helmholtz energy is modelled by the fundamental equation of state of Richter et al (2011).
 </p>
 </html>"));
-  end specificHelmholtzEnergy;
+    end specificHelmholtzEnergy;
 
     redeclare function extends density_derh_p
       "Density derivative by specific enthalpy | use setState_phX function for input"
@@ -23276,7 +23274,7 @@ The isentropic efficiency function should not be applied in liquid region.
     end isentropicEnthalpy;
 
     function derivsOf_ph
-      "derivatives required for inversion of temperature and density functions"
+      "Derivatives required for inversion of temperature and density functions"
 
       extends Modelica.Icons.Function;
 
@@ -23327,7 +23325,7 @@ The isentropic efficiency function should not be applied in liquid region.
 
     end derivsOf_ph;
 
-    function dt_ph "density and temperature w.r.t. pressure and specific enthalpy"
+    function dt_ph "Density and temperature w.r.t. pressure and specific enthalpy"
 
       extends Modelica.Icons.Function;
 
@@ -23371,7 +23369,7 @@ The function cannot be inverted in a numerical way. Please use functions <a href
     end dt_ph;
 
     function dtofphOnePhase
-      "density and temperature w.r.t. pressure and specific enthalpy in one-phase region"
+      "Density and temperature w.r.t. pressure and specific enthalpy in one-phase region"
 
       extends Modelica.Icons.Function;
 
@@ -23488,7 +23486,7 @@ The function shall only be used for one-phase inputs since the fundamental equat
 </html>"));
     end dtofphOnePhase;
 
-    function dtofpsOnePhase "inverse iteration in one phase region (d,T) = f(p,s)"
+    function dtofpsOnePhase "Inverse iteration in one phase region (d,T) = f(p,s)"
 
       extends Modelica.Icons.Function;
 
@@ -23597,7 +23595,7 @@ The function shall only be used for one-phase inputs since the fundamental equat
     end dtofpsOnePhase;
 
     function f_R1234yf
-      "calculation of helmholtz derivatives by density and temperature"
+      "Calculation of helmholtz derivatives by density and temperature"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Density d "density";
@@ -23628,7 +23626,7 @@ This function adds the ideal gas contribution of the fundamental equation to the
 </html>"));
     end f_R1234yf;
 
-    function fid_R1234yf "helmholtz coefficients of ideal part"
+    function fid_R1234yf "Helmholtz coefficients of ideal part"
       extends Modelica.Icons.Function;
 
       input Real delta "reduced density (delta=d/dcrit)";
@@ -23666,7 +23664,7 @@ This function computes the ideal gas helmholtz derivatives of the fundamental eq
 </html>"));
     end fid_R1234yf;
 
-    function fres_R1234yf "calculation of helmholtz derivatives"
+    function fres_R1234yf "Calculation of helmholtz derivatives"
       extends Modelica.Icons.Function;
 
       input Real delta "reduced density (delta=d/dcrit)";
@@ -23737,7 +23735,7 @@ This function computes the ideal gas helmholtz derivatives of the fundamental eq
 
     end fres_R1234yf;
 
-    function getPhase_ph "number of phases by pressure and specific enthalpy"
+    function getPhase_ph "Number of phases by pressure and specific enthalpy"
 
       extends Modelica.Icons.Function;
 
@@ -23747,20 +23745,20 @@ This function computes the ideal gas helmholtz derivatives of the fundamental eq
       output Integer phase "number of phases";
 
     protected
-     SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
+      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
       Modelica.Units.SI.SpecificEnthalpy hl=bubbleEnthalpy(sat)
         "liquid enthalpy";
       Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
-    phase := if ((h < hl) or (h > hv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
+      phase := if ((h < hl) or (h > hv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
 
       annotation (Documentation(info="<html>
 This function computes the number of phases for R1234yf depending on the inputs for absolute pressure and specific enthalpy. It makes use of cubic spline functions for liquid and vapor specific enthalpy.
 </html>"));
     end getPhase_ph;
 
-    function getPhase_ps "number of phases by pressure and entropy"
+    function getPhase_ps "Number of phases by pressure and entropy"
 
       extends Modelica.Icons.Function;
 
@@ -23769,12 +23767,12 @@ This function computes the number of phases for R1234yf depending on the inputs 
       output Integer phase "number of phases";
 
     protected
-     SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
+      SaturationProperties sat(psat=p, Tsat=0) "saturation temperature and pressure";
       Modelica.Units.SI.SpecificEntropy sl=bubbleEntropy(sat) "liquid entropy";
       Modelica.Units.SI.SpecificEntropy sv=dewEntropy(sat) "vapor entropy";
 
     algorithm
-    phase := if ((s < sl) or (s > sv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
+      phase := if ((s < sl) or (s > sv) or (p > R1234yfData.data.FPCRIT)) then 1 else 2;
 
       annotation (Documentation(info="<html>
 This function computes the number of phases for R1234yf depending on the inputs for absolute pressure and specific entropy. It makes use of cubic spline functions for liquid and vapor specific entropy.
@@ -23782,7 +23780,7 @@ This function computes the number of phases for R1234yf depending on the inputs 
     end getPhase_ps;
 
     function hofpsTwoPhase
-      "isentropic specific enthalpy in two phase region h(p,s)"
+      "Isentropic specific enthalpy in two phase region h(p,s)"
 
       extends Modelica.Icons.Function;
 
@@ -23813,7 +23811,7 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
 </html>"));
     end hofpsTwoPhase;
 
-    function R1234yf_liqofdT "properties on liquid boundary phase"
+    function R1234yf_liqofdT "Properties on liquid boundary phase"
 
       extends Modelica.Icons.Function;
 
@@ -23838,7 +23836,7 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
 
     end R1234yf_liqofdT;
 
-    function R1234yf_vapofdT "properties on vapor boundary phase"
+    function R1234yf_vapofdT "Properties on vapor boundary phase"
 
       extends Modelica.Icons.Function;
 
@@ -23863,31 +23861,31 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
 
     end R1234yf_vapofdT;
 
-    function rho_ph_der "time derivative function of rho_ph"
-    extends Modelica.Icons.Function;
+    function rho_ph_der "Time derivative function of rho_ph"
+      extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "record for derivatives";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real d_der "derivative of density";
+      input Common.InverseDerivatives_rhoT derivs "record for derivatives";
+      input Real p_der "derivative of pressure";
+      input Real h_der "derivative of specific enthalpy";
+      output Real d_der "derivative of density";
     algorithm
-    if (derivs.phase == 2) then
-      d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
-        p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
-    else
-      d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
-        *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
+      if (derivs.phase == 2) then
+        d_der := (derivs.rho*(derivs.rho*derivs.cv/derivs.dpT + 1.0)/(derivs.dpT*derivs.T))*
+          p_der + (-derivs.rho*derivs.rho/(derivs.dpT*derivs.T))*h_der;
+      else
+        d_der := ((derivs.rho*(derivs.cv*derivs.rho + derivs.pt))/(derivs.rho*derivs.rho*derivs.pd
+          *derivs.cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+      -derivs.rho*derivs.rho*derivs.pt/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
       annotation (Documentation(info="<html>
 This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.rho_props_ph> rho_props_ph</a>.
 </html>"));
     end rho_ph_der;
 
-    function rho_props_ph "density as function of pressure and specific enthalpy"
+    function rho_props_ph "Density as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
@@ -23907,30 +23905,30 @@ This function integrates the derivative of density w.r.t. time in order to allow
 </html>"));
     end rho_props_ph;
 
-    function T_ph_der "time derivative function of T_ph"
-    extends Modelica.Icons.Function;
+    function T_ph_der "Time derivative function of T_ph"
+      extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
       input Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
-    input Common.InverseDerivatives_rhoT derivs "auxiliary record";
-    input Real p_der "derivative of pressure";
-    input Real h_der "derivative of specific enthalpy";
-    output Real T_der "derivative of temperature";
+      input Common.InverseDerivatives_rhoT derivs "auxiliary record";
+      input Real p_der "derivative of pressure";
+      input Real h_der "derivative of specific enthalpy";
+      output Real T_der "derivative of temperature";
     algorithm
-    if (derivs.phase == 2) then
-      T_der := 1/derivs.dpT*p_der;
-    else
-      T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
-        cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
-    (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
-    end if;
+      if (derivs.phase == 2) then
+        T_der := 1/derivs.dpT*p_der;
+      else
+        T_der := ((-derivs.rho*derivs.pd + derivs.T*derivs.pt)/(derivs.rho*derivs.rho*derivs.pd*derivs.
+                 cv + derivs.T*derivs.pt*derivs.pt))*p_der + (
+                 (derivs.rho*derivs.rho*derivs.pd)/(derivs.rho*derivs.rho*derivs.pd*derivs.cv + derivs.T*derivs.pt*derivs.pt))*h_der;
+      end if;
 
       annotation (Documentation(info="<html>
 This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.T_props_ph> T_props_ph</a>.
 </html>"));
     end T_ph_der;
 
-    function T_props_ph "temperature as function of pressure and specific enthalpy"
+    function T_props_ph "Temperature as function of pressure and specific enthalpy"
       extends Modelica.Icons.Function;
 
       input Modelica.Units.SI.Pressure p "pressure";
@@ -23974,51 +23972,51 @@ This function integrates the derivative of temperature w.r.t. time in order to a
       output Density d "Density";
 
     protected
-    constant Real T_breaks[:]=R1234yfData.Tbreaks
-      "Grid points of reduced temperature";
-    constant Real dlt_coef[:, 4]=R1234yfData.dltcoef
-      "Coefficients of cubic spline for rho_liq(T)";
-    constant Real dvt_coef[:, 4]=R1234yfData.dvtcoef
-      "Coefficients of cubic spline for rho_vap(T)";
+      constant Real T_breaks[:]=R1234yfData.Tbreaks
+        "Grid points of reduced temperature";
+      constant Real dlt_coef[:, 4]=R1234yfData.dltcoef
+        "Coefficients of cubic spline for rho_liq(T)";
+      constant Real dvt_coef[:, 4]=R1234yfData.dvtcoef
+        "Coefficients of cubic spline for rho_vap(T)";
 
-    Boolean liquid "Is liquid";
-    Boolean supercritical "Is supercritcal";
-    Integer int "Interval number";
-    Real Tred "Reduced temperature";
-    Real localx "Oordinate of local spline";
-    Integer i "Newton iteration number";
-    Real dp "Pressure difference";
-    Density deld "Density step";
-    Common.HelmholtzDerivs f
-      "Dimensionless Helmholtz function and dervatives w.r.t. delta and tau";
-    Common.NewtonDerivatives_pT nDerivs
-      "Derivatives needed in Newton iteration";
-    Boolean found "Flag for iteration success";
-    Integer error "1 if did not converged";
+      Boolean liquid "Is liquid";
+      Boolean supercritical "Is supercritcal";
+      Integer int "Interval number";
+      Real Tred "Reduced temperature";
+      Real localx "Oordinate of local spline";
+      Integer i "Newton iteration number";
+      Real dp "Pressure difference";
+      Density deld "Density step";
+      Common.HelmholtzDerivs f
+        "Dimensionless Helmholtz function and dervatives w.r.t. delta and tau";
+      Common.NewtonDerivatives_pT nDerivs
+        "Derivatives needed in Newton iteration";
+      Boolean found "Flag for iteration success";
+      Integer error "1 if did not converged";
 
     algorithm
-    phaseBoundaryAssert(p, T);
-    i := 0;
-    error := 0;
-    found := false;
-    Tred := T/R1234yfData.data.FTCRIT;
-    (int,error) := Common.FindInterval(Tred, T_breaks);
-    localx := Tred - T_breaks[int];
-    // set decent initial guesses for d and T
-    supercritical := p > R1234yfData.data.FPCRIT;
-    if supercritical then
-      // iteration seems to work better if coming from high densities
-      d := R1234yfData.data.FDCRIT*3.0;
-    else
-      liquid := T <= saturationTemperature(p);
-      if liquid then
-        d := R1234yfData.data.FDCRIT*Common.CubicSplineEval(localx, dlt_coef[int,
-          1:4])*1.02;
+      phaseBoundaryAssert(p, T);
+      i := 0;
+      error := 0;
+      found := false;
+      Tred := T/R1234yfData.data.FTCRIT;
+      (int,error) := Common.FindInterval(Tred, T_breaks);
+      localx := Tred - T_breaks[int];
+      // set decent initial guesses for d and T
+      supercritical := p > R1234yfData.data.FPCRIT;
+      if supercritical then
+        // iteration seems to work better if coming from high densities
+        d := R1234yfData.data.FDCRIT*3.0;
       else
-        d := R1234yfData.data.FDCRIT*Common.CubicSplineEval(localx, dvt_coef[int,
-          1:4])*0.95;
+        liquid := T <= saturationTemperature(p);
+        if liquid then
+          d := R1234yfData.data.FDCRIT*Common.CubicSplineEval(localx, dlt_coef[int,
+            1:4])*1.02;
+        else
+          d := R1234yfData.data.FDCRIT*Common.CubicSplineEval(localx, dvt_coef[int,
+            1:4])*0.95;
+        end if;
       end if;
-    end if;
 
       while ((i < 100) and not found) loop
         f := f_R1234yf(d, T);
@@ -24116,7 +24114,6 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
 <dt>Perkins A., Huber M.: </dt>
 <dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
-
 </html>", revisions="<html>
 <p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
@@ -24124,8 +24121,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
   end R1234yf_ph;
 
   package R1234yfData "R1234yf data required by package R1234yf_ph"
-  import SIunits =
-         Modelica.Units.SI;
+    import SIunits = Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;
@@ -29071,13 +29067,11 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
     redeclare record extends SaturationProperties
     end SaturationProperties;
 
-    redeclare record extends ThermodynamicState "thermodynamic state"
+    redeclare record extends ThermodynamicState "Thermodynamic state"
       SpecificEnthalpy h "specific enthalpy";
       Density d "density";
       Temperature T "temperature";
       AbsolutePressure p "pressure";
-
-
 
     end ThermodynamicState;
 
@@ -29130,13 +29124,13 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
       Modelica.Units.SI.SpecificEnthalpy hv=dewEnthalpy(sat) "vapor enthalpy";
 
     algorithm
-    state.p :=p;
-    state.h :=h;
+      state.p :=p;
+      state.h :=h;
 
-    state.phase := if ((state.h < hl) or (state.h > hv) or (state.p > R245faData.data.FPCRIT)) then 1 else 2;
+      state.phase := if ((state.h < hl) or (state.h > hv) or (state.p > R245faData.data.FPCRIT)) then 1 else 2;
 
-    state.d := density_ph(p, h);
-    state.T := temperature_ph(p, h);
+      state.d := density_ph(p, h);
+      state.T := temperature_ph(p, h);
 
       annotation (Documentation(info="<html>
 <p>This function should be used by default in order to calculate the thermodynamic state record used as input by many functions.</p>
@@ -31305,8 +31299,7 @@ The functions provided by this package shall be used inside of the restricted li
   end R245fa_ph;
 
   package R245faData "R245fa data required by package R245fa_ph"
-  import SIunits =
-         Modelica.Units.SI;
+    import SIunits = Modelica.Units.SI;
 
     extends Modelica.Icons.Package;
     constant SIunits.SpecificHeatCapacity R=data.R;
