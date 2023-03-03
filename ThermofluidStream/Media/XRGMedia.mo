@@ -106,9 +106,9 @@ package XRGMedia "A medium property library"
       "Record for coefficients of ideal term of helmholtz equation of state"
       extends Modelica.Icons.Record;
 
-      parameter Integer nc=5 "no. of coefficients in a";
+      parameter Integer nc=5 "No. of coefficients in a";
       parameter Real[nc] a
-        "coefficients of ideal term of helmholtz equation of state";
+        "Coefficients of ideal term of helmholtz equation of state";
 
 
     end EOSIdealCoeff;
@@ -117,16 +117,16 @@ package XRGMedia "A medium property library"
       "Record for coefficients of residual term of helmholtz equation of state"
       extends Modelica.Icons.Record;
 
-      parameter Integer nc=20 "no. of coefficients in c, d, t, n";
-      parameter Integer ns1 "no. of zero coefficients in c";
+      parameter Integer nc=20 "No. of coefficients in c, d, t, n";
+      parameter Integer ns1 "No. of zero coefficients in c";
       parameter Real[nc] c
-        "coefficients of residual term of helmholtz equation of state";
+        "Coefficients of residual term of helmholtz equation of state";
       parameter Real[nc] d
-        "coefficients of residual term of helmholtz equation of state";
+        "Coefficients of residual term of helmholtz equation of state";
       parameter Real[nc] t
-        "coefficients of residual term of helmholtz equation of state";
+        "Coefficients of residual term of helmholtz equation of state";
       parameter Real[nc] n
-        "coefficients of residual term of helmholtz equation of state";
+        "Coefficients of residual term of helmholtz equation of state";
 
     end EOSResidualCoeff;
 
