@@ -9,11 +9,11 @@ model ThermalConvectionPipe "Very simple model of thermal convection"
   parameter SI.Radius r(min = 0) "Radius of Pipe";
   parameter SI.Length l(min=0) "Length of pipe";
   parameter SI.ReynoldsNumber Re_D_crit = 2300
-    "critical Reynolds number for transition to turbulent"
+    "Critical Reynolds number for transition to turbulent"
   annotation(Dialog(tab = "Advanced", group = "flow characteristics"));
   //parameter Real C_dh(unit="J/(K.s)") = 1e-6 "dimensionless constant for mass flow regularisation";
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg
-    "nominal mass flow rate for regularisation"
+    "Nominal mass flow rate for regularisation"
   annotation(Dialog(tab = "Advanced", group = "Regularisation parameters"));
 
   Medium.ThermodynamicState center_state = Medium.setState_phX(p_in,h_in+dh/2,Xi_in);
