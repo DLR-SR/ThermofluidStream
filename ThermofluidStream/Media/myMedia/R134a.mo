@@ -706,7 +706,7 @@ by the fundamental equation of state of Tillner-Roth and Baehr (1994).
 <p>This function calculates the saturation temperature of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 <p><img src=\"modelica://Modelica/Resources/Images/Media/R134a/log(p)Tsat-Diagram-R134a.png\"/></p>
@@ -734,7 +734,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       annotation (Documentation(info="<html>
 <p>This function calculates the derivative of saturation temperature of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://Modelica.Media.R134a.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 </html>"));
@@ -766,7 +766,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       annotation (Documentation(info="<html>
 <p>This function calculates the time derivative of saturation temperature of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://Modelica.Media.R134a.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 </html>"));
@@ -1070,8 +1070,9 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         4]);
 
       // annotation(smoothOrder=5);
-      annotation (derivative=dDewEnthalpy_dPressure_der_sat, Documentation(info=
-             "<html>
+      annotation (
+        derivative=dDewEnthalpy_dPressure_der_sat, 
+        Documentation(info="<html>
 <p>This function calculates the vapor phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
@@ -2643,18 +2644,18 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <strong> 0.0039 bar &le; p &le; 700 bar </strong>
- </li>
- <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
- </li>
- <li>
-      <strong> explicit for pressure and specific enthalpy </strong>
- </li>
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><strong>References</strong></p>
+<h4>References</h4>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
@@ -9423,18 +9424,18 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <strong> 0.0039 bar &le; p &le; 700 bar </strong>
- </li>
- <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
- </li>
- <li>
-      <strong> explicit for pressure and specific enthalpy </strong>
- </li>
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><strong>References</strong></p>
+<h4>References</h4>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>

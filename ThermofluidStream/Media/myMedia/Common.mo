@@ -332,13 +332,13 @@ for any medium model or dynamic state model.
       Real dpT "Derivative of pressure w.r.t. temperature";
       Real dpZ[nspecies] "Derivative of pressure w.r.t. moles";
       annotation (Documentation(info="<html>
-        <h4>Model description</h4>
-        <p>
-        A base class for medium property models which work with most of the
-        versions of dynamic states that are available in the ThermoFluid
-        library. Currently used by all ideal gas models.
-     </p>
-        </html>"));
+<h4>Model description</h4>
+<p>
+A base class for medium property models which work with most of the
+versions of dynamic states that are available in the ThermoFluid
+library. Currently used by all ideal gas models.
+</p>
+</html>"));
     end ThermoProperties;
 
     record ThermoProperties_ph
@@ -1630,29 +1630,37 @@ sum(X) = c*(sum(X_a) - sum(X_b)) + (sum(X_a) + sum(X_b))/2
     nderivs.sd := 0.0;
   end Gibbs2_ps;
 
-  annotation (Documentation(info="<html><h4>Package description</h4>
-      <p>Package Modelica.Media.Common provides records and functions shared by many of the property sub-packages.
-      High accuracy fluid property models share a lot of common structure, even if the actual models are different.
-      Common data structures and computations shared by these property models are collected in this library.
-   </p>
+  annotation (
+    Documentation(
+      info="<html>
+<h4>Package description</h4>
+<p>Package Modelica.Media.Common provides records and functions shared by many of the property sub-packages.
+High accuracy fluid property models share a lot of common structure, even if the actual models are different.
+Common data structures and computations shared by these property models are collected in this library.
+</p>
+</html>",
+      revisions="<html>
+<ul>
+  <li>
+    First implemented: <em>July, 2000</em>
+    by Hubertus Tummescheit
+    for the ThermoFluid Library with help from Jonas Eborn and Falko Jens Wagner
+  </li>
+  <li>
+    Code reorganization, enhanced documentation, additional functions: <em>December, 2002</em>
+    by Hubertus Tummescheit and move to Modelica properties library.
+  </li>
+  <li>
+    Inclusion into Modelica.Media: September 2003
+  </li>
+</ul>
 
-</html>", revisions="<html>
-      <ul>
-      <li>First implemented: <em>July, 2000</em>
-      by Hubertus Tummescheit
-      for the ThermoFluid Library with help from Jonas Eborn and Falko Jens Wagner
-      </li>
-      <li>Code reorganization, enhanced documentation, additional functions: <em>December, 2002</em>
-      by Hubertus Tummescheit and move to Modelica
-                            properties library.</li>
-      <li>Inclusion into Modelica.Media: September 2003</li>
-      </ul>
-
-      <address>Author: Hubertus Tummescheit,<br>
-      Lund University<br>
-      Department of Automatic Control<br>
-      Box 118, 22100 Lund, Sweden<br>
-      email: hubertus@control.lth.se
-      </address>
+<address>
+Author: Hubertus Tummescheit,<br>
+Lund University<br>
+Department of Automatic Control<br>
+Box 118, 22100 Lund, Sweden<br>
+email: hubertus@control.lth.se
+</address>
 </html>"));
 end Common;
