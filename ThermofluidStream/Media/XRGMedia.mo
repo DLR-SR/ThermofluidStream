@@ -23939,7 +23939,11 @@ This function integrates the derivative of density w.r.t. time in order to allow
       end if;
 
       annotation (Documentation(info="<html>
-This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.T_props_ph> T_props_ph</a>.
+<p>
+This function calculates the derivative of temperature w.r.t. time. It is used
+as derivative function for
+<a href=\"modelica://ThermofluidStream.Media.XRGMedia.R1234yf_ph.T_props_ph\">T_props_ph</a>.
+</p>
 </html>"));
     end T_ph_der;
 
@@ -23959,7 +23963,10 @@ This function calculates the derivative of temperature w.r.t. time. It is used a
         Inline=false,
         LateInline=true,
         Documentation(info="<html>
-This function integrates the derivative of temperature w.r.t. time in order to allow a numerical inversion for the complex fundamental equation of state.
+<p>
+This function integrates the derivative of temperature w.r.t. time in order to
+allow a numerical inversion for the complex fundamental equation of state.
+</p>
 </html>"));
     end T_props_ph;
 
