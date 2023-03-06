@@ -361,11 +361,10 @@ package XRGMedia "A medium property library"
       h(stateSelect=StateSelect.prefer),
       d(stateSelect=StateSelect.default),
       T(stateSelect=StateSelect.default),
-      p(stateSelect=StateSelect.prefer)) "Base properties of R134a"
+      p(stateSelect=StateSelect.prefer),
+      sat(Tsat(start=273.0), psat(start=3.0e5))) "Base properties of R134a"
       Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      SaturationProperties sat(Tsat(start=273.0), psat(start=3.0e5))
-      "saturation temperature and pressure";
       MassFraction quality "quality of vapour";
 
     equation
