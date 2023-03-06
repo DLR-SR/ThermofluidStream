@@ -9,7 +9,7 @@ model FlowRes
 
   extends Modelica.Icons.Example;
 
-  parameter Integer nCells = 10;
+  parameter Integer nCells = 10 "Number of discretization elements in heat exchangers";
 
   ThermofluidStream.Boundaries.Source sourceA(
     redeclare package Medium = MediumAir,
@@ -79,8 +79,7 @@ model FlowRes
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
-        (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -182,8 +181,7 @@ model FlowRes
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
-        (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
         U_liq_nom=1000,
         U_vap_nom=1400,
         U_tp_nom=3000),
@@ -296,7 +294,7 @@ model FlowRes
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{62,32},{82,52}})));
   Processes.FlowResistance flowResistanceB(
@@ -305,7 +303,7 @@ model FlowRes
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -425,7 +423,7 @@ model FlowRes
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{44,-72},{64,-52}})));
   Processes.FlowResistance flowResistanceB1(
@@ -434,7 +432,7 @@ model FlowRes
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

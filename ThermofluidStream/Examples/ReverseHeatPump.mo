@@ -2,15 +2,20 @@ within ThermofluidStream.Examples;
 model ReverseHeatPump
   extends Modelica.Icons.Example;
 
-  parameter Boolean switchDuringSimulation = true;
-  parameter Boolean heatingMode = false annotation(Dialog(enable = not switchDuringSimulation));
+  parameter Boolean switchDuringSimulation = true
+    "= true, if heating is switched on during simulation";
+  parameter Boolean heatingMode = false
+    "Constant heating mode if switchDuringSimulation = false"
+    annotation(Dialog(enable = not switchDuringSimulation));
 
   replaceable package SecondaryMedium = Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Secondary medium"
     annotation(choicesAllMatching=true);
 
   replaceable package RefrigerantMedium = Media.myMedia.R134a.R134a_ph
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Refrigerant medium"
     annotation(choicesAllMatching=true);
 
   Processes.Compressor compressor(
@@ -127,7 +132,7 @@ model ReverseHeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -198,7 +203,7 @@ model ReverseHeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -613,7 +618,15 @@ equation
       points={{84,100},{84,104}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Diagram(coordinateSystem(extent={{-260,-80},{180,220}}), graphics={
+  annotation (
+    experiment(
+      StopTime=200,
+      Tolerance=1e-6,
+      Interval=0.2,
+      __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem),
+    Diagram(coordinateSystem(extent={{-260,-80},{180,220}}),
+      graphics={
         Polygon(
           points={{48,42},{48,160},{140,210},{140,42},{48,42}},
           fillColor={215,215,215},
@@ -630,8 +643,6 @@ equation
           extent={{-172,202},{-122,190}},
           lineColor={28,108,200},
           textString="Ambient Air")}),
-    Icon(coordinateSystem),
-    experiment(StopTime=200, Tolerance=1e-6, Interval=0.2, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a undirected receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>
 <p>The flow direction is controlled by a system of valves and undirected junctions. In the parameter settings it can be chosen between &quot;switching during simulation&quot; or manually switching between cooling and heating mode prior to the simulation.</p>

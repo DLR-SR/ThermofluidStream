@@ -47,7 +47,7 @@ partial package WaterIF97_base
            then StateSelect.prefer else StateSelect.default),
     p(stateSelect=if (pT_explicit or ph_explicit) and preferredMediumStates
            then StateSelect.prefer else StateSelect.default))
-    "Base properties of water"
+      "Base properties of water"
     Integer phase(
       min=0,
       max=2,

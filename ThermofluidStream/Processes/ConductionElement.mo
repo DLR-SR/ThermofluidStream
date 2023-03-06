@@ -3,6 +3,7 @@ model ConductionElement "Element with quasi-stationary mass and heatport"
   extends Internal.PartialConductionElement;
 
   parameter Boolean resistanceFromAU = true
+    "= true, if thermal conductance given by U*A"
     annotation(Dialog(group="Thermal Conductance"));
   parameter SI.Area A = 1 "Contact area of element with medium"
     annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));

@@ -1,14 +1,16 @@
 within ThermofluidStream;
-model DropOfCommons "model for global parameters"
+model DropOfCommons "Model for global parameters"
 
-  parameter Utilities.Units.Inertance L = 0.01 "inertance of the flow"
+  parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
       annotation(Dialog(tab="Advanced"));
 
   parameter SI.MassFlowRate m_flow_reg = 0.01
+    "Regularization threshold of mass flow rate"
     annotation(Dialog(group="Regularization"));
   parameter SI.AngularVelocity omega_reg = 1
+    "Angular velocity used for regularization"
     annotation(Dialog(group="Regularization"));
-  parameter SI.Density rho_min = 1e-10
+  parameter SI.Density rho_min = 1e-10 "Minimum allowed density"
     annotation(Dialog(group="Regularization"));
   parameter SI.Pressure p_min = 100 "Minimal steady-state pressure"
     annotation(Dialog(group="Regularization"));

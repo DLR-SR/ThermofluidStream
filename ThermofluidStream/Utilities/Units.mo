@@ -1,5 +1,5 @@
 within ThermofluidStream.Utilities;
-package Units "units package for the thermofluid library"
+package Units "Units package for the thermofluid library"
   extends Modelica.Icons.Package;
 
   type Inertance = Real(quantity="Inertance", unit="1/m", min=0) "Unit of Inertance"
