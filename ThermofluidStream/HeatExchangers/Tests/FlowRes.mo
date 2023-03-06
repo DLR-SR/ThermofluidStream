@@ -9,7 +9,7 @@ model FlowRes
 
   extends Modelica.Icons.Example;
 
-  parameter Integer nCells = 10 "Number of evaporators' discretization elements";
+  parameter Integer nCells = 10 "Number of discretization elements in heat exchangers";
 
   ThermofluidStream.Boundaries.Source sourceA(
     redeclare package Medium = MediumAir,
