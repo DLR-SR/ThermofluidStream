@@ -22,7 +22,11 @@ equation
           origin={100,0},
           rotation=90)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Sink with fancy water animation.</span></p>
-<p><span style=\"font-family: Courier New;\">x is a nondimensional mass flow. @x=1 the animation looks best.</span></p>
+<p>
+Sink with fancy water animation.
+</p>
+<p>
+x is a nondimensional mass flow. @x=1 the animation looks best.
+</p>
 </html>"));
 end WaterSink;

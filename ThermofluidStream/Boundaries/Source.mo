@@ -4,8 +4,11 @@ model Source "Boundary model of a source"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
      annotation (choicesAllMatching=true, Documentation(info="<html>
-       <p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
-       </html>"));
+<p>
+Medium package used in the Source. Make sure it is the same as the one
+the inlet the source is connected to.
+</p>
+</html>"));
 
   parameter Boolean setEnthalpy = false "Prescribe specific enthalpy instead of temperature?";
   parameter Boolean pressureFromInput = false "Use input connector for pressure?";

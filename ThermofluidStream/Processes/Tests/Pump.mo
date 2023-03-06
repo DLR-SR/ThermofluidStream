@@ -8,8 +8,10 @@ model Pump "Test for pumps"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>
-        <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be incompressible or with low compressibility.</span></p>
-        </html>"));
+<p>
+Medium model for the test. Should be incompressible or with low compressibility.
+</p>
+</html>"));
 
   tf.Boundaries.Source source(
     redeclare package Medium = Medium,

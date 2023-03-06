@@ -6,7 +6,9 @@ model TanValve "Test for undirected TanValve"
     constrainedby Media.myMedia.Interfaces.PartialMedium
     "Medium package"
     annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)

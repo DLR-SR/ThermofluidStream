@@ -5,13 +5,17 @@ model Volumes "Test Volumes"
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
     "Medium package" annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
     "Medium package"
     annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
+<p>
+Medium package used in the Test of the MixVolumes.
+</p>
 </html>"));
 
 

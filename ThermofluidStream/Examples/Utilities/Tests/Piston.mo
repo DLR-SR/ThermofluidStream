@@ -34,7 +34,7 @@ model Piston "Test for Piston model"
     p0_par=1000000)
     annotation (Placement(transformation(extent={{-106,0},{-86,20}})));
   SteamSink steamSink(
-                       redeclare package Medium = Medium,
+    redeclare package Medium = Medium,
     p0_par=200000,
     m_flow_animate=1.3)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -46,13 +46,13 @@ model Piston "Test for Piston model"
     startTime=1)
     annotation (Placement(transformation(extent={{-64,46},{-44,66}})));
   ThermofluidStream.Utilities.showRealValue showRealValue annotation (Placement(transformation(extent={{32,-82},{52,-62}})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare
-      package Medium = Medium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector(
+    redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,-20})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare
-      package Medium = Medium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector1(
+    redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={16,10})));

@@ -6,7 +6,9 @@ model Flow_Resistance "Test for flow resistance"
   replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
     "Medium model"
     annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
+<p>
+Medium model for the test. Can be anything.
+</p>
 </html>"));
 
   tf.Boundaries.Source source(
@@ -70,8 +72,8 @@ model Flow_Resistance "Test for flow resistance"
     r=0.075,
     l=10,
     redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-        (material=ThermofluidStream.Processes.Internal.Material.steel))
+        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
 
   tf.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)

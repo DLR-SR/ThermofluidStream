@@ -6,8 +6,10 @@ model TestJunctionNM
     constrainedby Media.myMedia.Interfaces.PartialMedium
     "Medium Model"
     annotation (choicesAllMatching=
-       true, Documentation(info = "<html>
-<p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
+       true, Documentation(info="<html>
+<p>
+Medium model for the test. Can be anything.
+</p>
 </html>"));
 
   JunctionNM junctionNM(

@@ -5,7 +5,10 @@ model BoilerEspresso
   replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model"
     annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium model for the water in the boiler. We alwails want both phases of the water in the boiler.</span></p>
+<p>
+Medium model for the water in the boiler. We always want both
+phases of the water in the boiler.
+</p>
 </html>"));
 
   parameter SI.Pressure p_0 = 1e5 "Start pressure";
@@ -176,6 +179,13 @@ equation
      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">A boiler with a heatport to add heat and a heat port to connect a tube as an heat exchanger. </p><p>Also there is a inlet for water and two outlets, one for water, one for steam.</span></p>
+<p>
+A boiler with a heatport to add heat and a heat port to connect
+a tube as an heat exchanger.
+</p>
+<p>
+Also there is a inlet for water and two outlets, one for water,
+one for steam.
+</p>
 </html>"));
 end BoilerEspresso;

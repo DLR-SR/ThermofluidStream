@@ -229,7 +229,16 @@ equation
           pattern=LinePattern.Dash,
           textString="1")}),
     Documentation(info="<html>
-<p>The cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differes from DiscretizedCrossFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCrossFlowHEX. </p>
-<p>The flowResistances are parametrized by the parameters in the group <span style=\"font-family: Courier New;\">laminar-turbolent&nbsp;flowRes.</span></p>
+<p>
+The cross-flow discretized heat exchanger uses a number of conduction elements
+(which is set by the parameter nCells) as discrete control volumes to exchange
+heat between two fluid streams. This model differes from DiscretizedCrossFlowHEX
+by introducing flow-resistances after each control volume, but otherwise is the
+same, therefore consider the documentation of DiscretizedCrossFlowHEX.
+</p>
+<p>
+The flowResistances are parametrized by the parameters in the group 
+<strong>laminar-turbolent&nbsp;flowRes.</strong>
+</p>
 </html>"));
 end DiscretizedCrossFlowHEX_FR;

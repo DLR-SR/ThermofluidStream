@@ -10,8 +10,11 @@ model Turbine "Turbine under ideal gas assumption"
     annotation(choices(
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(omega_ref=1e6) "Fixed isentropic efficency"),
-      Documentation(info="<html><p><span style=\"font-size: 12pt;\">Selectable function to choose beween different turbine models.</span></p>
-        </html>"));
+      Documentation(info="<html>
+<p>
+Selectable function to choose beween different turbine models.
+</p>
+</html>"));
 
   parameter Real max_rel_R(min=0, max=1, unit="1") = 0.05 "Maximum relative allowed divergence from ideal gas"
     annotation(Dialog(tab="Advanced"));
