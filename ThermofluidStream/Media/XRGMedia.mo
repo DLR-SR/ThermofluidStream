@@ -23280,7 +23280,9 @@ Example:
 
   eta_is = (h_is-h_upstream)/(h_downstream - h_upstream);
 </pre></blockquote>
+
 <h4>Restrictions</h4>
+<p>
 The isentropic efficiency function should not be applied in liquid region.
 </p>
 </html>"));
