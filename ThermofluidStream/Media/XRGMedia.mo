@@ -297,7 +297,7 @@ package XRGMedia "A medium property library"
     end Helmholtz_pT;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end Common;
@@ -2541,7 +2541,9 @@ This deprecated function (which will be removed in future) adds the ideal gas co
       end if;
 
       annotation (Documentation(info="<html>
-This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.rho_props_ph> rho_props_ph</a>.
+This function calculates the derivative of density w.r.t. time.
+It is used as derivative function for
+<a href=\"modelica://ThermofluidStream.Media.XRGMedia.R134a_ph.rho_props_ph\">rho_props_ph</a>.
 </html>"));
     end rho_ph_der;
 
@@ -2583,7 +2585,11 @@ This function integrates the derivative of density w.r.t. time in order to allow
       end if;
 
       annotation (Documentation(info="<html>
-This function calculates the derivative of temperature w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R134a_ph.T_props_ph> T_props_ph</a>.
+<p>
+This function calculates the derivative of temperature w.r.t. time.
+It is used as derivative function for
+<a href=\"modelica://ThermofluidStream.Media.XRGMedia.R134a_ph.T_props_ph\">T_props_ph</a>.
+</p>
 </html>"));
     end T_ph_der;
 
@@ -2739,16 +2745,24 @@ The function cannot be inverted in a numerical way. Please use functions <a href
                                           (T<T_lim_gas and T>T_lim_liq), "Fluid state is too close to the two-phase region (p="+String(p)+"[Pa], T="+String(T)+"[K]. Pressure and temperature can not be used to determine properties in two-phase region.");
 
       annotation (Documentation(info="<html>
-This function is used as a guard for property functions using pTX as an input. Property functions for two-phase media using pressure and temperature as inputs shall not be used close to the phase boundary in order to avoid errors and high deviations for just small deviations in the input arguments. The refrigerant state can not be determined in the two-phase region using pressure and temperature.
+<p>
+This function is used as a guard for property functions using pTX as an input.
+Property functions for two-phase media using pressure and temperature as inputs
+shall not be used close to the phase boundary in order to avoid errors and
+high deviations for just small deviations in the input arguments.
+The refrigerant state can not be determined in the two-phase region using
+pressure and temperature.
+</p>
 </html>"));
     end phaseBoundaryAssert;
     annotation (Documentation(info="<html>
 <p>
-Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid region of 0.0039 bar (Triple pressure) to 700 bar and 169.85 Kelvin (Triple temperature) to 455 Kelvin.
+Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid
+region of 0.0039 bar (Triple pressure) to 700 bar and 169.85 Kelvin
+(Triple temperature) to 455 Kelvin.
 </p>
-<p>
+
 <h4><font color=\"#EF9B13\">Restriction</font></h4>
-</p>
 <p>
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
@@ -2779,7 +2793,7 @@ of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R134a_ph;
@@ -7661,7 +7675,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R134aData;
@@ -9730,7 +9744,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
 <dd><strong>Equations of Thermal Conductivity of Natural Refrigerants</strong>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end NH3_ph;
@@ -14615,7 +14629,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end NH3Data;
@@ -16752,7 +16766,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dd><strong>The Transport Properties of Carbon Dioxide</strong>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end CO2_ph;
@@ -21631,7 +21645,7 @@ The functions provided by this package shall be used inside of the restricted li
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end CO2Data;
@@ -23880,7 +23894,9 @@ This function computes the specific enthalpy in two-phase for R1234yf depending 
       end if;
 
       annotation (Documentation(info="<html>
-This function calculates the derivative of density w.r.t. time. It is used as derivative function for <a href=\"modelica://XRG_Media.R1234yf_ph.rho_props_ph> rho_props_ph</a>.
+This function calculates the derivative of density w.r.t. time.
+It is used as derivative function for
+<a href=\"modelica://ThermofluidStream.Media.XRGMedia.R1234yf_ph.rho_props_ph\">rho_props_ph</a>.
 </html>"));
     end rho_ph_der;
 
@@ -24114,7 +24130,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
 <dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R1234yf_ph;
@@ -29014,7 +29030,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R1234yfData;
@@ -31292,7 +31308,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245fa_ph;
@@ -36186,7 +36202,7 @@ The functions provided by this package shall be used inside of the restricted li
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245faData;
@@ -36211,7 +36227,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p>2013-01-09 XRG Simulation GmbH - Stefan Wischhusen: Migration to MSL 3.2.1 Interface. Added functions for R134a. </p>
 <p>2012-04-27 XRG Simulation GmbH - Stefan Wischhusen: Added new refrigerant R1234yf and additional functions. Helmholtz functions have been structured in a new way. Coefficients of phase boundaries were updated. </p>
 <p>2011-03-17 XRG Simulation GmbH - Stefan Wischhusen: Fixed problems with functions for calculation of thermal conductivity at phase boundaries. </p>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"),
     Icon(
