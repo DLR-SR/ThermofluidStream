@@ -297,7 +297,7 @@ package XRGMedia "A medium property library"
     end Helmholtz_pT;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end Common;
@@ -651,7 +651,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the density of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"></p>
 
 </html>"));
     end density_ph;
@@ -666,7 +666,7 @@ Example:
        Documentation(info="<html>
 <p> This function calculates the density of R134a from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)d-Diagram-R134a.png\"></p>
 </html>"));
     end density;
 
@@ -687,7 +687,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R134a from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 
 
 </html>"));
@@ -702,7 +702,7 @@ Example:
       annotation(Inline=true,
         Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R134a from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 </html>"));
     end temperature;
 
@@ -713,7 +713,7 @@ Example:
         Inline=true,
         Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 </html>"));
     end pressure;
 
@@ -724,7 +724,7 @@ Example:
 
       annotation (Inline = true, Documentation(info="<html>
 <p> This function calculates the specific internal energy of R134a from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)u-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)u-Diagram-R134a.png\"></p>
 
 </html>"));
     end specificInternalEnergy;
@@ -737,7 +737,7 @@ Example:
 
       annotation (Inline = true, Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 </html>"));
     end specificEnthalpy;
 
@@ -767,7 +767,7 @@ Example:
 
       annotation (Documentation(info="<html>
 <p> This function calculates the specific entropy of R134a from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Tillner-Roth and Baehr (1994). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)s-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)s-Diagram-R134a.png\"></p>
 </html>"));
     end specificEntropy;
 
@@ -799,7 +799,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 <h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"></p>
 </html>"));
     end saturationTemperature;
 
@@ -1474,7 +1474,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 <h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)Tsat-Diagram-R134a.png\"></p>
 </html>"));
     end saturationPressure;
 
@@ -1494,7 +1494,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cp-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cp-Diagram-R134a.png\"></p>
 </html>"));
     end specificHeatCapacityCp;
 
@@ -1527,7 +1527,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition (see Tillner-Roth and Baehr, 1994). Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cv-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)cv-Diagram-R134a.png\"></p>
 </html>"));
     end specificHeatCapacityCv;
 
@@ -1594,7 +1594,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <dd><strong>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)eta-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)eta-Diagram-R134a.png\"></p>
 </html>"));
     end dynamicViscosity;
 
@@ -1677,7 +1677,7 @@ Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)lambda-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)lambda-Diagram-R134a.png\"></p>
 </html>"));
     end thermalConductivity;
 
@@ -1712,7 +1712,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
 <dd><strong>Surface tension correlation of HFC-134a and HCFC-123</strong>.
 Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, Italy, pp. 541-548, 1994.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/Tsigma-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/Tsigma-Diagram-R134a.png\"></p>
 </html>"));
     end surfaceTension;
 
@@ -1736,7 +1736,7 @@ Proceedings of the Joint Meeting of IIR Commissions B1, B2, E1, and E2, Padua, I
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)a-Diagram-R134a.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)a-Diagram-R134a.png\"></p>
 </html>"));
     end velocityOfSound;
 
@@ -2793,7 +2793,7 @@ of refrigerants and refrigerant mixtures</strong>.
 Int. J. Refrig., 23 (2000) 43-63.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R134a_ph;
@@ -7675,7 +7675,7 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R134aData;
@@ -9744,7 +9744,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
 <dd><strong>Equations of Thermal Conductivity of Natural Refrigerants</strong>.  International Journal of Thermophysics, Vol. 22, No. 5, 2001.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end NH3_ph;
@@ -14629,7 +14629,7 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end NH3Data;
@@ -16766,7 +16766,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dd><strong>The Transport Properties of Carbon Dioxide</strong>.  J. Phys. Chem. Ref. Data, Vol. 19, No. 3, 1990.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end CO2_ph;
@@ -21645,7 +21645,7 @@ The functions provided by this package shall be used inside of the restricted li
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end CO2Data;
@@ -22000,7 +22000,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the density of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"></p>
 
 </html>"));
     end density_ph;
@@ -22015,7 +22015,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the density of R1234yf from the state record (e.g., use setState_phX function for input). The density is modelled by the fundamental equation of state of Richter et al (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)d-Diagram-R1234yf.png\"></p>
 </html>"));
     end density;
 
@@ -22036,7 +22036,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R1234yf from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Richter (2011). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 
 
 </html>"));
@@ -22051,7 +22051,7 @@ Example:
       annotation(Inline=true,
       Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R1234yf from the state record (e.g., use setState_phX function for input). The temperature is modelled by the fundamental equation of state of Richter et al (2011). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 </html>"));
     end temperature;
 
@@ -22060,7 +22060,7 @@ Example:
       p := state.p;
       annotation (Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 </html>"));
     end pressure;
 
@@ -22071,7 +22071,7 @@ Example:
 
       annotation (Documentation(info="<html>
 <p> This function calculates the specific internal energy of R1234yf from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Richter et al (2011). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)u-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)u-Diagram-R1234yf.png\"></p>
 
 </html>"));
     end specificInternalEnergy;
@@ -22084,7 +22084,7 @@ Example:
 
       annotation (Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 </html>"));
     end specificEnthalpy;
 
@@ -22114,7 +22114,7 @@ Example:
 
       annotation (Documentation(info="<html>
 <p> This function calculates the specific entropy of R1234yf from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Richter et al (2011). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)s-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)s-Diagram-R1234yf.png\"></p>
 </html>"));
     end specificEntropy;
 
@@ -22145,7 +22145,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 <h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"></p>
 </html>"));
     end saturationTemperature;
 
@@ -22818,7 +22818,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 <h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)Tsat-Diagram-R1234yf.png\"></p>
 </html>"));
     end saturationPressure;
 
@@ -22838,7 +22838,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cp-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cp-Diagram-R1234yf.png\"></p>
 </html>"));
     end specificHeatCapacityCp;
 
@@ -22871,7 +22871,7 @@ the fundamental equation of state of Richter et al (2011) and the Maxwell criter
 <p>
 Please note, that the function can also be called in the two-phase region, but the output is not continuous for a phase transition. Values in two-phase region are considerably higher than in one-phase domain. The following figure just shows one-phase properties.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cv-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)cv-Diagram-R1234yf.png\"></p>
 </html>"));
     end specificHeatCapacityCv;
 
@@ -22990,7 +22990,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <dt>Akasaka, R.: </dt>
 <dd><strong>Viscosity Correlation for 2,3,3,3-Tetrafluoropropene (HFO-1234yf) based on the Extended Corresponding States Model</strong>. Journal of Thermal Science and Technology, Vol. 5, No. 2, 2010.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)eta-Diagram-R1234yf.png\"></p>
 </html>"));
     end dynamicViscosity;
 
@@ -23080,7 +23080,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <dt>Perkins A., Huber M.: </dt>
 <dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data, 2011, 56, 4868-4874.</dd>
 </dl>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)lambda-Diagram-R1234yf.png\"></p>
 </html>"));
     end thermalConductivity;
 
@@ -23110,7 +23110,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <h4>Restrictions</h4>
 <p>This property is only defined in two-phase region.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/Tsigma-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/Tsigma-Diagram-R1234yf.png\"></p>
 </html>"));
     end surfaceTension;
 
@@ -23134,7 +23134,7 @@ Please note, that the function can also be called in the two-phase region, but t
 <h4>Restrictions</h4>
 <p>This property is only defined in one-phase region.
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)a-Diagram-R1234yf.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)a-Diagram-R1234yf.png\"></p>
 </html>"));
     end velocityOfSound;
 
@@ -24130,7 +24130,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
 <dd><strong>Measurement and Correlation of Thermal Conductivity of 2,3,3,3-Tetrafluoroprop-1-ene (R1234yf) and trans-1,3,3,3-Tetrafluoropropene (R1234ze(E))</strong>. Journal of Chemical and Engineering Data 2011, 56, 4868-4874.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R1234yf_ph;
@@ -29030,7 +29030,7 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R1234yfData;
@@ -29388,7 +29388,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"></p>
 
 </html>"));
     end density_ph;
@@ -29403,7 +29403,7 @@ Example:
       Documentation(info="<html>
 <p> This function calculates the density of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The density is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)d-Diagram-R245fa.png\"></p>
 
 </html>"));
     end density;
@@ -29425,7 +29425,7 @@ Example:
         Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 
 
 </html>"));
@@ -29441,7 +29441,7 @@ Example:
                       Documentation(info="<html>
 <p> This function calculates the Kelvin temperature of R245fa from the state variables p (absolute pressure) and h (specific enthalpy). The temperature is modelled by the fundamental equation of state of Lemmon (2006). </p>
 
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 
 
 </html>"));
@@ -29453,7 +29453,7 @@ Example:
       annotation (
         Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 </html>"));
     end pressure;
 
@@ -29464,7 +29464,7 @@ Example:
 
       annotation (Inline = true, Documentation(info="<html>
 <p> This function calculates the specific internal energy of R245fa from the state record (e.g., use setState_phX function for input). The specific internal energy is modelled by the fundamental equation of state of Lemmon (2006). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)u-Diagram-R245fa.png\"></p>
 
 </html>"));
     end specificInternalEnergy;
@@ -29477,7 +29477,7 @@ Example:
 
       annotation (Inline = true, Documentation(info="<html>
 <p>This function is included for the sake of completness.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 </html>"));
     end specificEnthalpy;
 
@@ -29508,7 +29508,7 @@ Example:
 
       annotation (Documentation(info="<html>
 <p> This function calculates the specific entropy of R245fa from the state record (e.g., use setState_phX function for input). The specific entropy is modelled by the fundamental equation of state of Lemmon (2006). </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)s-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)s-Diagram-R245fa.png\"></p>
 </html>"));
     end specificEntropy;
 
@@ -29539,7 +29539,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 <h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)Tsat-Diagram-R245fa.png\"/> </p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)Tsat-Diagram-R245fa.png\"></p>
 </html>"));
     end saturationTemperature;
 
@@ -31308,7 +31308,7 @@ The functions provided by this package shall be used inside of the restricted li
 <dd><strong>Short Fundamental Equations of State for 20 Industrial Fluids</strong>. Journal of Chemical and Engineering Data 2006, 51, 785-850.</dd>
 </dl>
 </html>", revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245fa_ph;
@@ -36202,12 +36202,12 @@ The functions provided by this package shall be used inside of the restricted li
     end CoeffsSurfaceTension;
 
     annotation(Documentation(revisions="<html>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245faData;
   annotation (preferedView="info", Documentation(info="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"></p>
 
 <h4>Library description</h4>
 <p>This library contains property functions written in Modelica for the refrigerants <strong>R134a</strong>, <strong>NH3</strong> (R717), <strong>CO2</strong> (R744), <strong>R1234yf</strong> and <strong>R245fa</strong>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
@@ -36227,7 +36227,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p>2013-01-09 XRG Simulation GmbH - Stefan Wischhusen: Migration to MSL 3.2.1 Interface. Added functions for R134a. </p>
 <p>2012-04-27 XRG Simulation GmbH - Stefan Wischhusen: Added new refrigerant R1234yf and additional functions. Helmholtz functions have been structured in a new way. Coefficients of phase boundaries were updated. </p>
 <p>2011-03-17 XRG Simulation GmbH - Stefan Wischhusen: Fixed problems with functions for calculation of thermal conductivity at phase boundaries. </p>
-<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo_2015_4c.png\"></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"),
     Icon(
