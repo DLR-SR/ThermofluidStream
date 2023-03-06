@@ -25,7 +25,7 @@ model MCV "Massflow and volume control valve"
 
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "= true, if desired setpoint_var input enabled";
+  parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
   parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
