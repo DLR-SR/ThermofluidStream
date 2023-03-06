@@ -9266,14 +9266,14 @@ Example:
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p> For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_NH3
@@ -9302,7 +9302,6 @@ when on the other side of a phase boundary)
       f.d := d;
       f.T := T;
       f.R := NH3Data.R;
-
 
     end f_NH3;
 
@@ -16211,14 +16210,14 @@ Example:
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p> For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_CO2
@@ -30830,7 +30829,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p>
 For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
@@ -30838,7 +30837,7 @@ so e.g. the values in the downstream connector are very good guesses. Giving the
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_R245fa
