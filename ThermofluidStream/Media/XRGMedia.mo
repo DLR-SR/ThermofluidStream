@@ -23260,11 +23260,19 @@ Please note, that the function can also be called in the two-phase region, but t
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
       annotation (Documentation(info="<html>
-<p> This function calculates the specific enthalpy of R1234yf for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
+<p>
+This function calculates the specific enthalpy of R1234yf for an isentropic
+pressure change from refState.p to p_downstream (e.g., use setState_phX
+function for input of refState).
 </p>
-<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
+<p>
+The function can be used for instance to calculate an isentropic efficiency 
+of a compressor or calculate the power consumption (obtained from the 
+isentropic enthalpy) for a given efficiency.
+</p>
 <p>
 Example:
+</p>
 <blockquote><pre>
   Medium.AbsolutePressure p_downstream=10e5;
   Medium.SpecificEnthalpy h_downstream=3.8e5;
