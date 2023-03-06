@@ -38,7 +38,6 @@ protected
   SI.Density rho_in =  Medium.density(inlet.state) "density of medium entering";
   SI.Density rho_out "density of medium exiting";
 
-
   SI.Velocity v_mean;
   SI.Velocity delta_v;
 

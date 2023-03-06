@@ -18,7 +18,7 @@ model DifferenceSensorSelect
       </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed Density"
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Quantitiy the sensor measures"
     annotation(choicesAllMatching=true);

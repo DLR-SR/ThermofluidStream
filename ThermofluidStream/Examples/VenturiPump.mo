@@ -7,10 +7,9 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
     Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
-  parameter SI.Area A_in_hp=0.0002;
-  parameter SI.Area A_in_lp=0.001;
-  parameter SI.Area A_out=0.003;
-
+  parameter SI.Area A_in_hp=0.0002 "Cross-section area of high pressure inlet boundary";
+  parameter SI.Area A_in_lp=0.001 "Cross-section area of low pressure inlet boundary";
+  parameter SI.Area A_out=0.003 "Cross-section area of outlet boundary";
 
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
@@ -149,13 +148,14 @@ equation
       points={{0,40},{0,30}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
-                                                                 Diagram(
+  annotation (
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
       StopTime=1,
-   Tolerance=1e-6,
-   Interval=1e-3,
+      Tolerance=1e-6,
+      Interval=1e-3,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

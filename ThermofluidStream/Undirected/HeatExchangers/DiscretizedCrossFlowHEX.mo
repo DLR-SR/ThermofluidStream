@@ -60,7 +60,7 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
     annotation (Dialog(group="Heat transfer parameters"));
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization massflow to switch between positive- and negative-massflow model"
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization mass flow to switch between positive- and negative-massflow model"
     annotation(Dialog(tab="Advanced"));
 
   //Parameterization of HEX Wall
@@ -106,13 +106,13 @@ public
   SI.Mass M_B=sum(thermalElementB.M);
   SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system);
 
-  ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
+  ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=50))
     annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionMN junctionMN(redeclare package Medium = MediumA,

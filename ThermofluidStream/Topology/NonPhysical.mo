@@ -44,13 +44,14 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-    parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
+    parameter Boolean assumeConstantDensity = true "= true, if only mass-flow rate will determine the mixing";
     parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
       annotation (Dialog(tab="Advanced"));
-    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each branch of component"
       annotation (Dialog(tab="Advanced"));
-    parameter SI.Time TC_input = 0.05;
-    parameter Boolean invert = false;
+    parameter SI.Time TC_input = 0.05 "Time constant";
+    parameter Boolean invert = false
+      "= true, if difference (1-splitRatio) is used for split ratio, otherwise splitRatio input is used directly";
 
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),

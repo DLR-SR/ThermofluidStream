@@ -23,7 +23,7 @@ model MCV "Massflow control valve"
         origin={0,-80})));
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "Enable desired massFlow input";
+  parameter Boolean setpointFromInput = false "= true, if desired setpoint_var input enabled";
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
   parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
@@ -35,7 +35,7 @@ model MCV "Massflow control valve"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false;
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput enabled";
 
   SI.Density rho_rear_in = Medium.density(rear.state_forwards);
   SI.Density rho_fore_in = Medium.density(fore.state_rearwards);

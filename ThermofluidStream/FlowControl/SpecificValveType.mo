@@ -6,7 +6,7 @@ model SpecificValveType "Specific technical valve types"
          ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
 
   replaceable record zetaValueRecord = Internal.Curves.SlideValveZetaCurve
-    constrainedby Internal.Curves.PartialCharacteristicZetaCurves "Select Valve Type"
+    constrainedby Internal.Curves.PartialCharacteristicZetaCurves "Select valve type"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));

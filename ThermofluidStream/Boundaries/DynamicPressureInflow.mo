@@ -5,7 +5,7 @@ model DynamicPressureInflow
 
   parameter Boolean areaFromInput = false "Use input connector for cross section area?";
   parameter Boolean velocityFromInput = false "Use input connector for inlet speed?";
-  parameter SI.Area A_par = 1 "Parameter for cross-section area of inlet boundary"
+  parameter SI.Area A_par = 1 "Cross-section area of inlet boundary"
     annotation(Dialog(enable=not areaFromInput));
   parameter SI.Velocity v_in_par = 0 "Parameter for reference velocity for p0. Positive velocity points from outside the boundary to inside"
     annotation(Dialog(enable=not velocityFromInput));
