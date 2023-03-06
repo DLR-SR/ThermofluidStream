@@ -112,8 +112,8 @@ algorithm
 
   annotation (Documentation(info="<html>
 <p>Centrifugal pump with HQ and TQ characteristic curve. </p>
-<p>HQ curve: <span style=\"font-family: Courier New;\">TDH&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;f_H&nbsp;*(a_h*omega*<span style=\"color: #ff0000;\">abs</span>(omega)&nbsp;-&nbsp;b_h*omega*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)&nbsp;-&nbsp;c_h*V_flow*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow));</p>
-<p>TQ curve: <span style=\"font-family: Courier New;\">tau_st&nbsp;:=&nbsp;(f_Q*f_H/f_eta)*(&nbsp;v_ref/v_in*a_t*<span style=\"color: #ff0000;\">abs</span>(omega)*V_flow&nbsp;-&nbsp;v_ref/v_in*b_t*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)*V_flow&nbsp;+&nbsp;v_i*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)*omega&nbsp;+&nbsp;v_s*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega));</p>
+<p>HQ curve: <code>TDH&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;f_H&nbsp;*(a_h*omega*<span style=\"color: #ff0000;\">abs</span>(omega)&nbsp;-&nbsp;b_h*omega*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)&nbsp;-&nbsp;c_h*V_flow*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow));</code></p>
+<p>TQ curve: <code>tau_st&nbsp;:=&nbsp;(f_Q*f_H/f_eta)*(&nbsp;v_ref/v_in*a_t*<span style=\"color: #ff0000;\">abs</span>(omega)*V_flow&nbsp;-&nbsp;v_ref/v_in*b_t*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(V_flow)*V_flow&nbsp;+&nbsp;v_i*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega)*omega&nbsp;+&nbsp;v_s*<span style=\"font-family: Courier New; color: #ff0000;\">abs</span>(omega));</code></p>
 <p>Both characteristics are generalized to all four quadrants of the V_flow/omega plot.</p>
 <p>The parameters a,b,c,v can be set directly or by three scaling factors alpha, beta and gamma, which scale the reference pump.</p>
 <p>Reference pump:</p>
