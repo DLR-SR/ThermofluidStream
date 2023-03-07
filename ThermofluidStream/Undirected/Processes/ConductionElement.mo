@@ -37,7 +37,7 @@ for the fluid mass contained within it.
 </p>
 <p>
 For further documentation see the documentation of the
-<a href=\"ThermofluidStream.Undirected.Processes.Internal.PartialConductionElement\">motherclass</a>.
+<a href=\"modelica://ThermofluidStream.Undirected.Processes.Internal.PartialConductionElement\">motherclass</a>.
 </p>
 </html>"));
 end ConductionElement;

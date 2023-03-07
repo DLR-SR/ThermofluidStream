@@ -36229,7 +36229,7 @@ The functions provided by this package shall be used inside of the restricted li
 <p>This library contains property functions written in Modelica for the refrigerants <strong>R134a</strong>, <strong>NH3</strong> (R717), <strong>CO2</strong> (R744), <strong>R1234yf</strong> and <strong>R245fa</strong>. The property models use the Modelica.Media specification for two-phase media (Modelica Standard Library version 3.2.3). The functions supplied may be used separately. </p>
 <p>The library is a product of XRG Simulation GmbH. It makes use of external, non-commercial models supplied by Modelica standard library. In order to work correctly, ensure that this library is always loaded with Modelica Standard Library version 3.2.3</p>
 <p>Some parts of this library refer to the ThermoFluid library developed at Lund University (<a href=\"http://sourceforge.net\">http://sourceforge.net</a>). </p>
-<p><br>Please refer to Modelica.Media&apos;s <a href=\"Modelica.Media.UsersGuide\">User Guide</a> for detailed usage information.</p>
+<p><br>Please refer to Modelica.Media&apos;s <a href=\"modelica://Modelica.Media.UsersGuide\">User Guide</a> for detailed usage information.</p>
 
 <h4>Contact </h4>
 <p>XRG Simulation GmbH<br>Harburger Schlossstra&szlig;e 6-12<br>21079 Hamburg<br>Germany</p>

@@ -5,7 +5,7 @@ package Rules "Basic Composition Rules"
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
 First of all we recommend to study the Example models provided in
-<a href=\"ThermofluidStream.Examples\">ThermofluidStream.Examples</a>.
+<a href=\"modelica://ThermofluidStream.Examples\">ThermofluidStream.Examples</a>.
 </p>
 
 <h4>For basic directional flows</h4>
