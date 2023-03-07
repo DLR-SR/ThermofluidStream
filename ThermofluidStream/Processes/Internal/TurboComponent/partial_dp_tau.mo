@@ -8,12 +8,12 @@ Medium model needet to compute properties from the inlet_state.
 </p>
 </html>"));
 
-  input SI.MassFlowRate m_flow "Mass flow through component";
+  input Medium.MassFlowRate m_flow "Mass flow through component";
   input SI.AngularVelocity omega "Component angular velocity";
   input Medium.ThermodynamicState state_in "Thermodynamic state at inlet";
-  input SI.MassFlowRate m_flow_norm "Mass flow used for normalization";
+  input Medium.MassFlowRate m_flow_norm "Mass flow used for normalization";
   input SI.AngularVelocity omega_norm "Angular velocity used for normalization";
-  input SI.Density rho_min "Minimum for rho (to make model robust for rho=0 @ p=0)";
+  input Medium.Density rho_min "Minimum for rho (to make model robust for rho=0 @ p=0)";
 
   output SI.Pressure dp "Pressure difference of fluid (dp=p1-p2)";
   output SI.Torque tau_st "Moment that would leed to static operation";
