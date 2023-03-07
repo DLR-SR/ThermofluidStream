@@ -36217,7 +36217,10 @@ The functions provided by this package shall be used inside of the restricted li
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245faData;
-  annotation (preferedView="info", Documentation(info="<html>
+
+  annotation (
+    preferredView="info",
+    Documentation(info="<html>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"></p>
 
 <h4>Library description</h4>
