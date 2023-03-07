@@ -8,7 +8,7 @@ model Switch
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
-  parameter SI.Pressure p_ref = 1e5 "Rreference pressurre";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
   parameter Boolean invertInput = false "Invert input meaning";
   parameter Boolean initializeOneMassflowSplit = false "Initialize mass-flow ratio (one initial equation)"
