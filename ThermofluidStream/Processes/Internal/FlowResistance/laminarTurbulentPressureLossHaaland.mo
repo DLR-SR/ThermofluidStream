@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Internal.FlowResistance;
+within ThermofluidStream.Processes.Internal.FlowResistance;
 function laminarTurbulentPressureLossHaaland
   extends Internal.FlowResistance.partialPressureLoss;
 

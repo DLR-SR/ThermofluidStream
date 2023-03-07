@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.HeatExchangers;
+within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
 
   replaceable package MediumA =
