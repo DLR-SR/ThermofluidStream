@@ -73,29 +73,21 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{-20,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{50,20},{90,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Text(
           extent={{-60,-20},{-100,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="a"),
         Text(
           extent={{60,-100},{20,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="b")}),
-     Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Medium package used in the component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));

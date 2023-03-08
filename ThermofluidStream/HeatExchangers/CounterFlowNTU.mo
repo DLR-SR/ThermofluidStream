@@ -217,15 +217,11 @@ equation
           thickness=0.5),
         Text(
           extent={{-142,-18},{-102,-58}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{82,112},{122,72}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Line(
           points={{-60,-44},{60,-44}},

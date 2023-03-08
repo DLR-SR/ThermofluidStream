@@ -72,15 +72,11 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-90,80},{-50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N"),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%M")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)));
 end JunctionNM;

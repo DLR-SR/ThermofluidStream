@@ -66,15 +66,11 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{-20,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{80,-20},{120,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
-          textString="B")}), Diagram(coordinateSystem(preserveAspectRatio=
-            false)));
+          textColor={175,175,175},
+          textString="B")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)));
 end JunctionT2;

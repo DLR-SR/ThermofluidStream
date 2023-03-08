@@ -100,7 +100,7 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_A,
       each k2=k2_A))
       annotation (Placement(transformation(extent={{20,70},{40,90}})));
@@ -111,7 +111,7 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_B,
       each k2=k2_B))
     annotation (Placement(transformation(
@@ -205,28 +205,23 @@ equation
       graphics={
         Text(
           extent={{-72,76},{-60,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="N"),
         Text(
           extent={{-42,76},{-30,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{-10,76},{2,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{20,76},{32,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="2"),
         Text(
           extent={{50,76},{62,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="1")}),
     Documentation(info="<html>
 <p>

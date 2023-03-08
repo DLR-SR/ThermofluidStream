@@ -197,15 +197,11 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(
           extent={{-120,-20},{-80,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{20,120},{60,80}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Line(
           points={{0,70},{0,-80}},

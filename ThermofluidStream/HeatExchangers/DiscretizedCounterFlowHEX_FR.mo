@@ -72,7 +72,7 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_A,
       each k2=k2_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
@@ -81,8 +81,7 @@ public
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
-      
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_B,
       each k2=k2_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));
@@ -183,28 +182,23 @@ equation
     Icon(graphics={
         Text(
           extent={{-70,76},{-58,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="1"),
         Text(
           extent={{-40,76},{-28,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="2"),
         Text(
           extent={{-8,76},{4,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{22,76},{34,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{50,76},{62,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="N")}),
     Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differes from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
