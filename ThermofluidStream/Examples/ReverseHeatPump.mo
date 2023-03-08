@@ -641,7 +641,7 @@ equation
         Rectangle(extent={{-180,206},{-74,42}}, lineColor={28,108,200}),
         Text(
           extent={{-172,202},{-122,190}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Ambient Air")}),
     Documentation(info="<html>
 <p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a undirected receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>

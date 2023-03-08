@@ -99,13 +99,13 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{0,25},{60,75}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity"),
         Line(
           points={{-80,40},{-80,-40}},
@@ -141,7 +141,7 @@ equation
           extent={{-72,-38},{-48,-62}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the difference of the vapor quality between two fluid streams.</p>
 <p>This sensor can be connected totwo fluid streams without a junction.</p>

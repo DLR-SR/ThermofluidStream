@@ -35,7 +35,7 @@ model DiscretizedHexIcon
           textString="..."),
         Text(
           extent={{-40,-72},{-28,-84}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="..."),
         Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
             lineColor = {28,108,200}),

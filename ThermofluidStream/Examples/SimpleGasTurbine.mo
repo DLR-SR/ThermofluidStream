@@ -149,14 +149,18 @@ equation
       points={{76,6},{70,6},{70,-10},{60,-10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=100, Tolerance=1e-6, Interval=0.1),Diagram(coordinateSystem(extent={{-140,
-            -80},{140,80}}), graphics={Rectangle(extent={{-64,76},{36,-26}},
-            lineColor={28,108,200}),
+  annotation (
+    experiment(StopTime=100, Tolerance=1e-6, Interval=0.1),
+    Diagram(coordinateSystem(extent={{-140,-80},{140,80}}),
+      graphics={
+        Rectangle(
+          extent={{-64,76},{36,-26}},
+          lineColor={28,108,200}),
         Text(
           extent={{-60,76},{16,60}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="combustion chamber")}),
-          Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>A very basic model of a regulated gas turbine. GASTASTIC!</p>
 <p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is proportional to the massflow, so the steady-state q is the input to the combustion chamber. </p>

@@ -23,7 +23,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
         transformation(extent={{80,-20},{120,20}}),
           iconTransformation(extent={{80,-20},{120,20}})));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity(
+  function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity (
     redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
       <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
@@ -76,13 +76,13 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
           extent={{2,17},{62,67}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected sensor for a single selectable quantity. For some quatities several units are available.</p>
 </html>"));

@@ -80,11 +80,11 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(display_value, format="1."+String(digits)+"f"))),
         Text(
           extent={{-26,22},{60,69}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%row. mass-fraction"),
         Ellipse(
           extent={{-5,-75},{5,-85}},
@@ -92,7 +92,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring mass fraction X. Which row from X to display can be selected by the row parameter.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

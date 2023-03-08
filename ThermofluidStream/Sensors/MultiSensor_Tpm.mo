@@ -125,35 +125,35 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,80},{60,30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("T", String(
               T,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,30},{60,-20}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-20},{60,-70}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("m", String(
               m_flow,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,80},{-60,28}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
           extent={{-120,32},{-60,-20}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%pressureUnit"),
         Text(
           extent={{-120,-20},{-60,-72}},
-          lineColor={175,175,175},
-          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
-            false)),
+          textColor={175,175,175},
+          textString="%massFlowUnit")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>

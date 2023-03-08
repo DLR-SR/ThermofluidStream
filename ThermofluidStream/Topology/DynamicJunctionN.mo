@@ -77,9 +77,12 @@ equation
           extent={{-20,20},{20,-20}},
           lineThickness=0.5,
           lineColor={170,255,170})}),
-      Diagram(coordinateSystem(preserveAspectRatio=false), graphics={Text(
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false),
+      graphics={
+        Text(
           extent={{-40,60},{40,40}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Use of dynamicInflow instead of nozzle,
 because velocity can directly be set, instead of A,
 that will need regularization for low massflow.")}),

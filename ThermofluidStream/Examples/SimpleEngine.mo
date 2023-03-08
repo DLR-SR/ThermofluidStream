@@ -74,7 +74,7 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,44},{30,64}})));
   Processes.FlowResistance flowResistance4(
@@ -83,7 +83,7 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-2,24},{18,44}})));
   Processes.FlowResistance flowResistance5(
@@ -92,7 +92,7 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{70,44},{90,64}})));
   Processes.FlowResistance flowResistance6(
@@ -101,7 +101,7 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,24},{108,44}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Water, invertInput=false) annotation (Placement(transformation(extent={{100,64},{120,44}})));
@@ -237,27 +237,28 @@ equation
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
   connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
-        graphics={
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
+      graphics={
         Rectangle(extent={{-192,96},{-38,6}}, lineColor={28,108,200}),
         Text(
           extent={{-188,94},{-96,82}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Boiler and Preheater"),
         Rectangle(extent={{-30,80},{168,20}}, lineColor={28,108,200}),
         Text(
           extent={{118,78},{180,66}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Valves"),
         Text(
           extent={{-8,-82},{86,-100}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Piston and Crank Drive"),
-        Rectangle(extent={{-118,-32},{90,-100}},
-                                              lineColor={28,108,200})}),
+        Rectangle(
+          extent={{-118,-32},{90,-100}},
+          lineColor={28,108,200})}),
         experiment(StopTime=25, Tolerance=1e-6, Interval=0.025),
-        Documentation(info="<html>
+    Documentation(info="<html>
 <p>Basic model of a steam engine. STEAM AND POWER!</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

@@ -21,7 +21,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=3e8,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -55,7 +55,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -98,7 +98,7 @@ Medium model for water.
     r(displayUnit="mm") = 0.003,
     l=0.3,
     computeL=true,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -176,7 +176,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     omegaStateSelect=StateSelect.never,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow(
+    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
       k_fric_input=0))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -311,7 +311,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -390,7 +390,7 @@ Medium model for water.
     redeclare package Medium = Water,
     r(displayUnit="mm") = 0.003,
     l=0.2,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -613,42 +613,43 @@ equation
       Tolerance=1e-6,
       Interval=1.5,
       __Dymola_Algorithm="Dassl"),
-    Diagram(coordinateSystem(extent={{-220,-200},{220,200}}), graphics={Text(
+    Diagram(coordinateSystem(extent={{-220,-200},{220,200}}), graphics={
+        Text(
           extent={{-21,3},{21,-3}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           origin={-71,83},
           rotation=90,
           textString="boiling water"),
-                                   Text(
+        Text(
           extent={{-20,3},{20,-3}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Steam",
           origin={-56,77},
           rotation=90),
         Rectangle(extent={{96,52},{218,-86}}, lineColor={28,108,200}),
         Text(
           extent={{152,-72},{218,-84}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Brewing head"),
         Text(
           extent={{66,-172},{158,-184}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Coffee strainer and Cups"),
         Rectangle(extent={{62,-110},{162,-184}}, lineColor={28,108,200}),
         Rectangle(extent={{-210,48},{-6,-48}}, lineColor={28,108,200}),
         Text(
           extent={{-208,46},{-116,34}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Boiler and Heat Exchanger"),
         Rectangle(extent={{-210,-62},{-80,-148}},lineColor={28,108,200}),
         Text(
           extent={{-116,-134},{-80,-146}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Pump"),
         Rectangle(extent={{-176,188},{60,52}}, lineColor={28,108,200}),
         Text(
           extent={{-174,184},{-68,174}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Water and Steam Valves")}),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>

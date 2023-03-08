@@ -116,35 +116,35 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{60,50}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("T", String(
                   T,
                   format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,50},{60,0}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("p", String(
                   p,
                   format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,0},{60,-50}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("m", String(
                   m_flow,
                   format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,100},{-60,48}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
           extent={{-120,52},{-60,0}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%pressureUnit"),
         Text(
           extent={{-120,0},{-60,-52}},
-          lineColor={175,175,175},
-          textString="%massFlowUnit")}), Diagram(coordinateSystem(preserveAspectRatio=
-            false)),
+          textColor={175,175,175},
+          textString="%massFlowUnit")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>
 </html>"));

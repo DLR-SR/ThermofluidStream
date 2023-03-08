@@ -194,14 +194,16 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5), Text(
+          thickness=0.5),
+        Text(
           extent={{-90,48},{-64,6}},
-          lineColor={116,116,116},
-          textString="%N_rear"), Text(
+          textColor={116,116,116},
+          textString="%N_rear"),
+        Text(
           extent={{66,48},{92,6}},
-          lineColor={116,116,116},
+          textColor={116,116,116},
           textString="%N_fore")}),
-                            Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This is the partial parent class for all unidirectional volumes with more then one fore or rear. It is partial missing one equation its volume or the medium pressure and one for the volume work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>

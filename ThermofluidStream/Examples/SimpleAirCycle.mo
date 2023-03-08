@@ -58,7 +58,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_compressor =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=2000,
       skew=1,
       m_flow_ref=1,
@@ -75,7 +75,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     L=5e2,
     omega_from_input=false,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=Modelica.Constants.inf,
       m_flow_ref=0.36,
       skew=-0.2,
@@ -97,7 +97,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=Modelica.Constants.inf,
       m_flow_ref=0.39,
       skew=-0.2,
@@ -123,7 +123,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.Fan fan(
     redeclare package Medium = Medium_ram,
     redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=500,
       skew=1,
       m_flow_ref=0.21,
@@ -134,7 +134,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.Fan fan1(
     redeclare package Medium = Medium_ram,
     redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=1000,
       skew=1,
       eta=0.7)) annotation (Placement(transformation(
@@ -146,14 +146,14 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     r=0.05,
     l=40,
     redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-40,-94},{-20,-74}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium_ram,
     r=0.05,
     l=40,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{40,-94},{20,-74}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{118,-120},{158,-80}})));
@@ -263,38 +263,42 @@ equation
       points={{20,-84},{10,-84}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-120},{160,
-            120}}),
-    graphics={
+  annotation (
+    experiment(
+      StopTime=100,
+      Tolerance=1e-6,
+      Interval=0.1),
+    Icon(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-140,-120},{160,120}}),
+      graphics={
         Text(
           extent={{-142,96},{-114,90}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="ram inlet"),
         Text(
           extent={{-144,-64},{-110,-72}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="bleed inlet"),
         Text(
           extent={{134,70},{174,62}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="pack discharge"),
         Text(
           extent={{86,-82},{120,-90}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="ram outlet"),
         Rectangle(extent={{-102,70},{-22,-74}}, lineColor={28,108,200}),
         Text(
           extent={{-96,78},{-38,70}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="three wheel bootstrap"),
         Rectangle(extent={{32,72},{112,-72}}, lineColor={28,108,200}),
         Text(
           extent={{60,80},{118,72}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="simple cycle")}),
-        experiment(StopTime=100, Tolerance=1e-6, Interval=0.1),
-        Documentation(info="<html>
+    Documentation(info="<html>
 <p>Very simple implementation of a bootstrap air cycle used in a aircraft ecs.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

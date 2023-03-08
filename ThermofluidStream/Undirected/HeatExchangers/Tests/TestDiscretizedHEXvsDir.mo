@@ -52,7 +52,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-68,198},{-48,218}})));
   Modelica.Blocks.Sources.Ramp rampPressure(
@@ -85,7 +85,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-50,182},{-70,202}})));
   Modelica.Blocks.Continuous.PI PI1(
@@ -234,7 +234,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{90,-74},{70,-54}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB1(
@@ -242,7 +242,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -371,7 +371,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-84,-176},{-64,-156}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB2(
@@ -380,7 +380,7 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -631,25 +631,28 @@ equation
       points={{8,208},{20,208}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
-        graphics={
+  annotation (
+    experiment(StopTime=30, Tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
+      graphics={
         Rectangle(extent={{-208,-104},{170,-280}}, lineColor={28,108,200}),
         Text(
           extent={{-192,-106},{-106,-128}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Condenser"),
         Text(
           extent={{-192,80},{-106,58}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Evaporator"),
         Rectangle(extent={{-208,82},{170,-94}}, lineColor={28,108,200}),
         Text(
           extent={{-192,274},{-106,252}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Undirected"),
         Rectangle(extent={{-208,276},{170,100}}, lineColor={28,108,200})}),
-    experiment(StopTime=30, Tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
-        <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
+<p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));
 end TestDiscretizedHEXvsDir;
