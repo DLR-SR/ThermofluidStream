@@ -6233,82 +6233,103 @@ email: hubertus@modelon.se
 white-space:nowrap;
 }
 </style>
-    <h4>Version Info and Revision history</h4>
-        <ul>
-        <li>First implemented: <em>July, 2000</em>
-        by Hubertus Tummescheit
-        for the ThermoFluid Library with help from Jonas Eborn and Falko Jens Wagner
-        </li>
-      <li>Code reorganization, enhanced documentation, additional functions:   <em>December, 2002</em>
-      by <a href=\"mailto:Hubertus.Tummescheit@modelon.se\">Hubertus Tummescheit</a> and moved to Modelica
-      properties library.</li>
-        </ul>
-      <address>Author: Hubertus Tummescheit,<br>
-      Modelon AB<br>
-      Ideon Science Park<br>
-      SE-22370 Lund, Sweden<br>
-      email: hubertus@modelon.se
-      </address>
-        <p>In September 1997, the International Association for the Properties
-        of Water and Steam (<a href=\"http://www.iapws.org\">IAPWS</a>) adopted a
-        new formulation for the thermodynamic properties of water and steam for
-        industrial use. This new industrial standard is called \"IAPWS Industrial
-        Formulation for the Thermodynamic Properties of Water and Steam\" (IAPWS-IF97).
-        The formulation IAPWS-IF97 replaces the previous industrial standard IFC-67.</p>
-        <p>Based on this new formulation, a new steam table, titled \"<a href=\"https://doi.org/10.1007/978-3-662-03529-0\">Properties of Water and Steam</a>\" by W. Wagner and A. Kruse, was published by
-        the Springer-Verlag, Berlin - New-York - Tokyo in April 1998. This
-        steam table, ref. <a href=\"#steamprop\">[1]</a> is bilingual (English /
-        German) and contains a complete description of the equations of
-        IAPWS-IF97. This reference is the authoritative source of information
-        for this implementation. A mostly identical version has been published by the International
-        Association for the Properties
-        of Water and Steam (<a href=\"http://www.iapws.org\">IAPWS</a>) with permission granted to re-publish the
-        information if credit is given to IAPWS. This document is distributed with this library as
-        <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>.
-        In addition, the equations published by <a href=\"http://www.iapws.org\">IAPWS</a> for
-        the transport properties dynamic viscosity (standards document: <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/visc.pdf\">visc.pdf</a>)
-        and thermal conductivity (standards document: <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/thcond.pdf\">thcond.pdf</a>)
-        and equations for the surface tension (standards document: <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/surf.pdf\">surf.pdf</a>)
-        are also implemented in this library and included for reference.</p>
-        <p>
-        The functions in BaseIF97.mo are low level functions which should
-        only be used in those exceptions when the standard user level
-        functions in Water.mo do not contain the wanted properties.
-     </p>
-<p>Based on IAPWS-IF97, Modelica functions are available for calculating
+<h4>Version Info and Revision history</h4>
+<ul>
+  <li>
+    First implemented: <em>July, 2000</em>
+    by Hubertus Tummescheit
+    for the ThermoFluid Library with help from Jonas Eborn and Falko Jens Wagner
+  </li>
+  <li>
+    Code reorganization, enhanced documentation, additional functions:
+    <em>December, 2002</em> by
+    <a href=>Hubertus Tummescheit</a>
+    and moved to Modelica properties library.
+  </li>
+</ul>
+<address>
+  Author: Hubertus Tummescheit,<br>
+  Modelon AB<br>
+  Ideon Science Park<br>
+  SE-22370 Lund, Sweden<br>
+  email: hubertus@modelon.se
+</address>
+<p>
+In September 1997, the International Association for the Properties
+of Water and Steam (<a href=\"http://www.iapws.org\">IAPWS</a>) adopted a
+new formulation for the thermodynamic properties of water and steam for
+industrial use. This new industrial standard is called \"IAPWS Industrial
+Formulation for the Thermodynamic Properties of Water and Steam\" (IAPWS-IF97).
+The formulation IAPWS-IF97 replaces the previous industrial standard IFC-67.
+</p>
+<p>
+Based on this new formulation, a new steam table, titled
+\"<a href=\"https://doi.org/10.1007/978-3-662-03529-0\">Properties of Water and Steam</a>\"
+by W. Wagner and A. Kruse, was published by the Springer-Verlag,
+Berlin - New-York - Tokyo in April 1998. This steam table,
+ref. <a href=\"#steamprop\">[1]</a> is bilingual (English/German) and contains
+a complete description of the equations of IAPWS-IF97. This reference is the
+authoritative source of information for this implementation. A mostly
+identical version has been published by the International Association for the
+Properties of Water and Steam (<a href=\"http://www.iapws.org\">IAPWS</a>) with
+permission granted to re-publish the information if credit is given to IAPWS.
+This document is distributed with this library as
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>.
+In addition, the equations published by <a href=\"http://www.iapws.org\">IAPWS</a>
+for the transport properties dynamic viscosity (standards document:
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/visc.pdf\">visc.pdf</a>)
+and thermal conductivity (standards document:
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/thcond.pdf\">thcond.pdf</a>)
+and equations for the surface tension (standards document:
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/surf.pdf\">surf.pdf</a>)
+are also implemented in this library and included for reference.
+</p>
+<p>
+The functions in BaseIF97.mo are low level functions which should
+only be used in those exceptions when the standard user level
+functions in Water.mo do not contain the wanted properties.
+</p>
+<p>
+Based on IAPWS-IF97, Modelica functions are available for calculating
 the most common thermophysical properties (thermodynamic and transport
 properties). The implementation requires part of the common medium
-property infrastructure of the Modelica.Thermal.Properties library in the file
-Common.mo. There are a few extensions from the version of IF97 as
-documented in <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a> in order to improve performance for
-dynamic simulations. Input variables for calculating the properties are
-only implemented for a limited number of variable pairs which make sense as dynamic states: (p,h), (p,T), (p,s) and (d,T).
+property infrastructure of the Modelica.Thermal.Properties library in the
+file Common.mo. There are a few extensions from the version of IF97 as
+documented in
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>
+in order to improve performance for dynamic simulations. Input variables for
+calculating the properties are only implemented for a limited number of
+variable pairs which make sense as dynamic states: (p,h), (p,T), (p,s) and (d,T).
 </p>
+
 <hr size=\"3\" width=\"70%\">
 
 <h4><a name=\"regions\">1. Structure and Regions of IAPWS-IF97</a></h4>
-<p>The IAPWS Industrial Formulation 1997 consists of
-a set of equations for different regions which cover the following range
-of validity:</p>
+<p>
+The IAPWS Industrial Formulation 1997 consists of a set of equations for
+different regions which cover the following range of validity:
+</p>
 <table border=\"0\" cellpadding=\"4\">
-<tr>
-<td>273,15 K &lt; <em>T</em> &lt; 1073,15 K</td>
-<td><em>p</em> &lt; 100 MPa</td>
-</tr>
-<tr>
-<td>1073,15 K &lt; <em>T</em> &lt; 2273,15 K</td>
-<td><em>p</em> &lt; 10 MPa</td>
-</tr>
+  <tr>
+    <td>273,15 K &lt; <em>T</em> &lt; 1073,15 K</td>
+    <td><em>p</em> &lt; 100 MPa</td>
+  </tr>
+  <tr>
+    <td>1073,15 K &lt; <em>T</em> &lt; 2273,15 K</td>
+    <td><em>p</em> &lt; 10 MPa</td>
+  </tr>
 </table>
 <p>
 Figure 1 shows the 5 regions into which the entire range of validity of
 IAPWS-IF97 is divided. The boundaries of the regions can be directly taken
 from Fig. 1 except for the boundary between regions 2 and 3; this boundary,
-which corresponds approximately to the isentropic line <span class=\"nobr\"><em>s</em> = 5.047 kJ kg
-<sup>-1</sup>K<sup>-1</sup></span>, is defined
-by a corresponding auxiliary equation. Both regions 1 and 2 are individually
-covered by a fundamental equation for the specific Gibbs free energy <span class=\"nobr\"><em>g</em>( <em>p</em>,<em>T</em> )</span>, region 3 by a fundamental equation for the specific Helmholtz
-free energy <span class=\"nobr\"><em>f </em>(<em> <font face=\"symbol\">r</font></em>,<em>T
+which corresponds approximately to the isentropic line
+<span class=\"nobr\"><em>s</em> = 5.047 kJ kg<sup>-1</sup>K<sup>-1</sup></span>,
+is defined by a corresponding auxiliary equation. Both regions 1 and 2 are
+individually covered by a fundamental equation for the specific Gibbs free
+energy <span class=\"nobr\"><em>g</em>( <em>p</em>,<em>T</em> )</span>, region 3 by
+a fundamental equation for the specific Helmholtz free energy
+<span class=\"nobr\"><em>f </em>(<em> <font face=\"symbol\">r</font></em>,<em>T
 </em>)</span>, and the saturation curve, corresponding to region 4, by a saturation-pressure
 equation <span><em>p</em><sub>s</sub>( <em>T</em> )</span>. The high-temperature
 region 5 is also covered by a <span class=\"nobr\"><em>g</em>( <em>p</em>,<em>T</em> )</span> equation. These
@@ -6326,10 +6347,13 @@ equations</em>.
 <p>
 In addition to these basic equations, so-called <em>backward
 equations</em> are provided for regions 1, 2, and 4 in form of
-<span class=\"nobr\"><em>T</em>( <em>p</em>,<em>h</em> )</span> and <span class=\"nobr\"><em>T</em>( <em>
-p</em>,<em>s</em> )</span> for regions 1 and 2, and <span class=\"nobr\"><em>T</em><sub>s</sub>( <em>p</em> )</span> for region 4. These
-backward equations, marked in grey in Fig. 1, were developed in such a
-way that they are numerically very consistent with the corresponding
+<span class=\"nobr\"><em>T</em>( <em>p</em>,<em>h</em> )</span> and
+<span class=\"nobr\"><em>T</em>( <em>p</em>,<em>s</em> )</span> for
+regions 1 and 2, and
+<span class=\"nobr\"><em>T</em><sub>s</sub>( <em>p</em> )</span> for
+region&nbsp;4.
+These backward equations, marked in grey in Fig. 1, were developed in such
+a way that they are numerically very consistent with the corresponding
 basic equation. Thus, properties as functions of&nbsp; <em>p</em>,<em>h
 </em>and of&nbsp;<em> p</em>,<em>s </em>for regions 1 and 2, and of
 <em>p</em> for region 4 can be calculated without any iteration. As a
@@ -6340,10 +6364,13 @@ with regard to short computing times.
 </p>
 <p>
 The complete description of the individual equations of the new industrial
-formulation IAPWS-IF97 is given in <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>. Comprehensive information on
-IAPWS-IF97 (requirements, concept, accuracy, consistency along region boundaries,
+formulation IAPWS-IF97 is given in
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>.
+Comprehensive information on IAPWS-IF97 (requirements, concept, accuracy, consistency along region boundaries,
 and the increase of computing speed in comparison with IFC-67, etc.) can
-be taken from <a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a> or [2].
+be taken from
+<a href=\"modelica://Modelica/Resources/Documentation/Media/Water/IF97documentation/IF97.pdf\">IF97.pdf</a>
+or [2].
 </p>
 <p>
 <a name=\"steamprop\">[1]<em>Wagner, W., Kruse, A.</em> Properties of Water
@@ -6361,245 +6388,260 @@ of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (
 
 <h4>2. Calculable Properties</h4>
 <table border=\"1\" cellpadding=\"2\" cellspacing=\"0\">
-       <tbody>
-       <tr>
-       <td bgcolor=\"#cccccc\"><br>
-      </td>
-      <td bgcolor=\"#cccccc\"><strong>Common name</strong><br>
-       </td>
-       <td bgcolor=\"#cccccc\"><strong>Abbreviation</strong><br>
-       </td>
-       <td bgcolor=\"#cccccc\"><strong>Unit</strong><br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;1<br>
-      </td>
-      <td>Pressure</td>
-       <td>p<br>
-        </td>
-       <td>Pa<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;2<br>
-      </td>
-      <td>Temperature</td>
-       <td>T<br>
-       </td>
-       <td>K<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;3<br>
-      </td>
-      <td>Density</td>
-        <td>d<br>
-        </td>
-       <td>kg/m<sup>3</sup><br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;4<br>
-      </td>
-      <td>Specific volume</td>
-        <td>v<br>
-        </td>
-       <td>m<sup>3</sup>/kg<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;5<br>
-      </td>
-      <td>Specific enthalpy</td>
-       <td>h<br>
-       </td>
-       <td>J/kg<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;6<br>
-      </td>
-      <td>Specific entropy</td>
-       <td>s<br>
-       </td>
-       <td>J/(kg K)<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;7<br>
-      </td>
-      <td>Specific internal energy<br>
-       </td>
-       <td>u<br>
-       </td>
-       <td>J/kg<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;8<br>
-      </td>
-      <td>Specific isobaric heat capacity</td>
-       <td>c<sub>p</sub><br>
-       </td>
-       <td>J/(kg K)<br>
-       </td>
-       </tr>
-       <tr>
-       <td>&nbsp;9<br>
-      </td>
-      <td>Specific isochoric heat capacity</td>
-       <td>c<sub>v</sub><br>
-       </td>
-       <td>J/(kg K)<br>
-       </td>
-       </tr>
-       <tr>
-       <td>10<br>
-      </td>
-      <td>Isentropic exponent, kappa = -(v/p) (dp/dv)<sub>s</sub></td>
-     <td>kappa (&kappa;)<br>
-     </td>
-     <td>1<br>
-     </td>
-     </tr>
-     <tr>
-     <td>11<br>
-      </td>
-      <td>Speed of sound<br>
-     </td>
-     <td>a<br>
-     </td>
-     <td>m/s<br>
-     </td>
-     </tr>
-     <tr>
-     <td>12<br>
-      </td>
-      <td>Dryness fraction<br>
-     </td>
-     <td>x<br>
-     </td>
-     <td>kg/kg<br>
-     </td>
-     </tr>
-     <tr>
-     <td>13<br>
-      </td>
-      <td>Specific Helmholtz free energy, f = u - Ts</td>
-     <td>f<br>
-     </td>
-     <td>J/kg<br>
-     </td>
-     </tr>
-     <tr>
-     <td>14<br>
-      </td>
-      <td>Specific Gibbs free energy, g = h - Ts</td>
-     <td>g<br>
-     </td>
-     <td>J/kg<br>
-     </td>
-     </tr>
-     <tr>
-     <td>15<br>
-      </td>
-      <td>Isenthalpic exponent, theta = -(v/p) (dp/dv)<sub>h</sub></td>
-     <td>theta (&theta;)<br>
-     </td>
-     <td>1<br>
-     </td>
-     </tr>
-     <tr>
-     <td>16<br>
-      </td>
-      <td>Isobaric volume expansion coefficient, alpha = v<sup>-1</sup> (dv/dT)<sub>p</sub></td>
-     <td>alpha (&alpha;)<br>
-     </td>
-       <td>1/K<br>
-     </td>
-     </tr>
-     <tr>
-     <td>17<br>
-      </td>
-      <td>Isochoric pressure coefficient, beta = p<sup>-1</sup>(dp/dT)<sub>v</sub></td>
-     <td>beta (&beta;)<br>
-     </td>
-     <td>1/K<br>
-     </td>
-     </tr>
-     <tr>
-     <td>18<br>
-     </td>
-     <td>Isothermal compressibility, gamma = -v<sup>-1</sup>(dv/dp)<sub>T</sub></td>
-     <td>gamma (&gamma;)<br>
-     </td>
-     <td>1/Pa<br>
-     </td>
-     </tr>
-     <!-- <tr><td>f</td><td>Fugacity</td></tr> --> <tr>
-     <td>19<br>
-      </td>
-      <td>Dynamic viscosity</td>
-     <td>eta (&eta;)<br>
-     </td>
-     <td>Pa s<br>
-     </td>
-     </tr>
-     <tr>
-     <td>20<br>
-      </td>
-      <td>Kinematic viscosity</td>
-     <td>nu (&nu;)<br>
-     </td>
-     <td>m<sup>2</sup>/s<br>
-     </td>
-     </tr>
-     <!-- <tr><td>Pr</td><td>Prandtl number</td></tr> --> <tr>
-     <td>21<br>
-      </td>
-      <td>Thermal conductivity</td>
-     <td>lambda (&lambda;)<br>
-     </td>
-     <td>W/(m K)<br>
-     </td>
-     </tr>
-     <tr>
-     <td>22<br>
-      </td>
-      <td>Surface tension</td>
-     <td>sigma (&sigma;)<br>
-     </td>
-     <td>N/m<br>
-     </td>
-     </tr>
-  </tbody>
+  <tr>
+    <td bgcolor=\"#cccccc\"><br>
+    </td>
+    <td bgcolor=\"#cccccc\"><strong>Common name</strong><br>
+    </td>
+    <td bgcolor=\"#cccccc\"><strong>Abbreviation</strong><br>
+    </td>
+    <td bgcolor=\"#cccccc\"><strong>Unit</strong><br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;1<br>
+    </td>
+    <td>Pressure</td>
+    <td>p<br>
+    </td>
+    <td>Pa<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;2<br>
+    </td>
+    <td>Temperature</td>
+    <td>T<br>
+    </td>
+    <td>K<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;3<br>
+    </td>
+    <td>Density</td>
+    <td>d<br>
+    </td>
+    <td>kg/m<sup>3</sup><br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;4<br>
+    </td>
+    <td>Specific volume</td>
+    <td>v<br>
+    </td>
+    <td>m<sup>3</sup>/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;5<br>
+    </td>
+    <td>Specific enthalpy</td>
+    <td>h<br>
+    </td>
+    <td>J/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;6<br>
+    </td>
+    <td>Specific entropy</td>
+    <td>s<br>
+    </td>
+    <td>J/(kg K)<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;7<br>
+    </td>
+    <td>Specific internal energy<br>
+    </td>
+    <td>u<br>
+    </td>
+    <td>J/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;8<br>
+    </td>
+    <td>Specific isobaric heat capacity</td>
+    <td>c<sub>p</sub><br>
+    </td>
+    <td>J/(kg K)<br>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;9<br>
+    </td>
+    <td>Specific isochoric heat capacity</td>
+    <td>c<sub>v</sub><br>
+    </td>
+    <td>J/(kg K)<br>
+    </td>
+  </tr>
+  <tr>
+    <td>10<br>
+    </td>
+    <td>Isentropic exponent, kappa = -(v/p) (dp/dv)<sub>s</sub></td>
+    <td>kappa (&kappa;)<br>
+    </td>
+    <td>1<br>
+    </td>
+  </tr>
+  <tr>
+    <td>11<br>
+    </td>
+    <td>Speed of sound<br>
+    </td>
+    <td>a<br>
+    </td>
+    <td>m/s<br>
+    </td>
+  </tr>
+  <tr>
+    <td>12<br>
+    </td>
+    <td>Dryness fraction<br>
+    </td>
+    <td>x<br>
+    </td>
+    <td>kg/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>13<br>
+    </td>
+    <td>Specific Helmholtz free energy, f = u - Ts</td>
+    <td>f<br>
+    </td>
+    <td>J/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>14<br>
+    </td>
+    <td>Specific Gibbs free energy, g = h - Ts</td>
+    <td>g<br>
+    </td>
+    <td>J/kg<br>
+    </td>
+  </tr>
+  <tr>
+    <td>15<br>
+    </td>
+    <td>Isenthalpic exponent, theta = -(v/p) (dp/dv)<sub>h</sub></td>
+    <td>theta (&theta;)<br>
+    </td>
+    <td>1<br>
+    </td>
+  </tr>
+  <tr>
+    <td>16<br>
+    </td>
+    <td>Isobaric volume expansion coefficient, alpha = v<sup>-1</sup> (dv/dT)<sub>p</sub></td>
+    <td>alpha (&alpha;)<br>
+    </td>
+    <td>1/K<br>
+    </td>
+  </tr>
+  <tr>
+    <td>17<br>
+    </td>
+    <td>Isochoric pressure coefficient, beta = p<sup>-1</sup>(dp/dT)<sub>v</sub></td>
+    <td>beta (&beta;)<br>
+    </td>
+    <td>1/K<br>
+    </td>
+  </tr>
+  <tr>
+    <td>18<br>
+    </td>
+    <td>Isothermal compressibility, gamma = -v<sup>-1</sup>(dv/dp)<sub>T</sub></td>
+    <td>gamma (&gamma;)<br>
+    </td>
+    <td>1/Pa<br>
+    </td>
+  </tr>
+  <!-- <tr><td>f</td><td>Fugacity</td></tr> -->
+  <tr>
+    <td>19<br>
+    </td>
+    <td>Dynamic viscosity</td>
+    <td>eta (&eta;)<br>
+    </td>
+    <td>Pa s<br>
+    </td>
+  </tr>
+  <tr>
+    <td>20<br>
+    </td>
+    <td>Kinematic viscosity</td>
+    <td>nu (&nu;)<br>
+    </td>
+    <td>m<sup>2</sup>/s<br>
+    </td>
+  </tr>
+  <!-- <tr><td>Pr</td><td>Prandtl number</td></tr> -->
+  <tr>
+    <td>21<br>
+    </td>
+    <td>Thermal conductivity</td>
+    <td>lambda (&lambda;)<br>
+    </td>
+    <td>W/(m K)<br>
+    </td>
+  </tr>
+  <tr>
+    <td>22<br>
+    </td>
+    <td>Surface tension</td>
+    <td>sigma (&sigma;)<br>
+    </td>
+    <td>N/m<br>
+    </td>
+  </tr>
 </table>
-<p>The properties 1-11 are calculated by default with the functions for dynamic
+<p>
+The properties 1-11 are calculated by default with the functions for dynamic
 simulation, 2 of these variables are the dynamic states and are the inputs
 to calculate all other properties. In addition to these properties
 of general interest, the entries to the thermodynamic Jacobian matrix which render
-the mass- and energy balances explicit in the input variables to the property calculation are also calculated.
-For an explanatory example using pressure and specific enthalpy as states, see the Examples sub-package.</p>
-<p>The high-level calls to steam properties are grouped into records comprising both the properties of general interest
-and the entries to the thermodynamic Jacobian. If additional properties are
-needed the low level functions in BaseIF97 provide more choice.</p>
+the mass- and energy balances explicit in the input variables to the property
+calculation are also calculated.
+For an explanatory example using pressure and specific enthalpy as states,
+see the Examples sub-package.
+</p>
+<p>
+The high-level calls to steam properties are grouped into records comprising
+both the properties of general interest and the entries to the thermodynamic
+Jacobian. If additional properties are needed the low level functions in
+BaseIF97 provide more choice.
+</p>
+
 <hr size=\"3\" width=\"90%\">
+
 <h4>Additional functions</h4>
 <ul>
-<li>Function <strong>boundaryvals_p</strong> computes the temperature and the specific enthalpy and
-entropy on both phase boundaries as a function of p
-</li>
-<li>Function <strong>boundaryderivs_p</strong> is the Modelica derivative function of <strong>boundaryvals_p</strong>
-</li>
-<li>Function <strong>extraDerivs_ph</strong> computes all entries to Bridgmans tables for all
-one-phase regions of IF97 using inputs (p,h). All 336 directional derivatives of the
-thermodynamic surface can be computed as a ratio of two entries in the return data, see package Common
-for details.
-</li>
-<li>Function <strong>extraDerivs_pT</strong> computes all entries to Bridgmans tables for all
-one-phase regions of IF97 using inputs (p,T).
-</li>
+  <li>
+    Function <strong>boundaryvals_p</strong> computes the temperature and the
+    specific enthalpy and entropy on both phase boundaries as a function of p.
+  </li>
+  <li>
+    Function <strong>boundaryderivs_p</strong> is the Modelica derivative
+    function of <strong>boundaryvals_p</strong>.
+  </li>
+  <li>
+    Function <strong>extraDerivs_ph</strong> computes all entries to Bridgmans
+    tables for all one-phase regions of IF97 using inputs (p,h). All 336
+    directional derivatives of the thermodynamic surface can be computed
+    as a ratio of two entries in the return data, see package Common
+    for details.
+  </li>
+  <li>
+    Function <strong>extraDerivs_pT</strong> computes all entries to Bridgmans
+    tables for all one-phase regions of IF97 using inputs (p,T).
+  </li>
 </ul>
 </html>"));
   end BaseIF97;
