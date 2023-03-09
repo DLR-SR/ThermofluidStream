@@ -22,7 +22,6 @@ package IF97_Utilities
 
     //===================================================================
     //                      Constant declarations
-
     //===================================================================
     record data "Constant IF97 data and region limits"
       extends Modelica.Icons.Record;
@@ -200,7 +199,6 @@ email: hubertus@modelon.se
 
       //===================================================================
       //                      "Public" functions
-
       //===================================================================
 
       function boundary23ofT
@@ -845,7 +843,7 @@ email: hubertus@modelon.se
 
         extends Modelica.Icons.Function;
         input SI.Pressure p "Pressure";
-        output SI.SpecificEntropy s;
+        output SI.SpecificEntropy s "Specific entropy";
       protected
         Real x "Auxiliary variable";
       algorithm
@@ -1565,7 +1563,7 @@ region for two input variables.
   </li>
   <li>
     Function <strong>region_ps</strong> compute the region of IAPWS/IF97 for
-    input pair pressure and specific entropy
+    input pair pressure and specific entropy.
   </li>
   <li>
     Function <strong>region_dT</strong> compute the region of IAPWS/IF97 for
@@ -1740,7 +1738,6 @@ email: hubertus@modelon.se
 
     //===================================================================
     //                      Base functions
-
     //===================================================================
 
     package Basic "Base functions as described in IAWPS/IF97"
@@ -3249,15 +3246,15 @@ email: hubertus@modelon.se
           pstar;
         annotation (Documentation(info="<html>
 <p>
-  Equation number 1 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Gaithersburg, Maryland, USA<br>
-  September 2001<br>
-  Supplementary Release on&nbsp; Backward Equations for Pressure as a
-  Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
-  Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
+Equation number 1 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Gaithersburg, Maryland, USA<br>
+September 2001<br>
+Supplementary Release on&nbsp; Backward Equations for Pressure as a
+Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
+Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
 </p>
-  </html>"));
+</html>"));
       end p1_hs;
 
       function h2ab_s "Boundary between regions 2a and 2b"
@@ -3273,16 +3270,16 @@ email: hubertus@modelon.se
       algorithm
         h := (n[1] + n[2]*sigma + n[3]*sigma^2 + n[4]*sigma^3)*hstar;
         annotation (Documentation(info="<html>
-  <p>
-  Equation number 2 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Gaithersburg, Maryland, USA<br>
-  September 2001<br>
-  Supplementary Release on&nbsp; Backward Equations for Pressure as a
-  Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
-  Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
+<p>
+Equation number 2 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Gaithersburg, Maryland, USA<br>
+September 2001<br>
+Supplementary Release on&nbsp; Backward Equations for Pressure as a
+Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
+Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
 </p>
-  </html>"));
+</html>"));
       end h2ab_s;
 
       function p2a_hs
@@ -3314,16 +3311,16 @@ email: hubertus@modelon.se
         p := sum(n[i]*(eta - 0.5)^I[i]*(sigma - 1.2)^J[i] for i in 1:29)^4*
           pstar;
         annotation (Documentation(info="<html>
-  <p>
-  Equation number 3 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Gaithersburg, Maryland, USA<br>
-  September 2001<br>
-  Supplementary Release on&nbsp; Backward Equations for Pressure as a
-  Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
-  Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
+<p>
+Equation number 3 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Gaithersburg, Maryland, USA<br>
+September 2001<br>
+Supplementary Release on&nbsp; Backward Equations for Pressure as a
+Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
+Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
 </p>
-  </html>"));
+</html>"));
       end p2a_hs;
 
       function p2b_hs
@@ -3365,7 +3362,7 @@ Supplementary Release on&nbsp; Backward Equations for Pressure as a
 Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
 Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
 </p>
-      </html>"));
+</html>"));
       end p2b_hs;
 
       function p2c_hs
@@ -3398,16 +3395,16 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         p := sum(n[i]*(eta - 0.7)^I[i]*(sigma - 1.1)^J[i] for i in 1:31)^4*
           pstar;
         annotation (Documentation(info="<html>
-      <p>
-      Equation number 5 from:<br>
-      The International Association for the Properties of Water and Steam<br>
-      Gaithersburg, Maryland, USA<br>
-      September 2001<br>
-      Supplementary Release on&nbsp; Backward Equations for Pressure as a
-      Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
-      Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
-   </p>
-      </html>"));
+<p>
+Equation number 5 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Gaithersburg, Maryland, USA<br>
+September 2001<br>
+Supplementary Release on&nbsp; Backward Equations for Pressure as a
+Function of Enthalpy and Entropy p(h,s) to the IAPWS Industrial
+Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
+</p>
+</html>"));
       end p2c_hs;
 
       // Inverses from the 2003 additions to IF97
@@ -3425,19 +3422,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       algorithm
         h := (n[1] + n[2]*pi + n[3]*pi^2 + n[4]*pi^3)*hstar;
         annotation (Documentation(info="<html>
-      <p>
-      &nbsp;Equation number 1 from:
-      </p>
-      <div style=\"text-align: center;\">&nbsp;[1] The international Association
-      for the Properties of Water and Steam<br>
-      &nbsp;Vejle, Denmark<br>
-      &nbsp;August 2003<br>
-      &nbsp;Supplementary Release on Backward Equations for the Functions
-      T(p,h), v(p,h) and T(p,s),<br>
-      &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
-      the Thermodynamic Properties of<br>
-      &nbsp;Water and Steam</div>
-      </html>"));
+<p>
+Equation number 1 from:
+</p>
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end h3ab_p;
 
       function T3a_ph "Region 3 a: inverse function T(p,h)"
@@ -3468,18 +3465,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         T := sum(n[i]*(pi + 0.240)^I[i]*(eta - 0.615)^J[i] for i in 1:31)*Tstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 2 from:
+Equation number 2 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
- </html>"));
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end T3a_ph;
 
       function T3b_ph "Region 3 b: inverse function T(p,h)"
@@ -3510,19 +3507,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       algorithm
         T := sum(n[i]*(pi + 0.298)^I[i]*(eta - 0.720)^J[i] for i in 1:33)*Tstar;
         annotation (Documentation(info="<html>
- <p>
- &nbsp;Equation number 3 from:
+<p>
+Equation number 3 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
- </html>"));
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end T3b_ph;
 
       function v3a_ph "Region 3 a: inverse function v(p,h)"
@@ -3554,18 +3551,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         v := sum(n[i]*(pi + 0.128)^I[i]*(eta - 0.727)^J[i] for i in 1:32)*vstar;
         annotation (Documentation(info="<html>
 <p>
-&nbsp;Equation number 4 from:
+Equation number 4 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
- </html>"));
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end v3a_ph;
 
       function v3b_ph "Region 3 b: inverse function v(p,h)"
@@ -3598,18 +3595,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           vstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 5 from:
+Equation number 5 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
- </html>"));
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end v3b_ph;
 
       function T3a_ps "Region 3 a: inverse function T(p,s)"
@@ -3643,18 +3640,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           Tstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 6 from:
+Equation number 6 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
- </html>"));
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
+</html>"));
       end T3a_ps;
 
       function T3b_ps "Region 3 b: inverse function T(p,s)"
@@ -3685,17 +3682,17 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           Tstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 7 from:
+Equation number 7 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
 </html>"));
       end T3b_ps;
 
@@ -3728,17 +3725,17 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           vstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 8 from:
+Equation number 8 from:
 </p>
- <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
+<div style=\"text-align: center;\">&nbsp;[1] The international Association
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
 </html>"));
       end v3a_ps;
 
@@ -3772,17 +3769,17 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           vstar;
         annotation (Documentation(info="<html>
 <p>
- &nbsp;Equation number 9 from:
+Equation number 9 from:
 </p>
 <div style=\"text-align: center;\">&nbsp;[1] The international Association
- for the Properties of Water and Steam<br>
- &nbsp;Vejle, Denmark<br>
- &nbsp;August 2003<br>
- &nbsp;Supplementary Release on Backward Equations for the Functions
- T(p,h), v(p,h) and T(p,s),<br>
- &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
- the Thermodynamic Properties of<br>
- &nbsp;Water and Steam</div>
+for the Properties of Water and Steam<br>
+&nbsp;Vejle, Denmark<br>
+&nbsp;August 2003<br>
+&nbsp;Supplementary Release on Backward Equations for the Functions
+T(p,h), v(p,h) and T(p,s),<br>
+&nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+the Thermodynamic Properties of<br>
+&nbsp;Water and Steam</div>
 </html>"));
       end v3b_ps;
 
@@ -3918,15 +3915,15 @@ the Thermodynamic Properties of<br>
         pm := (1 - 0.626000e6*(1 - sigma^(-3)) + 0.197135e6*(1 - sigma^(21.2)))
           *pn;
         annotation (Documentation(info="<html>
-  <p>
-  Equation 1 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Milan, Italy<br>
-  September 1993<br>
-  Release on the Pressure along the Melting and the Sublimation Curves of
-  Ordinary Water Substance<br>
+<p>
+Equation 1 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Milan, Italy<br>
+September 1993<br>
+Release on the Pressure along the Melting and the Sublimation Curves of
+Ordinary Water Substance<br>
 </p>
-  </html>"));
+</html>"));
       end pmIceI_T;
 
       function pmIceIII_T
@@ -3942,15 +3939,15 @@ the Thermodynamic Properties of<br>
       algorithm
         pm := (1 - 0.295252*(1 - sigma^60))*pn;
         annotation (Documentation(info="<html>
-  <p>
-  Equation 2 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Milan, Italy<br>
-  September 1993<br>
-  Release on the Pressure along the Melting and the Sublimation Curves of
-  Ordinary Water Substance<br>
+<p>
+Equation 2 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Milan, Italy<br>
+September 1993<br>
+Release on the Pressure along the Melting and the Sublimation Curves of
+Ordinary Water Substance<br>
 </p>
-  </html>"));
+</html>"));
       end pmIceIII_T;
 
       function pmIceV_T
@@ -3967,15 +3964,15 @@ the Thermodynamic Properties of<br>
       algorithm
         pm := (1 - 1.18721*(1 - sigma^8))*pn;
         annotation (Documentation(info="<html>
-  <p>
-  Equation 3 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Milan, Italy<br>
-  September 1993<br>
-  Release on the Pressure along the Melting and the Sublimation Curves of
-  Ordinary Water Substance<br>
+<p>
+Equation 3 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Milan, Italy<br>
+September 1993<br>
+Release on the Pressure along the Melting and the Sublimation Curves of
+Ordinary Water Substance<br>
 </p>
-  </html>"));
+</html>"));
       end pmIceV_T;
 
       function sublimationPressure_T
@@ -3993,15 +3990,15 @@ the Thermodynamic Properties of<br>
         psubl := Modelica.Math.exp(a[1]*(1 - sigma^(-1.5)) + a[2]*(1 - sigma^(-1.25)))
           *pn;
         annotation (Documentation(info="<html>
-  <p>
-  Equation 6 from:<br>
-  The International Association for the Properties of Water and Steam<br>
-  Milan, Italy<br>
-  September 1993<br>
-  Release on the Pressure along the Melting and the Sublimation Curves of
-  Ordinary Water Substance<br>
+<p>
+Equation 6 from:<br>
+The International Association for the Properties of Water and Steam<br>
+Milan, Italy<br>
+September 1993<br>
+Release on the Pressure along the Melting and the Sublimation Curves of
+Ordinary Water Substance<br>
 </p>
-  </html>"));
+</html>"));
       end sublimationPressure_T;
 
       annotation (Documentation(info="<html>
@@ -5067,7 +5064,6 @@ email: hubertus@modelon.se
 
       //===================================================================
       //            Iterative version for some pairs/regions
-
       //===================================================================
       function fixdT "Region limits for inverse iteration in region 3"
 
@@ -5656,7 +5652,8 @@ email: hubertus@modelon.se
           "Error in inverse function tofpst5: iteration failed");
       end tofpst5;
 
-      annotation (Documentation(info="<html><h4>Package description</h4>
+      annotation (Documentation(info="<html>
+<h4>Package description</h4>
 <h4>Package contents</h4>
 <ul>
   <li>
@@ -5834,7 +5831,8 @@ one phase regions of IAPWS/IF97
     by Hubertus Tummescheit
   </li>
 </ul>
-<address>Author: Hubertus Tummescheit,<br>
+<address>
+Author: Hubertus Tummescheit,<br>
 Modelon AB<br>
 Ideon Science Park<br>
 SE-22370 Lund, Sweden<br>
@@ -6337,10 +6335,10 @@ region 5 is also covered by a <span class=\"nobr\"><em>g</em>( <em>p</em>,<em>T<
 equations</em>.
 </p>
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-  <caption align=\"bottom\">Figure 1: Regions and equations of IAPWS-IF97</caption>
+  <caption>Figure 1: Regions and equations of IAPWS-IF97</caption>
   <tr>
     <td>
-    <img src=\"modelica://Modelica/Resources/Images/Media/Water/if97.png\" alt=\"Regions and equations of IAPWS-IF97\">
+      <img src=\"modelica://Modelica/Resources/Images/Media/Water/if97.png\" alt=\"Regions and equations of IAPWS-IF97\">
     </td>
   </tr>
 </table>
@@ -6384,6 +6382,7 @@ I., &#352;ifner, O., Takaishi, Y., Tanishita, I., Tr&uuml;benbach, J., and Willk
 Th.</em> The IAPWS Industrial Formulation 1997 for the Thermodynamic Properties
 of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (2000), 150 - 182.
 </p>
+
 <hr size=\"3\" width=\"90%\">
 
 <h4>2. Calculable Properties</h4>
@@ -6618,6 +6617,7 @@ both the properties of general interest and the entries to the thermodynamic
 Jacobian. If additional properties are needed the low level functions in
 BaseIF97 provide more choice.
 </p>
+
 
 <hr size=\"3\" width=\"90%\">
 
@@ -8864,7 +8864,8 @@ Modelica/Resources/Documentation/Media/Water/IF97documentation):
     and moved to Modelica properties library.
   </li>
 </ul>
-<address>Author: Hubertus Tummescheit,<br>
+<address>
+Author: Hubertus Tummescheit,<br>
 Modelon AB<br>
 Ideon Science Park<br>
 SE-22370 Lund, Sweden<br>
