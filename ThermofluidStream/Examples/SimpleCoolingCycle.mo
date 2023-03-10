@@ -259,10 +259,16 @@ equation
           -152.5,-38},{-146,-38},{-146,-60},{-142,-60}}, color={0,0,127}));
   connect(prescribedHeatFlow.Q_flow, combiTimeTable.y[1])
     annotation (Line(points={{-154,20},{-167,20}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-200,-120},{180,100}})),
-    experiment(StopTime=10000, Tolerance=1e-6, Interval=10, __Dymola_Algorithm="Dassl"),
-        Documentation(info="<html>
+  annotation (
+    experiment(
+      StopTime=10000,
+      Tolerance=1e-6,
+      Interval=10,
+      __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-200,-120},{180,100}})),
+    Documentation(info="<html>
 <p>This cooling cycle is regulated to hit a temperature target. The load is a prescribed heatflow and comes from a table.</p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));

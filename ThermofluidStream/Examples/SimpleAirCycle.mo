@@ -268,7 +268,7 @@ equation
       StopTime=100,
       Tolerance=1e-6,
       Interval=0.1),
-    Icon(coordinateSystem(preserveAspectRatio=false)),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(
       coordinateSystem(preserveAspectRatio=false, extent={{-140,-120},{160,120}}),
       graphics={
