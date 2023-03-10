@@ -1,0 +1,9 @@
+time
+reservoir.M
+reservoir.U_med
+reservoir.m_flow_fore
+reservoir.m_flow_rear
+reservoir2.M
+reservoir2.U_med
+reservoir2.m_flow_in
+reservoir2.m_flow_out

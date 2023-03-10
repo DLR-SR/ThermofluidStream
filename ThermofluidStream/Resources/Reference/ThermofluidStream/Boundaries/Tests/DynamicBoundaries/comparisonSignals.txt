@@ -1,0 +1,7 @@
+time
+source.outlet.m_flow
+source1.outlet.m_flow
+source2.outlet.m_flow
+source3.outlet.m_flow
+source4.outlet.m_flow
+source5.outlet.m_flow

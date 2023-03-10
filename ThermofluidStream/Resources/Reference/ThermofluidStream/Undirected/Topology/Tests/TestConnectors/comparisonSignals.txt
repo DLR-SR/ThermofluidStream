@@ -1,0 +1,13 @@
+time
+boundary_fore1.rear.m_flow
+boundary_fore2.rear.m_flow
+boundary_fore3.rear.m_flow
+boundary_fore5.rear.m_flow
+boundary_rear.fore.m_flow
+connectRearOutlet.rear.m_flow
+flowResistance2.rear.m_flow
+sink3.inlet.m_flow
+source1.outlet.m_flow
+source2.outlet.m_flow
+pulse.T_start
+pulse.count

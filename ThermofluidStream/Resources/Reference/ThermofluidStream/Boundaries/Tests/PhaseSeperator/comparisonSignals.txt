@@ -1,0 +1,14 @@
+time
+accumulator.M
+accumulator.U_med
+accumulator.m_flow_in
+accumulator.m_flow_out
+receiver.M
+receiver.U_med
+receiver.m_flow_out
+source.outlet.m_flow
+timeTable.a
+timeTable.b
+timeTable.last
+timeTable.nextEvent
+timeTable.nextEventScaled

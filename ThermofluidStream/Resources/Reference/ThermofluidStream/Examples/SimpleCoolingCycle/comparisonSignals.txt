@@ -1,0 +1,16 @@
+time
+PI.x
+PID.I.y
+fan.m_flow
+flexVolume.M
+flexVolume.U_med
+heatCapacitor.T
+heatExchange_CounterFlowNTU.h_out_A
+heatExchange_CounterFlowNTU.h_out_B
+pump.m_flow
+pump.omega
+speed.phi
+speed1.phi
+speed1.w
+combiTimeTable.nextTimeEvent
+combiTimeTable.nextTimeEventScaled

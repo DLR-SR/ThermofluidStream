@@ -1,0 +1,15 @@
+time
+PID1.I.y
+PID2.I.y
+boilerEspresso.phaseSeparator2_1.M
+boilerEspresso.phaseSeparator2_1.U_med
+firstOrder1.y
+firstOrder2.y
+firstOrder3.y
+source.outlet.m_flow
+tanValve1.inlet.m_flow
+tanValve2.inlet.m_flow
+pulse.T_start
+pulse.count
+pulse1.T_start
+pulse1.count

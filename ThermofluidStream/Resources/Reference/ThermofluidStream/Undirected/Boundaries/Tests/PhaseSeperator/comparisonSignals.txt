@@ -1,0 +1,14 @@
+time
+accumulator.M
+accumulator.U_med
+boundaryFore1.rear.m_flow
+boundaryRear.fore.m_flow
+flowResistance2.rear.m_flow
+receiver.M
+receiver.U_med
+receiver.m_flow_fore
+timeTable.a
+timeTable.b
+timeTable.last
+timeTable.nextEvent
+timeTable.nextEventScaled

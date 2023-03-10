@@ -1,0 +1,5 @@
+time
+compressor1.m_flow
+compressor1.omega
+compressor1.phi
+source.outlet.m_flow

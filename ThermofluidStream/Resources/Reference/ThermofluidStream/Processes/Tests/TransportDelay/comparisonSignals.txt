@@ -1,0 +1,9 @@
+time
+transportDelay.inlet.m_flow
+transportDelay.x
+transportDelay1.inlet.m_flow
+transportDelay1.x
+sawTooth.T_start
+sawTooth.count
+sawTooth1.T_start
+sawTooth1.count
