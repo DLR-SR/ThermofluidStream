@@ -1,4 +1,4 @@
-﻿within ;
+within ;
 package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
   extends Modelica.Icons.Package;
 
