@@ -31,7 +31,7 @@ model MCV "Massflow and volume control valve"
   parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.volume_flow));
   parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
-  parameter Real k1(unit="1") = 100 "Timeconstant factor"
+  parameter Real k1(unit="1") = 100 "Time constant factor"
     annotation(Dialog(tab="Advanced"));
   parameter Real k2(unit="1") = 100 "Integrator windup factor"
     annotation(Dialog(tab="Advanced"));
