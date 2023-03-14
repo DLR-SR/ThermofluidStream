@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.HeatExchangers;
+within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
 
   replaceable package MediumA =
@@ -8,26 +8,26 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
-  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby
-    Internal.PartialConductionElementHEX(
-    final A=A/nCells,
-    final V=V_Hex/nCells,
-    redeclare package Medium = MediumA,
-    final enforce_global_energy_conservation=enforce_global_energy_conservation,
-    final init=init_A,
-    final h_0= h0_A)
+  replaceable model ConductionElementA = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium = MediumA,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation,
+      final init=init_A,
+      final h_0= h0_A)
     "Heat transfer element model for side A"
-      annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
-  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby
-    Internal.PartialConductionElementHEX(
-    final A=A/nCells,
-    final V=V_Hex/nCells,
-    redeclare package Medium = MediumB,
-    final enforce_global_energy_conservation=enforce_global_energy_conservation,
-    final init=init_B,
-    final h_0= h0_B)
+    annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
+  replaceable model ConductionElementB = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium = MediumB,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation,
+      final init=init_B,
+      final h_0= h0_B)
     "Heat transfer element model for side B"
-      annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"

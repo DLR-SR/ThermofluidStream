@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.HeatExchangers.Internal;
+within ThermofluidStream.HeatExchangers.Internal;
 model DiscretizedHexIcon
 
   annotation (
