@@ -126,9 +126,9 @@ equation
     experiment(
       StopTime=25,
       Interval=0.025,
-   Tolerance=1e-6,
+      Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
-    Icon(coordinateSystem),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>This water hammer pumps water into a reservoir by using the dynamic pressure when closing a valve. </p>
 <p><br>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>

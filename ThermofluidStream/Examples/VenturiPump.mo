@@ -149,7 +149,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(

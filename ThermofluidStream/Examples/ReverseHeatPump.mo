@@ -624,7 +624,7 @@ equation
       Tolerance=1e-6,
       Interval=0.2,
       __Dymola_Algorithm="Dassl"),
-    Icon(coordinateSystem),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(extent={{-260,-80},{180,220}}),
       graphics={
         Polygon(

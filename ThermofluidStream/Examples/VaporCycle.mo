@@ -87,7 +87,7 @@ model VaporCycle
     redeclare package Medium = SecondaryMedium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-66,58},{-46,78}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(
@@ -100,7 +100,7 @@ model VaporCycle
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{82,-70},{62,-50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(
@@ -491,14 +491,16 @@ equation
       points={{56,-48},{48,-48},{48,-44},{10.2,-44}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-220,-160},{240,100}})),
+  annotation (
     experiment(
       StopTime=1500,
-   Tolerance=1e-6,
-   Interval=1.5,
+      Tolerance=1e-6,
+      Interval=1.5,
       __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-220,-160},{240,100}})),
     Documentation(info="<html>
-        <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
+<p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));
 end VaporCycle;

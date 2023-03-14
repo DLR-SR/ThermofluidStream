@@ -236,7 +236,8 @@ equation
   connect(switch.u, tanValve.u) annotation (Line(points={{-10,62},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
   connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+  annotation (
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(
       coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
       graphics={
