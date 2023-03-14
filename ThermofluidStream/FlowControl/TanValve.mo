@@ -15,7 +15,7 @@ model TanValve "Valve with tan-shaped flow resistance"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean invertInput = false "Zero represents a closed valve for non-inverted, open for inverted";
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
-  parameter SI.Pressure p_ref = 1e5 "Rreference pressurre";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
 protected
