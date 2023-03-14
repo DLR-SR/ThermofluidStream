@@ -3230,6 +3230,7 @@ email: hubertus@modelon.se
         input SI.SpecificEnthalpy h "Specific enthalpy";
         input SI.SpecificEntropy s "Specific entropy";
         output SI.Pressure p "Pressure";
+      protected
         constant Real[:] n={-0.691997014660582,-0.183612548787560e2,-0.928332409297335e1,
             0.659639569909906e2,-0.162060388912024e2,0.450620017338667e3,
             0.854680678224170e3,0.607523214001162e4,0.326487682621856e2,-0.269408844582931e2,
@@ -3241,7 +3242,6 @@ email: hubertus@modelon.se
         constant SI.SpecificEnthalpy hstar=3400e3 "Normalization enthalpy";
         constant SI.Pressure pstar=100e6 "Normalization pressure";
         constant SI.SpecificEntropy sstar=7.6e3 "Normalization entropy";
-      protected
         Real eta=h/hstar "Normalized specific enthalpy";
         Real sigma=s/sstar "Normalized specific entropy";
       algorithm
@@ -3291,6 +3291,7 @@ email: hubertus@modelon.se
         input SI.SpecificEnthalpy h "Specific enthalpy";
         input SI.SpecificEntropy s "Specific entropy";
         output SI.Pressure p "Pressure";
+      protected
         constant Real[:] n={-0.182575361923032e-1,-0.125229548799536,
             0.592290437320145,0.604769706185122e1,0.238624965444474e3,-0.298639090222922e3,
             0.512250813040750e-1,-0.437266515606486,0.413336902999504,-0.516468254574773e1,
@@ -3307,7 +3308,6 @@ email: hubertus@modelon.se
         constant SI.SpecificEnthalpy hstar=4200e3 "Normalization enthalpy";
         constant SI.Pressure pstar=4e6 "Normalization pressure";
         constant SI.SpecificEntropy sstar=12e3 "Normalization entropy";
-      protected
         Real eta=h/hstar "Normalized specific enthalpy";
         Real sigma=s/sstar "Normalized specific entropy";
       algorithm
@@ -3332,6 +3332,7 @@ email: hubertus@modelon.se
         input SI.SpecificEnthalpy h "Specific enthalpy";
         input SI.SpecificEntropy s "Specific entropy";
         output SI.Pressure p "Pressure";
+      protected
         constant Real[:] n={0.801496989929495e-1,-0.543862807146111,
             0.337455597421283,0.890555451157450e1,0.313840736431485e3,
             0.797367065977789,-0.121616973556240e1,0.872803386937477e1,-0.169769781757602e2,
@@ -3349,7 +3350,6 @@ email: hubertus@modelon.se
         constant SI.SpecificEnthalpy hstar=4100e3 "Normalization enthalpy";
         constant SI.Pressure pstar=100e6 "Normalization pressure";
         constant SI.SpecificEntropy sstar=7.9e3 "Normalization entropy";
-      protected
         Real eta=h/hstar "Normalized specific enthalpy";
         Real sigma=s/sstar "Normalized specific entropy";
       algorithm
@@ -3374,6 +3374,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         input SI.SpecificEnthalpy h "Specific enthalpy";
         input SI.SpecificEntropy s "Specific entropy";
         output SI.Pressure p "Pressure";
+      protected
         constant Real[:] n={0.112225607199012,-0.339005953606712e1,-0.320503911730094e2,
             -0.197597305104900e3,-0.407693861553446e3,0.132943775222331e5,
             0.170846839774007e1,0.373694198142245e2,0.358144365815434e4,
@@ -3391,7 +3392,6 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant SI.SpecificEnthalpy hstar=3500e3 "Normalization enthalpy";
         constant SI.Pressure pstar=100e6 "Normalization pressure";
         constant SI.SpecificEntropy sstar=5.9e3 "Normalization entropy";
-      protected
         Real eta=h/hstar "Normalized specific enthalpy";
         Real sigma=s/sstar "Normalized specific entropy";
       algorithm
