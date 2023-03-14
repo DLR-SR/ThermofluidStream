@@ -1,0 +1,14 @@
+time
+pCV.inlet.m_flow
+source.outlet.m_flow
+source1.outlet.m_flow
+source2.outlet.m_flow
+volumeFlex.M
+volumeFlex.U_med
+volumeFlex1.M
+volumeFlex1.U_med
+volumeFlex2.M
+volumeFlex2.U_med
+volumeFlex2.m_flow_out
+volumeFlex3.M
+volumeFlex3.U_med

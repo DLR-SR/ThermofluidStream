@@ -1,0 +1,11 @@
+time
+fourWaySwitch.switch.tanValve.outlet.m_flow
+fourWaySwitch.switch1.tanValve.outlet.m_flow
+source.outlet.m_flow
+source1.outlet.m_flow
+source2.outlet.m_flow
+switch.tanValve.outlet.m_flow
+pulse.T_start
+pulse.count
+pulse1.T_start
+pulse1.count

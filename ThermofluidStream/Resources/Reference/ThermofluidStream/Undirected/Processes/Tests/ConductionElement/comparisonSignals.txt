@@ -1,0 +1,15 @@
+time
+conductionElement.h
+conductionElement.rear.m_flow
+conductionElement1.h
+conductionElement1.rear.m_flow
+conductionElement2.deltaE_system
+conductionElement2.h
+conductionElement2.rear.m_flow
+conductionElement3.h
+conductionElement3.rear.m_flow
+conductionElement4.deltaE_system
+conductionElement4.h
+conductionElement4.rear.m_flow
+conductionElement5.h
+conductionElement5.rear.m_flow

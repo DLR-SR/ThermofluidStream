@@ -1,0 +1,8 @@
+time
+checkValve.inlet.m_flow
+firstOrder.y
+reservoir.M
+reservoir.U_med
+source.outlet.m_flow
+pulse.T_start
+pulse.count

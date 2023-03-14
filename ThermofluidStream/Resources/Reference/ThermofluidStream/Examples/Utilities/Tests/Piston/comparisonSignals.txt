@@ -1,0 +1,14 @@
+time
+firstOrder.y
+flowResistance.m_flow
+flowResistance1.m_flow
+flowResistance2.m_flow
+flowResistance3.m_flow
+piston2_1.M_left
+piston2_1.M_right
+piston2_1.l
+piston2_1.medium_left.u
+piston2_1.medium_right.u
+steamSink.x
+pulse.T_start
+pulse.count

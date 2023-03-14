@@ -1,0 +1,9 @@
+time
+transportDelay.inlet.m_flow
+transportDelay.x
+transportDelay1.rear.m_flow
+transportDelay1.x
+trapezoid.T_start
+trapezoid.count
+trapezoid1.T_start
+trapezoid1.count

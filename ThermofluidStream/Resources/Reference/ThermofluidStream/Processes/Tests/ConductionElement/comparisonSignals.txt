@@ -1,0 +1,13 @@
+time
+conductionElement.h
+conductionElement1.deltaE_system
+conductionElement1.h
+conductionElement1.inlet.m_flow
+conductionElement2.h
+conductionElement2.inlet.m_flow
+conductionElement3.deltaE_system
+conductionElement3.h
+conductionElement4.h
+sink.inlet.m_flow
+source1.outlet.m_flow
+source2.outlet.m_flow

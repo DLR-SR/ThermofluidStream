@@ -1,0 +1,5 @@
+time
+heatCapacitor.T
+source.outlet.m_flow
+thermalConduction.h
+thermalConduction.inlet.m_flow

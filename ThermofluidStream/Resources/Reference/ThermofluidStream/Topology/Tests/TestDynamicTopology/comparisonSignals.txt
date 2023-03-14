@@ -1,0 +1,9 @@
+time
+dynamicJunctionNM.dynamicJunctionN.junction.outlet.m_flow
+dynamicJunctionNM1.dynamicJunctionN.junction.outlet.m_flow
+sink.inlet.m_flow
+sink1.inlet.m_flow
+sink3.inlet.m_flow
+sink4.inlet.m_flow
+source.outlet.m_flow
+source2.outlet.m_flow

@@ -1,0 +1,4 @@
+time
+junctionN.outlet.m_flow
+source.outlet.m_flow
+source1.outlet.m_flow

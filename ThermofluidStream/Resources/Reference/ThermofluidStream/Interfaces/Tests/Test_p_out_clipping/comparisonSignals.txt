@@ -1,0 +1,9 @@
+time
+basicControlValve.m_flow
+fan.m_flow
+fan.omega
+fan.phi
+flowResistance.m_flow
+nozzle.m_flow
+specificValveType.m_flow
+tanValve.m_flow

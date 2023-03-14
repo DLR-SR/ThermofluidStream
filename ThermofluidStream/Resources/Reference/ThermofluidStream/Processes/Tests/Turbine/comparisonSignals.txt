@@ -1,0 +1,5 @@
+time
+turbine.m_flow
+turbine1.m_flow
+turbine1.omega
+turbine1.phi
