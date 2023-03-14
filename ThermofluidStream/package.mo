@@ -26,6 +26,11 @@ use and easy to adapt and enriched by a&nbsp;number of examples, this library
 can be used as basis for many different applications such as thermal management
 of electric cars, power plants, or building physics.
 </p>
+
+<p>
+For copyright and license, see
+<a href=\"modelica://ThermofluidStream.UserGuide.License\">Copyright and License agreement</a>.
+</p>
 </html>", revisions="<html>
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
   <tr>
