@@ -89,7 +89,7 @@ public
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=50))
     annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
@@ -172,28 +172,23 @@ equation
       graphics={
         Text(
           extent={{-72,76},{-60,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="N"),
         Text(
           extent={{-42,76},{-30,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{-10,76},{2,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{20,76},{32,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="2"),
         Text(
           extent={{50,76},{62,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="1")}),
     Documentation(info="<html>
 <p>The cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>

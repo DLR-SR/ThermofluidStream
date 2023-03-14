@@ -21,15 +21,18 @@ equation
      showNumber = number;
   end if;
 
-  annotation (Icon(
-      coordinateSystem(preserveAspectRatio=false,
+  annotation (
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=false,
         extent={{-100.0,-100.0},{100.0,100.0}}),
-        graphics={
-      Text(extent={{-94.0,-34.0},{96.0,34.0}},
-          lineColor={28,108,200},
-          textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))), Text(
+      graphics={
+        Text(extent={{-94.0,-34.0},{96.0,34.0}},
+          textColor={28,108,200},
+          textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))),
+        Text(
           extent={{-52,76},{54,28}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="%description")}),
     Documentation(info="<html>
 <p>

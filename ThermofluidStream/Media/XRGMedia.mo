@@ -391,7 +391,6 @@ package XRGMedia "A medium property library"
       T = state.T;
       d = state.d;
       phase = state.phase;
-      annotation (structurallyIncomplete);
     end BaseProperties;
 
     redeclare function extends setState_phX
@@ -7771,7 +7770,6 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       T = state.T;
       d = state.d;
       phase = state.phase;
-      annotation (structurallyIncomplete);
     end BaseProperties;
 
     redeclare function extends setState_phX
@@ -14723,7 +14721,6 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
       T = state.T;
       d = state.d;
       phase = state.phase;
-      annotation (structurallyIncomplete);
     end BaseProperties;
 
     redeclare function extends setState_phX
@@ -21739,7 +21736,6 @@ The functions provided by this package shall be used inside of the restricted li
       T = state.T;
       d = state.d;
       phase = state.phase;
-      annotation (structurallyIncomplete);
     end BaseProperties;
 
     redeclare function extends setState_phX
@@ -29141,7 +29137,6 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
       T = state.T;
       d = state.d;
       phase = state.phase;
-      annotation (structurallyIncomplete);
     end BaseProperties;
 
     redeclare function extends setState_phX
@@ -36222,7 +36217,10 @@ The functions provided by this package shall be used inside of the restricted li
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end R245faData;
-  annotation (preferedView="info", Documentation(info="<html>
+
+  annotation (
+    preferredView="info",
+    Documentation(info="<html>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Media_height131.png\"></p>
 
 <h4>Library description</h4>

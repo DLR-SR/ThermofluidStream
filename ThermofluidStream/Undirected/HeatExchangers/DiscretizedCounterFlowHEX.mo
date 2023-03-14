@@ -164,8 +164,10 @@ equation
       annotation (Line(points={{-6.66134e-16,-70.2},{-6.66134e-16,-10},{0,-10}}, color={191,0,0}));
   end for;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
-                                                                graphics={
+  annotation (
+    Icon(
+      coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
+      graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={28,108,200},
@@ -180,28 +182,23 @@ equation
         Line(points={{50,-52},{40,-62},{40,-92}}, color={28,108,200}),
         Text(
           extent={{-70,-72},{-58,-84}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="N"),
         Text(
           extent={{52,-72},{64,-84}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="1"),
         Text(
           extent={{20,-72},{32,-84}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="2"),
         Text(
           extent={{-10,-72},{2,-84}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{-40,-72},{-28,-84}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
             lineColor = {28,108,200}),
@@ -211,80 +208,57 @@ equation
         Line(points={{50,96},{40,86},{40,56}}, color={28,108,200}),
         Text(
           extent={{50,76},{62,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="N"),
         Text(
           extent={{20,76},{32,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{-10,76},{2,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="..."),
         Text(
           extent={{-42,76},{-30,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="2"),
         Text(
           extent={{-72,76},{-60,64}},
-          lineColor={28,108,200},
-          pattern=LinePattern.Dash,
+          textColor={28,108,200},
           textString="1"),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={-61,36},
           rotation=270),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={1,36},
           rotation=270),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={61,36},
           rotation=270),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={57,-36},
           rotation=90),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={-65,-36},
           rotation=90),
         Text(
           extent={{-8,41},{8,-41}},
-          lineColor={188,36,38},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={188,36,38},
           textString="«",
           origin={-3,-36},
           rotation=90),
@@ -295,7 +269,7 @@ equation
         Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
         Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
     Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+      coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>The undirected counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells from rear to fore and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>

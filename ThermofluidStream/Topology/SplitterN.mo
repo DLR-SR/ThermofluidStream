@@ -31,7 +31,7 @@ equation
 
   sum(outlets.m_flow) + inlet.m_flow = 0;
 
-   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
           points={{-70,0},{0,0}},
           color={28,108,200},
@@ -48,9 +48,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)));
+    Diagram(coordinateSystem(preserveAspectRatio=false)));
 end SplitterN;

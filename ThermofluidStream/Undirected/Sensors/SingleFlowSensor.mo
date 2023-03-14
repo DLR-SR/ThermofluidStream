@@ -28,7 +28,7 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity(
+  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity (
     redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
         <p>This function computes the selected quantity from state and massflow. rho_min is neddet for the computation of v. </p>
@@ -74,13 +74,13 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
           extent={{0,25},{60,75}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A undirected sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>
 </html>"));

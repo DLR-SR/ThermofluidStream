@@ -35,7 +35,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(
+  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity (
     redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
     <p>This function computes the selected two-phase quantity from state.</p>
@@ -86,13 +86,13 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
           extent={{0,19},{60,69}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected sensor for a vapor quality. It must be seperate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
 </html>"));

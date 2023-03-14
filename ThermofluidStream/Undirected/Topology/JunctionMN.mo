@@ -99,16 +99,13 @@ equation
           lineThickness=0.5),
         Text(
           extent={{60,20},{100,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%M"),
         Text(
           extent={{-100,20},{-60,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
-          textString="%N")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textColor={175,175,175},
+          textString="%N")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This model represents a generalized junction/splitter for undirected flow with N rear and M fore ports. </p>
 <p>Note that in the undirected case a distinction between junction and splitter is not possible, since the flow direction is unknown in advance. </p>

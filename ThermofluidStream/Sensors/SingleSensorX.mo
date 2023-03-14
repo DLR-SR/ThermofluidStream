@@ -31,7 +31,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
 
-  function mfk = ThermofluidStream.Utilities.Functions.massFractionK(
+  function mfk = ThermofluidStream.Utilities.Functions.massFractionK (
     redeclare package Medium = Medium);
 
 protected
@@ -80,15 +80,15 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               display_value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-26,22},{60,69}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%row. mass-fraction")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring mass fraction X. Which row from X to display can be selected by the row parameter.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

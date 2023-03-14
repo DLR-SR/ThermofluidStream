@@ -21,7 +21,8 @@ block RealVector "Set output vector signal to a time varying Real expression"
         Text(
           extent={{-150,90},{150,50}},
           textString="%name",
-          lineColor={0,0,255})}), Documentation(info="<html>
+          textColor={0,0,255})}),
+    Documentation(info="<html>
 </html>"));
 
 end RealVector;

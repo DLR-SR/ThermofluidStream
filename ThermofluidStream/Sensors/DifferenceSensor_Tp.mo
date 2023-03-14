@@ -115,23 +115,23 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,55},{60,5}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("T", String(
               T,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-5},{60,-55}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,55},{-60,5}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
           extent={{-120,-5},{-60,-55}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%pressureUnit"),
         Line(
           points={{-80,80},{-80,-80}},
@@ -167,7 +167,7 @@ equation
           extent={{-72,-68},{-48,-92}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>

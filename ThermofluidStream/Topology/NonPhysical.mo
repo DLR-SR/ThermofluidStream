@@ -140,7 +140,6 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
-
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
             points={{-70,0},{0,0}},
@@ -162,27 +161,23 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             lineThickness=0.5),
           Text(
             extent={{-60,100},{-20,60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="A"),
           Text(
             extent={{80,-20},{120,-60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="B"),
           Text(
             extent={{-96,34},{88,4}},
-            lineColor={0,0,0},
+            textColor={0,0,0},
             textString="JunctionRatio")}),
-                                  Diagram(coordinateSystem(preserveAspectRatio=
-              false)),
+      Diagram(coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (likely to dynamic pressure effects).</p>
 <p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end JunctionRatio;
+
   annotation (Documentation(info="<html>
 <p>This package contains topology elements that have non-physical assumtions or constraints like mass-flow splits. </p>
 <p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicilty modeling the phenomena like a controlled valve.</p>

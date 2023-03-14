@@ -23,9 +23,9 @@ equation
   state_out = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-                            Text(
+        Text(
           extent={{-60,8},{60,-52}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Mix")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A volume with N inlets.</p>

@@ -70,21 +70,15 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-20,100},{-60,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{20,-60},{60,-100}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Text(
           extent={{50, 60},{90, 20}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="C")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));
 end SplitterX;
