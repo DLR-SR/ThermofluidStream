@@ -42,11 +42,11 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
   parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
     annotation(Dialog(tab="Advanced"));
 
-  parameter Real k1_A= 1e2 "Liner flowres factor A"
+  parameter Real k1_A= 1e2 "Linear flowres factor A"
     annotation(Dialog(group="laminar-turbolent flowRes"));
   parameter Real k2_A = 1e2 "Quadratic flowres factor A"
     annotation(Dialog(group="laminar-turbolent flowRes"));
-  parameter Real k1_B = 1e2 "Liner flowres factor B"
+  parameter Real k1_B = 1e2 "Linear flowres factor B"
     annotation(Dialog(group="laminar-turbolent flowRes"));
   parameter Real k2_B = 1e2 "Quadratic flowres factor B"
     annotation(Dialog(group="laminar-turbolent flowRes"));
