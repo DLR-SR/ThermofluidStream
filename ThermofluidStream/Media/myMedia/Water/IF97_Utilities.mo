@@ -6241,7 +6241,7 @@ white-space:nowrap;
   <li>
     Code reorganization, enhanced documentation, additional functions:
     <em>December, 2002</em> by
-    <a href=>Hubertus Tummescheit</a>
+    <a href=\"mailto:Hubertus.Tummescheit@modelon.se\">Hubertus Tummescheit</a>
     and moved to Modelica properties library.
   </li>
 </ul>
