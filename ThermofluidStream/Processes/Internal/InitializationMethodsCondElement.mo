@@ -6,5 +6,7 @@ type InitializationMethodsCondElement = enumeration(
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-        <p>Choices for Initailtaion of a state h.</span></p>
-        </html>"));
+<p>
+Choices for initialization of a state h.
+</p>
+</html>"));

@@ -44,7 +44,7 @@ If you have used this library for your publication, please cite the following tw
 Preferred feedback is to raise an issue on the GitHub repository (also for positive feedback).
 </p>
 <p>
-If you have other issues contact: <a href=\"dirk.zimmer@dlr.de\">dirk.zimmer@dlr.de</a>.
+If you have other issues contact: <a href=\"mailto:dirk.zimmer@dlr.de\">dirk.zimmer@dlr.de</a>.
 </p>
 
 <h4>Authors</h4>

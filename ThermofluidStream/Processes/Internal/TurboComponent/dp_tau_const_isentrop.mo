@@ -85,13 +85,16 @@ two-phase region.
     <code>pr=p_outlet/p_inlet</code> is computed as quadratic function of
     <code>omega/omega_ref</code>, <code>m_flow/m_flow_ref:</code>
     <br>
-    <span style=\"font-family: Courier New;\">pr&nbsp;&nbsp;:=<span style=\"color: #ff0000;\">&nbsp;abs</span>(omega)*omega/(omega_ref^2)&nbsp;-&nbsp;skew*omega*m_flow/(omega_ref*m_flow_ref)&nbsp;-<span style=\"font-family: Courier New; color: #ff0000;\">&nbsp;abs</span>(m_flow)*m_flow/(m_flow_ref^2)&nbsp;+&nbsp;1;
+    <code>pr&nbsp;&nbsp;:=&nbsp;abs(omega)*omega/(omega_ref^2)
+      &nbsp;-&nbsp;skew*omega*m_flow/(omega_ref*m_flow_ref)
+      &nbsp;-&nbsp;abs(m_flow)*m_flow/(m_flow_ref^2)
+      &nbsp;+&nbsp;1;</code>
   </li>
   <li>
     if the pressure ratio is smaller then 1 (expansion of gas), to limit it
     to 0 compute:
     <br>
-    <span style=\"font-family: Courier New;\">pr&nbsp;:=&nbsp;k^(pr-1);</span>
+    <code>pr&nbsp;:=&nbsp;k^(pr-1);</code>
   </li>
   <li>
     compute specific technical work w_t from pr using a isenthalpic process

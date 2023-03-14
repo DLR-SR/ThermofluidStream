@@ -475,17 +475,17 @@ for the medium model. In this scenario, that builds a new medium model
 with many more properties than the default, the standard BaseProperties
 is used as a basis. For additional properties, a user has to:<br>
 <ol>
-<li>Declare a new variable of the wanted type, e.g., \"<span style=\"color: rgb(51, 51, 255);\">DynamicViscosity
-eta</span>\".</li>
-<li>Compute that variable by calling the function form the package,
-e.g., <span style=\"color: rgb(51, 51, 255);\">eta =
-dynamicViscosity(state)</span>. Note that the instance of
+<li>Declare a new variable of the wanted type, e.g.,
+<code>DynamicViscosity eta</code>.</li>
+<li>Compute that variable by calling the function from the package,
+e.g., <code>eta&nbsp;= dynamicViscosity(state)</code>.
+Note that the instance of
 ThermodynamicState is used as an input to the function. This instance
 \"state\" is declared in PartialMedium and thus available in every medium
 model. A user does not have to know what actual variables are required
 to compute the dynamic viscosity, because the state instance is
 guaranteed to contain what is needed.</li>
-<li><span style=\"color: rgb(255, 0, 0);\">Attention</span>: Many
+<li><strong>Note</strong>: Many
 properties are not well defined in the two phase region and the
 functions might return undesired values if called there. It is the
 user's responsibility&nbsp; to take care of such situations. The example
