@@ -8,7 +8,6 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
     version = "1.0.0",
     versionDate = "2022-12-02",
     dateModified = "2022-12-02 11:00:00Z",
-    revisionId = "$Format:%h %ci$",
     uses(
       Modelica(version="4.0.0"),
       Complex(version="4.0.0")),
