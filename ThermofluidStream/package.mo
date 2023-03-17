@@ -4,22 +4,47 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
 
   import Modelica.Units.SI;
 
-annotation (
-  version="1.0.0",
-  uses(
-    Modelica(version="4.0.0"),
-    Complex(version="4.0.0")),
-  conversion(
-    noneFromVersion="0.4.1",
-    from(
-      version="0.2.1",
-      to="0.3.0",
-      script="modelica://ThermofluidStream/Resources/ConversionSkripts/convert0_2_1to0_3_0.mos")),
-  Documentation(info="<html>
+  annotation (
+    version = "1.0.0",
+    versionDate = "2022-12-02",
+    dateModified = "2022-12-02 11:00:00Z",
+    uses(
+      Modelica(version="4.0.0"),
+      Complex(version="4.0.0")),
+    conversion(
+      noneFromVersion="0.4.1",
+      from(
+        version="0.2.1",
+        to="0.3.0",
+        script="modelica://ThermofluidStream/Resources/ConversionSkripts/convert0_2_1to0_3_0.mos")),
+    Documentation(info="<html>
+<p>
+The DLR ThermofluidStream Library is a&nbsp;free open-source library for the
+robust modeling of complex thermofluid architectures. Designed to be easy to
+use and easy to adapt and enriched by a&nbsp;number of examples, this library
+can be used as basis for many different applications such as thermal management
+of electric cars, power plants, or building physics.
+</p>
 
+<p>
+For copyright and license, see
+<a href=\"modelica://ThermofluidStream.UserGuide.License\">Copyright and License agreement</a>.
+</p>
 </html>", revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+  <tr>
+    <td valign=\"middle\">
+      <img width=\"72\" src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/ alt=\"Logo DLR\">
+    </td>
+    <td valign=\"middle\">
+      <strong>Copyright &copy; DLR Institut f&uuml;r Systemdynamik und Regelungstechnik</strong>
+    </td>
+  </tr>
+</table>
 </html>"),
-  Icon(
-    graphics={Bitmap(extent={{-100,-100},{100,100}}, fileName="modelica://ThermofluidStream/Resources/logo_lib.png")}));
+    Icon(
+      graphics={
+        Bitmap(
+          extent={{-100,-100},{100,100}},
+          fileName="modelica://ThermofluidStream/Resources/logo_lib.png")}));
 end ThermofluidStream;
