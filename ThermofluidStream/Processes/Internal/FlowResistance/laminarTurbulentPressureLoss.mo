@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
 function laminarTurbulentPressureLoss
-  "Laminar and turbolent flow regimes pressure loss function"
+  "Laminar and turbulent flow regimes pressure loss function (Cheng 2008)"
   extends Internal.FlowResistance.partialPressureLoss;
   import Modelica.Constants.pi;
 
