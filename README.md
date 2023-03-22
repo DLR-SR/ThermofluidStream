@@ -66,7 +66,7 @@ Further literature: The principal considerations for creating a solution for non
 - Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
 
 More details on the modeling of various types of volumes can be found in:
- 
+
 - M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks] (https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20. 
 
 ## Tool compatibility 
@@ -94,6 +94,8 @@ We would like to thank very much Stefan Wischhusen from [XRG Simulation GmbH](ht
 
 ## Acknowledgements
 
-This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Chistopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz form TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility. 
+This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Chistopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz form TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility.
+
+The used **continuous integration** stuff originates in parts from that used in the development of the Modelica Standard Library. We would like to thank MAP-Lib project members who established this CI for their valuable work.
 
 
