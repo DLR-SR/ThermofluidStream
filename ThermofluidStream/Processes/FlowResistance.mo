@@ -19,19 +19,19 @@ model FlowResistance "Flow resistance model"
       choices(
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
-          "no function selected"),
+          "No function selected"),
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-          "linear-quadratic"),
+          "Linear-quadratic"),
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss
-          "laminar"),
+          "Laminar (Hagen-Poiseuille)"),
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-          "laminar-turbulent Cheng2008"),
+          "Laminar-turbulent (Cheng2008)"),
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-          "laminar-turbulent Haaland1983")),
+          "Laminar-turbulent (Haaland1983)")),
       Documentation(info="<html>
 <p>
 This function computes the pressure loss of the fluid depending on the massflow,
@@ -41,9 +41,9 @@ some medium properties and the geometry of the pipe.
 
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state))
-    "density of medium entering";
+    "Density of medium entering";
   SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state)
-    "dynamic viscosity of medium entering";
+    "Dynamic viscosity of medium entering";
 
 equation
   dp = -pLoss(m_flow, rho_in, mu_in, r, l);

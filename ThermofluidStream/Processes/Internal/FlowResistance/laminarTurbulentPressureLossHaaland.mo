@@ -42,14 +42,14 @@ protected
   SI.Area area=pi*r^2 "Area of Pipe";
   Real relative_roughness=ks/diameter "Relative Roughness of Pipe";
 
-  Real Re_abs "absolute value of Reynolds number";
-  Real Re_abs_limited "limited absolute value of Reynolds number";
+  Real Re_abs "Absolute value of Reynolds number";
+  Real Re_abs_limited "Limited absolute value of Reynolds number";
 
   Real friction_factor;
   SI.Pressure pressureLossLaminar "Laminar Pressure Loss";
   SI.Pressure pressureLossTurbulent "Turbulent Pressure Loss";
 
-  constant Real eps=1e-5 "lower bound of tubulent Re to avoid devision by zero";
+  constant Real eps=1e-5 "lower bound of turbulent Re to avoid division by zero";
 
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then
