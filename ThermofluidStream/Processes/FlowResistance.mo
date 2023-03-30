@@ -5,7 +5,7 @@ model FlowResistance "Flow resistance model"
   import Modelica.Constants.pi "Constant Pi";
 
   parameter Internal.ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Shape of cross sectional area"
-    annotation (Dialog(group = "Geometry",enable=true),
+    annotation (Dialog(group = "Geometry",enable = true),
     choices(
       choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Circular",
       choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle "Rectangle",
@@ -31,6 +31,7 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
     annotation(Dialog(tab="Advanced"));
+
   replaceable function pLoss = Internal.FlowResistance.pleaseSelectPressureLoss
     constrainedby Internal.FlowResistance.partialPressureLoss "Pressure loss function"
     annotation (
@@ -49,7 +50,11 @@ model FlowResistance "Flow resistance model"
           "Laminar-turbulent (Cheng2008)"),
         choice(
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-          "Laminar-turbulent (Haaland1983)")),
+          "Laminar-turbulent (Haaland1983)"),
+        choice(
+          redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss
+          "Zeta-value")),
       Documentation(info="<html>
 <p>
 This function computes the pressure loss of the fluid depending on the massflow,
@@ -57,6 +62,7 @@ some medium properties and the geometry of the pipe.
 </p>
 </html>"));
 
+  //parameter Internal.pLossFunc dropFunc;
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state))
     "Density of medium entering";
@@ -67,7 +73,7 @@ protected
   SI.Length r_h "Hydraulic radius of resistance";
 
 equation
-  dp = -pLoss(m_flow, rho_in, mu_in, r_h, l);
+  dp = -pLoss(m_flow, rho_in, mu_in, r_h, l, areaCrossActual);
   h_out = h_in;
   Xi_out = Xi_in;
 
@@ -85,6 +91,7 @@ equation
     areaCrossActual = areaCross;
     r_h = areaCrossActual/perimeterActual;
   end if;
+
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
