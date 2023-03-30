@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes;
 model FlowResistance "Flow resistance model"
-  extends Interfaces.SISOFlow(final L=if computeL then l/(r^2*pi) else L_value, final clip_p_out=true);
+  extends Interfaces.SISOFlow(final L=if computeL then l/areaCross else L_value, final clip_p_out=true);
 
   import Modelica.Constants.pi "Constant Pi";
 
@@ -9,7 +9,7 @@ model FlowResistance "Flow resistance model"
     choices(
       choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Circular",
       choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle "Rectangle",
-      choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.other "Rectangle"));
+      choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.other "Other"));
 
   parameter SI.Length l(min=0) "Length of pipe" annotation (Dialog(group = "Geometry"));
   parameter SI.Radius r(min=0) = 0 "Radius of pipe"
@@ -18,7 +18,9 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Length b(min=0) = 0 "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCross = Modelica.Constants.pi*r*r "Cross section area"
+  parameter SI.Area areaCross=
+    if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then
+    Modelica.Constants.pi*r*r else a*b "Cross section area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter SI.Length perimeter = 2*Modelica.Constants.pi*r "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
