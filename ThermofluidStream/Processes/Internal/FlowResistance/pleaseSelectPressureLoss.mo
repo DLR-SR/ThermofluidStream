@@ -3,7 +3,7 @@ function pleaseSelectPressureLoss "Please select pressure loss function"
   extends Internal.FlowResistance.partialPressureLoss;
 
 algorithm
-  assert(false, "please select pressure loss function");
+  assert(false, "Please select pressure loss function");
 
   pressureLoss :=0;
 

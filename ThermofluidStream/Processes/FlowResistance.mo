@@ -56,7 +56,7 @@ model FlowResistance "Flow resistance model"
         choice(
           redeclare function pLoss =
             ThermofluidStream.Processes.Internal.FlowResistance.referencePressureLoss
-          "Pressure drop from reference values")),
+          "Reference dp at given m_flow and density")),
       Documentation(info="<html>
 <p>
 This function computes the pressure loss of the fluid depending on the massflow,

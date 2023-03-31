@@ -17,7 +17,7 @@ function referencePressureLoss "Pressure loss function based on reference values
       choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent "Custom exponent"));
 
   input Real m( unit = "1") = 1.5 "Exponent for pressure drop function"
-  annotation(Dialog(enable=(dp_corr == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent)));
+  annotation(Dialog(enable=(dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent)));
 algorithm
 
   if dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear then
@@ -29,7 +29,7 @@ algorithm
   end if;
 
   annotation (Documentation(info="<html>
-<p>This function calculates the pressure drop according a reference pressure drop at a reference mass flow rate.</p>
-<p>The correlation can be assumed to be linear, quadratic or through a custom exponent.</p>
+<p>This function calculates the pressure drop according a reference pressure drop at a reference mass flow rate and reference density.</p>
+<p><br><span style=\"font-family: Courier New;\">dp&nbsp;:=&nbsp;dp_ref*rho_ref/rho*(m_flow/m_flow_ref)^m</span></p><p><br>The correlation can be assumed to be linear (m=1), quadratic (m=2) or with a custom exponent m.</p>
 </html>"));
 end referencePressureLoss;
