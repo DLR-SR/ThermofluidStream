@@ -18,7 +18,7 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Length b(min=0) = 0 "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCross = areaInertance "Cross section area"
+  parameter SI.Area areaCross = 0 "Cross section area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter SI.Length perimeter = 2*Modelica.Constants.pi*r "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
