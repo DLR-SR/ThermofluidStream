@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes;
 model FlowResistance "Flow resistance model"
-  extends Interfaces.SISOFlow(final L=if computeL then l/areaCross else L_value, final clip_p_out=true);
+  extends Interfaces.SISOFlow(final L=if computeL then l/areaInertance else L_value, final clip_p_out=true);
 
   import Modelica.Constants.pi "Constant Pi";
 
@@ -18,9 +18,7 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Length b(min=0) = 0 "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCross=
-    if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then
-    Modelica.Constants.pi*r*r else a*b "Cross section area"
+  parameter SI.Area areaCross = areaInertance "Cross section area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter SI.Length perimeter = 2*Modelica.Constants.pi*r "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
@@ -62,7 +60,6 @@ some medium properties and the geometry of the pipe.
 </p>
 </html>"));
 
-  //parameter Internal.pLossFunc dropFunc;
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state))
     "Density of medium entering";
@@ -70,10 +67,15 @@ protected
     "Dynamic viscosity of medium entering";
   SI.Length perimeterActual "Actual perimeter of resistance";
   SI.Area areaCrossActual "Actual area of resistance";
-  SI.Length r_h "Hydraulic radius of resistance";
+  SI.Length D_h "Hydraulic diameter of resistance";
+
+  parameter SI.Area areaInertance=
+    if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then Modelica.Constants.pi*r*r
+    elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle then (2*a*b)/(a+b)
+    else areaCross "Area for calculation of inertance";
 
 equation
-  dp = -pLoss(m_flow, rho_in, mu_in, r_h, l, areaCrossActual);
+  dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);
   h_out = h_in;
   Xi_out = Xi_in;
 
@@ -81,17 +83,15 @@ equation
   if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then
     perimeterActual = 2*Modelica.Constants.pi*r;
     areaCrossActual = Modelica.Constants.pi*r*r;
-    r_h = r;
   elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle then
     perimeterActual = 2*a+2*b;
     areaCrossActual = a*b;
-    r_h = areaCrossActual/perimeterActual;
   elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other then
     perimeterActual = perimeter;
     areaCrossActual = areaCross;
-    r_h = areaCrossActual/perimeterActual;
   end if;
 
+  D_h = 4*areaCrossActual/perimeterActual;
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={

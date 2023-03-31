@@ -6,7 +6,6 @@ partial function partialPressureLoss
   input SI.DynamicViscosity mu "Medium dynamic viscosity";
   input SI.Length r(min=0) "Pipe radius";
   input SI.Length l(min=0) "Pipe length";
-  input SI.Area A "Effective area";
 
   output SI.Pressure pressureLoss "Pressure lost in Pipe";
 

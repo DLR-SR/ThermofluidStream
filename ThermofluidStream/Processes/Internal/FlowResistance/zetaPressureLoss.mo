@@ -8,7 +8,8 @@ function zetaPressureLoss "Pressure loss function based on zeta value"
 
 
   //SI.Area A_zeta "Reference area either from radius or set by parameter";
-
+protected
+    SI.Area A "Reference area either from radius or set by parameter";
 algorithm
 
 //   if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then
@@ -20,7 +21,7 @@ algorithm
 //   elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other then
 //     A_zeta := A;
 //   end if;
-
+  A := Modelica.Constants.pi*r*r;
   pressureLoss := zeta/(2*rho)*Modelica.Fluid.Utilities.regSquare(m_flow/A);
 
 
