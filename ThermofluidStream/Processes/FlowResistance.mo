@@ -1,10 +1,13 @@
 within ThermofluidStream.Processes;
 model FlowResistance "Flow resistance model"
-  extends Interfaces.SISOFlow(final L=if computeL then l/areaInertance else L_value, final clip_p_out=true);
+  extends Interfaces.SISOFlow(
+    final L=if computeL then l/areaInertance else L_value,
+    final clip_p_out=true);
 
   import Modelica.Constants.pi "Constant Pi";
 
-  parameter Internal.ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Shape of cross sectional area"
+  parameter Internal.ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular
+    "Shape of cross sectional area"
     annotation (Dialog(group = "Geometry",enable = true),
     choices(
       choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Circular",
@@ -20,7 +23,7 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Area areaCross = 0 "Cross section area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
-  parameter SI.Length perimeter = 2*Modelica.Constants.pi*r "Wetted perimeter of cross-section"
+  parameter SI.Length perimeter = 2*pi*r "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
 
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance of pipe"
@@ -74,7 +77,7 @@ protected
   SI.Length D_h "Hydraulic diameter of resistance";
 
   parameter SI.Area areaInertance=
-    if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then Modelica.Constants.pi*r*r
+    if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then pi*r*r
     elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle then (2*a*b)/(a+b)
     else areaCross "Area for calculation of inertance";
 
@@ -85,8 +88,8 @@ equation
 
   //Match relevant geometrical values from inputs
   if shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular then
-    perimeterActual = 2*Modelica.Constants.pi*r;
-    areaCrossActual = Modelica.Constants.pi*r*r;
+    perimeterActual = 2*pi*r;
+    areaCrossActual = pi*r*r;
   elseif shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle then
     perimeterActual = 2*a+2*b;
     areaCrossActual = a*b;
