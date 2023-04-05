@@ -1,28 +1,10 @@
 within ThermofluidStream.UserGuide;
-package References "Nomenclature, Literature References"
-  extends Modelica.Icons.Information;
+class References "References"
+  extends Modelica.Icons.References;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
-<h4>Nomenclature</h4>
 <p>
-Nomenclature used in this library
-</p>
-
-<ul>
-  <li>steady mass flow pressure: p / delta: dp</li>
-  <li>inertial pressure: r / delta: dr</li>
-  <li>inertance: L</li>
-  <li>dynamic pressure q / delta: dq</li>
-  <li>mass flow rate: m_flow</li>
-  <li>specific enthalpy: h / delta: dh</li>
-  <li>specific internal energy: u</li>
-  <li>heat flow: Q_flow</li>
-  <li>temperature: T</li>
-</ul>
-
-<h4>Literature</h4>
-<p>
-<strong>References reffering directly to this library</strong>
+<h4>References referring directly to this library</h4>
 </p>
 <ul>
   <li>
@@ -40,7 +22,7 @@ Nomenclature used in this library
 </ul>
 
 <p>
-<strong>Further background references on the methodology</strong>
+<h4>Further background references on the methodology</h4>
 </p>
 <ul>
   <li>
