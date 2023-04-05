@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
 function laminarTurbulentPressureLoss
-  "Laminar and turbolent flow regimes pressure loss function"
+  "Laminar and turbulent flow regimes pressure loss function"
   extends Internal.FlowResistance.partialPressureLoss;
   import Modelica.Constants.pi;
 
@@ -21,8 +21,8 @@ protected
   constant Real R_laminar_DarcyWeisbach_min(unit="1") = 500 "Minimal Reynolds number to use the general equation. Laminar flow before";
   SI.Length ks "pipe roughness";
 
-  Real a(unit="1") "laminar flow factor for the DarcyWeisbach equation (1=laminar flow; 0=turbolent flow)";
-  Real b(unit="1") "turbolent flow factor for DarcyWeisbach equation (1=fully smooth turbolent flow; 0= fully rough turbolent flow)";
+  Real a(unit="1") "laminar flow factor for the DarcyWeisbach equation (1=laminar flow; 0=turbulent flow)";
+  Real b(unit="1") "turbulent flow factor for DarcyWeisbach equation (1=fully smooth turbulent flow; 0= fully rough turbulent flow)";
   Real lambda_aux(unit="1") "darcy friction factor for DarcyWeisbach equation";
 
   SI.Velocity u "median flow velocity";
