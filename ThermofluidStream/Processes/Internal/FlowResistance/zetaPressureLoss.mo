@@ -34,7 +34,7 @@ dp := zeta/(2*rho) * m_flow^2/A^2
 </pre></blockquote>
 <p>
 The square of the mass-flow is regularized using the
-<a href=\"Modelica.Fluid.Utilities.regSquare\">Modelica.Fluid.Utilities.regSquare</a>
+<a href=\"modelica://Modelica.Fluid.Utilities.regSquare\">Modelica.Fluid.Utilities.regSquare</a>
 function.
 </p>
 </html>"));
