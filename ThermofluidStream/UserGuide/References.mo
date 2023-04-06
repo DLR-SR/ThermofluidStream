@@ -3,9 +3,7 @@ class References "References"
   extends Modelica.Icons.References;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
-<p>
 <h4>References referring directly to this library</h4>
-</p>
 <ul>
   <li>
     Zimmer, Dirk (2020).
@@ -21,9 +19,7 @@ class References "References"
   </li>
 </ul>
 
-<p>
 <h4>Further background references on the methodology</h4>
-</p>
 <ul>
   <li>
     Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018).
