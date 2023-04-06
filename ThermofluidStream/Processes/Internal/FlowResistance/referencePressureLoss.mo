@@ -10,16 +10,16 @@ function referencePressureLoss "Pressure loss function based on reference values
 
   input ThermofluidStream.Processes.Internal.ReferencePressureDropFunction dp_function=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear
   "Pressure drop function"
-  annotation (Dialog(enable=true),
-  choices(
-      choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear "Linear",
-      choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.quadratic "Quadratic",
-      choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent "Custom exponent"));
+    annotation (Dialog(enable=true),
+      choices(
+        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear "Linear",
+        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.quadratic "Quadratic",
+        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent "Custom exponent"));
 
-  input Real m( unit = "1") = 1.5 "Exponent for pressure drop function"
-  annotation(Dialog(enable=(dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent)));
+  input Real m(unit = "1") = 1.5 "Exponent for pressure drop function"
+    annotation(Dialog(enable=(dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent)));
+
 algorithm
-
   if dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear then
     pressureLoss := rho_ref/rho*dp_ref*m_flow/m_flow_ref;
   elseif dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.quadratic then
@@ -29,7 +29,16 @@ algorithm
   end if;
 
   annotation (Documentation(info="<html>
-<p>This function calculates the pressure drop according a reference pressure drop at a reference mass flow rate and reference density.</p>
-<p><br><span style=\"font-family: Courier New;\">dp&nbsp;:=&nbsp;dp_ref*rho_ref/rho*(m_flow/m_flow_ref)^m</span></p><p><br>The correlation can be assumed to be linear (m=1), quadratic (m=2) or with a custom exponent m.</p>
+<p>
+This function calculates the pressure drop according a reference pressure
+drop at a reference mass flow rate and reference density.
+</p>
+<blockquote><pre>
+dp := dp_ref * rho_ref/rho * (m_flow/m_flow_ref)^m
+</pre></blockquote>
+<p>
+The correlation can be assumed to be linear (m=1), quadratic (m=2) or with
+a custom exponent&nbsp;m.
+</p>
 </html>"));
 end referencePressureLoss;
