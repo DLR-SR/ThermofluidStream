@@ -31,6 +31,6 @@ convertElement({"ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX",
                 "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX",
                 "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR",
                 "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX",
-                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX"}
+                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX"},
                "calculate_efficency", "calculate_efficiency");
 
