@@ -47,7 +47,7 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
     "Coefficient of heat transfer for wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
-  parameter Boolean calculate_efficency= false "Enable calculation of efficency";
+  parameter Boolean calculate_efficiency= false "Enable calculation of efficiency";
 protected
   parameter Modelica.Units.SI.ThermalConductance G=k_wall*A
     "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
@@ -79,7 +79,7 @@ public
 
 protected
   outer DropOfCommons dropOfCommons;
-  function efficency = Internal.calculateEfficency (
+  function efficiency = Internal.calculateEfficiency (
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB);
 
@@ -109,7 +109,7 @@ equation
   summary.dh_B = summary.hout_B - summary.hin_B;
   summary.Q_flow_A=Q_flow_A;
   summary.Q_flow_B=Q_flow_B;
-  summary.efficency = if calculate_efficency then efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
+  summary.efficiency = if calculate_efficiency then efficiency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
 
   //Connecting equations (to interconnect pipes)
   //Fluid Side B

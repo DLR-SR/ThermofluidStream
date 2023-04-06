@@ -7,7 +7,7 @@ model Fan "Fan under ideal gas assumption"
       redeclare package Medium = Medium) "Fan characteristic curve"
       annotation(choices(
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
-        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficency"),
+        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
         Documentation(info="<html>
 <p>
 Selectable function to choose beween different fan models.

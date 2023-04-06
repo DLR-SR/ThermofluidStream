@@ -1,5 +1,5 @@
 within ThermofluidStream.HeatExchangers.Internal;
-function calculateEfficency "Calculates efficency for a general HEX"
+function calculateEfficiency "Calculates efficiency for a general HEX"
   extends Modelica.Icons.Function;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium;
@@ -16,7 +16,7 @@ function calculateEfficency "Calculates efficency for a general HEX"
 
   input SI.Power Q_flow;
 
-  output Real efficency(unit="1") = 0;
+  output Real efficiency(unit="1") = 0;
 
 protected
   SI.SpecificEnthalpy h_A_in = MediumA.specificEnthalpy(state_A_in);
@@ -80,6 +80,6 @@ algorithm
     end if;
   end while;
 
-  efficency := max(0, min(1, abs(Q_flow)/max(min(dh_A*abs(m_flow_A), dh_B*abs(m_flow_B)),eps)));
+  efficiency := max(0, min(1, abs(Q_flow)/max(min(dh_A*abs(m_flow_A), dh_B*abs(m_flow_B)),eps)));
 
-end calculateEfficency;
+end calculateEfficiency;

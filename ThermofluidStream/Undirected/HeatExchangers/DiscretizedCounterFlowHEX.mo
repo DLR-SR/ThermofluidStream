@@ -1,4 +1,4 @@
-within ThermofluidStream.Undirected.HeatExchangers;
+﻿within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
 
   replaceable package MediumA =
@@ -68,7 +68,7 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
     "Coefficient of heat transfer for wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
-  parameter Boolean calculate_efficency= false "Enable calculation of efficency";
+  parameter Boolean calculate_efficiency= false "Enable calculation of efficiency";
 
 protected
   parameter Modelica.Units.SI.ThermalConductance G=k_wall*A
@@ -103,8 +103,8 @@ public
 
 protected
   outer DropOfCommons dropOfCommons;
-  function efficency =
-      ThermofluidStream.HeatExchangers.Internal.calculateEfficency (
+  function efficiency =
+      ThermofluidStream.HeatExchangers.Internal.calculateEfficiency (
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB);
 
@@ -136,7 +136,7 @@ equation
   summary.dh_A = summary.hout_A - summary.hin_A;
   summary.dh_B = summary.hout_B - summary.hin_B;
 
-  summary.efficency = if calculate_efficency then efficency(stateA_in, stateB_in, stateA_out, stateB_out, rearA.m_flow, rearB.m_flow, Q_flow_A) else 0;
+  summary.efficiency = if calculate_efficiency then efficiency(stateA_in, stateB_in, stateA_out, stateB_out, rearA.m_flow, rearB.m_flow, Q_flow_A) else 0;
 
   summary.Q_flow_A = Q_flow_A;
   summary.Q_flow_B = Q_flow_B;

@@ -16,13 +16,13 @@ record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
   SI.SpecificEnthalpy hin_B "Enthalpy at B inlet";
   SI.SpecificEnthalpy hout_B "Enthalpy at B outlet";
 
-  SI.SpecificEnthalpy dh_A "Enthalpy differnce A";
-  SI.SpecificEnthalpy dh_B "Enthalpy differnce B";
+  SI.SpecificEnthalpy dh_A "Enthalpy difference A";
+  SI.SpecificEnthalpy dh_B "Enthalpy difference B";
 
   SI.Power Q_flow_A "Heat going into A";
   SI.Power Q_flow_B "Heat going into B";
 
-  Real efficency(unit="1") "Heat exchanger efficency";
+  Real efficiency(unit="1") "Heat exchanger efficiency";
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

@@ -43,13 +43,13 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
     annotation(Dialog(tab="Advanced"));
 
   parameter Real k1_A= 1e2 "Linear flowres factor A"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
+    annotation(Dialog(group="laminar-turbulent flowRes"));
   parameter Real k2_A = 1e2 "Quadratic flowres factor A"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
+    annotation(Dialog(group="laminar-turbulent flowRes"));
   parameter Real k1_B = 1e2 "Linear flowres factor B"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
+    annotation(Dialog(group="laminar-turbulent flowRes"));
   parameter Real k2_B = 1e2 "Quadratic flowres factor B"
-    annotation(Dialog(group="laminar-turbolent flowRes"));
+    annotation(Dialog(group="laminar-turbulent flowRes"));
 
 
   //Parameterization of HEX Wall
@@ -57,7 +57,7 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
     "Coefficient of heat transfer for pipe wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
-  parameter Boolean calculate_efficency= false "Enable calculation of efficency";
+  parameter Boolean calculate_efficiency= false "Enable calculation of efficiency";
 protected
   parameter Modelica.Units.SI.ThermalConductance G=k_wall*A
     "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
@@ -103,7 +103,7 @@ public
 
 protected
   outer DropOfCommons dropOfCommons;
-  function efficency = Internal.calculateEfficency (
+  function efficiency = Internal.calculateEfficiency (
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB);
 
@@ -133,8 +133,8 @@ equation
   summary.dh_B = summary.hout_B - summary.hin_B;
   summary.Q_flow_A=Q_flow_A;
   summary.Q_flow_B=Q_flow_B;
-  summary.efficency = if calculate_efficency and not initial() then
-    efficency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
+  summary.efficiency = if calculate_efficiency and not initial() then
+    efficiency(inletA.state, inletB.state, outletA.state, outletB.state, inletA.m_flow, inletB.m_flow, Q_flow_A) else 0;
 
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
@@ -202,6 +202,6 @@ equation
           textString="N")}),
     Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differes from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
-<p>The flowResistances are parametrized by the parameters in the group laminar-turbolent flowRes.</p>
+<p>The flowResistances are parametrized by the parameters in the group laminar-turbulent flowRes.</p>
 </html>"));
 end DiscretizedCounterFlowHEX_FR;
