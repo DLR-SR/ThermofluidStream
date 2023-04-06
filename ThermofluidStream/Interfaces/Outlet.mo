@@ -10,37 +10,34 @@ connector Outlet "Outlet port for a fluid"
 
   output Medium.ThermodynamicState state "Thermodynamic state assuming steady mass flow pressure";
 
-  annotation (
-    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Polygon(
-          points={{100,0},{-100,100},{-100,-100},{100,0}},
-          pattern=LinePattern.None,
+          points={{-100,60},{-100,-60},{20,0},{-100,60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(
-          points={{-100,100},{-100,-100}},
-          color={255,255,254},
-          thickness=0.1),
+          points={{-100,100},{100,0},{-100,-100}},
+          color={28,108,200},
+          thickness=0.5),
         Line(
           points={{-100,60},{20,0},{-100,-60}},
           color={170,213,255},
-          thickness=0.5),
-        Line(
-          points={{-100,100},{100,0},{-100,-100}},
-          color={28,108,200},
-          thickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
-        Polygon(
-          points={{0,0},{-100,50},{-100,-50},{0,0}},
-          pattern=LinePattern.None,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
           points={{-100,50},{0,0},{-100,-50}},
           color={28,108,200},
           thickness=0.5),
+        Polygon(
+          points={{-100,30},{-100,-30},{-40,0},{-100,30}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
         Line(
           points={{-100,30},{-40,0},{-100,-30}},
           color={170,213,255},

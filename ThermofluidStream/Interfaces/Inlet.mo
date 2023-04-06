@@ -13,7 +13,8 @@ connector Inlet "Inlet port for a fluid"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{100,0},{-100,100},{-100,-100},{100,0}},
+          points={{100,0},{-100,100},{-100,50},{0,0},{-100,-50},{-100,-100},{100,0}},
+          lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
@@ -44,8 +45,27 @@ connector Inlet "Inlet port for a fluid"
           fillPattern=FillPattern.Solid,
           pattern=linePattern.None),
         Line(
+          points={{-100,100},{100,0},{-100,-100}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-100,50},{0,0},{-100,-50}},
+          color={170,213,255},
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false), graphics={
+        Polygon(
+          points={{100,0},{0,50},{0,20},{40,0},{0,-20},{0,-50},{100,0}},
+          lineColor={28,108,200},
+          pattern=LinePattern.None,
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(
           points={{0,50},{100,0},{0,-50}},
           color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,20},{40,0},{0,-20}},
+          color={170,213,255},
           thickness=0.5)}),
     Documentation(info="<html>
 <p>Directed flow connector for fluids.</p>
