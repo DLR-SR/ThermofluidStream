@@ -15,14 +15,14 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
       from(
         version="1.0.0",
         to="1.1.0",
-        script="modelica://ThermofluidStream/Resources/ConversionSkripts/ConvertTFS_from_1.0.0_to_1.1.0.mos"),
+        script="modelica://ThermofluidStream/Resources/Scripts/Conversion/ConvertTFS_from_1.0.0_to_1.1.0.mos"),
       noneFromVersion="0.5.0",
       noneFromVersion="0.4.1",
       noneFromVersion="0.3.0",
       from(
         version="0.2.1",
         to="0.3.0",
-        script="modelica://ThermofluidStream/Resources/ConversionSkripts/convert0_2_1to0_3_0.mos")),
+        script="modelica://ThermofluidStream/Resources/Scripts/Conversion/ConvertTFS_from_0.2.1_to_0.3.0.mos.mos")),
     Documentation(info="<html>
 <p>
 The DLR ThermofluidStream Library is a&nbsp;free open-source library for the
