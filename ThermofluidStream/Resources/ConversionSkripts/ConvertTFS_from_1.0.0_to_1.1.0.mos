@@ -1,0 +1,36 @@
+// Convert from ThermofluidStream 1.0.0 to ThermofluidStream 1.1.0
+
+// Changes due to fixed typo
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR.efficiency");
+
+convertClass("ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX.efficency",
+             "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX.efficency",
+             "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.Internal.calculateEfficency",
+             "ThermofluidStream.HeatExchangers.Internal.calculateEfficiency");
+
+convertElement({"ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary",
+                "ThermofluidStream.HeatExchangers.Internal.calculateEfficency"},
+               "efficency", "efficiency");
+
+convertElement({"ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX",
+                "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR",
+                "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX",
+                "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR",
+                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX",
+                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX"}
+               "calculate_efficency", "calculate_efficiency");
+

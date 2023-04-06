@@ -12,7 +12,13 @@ package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
       Modelica(version="4.0.0"),
       Complex(version="4.0.0")),
     conversion(
+      from(
+        version="1.0.0",
+        to="1.1.0",
+        script="modelica://ThermofluidStream/Resources/ConversionSkripts/ConvertTFS_from_1.0.0_to_1.1.0.mos"),
+      noneFromVersion="0.5.0",
       noneFromVersion="0.4.1",
+      noneFromVersion="0.3.0",
       from(
         version="0.2.1",
         to="0.3.0",
