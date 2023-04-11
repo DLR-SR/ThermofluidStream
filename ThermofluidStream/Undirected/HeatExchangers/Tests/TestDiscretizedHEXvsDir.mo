@@ -75,7 +75,7 @@ model TestDiscretizedHEXvsDir
     V_Hex(displayUnit="m3"),
     initializeMassFlow=true,
     k_wall=300,
-    calculate_efficency=true)
+    calculate_efficiency=true)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -225,7 +225,7 @@ model TestDiscretizedHEXvsDir
     initializeMassFlow=true,
     nCells=10,
     k_wall=300,
-    calculate_efficency=true)
+    calculate_efficiency=true)
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={2,-56})));
@@ -362,7 +362,7 @@ model TestDiscretizedHEXvsDir
     initializeMassFlow=true,
     nCells=10,
     k_wall=300,
-    calculate_efficency=true)
+    calculate_efficiency=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-174})));

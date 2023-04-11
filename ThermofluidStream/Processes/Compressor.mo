@@ -10,7 +10,7 @@ model Compressor
       redeclare package Medium = Medium) "Compressor characteristic curve"
     annotation(choices(
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
-        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficency"),
+        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
       Documentation(info="<html>
 <p>
 Selectable function to choose beween different compressor models.

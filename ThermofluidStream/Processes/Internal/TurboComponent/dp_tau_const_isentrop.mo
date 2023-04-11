@@ -9,7 +9,7 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass_flow, that produces pr=-1"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
-  input Real eta(unit="1") = 1 "Isentropic efficenty"
+  input Real eta(unit="1") = 1 "Isentropic efficienty"
     annotation(Dialog(enable=true));
   input Real k(unit="1") = 2 "Exponetial factor used for pr<1"
     annotation(Dialog(tab="Advanced", enable=true));
@@ -36,7 +36,7 @@ protected
 algorithm
   // calc pr from characteristic curve
   pr := abs(omega)*omega/(omega_ref^2) - skew*omega*m_flow/(omega_ref*m_flow_ref) - abs(m_flow)*m_flow/(m_flow_ref^2) + 1;
-  // make sure pressure ratio is alwails positive
+  // make sure pressure ratio is always positive
   if pr < 1 then
     pr := k^(pr-1);
   end if;
@@ -68,7 +68,7 @@ algorithm
   annotation (Documentation(info="<html>
 <p>
 This is a model of isentropic expansion or compression of an ideal gas with a fixed
-isentropic efficency.
+isentropic efficiency.
 </p>
 <p>
 The isentropic exponent (kappa) by default is retrieved from the media model at
@@ -100,7 +100,7 @@ two-phase region.
     compute specific technical work w_t from pr using a isenthalpic process
   </li>
   <li>
-    apply constant isentropic efficency
+    apply constant isentropic efficiency
   </li>
   <li>
     compute static moment by the following law:
