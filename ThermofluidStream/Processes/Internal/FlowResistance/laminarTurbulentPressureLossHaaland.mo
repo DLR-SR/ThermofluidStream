@@ -1,5 +1,5 @@
-within ThermofluidStream.Processes.Internal.FlowResistance;
-function laminarTurbulentPressureLossHaaland
+﻿within ThermofluidStream.Processes.Internal.FlowResistance;
+function laminarTurbulentPressureLossHaaland "Laminar and turbulent flow regimes pressure loss function (Haaland 1983)"
   extends Internal.FlowResistance.partialPressureLoss;
 
   import Modelica.Constants.pi;
@@ -14,7 +14,7 @@ function laminarTurbulentPressureLossHaaland
   input Real shape_factor(unit "1") = 64
     "Laminar pressure loss factor based on Hagen-Poiseuille loss"
     annotation(Dialog(enable=true));
-  input Real n(unit "1") = 1 "Transition Coefficient see Documentation"
+  input Real n(unit "1") = 1 "Transition coefficient (see documentation)"
     annotation(Dialog(enable=true));
 
   input SI.Length ks_input(min=1e-7) = 1e-7 "Pipe roughness" annotation (Dialog(
@@ -36,20 +36,20 @@ function laminarTurbulentPressureLossHaaland
         "Drawn Pipe ks=0.0015mm"));
 
 protected
-  SI.Length ks "pipe roughness";
+  SI.Length ks "Pipe roughness";
 
-  SI.Length diameter=r*2 "Diameter of Pipe";
-  SI.Area area=pi*r^2 "Area of Pipe";
-  Real relative_roughness=ks/diameter "Relative Roughness of Pipe";
+  SI.Length diameter=r*2 "Diameter of pipe";
+  SI.Area area=pi*r^2 "Area of pipe";
+  Real relative_roughness=ks/diameter "Relative roughness of pipe";
 
-  Real Re_abs "absolute value of Reynolds number";
-  Real Re_abs_limited "limited absolute value of Reynolds number";
+  Real Re_abs "Absolute value of Reynolds number";
+  Real Re_abs_limited "Limited absolute value of Reynolds number";
 
   Real friction_factor;
-  SI.Pressure pressureLossLaminar "Laminar Pressure Loss";
-  SI.Pressure pressureLossTurbulent "Turbulent Pressure Loss";
+  SI.Pressure pressureLossLaminar "Laminar pressure loss";
+  SI.Pressure pressureLossTurbulent "Turbulent pressure loss";
 
-  constant Real eps=1e-5 "lower bound of tubulent Re to avoid devision by zero";
+  constant Real eps=1e-5 "Lower bound of turbulent Re to avoid division by zero";
 
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then
@@ -69,7 +69,7 @@ algorithm
   end if;
 
 
-  // absolute Reynolds number
+  //absolute Reynolds number
   Re_abs := abs(m_flow)*diameter/(area*mu);
   Re_abs_limited := max(eps, min(1, Re_abs));
 

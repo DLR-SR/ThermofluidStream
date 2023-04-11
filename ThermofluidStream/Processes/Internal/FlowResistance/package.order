@@ -4,3 +4,5 @@ laminarPressureLoss
 laminarTurbulentPressureLoss
 laminarTurbulentPressureLossHaaland
 pleaseSelectPressureLoss
+zetaPressureLoss
+referencePressureLoss

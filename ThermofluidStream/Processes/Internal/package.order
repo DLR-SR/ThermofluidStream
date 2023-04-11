@@ -4,3 +4,5 @@ PartialTurboComponent
 PartialConductionElement
 InitializationMethodsCondElement
 Material
+ShapeOfResistance
+ReferencePressureDropFunction
