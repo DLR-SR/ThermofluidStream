@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes;
 model FlowResistance "Flow resistance model"
   extends Interfaces.SISOFlow(
-    final L=if computeL then l/areaInertance else L_value,
+    final L=if computeL then l/areaHydraulic else L_value,
     final clip_p_out=true);
 
   import Modelica.Constants.pi "Constant Pi";
@@ -23,9 +23,9 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Length b(min=0) = 0 "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCross(min=0) = 0 "Cross section area"
+  parameter SI.Area areaCrossInput(min=0) = 0 "Cross section area from input"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
-  parameter SI.Length perimeter(min=0) = 0 "Wetted perimeter of cross-section"
+  parameter SI.Length perimeterInput(min=0) = 0 "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
 
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance of pipe"
@@ -69,27 +69,26 @@ some medium properties and the geometry of the pipe.
 </p>
 </html>"));
 
+  final parameter SI.Length D_h = 4*areaCross/perimeter "Hydraulic diameter of resistance";
+
+  final parameter SI.Length perimeter=
+    if shape == ShapeOfResistance.circular then 2*pi*r
+    elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
+    else perimeterInput "Perimeter of resistance";
+
+  final parameter SI.Area areaCross=
+    if shape == ShapeOfResistance.circular then pi*r*r
+    elseif shape == ShapeOfResistance.rectangle then a*b
+    else areaCrossInput "Cross-sectional area of resistance";
+
+  final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4
+    "Hydraulic cross-sectional area of resistance";
+
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state))
     "Density of medium entering";
   SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state)
     "Dynamic viscosity of medium entering";
-  parameter SI.Length D_h = 4*areaCrossActual/perimeterActual "Hydraulic diameter of resistance";
-
-  parameter SI.Length perimeterActual=
-    if shape == ShapeOfResistance.circular then 2*pi*r
-    elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
-    else perimeter "Actual perimeter of resistance";
-
-  parameter SI.Area areaCrossActual=
-    if shape == ShapeOfResistance.circular then pi*r*r
-    elseif shape == ShapeOfResistance.rectangle then a*b
-    else areaCross "Actual area of resistance";
-
-  parameter SI.Area areaInertance=
-    if shape == ShapeOfResistance.circular then pi*r*r
-    elseif shape == ShapeOfResistance.rectangle then pi*D_h*D_h*1/4
-    else areaCross "Area for calculation of inertance";
 
 equation
   dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);
