@@ -7,7 +7,7 @@ model FlowResistance "Flow resistance model"
   import Modelica.Constants.pi "Constant Pi";
   import ThermofluidStream.Processes.Internal.ShapeOfResistance "Shape of cross sectional area";
 
-  parameter SI.Length l(min=0) "Length of pipe"
+  parameter SI.Length l(min=0) "Length of resistance"
     annotation (Dialog(group = "Geometry"));
   parameter ShapeOfResistance shape=ShapeOfResistance.circular
     "Shape of cross sectional area"
@@ -23,7 +23,7 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
   parameter SI.Length b(min=0) = 0 "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCrossInput(min=0) = 0 "Cross section area from input"
+  parameter SI.Area areaCrossInput(min=0) = 0 "Cross section area from user input"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter SI.Length perimeterInput(min=0) = 0 "Wetted perimeter of cross-section"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
