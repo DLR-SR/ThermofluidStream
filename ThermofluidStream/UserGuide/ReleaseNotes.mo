@@ -4,7 +4,7 @@ class ReleaseNotes "Release notes"
 
   annotation (
     Documentation(
-      info="<html> 
+      info="<html>
 <p>
 This section summarizes the changes that have been performed on the library.
 </p>
@@ -16,7 +16,9 @@ This section summarizes the changes that have been performed on the library.
     <a href=\"modelica://ThermofluidStream.Processes.FlowResistance\">flow resistance model</a>
     that now provides
     a) the ability to choose different shapes for cross sectional area and
-    b) additional pressure loss functions.
+    b) additional pressure loss functions (collected in
+    <a href=\"modelica://ThermofluidStream.Processes.Internal.FlowResistance\">FlowResistance</a>
+    sub-package).
   </li>
 </ul>
 
