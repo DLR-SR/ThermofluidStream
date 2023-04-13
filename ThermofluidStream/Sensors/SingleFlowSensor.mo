@@ -78,7 +78,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,-60},{80,-60}},
+          points={{-80,-60},{80,-60}},
           color={28,108,200},
           thickness=0.5),
         Line(points={{0,-26},{0,-60}}, color={0,0,0}),

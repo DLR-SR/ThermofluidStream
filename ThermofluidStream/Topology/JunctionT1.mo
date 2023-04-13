@@ -13,14 +13,11 @@ model JunctionT1 "2 to 1 T-Junction"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={-100,0})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
   Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
   JunctionN junctionN(final N=2, redeclare package Medium = Medium, final L=L,
     final assumeConstantDensity = assumeConstantDensity, final m_flow_eps=m_flow_eps)
     annotation (Placement(transformation(
@@ -47,11 +44,11 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{-80,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{0,-70}},
+          points={{0,0},{0,-80}},
           color={28,108,200},
           thickness=0.5),
         Line(
