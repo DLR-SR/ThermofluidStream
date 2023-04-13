@@ -10,6 +10,7 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel = nCells,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium = MediumA,
@@ -20,6 +21,7 @@ model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-pha
     annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel = 1,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium = MediumB,
