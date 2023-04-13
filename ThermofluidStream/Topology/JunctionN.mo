@@ -72,11 +72,11 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{-80,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{70,0}},
+          points={{0,0},{80,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

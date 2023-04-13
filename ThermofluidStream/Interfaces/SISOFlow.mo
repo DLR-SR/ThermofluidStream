@@ -26,11 +26,9 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
     annotation(Dialog(tab="Advanced", enable=clip_p_out));
 
   Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-      iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-      iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
 SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow "mass flow through component";
 

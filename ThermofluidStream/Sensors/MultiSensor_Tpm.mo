@@ -108,7 +108,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,-100},{80,-100}},
+          points={{-80,-100},{80,-100}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
