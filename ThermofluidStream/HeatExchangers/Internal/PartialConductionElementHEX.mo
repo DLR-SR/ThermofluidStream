@@ -6,7 +6,7 @@ partial model PartialConductionElementHEX "Parent for CEs for discretizedHEX"
 
     parameter SI.Area A = 1 "Contact area of volume with medium";
 
-    parameter Integer nCellsParallel "Number of parallel discretization elements";
+    parameter Integer nCellsParallel = 1 "Number of parallel discretization elements";
 
     constant SI.CoefficientOfHeatTransfer U_min = 1 "Minimum heat transfer coefficient for temperature adaption at zero massflow";
 
