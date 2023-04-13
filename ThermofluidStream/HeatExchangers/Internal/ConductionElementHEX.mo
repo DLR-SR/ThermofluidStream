@@ -9,7 +9,7 @@ model ConductionElementHEX "ConductionElement for single-phase fluids"
 
 equation
   //Estimation of heat transfer coefficient
-  U =max(U_min, U_nom*(abs(m_flow/(m_flow_nom/nCellsParallel)))^Re_exp);
+  U = max(U_min, U_nom*(abs(m_flow/(m_flow_nom/nCellsParallel)))^Re_exp);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
