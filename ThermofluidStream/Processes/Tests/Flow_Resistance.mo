@@ -37,7 +37,7 @@ Medium model for the test. Can be anything.
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-    m_acceleraton_0=1,
+    m_acceleration_0=1,
     computeL=false,
     L_value=1000,
     r=0.02,

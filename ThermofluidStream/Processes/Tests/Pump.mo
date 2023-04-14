@@ -34,7 +34,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-    m_acceleraton_0=0.2,
+    m_acceleration_0=0.2,
     redeclare function dp_tau_pump =
         tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
     annotation (Placement(transformation(extent={{-2,62},{18,82}})));

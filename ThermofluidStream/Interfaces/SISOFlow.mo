@@ -17,7 +17,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
     annotation(Dialog(tab= "Initialization", group="Mass flow"), choicesAllMatching=true);
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
     annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.state)));
-  parameter Utilities.Units.MassFlowAcceleration m_acceleraton_0 = 0 "Initial value for der(m_flow)"
+  parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
     annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.derivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "If false, set dr_corr to zero"
@@ -54,7 +54,7 @@ initial equation
   if initM_flow == InitializationMethods.state then
     m_flow = m_flow_0;
   elseif initM_flow == InitializationMethods.derivative then
-    der(m_flow) = m_acceleraton_0;
+    der(m_flow) = m_acceleration_0;
   elseif initM_flow == InitializationMethods.steadyState then
     der(m_flow) = 0;
   end if;

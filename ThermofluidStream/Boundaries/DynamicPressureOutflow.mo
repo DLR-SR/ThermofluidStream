@@ -61,7 +61,7 @@ equation
   if extrapolateQuadratic then
     v_mean = (v_out+v_in)*0.5;
   else
-    //the mean velocity is limited to half the velcocity that is bound to the actual mass-flow rate
+    //the mean velocity is limited to half the velocity that is bound to the actual mass-flow rate
     v_mean =Undirected.Internal.regStep(
       sign(v_out)*m_flow,
       (v_out + v_in)*0.5,
