@@ -34,3 +34,6 @@ convertElement({"ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX",
                 "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX"},
                "calculate_efficency", "calculate_efficiency");
 
+convertElement({"ThermofluidStream.Interfaces.SISOFlow",
+                "ThermofluidStream.Undirected.Interfaces.SISOFlow"},
+               "m_acceleraton_0", "m_acceleration_0");

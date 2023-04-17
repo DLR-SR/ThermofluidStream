@@ -1,18 +1,18 @@
 within ThermofluidStream.Undirected.Boundaries;
-model Reservoir "Model of a Resorvoir"
+model Reservoir "Model of a reservoir"
   extends Internal.PartialVolume(final useHeatport=false, final initialize_pressure=false, final A=0, final U=0);
 
-  parameter Boolean pEnvFromInput = false "Enable Input";
+  parameter Boolean pEnvFromInput = false "Enable input";
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area of medium";
-  parameter SI.Pressure p_env_par=1e5 "Environment Pressure"
+  parameter SI.Pressure p_env_par=1e5 "Environmental pressure"
     annotation(Dialog(enable=not pEnvFromInput));
   parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
     annotation(Dialog(tab="Initialization"));
   parameter SI.Acceleration g = dropOfCommons.g "Acceleration of gravity";
-  parameter SI.Height height_min = 0.01 "Minimum Height of fluid in Resorvoir; should be above 0"
+  parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir; should be above 0"
     annotation(Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environment pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,100})));

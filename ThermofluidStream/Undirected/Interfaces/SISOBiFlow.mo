@@ -17,7 +17,7 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
     annotation(Dialog(tab= "Initialization"), choicesAllMatching=true);
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
     annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.state)));
-  parameter Utilities.Units.MassFlowAcceleration m_acceleraton_0 = 0 "Initial value for der(m_flow)"
+  parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
     annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.derivative)));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
@@ -67,7 +67,7 @@ initial equation
   if initM_flow == InitializationMethods.state then
     m_flow = m_flow_0;
   elseif initM_flow == InitializationMethods.derivative then
-    der(m_flow) = m_acceleraton_0;
+    der(m_flow) = m_acceleration_0;
   elseif initM_flow == InitializationMethods.steadyState then
     der(m_flow) = 0;
   end if;
