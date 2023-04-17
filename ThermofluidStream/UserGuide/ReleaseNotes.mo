@@ -12,6 +12,14 @@ This section summarizes the changes that have been performed on the library.
 <h4>Version 1.1.0-dev (202Y-MM-DD)</h4>
 <ul>
   <li>
+    Updated graphical layout (both diagram and icon) of connectors
+    <a href=\"modelica://ThermofluidStream.Interfaces.Inlet\">Inlet</a>
+    and
+    <a href=\"modelica://ThermofluidStream.Interfaces.Outlet\">Outlet</a>
+    to be structured according to the convention of the Modelica
+    Standard Library.
+  </li>
+  <li>
     Updated
     <a href=\"modelica://ThermofluidStream.Processes.FlowResistance\">flow resistance model</a>
     that now provides
