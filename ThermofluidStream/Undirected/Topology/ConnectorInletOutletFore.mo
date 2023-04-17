@@ -11,7 +11,7 @@ model ConnectorInletOutletFore
     annotation(Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference mass flow"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
     annotation (Dialog(tab="Advanced"));
