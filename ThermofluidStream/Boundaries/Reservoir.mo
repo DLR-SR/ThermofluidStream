@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model Reservoir "Model of a Reservoir"
+model Reservoir "Model of a reservoir"
   extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=0, final A = 0, final U=0);
 
   parameter Boolean pEnvFromInput = false "Enable input";
