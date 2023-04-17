@@ -4,7 +4,7 @@ model Reservoir "Model of a reservoir"
 
   parameter Boolean pEnvFromInput = false "Enable input";
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area of medium";
-  parameter SI.Pressure p_env_par=1e5 "Environment pressure"
+  parameter SI.Pressure p_env_par=1e5 "Environmental pressure"
     annotation(Dialog(enable=not pEnvFromInput));
   parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
     annotation(Dialog(tab="Initialization"));
