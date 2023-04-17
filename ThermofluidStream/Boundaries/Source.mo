@@ -37,7 +37,7 @@ the inlet the source is connected to.
   Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{100,0},{120,20}}), iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
 protected
   outer DropOfCommons dropOfCommons;

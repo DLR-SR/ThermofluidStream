@@ -9,14 +9,11 @@ model SplitterT1 "Splits a flow into two subflows"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0}),
-      iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0})));
   Interfaces.Outlet outletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,100}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,100})));
   Interfaces.Outlet outletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100})));
   SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
 
@@ -39,11 +36,11 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{-80,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{0,-70}},
+          points={{0,0},{0,-80}},
           color={28,108,200},
           thickness=0.5),
         Line(

@@ -15,8 +15,7 @@ the outlet the sink is connected to.
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-114,-10},
-            {-94,10}}), iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")=p0 if pressureFromInput "Pressure setpoint [Pa]"
     annotation (Placement(

@@ -41,7 +41,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{-40,0}},
+          points={{-80,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(

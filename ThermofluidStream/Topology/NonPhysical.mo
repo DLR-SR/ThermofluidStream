@@ -54,18 +54,13 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       "= true, if difference (1-splitRatio) is used for split ratio, otherwise splitRatio input is used directly";
 
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={-100,0})));
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
     Interfaces.Inlet inletA(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
     Interfaces.Inlet inletB(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={100,0})));
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0})));
 
-    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
-          rotation=90,
-          origin={0,-100}), iconTransformation(
+    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,-30})));
@@ -142,15 +137,11 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
-            points={{-70,0},{0,0}},
+            points={{-90,0},{90,0}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{80,0}},
-            color={28,108,200},
-            thickness=0.5),
-          Line(
-            points={{0,0},{0,80}},
+            points={{0,0},{0,90}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(

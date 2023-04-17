@@ -1,4 +1,4 @@
-within ThermofluidStream.HeatExchangers;
+﻿within ThermofluidStream.HeatExchangers;
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
@@ -21,27 +21,20 @@ model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-90,10}), iconTransformation(extent={{-120,-20},{-80,20}})));
+        origin={-100,0})));
   ThermofluidStream.Interfaces.Outlet outletA(
-    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{100,0},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
+    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=0,
-        origin={110,60}),iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
+        extent={{20,-20},{-20,20}},
+        rotation=90,
         origin={0,100})));
   ThermofluidStream.Interfaces.Outlet outletB(
     redeclare package Medium = MediumB) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=0,
-        origin={-108,60}),iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
+        extent={{20,-20},{-20,20}},
+        rotation=90,
         origin={0,-100})));
 
   Modelica.Units.SI.TemperatureDifference Delta_T_max
@@ -203,10 +196,6 @@ equation
           extent={{20,120},{60,80}},
           textColor={175,175,175},
           textString="B"),
-        Line(
-          points={{0,70},{0,-80}},
-          color={28,108,200},
-          thickness=0.5),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -215,7 +204,11 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{0,80},{0,-80}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-80,0},{80,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

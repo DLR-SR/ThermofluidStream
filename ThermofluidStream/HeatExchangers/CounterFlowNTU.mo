@@ -1,4 +1,4 @@
-within ThermofluidStream.HeatExchangers;
+﻿within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
@@ -10,30 +10,23 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-102,-50}),
-                          iconTransformation(extent={{-132,-80},{-92,-40}})));
+        origin={-100,-60})));
   ThermofluidStream.Interfaces.Outlet outletA(
-    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{110,-60},{130,
-            -40}}),
-        iconTransformation(extent={{90,-80},{130,-40}})));
+    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={100,-60})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={110,60}),iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={112,60})));
+        origin={100,60})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={-108,60}),iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={-110,60})));
+        origin={-100,60})));
 
   parameter Modelica.Units.SI.Area A "Conductive Surface";
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
@@ -196,27 +189,27 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
-          extent={{-82,66},{92,-86}},
+          extent={{-70,66},{84,-86}},
           lineColor={215,215,215},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           radius=6),
         Rectangle(
-          extent={{-88,70},{84,-78}},
+          extent={{-76,78},{76,-78}},
           lineColor={28,108,200},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           radius=6),
         Line(
-          points={{-60,56},{60,56}},
+          points={{-60,64},{60,64}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-60,36},{60,36}},
+          points={{-60,44},{60,44}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Text(
-          extent={{-142,-18},{-102,-58}},
+          extent={{-120,-74},{-80,-114}},
           textColor={175,175,175},
           textString="A"),
         Text(
@@ -228,7 +221,7 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA > T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-60,16},{60,16}},
+          points={{-60,24},{60,24}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -236,11 +229,11 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA > T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,32},{-60,36}},
+          points={{-50,40},{-60,44}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,40},{-60,36}},
+          points={{-50,48},{-60,44}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -252,19 +245,19 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA > T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,52},{-60,56}},
+          points={{-50,60},{-60,64}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,60},{-60,56}},
+          points={{-50,68},{-60,64}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,12},{-60,16}},
+          points={{-50,20},{-60,24}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-50,20},{-60,16}},
+          points={{-50,28},{-60,24}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
