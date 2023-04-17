@@ -12,7 +12,7 @@ model Reservoir "Model of a reservoir"
   parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir; should be above 0"
     annotation(Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environment pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,100})));
