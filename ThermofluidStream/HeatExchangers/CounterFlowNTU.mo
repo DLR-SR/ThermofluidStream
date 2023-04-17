@@ -12,19 +12,21 @@ model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-100,-50})));
+        origin={-100,-60})));
   ThermofluidStream.Interfaces.Outlet outletA(
-    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{80,-70},{120,-30}})));
+    redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={100,-60})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={100,50})));
+        origin={100,60})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB)
     annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={-100,50})));
+        origin={-100,60})));
 
   parameter Modelica.Units.SI.Area A "Conductive Surface";
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
