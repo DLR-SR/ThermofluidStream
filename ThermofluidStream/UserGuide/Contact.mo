@@ -18,8 +18,9 @@ class Contact "Contact and citation information"
 
 <h4>Contact</h4>
 <p>
-Preferred feedback is to raise an issue on the GitHub repository (also
-for positive feedback).
+Preferred feedback is to raise an issue on the project&apos;s
+<a href=\"https://github.com/DLR-SR/ThermofluidStream.git\">GitHub repository</a>
+(also for positive feedback).
 </p>
 <p>
 If you have other issues contact:
