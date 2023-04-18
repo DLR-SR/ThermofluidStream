@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.HeatExchangers;
+within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   replaceable package MediumA =
