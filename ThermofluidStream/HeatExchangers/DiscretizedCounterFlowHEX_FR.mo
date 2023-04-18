@@ -11,6 +11,7 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel= 1,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium=MediumA,
@@ -19,6 +20,7 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel= 1,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium=MediumB,
@@ -72,7 +74,8 @@ public
     each r = 1,
     each l= 1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_A,
       each k2=k2_A))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=180,origin={-50,-80})));
@@ -81,7 +84,8 @@ public
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare function pLoss =
+        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_B,
       each k2=k2_B))
       annotation (Placement(transformation(extent={{40,70},{60,90}})));

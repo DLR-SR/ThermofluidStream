@@ -12,7 +12,7 @@ initial equation
 
 equation
   //Estimation of heat transfer coefficient
-  U = max(U_min, U_nom*(abs(m_flow/m_flow_nom))^Re_exp);
+  U = max(U_min, U_nom*(abs(m_flow/(m_flow_nom/nCellsParallel)))^Re_exp);
 
   annotation (Dialog(tab="Initialization", group="Enthalpy"),
               Icon(coordinateSystem(preserveAspectRatio=false)),

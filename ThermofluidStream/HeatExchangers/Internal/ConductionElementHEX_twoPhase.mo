@@ -30,8 +30,10 @@ equation
   x = (h - h_bubble)/(h_dew - h_bubble);
 
   //Heat transfer coefficients for each zone dependent on mass-flow rate
-  U_liq = max(U_min, U_liq_nom*(abs(inlet.m_flow)/m_flow_nom)^Re_exp_cond);
-  U_vap = max(U_min, U_vap_nom*(abs(inlet.m_flow)/m_flow_nom)^Re_exp_evap);
+  U_liq = max(U_min, U_liq_nom*(abs(inlet.m_flow)/(m_flow_nom/nCellsParallel))^
+    Re_exp_cond);
+  U_vap = max(U_min, U_vap_nom*(abs(inlet.m_flow)/(m_flow_nom/nCellsParallel))^
+    Re_exp_evap);
   U_tp = max(U_min, U_tp_nom);
 
   //Coefficient of heat transfer dependent on vapor quality (interpolation in phase-transition regions)

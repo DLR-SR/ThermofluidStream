@@ -11,6 +11,7 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
 
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel= 1,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium=MediumA,
@@ -19,6 +20,7 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
   replaceable model ConductionElementB = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel= 1,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium=MediumB,

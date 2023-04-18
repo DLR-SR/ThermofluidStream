@@ -28,6 +28,19 @@ This section summarizes the changes that have been performed on the library.
     <a href=\"modelica://ThermofluidStream.Processes.Internal.FlowResistance\">FlowResistance</a>
     sub-package).
   </li>
+  <li>
+    Fix bug in
+    <a href=\"modelica://ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX\">cross-flow heat exchanger</a>:
+    solution not converging for increasing number of discretization elements.
+    <ul>
+      <li>
+        Scale reference mass-flow for heat transfer coefficient if stream is split into parallel streams.
+      </li>
+      <li>
+        Introduce parameter <code>nCellsParallel</code> for general usage in all discretized heat exchangers.
+      </li>
+    </ul> 
+  </li>
 </ul>
 
 <h4>Version 1.0.0 (2022-12-02)</h4>
