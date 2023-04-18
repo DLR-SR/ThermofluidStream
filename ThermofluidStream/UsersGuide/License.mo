@@ -1,4 +1,4 @@
-within ThermofluidStream.UserGuide;
+within ThermofluidStream.UsersGuide;
 class License "Copyright and license"
   extends Modelica.Icons.Information;
 

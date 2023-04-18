@@ -1,5 +1,5 @@
 within ThermofluidStream;
-package UserGuide "User Guide to the DLR Thermofluid Stream Library"
+package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
 
@@ -18,4 +18,4 @@ More information on license and content in the sub-packages.
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>"));
-end UserGuide;
+end UsersGuide;

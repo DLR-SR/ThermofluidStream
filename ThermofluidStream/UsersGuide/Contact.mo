@@ -1,4 +1,4 @@
-within ThermofluidStream.UserGuide;
+within ThermofluidStream.UsersGuide;
 class Contact "Contact and citation information"
   extends Modelica.Icons.Contact;
 

@@ -1,4 +1,4 @@
-within ThermofluidStream.UserGuide;
+within ThermofluidStream.UsersGuide;
 class Nomenclature "Nomenclature"
   extends Modelica.Icons.Information;
 
