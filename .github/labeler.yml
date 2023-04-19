@@ -1,0 +1,55 @@
+# Labeler attributes
+#   all: all changed files must match the list
+#   any: any of changed files match the list
+
+CI:
+- any: ['.CI/**/*']
+- any: ['.github/**/*']
+
+p::Boundaries:
+- all: ['ThermofluidStream/Boundaries/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Boundaries/**/*.mo']
+
+p::Examples:
+- all: ['ThermofluidStream/Examples/**/*.mo']
+
+p::FlowControl:
+- all: ['ThermofluidStream/FlowControl/**/*.mo']
+- all: ['ThermofluidStream/Undirected/FlowControl/**/*.mo']
+
+p::HeatExchangers:
+- all: ['ThermofluidStream/HeatExchangers/**/*.mo']
+- all: ['ThermofluidStream/Undirected/HeatExchangers/**/*.mo']
+
+p::Interfaces:
+- all: ['ThermofluidStream/Interfaces/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Interfaces/**/*.mo']
+
+p::Internal:
+- all: ['ThermofluidStream/Undirected/Internal/**/*.mo']
+
+p::Media:
+- all: ['ThermofluidStream/Media/**/*.mo']
+
+p::Processes:
+- all: ['ThermofluidStream/Processes/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Processes/**/*.mo']
+
+d::Resources:
+- all: ['ThermofluidStream/Resources/**/*']
+
+p::Sensors:
+- all: ['ThermofluidStream/Sensors/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Sensors/**/*.mo']
+
+p::Topology:
+- all: ['ThermofluidStream/Topology/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Topology/**/*.mo']
+
+p::UsersGuide:
+- all: ['ThermofluidStream/UsersGuide/**/*.mo']
+
+p::Utilities:
+- all: ['ThermofluidStream/Utilities/**/*.mo']
+
+
