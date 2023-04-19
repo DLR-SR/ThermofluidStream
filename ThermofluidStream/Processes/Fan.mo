@@ -22,7 +22,7 @@ protected
   Real R_out(unit="J/(kg.K)") = p_out/Medium.temperature(outlet.state)/Medium.density(outlet.state);
 
 equation
-  // test for idel gas
+  // test for ideal gas
   assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in fan is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
