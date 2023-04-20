@@ -16,9 +16,8 @@ jobs:
           python-version: 3.8
       - name: Install python packages
         run: |
-          pip install --user pytidylib
-          pip install --user futures
-          pip install --user bs4
+          pip install --disable-pip-version-check --user pytidylib
+          pip install --disable-pip-version-check --user futures
       - name: Build html tidy
         run: |
           git clone --branch 5.8.0 --depth=1 https://github.com/htacg/tidy-html5.git
@@ -38,8 +37,9 @@ jobs:
           echo "::add-matcher::./.github/checkTags.json"
           python ./.CI/check_html.py checkTags ./
           echo "::remove-matcher owner=checkTags::"
-      - name: Check URL links
-        run: python ./.CI/check_url_access.py ./
+      - name: Check links
+        timeout-minutes: 3
+        run: python ./.CI/check_html.py checkLinks ./
   syntax_checks:
     timeout-minutes: 5
     runs-on: ubuntu-latest
