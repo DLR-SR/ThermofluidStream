@@ -2,7 +2,7 @@
 Copyright (C) 2022, DLR Institut fuer Systemdynamik und Regelungstechnik
 All rights reserved.
 
-Check url adress in links of Modelica HTML documentation for validity
+Check url address in links of Modelica HTML documentation for validity
 python check_url_access.py [path]
 """
 import importlib
