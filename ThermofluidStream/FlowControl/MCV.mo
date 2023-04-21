@@ -79,7 +79,7 @@ equation
   end if;
 
   // compute pressure drop dynamic very fast, so dr tracks dr_set.
-  // dr is limited, since it can be very high for non-smooth systms (e.g. a jump in input pressure)
+  // dr is limited, since it can be very high for non-smooth systems (e.g. a jump in input pressure)
   TC/k1 * der(dp_int) = max(-1e8, min(1e8,dr)) - dr_set +  dp_corr;
 
   // limit dp to a so that p_out > p_min and no pressure is created
