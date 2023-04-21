@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.FlowControl;
-model CheckValve "Valve that allows only postive mass_flow"
+model CheckValve "Valve that allows only positive mass_flow"
   extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=
         false);
 
