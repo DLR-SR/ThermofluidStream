@@ -16,14 +16,14 @@ the inlet the source is connected to.
     annotation(Dialog(enable = not setEnthalpy));
   parameter Boolean enthalpyFromInput = false "Use input connector for specific enthalpy"
     annotation(Dialog(enable = setEnthalpy));
-  parameter Boolean xiFromInput = false "Use input connector for mass Fraction?";
+  parameter Boolean xiFromInput = false "Use input connector for mass fraction?";
   parameter SI.Temperature T0_par = Medium.T_default "Temperature set value"
     annotation(Dialog(enable = not setEnthalpy and not temperatureFromInput));
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(enable = not pressureFromInput));
   parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
     annotation(Dialog(enable = setEnthalpy and not enthalpyFromInput));
-  parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass Fraction set value"
+  parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
     annotation(Dialog(enable = not xiFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));

@@ -12,7 +12,7 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input Real slip_D(unit="1", min=0, max=1) = 0.5 "Design slip ((V_flow_nominal-V_flow)/V_flow_nominal)"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
-  input Real eta_D(unit="1", min=0.001, max=1) = 0.75 "Design efficciency"
+  input Real eta_D(unit="1", min=0.001, max=1) = 0.75 "Design efficiency"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
 
   input SI.Volume V_r_input=0.0001 "Reference volume of pump"
