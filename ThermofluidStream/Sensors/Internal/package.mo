@@ -5,6 +5,6 @@ package Internal "Helper functions for sensor package"
 
 
   annotation (Documentation(info="<html>
-<p>Package for helper funcitons, Types and Models for the Sensor package.</p>
+<p>Package for helper functions, Types and Models for the Sensor package.</p>
 </html>"));
 end Internal;

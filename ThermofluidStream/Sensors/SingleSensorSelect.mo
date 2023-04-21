@@ -12,7 +12,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
