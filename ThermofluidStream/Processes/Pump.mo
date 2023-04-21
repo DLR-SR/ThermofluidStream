@@ -27,7 +27,7 @@ protected
 
 equation
   // test for incompressibility
-  assert(abs(v_in- v_out)/v_in < max_rel_volume, "medium in pump is assumed ot be incompressible, but check failed", dropOfCommons.assertionLevel);
+  assert(abs(v_in- v_out)/v_in < max_rel_volume, "Medium in pump is assumed to be incompressible, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
