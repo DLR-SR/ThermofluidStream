@@ -51,7 +51,7 @@ equation
     for j in 1:Medium.nXi loop
       Xi[j,i] = mfk(inlets[i].state, j);
     end for;
-    //instad of
+    //instead of
     /* Xi[:,i] = Medium.massFraction(inlets[i].state); */
 
     p[i] + r_in[i] = p_mix + r_mix;

@@ -32,7 +32,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is nessesary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
+<p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is necessary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
 <p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end LeakageA;
@@ -107,7 +107,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       Xi[j,1] = mfk(inletA.state, j);
       Xi[j,2] = mfk(inletB.state, j);
     end for;
-    //instad of
+    //instead of
     /* Xi[:,i] = Medium.massFraction(inlets[i].state); */
 
     //p[1] + r_in[2] = p_mix + r_mix;
@@ -170,8 +170,8 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   end JunctionRatio;
 
   annotation (Documentation(info="<html>
-<p>This package contains topology elements that have non-physical assumtions or constraints like mass-flow splits. </p>
-<p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicilty modeling the phenomena like a controlled valve.</p>
+<p>This package contains topology elements that have non-physical assumptions or constraints like mass-flow splits. </p>
+<p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicitly modeling the phenomena like a controlled valve.</p>
 <p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><strong>or</strong></u> Junction.</p>
 </html>"));
 end NonPhysical;
