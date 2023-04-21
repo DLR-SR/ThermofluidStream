@@ -3,7 +3,7 @@ package Processes "Undirected process package"
   extends Modelica.Icons.Package;
 
   annotation (Documentation(info="<html>
-<p>This package contains models implementing undirected versions of the processes. Here the thermodynamic state of one ore more fluid streams is chaged by exchanging heat or work with the streams, or by delaying the state.</p>
+<p>This package contains models implementing undirected versions of the processes. Here, the thermodynamic state of one or more fluid streams is chaged by exchanging heat or work with the streams, or by delaying the state.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>"), Icon(graphics={

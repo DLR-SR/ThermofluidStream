@@ -8,7 +8,7 @@ model ConductionElement "Test for ConductionElement"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium Model for the test. Be aware that the Component is mainly
-ment for liquids with low compressablility.
+meant for liquids with low compressablility.
 </p>
 </html>"));
 
