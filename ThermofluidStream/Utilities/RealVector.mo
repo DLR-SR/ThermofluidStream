@@ -3,7 +3,7 @@ block RealVector "Set output vector signal to a time varying Real expression"
 
   parameter Integer N = 1 "Size of signal";
 
-  Modelica.Blocks.Interfaces.RealOutput y[N](each unit="1")=zeros(N) "Value of Real output vetor"
+  Modelica.Blocks.Interfaces.RealOutput y[N](each unit="1")=zeros(N) "Value of Real output vector"
     annotation (Dialog(group="Time varying output vector"), Placement(
         transformation(extent={{100,-10},{120,10}})));
 
