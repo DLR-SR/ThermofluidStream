@@ -5,6 +5,22 @@ class References "References"
   annotation (DocumentationClass=true, Documentation(info="<html>
 <h4>References referring directly to this library</h4>
 <ul>
+  <li>steady mass flow pressure: p / delta: dp</li>
+  <li>inertial pressure: r / delta: dr</li>
+  <li>inertance: L</li>
+  <li>dynamic pressure q / delta: dq</li>
+  <li>mass flow rate: m_flow</li>
+  <li>specific enthalpy: h / delta: dh</li>
+  <li>specific internal energy: u</li>
+  <li>heat flow: Q_flow</li>
+  <li>temperature: T</li>
+</ul>
+
+<h4>Literature</h4>
+<p>
+<strong>References referring directly to this library</strong>
+</p>
+<ul>
   <li>
     Zimmer, Dirk (2020).
     &quot;Robust object-oriented formulation of directed thermofluid stream networks&quot;.
