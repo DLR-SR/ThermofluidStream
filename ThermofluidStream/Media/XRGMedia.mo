@@ -256,7 +256,7 @@ package XRGMedia "A medium property library"
     end Helmholtz_ps;
 
     function helmholtzToBoundaryProps
-      "Calulate phase boundary property record from dimensionless Helmholtz function"
+      "Calculate phase boundary property record from dimensionless Helmholtz function"
       extends Modelica.Icons.Function;
 
       import Modelica.Units.SI;
@@ -711,7 +711,7 @@ Example:
       annotation (
         Inline=true,
         Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 </html>"));
     end pressure;
@@ -735,7 +735,7 @@ Example:
      h:=state.h;
 
       annotation (Inline = true, Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R134a/log(p)h-Diagram-R134a.png\"></p>
 </html>"));
     end specificEnthalpy;
@@ -1684,9 +1684,9 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       "Surface tension as a function of temperature (below critical point)"
 
     protected
-      Real tau "reduced temperatur";
-      R134aData.CoeffsSurfaceTension coeff "polynomial coefficients";
-      Modelica.Units.SI.Temperature Tc=374.21 "critical temperature";
+      Real tau "Reduced temperature";
+      R134aData.CoeffsSurfaceTension coeff "Polynomial coefficients";
+      Modelica.Units.SI.Temperature Tc=374.21 "Critical temperature";
 
     algorithm
       if sat.Tsat > Tc then
@@ -2252,7 +2252,7 @@ This function adds the ideal gas contribution of the fundamental equation to the
       input Real tau "reduced temperature (tau=Tcrit/T)";
       output Common.HelmholtzDerivs fid "helmholtz derivatives of ideal part";
     protected
-      XRGMedia.R134aData.Ideal id "ideal coeffcients";
+      XRGMedia.R134aData.Ideal id "Ideal coefficients";
       Real atau=abs(tau) "|tau|";
       Real adelta=abs(delta) "|delta|";
     algorithm
@@ -2783,7 +2783,7 @@ The functions provided by this package shall be used inside of the restricted li
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
 </dl>
 <dl><dt>Klein, McLinden and Laesecke: </dt>
-<dd><strong>An improved extended corresponding states methode for estimation of visocsity of pure refrigerants and mixtures</strong>.
+<dd><strong>An improved extended corresponding states method for estimation of visocsity of pure refrigerants and mixtures</strong>.
 Int. J. Refrig., Vol. 20, No.3, pp. 208-217, 1997.</dd>
 </dl>
 <dl><dt>McLinden, Klein. and Perkins: </dt>
@@ -8775,7 +8775,7 @@ Example:
         del_lam := del_lam + b[i]*(d_red)^(i);
       end for;
 
-      // required for critical enhancment only
+      // required for critical enhancement only
       cv := specificHeatCapacityCv(state);
       //cp := specificHeatCapacityCp(state);
       eta := dynamicViscosity(state);
@@ -9265,7 +9265,7 @@ Example:
       end if;
 
       annotation (Documentation(info="<html>
-<p> For the calcualtion of density and temperature from pressure and specific
+<p> For the calculation of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
@@ -16208,7 +16208,7 @@ Example:
       end if;
 
       annotation (Documentation(info="<html>
-<p> For the calcualtion of density and temperature from pressure and specific
+<p> For the calculation of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
@@ -16253,7 +16253,7 @@ when on the other side of a phase boundary)
       input Real tau "dimensionless temperature";
       output Common.HelmholtzDerivs fid "helmholtz coefficients of ideal part";
     protected
-      XRGMedia.CO2Data.Ideal id "ideal coeffcients";
+      XRGMedia.CO2Data.Ideal id "Ideal coefficients";
       Real atau=abs(tau);
       Real adelta=abs(delta);
     algorithm
@@ -22054,7 +22054,7 @@ Example:
     algorithm
       p := state.p;
       annotation (Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 </html>"));
     end pressure;
@@ -22078,7 +22078,7 @@ Example:
      h:=state.h;
 
       annotation (Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R1234yf/log(p)h-Diagram-R1234yf.png\"></p>
 </html>"));
     end specificEnthalpy;
@@ -23651,7 +23651,7 @@ This function adds the ideal gas contribution of the fundamental equation to the
       input Real tau "reduced temperature (tau=Tcrit/T)";
       output Common.HelmholtzDerivs fid "helmholtz derivatives of ideal part";
     protected
-      XRGMedia.R1234yfData.Ideal id "ideal coeffcients";
+      XRGMedia.R1234yfData.Ideal id "Ideal coefficients";
       Real atau=abs(tau) "|tau|";
       Real adelta=abs(delta) "|delta|";
       Temperature Tc = R1234yfData.data.TCRIT "temperature at critical point";
@@ -29463,7 +29463,7 @@ Example:
       p := state.p;
       annotation (
         Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 </html>"));
     end pressure;
@@ -29487,7 +29487,7 @@ Example:
       h:=state.h;
 
       annotation (Inline = true, Documentation(info="<html>
-<p>This function is included for the sake of completness.</p>
+<p>This function is included for the sake of completeness.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/XRG_Media/R245fa/log(p)h-Diagram-R245fa.png\"></p>
 </html>"));
     end specificEnthalpy;
@@ -30826,7 +30826,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
 
       annotation (Documentation(info="<html>
 <p>
-For the calcualtion of density and temperature from pressure and specific
+For the calculation of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
@@ -30872,7 +30872,7 @@ when on the other side of a phase boundary)
       input Real tau "dimensionless temperature";
       output Common.HelmholtzDerivs fid "helmholtz coefficients of ideal part";
     protected
-      XRGMedia.R245faData.Ideal id "ideal coeffcients";
+      XRGMedia.R245faData.Ideal id "Ideal coefficients";
       Real atau=abs(tau);
       Real adelta=abs(delta);
       //Real Tc = R245faData.data.TCRIT;
