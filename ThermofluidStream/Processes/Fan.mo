@@ -10,7 +10,7 @@ model Fan "Fan under ideal gas assumption"
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
         Documentation(info="<html>
 <p>
-Selectable function to choose beween different fan models.
+Selectable function to choose between different fan models.
 </p>
 </html>"));
 
@@ -22,7 +22,7 @@ protected
   Real R_out(unit="J/(kg.K)") = p_out/Medium.temperature(outlet.state)/Medium.density(outlet.state);
 
 equation
-  // test for idel gas
+  // test for ideal gas
   assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in fan is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

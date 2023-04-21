@@ -11,7 +11,7 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real eta(unit="1") = 1 "Isentropic efficienty"
     annotation(Dialog(enable=true));
-  input Real k(unit="1") = 2 "Exponetial factor used for pr<1"
+  input Real k(unit="1") = 2 "Exponential factor used for pr<1"
     annotation(Dialog(tab="Advanced", enable=true));
   input SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
     annotation(Dialog(tab="Advanced", enable=true));
@@ -23,15 +23,15 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
 
 
 protected
-  SI.Pressure p_in = Medium.pressure(state_in) "pressure at inlet";
-  SI.Temperature T_in = Medium.temperature(state_in) "temperatur at inlet";
+  SI.Pressure p_in = Medium.pressure(state_in) "Pressure at inlet";
+  SI.Temperature T_in = Medium.temperature(state_in) "Temperature at inlet";
 
-  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "isentropic coefficient at inlet";
-  Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "medium gas constant";
+  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "Isentropic coefficient at inlet";
+  Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "Medium gas constant";
 
-  SI.SpecificEnergy w_t_is "ideal specific technical work";
-  SI.SpecificEnergy w_t "actual specific technical work";
-  Real pr(unit="1") "pressure coefficent = p2/p1";
+  SI.SpecificEnergy w_t_is "Ideal specific technical work";
+  SI.SpecificEnergy w_t "Actual specific technical work";
+  Real pr(unit="1") "Pressure coefficient = p2/p1";
 
 algorithm
   // calc pr from characteristic curve
@@ -44,10 +44,10 @@ algorithm
   dp := p_in*(pr-1);
 
   // compute w_t_is for isenthalpic compression
-  // ideal gas assuptions
+  // ideal gas assumptions
   if pr >= 0 then
     // use this instead of h_in - Medium.isentropicEnthalpy(p_in+dp, state_in);
-    // to make it more robust, isentropicEnthalpy failes to solve often
+    // to make it more robust, isentropicEnthalpy fails to solve often
     w_t_is := kappa/(kappa - 1)*(R*T_in*(abs(pr)^((kappa - 1)/kappa) - 1));
   end if;
 

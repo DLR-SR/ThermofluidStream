@@ -103,7 +103,7 @@ algorithm
   V_flow := v_in*m_flow/f_Q;
   f_H    := 1 - (1 - f_Q)*abs(V_flow/V_flow_BEP)^0.75;
 
-  // corrected characterisic curves for TDH and tau_st
+  // corrected characteristic curves for TDH and tau_st
   TDH    := f_H *(a_h*omega*abs(omega) - b_h*omega*abs(V_flow) - c_h*V_flow*abs(V_flow));
   tau_st := (f_Q*f_H/f_eta) * (v_ref/v_in* (a_t*V_flow*abs(omega) - b_t*V_flow*abs(V_flow) + v_i*omega*abs(omega))) + v_s*abs(omega); // v_s is mechanical and does not scale with medium
 
@@ -134,6 +134,6 @@ K_D_ref =  9.73e-06 m3/rad;
 rho_ref_ref = 1.00e3 kg/m3;
 r_ref   =  1.60e-2 m;
 </pre></blockquote>
-<p>The characteristic curves are getting scaled to accomodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
+<p>The characteristic curves are getting scaled to accommodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
 </html>"));
 end dp_tau_centrifugal;

@@ -6,7 +6,7 @@ annotation (Documentation(revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 
 </html>", info="<html>
-<p>This package contains models implementing processes. Here the Thermodynamik state of one ore more fluid streams is chaged by exchanging heat or work with the streams, or by delaying the state.</p>
+<p>This package contains models implementing processes. Here, the thermodynamic state of one or more fluid streams is chaged by exchanging heat or work with the streams, or by delaying the state.</p>
 </html>"), Icon(graphics={
          Ellipse(
           extent={{-60,54},{60,-66}},

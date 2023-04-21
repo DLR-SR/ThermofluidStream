@@ -43,7 +43,7 @@ algorithm
   //calc dp as linear resistance model and w_t as volume change work in positive flow direction
   dp := k_p*(V_flow_nominal - V_flow);
   // for positive dp, if fluid goes against pressure gradient, Work performed is positive, else negative.
-  // additionaly a linear friction is added.
+  // additionally a linear friction is added.
   tau_st := V_flow*dp*omega/(omega^2 + omega_norm^2) + k_fric*(V_flow_nominal - V_flow);
 
   annotation (Documentation(info="<html>

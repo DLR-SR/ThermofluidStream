@@ -16,7 +16,7 @@ model Pump "A simple pump model"
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow "Nominal Flow Pump"),
     Documentation(info="<html>
 <p>
-Selectable function to choose beween different pump models.
+Selectable function to choose between different pump models.
 </p>
 </html>"));
 
