@@ -5,7 +5,7 @@ model BoilerEspresso "Test for the espresso boiler"
   package Water = Media.myMedia.Water.StandardWater
     "Medium Model"
     annotation (Documentation(info="<html>
-<p>Typicaly some sort of water, since we want to make espresso with it.</p>
+<p>Typically some sort of water, since we want to make espresso with it.</p>
 </html>"));
 
   Utilities.BoilerEspresso boilerEspresso(

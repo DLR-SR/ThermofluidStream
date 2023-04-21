@@ -5,7 +5,7 @@ model Piston "Test for Piston model"
   package Medium = Media.myMedia.Water.StandardWater
     "Medium Model"
     annotation (Documentation(info="<html>
-<p>Typicaly some sort of water.</p>
+<p>Typically some sort of water.</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
