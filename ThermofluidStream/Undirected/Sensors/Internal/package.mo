@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Sensors;
-package Internal "Partials and funtions"
+package Internal "Partials and functions"
   extends Modelica.Icons.InternalPackage;
 
   annotation (Documentation(info="<html>

@@ -18,7 +18,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = value if outputValue "Measured quantitiy [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(
         transformation(extent={{80,-20},{120,20}}),
           iconTransformation(extent={{80,-20},{120,20}})));
