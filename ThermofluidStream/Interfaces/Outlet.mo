@@ -13,38 +13,18 @@ connector Outlet "Outlet port for a fluid"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{100,0},{-100,100},{-100,-100},{100,0}},
-          pattern=LinePattern.None,
+          points={{100,0},{-100,100},{-40,0},{-100,-100},{100,0}},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           lineColor={28,108,200},
-          lineThickness=0.5),
-        Line(
-          points={{-100,100},{-100,-100}},
-          color={255,255,254},
-          thickness=0.1),
-        Line(
-          points={{-100,60},{20,0},{-100,-60}},
-          color={170,213,255},
-          thickness=0.5),
-        Line(
-          points={{-100,100},{100,0},{-100,-100}},
-          color={28,108,200},
-          thickness=0.5)}),
+          lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{0,0},{-100,50},{-100,-50},{0,0}},
-          pattern=LinePattern.None,
+          points={{0,0},{-100,50},{-80,0},{-100,-50},{0,0}},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Line(
-          points={{-100,50},{0,0},{-100,-50}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-100,30},{-40,0},{-100,-30}},
-          color={170,213,255},
-          thickness=0.5)}),
+          fillPattern=FillPattern.Solid,
+          lineColor={28,108,200},
+          lineThickness=0.5)}),
     Documentation(info="<html>
 <p>Directed flow connector for fluids.</p>
 <p>The mass flow is supposed to be negative, hence the fluid is supposed to leave the component through an outlet, therefore the state information of this connector is an output.</p>
