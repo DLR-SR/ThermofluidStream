@@ -45,7 +45,7 @@ class References "References"
     &quot;Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs&quot;.
     In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany).
     Link&ouml;ping University Electronic Press, Link&ouml;pings universitet <br>
-    <a href=\"https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf</a>
+    <a href=\"https://ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://ep.liu.se/ecp/157/060/ecp19157060.pdf</a>
   </li>
 </ul>
 </html>", revisions="<html>
