@@ -180,11 +180,11 @@ equation
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>
-A boiler with a heatport to add heat and a heat port to connect
-a tube as an heat exchanger.
+A boiler with a heatport to add heat and a heatport to connect
+a tube as a heat exchanger.
 </p>
 <p>
-Also there is a inlet for water and two outlets, one for water,
+There is also an inlet for water and two outlets, one for water,
 one for steam.
 </p>
 </html>"));

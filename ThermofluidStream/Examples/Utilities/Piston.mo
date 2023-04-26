@@ -1,8 +1,8 @@
 within ThermofluidStream.Examples.Utilities;
-model Piston "Piston Model with steam on both sides"
+model Piston "Piston model with steam on both sides"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium Model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p>Model of the medium in the Piston. The medium is typically Two-phase.</p>
 </html>"));
@@ -12,7 +12,7 @@ model Piston "Piston Model with steam on both sides"
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced"));
 
-  parameter SI.Area A "Area of Piston";
+  parameter SI.Area A "Area of piston";
   parameter SI.Length l_stroke "Stroke length of motion";
   parameter SI.Volume V_dead "Dead volume at both ends";
   parameter Boolean outputX = false "Enable piston position output";
@@ -152,7 +152,7 @@ equation
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>
-In a piston a different pressure of fluids perform mechanical linar work.
+In a piston a different pressure of fluids perform mechanical linear work.
 </p>
 <p>
 Depending on <code>push_left</code>, the left (when pushleft is true) side or
