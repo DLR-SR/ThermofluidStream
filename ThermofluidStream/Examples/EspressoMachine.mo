@@ -395,7 +395,7 @@ Medium model for water.
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-20})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{156,138},{212,194}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,142},{218,198}})));
 equation
   connect(boiler.heatport_heat, heating_element.port)
     annotation (Line(points={{-72,10},{-90,10}}, color={191,0,0}));

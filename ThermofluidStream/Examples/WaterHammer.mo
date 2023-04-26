@@ -79,7 +79,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1)
     annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{80,-100},{120,-60}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{82,-98},{118,-62}})));
 equation
   connect(multiSensor_Tpm3.inlet, valveLinear.outlet) annotation (Line(
       points={{70,0},{60,0}},

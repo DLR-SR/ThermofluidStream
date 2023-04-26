@@ -228,7 +228,7 @@ model ReverseHeatPump
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={46,40})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{104,-64},{160,-8}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{122,-78},{178,-22}})));
   Undirected.Topology.ConnectRearOutlet connectRearOutlet1(
     redeclare package Medium = RefrigerantMedium,
     useDefaultStateAsRear=true) annotation (
