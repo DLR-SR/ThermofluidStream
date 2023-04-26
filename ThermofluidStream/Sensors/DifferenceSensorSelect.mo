@@ -42,7 +42,7 @@ model DifferenceSensorSelect
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantitiy [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected Quantity";
+  output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected quantity";
 
   Real valueA(unit=Internal.getUnit(quantity));
   Real valueB(unit=Internal.getUnit(quantity));

@@ -1,5 +1,5 @@
 within ThermofluidStream.Examples;
-model EspressoMachine "Get your simulated coffe!"
+model EspressoMachine "Get your simulated coffee!"
   extends Modelica.Icons.Example;
 
   package Water = Media.myMedia.Water.StandardWater
