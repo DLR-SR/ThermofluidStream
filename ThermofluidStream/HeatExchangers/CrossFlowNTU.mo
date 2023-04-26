@@ -132,7 +132,7 @@ equation
   //Number of Transfer Units
   NTU = (k_NTU*A)/(max(C_min, 1e-3));
 
-  //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Wärmeatlas)
+  //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
   //it is assumed that both fluids are unmixed
   effectiveness = 1 - exp((1/C_r)*NTU^(0.22)*(exp(-C_r*NTU^(0.78))-1));
 
