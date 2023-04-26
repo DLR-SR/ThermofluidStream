@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model TerminalSource "Source that impoeses m_flow = 0"
+model TerminalSource "Source that imposes m_flow = 0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
