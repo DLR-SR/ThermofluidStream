@@ -1,4 +1,4 @@
-within ThermofluidStream.UserGuide;
+within ThermofluidStream.UsersGuide;
 class ReleaseNotes "Release notes"
   extends Modelica.Icons.ReleaseNotes;
 

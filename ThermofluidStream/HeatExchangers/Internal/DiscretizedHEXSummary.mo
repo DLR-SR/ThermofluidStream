@@ -7,8 +7,8 @@ record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
   SI.Temperature Tin_B "Temperature at B B";
   SI.Temperature Tout_B "Temperature at refrigerant outlet";
 
-  SI.Temperature dT_A "Temperature differnce A";
-  SI.Temperature dT_B "Temperature differnce B";
+  SI.Temperature dT_A "Temperature difference A";
+  SI.Temperature dT_B "Temperature difference B";
 
   //In- and outlet enthalpies
   SI.SpecificEnthalpy hin_A "Enthalpy at A inlet";

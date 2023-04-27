@@ -1,5 +1,5 @@
 within ThermofluidStream.FlowControl;
-model CheckValve "Valve that allows only postive mass flow"
+model CheckValve "Valve that allows only positive mass_flow"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
   parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"

@@ -13,7 +13,7 @@ model Compressor
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
       Documentation(info="<html>
 <p>
-Selectable function to choose beween different compressor models.
+Selectable function to choose between different compressor models.
 </p>
 </html>"));
 

@@ -10,7 +10,7 @@ model Fan "Fan under ideal gas assumption"
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
         Documentation(info="<html>
 <p>
-Selectable function to choose beween different fan models.
+Selectable function to choose between different fan models.
 </p>
 </html>"));
 

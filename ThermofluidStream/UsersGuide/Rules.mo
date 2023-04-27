@@ -1,5 +1,5 @@
-within ThermofluidStream.UserGuide;
-package Rules "Basic Composition Rules"
+within ThermofluidStream.UsersGuide;
+class Rules "Basic composition rules"
   extends Modelica.Icons.Information;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
@@ -58,7 +58,7 @@ equation system to be sure.
 <p>
 There is a special sub-package if the flow direction is unknown. Basically the rules
 are the same but please be aware that without knowledge of the flow-direction, loops
-are more likely to occur. Hence only use these componenents when needed.
+are more likely to occur. Hence, only use these components when needed.
 </p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>

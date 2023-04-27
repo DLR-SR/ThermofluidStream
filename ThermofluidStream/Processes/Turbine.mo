@@ -12,7 +12,7 @@ model Turbine "Turbine under ideal gas assumption"
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop(omega_ref=1e6) "Fixed isentropic efficiency"),
       Documentation(info="<html>
 <p>
-Selectable function to choose beween different turbine models.
+Selectable function to choose between different turbine models.
 </p>
 </html>"));
 

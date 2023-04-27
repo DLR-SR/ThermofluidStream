@@ -20,6 +20,6 @@ Medium model needet to compute properties from the inlet_state.
 
   annotation(Inline=true, Documentation(info="<html>
 <p>This function computes the pressure differential and the moment needed for static operation of a partialTurboComponent in its current state. </p>
-<p>By changing this function the partialTurboComponent implements different kinds of turbo components like fans, pumps, compressors, turbines ect.</p>
+<p>By changing this function the partialTurboComponent implements different kinds of turbo components like fans, pumps, compressors, turbines, etc.</p>
 </html>"));
 end partial_dp_tau;

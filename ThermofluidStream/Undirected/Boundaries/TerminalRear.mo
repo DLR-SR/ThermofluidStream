@@ -12,7 +12,7 @@ the one the inlet the source is connected to.
 
   parameter SI.Time TC = 0.1 "Time constant for pressure adaption"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.SpecificEnthalpy h = Medium.h_default "Source enthaply";
+  parameter SI.SpecificEnthalpy h = Medium.h_default "Source enthalpy";
   parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Source mass fraction";
   parameter SI.Pressure p_0 = Medium.p_default "Initial pressure";
 
