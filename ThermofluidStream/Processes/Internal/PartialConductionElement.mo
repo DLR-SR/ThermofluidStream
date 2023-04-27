@@ -65,7 +65,7 @@ equation
   // or:     Q_flow + m_flow_in*h_in + m_flow_out*h = Q_flow + (m_flow_in+m_flow_out-m_flow_out)*h_in + m_flow_out*h = Q_flow + m_flow_out*(h-h_in) + der(M)*h_in = Q_flow + m_flow*(h_in - h)
   // so there is a resulting term on the RHS with der(M)*(h(k) + h_out(1-k)) with k in [0,1]; that also would have to be accounted for when der(M) not 0 on LHS
   // to improve the equation p_in and M would have to be filtered and a value for k would have to be found, all that resulted in only moderate improvements
-  // therefore energy that is accumulated with system border around the component (deltaE_system) is slowly fed back into the sytem when enforce_global_energy_conservation is true
+  // therefore energy that is accumulated with system border around the component (deltaE_system) is slowly fed back into the system when enforce_global_energy_conservation is true
   //(then energy stored in the system e.g. by evaproation/condension, while still being visible short-term, neglegted in logterm)
   if not neglectPressureChanges then
     M*der(h) = Q_flow + m_flow*(h_in_norm - h) + V*der(p_in) + (if enforce_global_energy_conservation then deltaE_system/T_e else 0);
@@ -147,7 +147,7 @@ The ConductionElement makes different assumptions:
   </li>
   <li>
     Neglection of der(p) in the energy equation<br>V*der(p) = 0 (this assumption
-    violates the conservation of energy for changing pressures. For a noticable
+    violates the conservation of energy for changing pressures. For a noticeable
     difference in the testcase the der(p) must be in the order of 1e5 Pa/s).
     <br>
     This assumption can be turned off by setting neglectPressureChanges=false

@@ -12,7 +12,7 @@ model SingleFlowSensor
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
@@ -33,7 +33,7 @@ model SingleFlowSensor
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{80,-80},{120,-40}}),
         iconTransformation(extent={{80,-80},{120,-40}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantitiy [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
 

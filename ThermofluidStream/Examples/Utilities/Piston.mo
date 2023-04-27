@@ -152,7 +152,7 @@ equation
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>
-In a piston a different pressure of fluids perform mechanical linar work.
+In a piston a different pressure of fluids perform mechanical linear work.
 </p>
 <p>
 Depending on <code>push_left</code>, the left (when pushleft is true) side or

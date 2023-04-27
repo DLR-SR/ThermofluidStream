@@ -54,7 +54,7 @@ algorithm
   // cheng 2008. Formulas for Friction Factor in Transitional Regimes. Journal of Hydraulic Engineering.
   a := 1/(1+(Re/2720)^9);
   b := 1/(1+(Re/(160*2*r/ks))^2);
-  //compute lambda_aux = Re*lambda to avoid devision by zero at Re=0 and to avoid if-else
+  //compute lambda_aux = Re*lambda to avoid division by zero at Re=0 and to avoid if-else
   lambda_aux := 64^a * Re^(1-a) * ((1.8*log10(Re/6.8))^(2*(a-1)*b) * (2*log10(3.7*2*r/ks))^(2*(a-1)*(1-b)));
 
   pressureLoss := lambda_aux*l*mu*u/(8*r^2);

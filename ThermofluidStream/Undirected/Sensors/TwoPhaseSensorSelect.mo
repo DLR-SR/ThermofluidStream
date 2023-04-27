@@ -12,7 +12,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>
 </html>"));
 
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
@@ -94,6 +94,6 @@ equation
           textString="%quantity")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Undirected sensor for a vapor quality. It must be seperate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
+<p>Undirected sensor for a vapor quality. It must be separate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
 </html>"));
 end TwoPhaseSensorSelect;

@@ -11,7 +11,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));

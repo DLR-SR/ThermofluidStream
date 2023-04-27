@@ -205,7 +205,7 @@ equation
           textColor={28,108,200},
           textString="N")}),
     Documentation(info="<html>
-<p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differes from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
+<p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differs from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
 <p>The flowResistances are parametrized by the parameters in the group laminar-turbulent flowRes.</p>
 </html>"));
 end DiscretizedCounterFlowHEX_FR;

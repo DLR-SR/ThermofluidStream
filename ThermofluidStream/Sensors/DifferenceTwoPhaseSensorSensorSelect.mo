@@ -17,7 +17,7 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
       </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
@@ -36,7 +36,7 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
         iconTransformation(extent={{-116,-60},{-76,-20}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantitiy [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected Quantity";

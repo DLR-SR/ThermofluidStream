@@ -231,7 +231,7 @@ equation
 <p>
 The cross-flow discretized heat exchanger uses a number of conduction elements
 (which is set by the parameter nCells) as discrete control volumes to exchange
-heat between two fluid streams. This model differes from DiscretizedCrossFlowHEX
+heat between two fluid streams. This model differs from DiscretizedCrossFlowHEX
 by introducing flow-resistances after each control volume, but otherwise is the
 same, therefore consider the documentation of DiscretizedCrossFlowHEX.
 </p>

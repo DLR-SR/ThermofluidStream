@@ -89,7 +89,7 @@ equation
             100}})),
     Documentation(info="<html>
 <p>
-This model is a equation based model of a crank drive. It can be ised to convet
+This model is an equation based model of a crank drive. It can be used to convert
 linear motion into circular motion.
 </p>
 <p>

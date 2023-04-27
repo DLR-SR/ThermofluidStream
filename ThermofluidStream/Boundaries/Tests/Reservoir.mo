@@ -6,7 +6,7 @@ model Reservoir "Test for Reservoir"
     constrainedby Media.myMedia.Interfaces.PartialMedium
     "Medium Model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
-<p>Medium Model for the test. Be aware that the Component is manly ment for liquids with low compressablility.</p>
+<p>Medium Model for the test. Be aware that the Component is mainly meant for liquids with low compressablility.</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
