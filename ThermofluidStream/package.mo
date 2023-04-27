@@ -33,7 +33,7 @@ of electric cars, power plants, or building physics.
 
 <p>
 For copyright and license, see
-<a href=\"modelica://ThermofluidStream.UserGuide.License\">Copyright and License agreement</a>.
+<a href=\"modelica://ThermofluidStream.UsersGuide.License\">Copyright and license agreement</a>.
 </p>
 </html>", revisions="<html>
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
