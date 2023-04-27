@@ -1,6 +1,8 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
 partial function partialPressureLoss
   "Interface for pressure loss functions"
+  extends Modelica.Icons.Function;
+
   input SI.MassFlowRate m_flow "Mass flow rate";
   input SI.Density rho "Medium density";
   input SI.DynamicViscosity mu "Medium dynamic viscosity";

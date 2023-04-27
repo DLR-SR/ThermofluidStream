@@ -1,5 +1,7 @@
 within ThermofluidStream.Sensors.Internal;
 function getFlowUnit "Returns unit of input flow-quantity"
+  extends Modelica.Icons.Function;
+
   input Types.MassFlowQuantities quantity;
   output String unit;
 
