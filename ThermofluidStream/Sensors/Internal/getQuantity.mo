@@ -1,5 +1,6 @@
 within ThermofluidStream.Sensors.Internal;
 function getQuantity "Computes selected quantity from state"
+  extends Modelica.Icons.Function;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
