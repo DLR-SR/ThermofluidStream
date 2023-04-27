@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-package Tests "Tests for the Boundary package"
+package Tests "Tests for the boundary package"
   extends Modelica.Icons.ExamplesPackage;
 
   annotation (Documentation(info="<html>
