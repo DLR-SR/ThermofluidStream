@@ -1,5 +1,5 @@
 within ThermofluidStream;
-package Interfaces "Interface definitions for the Library"
+package Interfaces "Interface definitions for the library"
 extends Modelica.Icons.InterfacesPackage;
 
 annotation (Documentation(revisions="<html>
