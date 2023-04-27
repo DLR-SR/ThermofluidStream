@@ -1,29 +1,9 @@
-within ThermofluidStream.UserGuide;
-package References "Nomenclature, Literature References"
-  extends Modelica.Icons.Information;
+within ThermofluidStream.UsersGuide;
+class References "References"
+  extends Modelica.Icons.References;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
-<h4>Nomenclature</h4>
-<p>
-Nomenclature used in this library
-</p>
-
-<ul>
-  <li>steady mass flow pressure: p / delta: dp</li>
-  <li>inertial pressure: r / delta: dr</li>
-  <li>inertance: L</li>
-  <li>dynamic pressure q / delta: dq</li>
-  <li>mass flow rate: m_flow</li>
-  <li>specific enthalpy: h / delta: dh</li>
-  <li>specific internal energy: u</li>
-  <li>heat flow: Q_flow</li>
-  <li>temperature: T</li>
-</ul>
-
-<h4>Literature</h4>
-<p>
-<strong>References reffering directly to this library</strong>
-</p>
+<h4>References referring directly to this library</h4>
 <ul>
   <li>
     Zimmer, Dirk (2020).
@@ -39,9 +19,7 @@ Nomenclature used in this library
   </li>
 </ul>
 
-<p>
-<strong>Further background references on the methodology</strong>
-</p>
+<h4>Further background references on the methodology</h4>
 <ul>
   <li>
     Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018).
@@ -67,7 +45,7 @@ Nomenclature used in this library
     &quot;Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs&quot;.
     In: Proceedings of the 13th International Modelica Conference (Regensburg, Germany).
     Link&ouml;ping University Electronic Press, Link&ouml;pings universitet <br>
-    <a href=\"https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://www.ep.liu.se/ecp/157/060/ecp19157060.pdf</a>
+    <a href=\"https://ep.liu.se/ecp/157/060/ecp19157060.pdf\">https://ep.liu.se/ecp/157/060/ecp19157060.pdf</a>
   </li>
 </ul>
 </html>", revisions="<html>
