@@ -1,5 +1,6 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized Heat Exchanger for single- or two-phase working fluid without pressure drop"
+  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
@@ -206,47 +207,7 @@ equation
 
   annotation (
     Icon(
-      coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
       graphics={
-        Rectangle(
-          extent={{-100,100},{100,-100}},
-          lineColor={28,108,200},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
-          radius=25),
-        Polygon(
-          points={{-80,-92},{70,-92},{70,-62},{-80,-62},{-70,-52},{80,-52},{80,-82},{70,-92},{70,-62},{80,-52},{-70,-52},{-80,-62},{-80,-92}},
-          lineColor={28,108,200}),
-        Line(points={{-40,-52},{-50,-62},{-50,-92}}, color={28,108,200}),
-        Line(points={{-10,-52},{-20,-62},{-20,-92}},color={28,108,200}),
-        Line(points={{20,-52},{10,-62},{10,-92}}, color={28,108,200}),
-        Line(points={{50,-52},{40,-62},{40,-92}}, color={28,108,200}),
-        Text(
-          extent={{-70,-72},{-58,-84}},
-          textColor={28,108,200},
-          textString="N"),
-        Text(
-          extent={{52,-72},{64,-84}},
-          textColor={28,108,200},
-          textString="1"),
-        Text(
-          extent={{20,-72},{32,-84}},
-          textColor={28,108,200},
-          textString="2"),
-        Text(
-          extent={{-10,-72},{2,-84}},
-          textColor={28,108,200},
-          textString="..."),
-        Text(
-          extent={{-40,-72},{-28,-84}},
-          textColor={28,108,200},
-          textString="..."),
-        Polygon(points={{-80,56},{70,56},{70,86},{-80,86},{-70,96},{80,96},{80,66},{70,56},{70,86},{80,96},{-70,96},{-80,86},{-80,56}},
-            lineColor = {28,108,200}),
-        Line(points={{-40,96},{-50,86},{-50,56}}, color={28,108,200}),
-        Line(points={{-10,96},{-20,86},{-20,56}}, color={28,108,200}),
-        Line(points={{20,96},{10,86},{10,56}}, color={28,108,200}),
-        Line(points={{50,96},{40,86},{40,56}}, color={28,108,200}),
         Text(
           extent={{-72,76},{-60,64}},
           textColor={28,108,200},
@@ -266,52 +227,7 @@ equation
         Text(
           extent={{50,76},{62,64}},
           textColor={28,108,200},
-          textString="1"),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={-61,36},
-          rotation=270),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={1,36},
-          rotation=270),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={61,36},
-          rotation=270),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={57,-36},
-          rotation=90),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={-65,-36},
-          rotation=90),
-        Text(
-          extent={{-8,41},{8,-41}},
-          textColor={188,36,38},
-          textString="«",
-          origin={-3,-36},
-          rotation=90),
-        Polygon(
-          points={{-82,-16},{68,-16},{68,4},{-82,4},{-72,14},{78,14},{78,-6},{68,-16},{68,4},{78,14},{-72,14},{-82,4},{-82,-16}},
-          lineColor = {188,36,38}),
-        Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
-        Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
-        Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
-        Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
-    Diagram(
-      coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+          textString="1")}),
     Documentation(info="<html>
 <p>The undirected cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>Side A splits the fluid stream into nCells substreams that are parallel. The flow-resistance is chosen to be very small and only ensures numerical stability of the parallel streams. By default, it is a linear-quadratic flow resistance, so the massflows through each of the parallel streams is the same. If exchanged for flow-resistance that depends on media properties (e.g. a laminar-turbulent) the mass-flow on the paths will be different. For side B the elements are serial and numbered 1 to nCells in the flow direction. The elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a cross-flow configuration. </p>

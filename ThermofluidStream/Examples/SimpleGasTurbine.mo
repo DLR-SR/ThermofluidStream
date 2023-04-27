@@ -92,7 +92,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{58,-70},{78,-50}})));
   Modelica.Blocks.Nonlinear.Limiter q_limits(uMax=5e5, uMin=0)
     annotation (Placement(transformation(extent={{18,46},{6,58}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{108,-80},{140,-48}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{102,-78},{138,-42}})));
 equation
   connect(sink.inlet, turbine.outlet) annotation (Line(
       points={{90,-10},{60,-10}},
@@ -120,7 +120,8 @@ equation
   connect(prescribedHeatFlow.Q_flow, product1.y)
     annotation (Line(points={{-10,28},{-10,33.4}}, color={0,0,127}));
   connect(speedSensor.w, PI.u_m)
-    annotation (Line(points={{79,-60},{108,-60},{108,44.8}}, color={0,0,127}));
+    annotation (Line(points={{79,-60},{94,-60},{94,-36},{108,-36},{108,44.8}},
+                                                             color={0,0,127}));
   connect(PI.u_s, setpoint.y)
     annotation (Line(points={{115.2,52},{123.3,52}}, color={0,0,127}));
   connect(compressor.outlet, multiSensor_Tpm1.inlet) annotation (Line(

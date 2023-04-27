@@ -90,6 +90,6 @@ algorithm
   annotation (Documentation(info="<html>
 <p>Pressure loss after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes.</p>
 <p>The friction factor is based on Haaland 1983.</p>
-<p>Haaland, S. E. Simple and Explicit Formulas for the Friction Factor in Turbulent Pipe Flow. Journal of Fluids Engineering 105, 89–90; 10.1115/1.3240948 (1983).</p>
+<p>Haaland, S. E. Simple and Explicit Formulas for the Friction Factor in Turbulent Pipe Flow. Journal of Fluids Engineering 105, 89-90; 10.1115/1.3240948 (1983).</p>
 </html>"));
 end laminarTurbulentPressureLossHaaland;
