@@ -24,7 +24,7 @@ the fores and rears the volume is connected to.
     annotation(Dialog(tab= "Initialization"));
   parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
-  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of Temperature"
+  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
   parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
