@@ -7,79 +7,86 @@ model DiscretizedHexIcon
           lineColor={28,108,200},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          radius=25),       Polygon(
+          radius=25),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={58,-40},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={58,-30},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={0,-40},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={0,-30},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={-62,-40},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-8,-2},{0,6},{8,-2},{8,-6},{0,2},{-8,-6},{-8,-2}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={-62,-30},
-          rotation=180),    Polygon(
+          rotation=180),
+        Polygon(
           points={{-70,28},{-62,36},{-54,28},{-54,24},{-62,32},{-70,24},{-70,28}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-                            Polygon(
+        Polygon(
           points={{-70,38},{-62,46},{-54,38},{-54,34},{-62,42},{-70,34},{-70,38}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-                            Polygon(
+        Polygon(
           points={{-8,28},{0,36},{8,28},{8,24},{0,32},{-8,24},{-8,28}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-                            Polygon(
+        Polygon(
           points={{-8,38},{0,46},{8,38},{8,34},{0,42},{-8,34},{-8,38}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-                            Polygon(
+        Polygon(
           points={{50,28},{58,36},{66,28},{66,24},{58,32},{50,24},{50,28}},
           lineColor={28,108,200},
           fillColor={188,36,38},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-                            Polygon(
+        Polygon(
           points={{50,38},{58,46},{66,38},{66,34},{58,42},{50,34},{50,38}},
           lineColor={28,108,200},
           fillColor={188,36,38},
@@ -119,6 +126,5 @@ model DiscretizedHexIcon
         Line(points={{-42,14},{-52,4},{-52,-16}}, color={188,36,38}),
         Line(points={{-12,14},{-22,4},{-22,-16}}, color={188,36,38}),
         Line(points={{18,14},{8,4},{8,-16}}, color={188,36,38}),
-        Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}),
-                           Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+        Line(points={{48,14},{38,4},{38,-16}}, color={188,36,38})}), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
 end DiscretizedHexIcon;
