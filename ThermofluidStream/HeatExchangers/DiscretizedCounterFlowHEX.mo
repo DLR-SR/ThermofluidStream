@@ -1,5 +1,5 @@
 within ThermofluidStream.HeatExchangers;
-model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase fluids without pressure drop"
+model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA =
@@ -55,11 +55,9 @@ protected
     "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
 
 public
-  ConductionElementB thermalElementB[nCells]
-    annotation (Placement(transformation(extent={{-10,90},{10,70}})));
+  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));
 
-  ConductionElementA thermalElementA[nCells]
-    annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
+  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
 
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells)
     annotation (Placement(transformation(
@@ -157,7 +155,15 @@ equation
         Text(
           extent={{50,76},{62,64}},
           textColor={28,108,200},
-          textString="N")}),
+          textString="N"),
+        Text(
+          extent={{80,-94},{120,-134}},
+          textColor={175,175,175},
+          textString="A"),
+        Text(
+          extent={{-120,132},{-80,92}},
+          textColor={175,175,175},
+          textString="B")}),
     Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells in the flow direction and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>

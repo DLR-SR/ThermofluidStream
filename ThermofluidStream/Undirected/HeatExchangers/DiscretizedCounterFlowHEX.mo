@@ -188,7 +188,15 @@ equation
         Text(
           extent={{50,76},{62,64}},
           textColor={28,108,200},
-          textString="N")}),
+         textString="N"),
+       Text(
+         extent={{-120,132},{-80,92}},
+         textColor={175,175,175},
+         textString="B"),
+       Text(
+         extent={{80,-94},{120,-134}},
+         textColor={175,175,175},
+         textString="A")}),
     Documentation(info="<html>
 <p>The undirected counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells from rear to fore and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>
