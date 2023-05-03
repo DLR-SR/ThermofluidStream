@@ -144,7 +144,7 @@ model SimpleEngine "Simple steam engine"
         rotation=180,
         origin={-96,16})));
   Boundaries.TerminalSource terminalSource(redeclare package Medium = Water) annotation (Placement(transformation(extent={{-130,44},{-110,64}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{156,-118},{212,-62}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,-118},{218,-62}})));
 equation
   connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}}, color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, crankDrive.flange_a)

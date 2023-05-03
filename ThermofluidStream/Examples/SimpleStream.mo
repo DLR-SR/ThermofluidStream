@@ -66,7 +66,7 @@ model SimpleStream "Steam splitting and joining"
     annotation (Placement(transformation(extent={{100,-20},{120,0}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-140,20},{-120,40}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{116,-62},{158,-20}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{122,-58},{158,-22}})));
 equation
   connect(source.outlet, flowResistance3.inlet) annotation (Line(
       points={{-130,-10},{-120,-10}},

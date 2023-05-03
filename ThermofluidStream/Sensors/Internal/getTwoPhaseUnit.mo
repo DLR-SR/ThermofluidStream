@@ -1,5 +1,6 @@
 within ThermofluidStream.Sensors.Internal;
 function getTwoPhaseUnit "Returns unit of input two-phase-quantity"
+  extends Modelica.Icons.Function;
 
   input Types.TwoPhaseQuantities quantity;
   output String unit;

@@ -163,7 +163,7 @@ extends Modelica.Icons.Example;
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
   ThermofluidStream.Utilities.showRealValue showRealValue2
     annotation (Placement(transformation(extent={{-100,-40},{-120,-20}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{140,-100},{180,-60}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{142,-98},{178,-62}})));
 equation
   connect(multiSensor_Tpm1.inlet, heatExchange_CounterFlowNTU.outletB)
     annotation (Line(

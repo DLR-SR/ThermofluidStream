@@ -158,7 +158,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{60,-104},{40,-84}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{100,-20},{140,20}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{102,-18},{138,18}})));
 initial equation
   heatExchange_CounterFlowNTU.inletA.m_flow = 0.1;
   heatExchange_CounterFlowNTU.inletB.m_flow = 0.1;

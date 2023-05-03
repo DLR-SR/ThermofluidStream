@@ -1,5 +1,8 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
-partial function partial_dp_tau "Compute dp and tau_st of a TurboComponent from the current state"
+partial function partial_dp_tau
+  "Compute dp and tau_st of a TurboComponent from the current state"
+  extends Modelica.Icons.Function;
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation(choicesAllMatching=true, Documentation(info="<html>

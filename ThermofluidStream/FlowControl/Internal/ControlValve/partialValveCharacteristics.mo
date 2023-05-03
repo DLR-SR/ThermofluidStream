@@ -1,5 +1,7 @@
 within ThermofluidStream.FlowControl.Internal.ControlValve;
-partial function partialValveCharacteristics "Partial function for control valve characteristics"
+partial function partialValveCharacteristics
+  "Partial function for control valve characteristics"
+  extends Modelica.Icons.Function;
 
   input Real u(unit="1");
   input Real k_min(unit="1");

@@ -133,7 +133,7 @@ equation
   //Number of Transfer Units
   NTU = (k_NTU*A)/(max(C_min, 1e-3));
 
-  //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Wärmeatlas)
+  //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
   effectiveness = if noEvent(C_r < 1) then (1-exp(-NTU*(1-C_r)))/(1-C_r*exp(-NTU*(1-C_r))) else NTU/(1+NTU);
 
   //Maximum possible temperature difference

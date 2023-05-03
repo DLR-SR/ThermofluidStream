@@ -305,7 +305,7 @@ model VaporCycle
   Modelica.Blocks.Math.Gain gain1(k=-1)
     annotation (Placement(transformation(extent={{172,-6},{160,6}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{-180,-128},{-160,-108}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{172,-152},{228,-96}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{182,-158},{238,-102}})));
 equation
   connect(condenser.outletB, receiver.inlet) annotation (Line(
       points={{-8.2,52},{-8.2,52},{-6,52},{-24,52}},
