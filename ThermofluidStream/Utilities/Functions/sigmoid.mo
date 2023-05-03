@@ -1,5 +1,7 @@
 within ThermofluidStream.Utilities.Functions;
 function sigmoid
+  extends Modelica.Icons.Function;
+
   input Real x;
   output Real y;
 
