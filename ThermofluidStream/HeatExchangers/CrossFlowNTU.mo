@@ -162,7 +162,7 @@ equation
     Documentation(info="<html>
 <p>Basic model of a cross-flow heat exchanger based on the effectiveness-NTU method.</p>
 <p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>
-<p>For stream dominated applications the following assumptions are made for mass flow regularisation close to zero:</p>
+<p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
 </html>"));
 end CrossFlowNTU;
