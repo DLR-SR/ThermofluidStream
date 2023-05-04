@@ -10,9 +10,8 @@ function dp_tau_centrifugal "Model of a centrifugal pump"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
   input SI.VolumeFlowRate V_flow_D = 3.06e-3 "Design pressure difference"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
-  input SI.AngularVelocity omega_D = 314.2 "Design pressure difference"
+  input SI.AngularVelocity omega_D = 314.2 "Design angular velocity"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
-
   input Real K_D_input(unit="m3/rad") = K_D_ref "Vflow_D / omega_D"
     annotation(Dialog(group="General", enable=not parametrizeByScaling));
   input Integer f_q_input = f_q_ref "Number of floods"
@@ -43,8 +42,8 @@ protected
   Real beta(unit="1") = omega_D/omega_D_ref "Speed scaling factor";
   Real gamma(unit="1") = V_flow_D/V_flow_D_ref "Flow scaling factor";
 
-  SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
-  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "specifiv volume at inlet";
+  SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
+  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "Specific volume at inlet";
   SI.SpecificVolume v_ref = 1/rho_ref;
 
   SI.Power W_t "technical work going into pump";
