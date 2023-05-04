@@ -43,7 +43,7 @@ equation
           origin={-46,-4},
           rotation=360),
         Line(
-          points={{-6,0},{6,0}},
+          points={{-10,0},{6,0}},
           color={28,108,200},
           thickness=0.5,
           origin={-74,0},

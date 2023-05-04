@@ -29,9 +29,9 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
       annotation(choicesAllMatching=true, Dialog(group = "Medium definitions"));
 
   parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation(Dialog(tab = "Initialization", group = "Mass flow"));
-  parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow side A"
+  parameter SI.MassFlowRate m_flow_0_A = 0 "Initial mass flow for side A"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
-  parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow side B"
+  parameter SI.MassFlowRate m_flow_0_B = 0 "Initial mass flow for side B"
     annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = initializeMassFlow));
   parameter Integer nCells = 3 "Number of discretization elements";
   parameter Modelica.Units.SI.Area A=10 "Conductive area of heat exchanger"
@@ -56,7 +56,7 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
 
   //Parameterization of HEX Wall
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100
-    "Coefficient of heat transfer for pipe wall"
+    "Coefficient of heat transfer for wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
   parameter Boolean calculate_efficiency= false "Enable calculation of efficiency";
@@ -124,6 +124,7 @@ public
         origin={-52,-80})));
 protected
   outer DropOfCommons dropOfCommons;
+
   function efficiency = Internal.calculateEfficiency (
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB);
@@ -163,7 +164,7 @@ equation
   //Connecting equations (to interconnect pipes)
 
   //Fluid Side B
-  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200}));
+  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{100,-80},{10,-80}}, color={28,108,200},thickness=0.5));
   connect(thermalElementB.outlet, flowResistanceB.inlet)
     annotation (Line(
       points={{-10,-80},{-42,-80}},
@@ -203,7 +204,6 @@ equation
       points={{70,80},{102,80}},
       color={28,108,200},
       thickness=0.5));
-
   annotation (
     Icon(
       graphics={
@@ -226,7 +226,15 @@ equation
         Text(
           extent={{50,76},{62,64}},
           textColor={28,108,200},
-          textString="1")}),
+          textString="1"),
+        Text(
+          extent={{10,134},{50,94}},
+          textColor={175,175,175},
+          textString="A"),
+        Text(
+          extent={{80,-94},{120,-134}},
+          textColor={175,175,175},
+          textString="B")}),
     Documentation(info="<html>
 <p>
 The cross-flow discretized heat exchanger uses a number of conduction elements
