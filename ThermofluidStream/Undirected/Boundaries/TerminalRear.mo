@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Boundaries;
-model TerminalRear "Fore Boundary that impoeses m_flow = 0"
+model TerminalRear "Fore Boundary that imposes m_flow = 0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -40,7 +40,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{68,0},{80,0}},
+          points={{68,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(

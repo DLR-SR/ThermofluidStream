@@ -32,14 +32,14 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
-        iconTransformation(extent={{-116,20},{-76,60}})));
+        iconTransformation(extent={{-120,20},{-80,60}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
-        iconTransformation(extent={{-116,-60},{-76,-20}})));
+        iconTransformation(extent={{-120,-60},{-80,-20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected Quantity";
+  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected quantity";
 
   Real valueA(unit=Internal.getTwoPhaseUnit(quantity));
   Real valueB(unit=Internal.getTwoPhaseUnit(quantity));

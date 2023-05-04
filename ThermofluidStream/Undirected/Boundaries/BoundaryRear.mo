@@ -86,7 +86,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{68,0},{80,0}},
+          points={{60,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Line(

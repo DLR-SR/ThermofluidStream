@@ -28,7 +28,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
+  output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
 
   function mfk = ThermofluidStream.Utilities.Functions.massFractionK (

@@ -49,6 +49,6 @@ connector Inlet "Inlet port for a fluid"
           thickness=0.5)}),
     Documentation(info="<html>
 <p>Directed flow connector for fluids.</p>
-<p>The mass-flow is supposed to be positive, hence the fluid is supposed to enter the component through an inlet, therefore the state information of this connector is an input.</p>
+<p>The mass flow is supposed to be positive, hence the fluid is supposed to enter the component through an inlet, therefore the state information of this connector is an input.</p>
 </html>"));
 end Inlet;

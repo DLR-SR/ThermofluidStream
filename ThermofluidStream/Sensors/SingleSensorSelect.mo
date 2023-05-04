@@ -10,7 +10,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed Density"
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
@@ -30,7 +30,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected Quantity";
+  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
 
 protected
   outer DropOfCommons dropOfCommons;

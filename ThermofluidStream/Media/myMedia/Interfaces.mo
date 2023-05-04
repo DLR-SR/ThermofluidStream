@@ -185,9 +185,9 @@ Modelica source.
     constant Boolean singleState
       "= true, if u and d are not a function of pressure";
     constant Boolean reducedX=true
-      "= true if medium contains the equation sum(X) = 1.0; set reducedX=true if only one substance (see docu for details)";
+      "= true, if medium contains the equation sum(X) = 1.0; set reducedX=true if only one substance (see docu for details)";
     constant Boolean fixedX=false
-      "= true if medium contains the equation X = reference_X";
+      "= true, if medium contains the equation X = reference_X";
     constant AbsolutePressure reference_p=101325
       "Reference pressure of Medium: default 1 atmosphere";
     constant Temperature reference_T=298.15
@@ -242,7 +242,7 @@ Modelica source.
       ThermodynamicState state
         "Thermodynamic state record for optional functions";
       parameter Boolean preferredMediumStates=false
-        "= true if StateSelect.prefer shall be used for the independent property variables of the medium"
+        "= true, if StateSelect.prefer shall be used for the independent property variables of the medium"
         annotation (Evaluate=true, Dialog(tab="Advanced"));
       parameter Boolean standardOrderComponents=true
         "If true, and reducedX = true, the last element of X will be computed from the other ones";

@@ -1,5 +1,5 @@
 within ThermofluidStream.Examples.Utilities;
-model Accumulator "Accumulator Model for vapor cycle applications"
+model Accumulator "Accumulator model for vapor cycle applications"
   extends Boundaries.PhaseSeparator(pipe_low=0.85, pipe_high=0.95);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

@@ -6,7 +6,7 @@ model Nozzle "Model for dynamic pressure difference"
   parameter SI.Area A_out = 1 "Area of outlet";
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance of Nozzle"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity=true "if true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "= true, if only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
 
 protected
