@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Boundaries;
-model TerminalFore "Rear Boundary that impoeses m_flow = 0"
+model TerminalFore "Rear Boundary that imposes m_flow = 0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"

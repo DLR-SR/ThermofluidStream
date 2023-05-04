@@ -29,7 +29,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Computed value of the selected Quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected Quantity [variable]";
+  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 
 protected
   Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));

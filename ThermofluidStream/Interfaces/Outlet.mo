@@ -47,6 +47,6 @@ connector Outlet "Outlet port for a fluid"
           thickness=0.5)}),
     Documentation(info="<html>
 <p>Directed flow connector for fluids.</p>
-<p>The mass-flow is supposed to be negative, hence the fluid is supposed to leave the component through an outlet, therefore the state information of this connector is an output.</p>
+<p>The mass flow is supposed to be negative, hence the fluid is supposed to leave the component through an outlet, therefore the state information of this connector is an output.</p>
 </html>"));
 end Outlet;

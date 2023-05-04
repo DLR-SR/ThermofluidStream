@@ -1,14 +1,14 @@
 within ThermofluidStream.HeatExchangers.Internal;
-record DiscretizedHEXSummary "Summary Record for Discretized Heat Exchangers"
+record DiscretizedHEXSummary "Summary record for discretized heat exchangers"
 
   //In- and outlet temperatures
-  SI.Temperature Tin_A "Temperature at A outlet";
+  SI.Temperature Tin_A "Temperature at A inlet";
   SI.Temperature Tout_A "Temperature at A outlet";
-  SI.Temperature Tin_B "Temperature at B B";
-  SI.Temperature Tout_B "Temperature at refrigerant outlet";
+  SI.Temperature Tin_B "Temperature at B inlet";
+  SI.Temperature Tout_B "Temperature at B outlet";
 
-  SI.Temperature dT_A "Temperature difference A";
-  SI.Temperature dT_B "Temperature difference B";
+  SI.TemperatureDifference dT_A "Temperature difference A";
+  SI.TemperatureDifference dT_B "Temperature difference B";
 
   //In- and outlet enthalpies
   SI.SpecificEnthalpy hin_A "Enthalpy at A inlet";

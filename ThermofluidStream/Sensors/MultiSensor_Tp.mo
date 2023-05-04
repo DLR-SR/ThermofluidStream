@@ -25,7 +25,7 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));

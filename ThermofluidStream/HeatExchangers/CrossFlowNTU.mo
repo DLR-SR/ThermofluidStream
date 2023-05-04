@@ -8,14 +8,14 @@ model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true);
 
-  parameter Modelica.Units.SI.Area A "Conductive Surface";
+  parameter Modelica.Units.SI.Area A "Conductive surface";
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50
     "Overall heat transfer coefficient";
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg
-    "Nominal mass flow for regularisation"
-    annotation (Dialog(tab="Advanced", group="Regularisation parameters"));
+    "Nominal mass flow for regularization"
+    annotation (Dialog(tab="Advanced", group="Regularization parameters"));
   parameter Modelica.Units.SI.Time TC=0.01 "Time constant for dh"
     annotation (Dialog(tab="Advanced"));
 
@@ -147,7 +147,7 @@ equation
 
   if noEvent(C_A < C_B) then
 
-      //if both mass flows are smaller than regularisation mass flow, no heat is transferred
+      //If both mass flows are smaller than regularization mass flow, no heat is transferred
      if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
 
        dh_A = 0;
@@ -158,7 +158,7 @@ equation
      q_flowA = m_flow_A*dh_A;
      q_flowB = -q_flowA;
 
-     //Based on regularisation for mass flow
+     //Based on regularization for mass flow
      dh_B = (m_flow_B*q_flowB)/(m_flow_B^2+(m_flow_reg/10)^2);
 
      der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
@@ -166,7 +166,7 @@ equation
 
   else
 
-     //if both mass flows are smaller than regularisation mass flow, no heat is transferred
+     //If both mass flows are smaller than regularization mass flow, no heat is transferred
      if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
         dh_B = 0;
      else
@@ -176,7 +176,7 @@ equation
      q_flowB = m_flow_B*dh_B;
      q_flowA = -q_flowB;
 
-     //Based on regularisation for mass flow
+     //Based on regularization for mass flow
      dh_A = (m_flow_A*q_flowA)/(m_flow_A^2+(m_flow_reg/10)^2);
 
      der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
@@ -340,7 +340,7 @@ equation
     Documentation(info="<html>
 <p>Basic model of a cross-flow heat exchanger based on the effectiveness-NTU method.</p>
 <p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>
-<p>For stream dominated applications the following assumptions are made for mass flow regularisation close to zero:</p>
+<p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
 </html>"));
 end CrossFlowNTU;

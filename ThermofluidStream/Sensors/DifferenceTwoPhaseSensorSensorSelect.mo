@@ -39,7 +39,7 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected Quantity";
+  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected quantity";
 
   Real valueA(unit=Internal.getTwoPhaseUnit(quantity));
   Real valueB(unit=Internal.getTwoPhaseUnit(quantity));
