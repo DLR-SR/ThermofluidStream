@@ -35,10 +35,10 @@ model DifferenceSensorSelect
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
-        iconTransformation(extent={{-116,20},{-76,60}})));
+        iconTransformation(extent={{-120,20},{-80,60}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
-        iconTransformation(extent={{-116,-60},{-76,-20}})));
+        iconTransformation(extent={{-120,-60},{-80,-20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
@@ -111,7 +111,7 @@ equation
           textColor={175,175,175},
           textString="%quantity"),
         Line(
-          points={{-80,42},{-80,-40}},
+          points={{-80,40},{-80,-40}},
           color={28,108,200},
           thickness=0.5),
         Line(

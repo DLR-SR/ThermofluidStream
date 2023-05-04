@@ -10,7 +10,7 @@ model BasicControlValve
     ThermofluidStream.FlowControl.Internal.ControlValve.linearCharacteristics
     constrainedby ThermofluidStream.FlowControl.Internal.ControlValve.partialValveCharacteristics
     "Select valve characteristics"
-    annotation(
+    annotation (
       choicesAllMatching = true,
       Dialog(group = "Valve parameters"),
       Documentation(info="<html>
@@ -44,7 +44,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{-40,0}},
+          points={{-84,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -57,7 +57,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,0},{80,0}},
+          points={{40,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Polygon(
