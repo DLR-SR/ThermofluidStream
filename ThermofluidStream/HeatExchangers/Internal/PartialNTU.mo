@@ -136,7 +136,6 @@ equation
 
     //if both mass flows are smaller than regularisation mass flow, no heat is transferred
     if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
-
       dh_A = 0;
     else
       dh_A = Delta_T_max*cp_A*effectiveness;
@@ -198,9 +197,8 @@ equation
   summary.efficiency = effectiveness;
 
   annotation (Documentation(info="<html>
-<p>Basic model of a counter-flow heat exchanger based on the effectiveness-NTU method.</p>
-<p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>
-<p>For stream dominated applications the following assumptions are made for mass flow regularisation close to zero:</p>
+<p>This is the partial parent class for all heat exchangers based on the the effectiveness-NTU method.</p>
+<p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
 </html>"));
 end PartialNTU;
