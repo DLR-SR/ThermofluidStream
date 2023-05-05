@@ -26,7 +26,7 @@ protected
   Real lambda_aux(unit="1") "Darcy friction factor for Darcy-Weisbach equation";
 
   SI.Velocity u "Median flow velocity";
-  Real Re(unit="1") "Reynolds number for flow though the pipe";
+  Real Re(unit="1") "Reynolds number for flow through the pipe";
   constant Real eps(unit="1") = 0.001;
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then

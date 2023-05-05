@@ -43,13 +43,13 @@ protected
   Real beta(unit="1") = omega_D/omega_D_ref "Speed scaling factor";
   Real gamma(unit="1") = V_flow_D/V_flow_D_ref "Flow scaling factor";
 
-  SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
-  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "specifiv volume at inlet";
+  SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
+  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "Specific volume at inlet";
   SI.SpecificVolume v_ref = 1/rho_ref;
 
-  SI.Power W_t "technical work going into pump";
-  SI.Length TDH "total dynamic head";
-  SI.VolumeFlowRate V_flow "volume flow though pump";
+  SI.Power W_t "Technical work going into pump";
+  SI.Length TDH "Total dynamic head";
+  SI.VolumeFlowRate V_flow "Volume flow through pump";
 
   constant SI.AngularVelocity omega_D_ref = 314.2;
   constant SI.VolumeFlowRate V_flow_D_ref = 3.06e-3;
