@@ -23,10 +23,10 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
 
 protected
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
 
-  SI.VolumeFlowRate V_flow_nominal "nominal volume flow though pump";
-  SI.VolumeFlowRate V_flow "actual volume flow though pump";
+  SI.VolumeFlowRate V_flow_nominal "Nominal volume flow through pump";
+  SI.VolumeFlowRate V_flow "Actual volume flow through pump";
   //slip = (V_flow_nominal - V_flow)/V_flow_nominal
 
   SI.Volume V_r = if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
