@@ -197,8 +197,19 @@ equation
   summary.efficiency = effectiveness;
 
   annotation (Documentation(info="<html>
-<p>This is the partial parent class for all heat exchangers based on the the effectiveness-NTU method.</p>
-<p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
-<p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
+<p>
+This is the partial parent class for all heat exchangers based on the the
+effectiveness-NTU method.
+</p>
+<p>
+For stream dominated applications the following assumptions are made for mass
+flow regularization close to zero:
+</p>
+<ul>
+  <li>
+    if the mass flow on both sides of the heat exchanger is zero, no heat
+    is transferred
+  </li>
+</ul>
 </html>"));
 end PartialNTU;

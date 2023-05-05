@@ -1,22 +1,24 @@
 within ThermofluidStream.HeatExchangers.Internal;
-partial model PartialDiscretizedHEX
+partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
   extends Internal.DiscretizedHexIcon;
 
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 
-  replaceable model ConductionElementA = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
-    final nCellsParallel=nCellsParallel,
-    final A=A/nCells,
-    final V=V_Hex/nCells,
-    redeclare package Medium = MediumA,
-    final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-  replaceable model ConductionElementB = Internal.ConductionElementHEX constrainedby Internal.PartialConductionElementHEX(
-    final nCellsParallel=1,
-    final A=A/nCells,
-    final V=V_Hex/nCells,
-    redeclare package Medium = MediumB,
-    final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
+  replaceable model ConductionElementA = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel=nCellsParallel,
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium = MediumA,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
+  replaceable model ConductionElementB = Internal.ConductionElementHEX
+    constrainedby Internal.PartialConductionElementHEX(
+      final nCellsParallel=1,
+      final A=A/nCells,
+      final V=V_Hex/nCells,
+      redeclare package Medium = MediumB,
+      final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 
   parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation (Dialog(tab="Initialization", group="Mass flow"));
   parameter SI.MassFlowRate m_flow_0_A=0 "Initial mass flow for side A" annotation (Dialog(
@@ -103,12 +105,55 @@ equation
     Q_flow_A) else 0;
 
   annotation (Documentation(info="<html>
-<p>This is the partial parent class for all discretized heat exchangers. It contains the inlet and outlet connectors as well as a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
-<p>The conduction elements are computing a heat transfer coefficient between their heatport and the fluid contained. They are replaceable with a choice between a single-phase and a two-phase version, both can be further parametrized. Although the single-phase version works for two-phase media (not the other way around), using the two-phase one for two-phase media enables to set different heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state of the medium. </p>
-<p>Note that since the model uses conductionElements as discrete control volumes that in turn assume quasi-stationary mass and therefore are part of a fluid stream rather than break it into two (like a full volume would), the same holds for both sides of the heat exchanger - they are part of a fluid stream and don&apos;t break it. The quasi-stationary mass assumption also implies that for (fast) changing masses/densities in any of the conduction elements the heat exchanger will (slightly) violate the conservation of energy. Furthermore, the conduction elements change their behavior for reversed mass-flow, therefore this model asserts for negative mass-flow with the level dropOfCommons.globalAssertionLevel. </p>
-<p>The parameters A (heat transferring area), k_wall (heat transfer coefficient of the wall between the streams) and the heat transfer coefficients in the conduction elements scale the transferred heat (the middle only if the wall and the latter only of the heat transfer into a fluid is the choke of the heatflow). </p>
-<p>The parameter V determines the amount of fluid in the heat exchanger and therefore the dynamic for non-steady states. </p>
-<p>The initialization tab allows for a mass-flow initialization for both paths. </p>
-<p>The Advanced tab allows to modify the massflow that triggers the reverse-massflow-assertion and has an option to enforce global conservation of energy. The latter is done by feeding back any energy the conduction elements accumulated over time, basically making it impossible to store energy in their fluid long-term. While this enforces long-term conservation of energy it changes the medium-/short-term dynamics of the system and is therefore disabled by default. </p>
+<p>
+This is the partial parent class for discretized heat exchangers. It contains
+the inlet and outlet connectors as well as a number of conduction elements (which
+is set by the parameter <code>nCells</code>) as discrete control volumes to
+exchange heat between two fluid streams.
+</p>
+<p>
+The conduction elements are computing a heat transfer coefficient between their
+heatport and the fluid contained. They are replaceable with a choice between
+a single-phase and a two-phase version, both can be further parametrized.
+Although the single-phase version works for two-phase media (not the other
+way around), using the two-phase one for two-phase media enables to set different
+heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state
+of the medium.
+</p>
+<p>
+Note that since the model uses conductionElements as discrete control volumes that
+in turn assume quasi-stationary mass and, therefore, are part of a fluid stream
+rather than break it into two (like a full volume would), the same holds for
+both sides of the heat exchanger &ndash; they are part of a fluid stream and
+don&apos;t break it. The quasi-stationary mass assumption also implies that for
+(fast) changing masses/densities in any of the conduction elements the heat
+exchanger will (slightly) violate the conservation of energy. Furthermore, the
+conduction elements change their behavior for reversed mass-flow, therefore, this
+model asserts for negative mass-flow with the level
+&quot;<a href=\"ThermofluidStream.DropOfCommons\">DropOfCommons</a>.assertionLevel&quot;.
+</p>
+<p>
+The parameters <code>A</code> (heat transferring area), <code>k_wall</code> (heat
+transfer coefficient of the wall between the streams) and the heat transfer
+coefficients in the conduction elements scale the transferred heat (the middle
+only if the wall and the latter only of the heat transfer into a fluid is the
+choke of the heatflow).
+</p>
+<p>
+The parameter <code>V</code> determines the amount of fluid in the heat exchanger
+and, therefore, the dynamic for non-steady states.
+</p>
+<p>
+The &quot;Initialization&quot; tab allows for a mass-flow initialization for both paths.
+</p>
+<p>
+The &quot;Advanced&quot; tab allows to modify the massflow that triggers the
+reverse-massflow-assertion and has an option to enforce global conservation of
+energy. The latter is done by feeding back any energy the conduction elements
+accumulated over time, basically making it impossible to store energy in their
+fluid long-term. While this enforces long-term conservation of energy, it
+changes the medium-/short-term dynamics of the system and is, therefore,
+disabled by default.
+</p>
 </html>"));
 end PartialDiscretizedHEX;
