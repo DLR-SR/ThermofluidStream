@@ -9,7 +9,7 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
     each computeL=false,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_A,
-      each k2=k2_A)) annotation (Placement(transformation(extent={{20,70},{40,90}})));
+      each k2=k2_A)) annotation (Placement(transformation(extent={{-20,-90},{-40,-70}})));
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
     each r=1,
@@ -18,16 +18,16 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       each k=k1_B,
       each k2=k2_B)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={-50,-80})));
+        origin={50,80})));
 
   Topology.JunctionN junctionN(
     redeclare package Medium = MediumA,
-    N=nCells) annotation (Placement(transformation(extent={{50,70},{70,90}})));
+    N=nCells) annotation (Placement(transformation(extent={{-60,-90},{-80,-70}})));
   Topology.SplitterN splitterN(
     redeclare package Medium = MediumA,
-    N=nCells) annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
+    N=nCells) annotation (Placement(transformation(extent={{60,-90},{40,-70}})));
 
   parameter Real k1_A=1e2 "Linear flowres factor A" annotation (Dialog(group="laminar-turbulent flowRes"));
   parameter Real k2_A=1e2 "Quadratic flowres factor A" annotation (Dialog(group="laminar-turbulent flowRes"));
@@ -49,18 +49,18 @@ equation
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(inletB, thermalElementB[1].inlet) annotation (Line(
-      points={{-100,80},{46,80},{46,80},{-10,80}},
+      points={{-100,80},{-10,80}},
       color={28,108,200},
       thickness=0.5));
   connect(thermalElementB.outlet, flowResistanceB.inlet) annotation (Line(
-      points={{10,80},{-16,80},{-16,-80},{-40,-80}},
+      points={{10,80},{40,80}},
       color={28,108,200},
       thickness=0.5));
   for i in 1:nCells - 1 loop
     connect(flowResistanceB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
   connect(flowResistanceB[nCells].outlet, outletB) annotation (Line(
-      points={{-60,-80},{20,-80},{20,80},{100,80}},
+      points={{60,80},{100,80}},
       color={28,108,200},
       thickness=0.5));
 
@@ -68,23 +68,23 @@ equation
   connect(thermalElementA.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,-70.2},{4.44089e-16,40},{0,40},{0,10}},color={191,0,0}));
 
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{100,-80},{20,-80},{20,80},{-60,80}},
+      points={{100,-80},{60,-80}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
-      points={{-40,80},{-16,80},{-16,-80},{10,-80}},
+      points={{40,-80},{10,-80}},
       color={28,108,200},
       thickness=0.5));
   connect(thermalElementA.outlet, flowResistanceA.inlet) annotation (Line(
-      points={{-10,-80},{20,-80},{20,80}},
+      points={{-10,-80},{-20,-80}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA.outlet, junctionN.inlets) annotation (Line(
-      points={{40,80},{50,80}},
+      points={{-40,-80},{-60,-80}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outletA) annotation (Line(
-      points={{70,80},{-16,80},{-16,-80},{-100,-80}},
+      points={{-80,-80},{-100,-80}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={
