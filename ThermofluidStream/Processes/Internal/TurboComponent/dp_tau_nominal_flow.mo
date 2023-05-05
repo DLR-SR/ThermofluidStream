@@ -8,7 +8,7 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input SI.VolumeFlowRate V_flow_D(displayUnit="l/min")=0.0016666666666667 "Design Volume flow"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
-  input SI.AngularVelocity omega_D(displayUnit="1/s")=314.15926535898 "Design angular velocity"
+  input SI.AngularVelocity omega_D=314.2 "Design angular velocity"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input Real slip_D(unit="1", min=0, max=1) = 0.5 "Design slip ((V_flow_nominal-V_flow)/V_flow_nominal)"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
