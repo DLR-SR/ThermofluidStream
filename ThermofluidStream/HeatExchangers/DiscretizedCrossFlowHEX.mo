@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells);
+  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,

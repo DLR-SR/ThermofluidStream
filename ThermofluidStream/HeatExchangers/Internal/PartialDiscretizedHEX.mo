@@ -47,8 +47,9 @@ partial model PartialDiscretizedHEX
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
 protected
+  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
+  parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
   parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
-  parameter Integer nCellsParallel=2 "Number of discretization elements in parallel";
   outer DropOfCommons dropOfCommons;
 
   function efficiency = Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB);
@@ -62,10 +63,10 @@ public
   ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
 
-  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-110,70},{-90,90}}), iconTransformation(extent=if (nCellsParallel == 1) then {{-110,70},{-90,90}} else {{110,-90},{90,-70}})));
-  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{90,70},{110,90}}), iconTransformation(extent=if (nCellsParallel == 1) then {{90,70},{110,90}} else {{-90,-90},{-110,-70}})));
-  Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{110,-90},{90,-70}}), iconTransformation(extent=if (nCellsParallel == 1) then {{110,-90},{90,-70}} else {{-110,-10},{-90,10}}, rotation=if (nCellsParallel == 1) then 0 else -90)));
-  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-90,-90},{-110,-70}}), iconTransformation(extent=if (nCellsParallel == 1) then {{-90,-90},{-110,-70}} else {{90,-10},{110,10}}, rotation=if (nCellsParallel == 1) then 0 else -90)));
+  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-110,70},{-90,90}}), iconTransformation(extent=if not crossFlow then {{-110,70},{-90,90}} else {{110,-90},{90,-70}})));
+  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{90,70},{110,90}}), iconTransformation(extent=if not crossFlow then {{90,70},{110,90}} else {{-90,-90},{-110,-70}})));
+  Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{110,-90},{90,-70}}), iconTransformation(extent=if not crossFlow then {{110,-90},{90,-70}} else {{-110,-10},{-90,10}}, rotation=if not crossFlow then 0 else -90)));
+  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-90,-90},{-110,-70}}), iconTransformation(extent=if not crossFlow then {{-90,-90},{-110,-70}} else {{90,-10},{110,10}}, rotation=if not crossFlow then 0 else -90)));
 
 equation
   assert(

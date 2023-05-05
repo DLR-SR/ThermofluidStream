@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=1);
+  extends Internal.PartialDiscretizedHEX;
 
 initial equation
 
