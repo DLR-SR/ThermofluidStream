@@ -7,19 +7,19 @@ partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-100,-60}), iconTransformation(extent=if (crossFlow) then {{-120,-20},{-80,20}} else {{-120,-80},{-80,-40}})));
+        origin={-100,-60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{-120,-80},{-80,-40}})));
   ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={100,-60}), iconTransformation(extent=if (crossFlow) then {{80,-20},{120,20}} else {{80,-80},{120,-40}})));
+        origin={100,-60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{80,-80},{120,-40}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={100,60}), iconTransformation(extent=if (crossFlow) then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if (crossFlow) then -90 else 0)));
+        origin={100,60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={-100,60}), iconTransformation(extent=if (crossFlow) then {{80,-20},{120,20}} else {{-80,80},{-120,40}}, rotation=if (crossFlow) then -90 else 0)));
+        origin={-100,60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,80},{-120,40}}, rotation=if crossFlow then -90 else 0)));
 
   parameter Modelica.Units.SI.Area A "Conductive Surface";
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the flow" annotation (Dialog(tab="Advanced"));
