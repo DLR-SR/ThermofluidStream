@@ -7,13 +7,17 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=k1_B, each k2=k2_B)) annotation (Placement(transformation(extent={{20,70},{40,90}})));
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+      each k=k1_B,
+      each k2=k2_B)) annotation (Placement(transformation(extent={{20,70},{40,90}})));
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
     each r=1,
     each l=1,
     each computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=k1_A, each k2=k2_A)) annotation (Placement(transformation(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+      each k=k1_A,
+      each k2=k2_A)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-50,-80})));

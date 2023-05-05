@@ -6,15 +6,20 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50)) annotation (Placement(transformation(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+      each k=50)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-30,-80})));
-  Topology.JunctionN junctionN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(
+  Topology.JunctionN junctionN(
+    redeclare package Medium = MediumA,
+    N=nCells) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-70,-80})));
-  Topology.SplitterN splitterN(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(
+  Topology.SplitterN splitterN(
+    redeclare package Medium = MediumA,
+    N=nCells) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-80})));
@@ -38,10 +43,8 @@ equation
     connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
   connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{100,80}}, color={28,108,200}));
-
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,70.2},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}}, color={191,0,0}));
   connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-70.2},{0,-42},{0,-42},{0,-10},{0,-10}}, color={191,0,0}));
-
   connect(inletA, splitterN.inlet) annotation (Line(
       points={{100,-80},{60,-80}},
       color={28,108,200},
