@@ -41,6 +41,17 @@ This section summarizes the changes that have been performed on the library.
       </li>
     </ul> 
   </li>
+  <li>
+    Updated discretized and NTU heat exchangers to inherit from common base components.
+    <ul>
+      <li>
+        Added summary record to NTU heat exchangers
+      </li>
+      <li>
+        Changed direction of the <span style=\\\"font-family: Courier New;\\\">ThermalConductor</span> in the <a href=\\\"modelica://ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX\\\">cross-flow heat exchanger</a>, <a href=\\\"modelica://ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR\\\">cross-flow heat exchanger with flow resistance</a> and <a href=\\\"modelica://ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX\\\">undirected cross-flow heat exchanger</a>. This causes heat flow from A to B to be positive, similar to the counter-flow heat exchangers. 
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h4>Version 1.0.0 (2022-12-02)</h4>
