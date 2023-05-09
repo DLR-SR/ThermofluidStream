@@ -40,12 +40,12 @@ equation
   end if;
 
    //forwards model
-  dp_fore = -dp_ref*(rho_ref/rho_rear_in)*Modelica.Fluid.Utilities.regSquare(1/(k_u)*(m_flow/m_flow_ref));
+  dp_fore = -sign(m_flow)*dp_ref*(rho_ref/rho_rear_in)*(1/(k_u)*(m_flow/m_flow_ref))^2;
   h_fore_out = h_rear_in;
   Xi_fore_out = Xi_rear_in;
 
   //rearwards model
-  dp_rear = dp_ref*(rho_ref/rho_fore_in)*Modelica.Fluid.Utilities.regSquare(1/(k_u)*(m_flow/m_flow_ref));
+  dp_rear = sign(m_flow)*dp_ref*(rho_ref/rho_fore_in)*(1/(k_u)*(m_flow/m_flow_ref))^2;
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
