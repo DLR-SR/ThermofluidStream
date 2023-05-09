@@ -61,6 +61,8 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
 
   SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow);
   SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow);
+  SI.MassFlowRate m_flow_A=rearA.m_flow;
+  SI.MassFlowRate m_flow_B=rearB.m_flow;
   SI.Mass M_A=sum(thermalElementA.M);
   SI.Mass M_B=sum(thermalElementB.M);
   SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system);

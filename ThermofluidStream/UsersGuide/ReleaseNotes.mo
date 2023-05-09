@@ -50,6 +50,9 @@ This section summarizes the changes that have been performed on the library.
       <li>
         Changed direction of the <code>ThermalConductor</code> in the <a href=\"modelica://ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX\">cross-flow heat exchanger</a>, <a href=\"modelica://ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR\">cross-flow heat exchanger with flow resistance</a> and <a href=\"modelica://ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX\">undirected cross-flow heat exchanger</a>. This causes heat flow from A to B to be positive, similar to the counter-flow heat exchangers. 
       </li>
+      <li>
+        Corrected an error in the <a href=\"modelica://ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX\">undirected counter-flow heat exchanger</a>. Now <code>m_flow_A</code> and <code>m_flow_B</code> corresponds to the flow through channel A and B respectively, instead of the other way around. 
+      </li>
     </ul>
   </li>
 </ul>

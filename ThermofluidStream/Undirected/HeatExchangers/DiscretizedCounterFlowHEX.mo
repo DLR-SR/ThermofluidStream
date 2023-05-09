@@ -2,9 +2,6 @@ within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
   extends Internal.PartialDiscretizedHEX;
 
-  SI.MassFlowRate m_flow_A=rearB.m_flow;
-  SI.MassFlowRate m_flow_B=rearA.m_flow;
-
 initial equation
 
   if initializeMassFlow then

@@ -2,9 +2,6 @@ within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
-  SI.MassFlowRate m_flow_A=rearA.m_flow;
-  SI.MassFlowRate m_flow_B=rearB.m_flow;
-
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
