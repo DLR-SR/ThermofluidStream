@@ -19,7 +19,7 @@ model SplitterN "1 to N splitter"
 protected
   outer DropOfCommons dropOfCommons;
 
-   SI.Pressure r_mix;
+  SI.Pressure r_mix;
 
 equation
   der(inlet.m_flow) * L = inlet.r - r_mix;
@@ -33,11 +33,19 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-80,0},{0,0}},
+          points={{0,0},{80,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{80,0}},
+          points={{0,0},{100,10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,0},{100,-10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-80,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
