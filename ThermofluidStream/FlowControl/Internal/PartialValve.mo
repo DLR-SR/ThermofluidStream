@@ -40,7 +40,7 @@ equation
   end if;
 
   //Generic pressure loss calculation
-  dp = -dp_ref*(rho_ref/rho)*Modelica.Fluid.Utilities.regSquare(1/(k_u)*(inlet.m_flow/m_flow_ref));
+  dp = -sign(inlet.m_flow)*dp_ref*(rho_ref/rho)*(1/(k_u)*(inlet.m_flow/m_flow_ref))^2;
   h_out = h_in;
   Xi_out = Xi_in;
 
