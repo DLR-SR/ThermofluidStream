@@ -100,10 +100,11 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(extent={{40,230},{60,250}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(
     redeclare package Medium = MediumRefrigerant,
+    temperatureUnit="degC",
     outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{40,194},{20,174}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm3(
-    redeclare package Medium = MediumRefrigerant)
+    redeclare package Medium = MediumRefrigerant, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-22,194},{-42,174}})));
   Modelica.Blocks.Continuous.PI PI(
     k=10000,
@@ -493,7 +494,7 @@ equation
       thickness=0.5));
   connect(evaporator.outletA, multiSensor_Tpm5.inlet)
     annotation (Line(
-      points={{-8.2,-64},{-12,-64}},
+      points={{-8,-64},{-12,-64}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.p0_var,limiter3. y)
@@ -502,7 +503,7 @@ equation
   connect(multiSensor_Tpm5.m_flow_out,feedback3. u2) annotation (Line(points={{-32,-68},{-42,-68},{-42,-82},{-124,-82},{-124,-72}},
                                                            color={0,0,127}));
   connect(evaporator.outletB, multiSensor_Tpm6.inlet) annotation (Line(
-      points={{12.2,-48},{26,-48}},
+      points={{12,-48},{26,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm7.outlet, evaporator.inletB) annotation (Line(
@@ -515,7 +516,7 @@ equation
                                                                                       color={0,0,127}));
   connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-24},{22,-24},{22,-48},{12.2,-48}},
+      points={{26,-24},{22,-24},{22,-48},{12,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.inlet, evaporator.inletB)
@@ -530,7 +531,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-56},{16,-56},{16,-48},{12.2,-48}},
+      points={{26,-56},{16,-56},{16,-48},{12,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA1.inlet, multiSensor_Tpm9.outlet) annotation (Line(
@@ -563,7 +564,7 @@ equation
       thickness=0.5));
   connect(condenser.outletB, multiSensor_Tpm10.inlet)
     annotation (Line(
-      points={{-12.2,-182},{-24,-182}},
+      points={{-12,-182},{-24,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletA, multiSensor_Tpm8.outlet)
@@ -572,7 +573,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, multiSensor_Tpm9.inlet) annotation (Line(
-      points={{8.2,-166},{20,-166},{20,-166},{42,-166}},
+      points={{8,-166},{20,-166},{20,-166},{42,-166}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB1.inlet, flowResistanceB2.outlet) annotation (Line(
@@ -594,7 +595,7 @@ equation
   connect(refFlow_setPoint2.y, feedback4.u1) annotation (Line(points={{-3,-244},{12,-244}}, color={0,0,127}));
   connect(singleSensorSelect2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-208},{-20,-208},{-20,-182},{-12.2,-182}},
+      points={{-24,-208},{-20,-208},{-20,-182},{-12,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, condenser.inletB)
@@ -604,7 +605,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-220},{-20,-220},{-20,-182},{-12.2,-182}},
+      points={{-24,-220},{-20,-220},{-20,-182},{-12,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, condenser.inletB)
@@ -620,7 +621,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.foreB, multiSensor_Tpm3.rear) annotation (Line(
-      points={{-12.2,192},{-22,192}},
+      points={{-12,192},{-22,192}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.rearB, multiSensor_Tpm2.fore) annotation (Line(

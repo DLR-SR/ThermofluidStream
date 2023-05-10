@@ -44,7 +44,7 @@ equation system to be sure.
     for the latter always are done with AssertionLevel.error, the assertion level for
     the former can be set in the DropOfCommons globally. So if the simulation stops
     because one of the former asserts is violated, insert a DropOfCommons model and
-    set the globalAssertionLevel to warning.
+    set the assertionLevel to warning.
   </li>
   <li>
     Many models rely on mass-flow normalization for zero or small mass-flow.
