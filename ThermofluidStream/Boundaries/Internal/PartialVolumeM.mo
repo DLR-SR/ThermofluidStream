@@ -63,8 +63,8 @@ protected
 
   SI.Pressure p_in = Medium.pressure(inlet.state);
   // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-  SI.SpecificEnthalpy h_in = if noEvent(m_flow_in) >= 0 then Medium.specificEnthalpy(inlet.state) else medium.h;
-  Medium.MassFraction Xi_in[Medium.nXi] = if noEvent(m_flow_in) >= 0 then Medium.massFraction(inlet.state) else medium.Xi;
+  SI.SpecificEnthalpy h_in = if noEvent(m_flow_in >= 0) then Medium.specificEnthalpy(inlet.state) else medium.h;
+  Medium.MassFraction Xi_in[Medium.nXi] = if noEvent(m_flow_in >= 0) then Medium.massFraction(inlet.state) else medium.Xi;
 
   Medium.ThermodynamicState state_out[M_outlets];
   SI.SpecificEnthalpy h_out[M_outlets];
@@ -113,7 +113,7 @@ equation
   for i in 1:M_outlets loop
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
 
-    h_out[i] = if noEvent(-m_flow_out[i]) >= 0 then Medium.specificEnthalpy(state_out[i])  else medium.h;
+    h_out[i] = if noEvent(-m_flow_out[i] >= 0) then Medium.specificEnthalpy(state_out[i])  else medium.h;
     Xi_out[:,i] = if noEvent(-m_flow_out[i] >= 0) then Medium.massFraction(state_out[i]) else medium.Xi;
   end for;
 
