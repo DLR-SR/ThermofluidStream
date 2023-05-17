@@ -69,7 +69,7 @@ This section summarizes the changes that have been performed on the library.
   <li>
     Fix bug in
     <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeM\">PartialVolumeM</a> and <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeN\">PartialVolumeN</a>:
-    noEvent statements now work on mass flow related if statements.
+    <code>noEvent</code> operator now works on mass flow related if-statements.
   </li>
 </ul>
 
