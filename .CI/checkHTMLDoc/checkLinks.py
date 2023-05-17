@@ -68,6 +68,9 @@ def _checkURL(url):
         if rc == 429:
             # Ignore too many requests
             rc = 200
+        elif rc == 403:
+            # Ignore HTTP Error 403 Forbidden
+            rc = 200
         elif rc in (301, 302):
             # Handle redirect errors
             rc = urllib2.build_opener(urllib2.HTTPCookieProcessor).open(url).code
