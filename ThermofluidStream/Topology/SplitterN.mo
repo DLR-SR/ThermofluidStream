@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model SplitterN "1 to N splitter"
+model SplitterN "Splitter with one inlet and N outlets"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
