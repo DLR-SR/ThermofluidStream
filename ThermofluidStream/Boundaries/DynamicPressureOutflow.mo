@@ -74,7 +74,8 @@ equation
   h_out = h_in + delta_v*v_mean;
   Xi_out = Xi_in;
 
-  annotation (Icon(graphics={
+  annotation (
+  	Icon(graphics={
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},
@@ -82,6 +83,10 @@ equation
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
+        Line(
+          points={{100,0},{-100,0}},
+          color={28,108,200},
+          thickness=0.5),
         Rectangle(
           extent={{-30,80},{30,-80}},
           lineColor={28,108,200},
@@ -92,10 +97,6 @@ equation
           origin={-30,0},
           rotation=180),
         Line(
-          points={{80,0},{2,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
           points={{-12,80},{-12,-80}},
           color={255,255,255},
           thickness=1),
@@ -103,16 +104,14 @@ equation
           points={{-28,80},{-28,-80}},
           color={255,255,255},
           thickness=0.5),
-        Line(points={{-44,80},{-44,-80}},
-                                        color={255,255,255}),
         Line(
-          points={{-60,0},{-80,0}},
-          color={28,108,200},
-          thickness=0.5),
+          points={{-44,80},{-44,-80}},
+          color={255,255,255}),
         Line(
           points={{-60,80},{-60,-80}},
           color={0,127,0},
-          thickness=0.5)}), Documentation(info="<html>
+          thickness=0.5)}),
+    Documentation(info="<html>
 <p>This Outflow Boundary is supposed to end a area of the model where dynamic pressure is taken into account. The area is started with DynamicPressureInflows. </p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>
 <p>The components output velocity can be set to a fixed Value or given by a signal. From the inflow velocity, that is computed by the Area of the Component, the flow is decelerated to the reference outflow velocity.</p>

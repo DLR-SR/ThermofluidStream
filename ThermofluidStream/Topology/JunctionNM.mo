@@ -69,11 +69,11 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{100,10}},
+          points={{0,0},{96,10}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{100,-10}},
+          points={{0,0},{96,-10}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

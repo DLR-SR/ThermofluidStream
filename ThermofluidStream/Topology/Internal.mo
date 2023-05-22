@@ -125,11 +125,11 @@ package Internal
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
-            points={{-90,0},{90,0}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{0,90}},
+            points={{0,0},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(

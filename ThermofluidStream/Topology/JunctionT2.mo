@@ -44,15 +44,15 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-80,0},{0,0}},
+          points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{80,0}},
+          points={{0,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{0,80}},
+          points={{0,0},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
