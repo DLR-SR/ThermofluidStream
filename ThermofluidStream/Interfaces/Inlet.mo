@@ -20,7 +20,7 @@ connector Inlet "Inlet port for a fluid"
           lineColor={28,108,200})}),
     Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{100,0},{0,50},{20,0},{0,-50},{100,0}},
+          points={{50,0},{-50,50},{-30,0},{-50,-50},{50,0}},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5,

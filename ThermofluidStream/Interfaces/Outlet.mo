@@ -20,7 +20,7 @@ connector Outlet "Outlet port for a fluid"
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{0,0},{-100,50},{-80,0},{-100,-50},{0,0}},
+          points={{50,0},{-50,50},{-30,0},{-50,-50},{50,0}},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           lineColor={28,108,200},
