@@ -66,6 +66,11 @@ This section summarizes the changes that have been performed on the library.
       </li>
     </ul>
   </li>
+  <li>
+    Fix bug in
+    <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeM\">PartialVolumeM</a> and <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeN\">PartialVolumeN</a>:
+    <code>noEvent</code> operator now works on mass flow related if-statements.
+  </li>
 </ul>
 
 <h4>Version 1.0.0 (2022-12-02)</h4>

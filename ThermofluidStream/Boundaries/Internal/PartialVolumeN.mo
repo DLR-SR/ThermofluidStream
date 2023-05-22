@@ -68,7 +68,7 @@ protected
 
   Medium.ThermodynamicState state_out;
   // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-  SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(state_out) else medium.h;
+  SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out >= 0) then Medium.specificEnthalpy(state_out) else medium.h;
   Medium.MassFraction Xi_out[Medium.nXi] = if noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else medium.Xi;
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
@@ -113,8 +113,8 @@ equation
     r[i] + p_in[i] = medium.p;
 
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-    h_in[i] =  if noEvent(m_flow_in[i]) >= 0 then Medium.specificEnthalpy(inlet[i].state) else medium.h;
-    Xi_in[:,i] = if noEvent(m_flow_in[i]) >= 0 then Medium.massFraction(inlet[i].state) else medium.Xi;
+    h_in[i] =  if noEvent(m_flow_in[i] >= 0) then Medium.specificEnthalpy(inlet[i].state) else medium.h;
+    Xi_in[:,i] = if noEvent(m_flow_in[i] >= 0) then Medium.massFraction(inlet[i].state) else medium.Xi;
   end for;
 
   der(M) = sum(inlet.m_flow) + outlet.m_flow;
