@@ -137,11 +137,11 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
-            points={{-90,0},{90,0}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{0,90}},
+            points={{0,0},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(
@@ -159,7 +159,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             textColor={175,175,175},
             textString="B"),
           Text(
-            extent={{-96,34},{88,4}},
+            extent={{-92,38},{92,8}},
             textColor={0,0,0},
             textString="JunctionRatio")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),

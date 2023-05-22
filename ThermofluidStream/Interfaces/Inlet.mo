@@ -13,40 +13,18 @@ connector Inlet "Inlet port for a fluid"
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{100,0},{-100,100},{-100,-100},{100,0}},
-          pattern=LinePattern.None,
+          points={{-100,100},{-40,0},{-100,-100},{100,0},{-100,100}},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Polygon(
-          points={{-100,60},{-100,-60},{20,0},{-100,60}},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None),
-        Line(
-          points={{-100,60},{-100,-60}},
-          color={255,255,254},
-          thickness=0.1),
-        Line(
-          points={{-100,100},{100,0},{-100,-100}},
-          color={28,108,200},
-          thickness=0.5)}),
+          lineThickness=0.5,
+          lineColor={28,108,200})}),
     Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
-          points={{100,0},{0,50},{0,-50},{100,0}},
-          pattern=LinePattern.None,
+          points={{50,0},{-50,50},{-30,0},{-50,-50},{50,0}},
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{0,30},{0,-30},{60,0},{0,30}},
-          fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          pattern=linePattern.None),
-        Line(
-          points={{0,50},{100,0},{0,-50}},
-          color={28,108,200},
-          thickness=0.5)}),
+          lineThickness=0.5,
+          lineColor={28,108,200})}),
     Documentation(info="<html>
 <p>Directed flow connector for fluids.</p>
 <p>The mass flow is supposed to be positive, hence the fluid is supposed to enter the component through an inlet, therefore the state information of this connector is an input.</p>

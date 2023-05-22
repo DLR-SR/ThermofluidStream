@@ -74,7 +74,8 @@ equation
   h_out = h_in + delta_v*v_mean;
   Xi_out = Xi_in;
 
-  annotation (Icon(graphics={
+  annotation (
+    Icon(graphics={
         Rectangle(
           extent={{0,78},{64,-82}},
           lineColor={28,108,200},
@@ -82,6 +83,10 @@ equation
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
+        Line(
+          points={{100,0},{-100,0}},
+          color={28,108,200},
+          thickness=0.5),
         Rectangle(
           extent={{0,80},{60,-80}},
           lineColor={28,108,200},
@@ -89,10 +94,6 @@ equation
           fillColor={170,255,170},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{80,0},{60,0}},
-          color={28,108,200},
-          thickness=0.5),
         Line(
           points={{12,80},{12,-80}},
           color={255,255,255},
@@ -103,13 +104,10 @@ equation
           thickness=0.5),
         Line(points={{44,80},{44,-80}}, color={255,255,255}),
         Line(
-          points={{0,0},{-80,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
           points={{60,80},{60,-80}},
           color={0,127,0},
-          thickness=0.5)}), Documentation(info="<html>
+          thickness=0.5)}),
+    Documentation(info="<html>
 <p>This Inflow Boundary is supposed to start an area of the model where dynamic pressure is taken into account. The area is ended with DynamicPressureOutflows. </p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>
 <p>The components input velocity can be set to a fixed value or given by a signal. From this reference inflow velocity the medium is accelerated to fit the outflow velocity, that is computed by the Area of the Component. </p>

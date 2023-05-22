@@ -39,7 +39,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-80,0},{-40,0}},
+          points={{-100,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -52,7 +52,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,0},{80,0}},
+          points={{40,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Polygon(

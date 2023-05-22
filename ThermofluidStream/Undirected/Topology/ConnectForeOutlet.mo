@@ -50,7 +50,7 @@ equation
   annotation (Icon(
       graphics={
         Line(
-          points={{-20,0},{20,0}},
+          points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5), Line(
           points={{0,0},{0,60}},
