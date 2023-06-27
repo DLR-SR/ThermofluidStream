@@ -3,18 +3,9 @@ class References "References"
   extends Modelica.Icons.References;
 
   annotation (DocumentationClass=true, Documentation(info="<html>
-<h4>References referring directly to this library</h4>
-<ul>
-  <li>steady mass flow pressure: p / delta: dp</li>
-  <li>inertial pressure: r / delta: dr</li>
-  <li>inertance: L</li>
-  <li>dynamic pressure q / delta: dq</li>
-  <li>mass flow rate: m_flow</li>
-  <li>specific enthalpy: h / delta: dh</li>
-  <li>specific internal energy: u</li>
-  <li>heat flow: Q_flow</li>
-  <li>temperature: T</li>
-</ul>
+<p>
+This section gives an overview of the literature related to the library and its modeling approach.
+</p>
 
 <h4>Literature</h4>
 <p>
@@ -35,7 +26,7 @@ class References "References"
   </li>
 </ul>
 
-<h4>Further background references on the methodology</h4>
+<strong>Further background references on the methodology</strong>
 <ul>
   <li>
     Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018).
