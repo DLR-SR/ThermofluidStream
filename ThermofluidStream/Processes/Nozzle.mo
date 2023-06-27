@@ -49,17 +49,20 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,60},{-60,0},{0,-60},{60,0},{0,60}}, color={28,108,200}),
-        Line(points={{-40,44},{-40,-44},{40,-44},{40,44},{-40,44}}, color={28,108,
-              200}),
+        Rectangle(
+          extent={{-42,42},{42,-42}},
+          lineColor={28,108,200}),
+        Polygon(
+          points={{0,60},{-60,0},{0,-60},{60,0},{0,60}},
+          lineColor={28,108,200}),
         Ellipse(
-          extent={{-40,44},{40,-44}},
+          extent={{-42,42},{42,-42}},
           lineColor={170,255,170},
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Sphere),
         Ellipse(
-          extent={{-40,44},{40,-44}},
+          extent={{-42,42},{42,-42}},
           lineColor={0,140,72},
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
