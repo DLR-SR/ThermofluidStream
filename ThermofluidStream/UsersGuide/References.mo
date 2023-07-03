@@ -28,7 +28,7 @@ The citation rules for publishing work that is based on this library can be foun
   </li>
   <li>
     Zimmer, Dirk, Michael Mei&szlig;ner, Niels Weber (2022).
-    &quot;The DLR ThermoFluidStream Library&quot; <i>Electronics</i> 11, no.22 :3790.<br>
+    &quot;The DLR ThermoFluidStream Library&quot; <em>Electronics</em> 11, no.22 :3790.<br>
 	<a href=\"https://doi.org/10.3390/electronics11223790\">https://doi.org/10.3390/electronics11223790</a>.
   </li>
 </ul>
