@@ -84,7 +84,6 @@ Water model with linear compressibility at ambient conditions
 </p>
 </html>"));
   end LinearWater_pT_Ambient;
-
   annotation (Documentation(info="<html>
 <h4>Fluid models with linear compressibility, using PartialLinearFluid as base class.</h4>
 <p>The linear compressibility fluid models contained in this package are based on the assumptions that:

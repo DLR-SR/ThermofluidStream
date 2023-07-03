@@ -6645,9 +6645,7 @@ BaseIF97 provide more choice.
 </ul>
 </html>"));
   end BaseIF97;
-
   replaceable record iter = BaseIF97.IterationData;
-
   function waterBaseProp_ph "Intermediate property record for water"
     extends Modelica.Icons.Function;
     input SI.Pressure p "Pressure";
@@ -8432,8 +8430,8 @@ BaseIF97 provide more choice.
           region));
     annotation (Inline=false, LateInline=true);
   end isentropicExponent_dT;
-
 protected
+
   package ThermoFluidSpecial
     extends Modelica.Icons.FunctionsPackage;
     function water_ph
@@ -8605,31 +8603,26 @@ protected
       end if;
     end water_pT;
   end ThermoFluidSpecial;
-
 public
+
   function hl_p = BaseIF97.Regions.hl_p
     "Compute the saturated liquid specific h(p)";
   function hv_p = BaseIF97.Regions.hv_p
     "Compute the saturated vapour specific h(p)";
-
   function sl_p = BaseIF97.Regions.sl_p
     "Compute the saturated liquid specific s(p)";
   function sv_p = BaseIF97.Regions.sv_p
     "Compute the saturated vapour specific s(p)";
-
   function rhol_T = BaseIF97.Regions.rhol_T "Compute the saturated liquid d(T)";
   function rhov_T = BaseIF97.Regions.rhov_T "Compute the saturated vapour d(T)";
-
   function rhol_p = BaseIF97.Regions.rhol_p "Compute the saturated liquid d(p)";
   function rhov_p = BaseIF97.Regions.rhov_p "Compute the saturated vapour d(p)";
-
   function dynamicViscosity = BaseIF97.Transport.visc_dTp
     "Compute eta(d,T) in the one-phase region";
   function thermalConductivity = BaseIF97.Transport.cond_dTp
     "Compute lambda(d,T,p) in the one-phase region";
   function surfaceTension = BaseIF97.Transport.surfaceTension
     "Compute sigma(T) at saturation T";
-
   //   function isentropicEnthalpy
   //     "Isentropic specific enthalpy from p,s (preferably use dynamicIsentropicEnthalpy in dynamic simulation!)"
   //     extends Modelica.Icons.Function;
@@ -8709,7 +8702,6 @@ public
         0);
     annotation (Inline=true);
   end dynamicIsentropicEnthalpy;
-
   annotation (Documentation(info="<html>
 <h4>Package description</h4>
 <p>

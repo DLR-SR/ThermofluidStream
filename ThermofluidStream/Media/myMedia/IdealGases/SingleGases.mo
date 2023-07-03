@@ -347,7 +347,6 @@ package SingleGases "Media models of ideal gases from NASA tables"
     annotation (Documentation(info="<html><div>
       <img src=\"modelica://Modelica/Resources/Images/Media/IdealGases/SingleGases/SO3.png\"></div></html>"));
   end SO3;
-
   annotation (Documentation(
         info="<html>
 <p>
