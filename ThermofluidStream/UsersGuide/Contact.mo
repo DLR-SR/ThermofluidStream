@@ -1,5 +1,5 @@
 within ThermofluidStream.UsersGuide;
-class Contact "Contact and citation information"
+class Contact "Contact"
   extends Modelica.Icons.Contact;
 
   annotation (
@@ -27,24 +27,6 @@ If you have other issues contact:
 <a href=\"mailto:dirk.zimmer@dlr.de\">dirk.zimmer@dlr.de</a>.
 </p>
 
-
-<h4>Citation Rules</h4>
-<p>
-If you have used this library for your publication, please cite the following two papers:
-</p>
-<ul>
-  <li>
-    Zimmer, Dirk (2020).
-    &quot;Robust object-oriented formulation of directed thermofluid stream networks&quot;.
-    In: Mathematical and Computer Modelling of Dynamical Systems 26.3, pp. 204&ndash; 233.
-    DOI: 10.1080/13873954.2020.1757726.
-  </li>
-  <li>
-    Zimmer, Dirk, Michael Mei&szlig;ner, Niels Weber (in review 2021).
-    &quot;The DLR ThermoFluidStream Library&quot;
-    submitted for the 14th International Modelica Conference, Link&ouml;ping, Sweden.
-  </li>
-</ul>
 
 
 <h4>Acknowledgements</h4>

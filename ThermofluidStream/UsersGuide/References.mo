@@ -5,6 +5,8 @@ class References "References"
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
 This section gives an overview of the literature related to the library and its modeling approach.
+The citation rules for publishing work that is based on this library can be found in the project&apos;s
+<a href=\"https://github.com/DLR-SR/ThermofluidStream.git\">GitHub repository</a> frontpage.
 </p>
 
 <h4>Literature</h4>
@@ -21,8 +23,13 @@ This section gives an overview of the literature related to the library and its 
   </li>
   <li>
     Zimmer, Dirk, Michael Mei&szlig;ner, Niels Weber (2021).
-    &quot;The DLR ThermoFluidStream Library&quot;
-    submitted for the 14th International Modelica Conference, Link&ouml;ping, Sweden.
+    &quot;The DLR ThermoFluidStream Library&quot;.
+    In: 14th International Modelica Conference, Link&ouml;ping, Sweden.
+  </li>
+  <li>
+    Zimmer, Dirk, Michael Mei&szlig;ner, Niels Weber (2022).
+    &quot;The DLR ThermoFluidStream Library&quot; <i>Electronics</i> 11, no.22 :3790.<br>
+	<a href=\"https://doi.org/10.3390/electronics11223790\">https://doi.org/10.3390/electronics11223790</a>.
   </li>
 </ul>
 
