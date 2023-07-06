@@ -771,8 +771,8 @@ end lowPressureThermalConductivity;
       function f_nonlinear(p=p, s=s, X=X), 200, 6000);
     annotation(inverse(s = specificEntropyOfpTX(p,T,X)));
   end T_psX;
-protected
 
+protected
     function specificEntropyOfpTX
       "Return specific entropy from pressure, temperature and mass fractions"
       extends Modelica.Icons.Function;

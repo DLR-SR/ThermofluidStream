@@ -31,14 +31,17 @@ protected
       nominal=3.e1,
       start=3.e1)
     "Type for molar heat capacity with medium specific attributes";
+
   type MolarDensity = Real (
       final quantity="MolarDensity",
       final unit="mol/m3",
       min=0);
+
   type IsothermalExpansionCoefficient = Real (
       min=0,
       max=1e8,
       unit="1");
+
 public
   package Air_ph
     "ReferenceAir.Air_ph: Detailed dry air model (130 ... 2000 K) explicit in p and h"
@@ -73,8 +76,8 @@ The package Air_pT can be used as any other medium model (see <a href=\"modelica
 </p>
 </html>"));
   end Air_pT;
-public
 
+public
   package Air_dT
     "ReferenceAir.Air_dT: Detailed dry air model (130 ... 2000 K) explicit in d and T"
     extends Modelica.Icons.MaterialProperty;
@@ -91,8 +94,8 @@ The package Air_dT can be used as any other medium model (see <a href=\"modelica
 </p>
 </html>"));
   end Air_dT;
-public
 
+public
   partial package Air_Base
     "Properties of dry air calculated using the equation of state by Lemmon et. al."
 

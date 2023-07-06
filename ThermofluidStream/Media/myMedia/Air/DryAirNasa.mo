@@ -45,6 +45,7 @@ package DryAirNasa "Air: Detailed dry air model as ideal gas (200..6000 K)"
 <p>Source: VDI Waermeatlas, 8th edition.</p>
 </html>"));
   end thermalConductivity;
+
   annotation (Documentation(info="<html>
 <p>
     <img src=\"modelica://Modelica/Resources/Images/Media/Air/Air.png\">

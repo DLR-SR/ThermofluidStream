@@ -1782,8 +1782,8 @@ package ReferenceMoistAir
       final constant MolarMass molarMass=0.018015257;
 
       function g2 =
-          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Basic.g2 (
-           final checkLimits=false)
+          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Basic.g2
+          (final checkLimits=false)
         "Gibbs function for region 2: g(p,T)";
 
       function h_pT "Specific enthalpy as function or pressure and temperature"
@@ -1900,14 +1900,16 @@ package ReferenceMoistAir
       end rho_pT_der;
 
       function visc_dT =
-          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Transport.visc_dTp (
+          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Transport.visc_dTp
+          (
           final p=0,
           final phase=0,
           final checkLimits=false)
         "Dynamic viscosity eta(d,T), industrial formulation";
 
       function cond_dT =
-          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Transport.cond_dTp (
+          ThermofluidStream.Media.myMedia.Water.IF97_Utilities.BaseIF97.Transport.cond_dTp
+          (
           final p=0,
           final phase=0,
           final industrialMethod=true,

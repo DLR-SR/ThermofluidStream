@@ -826,8 +826,8 @@ critical pressure.
     end TwoPhaseToProps_dT;
 
   end ThermoFluidSpecial;
-public
 
+public
   record SaturationProperties "Properties in the two phase region"
     extends Modelica.Icons.Record;
     SI.Temperature T "Temperature";
@@ -1629,6 +1629,7 @@ sum(X) = c*(sum(X_a) - sum(X_b)) + (sum(X_a) + sum(X_b))/2
     nderivs.pt := 0.0;
     nderivs.sd := 0.0;
   end Gibbs2_ps;
+
   annotation (
     Documentation(
       info="<html>

@@ -74,7 +74,7 @@ package Incompressible
   equation
     medium.p = 1.013e5;
     medium.T = Medium.T_min + time/timeUnit*Ta;
-      annotation (__DLR_experiment(StopTime=1.01));
+      annotation (experiment_X(StopTime=1.01));
   end TestGlycol;
 
   annotation (
@@ -603,6 +603,7 @@ function calls can not be used.
 </p>
 </html>"));
   end TableBased;
+
   annotation (
     Documentation(info="<html>
 <h4>Incompressible media package</h4>

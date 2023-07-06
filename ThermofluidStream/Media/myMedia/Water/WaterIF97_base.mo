@@ -31,6 +31,7 @@ partial package WaterIF97_base
     Temperature T "Temperature";
     AbsolutePressure p "Pressure";
   end ThermodynamicState;
+
   constant Integer Region = 0 "Region of IF97, if known, zero otherwise";
   constant Boolean ph_explicit
     "True if explicit in pressure and specific enthalpy";
@@ -547,6 +548,7 @@ partial package WaterIF97_base
           Region);
     annotation (Inline=true);
   end density_derp_h;
+
   //   redeclare function extends density_derT_p
   //     "Density derivative by temperature"
   //   algorithm
