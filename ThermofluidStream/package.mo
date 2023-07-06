@@ -1,5 +1,5 @@
 within ;
-package ThermofluidStream "Library for the Modelling of Thermofluid Streams"
+package ThermofluidStream "Library for the modeling of thermofluid streams"
   extends Modelica.Icons.Package;
 
   import Modelica.Units.SI;
