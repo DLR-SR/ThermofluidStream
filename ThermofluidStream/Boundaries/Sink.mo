@@ -13,6 +13,8 @@ the outlet the sink is connected to.
     annotation(Dialog(enable = not pressureFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of pressure"
     annotation (Dialog(tab="Advanced"));
+  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
+    annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -36,6 +38,8 @@ protected
   SI.Pressure p = Medium.pressure(inlet.state);
 
 equation
+  assert(inlet.m_flow > m_flow_assert, "Negative massflow at Sink inlet", dropOfCommons.assertionLevel);
+  
   if not pressureFromInput then
     p0 = p0_par;
   end if;
