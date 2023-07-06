@@ -88,7 +88,8 @@ Medium model for water.
   Boundaries.Source source1(
     redeclare package Medium = Water,
     T0_par=298.15,
-    p0_par=100000)
+    p0_par=100000,
+    m_flow_assert=-3*dropOfCommons.m_flow_reg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-140,-120})));
