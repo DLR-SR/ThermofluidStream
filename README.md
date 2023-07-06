@@ -64,10 +64,18 @@ We also welcome feedback in form of issues raised here on GitHub. Also when you 
 Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
 
 - Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
+- Zimmer, Dirk, Michael Meißner, Niels Weber (2021) [The DLR ThermoFluidStream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199). 14th International Modelica Conference, Linköping, Sweden.
+- Zimmer, Dirk (2019a). [Robust Simulation of StreamDominated Thermo-Fluid Systems: From Unidirectional to Bidirectional Applications](https://www.researchgate.net/publication/337812690_Robust_Simulation_of_Stream-Dominated_Thermo-Fluid_Systems_From_Unidirectional_to_Bidirectional_Applications). EUROSIM Congress (Logrono, Spain).
 
 More details on the modeling of various types of volumes can be found in:
 
-- M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks] (https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20. 
+- M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks](https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20.
+
+Further background literature on the methodology:
+
+- Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).
+- Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
+- Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet.
 
 ## Tool compatibility 
 - [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pedantic checking has been applied to all components in order to improve cross-tool compatibility. 
