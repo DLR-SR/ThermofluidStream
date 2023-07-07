@@ -73,7 +73,7 @@ More details on the modeling of various types of volumes can be found in:
 
 Further background literature on the methodology:
 
-- Zimmer, Dirk. and Daniel Bender Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).
+- Zimmer, Dirk, Daniel Bender, Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).
 - Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
 - Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet.
 
