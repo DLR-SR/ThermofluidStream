@@ -24,7 +24,7 @@ partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
   parameter Modelica.Units.SI.Area A "Conductive Surface";
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the flow" annotation (Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Overall heat transfer coefficient";
-  parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow for regularisation" annotation (Dialog(tab="Advanced", group="Regularisation parameters"));
+  parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow for regularization" annotation (Dialog(tab="Advanced", group="Regularization parameters"));
   parameter Modelica.Units.SI.Time TC=0.01 "Time constant for dh" annotation (Dialog(tab="Advanced"));
 
   Modelica.Units.SI.TemperatureDifference Delta_T_max "Maximum Temperature Difference";
@@ -134,7 +134,7 @@ equation
 
   if noEvent(C_A < C_B) then
 
-    //if both mass flows are smaller than regularisation mass flow, no heat is transferred
+    //if both mass flows are smaller than regularization mass flow, no heat is transferred
     if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
       dh_A = 0;
     else
@@ -144,7 +144,7 @@ equation
     q_flowA = m_flow_A*dh_A;
     q_flowB = -q_flowA;
 
-    //Based on regularisation for mass flow
+    //Based on regularization for mass flow
     dh_B = (m_flow_B*q_flowB)/(m_flow_B^2 + (m_flow_reg/10)^2);
 
     der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
@@ -152,7 +152,7 @@ equation
 
   else
 
-    //if both mass flows are smaller than regularisation mass flow, no heat is transferred
+    //if both mass flows are smaller than regularization mass flow, no heat is transferred
     if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
       dh_B = 0;
     else
@@ -162,7 +162,7 @@ equation
     q_flowB = m_flow_B*dh_B;
     q_flowA = -q_flowB;
 
-    //Based on regularisation for mass flow
+    //Based on regularization for mass flow
     dh_A = (m_flow_A*q_flowA)/(m_flow_A^2 + (m_flow_reg/10)^2);
 
     der(h_out_A)*TC = h_in_A - dh_A - h_out_A;

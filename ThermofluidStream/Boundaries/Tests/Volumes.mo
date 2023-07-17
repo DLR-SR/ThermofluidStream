@@ -427,7 +427,7 @@ equation
                                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-200},{100,200}})),
         Documentation(info="<html>
-<p>This test purposely violates the asserts for reversed mass-flows to test the behaviour of volumes for prolonged reversed massflow for some of the volumes. The assert is set to warning.</p>
+<p>This test purposely violates the asserts for reversed mass-flows to test the behavior of volumes for prolonged reversed massflow for some of the volumes. The assert is set to warning.</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end Volumes;

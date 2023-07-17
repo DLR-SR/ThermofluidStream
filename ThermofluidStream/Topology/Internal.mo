@@ -162,5 +162,5 @@ package Internal
       B "Port B",
       OneMinusS "1-s",
       pressureDrop "Pressure Drop")
-      "Choices for the pressure drop behaviour of SplitterRatio";
+      "Choices for the pressure drop behavior of SplitterRatio";
 end Internal;
