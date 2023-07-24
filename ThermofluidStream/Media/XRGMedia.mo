@@ -7739,11 +7739,10 @@ Int. J. Refrig., 23 (2000) 43-63.</dd>
       h(stateSelect=StateSelect.prefer),
       d(stateSelect=StateSelect.default),
       T(stateSelect=StateSelect.default),
-      p(stateSelect=StateSelect.prefer)) "Base properties of NH3"
+      p(stateSelect=StateSelect.prefer),
+      sat(Tsat(start=273.0), psat(start=3.0e5))) "Base properties of NH3"
       Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      SaturationProperties sat(Tsat(start=273.0), psat(start=3.0e5))
-      "saturation temperature and pressure";
       MassFraction quality "quality of vapour";
 
     equation
@@ -14690,11 +14689,10 @@ Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>.
       h(stateSelect=StateSelect.prefer),
       d(stateSelect=StateSelect.default),
       T(stateSelect=StateSelect.default),
-      p(stateSelect=StateSelect.prefer)) "Base properties of CO2"
+      p(stateSelect=StateSelect.prefer),
+      sat(Tsat(start=273.15), psat(start=3.4851e6))) "Base properties of CO2"
       Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      SaturationProperties sat(Tsat(start=273.15), psat(start=3.4851e6))
-      "saturation temperature and pressure";
       MassFraction quality "quality of vapour";
 
     equation
@@ -21705,11 +21703,10 @@ The functions provided by this package shall be used inside of the restricted li
       h(stateSelect=StateSelect.prefer),
       d(stateSelect=StateSelect.default),
       T(stateSelect=StateSelect.default),
-      p(stateSelect=StateSelect.prefer)) "Base properties of R1234yf"
+      p(stateSelect=StateSelect.prefer),
+      sat(Tsat(start=273.0), psat(start=3.1582e5))) "Base properties of R1234yf"
       Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      SaturationProperties sat(Tsat(start=273.0), psat(start=3.1582e5))
-      "saturation temperature and pressure";
       MassFraction quality "quality of vapour";
 
     equation
@@ -29106,11 +29103,10 @@ Vapor Pressure and p-rho-T Measurements and Equation of State</strong>. Journal 
       h(stateSelect=StateSelect.prefer),
       d(stateSelect=StateSelect.default),
       T(stateSelect=StateSelect.default),
-      p(stateSelect=StateSelect.prefer)) "Base properties of R1234yf"
+      p(stateSelect=StateSelect.prefer),
+      sat(Tsat(start=273.0), psat(start=3.1582e5))) "Base properties of R1234yf"
       Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-      SaturationProperties sat(Tsat(start=273.0), psat(start=3.1582e5))
-      "saturation temperature and pressure";
       MassFraction quality "quality of vapour";
 
     equation
