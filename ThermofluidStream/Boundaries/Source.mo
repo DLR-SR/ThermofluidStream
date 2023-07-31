@@ -47,11 +47,6 @@ protected
   Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
   Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fraction connector";
 
-  //SI.Temperature T0;
-  //SI.Pressure p0;
-  //SI.SpecificEnthalpy h0;
-  //Medium.MassFraction Xi0[Medium.nXi];
-
 equation
 
    connect(T0_var, T0);

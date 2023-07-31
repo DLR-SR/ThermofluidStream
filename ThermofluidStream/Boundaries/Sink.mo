@@ -31,7 +31,6 @@ protected
   outer DropOfCommons dropOfCommons;
 
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
-  //SI.Pressure p0;
   SI.Pressure r;
 
   SI.Pressure p = Medium.pressure(inlet.state);
