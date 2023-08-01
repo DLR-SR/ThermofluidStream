@@ -8,31 +8,31 @@ function dp_tau_centrifugal "Model of a centrifugal pump"
     annotation(Dialog(enable=true));
   input SI.Height TDH_D = 3.6610 "Design pressure head"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
-  input SI.VolumeFlowRate V_flow_D = 3.06e-3 "Design pressure difference"
+  input SI.VolumeFlowRate V_flow_D = 3.06e-3 "Design volume flow"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
   input SI.AngularVelocity omega_D = 314.2 "Design angular velocity"
     annotation(Dialog(group="Scaling", enable=parametrizeByScaling));
-  input Real K_D_input(unit="m3/rad") = K_D_ref "Vflow_D / omega_D"
+  input Real K_D_input(unit="m3/rad") = 9.73e-06 "Vflow_D / omega_D"
     annotation(Dialog(group="General", enable=not parametrizeByScaling));
-  input Integer f_q_input = f_q_ref "Number of floods"
+  input Integer f_q_input = 1 "Number of floods"
     annotation(Dialog(group="General", enable=not parametrizeByScaling));
-  input SI.Radius r_input = r_ref "Radius of pump"
+  input SI.Radius r_input = 1.60e-2 "Radius of pump"
     annotation(Dialog(group="General", enable=not parametrizeByScaling));
-  input SI.Density rho_ref_input = rho_ref_ref "Reference Density"
+  input SI.Density rho_ref_input = 1.00e3 "Reference Density"
     annotation(Dialog(group="General", enable=not parametrizeByScaling));
-  input Real a_h_input(unit= "m.s2/rad2", displayUnit="m.min2") = a_h_ref "HQ factor 1"
+  input Real a_h_input(unit= "m.s2/rad2", displayUnit="m.min2") = 4.864e-5 "HQ factor 1"
     annotation(Dialog(group="HQ characteristic", enable=not parametrizeByScaling));
-  input Real b_h_input(unit="s2/(m2.rad)", displayUnit="m.h.min/l") = b_h_ref "HQ factor 2"
+  input Real b_h_input(unit="s2/(m2.rad)", displayUnit="m.h.min/l") = -2.677 "HQ factor 2"
     annotation(Dialog(group="HQ characteristic", enable=not parametrizeByScaling));
-  input Real c_h_input(unit="s2/m5", displayUnit="m.h2/l2") = c_h_ref "HQ factor 3"
+  input Real c_h_input(unit="s2/m5", displayUnit="m.h2/l2") = 3.967e+5 "HQ factor 3"
     annotation(Dialog(group="HQ characteristic", enable=not parametrizeByScaling));
-  input Real a_t_input(unit="N.m.s2/(rad.m3)", displayUnit="N.m.min.h/l") = a_t_ref "TQ factor 1"
+  input Real a_t_input(unit="N.m.s2/(rad.m3)", displayUnit="N.m.min.h/l") = 5.427e-1 "TQ factor 1"
     annotation(Dialog(group="TQ characteristic", enable=not parametrizeByScaling));
-  input Real b_t_input(unit="N.m.s2/m6", displayUnit="N.m.h2/l2") = b_t_ref "TQ factor 2"
+  input Real b_t_input(unit="N.m.s2/m6", displayUnit="N.m.h2/l2") = 2.777e+4 "TQ factor 2"
     annotation(Dialog(group="TQ characteristic", enable=not parametrizeByScaling));
-  input Real v_i_input(unit="N.m.s2/rad2", displayUnit="N.m.min2") = v_i_ref "TQ factor 4"
+  input Real v_i_input(unit="N.m.s2/rad2", displayUnit="N.m.min2") = 1.218e-6 "TQ factor 4"
     annotation(Dialog(group="TQ characteristic", enable=not parametrizeByScaling));
-  input Real v_s_input(unit="N.m.s/rad", displayUnit="N.m.min") = v_s_ref "TQ factor 3"
+  input Real v_s_input(unit="N.m.s/rad", displayUnit="N.m.min") = 1.832e-4 "TQ factor 3"
     annotation(Dialog(group="TQ characteristic", enable=not parametrizeByScaling));
   input Real Re_mod_min(unit="1") = 1e2 "Minimum modified Reynolds number"
     annotation(Dialog(tab="Advanced", enable=true));
@@ -55,7 +55,7 @@ protected
   constant SI.Height TDH_D_ref = 3.6610;
 
   constant Real a_h_ref(unit="m.s2/rad2") =  4.864e-5;
-  constant Real b_h_ref(unit="s2/m2") =      -2.677;
+  constant Real b_h_ref(unit="s2/(m2.rad)") =      -2.677;
   constant Real c_h_ref(unit="s2/m5") =       3.967e+5;
 
   constant Real a_t_ref(unit="N.m.s2/(rad.m3)") =  5.427e-1;
