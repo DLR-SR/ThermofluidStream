@@ -67,6 +67,6 @@ equation
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Implementation of nozzle taking gas dynamic effects into account.</p>
+<p>Implementation of a nozzle taking gas dynamic effects into account.</p>
 </html>"));
 end Nozzle;
