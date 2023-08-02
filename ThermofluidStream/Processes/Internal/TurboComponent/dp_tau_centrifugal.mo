@@ -54,23 +54,23 @@ protected
   constant SI.VolumeFlowRate V_flow_D_ref = 3.06e-3;
   constant SI.Height TDH_D_ref = 3.6610;
 
-  constant Real a_h_ref(unit="m.s2/rad2") =  4.864e-5;
-  constant Real b_h_ref(unit="s2/(m2.rad)") =      -2.677;
+  constant Real a_h_ref(unit="m.s2/rad2") =   4.864e-5;
+  constant Real b_h_ref(unit="s2/(m2.rad)") = -2.677;
   constant Real c_h_ref(unit="s2/m5") =       3.967e+5;
 
-  constant Real a_t_ref(unit="N.m.s2/(rad.m3)") =  5.427e-1;
-  constant Real b_t_ref(unit="N.m.s2/m6") =        2.777e+4;
-  constant Real v_i_ref(unit="N.m.s2/rad2") =      1.218e-6;
-  constant Real v_s_ref(unit="N.m.s/rad") =        1.832e-4;
+  constant Real a_t_ref(unit="N.m.s2/(rad.m3)") = 5.427e-1;
+  constant Real b_t_ref(unit="N.m.s2/m6") =       2.777e+4;
+  constant Real v_i_ref(unit="N.m.s2/rad2") =     1.218e-6;
+  constant Real v_s_ref(unit="N.m.s/rad") =       1.832e-4;
 
   constant Integer f_q_ref =             1;
   constant Real K_D_ref(unit="m3/rad") = 9.73e-06;
   constant SI.Density rho_ref_ref =      1.00e3;
   constant SI.Length r_ref =             1.60e-2;
 
-  Real a_h(unit="m.s2/rad2") = if parametrizeByScaling then alpha/(beta^2)*     a_h_ref else a_h_input;
-  Real b_h(unit="s2/(m2.rad)") =     if parametrizeByScaling then alpha/(beta*gamma)* b_h_ref else b_h_input;
-  Real c_h(unit="s2/m5") =     if parametrizeByScaling then alpha/(gamma^2)*    c_h_ref else c_h_input;
+  Real a_h(unit="m.s2/rad2") =   if parametrizeByScaling then alpha/(beta^2)*     a_h_ref else a_h_input;
+  Real b_h(unit="s2/(m2.rad)") = if parametrizeByScaling then alpha/(beta*gamma)* b_h_ref else b_h_input;
+  Real c_h(unit="s2/m5") =       if parametrizeByScaling then alpha/(gamma^2)*    c_h_ref else c_h_input;
 
   Real a_t(unit="N.m.s2/(rad.m3)") = if parametrizeByScaling then alpha/(beta^2)*                      a_t_ref else a_t_input;
   Real b_t(unit="N.m.s2/m6") =       if parametrizeByScaling then alpha/(beta*gamma)*                  b_t_ref else b_t_input;
