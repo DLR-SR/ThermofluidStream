@@ -69,7 +69,7 @@ protected
   constant SI.Length r_ref =             1.60e-2;
 
   Real a_h(unit="m.s2/rad2") = if parametrizeByScaling then alpha/(beta^2)*     a_h_ref else a_h_input;
-  Real b_h(unit="s2/m2") =     if parametrizeByScaling then alpha/(beta*gamma)* b_h_ref else b_h_input;
+  Real b_h(unit="s2/(m2.rad)") =     if parametrizeByScaling then alpha/(beta*gamma)* b_h_ref else b_h_input;
   Real c_h(unit="s2/m5") =     if parametrizeByScaling then alpha/(gamma^2)*    c_h_ref else c_h_input;
 
   Real a_t(unit="N.m.s2/(rad.m3)") = if parametrizeByScaling then alpha/(beta^2)*                      a_t_ref else a_t_input;
