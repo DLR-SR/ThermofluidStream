@@ -71,6 +71,40 @@ This section summarizes the changes that have been performed on the library.
     <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeM\">PartialVolumeM</a> and <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolumeN\">PartialVolumeN</a>:
     <code>noEvent</code> operator now works on mass flow related if-statements.
   </li>
+  <li>
+    Fix wrong handling of conditional connectors:
+    <ul>
+      <li>
+        remove input binding for conditional connectors and
+      </li>
+      <li>
+        enable/disable conditional connectors which depend on <code>setEnthalpy</code>
+        parameter.
+      </li>
+    </ul>
+    This concerns:
+    <ul>
+      <li>
+        Boundaries: 
+        <a href=\"modelica://ThermofluidStream.Boundaries.CreateState\">CreateState</a>,
+        <a href=\"modelica://ThermofluidStream.Boundaries.DynamicPressureInflow\">DynamicPressureInflow</a>,
+        <a href=\"modelica://ThermofluidStream.Boundaries.DynamicPressureOutflow\">DynamicPressureOutflow</a>,
+        <a href=\"modelica://ThermofluidStream.Boundaries.Sink\">Sink</a>,
+        <a href=\"modelica://ThermofluidStream.Boundaries.Source\">Source</a>.
+      </li>
+      <li>
+        FlowControl: 
+        <a href=\"modelica://ThermofluidStream.FlowControl.MCV\">MCV</a>,
+        <a href=\"modelica://ThermofluidStream.FlowControl.PCV\">PCV</a>.
+      </li>
+      <li>
+        Undirected:
+        <a href=\"modelica://ThermofluidStream.Undirected.Boundaries.BoundaryFore\">BoundaryFore</a>,
+        <a href=\"modelica://ThermofluidStream.Undirected.Boundaries.BoundaryRear\">BoundaryRear</a>,
+        <a href=\"modelica://ThermofluidStream.Undirected.FlowControl.MCV\">MCV</a>.
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h4>Version 1.0.0 (2022-12-02)</h4>
