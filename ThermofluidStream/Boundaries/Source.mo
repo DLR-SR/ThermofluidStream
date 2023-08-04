@@ -28,13 +28,13 @@ the inlet the source is connected to.
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")= p0 if pressureFromInput "Pressure input connector [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-40,40},{0,80}}), iconTransformation(extent={{-40,40},{0,80}})));
-  Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") = T0 if temperatureFromInput "Temperature input connector [K]"
+  Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") if not setEnthalpy and temperatureFromInput "Temperature input connector [K]"
     annotation (Placement(transformation(extent={{-40,0},{0,40}}), iconTransformation(extent={{-40,-20},{0,20}})));
-  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector [J/kg]"
+  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and enthalpyFromInput "Enthalpy input connector [J/kg]"
     annotation (Placement(transformation(extent={{-40,-40},{0,0}}), iconTransformation(extent={{-40,-20},{0,20}})));
-  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg") if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
@@ -42,26 +42,30 @@ the inlet the source is connected to.
 protected
   outer DropOfCommons dropOfCommons;
 
-  SI.Temperature T0;
-  SI.Pressure p0;
-  SI.SpecificEnthalpy h0;
-  Medium.MassFraction Xi0[Medium.nXi];
+  Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
+  Modelica.Blocks.Interfaces.RealInput T0(unit = "K") "Internal temperature connector";
+  Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
+  Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fraction connector";
 
 equation
 
-   if not temperatureFromInput then
+   connect(T0_var, T0);
+   if not temperatureFromInput or setEnthalpy then
      T0 = T0_par;
    end if;
 
+   connect(p0_var, p0);
    if not pressureFromInput then
      p0 = p0_par;
    end if;
 
+   connect(xi_var, Xi0);
    if not xiFromInput then
      Xi0 = Xi0_par;
    end if;
 
-   if not enthalpyFromInput then
+   connect(h0_var, h0);
+   if not enthalpyFromInput or not setEnthalpy then
      h0 = h0_par;
    end if;
 

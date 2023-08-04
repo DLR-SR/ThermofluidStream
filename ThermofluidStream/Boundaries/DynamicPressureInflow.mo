@@ -16,13 +16,13 @@ model DynamicPressureInflow
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={60,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={60,100})));
-  Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s")=v_in if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
@@ -30,9 +30,9 @@ model DynamicPressureInflow
         origin={0,100})));
 
 protected
-  SI.Area A "Cross-section area of inlet boundary";
+  Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
 
-  SI.Velocity v_in "Reference velocity for p0. Positive velocity points from outside the boundary to inside";
+  Modelica.Blocks.Interfaces.RealInput v_in(unit="m/s") "Internal connector for reference velocity";
   SI.Velocity v_out;
 
   SI.Density rho_in =  Medium.density(inlet.state) "density of medium entering";
@@ -42,10 +42,13 @@ protected
   SI.Velocity delta_v;
 
 equation
+
+   connect(A_var, A);
    if not areaFromInput then
      A = A_par;
    end if;
 
+   connect(v_in_var, v_in);
    if not velocityFromInput then
      v_in = v_in_par;
    end if;

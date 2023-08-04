@@ -4,7 +4,7 @@ model PCV "Pressure and pressure-drop control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") = pressure_set if pressureFromInput "Output pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Output pressure [Pa]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
@@ -21,10 +21,11 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
 
 protected
-  SI.AbsolutePressure pressure_set;
+  Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector";
   SI.Pressure dp_raw "Not normalized desired dp";
 
 equation
+  connect(pressure_set_var, pressure_set);
   if not pressureFromInput then
     pressure_set = pressure_set_par;
   end if;

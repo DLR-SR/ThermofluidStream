@@ -16,13 +16,13 @@ model DynamicPressureOutflow
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") = A if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100})));
-  Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s")=v_out if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-60,100}), iconTransformation(extent={{-20,-20},{20,20}},
@@ -30,10 +30,10 @@ model DynamicPressureOutflow
         origin={-60,100})));
 
 protected
-  SI.Area A "Cross-section area of outlet boundary";
+  Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
 
   SI.Velocity v_in;
-  SI.Velocity v_out "Reference velocity for p0. Positive velocity points from inside the boundary to outside";
+  Modelica.Blocks.Interfaces.RealInput v_out(unit="m/s") "Internal connector for reference velocity";
 
   SI.Density rho_in =  Medium.density(inlet.state) "density of medium entering";
   SI.Density rho_out "density of medium exiting";
@@ -42,10 +42,12 @@ protected
   SI.Velocity delta_v;
 
 equation
+   connect(A_var, A);
    if not areaFromInput then
      A = A_par;
    end if;
 
+   connect(v_out_var, v_out);
    if not velocityFromInput then
      v_out = v_out_par;
    end if;
@@ -75,7 +77,7 @@ equation
   Xi_out = Xi_in;
 
   annotation (
-  	Icon(graphics={
+   Icon(graphics={
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},
