@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers.Internal;
 model ConductionElementHEX_twoPhase "ConductionElement for two-phase fluids"
-  extends PartialConductionElementHEX(redeclare package Medium =
+  extends PartialConductionElementHEX(redeclare replaceable package Medium =
         Media.myMedia.Interfaces.PartialTwoPhaseMedium);
 
   import Modelica.Math;
