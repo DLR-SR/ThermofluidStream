@@ -9,17 +9,26 @@ class Nomenclature "Nomenclature"
 Nomenclature used in this library.
 </p>
 
-<ul>
-  <li>steady mass flow pressure: p / delta: dp</li>
-  <li>inertial pressure: r / delta: dr</li>
-  <li>inertance: L</li>
-  <li>dynamic pressure q / delta: dq</li>
-  <li>mass flow rate: m_flow</li>
-  <li>specific enthalpy: h / delta: dh</li>
-  <li>specific internal energy: u</li>
-  <li>heat flow: Q_flow</li>
-  <li>temperature: T</li>
-</ul>
+<dl>
+  <dt>h, dh</dt>
+  <dd>specific enthalpy and its rate</dd>
+  <dt>L</dt>
+  <dd>inertance</dd>
+  <dt>m_flow</dt>
+  <dd>mass flow rate</dd>
+  <dt>p, dp</dt>
+  <dd>steady mass flow pressure and its rate</dd>
+  <dt>Q_flow</dt>
+  <dd>heat flow</dd>
+  <dt>q, dq</dt>
+  <dd>dynamic pressure and its rate</dd>
+  <dt>r, dr</dt>
+  <dd>inertial pressure and its rate</dd>
+  <dt>T</dt>
+  <dd>temperature</dd>
+  <dt>u</dt>
+  <dd>specific internal energy</dd>
+</dl>
 </html>",
       revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
