@@ -9,26 +9,50 @@ class Nomenclature "Nomenclature"
 Nomenclature used in this library.
 </p>
 
-<dl>
-  <dt>h, dh</dt>
-  <dd>specific enthalpy and its rate</dd>
-  <dt>L</dt>
-  <dd>inertance</dd>
-  <dt>m_flow</dt>
-  <dd>mass flow rate</dd>
-  <dt>p, dp</dt>
-  <dd>steady mass flow pressure and its rate</dd>
-  <dt>Q_flow</dt>
-  <dd>heat flow</dd>
-  <dt>q, dq</dt>
-  <dd>dynamic pressure and its rate</dd>
-  <dt>r, dr</dt>
-  <dd>inertial pressure and its rate</dd>
-  <dt>T</dt>
-  <dd>temperature</dd>
-  <dt>u</dt>
-  <dd>specific internal energy</dd>
-</dl>
+<table border=\"1\" cellpadding=\"2\" cellspacing=\"0\" >
+   <caption align=\"bottom\">Variables and names</caption>
+   <tr>
+      <th>Variable</th>
+      <th>Quantity</th>
+    </tr>
+    <tr>
+      <td>h</td>
+      <td>specific enthalpy</td>
+    </tr>
+    <tr>
+      <td>L</td>
+      <td>inertance</td>
+    </tr>
+    <tr>
+      <td>m_flow</td>
+      <td>mass flow rate</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>steady mass flow pressure</td>
+    </tr>
+    <tr>
+      <td>Q_flow</td>
+      <td>heat flow</td>
+    </tr>
+    <tr>
+      <td>q</td>
+      <td>dynamic pressure</td>
+    </tr>
+    <tr>
+      <td>r</td>
+      <td>inertial pressure</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>temperature</td>
+    </tr>
+    <tr>
+      <td>u</td>
+      <td>specific internal energy</td>
+    </tr>
+</table>
+
 </html>",
       revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
