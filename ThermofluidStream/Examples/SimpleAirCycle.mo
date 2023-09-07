@@ -1,6 +1,5 @@
 within ThermofluidStream.Examples;
 model SimpleAirCycle "Basic bootstrap cooling cycle"
-  import ThermofluidStream;
   extends Modelica.Icons.Example;
 
   replaceable package Medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
