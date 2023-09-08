@@ -17,14 +17,8 @@ package Types "Types that are not units needed."
         coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>
-Choices for Initialization of a state. These are:
+Choices for initialization of a&nbsp;state.
 </p>
-<ul>
-  <li><code>state</code>: initialize a state with a value</li>
-  <li><code>derivative</code>: initialize the derivative of a state with a value</li>
-  <li><code>none</code>: no initialization for this state</li>
-  <li><code>steadyState</code>: zero derivative</li>
-</ul>
 </html>"));
 
   annotation (Documentation(info="<html>
