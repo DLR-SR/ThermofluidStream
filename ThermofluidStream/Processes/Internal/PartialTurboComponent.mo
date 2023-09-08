@@ -10,7 +10,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
   parameter Boolean enableOutput = false "Include output for selectable quantity"
     annotation(Dialog(group="Input/Output"));
   parameter Quantity outputQuantity=Quantity.m_flow_kgps "Quantity to output"
-    annotation(choicesAllMatching=true, Dialog(group="Input/Output", enable=enableOutput));
+    annotation(Dialog(group="Input/Output", enable=enableOutput));
   parameter Boolean enableAccessHeatPort = false "Include access heatport"
     annotation(Dialog(group="Input/Output"));
   parameter SI.MomentOfInertia J_p = 5e-4 "Moment of inertia"
@@ -24,7 +24,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
   parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for m_flow"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for omega"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input), choicesAllMatching=true);
+    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input));
   parameter SI.AngularVelocity omega_0 = 0 "Initial value for omega"
     annotation(Dialog(tab= "Initialization", group="Angular", enable=(initOmega == InitializationMethods.state)));
   parameter SI.AngularAcceleration omega_dot_0 = 0 "Initial value for der(omega)"

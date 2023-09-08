@@ -14,7 +14,7 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
   parameter StateSelect m_flowStateSelect = StateSelect.default "State select for m_flow"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for m_flow"
-    annotation(Dialog(tab= "Initialization"), choicesAllMatching=true);
+    annotation(Dialog(tab= "Initialization"));
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
     annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.state)));
   parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
