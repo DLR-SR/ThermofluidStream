@@ -10,11 +10,7 @@ function referencePressureLoss "Pressure loss function based on reference values
 
   input ThermofluidStream.Processes.Internal.ReferencePressureDropFunction dp_function=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear
   "Pressure drop function"
-    annotation (Dialog(enable=true),
-      choices(
-        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.linear "Linear",
-        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.quadratic "Quadratic",
-        choice=ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent "Custom exponent"));
+    annotation (Dialog(enable=true));
 
   input Real m(unit = "1") = 1.5 "Exponent for pressure drop function"
     annotation(Dialog(enable=(dp_function == ThermofluidStream.Processes.Internal.ReferencePressureDropFunction.customExponent)));
