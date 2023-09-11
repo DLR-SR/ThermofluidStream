@@ -10,7 +10,7 @@ package Types "Types that are not units needed."
       "Initialization with initial states",
     derivative
       "Initialization with initial derivatives of states")
-    "Choices for Initialization of a state."
+    "Choices for initialization of a state."
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false)),
       Diagram(
