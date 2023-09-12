@@ -10,8 +10,8 @@ model Nozzle "Model for dynamic pressure difference"
     annotation(Dialog(tab="Advanced"));
 
 protected
-  SI.Density rho_in = Medium.density(inlet.state) "density of medium entering";
-  SI.Density rho_out "density of medium exiting";
+  SI.Density rho_in = Medium.density(inlet.state) "Density of medium entering";
+  SI.Density rho_out "Density of medium exiting";
 
   SI.Velocity v_in;
   SI.Velocity v_out;
