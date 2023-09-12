@@ -14,7 +14,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   parameter StateSelect m_flowStateSelect = StateSelect.default "State select for m_flow"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for m_flow"
-    annotation(Dialog(tab= "Initialization", group="Mass flow"), choicesAllMatching=true);
+    annotation(Dialog(tab= "Initialization", group="Mass flow"));
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
     annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.state)));
   parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
@@ -30,12 +30,12 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow "mass flow through component";
+  SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = inlet.m_flow
+    "Mass flow through component";
 
-// changing pressure calculation
-SI.Pressure dr_corr; // delta = out - in
-SI.Pressure dp; // delta = out - in
-
+  // changing pressure calculation
+  SI.Pressure dr_corr; // delta = out - in
+  SI.Pressure dp; // delta = out - in
 
 protected
   outer DropOfCommons dropOfCommons;

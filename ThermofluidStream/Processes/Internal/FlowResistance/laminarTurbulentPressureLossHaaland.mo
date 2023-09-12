@@ -22,18 +22,7 @@ function laminarTurbulentPressureLossHaaland "Laminar and turbulent flow regimes
 
   input ThermofluidStream.Processes.Internal.Material material=
       ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
-    annotation (Dialog(enable=true), choices(
-      choice=ThermofluidStream.Processes.Internal.Material.concrete
-        "Concrete ks=5mm",
-      choice=ThermofluidStream.Processes.Internal.Material.wood "Wood ks=0.5mm",
-      choice=ThermofluidStream.Processes.Internal.Material.castIron
-        "Cast Iron ks=0.25mm",
-      choice=ThermofluidStream.Processes.Internal.Material.galvanizedIron
-        "Galvanized Iron ks=0.15mm",
-      choice=ThermofluidStream.Processes.Internal.Material.steel
-        "Steel ks=0.059mm",
-      choice=ThermofluidStream.Processes.Internal.Material.drawnPipe
-        "Drawn Pipe ks=0.0015mm"));
+    annotation (Dialog(enable=true));
 
 protected
   SI.Length ks "Pipe roughness";

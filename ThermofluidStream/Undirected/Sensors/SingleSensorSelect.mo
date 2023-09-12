@@ -3,8 +3,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   extends Internal.PartialSensor;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  parameter ThermofluidStream.Sensors.Internal.Types.Quantities quantity "Quantity to be measured"
-    annotation (choicesAllMatching=true);
+  parameter ThermofluidStream.Sensors.Internal.Types.Quantities quantity "Quantity to be measured";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
@@ -12,7 +11,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
