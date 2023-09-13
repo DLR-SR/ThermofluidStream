@@ -68,5 +68,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Implementation of a nozzle taking gas dynamic effects into account.</p>
+<p>By default, the density is assumed to be constant across the component. This assumption can be reverted by setting <code>assumeConstantDensity = false</code> and hence the outlet velocity is computed by the outlet density. </p>
+<p>By definition, the sign of the velocity matches the sign of the mass-flow rate at the inlet.</p>
 </html>"));
 end Nozzle;
