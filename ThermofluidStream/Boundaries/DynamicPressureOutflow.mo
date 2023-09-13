@@ -119,6 +119,6 @@ equation
 <p>The components output velocity can be set to a fixed value or given by a signal. From the inflow velocity, that is computed by the area of the component, the flow is decelerated to the reference outflow velocity. The sign of the velocity is defined to match the sign of the mass-flow rate at the inlet.</p>
 <p>The pressure difference resulting from the velocity difference is based on the total pressure balance, implicitly assuming a nozzle/diffusor of suitable area ratio. When the sign of the velocity does not match the sign of the mass-flow rate, this assumption cannot be upheld. The model then extrapolates the dynamic pressure difference in order to maintain a stable and well-natured behavior but its validity is lost. </p>
 <p>The area can be set to a fixed value or given by a signal, representing a variable-area outlet.</p>
-<p>In general the component has a non-linear equation system of size 1, because it computes the outlet velocity based on the outlet density. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false), because then only the inlet density is used in the whole component.</p>
+<p>By default, the density is assumed to be constant across the component and only the inlet density is used for the calculation of the velocity. This assumption can be reverted by setting <code>assumeConstantDensity = false</code>. This will lead to a non-linear equation system of size 1, as the outlet velocity is calculated based on the outlet density.</p>
 </html>"));
 end DynamicPressureOutflow;
