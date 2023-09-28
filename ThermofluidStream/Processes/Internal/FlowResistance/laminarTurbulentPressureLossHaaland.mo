@@ -29,7 +29,7 @@ protected
 
   SI.Length diameter=r*2 "Diameter of pipe";
   SI.Area area=pi*r^2 "Area of pipe";
-  Real relative_roughness=ks/diameter "Relative roughness of pipe";
+  Real relative_roughness "Relative roughness of pipe";
 
   Real Re_abs "Absolute value of Reynolds number";
   Real Re_abs_limited "Limited absolute value of Reynolds number";
@@ -57,6 +57,7 @@ algorithm
     ks := ks_input;
   end if;
 
+  relative_roughness :=ks/diameter;
 
   //absolute Reynolds number
   Re_abs := abs(m_flow)*diameter/(area*mu);
