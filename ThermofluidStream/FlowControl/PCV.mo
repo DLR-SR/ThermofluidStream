@@ -4,7 +4,7 @@ model PCV "Pressure and pressure-drop control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Output pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure(-drop) set value [Pa]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
