@@ -25,8 +25,8 @@ model CrossFlowNTU_zeroMassFlow
     p0_par=100000) annotation (Placement(transformation(extent={{116,-10},{136,
             10}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-               MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
