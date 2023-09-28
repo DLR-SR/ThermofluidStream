@@ -5,16 +5,16 @@ function laminarTurbulentPressureLossHaaland "Laminar and turbulent flow regimes
   import Modelica.Constants.pi;
 
   // Inputs
-  input Real Re_laminar(unit "1") = 2000
+  input SI.ReynoldsNumber Re_laminar = 2000
     "Upper Reynolds number boundary for laminar flow in pipe"
     annotation(Dialog(enable=true));
-  input Real Re_turbulent(unit "1") = 4000
+  input SI.ReynoldsNumber Re_turbulent = 4000
     "Lower Reynolds number boundary for turbulent flow in pipe"
     annotation(Dialog(enable=true));
-  input Real shape_factor(unit "1") = 64
+  input Real shape_factor(unit="1") = 64
     "Laminar pressure loss factor based on Hagen-Poiseuille loss"
     annotation(Dialog(enable=true));
-  input Real n(unit "1") = 1 "Transition coefficient (see documentation)"
+  input Real n(unit="1") = 1 "Transition coefficient (see documentation)"
     annotation(Dialog(enable=true));
 
   input SI.Length ks_input(min=1e-7) = 1e-7 "Pipe roughness" annotation (Dialog(
@@ -31,14 +31,14 @@ protected
   SI.Area area=pi*r^2 "Area of pipe";
   Real relative_roughness "Relative roughness of pipe";
 
-  Real Re_abs "Absolute value of Reynolds number";
-  Real Re_abs_limited "Limited absolute value of Reynolds number";
+  SI.ReynoldsNumber Re_abs "Absolute value of Reynolds number";
+  SI.ReynoldsNumber Re_abs_limited "Limited absolute value of Reynolds number";
 
-  Real friction_factor;
+  Real friction_factor(unit="1");
   SI.Pressure pressureLossLaminar "Laminar pressure loss";
   SI.Pressure pressureLossTurbulent "Turbulent pressure loss";
 
-  constant Real eps=1e-5 "Lower bound of turbulent Re to avoid division by zero";
+  constant SI.ReynoldsNumber eps=1e-5 "Lower bound of turbulent Re to avoid division by zero";
 
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then
