@@ -57,7 +57,7 @@ algorithm
     ks := ks_input;
   end if;
 
-  relative_roughness :=ks/diameter;
+  relative_roughness := ks/diameter;
 
   //absolute Reynolds number
   Re_abs := abs(m_flow)*diameter/(area*mu);
