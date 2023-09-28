@@ -43,6 +43,7 @@ equation
   end if;
 
   h_out = h_in;
+  Xi_out = Xi_in;
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
