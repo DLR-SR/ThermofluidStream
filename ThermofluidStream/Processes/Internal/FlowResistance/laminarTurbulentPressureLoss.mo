@@ -11,7 +11,7 @@ function laminarTurbulentPressureLoss
     annotation (Dialog(enable=true));
 
 protected
-  constant Real R_laminar_DarcyWeisbach_min(unit="1") = 500 "Minimal Reynolds number to use the general equation. Laminar flow before";
+  constant SI.ReynoldsNumber R_laminar_DarcyWeisbach_min = 500 "Minimal Reynolds number to use the general equation. Laminar flow before";
   SI.Length ks "pipe roughness";
 
   Real a(unit="1") "Laminar flow factor for the DarcyWeisbach equation (1=laminar flow; 0=turbulent flow)";
@@ -19,7 +19,7 @@ protected
   Real lambda_aux(unit="1") "Darcy friction factor for Darcy-Weisbach equation";
 
   SI.Velocity u "Median flow velocity";
-  Real Re(unit="1") "Reynolds number for flow through the pipe";
+  SI.ReynoldsNumber Re "Reynolds number for flow through the pipe";
   constant Real eps(unit="1") = 0.001;
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then
