@@ -83,7 +83,7 @@ equation
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on the chosen valve mode.</p>
-<p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This can be done by parameter input or via input connector when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>
+<p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This is done either by parameter <code>pressure_set_par</code> or via input connector <code>pressure_set_var</code> when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>
 <p>Setting <code>dp</code> instead of <code>p_out</code> has advantages, when <code>p_out</code> is determined by a volume at the outlet (for instance an accumulator).</p>
 <p>The pressure difference <code>dp</code> is normalized, such that it cannot create pressure and it is zero for zero or negative mass flow. </p>
 </html>"));
