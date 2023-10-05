@@ -50,7 +50,7 @@ protected
   Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fraction connector";
 
 equation
-   assert(-outlet.m_flow > m_flow_assert, "Positive massflow at Source outlet", dropOfCommons.assertionLevel);
+   assert(-outlet.m_flow > m_flow_assert, "Positive mass flow at source outlet", dropOfCommons.assertionLevel);
 
    connect(T0_var, T0);
    if not temperatureFromInput or setEnthalpy then
