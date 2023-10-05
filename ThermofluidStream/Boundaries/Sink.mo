@@ -38,7 +38,7 @@ protected
   SI.Pressure p = Medium.pressure(inlet.state);
 
 equation
-  assert(inlet.m_flow > m_flow_assert, "Negative massflow at Sink inlet", dropOfCommons.assertionLevel);
+  assert(inlet.m_flow > m_flow_assert, "Negative mass flow at sink inlet", dropOfCommons.assertionLevel);
   
   connect(p0_var, p0);
   if not pressureFromInput then
