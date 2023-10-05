@@ -5,7 +5,7 @@ model MCV "Massflow and volume control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput setpoint_var = setpoint if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
+  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
@@ -49,7 +49,7 @@ protected
 
   SI.MassFlowRate m_flow_set;
   SI.VolumeFlowRate V_flow_set;
-  Real setpoint;
+  Modelica.Blocks.Interfaces.RealInput setpoint "Internal setpoint connector";
 
   SI.Pressure dr = outlet.r - inlet.r;
   SI.Pressure dr_set;
@@ -62,6 +62,7 @@ initial equation
   dp_int = 0;
 
 equation
+  connect(setpoint_var, setpoint);
   if setpointFromInput then
     m_flow_set = setpoint;
     V_flow_set = setpoint;

@@ -10,8 +10,8 @@ model Nozzle "Model for dynamic pressure difference"
     annotation(Dialog(tab="Advanced"));
 
 protected
-  SI.Density rho_in = Medium.density(inlet.state) "density of medium entering";
-  SI.Density rho_out "density of medium exiting";
+  SI.Density rho_in = Medium.density(inlet.state) "Density of medium entering";
+  SI.Density rho_out "Density of medium exiting";
 
   SI.Velocity v_in;
   SI.Velocity v_out;
@@ -67,6 +67,8 @@ equation
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Implementation of nozzle taking gas dynamic effects into account.</p>
+<p>Implementation of a nozzle taking gas dynamic effects into account.</p>
+<p>By default, the density is assumed to be constant across the component. This assumption can be reverted by setting <code>assumeConstantDensity = false</code> and hence the outlet velocity is computed by the outlet density. Beware that this will lead to a non-linear equation system in the component.</p>
+<p>By definition, the sign of the velocity matches the sign of the mass-flow rate at the inlet.</p>
 </html>"));
 end Nozzle;

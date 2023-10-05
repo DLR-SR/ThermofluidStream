@@ -25,7 +25,7 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"

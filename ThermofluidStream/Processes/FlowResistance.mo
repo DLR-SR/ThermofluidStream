@@ -9,13 +9,9 @@ model FlowResistance "Flow resistance model"
 
   parameter SI.Length l(min=0) "Length of resistance"
     annotation (Dialog(group = "Geometry"));
-  parameter ShapeOfResistance shape=ShapeOfResistance.circular
+  parameter ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular
     "Shape of cross sectional area"
-    annotation (Dialog(group = "Geometry",enable = true),
-    choices(
-      choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Circular",
-      choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle "Rectangle",
-      choice=ThermofluidStream.Processes.Internal.ShapeOfResistance.other "Other"));
+    annotation (Dialog(group = "Geometry",enable = true));
 
   parameter SI.Radius r(min=0) = 0 "Radius of pipe"
   annotation (Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular)));

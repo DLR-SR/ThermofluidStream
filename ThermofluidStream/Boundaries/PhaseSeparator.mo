@@ -21,7 +21,7 @@ model PhaseSeparator "Parent to receiver and accumulator models"
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
      annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization Method"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization"));
+    annotation(Dialog(tab="Initialization"));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.h)));
   parameter SI.Mass M_0 = 1 "Initial Mass"

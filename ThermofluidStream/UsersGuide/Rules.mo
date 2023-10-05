@@ -4,8 +4,8 @@ class Rules "Basic composition rules"
 
   annotation (DocumentationClass=true, Documentation(info="<html>
 <p>
-First of all we recommend to study the Example models provided in
-<a href=\"modelica://ThermofluidStream.Examples\">ThermofluidStream.Examples</a>.
+First of all we recommend to study the example models provided in
+<a href=\"modelica://ThermofluidStream.Examples\">Examples</a>.
 </p>
 
 <h4>For basic directional flows</h4>
@@ -20,8 +20,9 @@ the modeller shall follow the following rules:
     Volume elements may act as source and/or sink.
   </li>
   <li>
-    Compose your topology using splitters and junctions. Splitting directly using the
-    connector is only recommended for the use of sensors.
+    Compose your topology using splitters and junctions from package
+    <a href=\"modelica://ThermofluidStream.Topology\">Topology</a>. Splitting directly
+    using the connector is only recommended for the use of sensors.
   </li>
   <li>
     Break cyclic loops by using volume elements. Each cyclic flow must be broken by at
@@ -40,15 +41,17 @@ equation system to be sure.
     Some classes implement asserts. Most of them represent checks that when not
     fulfilled result in a non-physical, but well behaved (numerically stable)
     simulation (e.g. reversed flow conditions for directed components), and some result
-    in stopping of the simulation (e.g. zero/negative mass in a volume). While asserts
-    for the latter always are done with AssertionLevel.error, the assertion level for
-    the former can be set in the DropOfCommons globally. So if the simulation stops
-    because one of the former asserts is violated, insert a DropOfCommons model and
-    set the assertionLevel to warning.
+    in stopping of the simulation (e.g. zero/negative mass in a&nbsp;volume). While
+    asserts for the latter always are done with AssertionLevel.error, the assertion
+    level for the former can be set in the
+    <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a> globally.
+    So if the simulation stops because one of the former asserts is violated, insert
+    a&nbsp;DropOfCommons model and set the assertionLevel to warning.
   </li>
   <li>
     Many models rely on mass-flow normalization for zero or small mass-flow.
-    The normalization-mass-flow used in the components, is set in the DropOfCommons.
+    The normalization-mass-flow used in the components is set globally in the
+    <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.
     Always make sure it is between one and two orders of magnitude smaller than the
     typical mass-flows of your system.
   </li>
@@ -56,7 +59,8 @@ equation system to be sure.
 
 <h4>For undirected flows</h4>
 <p>
-There is a special sub-package if the flow direction is unknown. Basically the rules
+There is a&nbsp;<a href=\"modelica://ThermofluidStream.Undirected\">special sub-package</a>
+if the flow direction is unknown. Basically the rules
 are the same but please be aware that without knowledge of the flow-direction, loops
 are more likely to occur. Hence, only use these components when needed.
 </p>

@@ -19,7 +19,7 @@ the outlet the sink is connected to.
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")=p0 if pressureFromInput "Pressure setpoint [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure setpoint [Pa]"
     annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
@@ -32,7 +32,7 @@ the outlet the sink is connected to.
 protected
   outer DropOfCommons dropOfCommons;
 
-  SI.Pressure p0;
+  Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r;
 
   SI.Pressure p = Medium.pressure(inlet.state);
@@ -40,6 +40,7 @@ protected
 equation
   assert(inlet.m_flow > m_flow_assert, "Negative massflow at Sink inlet", dropOfCommons.assertionLevel);
   
+  connect(p0_var, p0);
   if not pressureFromInput then
     p0 = p0_par;
   end if;

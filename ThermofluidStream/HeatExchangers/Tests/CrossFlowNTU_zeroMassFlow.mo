@@ -25,8 +25,8 @@ model CrossFlowNTU_zeroMassFlow
     p0_par=100000) annotation (Placement(transformation(extent={{116,-10},{136,
             10}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
-      Medium = MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -49,14 +49,15 @@ model CrossFlowNTU_zeroMassFlow
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,-54})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
-      Medium = MediumB,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = MediumB,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,-24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = MediumB, outputMassFlowRate=false,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumB,
+    outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
@@ -74,11 +75,11 @@ model CrossFlowNTU_zeroMassFlow
     "if time < 1500 then sourceA.p0*0.8 else sourceA.p0"
     annotation (Placement(transformation(extent={{162,-10},{142,10}})));
   Processes.FlowResistance flowResistanceA(
-    redeclare package Medium = MediumB,
+    redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e5))
     annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
   Processes.FlowResistance flowResistanceB(
@@ -86,7 +87,7 @@ model CrossFlowNTU_zeroMassFlow
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e5))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
