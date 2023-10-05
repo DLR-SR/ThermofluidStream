@@ -13,7 +13,7 @@ the outlet the sink is connected to.
     annotation(Dialog(enable = not pressureFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of pressure"
     annotation (Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
+  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative mass flows"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
