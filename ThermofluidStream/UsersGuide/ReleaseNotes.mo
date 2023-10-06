@@ -9,7 +9,7 @@ class ReleaseNotes "Release notes"
 This section summarizes the changes that have been performed on the library.
 </p>
 
-<h4>Version 1.1.0-dev (202Y-MM-DD)</h4>
+<h4>Version 1.1.0 (2023-10-06)</h4>
 <ul>
   <li>
     Updated graphical layout (both diagram and icon) of connectors
