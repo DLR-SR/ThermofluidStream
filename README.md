@@ -4,11 +4,14 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ![](/doc/example.svg)
 
+
+## Status
+
+[![GitHub release](https://img.shields.io/github/release/DLR-SR/ThermofluidStream.svg?sort=semver)](https://github.com/DLR-SR/ThermofluidStream/releases/latest) [![GitHub license](https://img.shields.io/github/license/DLR-SR/ThermofluidStream)](https://github.com/DLR-SR/ThermofluidStream/blob/main/LICENSE) ![GitHub workflow](https://github.com/DLR-SR/ThermofluidStream/actions/workflows/checkCI.yml/badge.svg?event=pull_request) [![Modelica Library Award 2021](https://img.shields.io/badge/award-%F0%9F%A5%87_Modelica_Library_Award_2021-gold?labelColor=grey)](https://2021.international.conference.modelica.org/libraries.html) 
+
 ## Highlights
 
-
-
-- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference** ![](/doc/LibraryAward.svg)
+- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
 - Robust modeling of even complex architectures due to new computational scheme
 - Easy to initialize and good support for switching bypasses and other configuration changes
 - Many examples that enable an easy start to working with this library.
