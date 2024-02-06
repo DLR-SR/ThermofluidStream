@@ -1,16 +1,25 @@
-*.txt
-*.c
-*.mof
-*.exe
-*.mat
-*.csv
+# exclude following files
+*~
 *.bak
 *.bak-mo
+*.c
+*.csv
+*.exe
 *.html
+*.mat
+*.mof
 *.png
+buildlog.txt
+dsfinal.txt
+dsin.txt
+dslog.txt
+dsmodel*
+dymosim*
 request
 status
 stop
 success
+
+# Testing stuff
 Testing*
 !ReferenceData/*
