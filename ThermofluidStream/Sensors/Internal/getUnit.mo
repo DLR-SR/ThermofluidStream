@@ -38,6 +38,8 @@ algorithm
     unit :="1";
   elseif quantity == Types.Quantities.MM_kgpmol then
     unit := "(kg/mol)";
+  elseif quantity == Types.Quantities.a_mps then
+    unit := "(m/s)";
   else
     unit :="";
   end if;
