@@ -40,7 +40,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-10,64},{10,84}})));
   Processes.FlowResistance flowResistance1(
@@ -51,7 +51,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-40,-16},{-20,4}})));
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium1,
@@ -288,7 +288,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{50,-110},{70,-90}})));
   Boundaries.Sink sink2(redeclare package Medium = Medium3)
@@ -301,6 +301,11 @@ model TestSensors "Test model for all sensors."
     outputValue=true,
     filter_output=true,
     row=3) annotation (Placement(transformation(extent={{4,-134},{24,-114}})));
+  SingleSensorSelect singleSensorSelect14(
+    redeclare package Medium = Medium2,
+    outputValue=true,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
+    annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
 equation
   connect(flowResistance.inlet, source.outlet) annotation (Line(
       points={{-10,74},{-80,74}},
@@ -375,21 +380,21 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect.inletB, source.outlet) annotation (Line(
-      points={{20.4,108},{-14,108},{-14,74},{-80,74}},
+      points={{20,108},{-14,108},{-14,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect1.inletA, flowResistance1.inlet) annotation (
       Line(
-      points={{-39.6,30},{-46,30},{-46,-6},{-40,-6}},
+      points={{-40,30},{-46,30},{-46,-6},{-40,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect1.inletB, source.outlet) annotation (Line(
-      points={{-39.6,38},{-46,38},{-46,74},{-80,74}},
+      points={{-40,38},{-46,38},{-46,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorVaporQuality.inletB, flowResistance1.inlet)
     annotation (Line(
-      points={{20.4,-30},{-46,-30},{-46,-6},{-40,-6}},
+      points={{20,-30},{-46,-30},{-46,-6},{-40,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, conductionElement.inlet)
@@ -409,7 +414,7 @@ equation
       thickness=0.5));
   connect(differenceSensorSelect.inletA, flowResistance.outlet) annotation (
       Line(
-      points={{20.4,100},{16,100},{16,74},{10,74}},
+      points={{20,100},{16,100},{16,74},{10,74}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.outlet, sink.inlet) annotation (Line(
@@ -418,7 +423,7 @@ equation
       thickness=0.5));
   connect(differenceSensorVaporQuality.inletA, conductionElement.outlet)
     annotation (Line(
-      points={{20.4,-22},{16,-22},{16,-6},{10,-6}},
+      points={{20,-22},{16,-22},{16,-6},{10,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor.outlet, singleFlowSensor1.inlet) annotation (Line(
@@ -483,12 +488,12 @@ equation
       thickness=0.5));
   connect(differenceSensorVaporQuality1.inletA, conductionElement.outlet)
     annotation (Line(
-      points={{20.4,-40},{18,-40},{18,-22},{16,-22},{16,-6},{10,-6}},
+      points={{20,-40},{18,-40},{18,-22},{16,-22},{16,-6},{10,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorVaporQuality1.inletB, flowResistance1.inlet)
     annotation (Line(
-      points={{20.4,-48},{12,-48},{12,-30},{-46,-30},{-46,-6},{-40,-6}},
+      points={{20,-48},{12,-48},{12,-30},{-46,-30},{-46,-6},{-40,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.inlet, multiSensor_Tpm1.outlet)
@@ -503,12 +508,12 @@ equation
       thickness=0.5));
   connect(differenceSensorSelect2.inletB, source.outlet)
     annotation (Line(
-      points={{-37.6,22},{-44,22},{-44,38},{-46,38},{-46,74},{-80,74}},
+      points={{-38,22},{-44,22},{-44,38},{-46,38},{-46,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect2.inletA, flowResistance1.inlet)
     annotation (Line(
-      points={{-37.6,14},{-46,14},{-46,-6},{-40,-6}},
+      points={{-38,14},{-46,14},{-46,-6},{-40,-6}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensor_Tp1.inletA, source.outlet)
@@ -523,12 +528,12 @@ equation
       thickness=0.5));
   connect(differenceSensorSelect3.inletA, flowResistance.outlet)
     annotation (Line(
-      points={{20.4,116},{16,116},{16,74},{10,74}},
+      points={{20,116},{16,116},{16,74},{10,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect3.inletB, source.outlet)
     annotation (Line(
-      points={{20.4,124},{12,124},{12,108},{-14,108},{-14,74},{-80,74}},
+      points={{20,124},{12,124},{12,108},{-14,108},{-14,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, sink2.inlet) annotation (Line(
@@ -557,6 +562,10 @@ equation
   connect(singleSensorX2.inlet, flowResistance2.inlet)
     annotation (Line(
       points={{4,-124},{0,-124},{0,-100},{50,-100}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect14.inlet, source1.outlet) annotation (Line(
+      points={{-84,38},{-78,38},{-78,-6},{-80,-6}},
       color={28,108,200},
       thickness=0.5));
   annotation (experiment(StopTime=1, Tolerance=1e-6, Interval=0.001),
