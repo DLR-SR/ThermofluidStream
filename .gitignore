@@ -8,7 +8,6 @@
 *.html
 *.mat
 *.mof
-*.png
 buildlog.txt
 dsfinal.txt
 dsin.txt
