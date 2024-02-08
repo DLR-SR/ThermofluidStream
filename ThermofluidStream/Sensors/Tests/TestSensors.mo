@@ -106,6 +106,11 @@ model TestSensors "Test model for all sensors."
   SingleSensorSelect singleSensorSelect13(redeclare package Medium = Medium2,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK)
     annotation (Placement(transformation(extent={{-74,-12},{-54,8}})));
+  SingleSensorSelect singleSensorSelect14(
+    redeclare package Medium = Medium2,
+    outputValue=true,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
+    annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
   MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium2,
     digits=2,
@@ -301,11 +306,6 @@ model TestSensors "Test model for all sensors."
     outputValue=true,
     filter_output=true,
     row=3) annotation (Placement(transformation(extent={{4,-134},{24,-114}})));
-  SingleSensorSelect singleSensorSelect14(
-    redeclare package Medium = Medium2,
-    outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
-    annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
 equation
   connect(flowResistance.inlet, source.outlet) annotation (Line(
       points={{-10,74},{-80,74}},
