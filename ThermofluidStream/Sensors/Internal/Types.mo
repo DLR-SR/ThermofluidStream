@@ -34,6 +34,7 @@ package Types "Types used in the Sensor Package"
       s_JpkgK "Specific enthropy (J/(kg.K))",
       rho_kgpm3 "Density (kg/m2)",
       v_m3pkg "Specific volume (m3/kg)",
+      a_mps "Velocity of sound (m/s)",
       cv_JpkgK "Specific isochoric heatcapacity (J/(kg.K))",
       cp_JpkgK "Specific isoparic heatcapacity (J/(kg.K))",
       kappa_1 "Isentropic Exponent (1))",
