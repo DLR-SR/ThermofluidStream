@@ -8,6 +8,10 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-70,66},{84,-86}},
           lineColor={215,215,215},

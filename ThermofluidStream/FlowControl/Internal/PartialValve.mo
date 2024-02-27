@@ -44,7 +44,11 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor={0,0,255})}),                                Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>

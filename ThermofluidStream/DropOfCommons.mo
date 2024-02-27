@@ -20,6 +20,9 @@ model DropOfCommons "Model for global parameters"
 
   parameter AssertionLevel assertionLevel = AssertionLevel.error "Global assertion level";
 
+  parameter Boolean displayComponentNames = false "=true, if u wish to display all Thermofluid Stream component names (can be overwritten by any component)" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
+
+
   annotation (defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",
     missingInnerMessage="

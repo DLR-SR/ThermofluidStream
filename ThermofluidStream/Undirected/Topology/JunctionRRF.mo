@@ -1,6 +1,8 @@
 within ThermofluidStream.Undirected.Topology;
 model JunctionRRF "Junction with two rears and a fore"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package for the Junction.</p>

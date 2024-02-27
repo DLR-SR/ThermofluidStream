@@ -3,6 +3,8 @@ model SingleSensorX "Sensor for mass fraction of mixture"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true,
@@ -63,6 +65,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,100},{150,60}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,24},{66,-36}},
           lineColor={0,0,0},

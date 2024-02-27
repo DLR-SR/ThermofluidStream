@@ -1,6 +1,8 @@
 within ThermofluidStream.Topology;
 model JunctionX1 "2 to 2 X-Junction"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true);

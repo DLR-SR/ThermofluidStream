@@ -2,6 +2,8 @@ within ThermofluidStream.Undirected.Topology;
 model ConnectInletRear
   "Directed/undirected connector with input and rear"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium of the connection"
     annotation (Documentation(info="<html>

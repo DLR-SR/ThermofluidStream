@@ -1,6 +1,8 @@
 within ThermofluidStream.Topology;
 model JunctionT1 "2 to 1 T-Junction"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -43,6 +45,12 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,20},{150,-20}},
+          textString="%name",
+          textColor={0,0,255},
+          origin={80,0},
+          rotation=90),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},

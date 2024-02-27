@@ -1,6 +1,8 @@
 within ThermofluidStream.Topology;
 model SplitterT2 "Splits a flow into two subflows"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
@@ -35,6 +37,10 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},

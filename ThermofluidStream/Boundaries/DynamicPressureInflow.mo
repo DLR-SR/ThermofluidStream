@@ -1,6 +1,7 @@
 within ThermofluidStream.Boundaries;
 model DynamicPressureInflow
   "Flow from a reference velocity through a certain cross section"
+
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
   parameter Boolean areaFromInput = false "Use input connector for cross section area?";

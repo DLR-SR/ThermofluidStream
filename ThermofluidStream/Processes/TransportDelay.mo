@@ -64,6 +64,10 @@ equation
 <p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
 </html>"),
 Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

@@ -1,6 +1,8 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectForeFore "Undirected connector with fore and fore"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium of the connection"
     annotation (Documentation(info="<html>

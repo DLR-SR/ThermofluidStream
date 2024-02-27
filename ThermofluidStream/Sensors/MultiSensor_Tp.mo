@@ -3,6 +3,8 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true,
@@ -42,6 +44,9 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
   Real direct_p; //unit intentional not given to avoid warning
   Real direct_T; //unit intentional not given to avoid warning
 
+protected
+  outer DropOfCommons dropOfCommons;
+
 initial equation
   if filter_output and init==InitMode.steadyState then
     p=direct_p;
@@ -75,6 +80,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,54},{66,-66}},
           lineColor={0,0,0},

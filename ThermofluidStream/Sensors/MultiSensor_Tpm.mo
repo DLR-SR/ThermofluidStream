@@ -2,6 +2,8 @@ within ThermofluidStream.Sensors;
 model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true,
@@ -52,6 +54,8 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   output Real m_flow(final quantity="MassFlowRate", final unit=massFlowUnit);
 
 protected
+  outer DropOfCommons dropOfCommons;
+
   Real direct_p; //unit intentional not given to avoid warning
   Real direct_T; //unit intentional not given to avoid warning
   Real direct_m_flow; //unit intentional not given to avoid warning
@@ -101,6 +105,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,74},{66,-86}},
           lineColor={0,0,0},

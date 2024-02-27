@@ -1,6 +1,8 @@
 within ThermofluidStream.Boundaries;
 model Source "Boundary model of a source"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
      annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -103,7 +105,12 @@ equation
         Line(
           points={{12,80},{12,-80}},
           color={255,255,255},
-          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=1),
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255})}),
+                          Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>

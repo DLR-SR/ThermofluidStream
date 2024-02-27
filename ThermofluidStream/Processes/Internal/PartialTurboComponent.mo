@@ -118,6 +118,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+         Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
          Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

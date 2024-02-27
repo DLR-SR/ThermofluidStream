@@ -38,6 +38,10 @@ equation
   Xi_out = Xi_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-100,0},{-40,0}},
           color={28,108,200},

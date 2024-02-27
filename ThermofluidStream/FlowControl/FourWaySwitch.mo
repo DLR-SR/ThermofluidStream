@@ -1,5 +1,8 @@
 within ThermofluidStream.FlowControl;
 model FourWaySwitch
+
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium;
 
@@ -97,6 +100,10 @@ equation
   connect(switch1.u, switch.u) annotation (Line(points={{60,-68},{60,-76},{0,-76},{0,76},{-60,76},{-60,68}}, color={0,0,127}));
   connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,68}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-76,76},{84,-84}},
           lineColor={28,108,200},

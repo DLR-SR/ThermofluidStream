@@ -4,6 +4,8 @@ model DifferenceSensorSelect
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
     "Medium model A"
     annotation (choicesAllMatching=true,
@@ -84,6 +86,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,24},{66,-36}},
           lineColor={0,0,0},

@@ -1,6 +1,8 @@
 within ThermofluidStream.Boundaries;
 model CreateState "Create state signal as output"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
   "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Model of the medium for this thermodynamic state connector.</p>
@@ -66,6 +68,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,110},{150,150}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{0,0},{98,0}},
           color={162,29,33},

@@ -1,5 +1,8 @@
 within ThermofluidStream.Topology;
 model DynamicJunctionN "Dynamic pressure junction with N inlets"
+
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -55,6 +58,10 @@ equation
       thickness=0.5));
   connect(v_mix.y, dynamicPressureInflow.v_in_var) annotation (Line(points={{-9,20},{30,20},{30,10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-100,0},{100,0}},
           color={0,127,0},

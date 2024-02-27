@@ -1,6 +1,8 @@
 within ThermofluidStream.Undirected.Boundaries;
 model BoundaryRear "Generic Boundary model (may act as source or sink)"
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Boundary. Make sure it is the same as the one the port is connected to.</p>

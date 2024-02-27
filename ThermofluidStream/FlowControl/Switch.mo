@@ -1,6 +1,8 @@
 within ThermofluidStream.FlowControl;
 model Switch
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);

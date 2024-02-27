@@ -3,6 +3,8 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
 
   import ThermofluidStream.Utilities.Types.InitializationMethods;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>

@@ -3,6 +3,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model"
     annotation (choicesAllMatching=true,
@@ -31,6 +33,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 
 protected
+  outer DropOfCommons dropOfCommons;
+
   Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));
 
   function getQuantity = Internal.getTwoPhaseQuantity(redeclare package Medium=Medium) "Quantity compute function"
@@ -56,6 +60,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,100},{150,60}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,24},{66,-36}},
           lineColor={0,0,0},

@@ -1,5 +1,8 @@
 within ThermofluidStream.Topology;
 model SplitterN "Splitter with one inlet and N outlets"
+
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
@@ -32,6 +35,10 @@ equation
   sum(outlets.m_flow) + inlet.m_flow = 0;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayComponentName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{0,0},{96,10}},
           color={28,108,200},

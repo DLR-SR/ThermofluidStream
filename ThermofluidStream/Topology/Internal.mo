@@ -4,6 +4,8 @@ package Internal
 
   model SplitterRatio "Splits a flow into two subflows with prescribed ratio"
 
+    extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
     replaceable package Medium =
         ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
       "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>

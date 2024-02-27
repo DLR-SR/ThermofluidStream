@@ -10,7 +10,7 @@ connector Inlet "Inlet port for a fluid"
 
   input Medium.ThermodynamicState state "Thermodynamic state assuming steady mass flow pressure";
 
-  annotation (
+  annotation (defaultComponentName="inlet",
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Polygon(
           points={{-100,100},{-40,0},{-100,-100},{100,0},{-100,100}},
@@ -19,6 +19,10 @@ connector Inlet "Inlet port for a fluid"
           lineThickness=0.5,
           lineColor={28,108,200})}),
     Diagram(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(
+          textColor={28,108,200},
+          extent={{-10.0,60.0},{-10.0,110.0}},
+          textString="%name"),
         Polygon(
           points={{50,0},{-50,50},{-30,0},{-50,-50},{50,0}},
           fillColor={170,213,255},

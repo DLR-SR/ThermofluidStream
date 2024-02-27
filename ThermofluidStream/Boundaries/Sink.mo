@@ -1,6 +1,9 @@
 within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
-    replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Sink. Make sure it is the same as the one
@@ -46,6 +49,10 @@ equation
   r + p = p0;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-56,76},{4,-84}},
           lineColor={28,108,200},

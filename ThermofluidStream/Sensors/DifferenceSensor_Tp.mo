@@ -3,6 +3,8 @@ model DifferenceSensor_Tp
   "Sensor difference in Temperature and pressure"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
     "Medium model A"
     annotation (choicesAllMatching=true,
@@ -49,6 +51,8 @@ model DifferenceSensor_Tp
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
 
 protected
+  outer DropOfCommons dropOfCommons;
+
   Real direct_p; //unit intentional not given to avoid warning
   Real direct_T; //unit intentional not given to avoid warning
 
@@ -98,6 +102,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayComponentName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,54},{66,-66}},
           lineColor={0,0,0},
