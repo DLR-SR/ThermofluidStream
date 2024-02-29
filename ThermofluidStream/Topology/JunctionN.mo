@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model JunctionN "Junction with N inlets and one outlet"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -27,8 +27,6 @@ model JunctionN "Junction with N inlets and one outlet"
   output SI.Density rho[N] = Medium.density(inlets.state) "density at inlets";
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   SI.Pressure p[N] = Medium.pressure(inlets.state) "(steady mass-flow) pressure at inlets";
   SI.SpecificEnthalpy h[N] =  Medium.specificEnthalpy(inlets.state) "specific enthapy at inlets";
   Medium.MassFraction Xi[Medium.nXi,N] "mass factions at inlets";
@@ -74,7 +72,7 @@ equation
   outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,80},{150,40}},
           textString="%name",
           textColor={0,0,255}),
@@ -97,7 +95,7 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-90,80},{-50,40}},
+          extent={{-120,-20},{-80,-60}},
           textColor={175,175,175},
           textString="%N")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)));

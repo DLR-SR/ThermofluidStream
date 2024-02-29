@@ -96,6 +96,10 @@ equation
   Xi_out = Xi_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-84,36},{88,-36}},
           fillColor={255,255,255},

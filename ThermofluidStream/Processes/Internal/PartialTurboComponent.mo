@@ -35,16 +35,21 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation(Dialog(tab= "Initialization", group="Angular", enable=initPhi));
 
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flange(phi=phi, tau=tau) if not omega_from_input "Flange to receive mechanical power"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90),
-      iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90)));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={0,-100}, rotation=-90),
+      iconTransformation(extent={{-10,-110},{10,-90}})));
   Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Input to directly set pump speed [rad/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90),
       iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=90)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "Access-heat dumping port"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90),
-      iconTransformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90)));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
+                                                                                     rotation=90),
+      iconTransformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
+                                                                     rotation=90)));
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [variable]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={60,-110})));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"
@@ -118,8 +123,8 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-         Text(visible=displayComponentName,
-          extent={{-150,140},{150,100}},
+         Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),
          Ellipse(
@@ -133,6 +138,26 @@ equation
           points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(visible=enableAccessHeatPort, points={{-60,-100},{-60,-68},{-38,-46}}, color={191,0,0}),
+        Line(
+          visible=enableOutput,
+          points={{60,-100},{60,-68},{38,-46}},
+          color={0,0,127}),
+        Line(visible=omega_from_input,
+          points={{0,-100},{0,-60}},
+          color={0,0,127}),
+      Rectangle(visible=not omega_from_input,
+        lineColor={64,64,64},
+        fillColor={191,191,191},
+        fillPattern=FillPattern.HorizontalCylinder,
+        extent={{-100.0,-10.0},{-50.0,10.0}},
+          rotation=90),
         Ellipse(
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},

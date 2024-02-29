@@ -72,8 +72,7 @@ model Evaporator
     redeclare package MediumA = MediumAir,
     redeclare package MediumB = MediumRefrigerant,
     redeclare model ConductionElementA = Internal.ConductionElementHEX (U_nom=4000),
-    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase
-        (
+    redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase (
       U_liq_nom=1000,
       U_vap_nom=1400,
       U_tp_nom=3000),
@@ -89,7 +88,7 @@ model Evaporator
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,-16},{68,4}})));
 
@@ -98,7 +97,7 @@ model Evaporator
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},

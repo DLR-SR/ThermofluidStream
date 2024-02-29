@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one inlet and outlet"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (
@@ -67,8 +67,6 @@ inlets and outlets the volume is connected to.
   SI.Power W_v;
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   SI.Temperature T_heatPort;
   SI.Pressure r;
 
@@ -136,10 +134,6 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
-          extent={{-150,140},{150,100}},
-          textString="%name",
-          textColor={0,0,255}),
         Ellipse(
           extent={{-56,76},{64,16}},
           lineColor={28,108,200},

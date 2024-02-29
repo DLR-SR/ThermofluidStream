@@ -140,8 +140,8 @@ equation
       points={{16,6},{10,6},{10,-10},{40,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm1.m_flow_out, product1.u1) annotation (Line(points={{
-          -40,-6},{-30,-6},{-30,60},{-13.6,60},{-13.6,47.2}}, color={0,0,127}));
+  connect(multiSensor_Tpm1.m_flow_out, product1.u1) annotation (Line(points={{-41.8,-6},{-30,-6},{-30,60},{-13.6,60},{-13.6,47.2}},
+                                                              color={0,0,127}));
   connect(q_limits.y, product1.u2) annotation (Line(points={{5.4,52},{-6.4,52},
           {-6.4,47.2}}, color={0,0,127}));
   connect(PI.y, q_limits.u)

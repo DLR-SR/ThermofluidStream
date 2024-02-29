@@ -3,8 +3,7 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
 
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby
-    Media.myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   parameter SI.Area A_in_hp=0.0002 "Cross-section area of high pressure inlet boundary";
@@ -89,7 +88,8 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={6,50})));
-  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612) annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
+  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612, displayInstanceNames=true)
+                                                                   annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{82,62},{118,98}})));
 equation
   connect(flowResistance1.outlet, checkValve.inlet) annotation (Line(

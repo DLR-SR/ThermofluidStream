@@ -223,7 +223,8 @@ equation
       points={{-86,16},{-70,16},{-70,54},{-60,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-106,16},{-140,16},{-140,22}}, color={0,0,127}));
+  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-104.2,16},{-140,16},{-140,22}},
+                                                                                                          color={0,0,127}));
   connect(heating_element.Q_flow, PI1.y) annotation (Line(points={{-120,34},{-129,34}}, color={0,0,127}));
   connect(terminalSource.outlet, boiler.inlet) annotation (Line(
       points={{-110,54},{-100,54}},
@@ -233,7 +234,7 @@ equation
       points={{-20,54},{-40,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-10,62},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-10,67},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
   connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
   annotation (

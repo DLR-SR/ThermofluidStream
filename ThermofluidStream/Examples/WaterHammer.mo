@@ -8,7 +8,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     "Medium model"
     annotation(choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, displayInstanceNames=false)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -61,6 +61,7 @@ model WaterHammer "Pump water by using dynamic pressures"
         origin={10,60})));
   Boundaries.Reservoir reservoir(
     redeclare package Medium = Medium,
+    pEnvFromInput=false,
     A_surf=0.00025,
     p_env_par=100000,
     height_0=0.1)

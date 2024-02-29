@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model FourWaySwitch
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium;
@@ -12,18 +12,24 @@ model FourWaySwitch
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={100,-60})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{90,50},{110,70}})));
+        origin={100,-60}), iconTransformation(
+        extent={{-28.2354,51.7646},{11.7646,11.7646}},
+        rotation=180,
+        origin={91.7646,-28.2354})));
+  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-100,-60})));
+        origin={-100,-60}), iconTransformation(
+        extent={{-27.5,52.5},{12.5,12.5}},
+        rotation=180,
+        origin={-107.5,-27.5})));
   Switch switch(
     redeclare package Medium = Medium,
     final m_flow_ref=m_flow_ref,
@@ -60,12 +66,11 @@ model FourWaySwitch
         origin={0,-100})));
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
   constant Real delta(unit="1") = 0.1;
 
 equation
   connect(switch.inlet, inletA) annotation (Line(
-      points={{-70,60},{-100,60}},
+      points={{-70,60},{-82,60},{-82,60},{-100,60}},
       color={28,108,200},
       thickness=0.5));
   connect(inletB, switch1.inlet) annotation (Line(
@@ -94,13 +99,13 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_2.outlet, outletA) annotation (Line(
-      points={{70,60},{100,60}},
+      points={{70,60},{86,60},{86,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch1.u, switch.u) annotation (Line(points={{60,-68},{60,-76},{0,-76},{0,76},{-60,76},{-60,68}}, color={0,0,127}));
-  connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,68}}, color={0,0,127}));
+  connect(switch1.u, switch.u) annotation (Line(points={{60,-73},{60,-76},{0,-76},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
+  connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),

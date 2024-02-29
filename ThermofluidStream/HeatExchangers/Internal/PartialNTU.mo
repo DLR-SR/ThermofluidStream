@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
-
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
 
@@ -15,7 +15,7 @@ partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={100,60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
+        origin={100,60}), iconTransformation(extent=if crossFlow then {{-160,-20},{-120,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,

@@ -58,7 +58,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-100,50},{-80,70}})));
@@ -68,7 +68,7 @@ model TestNonPhysical
     l=1,
     computeL=false,
     redeclare function pLoss =
-      Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
@@ -78,7 +78,7 @@ model TestNonPhysical
     l=1,
     computeL=false,
     redeclare function pLoss =
-      Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-100,-50},{-80,-30}})));
@@ -87,7 +87,7 @@ model TestNonPhysical
     l=1,
     computeL=false,
     redeclare function pLoss =
-      Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
@@ -178,7 +178,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-50,70},{-30,90}})));
@@ -188,7 +188,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
@@ -198,7 +198,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-50,-30},{-30,-10}})));
@@ -208,7 +208,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{-50,-80},{-30,-60}})));
@@ -218,7 +218,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{120,70},{140,90}})));
@@ -228,7 +228,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{120,20},{140,40}})));
@@ -238,7 +238,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{120,-30},{140,-10}})));
@@ -248,7 +248,7 @@ model TestNonPhysical
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=100))
     annotation (Placement(transformation(extent={{120,-80},{140,-60}})));

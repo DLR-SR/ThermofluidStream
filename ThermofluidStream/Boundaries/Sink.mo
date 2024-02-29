@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -31,8 +31,6 @@ the outlet the sink is connected to.
         origin={20,0})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r;
 
@@ -49,7 +47,7 @@ equation
   r + p = p0;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),

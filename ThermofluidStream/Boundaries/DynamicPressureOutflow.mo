@@ -20,15 +20,16 @@ model DynamicPressureOutflow
   Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,100})));
+        origin={-104,-60}),
+                         iconTransformation(extent={{-20,-20},{20,20}},
+        rotation=0,
+        origin={-80,-60})));
   Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={-60,100}), iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-60,100})));
+        origin={-96,-60}), iconTransformation(extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={20,-60})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
@@ -79,6 +80,10 @@ equation
 
   annotation (
    Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},

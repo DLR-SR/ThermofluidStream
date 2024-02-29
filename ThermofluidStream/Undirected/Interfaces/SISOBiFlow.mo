@@ -3,7 +3,7 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
 
   import ThermofluidStream.Utilities.Types.InitializationMethods;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -46,10 +46,8 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
   SI.Pressure dr_corr_rear; //rearward direction; delta = rear - fore
   SI.Pressure dr_corr; // regstep regulated one used; delta = fore - rear
 
-protected
-  outer DropOfCommons dropOfCommons;
-
   // input state quantities
+protected
   SI.Pressure p_rear_in = Medium.pressure(rear.state_forwards) "Pressure of medium entering";
   SI.Pressure p_fore_in = Medium.pressure(fore.state_rearwards) "Pressure of medium entering";
   SI.SpecificEnthalpy h_rear_in = Medium.specificEnthalpy(rear.state_forwards) "Enthalpy of medium enetering";

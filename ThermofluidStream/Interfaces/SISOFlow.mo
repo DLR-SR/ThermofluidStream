@@ -2,7 +2,7 @@ within ThermofluidStream.Interfaces;
 partial model SISOFlow "Base Model with basic flow eqautions for SISO"
 
   import ThermofluidStream.Utilities.Types.InitializationMethods;
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -38,10 +38,8 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   SI.Pressure dr_corr; // delta = out - in
   SI.Pressure dp; // delta = out - in
 
-protected
-  outer DropOfCommons dropOfCommons;
-
   // inlet state quantities
+protected
   SI.Pressure p_in = Medium.pressure(inlet.state) "Pressure of medium entering";
   SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Enthalpy of medium enetering";
   Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Mass fraction of medium entering";

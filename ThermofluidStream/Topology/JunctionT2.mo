@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model JunctionT2 "2 to 1 T-Junction"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -27,9 +27,6 @@ model JunctionT2 "2 to 1 T-Junction"
         rotation=180,
         origin={-20,0})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
 
   connect(junctionN.inlets[2], inletB) annotation (Line(
@@ -45,8 +42,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
-          extent={{-150,-60},{150,-100}},
+       Text(visible=displayInstanceName,
+          extent={{-150,-40},{150,-80}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -68,11 +65,11 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,100},{-20,60}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,-20},{120,-60}},
+          extent={{80,60},{120,20}},
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));

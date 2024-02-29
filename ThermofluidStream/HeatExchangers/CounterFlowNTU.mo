@@ -1,6 +1,18 @@
 within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
+
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{-120,-80},{-80,-40}}),
+                                     iconTransformation(extent={{-120,-80},{-80,-40}})));
+  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{80,-80},{120,-40}})));
+  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{120,40},{80,80}})));
+  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{-80,40},{-120,80}})));
+
   extends Internal.PartialNTU;
+
 
 equation
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
@@ -8,7 +20,7 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
@@ -33,11 +45,11 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Text(
-          extent={{-120,-74},{-80,-114}},
+          extent={{-130,-90},{-90,-130}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{82,112},{122,72}},
+          extent={{90,30},{130,-10}},
           textColor={175,175,175},
           textString="B"),
         Line(

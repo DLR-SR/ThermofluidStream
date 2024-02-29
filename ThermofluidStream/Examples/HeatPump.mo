@@ -88,7 +88,7 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -100,7 +100,7 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

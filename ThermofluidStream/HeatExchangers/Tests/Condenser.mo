@@ -87,7 +87,7 @@ model Condenser
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-82,0},{-62,20}})));
 
@@ -97,7 +97,7 @@ model Condenser
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

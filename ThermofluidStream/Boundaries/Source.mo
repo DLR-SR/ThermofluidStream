@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries;
 model Source "Boundary model of a source"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -42,8 +42,6 @@ the inlet the source is connected to.
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   Modelica.Blocks.Interfaces.RealInput T0(unit = "K") "Internal temperature connector";
   Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
@@ -106,7 +104,7 @@ equation
           points={{12,80},{12,-80}},
           color={255,255,255},
           thickness=1),
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255})}),

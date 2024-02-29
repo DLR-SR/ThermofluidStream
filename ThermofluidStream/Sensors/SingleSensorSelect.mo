@@ -3,7 +3,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
@@ -29,13 +29,11 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{72,-10},{92,10}}), iconTransformation(extent={{72,-10},{92,10}})));
 
   output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value(unit=Internal.getUnit(quantity));
 
   function getQuantity = Internal.getQuantity(redeclare package Medium=Medium) "Quantity compute function"
@@ -61,8 +59,8 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
-          extent={{-150,100},{150,60}},
+        Text(visible=displayInstanceName,
+          extent={{-150,-50},{150,-90}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -89,7 +87,10 @@ equation
         Text(
           extent={{0,25},{60,75}},
           textColor={175,175,175},
-          textString="%quantity")}),
+          textString="%quantity"),
+        Line(visible=outputValue,
+          points={{60,0},{78,0}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring a selectable quantity.</p>

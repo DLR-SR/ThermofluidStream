@@ -22,7 +22,11 @@ equation
 
   state_out = medium.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false),graphics={
+       Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255})}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Conceptually a Volume is a Sink and a Source. It therefore defines the level of inertial pressure r in a closed loop and serves as a loop breaker.</p>
 <p>This simple volume will become singular for incompressible fluids and close to singular for fluids with very low compressibility. For both cases we advise to use VolumeFlex or a Reservoir instead.</p>

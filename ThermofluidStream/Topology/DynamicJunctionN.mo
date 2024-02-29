@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model DynamicJunctionN "Dynamic pressure junction with N inlets"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -40,9 +40,6 @@ model DynamicJunctionN "Dynamic pressure junction with N inlets"
   Modelica.Blocks.Sources.RealExpression v_mix(y=sqrt(sum(junction.w .* (junction.inlets.m_flow ./ (junction.rho.*A)) .^ 2)))
     "conservation of kinetik energy over mixing" annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   connect(inlets, junction.inlets) annotation (Line(
       points={{-100,0},{-40,0}},
@@ -56,9 +53,10 @@ equation
       points={{-20,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(v_mix.y, dynamicPressureInflow.v_in_var) annotation (Line(points={{-9,20},{30,20},{30,10}}, color={0,0,127}));
+  connect(v_mix.y, dynamicPressureInflow.v_in_var) annotation (Line(points={{-9,20},{28,20},{28,-6.2}},
+                                                                                                      color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
+       Text(visible=displayInstanceName,
           extent={{-150,80},{150,40}},
           textString="%name",
           textColor={0,0,255}),
@@ -73,7 +71,7 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-90,80},{-50,40}},
+          extent={{-120,-20},{-80,-60}},
           textColor={175,175,175},
           textString="%N"),
         Ellipse(

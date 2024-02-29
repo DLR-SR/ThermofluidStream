@@ -1,3 +1,4 @@
+Variants
 SplitterT1
 SplitterT2
 JunctionT1
@@ -9,8 +10,8 @@ JunctionX3
 SplitterN
 JunctionN
 JunctionNM
-DynamicJunctionN
 DynamicSplitterN
+DynamicJunctionN
 DynamicJunctionNM
 NonPhysical
 Tests

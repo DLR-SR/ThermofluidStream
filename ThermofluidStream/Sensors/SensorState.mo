@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SensorState "Sensor for whole state"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -13,10 +13,7 @@ model SensorState "Sensor for whole state"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Interfaces.StateOutput state_out(redeclare package Medium = Medium) "Measured value [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
-
-protected
-  outer DropOfCommons dropOfCommons;
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
 equation
   inlet.m_flow = 0;
@@ -24,8 +21,8 @@ equation
   state_out.state = inlet.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
-          extent={{-150,100},{150,60}},
+        Text(visible=displayInstanceName,
+          extent={{-150,-50},{150,-90}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -46,7 +43,10 @@ equation
         Text(
           extent={{-60,30},{60,-30}},
           textColor={28,108,200},
-          textString="state")}),
+          textString="state"),
+        Line(
+          points={{60,0},{78,0}},
+          color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the full state.</p>

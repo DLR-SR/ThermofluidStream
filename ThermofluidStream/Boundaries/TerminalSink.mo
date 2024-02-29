@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries;
 model TerminalSink "Sink that imposes m_flow=0"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -19,7 +19,7 @@ equation
   inlet.m_flow = 0;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
+       Text(visible=displayInstanceName,
           extent={{-150,60},{150,100}},
           textString="%name",
           textColor={0,0,255}),

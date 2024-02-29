@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (
@@ -66,8 +66,6 @@ the fores and rears the volume is connected to.
   SI.Power W_v;
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   SI.Temperature T_heatPort;
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)

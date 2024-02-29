@@ -4,7 +4,7 @@ model DifferenceSensorSelect
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
     "Medium model A"
@@ -35,13 +35,13 @@ model DifferenceSensorSelect
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
-        iconTransformation(extent={{-120,20},{-80,60}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,60}),
+        iconTransformation(extent={{-120,40},{-80,80}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
-        iconTransformation(extent={{-120,-60},{-80,-20}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-60}),
+        iconTransformation(extent={{-120,-80},{-80,-40}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
   output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected quantity";
 
@@ -49,8 +49,6 @@ model DifferenceSensorSelect
   Real valueB(unit=Internal.getUnit(quantity));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value(unit=Internal.getUnit(quantity));
 
   function getQuantityA = Internal.getQuantity(redeclare package Medium=MediumA) "Quantity compute function A"
@@ -86,7 +84,7 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),
@@ -116,15 +114,15 @@ equation
           textColor={175,175,175},
           textString="%quantity"),
         Line(
-          points={{-80,40},{-80,-40}},
+          points={{-80,60},{-80,-60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,-40},{-80,-40}},
+          points={{-100,-60},{-80,-60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,40},{-80,40}},
+          points={{-100,60},{-80,60}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -148,7 +146,10 @@ equation
         Ellipse(
           extent={{-72,-38},{-48,-62}},
           lineColor={28,108,200},
-          lineThickness=0.5)}),
+          lineThickness=0.5),
+        Line(visible=outputValue,
+          points={{60,0},{78,0}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the difference of a selectable quantity between two fluid streams.</p>

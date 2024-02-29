@@ -4,7 +4,7 @@ package Internal
 
   model SplitterRatio "Splits a flow into two subflows with prescribed ratio"
 
-    extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+    extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
     replaceable package Medium =
         ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
@@ -52,8 +52,6 @@ package Internal
     SI.Power P_B = (v_in+v_B)/2*(-outletB.m_flow)*(p_B-p_in);
 
   protected
-    outer ThermofluidStream.DropOfCommons dropOfCommons;
-
     SI.AbsolutePressure dp(stateSelect=StateSelect.always, start=0, fixed=true);
     SI.AbsolutePressure p_A;
     SI.AbsolutePressure p_B;
@@ -126,12 +124,24 @@ package Internal
 
     annotation (
       Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Line(
-            points={{-100,0},{100,0}},
+          Text(visible=displayInstanceName,
+            extent={{-150,65},{150,25}},
+            textString="%name",
+            textColor={0,0,255}),
+          Line(visible= not displayInstanceName,
+            points={{0,0},{0,100}},
+            color={28,108,200},
+            thickness=0.5),
+          Line(visible= displayInstanceName,
+            points={{0,0},{0,20}},
+            color={28,108,200},
+            thickness=0.5),
+          Line(visible= displayInstanceName,
+            points={{0,70},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{0,100}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(
@@ -141,17 +151,13 @@ package Internal
             fillPattern=FillPattern.Solid,
             lineThickness=0.5),
           Text(
-            extent={{-60,100},{-20,60}},
+            extent={{-60,120},{-20,80}},
             textColor={175,175,175},
             textString="A"),
           Text(
-            extent={{60,-20},{100,-60}},
+            extent={{80,-20},{120,-60}},
             textColor={175,175,175},
-            textString="B"),
-          Text(
-            extent={{-94,38},{90,8}},
-            textColor={0,0,0},
-            textString="SplitterRatio")}),
+            textString="B")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p><br>Splitter, that uses a directly set split ratio. In order to have stationary r that goes to zero, a pressure difference between outlet A and B is calculated, that is applied to one of the outlets, until r-&gt;0.</p><p><br>The idear builds on the splitter with an enforeced regime of Zimmer Real-Time&nbsp;Simulation&nbsp;of&nbsp;an&nbsp;Aircraft&nbsp;Electric&nbsp;Driven&nbsp;Environmental&nbsp;Control&nbsp;System&nbsp;for&nbsp;Virtual&nbsp;Testing&nbsp;Purposes&nbsp;Sec&nbsp;3.4</p>

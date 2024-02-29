@@ -4,7 +4,7 @@ model SingleFlowSensor
   import Quantities=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -29,20 +29,18 @@ model SingleFlowSensor
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-120,-80},{-80,-40}}),
-        iconTransformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
+        iconTransformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{80,-80},{120,-40}}),
-        iconTransformation(extent={{80,-80},{120,-40}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
+    annotation (Placement(transformation(extent={{70,50},{90,70}}),
+        iconTransformation(extent={{70,50},{90,70}})));
 
   output Real value(unit=Internal.getFlowUnit(quantity));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value(unit=Internal.getFlowUnit(quantity));
   output SI.MassFlowRate m_flow = inlet.m_flow;
 
@@ -72,42 +70,45 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
-          extent={{-150,110},{150,70}},
+        Text(visible=displayInstanceName,
+          extent={{-150,-40},{150,-80}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-54,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-100,-60},{100,-60}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{0,-26},{0,-60}}, color={0,0,0}),
+        Line(points={{0,34},{0,0}},    color={0,0,0}),
         Ellipse(
-          extent={{-6,-54},{6,-66}},
+          extent={{-6,6},{6,-6}},
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
+          extent={{0,85},{60,135}},
           textColor={175,175,175},
-          textString="%quantity")}),
+          textString="%quantity"),
+        Line(visible=outputValue,
+          points={{60,60},{78,60}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A sensor measuring a selectable flow quantity associated with the massflow.</p>

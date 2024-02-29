@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model DynamicSplitterN "Dynamic pressure 1 to N splitter"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -44,9 +44,6 @@ model DynamicSplitterN "Dynamic pressure 1 to N splitter"
     each final L_value=L/3)
       annotation (Placement(transformation(extent={{30,-10},{50,10}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   connect(nozzle_out.outlet, outlets) annotation (Line(
       points={{50,0},{100,0}},
@@ -65,7 +62,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
+       Text(visible=displayInstanceName,
           extent={{-150,80},{150,40}},
           textString="%name",
           textColor={0,0,255}),
@@ -80,7 +77,7 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{90,80},{50,40}},
+          extent={{120,-20},{80,-60}},
           textColor={175,175,175},
           textString="%N"),
         Ellipse(

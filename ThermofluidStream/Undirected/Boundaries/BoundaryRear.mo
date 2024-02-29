@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries;
 model BoundaryRear "Generic Boundary model (may act as source or sink)"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -37,8 +37,6 @@ model BoundaryRear "Generic Boundary model (may act as source or sink)"
       iconTransformation(extent={{80,-20},{120,20}})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   SI.Pressure p_rearwards = Medium.pressure(fore.state_rearwards);
 
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";

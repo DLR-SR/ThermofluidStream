@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
-  extends Internal.PartialNTU(crossFlow=true);
+  extends Internal.PartialNTU(final crossFlow=true);
 
 equation
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
@@ -9,12 +9,28 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,110},{150,70}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(visible=not displayInstanceName,
+          points={{0,0},{0,120}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible=displayInstanceName,
+          points={{0,110},{0,120}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible=displayInstanceName,
+          points={{0,60},{0,70}},
+          color={28,108,200},
+          thickness=0.5),
         Text(
-          extent={{-120,-20},{-80,-60}},
+          extent={{-120,60},{-80,20}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{20,120},{60,80}},
+          extent={{-60,160},{-20,120}},
           textColor={175,175,175},
           textString="B"),
         Ellipse(
@@ -25,7 +41,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{0,100},{0,-100}},
+          points={{0,0},{0,-100}},
           color={28,108,200},
           thickness=0.5),
         Line(

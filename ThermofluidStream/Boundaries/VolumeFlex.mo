@@ -15,6 +15,10 @@ equation
   state_out = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-44,18},{-44,-54}},
           color={28,108,200},

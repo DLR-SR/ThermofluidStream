@@ -3,7 +3,7 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialTwoPhaseMedium
     "Medium model A"
@@ -46,8 +46,6 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
   Real valueB(unit=Internal.getTwoPhaseUnit(quantity));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));
 
   function getQuantityA = Internal.getTwoPhaseQuantity(redeclare package Medium=MediumA) "Quantity compute function"
@@ -83,7 +81,7 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),
@@ -145,7 +143,10 @@ equation
         Ellipse(
           extent={{-72,-38},{-48,-62}},
           lineColor={28,108,200},
-          lineThickness=0.5)}),
+          lineThickness=0.5),
+        Line(visible=outputValue,
+          points={{60,0},{78,0}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the difference of the vapor quality between two fluid streams.</p>

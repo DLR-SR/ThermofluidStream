@@ -13,7 +13,7 @@ equation
   Xi_out = Xi_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),

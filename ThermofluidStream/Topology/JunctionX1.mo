@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model JunctionX1 "2 to 2 X-Junction"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -13,50 +13,72 @@ model JunctionX1 "2 to 2 X-Junction"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Outlet outleta(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={-100,0})));
   Interfaces.Outlet outletb(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=-90,
+        origin={0,-100})));
   Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={100,0})));
   JunctionNM junctionNM(N=2, M=2, redeclare package Medium = Medium, final L=L,
     final assumeConstantDensity = assumeConstantDensity, final m_flow_eps=m_flow_eps)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={0,0})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   connect(inletB, junctionNM.inlets[2]) annotation (Line(
-      points={{100,0},{54,0},{54,-0.5},{10,-0.5}},
+      points={{100,0},{10,0},{10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.outlets[1], outleta) annotation (Line(
-      points={{-10,0.5},{-54,0.5},{-54,0},{-100,0}},
+      points={{-10,0.5},{-22,0.5},{-22,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionNM.inlets[1]) annotation (Line(
-      points={{0,100},{0,40},{40,40},{40,0.5},{10,0.5}},
+      points={{0,100},{0,40},{20,40},{20,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(outletb, junctionNM.outlets[2]) annotation (Line(
-      points={{0,-100},{0,-40},{-40,-40},{-40,-0.5},{-10,-0.5}},
+      points={{0,-100},{0,-40},{-20,-40},{-20,-0.5},{-10,-0.5}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(outleta, outleta) annotation (Line(
+      points={{-100,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(visible= not displayInstanceName,
+          points={{0,0},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,0},{0,20}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,70},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{0,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{0,0},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -70,19 +92,19 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,100},{-20,60}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{50,20},{90,60}},
+          extent={{80,-60},{120,-20}},
           textColor={175,175,175},
           textString="B"),
         Text(
-          extent={{-60,-20},{-100,-60}},
+          extent={{-80,-20},{-120,-60}},
           textColor={175,175,175},
           textString="a"),
         Text(
-          extent={{60,-100},{20,-60}},
+          extent={{-20,-120},{-60,-80}},
           textColor={175,175,175},
           textString="b")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

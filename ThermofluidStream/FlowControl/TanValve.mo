@@ -38,7 +38,7 @@ equation
   Xi_out = Xi_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor={0,0,255}),
@@ -52,8 +52,8 @@ equation
           thickness=0.5,
           pattern=LinePattern.Dash),
         Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
+          points={{0,0},{0,80}},
+          color={0,0,127},
           thickness=0.5),
         Line(
           points={{40,0},{100,0}},

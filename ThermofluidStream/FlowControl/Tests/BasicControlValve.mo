@@ -31,7 +31,7 @@ Medium package used in the Test.
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = medium,
@@ -103,35 +103,35 @@ Medium package used in the Test.
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{66,50},{86,70}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{68,-10},{88,10}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{-76,-70},{-56,-50}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
 equation

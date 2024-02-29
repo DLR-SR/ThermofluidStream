@@ -3,7 +3,7 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -35,17 +35,14 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{80,20},{120,60}})));
+    annotation (Placement(transformation(extent={{70,20},{90,40}}), iconTransformation(extent={{70,20},{90,40}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured Pressure [variable]"
-    annotation (Placement(transformation(extent={{80,-60},{120,-20}})));
+    annotation (Placement(transformation(extent={{72,-40},{92,-20}}), iconTransformation(extent={{72,-40},{92,-20}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
   Real direct_p; //unit intentional not given to avoid warning
   Real direct_T; //unit intentional not given to avoid warning
-
-protected
-  outer DropOfCommons dropOfCommons;
 
 initial equation
   if filter_output and init==InitMode.steadyState then
@@ -80,7 +77,7 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),
@@ -118,7 +115,13 @@ equation
         Text(
           extent={{-120,-5},{-60,-55}},
           textColor={175,175,175},
-          textString="%pressureUnit")}),
+          textString="%pressureUnit"),
+        Line(visible=outputTemperature,
+          points={{60,30},{78,30}},
+          color={0,0,127}),
+        Line(visible=outputPressure,
+          points={{60,-30},{78,-30}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature and pressure at once.</p>

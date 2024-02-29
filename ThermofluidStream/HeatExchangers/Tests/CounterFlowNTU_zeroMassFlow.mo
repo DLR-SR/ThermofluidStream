@@ -74,7 +74,7 @@ model CounterFlowNTU_zeroMassFlow
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{98,10},{78,30}})));
   Processes.FlowResistance flowResistanceA(
@@ -82,7 +82,7 @@ model CounterFlowNTU_zeroMassFlow
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-54,-30},{-34,-10}})));
 equation

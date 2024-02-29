@@ -2,7 +2,7 @@ within ThermofluidStream.Undirected.Topology;
 model ConnectInletFore
   "Directed/undirected connector with input and fore"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium of the connection"

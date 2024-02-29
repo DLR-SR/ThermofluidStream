@@ -16,12 +16,9 @@ model MCV "Massflow and volume control valve"
 
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
+        transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,-80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,-80})));
+        origin={0,-120})));
 
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
@@ -91,6 +88,14 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible= displayInstanceName and not enableClippingOutput,
+          extent={{-150,-80},{150,-120}},
+          textString="%name",
+          textColor={0,0,255}),
+        Text(visible= displayInstanceName and enableClippingOutput,
+          extent={{-150,-65},{150,-105}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -126,10 +131,14 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{40,-60},{60,-80}},
+          extent={{40,60},{60,80}},
           lineColor={0,0,0},
           fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
-          fillPattern=FillPattern.Solid)}),
+          fillPattern=FillPattern.Solid),
+        Line(visible=enableClippingOutput and not displayInstanceName,
+          points={{0,-110},{0,-60}},
+          color={0,0,127},
+          thickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>

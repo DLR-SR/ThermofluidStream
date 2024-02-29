@@ -30,7 +30,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-84,-10},{-64,10}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=100, T(fixed=true))

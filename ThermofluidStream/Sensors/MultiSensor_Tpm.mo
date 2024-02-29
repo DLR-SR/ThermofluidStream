@@ -2,7 +2,7 @@ within ThermofluidStream.Sensors;
 model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -42,20 +42,18 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{80,-120},{120,-80}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{80,40},{120,80}})));
+    annotation (Placement(transformation(extent={{72,50},{92,70}}), iconTransformation(extent={{72,50},{92,70}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured pressure [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{72,-10},{92,10}}),
+        iconTransformation(extent={{72,-10},{92,10}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate "Measured massflow [kg/s]"
-    annotation (Placement(transformation(extent={{80,-80},{120,-40}})));
+    annotation (Placement(transformation(extent={{72,-70},{92,-50}}), iconTransformation(extent={{72,-70},{92,-50}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
   output Real m_flow(final quantity="MassFlowRate", final unit=massFlowUnit);
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_p; //unit intentional not given to avoid warning
   Real direct_T; //unit intentional not given to avoid warning
   Real direct_m_flow; //unit intentional not given to avoid warning
@@ -105,7 +103,7 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
+        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
@@ -160,7 +158,16 @@ equation
         Text(
           extent={{-120,-20},{-60,-72}},
           textColor={175,175,175},
-          textString="%massFlowUnit")}),
+          textString="%massFlowUnit"),
+        Line(visible=outputTemperature,
+          points={{60,60},{78,60}},
+          color={0,0,127}),
+        Line(visible=outputPressure,
+          points={{60,0},{78,0}},
+          color={0,0,127}),
+        Line(visible=outputMassFlowRate,
+          points={{60,-60},{78,-60}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>

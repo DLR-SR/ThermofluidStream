@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model SplitterT2 "Splits a flow into two subflows"
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -19,9 +19,6 @@ model SplitterT2 "Splits a flow into two subflows"
   SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
 
   connect(splitterN.inlet, inlet) annotation (Line(
@@ -37,8 +34,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayComponentName,
-          extent={{-150,-60},{150,-100}},
+       Text(visible=displayInstanceName,
+          extent={{-150,-40},{150,-80}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -60,11 +57,11 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,100},{-20,60}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{60,-20},{100,-60}},
+          extent={{80,60},{120,20}},
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));

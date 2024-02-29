@@ -49,7 +49,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=5000))
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
   Processes.FlowResistance flowResistance2(
@@ -58,7 +58,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=5000))
     annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
   Processes.FlowResistance flowResistance(
@@ -67,7 +67,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=5000))
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
   Processes.FlowResistance flowResistance3(
@@ -76,7 +76,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=5000))
     annotation (Placement(transformation(extent={{72,-30},{92,-10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(

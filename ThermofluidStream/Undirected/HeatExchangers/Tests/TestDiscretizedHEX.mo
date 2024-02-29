@@ -53,7 +53,7 @@ model TestDiscretizedHEX
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-70,14},{-50,34}})));
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{74,74},{94,94}})));
@@ -81,7 +81,7 @@ model TestDiscretizedHEX
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-2},{-72,18}})));
   Modelica.Blocks.Continuous.PI PI1(

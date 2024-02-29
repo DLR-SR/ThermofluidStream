@@ -5,8 +5,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   model RatioControl "SplitterRatio in pressure drop mode"
     extends Internal.SplitterRatio(final mode = Internal.SplitterModes.pressureDrop);
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-          coordinateSystem(preserveAspectRatio=false)),
+    annotation (
       Documentation(info="<html>
 <p>A splitter with prescribed split ratio that acts as a pressure control valve on both outlets. Pressure is reduced on the outlets in order to follow the mass-flow split prescription. </p>
 <p>For reversed mass-flow the component might create work in form of increasing pressure of the fluid flowing from outlet to inlet. </p>
@@ -17,8 +16,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   model RTSwitch "SplitterRatio in full switch mode"
     extends Internal.SplitterRatio(final mode = Internal.SplitterModes.OneMinusS);
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-          coordinateSystem(preserveAspectRatio=false)),
+    annotation (
       Documentation(info="<html>
 <p>A switch with a fixed split ratio that is intended as a switch between two paths. Therefore the input should be 1 or 0 for the most part. </p>
 <p><br>Otherwise it will create work in the form of pressure on one of the two paths in order to fulfill the prescribed split ratio. </p>
@@ -29,8 +27,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
   model LeakageA "Leakage on path A to a lower pressure level"
     extends Internal.SplitterRatio(final mode = Internal.SplitterModes.A);
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-          coordinateSystem(preserveAspectRatio=false)),
+    annotation (
       Documentation(info="<html>
 <p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is necessary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
 <p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
@@ -39,7 +36,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
   model JunctionRatio "Split-ratio Junction for a bypass"
 
-    extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+    extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
 
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -67,11 +64,8 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
           rotation=90,
           origin={0,-30})));
 
-  protected
-    outer DropOfCommons dropOfCommons;
-
-
     // these are needed by DynamicJunctionN
+  protected
     Real w[2](each unit="1") "regularized weighting factor for specific enthalpy";
     SI.Density rho[2] = {Medium.density(inletA.state),Medium.density(inletB.state)} "density at inlets";
 
@@ -138,12 +132,24 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Line(
-            points={{-100,0},{100,0}},
+          Text(visible=displayInstanceName,
+            extent={{-150,65},{150,25}},
+            textString="%name",
+            textColor={0,0,255}),
+          Line(visible= not displayInstanceName,
+            points={{0,0},{0,100}},
+            color={28,108,200},
+            thickness=0.5),
+          Line(visible= displayInstanceName,
+            points={{0,0},{0,20}},
+            color={28,108,200},
+            thickness=0.5),
+          Line(visible= displayInstanceName,
+            points={{0,70},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{0,100}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(
@@ -153,17 +159,13 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             fillPattern=FillPattern.Solid,
             lineThickness=0.5),
           Text(
-            extent={{-60,100},{-20,60}},
+            extent={{20,120},{60,80}},
             textColor={175,175,175},
             textString="A"),
           Text(
             extent={{80,-20},{120,-60}},
             textColor={175,175,175},
-            textString="B"),
-          Text(
-            extent={{-92,38},{92,8}},
-            textColor={0,0,0},
-            textString="JunctionRatio")}),
+            textString="B")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (likely to dynamic pressure effects).</p>

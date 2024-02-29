@@ -65,7 +65,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100))
     annotation (Placement(transformation(extent={{-46,-66},{-26,-46}})));
   Processes.FlowResistance flowResistance2(
@@ -73,7 +73,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100))
     annotation (Placement(transformation(extent={{16,-66},{36,-46}})));
 equation

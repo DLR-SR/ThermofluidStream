@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model Switch
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
@@ -24,8 +24,7 @@ model Switch
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
 
   Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-130})));
 
   ThermofluidStream.FlowControl.TanValve tanValve(redeclare package Medium = Medium,
                                                   final invertInput=invertInput,
@@ -53,7 +52,6 @@ model Switch
   Real u2 = (if not invertInput then u else 1-u);
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
   constant Real delta(unit="1") = 0.1;
 
 initial equation
@@ -87,10 +85,14 @@ equation
       points={{6.66134e-16,50},{0,50},{0,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-80}}, color={0,0,127}));
-  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-80}}, color={0,0,127}));
+  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-130}},color={0,0,127}));
+  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-130}},color={0,0,127}));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible= displayInstanceName,
+          extent={{-150,-65},{150,-105}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

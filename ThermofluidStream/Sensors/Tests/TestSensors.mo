@@ -40,7 +40,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=1000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-10,64},{10,84}})));
   Processes.FlowResistance flowResistance1(
@@ -51,7 +51,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{-40,-16},{-20,4}})));
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium1,
@@ -293,7 +293,7 @@ model TestSensors "Test model for all sensors."
     l=2,
     L_value=100000,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(extent={{50,-110},{70,-90}})));
   Boundaries.Sink sink2(redeclare package Medium = Medium3)

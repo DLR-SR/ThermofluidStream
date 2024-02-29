@@ -3,7 +3,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayComponentNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -28,7 +28,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
@@ -37,8 +37,6 @@ model SingleSensorX "Sensor for mass fraction of mixture"
     redeclare package Medium = Medium);
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value[Medium.nX](each unit="kg/kg");
 
 initial equation
@@ -65,8 +63,8 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayComponentName,
-          extent={{-150,100},{150,60}},
+        Text(visible=displayInstanceName,
+          extent={{-150,-50},{150,-90}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -93,7 +91,10 @@ equation
         Text(
           extent={{-26,22},{60,69}},
           textColor={175,175,175},
-          textString="%row. mass-fraction")}),
+          textString="%row. mass-fraction"),
+        Line(visible=outputValue,
+          points={{60,0},{78,0}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring mass fraction X. Which row from X to display can be selected by the row parameter.</p>
