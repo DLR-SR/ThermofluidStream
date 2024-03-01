@@ -1,4 +1,4 @@
-﻿within ThermofluidStream;
+within ThermofluidStream;
 model TestPump_AtReference
   extends Modelica.Icons.Example;
     replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
