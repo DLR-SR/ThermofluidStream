@@ -36,7 +36,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
   model JunctionRatio "Split-ratio Junction for a bypass"
 
-    extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
+    extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
 
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"

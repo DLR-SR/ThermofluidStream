@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for undirected discretized heat exchangers"
   extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
 
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));

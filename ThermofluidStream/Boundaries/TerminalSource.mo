@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries;
 model TerminalSource "Source that imposes m_flow = 0"
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"

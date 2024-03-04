@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectRearRear "Undirected connector with rear and rear"
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium of the connection"

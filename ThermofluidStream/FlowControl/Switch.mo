@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model Switch
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
 
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium

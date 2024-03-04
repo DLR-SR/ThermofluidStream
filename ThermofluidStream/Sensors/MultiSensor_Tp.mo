@@ -3,7 +3,7 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"

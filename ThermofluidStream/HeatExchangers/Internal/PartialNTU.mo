@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
 

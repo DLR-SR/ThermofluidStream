@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model JunctionNM "Junction with N inlets and M outlets"
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually;  //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>

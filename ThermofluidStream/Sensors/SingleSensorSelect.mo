@@ -3,7 +3,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
