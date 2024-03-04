@@ -6,15 +6,15 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50)) annotation (Placement(transformation(extent={{-20,-90},{-40,-70}})));
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50)) annotation (Placement(transformation(extent={{-20,-70},{-40,-50}})));
   Topology.JunctionMN junctionMN(
     redeclare package Medium = MediumA,
     N=1,
     M=nCells) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
-        origin={50,-80})));
-  Topology.JunctionMN junctionMN1(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,-90},{-80,-70}})));
+        origin={50,-60})));
+  Topology.JunctionMN junctionMN1(redeclare package Medium = MediumA, N=nCells) annotation (Placement(transformation(extent={{-60,-70},{-80,-50}})));
 
 initial equation
 
@@ -31,68 +31,95 @@ equation
   //Connecting equations (to interconnect pipes)
 
   //Fluid side B
-  connect(rearB, thermalElementB[1].rear) annotation (Line(points={{-100,80},{-62,80},{-62,80},{-10,80}},
+  connect(rearB, thermalElementB[1].rear) annotation (Line(points={{-100,60},{-62,60},{-62,60},{-10,60}},
                                                                                         color={28,108,200}));
   for i in 1:nCells - 1 loop
     connect(thermalElementB[i].fore, thermalElementB[i + 1].rear);
   end for;
-  connect(thermalElementB[nCells].fore, foreB) annotation (Line(points={{10,80},{62,80},{62,80},{100,80}},
+  connect(thermalElementB[nCells].fore, foreB) annotation (Line(points={{10,60},{62,60},{62,60},{100,60}},
                                                                                                color={28,108,200}));
 
-  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{4.44089e-16,-70.2},{4.44089e-16,-40},{0,-40},{0,-10}}, color={191,0,0}));
-  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,70.2},{4.44089e-16,40},{0,40},{0,10}}, color={191,0,0}));
+  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{4.44089e-16,-50.2},{4.44089e-16,-40},{0,-40},{0,-10}}, color={191,0,0}));
+  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,50.2},{4.44089e-16,40},{0,40},{0,10}}, color={191,0,0}));
 
   //Fluid side A
   connect(junctionMN1.fores[1], foreA) annotation (Line(
-      points={{-80,-80},{-100,-80}},
+      points={{-80,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.rears[1], rearA) annotation (Line(
-      points={{60,-80},{100,-80}},
+      points={{60,-60},{100,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores, thermalElementA.rear) annotation (Line(
-      points={{40,-80},{10,-80}},
+      points={{40,-60},{10,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA.rear, thermalElementA.fore) annotation (Line(
-      points={{-20,-80},{-10,-80}},
+      points={{-20,-60},{-10,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA.fore, junctionMN1.rears) annotation (Line(
-      points={{-40,-80},{-60,-80}},
+      points={{-40,-60},{-60,-60}},
       color={28,108,200},
       thickness=0.5));
 
   annotation (Icon(graphics={
+        Line(visible=not displayInstanceName,
+          points={{0,78},{0,150}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible=displayInstanceName,
+          points={{0,125},{0,150}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible=displayInstanceName,
+          points={{0,78},{0,90}},
+          color={28,108,200},
+          thickness=0.5),
         Text(
-          extent={{-72,76},{-60,64}},
+          extent={{-66,54},{-54,42}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-42,76},{-30,64}},
+          extent={{-40,54},{-28,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-10,76},{2,64}},
+          extent={{-12,54},{0,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{20,76},{32,64}},
+          extent={{16,54},{28,42}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{50,76},{62,64}},
+          extent={{42,54},{54,42}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{10,134},{50,94}},
+          extent={{-60,180},{-20,140}},
           textColor={175,175,175},
           textString="A"),
         Text(
           extent={{80,-94},{120,-134}},
           textColor={175,175,175},
-          textString="B")}), Documentation(info="<html>
+          textString="B"),
+       Line(
+         points={{-12,0},{10,4.89858e-16}},
+         thickness=0.5,
+         color={28,108,200},
+          origin={0,-88},
+          rotation=90),
+       Line(
+         points={{-100,-60},{-76,-60}},
+         thickness=0.5,
+         color={28,108,200}),
+       Line(
+         points={{76,-60},{100,-60}},
+         thickness=0.5,
+         color={28,108,200})}),
+                             Documentation(info="<html>
 <p>The undirected cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>Side A splits the fluid stream into nCells substreams that are parallel. The flow-resistance is chosen to be very small and only ensures numerical stability of the parallel streams. By default, it is a linear-quadratic flow resistance, so the mass flow through each of the parallel streams is the same. If exchanged for flow-resistance that depends on media properties (e.g. a laminar-turbulent) the mass flow on the paths will be different. For side B the elements are serial and numbered 1 to nCells in the flow direction. The elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a cross-flow configuration. </p>
 <p>The conduction elements are computing a heat transfer coefficient between their heatport and the fluid contained. They are replaceable with a choice between a single-phase and a two-phase version, both can be further parametrized. Although the single-phase version works for two-phase media (not the other way around), using the two-phase one for two-phase media enables to set different heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state of the medium. </p>

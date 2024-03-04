@@ -90,13 +90,13 @@ public
         rotation=90,
         origin={0,0})));
 
-  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
-  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));
+  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-70},{-10,-50}})));
+  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,70},{10,50}})));
 
-  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-100},{80,-60}}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,-100},{80,-60}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-100},{-120,-60}}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,-100},{-120,-60}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,60},{-80,100}}), iconTransformation(extent=if crossFlow then {{120,-100},{80,-60}} else {{-120,60},{-80,100}})));
-  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,60},{120,100}}), iconTransformation(extent=if crossFlow then {{-80,-100},{-120,-60}} else {{80,60},{120,100}})));
+  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent=if crossFlow then {{-20,175},{20,135}} else {{120,-80},{80,-40}})));
+  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent=if crossFlow then {{-20,-80},{20,-120}} else {{-80,-80},{-120,-40}})));
+  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent=if crossFlow then {{120,-80},{80,-40}} else {{-120,40},{-80,80}})));
+  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent=if crossFlow then {{-80,-80},{-120,-40}} else {{80,40},{120,80}})));
 
 equation
   //Summary record
@@ -181,7 +181,7 @@ disabled by default.
 </p>
 </html>"), Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,150},{150,110}},
+          extent={{-150,130},{150,90}},
           textString="%name",
           textColor={0,0,255})}));
 end PartialDiscretizedHEX;

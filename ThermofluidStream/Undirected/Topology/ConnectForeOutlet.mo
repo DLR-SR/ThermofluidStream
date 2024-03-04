@@ -58,7 +58,7 @@ equation
           extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
-        Line(
+        Line(visbile=not useDefaultStateAsRear,
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5), Line(

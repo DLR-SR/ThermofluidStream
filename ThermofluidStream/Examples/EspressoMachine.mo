@@ -121,7 +121,7 @@ Medium model for water.
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={116,-50})));
+        origin={110,-50})));
   FlowControl.TanValve tanValve2(
     redeclare package Medium = Water,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -200,7 +200,7 @@ Medium model for water.
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
-        origin={80,-14})));
+        origin={80,-20})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Water,
     outputTemperature=false,
@@ -253,7 +253,7 @@ Medium model for water.
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-24,120})));
+        origin={-30,120})));
   Modelica.Blocks.Continuous.LimPID PID1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=1,
@@ -336,7 +336,7 @@ Medium model for water.
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
-        origin={-94,120})));
+        origin={-88,120})));
   Sensors.MultiSensor_Tp multiSensor_Tp3(
     redeclare package Medium = Water,
     outputTemperature=false,
@@ -368,7 +368,7 @@ Medium model for water.
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-54,-90})));
+        origin={-60,-90})));
   inner DropOfCommons dropOfCommons(
     assertionLevel = AssertionLevel.warning,
     m_flow_reg=0.5e-5,
@@ -410,7 +410,7 @@ equation
   connect(boiler.heatport_HX, hex.heatPort)
     annotation (Line(points={{-48,10},{-28,10}}, color={191,0,0}));
   connect(singleFlowSensor.outlet, tanValve2.inlet) annotation (Line(
-      points={{116,-60},{116,-66},{110,-66},{110,-70}},
+      points={{110,-60},{110,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(tanValve2.outlet, coffeeStrainer.inlet) annotation (Line(
@@ -426,7 +426,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterT2_1.outletB, singleFlowSensor.inlet) annotation (Line(
-      points={{110,-30},{110,-36},{110,-40},{116,-40}},
+      points={{110,-30},{110,-40}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, junctionT2_1.inletB) annotation (Line(
@@ -445,7 +445,7 @@ equation
     annotation (Line(points={{19,0},{10,0},{10,-10}}, color={0,0,127}));
   connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{14,33},{26,33},{26,34},{38.8,34}},
                                                                                      color={0,0,127}));
-  connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-8},{72,-8}},   color={0,0,127}));
+  connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{72,-14}}, color={0,0,127}));
   connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{119.8,20}}, color={191,0,0}));
   connect(splitterT2_1.inlet, conductionElement1.outlet)
     annotation (Line(
@@ -473,11 +473,11 @@ equation
   connect(environment.port, thermalResistor.port_b)
     annotation (Line(points={{190,20},{180,20}}, color={191,0,0}));
   connect(tanValve1.outlet, singleFlowSensor2.inlet) annotation (Line(
-      points={{-30,140},{-30,136},{-30,130},{-24,130}},
+      points={{-30,140},{-30,130}},
       color={28,108,200},
       thickness=0.5));
   connect(steamSink1.inlet, singleFlowSensor2.outlet) annotation (Line(
-      points={{-30,80},{-30,96},{-30,110},{-24,110}},
+      points={{-30,80},{-30,110}},
       color={28,108,200},
       thickness=0.5));
   connect(steam_valve.y, firstOrder1.u)
@@ -528,11 +528,11 @@ equation
   connect(tanValve6.u,firstOrder7. y) annotation (Line(points={{-96,150},{-109,150}},
                                      color={0,0,127}));
   connect(tanValve6.outlet,singleFlowSensor3. inlet) annotation (Line(
-      points={{-88,140},{-88,136},{-88,130},{-94,130}},
+      points={{-88,140},{-88,130}},
       color={28,108,200},
       thickness=0.5));
   connect(waterSink.inlet, singleFlowSensor3.outlet) annotation (Line(
-      points={{-88,80},{-88,96},{-88,110},{-94,110}},
+      points={{-88,80},{-88,110}},
       color={28,108,200},
       thickness=0.5));
   connect(steam_valve1.y, firstOrder7.u)
@@ -543,15 +543,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp3.inlet, singleFlowSensor2.outlet) annotation (Line(
-      points={{-24,104},{-24,104},{-24,110}},
+      points={{-24,104},{-30,104},{-30,110}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp4.inlet, singleFlowSensor3.outlet) annotation (Line(
-      points={{-96,104},{-94,104},{-94,110}},
+      points={{-96,104},{-88,104},{-88,110}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality.inlet, singleFlowSensor3.outlet) annotation (Line(
-      points={{-96,94},{-94,94},{-94,110}},
+      points={{-96,94},{-88,94},{-88,110}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, coffeeStrainer.inlet) annotation (Line(
@@ -559,11 +559,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, singleFlowSensor2.outlet) annotation (Line(
-      points={{-24,94},{-24,94},{-24,110}},
+      points={{-24,94},{-30,94},{-30,110}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT2_2.outletA, singleFlowSensor5.inlet) annotation (Line(
-      points={{-60,-110},{-60,-106},{-60,-100},{-54,-100}},
+      points={{-60,-110},{-60,-100}},
       color={28,108,200},
       thickness=0.5));
   connect(coffeeStrainer.outlet, splitterT1_1.inlet) annotation (Line(
@@ -587,12 +587,12 @@ equation
       thickness=0.5));
   connect(singleFlowSensor5.outlet, flowResistance.inlet)
     annotation (Line(
-      points={{-54,-80},{-54,-76},{-60,-76},{-60,-70}},
+      points={{-60,-80},{-60,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT2_1.outletA, singleFlowSensor1.inlet)
     annotation (Line(
-      points={{100,-20},{96,-20},{96,-14},{90,-14}},
+      points={{100,-20},{90,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(pump.inlet, flowResistance4.outlet) annotation (Line(
@@ -601,7 +601,7 @@ equation
       thickness=0.5));
   connect(flowResistance4.inlet, singleFlowSensor1.outlet)
     annotation (Line(
-      points={{60,-20},{66,-20},{66,-14},{70,-14}},
+      points={{60,-20},{70,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(conductionElement1.inlet, hex.outlet)

@@ -194,8 +194,8 @@ model TestIcons
   Undirected.Processes.FlowResistance flowResistance1 annotation (Placement(transformation(extent={{120,-440},{140,-420}})));
   Undirected.Processes.TransportDelay transportDelay1 annotation (Placement(transformation(extent={{160,-440},{180,-420}})));
   Undirected.Processes.ConductionElement conductionElement1 annotation (Placement(transformation(extent={{200,-440},{220,-420}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX1 annotation (Placement(transformation(extent={{280,-440},{300,-420}})));
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1 annotation (Placement(transformation(extent={{320,-440},{340,-420}})));
+  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX1 annotation (Placement(transformation(extent={{320,-440},{340,-420}})));
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1 annotation (Placement(transformation(extent={{280,-440},{300,-420}})));
   Undirected.FlowControl.BasicControlValve basicControlValve1 annotation (Placement(transformation(extent={{-500,-580},{-480,-560}})));
   Undirected.FlowControl.SpecificValveType specificValveType1 annotation (Placement(transformation(extent={{-460,-580},{-440,-560}})));
   Undirected.FlowControl.TanValve tanValve1 annotation (Placement(transformation(extent={{-420,-580},{-400,-560}})));
@@ -205,15 +205,15 @@ model TestIcons
     displayInstanceName=false,
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-460,-620},{-440,-600}})));
-  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{160,-542},{180,-522}})));
-  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{200,-542},{220,-522}})));
-  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{240,-542},{260,-522}})));
-  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{160,-572},{180,-552}})));
-  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{200,-572},{220,-552}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{120,-582},{140,-562}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{160,-582},{180,-562}})));
+  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{200,-582},{220,-562}})));
+  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{120,-612},{140,-592}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{160,-612},{180,-592}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
     outputTemperature=true,
     outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{240,-572},{260,-552}})));
+    outputMassFlowRate=true) annotation (Placement(transformation(extent={{200,-612},{220,-592}})));
   Topology.Variants.Trash.SplitterT1v3 splitterT1v3_1 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -239,6 +239,12 @@ model TestIcons
                                                     annotation (Placement(transformation(extent={{0,-520},{20,-500}})));
   Undirected.Topology.JunctionRRRF junctionRRRF1(displayInstanceName=false)
                                                 annotation (Placement(transformation(extent={{40,-520},{60,-500}})));
+  HeatExchangers.DiscretizedCrossFlowHEX                   discretizedCrossFlowHEX2(displayInstanceName=false)
+                                                                                   annotation (Placement(transformation(extent={{-280,-260},{-260,-240}})));
+  HeatExchangers.DiscretizedCrossFlowHEX_FR                   discretizedCrossFlowHEX_FR1(displayInstanceName=false)
+                                                                                         annotation (Placement(transformation(extent={{-200,-260},{-180,-240}})));
+  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX3(displayInstanceName=false)
+                                                                             annotation (Placement(transformation(extent={{360,-440},{380,-420}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-780},{420,520}}), graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -279,7 +285,7 @@ model TestIcons
           textColor={28,108,200},
           textString="Processes"),
         Rectangle(
-          extent={{-120,-240},{-300,-140}},
+          extent={{-120,-280},{-300,-140}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
@@ -370,7 +376,7 @@ are marked with the red square?"),
           textColor={28,108,200},
           textString="Mark everything exept interfaces to check if displayInstanceName works"),
         Text(
-          extent={{-540,-280},{420,-340}},
+          extent={{-540,-304},{420,-364}},
           textColor={28,108,200},
           textString="Undirected"),
         Text(
@@ -406,11 +412,11 @@ are marked with the red square?"),
           textColor={28,108,200},
           textString="Processes"),
         Rectangle(
-          extent={{360,-460},{260,-400}},
+          extent={{400,-460},{260,-400}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{260,-360},{360,-400}},
+          extent={{260,-378},{400,-400}},
           textColor={28,108,200},
           textString="HeatExchangers"),
         Text(
@@ -539,11 +545,11 @@ are marked with the red square?"),
           textColor={28,108,200},
           textString="i would change that"),
         Rectangle(
-          extent={{280,-600},{140,-500}},
+          extent={{240,-640},{100,-540}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{140,-480},{280,-500}},
+          extent={{100,-520},{240,-540}},
           textColor={28,108,200},
           textString="Sensors")}));
 end TestIcons;

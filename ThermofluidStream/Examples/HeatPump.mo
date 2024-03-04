@@ -37,7 +37,7 @@ model HeatPump
     k_wall=150) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-80,-82})));
+        origin={-80,-80})));
   Processes.Compressor compressor(
     redeclare package Medium = Medium,
     L=1e6,
@@ -75,13 +75,13 @@ model HeatPump
     p_start=420000,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.h,
     h_0=220e3)
-    annotation (Placement(transformation(extent={{-120,64},{-140,84}})));
+    annotation (Placement(transformation(extent={{-120,66},{-140,86}})));
   Boundaries.Sink sink(redeclare package Medium = Air)
-    annotation (Placement(transformation(extent={{-20,80},{0,100}})));
+    annotation (Placement(transformation(extent={{-20,78},{0,98}})));
   Boundaries.Source source(redeclare package Medium = Air,
     T0_par=293.15,
     p0_par=100000)
-    annotation (Placement(transformation(extent={{-160,80},{-140,100}})));
+    annotation (Placement(transformation(extent={{-160,78},{-140,98}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Air,
     r=1,
@@ -93,7 +93,7 @@ model HeatPump
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-110,90})));
+        origin={-110,88})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Air,
     r=1,
@@ -112,7 +112,7 @@ model HeatPump
     omega_from_input=true,
     redeclare function dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
-    annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
+    annotation (Placement(transformation(extent={{-60,98},{-40,78}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -122,7 +122,7 @@ model HeatPump
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
-        origin={-110,-90})));
+        origin={-110,-86})));
   Boundaries.Source source1(
     redeclare package Medium = Air,
     temperatureFromInput=true,
@@ -137,7 +137,7 @@ model HeatPump
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-150,-90})));
+        origin={-150,-86})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=250)
     annotation (Placement(transformation(extent={{-70,-120},{-90,-100}})));
   Modelica.Blocks.Sources.Step step1(
@@ -172,7 +172,7 @@ model HeatPump
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
     digits=4,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps) annotation (Placement(transformation(extent={{-20,78},{-40,58}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps) annotation (Placement(transformation(extent={{-20,86},{-40,66}})));
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
@@ -297,46 +297,46 @@ equation
       thickness=0.5));
   connect(flowResistance2.outlet, evaporator.inletA)
     annotation (Line(
-      points={{-50,-120},{-60,-120},{-60,-90},{-70,-90}},
+      points={{-50,-120},{-60,-120},{-60,-86},{-70,-86}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletA, fan1.inlet) annotation (Line(
-      points={{-90.2,-90},{-90,-90},{-90,-90},{-100,-90}},
+      points={{-90,-86},{-100,-86}},
       color={28,108,200},
       thickness=0.5));
   connect(fan1.outlet, sink1.inlet) annotation (Line(
-      points={{-120,-90},{-140,-90}},
+      points={{-120,-86},{-140,-86}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, flowResistance1.inlet) annotation (Line(
-      points={{-140,90},{-120,90}},
+      points={{-140,88},{-120,88}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, condenser.inletA) annotation (Line(
-      points={{-100,90},{-90,90},{-90,90},{-90,90}},
+      points={{-100,88},{-90,88}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, fan.inlet) annotation (Line(
-      points={{-69.8,90},{-70,90},{-70,90},{-60,90}},
+      points={{-70,88},{-60,88}},
       color={28,108,200},
       thickness=0.5));
   connect(fan.outlet, sink.inlet) annotation (Line(
-      points={{-40,90},{-20,90}},
+      points={{-40,88},{-20,88}},
       color={28,108,200},
       thickness=0.5));
   connect(realExpression2.y, fan1.omega_input)
-    annotation (Line(points={{-91,-110},{-110,-110},{-110,-100}},
+    annotation (Line(points={{-91,-110},{-110,-110},{-110,-96}},
                                                             color={0,0,127}));
   connect(condenser.outletB, receiver.inlet) annotation (Line(
-      points={{-90.2,74},{-94,74},{-94,74},{-120,74}},
+      points={{-90,76},{-120,76}},
       color={28,108,200},
       thickness=0.5));
   connect(receiver.outlet, controlValve.inlet) annotation (Line(
-      points={{-140,74},{-160,74},{-160,10}},
+      points={{-140,76},{-160,76},{-160,10}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, receiver.inlet) annotation (Line(
-      points={{-104,44},{-110,44},{-110,74},{-120,74}},
+      points={{-104,44},{-110,44},{-110,76},{-120,76}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality4.inlet, controlValve.inlet) annotation (Line(
@@ -348,23 +348,23 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp2.inlet, receiver.inlet) annotation (Line(
-      points={{-104,54},{-110,54},{-110,74},{-120,74}},
+      points={{-104,54},{-110,54},{-110,76},{-120,76}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletB, singleFlowSensor.outlet) annotation (Line(
-      points={{-70,74},{-66,74},{-66,74},{-40,74}},
+      points={{-70,76},{-40,76}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletB, accumulator.inlet) annotation (Line(
-      points={{-69.8,-74},{-66,-74},{-66,-74},{-40,-74}},
+      points={{-70,-74},{-40,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp3.inlet, singleFlowSensor.outlet) annotation (Line(
-      points={{-56,54},{-62,54},{-62,74},{-40,74}},
+      points={{-56,54},{-62,54},{-62,76},{-40,76}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, singleFlowSensor.outlet) annotation (Line(
-      points={{-56,44},{-62,44},{-62,74},{-40,74}},
+      points={{-56,44},{-62,44},{-62,76},{-40,76}},
       color={28,108,200},
       thickness=0.5));
   connect(accumulator.outlet, compressor.inlet) annotation (Line(
@@ -389,12 +389,12 @@ equation
       thickness=0.5));
   connect(singleSensorSelect2.inlet, sink.inlet)
     annotation (Line(
-      points={{-10,110},{-28,110},{-28,90},{-20,90}},
+      points={{-10,110},{-28,110},{-28,88},{-20,88}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, flowResistance1.inlet)
     annotation (Line(
-      points={{-120,110},{-126,110},{-126,90},{-120,90}},
+      points={{-120,110},{-126,110},{-126,88},{-120,88}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect4.inlet, flowResistance2.inlet)
@@ -404,7 +404,7 @@ equation
       thickness=0.5));
   connect(singleSensorSelect5.inlet, sink1.inlet)
     annotation (Line(
-      points={{-124,-118},{-130,-118},{-130,-90},{-140,-90}},
+      points={{-124,-118},{-130,-118},{-130,-86},{-140,-86}},
       color={28,108,200},
       thickness=0.5));
   connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}}, color={191,0,0}));
@@ -426,7 +426,7 @@ equation
       thickness=0.5));
   connect(compressor.outlet, singleFlowSensor.inlet)
     annotation (Line(
-      points={{0,10},{0,74},{-20,74}},
+      points={{0,10},{0,76},{-20,76}},
       color={28,108,200},
       thickness=0.5));
   connect(controlValve.outlet, evaporator.inletB)
@@ -438,16 +438,16 @@ equation
   connect(step.y, PI1.u_s) annotation (Line(points={{147,0},{126,0}}, color={0,0,127}));
   connect(torque.flange, compressor.flange) annotation (Line(points={{24,0},{10,0}}, color={0,0,0}));
   connect(PI2.y, torque.tau) annotation (Line(points={{61,0},{46,0}}, color={0,0,127}));
-  connect(compressor.output_val, PI2.u_m) annotation (Line(points={{10,-8},{26,-8},{26,-26},{72,-26},{72,-12}}, color={0,0,127}));
+  connect(compressor.output_val, PI2.u_m) annotation (Line(points={{11,6},{26,6},{26,-26},{72,-26},{72,-12}},   color={0,0,127}));
   connect(PI2.u_s, PI1.y) annotation (Line(points={{84,0},{103,0}}, color={0,0,127}));
   connect(step1.y, firstOrder2.u) annotation (Line(points={{-101,140},{-80,140}},
                                                                                color={0,0,127}));
-  connect(fan.omega_input, firstOrder2.y) annotation (Line(points={{-50,100},{-50,140},{-57,140}},
+  connect(fan.omega_input, firstOrder2.y) annotation (Line(points={{-50,98},{-50,140},{-57,140}},
                                                                                                 color={0,0,127}));
   connect(step2.y, source1.T0_var) annotation (Line(points={{41,-126},{22,-126},{22,-120},{2,-120}},
                                                                                  color={0,0,127}));
-  connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{10,110},{114,110},{114,12}}, color={0,0,127}));
-  connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-76,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
+  connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{8.2,110},{114,110},{114,12}},color={0,0,127}));
+  connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-74,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
   annotation (experiment(StopTime=2500, Tolerance=1e-6, Interval=2.5),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-160},{200,160}})),
