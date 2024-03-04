@@ -1,4 +1,4 @@
-within ThermofluidStream.Topology.Variants.Trash;
+﻿within ThermofluidStream.Topology.Variants.Trash;
 model SplitterT1v3 "Combined Version (3) of SplitterT1"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
@@ -56,10 +56,9 @@ equation
           color={28,108,200},
           thickness=0.5),
         Text(visible=d2name,
-          extent={{-150,20},{150,-20}},
+          extent={{-150,-65},{150,-25}},
           textString="%name",
           textColor={0,0,255},
-          origin={60,0},
           rotation=90),
         Line(
           points={{-100,0},{0,0}},

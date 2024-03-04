@@ -48,7 +48,7 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
   Text(visible=displayInstanceName,
-          extent={{-150,40},{150,80}},
+          extent={{-150,25},{150,65}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -74,7 +74,7 @@ equation
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,-60},{120,-20}},
+          extent={{-120,-60},{-80,-20}},
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

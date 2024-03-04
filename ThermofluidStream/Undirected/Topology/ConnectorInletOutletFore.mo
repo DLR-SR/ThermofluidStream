@@ -99,7 +99,7 @@ equation
   connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,-4}}, color={162,29,33}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
         Line(

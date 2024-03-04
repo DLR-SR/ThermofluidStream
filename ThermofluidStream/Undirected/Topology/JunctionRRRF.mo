@@ -77,10 +77,6 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{0,100}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
           points={{0,-100},{0,0}},
           color={28,108,200},
           thickness=0.5),

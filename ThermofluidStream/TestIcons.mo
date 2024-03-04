@@ -205,15 +205,15 @@ model TestIcons
     displayInstanceName=false,
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-460,-620},{-440,-600}})));
-  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{-360,-560},{-340,-540}})));
-  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{-320,-560},{-300,-540}})));
-  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{-280,-560},{-260,-540}})));
-  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{-360,-590},{-340,-570}})));
-  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{-320,-590},{-300,-570}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{160,-542},{180,-522}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{200,-542},{220,-522}})));
+  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{240,-542},{260,-522}})));
+  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{160,-572},{180,-552}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{200,-572},{220,-552}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
     outputTemperature=true,
     outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{-280,-590},{-260,-570}})));
+    outputMassFlowRate=true) annotation (Placement(transformation(extent={{240,-572},{260,-552}})));
   Topology.Variants.Trash.SplitterT1v3 splitterT1v3_1 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -231,6 +231,14 @@ model TestIcons
         rotation=90,
         origin={-330,70})));
   Topology.Variants.JunctionT1v3 junctionT1v3 annotation (Placement(transformation(extent={{-380,20},{-360,40}})));
+  Undirected.Topology.JunctionRFFF junctionRFFF1(displayInstanceName=false)
+                                                annotation (Placement(transformation(extent={{-80,-520},{-60,-500}})));
+  Undirected.Topology.JunctionRRFF junctionRRFF1(displayInstanceName=false)
+                                                annotation (Placement(transformation(extent={{-40,-520},{-20,-500}})));
+  Undirected.Topology.JunctionRRFF2 junctionRRFF2_2(displayInstanceName=false)
+                                                    annotation (Placement(transformation(extent={{0,-520},{20,-500}})));
+  Undirected.Topology.JunctionRRRF junctionRRRF1(displayInstanceName=false)
+                                                annotation (Placement(transformation(extent={{40,-520},{60,-500}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-780},{420,520}}), graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -382,7 +390,7 @@ are marked with the red square?"),
           textColor={28,108,200},
           textString="Boundaries"),
         Rectangle(
-          extent={{80,-502},{-260,-400}},
+          extent={{80,-542},{-260,-400}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
@@ -529,5 +537,13 @@ are marked with the red square?"),
         Text(
           extent={{-660,80},{-560,60}},
           textColor={28,108,200},
-          textString="i would change that")}));
+          textString="i would change that"),
+        Rectangle(
+          extent={{280,-600},{140,-500}},
+          lineColor={28,108,200},
+          lineThickness=1),
+        Text(
+          extent={{140,-480},{280,-500}},
+          textColor={28,108,200},
+          textString="Sensors")}));
 end TestIcons;

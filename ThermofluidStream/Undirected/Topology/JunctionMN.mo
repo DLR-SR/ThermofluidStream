@@ -90,7 +90,7 @@ equation
   end for;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
         Line(
