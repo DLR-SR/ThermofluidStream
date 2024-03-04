@@ -47,6 +47,10 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  Text(visible=displayInstanceName,
+          extent={{-150,40},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},

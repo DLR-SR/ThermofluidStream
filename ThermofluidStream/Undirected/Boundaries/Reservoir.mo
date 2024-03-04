@@ -15,7 +15,10 @@ model Reservoir "Model of a reservoir"
   Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,100})));
+        origin={0,100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,145})));
 
   SI.Height height;
 
@@ -50,7 +53,7 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-       Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127}),
+        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127}),
        Ellipse(
           extent={{-54,-26},{54,26}},
           lineColor={28,108,200},

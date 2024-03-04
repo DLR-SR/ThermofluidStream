@@ -179,5 +179,9 @@ fluid long-term. While this enforces long-term conservation of energy, it
 changes the medium-/short-term dynamics of the system and is, therefore,
 disabled by default.
 </p>
-</html>"));
+</html>"), Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,150},{150,110}},
+          textString="%name",
+          textColor={0,0,255})}));
 end PartialDiscretizedHEX;

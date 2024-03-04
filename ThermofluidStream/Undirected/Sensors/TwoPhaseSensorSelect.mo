@@ -59,6 +59,10 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-40},{150,-80}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{-54,84},{66,24}},
           lineColor={0,0,0},
@@ -84,7 +88,10 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid)}),
+          fillPattern=FillPattern.Solid),
+        Line(visible=outputValue,
+          points={{60,60},{78,60}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected sensor for a vapor quality. It must be separate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>

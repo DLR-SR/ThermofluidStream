@@ -52,6 +52,7 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127}),
        Ellipse(
           extent={{-54,-26},{54,26}},
           lineColor={28,108,200},
@@ -77,8 +78,7 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid),
-        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127})}),
+          fillPattern=FillPattern.Solid)}),
             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>

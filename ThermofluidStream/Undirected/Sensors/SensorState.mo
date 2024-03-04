@@ -10,35 +10,42 @@ model SensorState "Sensor for whole state"
         </html>"));
 
   ThermofluidStream.Interfaces.StateOutput state_out(redeclare package Medium = Medium) "Measured value [variable]"
-    annotation (Placement(transformation(extent={{70,70},{90,90}}), iconTransformation(extent={{70,70},{90,90}})));
+    annotation (Placement(transformation(extent={{70,50},{90,70}}), iconTransformation(extent={{70,50},{90,70}})));
 
 equation
 
   state_out.state = state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-40},{150,-80}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
-          extent={{-54,104},{66,44}},
+          extent={{-54,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
+        Line(points={{0,34},{0,0}},    color={0,0,0}),
         Rectangle(
-          extent={{-60,110},{60,50}},
+          extent={{-60,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,110},{60,50}},
+          extent={{-60,90},{60,30}},
           textColor={28,108,200},
           textString="state"),
-        Line(points={{0,34},{0,0}},    color={0,0,0}),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid)}),
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{60,60},{78,60}},
+          color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the full state.</p>

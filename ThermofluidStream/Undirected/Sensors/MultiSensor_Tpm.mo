@@ -1,9 +1,44 @@
 within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
-  extends Internal.PartialSensor;
+  extends ThermofluidStream.Utilities.DisplayInstanceNameIndividually; //Define the display of the instance name for your component.
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (choicesAllMatching=true, Documentation(
+        info="<html>
+<p>Replaceable medium package for the sensor.</p>
+</html>"));
+
+  parameter Integer digits(min=0) = 1 "Number of displayed digits"
+    annotation(Dialog(group="Sensor display"));
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
+    annotation(Dialog(tab="Advanced", group="Regularization"));
+
+  Interfaces.Rear rear(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-100}),iconTransformation(extent={{-120,-120},{-80,-80}})));
+  Interfaces.Fore fore(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-100}),iconTransformation(extent={{80,-120},{120,-80}})));
+
+/*  function regStepSt = Undirected.Internal.regStepState (
+    redeclare package Medium = Medium) "RegStep function for a state"
+    annotation (Documentation(info="<html>
+<p><span style=\"font-family: Courier New;\">RegStep function for a state. The medium of the sensor is used and given to the function.</span></p>
+</html>"));
+*/
+  Medium.ThermodynamicState state = Medium.setState_phX(p_reg, h_reg, Xi_reg); //= regStepSt(rear.m_flow, rear.state_forwards, rear.state_rearwards, m_flow_reg);
+
+protected
+ SI.Pressure p_reg= Undirected.Internal.regStep(rear.m_flow, Medium.pressure(rear.state_forwards), Medium.pressure(rear.state_rearwards), m_flow_reg);
+  SI.SpecificEnthalpy h_reg = Undirected.Internal.regStep(rear.m_flow, Medium.specificEnthalpy(rear.state_forwards), Medium.specificEnthalpy(rear.state_rearwards), m_flow_reg);
+  Medium.MassFraction Xi_reg[Medium.nXi];
+
+  Medium.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(rear.state_forwards);
+  Medium.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(rear.state_rearwards);
+
+
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
+public
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit="K" "Unit for the temperature output"
     annotation (
     Dialog(group="Units"),
@@ -37,14 +72,14 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
 
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured temperature [variable]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,60}),
-        iconTransformation(extent={{70,70},{90,90}})));
+        iconTransformation(extent={{70,50},{90,70}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured pressure [variable]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={82,20}),
-        iconTransformation(extent={{72,10},{92,30}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={82,0}),
+        iconTransformation(extent={{72,-10},{92,10}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate
     "Measured mass-flow [kg/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-60}),
-        iconTransformation(extent={{72,-50},{92,-30}})));
+        iconTransformation(extent={{72,-70},{92,-50}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -67,6 +102,16 @@ initial equation
   end if;
 
 equation
+  for i in 1:Medium.nXi loop
+    Xi_reg[i] = Undirected.Internal.regStep(rear.m_flow, Xi_forwards[i], Xi_rearwards[i], m_flow_reg);
+  end for;
+
+  fore.state_forwards = rear.state_forwards;
+  rear.state_rearwards = fore.state_rearwards;
+  fore.r = rear.r;
+  fore.m_flow + rear.m_flow = 0;
+
+
   if temperatureUnit == "K" then
     direct_T =Medium.temperature(state);
   elseif temperatureUnit == "degC" then
@@ -96,54 +141,71 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-160},{150,-120}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
-          extent={{-54,94},{66,-66}},
+          extent={{-54,74},{66,-86}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-60,100},{60,-60}},
+          extent={{-60,80},{60,-80}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,-60},{0,-80}}, color={0,0,0}),
-        Ellipse(
-          extent={{-6,-74},{6,-86}},
-          lineColor={28,108,200},
-          fillColor={170,213,255},
-          fillPattern=FillPattern.Solid,
-          lineThickness=0.5),
+        Line(points={{0,-80},{0,-100}},color={0,0,0}),
         Text(
-          extent={{-60,100},{60,50}},
+          extent={{-60,80},{60,30}},
           textColor={28,108,200},
           textString=DynamicSelect("T", String(
                   T,
                   format="1."+String(digits)+"f"))),
         Text(
-          extent={{-60,50},{60,0}},
+          extent={{-60,30},{60,-20}},
           textColor={28,108,200},
           textString=DynamicSelect("p", String(
                   p,
                   format="1."+String(digits)+"f"))),
         Text(
-          extent={{-60,0},{60,-50}},
+          extent={{-60,-20},{60,-70}},
           textColor={28,108,200},
           textString=DynamicSelect("m", String(
                   m_flow,
                   format="1."+String(digits)+"f"))),
         Text(
-          extent={{-120,100},{-60,48}},
+          extent={{-120,80},{-60,28}},
           textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
-          extent={{-120,52},{-60,0}},
+          extent={{-120,32},{-60,-20}},
           textColor={175,175,175},
           textString="%pressureUnit"),
         Text(
-          extent={{-120,0},{-60,-52}},
+          extent={{-120,-20},{-60,-72}},
           textColor={175,175,175},
-          textString="%massFlowUnit")}),
+          textString="%massFlowUnit"),
+        Line(
+          points={{-100,-100},{100,-100}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-6,-94},{6,-106}},
+          lineColor={28,108,200},
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid,
+          lineThickness=0.5),
+        Line(visible=outputTemperature,
+          points={{60,60},{78,60}},
+          color={0,0,127}),
+        Line(visible=outputPressure,
+          points={{60,0},{78,0}},
+          color={0,0,127}),
+        Line(visible=outputMassFlowRate,
+          points={{60,-60},{78,-60}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected&nbsp;sensor&nbsp;for&nbsp;temperature,&nbsp;pressure&nbsp;and&nbsp;mass-flow. Units can be selected.</p>

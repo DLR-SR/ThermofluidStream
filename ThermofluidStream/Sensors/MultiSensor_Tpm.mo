@@ -104,7 +104,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,140},{150,100}},
+          extent={{-150,-160},{150,-120}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
