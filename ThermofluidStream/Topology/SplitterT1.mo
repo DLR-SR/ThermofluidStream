@@ -35,10 +35,9 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,20},{150,-20}},
+          extent={{-150,-65},{150,-25}},
           textString="%name",
           textColor={0,0,255},
-          origin={60,0},
           rotation=90),
         Line(
           points={{-100,0},{0,0}},

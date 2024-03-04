@@ -1,4 +1,4 @@
-within ThermofluidStream.Topology.Variants;
+within ThermofluidStream.Topology.Variants.Trash;
 model SplitterT1v1 "Version 1 of SplitterT1"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.

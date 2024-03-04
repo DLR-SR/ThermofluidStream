@@ -1,8 +1,13 @@
-within ThermofluidStream.Topology.Variants;
-model SplitterT1v2 "Version 2 of SplitterT1"
+﻿within ThermofluidStream.Topology.Variants.Trash;
+model SplitterT1v3 "Combined Version (3) of SplitterT1"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
-
+  extends ThermofluidStream.Topology.Variants.Trash.RotateInstanceName;
+  /*
+  parameter Boolean rotateInstanceName = false "= true, if you wish to rotate the instane name by 90°" annotation(Dialog(tab="Layout",group="Display instance name",enable=displayInstanceName),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1name = displayInstanceName and not rotateInstanceName "displayInstanceName version 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2name = displayInstanceName and rotateInstanceName "displayInstanceName version 1" annotation(Evaluate=true, HideResult=true);
+  */
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
@@ -34,22 +39,28 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayInstanceName,
+        Text(visible=d1name,
           extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
-        Line(visible= not displayInstanceName,
+        Line(visible= not d1name,
           points={{0,0},{0,100}},
           color={28,108,200},
           thickness=0.5),
-        Line(visible= displayInstanceName,
+        Line(visible= d1name,
           points={{0,0},{0,20}},
           color={28,108,200},
           thickness=0.5),
-        Line(visible= displayInstanceName,
+        Line(visible= d1name,
           points={{0,70},{0,100}},
           color={28,108,200},
           thickness=0.5),
+        Text(visible=d2name,
+          extent={{-150,20},{150,-20}},
+          textString="%name",
+          textColor={0,0,255},
+          origin={60,0},
+          rotation=90),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},
@@ -73,4 +84,4 @@ equation
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));
-end SplitterT1v2;
+end SplitterT1v3;

@@ -1,47 +1,36 @@
-within ThermofluidStream.Topology.Variants;
-model JunctionT1v2 "2 to 1 T-Junction"
+within ThermofluidStream.Topology.Variants.Trash;
+model SplitterT1v2 "Version 2 of SplitterT1"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
-  parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
-    annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
     annotation (Dialog(tab="Advanced"));
 
-  Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}), iconTransformation(
-        extent={{20,-20},{-20,20}},
-        rotation=180,
-        origin={100,0})));
-  Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
-  Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
-  JunctionN junctionN(final N=2, redeclare package Medium = Medium, final L=L,
-    final assumeConstantDensity = assumeConstantDensity, final m_flow_eps=m_flow_eps)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-34,0})));
+  Interfaces.Inlet inlet(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0})));
+  Interfaces.Outlet outletA(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,100})));
+  Interfaces.Outlet outletB(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100})));
+  SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
 
 equation
 
-  connect(junctionN.outlet, outlet) annotation (Line(
-      points={{-44,1.33227e-15},{-72,1.33227e-15},{-72,0},{-100,0}},
+  connect(splitterN.inlet, inlet) annotation (Line(
+      points={{-28,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(inletA, junctionN.inlets[1]) annotation (Line(
-      points={{0,100},{0,0.5},{-24,0.5}},
+  connect(splitterN.outlets[2], outletA) annotation (Line(
+      points={{-8,0.5},{0,0.5},{0,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(junctionN.inlets[2], inletB) annotation (Line(
-      points={{-24,-0.5},{0,-0.5},{0,-100}},
+  connect(outletB, splitterN.outlets[1]) annotation (Line(
+      points={{0,-100},{0,-0.5},{-8,-0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -62,7 +51,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{100,0}},
+          points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -84,4 +73,4 @@ equation
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));
-end JunctionT1v2;
+end SplitterT1v2;

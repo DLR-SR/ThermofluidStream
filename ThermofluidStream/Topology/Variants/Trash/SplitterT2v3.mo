@@ -1,7 +1,8 @@
-within ThermofluidStream.Topology.Variants;
-model SplitterT2v2 "Splits a flow into two subflows"
+within ThermofluidStream.Topology.Variants.Trash;
+model SplitterT2v3 "Combined Version (3) of SplitterT2"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Topology.Variants.Trash.RotateInstanceName;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -11,12 +12,9 @@ model SplitterT2v2 "Splits a flow into two subflows"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-42,-110},{-2,-70}}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-100})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
+    annotation (Placement(transformation(extent={{20,-20},{-20,20}},rotation=90,origin={0,-100})));
   Interfaces.Outlet outletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
   SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
@@ -25,7 +23,7 @@ model SplitterT2v2 "Splits a flow into two subflows"
 equation
 
   connect(splitterN.inlet, inlet) annotation (Line(
-      points={{-40,0},{-32,0},{-32,-90},{-22,-90}},
+      points={{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[1], outletB) annotation (Line(
@@ -33,24 +31,29 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(outletA, splitterN.outlets[2]) annotation (Line(
-      points={{0,100},{0,0.5},{-20,0.5}},
+      points={{0,-100},{0,0.5},{-20,0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Text(visible=displayInstanceName,
+        Text(visible=d1name,
           extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
-        Line(visible= not displayInstanceName,
-          points={{0,0},{0,100}},
+        Text(visible=d2name,
+          extent={{-150,24},{150,65}},
+          textString="%name",
+          textColor={0,0,255},
+          rotation=270),
+        Line(visible= not d2name,
+          points={{0,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(visible= displayInstanceName,
-          points={{0,0},{0,20}},
+        Line(visible= d2name,
+          points={{0,0},{20,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(visible= displayInstanceName,
-          points={{0,70},{0,100}},
+        Line(visible= d2name,
+          points={{70,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -58,7 +61,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{100,0}},
+          points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -68,7 +71,7 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,120},{-20,80}},
+          extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="A"),
         Text(
@@ -76,4 +79,4 @@ equation
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)));
-end SplitterT2v2;
+end SplitterT2v3;
