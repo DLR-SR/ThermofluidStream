@@ -202,7 +202,6 @@ model TestIcons
   Undirected.FlowControl.MCV mCV3(setpointFromInput=true, enableClippingOutput=true) annotation (Placement(transformation(extent={{-500,-620},{-480,-600}})));
   Undirected.FlowControl.CheckValve checkValve1 annotation (Placement(transformation(extent={{-420,-620},{-400,-600}})));
   Undirected.FlowControl.MCV mCV4(
-    displayInstanceName=false,
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-460,-620},{-440,-600}})));
   Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{120,-582},{140,-562}})));
