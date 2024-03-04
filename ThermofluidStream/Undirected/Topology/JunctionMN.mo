@@ -89,6 +89,10 @@ equation
     ps_out[i] = (ps*inflows - ps[i]*inflows[i]) /(sum(inflows) - inflows[i]);
   end for;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-84,0},{84,0}},
           color={28,108,200},
@@ -100,11 +104,11 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{60,20},{100,60}},
+          extent={{80,-60},{120,-20}},
           textColor={175,175,175},
           textString="%M"),
         Text(
-          extent={{-100,20},{-60,60}},
+          extent={{-120,-60},{-80,-20}},
           textColor={175,175,175},
           textString="%N")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

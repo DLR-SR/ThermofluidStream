@@ -49,7 +49,11 @@ equation
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor={0,0,255})}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Partial&nbsp;implementation&nbsp;of&nbsp;a&nbsp;physical&nbsp;valve.</p>

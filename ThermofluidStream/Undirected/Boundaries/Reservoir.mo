@@ -42,6 +42,15 @@ equation
   state_out_fore = medium.state;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+       Text(visible=displayInstanceName and pEnvFromInput,
+          extent={{-150,125},{150,85}},
+          textString="%name",
+          textColor={0,0,255}),
+       Text(visible=displayInstanceName and not pEnvFromInput,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
+       Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127}),
        Ellipse(
           extent={{-54,-26},{54,26}},
           lineColor={28,108,200},

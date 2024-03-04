@@ -93,10 +93,10 @@ public
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
   ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,90},{10,70}})));
 
-  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{110,-90},{90,-70}}), iconTransformation(extent=if crossFlow then {{-110,-10},{-90,10}} else {{110,-90},{90,-70}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-90,-90},{-110,-70}}), iconTransformation(extent=if crossFlow then {{90,-10},{110,10}} else {{-90,-90},{-110,-70}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-110,70},{-90,90}}), iconTransformation(extent=if crossFlow then {{110,-90},{90,-70}} else {{-110,70},{-90,90}})));
-  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{90,70},{110,90}}), iconTransformation(extent=if crossFlow then {{-90,-90},{-110,-70}} else {{90,70},{110,90}})));
+  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-100},{80,-60}}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,-100},{80,-60}}, rotation=if crossFlow then -90 else 0)));
+  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-100},{-120,-60}}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,-100},{-120,-60}}, rotation=if crossFlow then -90 else 0)));
+  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,60},{-80,100}}), iconTransformation(extent=if crossFlow then {{120,-100},{80,-60}} else {{-120,60},{-80,100}})));
+  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,60},{120,100}}), iconTransformation(extent=if crossFlow then {{-80,-100},{-120,-60}} else {{80,60},{120,100}})));
 
 equation
   //Summary record

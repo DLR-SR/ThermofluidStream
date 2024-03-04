@@ -81,7 +81,11 @@ equation
   state_out_fore = Medium.setState_phX(medium.p, h_pipe, medium.Xi);
   state_out_rear = state_out_fore;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false),graphics={
+       Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255})}),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>

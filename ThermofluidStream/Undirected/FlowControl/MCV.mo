@@ -15,12 +15,9 @@ model MCV "Massflow control valve"
 
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
+        transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,-80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,-80})));
+        origin={0,-120})));
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
   parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
@@ -100,6 +97,18 @@ equation
   Xi_rear_out = Xi_fore_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible= displayInstanceName and not enableClippingOutput,
+          extent={{-150,-80},{150,-120}},
+          textString="%name",
+          textColor={0,0,255}),
+        Text(visible= displayInstanceName and enableClippingOutput,
+          extent={{-150,-65},{150,-105}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(visible=enableClippingOutput and not displayInstanceName,
+          points={{0,-110},{0,-60}},
+          color={0,0,127},
+          thickness=0.5),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -135,7 +144,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{40,-60},{60,-80}},
+          extent={{40,80},{60,60}},
           lineColor={0,0,0},
           fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
           fillPattern=FillPattern.Solid)}),

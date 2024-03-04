@@ -96,8 +96,12 @@ equation
       points={{-10,18},{-40,18},{-40,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{10,18},{30,18},{30,4}}, color={162,29,33}));
+  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,-4}}, color={162,29,33}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},

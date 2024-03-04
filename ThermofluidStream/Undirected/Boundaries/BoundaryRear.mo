@@ -28,13 +28,13 @@ model BoundaryRear "Generic Boundary model (may act as source or sink)"
     annotation (Placement(transformation(extent={{-40,40},{0,80}}), iconTransformation(extent={{-40,40},{0,80}})));
   Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") if not setEnthalpy and temperatureFromInput "Temperature input connector [K]"
     annotation (Placement(transformation(extent={{-40,0},{0,40}}), iconTransformation(extent={{-40,-20},{0,20}})));
+  Interfaces.Fore fore(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
+      iconTransformation(extent={{80,-20},{120,20}})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and enthalpyFromInput "Enthalpy input connector"
     annotation (Placement(transformation(extent={{-40,-40},{0,0}}), iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg") if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
-  Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-      iconTransformation(extent={{80,-20},{120,20}})));
 
 protected
   SI.Pressure p_rearwards = Medium.pressure(fore.state_rearwards);
@@ -76,6 +76,10 @@ equation
   fore.state_forwards = if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0,h0,Xi0);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},

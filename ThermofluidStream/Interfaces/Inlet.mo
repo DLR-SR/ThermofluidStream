@@ -13,7 +13,7 @@ connector Inlet "Inlet port for a fluid"
   annotation (defaultComponentName="inlet",
     Icon(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={
         Polygon(
-          points={{-100,100},{-40,0},{-100,-100},{100,0},{-100,100}},
+          points={{-100.0,100.0},{-40.0,0.0},{-100.0,-100.0},{100.0,0.0},{-100.0,100.0}},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5,
@@ -21,10 +21,10 @@ connector Inlet "Inlet port for a fluid"
     Diagram(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={
         Text(
           textColor={28,108,200},
-          extent={{-10.0,60.0},{-10.0,110.0}},
+          extent={{-110.0,60.0},{90.0,110.0}},
           textString="%name"),
         Polygon(
-          points={{50,0},{-50,50},{-30,0},{-50,-50},{50,0}},
+          points={{50.0,0.0},{-50.0,50.0},{-30.0,0.0},{-50.0,-50.0},{50.0,0.0}},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5,

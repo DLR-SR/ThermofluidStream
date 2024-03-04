@@ -15,8 +15,8 @@ model FlowResistance "Flow resistance model"
 
   replaceable function pLoss =
       ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
-    constrainedby
-    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss "Pressure loss function"
+    constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
+                                                                            "Pressure loss function"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>Pressure loss function used in the flow resistance.</p>
 </html>"));
@@ -41,6 +41,10 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

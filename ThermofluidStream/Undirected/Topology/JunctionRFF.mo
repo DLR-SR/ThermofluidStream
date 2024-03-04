@@ -47,6 +47,12 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,20},{150,-20}},
+          textString="%name",
+          textColor={0,0,255},
+          origin={60,0},
+          rotation=90),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},
@@ -66,11 +72,11 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{20,100},{60,60}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{20,-60},{60,-100}},
+          extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

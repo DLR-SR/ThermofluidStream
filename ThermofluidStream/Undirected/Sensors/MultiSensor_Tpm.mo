@@ -37,14 +37,14 @@ model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow
 
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured temperature [variable]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,60}),
-        iconTransformation(extent={{80,60},{120,100}})));
+        iconTransformation(extent={{70,70},{90,90}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured pressure [variable]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,20}),
-        iconTransformation(extent={{80,0},{120,40}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={82,20}),
+        iconTransformation(extent={{72,10},{92,30}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate
     "Measured mass-flow [kg/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-60}),
-        iconTransformation(extent={{80,-60},{120,-20}})));
+        iconTransformation(extent={{72,-50},{92,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);

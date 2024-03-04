@@ -56,7 +56,7 @@ equation
           pattern=LinePattern.Dash),
         Line(
           points={{0,0},{0,60}},
-          color={28,108,200},
+          color={0,0,127},
           thickness=0.5),
         Line(
           points={{40,0},{84,0}},

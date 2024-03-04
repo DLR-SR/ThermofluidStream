@@ -24,7 +24,10 @@ model ConnectRearOutlet
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,40})));
+        origin={0,40}), iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=270,
+        origin={0,-40})));
 
 protected
   outer DropOfCommons dropOfCommons;
@@ -46,13 +49,17 @@ equation
 
   annotation (Icon(
       graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor={0,0,255}),
         Line(
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5),
         Line(points={{2,58},{0,58}}, color={28,108,200}),
         Line(
-          points={{0,0},{0,60}},
+          points={{0,0},{0,-60}},
           color={162,29,33},
           arrow={Arrow.Filled,Arrow.None},
           arrowSize = 20)},

@@ -19,8 +19,8 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(
-        transformation(extent={{80,-20},{120,20}}),
-          iconTransformation(extent={{80,-20},{120,20}})));
+        transformation(extent={{70,70},{90,90}}),
+          iconTransformation(extent={{70,70},{90,90}})));
 
   function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity (
     redeclare package Medium = Medium) "Quantity compute function"
@@ -53,34 +53,31 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-54,104},{66,44}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{0,0},{0,-80}},
-          color={28,108,200},
-          thickness=0.5),
-        Ellipse(
-          extent={{-5,-75},{5,-85}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,110},{60,50}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,110},{60,50}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{2,17},{62,67}},
+          extent={{2,97},{62,147}},
           textColor={175,175,175},
-          textString="%quantity")}),
+          textString="%quantity"),
+        Line(points={{0,34},{0,0}},    color={0,0,0}),
+        Ellipse(
+          extent={{-5,5},{5,-5}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected sensor for a single selectable quantity. For some quatities several units are available.</p>

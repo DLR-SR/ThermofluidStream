@@ -27,8 +27,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(
-        transformation(extent={{80,-20},{120,20}}),
-          iconTransformation(extent={{80,-20},{120,20}})));
+        transformation(extent={{70,50},{90,70}}),
+          iconTransformation(extent={{70,50},{90,70}})));
 
   Real value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
@@ -60,38 +60,31 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-54,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-100,-80},{100,-80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{0,0},{0,-80}},
-          color={28,108,200},
-          thickness=0.5),
-        Ellipse(
-          extent={{-5,-75},{5,-85}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
+        Line(points={{0,34},{0,0}}, color={0,0,0}),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,19},{60,69}},
+          extent={{0,79},{60,129}},
           textColor={175,175,175},
-          textString="%quantity")}),
+          textString="%quantity"),
+        Ellipse(
+          extent={{-5,5},{5,-5}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected sensor for a vapor quality. It must be separate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>

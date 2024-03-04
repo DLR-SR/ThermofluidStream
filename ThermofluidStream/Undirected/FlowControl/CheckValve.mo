@@ -20,6 +20,10 @@ equation
   Xi_rear_out = Xi_fore_in;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor={0,0,255}),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

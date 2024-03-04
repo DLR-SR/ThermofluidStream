@@ -66,11 +66,11 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{20,-100},{60,-60}},
+          extent={{-60,-120},{-20,-80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{60,20},{100,60}},
+          extent={{80,-60},{120,-20}},
           textColor={175,175,175},
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),

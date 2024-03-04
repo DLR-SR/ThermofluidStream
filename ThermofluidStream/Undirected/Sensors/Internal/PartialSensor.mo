@@ -15,9 +15,9 @@ partial model PartialSensor "Partial undirected sensor"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-80}), iconTransformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80}), iconTransformation(extent={{80,-20},{120,20}})));
 
 /*  function regStepSt = Undirected.Internal.regStepState (
     redeclare package Medium = Medium) "RegStep function for a state"
@@ -47,7 +47,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-100,-80},{100,-80}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5)}),
        Diagram(coordinateSystem(preserveAspectRatio=false)),

@@ -25,7 +25,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of mass fraction vector to display";
 
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{72,70},{92,90}}), iconTransformation(extent={{72,70},{92,90}})));
 
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
@@ -64,30 +64,27 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-54,104},{66,44}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{0,0},{0,-80}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,110},{60,50}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,110},{60,50}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(display_value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{-26,22},{60,69}},
+          extent={{-26,102},{60,149}},
           textColor={175,175,175},
           textString="%row. mass-fraction"),
+        Line(points={{0,34},{0,0}},    color={0,0,0}),
         Ellipse(
-          extent={{-5,-75},{5,-85}},
+          extent={{-5,5},{5,-5}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},

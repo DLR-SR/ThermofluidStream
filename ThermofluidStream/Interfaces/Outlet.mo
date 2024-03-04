@@ -20,7 +20,7 @@ connector Outlet "Outlet port for a fluid"
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={
         Text(
-          extent={{30.0,110.0},{30.0,60.0}},
+          extent={{-70.0,110.0},{130.0,60.0}},
           textString="%name",
           textColor={28,108,200}),
         Polygon(
