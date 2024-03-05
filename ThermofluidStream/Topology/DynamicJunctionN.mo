@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model DynamicJunctionN "Dynamic pressure junction with N inlets"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"

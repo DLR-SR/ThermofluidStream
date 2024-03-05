@@ -4,7 +4,7 @@ model DifferenceSensorSelect
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
     "Medium model A"

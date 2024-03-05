@@ -1,7 +1,13 @@
 within ThermofluidStream.Boundaries;
 model Source "Boundary model of a source"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  // Configure icon display options
+  parameter Boolean displayPressure = true "= true, if you wish to display the pressure set value p0_par (this does not work for pressureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayTemperature = true "= true, if you wish to display the temperature set value T0_par (this does not work for temperatureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1p = displayParameters and displayPressure and not pressureFromInput  "displayPressure at position 1" annotation(Evaluate=true, HideResult=true); //d1p -> Display at position 1 p=pressure
+  final parameter Boolean d1T = displayParameters and displayTemperature and not temperatureFromInput and not setEnthalpy and not d1p  "displayTemperature at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2T = displayParameters and displayTemperature and not temperatureFromInput and not setEnthalpy and not d1T  "displayTemperature at position 2" annotation(Evaluate=true, HideResult=true);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -12,13 +18,13 @@ the inlet the source is connected to.
 </p>
 </html>"));
 
-  parameter Boolean setEnthalpy = false "Prescribe specific enthalpy instead of temperature?";
-  parameter Boolean pressureFromInput = false "Use input connector for pressure?";
-  parameter Boolean temperatureFromInput = false "Use input connector for temperature?"
+  parameter Boolean setEnthalpy = false "= true if you wish to set specific enthalpy, otherwise temperature can be set";
+  parameter Boolean pressureFromInput = false "= true to use input connector for pressure";
+  parameter Boolean temperatureFromInput = false "= true to use input connector for temperature"
     annotation(Dialog(enable = not setEnthalpy));
-  parameter Boolean enthalpyFromInput = false "Use input connector for specific enthalpy"
+  parameter Boolean enthalpyFromInput = false "= true to use input connector for specific enthalpy"
     annotation(Dialog(enable = setEnthalpy));
-  parameter Boolean xiFromInput = false "Use input connector for mass fraction?";
+  parameter Boolean xiFromInput = false "= true to use input connector for mass fraction";
   parameter SI.Temperature T0_par = Medium.T_default "Temperature set value"
     annotation(Dialog(enable = not setEnthalpy and not temperatureFromInput));
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
@@ -73,6 +79,22 @@ equation
   outlet.state =  if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0, h0, Xi0);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
+        Text(visible=d1p,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="p = %p0_par"),
+        Text(visible=d1T,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="T = %T0_par"),
+        Text(visible=d2T,
+          extent={{-150,-120},{150,-150}},
+          textColor={0,0,0},
+          textString="T = %T0_par"),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},
@@ -103,12 +125,7 @@ equation
         Line(
           points={{12,80},{12,-80}},
           color={255,255,255},
-          thickness=1),
-        Text(visible=displayInstanceName,
-          extent={{-150,140},{150,100}},
-          textString="%name",
-          textColor={0,0,255})}),
-                          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>

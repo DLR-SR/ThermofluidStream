@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model JunctionMN "Generalized junction/splitter for undirected flow"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model for the Junction" annotation (choicesAllMatching=true, Documentation(info="<html>

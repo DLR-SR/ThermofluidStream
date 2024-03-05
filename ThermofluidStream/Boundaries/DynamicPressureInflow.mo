@@ -3,16 +3,26 @@ model DynamicPressureInflow
   "Flow from a reference velocity through a certain cross section"
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
+  // Configure icon display options
+  parameter Boolean displayInletVelocity = true "= true, if you wish to display the inlet velocity parameter value (this does not work for velocityFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayOutletArea = true "= true, if you wish to display the outlet area parameter value (this does not work for areaFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  parameter Boolean areaFromInput = false "Use input connector for cross section area?";
-  parameter Boolean velocityFromInput = false "Use input connector for inlet speed?";
-  parameter SI.Area A_par = 1 "Cross-section area of inlet boundary"
-    annotation(Dialog(enable=not areaFromInput));
-  parameter SI.Velocity v_in_par = 0 "Parameter for reference velocity for p0. Positive velocity points from outside the boundary to inside"
+  final parameter Boolean dv_in = displayParameters and not velocityFromInput and displayInletVelocity "display inlet velocity" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean dA_out = displayParameters and not areaFromInput and displayOutletArea "display outlet area" annotation(Evaluate=true, HideResult=true);
+  final parameter String compressibilityString = if assumeConstantDensity then "assumption = incompressible" else "assumption = compressible"  annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1c = displayParameters and displayCompressibilityApproach "displayCompressibilityApproach at position 1" annotation(Evaluate=true, HideResult=true);
+
+
+
+  parameter Boolean velocityFromInput = false "= true to use input connector for inlet velocity";
+  parameter Boolean areaFromInput = false "= true to use input connector for outlet cross section area";
+  parameter SI.Velocity v_in_par = 0 "Inlet velocity set value"
     annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
-    annotation(Dialog(tab="Advanced"));
-  parameter Boolean extrapolateQuadratic = false "If true extrapolation for negative velocities is done purely quadratic"
+  parameter SI.Area A_par = 1 "Cross-section area of outlet"
+    annotation(Dialog(enable=not areaFromInput));
+  parameter Boolean assumeConstantDensity=true "= true for incompressibility assumption applied, use '= false' for Ma > 0.3";
+  parameter Boolean extrapolateQuadratic = false "= true to extrapolate negative velocities purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
@@ -29,7 +39,7 @@ model DynamicPressureInflow
         origin={-58,-32}),
                          iconTransformation(extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-20,-62})));
+        origin={-20,-60})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
@@ -42,7 +52,7 @@ protected
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
-
+  SI.Density rho_m "Mean density";
 equation
 
    connect(A_var, A);
@@ -74,8 +84,9 @@ equation
       m_flow_reg);
   end if;
   delta_v = v_in - v_out;
+  rho_mean = 0.5*(rho_in + rho_out);
 
-  dp = (rho_in+rho_out)*0.5*delta_v*v_mean;
+  dp = rho_mean*delta_v*v_mean;
   h_out = h_in + delta_v*v_mean;
   Xi_out = Xi_in;
 
@@ -85,6 +96,20 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=dA_out,
+          extent={{70,-45},{200,-75}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Left,
+          textString=" A_out = %A_par"),
+        Text(visible=dv_in,
+          extent={{-180,-45},{-10,-75}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Right,
+          textString="v_in = %v_in_par "),
+        Text(visible=d1c,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString=compressibilityString),
         Rectangle(
           extent={{0,78},{64,-82}},
           lineColor={28,108,200},

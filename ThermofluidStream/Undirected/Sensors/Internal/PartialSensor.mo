@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Sensors.Internal;
 partial model PartialSensor "Partial undirected sensor"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(

@@ -1,7 +1,10 @@
 within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  // Configure icon display options
+  parameter Boolean displayPressure = true "= true, if you wish to display the pressure set value p0_par (this does not work for pressureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1p = displayParameters and displayPressure and not pressureFromInput  "displayPressure at position 1" annotation(Evaluate=true, HideResult=true); //d1p -> Display at position 1 p=pressure
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -11,16 +14,16 @@ the outlet the sink is connected to.
 </p>
 </html>"));
 
-  parameter Boolean pressureFromInput = false "If true pressure comes from real input";
-  parameter SI.Pressure p0_par = Medium.p_default "Pressure setpoint of Sink"
+  parameter Boolean pressureFromInput = false "= true to use input connector for pressure";
+  parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(enable = not pressureFromInput));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of pressure"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure setpoint [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
@@ -51,6 +54,10 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=d1p,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="p = %p0_par"),
         Rectangle(
           extent={{-56,76},{4,-84}},
           lineColor={28,108,200},

@@ -1,6 +1,6 @@
 within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the instance name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(

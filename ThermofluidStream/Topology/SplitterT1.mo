@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model SplitterT1 "Splits a flow into two subflows"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>

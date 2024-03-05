@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model FourWaySwitch
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.Interfaces.PartialMedium;

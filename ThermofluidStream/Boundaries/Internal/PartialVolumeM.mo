@@ -1,7 +1,7 @@
 within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolumeM "Partial parent class for Volumes with one inlet and M outlet"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>

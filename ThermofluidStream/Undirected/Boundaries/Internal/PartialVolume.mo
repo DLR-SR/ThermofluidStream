@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (

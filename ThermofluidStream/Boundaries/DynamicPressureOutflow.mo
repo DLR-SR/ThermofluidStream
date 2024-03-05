@@ -4,15 +4,23 @@ model DynamicPressureOutflow
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean areaFromInput = false "Use input connector for cross section area?";
-  parameter Boolean velocityFromInput = false "Use input connector for inlet speed?";
-  parameter SI.Area A_par = 1 "Cross-section area of outlet boundary"
+  parameter Boolean displayOutletVelocity = true "= true, if you wish to display the inlet velocity parameter value (this does not work for velocityFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInletArea = true "= true, if you wish to display the outlet area parameter value (this does not work for areaFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+
+  final parameter Boolean dv_out = displayParameters and not velocityFromInput and displayOutletVelocity "display outlet velocity" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean dA_in = displayParameters and not areaFromInput and displayInletArea "display inlet area" annotation(Evaluate=true, HideResult=true);
+  final parameter String compressibilityString = if assumeConstantDensity then "assumption = incompressible" else "assumption = compressible"  annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1c = displayParameters and displayCompressibilityApproach "displayCompressibilityApproach at position 1" annotation(Evaluate=true, HideResult=true);
+
+  parameter Boolean areaFromInput = false "= true to use input connector for inlet cross section area";
+  parameter Boolean velocityFromInput = false "= true to use input connector for outlet velocity";
+  parameter SI.Area A_par = 1 "Inlet cross-section area"
     annotation(Dialog(enable=not areaFromInput));
-  parameter SI.Velocity v_out_par = 0 "Reference velocity for p0. Positive velocity points from inside the boundary to outside"
+  parameter SI.Velocity v_out_par = 0 "Outlet velocity set value"
     annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
-    annotation(Dialog(tab="Advanced"));
-  parameter Boolean extrapolateQuadratic = false "If true extrapolation for neagive velocities is done purly quadratic"
+  parameter Boolean assumeConstantDensity= true "= true for incompressibility assumption applied, use '= false' for Ma > 0.3";
+  parameter Boolean extrapolateQuadratic = false "= true to extrapolate negative velocities purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
@@ -84,6 +92,20 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=dv_out,
+          extent={{12,-45},{222,-75}},
+          textColor={0,0,0},
+          textString=" v_out = %v_out_par",
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=dA_in,
+          extent={{-200,-45},{-70,-75}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Right,
+          textString="A_in = %A_par "),
+        Text(visible=d1c,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString=compressibilityString),
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},

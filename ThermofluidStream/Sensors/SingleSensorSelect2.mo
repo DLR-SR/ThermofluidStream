@@ -3,7 +3,7 @@ model SingleSensorSelect2 "Alternative Icon to SingleSensorSelect"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;               //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,

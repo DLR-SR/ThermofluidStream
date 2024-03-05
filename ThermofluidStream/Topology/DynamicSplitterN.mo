@@ -1,7 +1,7 @@
 within ThermofluidStream.Topology;
 model DynamicSplitterN "Dynamic pressure 1 to N splitter"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
