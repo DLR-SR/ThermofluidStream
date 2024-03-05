@@ -31,7 +31,7 @@ equation
   Xi_out = Xi_in;
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
@@ -69,7 +69,7 @@ equation
           extent={{-42,42},{42,-42}},
           lineColor={0,140,72},
           lineThickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Implementation of a nozzle taking gas dynamic effects into account.</p>
 <p>By default, the density is assumed to be constant across the component. This assumption can be reverted by setting <code>assumeConstantDensity = false</code> and hence the outlet velocity is computed by the outlet density. Beware that this will lead to a non-linear equation system in the component.</p>

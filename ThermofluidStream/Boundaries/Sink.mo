@@ -49,7 +49,7 @@ equation
   der(inlet.m_flow)*L = inlet.r - r;
   r + p = p0;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -89,7 +89,7 @@ equation
           color={255,255,255},
           thickness=0.5),
         Line(points={{-44,80},{-44,-80}}, color={255,255,255})}), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>
 <p>The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink therefore acts by definition as the origin of the energy to accelerate the stream. </p>

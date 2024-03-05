@@ -76,7 +76,7 @@ equation
     T = direct_T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
@@ -122,7 +122,7 @@ equation
         Line(visible=outputPressure,
           points={{60,-30},{78,-30}},
           color={0,0,127})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature and pressure at once.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

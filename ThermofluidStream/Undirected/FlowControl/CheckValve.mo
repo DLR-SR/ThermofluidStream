@@ -19,7 +19,7 @@ equation
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
@@ -61,7 +61,7 @@ equation
         Line(
           points={{0,-30},{20,-10}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Undirected implementation of CheckValve.</p>
 <p>Valve that allows positive mass_flow and builds up a large pressure difference against negative mass_flow.</p>

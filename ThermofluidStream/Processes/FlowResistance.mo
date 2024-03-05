@@ -92,7 +92,7 @@ equation
   Xi_out = Xi_in;
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
@@ -130,7 +130,7 @@ equation
           thickness=0.5,
           smooth=Smooth.Bezier,
           origin={0,25},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Implementation of a flow resistance pipe with different selectable

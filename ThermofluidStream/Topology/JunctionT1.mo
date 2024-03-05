@@ -41,7 +41,7 @@ equation
       points={{-24,-0.5},{0,-0.5},{0,-100}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",
@@ -73,5 +73,5 @@ equation
           extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)));
 end JunctionT1;

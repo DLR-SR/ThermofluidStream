@@ -68,7 +68,7 @@ equation
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,50.2},{4.44089e-16,40},{0,40},{0,10}}, color={191,0,0}));
 
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{100,-160},{80,-160},{80,-60},{60,-60}},
+      points={{100,-60},{80,-60},{80,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(

@@ -104,7 +104,7 @@ equation
       thickness=0.5));
   connect(switch1.u, switch.u) annotation (Line(points={{60,-73},{60,-76},{0,-76},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
   connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -146,5 +146,5 @@ equation
           points=DynamicSelect({{-40,-60},{40,60}}, if (u<=delta) then {{40,-60},{40,60}} else if (u>=1-delta) then {{40,-60},{-40,-60}}   else {{-40,-60},{40,60}}),
           color={28,108,200},
           thickness=0.5)}),
-        Diagram(coordinateSystem(preserveAspectRatio=false)));
+        Diagram(coordinateSystem(preserveAspectRatio=true)));
 end FourWaySwitch;

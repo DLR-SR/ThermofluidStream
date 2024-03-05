@@ -63,7 +63,7 @@ equation
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts2.PNG\"/> <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts.PNG\"/> </p>
 <p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
 </html>"),
-Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",

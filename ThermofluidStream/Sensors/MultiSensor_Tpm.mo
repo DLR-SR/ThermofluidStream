@@ -102,7 +102,7 @@ equation
     m_flow = direct_m_flow;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-160},{150,-120}},
           textString="%name",
@@ -168,7 +168,7 @@ equation
         Line(visible=outputMassFlowRate,
           points={{60,-60},{78,-60}},
           color={0,0,127})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>

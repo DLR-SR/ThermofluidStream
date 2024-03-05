@@ -52,45 +52,45 @@ model TestIcons
   ThermofluidStream.Topology.SplitterT1 splitterT1 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-510,110})));
-  ThermofluidStream.Topology.SplitterT2 splitterT2 annotation (Placement(transformation(extent={{-520,60},{-500,80}})));
-  ThermofluidStream.Topology.JunctionT2 junctionT2 annotation (Placement(transformation(extent={{-520,-20},{-500,0}})));
+        origin={-510,270})));
+  ThermofluidStream.Topology.SplitterT2 splitterT2 annotation (Placement(transformation(extent={{-480,260},{-460,280}})));
+  ThermofluidStream.Topology.JunctionT2 junctionT2 annotation (Placement(transformation(extent={{-400,260},{-380,280}})));
   ThermofluidStream.Topology.SplitterX splitterX(displayInstanceName=true)
-                                                 annotation (Placement(transformation(extent={{-260,100},{-240,120}})));
-  ThermofluidStream.Topology.JunctionX1 junctionX1 annotation (Placement(transformation(extent={{-260,60},{-240,80}})));
-  ThermofluidStream.Topology.JunctionX2 junctionX2 annotation (Placement(transformation(extent={{-260,20},{-240,40}})));
-  ThermofluidStream.Topology.JunctionX3 junctionX3 annotation (Placement(transformation(extent={{-260,-20},{-240,0}})));
-  ThermofluidStream.Topology.JunctionT1 junctionT1 annotation (Placement(transformation(extent={{-520,20},{-500,40}})));
-  ThermofluidStream.Topology.SplitterN splitterN annotation (Placement(transformation(extent={{-520,-80},{-500,-60}})));
-  ThermofluidStream.Topology.JunctionN junctionN annotation (Placement(transformation(extent={{-480,-80},{-460,-60}})));
-  ThermofluidStream.Topology.JunctionNM junctionNM annotation (Placement(transformation(extent={{-440,-80},{-420,-60}})));
-  ThermofluidStream.Topology.DynamicJunctionNM dynamicJunctionNM annotation (Placement(transformation(extent={{-320,-80},{-300,-60}})));
-  ThermofluidStream.Topology.DynamicJunctionN dynamicJunctionN annotation (Placement(transformation(extent={{-360,-80},{-340,-60}})));
-  ThermofluidStream.Topology.DynamicSplitterN dynamicSplitterN annotation (Placement(transformation(extent={{-400,-80},{-380,-60}})));
-  ThermofluidStream.Topology.NonPhysical.RatioControl ratioControl annotation (Placement(transformation(extent={{-280,-80},{-260,-60}})));
-  ThermofluidStream.Topology.NonPhysical.RTSwitch rTSwitch annotation (Placement(transformation(extent={{-240,-80},{-220,-60}})));
-  ThermofluidStream.Topology.NonPhysical.LeakageA leakageA annotation (Placement(transformation(extent={{-200,-80},{-180,-60}})));
-  ThermofluidStream.Topology.NonPhysical.JunctionRatio junctionRatio1 annotation (Placement(transformation(extent={{-160,-80},{-140,-60}})));
-  ThermofluidStream.Boundaries.Source source annotation (Placement(transformation(extent={{-38,260},{-18,280}})));
-  ThermofluidStream.Boundaries.Sink sink annotation (Placement(transformation(extent={{2,260},{22,280}})));
-  ThermofluidStream.Boundaries.TerminalSource terminalSource annotation (Placement(transformation(extent={{42,260},{62,280}})));
-  ThermofluidStream.Boundaries.TerminalSink terminalSink annotation (Placement(transformation(extent={{82,260},{102,280}})));
-  ThermofluidStream.Boundaries.DynamicPressureInflow dynamicPressureInflow(areaFromInput=true, velocityFromInput=true) annotation (Placement(transformation(extent={{122,260},{142,280}})));
-  ThermofluidStream.Boundaries.DynamicPressureOutflow dynamicPressureOutflow(areaFromInput=true, velocityFromInput=true) annotation (Placement(transformation(extent={{162,260},{182,280}})));
-  ThermofluidStream.Boundaries.Volume volume annotation (Placement(transformation(extent={{-38,220},{-18,240}})));
-  ThermofluidStream.Boundaries.VolumeFlex volumeFlex annotation (Placement(transformation(extent={{2,220},{22,240}})));
-  ThermofluidStream.Boundaries.VolumeMix volumeMix annotation (Placement(transformation(extent={{42,220},{62,240}})));
-  ThermofluidStream.Boundaries.PhaseSeparator phaseSeparator annotation (Placement(transformation(extent={{82,220},{102,240}})));
-  ThermofluidStream.Boundaries.PhaseSeparator2 phaseSeparator2 annotation (Placement(transformation(extent={{122,220},{142,240}})));
-  ThermofluidStream.Boundaries.Reservoir reservoir annotation (Placement(transformation(extent={{162,220},{182,240}})));
-  ThermofluidStream.Boundaries.Reservoir reservoir1(pEnvFromInput=true) annotation (Placement(transformation(extent={{202,220},{222,240}})));
-  ThermofluidStream.Boundaries.CreateState createState annotation (Placement(transformation(extent={{202,260},{222,280}})));
-  ThermofluidStream.Interfaces.StateInput u annotation (Placement(transformation(extent={{-402,432},{-362,472}})));
-  ThermofluidStream.Interfaces.StateOutput y annotation (Placement(transformation(extent={{-342,442},{-322,462}})));
-  ThermofluidStream.Interfaces.Inlet inlet annotation (Placement(transformation(extent={{-482,432},{-442,472}})));
-  ThermofluidStream.Interfaces.Outlet outlet annotation (Placement(transformation(extent={{-444,432},{-404,472}})));
-  Modelica.Blocks.Interfaces.RealInput u1 annotation (Placement(transformation(extent={{-402,392},{-362,432}})));
-  Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(extent={{-342,402},{-322,422}})));
+                                                 annotation (Placement(transformation(extent={{-520,220},{-500,240}})));
+  ThermofluidStream.Topology.JunctionX1 junctionX1 annotation (Placement(transformation(extent={{-480,220},{-460,240}})));
+  ThermofluidStream.Topology.JunctionX2 junctionX2 annotation (Placement(transformation(extent={{-440,220},{-420,240}})));
+  ThermofluidStream.Topology.JunctionX3 junctionX3 annotation (Placement(transformation(extent={{-400,220},{-380,240}})));
+  ThermofluidStream.Topology.JunctionT1 junctionT1 annotation (Placement(transformation(extent={{-440,260},{-420,280}})));
+  ThermofluidStream.Topology.SplitterN splitterN annotation (Placement(transformation(extent={{-520,180},{-500,200}})));
+  ThermofluidStream.Topology.JunctionN junctionN annotation (Placement(transformation(extent={{-480,180},{-460,200}})));
+  ThermofluidStream.Topology.JunctionNM junctionNM annotation (Placement(transformation(extent={{-440,180},{-420,200}})));
+  ThermofluidStream.Topology.DynamicJunctionNM dynamicJunctionNM annotation (Placement(transformation(extent={{-440,140},{-420,160}})));
+  ThermofluidStream.Topology.DynamicJunctionN dynamicJunctionN annotation (Placement(transformation(extent={{-480,140},{-460,160}})));
+  ThermofluidStream.Topology.DynamicSplitterN dynamicSplitterN annotation (Placement(transformation(extent={{-520,140},{-500,160}})));
+  ThermofluidStream.Topology.NonPhysical.RatioControl ratioControl annotation (Placement(transformation(extent={{-520,100},{-500,120}})));
+  ThermofluidStream.Topology.NonPhysical.RTSwitch rTSwitch annotation (Placement(transformation(extent={{-480,100},{-460,120}})));
+  ThermofluidStream.Topology.NonPhysical.LeakageA leakageA annotation (Placement(transformation(extent={{-440,100},{-420,120}})));
+  ThermofluidStream.Topology.NonPhysical.JunctionRatio junctionRatio1 annotation (Placement(transformation(extent={{-400,100},{-380,120}})));
+  ThermofluidStream.Boundaries.Source source annotation (Placement(transformation(extent={{-40,260},{-20,280}})));
+  ThermofluidStream.Boundaries.Sink sink annotation (Placement(transformation(extent={{0,260},{20,280}})));
+  ThermofluidStream.Boundaries.TerminalSource terminalSource annotation (Placement(transformation(extent={{40,260},{60,280}})));
+  ThermofluidStream.Boundaries.TerminalSink terminalSink annotation (Placement(transformation(extent={{80,260},{100,280}})));
+  ThermofluidStream.Boundaries.DynamicPressureInflow dynamicPressureInflow(areaFromInput=true, velocityFromInput=true) annotation (Placement(transformation(extent={{120,260},{140,280}})));
+  ThermofluidStream.Boundaries.DynamicPressureOutflow dynamicPressureOutflow(areaFromInput=true, velocityFromInput=true) annotation (Placement(transformation(extent={{160,260},{180,280}})));
+  ThermofluidStream.Boundaries.Volume volume annotation (Placement(transformation(extent={{-40,220},{-20,240}})));
+  ThermofluidStream.Boundaries.VolumeFlex volumeFlex annotation (Placement(transformation(extent={{0,220},{20,240}})));
+  ThermofluidStream.Boundaries.VolumeMix volumeMix annotation (Placement(transformation(extent={{40,220},{60,240}})));
+  ThermofluidStream.Boundaries.PhaseSeparator phaseSeparator annotation (Placement(transformation(extent={{80,220},{100,240}})));
+  ThermofluidStream.Boundaries.PhaseSeparator2 phaseSeparator2 annotation (Placement(transformation(extent={{120,220},{140,240}})));
+  ThermofluidStream.Boundaries.Reservoir reservoir annotation (Placement(transformation(extent={{160,220},{180,240}})));
+  ThermofluidStream.Boundaries.Reservoir reservoir1(pEnvFromInput=true) annotation (Placement(transformation(extent={{200,220},{220,240}})));
+  ThermofluidStream.Boundaries.CreateState createState annotation (Placement(transformation(extent={{200,260},{220,280}})));
+  ThermofluidStream.Interfaces.StateInput u annotation (Placement(transformation(extent={{-400,440},{-360,480}}), iconTransformation(extent={{-400,440},{-360,480}})));
+  ThermofluidStream.Interfaces.StateOutput y annotation (Placement(transformation(extent={{-340,450},{-320,470}}), iconTransformation(extent={{-340,450},{-320,470}})));
+  ThermofluidStream.Interfaces.Inlet inlet annotation (Placement(transformation(extent={{-480,440},{-442,478}}), iconTransformation(extent={{-480,440},{-442,478}})));
+  ThermofluidStream.Interfaces.Outlet outlet annotation (Placement(transformation(extent={{-440,440},{-400,480}}), iconTransformation(extent={{-440,440},{-400,480}})));
+  Modelica.Blocks.Interfaces.RealInput u1 annotation (Placement(transformation(extent={{-400,400},{-360,440}}), iconTransformation(extent={{-400,400},{-360,440}})));
+  Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(extent={{-340,410},{-320,430}}), iconTransformation(extent={{-340,410},{-320,430}})));
   ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX annotation (Placement(transformation(extent={{-280,-220},{-260,-200}})));
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX annotation (Placement(transformation(extent={{-240,-220},{-220,-200}})));
   ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR discretizedCrossFlowHEX_FR annotation (Placement(transformation(extent={{-200,-220},{-180,-200}})));
@@ -140,29 +140,12 @@ model TestIcons
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{180,0},{200,20}})));
   Sensors.SensorState sensorState1 annotation (Placement(transformation(extent={{220,0},{240,20}})));
   Sensors.SingleSensorX singleSensorX1 annotation (Placement(transformation(extent={{260,0},{280,20}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp1 annotation (Placement(transformation(extent={{342,-10},{362,10}})));
-  Sensors.DifferenceSensorSelect differenceSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK) annotation (Placement(transformation(extent={{302,-10},{322,10}})));
+  Sensors.MultiSensor_Tp multiSensor_Tp1 annotation (Placement(transformation(extent={{340,-10},{360,10}})));
+  Sensors.DifferenceSensorSelect differenceSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK) annotation (Placement(transformation(extent={{300,-10},{320,10}})));
   Sensors.SingleFlowSensor singleFlowSensor1(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps, outputValue=false) annotation (Placement(transformation(extent={{380,-10},{400,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1 annotation (Placement(transformation(extent={{220,-40},{240,-20}})));
-  Topology.Variants.Trash.SplitterT1v2 splitterT1new2 annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-410,110})));
-  Topology.Variants.Trash.SplitterT2v1 splitterT2new1 annotation (Placement(transformation(extent={{-460,60},{-440,80}})));
-  Topology.Variants.Trash.JunctionT1v2 junctionT1new2 annotation (Placement(transformation(extent={{-420,20},{-400,40}})));
-  Topology.Variants.Trash.SplitterT2v2 splitterT2new2 annotation (Placement(transformation(extent={{-420,60},{-400,80}})));
-  Topology.Variants.JunctionT2v1 junctionT2new1 annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-450,-10})));
-  Topology.Variants.Trash.JunctionT1v1 junctionT1new1 annotation (Placement(transformation(extent={{-460,20},{-440,40}})));
-  Topology.Variants.Trash.SplitterT1v1 splitterT1new1 annotation (Placement(transformation(extent={{-460,100},{-440,120}})));
-  Topology.Variants.Trash.JunctionT2v2 junctionT2new2 annotation (Placement(transformation(extent={{-420,-20},{-400,0}})));
-  Topology.Variants.JunctionX1v2 junctionX1new annotation (Placement(transformation(extent={{-200,60},{-180,80}})));
-  Topology.Variants.Trash.JunctionX2v2 junctionX2v2 annotation (Placement(transformation(extent={{-200,20},{-180,40}})));
-  Topology.Variants.JunctionX3v2 junctionX3new annotation (Placement(transformation(extent={{-200,-20},{-180,0}})));
-  Undirected.Interfaces.Rear rear annotation (Placement(transformation(extent={{-200,420},{-160,460}})));
-  Undirected.Interfaces.Fore fore annotation (Placement(transformation(extent={{-160,420},{-120,460}})));
+  Undirected.Interfaces.Rear rear annotation (Placement(transformation(extent={{-200,420},{-160,460}}), iconTransformation(extent={{-200,420},{-160,460}})));
+  Undirected.Interfaces.Fore fore annotation (Placement(transformation(extent={{-160,420},{-120,460}}), iconTransformation(extent={{-160,420},{-120,460}})));
   Undirected.Boundaries.BoundaryRear boundaryRear annotation (Placement(transformation(extent={{-520,-440},{-500,-420}})));
   Undirected.Boundaries.BoundaryFore boundaryFore annotation (Placement(transformation(extent={{-480,-440},{-460,-420}})));
   Undirected.Boundaries.TerminalRear terminalRear annotation (Placement(transformation(extent={{-440,-440},{-420,-420}})));
@@ -170,7 +153,7 @@ model TestIcons
   Undirected.Boundaries.Volume volume1 annotation (Placement(transformation(extent={{-360,-440},{-340,-420}})));
   Undirected.Boundaries.VolumeFlex volumeFlex1 annotation (Placement(transformation(extent={{-320,-440},{-300,-420}})));
   Undirected.Boundaries.VolumeMix volumeMix1 annotation (Placement(transformation(extent={{-520,-480},{-500,-460}})));
-  Undirected.Boundaries.PhaseSeparator phaseSeparator1 annotation (Placement(transformation(extent={{-478,-480},{-458,-460}})));
+  Undirected.Boundaries.PhaseSeparator phaseSeparator1 annotation (Placement(transformation(extent={{-480,-480},{-460,-460}})));
   Undirected.Boundaries.Reservoir reservoir3 annotation (Placement(transformation(extent={{-440,-480},{-420,-460}})));
   Undirected.Boundaries.Reservoir reservoir4(pEnvFromInput=true) annotation (Placement(transformation(extent={{-400,-480},{-380,-460}})));
   Undirected.Boundaries.Reservoir reservoir5(displayInstanceName=false, pEnvFromInput=true) annotation (Placement(transformation(extent={{-360,-480},{-340,-460}})));
@@ -200,36 +183,19 @@ model TestIcons
   Undirected.FlowControl.SpecificValveType specificValveType1 annotation (Placement(transformation(extent={{-460,-580},{-440,-560}})));
   Undirected.FlowControl.TanValve tanValve1 annotation (Placement(transformation(extent={{-420,-580},{-400,-560}})));
   Undirected.FlowControl.MCV mCV3(setpointFromInput=true, enableClippingOutput=true) annotation (Placement(transformation(extent={{-500,-620},{-480,-600}})));
-  Undirected.FlowControl.CheckValve checkValve1 annotation (Placement(transformation(extent={{-420,-620},{-400,-600}})));
+  Undirected.FlowControl.CheckValve checkValve1 annotation (Placement(transformation(extent={{-380,-620},{-360,-600}})));
   Undirected.FlowControl.MCV mCV4(
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-460,-620},{-440,-600}})));
-  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{120,-582},{140,-562}})));
-  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{160,-582},{180,-562}})));
-  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{200,-582},{220,-562}})));
-  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{120,-612},{140,-592}})));
-  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{160,-612},{180,-592}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect3(outputValue=true) annotation (Placement(transformation(extent={{120,-580},{140,-560}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{160,-580},{180,-560}})));
+  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{200,-580},{220,-560}})));
+  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{120,-620},{140,-600}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{160,-620},{180,-600}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
     outputTemperature=true,
     outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{200,-612},{220,-592}})));
-  Topology.Variants.Trash.SplitterT1v3 splitterT1v3_1 annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-370,110})));
-  Topology.Variants.Trash.SplitterT1v3 splitterv3_2(rotateInstanceName=true) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-330,110})));
-  Topology.Variants.Trash.SplitterT2v3 splitterT2v3_1 annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-370,70})));
-  Topology.Variants.Trash.SplitterT2v3 splitterT2v3_2(rotateInstanceName=true) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-330,70})));
-  Topology.Variants.JunctionT1v3 junctionT1v3 annotation (Placement(transformation(extent={{-380,20},{-360,40}})));
+    outputMassFlowRate=true) annotation (Placement(transformation(extent={{200,-620},{220,-600}})));
   Undirected.Topology.JunctionRFFF junctionRFFF1(displayInstanceName=false)
                                                 annotation (Placement(transformation(extent={{-80,-520},{-60,-500}})));
   Undirected.Topology.JunctionRRFF junctionRRFF1(displayInstanceName=false)
@@ -244,6 +210,8 @@ model TestIcons
                                                                                          annotation (Placement(transformation(extent={{-200,-260},{-180,-240}})));
   Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX3(displayInstanceName=false)
                                                                              annotation (Placement(transformation(extent={{360,-440},{380,-420}})));
+  Undirected.FlowControl.MCV mCV5(setpointFromInput=true, enableClippingOutput=false)
+                               annotation (Placement(transformation(extent={{-420,-620},{-400,-600}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-780},{420,520}}), graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -268,11 +236,11 @@ model TestIcons
           textColor={28,108,200},
           textString="Boundaries"),
         Rectangle(
-          extent={{-120,-100},{-540,160}},
+          extent={{-360,80},{-540,300}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-540,180},{-122,160}},
+          extent={{-540,320},{-360,300}},
           textColor={28,108,200},
           textString="Topology"),
         Rectangle(
@@ -308,68 +276,25 @@ model TestIcons
           textColor={28,108,200},
           textString="Sensors"),
         Rectangle(
-          extent={{-538,-40},{-484,140}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Rectangle(
-          extent={{-528,6},{-520,0}},
+          extent={{-408,286},{-400,280}},
           lineColor={28,108,200},
           fillColor={255,0,0},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-480,-40},{-300,140}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Text(
-          extent={{-538,158},{-484,142}},
-          textColor={28,108,200},
-          textString="alt"),
-        Text(
-          extent={{-478,160},{-398,142}},
-          textColor={28,108,200},
-          textString="neu?"),
-        Rectangle(
-          extent={{-280,-40},{-226,140}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Text(
-          extent={{-220,160},{-140,142}},
-          textColor={28,108,200},
-          textString="neu?"),
-        Text(
-          extent={{-280,158},{-226,142}},
-          textColor={28,108,200},
-          textString="alt"),
-        Rectangle(
-          extent={{-222,-40},{-122,140}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Rectangle(
-          extent={{-528,46},{-520,40}},
+          extent={{-448,286},{-440,280}},
           lineColor={28,108,200},
           fillColor={255,0,0},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-268,86},{-260,80}},
+          extent={{-488,246},{-480,240}},
           lineColor={28,108,200},
           fillColor={255,0,0},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-268,6},{-260,0}},
+          extent={{-408,246},{-400,240}},
           lineColor={28,108,200},
           fillColor={255,0,0},
           fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-212,122},{-204,116}},
-          lineColor={28,108,200},
-          fillColor={255,0,0},
-          fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-216,118},{-124,86}},
-          textColor={28,108,200},
-          textString="shouldnt the outlet be on the 
-right side for components that 
-are marked with the red square?"),
         Text(
           extent={{-558,400},{418,340}},
           textColor={28,108,200},
@@ -423,126 +348,18 @@ are marked with the red square?"),
           textColor={28,108,200},
           textString="FlowControl"),
         Rectangle(
-          extent={{-380,-640},{-520,-540}},
+          extent={{-360,-640},{-520,-540}},
           lineColor={28,108,200},
           lineThickness=1),
         Rectangle(
-          extent={{-528,126},{-520,120}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-468,126},{-460,120}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-428,126},{-420,120}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-354,120},{-346,114}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-468,86},{-460,80}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-428,86},{-420,80}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-354,80},{-346,74}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-528,86},{-520,80}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-468,46},{-460,40}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-428,46},{-420,40}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-388,46},{-380,40}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-428,6},{-420,0}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-468,6},{-460,0}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-268,126},{-260,120}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-208,86},{-200,80}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-268,46},{-260,40}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-208,6},{-200,0}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-208,46},{-200,40}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-674,102},{-666,96}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-672,132},{-664,126}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-660,140},{-560,120}},
-          textColor={28,108,200},
-          textString="my favorite version"),
-        Text(
-          extent={{-656,110},{-556,90}},
-          textColor={28,108,200},
-          textString="not necessary"),
-        Rectangle(
-          extent={{-676,74},{-668,68}},
+          extent={{-674,212},{-666,206}},
           lineColor={28,108,200},
           fillColor={255,0,0},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-660,80},{-560,60}},
+          extent={{-660,218},{-560,198}},
           textColor={28,108,200},
-          textString="i would change that"),
+          textString="might be changed in a major release"),
         Rectangle(
           extent={{240,-640},{100,-540}},
           lineColor={28,108,200},

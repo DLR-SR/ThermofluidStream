@@ -61,9 +61,9 @@ equation
       points={{-50,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -84,7 +84,7 @@ equation
           extent={{-20,20},{20,-20}},
           lineThickness=0.5,
           lineColor={170,255,170})}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+      Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Splitter that takes into account dynamic pressure.</p>
 <p>In general the component has two non-linear equation systems of size 1. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false).</p>

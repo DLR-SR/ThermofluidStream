@@ -79,7 +79,7 @@ equation
 
   rear.state_rearwards = if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0,h0,Xi0);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -114,7 +114,7 @@ equation
         Line(
           points={{-12,80},{-12,-80}},
           color={255,255,255},
-          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>A undirected boundary that can act as source and sink, depending on the rest of the system. The Boundary_fore has to be connected to the fore end of your model and therefore has a rear port.</p>
 <p>At positive massflow the rear port acts as an inlet and therefore the boundary_fore is a sink.</p>

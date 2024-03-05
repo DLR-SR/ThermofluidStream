@@ -63,7 +63,7 @@ equation
 
   k_u = k_min + (1 - k_min)*k_u_zeta;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-84,0},{-40,0}},
           color={28,108,200},
@@ -96,7 +96,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Undirected implementation of the specific valve type.</p>
 <p>This valve models the behavior of specific valve types.</p>

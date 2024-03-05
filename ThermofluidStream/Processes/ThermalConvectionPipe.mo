@@ -95,7 +95,7 @@ equation
   h_out = h_in+dh;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
@@ -112,7 +112,7 @@ equation
         Line(
           points={{-60,0},{64,0}},
           color={28,108,200})}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)),
+          preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component models the convective heat transfer in a pipe element with constant heat flux. </p>
 <p>So far, the transition from laminar to turbulent flow regime is not implemented, thus a turbulent flow regime is assumed.</p>

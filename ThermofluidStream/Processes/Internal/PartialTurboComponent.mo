@@ -122,7 +122,7 @@ equation
     omega = der(phi);
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
          Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
@@ -164,7 +164,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid)}),
-          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, an optional heatport to dump heat that the fluid cannot take on, and an optional output for a measureable quantity.</p>
 <p>The component does the following:</p>

@@ -123,7 +123,7 @@ package Internal
     outletB.state = Medium.setState_phX(p= max(p_min,p_B), h=h_in, X=Xi_in);
 
     annotation (
-      Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+      Icon(coordinateSystem(preserveAspectRatio=true), graphics={
           Text(visible=displayInstanceName,
             extent={{-150,65},{150,25}},
             textString="%name",
@@ -158,7 +158,7 @@ package Internal
             extent={{80,-20},{120,-60}},
             textColor={175,175,175},
             textString="B")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+      Diagram(coordinateSystem(preserveAspectRatio=true)),
       Documentation(info="<html>
 <p><br>Splitter, that uses a directly set split ratio. In order to have stationary r that goes to zero, a pressure difference between outlet A and B is calculated, that is applied to one of the outlets, until r-&gt;0.</p><p><br>The idear builds on the splitter with an enforeced regime of Zimmer Real-Time&nbsp;Simulation&nbsp;of&nbsp;an&nbsp;Aircraft&nbsp;Electric&nbsp;Driven&nbsp;Environmental&nbsp;Control&nbsp;System&nbsp;for&nbsp;Virtual&nbsp;Testing&nbsp;Purposes&nbsp;Sec&nbsp;3.4</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Topology.Internal.SplitterRatio.PNG\"/><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Topology.Internal.SplitterRatio2.PNG\"/></p>

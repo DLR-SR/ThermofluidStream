@@ -33,7 +33,7 @@ equation
       points={{0,-100},{0,-0.5},{-8,-0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-65},{150,-25}},
           textString="%name",
@@ -65,5 +65,5 @@ equation
           extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)));
 end SplitterT1;

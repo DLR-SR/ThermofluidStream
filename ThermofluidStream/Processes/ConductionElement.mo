@@ -15,8 +15,8 @@ model ConductionElement "Element with quasi-stationary mass and heatport"
 equation
   k = (if noEvent(resistanceFromAU) then U*A else k_par);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 This model is an element with a fixed volume (fig. 1). The mass in the volume is

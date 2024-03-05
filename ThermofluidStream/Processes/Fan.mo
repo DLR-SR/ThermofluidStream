@@ -25,7 +25,7 @@ equation
   // test for ideal gas
   assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in fan is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-30,52},{56,20}},
           color={28,108,200},
@@ -57,7 +57,7 @@ equation
           lineColor={28,108,200},
           fillPattern=FillPattern.None,
           pattern=LinePattern.Solid)}),
-          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model works under ideal gas assumption and throws an assert if it is violated.</p>
 <p>Currently the only fan model is a fan with constant polytropic coefficient.</p>

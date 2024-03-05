@@ -88,7 +88,7 @@ equation
   connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-130}},color={0,0,127}));
   connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-130}},color={0,0,127}));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName,
           extent={{-150,-65},{150,-105}},
           textString="%name",
@@ -120,5 +120,5 @@ equation
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=true)));
 end Switch;

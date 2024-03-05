@@ -132,5 +132,5 @@ model DiscretizedHexIcon
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={54,-22},
-          rotation=180)}),                                           Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+          rotation=180)}),                                           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}})));
 end DiscretizedHexIcon;

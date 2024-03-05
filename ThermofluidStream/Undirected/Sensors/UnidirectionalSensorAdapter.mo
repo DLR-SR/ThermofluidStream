@@ -28,9 +28,9 @@ equation
         fillColor={255,255,255},
         fillPattern=FillPattern.Solid,
         lineThickness=0.5)},
-    coordinateSystem(preserveAspectRatio=false, extent={{-100,-20},{100,60}})),
+    coordinateSystem(preserveAspectRatio=true, extent={{-100,-20},{100,60}})),
                                                   Diagram(
-     coordinateSystem(preserveAspectRatio=false, extent={{-100,-20},{100,60}})),
+     coordinateSystem(preserveAspectRatio=true, extent={{-100,-20},{100,60}})),
     Documentation(info="<html>
 <p>A adapter to outputs the relevant state of the undirected flow, with r=0 at the outlet. It can be used to connect a unidirectional sensor to a undirected network.</p>
 </html>"));

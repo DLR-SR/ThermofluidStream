@@ -18,7 +18,7 @@ the inlet the source is connected to.
 equation
   inlet.m_flow = 0;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,60},{150,100}},
           textString="%name",
@@ -48,7 +48,7 @@ equation
         Line(
           points={{-60,30},{-20,-30}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sink that terminates the flow. </p>
 <p>It imposes a m_flow=0 boundary.</p>

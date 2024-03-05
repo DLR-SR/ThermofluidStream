@@ -16,7 +16,7 @@ equation
 
   state_out.state = state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-40},{150,-80}},
           textString="%name",
@@ -46,7 +46,7 @@ equation
         Line(
           points={{60,60},{78,60}},
           color={162,29,33})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring the full state.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

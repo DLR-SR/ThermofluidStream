@@ -44,12 +44,12 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor={0,0,255})}),                                Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Partial implementation of a physical valve.

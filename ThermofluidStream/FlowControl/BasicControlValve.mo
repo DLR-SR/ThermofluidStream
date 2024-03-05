@@ -39,7 +39,7 @@ equation
 
   k_u = valveCharacteristics(u, k_min);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-100,0},{-40,0}},
           color={28,108,200},
@@ -72,7 +72,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>
 <p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>

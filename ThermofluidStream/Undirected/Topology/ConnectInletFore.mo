@@ -43,9 +43,9 @@ equation
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5)},
-      coordinateSystem(preserveAspectRatio=false)),
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect a unidirectional outlet to a undirected rear port. </p>
 <p>The state from the inlet is given to the forward direction of the fore port, the total pressure as well as the massflow of inlet and port are set equal. </p>

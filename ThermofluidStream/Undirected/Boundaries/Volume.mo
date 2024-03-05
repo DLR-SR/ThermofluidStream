@@ -23,11 +23,11 @@ equation
   state_out_rear = medium.state;
   state_out_fore = medium.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false),graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true),graphics={
        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
-          textColor={0,0,255})}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textColor={0,0,255})}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Conceptually a volume is a sink and asource. It therefore defines the level of inertial pressure r in a closed loop and acts as aloop breaker.</p>
 <p>This simple volume will become singular for incompressible fluids and close to singular for fluids with very low compressibility. For both cases we advise to use VolumeFlex or a Reservoir instead.</p>

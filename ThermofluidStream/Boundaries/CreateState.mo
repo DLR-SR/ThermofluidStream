@@ -67,7 +67,7 @@ equation
     Xi = Xi_par;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,110},{150,150}},
           textString="%name",
@@ -87,7 +87,7 @@ equation
         Line(
           points={{0,0},{-100,0}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Create a Thermodynamic state signal from T,p,Xi.</p>
 </html>"));

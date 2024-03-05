@@ -11,7 +11,7 @@ connector Fore "Undirected connector outputting the forward state"
 
   input Medium.ThermodynamicState state_rearwards "thermodynamic state in rearwards direction";
   output Medium.ThermodynamicState state_forwards "thermodynamic state in forwards direction";
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false,initialScale=0.2), graphics={Ellipse(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={Ellipse(
           extent={{-80.0,80.0},{80.0,-80.0}},
           lineColor={28,108,200},
           lineThickness=0.5,
@@ -22,7 +22,7 @@ connector Fore "Undirected connector outputting the forward state"
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),
-                            Diagram(coordinateSystem(preserveAspectRatio=false,initialScale=0.2), graphics={
+                            Diagram(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={
                                                                           Ellipse(
           extent={{-40.0,40.0},{40.0,-40.0}},
           lineColor={28,108,200},

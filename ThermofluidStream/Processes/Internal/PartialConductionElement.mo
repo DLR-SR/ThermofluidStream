@@ -85,7 +85,7 @@ equation
   h_out = h;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,-80},{150,-120}},
           textString="%name",
@@ -119,7 +119,7 @@ equation
        Line(
          points={{0,100},{0,-30}},
          color={238,46,47})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 This model is an element with a fixed volume (fig. 1). The mass in the volume is

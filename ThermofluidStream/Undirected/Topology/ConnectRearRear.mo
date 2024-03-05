@@ -37,9 +37,9 @@ equation
           points={{-20,0},{20,0}},
           color={28,108,200},
           thickness=0.5)},
-      coordinateSystem(preserveAspectRatio=false)),
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect two undirected fore ports. </p>
 <p>Basically the connector switches the names of output and input of the two ports.</p>

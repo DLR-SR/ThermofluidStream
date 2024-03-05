@@ -62,7 +62,7 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-50},{150,-90}},
           textString="%name",
@@ -95,7 +95,7 @@ equation
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring mass fraction X. Which row from X to display can be selected by the row parameter.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

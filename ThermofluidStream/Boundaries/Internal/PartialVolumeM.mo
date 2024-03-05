@@ -132,7 +132,7 @@ equation
     T_heatPort = medium.T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Ellipse(
           extent={{-56,76},{64,16}},
           lineColor={28,108,200},
@@ -189,7 +189,7 @@ equation
           extent={{68,48},{94,6}},
           textColor={116,116,116},
           textString="%M_out")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This is the partial parent class for unidirectional volumes with M outlets. It is partial and missing the number if inputs, as well as a equations for its volume or medium pressure and one for the volume change work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>

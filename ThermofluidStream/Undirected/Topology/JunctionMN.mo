@@ -88,7 +88,7 @@ equation
     hs_out[i] = (hs*inflows - hs[i]*inflows[i]) /(sum(inflows) - inflows[i]);
     ps_out[i] = (ps*inflows - ps[i]*inflows[i]) /(sum(inflows) - inflows[i]);
   end for;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -111,7 +111,7 @@ equation
           extent={{-120,-60},{-80,-20}},
           textColor={175,175,175},
           textString="%N")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model represents a generalized junction/splitter for undirected flow with N rear and M fore ports. </p>
 <p>Note that in the undirected case a distinction between junction and splitter is not possible, since the flow direction is unknown in advance. </p>

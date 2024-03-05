@@ -8,10 +8,16 @@ model DynamicPressureOutflow
   parameter Boolean displayInletArea = true "= true, if you wish to display the outlet area parameter value (this does not work for areaFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  final parameter Boolean dv_out = displayParameters and not velocityFromInput and displayOutletVelocity "display outlet velocity" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean dA_in = displayParameters and not areaFromInput and displayInletArea "display inlet area" annotation(Evaluate=true, HideResult=true);
-  final parameter String compressibilityString = if assumeConstantDensity then "assumption = incompressible" else "assumption = compressible"  annotation(Evaluate=true, HideResult=true);
+
+  final parameter String compressibilityString = if assumeConstantDensity then "incompressible" else "compressible"  annotation(Evaluate=true, HideResult=true);
   final parameter Boolean d1c = displayParameters and displayCompressibilityApproach "displayCompressibilityApproach at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1A = displayParameters and displayInletArea and not areaFromInput and not d1c "displayInletArea at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2A = displayParameters and displayInletArea and not areaFromInput and not d1A "displayInletArea at position 2" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1v = displayParameters and displayOutletVelocity and not velocityFromInput and not d1c and not d1A "displayOutletVelocity at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2v = displayParameters and displayOutletVelocity and not velocityFromInput and not d2A and not d1v "displayOutletVelocity  at position 2" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d3v = displayParameters and displayOutletVelocity and not velocityFromInput and not d1v and not d2v "displayOutletVelocity  at position 3" annotation(Evaluate=true, HideResult=true);
+
+
 
   parameter Boolean areaFromInput = false "= true to use input connector for inlet cross section area";
   parameter Boolean velocityFromInput = false "= true to use input connector for outlet velocity";
@@ -31,13 +37,13 @@ model DynamicPressureOutflow
         origin={-104,-60}),
                          iconTransformation(extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-80,-60})));
+        origin={-120,-60})));
   Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-96,-60}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=180,
-        origin={20,-60})));
+        origin={120,-60})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
@@ -92,20 +98,30 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible=dv_out,
-          extent={{12,-45},{222,-75}},
-          textColor={0,0,0},
-          textString=" v_out = %v_out_par",
-          horizontalAlignment=TextAlignment.Left),
-        Text(visible=dA_in,
-          extent={{-200,-45},{-70,-75}},
-          textColor={0,0,0},
-          horizontalAlignment=TextAlignment.Right,
-          textString="A_in = %A_par "),
         Text(visible=d1c,
           extent={{-150,-100},{150,-130}},
           textColor={0,0,0},
           textString=compressibilityString),
+        Text(visible=d1v,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString="v_out = %v_out_par"),
+        Text(visible=d1A,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString="A_in = %A_par"),
+        Text(visible=d2v,
+          extent={{-150,-140},{150,-170}},
+          textColor={0,0,0},
+          textString="v_out = %v_out_par"),
+        Text(visible=d2A,
+          extent={{-150,-140},{150,-170}},
+          textColor={0,0,0},
+          textString="A_in = %A_par"),
+        Text(visible=d3v,
+          extent={{-150,-180},{150,-210}},
+          textColor={0,0,0},
+          textString="v_out = %v_out_par"),
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},
@@ -140,7 +156,9 @@ equation
         Line(
           points={{-60,80},{-60,-80}},
           color={0,127,0},
-          thickness=0.5)}),
+          thickness=0.5),
+        Line(visible=areaFromInput, points={{-100,-60},{-92,-60},{-60,0}}, color={28,108,200}),
+        Line(visible=velocityFromInput, points={{100,-60},{60,-60},{0,0}}, color={28,108,200})}),
     Documentation(info="<html>
 <p>This outflow boundary is supposed to end an area of the model where dynamic pressure is taken into account. The area is started with <a href=\"modelica://ThermofluidStream.Boundaries.DynamicPressureInflow\">DynamicPressureInflows</a>. </p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>

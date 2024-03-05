@@ -4,14 +4,18 @@ model DynamicPressureInflow
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
   // Configure icon display options
+  parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayInletVelocity = true "= true, if you wish to display the inlet velocity parameter value (this does not work for velocityFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayOutletArea = true "= true, if you wish to display the outlet area parameter value (this does not work for areaFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  final parameter Boolean dv_in = displayParameters and not velocityFromInput and displayInletVelocity "display inlet velocity" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean dA_out = displayParameters and not areaFromInput and displayOutletArea "display outlet area" annotation(Evaluate=true, HideResult=true);
-  final parameter String compressibilityString = if assumeConstantDensity then "assumption = incompressible" else "assumption = compressible"  annotation(Evaluate=true, HideResult=true);
+  final parameter String compressibilityString = if assumeConstantDensity then "incompressible" else "compressible"  annotation(Evaluate=true, HideResult=true);
   final parameter Boolean d1c = displayParameters and displayCompressibilityApproach "displayCompressibilityApproach at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1v = displayParameters and displayInletVelocity and not velocityFromInput and not d1c "displayInletVelocity at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2v = displayParameters and displayInletVelocity and not velocityFromInput and not d1v "displayInletVelocity at position 2" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d1A = displayParameters and displayOutletArea and not areaFromInput and not d1c and not d1v "displayOutletArea at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2A = displayParameters and displayOutletArea and not areaFromInput and not d2v and not d1A "displayOutletArea at position 2" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d3A = displayParameters and displayOutletArea and not areaFromInput and not d1A and not d2A "displayOutletArea at position 3" annotation(Evaluate=true, HideResult=true);
+
 
 
 
@@ -32,14 +36,14 @@ model DynamicPressureInflow
         rotation=270,
         origin={88,-56}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=180,
-        origin={80,-60})));
+        origin={120,-60})));
   Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-58,-32}),
                          iconTransformation(extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-20,-60})));
+        origin={-120,-60})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
@@ -96,20 +100,30 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible=dA_out,
-          extent={{70,-45},{200,-75}},
-          textColor={0,0,0},
-          horizontalAlignment=TextAlignment.Left,
-          textString=" A_out = %A_par"),
-        Text(visible=dv_in,
-          extent={{-180,-45},{-10,-75}},
-          textColor={0,0,0},
-          horizontalAlignment=TextAlignment.Right,
-          textString="v_in = %v_in_par "),
         Text(visible=d1c,
           extent={{-150,-100},{150,-130}},
           textColor={0,0,0},
           textString=compressibilityString),
+        Text(visible=d1v,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString="v_in = %v_in_par"),
+        Text(visible=d1A,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString="A_out = %A_par"),
+        Text(visible=d2v,
+          extent={{-150,-140},{150,-170}},
+          textColor={0,0,0},
+          textString="v_in = %v_in_par"),
+        Text(visible=d2A,
+          extent={{-150,-140},{150,-170}},
+          textColor={0,0,0},
+          textString="A_out = %A_par"),
+        Text(visible=d3A,
+          extent={{-150,-180},{150,-210}},
+          textColor={0,0,0},
+          textString="A_out = %A_par"),
         Rectangle(
           extent={{0,78},{64,-82}},
           lineColor={28,108,200},
@@ -140,7 +154,11 @@ equation
         Line(
           points={{60,80},{60,-80}},
           color={0,127,0},
-          thickness=0.5)}),
+          thickness=0.5),
+        Line(visible=velocityFromInput, points={{-100,-60},{-80,-60},{0,0}}, color={0,0,127}),
+        Line(visible=areaFromInput,
+          points={{60,0},{90,-60},{100,-60}},
+          color={0,0,127})}),
     Documentation(info="<html>
 <p>This inflow boundary is supposed to start an area of the model where dynamic pressure is taken into account. The area is ended with <a href=\"modelica://ThermofluidStream.Boundaries.DynamicPressureOutflow\">DynamicPressureOutflows</a>.</p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>

@@ -18,7 +18,7 @@ model Reservoir "Model of a reservoir"
         origin={0,100}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,145})));
+        origin={0,120})));
 
   SI.Height height;
 
@@ -44,43 +44,91 @@ equation
   state_out_rear = medium.state;
   state_out_fore = medium.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-       Text(visible=displayInstanceName and pEnvFromInput,
-          extent={{-150,125},{150,85}},
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Rectangle(
+          extent={{-62,98},{64,12}},
+          lineColor={28,108,200},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+       Text(visible=displayInstanceName,
+          extent={{-150,60},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-       Text(visible=displayInstanceName and not pEnvFromInput,
-          extent={{-150,140},{150,100}},
-          textString="%name",
-          textColor={0,0,255}),
-        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,130},{0,80}}, color={0,0,127}),
+        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,60},{0,100}}, color={0,0,127}),
+        Ellipse(
+          extent={{-56,52},{64,-8}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-58,22},{64,-56}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-56,-28},{64,-88}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,-20},{60,-80}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-60,28},{60,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-60,28},{-60,-52}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{60,28},{60,-52}},
+          color={28,108,200},
+          thickness=0.5),
        Ellipse(
-          extent={{-54,-26},{54,26}},
+          extent={{-54,-46},{54,6}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Backward),
-        Line(
-          points={{0,-56}, {0,4}},
-          color={28,108,200},
-          thickness=0.5),
         Polygon(
-          points={{0,-56},{20,-36},{-20,-36}},
+          points={{0,-12},{20,-32},{-20,-32}},
           fillPattern=FillPattern.Solid,
           fillColor={28,108,200},
           pattern=LinePattern.None),
+        Line(
+          points={{0,-72},{0,-12}},
+          color={28,108,200},
+          thickness=0.5),
         Polygon(
-          points={{0,4},{20,-16},{-20,-16}},
+          points={{0,-74},{20,-54},{-20,-54}},
           fillPattern=FillPattern.Solid,
           fillColor={28,108,200},
           pattern=LinePattern.None),
         Ellipse(
-          extent={{-60,80},{60,20}},
+          extent={{-60,60},{60,0}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),
-            Diagram(coordinateSystem(preserveAspectRatio=false)),
+            Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 This is a volume, that is open at the top and therefore maintains environmental

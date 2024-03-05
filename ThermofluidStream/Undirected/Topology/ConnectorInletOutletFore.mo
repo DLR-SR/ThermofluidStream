@@ -97,7 +97,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,-4}}, color={162,29,33}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -119,5 +119,5 @@ equation
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)));
+          lineThickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)));
 end ConnectorInletOutletFore;

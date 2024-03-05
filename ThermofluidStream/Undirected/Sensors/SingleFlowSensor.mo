@@ -49,7 +49,7 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Rectangle(
           extent={{-54,104},{66,44}},
           lineColor={0,0,0},
@@ -76,7 +76,7 @@ equation
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>A undirected sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>
 </html>"));

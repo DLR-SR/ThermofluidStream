@@ -56,7 +56,7 @@ equation
       points={{-100,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -107,7 +107,7 @@ equation
           extent={{-20,-120},{-60,-80}},
           textColor={175,175,175},
           textString="b")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Medium package used in the component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));

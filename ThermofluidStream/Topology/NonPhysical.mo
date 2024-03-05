@@ -131,7 +131,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
           Text(visible=displayInstanceName,
             extent={{-150,65},{150,25}},
             textString="%name",
@@ -166,7 +166,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             extent={{80,-20},{120,-60}},
             textColor={175,175,175},
             textString="B")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+      Diagram(coordinateSystem(preserveAspectRatio=true)),
       Documentation(info="<html>
 <p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (likely to dynamic pressure effects).</p>
 <p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>

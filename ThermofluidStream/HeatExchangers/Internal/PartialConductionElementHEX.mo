@@ -14,5 +14,5 @@ partial model PartialConductionElementHEX "Parent for CEs for discretizedHEX"
 equation
   k = U*A;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true)), Diagram(coordinateSystem(preserveAspectRatio=true)));
 end PartialConductionElementHEX;

@@ -71,9 +71,9 @@ equation
 
   outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -98,5 +98,5 @@ equation
           extent={{-120,-20},{-80,-60}},
           textColor={175,175,175},
           textString="%N")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)));
+      Diagram(coordinateSystem(preserveAspectRatio=true)));
 end JunctionN;

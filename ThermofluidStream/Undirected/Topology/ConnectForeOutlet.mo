@@ -66,9 +66,9 @@ equation
           color={162,29,33},
           arrow={Arrow.Filled,Arrow.None},
           arrowSize = 20)},
-      coordinateSystem(preserveAspectRatio=false)),
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect a unidirectional inlet to a undirected rear port. </p>
 <p>The state from the rearward direction of the fore port is handed to the outlet, the total pressure as well as the massflow of outlet and port are set equal. </p>

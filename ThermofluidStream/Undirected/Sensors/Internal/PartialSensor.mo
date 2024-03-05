@@ -45,12 +45,12 @@ equation
   fore.r = rear.r;
   fore.m_flow + rear.m_flow = 0;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Parent class of all undirected sensors.</p>
 </html>"));

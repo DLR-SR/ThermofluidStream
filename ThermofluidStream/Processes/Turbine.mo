@@ -27,7 +27,7 @@ equation
   // test for ideal gas
   assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in turbine is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-56,20},{30,52}},
           color={28,108,200},
@@ -36,7 +36,7 @@ equation
           points={{-56,-20},{30,-52}},
           color={28,108,200},
           thickness=0.5)}),
-          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model works under ideal gas assumption and throws an assert if it is violated.</p>
 <p>Currently the only turbine model is a turbine with constant polytropic coefficient. It this is used, the turbine should have a very high a_h (e.g. Inf).</p>

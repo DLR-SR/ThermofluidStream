@@ -17,7 +17,7 @@ model MCV "Massflow control valve"
     annotation (Placement(
         transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,-120})));
+        origin={0,-110})));
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
   parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
@@ -96,13 +96,13 @@ equation
   Xi_fore_out = Xi_rear_in;
   Xi_rear_out = Xi_fore_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName and not enableClippingOutput,
           extent={{-150,-80},{150,-120}},
           textString="%name",
           textColor={0,0,255}),
         Text(visible= displayInstanceName and enableClippingOutput,
-          extent={{-150,-65},{150,-105}},
+          extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor={0,0,255}),
         Line(visible=enableClippingOutput and not displayInstanceName,
@@ -148,7 +148,7 @@ equation
           lineColor={0,0,0},
           fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
           fillPattern=FillPattern.Solid)}),
-              Diagram(coordinateSystem(preserveAspectRatio=false)),
+              Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Undirected implementation of MCV.</p>
 <p>This component can be used to emulate a mass-flow regulated valve. </p>

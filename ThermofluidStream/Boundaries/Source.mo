@@ -78,7 +78,7 @@ equation
   L*der(outlet.m_flow) = outlet.r - 0;
   outlet.state =  if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0, h0, Xi0);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -92,7 +92,7 @@ equation
           textColor={0,0,0},
           textString="T = %T0_par"),
         Text(visible=d2T,
-          extent={{-150,-120},{150,-150}},
+          extent={{-150,-130},{150,-160}},
           textColor={0,0,0},
           textString="T = %T0_par"),
         Rectangle(
@@ -125,7 +125,7 @@ equation
         Line(
           points={{12,80},{12,-80}},
           color={255,255,255},
-          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>

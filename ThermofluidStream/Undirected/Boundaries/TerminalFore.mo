@@ -34,7 +34,7 @@ equation
   TC * der(p) =rear.r;
   rear.state_rearwards = Medium.setState_phX(p, h, Xi);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,60},{150,100}},
           textString="%name",
@@ -74,7 +74,7 @@ equation
           color={28,108,200},
           thickness=0.5,
           origin={-50,0},
-          rotation=360)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=360)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Fore Boundary that terminates the flow. The boundary has to be connected to the fore end of your model and therefore has a rear port.</p>
 <p>It imposes a m_flow=0 boundary and with a time constant, adapts the pressure such, that inertial pressure r goes to zero.</p>

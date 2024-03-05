@@ -29,7 +29,7 @@ equation
   // test for incompressibility
   assert(abs(v_in- v_out)/v_in < max_rel_volume, "Medium in pump is assumed to be incompressible, but check failed", dropOfCommons.assertionLevel);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{0,60},{60,0}},
           color={28,108,200},
@@ -38,7 +38,7 @@ equation
           points={{0,-60},{60,0}},
           color={28,108,200},
           thickness=0.5)}),
-          Diagram(coordinateSystem(preserveAspectRatio=false)),
+          Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model is&nbsp;working&nbsp;under&nbsp;the&nbsp;assumption&nbsp;of&nbsp;incompressible&nbsp;fluids and performs an assert for this. </p>
 <p>It can be chosen between</p>

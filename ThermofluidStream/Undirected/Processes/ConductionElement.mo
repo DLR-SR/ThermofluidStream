@@ -15,8 +15,8 @@ model ConductionElement "Volume with quasi-sationary mass and heatport"
 equation
   k = (if noEvent(resistanceFromAU) then U*A else k_par);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Undirected implementation of the Conduction Element.

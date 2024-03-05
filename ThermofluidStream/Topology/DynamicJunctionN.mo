@@ -53,11 +53,10 @@ equation
       points={{-20,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(v_mix.y, dynamicPressureInflow.v_in_var) annotation (Line(points={{-9,20},{28,20},{28,-6.2}},
-                                                                                                      color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  connect(v_mix.y, dynamicPressureInflow.v_in_var) annotation (Line(points={{-9,20},{18,20},{18,-6}}, color={0,0,127}));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
         Line(
@@ -79,7 +78,7 @@ equation
           lineThickness=0.5,
           lineColor={170,255,170})}),
     Diagram(
-      coordinateSystem(preserveAspectRatio=false),
+      coordinateSystem(preserveAspectRatio=true),
       graphics={
         Text(
           extent={{-40,60},{40,40}},

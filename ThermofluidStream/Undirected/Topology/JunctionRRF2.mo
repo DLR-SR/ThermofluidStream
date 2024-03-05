@@ -46,7 +46,7 @@ equation
       points={{-100,0},{-36,0},{-36,0.5},{30,0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
   Text(visible=displayInstanceName,
           extent={{-150,25},{150,65}},
           textString="%name",
@@ -77,7 +77,7 @@ equation
           extent={{-120,-60},{-80,-20}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Junction with two rears and a fore in a standing T shape.</p>
 </html>"));

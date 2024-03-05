@@ -51,7 +51,7 @@ equation
       points={{0,-100},{0,-0.666667},{-30,-0.666667}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -98,7 +98,7 @@ equation
           extent={{-20,-120},{-60,-80}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Junction with a rear and three fores in a x shape.</p>
 </html>"));
