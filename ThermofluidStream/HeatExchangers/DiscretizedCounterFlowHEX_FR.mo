@@ -103,7 +103,7 @@ equation
           textColor={175,175,175},
           textString="B"),
         Text(
-          extent={{80,-80},{120,-120}},
+          extent={{80,0},{120,-40}},
           textColor={175,175,175},
           textString="A")}), Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differs from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>

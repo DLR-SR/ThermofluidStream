@@ -62,7 +62,7 @@ equation
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{80,-80},{120,-120}},
+          extent={{80,0},{120,-40}},
           textColor={175,175,175},
           textString="A"),
         Text(

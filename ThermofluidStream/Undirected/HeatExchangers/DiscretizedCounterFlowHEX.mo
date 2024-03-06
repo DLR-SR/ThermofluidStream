@@ -1,5 +1,6 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
+  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedCounterFlowHexIcon;
   extends Internal.PartialDiscretizedHEX;
 
 initial equation
@@ -33,6 +34,10 @@ equation
   end for;
 
   annotation (Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,130},{150,90}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
           extent={{-66,54},{-54,42}},
           textColor={28,108,200},
@@ -58,7 +63,7 @@ equation
           textColor={175,175,175},
           textString="B"),
         Text(
-          extent={{80,-80},{120,-120}},
+          extent={{80,0},{120,-40}},
           textColor={175,175,175},
           textString="A"),
        Line(

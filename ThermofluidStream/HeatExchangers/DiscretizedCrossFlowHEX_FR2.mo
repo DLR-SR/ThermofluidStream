@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers;
-model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
-  extends Internal.DiscretizedCrossFlowHexIcon;
+model DiscretizedCrossFlowHEX_FR2 "v2 of DiscretizedCrossFlowHEX_FR"
+  extends Internal.DiscretizedCounterFlowHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](
@@ -90,15 +90,11 @@ equation
       thickness=0.5));
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,98},{150,58}},
+          extent={{-150,160},{150,120}},
           textString="%name",
           textColor={0,0,255}),
-        Line(visible=displayInstanceName,
-          points={{0,58},{0,65}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=not displayInstanceName,
-          points={{0,58},{0,100}},
+        Line(
+          points={{0,78},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Text(
@@ -122,7 +118,7 @@ equation
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-60,140},{-20,100}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
@@ -141,4 +137,4 @@ The flowResistances are parametrized by the parameters in the group
 <strong>laminar-turbulent&nbsp;flowRes.</strong>
 </p>
 </html>"));
-end DiscretizedCrossFlowHEX_FR;
+end DiscretizedCrossFlowHEX_FR2;

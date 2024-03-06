@@ -1,6 +1,5 @@
 within ThermofluidStream.Undirected.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for undirected discretized heat exchangers"
-  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedCounterFlowHexIcon;
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
@@ -93,7 +92,7 @@ public
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-70},{-10,-50}})));
   ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,70},{10,50}})));
 
-  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent=if crossFlow then {{-20,175},{20,135}} else {{120,-80},{80,-40}})));
+  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent=if crossFlow then {{-20,80},{20,120}} else {{120,-80},{80,-40}})));
   Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent=if crossFlow then {{-20,-80},{20,-120}} else {{-80,-80},{-120,-40}})));
   Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent=if crossFlow then {{120,-80},{80,-40}} else {{-120,40},{-80,80}})));
   Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent=if crossFlow then {{-80,-80},{-120,-40}} else {{80,40},{120,80}})));
@@ -179,9 +178,5 @@ fluid long-term. While this enforces long-term conservation of energy, it
 changes the medium-/short-term dynamics of the system and is, therefore,
 disabled by default.
 </p>
-</html>"), Icon(graphics={
-        Text(visible=displayInstanceName,
-          extent={{-150,130},{150,90}},
-          textString="%name",
-          textColor={0,0,255})}));
+</html>"));
 end PartialDiscretizedHEX;

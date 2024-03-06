@@ -1,6 +1,6 @@
 within ThermofluidStream.HeatExchangers;
-model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
-  extends Internal.DiscretizedCrossFlowHexIcon;
+model DiscretizedCrossFlowHEX2 "v2 of DiscretizedCrossFlowHEX"
+  extends Internal.DiscretizedCounterFlowHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](
@@ -70,15 +70,11 @@ equation
       thickness=0.5));
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,98},{150,58}},
+          extent={{-150,160},{150,120}},
           textString="%name",
           textColor={0,0,255}),
-        Line(visible=displayInstanceName,
-          points={{0,58},{0,65}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=not displayInstanceName,
-          points={{0,58},{0,100}},
+        Line(
+          points={{0,78},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Text(
@@ -102,7 +98,7 @@ equation
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-60,140},{-20,100}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
@@ -118,4 +114,4 @@ equation
 <p>The initialization tab allows for a mass-flow initialization for both paths. </p>
 <p>The Advanced tab allows to modify the massflow that triggers the reverse-massflow-assertion and has an option to enforce global conservation of energy. The latter is done by feeding back any energy the conduction elements accumulated over time, basically making it impossible to store energy in their fluid long-term. While this enforces long-term conservation of energy it changes the medium-/short-term dynamics of the system and is therefore disabled by default. </p>
 </html>"));
-end DiscretizedCrossFlowHEX;
+end DiscretizedCrossFlowHEX2;
