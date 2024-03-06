@@ -56,7 +56,7 @@ protected
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
-  SI.Density rho_m "Mean density";
+  SI.Density rho_mean "Mean density";
 equation
 
    connect(A_var, A);

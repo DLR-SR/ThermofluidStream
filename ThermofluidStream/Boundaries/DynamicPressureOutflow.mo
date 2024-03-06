@@ -56,7 +56,7 @@ protected
 
   SI.Velocity v_mean;
   SI.Velocity delta_v;
-
+  SI.Density rho_mean "Mean density";
 equation
    connect(A_var, A);
    if not areaFromInput then
@@ -87,8 +87,8 @@ equation
       m_flow_reg);
   end if;
   delta_v = v_in - v_out;
-
-  dp = (rho_in+rho_out)*0.5*delta_v*v_mean;
+  rho_mean = 0.5*(rho_in + rho_out);
+  dp = rho_mean*delta_v*v_mean;
   h_out = h_in + delta_v*v_mean;
   Xi_out = Xi_in;
 
