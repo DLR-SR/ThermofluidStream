@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model DifferenceTwoPhaseSensorSensorSelect2 "v2 of DifferenceTwoPhaseSensorSensorSelect"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;

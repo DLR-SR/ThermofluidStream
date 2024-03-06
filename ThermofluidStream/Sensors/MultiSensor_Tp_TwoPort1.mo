@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model MultiSensor_Tp_TwoPort1 "v1.1 of MultiSensor_Tp_TwoPort"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 

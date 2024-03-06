@@ -104,25 +104,25 @@ model TestIcons
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-168,-74},{-148,-54}})));
   ThermofluidStream.Boundaries.Reservoir reservoir2(displayInstanceName=false, pEnvFromInput=true) annotation (Placement(transformation(extent={{240,220},{260,240}})));
-  Sensors.SingleSensorSelect singleSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K, outputValue=true) annotation (Placement(transformation(extent={{180,100},{200,120}})));
-  Sensors.SingleSensorSelect singleSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C) annotation (Placement(transformation(extent={{180,80},{200,100}})));
-  Sensors.SingleSensorSelect singleSensorSelect2(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa, outputValue=true) annotation (Placement(transformation(extent={{180,60},{200,80}})));
+  Sensors.SingleSensorSelect singleSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K, outputValue=true) annotation (Placement(transformation(extent={{140,100},{160,120}})));
+  Sensors.SingleSensorSelect singleSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C) annotation (Placement(transformation(extent={{140,80},{160,100}})));
+  Sensors.SingleSensorSelect singleSensorSelect2(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa, outputValue=true) annotation (Placement(transformation(extent={{140,60},{160,80}})));
   Sensors.SingleSensorSelect singleSensorSelect5(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg)
-                                                                                                                     annotation (Placement(transformation(extent={{180,0},{200,20}})));
-  Sensors.SingleSensorSelect singleSensorSelect6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg,     outputValue=true) annotation (Placement(transformation(extent={{180,-20},{200,0}})));
-  Sensors.SingleSensorSelect singleSensorSelect7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)     annotation (Placement(transformation(extent={{180,-40},{200,-20}})));
+                                                                                                                     annotation (Placement(transformation(extent={{140,0},{160,20}})));
+  Sensors.SingleSensorSelect singleSensorSelect6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg,     outputValue=true) annotation (Placement(transformation(extent={{140,-20},{160,0}})));
+  Sensors.SingleSensorSelect singleSensorSelect7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)     annotation (Placement(transformation(extent={{140,-40},{160,-20}})));
   Sensors.SingleSensorSelect singleSensorSelect10(
     displayInstanceName=false,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1,                                                 outputValue=true) annotation (Placement(transformation(extent={{180,-100},{200,-80}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1,                                                 outputValue=true) annotation (Placement(transformation(extent={{140,-100},{160,-80}})));
   Sensors.SingleSensorSelect singleSensorSelect11(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
-                                                                                                                        annotation (Placement(transformation(extent={{180,-120},{200,-100}})));
+                                                                                                                        annotation (Placement(transformation(extent={{140,-120},{160,-100}})));
   Sensors.SingleSensorSelect singleSensorSelect12(
     displayInstanceName=false,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol,                                           outputValue=true) annotation (Placement(transformation(extent={{180,-140},{200,-120}})));
-  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true) annotation (Placement(transformation(extent={{320,100},{340,120}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol,                                           outputValue=true) annotation (Placement(transformation(extent={{140,-140},{160,-120}})));
+  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true) annotation (Placement(transformation(extent={{320,-220},{340,-200}})));
   Sensors.DifferenceSensorSelect differenceSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,      outputValue=true) annotation (Placement(transformation(extent={{680,90},{700,110}})));
   Sensors.SingleFlowSensor singleFlowSensor(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps,outputValue=true) annotation (Placement(transformation(extent={{460,90},{480,110}})));
-  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K) annotation (Placement(transformation(extent={{320,80},{340,100}})));
+  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K) annotation (Placement(transformation(extent={{320,-240},{340,-220}})));
   Sensors.DifferenceSensorSelect differenceSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)      annotation (Placement(transformation(extent={{680,60},{700,80}})));
   Sensors.SingleFlowSensor singleFlowSensor1(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps, outputValue=false) annotation (Placement(transformation(extent={{460,60},{480,80}})));
   Undirected.Interfaces.Rear rear annotation (Placement(transformation(extent={{-200,420},{-160,460}}), iconTransformation(extent={{-200,420},{-160,460}})));
@@ -191,160 +191,160 @@ model TestIcons
   Undirected.FlowControl.MCV mCV5(setpointFromInput=true, enableClippingOutput=false)
                                annotation (Placement(transformation(extent={{-420,-738},{-400,-718}})));
   Sensors.SingleSensorSelect singleSensorSelect4(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{180,20},{200,40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{140,20},{160,40}})));
   Sensors.SingleSensorSelect singleSensorSelect3(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{180,40},{200,60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{140,40},{160,60}})));
   Sensors.SingleSensorSelect singleSensorSelect8(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{180,-60},{200,-40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{140,-60},{160,-40}})));
   Sensors.SingleSensorSelect singleSensorSelect9(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{180,-80},{200,-60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{140,-80},{160,-60}})));
   Sensors.SingleSensorSelect singleSensorSelect13(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-160},{200,-140}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{140,-160},{160,-140}})));
   Sensors.SingleSensorSelect singleSensorSelect14(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-180},{200,-160}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{140,-180},{160,-160}})));
   Sensors.SingleSensorSelect singleSensorSelect15(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-200},{200,-180}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{140,-200},{160,-180}})));
   Sensors.SingleSensorSelect singleSensorSelect16(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-220},{200,-200}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{140,-220},{160,-200}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{220,100},{240,120}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{180,100},{200,120}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_3(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
-                                                                                                                   annotation (Placement(transformation(extent={{220,80},{240,100}})));
+                                                                                                                   annotation (Placement(transformation(extent={{180,80},{200,100}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_4(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa, outputValue=true)
-                                                                                                                                      annotation (Placement(transformation(extent={{220,60},{240,80}})));
+                                                                                                                                      annotation (Placement(transformation(extent={{180,60},{200,80}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_5(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg)
-                                                                                                                     annotation (Placement(transformation(extent={{220,0},{240,20}})));
-  Sensors.SingleSensorSelect2 singleSensorSelect2_6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg, outputValue=true)  annotation (Placement(transformation(extent={{220,-20},{240,0}})));
-  Sensors.SingleSensorSelect2 singleSensorSelect2_7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)  annotation (Placement(transformation(extent={{220,-40},{240,-20}})));
+                                                                                                                     annotation (Placement(transformation(extent={{180,0},{200,20}})));
+  Sensors.SingleSensorSelect2 singleSensorSelect2_6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg, outputValue=true)  annotation (Placement(transformation(extent={{180,-20},{200,0}})));
+  Sensors.SingleSensorSelect2 singleSensorSelect2_7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)  annotation (Placement(transformation(extent={{180,-40},{200,-20}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_8(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1,
-    outputValue=true)                                                                                                                       annotation (Placement(transformation(extent={{220,-100},{240,-80}})));
+    outputValue=true)                                                                                                                       annotation (Placement(transformation(extent={{180,-100},{200,-80}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_9(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
-                                                                                                                        annotation (Placement(transformation(extent={{220,-120},{240,-100}})));
+                                                                                                                        annotation (Placement(transformation(extent={{180,-120},{200,-100}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_10(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol,
-    outputValue=true)                                                                                                                   annotation (Placement(transformation(extent={{220,-140},{240,-120}})));
+    outputValue=true)                                                                                                                   annotation (Placement(transformation(extent={{180,-140},{200,-120}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_11(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{220,20},{240,40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{180,20},{200,40}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_12(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{220,40},{240,60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{180,40},{200,60}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_13(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{220,-60},{240,-40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{180,-60},{200,-40}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_14(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{220,-80},{240,-60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{180,-80},{200,-60}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_15(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-160},{240,-140}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-160},{200,-140}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_16(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-180},{240,-160}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-180},{200,-160}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_17(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-200},{240,-180}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-200},{200,-180}})));
   Sensors.SingleSensorSelect2 singleSensorSelect2_2(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-220},{240,-200}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{180,-220},{200,-200}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{260,100},{280,120}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{220,100},{240,120}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_3(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
-                                                                                                                   annotation (Placement(transformation(extent={{260,80},{280,100}})));
+                                                                                                                   annotation (Placement(transformation(extent={{220,80},{240,100}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_4(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa, outputValue=true)
-                                                                                                                                      annotation (Placement(transformation(extent={{260,60},{280,80}})));
+                                                                                                                                      annotation (Placement(transformation(extent={{220,60},{240,80}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_5(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg)
-                                                                                                                     annotation (Placement(transformation(extent={{260,0},{280,20}})));
-  Sensors.SingleSensorSelect3 singleSensorSelect3_6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg, outputValue=true)  annotation (Placement(transformation(extent={{260,-20},{280,0}})));
-  Sensors.SingleSensorSelect3 singleSensorSelect3_7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)  annotation (Placement(transformation(extent={{260,-40},{280,-20}})));
+                                                                                                                     annotation (Placement(transformation(extent={{220,0},{240,20}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_6(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg, outputValue=true)  annotation (Placement(transformation(extent={{220,-20},{240,0}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_7(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)  annotation (Placement(transformation(extent={{220,-40},{240,-20}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_8(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1,
-    outputValue=true)                                                                                                                       annotation (Placement(transformation(extent={{260,-100},{280,-80}})));
+    outputValue=true)                                                                                                                       annotation (Placement(transformation(extent={{220,-100},{240,-80}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_9(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
-                                                                                                                        annotation (Placement(transformation(extent={{260,-120},{280,-100}})));
+                                                                                                                        annotation (Placement(transformation(extent={{220,-120},{240,-100}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_10(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol,
-    outputValue=true)                                                                                                                   annotation (Placement(transformation(extent={{260,-140},{280,-120}})));
+    outputValue=true)                                                                                                                   annotation (Placement(transformation(extent={{220,-140},{240,-120}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_11(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{260,20},{280,40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{220,20},{240,40}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_12(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{260,40},{280,60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{220,40},{240,60}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_13(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{260,-60},{280,-40}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{220,-60},{240,-40}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_14(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK, outputValue=true)
-                                                                                                                                    annotation (Placement(transformation(extent={{260,-80},{280,-60}})));
+                                                                                                                                    annotation (Placement(transformation(extent={{220,-80},{240,-60}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_15(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{260,-160},{280,-140}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-160},{240,-140}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_16(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{260,-180},{280,-160}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-180},{240,-160}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_17(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{260,-200},{280,-180}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-200},{240,-180}})));
   Sensors.SingleSensorSelect3 singleSensorSelect3_2(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar,
-    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{260,-220},{280,-200}})));
-  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C) annotation (Placement(transformation(extent={{320,60},{340,80}})));
+    outputValue=true)                                                                                                               annotation (Placement(transformation(extent={{220,-220},{240,-200}})));
+  Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C) annotation (Placement(transformation(extent={{320,-260},{340,-240}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{320,40},{340,60}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{320,-280},{340,-260}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect5(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{320,20},{340,40}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{320,-300},{340,-280}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect6(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
-                                                                                                                                   annotation (Placement(transformation(extent={{320,0},{340,20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{320,-320},{340,-300}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect7(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{320,-20},{340,0}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{320,-340},{340,-320}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect8(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{320,-40},{340,-20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{320,-360},{340,-340}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true)
-                                                                                                                                                    annotation (Placement(transformation(extent={{360,100},{380,120}})));
+                                                                                                                                                    annotation (Placement(transformation(extent={{360,-220},{380,-200}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,80},{380,100}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-240},{380,-220}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_4(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,60},{380,80}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-260},{380,-240}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_5(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,40},{380,60}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-280},{380,-260}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_6(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,20},{380,40}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-300},{380,-280}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_7(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,0},{380,20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-320},{380,-300}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_8(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,-20},{380,0}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-340},{380,-320}})));
   Sensors.TwoPhaseSensorSelect2 twoPhaseSensorSelect2_2(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{360,-40},{380,-20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{360,-360},{380,-340}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true)
-                                                                                                                                                    annotation (Placement(transformation(extent={{400,100},{420,120}})));
+                                                                                                                                                    annotation (Placement(transformation(extent={{400,-220},{420,-200}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,80},{420,100}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-240},{420,-220}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_4(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,60},{420,80}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-260},{420,-240}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_5(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,40},{420,60}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-280},{420,-260}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_6(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,20},{420,40}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-300},{420,-280}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_7(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,0},{420,20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-320},{420,-300}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_8(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,-20},{420,0}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-340},{420,-320}})));
   Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_2(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
-                                                                                                                                   annotation (Placement(transformation(extent={{400,-40},{420,-20}})));
+                                                                                                                                   annotation (Placement(transformation(extent={{400,-360},{420,-340}})));
   Sensors.SingleFlowSensor singleFlowSensor2(
     displayInstanceName=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps,
@@ -793,15 +793,15 @@ model TestIcons
   Sensors.DifferenceSensorSelect33
                                  differenceSensorSelect33_2(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar)
                                                                                                                                 annotation (Placement(transformation(extent={{920,-390},{940,-370}})));
-  Modelica.Fluid.Sensors.Pressure pressure annotation (Placement(transformation(extent={{138,50},{158,70}})));
-  Modelica.Fluid.Sensors.Density density annotation (Placement(transformation(extent={{140,20},{160,40}})));
-  Modelica.Fluid.Sensors.DensityTwoPort density1 annotation (Placement(transformation(extent={{100,20},{120,40}})));
-  Modelica.Fluid.Sensors.Temperature temperature annotation (Placement(transformation(extent={{140,88},{160,108}})));
-  Modelica.Fluid.Sensors.TemperatureTwoPort temperature1 annotation (Placement(transformation(extent={{100,90},{120,110}})));
-  Modelica.Fluid.Sensors.SpecificEnthalpy specificEnthalpy annotation (Placement(transformation(extent={{140,-20},{160,0}})));
-  Modelica.Fluid.Sensors.SpecificEnthalpyTwoPort specificEnthalpy1 annotation (Placement(transformation(extent={{100,-20},{120,0}})));
-  Modelica.Fluid.Sensors.SpecificEntropy specificEntropy annotation (Placement(transformation(extent={{140,-60},{160,-40}})));
-  Modelica.Fluid.Sensors.SpecificEntropyTwoPort specificEntropy1 annotation (Placement(transformation(extent={{100,-60},{120,-40}})));
+  Modelica.Fluid.Sensors.Pressure pressure annotation (Placement(transformation(extent={{98,58},{118,78}})));
+  Modelica.Fluid.Sensors.Density density annotation (Placement(transformation(extent={{100,28},{120,48}})));
+  Modelica.Fluid.Sensors.DensityTwoPort density1 annotation (Placement(transformation(extent={{60,28},{80,48}})));
+  Modelica.Fluid.Sensors.Temperature temperature annotation (Placement(transformation(extent={{100,96},{120,116}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort temperature1 annotation (Placement(transformation(extent={{60,98},{80,118}})));
+  Modelica.Fluid.Sensors.SpecificEnthalpy specificEnthalpy annotation (Placement(transformation(extent={{100,-12},{120,8}})));
+  Modelica.Fluid.Sensors.SpecificEnthalpyTwoPort specificEnthalpy1 annotation (Placement(transformation(extent={{60,-12},{80,8}})));
+  Modelica.Fluid.Sensors.SpecificEntropy specificEntropy annotation (Placement(transformation(extent={{100,-52},{120,-32}})));
+  Modelica.Fluid.Sensors.SpecificEntropyTwoPort specificEntropy1 annotation (Placement(transformation(extent={{60,-52},{80,-32}})));
   Modelica.Fluid.Sensors.MassFlowRate massFlowRate annotation (Placement(transformation(extent={{510,180},{530,200}})));
   Modelica.Fluid.Sensors.VolumeFlowRate volumeFlowRate annotation (Placement(transformation(extent={{550,180},{570,200}})));
   Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true) annotation (Placement(transformation(extent={{980,90},{1000,110}})));
@@ -1167,6 +1167,160 @@ model TestIcons
         rotation=0,
         origin={-310,-350})));
   Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_4(displayInstanceName=false) annotation (Placement(transformation(extent={{-280,-360},{-260,-340}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_1(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,100},{360,120}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_3(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
+                                                                                                                   annotation (Placement(transformation(extent={{340,92},{360,112}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_4(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa)
+                                                                                                                                      annotation (Placement(transformation(extent={{340,84},{360,104}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_5(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg)
+                                                                                                                     annotation (Placement(transformation(extent={{340,60},{360,80}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_6(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+                                                                                                                                            annotation (Placement(transformation(extent={{340,52},{360,72}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_7(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)
+                                                                                                                           annotation (Placement(transformation(extent={{340,44},{360,64}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_8(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1)
+                                                                                                                                            annotation (Placement(transformation(extent={{340,20},{360,40}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_9(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
+                                                                                                                        annotation (Placement(transformation(extent={{340,12},{360,32}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_10(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol)
+                                                                                                                                        annotation (Placement(transformation(extent={{340,4},{360,24}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_11(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,68},{360,88}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_12(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,76},{360,96}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_13(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,36},{360,56}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_14(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,28},{360,48}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_15(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,-4},{360,16}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_16(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,-12},{360,8}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_17(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,-20},{360,0}})));
+  Sensors.SingleSensorSelect31 singleSensorSelect31_2(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar)
+                                                                                                                                    annotation (Placement(transformation(extent={{340,-28},{360,-8}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_18(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{260,100},{280,120}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_19(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C,
+    outputValue=false)                                                                                             annotation (Placement(transformation(extent={{260,88},{280,108}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_20(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa,
+    outputValue=false)                                                                                                                annotation (Placement(transformation(extent={{260,76},{280,96}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_21(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg,
+    outputValue=false)                                                                                               annotation (Placement(transformation(extent={{260,40},{280,60}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_22(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg,
+    outputValue=false)                                                                                                                      annotation (Placement(transformation(extent={{260,28},{280,48}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_23(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK,
+    outputValue=false)                                                                                                     annotation (Placement(transformation(extent={{260,16},{280,36}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_24(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1,
+    outputValue=false)                                                                                                                      annotation (Placement(transformation(extent={{288,88},{308,108}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_25(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps,
+    outputValue=false)                                                                                                  annotation (Placement(transformation(extent={{288,76},{308,96}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_26(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol,
+    outputValue=false)                                                                                                                  annotation (Placement(transformation(extent={{288,64},{308,84}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_27(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{260,52},{280,72}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_28(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{260,64},{280,84}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_29(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{260,4},{280,24}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_30(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{288,100},{308,120}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_31(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{288,52},{308,72}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_32(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{288,40},{308,60}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_33(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{288,28},{308,48}})));
+  Sensors.SingleSensorSelect3 singleSensorSelect3_34(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar,
+    outputValue=false)                                                                                                              annotation (Placement(transformation(extent={{288,16},{308,36}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_9(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
+    outputValue=false)                                                                                                                              annotation (Placement(transformation(extent={{440,-220},{460,-200}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_10(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-232},{460,-212}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_11(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-244},{460,-224}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_12(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-256},{460,-236}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_13(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-268},{460,-248}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_14(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-280},{460,-260}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_15(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-292},{460,-272}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_16(
+    displayInstanceName=false,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar,
+    outputValue=false)                                                                                                             annotation (Placement(transformation(extent={{440,-304},{460,-284}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_23(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa)
+                                                                                                                                   annotation (Placement(transformation(extent={{508,-354},{528,-334}})));
+  Sensors.TwoPhaseSensorSelect3 twoPhaseSensorSelect3_24(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
+                                                                                                                                   annotation (Placement(transformation(extent={{508,-374},{528,-354}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_1(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+                                                                                                                                                    annotation (Placement(transformation(extent={{480,-222},{500,-202}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_3(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-230},{500,-210}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_4(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-238},{500,-218}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_5(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-246},{500,-226}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_6(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-254},{500,-234}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_7(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-262},{500,-242}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_8(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-270},{500,-250}})));
+  Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_2(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
+                                                                                                                                   annotation (Placement(transformation(extent={{480,-278},{500,-258}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-800},{1480,520}}),graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -1223,7 +1377,7 @@ model TestIcons
           textColor={28,108,200},
           textString="FlowControl"),
         Rectangle(
-          extent={{1280,-400},{80,160}},
+          extent={{1278,-400},{40,160}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
@@ -1324,35 +1478,35 @@ model TestIcons
           textColor={28,108,200},
           textString="Sensors"),
         Text(
-          extent={{180,140},{200,120}},
+          extent={{140,140},{160,120}},
           textColor={28,108,200},
           textString="v1"),
+        Text(
+          extent={{180,140},{200,120}},
+          textColor={28,108,200},
+          textString="v2"),
         Text(
           extent={{220,140},{240,120}},
           textColor={28,108,200},
-          textString="v2"),
-        Text(
-          extent={{260,140},{280,120}},
-          textColor={28,108,200},
           textString="v3"),
         Text(
-          extent={{180,160},{280,140}},
+          extent={{140,160},{280,140}},
           textColor={28,108,200},
           textString="SingleSensorSelect"),
         Text(
-          extent={{320,160},{420,140}},
+          extent={{320,-160},{420,-180}},
           textColor={28,108,200},
           textString="TwoPhaseSensorSelect"),
         Text(
-          extent={{320,140},{340,120}},
+          extent={{320,-180},{340,-200}},
           textColor={28,108,200},
           textString="v1"),
         Text(
-          extent={{360,140},{380,120}},
+          extent={{360,-180},{380,-200}},
           textColor={28,108,200},
           textString="v2"),
         Text(
-          extent={{400,140},{420,120}},
+          extent={{400,-180},{420,-200}},
           textColor={28,108,200},
           textString="v3"),
         Text(
@@ -1608,5 +1762,17 @@ model TestIcons
         Text(
           extent={{-280,-140},{-260,-160}},
           textColor={28,108,200},
-          textString="v2")}));
+          textString="v2"),
+        Text(
+          extent={{340,140},{360,120}},
+          textColor={28,108,200},
+          textString="v4"),
+        Text(
+          extent={{500,-180},{520,-200}},
+          textColor={28,108,200},
+          textString="v4"),
+        Text(
+          extent={{272,138},{292,118}},
+          textColor={28,108,200},
+          textString="v3")}));
 end TestIcons;

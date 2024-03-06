@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model MultiSensor_Tp3 "v3 of MultiSensor_Tp"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;

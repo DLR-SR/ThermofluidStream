@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model MultiSensor_Tpm6 "v6 of MultiSensor_Tpm"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 

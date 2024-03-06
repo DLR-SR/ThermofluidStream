@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model DifferenceSensorSelect23
   "v2.3 of DifferenceSensorSelect"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
