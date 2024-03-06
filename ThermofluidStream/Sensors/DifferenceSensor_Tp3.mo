@@ -1,6 +1,5 @@
-within ThermofluidStream.Sensors;
-model DifferenceSensor_Tp
-  "Sensor difference in Temperature and pressure"
+﻿within ThermofluidStream.Sensors;
+model DifferenceSensor_Tp3 "v3 of DifferenceSensor_Tp"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -23,6 +22,12 @@ model DifferenceSensor_Tp
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
+
+    final parameter String quantityString=
+  if temperatureUnit == "K" then "T in K, p in "+pressureUnit
+  elseif temperatureUnit == "degC"  then "T in °C, p in "+pressureUnit
+  else "error";
+
   parameter Boolean outputTemperature = false "Enable temperature output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean outputPressure = false "Enable pressure output"
@@ -41,7 +46,7 @@ model DifferenceSensor_Tp
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}), iconTransformation(extent={{-120,40},{-80,80}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Difference of measured Temperature [variable]"
     annotation (Placement(transformation(extent={{70,20},{90,40}}), iconTransformation(extent={{70,20},{90,40}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Difference of measured pressure [variable]"
@@ -111,7 +116,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-80,0},{0,0}},
+          points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -132,45 +137,19 @@ equation
               p,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{-120,55},{-60,5}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,-5},{-60,-55}},
-          textColor={175,175,175},
-          textString="%pressureUnit"),
-        Line(
-          points={{-80,60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-100,-60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
+          extent={{-150,-110},{150,-80}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(
           points={{-100,60},{-80,60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-70,80},{-50,80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-10,0},{10,0}},
-          color={28,108,200},
-          thickness=0.5,
-          origin={-60,80},
-          rotation=90),
-        Line(
-          points={{-70,-80},{-50,-80}},
+          points={{-108,-30},{-92,-30}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-72,92},{-48,68}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Ellipse(
-          extent={{-72,-68},{-48,-92}},
+          extent={{-110,100},{-90,80}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(visible=outputTemperature,
@@ -178,10 +157,30 @@ equation
           color={0,0,127}),
         Line(visible=outputPressure,
           points={{60,-30},{78,-30}},
-          color={0,0,127})}),
+          color={0,0,127}),
+        Line(
+          points={{-108,90},{-92,90}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-8,0},{8,0}},
+          color={28,108,200},
+          thickness=0.5,
+          origin={-100,90},
+          rotation=90),
+        Ellipse(
+          extent={{-110,-20},{-90,-40}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Line(
+          points={{-10,-1.68234e-16},{50,0}},
+          color={28,108,200},
+          thickness=0.5,
+          origin={-80,10},
+          rotation=90)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
-end DifferenceSensor_Tp;
+end DifferenceSensor_Tp3;

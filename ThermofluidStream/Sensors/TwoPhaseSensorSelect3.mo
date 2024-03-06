@@ -1,20 +1,35 @@
-within ThermofluidStream.Sensors;
-model SingleSensorSelect "Sensor with selectable measured quantity"
-  import ThermofluidStream.Sensors.Internal.Types.Quantities;
+﻿within ThermofluidStream.Sensors;
+model TwoPhaseSensorSelect3 "v3 of TwoPhaseSensorSelect"
+  import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
-        <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
-        </html>"));
+<p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected. </p>
+</html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
-    annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Quantity the sensor measures";
+
+  final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "Vapor quality x in kg_Vapor/kg_total"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C then "T_sat in °C"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa then "p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar then "p_sat in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K then "T - T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
+  else "error";
+
+
+
+
+
 
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
@@ -22,24 +37,24 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
+  parameter Real value_0(unit=Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{72,-10},{92,10}}), iconTransformation(extent={{72,-10},{92,10}})));
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Computed value of the selected Quantity [variable]"
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
-  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
+  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 
 protected
-  Real direct_value(unit=Internal.getUnit(quantity));
+  Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = Internal.getQuantity(redeclare package Medium=Medium) "Quantity compute function"
+  function getQuantity = Internal.getTwoPhaseQuantity(redeclare package Medium=Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
-      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
+    <p>This function computes the selected two-phase quantity from state.</p>
       </html>"));
 
 initial equation
@@ -51,7 +66,7 @@ initial equation
 
 equation
   inlet.m_flow = 0;
-  direct_value = getQuantity(inlet.state, inlet.r, quantity, rho_min);
+  direct_value = getQuantity(inlet.state, quantity);
 
   if filter_output then
     der(value) * TC = direct_value-value;
@@ -61,7 +76,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-50},{150,-90}},
+          extent={{-150,80},{150,40}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -86,15 +101,15 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,-70},{150,-40}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Sensor for measuring a selectable quantity.</p>
+<p>This is an extra sensor for vaporQuantity, because the Medium must be constrained by PartialTwoPhaseMedium instead of TwoPhaseMedium.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>
 </html>"));
-end SingleSensorSelect;
+end TwoPhaseSensorSelect3;

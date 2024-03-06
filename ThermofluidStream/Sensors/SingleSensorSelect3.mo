@@ -1,5 +1,5 @@
-within ThermofluidStream.Sensors;
-model SingleSensorSelect "Sensor with selectable measured quantity"
+﻿within ThermofluidStream.Sensors;
+model SingleSensorSelect3 "v3 of SingleSensorSelect"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -16,6 +16,26 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Quantity the sensor measures";
 
+  final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_K then "T in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_C then "T in °C"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa then "p in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar then "p in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3 then "d in kg/m3"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg then "v in m3/kg"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg then "h in J/kg"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK then "s in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps then "Velocity of sound in m/s"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK then "cv in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK then "cp in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1 then "kappa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol then  "M in kg/mol"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa then "r in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar then "r in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
+  else "error";
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
@@ -30,7 +50,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{72,-10},{92,10}}), iconTransformation(extent={{72,-10},{92,10}})));
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
   output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
 
@@ -61,7 +81,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-50},{150,-90}},
+          extent={{-150,80},{150,40}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -86,9 +106,9 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,-70},{150,-40}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),
@@ -97,4 +117,4 @@ equation
 <p>Sensor for measuring a selectable quantity.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>
 </html>"));
-end SingleSensorSelect;
+end SingleSensorSelect3;

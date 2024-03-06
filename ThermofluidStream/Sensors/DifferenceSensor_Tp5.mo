@@ -1,6 +1,5 @@
-within ThermofluidStream.Sensors;
-model DifferenceSensor_Tp
-  "Sensor difference in Temperature and pressure"
+﻿within ThermofluidStream.Sensors;
+model DifferenceSensor_Tp5 "v5 of DifferenceSensor_Tp"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -23,6 +22,12 @@ model DifferenceSensor_Tp
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
+
+    final parameter String quantityString=
+  if temperatureUnit == "K" then "T in K, p in "+pressureUnit
+  elseif temperatureUnit == "degC"  then "T in °C, p in "+pressureUnit
+  else "error";
+
   parameter Boolean outputTemperature = false "Enable temperature output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean outputPressure = false "Enable pressure output"
@@ -39,13 +44,19 @@ model DifferenceSensor_Tp
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}), iconTransformation(extent={{-120,40},{-80,80}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}), iconTransformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{120,-20},{80,20}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Difference of measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{70,20},{90,40}}), iconTransformation(extent={{70,20},{90,40}})));
+    annotation (Placement(transformation(extent={{-66,-150},{-46,-130}}),
+                                                                    iconTransformation(extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-60,-110})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Difference of measured pressure [variable]"
-    annotation (Placement(transformation(extent={{70,-40},{90,-20}}), iconTransformation(extent={{70,-40},{90,-20}})));
+    annotation (Placement(transformation(extent={{26,-136},{46,-116}}),
+                                                                      iconTransformation(extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={60,-110})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -101,7 +112,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,140},{150,100}},
+          extent={{-150,110},{150,70}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -111,7 +122,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-80,0},{0,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -132,56 +143,34 @@ equation
               p,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{-120,55},{-60,5}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,-5},{-60,-55}},
-          textColor={175,175,175},
-          textString="%pressureUnit"),
+          extent={{-150,-98},{150,-68}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(
-          points={{-80,60},{-80,-60}},
+          points={{72,20},{88,20}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-90,30},{-70,10}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Line(
+          points={{-88,20},{-72,20}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,-60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-100,60},{-80,60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-70,80},{-50,80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-10,0},{10,0}},
+          points={{-8,0},{8,0}},
           color={28,108,200},
           thickness=0.5,
-          origin={-60,80},
+          origin={-80,20},
           rotation=90),
-        Line(
-          points={{-70,-80},{-50,-80}},
-          color={28,108,200},
-          thickness=0.5),
         Ellipse(
-          extent={{-72,92},{-48,68}},
+          extent={{70,30},{90,10}},
           lineColor={28,108,200},
-          lineThickness=0.5),
-        Ellipse(
-          extent={{-72,-68},{-48,-92}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Line(visible=outputTemperature,
-          points={{60,30},{78,30}},
-          color={0,0,127}),
-        Line(visible=outputPressure,
-          points={{60,-30},{78,-30}},
-          color={0,0,127})}),
+          lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
-end DifferenceSensor_Tp;
+end DifferenceSensor_Tp5;

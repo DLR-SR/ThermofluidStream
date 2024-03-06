@@ -1,17 +1,18 @@
-within ThermofluidStream.Sensors;
-model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapor quality"
-  import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
+﻿within ThermofluidStream.Sensors;
+model DifferenceSensorSelect3
+  "v3 of DifferenceSensorSelect"
+  import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package MediumA = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
     "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
-  replaceable package MediumB = Media.myMedia.Interfaces.PartialTwoPhaseMedium
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
     "Medium model B"
     annotation (choicesAllMatching=true,
     Documentation(info="<html>
@@ -19,42 +20,65 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
       </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
+    annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Quantity the sensor measures";
+
+final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_K then "T in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_C then "T in °C"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa then "p in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar then "p in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3 then "d in kg/m3"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg then "v in m3/kg"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg then "h in J/kg"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK then "s in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps then "Velocity of sound in m/s"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK then "cv in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK then "cp in J/(kg.K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1 then "kappa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol then  "M in kg/mol"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa then "r in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar then "r in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
+  else "error";
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
+  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,60}),
         iconTransformation(extent={{-120,40},{-80,80}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-60}),
         iconTransformation(extent={{-120,-80},{-80,-40}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
-  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected quantity";
+  output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected quantity";
 
-  Real valueA(unit=Internal.getTwoPhaseUnit(quantity));
-  Real valueB(unit=Internal.getTwoPhaseUnit(quantity));
+  Real valueA(unit=Internal.getUnit(quantity));
+  Real valueB(unit=Internal.getUnit(quantity));
 
 protected
-  Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));
+  Real direct_value(unit=Internal.getUnit(quantity));
 
-  function getQuantityA = Internal.getTwoPhaseQuantity(redeclare package Medium=MediumA) "Quantity compute function"
+  function getQuantityA = Internal.getQuantity(redeclare package Medium=MediumA) "Quantity compute function A"
     annotation (Documentation(info="<html>
-    <p>This function computes the selected two-phase quantity from state.</p>
+      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
       </html>"));
-  function getQuantityB = Internal.getTwoPhaseQuantity(redeclare package Medium=MediumB) "Quantity compute function"
+  function getQuantityB = Internal.getQuantity(redeclare package Medium=MediumB) "Quantity compute function B"
     annotation (Documentation(info="<html>
-    <p>This function computes the selected two-phase quantity from state.</p>
+      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
       </html>"));
 
 initial equation
@@ -69,10 +93,10 @@ equation
   inletA.m_flow = 0;
   inletB.m_flow = 0;
 
-  valueA = getQuantityA(inletA.state, quantity);
-  valueB = getQuantityB(inletB.state, quantity);
+  valueA =  getQuantityA(inletA.state, inletA.r, quantity, rho_min);
+  valueB =  getQuantityB(inletB.state, inletB.r, quantity, rho_min);
 
-  direct_value = valueA-valueB;
+  direct_value = valueA - valueB;
 
   if filter_output then
     der(value) * TC = direct_value-value;
@@ -107,9 +131,10 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          horizontalAlignment=TextAlignment.Left,
+          extent={{-35,-40},{150,-70}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(
           points={{-80,60},{-80,-60}},
           color={28,108,200},
@@ -149,7 +174,7 @@ equation
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Sensor for measuring the difference of the vapor quality between two fluid streams.</p>
-<p>This sensor can be connected totwo fluid streams without a junction.</p>
+<p>Sensor for measuring the difference of a selectable quantity between two fluid streams.</p>
+<p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
-end DifferenceTwoPhaseSensorSensorSelect;
+end DifferenceSensorSelect3;

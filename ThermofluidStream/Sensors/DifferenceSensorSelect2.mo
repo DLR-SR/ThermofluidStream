@@ -1,15 +1,23 @@
 ﻿within ThermofluidStream.Sensors;
-model SingleSensorSelect2 "Alternative Icon to SingleSensorSelect"
+model DifferenceSensorSelect2
+  "v2 of DifferenceSensorSelect"
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
+    "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
-        <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
+        <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
+    "Medium model B"
+    annotation (choicesAllMatching=true,
+    Documentation(info="<html>
+    <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
+      </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
@@ -47,17 +55,28 @@ model SingleSensorSelect2 "Alternative Icon to SingleSensorSelect"
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
-  Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
+  Interfaces.Inlet inletA(redeclare package Medium=MediumA)
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,60}),
+        iconTransformation(extent={{-120,40},{-80,80}})));
+  Interfaces.Inlet inletB(redeclare package Medium=MediumB)
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-60}),
+        iconTransformation(extent={{-120,-80},{-80,-40}})));
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
     annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
-  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
+  output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected quantity";
+
+  Real valueA(unit=Internal.getUnit(quantity));
+  Real valueB(unit=Internal.getUnit(quantity));
 
 protected
   Real direct_value(unit=Internal.getUnit(quantity));
 
-  function getQuantity = Internal.getQuantity(redeclare package Medium=Medium) "Quantity compute function"
+  function getQuantityA = Internal.getQuantity(redeclare package Medium=MediumA) "Quantity compute function A"
+    annotation (Documentation(info="<html>
+      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
+      </html>"));
+  function getQuantityB = Internal.getQuantity(redeclare package Medium=MediumB) "Quantity compute function B"
     annotation (Documentation(info="<html>
       <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
       </html>"));
@@ -70,8 +89,14 @@ initial equation
   end if;
 
 equation
-  inlet.m_flow = 0;
-  direct_value = getQuantity(inlet.state, inlet.r, quantity, rho_min);
+
+  inletA.m_flow = 0;
+  inletB.m_flow = 0;
+
+  valueA =  getQuantityA(inletA.state, inletA.r, quantity, rho_min);
+  valueB =  getQuantityB(inletB.state, inletB.r, quantity, rho_min);
+
+  direct_value = valueA - valueB;
 
   if filter_output then
     der(value) * TC = direct_value-value;
@@ -81,7 +106,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,80},{150,40}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor={0,0,255}),
         Rectangle(
@@ -91,7 +116,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-100,0},{0,0}},
+          points={{-80,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -106,15 +131,49 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{-150,-70},{150,-40}},
+          extent={{-150,-110},{150,-80}},
           textColor={0,0,0},
           textString=quantityString),
+        Line(
+          points={{-80,60},{-80,-60}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-100,-60},{-80,-60}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-100,60},{-80,60}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-70,50},{-50,50}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-10,0},{10,0}},
+          color={28,108,200},
+          thickness=0.5,
+          origin={-60,50},
+          rotation=90),
+        Line(
+          points={{-70,-50},{-50,-50}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-72,62},{-48,38}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Ellipse(
+          extent={{-72,-38},{-48,-62}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Sensor for measuring a selectable quantity.</p>
-<p>This sensor can be connected to a fluid stream without a junction.</p>
+<p>Sensor for measuring the difference of a selectable quantity between two fluid streams.</p>
+<p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
-end SingleSensorSelect2;
+end DifferenceSensorSelect2;

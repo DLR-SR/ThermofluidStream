@@ -1,5 +1,5 @@
-within ThermofluidStream.Sensors;
-model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapor quality"
+﻿within ThermofluidStream.Sensors;
+model DifferenceTwoPhaseSensorSensorSelect2 "v2 of DifferenceTwoPhaseSensorSensorSelect"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -20,6 +20,19 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter Quantities quantity "Quantity the sensor measures";
+
+    final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "Vapor quality (kg_Vapor/kg_total)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "Saturation temperature (K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C then "Saturation temperature (°C)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa then "Saturation pressure (Pa)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar then "Saturation pressure (bar)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K then "Temperature above saturation (K)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "Pressure above saturation (Pa)"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "Pressure above saturation (bar)"
+  else "error";
+
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
@@ -107,9 +120,9 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,-110},{150,-80}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(
           points={{-80,60},{-80,-60}},
           color={28,108,200},
@@ -152,4 +165,4 @@ equation
 <p>Sensor for measuring the difference of the vapor quality between two fluid streams.</p>
 <p>This sensor can be connected totwo fluid streams without a junction.</p>
 </html>"));
-end DifferenceTwoPhaseSensorSensorSelect;
+end DifferenceTwoPhaseSensorSensorSelect2;
