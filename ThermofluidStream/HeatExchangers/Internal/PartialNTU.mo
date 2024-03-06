@@ -1,6 +1,16 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  // Configure icon display options
+  parameter Boolean displayArea = true "= true, if you wish to display the conductive surface parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displaykNTU = true "= true, if you wish to display the heat transfer coefficient parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
+  final parameter Boolean d1kNTU = displayParameters and displaykNTU and not d1A  "displaykNTU at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2kNTU = displayParameters and displaykNTU and not d1kNTU  "displaykNTU at position 2" annotation(Evaluate=true, HideResult=true);
+
+
+
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
 

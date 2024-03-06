@@ -550,6 +550,22 @@ model TestIconParameters
     pressureFromInput=true)              annotation (Placement(transformation(extent={{-140,60},{-120,80}})));
   Boundaries.Sink                   sink4(displayParameters=true, pressureFromInput=true)
                                          annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
+  HeatExchangers.CounterFlowNTU counterFlowNTU(
+    displayParameters=true,
+    displayArea=false,
+    displaykNTU=false) annotation (Placement(transformation(extent={{-20,100},{0,120}})));
+  HeatExchangers.CounterFlowNTU counterFlowNTU1(
+    displayParameters=true,
+    displayArea=true,
+    displaykNTU=false) annotation (Placement(transformation(extent={{20,100},{40,120}})));
+  HeatExchangers.CounterFlowNTU counterFlowNTU2(
+    displayParameters=true,
+    displayArea=false,
+    displaykNTU=true) annotation (Placement(transformation(extent={{60,100},{80,120}})));
+  HeatExchangers.CounterFlowNTU counterFlowNTU3(
+    displayParameters=true,
+    displayArea=true,
+    displaykNTU=true) annotation (Placement(transformation(extent={{100,100},{120,120}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-340,-300},{340,300}}), graphics={
         Text(
           extent={{-340,-100},{0,-120}},
@@ -582,5 +598,13 @@ model TestIconParameters
         Text(
           extent={{-160,160},{-60,140}},
           textColor={28,108,200},
-          textString="Sink")}));
+          textString="Sink"),
+        Rectangle(
+          extent={{140,80},{-40,140}},
+          lineColor={28,108,200},
+          lineThickness=1),
+        Text(
+          extent={{-40,160},{140,140}},
+          textColor={28,108,200},
+          textString="CounterFlowNTU")}));
 end TestIconParameters;

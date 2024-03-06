@@ -14,6 +14,18 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=d1A,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="A = %A"),
+        Text(visible=d1kNTU,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="k_NTU = %k_NTU"),
+        Text(visible=d2kNTU,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString="k_NTU = %k_NTU"),
         Rectangle(
           extent={{-70,66},{84,-86}},
           lineColor={215,215,215},
@@ -35,11 +47,11 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Text(
-          extent={{-130,-90},{-90,-130}},
+          extent={{-120,0},{-80,-40}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{90,30},{130,-10}},
+          extent={{80,40},{120,0}},
           textColor={175,175,175},
           textString="B"),
         Line(
