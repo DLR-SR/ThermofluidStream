@@ -58,11 +58,10 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(points={{2,58},{0,58}}, color={28,108,200}),
-        Line(visible=not useDefaultStateAsRear,
+        Line(
           points={{0,0},{0,-60}},
           color={162,29,33},
-          arrow={Arrow.Filled,Arrow.None},
-          arrowSize = 20)},
+          arrowSize=20)},
       coordinateSystem(preserveAspectRatio=true)),
      Diagram(
         coordinateSystem(preserveAspectRatio=true)),

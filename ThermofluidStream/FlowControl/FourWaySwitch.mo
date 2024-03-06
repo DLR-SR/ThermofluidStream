@@ -63,6 +63,9 @@ model FourWaySwitch
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
+        origin={0,-100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
         origin={0,-100})));
 
 protected
@@ -102,8 +105,8 @@ equation
       points={{70,60},{86,60},{86,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch1.u, switch.u) annotation (Line(points={{60,-73},{60,-76},{0,-76},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
-  connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,73}}, color={0,0,127}));
+  connect(switch1.u, switch.u) annotation (Line(points={{60,-72},{60,-76},{0,-76},{0,76},{-60,76},{-60,72}}, color={0,0,127}));
+  connect(u, switch.u) annotation (Line(points={{0,-100},{0,76},{-60,76},{-60,72}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},

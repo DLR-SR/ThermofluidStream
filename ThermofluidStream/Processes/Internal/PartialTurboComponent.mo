@@ -39,7 +39,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
       iconTransformation(extent={{-10,-110},{10,-90}})));
   Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Input to directly set pump speed [rad/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90),
-      iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=90)));
+      iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-120}, rotation=90)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "Access-heat dumping port"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
                                                                                      rotation=90),

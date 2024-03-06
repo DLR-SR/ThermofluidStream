@@ -24,7 +24,10 @@ model Switch
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
 
   Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-130})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-130}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120})));
 
   ThermofluidStream.FlowControl.TanValve tanValve(redeclare package Medium = Medium,
                                                   final invertInput=invertInput,
@@ -90,7 +93,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName,
-          extent={{-150,-65},{150,-105}},
+          extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor={0,0,255}),
         Ellipse(

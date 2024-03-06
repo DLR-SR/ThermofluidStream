@@ -1,5 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
+  extends Internal.DiscretizedCounterFlowHexIcon;
   extends Internal.PartialDiscretizedHEX;
 
   Processes.FlowResistance flowResistanceB[nCells](
@@ -73,6 +74,10 @@ equation
   end for;
 
   annotation (Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
         Text(
           extent={{-66,54},{-54,42}},
           textColor={28,108,200},

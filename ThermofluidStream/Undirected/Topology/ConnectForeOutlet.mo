@@ -64,8 +64,7 @@ equation
           thickness=0.5), Line(
           points={{0,0},{0,-60}},
           color={162,29,33},
-          arrow={Arrow.Filled,Arrow.None},
-          arrowSize = 20)},
+          arrowSize=20)},
       coordinateSystem(preserveAspectRatio=true)),
      Diagram(
         coordinateSystem(preserveAspectRatio=true)),

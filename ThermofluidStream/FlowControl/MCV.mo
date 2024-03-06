@@ -18,7 +18,10 @@ model MCV "Massflow and volume control valve"
     annotation (Placement(
         transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,-120})));
+        origin={0,-120}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,-110})));
 
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
@@ -93,7 +96,7 @@ equation
           textString="%name",
           textColor={0,0,255}),
         Text(visible= displayInstanceName and enableClippingOutput,
-          extent={{-150,-65},{150,-105}},
+          extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor={0,0,255}),
         Ellipse(

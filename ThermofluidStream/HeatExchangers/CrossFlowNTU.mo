@@ -10,27 +10,23 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,110},{150,70}},
+          extent={{-150,100},{150,60}},
           textString="%name",
           textColor={0,0,255}),
         Line(visible=not displayInstanceName,
-          points={{0,0},{0,120}},
+          points={{0,60},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Line(visible=displayInstanceName,
-          points={{0,110},{0,120}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=displayInstanceName,
-          points={{0,60},{0,70}},
+          points={{0,60},{0,65}},
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-120,60},{-80,20}},
+          extent={{-120,-20},{-80,-60}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{-60,160},{-20,120}},
+          extent={{-60,140},{-20,100}},
           textColor={175,175,175},
           textString="B"),
         Ellipse(

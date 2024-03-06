@@ -1,5 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
+  extends Internal.DiscretizedCrossFlowHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](
@@ -88,36 +89,36 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,98},{150,58}},
+          textString="%name",
+          textColor={0,0,255}),
+        Line(visible=displayInstanceName,
+          points={{0,58},{0,65}},
+          color={28,108,200},
+          thickness=0.5),
         Line(visible=not displayInstanceName,
-          points={{0,78},{0,135}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=displayInstanceName,
-          points={{0,125},{0,135}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=displayInstanceName,
-          points={{0,78},{0,90}},
+          points={{0,58},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-66,54},{-54,42}},
+          extent={{-66,32},{-54,20}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-40,54},{-28,42}},
+          extent={{-40,32},{-28,20}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-12,54},{0,42}},
+          extent={{-12,32},{0,20}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,54},{28,42}},
+          extent={{16,32},{28,20}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{42,54},{54,42}},
+          extent={{42,32},{54,20}},
           textColor={28,108,200},
           textString="1"),
         Text(

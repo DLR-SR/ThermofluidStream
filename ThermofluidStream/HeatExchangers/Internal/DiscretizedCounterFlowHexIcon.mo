@@ -1,5 +1,5 @@
 within ThermofluidStream.HeatExchangers.Internal;
-model DiscretizedHexIcon
+model DiscretizedCounterFlowHexIcon
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
@@ -133,4 +133,4 @@ model DiscretizedHexIcon
           pattern=LinePattern.None,
           origin={54,-22},
           rotation=180)}),                                           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}})));
-end DiscretizedHexIcon;
+end DiscretizedCounterFlowHexIcon;
