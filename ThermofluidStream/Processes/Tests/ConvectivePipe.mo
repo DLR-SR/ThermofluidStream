@@ -11,7 +11,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.003,
     l=6.65)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
   Boundaries.Source source(
     redeclare package Medium = Medium,
     temperatureFromInput=false,

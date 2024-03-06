@@ -98,7 +98,7 @@ Medium package used in the Test.
       Medium = medium)
     annotation (Placement(transformation(extent={{26,-60},{46,-40}})));
   Modelica.Blocks.Sources.Constant const2(k=1.1e5)
-    annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
+    annotation (Placement(transformation(extent={{-170,-4},{-150,16}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = medium,
     r=0.05,
@@ -163,19 +163,19 @@ equation
       points={{26,-60},{10,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(source2.p0_var, const2.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,0},{-149,0}},
+  connect(source2.p0_var, const2.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,6},{-149,6}},
                                 color={0,0,127}));
   connect(ramp.y, valveParabolic.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(ramp.y, valveEqualPercentage.u_in) annotation (Line(points={{153,20},
           {120,20},{120,-40},{0,-40},{0,-52}}, color={0,0,127}));
-  connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,0},{-149,0}},
+  connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,6},{-149,6}},
                                                 color={0,0,127}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-96,60},{-80,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,0},{-124,0},{-124,6},{-108,6}},
+  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,6},{-108,6}},
                                color={0,0,127}));
   connect(multiSensor_Tpm3.outlet, flowResistance6.inlet) annotation (Line(
       points={{46,60},{66,60}},

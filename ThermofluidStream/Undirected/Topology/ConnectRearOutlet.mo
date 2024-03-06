@@ -57,11 +57,9 @@ equation
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{2,58},{0,58}}, color={28,108,200}),
-        Line(
+        Line(visible = not useDefaultStateAsRear,
           points={{0,0},{0,-60}},
-          color={162,29,33},
-          arrowSize=20)},
+          color={162,29,33})},
       coordinateSystem(preserveAspectRatio=true)),
      Diagram(
         coordinateSystem(preserveAspectRatio=true)),

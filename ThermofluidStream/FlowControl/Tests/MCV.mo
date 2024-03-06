@@ -62,7 +62,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
+    annotation (Placement(transformation(extent={{-80,-4},{-60,16}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -93,7 +93,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
+    annotation (Placement(transformation(extent={{-80,-34},{-60,-14}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -121,7 +121,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
+    annotation (Placement(transformation(extent={{-80,-64},{-60,-44}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -152,7 +152,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-78,-100},{-58,-80}})));
+    annotation (Placement(transformation(extent={{-78,-94},{-58,-74}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -234,7 +234,7 @@ equation
       points={{10,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse1.y, source1.p0_var) annotation (Line(points={{-59,0},{-40,0},{-40,6},{-32,6}}, color={0,0,127}));
+  connect(pulse1.y, source1.p0_var) annotation (Line(points={{-59,6},{-32,6}},                 color={0,0,127}));
   connect(mCV2.inlet, source2.outlet) annotation (Line(
       points={{-10,-30},{-20,-30}},
       color={28,108,200},
@@ -247,8 +247,7 @@ equation
       points={{10,-30},{20,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid.y, source2.p0_var) annotation (Line(points={{-59,-30},{-40,-30},{-40,-24},{-32,-24}},
-                                                                                                      color={0,0,127}));
+  connect(trapezoid.y, source2.p0_var) annotation (Line(points={{-59,-24},{-32,-24}},                 color={0,0,127}));
   connect(mCV3.inlet, source3.outlet) annotation (Line(
       points={{-10,-60},{-20,-60}},
       color={28,108,200},
@@ -261,7 +260,7 @@ equation
       points={{10,-60},{20,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse3.y, source3.p0_var) annotation (Line(points={{-59,-60},{-40,-60},{-40,-54},{-32,-54}}, color={0,0,127}));
+  connect(pulse3.y, source3.p0_var) annotation (Line(points={{-59,-54},{-32,-54}},                     color={0,0,127}));
   connect(mCV4.inlet, source4.outlet) annotation (Line(
       points={{-10,-90},{-20,-90}},
       color={28,108,200},
@@ -274,7 +273,7 @@ equation
       points={{10,-90},{20,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid1.y, source4.p0_var) annotation (Line(points={{-57,-90},{-40,-90},{-40,-84},{-32,-84}}, color={0,0,127}));
+  connect(trapezoid1.y, source4.p0_var) annotation (Line(points={{-57,-84},{-32,-84}},                     color={0,0,127}));
   connect(mCV5.inlet, source5.outlet) annotation (Line(
       points={{-10,70},{-20,70}},
       color={28,108,200},

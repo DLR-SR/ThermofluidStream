@@ -529,7 +529,7 @@ equation
   connect(twoPhaseSensorSelect.value_out, switch1.u3) annotation (Line(points={{64,58},{6.8,58},{6.8,72.8}}, color={0,0,127}));
   connect(PI_Valve.y, limiterValve.u) annotation (Line(points={{18,129},{18,132.8}}, color={0,0,127}));
   connect(feedback_valve.y, PI_Valve.u) annotation (Line(points={{7.3,101},{18,101},{18,106}}, color={0,0,127}));
-  connect(omega_compr.y, compressor.omega_input) annotation (Line(points={{20,5},{20,14},{10,14}}, color={0,0,127}));
+  connect(omega_compr.y, compressor.omega_input) annotation (Line(points={{20,5},{20,14},{12,14}}, color={0,0,127}));
   connect(booleanToReal.u, logicalSwitch.y) annotation (Line(points={{-144,-6},{-155,-6}}, color={255,0,255}));
   connect(logicalSwitch.u3, booleanExpression.y) annotation (Line(points={{-178,-14},{-184,-14},{-184,-22},{-191,-22}}, color={255,0,255}));
   connect(logicalSwitch.u2, booleanExpression2.y) annotation (Line(points={{-178,-6},{-191,-6}}, color={255,0,255}));

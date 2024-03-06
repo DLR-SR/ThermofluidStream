@@ -2,6 +2,12 @@ within ThermofluidStream.Undirected.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for undirected discretized heat exchangers"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
+  // Configure icon display options
+  parameter Boolean displayArea = true "= true, if you wish to display the conductive area of heat exchanger parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
+
+
+
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 

@@ -21,7 +21,7 @@ partial model PartialConductionElement "Element with quasi-stationary mass and h
     annotation(Dialog(tab="Advanced", enable = enforce_global_energy_conservation));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
-    annotation (Placement(transformation(extent={{-10,88},{10,108}})));
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
 
   SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer);
 
@@ -87,7 +87,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
-          extent={{-150,-80},{150,-120}},
+          extent={{-150,80},{150,120}},
           textString="%name",
           textColor={0,0,255}),
        Line(
@@ -95,30 +95,18 @@ equation
          thickness=0.5,
          color={28,108,200}),
        Ellipse(
-         extent={{-70,-70},{70,70}},
+         extent={{-60,-60},{60,60}},
          lineColor={28,108,200},
          lineThickness=0.5,
          fillColor={170,213,255},
          fillPattern=FillPattern.Solid,
          pattern=LinePattern.Solid),
-       Line(
-         points={{-50,-30},{50,-30}},
-         color={238,46,47}),
-       Line(
-         points={{-50,-15},{50,-15}},
-         color={238,46,47}),
-       Line(
-         points={{-50,0},{50,0}},
-         color={238,46,47}),
-       Line(
-         points={{-50,15},{50,15}},
-         color={238,46,47}),
-       Line(
-         points={{-50,30},{50,30}},
-         color={238,46,47}),
-       Line(
-         points={{0,100},{0,-30}},
-         color={238,46,47})}),
+       Line(points={{-40,-30},{40,-30}}, color={191,0,0}),
+       Line(points={{-40,-15},{40,-15}}, color={191,0,0}),
+       Line(points={{-40,0},{40,0}}, color={191,0,0}),
+       Line(points={{-40,15},{40,15}}, color={191,0,0}),
+       Line(points={{-40,30},{40,30}}, color={191,0,0}),
+       Line(points={{0,30},{0,-60}}, color={191,0,0})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>

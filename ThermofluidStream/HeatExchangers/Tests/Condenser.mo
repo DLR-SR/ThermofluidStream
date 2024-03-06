@@ -81,7 +81,7 @@ model Condenser
     k_wall=150,
     nCells=20) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={2,10})));
+        origin={4,10})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumAir,
     m_flow_0=0.5,
@@ -179,16 +179,16 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.outlet, condenser.inletA) annotation (Line(
-      points={{-24,10},{-8,10}},
+      points={{-24,10},{-6,10}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, multiSensor_Tpm1.inlet)
     annotation (Line(
-      points={{12,10},{28.2,10},{28.2,10},{44,10}},
+      points={{14,10},{44,10}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletB, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{10,-0.2},{10,-14}},
+      points={{10,0},{10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletB, multiSensor_Tpm3.outlet) annotation (Line(

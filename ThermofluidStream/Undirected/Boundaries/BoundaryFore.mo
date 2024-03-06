@@ -2,21 +2,28 @@ within ThermofluidStream.Undirected.Boundaries;
 model BoundaryFore "Generic Boundary model (may act as source or sink)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  // Configure icon display options
+  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par (this does not work for pressureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayTemperature = true "= true to display the temperature set value T0_par (this does not work for temperatureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1p = displayParameters and displayPressure and not pressureFromInput  "displayPressure at position 1" annotation(Evaluate=true, HideResult=true); //d1p -> Display at position 1 p=pressure
+  final parameter Boolean d1T = displayParameters and displayTemperature and not temperatureFromInput and not setEnthalpy and not d1p  "displayTemperature at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2T = displayParameters and displayTemperature and not temperatureFromInput and not setEnthalpy and not d1T  "displayTemperature at position 2" annotation(Evaluate=true, HideResult=true);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Boundary. Make sure it is the same as the one the port is connected to.</p>
 </html>"));
 
-  parameter Boolean setEnthalpy = false "Prescribe specific enthalpy instead of temperature?";
-  parameter Boolean temperatureFromInput = false "Use input connector for temperature?" annotation(Dialog(enable = not setEnthalpy));
-  parameter Boolean pressureFromInput = false "Use input connector for pressure?";
-  parameter Boolean enthalpyFromInput = false "Use input connector for specific enthalpy"
+  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)";
+  parameter Boolean temperatureFromInput = false "= true to use temperature input connector" annotation(Dialog(enable = not setEnthalpy));
+  parameter Boolean pressureFromInput = false "= true to use pressure input connector";
+  parameter Boolean enthalpyFromInput = false "= true to use specific enthalpy input connector"
     annotation(Dialog(enable = setEnthalpy));
-  parameter Boolean xiFromInput = false "Use input connector for mass Fraction?";
-  parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value" annotation(Dialog(enable = setEnthalpy and not enthalpyFromInput));
-  parameter SI.Temperature T0_par = Medium.T_default "Temperature set value" annotation(Dialog(enable = not setEnthalpy and not temperatureFromInput));
+  parameter Boolean xiFromInput = false "= true to use mass fraction input connector";
+
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value" annotation(Dialog(enable = not pressureFromInput));
+  parameter SI.Temperature T0_par = Medium.T_default "Temperature set value" annotation(Dialog(enable = not setEnthalpy and not temperatureFromInput));
+  parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value" annotation(Dialog(enable = setEnthalpy and not enthalpyFromInput));
   parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass Fraction set value"
     annotation(Dialog(enable = not xiFromInput));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
@@ -84,6 +91,22 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor={0,0,255}),
+        Text(visible=d1p,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="p = %p0_par"),
+        Text(visible=d1T,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="T = %T0_par"),
+        Text(visible=d2T,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString="T = %T0_par"),
         Rectangle(
           extent={{4,76},{-60,-84}},
           lineColor={28,108,200},

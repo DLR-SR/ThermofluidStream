@@ -93,7 +93,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
-        283.15) annotation (Placement(transformation(extent={{60,0},{40,20}})));
+        283.15) annotation (Placement(transformation(extent={{62,-36},{42,-16}})));
   tf.Processes.Pump pump4(
     redeclare package Medium = Medium,
     L=10000,
@@ -123,7 +123,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
 equation
 
   connect(pump.omega_input, const.y)
-    annotation (Line(points={{8,62},{8,52},{-3,52}}, color={0,0,127}));
+    annotation (Line(points={{8,60},{8,52},{-3,52}}, color={0,0,127}));
   connect(power1.flange, pump1.flange)
     annotation (Line(points={{-6.4,12},{8,12},{8,22}}, color={0,0,0}));
   connect(splitterN.inlet, source.outlet) annotation (Line(
@@ -139,7 +139,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(pump2.omega_input, const1.y)
-    annotation (Line(points={{8,-18},{8,-28},{-3,-28}}, color={0,0,127}));
+    annotation (Line(points={{8,-20},{8,-28},{-3,-28}}, color={0,0,127}));
   connect(power2.flange,pump3. flange)
     annotation (Line(points={{-6.4,-68},{8,-68},{8,-56}}, color={0,0,0}));
   connect(pump1.inlet, splitterN.outlets[3]) annotation (Line(
@@ -171,8 +171,9 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(fixedTemperature.port, pump2.heatport)
-    annotation (Line(points={{40,10},{8,10},{8,2}}, color={191,0,0}));
-  connect(const2.y, pump4.omega_input) annotation (Line(points={{-15,112},{0,112},{0,130}}, color={0,0,127}));
+    annotation (Line(points={{42,-26},{2,-26},{2,-18}},
+                                                    color={191,0,0}));
+  connect(const2.y, pump4.omega_input) annotation (Line(points={{-15,112},{0,112},{0,128}}, color={0,0,127}));
   connect(source1.outlet, pump4.inlet) annotation (Line(
       points={{-38,140},{-10,140}},
       color={28,108,200},

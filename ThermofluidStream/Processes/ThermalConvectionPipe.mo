@@ -1,13 +1,24 @@
 within ThermofluidStream.Processes;
 model ThermalConvectionPipe "Very simple model of thermal convection"
   extends Interfaces.SISOFlow(final clip_p_out=false);
-
+  // Configure icon display options
+  parameter Boolean displayLength = true "= true to display the length of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true to display the radius of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter String parameterString=
+  if displayParameters and displayLength and displayRadius then
+    "l = %l, r = %r"
+  elseif displayParameters and displayLength and not displayRadius then
+    "l = %l"
+  elseif  displayParameters and not displayLength and displayRadius then
+    "r = %r"
+  else "";
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
-      Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
-          extent={{-10,90},{10,110}})));
+      Placement(transformation(extent={{-10,-110},{10,-90}}),
+                                                            iconTransformation(
+          extent={{-10,-110},{10,-90}})));
 
-  parameter SI.Radius r(min = 0) "Radius of pipe";
   parameter SI.Length l(min=0) "Length of pipe";
+  parameter SI.Radius r "Radius of pipe";
   parameter SI.ReynoldsNumber Re_D_crit = 2300
     "Critical Reynolds number for transition to turbulent"
   annotation(Dialog(tab = "Advanced", group = "flow characteristics"));
@@ -97,21 +108,31 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-60},{150,-100}},
+          extent={{-150,60},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(
+          extent={{-150,-50},{150,-80}},
+          textColor={0,0,0},
+          textString=parameterString),
         Rectangle(
           extent={{-84,36},{88,-36}},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           lineColor={28,108,200},
           radius=2),
-        Line(points={{0,90},{0,44}},color={238,46,47}),
         Line(points={{-84,44},{88,44}}, color={238,46,47}),
         Line(points={{-84,-44},{88,-44}}, color={238,46,47}),
         Line(
           points={{-60,0},{64,0}},
-          color={28,108,200})}), Diagram(coordinateSystem(
+          color={28,108,200}),
+        Line(visible=not parameterString=="", points={{0,-44},{0,-50}},
+                                    color={238,46,47}),
+        Line(visible=not parameterString=="", points={{0,-80},{0,-90}},
+                                    color={238,46,47}),
+        Line(visible=parameterString=="", points={{0,-44},{0,-90}},
+                                    color={238,46,47})}),
+                                 Diagram(coordinateSystem(
           preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component models the convective heat transfer in a pipe element with constant heat flux. </p>

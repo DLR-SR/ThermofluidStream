@@ -71,7 +71,7 @@ model TestConnectors "Test for the connectors"
   ConnectInletFore connectInletFore1(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-30,-40},{-10,-20}})));
   ConnectRearOutlet connectRearOutlet1(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
+    annotation (Placement(transformation(extent={{10,-20},{30,-40}})));
   ThermofluidStream.Boundaries.Sink sink2(redeclare package Medium = Medium,
       pressureFromInput=true)
     annotation (Placement(transformation(extent={{30,-40},{50,-20}})));
@@ -226,13 +226,13 @@ equation
       thickness=0.5));
   connect(boundary_fore4.p0_var, sink.p0_var) annotation (Line(points={{42,-44},{46,-44},{46,10},{32,10}},
                                         color={0,0,127}));
-  connect(createState.y, connectRearOutlet.state_rear) annotation (Line(points={{32,-8},{12,-8},{12,20},{0,20},{0,14}},
+  connect(createState.y, connectRearOutlet.state_rear) annotation (Line(points={{32,-8},{0,-8},{0,6}},
                                                                         color={
           162,29,33}));
-  connect(createState.p_inp, sink.p0_var) annotation (Line(points={{38,-4},{46,-4},{46,10},{32,10}},
+  connect(createState.p_inp, sink.p0_var) annotation (Line(points={{38,-5.6},{46,-5.6},{46,10},{32,10}},
                                    color={0,0,127}));
   connect(connectRearOutlet1.state_rear, connectRearOutlet.state_rear)
-    annotation (Line(points={{20,-26},{20,-8},{12,-8},{12,28},{0,28},{0,14}},
+    annotation (Line(points={{20,-26},{20,-8},{0,-8},{0,6}},
         color={162,29,33}));
   connect(source3.outlet, flowResistance1.inlet) annotation (Line(
       points={{-60,-68},{-40,-68}},

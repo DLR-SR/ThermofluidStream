@@ -10,7 +10,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     redeclare package Medium = Medium,
     r=0.005,
     l=1)
-    annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
+    annotation (Placement(transformation(extent={{-30,10},{-10,-10}})));
   Boundaries.Source source(
     redeclare package Medium = Medium,
     temperatureFromInput=false,
@@ -77,7 +77,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     redeclare package Medium = Medium,
     r=0.005,
     l=1)
-    annotation (Placement(transformation(extent={{26,-10},{46,10}})));
+    annotation (Placement(transformation(extent={{26,10},{46,-10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(
     redeclare package Medium = Medium,
     digits=3,

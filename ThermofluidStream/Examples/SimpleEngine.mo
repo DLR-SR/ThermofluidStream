@@ -22,7 +22,7 @@ model SimpleEngine "Simple steam engine"
     A=20,
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,
     T_0=573.15)
-    annotation (Placement(transformation(extent={{-60,44},{-40,64}})));
+    annotation (Placement(transformation(extent={{-60,64},{-40,44}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(
     T(displayUnit="degC") = 873.15)
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
@@ -146,7 +146,7 @@ model SimpleEngine "Simple steam engine"
   Boundaries.TerminalSource terminalSource(redeclare package Medium = Water) annotation (Placement(transformation(extent={{-130,44},{-110,64}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,-118},{218,-62}})));
 equation
-  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}}, color={191,0,0}));
+  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,64}},   color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, crankDrive.flange_a)
     annotation (Line(points={{-130,-65},{-85.5,-65}},
                                                  color={0,0,0}));
@@ -234,7 +234,7 @@ equation
       points={{-20,54},{-40,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-10,67},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-10,66},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
   connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
   annotation (

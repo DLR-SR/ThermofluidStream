@@ -38,6 +38,10 @@ equation
           extent={{-150,130},{150,90}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=d1A,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="A = %A"),
         Text(
           extent={{-66,54},{-54,42}},
           textColor={28,108,200},

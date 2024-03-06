@@ -21,7 +21,7 @@ model SimpleStream "Steam splitting and joining"
     annotation (Placement(transformation(extent={{60,-20},{40,0}})));
   Processes.ConductionElement thermalConduction(
     redeclare package Medium = Medium,
-    L=100) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
+    L=100) annotation (Placement(transformation(extent={{-40,20},{-20,0}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(
     C=4e2,
     T(start=368.15, fixed=true))
@@ -85,8 +85,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(thermalConduction.heatPort, heatCapacitor.port)
-    annotation (Line(points={{-30,19.8},{-30,30}},
-                                                 color={191,0,0}));
+    annotation (Line(points={{-30,20},{-30,30}}, color={191,0,0}));
   connect(thermalConduction.outlet, multiSensor_Tpm.inlet) annotation (Line(
       points={{-20,10},{-10,10}},
       color={28,108,200},

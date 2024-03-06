@@ -52,20 +52,19 @@ equation
       thickness=0.5));
   connect(connectRearOutlet.state_rear, state_rear) annotation (Line(points={{10,-4},{10,12},{0,12},{0,40}},
                                  color={162,29,33}));
-  annotation (Icon(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true),
       graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
-        Line(visbile=not useDefaultStateAsRear,
+        Line(
           points={{-30,0},{30,0}},
           color={28,108,200},
-          thickness=0.5), Line(
+          thickness=0.5),
+        Line(visible = not useDefaultStateAsRear,
           points={{0,0},{0,-60}},
-          color={162,29,33},
-          arrowSize=20)},
-      coordinateSystem(preserveAspectRatio=true)),
+          color={162,29,33})}),
      Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

@@ -1,6 +1,12 @@
 within ThermofluidStream.Processes;
 model TransportDelay "Delay Thermofluid state depending on fluid speed"
   extends Interfaces.SISOFlow(final clip_p_out=false);
+  // Configure icon display options
+  parameter Boolean displayLength = true "= true to display the length of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true to display the radius of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1" annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
+  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2" annotation(Evaluate=true, HideResult=true);
 
   parameter SI.Length l "Length of Delay Pipe";
   parameter SI.Radius r "Radius of Delay Pipe";
@@ -64,10 +70,22 @@ equation
 <p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
 </html>"),
 Icon(coordinateSystem(preserveAspectRatio=true), graphics={
-       Text(visible=displayInstanceName,
-          extent={{-150,120},{150,80}},
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
+        Text(visible=d1l,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="l = %l"),
+        Text(visible=d1r,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="r = %r"),
+        Text(visible=d2r,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString="r = %r"),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

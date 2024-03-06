@@ -26,7 +26,7 @@ Medium package used in the Test.
     amplitude=2e5,
     period=0.5,
     offset=1e5)
-    annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
+    annotation (Placement(transformation(extent={{-96,-4},{-76,16}})));
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
     r=0.1,
     l=10,
@@ -37,7 +37,7 @@ equation
       points={{-22,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse.y, source.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,6},{-42,6}},
+  connect(pulse.y, source.p0_var) annotation (Line(points={{-75,6},{-42,6}},
                          color={0,0,127}));
   connect(sink.inlet, flowResistance.outlet) annotation (Line(
       points={{52,0},{34,0}},

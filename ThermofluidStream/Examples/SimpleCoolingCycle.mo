@@ -31,7 +31,7 @@ extends Modelica.Icons.Example;
     redeclare package Medium = Medium_liquid,
     r=0.005,
     l=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-80,50})));
   ThermofluidStream.Processes.FlowResistance flowResistance(

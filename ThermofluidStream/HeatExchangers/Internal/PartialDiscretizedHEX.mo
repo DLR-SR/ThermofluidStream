@@ -1,6 +1,12 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  // Configure icon display options
+  parameter Boolean displayArea = true "= true, if you wish to display the conductive area of heat exchanger parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
+
+
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
   replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 
@@ -60,8 +66,8 @@ public
         rotation=90,
         origin={0,0})));
 
-  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,70},{10,50}})));
-  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-70},{-10,-50}})));
+  ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,50},{10,70}})));
+  ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-50},{-10,-70}})));
 
   Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-120,40},{-80,80}}),iconTransformation(extent=if crossFlow then {{120,-80},{80,-40}} else {{-120,40},{-80,80}})));
   Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{80,40},{120,80}}),iconTransformation(extent=if crossFlow then {{-80,-80},{-120,-40}} else {{80,40},{120,80}})));

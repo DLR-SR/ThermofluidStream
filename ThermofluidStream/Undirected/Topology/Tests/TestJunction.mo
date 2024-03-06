@@ -127,8 +127,7 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{46,-30},{66,-10}})));
   ConnectInletRear connectInletRear3(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{46,-70},{66,-50}})));
-  ConnectForeOutlet connectForeOutlet1(redeclare package Medium = Medium,
-      useDefaultStateAsRear=true)
+  ConnectForeOutlet connectForeOutlet1(redeclare package Medium = Medium, useDefaultStateAsRear=true)
     annotation (Placement(transformation(extent={{98,-50},{118,-30}})));
   JunctionMN junctionMN(redeclare package Medium = Medium,
     M=2,
