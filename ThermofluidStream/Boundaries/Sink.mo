@@ -3,8 +3,22 @@ model Sink "Boundary model of sink"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
   // Configure icon display options
-  parameter Boolean displayPressure = true "= true, if you wish to display the pressure set value p0_par (this does not work for pressureFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1p = displayParameters and displayPressure and not pressureFromInput  "displayPressure at position 1" annotation(Evaluate=true, HideResult=true); //d1p -> Display at position 1 p=pressure
+  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "= true to display the inertance value L" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+
+  final parameter Boolean displayP = displayPressure and not pressureFromInput annotation(Evaluate=true, HideResult=true);
+
+  final parameter String displayPos1=
+  if displayP then
+    "p = %p0_par"
+  elseif displayInertance then
+    "L = %L"
+  else "";
+  final parameter String displayPos2=
+  if displayP and displayInertance then
+    "L = %L"
+  else "";
+
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -54,10 +68,14 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible=d1p,
+        Text(visible=displayParameters,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
-          textString="p = %p0_par"),
+          textString=displayPos1),
+        Text(visible=displayParameters,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString=displayPos2),
         Rectangle(
           extent={{-56,76},{4,-84}},
           lineColor={28,108,200},

@@ -65,7 +65,7 @@ model SimpleEngine "Simple steam engine"
         origin={-10,54})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Water)
     annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}},
+        extent={{-10,10},{10,-10}},
         rotation=0,
         origin={150,54})));
   Processes.FlowResistance flowResistance3(

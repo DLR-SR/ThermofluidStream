@@ -1774,5 +1774,15 @@ model TestIcons
         Text(
           extent={{272,138},{292,118}},
           textColor={28,108,200},
-          textString="v3")}));
+          textString="v3"),
+        Rectangle(
+          extent={{-438,292},{-430,286}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-398,292},{-390,286}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid)}));
 end TestIcons;

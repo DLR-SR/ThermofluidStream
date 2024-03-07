@@ -109,12 +109,12 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         rotation=90,
         origin={0,-40})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=90,
         origin={20,-94})));
   ThermofluidStream.Topology.JunctionT1
                       junctionT1_2(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=270,
         origin={0,60})));
   Topology.SplitterT1 splitterT1_2(redeclare package Medium=Medium_ram) annotation (Placement(transformation(

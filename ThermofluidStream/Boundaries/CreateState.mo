@@ -3,11 +3,21 @@ model CreateState "Create state signal as output"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
   // Configure icon display options
-  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par (this does not work for PFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not PFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayTemperature = true "= true to display the temperature set value T0_par (this does not work for TFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not TFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1p = displayParameters and displayPressure and not PFromInput  "displayPressure at position 1" annotation(Evaluate=true, HideResult=true); //d1p -> Display at position 1 p=pressure
-  final parameter Boolean d1T = displayParameters and displayTemperature and not TFromInput and not setEnthalpy and not d1p  "displayTemperature at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2T = displayParameters and displayTemperature and not TFromInput and not setEnthalpy and not d1T  "displayTemperature at position 2" annotation(Evaluate=true, HideResult=true);
+  parameter Boolean displayPressure = true "= true to display the pressure set value p_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not PFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayTemperature = true "= true to display the temperature set value T_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not TFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayP = displayPressure and not PFromInput annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayT = displayTemperature and not TFromInput and not setEnthalpy annotation(Evaluate=true, HideResult=true);
+
+  final parameter String displayPos1=
+  if displayP then
+    "p = %p_par"
+  elseif displayT then
+    "T = %T_par"
+  else "" annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos2=
+  if displayP and displayT then
+    "T = %T_par"
+  else "" annotation(Evaluate=true, HideResult=true);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
   "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -78,18 +88,14 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible=d1p,
+        Text(visible=displayParameters,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
-          textString="p = %p_par"),
-        Text(visible=d1T,
-          extent={{-150,-90},{150,-120}},
-          textColor={0,0,0},
-          textString="T = %T_par"),
-        Text(visible=d2T,
+          textString=displayPos1),
+        Text(visible=displayParameters,
           extent={{-150,-130},{150,-160}},
           textColor={0,0,0},
-          textString="T = %T_par"),
+          textString=displayPos2),
         Line(
           points={{0,0},{98,0}},
           color={162,29,33},

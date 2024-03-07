@@ -18,17 +18,17 @@ model TestNonPhysical
         origin={-70,-70})));
   JunctionT2 junctionT2_1(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-70,80})));
   JunctionT2 junctionT2_3(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-70,30})));
   JunctionT2 junctionT2_5(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-70,-20})));
   SplitterT2 splitterT2_1(redeclare package Medium = Medium)
@@ -105,17 +105,17 @@ model TestNonPhysical
         origin={100,-70})));
   JunctionT2 junctionT2_2(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={100,80})));
   JunctionT2 junctionT2_4(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={100,30})));
   JunctionT2 junctionT2_6(redeclare package Medium = Medium) annotation (
       Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={100,-20})));
   SplitterT2 splitterT2_2(redeclare package Medium = Medium)
@@ -414,13 +414,12 @@ equation
           -120,50},{-120,57}},
                          color={0,0,127}));
   connect(const.y, pump.omega_input)
-    annotation (Line(points={{165,44},{80,44},{80,50}}, color={0,0,127}));
-  connect(pump2.omega_input, pump.omega_input) annotation (Line(points={{80,0},{
-          80,-6},{140,-6},{140,44},{80,44},{80,50}},color={0,0,127}));
-  connect(pump3.omega_input, pump.omega_input) annotation (Line(points={{80,-50},
-          {80,-58},{140,-58},{140,44},{80,44},{80,50}}, color={0,0,127}));
-  connect(pump1.omega_input, pump.omega_input) annotation (Line(points={{80,-100},
-          {80,-106},{140,-106},{140,44},{80,44},{80,50}},
+    annotation (Line(points={{165,44},{80,44},{80,48}}, color={0,0,127}));
+  connect(pump2.omega_input, pump.omega_input) annotation (Line(points={{80,-2},{80,-6},{140,-6},{140,44},{80,44},{80,48}},
+                                                    color={0,0,127}));
+  connect(pump3.omega_input, pump.omega_input) annotation (Line(points={{80,-52},{80,-58},{140,-58},{140,44},{80,44},{80,48}},
+                                                        color={0,0,127}));
+  connect(pump1.omega_input, pump.omega_input) annotation (Line(points={{80,-102},{80,-106},{140,-106},{140,44},{80,44},{80,48}},
                                                         color={0,0,127}));
 
   connect(sink.inlet, flowResistance4.outlet) annotation (Line(

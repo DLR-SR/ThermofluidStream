@@ -154,7 +154,7 @@ model ReverseHeatPump
   Topology.JunctionT1 junctionT1_1(
     redeclare package Medium = RefrigerantMedium,
     L=1e6)
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=90,
         origin={0,-38})));
   Undirected.Topology.ConnectRearOutlet connectRearOutlet(

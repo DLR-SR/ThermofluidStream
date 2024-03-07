@@ -18,7 +18,7 @@ model FlowRes
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-50,36})));
+        origin={-44,36})));
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumAir,
@@ -52,7 +52,7 @@ model FlowRes
     h0_par=300e3)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-180,48})));
+        origin={-176,48})));
 
   ThermofluidStream.Boundaries.Sink sinkB(
     redeclare package Medium = MediumRefrigerant,
@@ -478,7 +478,7 @@ model FlowRes
         origin={138,-10})));
 equation
   connect(sourceB.outlet, multiSensor_Tpm3.inlet) annotation (Line(
-      points={{-170,48},{-162,48}},
+      points={{-166,48},{-162,48}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.outlet, evaporator.inletA)
@@ -528,7 +528,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sourceA.outlet, multiSensor_Tpm.inlet) annotation (Line(
-      points={{-60,36},{-82,36}},
+      points={{-54,36},{-82,36}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.inlet, mCV1.outlet) annotation (Line(

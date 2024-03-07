@@ -63,7 +63,7 @@ meant for liquids with low compressablility.
   Topology.JunctionX3 junctionX3_1(
     redeclare package Medium = Medium,
     assumeConstantDensity=true,
-    L=0) annotation (Placement(transformation(extent={{50,0},{30,20}})));
+    L=0) annotation (Placement(transformation(extent={{30,0},{50,20}})));
   Boundaries.Source source1(
     redeclare package Medium = Medium,
     pressureFromInput=false,

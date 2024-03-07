@@ -4,28 +4,45 @@ model DynamicPressureOutflow
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean displayOutletVelocity = true "= true, if you wish to display the inlet velocity parameter value (this does not work for velocityFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInletArea = true "= true, if you wish to display the outlet area parameter value (this does not work for areaFromInput)" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayCompressibilityApproach = true "= true, if you wish to display assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayCompressibilityApproach = true "= true to display the value of assumeConstantDensity" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInletArea = true "= true to display the inlet area value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayOutletVelocity = true "= true to display the outlet velocity value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "= true to display the inertance value L" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
+  final parameter Boolean displayA = displayInletArea  and not areaFromInput annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean dv_out = displayOutletVelocity and not velocityFromInput annotation(Evaluate=true, HideResult=true);
 
   final parameter String compressibilityString = if assumeConstantDensity then "incompressible" else "compressible"  annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d1c = displayParameters and displayCompressibilityApproach "displayCompressibilityApproach at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d1A = displayParameters and displayInletArea and not areaFromInput and not d1c "displayInletArea at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2A = displayParameters and displayInletArea and not areaFromInput and not d1A "displayInletArea at position 2" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d1v = displayParameters and displayOutletVelocity and not velocityFromInput and not d1c and not d1A "displayOutletVelocity at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2v = displayParameters and displayOutletVelocity and not velocityFromInput and not d2A and not d1v "displayOutletVelocity  at position 2" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d3v = displayParameters and displayOutletVelocity and not velocityFromInput and not d1v and not d2v "displayOutletVelocity  at position 3" annotation(Evaluate=true, HideResult=true);
+
+  final parameter String displayPos1=
+    if displayCompressibilityApproach then
+      compressibilityString
+    elseif displayA then
+      "A_in = %A_par"
+    elseif displayInertance then
+      "L = %L"
+    else "" annotation(Evaluate=true, HideResult=true);
+
+  final parameter String displayPos2=
+    if displayCompressibilityApproach and displayA then
+      "A_in = %A_par"
+    elseif displayInertance and not displayPos1 == "L = %L" then
+      "L = %L"
+    else "" annotation(Evaluate=true, HideResult=true);
+
+  final parameter String displayPos3=
+    if displayCompressibilityApproach and displayA and displayInertance then
+      "L = %L"
+    else "" annotation(Evaluate=true, HideResult=true);
 
 
-
-  parameter Boolean areaFromInput = false "= true to use input connector for inlet cross section area";
-  parameter Boolean velocityFromInput = false "= true to use input connector for outlet velocity";
-  parameter SI.Area A_par = 1 "Inlet cross-section area"
-    annotation(Dialog(enable=not areaFromInput));
+  parameter Boolean areaFromInput = false "= true to use input connector for inlet cross section area" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+    parameter SI.Area A_par = 1 "Inlet cross-section area"
+    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
+  parameter Boolean velocityFromInput = false "= true to use input connector for outlet velocity" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Velocity v_out_par = 0 "Outlet velocity set value"
-    annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity= true "= true for incompressibility assumption applied, use '= false' for Ma > 0.3";
+    annotation(Dialog(group="Nozzle / Diffusor definition",enable=not velocityFromInput));
+  parameter Boolean assumeConstantDensity= true "= true to assume incompressibility, use '= false' for Ma > 0.3";
   parameter Boolean extrapolateQuadratic = false "= true to extrapolate negative velocities purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
@@ -98,30 +115,23 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible=d1c,
+        Text(visible=displayParameters,
           extent={{-150,-100},{150,-130}},
           textColor={0,0,0},
-          textString=compressibilityString),
-        Text(visible=d1v,
-          extent={{-150,-100},{150,-130}},
-          textColor={0,0,0},
-          textString="v_out = %v_out_par"),
-        Text(visible=d1A,
-          extent={{-150,-100},{150,-130}},
-          textColor={0,0,0},
-          textString="A_in = %A_par"),
-        Text(visible=d2v,
+          textString=displayPos1),
+        Text(visible=displayParameters,
           extent={{-150,-140},{150,-170}},
           textColor={0,0,0},
-          textString="v_out = %v_out_par"),
-        Text(visible=d2A,
-          extent={{-150,-140},{150,-170}},
-          textColor={0,0,0},
-          textString="A_in = %A_par"),
-        Text(visible=d3v,
+          textString=displayPos2),
+        Text(visible=displayParameters,
           extent={{-150,-180},{150,-210}},
           textColor={0,0,0},
-          textString="v_out = %v_out_par"),
+          textString=displayPos3),
+        Text(visible=dv_out,
+          extent={{210,-45},{15,-75}},
+          textColor={0,0,0},
+          textString="v_out = %v_out_par",
+          horizontalAlignment=TextAlignment.Left),
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},

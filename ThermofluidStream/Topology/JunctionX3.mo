@@ -15,36 +15,42 @@ model JunctionX3 "3 to 1 X-Junction"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
+    annotation (Placement(transformation(extent={{20,-20},{-20,20}}, rotation=180, origin={100,0}), iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=180,
+        origin={100,0})));
   Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0})));
+    annotation (Placement(transformation(extent={{20,-20},{-20,20}}, rotation=180, origin={-100,0}), iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=180,
+        origin={-100,0})));
   Interfaces.Inlet inletC(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
   JunctionN junctionN(final N=3, redeclare package Medium = Medium, final L=L,
     final m_flow_eps=m_flow_eps, final assumeConstantDensity = assumeConstantDensity)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{20,-20},{-20,20}},
         rotation=180,
-        origin={-40,0})));
+        origin={40,0})));
 
 equation
 
   connect(junctionN.inlets[2], inletB) annotation (Line(
-      points={{-30,0},{100,0}},
+      points={{20,3.10862e-15},{-40,3.10862e-15},{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inletC, junctionN.inlets[3]) annotation (Line(
-      points={{0,-100},{0,-0.666667},{-30,-0.666667}},
+      points={{0,-100},{0,-1.33333},{20,-1.33333}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionN.inlets[1]) annotation (Line(
-      points={{0,100},{0,0.666667},{-30,0.666667}},
+      points={{0,100},{0,1.33333},{20,1.33333}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outlet) annotation (Line(
-      points={{-50,0},{-100,0}},
+      points={{60,-1.33227e-15},{81,-1.33227e-15},{81,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -87,7 +93,7 @@ equation
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,-60},{120,-20}},
+          extent={{-120,-60},{-80,-20}},
           textColor={175,175,175},
           textString="B"),
         Text(

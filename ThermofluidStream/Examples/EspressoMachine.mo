@@ -168,7 +168,7 @@ Medium model for water.
         origin={110,-20})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Water)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=270,
         origin={-20,-20})));
   Processes.Pump pump(
@@ -442,11 +442,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(PI.y, pump.omega_input)
-    annotation (Line(points={{19,0},{10,0},{10,-10}}, color={0,0,127}));
+    annotation (Line(points={{19,0},{10,0},{10,-8}},  color={0,0,127}));
   connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{14,33},{26,33},{26,34},{38.8,34}},
                                                                                      color={0,0,127}));
   connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{72,-14}}, color={0,0,127}));
-  connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{119.8,20}}, color={191,0,0}));
+  connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{100,20}},   color={191,0,0}));
   connect(splitterT2_1.inlet, conductionElement1.outlet)
     annotation (Line(
       points={{110,-10},{110,10}},
@@ -578,7 +578,7 @@ equation
       points={{120,-140},{130,-140},{130,-150}},
       color={28,108,200},
       thickness=0.5));
-  connect(PID3.y, pump1.omega_input) annotation (Line(points={{-149,-100},{-110,-100},{-110,-110}},
+  connect(PID3.y, pump1.omega_input) annotation (Line(points={{-149,-100},{-110,-100},{-110,-108}},
                                                                                                  color={0,0,127}));
   connect(multiSensor_Tp2.inlet, splitterT2_2.inlet)
     annotation (Line(

@@ -18,7 +18,7 @@ model SimpleStream "Steam splitting and joining"
     annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
   Topology.JunctionT1 junctionrT1_1(
     redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{60,-20},{40,0}})));
+    annotation (Placement(transformation(extent={{40,-20},{60,0}})));
   Processes.ConductionElement thermalConduction(
     redeclare package Medium = Medium,
     L=100) annotation (Placement(transformation(extent={{-40,20},{-20,0}})));

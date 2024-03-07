@@ -68,7 +68,7 @@ Medium model for the test. Should be an ideal gas or close to that.
 equation
 
   connect(compressor.omega_input, const.y)
-    annotation (Line(points={{4,10},{4,0},{-7,0}}, color={0,0,127}));
+    annotation (Line(points={{4,8},{4,0},{-7,0}},  color={0,0,127}));
   connect(power1.flange, compressor1.flange)
     annotation (Line(points={{-10.4,-40},{4,-40},{4,-30}},
                                                         color={0,0,0}));
