@@ -1,5 +1,5 @@
 within ThermofluidStream.Utilities;
-model DropOfCommonsPlus "Extend this to use 'dropOfCommons', 'displayInstanceName', 'displayParameterValues'"
+model DropOfCommonsPlus "Extend this to use 'dropOfCommons', 'displayInstanceName' and 'displayParameters'"
 protected
   outer DropOfCommons dropOfCommons;
 public
