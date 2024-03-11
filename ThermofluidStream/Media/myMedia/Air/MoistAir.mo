@@ -880,7 +880,11 @@ Derivative function for <a href=\"modelica://Modelica.Media.Air.MoistAir.h_pTX\"
 
   redeclare function extends isentropicExponent
     "Return isentropic exponent (only for gas fraction!)"
+  protected
+     MassFraction Xsat = Xsaturation(state) "Absolute Humidity at saturation";
+     Real PsiX =  state.X[Water]/Xsat "Relative humidity (based on X)";
   algorithm
+  assert(PsiX <= 0.998, "MoistAir.isentropicExponent is not valid for (over)saturated air", level = AssertionLevel.warning);
     gamma := specificHeatCapacityCp(state)/specificHeatCapacityCv(state);
   end isentropicExponent;
 
@@ -1057,8 +1061,12 @@ Derivative function for <a href=\"modelica://Modelica.Media.Air.MoistAir.specifi
 
   redeclare function extends specificEntropy
     "Return specific entropy from thermodynamic state record, only valid for phi<1"
-
+  protected
+     MassFraction Xsat = Xsaturation(state) "Absolute Humidity at saturation";
+     Real PsiX =  state.X[Water]/Xsat "Relative humidity (based on X)";
   algorithm
+  assert(PsiX <= 1, "MoistAir.specificEntropy is not valid for (over)saturated air", level = AssertionLevel.warning);
+
     s := s_pTX(
           state.p,
           state.T,

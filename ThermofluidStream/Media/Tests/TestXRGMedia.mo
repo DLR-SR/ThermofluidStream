@@ -135,7 +135,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R1234yf_ph,
     r(displayUnit="mm") = 0.02,
     l=20,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=500, k2=500))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
