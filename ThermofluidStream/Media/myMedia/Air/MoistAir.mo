@@ -1065,7 +1065,7 @@ Derivative function for <a href=\"modelica://Modelica.Media.Air.MoistAir.specifi
      MassFraction Xsat = Xsaturation(state) "Absolute Humidity at saturation";
      Real PsiX =  state.X[Water]/Xsat "Relative humidity (based on X)";
   algorithm
-  assert(PsiX <= 1, "MoistAir.specificEntropy is not valid for (over)saturated air", level = AssertionLevel.warning);
+  assert(PsiX <= 1, "MoistAir.specificEntropy is not valid for oversaturated air", level = AssertionLevel.warning);
 
     s := s_pTX(
           state.p,
