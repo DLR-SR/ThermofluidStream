@@ -30,17 +30,17 @@ equation
   connect(thermalElementA[nCells].outlet, outletA) annotation (Line(points={{-10,-60},{-56,-60},{-56,-60},{-100,-60}},
                                                                                                    color={28,108,200}));
 
-  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50.2},{0,10}}, color={191,0,0}));
+  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50},{0,10}},   color={191,0,0}));
 
   for i in 1:nCells loop
-    connect(thermalElementA[i].heatPort, thermalConductor[nCells + 1 - i].port_a) annotation (Line(points={{-6.66134e-16,-50.2},{-6.66134e-16,-10},{0,-10}}, color={191,0,0}));
+    connect(thermalElementA[i].heatPort, thermalConductor[nCells + 1 - i].port_a) annotation (Line(points={{-6.66134e-16,-50},{-6.66134e-16,-10},{0,-10}},   color={191,0,0}));
   end for;
 
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Text(visible=d1A,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},

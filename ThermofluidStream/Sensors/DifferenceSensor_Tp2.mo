@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model DifferenceSensor_Tp2 "v2 of DifferenceSensor_Tp"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -108,7 +108,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
           extent={{-54,54},{66,-66}},
           lineColor={0,0,0},

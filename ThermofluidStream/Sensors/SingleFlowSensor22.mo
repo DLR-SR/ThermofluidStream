@@ -84,7 +84,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,100},{150,140}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
           extent={{-54,84},{66,24}},
           lineColor={0,0,0},

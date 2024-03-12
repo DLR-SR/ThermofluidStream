@@ -37,7 +37,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,130},{150,90}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Text(visible=d1A,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},

@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model MultiSensor_Tpm2 "v2 of MultiSensor_Tpm"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -114,7 +114,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,130},{150,90}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Text(
           extent={{-150,-155},{150,-125}},
           textColor={0,0,0},

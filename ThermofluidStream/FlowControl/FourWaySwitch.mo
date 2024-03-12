@@ -86,15 +86,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_1.outlet,outletB) annotation (Line(
-      points={{-70,-60},{-100,-60}},
+      points={{-50,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.outletA, junctionT2_1.inletB) annotation (Line(
-      points={{50,-60},{-50,-60}},
+      points={{50,-60},{-70,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_2.inletB, switch.outletA) annotation (Line(
-      points={{50,60},{-50,60}},
+      points={{70,60},{-50,60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.outletB, junctionT2_2.inletA) annotation (Line(
@@ -102,7 +102,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_2.outlet, outletA) annotation (Line(
-      points={{70,60},{86,60},{86,60},{100,60}},
+      points={{50,60},{86,60},{86,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.u, switch.u) annotation (Line(points={{60,-72},{60,-76},{0,-76},{0,76},{-60,76},{-60,72}}, color={0,0,127}));
@@ -111,7 +111,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-76,76},{84,-84}},
           lineColor={28,108,200},

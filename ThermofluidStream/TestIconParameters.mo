@@ -1038,19 +1038,19 @@ model TestIconParameters
   Processes.ConductionElement conductionElement(
     displayParameters=true,
     displayVolume=false,
-    displayConduction=false) annotation (Placement(transformation(extent={{264,164},{284,184}})));
+    displayConduction=false) annotation (Placement(transformation(extent={{260,160},{280,180}})));
   Processes.ConductionElement conductionElement1(
     displayParameters=true,
     displayVolume=false,
-    displayConduction=true) annotation (Placement(transformation(extent={{304,164},{324,184}})));
+    displayConduction=true) annotation (Placement(transformation(extent={{300,160},{320,180}})));
   Processes.ConductionElement conductionElement2(
     displayParameters=true,
     displayVolume=true,
-    displayConduction=false) annotation (Placement(transformation(extent={{344,164},{364,184}})));
+    displayConduction=false) annotation (Placement(transformation(extent={{340,160},{360,180}})));
   Processes.ConductionElement conductionElement3(
     displayParameters=true,
     displayVolume=true,
-    displayConduction=true) annotation (Placement(transformation(extent={{384,164},{404,184}})));
+    displayConduction=true) annotation (Placement(transformation(extent={{380,160},{400,180}})));
   Processes.ConductionElement conductionElement4(
     displayParameters=true,
     displayVolume=false,

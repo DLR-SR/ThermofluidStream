@@ -135,7 +135,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
           Text(visible=displayInstanceName,
             extent={{-150,65},{150,25}},
             textString="%name",
-            textColor={0,0,255}),
+            textColor=dropOfCommons.instanceNameColor),
           Line(visible= not displayInstanceName,
             points={{0,0},{0,100}},
             color={28,108,200},

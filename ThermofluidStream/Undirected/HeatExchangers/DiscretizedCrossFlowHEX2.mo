@@ -69,7 +69,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,160},{150,120}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Line(
           points={{0,78},{0,100}},
           color={28,108,200},

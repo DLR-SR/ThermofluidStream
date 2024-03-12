@@ -80,7 +80,7 @@ Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

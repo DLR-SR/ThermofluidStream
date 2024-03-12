@@ -85,7 +85,7 @@ equation
        Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
-          textColor={0,0,255})}),
+          textColor=dropOfCommons.instanceNameColor)}),
                             Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>

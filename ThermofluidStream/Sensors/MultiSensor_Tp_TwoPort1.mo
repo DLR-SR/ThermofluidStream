@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model MultiSensor_Tp_TwoPort1 "v1.1 of MultiSensor_Tp_TwoPort"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -94,7 +94,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,-120},{150,-160}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
          Text(
           extent={{-150,15},{-60,-15}},
           textColor={0,0,0},

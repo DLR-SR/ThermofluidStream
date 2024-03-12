@@ -210,7 +210,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sink1.inlet,junctionT1_2. outlet) annotation (Line(
-      points={{100,110},{1.77636e-15,110},{1.77636e-15,70}},
+      points={{100,110},{0,110},{0,70}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine1.outlet,junctionT1_2. inletA) annotation (Line(

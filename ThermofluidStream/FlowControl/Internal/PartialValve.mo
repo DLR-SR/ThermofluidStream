@@ -48,7 +48,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
-          textColor={0,0,255})}),                                Diagram(
+          textColor=dropOfCommons.instanceNameColor)}),                                Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>

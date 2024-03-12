@@ -50,7 +50,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,-80},{150,-120}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

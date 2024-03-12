@@ -44,7 +44,8 @@ model TestIcons
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-310,-180})));
-  ThermofluidStream.Topology.SplitterT1 splitterT1 annotation (Placement(transformation(
+  ThermofluidStream.Topology.SplitterT1 splitterT1(displayInstanceName=true)
+                                                   annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-510,270})));
@@ -1017,6 +1018,7 @@ model TestIcons
     pressureUnit="bar",
     massFlowUnit="(g/s)")                  annotation (Placement(transformation(extent={{960,-560},{980,-540}})));
   Sensors.MultiSensor_Tpm4 multiSensor_Tpm4_4(
+    temperatureUnit="K",
     outputTemperature=true,
     outputPressure=true,
     outputMassFlowRate=true)               annotation (Placement(transformation(extent={{960,-600},{980,-580}})));
@@ -1144,7 +1146,9 @@ model TestIcons
     outputTemperature=true,
     outputPressure=true,
     outputMassFlowRate=true)               annotation (Placement(transformation(extent={{758,-640},{778,-620}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_1 annotation (Placement(transformation(extent={{-40,-800},{-20,-780}})));
+  Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_1 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-790})));
   HeatExchangers.CrossFlowNTU2                  crossFlowNTU2(displayInstanceName=true)
                                                                                        annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -1321,6 +1325,16 @@ model TestIcons
                                                                                                                                    annotation (Placement(transformation(extent={{480,-270},{500,-250}})));
   Sensors.TwoPhaseSensorSelect31 twoPhaseSensorSelect31_2(displayInstanceName=false, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar)
                                                                                                                                    annotation (Placement(transformation(extent={{480,-278},{500,-258}})));
+  Modelica.Fluid.Machines.Pump pump annotation (Placement(transformation(extent={{-1104,200},{-1084,220}})));
+equation
+  connect(discretizedCrossFlowHEX2_1.rearA, discretizedCounterFlowHEX1.foreB) annotation (Line(
+      points={{-30,-780},{-30,-744},{-60,-744}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(discretizedCrossFlowHEX1.rearA, discretizedCounterFlowHEX1.foreA) annotation (Line(
+      points={{-70,-780},{-70,-774},{-80,-774},{-80,-756}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-800},{1480,520}}),graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -1706,16 +1720,6 @@ model TestIcons
           fillColor={244,125,35},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{1066,-488},{1074,-494}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{1146,-488},{1154,-494}},
-          lineColor={28,108,200},
-          fillColor={244,125,35},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
           extent={{486,-478},{494,-484}},
           lineColor={28,108,200},
           fillColor={0,140,72},
@@ -1782,6 +1786,61 @@ model TestIcons
           fillPattern=FillPattern.Solid),
         Rectangle(
           extent={{-398,292},{-390,286}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{292,122},{300,116}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{576,-60},{584,-66}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{916,116},{924,110}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{574,120},{582,114}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{1214,120},{1222,114}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{344,-482},{352,-488}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{1144,-490},{1152,-496}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-22,-774},{-14,-780}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-284,-156},{-276,-162}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-260,-194},{-252,-200}},
+          lineColor={28,108,200},
+          fillColor={0,140,72},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-258,-224},{-250,-230}},
           lineColor={28,108,200},
           fillColor={0,140,72},
           fillPattern=FillPattern.Solid)}));

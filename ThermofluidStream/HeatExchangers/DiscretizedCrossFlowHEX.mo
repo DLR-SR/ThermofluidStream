@@ -46,8 +46,8 @@ equation
   end for;
   connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,60},{56,60},{56,60},{100,60}},
                                                                                                color={28,108,200}));
-  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50.2},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}}, color={191,0,0}));
-  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-50.2},{0,-42},{0,-42},{0,-10},{0,-10}}, color={191,0,0}));
+  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}},   color={191,0,0}));
+  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-50},{0,-42},{0,-42},{0,-10},{0,-10}},   color={191,0,0}));
   connect(inletA, splitterN.inlet) annotation (Line(
       points={{100,-60},{80,-60},{80,-60},{60,-60}},
       color={28,108,200},
@@ -72,7 +72,7 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,98},{150,58}},
           textString="%name",
-          textColor={0,0,255}),
+          textColor=dropOfCommons.instanceNameColor),
         Line(visible=displayInstanceName,
           points={{0,58},{0,65}},
           color={28,108,200},
