@@ -49,9 +49,9 @@ model DifferenceSensor_Tp
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{-120,-80},{-80,-40}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Difference of measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{70,20},{90,40}}), iconTransformation(extent={{70,20},{90,40}})));
+    annotation (Placement(transformation(extent={{70,30},{90,50}}), iconTransformation(extent={{70,30},{90,50}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Difference of measured pressure [variable]"
-    annotation (Placement(transformation(extent={{70,-40},{90,-20}}), iconTransformation(extent={{70,-40},{90,-20}})));
+    annotation (Placement(transformation(extent={{70,-50},{90,-30}}), iconTransformation(extent={{70,-50},{90,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -148,12 +148,12 @@ equation
           horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
         Text(visible= outputTemperature,
-          extent={{75,68},{135,38}},
+          extent={{75,78},{135,48}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
         Text(visible=outputPressure,
-          extent={{75,8},{135,-22}},
+          extent={{75,-2},{135,-32}},
           textColor={0,0,0},
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
@@ -178,10 +178,10 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(visible=outputTemperature,
-          points={{60,30},{78,30}},
+          points={{60,40},{78,40}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,-30},{78,-30}},
+          points={{60,-40},{78,-40}},
           color={0,0,127}),
         Line(
           points={{-108,90},{-92,90}},

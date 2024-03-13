@@ -35,7 +35,7 @@ model ConductionElementTwoPhase
     redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
     outputMassFlowRate=true)
-    annotation (Placement(transformation(extent={{24,-2},{44,18}})));
+    annotation (Placement(transformation(extent={{24,0},{44,20}})));
   Modelica.Blocks.Continuous.PI PI(
     k=-10000,
     T=0.1,
@@ -44,7 +44,7 @@ model ConductionElementTwoPhase
     y_start=5e5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={90,34})));
+        origin={84,46})));
   Modelica.Blocks.Math.Feedback feedback
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
@@ -52,7 +52,7 @@ model ConductionElementTwoPhase
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=35e5, uMin=1e5)
     annotation (Placement(transformation(extent={{6,-6},{-6,6}},
         rotation=0,
-        origin={88,0})));
+        origin={88,6})));
   Modelica.Blocks.Sources.Ramp ramp1(
     height=-0.6,
     duration=5,
@@ -78,14 +78,13 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
-    annotation (Line(points={{59,46},{68,46},{68,34},{78,34}},
-                                                  color={0,0,127}));
+    annotation (Line(points={{59,46},{72,46}},    color={0,0,127}));
   connect(PI.y,limiter. u)
-    annotation (Line(points={{101,34},{110,34},{110,0},{95.2,0}},
+    annotation (Line(points={{95,46},{100,46},{100,6},{95.2,6}},
                                                    color={0,0,127}));
-  connect(boundary_fore.p0_var, limiter.y) annotation (Line(points={{72,6},{76,6},{76,0},{81.4,0}},
-                                                                                      color={0,0,127}));
-  connect(multiSensor_Tpm.m_flow_out, feedback.u2) annotation (Line(points={{44,4},{50,4},{50,38}}, color={0,0,127}));
+  connect(boundary_fore.p0_var, limiter.y) annotation (Line(points={{72,6},{81.4,6}}, color={0,0,127}));
+  connect(multiSensor_Tpm.m_flow_out, feedback.u2) annotation (Line(points={{42.2,4},{50,4},{50,38}},
+                                                                                                    color={0,0,127}));
   connect(ramp1.y, feedback.u1) annotation (Line(points={{17,46},{42,46}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=100, Tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),

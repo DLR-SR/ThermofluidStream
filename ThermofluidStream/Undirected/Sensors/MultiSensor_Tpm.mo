@@ -1,4 +1,4 @@
-within ThermofluidStream.Undirected.Sensors;
+﻿within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -51,6 +51,16 @@ public
     Evaluate=true);
   parameter ThermofluidStream.Sensors.Internal.Types.MassFlowUnit massFlowUnit = "(kg/s)" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
+
+  final parameter String temperatureString=
+    if temperatureUnit == "K" then "K"
+    elseif temperatureUnit == "degC" then "°C"
+    else "error";
+  final parameter String massFlowString=
+    if massFlowUnit == "(kg/s)" then "kg/s"
+    elseif massFlowUnit == "(g/s)" then "g/s"
+    else "error";
+
   parameter Boolean outputTemperature = false "Enable temperature output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean outputPressure = false "Enable pressure output"
@@ -145,6 +155,36 @@ equation
           extent={{-150,-160},{150,-120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
+         Text(visible=not outputTemperature,
+          extent={{150,70},{68,40}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputPressure,
+          extent={{150,20},{68,-10}},
+          textColor={0,0,0},
+          textString=pressureUnit,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputMassFlowRate,
+          extent={{150,-30},{68,-60}},
+          textColor={0,0,0},
+          textString=massFlowString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputTemperature,
+          extent={{150,98},{75,68}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputPressure,
+          extent={{150,38},{75,8}},
+          textColor={0,0,0},
+          textString=pressureUnit,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputMassFlowRate,
+          extent={{150,-22},{75,-52}},
+          textColor={0,0,0},
+          textString=massFlowString,
+          horizontalAlignment=TextAlignment.Left),
         Rectangle(
           extent={{-54,74},{66,-86}},
           lineColor={0,0,0},
@@ -175,18 +215,6 @@ equation
           textString=DynamicSelect("m", String(
                   m_flow,
                   format="1."+String(digits)+"f"))),
-        Text(
-          extent={{-120,80},{-60,28}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,32},{-60,-20}},
-          textColor={175,175,175},
-          textString="%pressureUnit"),
-        Text(
-          extent={{-120,-20},{-60,-72}},
-          textColor={175,175,175},
-          textString="%massFlowUnit"),
         Line(
           points={{-100,-100},{100,-100}},
           color={28,108,200},

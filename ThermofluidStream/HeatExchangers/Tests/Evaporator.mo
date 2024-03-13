@@ -106,19 +106,19 @@ model Evaporator
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{24,44},{44,24}})));
+    annotation (Placement(transformation(extent={{24,24},{44,44}})));
   Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-20,44},{-40,24}})));
+    annotation (Placement(transformation(extent={{-20,24},{-40,44}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-20,-8},{-40,12}})));
+    annotation (Placement(transformation(extent={{-20,36},{-40,56}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{24,-8},{44,12}})));
+    annotation (Placement(transformation(extent={{24,36},{44,56}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumAir,
     m_flow_0=0,
@@ -177,12 +177,12 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,2},{-12,2},{-12,8},{-8,8}},
+      points={{-20,46},{-16,46},{-16,8},{-8,8}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{24,2},{14,2},{14,8},{12,8}},
+      points={{24,46},{20,46},{20,8},{12,8}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.inlet, mCV.outlet) annotation (Line(

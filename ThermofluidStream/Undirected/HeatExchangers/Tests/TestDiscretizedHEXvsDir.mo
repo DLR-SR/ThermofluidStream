@@ -135,11 +135,11 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={112,-64})));
+        origin={112,-62})));
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumAir,
     pressureFromInput=true,
-    p0_par=100000) annotation (Placement(transformation(extent={{-44,-74},{-64,-54}})));
+    p0_par=100000) annotation (Placement(transformation(extent={{-46,-72},{-66,-52}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
@@ -147,7 +147,7 @@ model TestDiscretizedHEXvsDir
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
-        origin={49,-74})));
+        origin={31,-72})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm5(
     redeclare package Medium = MediumAir,
     digits=3,
@@ -155,7 +155,7 @@ model TestDiscretizedHEXvsDir
     temperatureUnit="degC") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-22,-74})));
+        origin={-30,-72})));
   ThermofluidStream.Boundaries.Source sourceB(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
@@ -178,7 +178,7 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{26,-48},{46,-28}})));
+    annotation (Placement(transformation(extent={{20,-50},{40,-30}})));
   Modelica.Blocks.Sources.RealExpression refFlow_setPoint1(y=0.2)
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=0,
@@ -188,9 +188,9 @@ model TestDiscretizedHEXvsDir
     digits=3,
     outputMassFlowRate=true,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-38,-48},{-18,-28}})));
+    annotation (Placement(transformation(extent={{-40,-50},{-20,-30}})));
   Modelica.Blocks.Sources.RealExpression airFlow_setPoint2(y=1)
-    annotation (Placement(transformation(extent={{-160,-58},{-140,-38}})));
+    annotation (Placement(transformation(extent={{-180,-72},{-160,-52}})));
   Modelica.Blocks.Continuous.PI PI2(
     k=10000,
     T=0.1,
@@ -207,17 +207,17 @@ model TestDiscretizedHEXvsDir
   Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=10e5, uMin=1e5)
     annotation (Placement(transformation(extent={{6,6},{-6,-6}},
         rotation=90,
-        origin={-58,-2})));
+        origin={-52,-2})));
   Modelica.Blocks.Continuous.PI PI3(
     k=-10000,
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1e5)
-    annotation (Placement(transformation(extent={{-106,-74},{-86,-54}})));
+    annotation (Placement(transformation(extent={{-112,-72},{-92,-52}})));
   Modelica.Blocks.Math.Feedback feedback3
-    annotation (Placement(transformation(extent={{-134,-74},{-114,-54}})));
+    annotation (Placement(transformation(extent={{-140,-72},{-120,-52}})));
   Modelica.Blocks.Nonlinear.Limiter limiter3(uMax=5e5, uMin=100)
-    annotation (Placement(transformation(extent={{-76,-70},{-64,-58}})));
+    annotation (Placement(transformation(extent={{-76,-68},{-64,-56}})));
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare model ConductionElementB =
         ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
@@ -229,7 +229,7 @@ model TestDiscretizedHEXvsDir
     calculate_efficiency=true)
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={2,-56})));
+        origin={0,-56})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA1(
     redeclare package Medium = MediumAir,
     m_flow_0=1,
@@ -237,7 +237,7 @@ model TestDiscretizedHEXvsDir
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{90,-74},{70,-54}})));
+    annotation (Placement(transformation(extent={{90,-72},{70,-52}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumRefrigerant,
     m_flow_0=0.3,
@@ -252,19 +252,19 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{26,-14},{46,-34}})));
+    annotation (Placement(transformation(extent={{20,-34},{40,-14}})));
   ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-18,-14},{-38,-34}})));
+    annotation (Placement(transformation(extent={{-20,-34},{-40,-14}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-18,-66},{-38,-46}})));
+    annotation (Placement(transformation(extent={{-20,-22},{-40,-2}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{26,-66},{46,-46}})));
+    annotation (Placement(transformation(extent={{20,-22},{40,-2}})));
   ThermofluidStream.Boundaries.Source sourceA1(
     redeclare package Medium = MediumAir,
     T0_par=311.15,
@@ -417,17 +417,17 @@ equation
                              color={0,0,127}));
   connect(boundary_fore.p0_var, limiter1.y) annotation (Line(points={{98,214},{106,214},{106,208},{115.4,208}},
                                                                                           color={0,0,127}));
-  connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{40,212},{50,212},{50,232}},
+  connect(multiSensor_Tpm1.m_flow_out, feedback1.u2) annotation (Line(points={{38.2,210},{50,210},{50,232}},
                                                                                                         color={0,0,127}));
   connect(feedback1.y, PI1.u) annotation (Line(points={{59,240},{94,240}},
                                                                          color={0,0,127}));
   connect(boundary_rear1.fore, multiSensor_Tpm2.rear)
     annotation (Line(
-      points={{94,176},{68,176},{68,192},{40,192}},
+      points={{94,176},{68,176},{68,194},{40,194}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.fore, flowResistanceB.rear) annotation (Line(
-      points={{-42,192},{-50,192}},
+      points={{-42,194},{-46,194},{-46,192},{-50,192}},
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
@@ -436,10 +436,10 @@ equation
     annotation (Line(points={{63,136},{78.8,136}}, color={0,0,127}));
   connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{92.6,136},{114,136},{114,182},{106,182}},
                                                                                                               color={0,0,127}));
-  connect(multiSensor_Tpm2.m_flow_out, feedback.u2) annotation (Line(points={{20,188},{10,188},{10,144}},
+  connect(multiSensor_Tpm2.m_flow_out, feedback.u2) annotation (Line(points={{21.8,190},{10,190},{10,144}},
                                                                                                     color={0,0,127}));
   connect(multiSensor_Tpm1.fore, boundary_fore.rear) annotation (Line(
-      points={{40,208},{86,208}},
+      points={{40,206},{64,206},{64,208},{86,208}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_rear.fore, flowResistanceA.rear) annotation (Line(
@@ -447,31 +447,31 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.rear, flowResistanceA.fore) annotation (Line(
-      points={{-40,208},{-48,208}},
+      points={{-40,206},{-44,206},{-44,208},{-48,208}},
       color={28,108,200},
       thickness=0.5));
   connect(ramp1.y, feedback.u1) annotation (Line(points={{-13,136},{2,136}}, color={0,0,127}));
   connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-100,150},{-112,150},{-112,144},{-123,144}}, color={0,0,127}));
   connect(sinkA.inlet,multiSensor_Tpm5. outlet) annotation (Line(
-      points={{-44,-64},{-32,-64}},
+      points={{-46,-62},{-40,-62}},
       color={28,108,200},
       thickness=0.5));
   connect(feedback2.y, PI2.u) annotation (Line(points={{-13,16},{-20,16}}, color={0,0,127}));
   connect(PI3.u,feedback3. y)
-    annotation (Line(points={{-108,-64},{-115,-64}},
+    annotation (Line(points={{-114,-62},{-121,-62}},
                                                    color={0,0,127}));
   connect(feedback3.u1,airFlow_setPoint2. y)
-    annotation (Line(points={{-132,-64},{-138,-64},{-138,-48},{-139,-48}},
+    annotation (Line(points={{-138,-62},{-159,-62}},
                                                  color={0,0,127}));
-  connect(PI3.y,limiter3. u) annotation (Line(points={{-85,-64},{-77.2,-64}},
+  connect(PI3.y,limiter3. u) annotation (Line(points={{-91,-62},{-77.2,-62}},
                              color={0,0,127}));
   connect(sourceA.outlet, flowResistanceA1.inlet) annotation (Line(
-      points={{102,-64},{90,-64}},
+      points={{102,-62},{90,-62}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm4.inlet, flowResistanceA1.outlet)
     annotation (Line(
-      points={{60,-64},{70,-64}},
+      points={{42,-62},{70,-62}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB.inlet, flowResistanceB1.outlet) annotation (Line(
@@ -480,58 +480,58 @@ equation
       thickness=0.5));
   connect(flowResistanceB1.inlet, multiSensor_Tpm6.outlet)
     annotation (Line(
-      points={{64,-36},{64,-48},{46,-48}},
+      points={{64,-36},{64,-50},{40,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceB.outlet,multiSensor_Tpm7. inlet) annotation (Line(
-      points={{-58,-30},{-58,-48},{-38,-48}},
+      points={{-58,-30},{-58,-50},{-40,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(PI2.y, limiter2.u) annotation (Line(points={{-43,16},{-58,16},{-58,5.2}}, color={0,0,127}));
+  connect(PI2.y, limiter2.u) annotation (Line(points={{-43,16},{-52,16},{-52,5.2}}, color={0,0,127}));
   connect(multiSensor_Tpm4.outlet, evaporator.inletA) annotation (Line(
-      points={{38,-64},{20,-64},{20,-64},{12,-64}},
+      points={{20,-62},{10,-62}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletA, multiSensor_Tpm5.inlet)
     annotation (Line(
-      points={{-8,-64},{-12,-64}},
+      points={{-10,-62},{-20,-62}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.p0_var,limiter3. y)
-    annotation (Line(points={{-56,-64},{-63.4,-64}},
+    annotation (Line(points={{-58,-62},{-63.4,-62}},
                                                    color={0,0,127}));
-  connect(multiSensor_Tpm5.m_flow_out,feedback3. u2) annotation (Line(points={{-32,-68},{-42,-68},{-42,-82},{-124,-82},{-124,-72}},
+  connect(multiSensor_Tpm5.m_flow_out,feedback3. u2) annotation (Line(points={{-38.2,-66},{-42,-66},{-42,-82},{-130,-82},{-130,-70}},
                                                            color={0,0,127}));
   connect(evaporator.outletB, multiSensor_Tpm6.inlet) annotation (Line(
-      points={{12,-48},{26,-48}},
+      points={{10,-50},{20,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm7.outlet, evaporator.inletB) annotation (Line(
-      points={{-18,-48},{-8,-48}},
+      points={{-20,-50},{-10,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm7.m_flow_out, feedback2.u2) annotation (Line(points={{-18,-44},{-4,-44},{-4,8}}, color={0,0,127}));
+  connect(multiSensor_Tpm7.m_flow_out, feedback2.u2) annotation (Line(points={{-21.8,-46},{-4,-46},{-4,8}},
+                                                                                                          color={0,0,127}));
   connect(feedback2.u1, refFlow_setPoint1.y) annotation (Line(points={{4,16},{15,16}}, color={0,0,127}));
-  connect(sourceB.p0_var, limiter2.y) annotation (Line(points={{-52,-18},{-52,-14},{-58,-14},{-58,-8.6}},
-                                                                                      color={0,0,127}));
+  connect(sourceB.p0_var, limiter2.y) annotation (Line(points={{-52,-18},{-52,-8.6}}, color={0,0,127}));
   connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-24},{22,-24},{22,-48},{12,-48}},
+      points={{20,-24},{20,-50},{10,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-18,-24},{-14,-24},{-14,-48},{-8,-48}},
+      points={{-20,-24},{-14,-24},{-14,-50},{-10,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-18,-56},{-10,-56},{-10,-48},{-8,-48}},
+      points={{-20,-12},{-14,-12},{-14,-50},{-10,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-56},{16,-56},{16,-48},{12,-48}},
+      points={{20,-12},{20,-50},{10,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA1.inlet, multiSensor_Tpm9.outlet) annotation (Line(
@@ -545,7 +545,8 @@ equation
     annotation (Line(points={{70,-130},{29,-130}},
                                                  color={0,0,127}));
   connect(feedback5.u2,multiSensor_Tpm9. m_flow_out)
-    annotation (Line(points={{78,-138},{78,-162},{62,-162}},color={0,0,127}));
+    annotation (Line(points={{78,-138},{78,-162},{60.2,-162}},
+                                                            color={0,0,127}));
   connect(sinkA1.p0_var, limiter5.y) annotation (Line(points={{114,-166},{127.4,-166}}, color={0,0,127}));
   connect(PI5.y,limiter5. u) annotation (Line(points={{129,-130},{146,-130},{146,-166},{141.2,-166}},
                              color={0,0,127}));
@@ -559,21 +560,21 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm11.outlet, condenser.inletB) annotation (Line(
-      points={{20,-182},{8,-182}},
+      points={{20,-182},{14,-182},{14,-180},{8,-180}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletB, multiSensor_Tpm10.inlet)
     annotation (Line(
-      points={{-12,-182},{-24,-182}},
+      points={{-12,-180},{-18,-180},{-18,-182},{-24,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletA, multiSensor_Tpm8.outlet)
     annotation (Line(
-      points={{-12,-166},{-14,-166},{-14,-166},{-26,-166}},
+      points={{-12,-168},{-14,-168},{-14,-166},{-26,-166}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, multiSensor_Tpm9.inlet) annotation (Line(
-      points={{8,-166},{20,-166},{20,-166},{42,-166}},
+      points={{8,-168},{20,-168},{20,-166},{42,-166}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB1.inlet, flowResistanceB2.outlet) annotation (Line(
@@ -590,46 +591,47 @@ equation
       points={{80,-196},{80,-182},{40,-182}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm11.m_flow_out, feedback4.u2) annotation (Line(points={{20,-186},{6,-186},{6,-236},{20,-236}}, color={0,0,127}));
+  connect(multiSensor_Tpm11.m_flow_out, feedback4.u2) annotation (Line(points={{21.8,-186},{6,-186},{6,-236},{20,-236}},
+                                                                                                                       color={0,0,127}));
   connect(PI4.y, limiter4.u) annotation (Line(points={{55,-244},{60.8,-244}}, color={0,0,127}));
   connect(refFlow_setPoint2.y, feedback4.u1) annotation (Line(points={{-3,-244},{12,-244}}, color={0,0,127}));
   connect(singleSensorSelect2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-208},{-20,-208},{-20,-182},{-12,-182}},
+      points={{-24,-208},{-20,-208},{-20,-180},{-12,-180}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, condenser.inletB)
     annotation (Line(
-      points={{22,-206},{14,-206},{14,-182},{8,-182}},
+      points={{22,-206},{14,-206},{14,-180},{8,-180}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-220},{-20,-220},{-20,-182},{-12,-182}},
+      points={{-24,-220},{-20,-220},{-20,-180},{-12,-180}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, condenser.inletB)
     annotation (Line(
-      points={{22,-220},{14,-220},{14,-182},{8,-182}},
+      points={{22,-220},{14,-220},{14,-180},{8,-180}},
       color={28,108,200},
       thickness=0.5));
   connect(limiter4.y, sourceB1.p0_var) annotation (Line(points={{74.6,-244},{86,-244},{86,-208}}, color={0,0,127}));
   connect(rampPressure.y, boundary_rear.p0_var) annotation (Line(points={{-113,196},{-96,196},{-96,214},{-86,214}}, color={0,0,127}));
   connect(feedback1.u1, rampMassflow.y) annotation (Line(points={{42,240},{28,240},{28,244},{15,244}}, color={0,0,127}));
   connect(discretizedHEXUndir.rearA, multiSensor_Tpm.fore) annotation (Line(
-      points={{-12,208},{-20,208}},
+      points={{-12,206},{-14,206},{-14,204},{-16,204},{-16,206},{-20,206}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.foreB, multiSensor_Tpm3.rear) annotation (Line(
-      points={{-12,192},{-22,192}},
+      points={{-12,194},{-16,194},{-16,196},{-18,196},{-18,194},{-22,194}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.rearB, multiSensor_Tpm2.fore) annotation (Line(
-      points={{8,192},{20,192}},
+      points={{8,194},{12,194},{12,196},{14,196},{14,194},{20,194}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.foreA, multiSensor_Tpm1.rear) annotation (Line(
-      points={{8,208},{20,208}},
+      points={{8,206},{12,206},{12,204},{14,204},{14,206},{20,206}},
       color={28,108,200},
       thickness=0.5));
   annotation (

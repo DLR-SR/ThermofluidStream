@@ -91,19 +91,19 @@ model TestIcons
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX annotation (Placement(transformation(extent={{-220,-280},{-200,-260}})));
   ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR discretizedCrossFlowHEX_FR annotation (Placement(transformation(extent={{-320,-250},{-300,-230}})));
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR annotation (Placement(transformation(extent={{-220,-240},{-200,-220}})));
-  ThermofluidStream.FlowControl.BasicControlValve basicControlValve annotation (Placement(transformation(extent={{-288,-34},{-268,-14}})));
-  ThermofluidStream.FlowControl.SpecificValveType specificValveType annotation (Placement(transformation(extent={{-248,-34},{-228,-14}})));
-  ThermofluidStream.FlowControl.TanValve tanValve annotation (Placement(transformation(extent={{-208,-34},{-188,-14}})));
-  ThermofluidStream.FlowControl.CheckValve checkValve annotation (Placement(transformation(extent={{-168,-34},{-148,-14}})));
-  ThermofluidStream.FlowControl.MCV mCV(setpointFromInput=true) annotation (Placement(transformation(extent={{-248,-74},{-228,-54}})));
-  ThermofluidStream.FlowControl.PCV pCV(pressureFromInput=true) annotation (Placement(transformation(extent={{-288,-74},{-268,-54}})));
-  ThermofluidStream.FlowControl.Switch switch annotation (Placement(transformation(extent={{-128,-74},{-108,-54}})));
-  ThermofluidStream.FlowControl.FourWaySwitch fourWaySwitch annotation (Placement(transformation(extent={{-128,-34},{-108,-14}})));
-  ThermofluidStream.FlowControl.MCV mCV1(setpointFromInput=true, enableClippingOutput=true) annotation (Placement(transformation(extent={{-208,-74},{-188,-54}})));
+  ThermofluidStream.FlowControl.BasicControlValve basicControlValve annotation (Placement(transformation(extent={{-534,-36},{-514,-16}})));
+  ThermofluidStream.FlowControl.SpecificValveType specificValveType annotation (Placement(transformation(extent={{-494,-36},{-474,-16}})));
+  ThermofluidStream.FlowControl.TanValve tanValve annotation (Placement(transformation(extent={{-454,-36},{-434,-16}})));
+  ThermofluidStream.FlowControl.CheckValve checkValve annotation (Placement(transformation(extent={{-414,-36},{-394,-16}})));
+  ThermofluidStream.FlowControl.MCV mCV(setpointFromInput=true) annotation (Placement(transformation(extent={{-494,-76},{-474,-56}})));
+  ThermofluidStream.FlowControl.PCV pCV(pressureFromInput=true) annotation (Placement(transformation(extent={{-534,-76},{-514,-56}})));
+  ThermofluidStream.FlowControl.Switch switch annotation (Placement(transformation(extent={{-374,-76},{-354,-56}})));
+  ThermofluidStream.FlowControl.FourWaySwitch fourWaySwitch annotation (Placement(transformation(extent={{-374,-36},{-354,-16}})));
+  ThermofluidStream.FlowControl.MCV mCV1(setpointFromInput=true, enableClippingOutput=true) annotation (Placement(transformation(extent={{-454,-76},{-434,-56}})));
   ThermofluidStream.FlowControl.MCV mCV2(
     displayInstanceName=false,
     setpointFromInput=true,
-    enableClippingOutput=true) annotation (Placement(transformation(extent={{-168,-74},{-148,-54}})));
+    enableClippingOutput=true) annotation (Placement(transformation(extent={{-414,-76},{-394,-56}})));
   ThermofluidStream.Boundaries.Reservoir reservoir2(displayInstanceName=false, pEnvFromInput=true) annotation (Placement(transformation(extent={{240,220},{260,240}})));
   Sensors.SingleSensorSelect singleSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K, outputValue=true) annotation (Placement(transformation(extent={{140,100},{160,120}})));
   Sensors.SingleSensorSelect singleSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C) annotation (Placement(transformation(extent={{180,100},{200,120}})));
@@ -171,14 +171,6 @@ model TestIcons
   Undirected.FlowControl.MCV mCV4(
     setpointFromInput=true,
     enableClippingOutput=true) annotation (Placement(transformation(extent={{-460,-738},{-440,-718}})));
-  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(outputValue=true) annotation (Placement(transformation(extent={{184,-466},{204,-446}})));
-  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{224,-466},{244,-446}})));
-  Undirected.Sensors.SingleSensorX singleSensorX2 annotation (Placement(transformation(extent={{144,-506},{164,-486}})));
-  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{184,-506},{204,-486}})));
-  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
-    outputTemperature=true,
-    outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{224,-506},{244,-486}})));
   Undirected.Topology.JunctionRFFF junctionRFFF1(displayInstanceName=false)
                                                 annotation (Placement(transformation(extent={{-80,-638},{-60,-618}})));
   Undirected.Topology.JunctionRRFF junctionRRFF1(displayInstanceName=false)
@@ -299,7 +291,7 @@ model TestIcons
   Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect5(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K) annotation (Placement(transformation(extent={{220,-280},{240,-260}})));
   Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect6(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa, outputValue=true) annotation (Placement(transformation(extent={{140,-300},{160,-280}})));
   Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect7(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar) annotation (Placement(transformation(extent={{180,-300},{200,-280}})));
-  Sensors.SensorState sensorState annotation (Placement(transformation(extent={{370,-188},{390,-168}})));
+  Sensors.SensorState sensorState annotation (Placement(transformation(extent={{370,-180},{390,-160}})));
   Sensors.SingleSensorX singleSensorX(outputValue=true) annotation (Placement(transformation(extent={{340,-90},{360,-70}})));
   Sensors.SingleSensorX singleSensorX1 annotation (Placement(transformation(extent={{380,-90},{400,-70}})));
   Modelica.Fluid.Sensors.MassFractions massFraction annotation (Placement(transformation(extent={{420,-90},{440,-70}})));
@@ -363,17 +355,18 @@ model TestIcons
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     temperatureUnit="degC",
     pressureUnit="bar",
-    massFlowUnit="(g/s)")                  annotation (Placement(transformation(extent={{300,-70},{320,-50}})));
+    massFlowUnit="(g/s)",
+    outputTemperature=true)                annotation (Placement(transformation(extent={{300,-70},{320,-50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm5(
-    outputTemperature=true,
+    outputTemperature=false,
     outputPressure=true,
-    outputMassFlowRate=true)               annotation (Placement(transformation(extent={{260,-100},{280,-80}})));
+    outputMassFlowRate=false)              annotation (Placement(transformation(extent={{260,-100},{280,-80}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm6(
     temperatureUnit="degC",
     pressureUnit="bar",
     massFlowUnit="(g/s)",
-    outputTemperature=true,
-    outputPressure=true,
+    outputTemperature=false,
+    outputPressure=false,
     outputMassFlowRate=true)               annotation (Placement(transformation(extent={{300,-100},{320,-80}})));
   Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_1 annotation (Placement(transformation(extent={{260,-160},{280,-140}})));
   Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_3(
@@ -407,6 +400,61 @@ model TestIcons
     outputTemperature=true,
     outputPressure=true,
     outputMassFlowRate=true) annotation (Placement(transformation(extent={{300,-260},{320,-240}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect17(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K) annotation (Placement(transformation(extent={{500,90},{520,110}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect18(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C, outputValue=true) annotation (Placement(transformation(extent={{540,90},{560,110}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect19(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa) annotation (Placement(transformation(extent={{580,90},{600,110}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect20(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar, outputValue=true) annotation (Placement(transformation(extent={{500,60},{520,80}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect21(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3, outputValue=false) annotation (Placement(transformation(extent={{540,60},{560,80}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect22(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg, outputValue=true) annotation (Placement(transformation(extent={{580,60},{600,80}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect23(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg) annotation (Placement(transformation(extent={{500,30},{520,50}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect24(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK, outputValue=true) annotation (Placement(transformation(extent={{540,30},{560,50}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect25(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK) annotation (Placement(transformation(extent={{580,30},{600,50}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect26(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK, outputValue=true) annotation (Placement(transformation(extent={{500,0},{520,20}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect27(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1, outputValue=false) annotation (Placement(transformation(extent={{540,0},{560,20}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect28(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps, outputValue=true) annotation (Placement(transformation(extent={{580,0},{600,20}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect29(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol, outputValue=true) annotation (Placement(transformation(extent={{500,-30},{520,-10}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect30(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa, outputValue=false) annotation (Placement(transformation(extent={{540,-30},{560,-10}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect31(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar, outputValue=true) annotation (Placement(transformation(extent={{580,-30},{600,-10}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect32(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa, outputValue=true) annotation (Placement(transformation(extent={{500,-60},{520,-40}})));
+  Undirected.Sensors.SingleSensorSelect singleSensorSelect33(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar, outputValue=false) annotation (Placement(transformation(extent={{540,-60},{560,-40}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect9(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=false)
+                                                                                  annotation (Placement(transformation(extent={{620,90},{640,110}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect10(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K, outputValue=true)
+                                                                                  annotation (Placement(transformation(extent={{660,90},{680,110}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect11(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C, outputValue=false)
+                                                                                  annotation (Placement(transformation(extent={{700,90},{720,110}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect12(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa, outputValue=true)
+                                                                                  annotation (Placement(transformation(extent={{620,60},{640,80}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect13(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar, outputValue=false)
+                                                                                  annotation (Placement(transformation(extent={{660,60},{680,80}})));
+  Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect14(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C, outputValue=true)
+                                                                                  annotation (Placement(transformation(extent={{700,60},{720,80}})));
+  Undirected.Sensors.SensorState sensorState2 annotation (Placement(transformation(extent={{760,90},{780,110}})));
+  Undirected.Sensors.SingleSensorX singleSensorX2(row=2) annotation (Placement(transformation(extent={{760,30},{780,50}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm2 annotation (Placement(transformation(extent={{658,-100},{678,-80}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    outputTemperature=true,
+    outputPressure=true,
+    outputMassFlowRate=true) annotation (Placement(transformation(extent={{698,-100},{718,-80}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm7(
+    temperatureUnit="degC",
+    pressureUnit="bar",
+    massFlowUnit="(g/s)")                             annotation (Placement(transformation(extent={{738,-100},{758,-80}})));
+  Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm8(
+    temperatureUnit="degC",
+    pressureUnit="bar",
+    massFlowUnit="(g/s)",
+    outputTemperature=true,
+    outputPressure=true,
+    outputMassFlowRate=true) annotation (Placement(transformation(extent={{778,-100},{798,-80}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor7(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps) annotation (Placement(transformation(extent={{620,0},{640,20}})));
+  Undirected.Sensors.UnidirectionalSensorAdapter unidirectionalSensorAdapter(displayInstanceName=true) annotation (Placement(transformation(extent={{760,-20},{780,0}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor8(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps, outputValue=true) annotation (Placement(transformation(extent={{660,0},{680,20}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor9(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps) annotation (Placement(transformation(extent={{700,0},{720,20}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor10(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin, outputValue=true) annotation (Placement(transformation(extent={{620,-30},{640,-10}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor11(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps, outputValue=false) annotation (Placement(transformation(extent={{660,-30},{680,-10}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor12(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs, outputValue=true) annotation (Placement(transformation(extent={{700,-30},{720,-10}})));
+  Undirected.Sensors.SingleFlowSensor singleFlowSensor13(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs, outputValue=false) annotation (Placement(transformation(extent={{620,-60},{640,-40}})));
 equation
   connect(discretizedCrossFlowHEX2_1.rearA, discretizedCounterFlowHEX1.foreB) annotation (Line(
       points={{-30,-780},{-30,-744},{-60,-744}},
@@ -460,15 +508,15 @@ equation
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-340,-120},{-180,-140}},
+          extent={{-342,-120},{-182,-140}},
           textColor={28,108,200},
           textString="HeatExchangers"),
         Rectangle(
-          extent={{-88,-94},{-308,6}},
+          extent={{-334,-96},{-554,4}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-308,26},{-88,6}},
+          extent={{-554,24},{-334,4}},
           textColor={28,108,200},
           textString="FlowControl"),
         Rectangle(
@@ -476,7 +524,7 @@ equation
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{160,180},{420,160}},
+          extent={{40,180},{460,158}},
           textColor={28,108,200},
           textString="Sensors"),
         Text(
@@ -544,14 +592,6 @@ equation
           extent={{-660,218},{-560,198}},
           textColor={28,108,200},
           textString="might be changed in a major release"),
-        Rectangle(
-          extent={{264,-526},{124,-426}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Text(
-          extent={{124,-406},{264,-426}},
-          textColor={28,108,200},
-          textString="Sensors"),
         Text(
           extent={{140,140},{240,120}},
           textColor={28,108,200},
@@ -650,5 +690,41 @@ equation
         Text(
           extent={{360,-140},{400,-160}},
           textColor={28,108,200},
-          textString="SensorState")}));
+          textString="SensorState"),
+        Text(
+          extent={{500,140},{600,120}},
+          textColor={28,108,200},
+          textString="SingleSensorSelect"),
+        Text(
+          extent={{620,140},{720,120}},
+          textColor={28,108,200},
+          textString="TwoPhaseSensorSelect"),
+        Text(
+          extent={{740,138},{800,120}},
+          textColor={28,108,200},
+          textString="SensorState"),
+        Text(
+          extent={{740,80},{800,60}},
+          textColor={28,108,200},
+          textString="SingleSensorX"),
+        Text(
+          extent={{560,-80},{640,-100}},
+          textColor={28,108,200},
+          textString="MultiSensor_Tpm"),
+        Rectangle(
+          extent={{820,-120},{480,158}},
+          lineColor={28,108,200},
+          lineThickness=1),
+        Text(
+          extent={{480,178},{740,158}},
+          textColor={28,108,200},
+          textString="Undirected Sensors"),
+        Text(
+          extent={{740,20},{800,0}},
+          textColor={28,108,200},
+          textString="UnidirectionalSensorAdapter"),
+        Text(
+          extent={{620,50},{720,30}},
+          textColor={28,108,200},
+          textString="SingleFlowSensor")}));
 end TestIcons;

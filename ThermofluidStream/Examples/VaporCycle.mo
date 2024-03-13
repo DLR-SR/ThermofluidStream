@@ -134,11 +134,11 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{24,-36},{44,-16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{18,-26},{38,-6}})));
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{22,-48},{42,-28}})));
+    annotation (Placement(transformation(extent={{18,-36},{38,-16}})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
@@ -152,11 +152,11 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-16,4},{-36,24}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-18,16},{-38,36}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-16,-8},{-36,12}})));
+    annotation (Placement(transformation(extent={{-18,6},{-38,26}})));
   Sensors.MultiSensor_Tp multiSensor_Tp3(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
@@ -168,11 +168,11 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp4(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-20,-36},{-40,-16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-20,-26},{-40,-6}})));
   Sensors.SingleSensorSelect singleSensorSelect4(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-20,-48},{-40,-28}})));
+    annotation (Placement(transformation(extent={{-20,-36},{-40,-16}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps)
@@ -183,11 +183,11 @@ model VaporCycle
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-20,-60},{-40,-40}})));
+    annotation (Placement(transformation(extent={{-20,-46},{-40,-26}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
+    annotation (Placement(transformation(extent={{18,-46},{38,-26}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
@@ -195,19 +195,19 @@ model VaporCycle
   Sensors.TwoPhaseSensorSelect sensorVaporQuality3(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-16,18},{-36,38}})));
+    annotation (Placement(transformation(extent={{-18,-6},{-38,14}})));
   Modelica.Blocks.Sources.RealExpression superheating_setpoint1(y=sensorEvaporatorSuperheating.value)
     annotation (Placement(transformation(extent={{-190,-28},{-170,-8}})));
   Sensors.TwoPhaseSensorSelect sensorEvaporatorSuperheating(
     redeclare package Medium = RefrigerantMedium,
     outputValue=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
-    annotation (Placement(transformation(extent={{38,-64},{58,-44}})));
+    annotation (Placement(transformation(extent={{18,-12},{38,8}})));
   Sensors.TwoPhaseSensorSelect sensorCondenserSubcooling(
     redeclare package Medium = RefrigerantMedium,
     outputValue=false,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K)
-    annotation (Placement(transformation(extent={{-16,28},{-36,48}})));
+    annotation (Placement(transformation(extent={{-18,30},{-38,50}})));
   Processes.Compressor compressor(
     redeclare package Medium = RefrigerantMedium,
     omega_from_input=true,
@@ -263,7 +263,7 @@ model VaporCycle
   Sensors.SingleSensorSelect singleSensorSelect5(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{56,-58},{76,-38}})));
+    annotation (Placement(transformation(extent={{52,-46},{72,-26}})));
   Modelica.Blocks.Continuous.LimPID PI_CompressorTemperature(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=300,
@@ -376,22 +376,22 @@ equation
       thickness=0.5));
   connect(multiSensor_Tp.inlet, evaporator.outletB)
     annotation (Line(
-      points={{24,-26},{20,-26},{20,-46},{10,-46}},
+      points={{18,-16},{14,-16},{14,-46},{10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
-      points={{22,-38},{22,-46},{10,-46}},
+      points={{18,-26},{14,-26},{14,-46},{10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-16,14},{-14,14},{-14,54},{-8,54}},
+      points={{-18,26},{-14,26},{-14,54},{-8,54}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-16,2},{-14,2},{-14,54},{-8,54}},
+      points={{-18,16},{-14,16},{-14,54},{-8,54}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, controlValve.inlet) annotation (Line(
@@ -404,22 +404,22 @@ equation
       thickness=0.5));
   connect(singleSensorSelect4.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,-38},{-14,-38},{-14,-46},{-10,-46}},
+      points={{-20,-26},{-14,-26},{-14,-46},{-10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp4.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,-26},{-20,-38},{-14,-38},{-14,-46},{-10,-46}},
+      points={{-20,-16},{-14,-16},{-14,-46},{-10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-20,-50},{-12,-50},{-12,-46},{-10,-46}},
+      points={{-20,-36},{-14,-36},{-14,-46},{-10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{20,-50},{14,-50},{14,-46},{10,-46}},
+      points={{18,-36},{14,-36},{14,-46},{10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, condenser.inletB)
@@ -429,22 +429,22 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, condenser.outletB)
     annotation (Line(
-      points={{-16,28},{-14,28},{-14,54},{-8,54}},
+      points={{-18,4},{-14,4},{-14,54},{-8,54}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorEvaporatorSuperheating.inlet, evaporator.outletB)
     annotation (Line(
-      points={{38,-54},{14,-54},{14,-46},{10,-46}},
+      points={{18,-2},{14,-2},{14,-46},{10,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorCondenserSubcooling.inlet, condenser.outletB)
     annotation (Line(
-      points={{-16,38},{-14,38},{-14,54},{-8,54}},
+      points={{-18,40},{-14,40},{-14,54},{-8,54}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp1.inlet, singleFlowSensor.inlet)
     annotation (Line(
-      points={{96,26},{96,32},{90,32}},
+      points={{96,26},{90,26},{90,32}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outlet, singleFlowSensor.inlet) annotation (Line(
@@ -461,7 +461,7 @@ equation
   connect(superheating_setpoint1.y, feedback_valve.u2) annotation (Line(points={{-169,-18},{-152,-18},{-152,-8}}, color={0,0,127}));
   connect(firstOrderValve.u, PI_Valve.y) annotation (Line(points={{-103.2,0},{-109,0}}, color={0,0,127}));
   connect(PI_CompressorTemperature.u_m, multiSensor_Tpm1.T_out)
-    annotation (Line(points={{194,-12},{194,-90},{-44.2,-90},{-44.2,-74}},
+    annotation (Line(points={{194,-12},{194,-90},{-46,-90},{-46,-74},{-44.2,-74}},
                                                                        color={0,0,127}));
   connect(step.y, source.T0_var) annotation (Line(points={{-149,66},{-86,66}}, color={0,0,127}));
   connect(firstOrderValve.y, controlValve.u_in) annotation (Line(points={{-89.4,0},{-72,0}}, color={0,0,127}));
@@ -471,7 +471,7 @@ equation
       thickness=0.5));
   connect(gain.u, PI_CompressorPressure.y) annotation (Line(points={{121.2,0},{127,0}}, color={0,0,127}));
   connect(compressor.omega_input, gain.y) annotation (Line(points={{102,-5.55112e-16},{104,-5.55112e-16},{104,0},{107.4,0}}, color={0,0,127}));
-  connect(multiSensor_Tp1.p_out, PI_CompressorPressure.u_m) annotation (Line(points={{114.2,23},{138,23},{138,12}},
+  connect(multiSensor_Tp1.p_out, PI_CompressorPressure.u_m) annotation (Line(points={{114.2,22},{138,22},{138,12}},
                                                                                                                   color={0,0,127}));
   connect(PI_CompressorPressure.u_s, gain1.y) annotation (Line(points={{150,0},{159.4,0}}, color={0,0,127}));
   connect(PI_CompressorTemperature.y, gain1.u) annotation (Line(points={{183,0},{173.2,0}}, color={0,0,127}));
@@ -484,7 +484,7 @@ equation
       thickness=0.5));
   connect(singleSensorSelect5.inlet, evaporator.outletB)
     annotation (Line(
-      points={{56,-48},{48,-48},{48,-46},{10,-46}},
+      points={{52,-36},{48,-36},{48,-46},{10,-46}},
       color={28,108,200},
       thickness=0.5));
   annotation (

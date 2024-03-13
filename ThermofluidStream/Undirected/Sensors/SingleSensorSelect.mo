@@ -1,9 +1,30 @@
-within ThermofluidStream.Undirected.Sensors;
+﻿within ThermofluidStream.Undirected.Sensors;
 model SingleSensorSelect "Sensor with selectable measured quantity"
   extends Internal.PartialSensor;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   parameter ThermofluidStream.Sensors.Internal.Types.Quantities quantity "Quantity to be measured";
+
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_K then "T in K"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_C then "T in °C"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa then "p in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar then "p in bar"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3 then "d in kg/m3"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg then "v in m3/kg"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg then "h in J/kg"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK then "s in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps then "Velocity of sound in m/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK then "cv in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK then "cp in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1 then "kappa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol then  "M in kg/mol"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa then "r in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar then "r in bar"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
+    else "error";
+
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
@@ -53,7 +74,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-40},{150,-80}},
+          extent={{-150,-25},{150,-65}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
@@ -73,9 +94,9 @@ equation
           textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{2,77},{62,127}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,130},{150,100}},
+          textColor={0,0,0},
+          textString=quantityString),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},

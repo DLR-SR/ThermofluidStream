@@ -67,7 +67,7 @@ model TestJunction "Test for the undirected junction"
   ThermofluidStream.Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium,
     assumeConstantDensity=false,
     L=2*dropOfCommons.L)
-    annotation (Placement(transformation(extent={{94,30},{74,50}})));
+    annotation (Placement(transformation(extent={{74,30},{94,50}})));
   ThermofluidStream.Boundaries.Sink sink4(
     redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{140,30},{160,50}})));

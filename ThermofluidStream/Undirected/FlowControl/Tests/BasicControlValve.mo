@@ -38,10 +38,10 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{-40,58},{-20,78}})));
+    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{26,58},{46,78}})));
+    annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
     duration=10,
@@ -67,10 +67,10 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{-40,-2},{-20,18}})));
+    annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{26,-2},{46,18}})));
+    annotation (Placement(transformation(extent={{20,0},{40,20}})));
   Boundaries.BoundaryRear boundary_rear1(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -88,15 +88,15 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{96,-70},{116,-50}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm7(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{-40,-62},{-20,-42}})));
+    annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm8(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{26,-62},{46,-42}})));
+    annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
   Modelica.Blocks.Sources.Pulse pulse(
     amplitude=2e4,
     period=2,
     offset=0.9e5)
-    annotation (Placement(transformation(extent={{-172,-10},{-152,10}})));
+    annotation (Placement(transformation(extent={{-172,-4},{-152,16}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
     r=0.05,
@@ -133,14 +133,13 @@ Medium package used in the Test.
       k=1e3))
     annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
 equation
-  connect(boundary_rear1.p0_var, pulse.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,0},{-151,0}}, color={0,0,127}));
+  connect(boundary_rear1.p0_var, pulse.y) annotation (Line(points={{-108,-54},{-140,-54},{-140,6},{-151,6}}, color={0,0,127}));
   connect(ramp.y, valveParabolic.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(ramp.y, valveEqualPercentage.u_in) annotation (Line(points={{153,20},
           {120,20},{120,-40},{0,-40},{0,-52}}, color={0,0,127}));
-  connect(boundary_rear.p0_var, pulse.y) annotation (Line(points={{-108,66},{-140,66},{-140,0},{-151,0}}, color={0,0,127}));
-  connect(pulse.y, boundary_rear2.p0_var) annotation (Line(points={{-151,0},{-130,0},{-130,6},{-108,6}},
-                                                                                       color={0,0,127}));
+  connect(boundary_rear.p0_var, pulse.y) annotation (Line(points={{-108,66},{-140,66},{-140,6},{-151,6}}, color={0,0,127}));
+  connect(pulse.y, boundary_rear2.p0_var) annotation (Line(points={{-151,6},{-108,6}}, color={0,0,127}));
   connect(valveLinear.u_in, ramp.y) annotation (Line(points={{0,68},{0,90},{120,
           90},{120,20},{153,20}}, color={0,0,127}));
   connect(flowResistance.rear, boundary_rear.fore) annotation (Line(
@@ -157,11 +156,11 @@ equation
       thickness=0.5));
   connect(valveLinear.fore, multiSensor_Tpm3.rear)
     annotation (Line(
-      points={{10,60},{18,60},{18,60},{26,60}},
+      points={{10,60},{20,60}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.fore, flowResistance6.rear) annotation (Line(
-      points={{46,60},{60,60}},
+      points={{40,60},{60,60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance6.fore, boundary_fore1.rear) annotation (Line(
@@ -173,11 +172,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.rear, multiSensor_Tpm5.fore) annotation (Line(
-      points={{60,0},{46,0}},
+      points={{60,0},{40,0}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm5.rear, valveParabolic.fore) annotation (Line(
-      points={{26,0},{10,0}},
+      points={{20,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
   connect(valveParabolic.rear, multiSensor_Tpm4.fore) annotation (Line(
@@ -208,11 +207,11 @@ equation
       thickness=0.5));
   connect(valveEqualPercentage.fore, multiSensor_Tpm8.rear)
     annotation (Line(
-      points={{10,-60},{26,-60}},
+      points={{10,-60},{20,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm8.fore, flowResistance4.rear) annotation (Line(
-      points={{46,-60},{60,-60}},
+      points={{40,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance4.fore, boundary_fore.rear) annotation (Line(

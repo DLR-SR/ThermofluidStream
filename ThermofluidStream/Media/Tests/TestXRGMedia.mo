@@ -249,11 +249,11 @@ equation
       thickness=0.5));
   connect(discretizedHEX4.outletB, junctionT2_1.inletB)
     annotation (Line(
-      points={{-44,6},{-122,6}},
+      points={{-44,6},{-142,6}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_1.outlet, sink3.inlet) annotation (Line(
-      points={{-142,6},{-156,6}},
+      points={{-122,6},{-156,6}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX4.outletA, nozzle.inlet) annotation (Line(

@@ -2,11 +2,11 @@ within ThermofluidStream.Examples;
 model HeatPump
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby
-    Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
+  replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby Media.myMedia.Interfaces.PartialMedium
+                                           "Refrigerant Medium"
     annotation(choicesAllMatching=true);
-  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby
-    Media.myMedia.Interfaces.PartialMedium "Air Medium"
+  replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby Media.myMedia.Interfaces.PartialMedium
+                                           "Air Medium"
     annotation(choicesAllMatching=true);
 
   HeatExchangers.DiscretizedCounterFlowHEX condenser(
@@ -152,7 +152,7 @@ model HeatPump
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-56,-54},{-76,-34}})));
+    annotation (Placement(transformation(extent={{-62,-74},{-42,-54}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
@@ -168,7 +168,7 @@ model HeatPump
   Sensors.TwoPhaseSensorSelect sensorVaporQuality6(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-124,-54},{-104,-34}})));
+    annotation (Placement(transformation(extent={{-114,-74},{-94,-54}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
     digits=4,
@@ -176,7 +176,7 @@ model HeatPump
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-124,-64},{-104,-44}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-114,-64},{-94,-44}})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
@@ -192,7 +192,7 @@ model HeatPump
   Sensors.MultiSensor_Tp multiSensor_Tp4(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-56,-64},{-76,-44}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-62,-64},{-42,-44}})));
   Utilities.Accumulator accumulator(
     redeclare package Medium = Medium,
     useHeatport=true,
@@ -209,7 +209,7 @@ model HeatPump
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{4,-54},{24,-34}})));
+    annotation (Placement(transformation(extent={{4,-74},{24,-54}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = Air,
     digits=1,
@@ -236,7 +236,7 @@ model HeatPump
     redeclare package Medium = Medium,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
-    filter_output=true) annotation (Placement(transformation(extent={{-56,-46},{-76,-26}})));
+    filter_output=true) annotation (Placement(transformation(extent={{-62,-50},{-42,-30}})));
   Modelica.Blocks.Continuous.LimPID PI(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=0.1,
@@ -366,15 +366,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality.inlet, accumulator.inlet) annotation (Line(
-      points={{-56,-44},{-50,-44},{-50,-74},{-40,-74}},
+      points={{-62,-64},{-66,-64},{-66,-74},{-40,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp4.inlet, accumulator.inlet) annotation (Line(
-      points={{-56,-54},{-50,-54},{-50,-74},{-40,-74}},
+      points={{-62,-54},{-66,-54},{-66,-74},{-40,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, compressor.inlet) annotation (Line(
-      points={{4,-44},{0,-44},{0,-10}},
+      points={{4,-64},{0,-64},{0,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tp5.inlet, compressor.inlet) annotation (Line(
@@ -404,18 +404,18 @@ equation
   connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}}, color={191,0,0}));
   connect(sensorVaporQuality8.inlet, accumulator.inlet)
     annotation (Line(
-      points={{-56,-36},{-50,-36},{-50,-74},{-40,-74}},
+      points={{-62,-40},{-66,-40},{-66,-74},{-40,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(const.y, PI.u_s) annotation (Line(points={{-71,0},{-88,0}}, color={0,0,127}));
   connect(multiSensor_Tp.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-124,-54},{-130,-54},{-130,-74},{-90,-74}},
+      points={{-114,-54},{-120,-54},{-120,-74},{-90,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality6.inlet, evaporator.inletB)
     annotation (Line(
-      points={{-124,-44},{-130,-44},{-130,-74},{-90,-74}},
+      points={{-114,-64},{-120,-64},{-120,-74},{-90,-74}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outlet, singleFlowSensor.inlet)
@@ -441,7 +441,8 @@ equation
   connect(step2.y, source1.T0_var) annotation (Line(points={{41,-126},{22,-126},{22,-120},{2,-120}},
                                                                                  color={0,0,127}));
   connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{8.2,110},{114,110},{114,12}},color={0,0,127}));
-  connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-74,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
+  connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-44,-40},{-36,-40},{-36,-18},{-100,-18},{-100,-12}},
+                                                                                                            color={0,0,127}));
   annotation (experiment(StopTime=2500, Tolerance=1e-6, Interval=2.5),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-160},{200,160}})),

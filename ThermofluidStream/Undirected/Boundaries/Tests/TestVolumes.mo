@@ -315,11 +315,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance6.outlet, volumeMix1.inlet[1]) annotation (Line(
-      points={{66,30},{70,30},{70,49},{88,49}},
+      points={{66,30},{70,30},{70,49.5},{88,49.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, volumeMix1.inlet[2]) annotation (Line(
-      points={{66,70},{70,70},{70,51},{88,51}},
+      points={{66,70},{70,70},{70,50.5},{88,50.5}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance7.rear, boundary_rear3.fore) annotation (Line(
@@ -335,7 +335,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance4.fore, volumeMix2.rear[3]) annotation (Line(
-      points={{66,-20},{80,-20},{80,-38.6667},{90,-38.6667}},
+      points={{66,-20},{80,-20},{80,-39.3333},{90,-39.3333}},
       color={28,108,200},
       thickness=0.5));
   connect(volumeMix1.outlet, flowResistance8.inlet) annotation (Line(
@@ -351,7 +351,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance9.fore, volumeMix2.rear[1]) annotation (Line(
-      points={{100,-70},{90,-70},{90,-41.3333},{90,-41.3333}},
+      points={{100,-70},{90,-70},{90,-40.6667},{90,-40.6667}},
       color={28,108,200},
       thickness=0.5));
   connect(heatportVolume2.fore, flowResistance10.rear)

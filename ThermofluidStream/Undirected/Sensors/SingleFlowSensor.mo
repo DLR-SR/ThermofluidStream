@@ -5,6 +5,17 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   parameter Quantities quantity "Quantity the sensor measures";
+
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps then "m_flow in kg/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps then "m_flow in g/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps then "V_flow in m3/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin then "V_flow in l/min"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps then "H_flow in J/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in J/(K.s)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in J/(K.s)"
+    else "error";
+
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
@@ -19,8 +30,8 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
-    annotation (Placement(transformation(extent={{70,70},{90,90}}),
-        iconTransformation(extent={{70,70},{90,90}})));
+    annotation (Placement(transformation(extent={{70,50},{90,70}}),
+        iconTransformation(extent={{70,50},{90,70}})));
 
   output Real value(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity));
 
@@ -50,32 +61,39 @@ equation
   end if;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-25},{150,-65}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,104},{66,44}},
+          extent={{-54,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-60,110},{60,50}},
+          extent={{-60,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,110},{60,50}},
+          extent={{-60,90},{60,30}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,105},{60,155}},
-          textColor={175,175,175},
-          textString="%quantity"),
-        Line(points={{0,34},{0,0}},    color={0,0,0}),
+          extent={{-150,130},{150,100}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Line(points={{0,30},{0,0}},    color={0,0,0}),
         Ellipse(
           extent={{-6,6},{6,-6}},
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}),
+          lineThickness=0.5),
+        Line(visible=outputValue,
+          points={{60,60},{78,60}},
+          color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>A undirected sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>

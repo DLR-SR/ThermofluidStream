@@ -37,10 +37,10 @@ model Piston "Piston model with steam on both sides"
     state_rearwards=medium_left.state,
     state_forwards=state_in_left) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
-        origin={-80,20},
+        origin={-100,42},
         rotation=-90), iconTransformation(
         extent={{-20,-20},{20,20}},
-        origin={-80,20},
+        origin={-100,42},
         rotation=-90)));
   Undirected.Interfaces.Rear port_right(
     redeclare package Medium = Medium,
@@ -49,17 +49,17 @@ model Piston "Piston model with steam on both sides"
     state_rearwards=medium_right.state,
     state_forwards=state_in_right) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
-        origin={80,20},
+        origin={100,42},
         rotation=90), iconTransformation(
         extent={{-20,-20},{20,20}},
-        origin={80,20},
+        origin={100,42},
         rotation=90)));
   Modelica.Mechanics.Translational.Interfaces.Flange_a flange
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={100, -10}, rotation=0),
-      iconTransformation(extent={{-10,-10},{10,10}}, origin={100, -10}, rotation=0)));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={100,0},    rotation=0),
+      iconTransformation(extent={{-10,-10},{10,10}}, origin={100,0},    rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput x_out(unit="") = x if outputX "Unitless piston position []"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, origin={60,-60}, rotation=-90),
-      iconTransformation(extent={{-20,-20},{20,20}}, origin={60,-60}, rotation=-90)));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={60,-48}, rotation=-90),
+      iconTransformation(extent={{-10,-10},{10,10}}, origin={60,-48}, rotation=-90)));
 
   Medium.ThermodynamicState state_in_left, state_in_right;
   SI.MassFlowRate m_flow_left, m_flow_right;
@@ -119,35 +119,43 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false),
     graphics={
       Rectangle(
-        extent={{-76,-44},{84,16}},
+        extent={{-76,-34},{84,26}},
         fillColor={215,215,215},
         fillPattern=FillPattern.Solid,
         pattern=LinePattern.None),
       Rectangle(
-        extent={{-80,-40},{80,20}},
+        extent={{-80,-30},{80,30}},
         lineColor={28,108,200},
         fillColor={255,255,255},
         lineThickness=0.5,
         fillPattern=FillPattern.Solid,
         pattern=LinePattern.Solid),
       Line(
-        points={{DynamicSelect(-50, -50 + x*100),20},{DynamicSelect(-50, -50 + x*100),-40}},
+        points={{-50,30},{-50,-30}},
         color={28,108,200},
         pattern=LinePattern.Solid),
       Rectangle(
-        extent={{DynamicSelect(-60, -60 + x*100),-35},{DynamicSelect(-40, -40 + x*100),15}},
+        extent={{-60,-25},{-40,25}},
         lineColor={28,108,200},
         fillColor={255,255,255},
         lineThickness=0.5,
         fillPattern=FillPattern.Solid,
         pattern=LinePattern.Solid),
       Rectangle(
-        extent={{DynamicSelect(-40, -40 + x*100),-15},{DynamicSelect(90, 90 + x*100),-5}},
+        extent={{-40,-5},{90,5}},
         lineColor={28,108,200},
         fillColor={255,255,255},
         lineThickness=0.5,
         fillPattern=FillPattern.Solid,
-        pattern=LinePattern.Solid)}),
+        pattern=LinePattern.Solid),
+        Line(
+          points={{-100,42},{-80,30}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{80,30},{100,42}},
+          color={28,108,200},
+          thickness=0.5)}),
     Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>

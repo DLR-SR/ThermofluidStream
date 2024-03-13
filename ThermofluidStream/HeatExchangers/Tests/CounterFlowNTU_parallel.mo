@@ -16,7 +16,7 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={-130,-4})));
+        origin={-142,-4})));
 
   ThermofluidStream.Boundaries.Sink sinkA(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
@@ -35,21 +35,21 @@ model CounterFlowNTU_parallel
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=150000)
-    annotation (Placement(transformation(extent={{148,10},{128,30}})));
+    annotation (Placement(transformation(extent={{158,10},{138,30}})));
   ThermofluidStream.Boundaries.Sink sinkB(
     redeclare package Medium = MediumB,
     pressureFromInput=false,
     p0_par=100000)
-    annotation (Placement(transformation(extent={{-150,10},{-170,30}})));
+    annotation (Placement(transformation(extent={{-160,10},{-180,30}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
                MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-102,20},{-122,40}})));
+    annotation (Placement(transformation(extent={{-112,20},{-132,40}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
                MediumB,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{116,20},{96,40}})));
+    annotation (Placement(transformation(extent={{132,20},{112,40}})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-158,-92},{-138,-72}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
@@ -69,22 +69,22 @@ model CounterFlowNTU_parallel
         origin={-70,-14})));
   Topology.SplitterT1 splitterT1_1(
     redeclare package Medium = MediumB)
-    annotation (Placement(transformation(extent={{68,10},{48,30}})));
+    annotation (Placement(transformation(extent={{80,10},{60,30}})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium = MediumB)
-    annotation (Placement(transformation(extent={{-76,10},{-96,30}})));
+    annotation (Placement(transformation(extent={{-88,10},{-108,30}})));
   Boundaries.Source sourceA2(redeclare package Medium = MediumA, T0_par=
        333.15)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={-130,44})));
+        origin={-142,44})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-102,54})));
+        origin={-106,54})));
   Boundaries.Sink sinkA2(
     redeclare package Medium = MediumA, p0_par=MediumA.p_default - 1e4)
     annotation (Placement(transformation(extent={{80,34},{100,54}})));
@@ -99,29 +99,29 @@ model CounterFlowNTU_parallel
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{52,32},{32,12}})));
+    annotation (Placement(transformation(extent={{66,32},{46,12}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{34,8},{14,28}})));
+    annotation (Placement(transformation(extent={{44,8},{24,28}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm9(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-60,32},{-80,12}})));
+    annotation (Placement(transformation(extent={{-72,32},{-92,12}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm10(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-44,8},{-64,28}})));
+    annotation (Placement(transformation(extent={{-48,8},{-68,28}})));
   Processes.FlowResistance flowResistanceB2(
     redeclare package Medium = MediumB,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-126,10},{-146,30}})));
+    annotation (Placement(transformation(extent={{-136,10},{-156,30}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -129,7 +129,7 @@ model CounterFlowNTU_parallel
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{8,22},{-12,42}})));
+    annotation (Placement(transformation(extent={{20,22},{0,42}})));
   Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -137,7 +137,7 @@ model CounterFlowNTU_parallel
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{8,-2},{-12,18}})));
+    annotation (Placement(transformation(extent={{12,-2},{-8,18}})));
   Processes.FlowResistance flowResistanceA2(
     redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -153,11 +153,11 @@ model CounterFlowNTU_parallel
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-108,-14},{-88,6}})));
+    annotation (Placement(transformation(extent={{-116,-14},{-96,6}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumB,
     m_flow_0=0,
-    massFlow_set_par=1) annotation (Placement(transformation(extent={{92,10},{72,30}})));
+    massFlow_set_par=1) annotation (Placement(transformation(extent={{106,10},{86,30}})));
   FlowControl.MCV mCV1(
     redeclare package Medium = MediumA,
     m_flow_0=1,
@@ -178,7 +178,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sourceB.outlet, multiSensor_Tpm3.inlet) annotation (Line(
-      points={{128,20},{116,20}},
+      points={{138,20},{132,20}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm5.outlet, counterFlowNTU.inletA) annotation (Line(
@@ -186,11 +186,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm2.inlet, junctionT1_1.outlet) annotation (Line(
-      points={{-102,20},{-96,20}},
+      points={{-112,20},{-108,20}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceA2.outlet, multiSensor_Tpm4.inlet) annotation (Line(
-      points={{-120,44},{-112,44}},
+      points={{-132,44},{-116,44}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU1.outletA, multiSensor_Tpm6.inlet) annotation (Line(
@@ -198,55 +198,55 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterT1_1.outletA, multiSensor_Tpm7.inlet) annotation (Line(
-      points={{58,30},{58,32},{52,32}},
+      points={{70,30},{70,32},{66,32}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT1_1.outletB, multiSensor_Tpm8.inlet) annotation (Line(
-      points={{58,10},{58,8},{34,8}},
+      points={{70,10},{70,8},{44,8}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU1.outletB, multiSensor_Tpm9.inlet) annotation (Line(
-      points={{-38,32},{-60,32}},
+      points={{-38,32},{-72,32}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT1_1.inletA, multiSensor_Tpm9.outlet) annotation (Line(
-      points={{-86,30},{-86,32},{-80,32}},
+      points={{-98,30},{-98,32},{-92,32}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU.outletB, multiSensor_Tpm10.inlet) annotation (Line(
-      points={{-40,8},{-44,8}},
+      points={{-40,8},{-48,8}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm10.outlet, junctionT1_1.inletB) annotation (Line(
-      points={{-64,8},{-86,8},{-86,10}},
+      points={{-68,8},{-98,8},{-98,10}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB.inlet, flowResistanceB2.outlet) annotation (Line(
-      points={{-150,20},{-146,20}},
+      points={{-160,20},{-156,20}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm2.outlet, flowResistanceB2.inlet) annotation (Line(
-      points={{-122,20},{-126,20}},
+      points={{-132,20},{-136,20}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU1.inletB, flowResistanceB.outlet) annotation (Line(
-      points={{-18,32},{-12,32}},
+      points={{-18,32},{0,32}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm7.outlet,flowResistanceB. inlet) annotation (Line(
-      points={{32,32},{8,32}},
+      points={{46,32},{20,32}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU.inletB, flowResistanceB1.outlet) annotation (Line(
-      points={{-20,8},{-12,8}},
+      points={{-20,8},{-8,8}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm8.outlet, flowResistanceB1.inlet) annotation (Line(
-      points={{14,8},{8,8}},
+      points={{24,8},{12,8}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm4.outlet, flowResistanceA2.inlet) annotation (Line(
-      points={{-92,44},{-78,44}},
+      points={{-96,44},{-78,44}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA2.outlet, counterFlowNTU1.inletA) annotation (Line(
@@ -254,11 +254,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sourceA.outlet,flowResistanceA. inlet) annotation (Line(
-      points={{-120,-4},{-108,-4}},
+      points={{-132,-4},{-116,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm5.inlet,flowResistanceA. outlet) annotation (Line(
-      points={{-80,-4},{-88,-4}},
+      points={{-80,-4},{-96,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU.outletA, mCV1.inlet)
@@ -279,11 +279,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.outlet, mCV.inlet) annotation (Line(
-      points={{96,20},{92,20}},
+      points={{112,20},{106,20}},
       color={28,108,200},
       thickness=0.5));
   connect(mCV.outlet, splitterT1_1.inlet) annotation (Line(
-      points={{72,20},{68,20}},
+      points={{86,20},{80,20}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=

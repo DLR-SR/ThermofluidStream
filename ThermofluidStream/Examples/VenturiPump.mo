@@ -88,7 +88,7 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,50})));
-  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612, displayInstanceNames=true)
+  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612, displayInstanceNames=false)
                                                                    annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{82,62},{118,98}})));
 equation

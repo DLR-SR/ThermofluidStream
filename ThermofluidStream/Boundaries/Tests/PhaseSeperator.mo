@@ -31,19 +31,19 @@ model PhaseSeperator
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-56,-38},{-36,-18}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-56,-58},{-36,-38}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect1(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{20,-50},{40,-30}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{20,-58},{40,-38}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect2(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{20,30},{40,50}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{26,40},{46,60}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect3(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{64,-52},{84,-32}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{64,-58},{84,-38}})));
   Modelica.Blocks.Sources.TimeTable
                                timeTable(
     table=[0.0,1500e3; 24.9,1500e3; 25.1,3500e3; 49.9,3500e3; 50.1,1500e3; 74.9,1500e3; 75.1,410e3; 99.9,410e3; 100.1,1500e3; 124.9,1500e3; 1e10,
@@ -85,31 +85,31 @@ model PhaseSeperator
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-8,-50},{12,-30}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-10,-58},{10,-38}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect5(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-8,30},{12,50}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-8,40},{12,60}})));
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-8,38},{12,58}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-8,28},{12,48}})));
   Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{20,38},{40,58}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{26,28},{46,48}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-8,-58},{12,-38}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-10,-46},{10,-26}})));
   Sensors.SingleSensorSelect singleSensorSelect3(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{20,-58},{40,-38}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{20,-46},{40,-26}})));
   Sensors.SingleSensorSelect singleSensorSelect4(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,-60},{84,-40}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,-46},{84,-26}})));
   Sensors.SingleSensorSelect singleSensorSelect5(
     redeclare package Medium = Medium,
     digits=2,
@@ -123,7 +123,7 @@ model PhaseSeperator
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect6(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-56,20},{-36,40}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{-56,40},{-36,60}})));
   Sensors.SingleSensorSelect singleSensorSelect6(
     redeclare package Medium = Medium,
     digits=2,
@@ -133,23 +133,23 @@ model PhaseSeperator
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect7(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{64,32},{84,52}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation (Placement(transformation(extent={{64,40},{84,60}})));
   Sensors.SingleSensorSelect singleSensorSelect7(
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,40},{84,60}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,28},{84,48}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
 equation
   connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,20},{-90,20},{-90,-6},{-99,-6}}, color={0,0,127}));
   connect(twoPhaseSensorSelect1.inlet, accumulator.outlet)
     annotation (Line(
-      points={{20,-40},{16,-40},{16,-20},{10,-20}},
+      points={{20,-48},{16,-48},{16,-20},{10,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(twoPhaseSensorSelect2.inlet,receiver. outlet)
     annotation (Line(
-      points={{20,40},{16,40},{16,20},{10,20}},
+      points={{26,50},{16,50},{16,20},{10,20}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet,receiver. inlet) annotation (Line(
@@ -170,32 +170,32 @@ equation
       thickness=0.5));
   connect(twoPhaseSensorSelect4.inlet, flowResistance2.outlet)
     annotation (Line(
-      points={{-8,-40},{-14,-40},{-14,-20},{-20,-20}},
+      points={{-10,-48},{-14,-48},{-14,-20},{-20,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(twoPhaseSensorSelect5.inlet,receiver. inlet)
     annotation (Line(
-      points={{-8,40},{-14,40},{-14,20},{-10,20}},
+      points={{-8,50},{-14,50},{-14,20},{-10,20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect.inlet,receiver. inlet)
     annotation (Line(
-      points={{-8,48},{-14,48},{-14,20},{-10,20}},
+      points={{-8,38},{-14,38},{-14,20},{-10,20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.inlet,receiver. outlet)
     annotation (Line(
-      points={{20,48},{16,48},{16,20},{10,20}},
+      points={{26,38},{16,38},{16,20},{10,20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, accumulator.outlet)
     annotation (Line(
-      points={{20,-48},{16,-48},{16,-20},{10,-20}},
+      points={{20,-36},{16,-36},{16,-20},{10,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect2.inlet, flowResistance2.outlet)
     annotation (Line(
-      points={{-8,-48},{-14,-48},{-14,-20},{-20,-20}},
+      points={{-10,-36},{-14,-36},{-14,-20},{-20,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, flowResistance1.inlet) annotation (Line(
@@ -210,7 +210,7 @@ equation
   connect(source1.h0_var, timeTable.y) annotation (Line(points={{-82,-20},{-90,-20},{-90,-6},{-99,-6}}, color={0,0,127}));
   connect(twoPhaseSensorSelect.inlet, flowResistance2.inlet)
     annotation (Line(
-      points={{-56,-28},{-60,-28},{-60,-20},{-40,-20}},
+      points={{-56,-48},{-60,-48},{-60,-20},{-40,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect5.inlet, flowResistance2.inlet)
@@ -225,7 +225,7 @@ equation
       thickness=0.5));
   connect(twoPhaseSensorSelect6.inlet, flowResistance1.inlet)
     annotation (Line(
-      points={{-56,30},{-60,30},{-60,20},{-40,20}},
+      points={{-56,50},{-60,50},{-60,20},{-40,20}},
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, flowResistance3.outlet) annotation (Line(
@@ -238,22 +238,22 @@ equation
       thickness=0.5));
   connect(singleSensorSelect4.inlet, flowResistance3.outlet)
     annotation (Line(
-      points={{64,-50},{60,-50},{60,-20},{50,-20}},
+      points={{64,-36},{60,-36},{60,-20},{50,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(twoPhaseSensorSelect3.inlet, flowResistance3.outlet)
     annotation (Line(
-      points={{64,-42},{60,-42},{60,-20},{50,-20}},
+      points={{64,-48},{60,-48},{60,-20},{50,-20}},
       color={28,108,200},
       thickness=0.5));
   connect(twoPhaseSensorSelect7.inlet, flowResistance.outlet)
     annotation (Line(
-      points={{64,42},{60,42},{60,20},{50,20}},
+      points={{64,50},{60,50},{60,20},{50,20}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect7.inlet, flowResistance.outlet)
     annotation (Line(
-      points={{64,50},{60,50},{60,20},{50,20}},
+      points={{64,38},{60,38},{60,20},{50,20}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

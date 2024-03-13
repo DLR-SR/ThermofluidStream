@@ -61,19 +61,19 @@ model Recuperator
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{24,44},{44,24}})));
+    annotation (Placement(transformation(extent={{24,24},{44,44}})));
   Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-20,44},{-40,24}})));
+    annotation (Placement(transformation(extent={{-20,24},{-40,44}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-20,32},{-40,52}})));
+    annotation (Placement(transformation(extent={{-20,36},{-40,56}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{24,32},{44,52}})));
+    annotation (Placement(transformation(extent={{24,36},{44,56}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
@@ -83,11 +83,11 @@ model Recuperator
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-22,-18},{-42,-38}})));
+    annotation (Placement(transformation(extent={{-22,-36},{-42,-16}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{-22,-46},{-42,-26}})));
+    annotation (Placement(transformation(extent={{-22,-48},{-42,-28}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumRefrigerant,
     digits=3,
@@ -97,11 +97,11 @@ model Recuperator
   Sensors.SingleSensorSelect singleSensorSelect3(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{44,-28},{24,-48}})));
+    annotation (Placement(transformation(extent={{44,-36},{24,-16}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality3(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{44,-40},{24,-20}})));
+    annotation (Placement(transformation(extent={{44,-48},{24,-28}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -115,7 +115,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, multiSensor_Tpm2.inlet)
     annotation (Line(
-      points={{24,42},{20,42},{20,8},{24,8}},
+      points={{24,46},{20,46},{20,8},{24,8}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect.inlet, multiSensor_Tpm2.inlet)
@@ -134,12 +134,12 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, multiSensor_Tpm4.inlet)
     annotation (Line(
-      points={{44,-30},{52,-30},{52,-4},{44,-4}},
+      points={{44,-38},{52,-38},{52,-4},{44,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, multiSensor_Tpm4.inlet)
     annotation (Line(
-      points={{44,-38},{52,-38},{52,-4},{44,-4}},
+      points={{44,-26},{52,-26},{52,-4},{44,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.inlet, evaporator.outletB) annotation (Line(
@@ -148,12 +148,12 @@ equation
       thickness=0.5));
   connect(singleSensorSelect2.inlet, evaporator.outletB)
     annotation (Line(
-      points={{-22,-28},{-18,-28},{-18,-4},{-10,-4}},
+      points={{-22,-26},{-18,-26},{-18,-4},{-10,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, evaporator.outletB)
     annotation (Line(
-      points={{-22,-36},{-18,-36},{-18,-4},{-10,-4}},
+      points={{-22,-38},{-18,-38},{-18,-4},{-10,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.outlet, sinkB.inlet)
@@ -184,7 +184,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality.inlet, evaporator.inletA)
     annotation (Line(
-      points={{-20,42},{-16,42},{-16,8},{-10,8}},
+      points={{-20,46},{-16,46},{-16,8},{-10,8}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=

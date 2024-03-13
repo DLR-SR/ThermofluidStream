@@ -145,7 +145,7 @@ Medium model for water.
     redeclare package Medium = Water,
     outputTemperature=true,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-4,20},{16,40}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{0,20},{20,40}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor brewing_head(
     C=500,
     T(start=298.15, fixed=true))
@@ -190,7 +190,7 @@ Medium model for water.
   Modelica.Blocks.Math.Feedback feedback
     annotation (Placement(transformation(extent={{70,-10},{50,10}})));
   Modelica.Blocks.Math.Gain gain(k=10e-4)
-    annotation (Placement(transformation(extent={{40,28},{52,40}})));
+    annotation (Placement(transformation(extent={{34,28},{46,40}})));
   Sensors.SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Water,
     digits=3,
@@ -417,7 +417,7 @@ equation
   connect(tanValve2.u, firstOrder2.y)
     annotation (Line(points={{102,-80},{77,-80}},color={0,0,127}));
   connect(multiSensor_Tp.inlet, hex.outlet) annotation (Line(
-      points={{-4,30},{-20,30},{-20,20}},
+      points={{0,30},{-20,30},{-20,20}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT2_1.outletB, singleFlowSensor.inlet) annotation (Line(
@@ -438,8 +438,7 @@ equation
       thickness=0.5));
   connect(PI.y, pump.omega_input)
     annotation (Line(points={{19,0},{10,0},{10,-8}},  color={0,0,127}));
-  connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{14,33},{26,33},{26,34},{38.8,34}},
-                                                                                     color={0,0,127}));
+  connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{18,34},{32.8,34}}, color={0,0,127}));
   connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{72,-14}}, color={0,0,127}));
   connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{120,20}},   color={191,0,0}));
   connect(splitterT2_1.inlet, conductionElement1.outlet)
@@ -460,7 +459,7 @@ equation
       points={{-60,-10},{-60,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(gain.y, feedback.u1) annotation (Line(points={{52.6,34},{80,34},{80,0},{68,0}}, color={0,0,127}));
+  connect(gain.y, feedback.u1) annotation (Line(points={{46.6,34},{78,34},{78,0},{68,0}}, color={0,0,127}));
   connect(tanValve1.u, firstOrder1.y) annotation (Line(points={{-22,150},{-11,150}},
                                      color={0,0,127}));
   connect(thermalResistor.port_a, brewing_head.port)
@@ -510,7 +509,7 @@ equation
   connect(realExpression3.y, PID3.u_s)
     annotation (Line(points={{-179,-100},{-172,-100}},
                                                      color={0,0,127}));
-  connect(PID3.u_m, multiSensor_Tp2.p_out) annotation (Line(points={{-160,-88},{-160,-77},{-112.2,-77}},
+  connect(PID3.u_m, multiSensor_Tp2.p_out) annotation (Line(points={{-160,-88},{-160,-78},{-112.2,-78}},
                                  color={0,0,127}));
   connect(source1.outlet, pump1.inlet) annotation (Line(
       points={{-130,-120},{-120,-120}},

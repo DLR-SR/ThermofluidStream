@@ -37,10 +37,10 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{96,50},{116,70}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{-40,58},{-20,78}})));
+    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{26,58},{46,78}})));
+    annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
     duration=10,
@@ -67,10 +67,10 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{96,-10},{116,10}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{-40,-2},{-20,18}})));
+    annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm5(redeclare package
       Medium = Medium)
-    annotation (Placement(transformation(extent={{26,-2},{46,18}})));
+    annotation (Placement(transformation(extent={{20,0},{40,20}})));
 
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
@@ -97,14 +97,13 @@ Medium package used in the Test.
     amplitude=2e4,
     period=2,
     offset=0.9e5)
-    annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
+    annotation (Placement(transformation(extent={{-170,-4},{-150,16}})));
 equation
   connect(ramp.y, slideValveInverse.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
   connect(slideValve.u_in, ramp.y) annotation (Line(points={{0,68},{0,90},{120,
           90},{120,20},{153,20}}, color={0,0,127}));
-  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-149,0},{-128,0},{-128,6},{-108,6}},
-                                                                                      color={0,0,127}));
+  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-149,6},{-108,6}}, color={0,0,127}));
   connect(boundary_rear1.p0_var, boundary_rear.p0_var) annotation (Line(points={{-108,66},{-130,66},{-130,6},{-108,6}}, color={0,0,127}));
   connect(boundary_rear1.fore, flowResistance.rear)
     annotation (Line(
@@ -129,11 +128,11 @@ equation
       thickness=0.5));
   connect(slideValveInverse.fore, multiSensor_Tpm5.rear)
     annotation (Line(
-      points={{10,0},{26,0},{26,0}},
+      points={{10,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm5.fore, flowResistance1.rear) annotation (Line(
-      points={{46,0},{60,0}},
+      points={{40,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.fore, boundary_fore.rear) annotation (Line(
@@ -145,16 +144,16 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance6.rear, multiSensor_Tpm3.fore) annotation (Line(
-      points={{60,60},{46,60}},
+      points={{60,60},{40,60}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.rear, slideValve.fore) annotation (Line(
-      points={{26,60},{10,60}},
+      points={{20,60},{10,60}},
       color={28,108,200},
       thickness=0.5));
   connect(slideValve.rear, multiSensor_Tpm2.fore)
     annotation (Line(
-      points={{-10,60},{-20,60},{-20,60}},
+      points={{-10,60},{-20,60}},
       color={28,108,200},
       thickness=0.5));
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),

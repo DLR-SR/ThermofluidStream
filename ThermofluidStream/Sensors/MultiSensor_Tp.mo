@@ -39,9 +39,9 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{70,20},{90,40}}), iconTransformation(extent={{70,20},{90,40}})));
+    annotation (Placement(transformation(extent={{70,30},{90,50}}), iconTransformation(extent={{70,30},{90,50}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured Pressure [variable]"
-    annotation (Placement(transformation(extent={{72,-40},{92,-20}}), iconTransformation(extent={{72,-40},{92,-20}})));
+    annotation (Placement(transformation(extent={{72,-50},{92,-30}}), iconTransformation(extent={{72,-50},{92,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -123,20 +123,20 @@ equation
           horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
         Text(visible= outputTemperature,
-          extent={{75,68},{135,38}},
+          extent={{75,78},{135,48}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
         Text(visible=outputPressure,
-          extent={{75,8},{135,-22}},
+          extent={{75,-2},{135,-32}},
           textColor={0,0,0},
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
         Line(visible=outputTemperature,
-          points={{60,30},{78,30}},
+          points={{60,40},{78,40}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,-30},{78,-30}},
+          points={{60,-40},{78,-40}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

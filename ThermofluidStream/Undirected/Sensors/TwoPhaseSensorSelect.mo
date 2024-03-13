@@ -1,4 +1,4 @@
-within ThermofluidStream.Undirected.Sensors;
+﻿within ThermofluidStream.Undirected.Sensors;
 model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium"
   extends Internal.PartialSensor(redeclare package Medium=Medium2Phase);
 
@@ -14,6 +14,18 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 
   parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
+
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "x in kg_Vapor/kg_total"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "T_sat in K"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C then "T_sat in °C"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa then "p_sat in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar then "p_sat in bar"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K then "T - T_sat in K"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
+    else "error";
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
@@ -60,7 +72,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-40},{150,-80}},
+          extent={{-150,-25},{150,-65}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
@@ -80,9 +92,9 @@ equation
           textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,79},{60,129}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,130},{150,100}},
+          textColor={0,0,0},
+          textString=quantityString),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},
