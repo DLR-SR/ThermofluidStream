@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapor quality"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -20,6 +20,18 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter Quantities quantity "Quantity the sensor measures";
+
+    final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "x in kg_Vapor/kg_total"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C then "T_sat in °C"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa then "p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar then "p_sat in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K then "T - T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
+  else "error";
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
@@ -33,12 +45,15 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor to compute difference in vapo
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
-        iconTransformation(extent={{-120,40},{-80,80}})));
+        iconTransformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
-        iconTransformation(extent={{-120,-80},{-80,-40}})));
+        iconTransformation(extent={{120,-20},{80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
-    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
+    annotation (Placement(transformation(extent={{28,-90},{48,-70}}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,-90})));
 
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected quantity";
 
@@ -92,7 +107,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-80,0},{0,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -107,46 +122,37 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,-70},{150,-40}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Line(visible=outputValue,
+          points={{0,-30},{0,-40}},
+          color={0,0,127}),
+        Line(visible=outputValue,
+          points={{0,-70},{0,-80}},
+          color={0,0,127}),
+        Ellipse(
+          extent={{-90,30},{-70,10}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
         Line(
-          points={{-80,60},{-80,-60}},
+          points={{-88,20},{-72,20}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,-60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-100,60},{-80,60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-70,50},{-50,50}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-10,0},{10,0}},
+          points={{-8,0},{8,0}},
           color={28,108,200},
           thickness=0.5,
-          origin={-60,50},
+          origin={-80,20},
           rotation=90),
         Line(
-          points={{-70,-50},{-50,-50}},
+          points={{72,20},{88,20}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-72,62},{-48,38}},
+          extent={{70,30},{90,10}},
           lineColor={28,108,200},
-          lineThickness=0.5),
-        Ellipse(
-          extent={{-72,-38},{-48,-62}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Line(visible=outputValue,
-          points={{60,0},{78,0}},
-          color={0,0,127})}),
+          lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring the difference of the vapor quality between two fluid streams.</p>

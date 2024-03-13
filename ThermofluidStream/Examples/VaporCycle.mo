@@ -134,8 +134,7 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{24,-36},{44,-16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{24,-36},{44,-16}})));
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
@@ -145,8 +144,7 @@ model VaporCycle
     temperatureUnit="degC",
     pressureUnit="bar",
     outputPressure=true,
-    filter_output=true)
-    annotation (Placement(transformation(extent={{96,16},{116,36}})));
+    filter_output=true) annotation (Placement(transformation(extent={{96,16},{116,36}})));
   Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
@@ -154,8 +152,7 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-16,4},{-36,24}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-16,4},{-36,24}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
@@ -163,8 +160,7 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp3(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
   Sensors.SingleSensorSelect singleSensorSelect3(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
@@ -172,8 +168,7 @@ model VaporCycle
   Sensors.MultiSensor_Tp multiSensor_Tp4(
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-20,-36},{-40,-16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-20,-36},{-40,-16}})));
   Sensors.SingleSensorSelect singleSensorSelect4(
     redeclare package Medium = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
@@ -475,7 +470,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(gain.u, PI_CompressorPressure.y) annotation (Line(points={{121.2,0},{127,0}}, color={0,0,127}));
-  connect(compressor.omega_input, gain.y) annotation (Line(points={{100,-5.55112e-16},{104,-5.55112e-16},{104,0},{107.4,0}}, color={0,0,127}));
+  connect(compressor.omega_input, gain.y) annotation (Line(points={{102,-5.55112e-16},{104,-5.55112e-16},{104,0},{107.4,0}}, color={0,0,127}));
   connect(multiSensor_Tp1.p_out, PI_CompressorPressure.u_m) annotation (Line(points={{114.2,23},{138,23},{138,12}},
                                                                                                                   color={0,0,127}));
   connect(PI_CompressorPressure.u_s, gain1.y) annotation (Line(points={{150,0},{159.4,0}}, color={0,0,127}));

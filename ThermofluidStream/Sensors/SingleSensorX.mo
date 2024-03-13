@@ -64,7 +64,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-50},{150,-90}},
+          extent={{-150,80},{150,40}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
@@ -89,9 +89,9 @@ equation
               display_value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{-26,22},{60,69}},
-          textColor={175,175,175},
-          textString="%row. mass-fraction"),
+          extent={{-150,-70},{150,-40}},
+          textColor={0,0,0},
+          textString="X[%row] in kg/kg"),
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),

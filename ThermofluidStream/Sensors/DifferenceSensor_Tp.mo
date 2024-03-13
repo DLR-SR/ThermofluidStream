@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model DifferenceSensor_Tp
   "Sensor difference in Temperature and pressure"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -23,6 +23,12 @@ model DifferenceSensor_Tp
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
+
+  final parameter String temperatureString=
+    if temperatureUnit == "K" then "K"
+    elseif temperatureUnit == "degC" then "°C"
+    else "error";
+
   parameter Boolean outputTemperature = false "Enable temperature output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean outputPressure = false "Enable pressure output"
@@ -131,14 +137,26 @@ equation
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
-        Text(
-          extent={{-120,55},{-60,5}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,-5},{-60,-55}},
-          textColor={175,175,175},
+        Text(visible=not outputTemperature,
+          extent={{70,45},{130,15}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputPressure,
+          extent={{70,-15},{130,-45}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
+        Text(visible= outputTemperature,
+          extent={{75,68},{135,38}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputPressure,
+          extent={{75,8},{135,-22}},
+          textColor={0,0,0},
+          textString="%pressureUnit",
+          horizontalAlignment=TextAlignment.Left),
         Line(
           points={{-80,60},{-80,-60}},
           color={28,108,200},
@@ -152,25 +170,11 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-70,80},{-50,80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-10,0},{10,0}},
-          color={28,108,200},
-          thickness=0.5,
-          origin={-60,80},
-          rotation=90),
-        Line(
-          points={{-70,-80},{-50,-80}},
+          points={{-108,-30},{-92,-30}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-72,92},{-48,68}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Ellipse(
-          extent={{-72,-68},{-48,-92}},
+          extent={{-110,100},{-90,80}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(visible=outputTemperature,
@@ -178,7 +182,21 @@ equation
           color={0,0,127}),
         Line(visible=outputPressure,
           points={{60,-30},{78,-30}},
-          color={0,0,127})}),
+          color={0,0,127}),
+        Line(
+          points={{-108,90},{-92,90}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-8,0},{8,0}},
+          color={28,108,200},
+          thickness=0.5,
+          origin={-100,90},
+          rotation=90),
+        Ellipse(
+          extent={{-110,-20},{-90,-40}},
+          lineColor={28,108,200},
+          lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring difference in temperature and pressure at once.</p>

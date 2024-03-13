@@ -176,28 +176,23 @@ model HeatPump
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-124,-64},{-104,-44}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-124,-64},{-104,-44}})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-144,44},{-124,64}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-144,44},{-124,64}})));
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-104,44},{-84,64}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-104,44},{-84,64}})));
   Sensors.MultiSensor_Tp multiSensor_Tp3(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-56,44},{-36,64}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-56,44},{-36,64}})));
   Sensors.MultiSensor_Tp multiSensor_Tp4(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-56,-64},{-76,-44}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-56,-64},{-76,-44}})));
   Utilities.Accumulator accumulator(
     redeclare package Medium = Medium,
     useHeatport=true,
@@ -210,8 +205,7 @@ model HeatPump
   Sensors.MultiSensor_Tp multiSensor_Tp5(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{4,-64},{24,-44}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{4,-64},{24,-44}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
@@ -325,7 +319,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(realExpression2.y, fan1.omega_input)
-    annotation (Line(points={{-91,-110},{-110,-110},{-110,-96}},
+    annotation (Line(points={{-91,-110},{-110,-110},{-110,-98}},
                                                             color={0,0,127}));
   connect(condenser.outletB, receiver.inlet) annotation (Line(
       points={{-90,76},{-120,76}},
@@ -442,7 +436,7 @@ equation
   connect(PI2.u_s, PI1.y) annotation (Line(points={{84,0},{103,0}}, color={0,0,127}));
   connect(step1.y, firstOrder2.u) annotation (Line(points={{-101,140},{-80,140}},
                                                                                color={0,0,127}));
-  connect(fan.omega_input, firstOrder2.y) annotation (Line(points={{-50,98},{-50,140},{-57,140}},
+  connect(fan.omega_input, firstOrder2.y) annotation (Line(points={{-50,100},{-50,140},{-57,140}},
                                                                                                 color={0,0,127}));
   connect(step2.y, source1.T0_var) annotation (Line(points={{41,-126},{22,-126},{22,-120},{2,-120}},
                                                                                  color={0,0,127}));

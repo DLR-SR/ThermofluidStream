@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model MultiSensor_Tp "Sensor for Temperature and pressure"
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -17,6 +17,10 @@ model MultiSensor_Tp "Sensor for Temperature and pressure"
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
     annotation(choicesAllMatching = true, Evaluate = true);
+  final parameter String temperatureString=
+    if temperatureUnit == "K" then "K"
+    elseif temperatureUnit == "degC" then "°C"
+    else "error";
   parameter Boolean outputTemperature = false "Enable temperature output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean outputPressure = false "Enable pressure output"
@@ -108,14 +112,26 @@ equation
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
-        Text(
-          extent={{-120,55},{-60,5}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,-5},{-60,-55}},
-          textColor={175,175,175},
+         Text(visible=not outputTemperature,
+          extent={{70,45},{130,15}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputPressure,
+          extent={{70,-15},{130,-45}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
+        Text(visible= outputTemperature,
+          extent={{75,68},{135,38}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputPressure,
+          extent={{75,8},{135,-22}},
+          textColor={0,0,0},
+          textString="%pressureUnit",
+          horizontalAlignment=TextAlignment.Left),
         Line(visible=outputTemperature,
           points={{60,30},{78,30}},
           color={0,0,127}),

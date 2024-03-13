@@ -15,6 +15,17 @@ model SingleFlowSensor
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter Quantities quantity "Quantity the sensor measures";
+
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps then "m_flow in kg/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps then "m_flow in g/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps then "V_flow in m3/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin then "V_flow in l/min"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps then "H_flow in J/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in J/(K.s)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in J/(K.s)"
+    else "error";
+
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
@@ -71,7 +82,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-40},{150,-80}},
+          extent={{-150,-25},{150,-65}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
@@ -103,9 +114,9 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,85},{60,135}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,130},{150,100}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(visible=outputValue,
           points={{60,60},{78,60}},
           color={0,0,127})}),

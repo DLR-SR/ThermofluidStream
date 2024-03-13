@@ -38,9 +38,9 @@ the inlet the source is connected to.
 </html>"));
 
 
-  parameter Boolean pressureFromInput = false "= true to use pressure input connector" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean temperatureFromInput = false "= true to use temperature input connector" annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean xiFromInput = false "= true to use mass fraction input connector" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean temperatureFromInput = false "= true, if temperature input connector is enabled" annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean xiFromInput = false "= true, if mass fraction input connector is enabled" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)" annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean enthalpyFromInput = false "= true to use specific enthalpy input connector" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));

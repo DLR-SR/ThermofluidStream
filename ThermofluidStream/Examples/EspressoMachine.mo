@@ -145,8 +145,7 @@ Medium model for water.
     redeclare package Medium = Water,
     outputTemperature=true,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-4,20},{16,40}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-4,20},{16,40}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor brewing_head(
     C=500,
     T(start=298.15, fixed=true))
@@ -158,7 +157,7 @@ Medium model for water.
     redeclare package Medium = Water,
     V(displayUnit="l") = 1e-05,
     T_0=298.15) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=270,
         origin={110,20})));
   Topology.SplitterT2 splitterT2_1(redeclare package Medium = Water)
@@ -205,8 +204,7 @@ Medium model for water.
     redeclare package Medium = Water,
     outputTemperature=false,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
   Processes.Pump pump1(
     J_p=1e-3,redeclare package Medium = Water,
     redeclare function dp_tau_pump =
@@ -244,8 +242,7 @@ Medium model for water.
     outputTemperature=false,
     outputPressure=true,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-94,-84},{-114,-64}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-94,-84},{-114,-64}})));
   Sensors.SingleFlowSensor singleFlowSensor2(
     redeclare package Medium = Water,
     digits=2,
@@ -341,14 +338,12 @@ Medium model for water.
     redeclare package Medium = Water,
     outputTemperature=false,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-24,94},{-4,114}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-24,94},{-4,114}})));
   Sensors.MultiSensor_Tp multiSensor_Tp4(
     redeclare package Medium = Water,
     outputTemperature=false,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-96,94},{-116,114}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-96,94},{-116,114}})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = Water,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
@@ -446,7 +441,7 @@ equation
   connect(multiSensor_Tp.T_out, gain.u) annotation (Line(points={{14,33},{26,33},{26,34},{38.8,34}},
                                                                                      color={0,0,127}));
   connect(feedback.u2, singleFlowSensor1.value_out) annotation (Line(points={{60,-8},{60,-14},{72,-14}}, color={0,0,127}));
-  connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{100,20}},   color={191,0,0}));
+  connect(brewing_head.port, conductionElement1.heatPort) annotation (Line(points={{140,20},{120,20}},   color={191,0,0}));
   connect(splitterT2_1.inlet, conductionElement1.outlet)
     annotation (Line(
       points={{110,-10},{110,10}},

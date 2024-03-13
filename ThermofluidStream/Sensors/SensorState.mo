@@ -22,7 +22,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-50},{150,-90}},
+          extent={{-150,80},{150,40}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(

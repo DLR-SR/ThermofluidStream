@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium"
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -14,6 +14,18 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
   parameter Quantities quantity "Quantity the sensor measures";
+
+    final parameter String quantityString=
+  if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "x in kg_Vapor/kg_total"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C then "T_sat in °C"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa then "p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar then "p_sat in bar"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K then "T - T_sat in K"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
+  elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
+  else "error";
+
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
@@ -59,7 +71,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-50},{150,-90}},
+          extent={{-150,80},{150,40}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
@@ -84,9 +96,9 @@ equation
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,21},{60,71}},
-          textColor={175,175,175},
-          textString="%quantity"),
+          extent={{-150,-70},{150,-40}},
+          textColor={0,0,0},
+          textString=quantityString),
         Line(visible=outputValue,
           points={{60,0},{78,0}},
           color={0,0,127})}),

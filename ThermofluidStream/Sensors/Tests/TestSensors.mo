@@ -115,14 +115,12 @@ model TestSensors "Test model for all sensors."
     redeclare package Medium = Medium2,
     digits=2,
     outputTemperature=true,
-    outputPressure=true)
-    annotation (Placement(transformation(extent={{-74,-24},{-54,-4}})));
+    outputPressure=true) annotation (Placement(transformation(extent={{-74,-24},{-54,-4}})));
   MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Medium2,
     digits=1,
     temperatureUnit="degC",
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-74,-40},{-54,-20}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-74,-40},{-54,-20}})));
   DifferenceSensorSelect differenceSensorSelect(
     redeclare package MediumA = Medium1,
     redeclare package MediumB = Medium1,

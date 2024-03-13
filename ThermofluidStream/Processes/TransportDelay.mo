@@ -71,7 +71,7 @@ equation
 </html>"),
 Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,140},{150,100}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Text(visible=d1l,

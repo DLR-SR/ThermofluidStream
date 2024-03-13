@@ -98,7 +98,7 @@ equation
     annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,140},{150,100}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Text(visible=displayParameters,

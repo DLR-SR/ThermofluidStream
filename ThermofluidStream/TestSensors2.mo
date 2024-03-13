@@ -22,11 +22,10 @@ the inlet the source is connected to.
     redeclare package Medium = Medium,    l=1, r=1e-3,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
                                                        annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Sensors.SingleSensorSelect2 singleSensorSelect2_1(
+  Sensors.AdditionalSensors.SingleSensorsSelect.SingleSensorSelect2 singleSensorSelect2_1(
     redeclare package Medium = Medium,
     digits=4,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol)
-                                                    annotation (Placement(transformation(extent={{-20,20},{0,40}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol) annotation (Placement(transformation(extent={{-20,20},{0,40}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-40,0},{-10,0}},

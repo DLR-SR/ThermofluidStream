@@ -64,18 +64,15 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{16,-4},{36,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{16,-4},{36,16}})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{76,-4},{96,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{76,-4},{96,16}})));
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-104,-4},{-84,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-104,-4},{-84,16}})));
   Modelica.Blocks.Continuous.LimPID PI(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=2000,
