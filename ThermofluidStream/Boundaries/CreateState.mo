@@ -2,49 +2,50 @@ within ThermofluidStream.Boundaries;
 model CreateState "Create state signal as output"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-  // Configure icon display options
-  parameter Boolean displayPressure = true "= true to display the pressure set value p_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not PFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayTemperature = true "= true to display the temperature set value T_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not TFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean displayP = displayPressure and not PFromInput annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean displayT = displayTemperature and not TFromInput and not setEnthalpy annotation(Evaluate=true, HideResult=true);
 
-  final parameter String displayPos1=
-  if displayP then
-    "p = %p_par"
-  elseif displayT then
-    "T = %T_par"
-  else "" annotation(Evaluate=true, HideResult=true);
-  final parameter String displayPos2=
-  if displayP and displayT then
-    "T = %T_par"
-  else "" annotation(Evaluate=true, HideResult=true);
-
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-  "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info =          "<html>
 <p>Model of the medium for this thermodynamic state connector.</p>
 </html>"));
 
-  parameter Boolean PFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean TFromInput = false "= true, if temperature input connector is enabled" annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean XiFromInput = false "= true, if mass fraction input connector is enabled" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
-
-  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)" annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean nFromInput = false "= true, if specific enthalpy input connector is enabled" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean PFromInput = false "= true, if pressure input connector is enabled"
+    annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not PFromInput));
-
+  parameter Boolean TFromInput = false "= true, if temperature input connector is enabled"
+    annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Temperature T_par = Medium.T_default "Temperature set value"
     annotation(Dialog(group="Temperature", enable = not setEnthalpy and not TFromInput));
+  parameter Boolean XiFromInput = false "= true, if mass fractions input connector is enabled"
+    annotation(Dialog(group="Mass fractions"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Medium.MassFraction Xi_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
+    annotation(Dialog(group="Mass fractions", enable = not XiFromInput));
+  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)"
+    annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean hFromInput = false "= true, if specific enthalpy input connector is enabled"
+    annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy and not hFromInput));
-  parameter Medium.MassFraction Xi_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
-    annotation(Dialog(group="Mass fraction", enable = not XiFromInput));
 
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
 
-
-
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayPressure = true "= true to display the pressure set value p_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not PFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayTemperature = true "= true to display the temperature set value T_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not TFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayP = displayPressure and not PFromInput annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayT = displayTemperature and not TFromInput and not setEnthalpy annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos1=
+    if displayP then
+      "p = %p_par"
+    elseif displayT then
+      "T = %T_par"
+    else "" annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos2=
+    if displayP and displayT then
+      "T = %T_par"
+    else "" annotation(Evaluate=true, HideResult=true);
+  //----------------------------------------------------------------
 
   Interfaces.StateOutput y(redeclare package Medium = Medium) annotation (
       Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(
@@ -63,8 +64,8 @@ model CreateState "Create state signal as output"
 protected
   Modelica.Blocks.Interfaces.RealInput p(unit="Pa") "Internal pressure connector";
   Modelica.Blocks.Interfaces.RealInput T(unit="K") "Internal temperature connector";
-  Modelica.Blocks.Interfaces.RealInput h(unit = "J/kg") "Internal enthalpy connector";
-  Modelica.Blocks.Interfaces.RealInput Xi[Medium.nXi](each unit="kg/kg") "Internal mass fraction connector";
+  Modelica.Blocks.Interfaces.RealInput h(unit = "J/kg") "Internal specific enthalpy connector";
+  Modelica.Blocks.Interfaces.RealInput Xi[Medium.nXi](each unit="kg/kg") "Internal mass fractions connector";
 
 equation
   y.state = if not setEnthalpy then Medium.setState_pTX(p,T,Xi) else Medium.setState_phX(p, h, Xi);

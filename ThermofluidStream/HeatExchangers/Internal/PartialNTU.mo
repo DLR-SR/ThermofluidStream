@@ -27,7 +27,7 @@ protected
   SI.MassFlowRate outletB_m_flow "Inlet B mass flow rate";
   MediumB.ThermodynamicState outletB_state "Outlet B state";
 public
-  parameter Modelica.Units.SI.Area A "Conductive Surface";
+  parameter Modelica.Units.SI.Area A "Conductive surface";
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the flow" annotation (Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Overall heat transfer coefficient";
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow for regularization" annotation (Dialog(tab="Advanced", group="Regularization parameters"));

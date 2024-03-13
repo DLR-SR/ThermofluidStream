@@ -2,41 +2,42 @@ within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-  // Configure icon display options
-  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true to display the inertance value L" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  final parameter Boolean displayP = displayPressure and not pressureFromInput annotation(Evaluate=true, HideResult=true);
-
-  final parameter String displayPos1=
-  if displayP then
-    "p = %p0_par"
-  elseif displayInertance then
-    "L = %L"
-  else "";
-  final parameter String displayPos2=
-  if displayP and displayInertance then
-    "L = %L"
-  else "";
-
-
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Sink. Make sure it is the same as the one
 the outlet the sink is connected to.
 </p>
 </html>"));
-
-  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled"
+    annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not pressureFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
 
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "= true to display the inertance value L"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayP = displayPressure and not pressureFromInput
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos1=
+    if displayP then
+      "p = %p0_par"
+    elseif displayInertance then
+      "L = %L"
+    else "";
+  final parameter String displayPos2=
+    if displayP and displayInertance then
+      "L = %L"
+    else "";
+  //-----------------------------------------------------------------
+
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
-
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(
         transformation(
@@ -50,11 +51,9 @@ the outlet the sink is connected to.
 protected
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r;
-
   SI.Pressure p = Medium.pressure(inlet.state);
 
 equation
-
   connect(p0_var, p0);
   if not pressureFromInput then
     p0 = p0_par;

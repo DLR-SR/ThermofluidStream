@@ -3,19 +3,17 @@ model TerminalSource "Source that imposes m_flow = 0"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Source. Make sure it is the same as the one
 the inlet the source is connected to.
 </p>
 </html>"));
-
   parameter SI.Time TC = 0.1 "Time constant for pressure adaption"
     annotation(Dialog(tab="Advanced"));
   parameter SI.SpecificEnthalpy h = Medium.h_default "Specific enthalpy set value";
-  parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Mass fraction set value";
+  parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Mass fractions set value";
   parameter SI.Pressure p_0 = Medium.p_default "Initial pressure";
 
   Interfaces.Outlet outlet(redeclare package Medium=Medium)

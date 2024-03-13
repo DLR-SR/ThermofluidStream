@@ -1,4 +1,4 @@
-within ThermofluidStream.Boundaries.Internal;
+﻿within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolumeM "Partial parent class for Volumes with one inlet and M outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -12,35 +12,38 @@ inlets and outlets the volume is connected to.
 </html>"));
 
   parameter Integer M_outlets = 1 "Number if outlets";
-  parameter Boolean useHeatport = false "If true heatport is added";
-  parameter SI.Area A = 1 "Contact area of volume with medium"
+  parameter Boolean useHeatport = false "=true, if heatPort is enabled";
+  parameter SI.Area A = 1 "Heat transfer area"
     annotation(Dialog(enable=useHeatport));
-  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
+  parameter SI.CoefficientOfHeatTransfer U = 200 "Thermal transmittance"
     annotation(Dialog(enable=useHeatport));
- parameter Boolean initialize_pressure = true "If true: initialize Pressure"
-    annotation(Dialog(tab= "Initialization"));
-  parameter SI.Pressure p_start = Medium.p_default "Initial Pressure"
-    annotation(Dialog(tab= "Initialization", enable=initialize_pressure));
-  parameter Boolean initialize_energy = true "Initialize specific inner energy with temperature or specific enthalpy condition"
-    annotation(Dialog(tab= "Initialization"));
-  parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
-  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of Temperature"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy));
-  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
-  parameter Boolean initialize_Xi = true "If true: initialize mass fractions"
-    annotation(Dialog(tab= "Initialization"));
-  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
-    annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance at inlet and outlet"
+
+   parameter Boolean initialize_pressure = true "=true, if pressure is initialized"
+    annotation(Dialog(tab= "Initialization",group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Pressure p_start = Medium.p_default "Initial pressure set value"
+    annotation(Dialog(tab= "Initialization",group="Pressure", enable=initialize_pressure));
+  parameter Boolean initialize_energy = true "= true, if internal energy is initialized"
+    annotation(Dialog(tab= "Initialization",group="Temperature"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Temperature T_start = Medium.T_default "Initial Temperature set value"
+    annotation(Dialog(tab= "Initialization",group="Temperature", enable=initialize_energy and (not use_hstart)));
+  parameter Boolean initialize_Xi = true "=true, if mass fractions are iinitialized"
+    annotation(Dialog(tab= "Initialization",group="Mass fractions"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fractions set values"
+    annotation(Dialog(tab= "Initialization",group="Mass fractions", enable=initialize_Xi));
+  parameter Boolean use_hstart = false "=true, if internal energy is initialized with specific enthalpy"
+    annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy set value"
+    annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy and use_hstart));
+
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet"
     annotation (Dialog(tab="Advanced"));
-  parameter Real k_volume_damping(unit="1") = dropOfCommons.k_volume_damping "Damping factor multiplicator"
+  parameter Real k_volume_damping(unit="1", min=0) = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
-  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
+  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflow"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean usePreferredMediumStates=false "Use medium states instead of the ones differentiated in this component"
+  parameter Boolean usePreferredMediumStates=false "=true, if preferred medium states are used"
     annotation(Dialog(tab="Advanced"));
+
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -51,38 +54,36 @@ inlets and outlets the volume is connected to.
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
-  SI.Volume V;
+  SI.Volume V "Volume";
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
-  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d;
-  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi;
-  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u;
+  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d "Mass";
+  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi "Masses";
+  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u "Internal energy";
 
-  SI.HeatFlowRate Q_flow;
-  SI.Power W_v;
+  SI.HeatFlowRate Q_flow "Heat flow rate";
+  SI.Power W_v "Volumenänderungsarbeitsstrom (work due to change of volume)";
 
 protected
-  outer DropOfCommons dropOfCommons;
-
-  SI.Pressure p_in = Medium.pressure(inlet.state);
+  SI.Pressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
   // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-  SI.SpecificEnthalpy h_in = if noEvent(m_flow_in >= 0) then Medium.specificEnthalpy(inlet.state) else medium.h;
-  Medium.MassFraction Xi_in[Medium.nXi] = if noEvent(m_flow_in >= 0) then Medium.massFraction(inlet.state) else medium.Xi;
+  SI.SpecificEnthalpy h_in = if noEvent(m_flow_in >= 0) then Medium.specificEnthalpy(inlet.state) else medium.h "Inlet specific enthalpy";
+  Medium.MassFraction Xi_in[Medium.nXi] = if noEvent(m_flow_in >= 0) then Medium.massFraction(inlet.state) else medium.Xi "Inlet mass fractions";
 
-  Medium.ThermodynamicState state_out[M_outlets];
-  SI.SpecificEnthalpy h_out[M_outlets];
-  Medium.MassFraction Xi_out[Medium.nXi,M_outlets];
+  Medium.ThermodynamicState state_out[M_outlets] "States at outlets";
+  SI.SpecificEnthalpy h_out[M_outlets] "Specific enthalpy at outlets";
+  Medium.MassFraction Xi_out[Medium.nXi,M_outlets] "Mass fractions at outlets";
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
-  SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";
+  SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure at constant specific enthalpy";
   SI.Pressure r_damping = d*der(M);
 
-  SI.Pressure r;
+  SI.Pressure r "Inertial pressure";
 
-  SI.Temperature T_heatPort;
+  SI.Temperature T_heatPort "Heat port temperature";
 
-  SI.MassFlowRate m_flow_in = inlet.m_flow;
-  SI.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
+  SI.MassFlowRate m_flow_in = inlet.m_flow "Inlet mass flow rate";
+  SI.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow "Mass flow rates at outlets";
 
 initial equation
   if initialize_pressure then
@@ -102,11 +103,11 @@ initial equation
   end if;
 
 equation
-  assert(m_flow_in > m_flow_assert, "Negative massflow at Volume inlet", dropOfCommons.assertionLevel);
+  assert(m_flow_in > m_flow_assert, "Negative mass flow rate at volume inlet", dropOfCommons.assertionLevel);
   for i in 1:M_outlets loop
-    assert(-m_flow_out[i] > m_flow_assert, "Positive massflow at Volume outlet", dropOfCommons.assertionLevel);
+    assert(-m_flow_out[i] > m_flow_assert, "Positive mass flow rate at volume outlet", dropOfCommons.assertionLevel);
   end for;
-  assert(M > 0, "Volumes might not become empty");
+  assert(M > 0, "Negative mass inside volume");
 
   der(inlet.m_flow)*L = inlet.r - r - r_damping;
   der(outlet.m_flow)*L = outlet.r - r_damping*ones(M_outlets);

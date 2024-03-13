@@ -2,7 +2,7 @@ within ThermofluidStream.Boundaries;
 model VolumeFlex "Vessel that itself is subject to a bulk modulus"
   extends Internal.PartialVolume;
 
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure of Volume";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure of volume";
   parameter SI.Volume V_ref(displayUnit="l") = 0.001 "Volume of the Model at p_ref";
   parameter SI.BulkModulus K = 1e6 "Bulk modulus of Volume";
 

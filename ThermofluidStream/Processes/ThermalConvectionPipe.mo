@@ -1,21 +1,7 @@
 within ThermofluidStream.Processes;
 model ThermalConvectionPipe "Very simple model of thermal convection"
   extends Interfaces.SISOFlow(final clip_p_out=false);
-  // Configure icon display options
-  parameter Boolean displayLength = true "= true to display the length of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayRadius = true "= true to display the radius of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter String parameterString=
-  if displayParameters and displayLength and displayRadius then
-    "l = %l, r = %r"
-  elseif displayParameters and displayLength and not displayRadius then
-    "l = %l"
-  elseif  displayParameters and not displayLength and displayRadius then
-    "r = %r"
-  else "";
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
-      Placement(transformation(extent={{-10,-110},{10,-90}}),
-                                                            iconTransformation(
-          extent={{-10,-110},{10,-90}})));
+
 
   parameter SI.Length l(min=0) "Length of pipe";
   parameter SI.Radius r "Radius of pipe";
@@ -27,10 +13,29 @@ model ThermalConvectionPipe "Very simple model of thermal convection"
     "Nominal mass flow rate for regularization"
   annotation(Dialog(tab = "Advanced", group = "Regularization parameters"));
 
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayLength = true "= true to display the length of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true to display the radius of the pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter String parameterString=
+  if displayParameters and displayLength and displayRadius then
+      "l = %l, r = %r"
+    elseif displayParameters and displayLength and not displayRadius then
+      "l = %l"
+    elseif  displayParameters and not displayLength and displayRadius then
+      "r = %r"
+    else "";
+  //-----------------------------------------------------------------
+
   Medium.ThermodynamicState center_state = Medium.setState_phX(p_in,h_in+dh/2,Xi_in);
   Medium.Temperature T = Medium.temperature(center_state);
 
   Integer turb_flag "0: laminar flow, 1: turbulent flow (Re > 2300)";
+
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
+      Placement(transformation(extent={{-10,-110},{10,-90}}),
+                                                            iconTransformation(
+          extent={{-10,-110},{10,-90}})));
+
 
 protected
   SI.Area A_cond = 2*Modelica.Constants.pi*r*l
