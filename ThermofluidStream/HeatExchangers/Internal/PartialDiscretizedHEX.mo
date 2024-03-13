@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-
+  extends Internal.DiscretizedHexIcon;
   // Configure icon display options
   parameter Boolean displayArea = true "= true, if you wish to display the conductive area of heat exchanger parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
@@ -68,31 +68,39 @@ public
 
   ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-50},{-10,-70}})));
-
-  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-120,40},{-80,80}}),iconTransformation(extent=if crossFlow then {{120,-80},{80,-40}} else {{-120,40},{-80,80}})));
-  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{80,40},{120,80}}),iconTransformation(extent=if crossFlow then {{-80,-80},{-120,-40}} else {{80,40},{120,80}})));
-  Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{120,-80},{80,-40}}),iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,-80},{80,-40}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{-80,-80},{-120,-40}}),iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,-80},{-120,-40}}, rotation=if crossFlow then -90 else 0)));
+protected
+  SI.Pressure inletA_r "Inlet A inertial pressure";
+  SI.MassFlowRate inletA_m_flow "Inlet A mass flow rate";
+  MediumA.ThermodynamicState inletA_state "Inlet A state";
+  SI.Pressure inletB_r "Inlet B inertial pressure";
+  SI.MassFlowRate inletB_m_flow "Inlet B mass flow rate";
+  MediumB.ThermodynamicState inletB_state "Inlet B state";
+  SI.Pressure outletA_r "Inlet A inertial pressure";
+  SI.MassFlowRate outletA_m_flow "Inlet A mass flow rate";
+  MediumA.ThermodynamicState outletA_state "Outlet A state";
+  SI.Pressure outletB_r "Inlet B inertial pressure";
+  SI.MassFlowRate outletB_m_flow "Inlet B mass flow rate";
+  MediumB.ThermodynamicState outletB_state "Outlet B state";
 
 equation
   assert(
-    inletB.m_flow > m_flow_assert,
+    inletB_m_flow > m_flow_assert,
     "Negative massflow at Air inlet",
     dropOfCommons.assertionLevel);
   assert(
-    inletA.m_flow > m_flow_assert,
+    inletA_m_flow > m_flow_assert,
     "Negative massflow at Refigerant inlet",
     dropOfCommons.assertionLevel);
 
   //Summary record
-  summary.Tin_B = MediumB.temperature(inletB.state);
-  summary.Tin_A = MediumA.temperature(inletA.state);
-  summary.Tout_B = MediumB.temperature(outletB.state);
-  summary.Tout_A = MediumA.temperature(outletA.state);
-  summary.hin_B = MediumB.specificEnthalpy(inletB.state);
-  summary.hin_A = MediumA.specificEnthalpy(inletA.state);
-  summary.hout_B = MediumB.specificEnthalpy(outletB.state);
-  summary.hout_A = MediumA.specificEnthalpy(outletA.state);
+  summary.Tin_B = MediumB.temperature(inletB_state);
+  summary.Tin_A = MediumA.temperature(inletA_state);
+  summary.Tout_B = MediumB.temperature(outletB_state);
+  summary.Tout_A = MediumA.temperature(outletA_state);
+  summary.hin_B = MediumB.specificEnthalpy(inletB_state);
+  summary.hin_A = MediumA.specificEnthalpy(inletA_state);
+  summary.hout_B = MediumB.specificEnthalpy(outletB_state);
+  summary.hout_A = MediumA.specificEnthalpy(outletA_state);
   summary.dT_A = summary.Tout_A - summary.Tin_A;
   summary.dT_B = summary.Tout_B - summary.Tin_B;
   summary.dh_A = summary.hout_A - summary.hin_A;
@@ -100,12 +108,12 @@ equation
   summary.Q_flow_A = Q_flow_A;
   summary.Q_flow_B = Q_flow_B;
   summary.efficiency = if calculate_efficiency then efficiency(
-    inletA.state,
-    inletB.state,
-    outletA.state,
-    outletB.state,
-    inletA.m_flow,
-    inletB.m_flow,
+    inletA_state,
+    inletB_state,
+    outletA_state,
+    outletB_state,
+    inletA_m_flow,
+    inletB_m_flow,
     Q_flow_A) else 0;
 
   annotation (Documentation(info="<html>

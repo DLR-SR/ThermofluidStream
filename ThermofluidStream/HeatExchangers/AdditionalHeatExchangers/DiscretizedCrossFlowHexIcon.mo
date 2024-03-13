@@ -1,4 +1,4 @@
-within ThermofluidStream.HeatExchangers.Internal;
+within ThermofluidStream.HeatExchangers.AdditionalHeatExchangers;
 model DiscretizedCrossFlowHexIcon
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={

@@ -1,10 +1,38 @@
 within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
-  extends Internal.PartialNTU;
+  extends ThermofluidStream.HeatExchangers.Internal.PartialNTU;
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        origin={-100,-60}), iconTransformation(extent={{-120,-80},{-80,-40}})));
+  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        origin={100,-60}), iconTransformation(extent={{80,-80},{120,-40}})));
+  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{20,-20},{-20,20}},
+        origin={100,60}), iconTransformation(extent={{120,80},{80,40}})));
+  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{20,-20},{-20,20}},
+        origin={-100,60}), iconTransformation(extent={{-80,80},{-120,40}})));
 
 
 equation
+  inletA.state = inletA_state;
+  inletA.m_flow = inletA_m_flow;
+  inletA.r = inletA_r;
+
+  inletB.state = inletB_state;
+  inletB.m_flow = inletB_m_flow;
+  inletB.r = inletB_r;
+
+  outletA.state = outletA_state;
+  outletA.m_flow = outletA_m_flow;
+  outletA.r = outletA_r;
+
+  outletB.state = outletB_state;
+  outletB.m_flow = outletB_m_flow;
+  outletB.r = outletB_r;
+
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
   effectiveness = if noEvent(C_r < 1) then (1 - exp(-NTU*(1 - C_r)))/(1 - C_r*exp(-NTU*(1 - C_r))) else NTU/(1 + NTU);
 

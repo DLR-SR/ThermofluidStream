@@ -1,6 +1,6 @@
-within ThermofluidStream.HeatExchangers;
+within ThermofluidStream.HeatExchangers.AdditionalHeatExchangers;
 model DiscretizedCrossFlowHEX_FR2 "v2 of DiscretizedCrossFlowHEX_FR"
-  extends Internal.DiscretizedCounterFlowHexIcon;
+  extends Internal.DiscretizedHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](

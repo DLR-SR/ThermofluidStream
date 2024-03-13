@@ -1,7 +1,8 @@
 within ThermofluidStream;
 model TestIcons
   extends Modelica.Icons.Example;
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true)  annotation (Placement(transformation(extent={{-540,500},{-520,520}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
+                                                                                  annotation (Placement(transformation(extent={{-540,500},{-520,520}})));
   ThermofluidStream.Processes.FlowResistance flowResistance annotation (Placement(transformation(extent={{-290,210},{-270,230}})));
   ThermofluidStream.Processes.TransportDelay transportDelay annotation (Placement(transformation(extent={{-250,210},{-230,230}})));
   ThermofluidStream.Processes.Pump pump3(displayInstanceName=false)
@@ -39,17 +40,18 @@ model TestIcons
   ThermofluidStream.HeatExchangers.CounterFlowNTU counterFlowNTU annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-210,-190})));
+        origin={-270,-170})));
   ThermofluidStream.HeatExchangers.CrossFlowNTU crossFlowNTU(displayInstanceName=true) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-310,-180})));
+        origin={-310,-170})));
   ThermofluidStream.Topology.SplitterT1 splitterT1(displayInstanceName=true)
                                                    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-510,270})));
-  ThermofluidStream.Topology.SplitterT2 splitterT2 annotation (Placement(transformation(extent={{-480,260},{-460,280}})));
+  ThermofluidStream.Topology.SplitterT2 splitterT2(displayInstanceName=true)
+                                                   annotation (Placement(transformation(extent={{-480,260},{-460,280}})));
   ThermofluidStream.Topology.JunctionT2 junctionT2 annotation (Placement(transformation(extent={{-400,260},{-380,280}})));
   ThermofluidStream.Topology.SplitterX splitterX(displayInstanceName=true)
                                                  annotation (Placement(transformation(extent={{-520,220},{-500,240}})));
@@ -87,10 +89,10 @@ model TestIcons
   ThermofluidStream.Interfaces.Outlet outlet annotation (Placement(transformation(extent={{-440,440},{-400,480}}), iconTransformation(extent={{-440,440},{-400,480}})));
   Modelica.Blocks.Interfaces.RealInput u1 annotation (Placement(transformation(extent={{-400,400},{-360,440}}), iconTransformation(extent={{-400,400},{-360,440}})));
   Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(extent={{-340,410},{-320,430}}), iconTransformation(extent={{-340,410},{-320,430}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX annotation (Placement(transformation(extent={{-320,-220},{-300,-200}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX annotation (Placement(transformation(extent={{-220,-280},{-200,-260}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR discretizedCrossFlowHEX_FR annotation (Placement(transformation(extent={{-320,-250},{-300,-230}})));
-  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR annotation (Placement(transformation(extent={{-220,-240},{-200,-220}})));
+  ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX annotation (Placement(transformation(extent={{-280,-220},{-260,-200}})));
+  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX annotation (Placement(transformation(extent={{-240,-180},{-220,-160}})));
+  ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR discretizedCrossFlowHEX_FR annotation (Placement(transformation(extent={{-240,-220},{-220,-200}})));
+  ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR annotation (Placement(transformation(extent={{-320,-220},{-300,-200}})));
   ThermofluidStream.FlowControl.BasicControlValve basicControlValve annotation (Placement(transformation(extent={{-534,-36},{-514,-16}})));
   ThermofluidStream.FlowControl.SpecificValveType specificValveType annotation (Placement(transformation(extent={{-494,-36},{-474,-16}})));
   ThermofluidStream.FlowControl.TanValve tanValve annotation (Placement(transformation(extent={{-454,-36},{-434,-16}})));
@@ -156,12 +158,9 @@ model TestIcons
   Undirected.Topology.JunctionRRFF junctionRRFF annotation (Placement(transformation(extent={{-40,-598},{-20,-578}})));
   Undirected.Topology.JunctionRRFF2 junctionRRFF2_1 annotation (Placement(transformation(extent={{0,-598},{20,-578}})));
   Undirected.Topology.JunctionRRRF junctionRRRF annotation (Placement(transformation(extent={{40,-598},{60,-578}})));
-  Undirected.Processes.FlowResistance flowResistance1 annotation (Placement(transformation(extent={{-240,-758},{-220,-738}})));
-  Undirected.Processes.TransportDelay transportDelay1 annotation (Placement(transformation(extent={{-200,-758},{-180,-738}})));
-  Undirected.Processes.ConductionElement conductionElement1 annotation (Placement(transformation(extent={{-160,-758},{-140,-738}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX1 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-70,-790})));
+  Undirected.Processes.FlowResistance flowResistance1 annotation (Placement(transformation(extent={{-240,-760},{-220,-740}})));
+  Undirected.Processes.TransportDelay transportDelay1 annotation (Placement(transformation(extent={{-200,-760},{-180,-740}})));
+  Undirected.Processes.ConductionElement conductionElement1 annotation (Placement(transformation(extent={{-160,-760},{-140,-740}})));
   Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1 annotation (Placement(transformation(extent={{-80,-760},{-60,-740}})));
   Undirected.FlowControl.BasicControlValve basicControlValve1 annotation (Placement(transformation(extent={{-500,-698},{-480,-678}})));
   Undirected.FlowControl.SpecificValveType specificValveType1 annotation (Placement(transformation(extent={{-460,-698},{-440,-678}})));
@@ -180,7 +179,7 @@ model TestIcons
   Undirected.Topology.JunctionRRRF junctionRRRF1(displayInstanceName=false)
                                                 annotation (Placement(transformation(extent={{40,-638},{60,-618}})));
   Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX3(displayInstanceName=false)
-                                                                             annotation (Placement(transformation(extent={{0,-800},{20,-780}})));
+                                                                             annotation (Placement(transformation(extent={{-40,-760},{-20,-740}})));
   Undirected.FlowControl.MCV mCV5(setpointFromInput=true, enableClippingOutput=false)
                                annotation (Placement(transformation(extent={{-420,-738},{-400,-718}})));
   Sensors.SingleSensorSelect singleSensorSelect4(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3, outputValue=true)
@@ -306,31 +305,6 @@ model TestIcons
     pressureUnit="bar",
     outputTemperature=true,
     outputPressure=true) annotation (Placement(transformation(extent={{380,-30},{400,-10}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_1 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-30,-790})));
-  HeatExchangers.CrossFlowNTU2                  crossFlowNTU2(displayInstanceName=true)
-                                                                                       annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-270,-180})));
-  HeatExchangers.DiscretizedCrossFlowHEX2                  discretizedCrossFlowHEX2_3
-                                                                                   annotation (Placement(transformation(extent={{-280,-220},{-260,-200}})));
-  HeatExchangers.DiscretizedCrossFlowHEX_FR2                  discretizedCrossFlowHEX_FR2
-                                                                                         annotation (Placement(transformation(extent={{-280,-250},{-260,-230}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX6 annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-310,-310})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_2 annotation (Placement(transformation(extent={{-280,-320},{-260,-300}})));
-  HeatExchangers.DiscretizedCrossFlowHEX_FR                   discretizedCrossFlowHEX_FR1(displayInstanceName=false)
-                                                                                         annotation (Placement(transformation(extent={{-320,-280},{-300,-260}})));
-  HeatExchangers.DiscretizedCrossFlowHEX_FR2                  discretizedCrossFlowHEX_FR3(displayInstanceName=false)
-                                                                                         annotation (Placement(transformation(extent={{-280,-280},{-260,-260}})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX discretizedCrossFlowHEX2(displayInstanceName=false)
-                                                                             annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-310,-350})));
-  Undirected.HeatExchangers.DiscretizedCrossFlowHEX2 discretizedCrossFlowHEX2_4(displayInstanceName=false) annotation (Placement(transformation(extent={{-280,-360},{-260,-340}})));
   Sensors.MultiSensor_Tp multiSensor_Tp2(outputTemperature=false, outputPressure=false) annotation (Placement(transformation(extent={{260,90},{280,110}})));
   Sensors.MultiSensor_Tp multiSensor_Tp5(temperatureUnit="degC", pressureUnit="bar") annotation (Placement(transformation(extent={{300,90},{320,110}})));
   Sensors.MultiSensor_Tp multiSensor_Tp6(outputTemperature=true, outputPressure=true) annotation (Placement(transformation(extent={{260,62},{280,82}})));
@@ -338,7 +312,7 @@ model TestIcons
     temperatureUnit="degC",
     pressureUnit="bar",
     outputTemperature=true,
-    outputPressure=true) annotation (Placement(transformation(extent={{300,60},{320,80}})));
+    outputPressure=true) annotation (Placement(transformation(extent={{304,58},{324,78}})));
   Sensors.DifferenceSensor_Tp differenceSensor_Tp annotation (Placement(transformation(extent={{260,10},{280,30}})));
   Sensors.DifferenceSensor_Tp differenceSensor_Tp1(
     temperatureUnit="degC",
@@ -455,15 +429,7 @@ model TestIcons
   Undirected.Sensors.SingleFlowSensor singleFlowSensor11(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps, outputValue=false) annotation (Placement(transformation(extent={{660,-30},{680,-10}})));
   Undirected.Sensors.SingleFlowSensor singleFlowSensor12(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs, outputValue=true) annotation (Placement(transformation(extent={{700,-30},{720,-10}})));
   Undirected.Sensors.SingleFlowSensor singleFlowSensor13(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs, outputValue=false) annotation (Placement(transformation(extent={{620,-60},{640,-40}})));
-equation
-  connect(discretizedCrossFlowHEX2_1.rearA, discretizedCounterFlowHEX1.foreB) annotation (Line(
-      points={{-30,-780},{-30,-744},{-60,-744}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(discretizedCrossFlowHEX1.rearA, discretizedCounterFlowHEX1.foreA) annotation (Line(
-      points={{-70,-780},{-70,-774},{-80,-774},{-80,-756}},
-      color={28,108,200},
-      thickness=0.5));
+  Modelica.Electrical.Analog.Basic.Resistor resistor annotation (Placement(transformation(extent={{-400,196},{-380,216}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-800},{1480,520}}),graphics={
         Rectangle(
           extent={{-566,390},{430,344}},
@@ -504,11 +470,11 @@ equation
           textColor={28,108,200},
           textString="Processes"),
         Rectangle(
-          extent={{-180,-380},{-340,-140}},
+          extent={{-200,-240},{-340,-140}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-342,-120},{-182,-140}},
+          extent={{-340,-120},{-200,-140}},
           textColor={28,108,200},
           textString="HeatExchangers"),
         Rectangle(
@@ -560,23 +526,23 @@ equation
           textColor={28,108,200},
           textString="Topology"),
         Rectangle(
-          extent={{-120,-778},{-260,-718}},
+          extent={{-120,-778},{-260,-720}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-260,-698},{-120,-718}},
+          extent={{-260,-700},{-120,-720}},
           textColor={28,108,200},
           textString="Processes"),
         Rectangle(
-          extent={{40,-820},{-100,-718}},
+          extent={{0,-780},{-100,-720}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-100,-696},{40,-718}},
+          extent={{-100,-700},{0,-720}},
           textColor={28,108,200},
           textString="HeatExchangers"),
         Text(
-          extent={{-520,-640},{-380,-658}},
+          extent={{-520,-640},{-360,-658}},
           textColor={28,108,200},
           textString="FlowControl"),
         Rectangle(
@@ -629,44 +595,6 @@ equation
           extent={{340,40},{400,20}},
           textColor={28,108,200},
           textString="FlowSensor_Tp"),
-        Text(
-          extent={{-320,-140},{-300,-160}},
-          textColor={28,108,200},
-          textString="v1"),
-        Text(
-          extent={{-280,-140},{-260,-160}},
-          textColor={28,108,200},
-          textString="v2"),
-        Rectangle(
-          extent={{-438,292},{-430,286}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-398,292},{-390,286}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-22,-774},{-14,-780}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-284,-156},{-276,-162}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-260,-194},{-252,-200}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-258,-224},{-250,-230}},
-          lineColor={28,108,200},
-          fillColor={0,140,72},
-          fillPattern=FillPattern.Solid),
         Text(
           extent={{260,140},{320,120}},
           textColor={28,108,200},

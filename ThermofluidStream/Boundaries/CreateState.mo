@@ -24,21 +24,27 @@ model CreateState "Create state signal as output"
 <p>Model of the medium for this thermodynamic state connector.</p>
 </html>"));
 
-  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)";
-  parameter Boolean PFromInput = false "= true to use pressure input connector";
-  parameter Boolean TFromInput = false "= true to use temperature input connector"
-    annotation(Dialog(enable = not setEnthalpy));
-  parameter Boolean hFromInput = false "= true to use specific enthalpy input connector"
-    annotation(Dialog(enable = setEnthalpy));
-  parameter Boolean XiFromInput = false "= true to use mass fraction input connector";
+  parameter Boolean PFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean TFromInput = false "= true, if temperature input connector is enabled" annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean XiFromInput = false "= true, if mass fraction input connector is enabled" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
+
+  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)" annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean nFromInput = false "= true, if specific enthalpy input connector is enabled" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p_par = Medium.p_default "Pressure set value"
-    annotation(Dialog(enable=not PFromInput));
+    annotation(Dialog(group="Pressure", enable = not PFromInput));
+
   parameter SI.Temperature T_par = Medium.T_default "Temperature set value"
-    annotation(Dialog(enable = not setEnthalpy and not TFromInput));
+    annotation(Dialog(group="Temperature", enable = not setEnthalpy and not TFromInput));
   parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
-    annotation(Dialog(enable = setEnthalpy and not hFromInput));
-  parameter Medium.MassFraction[Medium.nXi] Xi_par = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
-    annotation(Dialog(enable=not XiFromInput));
+    annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy and not hFromInput));
+  parameter Medium.MassFraction Xi_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
+    annotation(Dialog(group="Mass fraction", enable = not XiFromInput));
+
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
+    annotation (Dialog(tab="Advanced"));
+
+
+
 
   Interfaces.StateOutput y(redeclare package Medium = Medium) annotation (
       Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(

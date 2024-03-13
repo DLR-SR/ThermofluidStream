@@ -1,7 +1,12 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
-  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedCounterFlowHexIcon;
+  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
   extends Internal.PartialDiscretizedHEX;
+
+  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent={{120,-80},{80,-40}})));
+  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent={{-80,-80},{-120,-40}})));
+  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
+  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
 
 initial equation
 
@@ -11,6 +16,11 @@ initial equation
   end if;
 
 equation
+  stateA_in=if noEvent(rearA.m_flow) > 0 then rearA.state_forwards else foreA.state_rearwards;
+  stateA_out=if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
+  stateB_in=if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
+  stateB_out=if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
+
 
   //Connecting equations (to interconnect pipes)
   //Fluid side B

@@ -43,7 +43,7 @@ the inlet the source is connected to.
   parameter Boolean xiFromInput = false "= true, if mass fraction input connector is enabled" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)" annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean enthalpyFromInput = false "= true to use specific enthalpy input connector" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean enthalpyFromInput = false "= true, if specific enthalpy input connector is enabled" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not pressureFromInput));
 

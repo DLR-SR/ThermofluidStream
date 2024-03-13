@@ -1,7 +1,13 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
-    extends ThermofluidStream.HeatExchangers.Internal.DiscretizedCrossFlowHexIcon;
+  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+
+  Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent={{-20,80},{20,120}})));
+  Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent={{-20,-80},{20,-120}})));
+  Interfaces.Rear rearB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{120,-80},{80,-40}})));
+  Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{-80,-80},{-120,-40}})));
+
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
@@ -29,6 +35,12 @@ initial equation
   end if;
 
 equation
+  stateA_in=if noEvent(rearA.m_flow) > 0 then rearA.state_forwards else foreA.state_rearwards;
+  stateA_out=if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
+  stateB_in=if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
+  stateB_out=if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
+
+
   //Connecting equations (to interconnect pipes)
 
   //Fluid side B
@@ -67,23 +79,19 @@ equation
 
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,98},{150,58}},
+          extent={{-150,160},{150,120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Line(visible=displayInstanceName,
-          points={{0,58},{0,65}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=not displayInstanceName,
-          points={{0,58},{0,100}},
+        Line(
+          points={{0,78},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-66,34},{-54,22}},
+          extent={{-66,54},{-54,42}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-40,34},{-28,22}},
+          extent={{-40,54},{-28,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
@@ -91,15 +99,15 @@ equation
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,34},{28,22}},
+          extent={{16,54},{28,42}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{42,34},{54,22}},
+          extent={{42,54},{54,42}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-60,140},{-20,100}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(

@@ -43,16 +43,16 @@ the inlet the source is connected to.
 </p>
 </html>"));
 
-  parameter Boolean velocityFromInput = false "= true to use input connector for outlet velocity" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean velocityFromInput = false "= true, if input connector for outlet velocity is enabled" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Velocity v_in_par = 0 "Parameter for reference velocity for p0. Positive velocity points from outside the boundary to inside"
     annotation(Dialog(group="Nozzle / Diffusor definition", enable=not velocityFromInput));
-  parameter Boolean areaFromInput = false "= true to use input connector for outlet cross section area" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean areaFromInput = false "= true, if input connector for cross section area is enabled" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter SI.Area A_par = 1 "Cross-section area of inlet boundary"
     annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
 
-  parameter Boolean assumeConstantDensity=true "= true to assume incompressibility, use '= false' for Ma > 0.3";
-  parameter Boolean extrapolateQuadratic = false "= true to extrapolate negative velocities purely quadratic"
+  parameter Boolean assumeConstantDensity=true "= true, if assuming incompressibility, use '= false' for Ma > 0.3";
+  parameter Boolean extrapolateQuadratic = false "= true, if extrapolating negative velocities purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));

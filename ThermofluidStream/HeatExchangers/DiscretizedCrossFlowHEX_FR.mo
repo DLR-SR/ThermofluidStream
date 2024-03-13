@@ -1,7 +1,21 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
-  extends Internal.DiscretizedCrossFlowHexIcon;
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+
+  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-36,90},{4,130}}),  iconTransformation(extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={100,-60})));
+  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-148,-86},{-108,-46}}),
+                                                                                                                                iconTransformation(extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={-100,-60})));
+  Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{30,90},{-10,130}}), iconTransformation(extent={{20,-20},{-20,20}},
+        rotation=90,
+        origin={0,100})));
+  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{2,-152},{-38,-112}}), iconTransformation(extent={{20,-20},{-20,20}},
+        rotation=90,
+        origin={0,-100})));
+
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
@@ -47,10 +61,26 @@ initial equation
   end if;
 
 equation
+  inletA.state = inletA_state;
+  inletA.m_flow = inletA_m_flow;
+  inletA.r = inletA_r;
+
+  inletB.state = inletB_state;
+  inletB.m_flow = inletB_m_flow;
+  inletB.r = inletB_r;
+
+  outletA.state = outletA_state;
+  outletA.m_flow = outletA_m_flow;
+  outletA.r = outletA_r;
+
+  outletB.state = outletB_state;
+  outletB.m_flow = outletB_m_flow;
+  outletB.r = outletB_r;
+
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(inletB, thermalElementB[1].inlet) annotation (Line(
-      points={{-100,60},{-56,60},{-56,60},{-10,60}},
+      points={{-16,110},{-56,110},{-56,60},{-10,60}},
       color={28,108,200},
       thickness=0.5));
   connect(thermalElementB.outlet, flowResistanceB.inlet) annotation (Line(
@@ -61,7 +91,7 @@ equation
     connect(flowResistanceB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
   connect(flowResistanceB[nCells].outlet, outletB) annotation (Line(
-      points={{60,60},{100,60}},
+      points={{60,60},{-34,60},{-34,-66},{-128,-66}},
       color={28,108,200},
       thickness=0.5));
 
@@ -69,7 +99,7 @@ equation
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,50},{4.44089e-16,40},{0,40},{0,10}},   color={191,0,0}));
 
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{100,-60},{80,-60},{80,-60},{60,-60}},
+      points={{10,110},{80,110},{80,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
@@ -85,44 +115,40 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outletA) annotation (Line(
-      points={{-80,-60},{-100,-60}},
+      points={{-80,-60},{-50,-60},{-50,-132},{-18,-132}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,98},{150,58}},
+          extent={{-150,160},{150,120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Line(visible=displayInstanceName,
-          points={{0,58},{0,65}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(visible=not displayInstanceName,
-          points={{0,58},{0,100}},
+        Line(
+          points={{0,78},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-66,32},{-54,20}},
+          extent={{-66,54},{-54,42}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-40,32},{-28,20}},
+          extent={{-40,54},{-28,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-12,32},{0,20}},
+          extent={{-12,54},{0,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,32},{28,20}},
+          extent={{16,54},{28,42}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{42,32},{54,20}},
+          extent={{42,54},{54,42}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-60,140},{-20,100}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(

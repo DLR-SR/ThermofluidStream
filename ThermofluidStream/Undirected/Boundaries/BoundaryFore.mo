@@ -32,22 +32,31 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
 <p>Medium package used in the Boundary. Make sure it is the same as the one the port is connected to.</p>
 </html>"));
 
-  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)";
-  parameter Boolean temperatureFromInput = false "= true to use temperature input connector" annotation(Dialog(enable = not setEnthalpy));
-  parameter Boolean pressureFromInput = false "= true to use pressure input connector";
-  parameter Boolean enthalpyFromInput = false "= true to use specific enthalpy input connector"
-    annotation(Dialog(enable = setEnthalpy));
-  parameter Boolean xiFromInput = false "= true to use mass fraction input connector";
+  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean temperatureFromInput = false "= true, if temperature input connector is enabled" annotation(Dialog(group="Temperature", enable = not setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean xiFromInput = false "= true, if mass fraction input connector is enabled" annotation(Dialog(group="Mass fraction"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  parameter SI.Pressure p0_par = Medium.p_default "Pressure set value" annotation(Dialog(enable = not pressureFromInput));
-  parameter SI.Temperature T0_par = Medium.T_default "Temperature set value" annotation(Dialog(enable = not setEnthalpy and not temperatureFromInput));
-  parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value" annotation(Dialog(enable = setEnthalpy and not enthalpyFromInput));
-  parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass Fraction set value"
-    annotation(Dialog(enable = not xiFromInput));
+  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)" annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean enthalpyFromInput = false "= true, if specific enthalpy input connector is enabled" annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
+    annotation(Dialog(group="Pressure", enable = not pressureFromInput));
+
+  parameter SI.Temperature T0_par = Medium.T_default "Temperature set value"
+    annotation(Dialog(group="Temperature", enable = not setEnthalpy and not temperatureFromInput));
+  parameter SI.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
+    annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy and not enthalpyFromInput));
+  parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fraction set value"
+    annotation(Dialog(group="Mass fraction", enable = not xiFromInput));
+
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
+    annotation (Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the boundary"
-    annotation (Dialog(tab="Advanced"));
+
+
+
+
+
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60}),

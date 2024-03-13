@@ -1,8 +1,41 @@
-within ThermofluidStream.HeatExchangers;
-model CrossFlowNTU2 "v2 of CrossFlowNTU"
-  extends Internal.PartialNTU(final crossFlow=true);
+within ThermofluidStream.HeatExchangers.AdditionalHeatExchangers;
+model CrossFlowNTUv2 "Cross flow heat exchanger using the epsilon-NTU method"
+  extends AdditionalHeatExchangers.PartialNTU2;
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        origin={-100,0}),   iconTransformation(extent={{-120,-20},{-80,20}})));
+  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        origin={100,0}),   iconTransformation(extent={{80,-20},{120,20}})));
+  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{20,-20},{-20,20}},
+        origin={0,100},
+        rotation=90),     iconTransformation(extent={{20,20},{-20,-20}},
+        rotation=90,
+        origin={0,100})));
+  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
+        extent={{20,-20},{-20,20}},
+        origin={0,-100},
+        rotation=90),      iconTransformation(extent={{20,20},{-20,-20}},
+        rotation=90,
+        origin={0,-100})));
 
 equation
+  inletA.state = inletA_state;
+  inletA.m_flow = inletA_m_flow;
+  inletA.r = inletA_r;
+
+  inletB.state = inletB_state;
+  inletB.m_flow = inletB_m_flow;
+  inletB.r = inletB_r;
+
+  outletA.state = outletA_state;
+  outletA.m_flow = outletA_m_flow;
+  outletA.r = outletA_r;
+
+  outletB.state = outletB_state;
+  outletB.m_flow = outletB_m_flow;
+  outletB.r = outletB_r;
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
   //it is assumed that both fluids are unmixed
   effectiveness = 1 - exp((1/C_r)*NTU^(0.22)*(exp(-C_r*NTU^(0.78)) - 1));
@@ -18,7 +51,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-120,-20},{-80,-60}},
+          extent={{-120,60},{-80,20}},
           textColor={175,175,175},
           textString="A"),
         Text(
@@ -173,4 +206,4 @@ equation
 <p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
 </html>"));
-end CrossFlowNTU2;
+end CrossFlowNTUv2;

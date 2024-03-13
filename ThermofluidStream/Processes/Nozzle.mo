@@ -36,10 +36,10 @@ model Nozzle "Model for dynamic pressure difference"
       "L = %L_value"
     else "" annotation(Evaluate=true, HideResult=true);
 
-  parameter Boolean area_in_FromInput = false "= true to use input connector for inlet cross section area" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean area_in_FromInput = false "= true, if input connector for inlet cross section area is enabled" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A_in = 1 "Cross-section area of inlet boundary"
     annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
-  parameter Boolean area_out_FromInput = false "= true to use input connector for outlet cross section area" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean area_out_FromInput = false "= true, if input connector for outlet cross section area is enabled" annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A_out = 1 "Cross-section area of outlet boundary"
     annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
 

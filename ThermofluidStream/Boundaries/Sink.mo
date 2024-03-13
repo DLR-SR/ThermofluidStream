@@ -28,9 +28,9 @@ the outlet the sink is connected to.
 </p>
 </html>"));
 
-  parameter Boolean pressureFromInput = false "= true to use input connector for pressure";
+  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled" annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
-    annotation(Dialog(enable = not pressureFromInput));
+    annotation(Dialog(group="Pressure", enable = not pressureFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
 

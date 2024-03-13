@@ -549,9 +549,9 @@ model TestIconParameters
     displayParameters=true,
     displayArea=true,
     displaykNTU=true) annotation (Placement(transformation(extent={{136,212},{156,232}})));
-  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{16,152},{36,172}})));
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{20,152},{40,172}})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1(displayParameters=true) annotation (Placement(transformation(extent={{56,152},{76,172}})));
-  HeatExchangers.DiscretizedCounterFlowHEX_FR FR_discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{16,112},{36,132}})));
+  HeatExchangers.DiscretizedCounterFlowHEX_FR FR_discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{20,112},{40,132}})));
   HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR1(displayParameters=true) annotation (Placement(transformation(extent={{56,112},{76,132}})));
   Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX2(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{16,72},{36,92}})));
   Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX3(displayParameters=true) annotation (Placement(transformation(extent={{56,72},{76,92}})));
@@ -2962,6 +2962,9 @@ model TestIconParameters
     A_out=2,
     assumeConstantDensity=false,
     L_value=0.5) annotation (Placement(transformation(extent={{-540,-342},{-520,-322}})));
+  Processes.Pump pump annotation (Placement(transformation(extent={{-200,180},{-180,200}})));
+  Processes.Compressor compressor annotation (Placement(transformation(extent={{-140,180},{-120,200}})));
+  Processes.Turbine turbine annotation (Placement(transformation(extent={{-80,180},{-60,200}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-860,-500},{860,500}}), graphics={
         Text(
           extent={{-500,-2},{-160,-22}},
