@@ -1,3 +1,0 @@
-within ThermofluidStream.Sensors.AdditionalSensors;
-package MultiSensor_Tp_TwoPort
-end MultiSensor_Tp_TwoPort;

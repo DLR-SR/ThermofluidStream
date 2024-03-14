@@ -1,3 +1,0 @@
-within ThermofluidStream.Sensors.AdditionalSensors;
-package DifferenceSensors_Tp
-end DifferenceSensors_Tp;

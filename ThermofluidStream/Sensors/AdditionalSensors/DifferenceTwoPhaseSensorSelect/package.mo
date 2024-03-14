@@ -1,3 +1,0 @@
-within ThermofluidStream.Sensors.AdditionalSensors;
-package DifferenceTwoPhaseSensorSelect
-end DifferenceTwoPhaseSensorSelect;
