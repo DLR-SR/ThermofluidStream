@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Boundaries.Internal;
+within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolumeN "Partial parent class for Volumes with N inlets and one outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

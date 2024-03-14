@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.Sensors;
+within ThermofluidStream.Undirected.Sensors;
 model SingleSensorSelect "Sensor with selectable measured quantity"
   extends Internal.PartialSensor;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;

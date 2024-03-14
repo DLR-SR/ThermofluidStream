@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.Sensors;
+within ThermofluidStream.Undirected.Sensors;
 model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium"
   extends Internal.PartialSensor(redeclare package Medium=Medium2Phase);
 

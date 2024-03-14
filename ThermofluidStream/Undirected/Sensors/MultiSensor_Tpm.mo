@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.Sensors;
+within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected Sensor for Temperature, pressure and mass-flow"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
