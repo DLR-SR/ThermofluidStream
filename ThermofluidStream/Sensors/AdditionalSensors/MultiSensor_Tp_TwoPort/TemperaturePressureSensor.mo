@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors.AdditionalSensors.MultiSensor_Tp_TwoPort;
 model TemperaturePressureSensor "Sensor for temperature and pressure"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

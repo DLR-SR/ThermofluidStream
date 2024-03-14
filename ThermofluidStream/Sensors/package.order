@@ -8,9 +8,5 @@ SingleSensorX
 DifferenceSensorSelect
 DifferenceTwoPhaseSensorSensorSelect
 DifferenceSensor_Tp
-TemperaturePressureSensor
-MultiSensor_Tpm_v2
-MultiSensor_Tpm_v3
 Tests
 Internal
-AdditionalSensors

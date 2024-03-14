@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors.AdditionalSensors.MultiSensor_Tpm;
 model MultiSensor_Tpm_v3 "Version 3 of MultiSensor_Tpm"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

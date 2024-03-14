@@ -282,29 +282,21 @@ model TestIcons
   Modelica.Fluid.Sensors.SpecificEntropyTwoPort specificEntropy1 annotation (Placement(transformation(extent={{60,-52},{80,-32}})));
   Modelica.Fluid.Sensors.MassFlowRate massFlowRate annotation (Placement(transformation(extent={{376,50},{396,70}})));
   Modelica.Fluid.Sensors.VolumeFlowRate volumeFlowRate annotation (Placement(transformation(extent={{416,50},{436,70}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true) annotation (Placement(transformation(extent={{140,-260},{160,-240}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K) annotation (Placement(transformation(extent={{180,-260},{200,-240}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect2(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C, outputValue=true) annotation (Placement(transformation(extent={{220,-260},{240,-240}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa) annotation (Placement(transformation(extent={{140,-280},{160,-260}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect4(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar, outputValue=true) annotation (Placement(transformation(extent={{180,-280},{200,-260}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect5(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K) annotation (Placement(transformation(extent={{220,-280},{240,-260}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect6(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa, outputValue=true) annotation (Placement(transformation(extent={{140,-300},{160,-280}})));
-  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect7(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar) annotation (Placement(transformation(extent={{180,-300},{200,-280}})));
-  Sensors.SensorState sensorState annotation (Placement(transformation(extent={{370,-180},{390,-160}})));
-  Sensors.SingleSensorX singleSensorX(outputValue=true) annotation (Placement(transformation(extent={{340,-90},{360,-70}})));
-  Sensors.SingleSensorX singleSensorX1 annotation (Placement(transformation(extent={{380,-90},{400,-70}})));
-  Modelica.Fluid.Sensors.MassFractions massFraction annotation (Placement(transformation(extent={{420,-90},{440,-70}})));
-  Modelica.Fluid.Sensors.MassFractionsTwoPort massFraction1 annotation (Placement(transformation(extent={{420,-120},{440,-100}})));
-  Modelica.Fluid.Sensors.TraceSubstancesTwoPort traceSubstance annotation (Placement(transformation(extent={{340,-120},{360,-100}})));
-  Modelica.Fluid.Sensors.TraceSubstances traceSubstance1 annotation (Placement(transformation(extent={{380,-120},{400,-100}})));
-  Sensors.TemperaturePressureSensor temperaturePressureSensor_1 annotation (Placement(transformation(extent={{340,0},{360,20}})));
-  Sensors.TemperaturePressureSensor temperaturePressureSensor_2(temperatureUnit="degC", pressureUnit="bar") annotation (Placement(transformation(extent={{380,0},{400,20}})));
-  Sensors.TemperaturePressureSensor temperaturePressureSensor_3(outputTemperature=true, outputPressure=true) annotation (Placement(transformation(extent={{340,-30},{360,-10}})));
-  Sensors.TemperaturePressureSensor temperaturePressureSensor_4(
-    temperatureUnit="degC",
-    pressureUnit="bar",
-    outputTemperature=true,
-    outputPressure=true) annotation (Placement(transformation(extent={{380,-30},{400,-10}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg, outputValue=true) annotation (Placement(transformation(extent={{260,-180},{280,-160}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect1(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K) annotation (Placement(transformation(extent={{300,-180},{320,-160}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect2(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_C, outputValue=true) annotation (Placement(transformation(extent={{340,-180},{360,-160}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect3(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa) annotation (Placement(transformation(extent={{260,-200},{280,-180}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect4(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_bar, outputValue=true) annotation (Placement(transformation(extent={{300,-200},{320,-180}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect5(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K) annotation (Placement(transformation(extent={{340,-200},{360,-180}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect6(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa, outputValue=true) annotation (Placement(transformation(extent={{260,-220},{280,-200}})));
+  Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect7(quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar) annotation (Placement(transformation(extent={{300,-220},{320,-200}})));
+  Sensors.SensorState sensorState annotation (Placement(transformation(extent={{370,-102},{390,-82}})));
+  Sensors.SingleSensorX singleSensorX(outputValue=true) annotation (Placement(transformation(extent={{340,-12},{360,8}})));
+  Sensors.SingleSensorX singleSensorX1 annotation (Placement(transformation(extent={{380,-12},{400,8}})));
+  Modelica.Fluid.Sensors.MassFractions massFraction annotation (Placement(transformation(extent={{420,-12},{440,8}})));
+  Modelica.Fluid.Sensors.MassFractionsTwoPort massFraction1 annotation (Placement(transformation(extent={{420,-42},{440,-22}})));
+  Modelica.Fluid.Sensors.TraceSubstancesTwoPort traceSubstance annotation (Placement(transformation(extent={{340,-42},{360,-22}})));
+  Modelica.Fluid.Sensors.TraceSubstances traceSubstance1 annotation (Placement(transformation(extent={{380,-42},{400,-22}})));
   Sensors.MultiSensor_Tp multiSensor_Tp2(outputTemperature=false, outputPressure=false) annotation (Placement(transformation(extent={{260,90},{280,110}})));
   Sensors.MultiSensor_Tp multiSensor_Tp5(temperatureUnit="degC", pressureUnit="bar") annotation (Placement(transformation(extent={{300,90},{320,110}})));
   Sensors.MultiSensor_Tp multiSensor_Tp6(outputTemperature=true, outputPressure=true) annotation (Placement(transformation(extent={{260,62},{280,82}})));
@@ -342,38 +334,6 @@ model TestIcons
     outputTemperature=false,
     outputPressure=false,
     outputMassFlowRate=true)               annotation (Placement(transformation(extent={{300,-100},{320,-80}})));
-  Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_1 annotation (Placement(transformation(extent={{260,-160},{280,-140}})));
-  Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_3(
-    temperatureUnit="degC",
-    pressureUnit="bar",
-    massFlowUnit="(g/s)") annotation (Placement(transformation(extent={{300,-160},{320,-140}})));
-  Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_4(
-    outputTemperature=true,
-    outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{260,-190},{280,-170}})));
-  Sensors.MultiSensor_Tpm_v2 MultiSensor_Tpm_v2_2(
-    temperatureUnit="degC",
-    pressureUnit="bar",
-    massFlowUnit="(g/s)",
-    outputTemperature=true,
-    outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{300,-190},{320,-170}})));
-  Sensors.MultiSensor_Tpm_v3 MultiSensor_Tpm_v3_1 annotation (Placement(transformation(extent={{260,-230},{280,-210}})));
-  Sensors.MultiSensor_Tpm_v3 MultiSensor_Tpm_v3_3(
-    temperatureUnit="degC",
-    pressureUnit="bar",
-    massFlowUnit="(g/s)") annotation (Placement(transformation(extent={{300,-230},{320,-210}})));
-  Sensors.MultiSensor_Tpm_v3 MultiSensor_Tpm_v3_4(
-    outputTemperature=true,
-    outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{260,-260},{280,-240}})));
-  Sensors.MultiSensor_Tpm_v3 MultiSensor_Tpm_v3_2(
-    temperatureUnit="degC",
-    pressureUnit="bar",
-    massFlowUnit="(g/s)",
-    outputTemperature=true,
-    outputPressure=true,
-    outputMassFlowRate=true) annotation (Placement(transformation(extent={{300,-260},{320,-240}})));
   Undirected.Sensors.SingleSensorSelect singleSensorSelect17(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K) annotation (Placement(transformation(extent={{500,90},{520,110}})));
   Undirected.Sensors.SingleSensorSelect singleSensorSelect18(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C, outputValue=true) annotation (Placement(transformation(extent={{540,90},{560,110}})));
   Undirected.Sensors.SingleSensorSelect singleSensorSelect19(quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa) annotation (Placement(transformation(extent={{580,90},{600,110}})));
@@ -486,7 +446,7 @@ model TestIcons
           textColor={28,108,200},
           textString="FlowControl"),
         Rectangle(
-          extent={{466,-332},{44,158}},
+          extent={{460,-242},{40,160}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
@@ -575,7 +535,7 @@ model TestIcons
           textColor={28,108,200},
           textString="DifferenceSensorSelect"),
         Text(
-          extent={{140,-220},{240,-240}},
+          extent={{260,-140},{360,-160}},
           textColor={28,108,200},
           textString="DifferenceTwoPhaseSensorSelect"),
         Rectangle(
@@ -588,13 +548,9 @@ model TestIcons
           textColor={28,108,200},
           textString="my favorite version"),
         Text(
-          extent={{340,-40},{440,-60}},
+          extent={{340,38},{440,18}},
           textColor={28,108,200},
           textString="singleSensorX"),
-        Text(
-          extent={{340,40},{400,20}},
-          textColor={28,108,200},
-          textString="FlowSensor_Tp"),
         Text(
           extent={{260,140},{320,120}},
           textColor={28,108,200},
@@ -608,15 +564,7 @@ model TestIcons
           textColor={28,108,200},
           textString="MultiSensor_Tpm"),
         Text(
-          extent={{260,-110},{320,-130}},
-          textColor={28,108,200},
-          textString="v2"),
-        Text(
-          extent={{260,-190},{320,-210}},
-          textColor={28,108,200},
-          textString="v3"),
-        Text(
-          extent={{360,-140},{400,-160}},
+          extent={{340,-62},{440,-82}},
           textColor={28,108,200},
           textString="SensorState"),
         Text(
