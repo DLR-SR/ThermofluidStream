@@ -12,7 +12,7 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ## News
 
 **Meet the developers at our ThermoFluid Stream Community Event!**  This online event shall give all users the possibility to provide feedback and learn about each other. We welcome your feedback.
-- We present the newest additions to our library (Pumps, Heat Exchangers, Media Interfaces, etc)
+- We present the newest additions to our library (Pumps, Heat Exchangers, Media Interfaces, etc.)
 - Users are invited to briefly present their solutions, problems or challenges.
 - Open discussion round on future development.
 
