@@ -1,0 +1,9 @@
+time
+conductionElement.h
+pump.m_flow
+reservoir.M
+reservoir.U_med
+reservoir.m_flow_in
+reservoir.m_flow_out
+reservoir1.M
+reservoir1.U_med

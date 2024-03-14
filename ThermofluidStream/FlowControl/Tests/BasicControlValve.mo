@@ -2,12 +2,13 @@ within ThermofluidStream.FlowControl.Tests;
 model BasicControlValve "Test for BasicControlValve"
   extends Modelica.Icons.Example;
 
-  replaceable package medium =
-      ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
+  replaceable package medium = ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-                                                                     "Medium package"
-        annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -17,7 +18,7 @@ model BasicControlValve "Test for BasicControlValve"
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-116,50},{-96,70}})));
-  FlowControl.BasicControlValve                          valveLinear(
+  FlowControl.BasicControlValve valveLinear(
     redeclare package Medium = medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
@@ -30,8 +31,8 @@ model BasicControlValve "Test for BasicControlValve"
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = medium,
       p0_par=100000)
@@ -78,7 +79,7 @@ model BasicControlValve "Test for BasicControlValve"
     pressureFromInput=true,
     T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-116,-70},{-96,-50}})));
-  FlowControl.BasicControlValve                          valveEqualPercentage(
+  FlowControl.BasicControlValve valveEqualPercentage(
     redeclare package Medium = medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
@@ -98,40 +99,40 @@ model BasicControlValve "Test for BasicControlValve"
     annotation (Placement(transformation(extent={{26,-60},{46,-40}})));
   Modelica.Blocks.Sources.Constant const2(k=1.1e5)
     annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
-  Processes.FlowResistance                   flowResistance6(
+  Processes.FlowResistance flowResistance6(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{66,50},{86,70}})));
-  Processes.FlowResistance                   flowResistance1(
+  Processes.FlowResistance flowResistance1(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{68,-10},{88,10}})));
-  Processes.FlowResistance                   flowResistance2(
+  Processes.FlowResistance flowResistance2(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
-  Processes.FlowResistance                   flowResistance3(
+  Processes.FlowResistance flowResistance3(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{-76,-70},{-56,-50}})));
-  Processes.FlowResistance                   flowResistance4(
+  Processes.FlowResistance flowResistance4(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e3))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e3))
     annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
 equation
   connect(valveLinear.inlet, multiSensor_Tpm2.outlet) annotation (Line(

@@ -1,18 +1,18 @@
 within ThermofluidStream.Boundaries;
-model Reservoir "Model of a Resorvoir"
+model Reservoir "Model of a reservoir"
   extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=0, final A = 0, final U=0);
 
-  parameter Boolean pEnvFromInput = false "Enable Input";
+  parameter Boolean pEnvFromInput = false "Enable input";
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area of medium";
-  parameter SI.Pressure p_env_par=1e5 "Environment Pressure"
+  parameter SI.Pressure p_env_par=1e5 "Environmental pressure"
     annotation(Dialog(enable=not pEnvFromInput));
   parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
     annotation(Dialog(tab="Initialization"));
   parameter SI.Acceleration g = dropOfCommons.g "Acceleration of gravity";
-  parameter SI.Height height_min = 0.01 "Minimum Height of fluid in Resorvoir; should be above 0"
+  parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir; should be above 0"
     annotation(Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Ambient pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,100})));
@@ -69,9 +69,23 @@ equation
           fillPattern=FillPattern.Solid)}),
             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This is a Volume, that is open at the top and therefore maintains envorinmental pressure at the top and adds pressure depending on fill height. </p>
-<p>Conceptually it a Sink and a Source. It therefore defines the Level of inertial pressure r and acts as a Loop breaker in a closed loop.</p>
-<p>This Component uses a simplification (medium.p is set to p_env + height* g, which is only correct at the bottom of the reservoir) which is intended to hold for media with low compressibility. </p>
-<p><span style=\"color: #ff5500;\">Note that the energy equation requires the Mass in the system to be positive and will not give valid results otherwise (if the assert of height &gt; 0 fails).</span></p>
+<p>
+This is a volume, that is open at the top and therefore maintains environmental
+pressure at the top and adds pressure depending on fill height.
+</p>
+<p>
+Conceptually it is a Sink and a Source. It therefore defines the level of inertial
+pressure r and acts as a loop breaker in a closed loop.
+</p>
+<p>
+This component uses a simplification (medium.p is set to p_env + height*g, which
+is only correct at the bottom of the reservoir) which is intended to hold for
+media with low compressibility.
+</p>
+<p>
+<strong>Note that the energy equation requires the mass in the system to be
+positive and will not give valid results otherwise (if the assert of
+height &gt; 0 fails).</strong>
+</p>
 </html>"));
 end Reservoir;

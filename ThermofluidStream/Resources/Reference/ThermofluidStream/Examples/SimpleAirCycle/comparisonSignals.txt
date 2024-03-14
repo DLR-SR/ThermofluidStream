@@ -1,0 +1,15 @@
+time
+compressor.m_flow
+compressor.omega
+compressor.phi
+fan.m_flow
+fan1.m_flow
+heatExchange_CounterFlowNTU.h_out_A
+heatExchange_CounterFlowNTU.h_out_B
+heatExchange_CounterFlowNTU1.h_out_A
+heatExchange_CounterFlowNTU1.h_out_B
+heatExchange_CounterFlowNTU2.h_out_A
+heatExchange_CounterFlowNTU2.h_out_B
+turbine1.m_flow
+turbine1.omega
+turbine1.phi

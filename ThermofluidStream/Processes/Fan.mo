@@ -3,14 +3,16 @@ model Fan "Fan under ideal gas assumption"
   extends Internal.PartialTurboComponent(redeclare function dp_tau=dp_tau_fan);
 
   replaceable function dp_tau_fan = Internal.TurboComponent.pleaseSelect_dp_tau
-    constrainedby Internal.TurboComponent.partial_dp_tau(redeclare package
-      Medium =                                                                    Medium) "Fan characteristic curve"
+    constrainedby Internal.TurboComponent.partial_dp_tau(
+      redeclare package Medium = Medium) "Fan characteristic curve"
       annotation(choices(
         choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
-        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficency"),
+        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
         Documentation(info="<html>
-          <p><span style=\"font-size: 12pt;\">Selectable function to choose beween different fan models.</span></p>
-          </html>"));
+<p>
+Selectable function to choose between different fan models.
+</p>
+</html>"));
 
   parameter Real max_rel_R(min=0, max=1, unit="1") = 0.05 "Maximum relative allowed divergence from ideal gas"
     annotation(Dialog(tab="Advanced"));
@@ -20,8 +22,8 @@ protected
   Real R_out(unit="J/(kg.K)") = p_out/Medium.temperature(outlet.state)/Medium.density(outlet.state);
 
 equation
-  // test for idel gas
-  assert(abs(R_in- R_in)/R_in < max_rel_R, "medium in compressor is assumed ot be idel gas, but check failed", dropOfCommons.assertionLevel);
+  // test for ideal gas
+  assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in fan is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
@@ -57,7 +59,7 @@ equation
           pattern=LinePattern.Solid)}),
           Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">This model works under and asserts the ideal gas assumption.</span></p>
-<p><span style=\"font-size: 12pt;\">Currently the only fan model is a fan with constant polytropic coefficient.</span></p>
+<p>This model works under ideal gas assumption and throws an assert if it is violated.</p>
+<p>Currently the only fan model is a fan with constant polytropic coefficient.</p>
 </html>"));
 end Fan;

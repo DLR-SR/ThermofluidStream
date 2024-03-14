@@ -117,27 +117,27 @@ required from medium model \"" + mediumName + "\".");
       annotation(Inline=true,smoothOrder=2);
     end setState_dTX;
 
-      redeclare function extends setSmoothState
-    "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
-      algorithm
-    state := ThermodynamicState(
-            p=myMedia.Common.smoothStep(
-              x,
-              state_a.p,
-              state_b.p,
-              x_small),
-            T=myMedia.Common.smoothStep(
-              x,
-              state_a.T,
-              state_b.T,
-              x_small),
-            X=myMedia.Common.smoothStep(
-              x,
-              state_a.X,
-              state_b.X,
-              x_small));
-        annotation(Inline=true,smoothOrder=2);
-      end setSmoothState;
+    redeclare function extends setSmoothState
+      "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
+    algorithm
+      state := ThermodynamicState(
+              p=myMedia.Common.smoothStep(
+                x,
+                state_a.p,
+                state_b.p,
+                x_small),
+              T=myMedia.Common.smoothStep(
+                x,
+                state_a.T,
+                state_b.T,
+                x_small),
+              X=myMedia.Common.smoothStep(
+                x,
+                state_a.X,
+                state_b.X,
+                x_small));
+          annotation(Inline=true,smoothOrder=2);
+    end setSmoothState;
 
     redeclare function extends pressure "Return pressure of ideal gas"
     algorithm
@@ -486,8 +486,7 @@ end gasMixtureViscosity;
   etaMixture := etam*1e-7; // conversion from microPoise->Pa.s
 
     annotation (smoothOrder=2,
-              Documentation(info="<html>
-
+      Documentation(info="<html>
 <p>
 Equation to estimate the viscosity of gas mixtures at low pressures.<br>
 It is a simplification of an extension of the rigorous kinetic theory
@@ -503,87 +502,61 @@ Values of kappa for a few such materials:
 </p>
 
 <table style=\"text-align: left; width: 302px; height: 200px;\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
-<tbody>
-<tr>
-<td style=\"vertical-align: top;\">Compound<br>
-</td>
-<td style=\"vertical-align: top; text-align: center;\">Kappa<br>
-</td>
-<td style=\"vertical-align: top;\">Compound<br>
-</td>
-<td style=\"vertical-align: top;\">Kappa<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">Methanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.215<br>
-</td>
-<td style=\"vertical-align: top;\">n-Pentanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.122<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">Ethanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.175<br>
-</td>
-<td style=\"vertical-align: top;\">n-Hexanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.114<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">n-Propanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.143<br>
-</td>
-<td style=\"vertical-align: top;\">n-Heptanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.109<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">i-Propanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.143<br>
-</td>
-<td style=\"vertical-align: top;\">Acetic Acid<br>
-</td>
-<td style=\"vertical-align: top;\">0.0916<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">n-Butanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.132<br>
-</td>
-<td style=\"vertical-align: top;\">Water<br>
-</td>
-<td style=\"vertical-align: top;\">0.076<br>
-</td>
-</tr>
-<tr>
-<td style=\"vertical-align: top;\">i-Butanol<br>
-</td>
-<td style=\"vertical-align: top;\">0.132</td>
-<td style=\"vertical-align: top;\"><br>
-</td>
-<td style=\"vertical-align: top;\"><br>
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <th>Compound</th>
+      <th>Kappa</th>
+      <th>Compound</th>
+      <th>Kappa</th>
+    </tr>
+    <tr>
+      <td>Methanol</td>
+      <td>0.215</td>
+      <td>n-Pentanol</td>
+      <td>0.122</td>
+    </tr>
+    <tr>
+      <td>Ethanol</td>
+      <td>0.175</td>
+      <td>n-Hexanol</td>
+      <td>0.114</td>
+    </tr>
+    <tr>
+      <td>n-Propanol</td>
+      <td>0.143</td>
+      <td>n-Heptanol</td>
+      <td>0.109</td>
+    </tr>
+    <tr>
+      <td>i-Propanol</td>
+      <td>0.143</td>
+      <td>Acetic Acid</td>
+      <td>0.0916</td>
+    </tr>
+    <tr>
+      <td>n-Butanol</td>
+      <td>0.132</td>
+      <td>Water</td>
+      <td>0.076</td>
+    </tr>
+    <tr>
+      <td>i-Butanol</td>
+      <td>0.132</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 <p>
 Chung, et al. (1984) suggest that for other alcohols not shown in the
-table:<br>
+table:
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp; kappa = 0.0682 + 4.704*[(number of -OH
 groups)]/[molecular weight]<br>
 <br>
-<span style=\"font-weight: normal;\">S.I. units relation for the
-debyes:&nbsp;</span><br>
+S.I. units relation for the debyes:
+<br>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;

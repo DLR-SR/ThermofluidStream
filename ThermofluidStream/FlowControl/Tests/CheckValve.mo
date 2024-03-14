@@ -4,9 +4,11 @@ model CheckValve "Test for CheckValve"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -28,8 +30,7 @@ model CheckValve "Test for CheckValve"
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 equation
   connect(checkValve.inlet, source.outlet) annotation (Line(

@@ -4,21 +4,20 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
-                                                                        "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected. </p>
 </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantitiy the sensor measures"
-    annotation(choicesAllMatching=true);
+  parameter Quantities quantity "Quantity the sensor measures";
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
@@ -29,7 +28,7 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Computed value of the selected Quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected Quantity [variable]";
+  output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 
 protected
   Real direct_value(unit=Internal.getTwoPhaseUnit(quantity));
@@ -74,15 +73,15 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{0,21},{60,71}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This is an extra sensor for vaporQuantity, because the Medium must be constrained by PartialTwoPhaseMedium instead of TwoPhaseMedium.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

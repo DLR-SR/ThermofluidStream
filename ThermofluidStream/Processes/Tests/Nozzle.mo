@@ -2,57 +2,63 @@ within ThermofluidStream.Processes.Tests;
 model Nozzle
   extends Modelica.Icons.Example;
 
-   replaceable package Medium = Media.myMedia.Air.MoistAir
-                                                       constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                            "Medium Model"
+  replaceable package Medium = Media.myMedia.Air.MoistAir
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (choicesAllMatching=true,Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Medium model for the test. Can be anything. </span></p>
+<p>
+Medium model for the test. Can be anything.
+</p>
 </html>"));
 
 
   ThermofluidStream.Processes.Nozzle nozzle(
     redeclare package Medium = Medium,
     A_in=0.00015,
-    A_out=0.01)                             annotation (Placement(transformation(extent={{10,10},{30,30}})));
+    A_out=0.01) annotation (Placement(transformation(extent={{10,10},{30,30}})));
   FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=10,
-    redeclare function pLoss =
-        Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=110000)
-                           annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
+    annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{70,10},{90,30}})));
+    annotation (Placement(transformation(extent={{70,10},{90,30}})));
   ThermofluidStream.Processes.Nozzle nozzle1(
     redeclare package Medium = Medium,
     A_in=0.01,
-    A_out=0.00015)                          annotation (Placement(transformation(extent={{10,-30},{30,-10}})));
+    A_out=0.00015) annotation (Placement(transformation(extent={{10,-30},{30,-10}})));
   FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=10,
     redeclare function pLoss =
-        Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+      Internal.FlowResistance.laminarTurbulentPressureLoss(
+        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,-30},{-10,-10}})));
   Boundaries.Source source1(redeclare package Medium = Medium, p0_par=110000)
-                           annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
+    annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
-                       annotation (Placement(transformation(extent={{70,-30},{90,-10}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
-      Medium =                                                                      Medium, A_par=0.00015)
+    annotation (Placement(transformation(extent={{70,-30},{90,-10}})));
+  Boundaries.DynamicPressureInflow dynamicPressureInflow(
+    redeclare package Medium = Medium,
+    A_par=0.00015)
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow1(redeclare package
-      Medium =                                                                       Medium, A_par=0.01)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow1(
+    redeclare package Medium = Medium,
+    A_par=0.01)
     annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
-      Medium =                                                                        Medium, A_par=0.01)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(
+    redeclare package Medium = Medium,
+    A_par=0.01)
     annotation (Placement(transformation(extent={{40,10},{60,30}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(redeclare package
-      Medium =                                                                         Medium, A_par=0.00015)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow1(
+    redeclare package Medium = Medium,
+    A_par=0.00015)
     annotation (Placement(transformation(extent={{40,-30},{60,-10}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons annotation (
     Placement(visible = true, transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

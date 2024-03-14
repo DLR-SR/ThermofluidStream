@@ -1,9 +1,12 @@
 within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolumeN "Partial parent class for Volumes with N inlets and one outlet"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the inlets and outlets the volume is connected to.</span></p>
+<p>
+Medium package used in the Volume. Make sure it is the same as the
+inlets and outlets the volume is connected to.
+</p>
 </html>"));
 
   parameter Integer N = 1 "Number if inlets";
@@ -20,7 +23,7 @@ partial model PartialVolumeN "Partial parent class for Volumes with N inlets and
     annotation(Dialog(tab= "Initialization"));
   parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
-  parameter Boolean use_hstart = false "True: spedific enthalpy contition instead of Temperature"
+  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
   parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
@@ -65,8 +68,8 @@ protected
 
   Medium.ThermodynamicState state_out;
   // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-  SI.SpecificEnthalpy h_out = if  noEvent(-m_flow_out) >= 0 then Medium.specificEnthalpy(state_out)  else medium.h;
-  Medium.MassFraction Xi_out[Medium.nXi] = if  noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else  medium.Xi;
+  SI.SpecificEnthalpy h_out = if noEvent(-m_flow_out >= 0) then Medium.specificEnthalpy(state_out) else medium.h;
+  Medium.MassFraction Xi_out[Medium.nXi] = if noEvent(-m_flow_out >= 0) then Medium.massFraction(state_out) else medium.Xi;
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
   SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";
@@ -110,8 +113,8 @@ equation
     r[i] + p_in[i] = medium.p;
 
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
-    h_in[i] =  if noEvent(m_flow_in[i]) >= 0 then Medium.specificEnthalpy(inlet[i].state) else medium.h;
-    Xi_in[:,i] = if noEvent(m_flow_in[i]) >= 0 then Medium.massFraction(inlet[i].state) else medium.Xi;
+    h_in[i] =  if noEvent(m_flow_in[i] >= 0) then Medium.specificEnthalpy(inlet[i].state) else medium.h;
+    Xi_in[:,i] = if noEvent(m_flow_in[i] >= 0) then Medium.massFraction(inlet[i].state) else medium.Xi;
   end for;
 
   der(M) = sum(inlet.m_flow) + outlet.m_flow;
@@ -178,16 +181,17 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5),                                                 Text(
+          thickness=0.5),
+        Text(
           extent={{-92,46},{-66,4}},
-          lineColor={116,116,116},
+          textColor={116,116,116},
           textString="%N")}),
-                            Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This is the partial parent class for unidirectional volumes with N inlets. It is partial and missing the number if inputs, as well as a equations for its volume or medium pressure and one for the volume change work performed.</p>
-<p>Conceptually&nbsp;a&nbsp;Volume&nbsp;is&nbsp;a&nbsp;Sink&nbsp;and&nbsp;a&nbsp;Source.&nbsp;It&nbsp;therefore&nbsp;defines&nbsp;the&nbsp;Level&nbsp;of&nbsp;inertial&nbsp;pressure&nbsp;r&nbsp;in&nbsp;a&nbsp;closed&nbsp;loop&nbsp;and&nbsp;acts&nbsp;as&nbsp;a&nbsp;Loop&nbsp;breaker.</p>
-<p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampend out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
-<p>For to stability reasons, mass-flows in the wrong direction (fluid entering the outlet or exiting the inlet) is considered to have the enthalpy and mass-fractions of the medium in the volume. This results in a stable steady-state solution, since this method effectiveley removes the parts of the energy and mass-fraction differential equations, that are associated with mass-flows. </p>
-<p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these Systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states prefered by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
+<p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>
+<p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampened out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
+<p>Due to stability reasons, mass-flows in the wrong direction (fluid entering the outlet or exiting the inlet) is considered to have the enthalpy and mass-fractions of the medium in the volume. This results in a stable steady-state solution, since this method effectiveley removes the parts of the energy and mass-fraction differential equations, that are associated with mass-flows. </p>
+<p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states preferred by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
 </html>"));
 end PartialVolumeN;

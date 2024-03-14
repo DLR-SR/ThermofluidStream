@@ -4,9 +4,11 @@ model Flow_Resistance "Test for flow resistance"
 
   import tf = ThermofluidStream;
   replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
-                                                        "Medium model"
+    "Medium model"
     annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium model for the test. Can be anything. </span></p>
+<p>
+Medium model for the test. Can be anything.
+</p>
 </html>"));
 
   tf.Boundaries.Source source(
@@ -27,15 +29,15 @@ model Flow_Resistance "Test for flow resistance"
     computeL=true,
     r=0.1,
     l=100,
-    redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1000,
-          k2=100))
+    redeclare function pLoss = tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1000,
+      k2=100))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   tf.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-    m_acceleraton_0=1,
+    m_acceleration_0=1,
     computeL=false,
     L_value=1000,
     r=0.02,
@@ -52,8 +54,8 @@ model Flow_Resistance "Test for flow resistance"
     L_value=30000,
     r=0.075,
     l=10,
-    redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 
   tf.Boundaries.Source source1(
@@ -70,8 +72,8 @@ model Flow_Resistance "Test for flow resistance"
     r=0.075,
     l=10,
     redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
-        (material=ThermofluidStream.Processes.Internal.Material.steel))
+        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
 
   tf.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)

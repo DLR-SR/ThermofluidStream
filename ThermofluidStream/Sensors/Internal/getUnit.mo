@@ -1,5 +1,6 @@
 within ThermofluidStream.Sensors.Internal;
 function getUnit "Returns unit of input quantity"
+  extends Modelica.Icons.Function;
 
   input Types.Quantities quantity;
   output String unit;
@@ -29,6 +30,8 @@ algorithm
     unit :="kg/m3";
   elseif quantity == Types.Quantities.v_m3pkg then
     unit :="m3/kg";
+  elseif quantity == Types.Quantities.a_mps then
+    unit := "(m/s)";
   elseif quantity == Types.Quantities.cv_JpkgK then
     unit :="J/(kg.K)";
   elseif quantity == Types.Quantities.cp_JpkgK then

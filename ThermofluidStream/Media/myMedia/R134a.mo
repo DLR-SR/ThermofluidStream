@@ -302,18 +302,16 @@ package R134a "R134a: Medium model for R134a"
 <p>
 Example:
 </p>
-<pre>
-     parameter Medium.AbsolutePressure p = 3e5;
-     parameter Medium.SpecificEnthalpy h = 4.2e5;
+<blockquote><pre>
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEnthalpy h = 4.2e5;
 
-     Medium.Density rho;
+  Medium.Density rho;
 
-     <strong>equation</strong>
+<strong>equation</strong>
 
-     rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
-</pre>
-
-
+  rho = Medium.density(setState_phX(p, h, fill(0, Medium.nX)));
+</pre></blockquote>
 </html>"));
     end setState_phX;
 
@@ -358,8 +356,8 @@ Example:
       state.T := T;
       state.d := d;
       annotation (Documentation(revisions="<html>
-<p>2019-12-20  Francesco Casella and Stefan Wischhusen: Two-phase calculation corrected.</p>
-<p>2012-08-01  Stefan Wischhusen: Corrected passing-error of inputs.</p>
+<p>2019-12-20 Francesco Casella and Stefan Wischhusen: Two-phase calculation corrected.</p>
+<p>2012-08-01 Stefan Wischhusen: Corrected passing-error of inputs.</p>
 </html>", info="<html>
 <p>Although the medium package is explicit for pressure and specific enthalpy, this function may be used in order to calculate the thermodynamic state record used as input by many functions. It will calculate the missing states:</p>
 <ul>
@@ -370,14 +368,14 @@ Example:
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.Density d = 4;
-parameter Medium.Temperature T = 298;
+  parameter Medium.Density d = 4;
+  parameter Medium.Temperature T = 298;
 
-Medium.SpecificEntropy s;
+  Medium.SpecificEntropy s;
 
 <strong>equation</strong>
 
-s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
+  s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 </pre></blockquote>
 
 </html>"));
@@ -421,14 +419,14 @@ s = Medium.specificEntropy(setState_dTX(d, T, fill(0, Medium.nX)));
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.AbsolutePressure p = 3e5;
-parameter Medium.SpecificEntropy s = 1.7e3;
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.SpecificEntropy s = 1.7e3;
 
-Medium.SpecificEnthalpy h;
+  Medium.SpecificEnthalpy h;
 
 <strong>equation</strong>
 
-h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
+  h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 </pre></blockquote>
 </html>", revisions="<html>
 <p>2020-02-05 Stefan Wischhusen: Added missing property calculation for d and T.</p>
@@ -457,15 +455,16 @@ h = Medium.specificEnthalpy(setState_psX(p, s, fill(0, Medium.nX)));
 Example:
 </p>
 <blockquote><pre>
-parameter Medium.AbsolutePressure p = 3e5;
-parameter Medium.Temperature T = 290;
+  parameter Medium.AbsolutePressure p = 3e5;
+  parameter Medium.Temperature T = 290;
 
-Medium.Density rho;
+  Medium.Density rho;
 
 <strong>equation</strong>
 
-rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
+  rho = Medium.density(setState_pTX(p, T, fill(0, Medium.nX)));
 </pre></blockquote>
+
 <p>
 Please note, that in contrast to setState_phX, setState_dTX and setState_psX this function can not calculate properties in the two-phase region since pressure and temperature are dependent variables. A guard function will be called if the temperature difference to the phase boundary is lower than 1K or the pressure difference to the critical pressure is lower than 1000 Pa.
 </p>
@@ -491,13 +490,13 @@ Please note, that in contrast to setState_phX, setState_dTX and setState_psX thi
 Example:
 </p>
 <blockquote><pre>
-Medium.AbsolutePressure p=3e5;
-// Viscosity on the liquid phase boundary
-SI.DynamicViscosity eta_liq;
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the liquid phase boundary
+  SI.DynamicViscosity eta_liq;
 
-equation
+<strong>equation</strong>
 
-eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+  eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 </pre></blockquote>
 
 <h4> Restrictions</h4>
@@ -525,13 +524,13 @@ eta_liq = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 Example:
 </p>
 <blockquote><pre>
-Medium.AbsolutePressure p=3e5;
-// Viscosity on the vapor phase boundary
-SI.DynamicViscosity eta_vap;
+  Medium.AbsolutePressure p=3e5;
+  // Viscosity on the vapor phase boundary
+  SI.DynamicViscosity eta_vap;
 
-equation
+<strong>equation</strong>
 
-eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
+  eta_vap = Medium.DynamicViscosity(Medium.setBubbleState(Medium.setSat_p(p)));
 </pre></blockquote>
 
 <h4> Restrictions</h4>
@@ -707,7 +706,7 @@ by the fundamental equation of state of Tillner-Roth and Baehr (1994).
 <p>This function calculates the saturation temperature of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 <p><img src=\"modelica://Modelica/Resources/Images/Media/R134a/log(p)Tsat-Diagram-R134a.png\"/></p>
@@ -735,7 +734,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       annotation (Documentation(info="<html>
 <p>This function calculates the derivative of saturation temperature of R134a with regard to the state variable p (absolute pressure). The non-derivative function is <a href=\"modelica://Modelica.Media.R134a.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 </html>"));
@@ -767,7 +766,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
       annotation (Documentation(info="<html>
 <p>This function calculates the time derivative of saturation temperature of R134a with regard to the time derivative of p. The non-derivative function is <a href=\"modelica://Modelica.Media.R134a.R134a_ph.saturationTemperature\"> saturatuionTemperature</a>.
 </p>
-<h4> Restrictions</h4>
+<h4>Restrictions</h4>
 <p>It is only valid in the two-phase region (i.e., p<sub>triple</sub> &le; p &le; p<sub>crit</sub> ).
 </p>
 </html>"));
@@ -1071,8 +1070,9 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
         4]);
 
       // annotation(smoothOrder=5);
-      annotation (derivative=dDewEnthalpy_dPressure_der_sat, Documentation(info=
-             "<html>
+      annotation (
+        derivative=dDewEnthalpy_dPressure_der_sat, 
+        Documentation(info="<html>
 <p>This function calculates the vapor phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.
 </p>
@@ -1791,7 +1791,7 @@ Example:
   // Isentropic efficiency of a compressor:
   Real eta_is;
 
-equation
+<strong>equation</strong>
 
   h_is = isentropicEnthalpy(p_downstream, Medium.setState_phX(p_upstream, h_upstream));
 
@@ -2644,18 +2644,18 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <strong> 0.0039 bar &le; p &le; 700 bar </strong>
- </li>
- <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
- </li>
- <li>
-      <strong> explicit for pressure and specific enthalpy </strong>
- </li>
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><strong>References</strong></p>
+<h4>References</h4>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>
@@ -9424,18 +9424,18 @@ Calculation of fluid properties for Tetrafluoroethane (R134a) in the fluid regio
 The functions provided by this package shall be used inside of the restricted limits according to the referenced literature.
 </p>
 <ul>
- <li>
-      <strong> 0.0039 bar &le; p &le; 700 bar </strong>
- </li>
- <li>
-      <strong> 169.85 Kelvin &le; T &le; 455 Kelvin  </strong>
- </li>
- <li>
-      <strong> explicit for pressure and specific enthalpy </strong>
- </li>
+  <li>
+    <strong> 0.0039 bar &le; p &le; 700 bar </strong>
+  </li>
+  <li>
+    <strong> 169.85 Kelvin &le; T &le; 455 Kelvin </strong>
+  </li>
+  <li>
+    <strong> explicit for pressure and specific enthalpy </strong>
+  </li>
 </ul>
 
-<p><strong>References</strong></p>
+<h4>References</h4>
 <dl><dt>Baehr, H.D. and Tillner-Roth, R.: </dt>
 <dd><strong>Thermodynamic Properties of Environmentally Acceptable Refrigerants -
 Equations of State and Tables for Ammonia, R22, R134a, R152a, and R123</strong>. Springer-Verlag, Berlin (Germany), 1994.</dd>

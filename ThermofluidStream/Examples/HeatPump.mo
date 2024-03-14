@@ -3,14 +3,13 @@ model HeatPump
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.XRGMedia.R1234yf_ph constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                                    "Refrigerant Medium"
+    Media.myMedia.Interfaces.PartialMedium "Refrigerant Medium"
     annotation(choicesAllMatching=true);
   replaceable package Air = Media.myMedia.Air.DryAirNasa constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                                    "Air Medium"
+    Media.myMedia.Interfaces.PartialMedium "Air Medium"
     annotation(choicesAllMatching=true);
 
-  HeatExchangers.DiscretizedCounterFlowHEX
-                                         condenser(
+  HeatExchangers.DiscretizedCounterFlowHEX condenser(
     redeclare package MediumA = Air,
     redeclare package MediumB = Medium,
     redeclare model ConductionElementA =
@@ -58,7 +57,8 @@ model HeatPump
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));
-  FlowControl.BasicControlValve controlValve(redeclare package Medium = Medium,
+  FlowControl.BasicControlValve controlValve(
+    redeclare package Medium = Medium,
     L=5000,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
@@ -88,8 +88,8 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -100,8 +100,8 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -118,56 +118,73 @@ model HeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     redeclare function dp_tau_fan =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))        annotation (
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100)) annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-110,-90})));
-  Boundaries.Source source1(redeclare package Medium = Air,
+  Boundaries.Source source1(
+    redeclare package Medium = Air,
     temperatureFromInput=true,
     T0_par=268.15,
-    p0_par=100000)                                          annotation (
+    p0_par=100000) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={0,-120})));
-  Boundaries.Sink sink1(redeclare package Medium = Air) annotation (Placement(
+  Boundaries.Sink sink1(
+    redeclare package Medium = Air) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-150,-90})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=250)
     annotation (Placement(transformation(extent={{-70,-120},{-90,-100}})));
-  Modelica.Blocks.Sources.Step           step1(
+  Modelica.Blocks.Sources.Step step1(
     height=-200,
     offset=250,
     startTime=800)
     annotation (Placement(transformation(extent={{-122,130},{-102,150}})));
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning, m_flow_reg=0.001)
+  inner DropOfCommons dropOfCommons(
+    assertionLevel = AssertionLevel.warning,
+    m_flow_reg=0.001)
     annotation (Placement(transformation(extent={{152,130},{172,150}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-56,-54},{-76,-34}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-56,34},{-36,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality3(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-104,34},{-84,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality4(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-144,34},{-124,54}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality6(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-124,-54},{-104,-34}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
     digits=4,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps) annotation (Placement(transformation(extent={{-20,78},{-40,58}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-124,-64},{-104,-44}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp1(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp1(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-144,44},{-124,64}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp2(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp2(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-104,44},{-84,64}})));
@@ -176,7 +193,8 @@ model HeatPump
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-56,44},{-36,64}})));
-  Sensors.MultiSensor_Tp multiSensor_Tp4(redeclare package Medium = Medium,
+  Sensors.MultiSensor_Tp multiSensor_Tp4(
+    redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{-56,-64},{-76,-44}})));
@@ -194,7 +212,9 @@ model HeatPump
     temperatureUnit="degC",
     pressureUnit="bar")
     annotation (Placement(transformation(extent={{4,-64},{24,-44}})));
-  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{4,-54},{24,-34}})));
   Sensors.SingleSensorSelect singleSensorSelect2(
     redeclare package Medium = Air,
@@ -243,10 +263,10 @@ model HeatPump
     xi_start=0,
     y_start=0.0001)
     annotation (Placement(transformation(extent={{124,10},{104,-10}})));
-  Modelica.Blocks.Sources.Step     step(
+  Modelica.Blocks.Sources.Step step(
     height=10,
     offset=25,
-    startTime=500)                              annotation (Placement(transformation(extent={{168,-10},{148,10}})));
+    startTime=500) annotation (Placement(transformation(extent={{168,-10},{148,10}})));
   Modelica.Blocks.Continuous.LimPID PI2(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=10,
@@ -261,15 +281,15 @@ model HeatPump
     k=1,
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState) annotation (Placement(transformation(extent={{-78,130},{-58,150}})));
-  Modelica.Blocks.Sources.Step     step2(
+  Modelica.Blocks.Sources.Step step2(
     height=-35,
     offset=10 + 273.15,
-    startTime=300)                              annotation (Placement(transformation(extent={{62,-136},{42,-116}})));
+    startTime=300) annotation (Placement(transformation(extent={{62,-136},{42,-116}})));
   ThermofluidStream.Utilities.showRealValue showRealValue(
     use_numberPort=false,
     description="COP",
-    number=condenser.Q_flow_A/max(0.00001, compressor.W_t))   annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{134,-156},{190,-100}})));
+    number=condenser.Q_flow_A/max(0.00001, compressor.W_t)) annotation (Placement(transformation(extent={{80,-94},{154,-56}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{142,-158},{198,-102}})));
 equation
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(
       points={{-10,-120},{-30,-120}},
@@ -387,7 +407,7 @@ equation
       points={{-124,-118},{-130,-118},{-130,-90},{-140,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}},                 color={191,0,0}));
+  connect(heatCapacitor.port, accumulator.heatPort) annotation (Line(points={{-30,-90},{-30,-82}}, color={191,0,0}));
   connect(sensorVaporQuality8.inlet, accumulator.inlet)
     annotation (Line(
       points={{-56,-36},{-50,-36},{-50,-74},{-40,-74}},
@@ -416,7 +436,7 @@ equation
       thickness=0.5));
   connect(PI.y, controlValve.u_in) annotation (Line(points={{-111,0},{-152,0}}, color={0,0,127}));
   connect(step.y, PI1.u_s) annotation (Line(points={{147,0},{126,0}}, color={0,0,127}));
-  connect(torque.flange, compressor.flange) annotation (Line(points={{24,0},{10,0}},  color={0,0,0}));
+  connect(torque.flange, compressor.flange) annotation (Line(points={{24,0},{10,0}}, color={0,0,0}));
   connect(PI2.y, torque.tau) annotation (Line(points={{61,0},{46,0}}, color={0,0,127}));
   connect(compressor.output_val, PI2.u_m) annotation (Line(points={{10,-8},{26,-8},{26,-26},{72,-26},{72,-12}}, color={0,0,127}));
   connect(PI2.u_s, PI1.y) annotation (Line(points={{84,0},{103,0}}, color={0,0,127}));
@@ -429,7 +449,7 @@ equation
   connect(singleSensorSelect2.value_out, PI1.u_m) annotation (Line(points={{10,110},{114,110},{114,12}}, color={0,0,127}));
   connect(sensorVaporQuality8.value_out, PI.u_m) annotation (Line(points={{-76,-36},{-100,-36},{-100,-12}}, color={0,0,127}));
   annotation (experiment(StopTime=2500, Tolerance=1e-6, Interval=2.5),
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-160},{200,160}})),
     Documentation(info="<html>
       <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

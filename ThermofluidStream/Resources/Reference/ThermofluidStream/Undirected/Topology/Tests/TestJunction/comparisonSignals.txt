@@ -1,0 +1,9 @@
+time
+sink.inlet.m_flow
+sink4.inlet.m_flow
+sink6.inlet.m_flow
+sink7.inlet.m_flow
+source.outlet.m_flow
+source3.outlet.m_flow
+source7.outlet.m_flow
+source8.outlet.m_flow

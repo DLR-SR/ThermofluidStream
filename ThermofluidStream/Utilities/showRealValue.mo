@@ -3,7 +3,7 @@ block showRealValue
   "Show Real value from numberPort or from number input field in diagram layer dynamically"
   parameter Boolean use_numberPort = true "= true, if numberPort enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter String description = "" "add description (in quotes!)";
+  parameter String description = "" "Add description (in quotes!)";
   input Real number = 0.0
     "Number to visualize if use_numberPort=false (time varying)"
     annotation(Dialog(enable=not use_numberPort), HideResult=true);
@@ -21,16 +21,20 @@ equation
      showNumber = number;
   end if;
 
-  annotation (Icon(
-      coordinateSystem(preserveAspectRatio=false,
+  annotation (
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=false,
         extent={{-100.0,-100.0},{100.0,100.0}}),
-        graphics={
-      Text(extent={{-94.0,-34.0},{96.0,34.0}},
-          lineColor={28,108,200},
-          textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))), Text(
+      graphics={
+        Text(extent={{-94.0,-34.0},{96.0,34.0}},
+          textColor={28,108,200},
+          textString=DynamicSelect("0.0", String(showNumber, significantDigits=significantDigits))),
+        Text(
           extent={{-52,76},{54,28}},
-          lineColor={28,108,200},
-          textString="%description")}),                                                                       Documentation(info="<html>
+          textColor={28,108,200},
+          textString="%description")}),
+    Documentation(info="<html>
 <p>
 This block visualizes a Real number in a diagram animation.
 The number to be visualized can be defined in the following ways:

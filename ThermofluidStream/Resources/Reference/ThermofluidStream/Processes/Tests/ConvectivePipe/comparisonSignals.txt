@@ -1,0 +1,3 @@
+time
+heatCapacitor.T
+thermalConvection.inlet.m_flow

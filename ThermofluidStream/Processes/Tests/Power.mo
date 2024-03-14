@@ -17,6 +17,6 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Delivers tourque, such that its delvers the set power, as long as tourque is under the maximum tourque, and maximum tourque else.</span></p>
+<p>Delivers torque, such that it delivers the set power, as long as torque is under the maximum torque.</p>
 </html>"));
 end Power;

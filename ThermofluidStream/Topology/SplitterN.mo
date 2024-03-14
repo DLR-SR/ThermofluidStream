@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model SplitterN "1 to N splitter"
+model SplitterN "Splitter with one inlet and N outlets"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
@@ -19,7 +19,7 @@ model SplitterN "1 to N splitter"
 protected
   outer DropOfCommons dropOfCommons;
 
-   SI.Pressure r_mix;
+  SI.Pressure r_mix;
 
 equation
   der(inlet.m_flow) * L = inlet.r - r_mix;
@@ -31,13 +31,17 @@ equation
 
   sum(outlets.m_flow) + inlet.m_flow = 0;
 
-   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{0,0},{96,10}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{70,0}},
+          points={{0,0},{96,-10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -48,9 +52,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)));
+    Diagram(coordinateSystem(preserveAspectRatio=false)));
 end SplitterN;

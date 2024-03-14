@@ -25,18 +25,19 @@ algorithm
 <p>
 This function is used to approximate the equation
 </p>
-<pre>
-    y = <strong>if</strong> x &gt; 0 <strong>then</strong> y1 <strong>else</strong> y2;
-</pre>
+
+<blockquote><pre>
+y = <strong>if</strong> x &gt; 0 <strong>then</strong> y1 <strong>else</strong> y2;
+</pre></blockquote>
 
 <p>
 by a smooth characteristic, so that the expression is continuous and differentiable:
 </p>
 
-<pre>
-   y = <strong>smooth</strong>(1, <strong>if</strong> x &gt;  x_small <strong>then</strong> y1 <strong>else</strong>
-                 <strong>if</strong> x &lt; -x_small <strong>then</strong> y2 <strong>else</strong> f(y1, y2));
-</pre>
+<blockquote><pre>
+y = <strong>smooth</strong>(1, <strong>if</strong> x &gt;  x_small <strong>then</strong> y1 <strong>else</strong>
+              <strong>if</strong> x &lt; -x_small <strong>then</strong> y2 <strong>else</strong> f(y1, y2));
+</pre></blockquote>
 
 <p>
 In the region -x_small &lt; x &lt; x_small a 2nd order polynomial is used

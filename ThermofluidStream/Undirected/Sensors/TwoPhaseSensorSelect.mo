@@ -6,19 +6,19 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium2Phase =
-      Media.myMedia.Interfaces.PartialTwoPhaseMedium                          "Medium model"
+      Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>
 </html>"));
 
-  parameter Quantities quantity "Quantitiy the sensor measures"
+  parameter Quantities quantity "Quantity the sensor measures"
     annotation(choicesAllMatching=true);
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -35,8 +35,8 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity(redeclare
-        package Medium =                                                                                 Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getTwoPhaseQuantity (
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
     <p>This function computes the selected two-phase quantity from state.</p>
       </html>"));
@@ -86,14 +86,14 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
           extent={{0,19},{60,69}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Undirected sensor for a vapor quality. It must be seperate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
+<p>Undirected sensor for a vapor quality. It must be separate from SingleSensorSelect, because it needs a TwoPhaseMedium.</p>
 </html>"));
 end TwoPhaseSensorSelect;

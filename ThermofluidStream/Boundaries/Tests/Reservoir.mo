@@ -2,12 +2,11 @@ within ThermofluidStream.Boundaries.Tests;
 model Reservoir "Test for Reservoir"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium =
-      Media.myMedia.CompressibleLiquids.LinearColdWater
+  replaceable package Medium = Media.myMedia.CompressibleLiquids.LinearColdWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium Model"
-      annotation(choicesAllMatching=true, Documentation(info="<html>
-<p>Medium Model for the test. Be aware that the Component is manly ment for liquids with low compressablility.</p>
+    "Medium Model"
+    annotation(choicesAllMatching=true, Documentation(info="<html>
+<p>Medium Model for the test. Be aware that the Component is mainly meant for liquids with low compressablility.</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -32,11 +31,11 @@ model Reservoir "Test for Reservoir"
         k_p_input=500,
         k_fric_input=0))
     annotation (Placement(transformation(extent={{34,10},{54,30}})));
-  Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
+  Processes.FlowResistance flowResistance(
+    redeclare package Medium=Medium,
     r=0.03,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{10,50},{-10,70}})));
   Source source(redeclare package Medium=Medium, p0_par=101200)
     annotation (Placement(transformation(extent={{-74,-66},{-54,-46}})));
@@ -66,16 +65,16 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=100))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100))
     annotation (Placement(transformation(extent={{-46,-66},{-26,-46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=100))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=100))
     annotation (Placement(transformation(extent={{16,-66},{36,-46}})));
 equation
   connect(pump.inlet, reservoir1.outlet) annotation (Line(

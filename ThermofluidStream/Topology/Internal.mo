@@ -23,29 +23,21 @@ package Internal
     parameter Boolean invert = false "Invert split-ratio input?";
     parameter SI.Time TC_input = 0.05 "Time constnat for PT1 on split-ratio input"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.Power P_thresh = 1 "Power threshold  for \"create-pressure-warning\""
+    parameter SI.Power P_thresh = 1 "Power threshold for \"create-pressure-warning\""
       annotation(Dialog(tab="Advanced"));
 
     ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{-80,20}})));
+      annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
     ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium) annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-          rotation=90,
-          origin={0,100}), iconTransformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,100})));
     ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = Medium) annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=0,
-          origin={100,0}), iconTransformation(
-          extent={{-20,-20},{20,20}},
-          rotation=0,
           origin={100,0})));
 
-    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
-          rotation=90,
-          origin={0,-100}),                                                                                                          iconTransformation(
+    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,-30})));
@@ -130,17 +122,14 @@ package Internal
     outletA.state = Medium.setState_phX(p= max(p_min,p_A), h=h_in, X=Xi_in);
     outletB.state = Medium.setState_phX(p= max(p_min,p_B), h=h_in, X=Xi_in);
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    annotation (
+      Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
-            points={{-70,0},{0,0}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{80,0}},
-            color={28,108,200},
-            thickness=0.5),
-          Line(
-            points={{0,0},{0,80}},
+            points={{0,0},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(
@@ -151,22 +140,17 @@ package Internal
             lineThickness=0.5),
           Text(
             extent={{-60,100},{-20,60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="A"),
           Text(
             extent={{60,-20},{100,-60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="B"),
           Text(
             extent={{-94,38},{90,8}},
-            lineColor={0,0,0},
+            textColor={0,0,0},
             textString="SplitterRatio")}),
-                                  Diagram(coordinateSystem(preserveAspectRatio=
-              false)),
+      Diagram(coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
 <p><br>Splitter, that uses a directly set split ratio. In order to have stationary r that goes to zero, a pressure difference between outlet A and B is calculated, that is applied to one of the outlets, until r-&gt;0.</p><p><br>The idear builds on the splitter with an enforeced regime of Zimmer Real-Time&nbsp;Simulation&nbsp;of&nbsp;an&nbsp;Aircraft&nbsp;Electric&nbsp;Driven&nbsp;Environmental&nbsp;Control&nbsp;System&nbsp;for&nbsp;Virtual&nbsp;Testing&nbsp;Purposes&nbsp;Sec&nbsp;3.4</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Topology.Internal.SplitterRatio.PNG\"/><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Topology.Internal.SplitterRatio2.PNG\"/></p>
@@ -178,5 +162,5 @@ package Internal
       B "Port B",
       OneMinusS "1-s",
       pressureDrop "Pressure Drop")
-      "Choices for the pressure drop behaviour of SplitterRatio";
+      "Choices for the pressure drop behavior of SplitterRatio";
 end Internal;

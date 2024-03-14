@@ -38,7 +38,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[3], foreA) annotation (Line(
-      points={{-30,1.33333},{0,1.33333},{0,100}},
+      points={{-30,0.666667},{0,0.666667},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(foreB, junctionMN.fores[2]) annotation (Line(
@@ -46,7 +46,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(foreC, junctionMN.fores[1]) annotation (Line(
-      points={{0,-100},{0,-1.33333},{-30,-1.33333}},
+      points={{0,-100},{0,-0.666667},{-30,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -74,23 +74,17 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{-20,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{50,20},{90,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Text(
           extent={{60,-100},{20,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="C")}),
-     Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Junction with a rear and three fores in a x shape.</p>
 </html>"));

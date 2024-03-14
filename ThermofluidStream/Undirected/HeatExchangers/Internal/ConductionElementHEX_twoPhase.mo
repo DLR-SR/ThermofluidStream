@@ -27,14 +27,14 @@ protected
 
 initial equation
   assert(init <> Processes.Internal.InitializationMethodsCondElement.port, "This initialization will lead to large nonlinear equation systems. Please choose 'h0', 'rear' or 'fore'.");
-  assert(init <> Processes.Internal.InitializationMethodsCondElement.T,  "Temperature might is not independent of pressrue in the 2-phase area. Please choose 'h0', 'rear' or 'fore'.");
+  assert(init <> Processes.Internal.InitializationMethodsCondElement.T, "Temperature might is not independent of pressrue in the 2-phase area. Please choose 'h0', 'rear' or 'fore'.");
 
 equation
   //1) Calculated from enthalpies --> can go below zero and above one (needed for heat transfer calculations)!
   x = (h - h_bubble)/(h_dew - h_bubble);
 
-  U_liq = max(U_min, U_liq_nom*(abs(m_flow)/m_flow_nom)^Re_exp_cond);
-  U_vap = max(U_min, U_vap_nom*(abs(m_flow)/m_flow_nom)^Re_exp_evap);
+  U_liq = max(U_min, U_liq_nom*(abs(m_flow)/(m_flow_nom/nCellsParallel))^Re_exp_cond);
+  U_vap = max(U_min, U_vap_nom*(abs(m_flow)/(m_flow_nom/nCellsParallel))^Re_exp_evap);
   U_tp = max(U_min, U_tp_nom);
 
   //Coefficient of heat transfer dependent on vapor quality (interpolation in phase-transition regions)
@@ -167,7 +167,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation of the Conduction Element for the DiscritizedHex.</p>
-<p>Concerning the heat transfer coefficient it is assumed, that the main term influencing the coefficient of heat transfer is the mass flow rate. Therefore a nominal value for the heat transfer coefficient at a nominal mass flow rate can be set. The reynolds exponents for normalization  of the heat transfer coefficient for evaporation and condensation are taken from Yan, Yi-Yie, &amp; Lin, T.-F. (1999). Condensation heat transfer and pressure drop of refrigerant R-134a in a small pipe. International Journal of Heat and Mass Transfer, 42(4) and Yan, Y.-Y., &amp; Lin, T.-F. (1999). Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger. Journal of Heat Transfer, 121(1). Furthermore a minimum value U_min for the coefficent of heat transfer is set to ensure heat transfer at zero mass flow.</p>
+<p>Concerning the heat transfer coefficient it is assumed, that the main term influencing the coefficient of heat transfer is the mass flow rate. Therefore a nominal value for the heat transfer coefficient at a nominal mass flow rate can be set. The reynolds exponents for normalization of the heat transfer coefficient for evaporation and condensation are taken from Yan, Yi-Yie, &amp; Lin, T.-F. (1999). Condensation heat transfer and pressure drop of refrigerant R-134a in a small pipe. International Journal of Heat and Mass Transfer, 42(4) and Yan, Y.-Y., &amp; Lin, T.-F. (1999). Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger. Journal of Heat Transfer, 121(1). Furthermore a minimum value U_min for the coefficient of heat transfer is set to ensure heat transfer at zero mass flow.</p>
 <p>For further documentation see the documentation of the motherclass.</p>
 </html>"));
 end ConductionElementHEX_twoPhase;

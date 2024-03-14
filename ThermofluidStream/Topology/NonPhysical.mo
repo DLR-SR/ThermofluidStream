@@ -10,7 +10,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       Documentation(info="<html>
 <p>A splitter with prescribed split ratio that acts as a pressure control valve on both outlets. Pressure is reduced on the outlets in order to follow the mass-flow split prescription. </p>
 <p>For reversed mass-flow the component might create work in form of increasing pressure of the fluid flowing from outlet to inlet. </p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RatioControl;
 
@@ -20,9 +20,9 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p>A switch with a fixed split ratio that is indended as a switch between two paths. Therefore the input sould be 1 or 0 for the most part. </p>
-<p><br>Otherwise will create work in the form of pressure on one of the two paths in order to fulfill the prescribed splitratio. </p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>A switch with a fixed split ratio that is intended as a switch between two paths. Therefore the input should be 1 or 0 for the most part. </p>
+<p><br>Otherwise it will create work in the form of pressure on one of the two paths in order to fulfill the prescribed split ratio. </p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end RTSwitch;
 
@@ -32,39 +32,35 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is nessesary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
+<p>A splitter with prescribed mass-flow split, that changes (increases or reduces) pressure on outletA in order to fulfull the mass-flow prescription. In case an increase of pressure is necessary for the mass-flow (or for reversed mass-flow), the component will create work in the form of increasing pressure on the A-path.</p>
+<p>For SplitterRatio and JunctionRatio make sure to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end LeakageA;
 
   model JunctionRatio "Split-ratio Junction for a bypass"
 
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                  "Medium model"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
+    "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-    parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
+    parameter Boolean assumeConstantDensity = true "= true, if only mass-flow rate will determine the mixing";
     parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
       annotation (Dialog(tab="Advanced"));
-    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each branch of component"
       annotation (Dialog(tab="Advanced"));
-    parameter SI.Time TC_input = 0.05;
-    parameter Boolean invert = false;
+    parameter SI.Time TC_input = 0.05 "Time constant";
+    parameter Boolean invert = false
+      "= true, if difference (1-splitRatio) is used for split ratio, otherwise splitRatio input is used directly";
 
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={-100,0})));
-    Interfaces.Inlet  inletA( redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100})));
-    Interfaces.Inlet  inletB( redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}},rotation=180,origin={100,0})));
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
+    Interfaces.Inlet inletA(redeclare package Medium = Medium)
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
+    Interfaces.Inlet inletB(redeclare package Medium = Medium)
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0})));
 
-    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(extent={{-20,-20},{20,20}},
-          rotation=90,
-          origin={0,-100}),                                                                                                          iconTransformation(
+    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,-30})));
@@ -111,7 +107,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       Xi[j,1] = mfk(inletA.state, j);
       Xi[j,2] = mfk(inletB.state, j);
     end for;
-    //instad of
+    //instead of
     /* Xi[:,i] = Medium.massFraction(inlets[i].state); */
 
     //p[1] + r_in[2] = p_mix + r_mix;
@@ -139,18 +135,13 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     outlet.state = Medium.setState_phX(p_mix,h_mix,Xi_mix);
 
-
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(
-            points={{-70,0},{0,0}},
+            points={{-100,0},{100,0}},
             color={28,108,200},
             thickness=0.5),
           Line(
-            points={{0,0},{80,0}},
-            color={28,108,200},
-            thickness=0.5),
-          Line(
-            points={{0,0},{0,80}},
+            points={{0,0},{0,100}},
             color={28,108,200},
             thickness=0.5),
           Ellipse(
@@ -161,30 +152,26 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             lineThickness=0.5),
           Text(
             extent={{-60,100},{-20,60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="A"),
           Text(
             extent={{80,-20},{120,-60}},
-            lineColor={175,175,175},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
+            textColor={175,175,175},
             textString="B"),
           Text(
-            extent={{-96,34},{88,4}},
-            lineColor={0,0,0},
+            extent={{-92,38},{92,8}},
+            textColor={0,0,0},
             textString="JunctionRatio")}),
-                                  Diagram(coordinateSystem(preserveAspectRatio=
-              false)),
+      Diagram(coordinateSystem(preserveAspectRatio=false)),
       Documentation(info="<html>
-<p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (as in through dynamic pressure).</p>
+<p>A junction with a fixed mass-flow split. It can be understood to use energy of the higher-pressure inlet to pull the lower-pressure stream (likely to dynamic pressure effects).</p>
 <p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter or Junction.</p>
 </html>"));
   end JunctionRatio;
+
   annotation (Documentation(info="<html>
-<p>This package contains topology elements that have non-physical assumtions or constraints like mass-flow splits. </p>
-<p>Although they are non-physical they can be used to model certain behaviour like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicilty modeling the phenomena like a controlled valve.</p>
-<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><b>or</b></u> Junction.</p>
+<p>This package contains topology elements that have non-physical assumptions or constraints like mass-flow splits. </p>
+<p>Although they are non-physical they can be used to model certain behavior like a leakage or mass-flow-split controlled junction-valve combinations and simplify the model by not explicitly modeling the phenomena like a controlled valve.</p>
+<p>For SplitterRatio and JunctionRatio make to only prescribe mass-flow-split in Splitter <u><strong>or</strong></u> Junction.</p>
 </html>"));
 end NonPhysical;

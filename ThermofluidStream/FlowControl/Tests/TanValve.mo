@@ -3,10 +3,11 @@ model TanValve "Test for TanValve"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-    constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-        annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -22,25 +23,25 @@ model TanValve "Test for TanValve"
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
-  Topology.SplitterT2 splitterT2_1(redeclare package Medium =
-        Medium)
+  Topology.SplitterT2 splitterT2_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-78,0},{-58,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-12,36},{8,56}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{44,36},{64,56}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
@@ -55,16 +56,16 @@ model TanValve "Test for TanValve"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{68,26},{88,46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{64,-10},{84,10}})));
 equation
   connect(flowResistance.outlet, splitterT2_1.inlet) annotation (Line(

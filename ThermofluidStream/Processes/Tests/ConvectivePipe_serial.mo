@@ -4,10 +4,10 @@ model ConvectivePipe_serial
   extends Modelica.Icons.Example;
 
 replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
-  ThermalConvectionPipe    thermalConvection(redeclare package Medium =
-        Medium,
+  ThermalConvectionPipe thermalConvection(
+    redeclare package Medium = Medium,
     r=0.005,
     l=1)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
@@ -21,7 +21,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
       p0_par=100000)
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(Q_flow=2000)
-               annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-20,70})));
@@ -30,21 +30,21 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4))
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=1e4))
     annotation (Placement(transformation(extent={{-84,-10},{-64,10}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=100, T(fixed=true))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,34})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
-        Medium,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{54,0},{74,20}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
-        Medium,
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-58,0},{-38,20}})));
@@ -60,7 +60,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
   Utilities.showRealValue showRealValue1(
     use_numberPort=false,
     description="v_m",
-    number=thermalConvection.v_m) 
+    number=thermalConvection.v_m)
     annotation (Placement(transformation(extent={{10,-8},{30,-28}})));
     */
   Utilities.showRealValue showRealValue2(
@@ -73,7 +73,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     offset=10 + 273.15,
     startTime=500)
     annotation (Placement(transformation(extent={{-96,36},{-76,56}})));
-  ThermalConvectionPipe    thermalConvection1(
+  ThermalConvectionPipe thermalConvection1(
     redeclare package Medium = Medium,
     r=0.005,
     l=1)
@@ -84,7 +84,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{0,0},{20,20}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow1(Q_flow=
-        2000)  annotation (Placement(transformation(
+        2000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={36,70})));
@@ -107,7 +107,7 @@ equation
     annotation (Line(points={{-20,10},{-20,34}},
                                              color={191,0,0}));
   connect(fixedHeatFlow.port, heatCapacitor.port) annotation (Line(points={{-20,60},
-          {-20,34}},                                        color={191,0,0}));
+          {-20,34}}, color={191,0,0}));
   connect(sink.inlet, multiSensor_Tpm.outlet) annotation (Line(
       points={{90,0},{74,0}},
       color={28,108,200},

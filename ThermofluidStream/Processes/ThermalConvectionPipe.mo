@@ -6,15 +6,15 @@ model ThermalConvectionPipe "Very simple model of thermal convection"
       Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
           extent={{-10,90},{10,110}})));
 
-  parameter SI.Radius r(min = 0) "Radius of Pipe";
+  parameter SI.Radius r(min = 0) "Radius of pipe";
   parameter SI.Length l(min=0) "Length of pipe";
   parameter SI.ReynoldsNumber Re_D_crit = 2300
-    "critical Reynolds number for transition to turbulent"
+    "Critical Reynolds number for transition to turbulent"
   annotation(Dialog(tab = "Advanced", group = "flow characteristics"));
-  //parameter Real C_dh(unit="J/(K.s)") = 1e-6 "dimensionless constant for mass flow regularisation";
+  //parameter Real C_dh(unit="J/(K.s)") = 1e-6 "Dimensionless constant for mass flow regularization";
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg
-    "nominal mass flow rate for regularisation"
-  annotation(Dialog(tab = "Advanced", group = "Regularisation parameters"));
+    "Nominal mass flow rate for regularization"
+  annotation(Dialog(tab = "Advanced", group = "Regularization parameters"));
 
   Medium.ThermodynamicState center_state = Medium.setState_phX(p_in,h_in+dh/2,Xi_in);
   Medium.Temperature T = Medium.temperature(center_state);
@@ -107,7 +107,7 @@ equation
         Line(points={{-84,-44},{88,-44}}, color={238,46,47}),
         Line(
           points={{-60,0},{64,0}},
-          color={28,108,200})}),       Diagram(coordinateSystem(
+          color={28,108,200})}), Diagram(coordinateSystem(
           preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component models the convective heat transfer in a pipe element with constant heat flux. </p>

@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionN "Junction with N inlets"
+model JunctionN "Junction with N inlets and one outlet"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
@@ -51,7 +51,7 @@ equation
     for j in 1:Medium.nXi loop
       Xi[j,i] = mfk(inlets[i].state, j);
     end for;
-    //instad of
+    //instead of
     /* Xi[:,i] = Medium.massFraction(inlets[i].state); */
 
     p[i] + r_in[i] = p_mix + r_mix;
@@ -72,11 +72,15 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{70,0}},
+          points={{0,0},{-100,10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,0},{-100,-10}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -87,9 +91,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-90,80},{-50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)));
 end JunctionN;

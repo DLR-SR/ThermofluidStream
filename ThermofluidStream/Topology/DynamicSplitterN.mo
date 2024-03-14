@@ -2,7 +2,7 @@ within ThermofluidStream.Topology;
 model DynamicSplitterN "Dynamic pressure 1 to N splitter"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
@@ -14,7 +14,7 @@ model DynamicSplitterN "Dynamic pressure 1 to N splitter"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
     annotation (Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity=true    "If true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "inlet"
@@ -64,11 +64,7 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
-          color={0,127,0},
-          thickness=0.5),
-        Line(
-          points={{0,0},{70,0}},
+          points={{-100,0},{100,0}},
           color={0,127,0},
           thickness=0.5),
         Ellipse(
@@ -79,9 +75,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N"),
         Ellipse(
           extent={{-20,20},{20,-20}},

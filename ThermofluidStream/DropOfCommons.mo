@@ -1,14 +1,16 @@
 within ThermofluidStream;
-model DropOfCommons "model for global parameters"
+model DropOfCommons "Model for global parameters"
 
-  parameter Utilities.Units.Inertance L = 0.01 "inertance of the flow"
+  parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
       annotation(Dialog(tab="Advanced"));
 
   parameter SI.MassFlowRate m_flow_reg = 0.01
+    "Regularization threshold of mass flow rate"
     annotation(Dialog(group="Regularization"));
   parameter SI.AngularVelocity omega_reg = 1
+    "Angular velocity used for regularization"
     annotation(Dialog(group="Regularization"));
-  parameter SI.Density rho_min = 1e-10
+  parameter SI.Density rho_min = 1e-10 "Minimum allowed density"
     annotation(Dialog(group="Regularization"));
   parameter SI.Pressure p_min = 100 "Minimal steady-state pressure"
     annotation(Dialog(group="Regularization"));
@@ -16,8 +18,7 @@ model DropOfCommons "model for global parameters"
     annotation(Dialog(group="Regularization"));
   parameter SI.Acceleration g = Modelica.Constants.g_n "Acceleration of gravity";
 
-  parameter AssertionLevel assertionLevel = AssertionLevel.error "Global assertion level"
-    annotation(choicesAllMatching=true);
+  parameter AssertionLevel assertionLevel = AssertionLevel.error "Global assertion level";
 
   annotation (defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",
@@ -48,7 +49,7 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
           pattern=LinePattern.None,
           smooth=Smooth.Bezier,
           fillColor={19,76,141},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>

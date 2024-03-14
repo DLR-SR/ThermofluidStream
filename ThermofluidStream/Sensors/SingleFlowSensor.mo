@@ -5,23 +5,22 @@ model SingleFlowSensor
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantitiy the sensor measures"
-    annotation(choicesAllMatching=true);
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum Density"
+  parameter Quantities quantity "Quantity the sensor measures";
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
@@ -33,7 +32,7 @@ model SingleFlowSensor
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{80,-80},{120,-40}}),
         iconTransformation(extent={{80,-80},{120,-40}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantitiy [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
 
@@ -78,10 +77,10 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,-60},{80,-60}},
+          points={{-100,-60},{100,-60}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{0,-26},{0,-60}},  color={0,0,0}),
+        Line(points={{0,-26},{0,-60}}, color={0,0,0}),
         Ellipse(
           extent={{-6,-54},{6,-66}},
           lineColor={28,108,200},
@@ -95,17 +94,17 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{0,25},{60,75}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>A Sensor measuring a selectable flow quantity associated with the massflow.</p>
+<p>A sensor measuring a selectable flow quantity associated with the massflow.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>
 </html>"));
 end SingleFlowSensor;

@@ -8,7 +8,7 @@ model Switch
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
-  parameter SI.Pressure p_ref = 1e5 "Rreference pressurre";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
   parameter Boolean invertInput = false "Invert input meaning";
   parameter Boolean initializeOneMassflowSplit = false "Initialize mass-flow ratio (one initial equation)"
@@ -45,7 +45,7 @@ model Switch
         rotation=0,
         origin={40,0})));
   ThermofluidStream.Topology.SplitterT2 splitterT2_1(redeclare package Medium = Medium, L=0)
-                                                     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
   // for dynamic select of graphics only
   Real u2 = (if not invertInput then u else 1-u);
@@ -115,6 +115,6 @@ equation
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}),                 Diagram(
+          lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end Switch;

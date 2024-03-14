@@ -4,14 +4,14 @@ model DifferenceSensor_Tp
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
-                                                                 "Medium model A"
+    "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
   replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
-                                                                 "Medium model B"
-  annotation (choicesAllMatching=true,
+    "Medium model B"
+    annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
@@ -27,11 +27,11 @@ model DifferenceSensor_Tp
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure)));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));
@@ -115,23 +115,23 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,55},{60,5}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("T", String(
               T,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-5},{60,-55}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,55},{-60,5}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
           extent={{-120,-5},{-60,-55}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%pressureUnit"),
         Line(
           points={{-80,80},{-80,-80}},
@@ -167,9 +167,9 @@ equation
           extent={{-72,-68},{-48,-92}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Sensor for measuring difference in temperature, pressure at once.</p>
+<p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>
 </html>"));
 end DifferenceSensor_Tp;

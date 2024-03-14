@@ -3,15 +3,15 @@ model Pump "Test for pumps"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package Medium =
-      tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-                                                            constrainedby
-    tf.Media.myMedia.Interfaces.PartialMedium      "Medium model"
+  replaceable package Medium = tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    constrainedby tf.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>
-        <p><span style=\"font-size: 12pt;\">Medium model for the test. Should be incompressible or with low compressibility.</span></p>
-        </html>"));
+<p>
+Medium model for the test. Should be incompressible or with low compressibility.
+</p>
+</html>"));
 
   tf.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -34,7 +34,7 @@ model Pump "Test for pumps"
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-    m_acceleraton_0=0.2,
+    m_acceleration_0=0.2,
     redeclare function dp_tau_pump =
         tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
     annotation (Placement(transformation(extent={{-2,62},{18,82}})));
@@ -123,9 +123,9 @@ model Pump "Test for pumps"
 equation
 
   connect(pump.omega_input, const.y)
-    annotation (Line(points={{8,62},{8,52},{-3,52}},     color={0,0,127}));
+    annotation (Line(points={{8,62},{8,52},{-3,52}}, color={0,0,127}));
   connect(power1.flange, pump1.flange)
-    annotation (Line(points={{-6.4,12},{8,12},{8,22}},     color={0,0,0}));
+    annotation (Line(points={{-6.4,12},{8,12},{8,22}}, color={0,0,0}));
   connect(splitterN.inlet, source.outlet) annotation (Line(
       points={{-70,68},{-82,68}},
       color={28,108,200},
@@ -135,39 +135,39 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(pump.inlet, splitterN.outlets[4]) annotation (Line(
-      points={{-2,72},{-32,72},{-32,69.5},{-50,69.5}},
+      points={{-2,72},{-32,72},{-32,68.75},{-50,68.75}},
       color={28,108,200},
       thickness=0.5));
   connect(pump2.omega_input, const1.y)
-    annotation (Line(points={{8,-18},{8,-28},{-3,-28}},  color={0,0,127}));
+    annotation (Line(points={{8,-18},{8,-28},{-3,-28}}, color={0,0,127}));
   connect(power2.flange,pump3. flange)
-    annotation (Line(points={{-6.4,-68},{8,-68},{8,-56}},  color={0,0,0}));
+    annotation (Line(points={{-6.4,-68},{8,-68},{8,-56}}, color={0,0,0}));
   connect(pump1.inlet, splitterN.outlets[3]) annotation (Line(
-      points={{-2,32},{-30,32},{-30,68.5},{-50,68.5}},
+      points={{-2,32},{-30,32},{-30,68.25},{-50,68.25}},
       color={28,108,200},
       thickness=0.5));
   connect(pump2.inlet, splitterN.outlets[2]) annotation (Line(
-      points={{-2,-8},{-32,-8},{-32,67.5},{-50,67.5}},
+      points={{-2,-8},{-32,-8},{-32,67.75},{-50,67.75}},
       color={28,108,200},
       thickness=0.5));
   connect(pump3.inlet, splitterN.outlets[1]) annotation (Line(
-      points={{-2,-46},{-34,-46},{-34,66.5},{-50,66.5}},
+      points={{-2,-46},{-34,-46},{-34,67.25},{-50,67.25}},
       color={28,108,200},
       thickness=0.5));
   connect(pump3.outlet, junctionN.inlets[1]) annotation (Line(
-      points={{18,-46},{30,-46},{30,66.5},{48,66.5}},
+      points={{18,-46},{30,-46},{30,67.25},{48,67.25}},
       color={28,108,200},
       thickness=0.5));
   connect(pump2.outlet, junctionN.inlets[2]) annotation (Line(
-      points={{18,-8},{28,-8},{28,67.5},{48,67.5}},
+      points={{18,-8},{28,-8},{28,67.75},{48,67.75}},
       color={28,108,200},
       thickness=0.5));
   connect(pump1.outlet, junctionN.inlets[3]) annotation (Line(
-      points={{18,32},{26,32},{26,68.5},{48,68.5}},
+      points={{18,32},{26,32},{26,68.25},{48,68.25}},
       color={28,108,200},
       thickness=0.5));
   connect(pump.outlet, junctionN.inlets[4]) annotation (Line(
-      points={{18,72},{28,72},{28,69.5},{48,69.5}},
+      points={{18,72},{28,72},{28,68.75},{48,68.75}},
       color={28,108,200},
       thickness=0.5));
   connect(fixedTemperature.port, pump2.heatport)

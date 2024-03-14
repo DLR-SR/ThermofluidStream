@@ -79,20 +79,21 @@ package CompressibleLiquids "Compressible liquid models"
     lambda := 0.608;
   end thermalConductivity;
     annotation (Documentation(info="<html>
-<h4>Water model with linear compressibility at ambient conditions</h4>
+<p>
+Water model with linear compressibility at ambient conditions
+</p>
 </html>"));
   end LinearWater_pT_Ambient;
 
   annotation (Documentation(info="<html>
-
 <h4>Fluid models with linear compressibility, using PartialLinearFluid as base class.</h4>
 <p>The linear compressibility fluid models contained in this package are based on the assumptions that:
 </p>
 <ul>
-<li>The specific heat capacity at constant pressure (cp) is constant</li>
-<li>The isobaric expansion coefficient (beta) is constant</li>
-<li>The isothermal compressibility (kappa) is constant</li>
-<li>Pressure and temperature are used as states</li>
+  <li>The specific heat capacity at constant pressure (cp) is constant</li>
+  <li>The isobaric expansion coefficient (beta) is constant</li>
+  <li>The isothermal compressibility (kappa) is constant</li>
+  <li>Pressure and temperature are used as states</li>
 </ul>
 <p>
 This results in models that are only valid for small temperature ranges, but sufficient to model compressibility and e.g., the \"water hammer\" effect. Another advantage id that only 3 values need to be measured to have an initial model. Hydraulic fluids can often be approximated by this type of model.
@@ -105,9 +106,9 @@ be interpreted as a linearization of a full non-linear fluid model (but it is no
 thermodynamic coordinates). Reference values are needed for
 </p>
 <ol>
-<li>the density (reference_d),</li>
-<li>the specific enthalpy (reference_h),</li>
-<li>the specific entropy (reference_s).</li>
+  <li>the density (reference_d),</li>
+  <li>the specific enthalpy (reference_h),</li>
+  <li>the specific entropy (reference_s).</li>
 </ol>
 <p>
 Apart from that, a user needs to define the molar mass, MM_const.
@@ -115,6 +116,5 @@ Note that it is possible to define a fluid by computing the reference
 values from a full non-linear fluid model by computing the package constants
 using the standard functions defined in a fluid package (see example in Common, LinearWater_pT).
 </p>
-
 </html>"));
 end CompressibleLiquids;

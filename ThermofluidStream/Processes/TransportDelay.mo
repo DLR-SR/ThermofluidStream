@@ -2,7 +2,7 @@ within ThermofluidStream.Processes;
 model TransportDelay "Delay Thermofluid state depending on fluid speed"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.Length l "Lengh of Delay Pipe";
+  parameter SI.Length l "Length of Delay Pipe";
   parameter SI.Radius r "Radius of Delay Pipe";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal Density"
     annotation(Dialog(tab="Advanced"));
@@ -11,7 +11,7 @@ model TransportDelay "Delay Thermofluid state depending on fluid speed"
   parameter Real v_max(unit="1/s", min=0) = 50 "Maximum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
 
-  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default,  Medium.h_default, Medium.X_default[1:Medium.nXi]);
+  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
   constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0);
   constant SI.SpecificVolume v_0 = 1/Medium.density(state_0);
 
@@ -58,8 +58,8 @@ equation
   h_out = u_out + p_out * v_out;
   Xi_out = Xi_in;
   annotation (Documentation(info="<html>
-<p>Delays the temperature and massFraction, not pressure, since pressure differences propagate with speed of sound, and since delaying only steady state pressure p not inertial pressure r might lead to undesireable behaviour.</p>
-<p>Note that this component uses the spatialDistribution operator, that has some artefacts (see Fig. 1) for high and low non-dimensional speeds v (possibly due to inerpolation or extrapolation the function). Therefore minimum and maximum speed in the non-dimensional coodrinate x (inlet @ x=0, outlet @ x=1) is limited. The default limits are [0.01, 50], so the delay is limited by default to [0.02s, 100s]. This limit can be adjusted in the advanced parameters tab.</p>
+<p>Delays the temperature and massFraction, not pressure, since pressure differences propagate with speed of sound, and since delaying only steady state pressure p not inertial pressure r might lead to undesirable behavior.</p>
+<p>Note that this component uses the spatialDistribution operator, that has some artefacts (see Fig. 1) for high and low non-dimensional speeds v (possibly due to inerpolation or extrapolation of the function). Therefore minimum and maximum speed in the non-dimensional coordinate x (inlet @ x=0, outlet @ x=1) is limited. The default limits are [0.01, 50], so the delay is limited by default to [0.02s, 100s]. This limit can be adjusted in the advanced parameters tab.</p>
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts2.PNG\"/> <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts.PNG\"/> </p>
 <p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
 </html>"),
@@ -72,7 +72,7 @@ Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

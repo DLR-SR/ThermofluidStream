@@ -16,7 +16,7 @@ model FlowResistance "Flow resistance model"
   replaceable function pLoss =
       ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
     constrainedby
-    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss               "Pressure loss function"
+    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss "Pressure loss function"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>Pressure loss function used in the flow resistance.</p>
 </html>"));
@@ -76,6 +76,6 @@ equation
           origin={0,25},
           rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Undirected implementation of the Flow Resistance with different selectable flow resistance functions (laminar, laminar-turbolent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
+<p>Undirected implementation of the FlowResistance with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
 </html>"));
 end FlowResistance;

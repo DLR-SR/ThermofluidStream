@@ -38,11 +38,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(rearB, junctionMN.rears[1]) annotation (Line(
-      points={{-100,0},{0,0},{0,-1.33333}},
+      points={{-100,0},{0,0},{0,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(rearC, junctionMN.rears[3]) annotation (Line(
-      points={{0,-100},{0,1.33333}},
+      points={{0,-100},{0,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[1], fore) annotation (Line(
@@ -74,23 +74,17 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{-20,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{-50,-20},{-90,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Text(
           extent={{60,-100},{20,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="C")}),
-     Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Junction with three rears and a fore in a x shape.</p>
 </html>"));

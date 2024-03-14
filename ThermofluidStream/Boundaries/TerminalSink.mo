@@ -2,12 +2,15 @@ within ThermofluidStream.Boundaries;
 model TerminalSink "Sink that imposes m_flow=0"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info =              "<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Source. Make sure it is the same as the one the inlet the source is connected to.</span></p>
+    "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Source. Make sure it is the same as the one
+the inlet the source is connected to.
+</p>
 </html>"));
 
-  Interfaces.Inlet inlet( redeclare package Medium=Medium)
+  Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{-80,20}})));
 
 equation
@@ -15,7 +18,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-72,0},{-60,0}},
+          points={{-100,0},{-50,0}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -39,7 +42,7 @@ equation
         Line(
           points={{-60,30},{-20,-30}},
           color={28,108,200},
-          thickness=0.5)}),                                      Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sink that terminates the flow. </p>
 <p>It imposes a m_flow=0 boundary.</p>

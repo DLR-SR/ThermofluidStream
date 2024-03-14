@@ -4,19 +4,24 @@ model VolumesDirectCoupling "Test Volumes"
 
   replaceable package Medium = Media.myMedia.Water.StandardWater
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                     "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
-        <p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
-        </html>"));
-
-  package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
-                                                                    "Medium package"
-      annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test of the MixVolumes.</span> </p>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(k_volume_damping=0.5,
-                                    assertionLevel = AssertionLevel.warning)
+  package MediumMix = Media.myMedia.IdealGases.MixtureGases.CombustionAir
+    "Medium package"
+    annotation (Documentation(info="<html>
+<p>
+Medium package used in the Test of the MixVolumes.
+</p>
+</html>"));
+
+  inner DropOfCommons dropOfCommons(
+    k_volume_damping=0.5,
+    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{70,-148},{90,-128}})));
   Volume heatportVolume2(
     redeclare package Medium = Medium,
@@ -30,7 +35,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Sink sink4(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-10},{56,10}})));
+    annotation (Placement(transformation(extent={{36,-10},{56,10}})));
   Volume heatportVolume1(
     redeclare package Medium = Medium,
     useHeatport=false,
@@ -104,7 +109,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Sink sink1(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
+    annotation (Placement(transformation(extent={{36,-30},{56,-10}})));
   VolumeFlex
          heatportVolume8(
     redeclare package Medium = Medium,
@@ -154,7 +159,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Sink sink2(redeclare package Medium = Medium, p0_par=130000)
-            annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
+    annotation (Placement(transformation(extent={{36,-50},{56,-30}})));
   ThermofluidStream.Boundaries.Reservoir
          heatportVolume12(
     redeclare package Medium = Medium,
@@ -180,7 +185,7 @@ model VolumesDirectCoupling "Test Volumes"
     outlet(m_flow(start=0, fixed=true)))
     annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
   Sink sink3(redeclare package Medium = Medium, p0_par=101000)
-            annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
+    annotation (Placement(transformation(extent={{36,-76},{56,-56}})));
 equation
 
   connect(heatportVolume2.outlet, sink4.inlet) annotation (Line(

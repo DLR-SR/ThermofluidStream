@@ -1,5 +1,5 @@
 within ThermofluidStream.Undirected.Boundaries;
-model PhaseSeparator "Parent to Reciever and Accumulator models"
+model PhaseSeparator "Parent to receiver and accumulator models"
   extends Internal.PartialVolume(
     redeclare replaceable package Medium =
         Media.myMedia.Interfaces.PartialTwoPhaseMedium,
@@ -13,7 +13,7 @@ model PhaseSeparator "Parent to Reciever and Accumulator models"
 
   import Init = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator;
 
-  parameter SI.Volume V_par(displayUnit="l")=0.01 "Volume of phase seperator";
+  parameter SI.Volume V_par(displayUnit="l")=0.01 "Volume of phase separator";
   parameter Real pipe_low(unit="1", min=0, max=1) "Low end of pipe";
   parameter Real pipe_high(unit="1", min=0, max=1) "High end of pipe";
   parameter Boolean density_derp_h_from_media = false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
@@ -21,10 +21,10 @@ model PhaseSeparator "Parent to Reciever and Accumulator models"
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization Method"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization"));
+    annotation(Dialog(tab="Initialization"));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.h)));
-  parameter SI.Mass M_0 = 1 "Initial Mass"
+  parameter SI.Mass M_0 = 1 "Initial mass"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.M)));
   parameter Real l_0(unit="1", min=0, max=1) = 0.5 "Initial liquid level"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.l)));
@@ -52,7 +52,7 @@ initial equation
   if init_method == Init.h then
     medium.h = h_0;
   elseif init_method == Init.M then
-    x/d_gas+(1-x)/d_liq  = V/M_0;
+    x/d_gas+(1-x)/d_liq = V/M_0;
     assert(x>=0 and x<=1, "Initialization by Mass might be inaccurate outside the two-phase region", AssertionLevel.warning);
   elseif init_method == Init.l then
     x = (d_gas*(1-l_0))/(d_liq*l_0+d_gas*(1-l_0));
@@ -84,7 +84,7 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                             Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This Volume is the parent class for Accumulator and Receiver models that seperate the two phases and are able and output gas, liquid or two-phase medium, dependin on its liquid level and the height of the outlet. </p>
-<p>Since there is no formula to compute density_derp_h for this volume, a upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding forumla by setting density_derp_h_from_media=true (default:false).</p>
+<p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>
+<p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false).</p>
 </html>"));
 end PhaseSeparator;

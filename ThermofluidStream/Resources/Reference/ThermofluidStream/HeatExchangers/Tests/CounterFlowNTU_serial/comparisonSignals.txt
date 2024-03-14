@@ -1,0 +1,9 @@
+time
+counterFlowNTU.h_out_A
+counterFlowNTU.h_out_B
+counterFlowNTU1.h_out_A
+counterFlowNTU1.h_out_B
+mCV.dp_int
+mCV1.dp_int
+sourceA.outlet.m_flow
+sourceB.outlet.m_flow

@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionNM "N to M splitter"
+model JunctionNM "Junction with N inlets and M outlets"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -21,14 +21,18 @@ model JunctionNM "N to M splitter"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
   SplitterN splitterN(
-    final N=M,                   redeclare package Medium = Medium, final L=L)
+    final N=M,
+    redeclare package Medium = Medium, final L=L)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={18,0})));
   JunctionN junctionN(
-    final N=N,                   redeclare package Medium = Medium, final L=L,
-    final m_flow_eps=m_flow_eps, final assumeConstantDensity = assumeConstantDensity)
+    final N=N,
+    redeclare package Medium = Medium,
+    final L=L,
+    final m_flow_eps=m_flow_eps,
+    final assumeConstantDensity = assumeConstantDensity)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -53,11 +57,23 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{0,0},{70,0}},
+          points={{0,0},{-100,10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,0},{-100,-10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,0},{96,10}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{0,0},{96,-10}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -68,15 +84,11 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-90,80},{-50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N"),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%M")}),
       Diagram(coordinateSystem(preserveAspectRatio=false)));
 end JunctionNM;

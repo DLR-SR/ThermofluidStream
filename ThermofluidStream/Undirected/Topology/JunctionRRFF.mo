@@ -34,19 +34,19 @@ protected
 
 equation
   connect(foreB, junctionMN.fores[2]) annotation (Line(
-      points={{100,0},{40,0},{40,1},{10,1}},
+      points={{100,0},{40,0},{40,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(foreA, junctionMN.fores[1]) annotation (Line(
-      points={{0,-100},{0,-20},{10,-20},{10,-1}},
+      points={{0,-100},{0,-20},{10,-20},{10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.rears[1], reara) annotation (Line(
-      points={{-10,-1},{-40,-1},{-40,0},{-100,0}},
+      points={{-10,-0.5},{-40,-0.5},{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(rearb, junctionMN.rears[2]) annotation (Line(
-      points={{0,100},{0,20},{-10,20},{-10,1}},
+      points={{0,100},{0,20},{-10,20},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -74,29 +74,21 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,100},{-20,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="b"),
         Text(
           extent={{50,20},{90,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="B"),
         Text(
           extent={{60,-100},{20,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{-50,-20},{-90,-60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="a")}),
-     Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Junction with two rears and two fores in a x shape.</p>
 </html>"));

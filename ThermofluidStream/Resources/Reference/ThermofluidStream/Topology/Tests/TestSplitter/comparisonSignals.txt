@@ -1,0 +1,4 @@
+time
+splitterN.inlet.m_flow
+splitterN.outlets[2].m_flow
+splitterN.outlets[3].m_flow

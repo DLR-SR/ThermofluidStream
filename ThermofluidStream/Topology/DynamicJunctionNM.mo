@@ -2,14 +2,14 @@ within ThermofluidStream.Topology;
 model DynamicJunctionNM "Dynamic pressure N to M splitter"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
 
   parameter Integer N(min=1) = 1 "Number of inputs";
   parameter Integer M(min=1) = 1 "Number of outputs";
-  parameter Boolean assumeConstantDensity=true    "If true only mass-flow rate will determine the mixing"
+  parameter Boolean assumeConstantDensity=true "If true only mass-flow rate will determine the mixing"
     annotation(Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
     annotation (Dialog(tab="Advanced"));
@@ -65,11 +65,7 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{0,0}},
-          color={0,127,0},
-          thickness=0.5),
-        Line(
-          points={{0,0},{70,0}},
+          points={{-100,0},{100,0}},
           color={0,127,0},
           thickness=0.5),
         Ellipse(
@@ -80,15 +76,11 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-90,80},{-50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%N"),
         Text(
           extent={{90,80},{50,40}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="%M"),
         Ellipse(
           extent={{-20,20},{20,-20}},

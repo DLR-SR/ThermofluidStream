@@ -1,9 +1,12 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model" annotation (
+    "Medium model" annotation (
       choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Volume. Make sure it is the same as the fores and rears the volume is connected to.</span></p>
+<p>
+Medium package used in the Volume. Make sure it is the same as
+the fores and rears the volume is connected to.
+</p>
 </html>"));
 
   parameter Boolean useHeatport = false "If true heatport is added";
@@ -21,7 +24,7 @@ partial model PartialVolume "Partial parent class for Volumes with one fore and 
     annotation(Dialog(tab= "Initialization"));
   parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
-  parameter Boolean use_hstart = false "True: spedific enthalpy contition instead of Temperature"
+  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
   parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
@@ -65,8 +68,8 @@ protected
   SI.Temperature T_heatPort;
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)
-  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
-  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(   m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
+  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
+  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
   // dont regstep variables that are only in der(state), to increase accuracy
   SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear;
   SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore;
@@ -122,7 +125,7 @@ equation
   end if;
   if not useRear then
     m_flow_rear = 0;
-    state_in_rear = Medium.setState_phX(Medium.p_default,  Medium.h_default, Medium.X_default[1:Medium.nXi]);
+    state_in_rear = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
     end if;
   if not useFore then
     m_flow_fore = 0;
@@ -184,8 +187,8 @@ equation
           thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This is the partial parent class for all undirected volumes with only one fore and rear. It is partial and is missing one equation for its volume or medium pressure and one for the volume work performed.</p>
-<p>Conceptually a Volume is a Sink and a Source. It therefore defines the Level of inertial pressure r in a closed loop and acts as a Loop breaker.</p>
-<p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampeend out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
-<p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these Systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states prefered by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
+<p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>
+<p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampened out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
+<p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states preferred by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
 </html>"));
 end PartialVolume;

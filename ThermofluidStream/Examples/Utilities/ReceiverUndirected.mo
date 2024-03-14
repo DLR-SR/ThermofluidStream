@@ -1,6 +1,6 @@
 within ThermofluidStream.Examples.Utilities;
-model ReceiverUndirected "Undirected Receiver Model for vapor cycle applications"
-  extends Undirected.Boundaries.PhaseSeparator(   pipe_low=0.05, pipe_high=0.15);
+model ReceiverUndirected "Undirected receiver model for vapor cycle applications"
+  extends Undirected.Boundaries.PhaseSeparator(pipe_low=0.05, pipe_high=0.15);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Ellipse(
@@ -228,7 +228,7 @@ model ReceiverUndirected "Undirected Receiver Model for vapor cycle applications
     Documentation(info="<html>
 <p>Model of an undirected receiver for application in reversible heat pump systems.</p>
 <p><br>It inherits the basic balance equations from the volume model.</p>
-<p><br>The only difference to the directed <a href=\"ThermofluidStream.Examples.Utilities.Receiver\">Receiver</a> model is, that it has outlet pipes on <b>both</b> sides of the volume. Hence the liquid phase is extracted from the respective pipe, depending on the flow direction.</p>
+<p><br>The only difference to the directed <a href=\"modelica://ThermofluidStream.Examples.Utilities.Receiver\">Receiver</a> model is, that it has outlet pipes on <strong>both</strong> sides of the volume. Hence the liquid phase is extracted from the respective pipe, depending on the flow direction.</p>
 <p><br>The purpose of this model is to separate the phases and provide liquid phase to the expansion valve in both flow directions. The liquid is extracted through a pipe on each side of the receiver. The low and high end of the pipes can be set by the respective parameters. Depending on the liquid level of the receiver, the outlet enthalpy is set:</p>
 <p><br>If the liquid level is higher than the upper end of the pipe, liquid is extracted.</p>
 <p>If the liquid level is lower then the lower end of the pipe, the actual enthalpy of the medium in the receiver is extracted.</p>

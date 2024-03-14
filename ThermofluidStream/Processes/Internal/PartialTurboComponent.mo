@@ -9,8 +9,8 @@ partial model PartialTurboComponent "Partial of components that exchange work be
     annotation(Dialog(group="Input/Output"));
   parameter Boolean enableOutput = false "Include output for selectable quantity"
     annotation(Dialog(group="Input/Output"));
-  parameter Quantity outputQuantity=Quantity.m_flow_kgps   "Quantitiy to output"
-    annotation(choicesAllMatching=true, Dialog(group="Input/Output", enable=enableOutput));
+  parameter Quantity outputQuantity=Quantity.m_flow_kgps "Quantity to output"
+    annotation(Dialog(group="Input/Output", enable=enableOutput));
   parameter Boolean enableAccessHeatPort = false "Include access heatport"
     annotation(Dialog(group="Input/Output"));
   parameter SI.MomentOfInertia J_p = 5e-4 "Moment of inertia"
@@ -24,7 +24,7 @@ partial model PartialTurboComponent "Partial of components that exchange work be
   parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for m_flow"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for omega"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input), choicesAllMatching=true);
+    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input));
   parameter SI.AngularVelocity omega_0 = 0 "Initial value for omega"
     annotation(Dialog(tab= "Initialization", group="Angular", enable=(initOmega == InitializationMethods.state)));
   parameter SI.AngularAcceleration omega_dot_0 = 0 "Initial value for der(omega)"
@@ -43,21 +43,21 @@ partial model PartialTurboComponent "Partial of components that exchange work be
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "Access-heat dumping port"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90),
       iconTransformation(extent={{-20,-20},{20,20}}, origin={0,100}, rotation=90)));
-  Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [varable]"
-        annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
+  Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [variable]"
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270)));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"
       annotation(choicesAllMatching=true,
         Documentation(info="<html>
-        <p>This functions computes the pressure difference over the component, as well as the moment that leeds to stationary operation in the current state.</p>
-        </html>"));
+<p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
+</html>"));
 
-function getQuantity = Sensors.Internal.getFlowQuantity(redeclare package
-        Medium =                                                                 Medium) "Function to compute a selectable quantitiy"
+function getQuantity = Sensors.Internal.getFlowQuantity (
+  redeclare package Medium = Medium) "Function to compute a selectable quantity"
   annotation (
       Documentation(info="<html>
-      <p>Function to compute a selectable quantitiy to output. The quantity is associated to the mass flow. </p>
+      <p>Function to compute a selectable quantity to output. The quantity is associated to the mass flow. </p>
       </html>"));
 
   SI.Power W_t "technichal work performed on fluid";
@@ -126,7 +126,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -137,17 +137,17 @@ equation
           fillPattern=FillPattern.Solid)}),
           Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, a optional heatport to dump heat that the fluid cannot take on, and a optional output for a measureable quantity.</p>
+<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, an optional heatport to dump heat that the fluid cannot take on, and an optional output for a measureable quantity.</p>
 <p>The component does the following:</p>
 <ol>
 <li>Compute the pressure differential and the moment on the flange, that would result in static operation from characteristic curves (static moment). These curves differ for different components.</li>
-<li>Regularize dh for low mass-flows. If the fluid is receiving energy, the heat that cannot given to the fluid, is given to an access heatport. If the fluid is giving away energy, the static moment is reduced until dh is small enough within the regularization. </li>
-<li>Compute mechanics of system if omega is not direct input of the system. The ifference between the static moment and the moment at the flange leeds to angular acceleration against the Inertia of the system. </li>
+<li>Regularize dh for low mass-flows. If the fluid is receiving energy, the heat that cannot be given to the fluid, is given to an accessible heatport. If the fluid is giving away energy, the static moment is reduced until dh is small enough within the regularization. </li>
+<li>Compute mechanics of system if omega is not direct input of the system. The ifference between the static moment and the moment at the flange leeds to angular acceleration against the inertia of the system. </li>
 </ol>
-<p><br>An output can be enabled that measures one of multiple selectable quantities. Different initial conditions and state selects for the component can be selected.</p>
-<p><br>Usefull hints:</p>
+<p><br>An output can be enabled that measures one of multiple selectable quantities. Different initial conditions and state selections for the component can be selected.</p>
+<p><br>Useful hints:</p>
 <ul>
-<li>The optional output might be usefull for simplifying the overall model in a control loop, since no additional sensor is required. </li>
+<li>The optional output might be useful for simplifying the overall model in a control loop, since no additional sensor is required. </li>
 <li>If one wants to prescribe a speed of the component, instead of being interested in the omega dynamics, enable omegaFromInput.</li>
 <li>The heatport is only of interest, if the overall energy of the system must be conserved.</li>
 </ul>

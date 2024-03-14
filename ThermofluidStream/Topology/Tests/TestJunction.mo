@@ -3,8 +3,7 @@ model TestJunction
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium;
+    constrainedby Media.myMedia.Interfaces.PartialMedium;
 
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{42,-74},{62,-54}})));
@@ -25,7 +24,7 @@ model TestJunction
     p0_par=200000,
     L=0,
     outlet(m_flow(start=0, fixed=true)))
-         annotation (Placement(transformation(extent={{-58,-38},{-38,-18}})));
+    annotation (Placement(transformation(extent={{-58,-38},{-38,-18}})));
   Boundaries.Sink sink(
     redeclare package Medium = Medium,
     L=0,
@@ -37,11 +36,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(source2.outlet, junctionN.inlets[1]) annotation (Line(
-      points={{-38,-28},{-24,-28},{-24,-1.33333},{-10,-1.33333}},
+      points={{-38,-28},{-24,-28},{-24,-0.666667},{-10,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, junctionN.inlets[3]) annotation (Line(
-      points={{-38,28},{-24,28},{-24,1.33333},{-10,1.33333}},
+      points={{-38,28},{-24,28},{-24,0.666667},{-10,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, junctionN.outlet) annotation (Line(

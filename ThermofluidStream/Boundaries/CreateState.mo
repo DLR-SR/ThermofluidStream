@@ -25,35 +25,42 @@ model CreateState "Create state signal as output"
   Interfaces.StateOutput y(redeclare package Medium = Medium) annotation (
       Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(
           extent={{80,-20},{120,20}})));
-  Modelica.Blocks.Interfaces.RealInput p_inp(unit="Pa") = p if PFromInput "Input for pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p_inp(unit="Pa") if PFromInput "Input for pressure [Pa]"
     annotation (Placement(transformation(extent={{-120,80},{-80,120}}),
         iconTransformation(extent={{-120,80},{-80,120}})));
-  Modelica.Blocks.Interfaces.RealInput T_inp(unit="K") = T if TFromInput "Input for Temperature [K]"
+  Modelica.Blocks.Interfaces.RealInput T_inp(unit="K") if not setEnthalpy and TFromInput "Input for Temperature [K]"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
-  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h if hFromInput "Enthalpy input connector [J/kg]"
-    annotation (Placement(transformation(extent={{-40,-40},{0,0}}),   iconTransformation(extent={{-40,-20},{0,20}})));
-  Modelica.Blocks.Interfaces.RealInput Xi_inp[Medium.nXi](each unit="kg/kg") = Xi if XiFromInput "Vector input for Mass fraction [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and hFromInput "Enthalpy input connector [J/kg]"
+    annotation (Placement(transformation(extent={{-40,-40},{0,0}}), iconTransformation(extent={{-40,-20},{0,20}})));
+  Modelica.Blocks.Interfaces.RealInput Xi_inp[Medium.nXi](each unit="kg/kg") if XiFromInput "Vector input for Mass fraction [kg/kg]"
     annotation (Placement(transformation(extent={{-120,-120},{-80,-80}}),
         iconTransformation(extent={{-120,-120},{-80,-80}})));
 
 protected
-  SI.Pressure p;
-  SI.Temperature T;
-  SI.SpecificEnthalpy h;
-  Medium.MassFraction Xi[Medium.nXi];
+  Modelica.Blocks.Interfaces.RealInput p(unit="Pa") "Internal pressure connector";
+  Modelica.Blocks.Interfaces.RealInput T(unit="K") "Internal temperature connector";
+  Modelica.Blocks.Interfaces.RealInput h(unit = "J/kg") "Internal enthalpy connector";
+  Modelica.Blocks.Interfaces.RealInput Xi[Medium.nXi](each unit="kg/kg") "Internal mass fraction connector";
 
 equation
   y.state = if not setEnthalpy then Medium.setState_pTX(p,T,Xi) else Medium.setState_phX(p, h, Xi);
 
+  connect(p_inp, p);
   if not PFromInput then
     p = p_par;
   end if;
-  if not TFromInput then
+
+  connect(T_inp, T);
+  if not TFromInput or setEnthalpy then
     T = T_par;
   end if;
-  if not hFromInput then
+
+  connect(h0_var, h);
+  if not hFromInput or not setEnthalpy then
     h = h0_par;
   end if;
+
+  connect(Xi_inp, Xi);
   if not XiFromInput then
     Xi = Xi_par;
   end if;

@@ -4,11 +4,11 @@ model MCV "Massflow control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput setpoint_var = setpoint if setpointFromInput   "Desired mass-flow [kg/s or m3/s]"
+  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -17,13 +17,13 @@ model MCV "Massflow control valve"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,-80}),                          iconTransformation(
+        origin={0,-80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,-80})));
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "Enable desired massFlow input";
+  parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
   parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
@@ -35,7 +35,7 @@ model MCV "Massflow control valve"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false;
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput enabled";
 
   SI.Density rho_rear_in = Medium.density(rear.state_forwards);
   SI.Density rho_fore_in = Medium.density(fore.state_rearwards);
@@ -54,7 +54,7 @@ protected
 
   SI.MassFlowRate m_flow_set;
   SI.VolumeFlowRate V_flow_set;
-  Real setpoint;
+  Modelica.Blocks.Interfaces.RealInput setpoint "Internal setpoint connector";
 
   SI.Pressure dr = fore.r - rear.r;
   SI.Pressure dr_set;
@@ -68,6 +68,7 @@ initial equation
   dp_int = 0;
 
 equation
+  connect(setpoint_var, setpoint);
   if setpointFromInput then
     m_flow_set = setpoint;
     V_flow_set = setpoint;
@@ -85,7 +86,7 @@ equation
   end if;
 
   // compute pressure drop dynamic very fast, so dr tracks dr_set.
-  // dr is limited, since it can be very high for non-smooth systms (e.g. a jump in input pressure)
+  // dr is limited, since it can be very high for non-smooth systems (e.g. a jump in input pressure)
   TC/k1 * der(dp_int) = max(-1e8, min(1e8,dr)) - dr_set + dp_corr;
 
   // limit dp to a so that p_out > p_min and no pressure is created
@@ -107,7 +108,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-84,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

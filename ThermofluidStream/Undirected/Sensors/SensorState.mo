@@ -1,9 +1,9 @@
 within ThermofluidStream.Undirected.Sensors;
 model SensorState "Sensor for whole state"
-    extends Internal.PartialSensor;
+  extends Internal.PartialSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -34,7 +34,7 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="state"),
         Ellipse(
           extent={{-5,-75},{5,-85}},
@@ -42,7 +42,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid)}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring the full state.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

@@ -50,7 +50,7 @@ package Examples
           10);
     der_p = der(state.p);
     der_T = der(state.T);
-    annotation (experiment_X(StopTime=100), Documentation(info="<html>
+    annotation (__DLR_experiment(StopTime=100), Documentation(info="<html>
 
 </html>"));
   end SimpleLiquidWater;
@@ -98,7 +98,7 @@ package Examples
 The function that is implemented is approximate, but usually very good: the second medium record medium2
 is given to compare the approximation.
 </p>
-</html>"), experiment_X(StopTime=1));
+</html>"), __DLR_experiment(StopTime=1));
   end IdealGasH2O;
 
   model WaterIF97 "WaterIF97 medium model"
@@ -152,7 +152,7 @@ is given to compare the approximation.
     der_T = der(state.T);
     annotation (Documentation(info="<html>
 
-</html>"), experiment_X(StopTime=1));
+</html>"), __DLR_experiment(StopTime=1));
   end WaterIF97;
 
   model MixtureGases "Test gas mixtures"
@@ -231,7 +231,7 @@ is given to compare the approximation.
     der_T = der(smoothState.T);
     annotation (Documentation(info="<html>
 
-</html>"), experiment_X(StopTime=1));
+</html>"), __DLR_experiment(StopTime=1));
   end MixtureGases;
 
   model MoistAir "Example for moist air"
@@ -282,13 +282,13 @@ is given to compare the approximation.
     der_T = der(smoothState.T);
     annotation (Documentation(info="<html>
 
-</html>"), experiment_X(StopTime=1.0, Tolerance=1e-005));
+</html>"), __DLR_experiment(StopTime=1.0, Tolerance=1e-005));
   end MoistAir;
 
   model PsychrometricData "Produces plot data for psychrometric charts"
     extends Modelica.Icons.Example;
     package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
-                                                 "Used medium package";
+      "Used medium package";
     parameter SI.Pressure p_const=1e5 "Pressure";
     parameter Integer n_T=11 "Number of isotherms";
     parameter SI.Temperature T_min=253.15 "Lowest isotherm";
@@ -388,7 +388,7 @@ It must be noted that the relationship of both axis variables is not right-angle
 <li><strong>y_T</strong>: constant temperature</li>
 <li><strong>y_phi</strong>: constant relative humidity</li>
 </ul>
-</html>"), experiment_X(StopTime=1.0, Interval=0.001));
+</html>"), __DLR_experiment(StopTime=1.0, Interval=0.001));
   end PsychrometricData;
 
   package TwoPhaseWater "Extension of the StandardWater package"
@@ -461,7 +461,7 @@ It must be noted that the relationship of both axis variables is not right-angle
     equation
       der(medium.p) = dp;
       der(medium.h) = dh;
-      annotation (experiment_X(StopTime=22, Interval=0.01), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=22, Interval=0.01), Documentation(info="<html>
 <p> For details see the documentation of the example package TwoPhaseWater</p>
 </html>"));
     end TestTwoPhaseStates;
@@ -475,17 +475,17 @@ for the medium model. In this scenario, that builds a new medium model
 with many more properties than the default, the standard BaseProperties
 is used as a basis. For additional properties, a user has to:<br>
 <ol>
-<li>Declare a new variable of the wanted type, e.g., \"<span style=\"color: rgb(51, 51, 255);\">DynamicViscosity
-eta</span>\".</li>
-<li>Compute that variable by calling the function form the package,
-e.g., <span style=\"color: rgb(51, 51, 255);\">eta =
-dynamicViscosity(state)</span>. Note that the instance of
+<li>Declare a new variable of the wanted type, e.g.,
+<code>DynamicViscosity eta</code>.</li>
+<li>Compute that variable by calling the function from the package,
+e.g., <code>eta&nbsp;= dynamicViscosity(state)</code>.
+Note that the instance of
 ThermodynamicState is used as an input to the function. This instance
 \"state\" is declared in PartialMedium and thus available in every medium
 model. A user does not have to know what actual variables are required
 to compute the dynamic viscosity, because the state instance is
 guaranteed to contain what is needed.</li>
-<li><span style=\"color: rgb(255, 0, 0);\">Attention</span>: Many
+<li><strong>Note</strong>: Many
 properties are not well defined in the two phase region and the
 functions might return undesired values if called there. It is the
 user's responsibility&nbsp; to take care of such situations. The example
@@ -528,7 +528,7 @@ points, e.g., when an isentropic reference state is computed.
         ThermofluidStream.Media.myMedia.Examples.Utilities.PartialTestModel(
           redeclare package Medium =
             ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_pT);
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end DryAir1;
 
     model DryAir2 "Example 2 for dry air"
@@ -537,7 +537,7 @@ points, e.g., when an isentropic reference state is computed.
         ThermofluidStream.Media.myMedia.Examples.Utilities.PartialTestModel2(
           redeclare package Medium =
             ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_pT);
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end DryAir2;
 
     model MoistAir "Example for moist air"
@@ -547,7 +547,7 @@ points, e.g., when an isentropic reference state is computed.
       parameter SI.Pressure p_start=1e5
         "Initial guess value for pressure";
       package Medium = ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir
-                                                            "Medium model";
+        "Medium model";
       Medium.BaseProperties medium(
         T(start=T_start, fixed=true),
         X(start={0.95,0.05}),
@@ -582,7 +582,7 @@ points, e.g., when an isentropic reference state is computed.
               0.2);
       der_p = der(smoothState.p);
       der_T = der(smoothState.T);
-      annotation (experiment_X(StopTime=1.0, Tolerance=1e-005));
+      annotation (__DLR_experiment(StopTime=1.0, Tolerance=1e-005));
     end MoistAir;
 
     model MoistAir1 "Example 1 for moist air"
@@ -591,7 +591,7 @@ points, e.g., when an isentropic reference state is computed.
         ThermofluidStream.Media.myMedia.Examples.Utilities.PartialTestModel(
           redeclare package Medium =
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir);
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end MoistAir1;
 
     model MoistAir2 "Example 2 for moist air"
@@ -600,7 +600,7 @@ points, e.g., when an isentropic reference state is computed.
         ThermofluidStream.Media.myMedia.Examples.Utilities.PartialTestModel2(
           redeclare package Medium =
             ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir);
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end MoistAir2;
 
     model Inverse_sh_T
@@ -608,7 +608,7 @@ points, e.g., when an isentropic reference state is computed.
       extends Modelica.Icons.Example;
 
       import Medium = ThermofluidStream.Media.myMedia.Air.ReferenceAir.Air_pT
-                                                             "Medium model";
+        "Medium model";
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -667,7 +667,7 @@ points, e.g., when an isentropic reference state is computed.
               fill(0, 0));
       assert(abs(h1 - h2) < 1e-3, "Inverse for h not correctly computed");
       assert(abs(s1 - s2) < 1e-3, "Inverse for s not correctly computed");
-      annotation (experiment_X(StopTime=1));
+      annotation (__DLR_experiment(StopTime=1));
     end Inverse_sh_T;
 
     model Inverse_sh_TX
@@ -675,7 +675,7 @@ points, e.g., when an isentropic reference state is computed.
       extends Modelica.Icons.Example;
 
       import Medium = ThermofluidStream.Media.myMedia.Air.ReferenceMoistAir
-                                                           "Medium model";
+        "Medium model";
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -749,7 +749,7 @@ points, e.g., when an isentropic reference state is computed.
       assert(abs(h1 - h2) < 1e-3, "Inverse for h not correctly computed");
       assert(abs(s1 - s2) < 1e-3, "Inverse for s not correctly computed");
 
-      annotation (experiment_X(StopTime=1), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=1), Documentation(info="<html>
 
 </html>"));
     end Inverse_sh_TX;
@@ -768,7 +768,7 @@ points, e.g., when an isentropic reference state is computed.
         fixedMassFlowRate(use_T_ambient=false),
         volume(use_T_start=false),
         ambient(use_T_ambient=false));
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end R134a1;
 
     model R134a2 "Example 2 for R134a"
@@ -781,7 +781,7 @@ points, e.g., when an isentropic reference state is computed.
         fixedMassFlowRate(use_T_ambient=false),
         volume(use_T_start=false),
         ambient(use_T_ambient=false));
-      annotation (experiment_X(StopTime=1.01));
+      annotation (__DLR_experiment(StopTime=1.01));
     end R134a2;
   end R134a;
 
@@ -815,7 +815,7 @@ points, e.g., when an isentropic reference state is computed.
 
       print("x_zero = " + String(x_zero) + ", y_zero = " + String(y_zero) +
         ", A*sin(w*x_zero) = " + String(A*Modelica.Math.sin(w*x_zero)));
-      annotation (experiment_X(StopTime=0), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=0), Documentation(info="<html>
 <p>
 This models solves the following non-linear equation
 </p>
@@ -837,11 +837,9 @@ output window.
       "Solve h = h_T(T), s = s_T(T) for T, if h or s is given for ideal gas NASA"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-        ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
-        "Medium model"
-        annotation (choicesAllMatching=true);
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+        constrainedby ThermofluidStream.Media.myMedia.IdealGases.Common.SingleGasNasa
+        "Medium model" annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=300
         "Vary temperature linearly from T_min (time=0) up to T_max (time=1)";
@@ -881,7 +879,7 @@ output window.
       // Check (h2 must be identical to h1, s2 must be identical to s1)
       h2 = Medium.specificEnthalpy_pTX(p, Th, fill(0.0, 0));
       s2 = Medium.specificEntropy(Medium.setState_pT(p, Ts));
-      annotation (experiment_X(StopTime=1), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=1), Documentation(info="<html>
 <p>
 This models computes the temperature <code>Th</code> for predefined specific enthalpy <code>h1</code> via numerical inversion of function <a href=\"modelica://Modelica.Media.IdealGases.Common.Functions.h_T\">Modelica.Media.IdealGases.Common.Functions.h_T</a>.
 The specific enthalpy <code>h2</code> is computed as check variable from temperature <code>Th</code> and must be identical to <code>h1</code>.
@@ -903,9 +901,8 @@ The numerical computation of the inverse function is performed by function <a hr
       "Inverse computation for incompressible media"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
-                                                          "Medium model"
+      replaceable package Medium = ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47
+        "Medium model"
         annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=Medium.T_min
@@ -947,7 +944,7 @@ The numerical computation of the inverse function is performed by function <a hr
       // Check (h2 must be identical to h1, s2 must be identical to s1)
       h2 = Medium.specificEnthalpy_pTX(p, Th, fill(0.0, 0));
       s2 = Medium.specificEntropy(Medium.setState_pT(p, Ts));
-      annotation (experiment_X(StopTime=1), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=1), Documentation(info="<html>
 <p>
 This models computes the temperature <code>Th</code> for predefined specific enthalpy <code>h1</code> via numerical inversion of function <a href=\"modelica://Modelica.Media.Incompressible.TableBased.h_T\">Modelica.Media.Incompressible.TableBased.h_T</a>.
 The specific enthalpy <code>h2</code> is computed as check variable from temperature <code>Th</code> and must be identical to <code>h1</code>.
@@ -969,10 +966,8 @@ The numerical computation of the inverse function is performed by function <a hr
       "Solve h = h_TX(TX) for T, if h is given for ideal gas NASA"
       extends Modelica.Icons.Example;
 
-      replaceable package Medium =
-          ThermofluidStream.Media.myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus
-        constrainedby
-        ThermofluidStream.Media.myMedia.IdealGases.Common.MixtureGasNasa
+      replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.MixtureGases.FlueGasLambdaOnePlus
+        constrainedby ThermofluidStream.Media.myMedia.IdealGases.Common.MixtureGasNasa
         "Medium model" annotation (choicesAllMatching=true);
 
       parameter SI.Temperature T_min=300
@@ -1014,7 +1009,7 @@ The numerical computation of the inverse function is performed by function <a hr
       // Check (h2 must be identical to h1, s2 must be identical to s1)
       h2 = Medium.specificEnthalpy_pTX(p, Th, X);
       s2 = Medium.specificEntropy(Medium.setState_pTX(p, Ts, X));
-      annotation (experiment_X(StopTime=1), Documentation(info="<html>
+      annotation (__DLR_experiment(StopTime=1), Documentation(info="<html>
 <p>
 This models computes the temperature <code>Th</code> for predefined specific enthalpy <code>h1</code> via numerical inversion of function <a href=\"modelica://Modelica.Media.IdealGases.Common.Functions.h_T\">Modelica.Media.IdealGases.Common.Functions.h_T</a>.
 The specific enthalpy <code>h2</code> is computed as check variable from temperature <code>Th</code> and must be identical to <code>h1</code>.

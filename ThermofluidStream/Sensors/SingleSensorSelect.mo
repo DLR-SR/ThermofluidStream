@@ -10,16 +10,15 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed Density"
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter Quantities quantity "Quantitiy the sensor measures"
-    annotation(choicesAllMatching=true);
+  parameter Quantities quantity "Quantity the sensor measures";
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
@@ -30,7 +29,7 @@ model SingleSensorSelect "Sensor with selectable measured quantity"
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Measured value [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected Quantity";
+  output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
 
 protected
   outer DropOfCommons dropOfCommons;
@@ -77,15 +76,15 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{0,25},{60,75}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring a selectable quantity.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

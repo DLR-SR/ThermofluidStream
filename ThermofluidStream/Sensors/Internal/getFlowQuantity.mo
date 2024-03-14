@@ -1,10 +1,11 @@
 within ThermofluidStream.Sensors.Internal;
 function getFlowQuantity "Computes selected quantity from state and massflow"
+  extends Modelica.Icons.Function;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
-  annotation (choicesAllMatching=true,
-    Documentation(info="<html>
+    "Medium model"
+    annotation (choicesAllMatching=true,
+      Documentation(info="<html>
       <p>Medium Model for the function. Make sure it implements the needed functions.</p>
         </html>"));
 

@@ -185,9 +185,9 @@ Modelica source.
     constant Boolean singleState
       "= true, if u and d are not a function of pressure";
     constant Boolean reducedX=true
-      "= true if medium contains the equation sum(X) = 1.0; set reducedX=true if only one substance (see docu for details)";
+      "= true, if medium contains the equation sum(X) = 1.0; set reducedX=true if only one substance (see docu for details)";
     constant Boolean fixedX=false
-      "= true if medium contains the equation X = reference_X";
+      "= true, if medium contains the equation X = reference_X";
     constant AbsolutePressure reference_p=101325
       "Reference pressure of Medium: default 1 atmosphere";
     constant Temperature reference_T=298.15
@@ -235,14 +235,14 @@ Modelica source.
       Density d "Density of medium";
       Temperature T "Temperature of medium";
       MassFraction[nX] X(start=reference_X)
-        "Mass fractions (= (component mass)/total mass  m_i/m)";
+        "Mass fractions (= (component mass)/total mass m_i/m)";
       SpecificInternalEnergy u "Specific internal energy of medium";
       SpecificHeatCapacity R_s "Gas constant (of mixture if applicable)";
       MolarMass MM "Molar mass (of mixture or single fluid)";
       ThermodynamicState state
         "Thermodynamic state record for optional functions";
       parameter Boolean preferredMediumStates=false
-        "= true if StateSelect.prefer shall be used for the independent property variables of the medium"
+        "= true, if StateSelect.prefer shall be used for the independent property variables of the medium"
         annotation (Evaluate=true, Dialog(tab="Advanced"));
       parameter Boolean standardOrderComponents=true
         "If true, and reducedX = true, the last element of X will be computed from the other ones";
@@ -458,7 +458,6 @@ sum(X) = c*(sum(X_a) - sum(X_b)) + (sum(X_a) + sum(X_b))/2
        = c*(1 - 1) + (1 + 1)/2
        = 1
 </pre></blockquote>
-
 </html>"));
     end setSmoothState;
 
@@ -604,7 +603,7 @@ This function computes an isentropic state transformation:
       output IsobaricExpansionCoefficient beta "Isobaric expansion coefficient";
       annotation (Documentation(info="<html>
 <blockquote><pre>
-beta is defined as  1/v * der(v,T), with v = 1/d, at constant pressure p.
+beta is defined as 1/v * der(v,T), with v = 1/d, at constant pressure p.
 </pre></blockquote>
 </html>"));
     end isobaricExpansionCoefficient;
@@ -619,9 +618,7 @@ beta is defined as  1/v * der(v,T), with v = 1/d, at constant pressure p.
       output SI.IsothermalCompressibility kappa "Isothermal compressibility";
       annotation (Documentation(info="<html>
 <blockquote><pre>
-
 kappa is defined as - 1/v * der(v,p), with v = 1/d at constant temperature T.
-
 </pre></blockquote>
 </html>"));
     end isothermalCompressibility;
@@ -803,7 +800,7 @@ kappa is defined as - 1/v * der(v,p), with v = 1/d at constant temperature T.
 
     // Only for backwards compatibility to version 3.2 (
     // (do not use these definitions in new models, but use Modelica.Media.Interfaces.Choices instead)
-    package Choices = myMedia.Interfaces.Choices        annotation (obsolete=
+    package Choices = myMedia.Interfaces.Choices annotation (obsolete=
           "Use Modelica.Media.Interfaces.Choices");
 
     annotation (Documentation(info="<html>
@@ -1287,11 +1284,11 @@ one, which would require a numeric solution.
 <p>This linear compressibility fluid model is based on the assumptions that:
 </p>
 <ul>
-<li>The specific heat capacity at constant pressure (cp) is constant</li>
-<li>The isobaric expansion coefficient (beta) is constant</li>
-<li>The isothermal compressibility (kappa) is constant</li>
-<li>Pressure and temperature are used as states</li>
-<li>The influence of density on specific enthalpy (h), entropy (s), inner energy (u) and heat capacity (cv) at constant volume is neglected.</li>
+  <li>The specific heat capacity at constant pressure (cp) is constant</li>
+  <li>The isobaric expansion coefficient (beta) is constant</li>
+  <li>The isothermal compressibility (kappa) is constant</li>
+  <li>Pressure and temperature are used as states</li>
+  <li>The influence of density on specific enthalpy (h), entropy (s), inner energy (u) and heat capacity (cv) at constant volume is neglected.</li>
 </ul>
 <p>
 That means that the density is a linear function in temperature and in pressure.
@@ -1301,9 +1298,9 @@ be interpreted as a linearization of a full non-linear fluid model (but it is no
 thermodynamic coordinates). Reference values are needed for
 </p>
 <ol>
-<li>the density (reference_d),</li>
-<li>the specific enthalpy (reference_h),</li>
-<li>the specific entropy (reference_s).</li>
+  <li>the density (reference_d),</li>
+  <li>the specific enthalpy (reference_h),</li>
+  <li>the specific entropy (reference_s).</li>
 </ol>
 <p>
 Apart from that, a user needs to define the molar mass, MM_const.
@@ -1322,17 +1319,27 @@ and cv would be replaced by a call to density(state). That would require a numer
 in simulations. There are a number of possible compromises and possibilities to improve performance.
 Some of them can be influenced by a flag. The following rules where used in this model:</p>
 <ul>
-<li>All forward evaluations (using the ThermodynamicState record as input) are exactly following
-the assumptions above.</li>
-<li>If the flag <strong>constantJacobian</strong> is set to true in the package, all functions that
-typically appear in thermodynamic Jacobians (specificHeatCapacityCv, density_derp_h, density_derh_p,
-density_derp_T, density_derT_p) are evaluated at reference conditions (that means using the reference
-density) instead of the density of the current pressure and temperature. This makes it possible to evaluate
-the thermodynamic Jacobian at compile time.</li>
-<li>For inverse functions using other inputs than the states (e.g pressure p and specific enthalpy h),
-the inversion is using the reference state whenever that is necessary to achieve a symbolic inversion.</li>
-<li>If <strong>constantJacobian</strong> is set to false, the above list of functions is computed exactly according
-to the above list of assumptions</li>
+  <li>
+    All forward evaluations (using the ThermodynamicState record as input) are exactly
+    following the assumptions above.
+  </li>
+  <li>
+    If the flag <strong>constantJacobian</strong> is set to true in the package, all
+    functions that typically appear in thermodynamic Jacobians (specificHeatCapacityCv,
+    density_derp_h, density_derh_p, density_derp_T, density_derT_p) are evaluated at
+    reference conditions (that means using the reference density) instead of the
+    density of the current pressure and temperature. This makes it possible to evaluate
+    the thermodynamic Jacobian at compile time.
+  </li>
+  <li>
+    For inverse functions using other inputs than the states (e.g pressure p and specific 
+    enthalpy h), the inversion is using the reference state whenever that is necessary to 
+    achieve a symbolic inversion.
+  </li>
+  <li>
+    If <strong>constantJacobian</strong> is set to false, the above list of functions is 
+    computed exactly according to the above list of assumptions.
+  </li>
 </ul>
 <dl>
 <dt><strong>Authors:</strong></dt>
@@ -1363,7 +1370,7 @@ to the above list of assumptions</li>
       AbsolutePressure p "Absolute pressure of medium";
       Temperature T "Temperature of medium";
       MassFraction[nX] X(start=reference_X)
-        "Mass fractions (= (component mass)/total mass  m_i/m)";
+        "Mass fractions (= (component mass)/total mass m_i/m)";
     end ThermodynamicState;
 
     redeclare replaceable function massFraction "Return independent mass Fraction"

@@ -1,11 +1,12 @@
 within ThermofluidStream.Sensors.Internal;
 function getTwoPhaseQuantity
   "Computes selected two-phase quantity from state"
+  extends Modelica.Icons.Function;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium
-                                                                        "Medium model"
-  annotation (choicesAllMatching=true,
-    Documentation(info="<html>
+    "Medium model"
+    annotation (choicesAllMatching=true,
+      Documentation(info="<html>
       <p>Medium Model for the function. Make sure it implements the needed functions.</p>
         </html>"));
 

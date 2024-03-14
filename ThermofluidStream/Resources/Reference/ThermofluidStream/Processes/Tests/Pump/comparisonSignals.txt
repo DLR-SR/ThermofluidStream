@@ -1,0 +1,10 @@
+time
+pump.m_flow
+pump1.m_flow
+pump1.omega
+pump1.phi
+pump2.m_flow
+pump3.m_flow
+pump3.omega
+pump3.phi
+pump4.m_flow

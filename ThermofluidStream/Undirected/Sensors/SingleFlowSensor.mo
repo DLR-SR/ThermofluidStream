@@ -4,16 +4,15 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
   import Quantities=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  parameter Quantities quantity "Quantitiy the sensor measures"
-    annotation(choicesAllMatching=true);
+  parameter Quantities quantity "Quantity the sensor measures";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "Enable sensor-value output"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
@@ -28,8 +27,8 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
 protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity));
 
-  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity (redeclare
-        package Medium =                                                                              Medium) "Quantity compute function"
+  function getQuantity = ThermofluidStream.Sensors.Internal.getFlowQuantity (
+    redeclare package Medium = Medium) "Quantity compute function"
     annotation (Documentation(info="<html>
         <p>This function computes the selected quantity from state and massflow. rho_min is neddet for the computation of v. </p>
         </html>"));
@@ -74,13 +73,13 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
         Text(
           extent={{0,25},{60,75}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%quantity")}),
-      Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>A undirected sensor measuring a selectable flow quantity associated with the massflow. For some quatities several units are available.</p>
 </html>"));

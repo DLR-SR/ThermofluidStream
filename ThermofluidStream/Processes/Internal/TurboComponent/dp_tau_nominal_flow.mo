@@ -8,14 +8,14 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input SI.VolumeFlowRate V_flow_D(displayUnit="l/min")=0.0016666666666667 "Design Volume flow"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
-  input SI.AngularVelocity omega_D(displayUnit="1/s")=314.15926535898   "Design angular velocity"
+  input SI.AngularVelocity omega_D=314.2 "Design angular velocity"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input Real slip_D(unit="1", min=0, max=1) = 0.5 "Design slip ((V_flow_nominal-V_flow)/V_flow_nominal)"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
-  input Real eta_D(unit="1", min=0.001, max=1) = 0.75 "Design efficciency"
+  input Real eta_D(unit="1", min=0.001, max=1) = 0.75 "Design efficiency"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
 
-  input SI.Volume V_r_input=0.0001   "Reference Volume of pump"
+  input SI.Volume V_r_input=0.0001 "Reference volume of pump"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
   input Real k_p_input(unit="N.s/(m5)") = 1e5 "Linear pressure factor"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
@@ -23,15 +23,15 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
 
 protected
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "specifiv volume at inlet";
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
 
-  SI.VolumeFlowRate V_flow_nominal "nominal volume flow though pump";
-  SI.VolumeFlowRate V_flow "actual volume flow though pump";
+  SI.VolumeFlowRate V_flow_nominal "Nominal volume flow through pump";
+  SI.VolumeFlowRate V_flow "Actual volume flow through pump";
   //slip = (V_flow_nominal - V_flow)/V_flow_nominal
 
-  SI.Volume V_r =  if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
-  Real k_p(unit="N.s/(m5)") =  if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
-  Real k_fric(unit="N.s/(m2)") =   if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
+  SI.Volume V_r = if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
+  Real k_p(unit="N.s/(m5)") = if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
+  Real k_fric(unit="N.s/(m2)") = if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
 
   constant Real radPrevolution(unit="rad") = 2*Modelica.Constants.pi;
 
@@ -43,7 +43,7 @@ algorithm
   //calc dp as linear resistance model and w_t as volume change work in positive flow direction
   dp := k_p*(V_flow_nominal - V_flow);
   // for positive dp, if fluid goes against pressure gradient, Work performed is positive, else negative.
-  // additionaly a linear friction is added.
+  // additionally a linear friction is added.
   tau_st := V_flow*dp*omega/(omega^2 + omega_norm^2) + k_fric*(V_flow_nominal - V_flow);
 
   annotation (Documentation(info="<html>

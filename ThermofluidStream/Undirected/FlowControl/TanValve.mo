@@ -7,7 +7,7 @@ model TanValve "Valve with tan-shaped flow resistance"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -16,7 +16,7 @@ model TanValve "Valve with tan-shaped flow resistance"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean invertInput = false "Zero represents a closed valve for non-inverted, open for inverted";
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
-  parameter SI.Pressure p_ref = 1e5 "Reference pressurre";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
 protected
@@ -46,7 +46,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{-40,0}},
+          points={{-84,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -59,7 +59,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,0},{80,0}},
+          points={{40,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Polygon(
@@ -67,20 +67,20 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation of the Tan valve. </p>
-<p>The TanValve is the most basic valve and can be used when there is no valve type is set yet. </p>
-<p>It adjusts its flow resistance koefficient according to a tangesn of the input. The pole of the tan function can lead to numerical problems.</p>
+<p>The TanValve is the most basic valve and can be used when no valve type is set yet. </p>
+<p>It adjusts its flow resistance coefficient according to a tangens of the input. The pole of the tan function can lead to numerical problems.</p>
 </html>"));
 end TanValve;

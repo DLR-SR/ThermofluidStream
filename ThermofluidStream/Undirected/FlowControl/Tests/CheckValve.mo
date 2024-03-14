@@ -4,9 +4,11 @@ model CheckValve "Test for undirected CheckValve"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -25,7 +27,7 @@ model CheckValve "Test for undirected CheckValve"
     period=0.5,
     offset=1e5)
     annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
-  Processes.FlowResistance                   flowResistance(
+  Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     r=0.1,
     l=10,

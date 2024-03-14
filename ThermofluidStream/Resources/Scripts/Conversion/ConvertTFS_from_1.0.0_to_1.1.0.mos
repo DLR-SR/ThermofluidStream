@@ -1,0 +1,67 @@
+// Convert from ThermofluidStream 1.0.0 to ThermofluidStream 1.1.0
+
+// Changes due to fixed typo
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR.efficency",
+             "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR.efficiency");
+
+convertClass("ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX.efficency",
+             "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX.efficency",
+             "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX.efficiency");
+
+convertClass("ThermofluidStream.HeatExchangers.Internal.calculateEfficency",
+             "ThermofluidStream.HeatExchangers.Internal.calculateEfficiency");
+
+convertElement({"ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary",
+                "ThermofluidStream.HeatExchangers.Internal.calculateEfficency"},
+               "efficency", "efficiency");
+
+convertElement({"ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX",
+                "ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX_FR",
+                "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX",
+                "ThermofluidStream.HeatExchangers.DiscretizedCrossFlowHEX_FR",
+                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCounterFlowHEX",
+                "ThermofluidStream.Undirected.HeatExchangers.DiscretizedCrossFlowHEX"},
+               "calculate_efficency", "calculate_efficiency");
+
+convertElement({"ThermofluidStream.Interfaces.SISOFlow",
+                "ThermofluidStream.Boundaries.DynamicPressureInflow",
+                "ThermofluidStream.Boundaries.DynamicPressureOutflow",
+                "ThermofluidStream.FlowControl.TanValve",
+                "ThermofluidStream.FlowControl.CheckValve",
+                "ThermofluidStream.FlowControl.MCV",
+                "ThermofluidStream.FlowControl.PCV",
+                "ThermofluidStream.FlowControl.Internal.PartialValve",
+                "ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX",
+                "ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase",
+                "ThermofluidStream.Processes.FlowResistance",
+                "ThermofluidStream.Processes.TransportDelay",
+                "ThermofluidStream.Processes.Pump",
+                "ThermofluidStream.Processes.Compressor",
+                "ThermofluidStream.Processes.Turbine",
+                "ThermofluidStream.Processes.Fan",
+                "ThermofluidStream.Processes.ThermalConvectionPipe",
+                "ThermofluidStream.Processes.Nozzle",
+                "ThermofluidStream.Processes.Internal.PartialTurboComponent",
+                "ThermofluidStream.Processes.Internal.PartialConductionElement",
+                "ThermofluidStream.Undirected.Interfaces.SISOBiFlow",
+                "ThermofluidStream.Undirected.FlowControl.TanValve",
+                "ThermofluidStream.Undirected.FlowControl.MCV",
+                "ThermofluidStream.Undirected.FlowControl.CheckValve",
+                "ThermofluidStream.Undirected.FlowControl.Internal.PartialValve",
+                "ThermofluidStream.Undirected.HeatExchangers.Internal.ConductionElementHEX",
+                "ThermofluidStream.Undirected.HeatExchangers.Internal.ConductionElementHEX_twoPhase",
+                "ThermofluidStream.Undirected.Processes.FlowResistance",
+                "ThermofluidStream.Undirected.Processes.TransportDelay",
+                "ThermofluidStream.Undirected.Processes.Internal.PartialConductionElement"},
+               "m_acceleraton_0", "m_acceleration_0");

@@ -6,7 +6,7 @@ model FourWaySwitch
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
     annotation(Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
-  parameter SI.Pressure p_ref = 1e5 "Rreference pressurre";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
@@ -74,7 +74,7 @@ equation
       points={{-60,50},{-60,50},{-60,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(junctionT2_1.outlet,outletB)  annotation (Line(
+  connect(junctionT2_1.outlet,outletB) annotation (Line(
       points={{-70,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));

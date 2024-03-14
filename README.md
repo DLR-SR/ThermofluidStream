@@ -4,11 +4,14 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ![](/doc/example.svg)
 
+
+## Status
+
+[![GitHub release](https://img.shields.io/github/release/DLR-SR/ThermofluidStream.svg?sort=semver)](https://github.com/DLR-SR/ThermofluidStream/releases/latest) [![GitHub license](https://img.shields.io/github/license/DLR-SR/ThermofluidStream)](https://github.com/DLR-SR/ThermofluidStream/blob/main/LICENSE) ![GitHub workflow](https://github.com/DLR-SR/ThermofluidStream/actions/workflows/checkCI.yml/badge.svg?event=pull_request) [![Modelica Library Award 2021](https://img.shields.io/badge/award-%F0%9F%A5%87_Modelica_Library_Award_2021-gold?labelColor=grey)](https://2021.international.conference.modelica.org/libraries.html) 
+
 ## Highlights
 
-
-
-- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference** ![](/doc/LibraryAward.svg)
+- **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
 - Robust modeling of even complex architectures due to new computational scheme
 - Easy to initialize and good support for switching bypasses and other configuration changes
 - Many examples that enable an easy start to working with this library.
@@ -64,13 +67,25 @@ We also welcome feedback in form of issues raised here on GitHub. Also when you 
 Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
 
 - Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
+- Zimmer, Dirk, Michael Meißner, Niels Weber (2021) [The DLR ThermoFluidStream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199). 14th International Modelica Conference, Linköping, Sweden.
+- Zimmer, Dirk (2019a). [Robust Simulation of StreamDominated Thermo-Fluid Systems: From Unidirectional to Bidirectional Applications](https://www.researchgate.net/publication/337812690_Robust_Simulation_of_Stream-Dominated_Thermo-Fluid_Systems_From_Unidirectional_to_Bidirectional_Applications). EUROSIM Congress (Logrono, Spain).
+
+More details on the modeling of various types of volumes can be found in:
+
+- M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks](https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20.
+
+Further background literature on the methodology:
+
+- Zimmer, Dirk, Daniel Bender, Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).
+- Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
+- Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet.
 
 More details on the modeling of various types of volumes can be found in:
  
 - M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks] (https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20. 
 
 ## Tool compatibility 
-- [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pendantic checking has been applied to all components in order to improve cross-tool compatibility. 
+- [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pedantic checking has been applied to all components in order to improve cross-tool compatibility. 
 - [Open Modelica](https://www.openmodelica.org/): To a large extent, the library is compatible to Open Modelica. Details in [Issue 10](https://github.com/DLR-SR/ThermofluidStream/issues/10): 
 - [Modelon Impact](https://www.modelon.com/modelon-impact/): The library is reported to be fully compatible to Modelon Impact. Details in [Issue 19](https://github.com/DLR-SR/ThermofluidStream/issues/19). 
 
@@ -94,6 +109,13 @@ We would like to thank very much Stefan Wischhusen from [XRG Simulation GmbH](ht
 
 ## Acknowledgements
 
-This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Chistopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz form TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility. 
+This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Chistopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz form TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility.
 
+The used **continuous integration** stuff originates in parts from that used in the development of the Modelica Standard Library. We would like to thank MAP-Lib project members who established this CI for their valuable work.
+
+
+## Tutorial
+At the 15th International Modelica Conference 2023, a tutorial is held about modeling of complex architectures using the library.
+The modeling templates can be downloaded here:
+[TFS_Tutorial.zip](https://github.com/nieweber/ThermofluidStream/files/12841619/TFS_Tutorial.zip)
 

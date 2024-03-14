@@ -4,7 +4,7 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -17,8 +17,8 @@ model SingleSensorX "Sensor for mass fraction of mixture"
     annotation(Dialog(group="Output Value", enable=outputValue));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Initial output state of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of mass fraction vector to display";
@@ -28,11 +28,11 @@ model SingleSensorX "Sensor for mass fraction of mixture"
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
+  output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";
 
-  function mfk =  ThermofluidStream.Utilities.Functions.massFractionK(redeclare
-        package Medium =                                                                         Medium);
+  function mfk = ThermofluidStream.Utilities.Functions.massFractionK (
+    redeclare package Medium = Medium);
 
 protected
   outer DropOfCommons dropOfCommons;
@@ -80,15 +80,15 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,30},{60,-30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("value", String(
               display_value,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-26,22},{60,69}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%row. mass-fraction")}),
-       Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring mass fraction X. Which row from X to display can be selected by the row parameter.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

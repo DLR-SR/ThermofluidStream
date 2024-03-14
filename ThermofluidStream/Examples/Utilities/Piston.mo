@@ -1,8 +1,8 @@
 within ThermofluidStream.Examples.Utilities;
-model Piston "Piston Model with steam on both sides"
+model Piston "Piston model with steam on both sides"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium Model"
+    "Medium model"
     annotation (Documentation(info="<html>
 <p>Model of the medium in the Piston. The medium is typically Two-phase.</p>
 </html>"));
@@ -12,7 +12,7 @@ model Piston "Piston Model with steam on both sides"
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced"));
 
-  parameter SI.Area A "Area of Piston";
+  parameter SI.Area A "Area of piston";
   parameter SI.Length l_stroke "Stroke length of motion";
   parameter SI.Volume V_dead "Dead volume at both ends";
   parameter Boolean outputX = false "Enable piston position output";
@@ -151,9 +151,19 @@ equation
     Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>In a piston a different pressure of fluids perform mechanical linar work. </p>
-<p>Depending on <span style=\"font-family: Courier New;\">push_left, the left (when pushleft is true) side or the right (when pushleft is false) side is connected to the input, and the other side is connected to the output. </span></p>
-<p><span style=\"font-family: Courier New;\">x is a nondimensional piston position, 0 being left and 1 being right. </span></p>
-<p><span style=\"font-family: Courier New;\">The piston has soft stops and a dead volume at both ends.</span></p>
+<p>
+In a piston a different pressure of fluids perform mechanical linear work.
+</p>
+<p>
+Depending on <code>push_left</code>, the left (when pushleft is true) side or
+the right (when pushleft is false) side is connected to the input, and the other
+side is connected to the output.
+</p>
+<p>
+<code>x</code> is a nondimensional piston position, 0 being left and 1 being right.
+</p>
+<p>
+The piston has soft stops and a dead volume at both ends.
+</p>
 </html>"));
 end Piston;

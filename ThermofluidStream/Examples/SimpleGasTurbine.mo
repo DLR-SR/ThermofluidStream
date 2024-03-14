@@ -3,28 +3,30 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.DryAirNasa
-                                                      constrainedby
-    Media.myMedia.Interfaces.PartialMedium                                                           "Medium Model"
+    constrainedby Media.myMedia.Interfaces.PartialMedium "Medium Model"
     annotation (Documentation(
         info="<html>
 <p>Medium used for this Example. Should be a gas.</p>
 </html>"));
 
-  Processes.Compressor compressor(redeclare package Medium=Medium,
+  Processes.Compressor compressor(
+    redeclare package Medium=Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=100,
     redeclare function dp_tau_compressor =
-        Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100, eta=0.8))
-    annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
-  Processes.Turbine turbine(redeclare package Medium=Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-                                                             redeclare function
-      dp_tau_turbine =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        omega_ref=1000,
-        m_flow_ref=1.2,
-        eta=0.8))
+      omega_ref=100,
+      eta=0.8))
+    annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
+  Processes.Turbine turbine(
+    redeclare package Medium=Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare function dp_tau_turbine =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+      omega_ref=1000,
+      m_flow_ref=1.2,
+      eta=0.8))
     annotation (Placement(transformation(extent={{40,-20},{60,0}})));
   Boundaries.Volume volume(redeclare package Medium=Medium,
     useHeatport=true,
@@ -38,7 +40,9 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{-140,-20},{-120,0}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-130,50},{-110,70}})));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J=1, phi(fixed=true, start=0))
+  Modelica.Mechanics.Rotational.Components.Inertia inertia(
+    J=1,
+    phi(fixed=true, start=0))
     annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
   Modelica.Mechanics.Rotational.Sources.LinearSpeedDependentTorque
     linearSpeedDependentTorque(
@@ -46,8 +50,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     TorqueDirection=false,
     w_nominal=100)
     annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow
-                                                      prescribedHeatFlow
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,18})));
@@ -89,7 +92,7 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
     annotation (Placement(transformation(extent={{58,-70},{78,-50}})));
   Modelica.Blocks.Nonlinear.Limiter q_limits(uMax=5e5, uMin=0)
     annotation (Placement(transformation(extent={{18,46},{6,58}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{108,-80},{140,-48}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{102,-78},{138,-42}})));
 equation
   connect(sink.inlet, turbine.outlet) annotation (Line(
       points={{90,-10},{60,-10}},
@@ -100,11 +103,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(inertia.flange_b, turbine.flange)
-    annotation (Line(points={{0,-60},{50,-60},{50,-20}},  color={0,0,0}));
+    annotation (Line(points={{0,-60},{50,-60},{50,-20}}, color={0,0,0}));
   connect(inertia.flange_a, compressor.flange)
     annotation (Line(points={{-20,-60},{-80,-60},{-80,-20}}, color={0,0,0}));
   connect(prescribedHeatFlow.port, volume.heatPort)
-    annotation (Line(points={{-10,8},{-10,-2}},    color={191,0,0}));
+    annotation (Line(points={{-10,8},{-10,-2}}, color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, compressor.flange)
     annotation (Line(points={{-110,-60},{-80,-60},{-80,-20}},
                                                            color={0,0,0}));
@@ -117,7 +120,8 @@ equation
   connect(prescribedHeatFlow.Q_flow, product1.y)
     annotation (Line(points={{-10,28},{-10,33.4}}, color={0,0,127}));
   connect(speedSensor.w, PI.u_m)
-    annotation (Line(points={{79,-60},{108,-60},{108,44.8}}, color={0,0,127}));
+    annotation (Line(points={{79,-60},{94,-60},{94,-36},{108,-36},{108,44.8}},
+                                                             color={0,0,127}));
   connect(PI.u_s, setpoint.y)
     annotation (Line(points={{115.2,52},{123.3,52}}, color={0,0,127}));
   connect(compressor.outlet, multiSensor_Tpm1.inlet) annotation (Line(
@@ -146,17 +150,21 @@ equation
       points={{76,6},{70,6},{70,-10},{60,-10}},
       color={28,108,200},
       thickness=0.5));
-  annotation (experiment(StopTime=100, Tolerance=1e-6, Interval=0.1),Diagram(coordinateSystem(extent={{-140,
-            -80},{140,80}}), graphics={Rectangle(extent={{-64,76},{36,-26}},
-            lineColor={28,108,200}),
+  annotation (
+    experiment(StopTime=100, Tolerance=1e-6, Interval=0.1),
+    Diagram(coordinateSystem(extent={{-140,-80},{140,80}}),
+      graphics={
+        Rectangle(
+          extent={{-64,76},{36,-26}},
+          lineColor={28,108,200}),
         Text(
           extent={{-60,76},{16,60}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="combustion chamber")}),
-          Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
 <p>A very basic model of a regulated gas turbine. GASTASTIC!</p>
-<p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is prortional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
+<p>The combustion chamber is approximated with a prescribed heatflow into a volume. The prescribed heatflow is proportional to the massflow, so the steady-state q is the input to the combustion chamber. </p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));
 end SimpleGasTurbine;

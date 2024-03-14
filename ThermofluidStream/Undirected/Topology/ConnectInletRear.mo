@@ -3,7 +3,7 @@ model ConnectInletRear
   "Directed/undirected connector with input and rear"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium of the connection"
+    "Medium of the connection"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
@@ -41,7 +41,8 @@ equation
       thickness=0.5));
   annotation (Icon(
       graphics={
-        Line( points={{-20,0},{20,0}},
+        Line(
+          points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5)},
       coordinateSystem(preserveAspectRatio=false)),

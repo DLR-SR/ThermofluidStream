@@ -4,14 +4,16 @@ model TestDiscretizedHEXvsDir
   extends Modelica.Icons.Example;
 
   replaceable package MediumAir = Media.myMedia.Air.DryAirNasa
-                                                         constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   replaceable package MediumRefrigerant = Media.myMedia.R134a.R134a_ph
-                                                                 constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Dialog(group = "Medium definitions"));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium model" annotation (
+      choicesAllMatching=true,
+      Dialog(group = "Medium definitions"));
 
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = MediumAir,
@@ -50,9 +52,8 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-68,198},{-48,218}})));
   Modelica.Blocks.Sources.Ramp rampPressure(
     height=1e5,
@@ -74,8 +75,8 @@ model TestDiscretizedHEXvsDir
     V_Hex(displayUnit="m3"),
     initializeMassFlow=true,
     k_wall=300,
-    calculate_efficency=true)
-                annotation (Placement(transformation(
+    calculate_efficiency=true)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,200})));
@@ -84,9 +85,8 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-50,182},{-70,202}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,
@@ -98,11 +98,13 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(extent={{128,202},{116,214}})));
   Modelica.Blocks.Math.Feedback feedback1
     annotation (Placement(transformation(extent={{40,230},{60,250}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
-        MediumRefrigerant,                                                               outputMassFlowRate=true)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = MediumRefrigerant,
+    temperatureUnit="degC",
+    outputMassFlowRate=true)
     annotation (Placement(transformation(extent={{40,194},{20,174}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
-        MediumRefrigerant)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumRefrigerant, temperatureUnit="degC")
     annotation (Placement(transformation(extent={{-22,194},{-42,174}})));
   Modelica.Blocks.Continuous.PI PI(
     k=10000,
@@ -141,7 +143,7 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{11,10},{-11,-10}},
         rotation=0,
@@ -150,7 +152,7 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumAir,
     digits=3,
     outputMassFlowRate=true,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-22,-74})));
@@ -162,7 +164,7 @@ model TestDiscretizedHEXvsDir
     T0_par=283.15,
     p0_par=200000,
     h0_par=300e3)
-               annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-58,-20})));
   ThermofluidStream.Boundaries.Sink sinkB(
@@ -224,8 +226,8 @@ model TestDiscretizedHEXvsDir
     initializeMassFlow=true,
     nCells=10,
     k_wall=300,
-    calculate_efficency=true)
-                annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    calculate_efficiency=true)
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={2,-56})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA1(
@@ -233,37 +235,35 @@ model TestDiscretizedHEXvsDir
     m_flow_0=1,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{90,-74},{70,-54}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumRefrigerant,
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
         origin={64,-26})));
-  ThermofluidStream.Sensors.SingleSensorSelect
-                             singleSensorSelect(redeclare package Medium =
-        MediumRefrigerant,                                                                    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{26,-14},{46,-34}})));
-  ThermofluidStream.Sensors.SingleSensorSelect
-                             singleSensorSelect1(redeclare package Medium =
-        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect1(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-18,-14},{-38,-34}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect
-                               sensorVaporQuality(redeclare package Medium =
-        MediumRefrigerant,                                                                      quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-18,-66},{-38,-46}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect
-                               sensorVaporQuality1(redeclare package Medium =
-        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{26,-66},{46,-46}})));
   ThermofluidStream.Boundaries.Source sourceA1(
     redeclare package Medium = MediumAir,
@@ -280,7 +280,7 @@ model TestDiscretizedHEXvsDir
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm8(
     redeclare package Medium = MediumAir,
     temperatureUnit="degC",
-    pressureUnit="bar")                                         annotation (
+    pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
@@ -289,7 +289,7 @@ model TestDiscretizedHEXvsDir
     redeclare package Medium = MediumAir,
     digits=3,
     outputMassFlowRate=true,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={52,-156})));
@@ -301,7 +301,7 @@ model TestDiscretizedHEXvsDir
     T0_par=283.15,
     p0_par=200000,
     h0_par=450e3)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
         origin={80,-206})));
   ThermofluidStream.Boundaries.Sink sinkB1(
@@ -363,8 +363,8 @@ model TestDiscretizedHEXvsDir
     initializeMassFlow=true,
     nCells=10,
     k_wall=300,
-    calculate_efficency=true)
-                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    calculate_efficiency=true)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-174})));
   ThermofluidStream.Processes.FlowResistance flowResistanceA2(
@@ -372,9 +372,8 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-84,-176},{-64,-156}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB2(
     redeclare package Medium = MediumRefrigerant,
@@ -382,28 +381,27 @@ model TestDiscretizedHEXvsDir
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-76,-202})));
-  ThermofluidStream.Sensors.SingleSensorSelect
-                             singleSensorSelect2(redeclare package Medium =
-        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect2(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-24,-218},{-44,-198}})));
-  ThermofluidStream.Sensors.SingleSensorSelect
-                             singleSensorSelect3(redeclare package Medium =
-        MediumRefrigerant,                                                                     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
+  ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect3(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{22,-216},{42,-196}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect
-                               sensorVaporQuality2(redeclare package Medium =
-        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality2(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-24,-230},{-44,-210}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect
-                               sensorVaporQuality3(redeclare package Medium =
-        MediumRefrigerant,                                                                       quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
+  ThermofluidStream.Sensors.TwoPhaseSensorSelect sensorVaporQuality3(
+    redeclare package Medium = MediumRefrigerant,
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{22,-230},{42,-210}})));
   Modelica.Blocks.Sources.Ramp rampMassflow(
     height=-2,
@@ -433,7 +431,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
-    annotation (Line(points={{19,136},{40,136}},  color={0,0,127}));
+    annotation (Line(points={{19,136},{40,136}}, color={0,0,127}));
   connect(PI.y,limiter. u)
     annotation (Line(points={{63,136},{78.8,136}}, color={0,0,127}));
   connect(limiter.y, boundary_rear1.p0_var) annotation (Line(points={{92.6,136},{114,136},{114,182},{106,182}},
@@ -496,7 +494,7 @@ equation
       thickness=0.5));
   connect(evaporator.outletA, multiSensor_Tpm5.inlet)
     annotation (Line(
-      points={{-8.2,-64},{-12,-64}},
+      points={{-8,-64},{-12,-64}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.p0_var,limiter3. y)
@@ -505,7 +503,7 @@ equation
   connect(multiSensor_Tpm5.m_flow_out,feedback3. u2) annotation (Line(points={{-32,-68},{-42,-68},{-42,-82},{-124,-82},{-124,-72}},
                                                            color={0,0,127}));
   connect(evaporator.outletB, multiSensor_Tpm6.inlet) annotation (Line(
-      points={{12.2,-48},{26,-48}},
+      points={{12,-48},{26,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm7.outlet, evaporator.inletB) annotation (Line(
@@ -518,7 +516,7 @@ equation
                                                                                       color={0,0,127}));
   connect(singleSensorSelect.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-24},{22,-24},{22,-48},{12.2,-48}},
+      points={{26,-24},{22,-24},{22,-48},{12,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.inlet, evaporator.inletB)
@@ -533,7 +531,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, evaporator.outletB)
     annotation (Line(
-      points={{26,-56},{16,-56},{16,-48},{12.2,-48}},
+      points={{26,-56},{16,-56},{16,-48},{12,-48}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA1.inlet, multiSensor_Tpm9.outlet) annotation (Line(
@@ -566,7 +564,7 @@ equation
       thickness=0.5));
   connect(condenser.outletB, multiSensor_Tpm10.inlet)
     annotation (Line(
-      points={{-12.2,-182},{-24,-182}},
+      points={{-12,-182},{-24,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletA, multiSensor_Tpm8.outlet)
@@ -575,7 +573,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, multiSensor_Tpm9.inlet) annotation (Line(
-      points={{8.2,-166},{20,-166},{20,-166},{42,-166}},
+      points={{8,-166},{20,-166},{20,-166},{42,-166}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB1.inlet, flowResistanceB2.outlet) annotation (Line(
@@ -597,7 +595,7 @@ equation
   connect(refFlow_setPoint2.y, feedback4.u1) annotation (Line(points={{-3,-244},{12,-244}}, color={0,0,127}));
   connect(singleSensorSelect2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-208},{-20,-208},{-20,-182},{-12.2,-182}},
+      points={{-24,-208},{-20,-208},{-20,-182},{-12,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect3.inlet, condenser.inletB)
@@ -607,7 +605,7 @@ equation
       thickness=0.5));
   connect(sensorVaporQuality2.inlet, condenser.outletB)
     annotation (Line(
-      points={{-24,-220},{-20,-220},{-20,-182},{-12.2,-182}},
+      points={{-24,-220},{-20,-220},{-20,-182},{-12,-182}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, condenser.inletB)
@@ -623,7 +621,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.foreB, multiSensor_Tpm3.rear) annotation (Line(
-      points={{-12.2,192},{-22,192}},
+      points={{-12,192},{-22,192}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEXUndir.rearB, multiSensor_Tpm2.fore) annotation (Line(
@@ -634,25 +632,28 @@ equation
       points={{8,208},{20,208}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
-        graphics={
+  annotation (
+    experiment(StopTime=30, Tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-280,-300},{260,300}}),
+      graphics={
         Rectangle(extent={{-208,-104},{170,-280}}, lineColor={28,108,200}),
         Text(
           extent={{-192,-106},{-106,-128}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Condenser"),
         Text(
           extent={{-192,80},{-106,58}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Evaporator"),
         Rectangle(extent={{-208,82},{170,-94}}, lineColor={28,108,200}),
         Text(
           extent={{-192,274},{-106,252}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Undirected"),
         Rectangle(extent={{-208,276},{170,100}}, lineColor={28,108,200})}),
-    experiment(StopTime=30, Tolerance=1e-6, Interval=0.03, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
-        <p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
+<p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
 </html>"));
 end TestDiscretizedHEXvsDir;

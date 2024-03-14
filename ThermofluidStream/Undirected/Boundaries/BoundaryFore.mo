@@ -22,16 +22,16 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the boundary"
     annotation (Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")= p0 if pressureFromInput "Pressure input connector [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60})));
-  Modelica.Blocks.Interfaces.RealInput T0_var( unit = "K") = T0  if temperatureFromInput "Temperature input connector [K]"
+  Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") if not setEnthalpy and temperatureFromInput "Temperature input connector [K]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,20}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
-  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg")= h0 if enthalpyFromInput "Enthalpy input connector"
+  Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and enthalpyFromInput "Enthalpy input connector"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-20}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
-  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg")= Xi0 if xiFromInput "Mass fraction connector [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg") if xiFromInput "Mass fraction connector [kg/kg]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60})));
   Interfaces.Rear rear(redeclare package Medium = Medium)
@@ -43,28 +43,33 @@ protected
 
   SI.Pressure p_forwards = Medium.pressure(rear.state_forwards);
 
-  SI.Temperature T0;
-  SI.Pressure p0;
-  SI.SpecificEnthalpy h0;
-  Medium.MassFraction Xi0[Medium.nXi];
+  Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
+  Modelica.Blocks.Interfaces.RealInput T0(unit = "K") "Internal temperature connector";
+  Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
+  Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fraction connector";
+
   SI.Pressure r;
 
 equation
 
-  if not temperatureFromInput then
+  connect(T0_var, T0);
+  if not temperatureFromInput or setEnthalpy then
     T0 = T0_par;
   end if;
 
+  connect(p0_var, p0);
   if not pressureFromInput then
     p0 = p0_par;
   end if;
 
-  if not xiFromInput then
-    Xi0 = Xi0_par;
+  connect(h0_var, h0);
+  if not enthalpyFromInput or not setEnthalpy then
+     h0 = h0_par;
   end if;
 
-  if not enthalpyFromInput then
-     h0 = h0_par;
+  connect(xi_var, Xi0);
+  if not xiFromInput then
+    Xi0 = Xi0_par;
   end if;
 
   der(rear.m_flow)*L = rear.r-r;
@@ -90,11 +95,11 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-68,0},{-80,0}},
+          points={{-60,0},{-84,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-58,80},{-58,-80}},
+          points={{-60,80},{-60,-80}},
           color={28,108,200},
           thickness=0.5),
         Line(points={{-44,80},{-44,-80}}, color={255,255,255}),

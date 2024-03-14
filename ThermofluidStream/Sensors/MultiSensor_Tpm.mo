@@ -3,7 +3,7 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
@@ -24,11 +24,11 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
     annotation(Dialog(group="Output Value"));
   parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
     annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
-  parameter InitMode init=InitMode.steadyState   "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
+    annotation(Dialog(tab="Initialization", enable=filter_output));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output Temperature of sensor"
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Initial output massflow of sensor"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
@@ -108,7 +108,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,-100},{80,-100}},
+          points={{-100,-100},{100,-100}},
           color={28,108,200},
           thickness=0.5),
         Rectangle(
@@ -125,35 +125,35 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-60,80},{60,30}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("T", String(
               T,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,30},{60,-20}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-60,-20},{60,-70}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString=DynamicSelect("m", String(
               m_flow,
               format="1."+String(digits)+"f"))),
         Text(
           extent={{-120,80},{-60,28}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%temperatureUnit"),
         Text(
           extent={{-120,32},{-60,-20}},
-          lineColor={175,175,175},
+          textColor={175,175,175},
           textString="%pressureUnit"),
         Text(
           extent={{-120,-20},{-60,-72}},
-          lineColor={175,175,175},
-          textString="%massFlowUnit")}),            Diagram(coordinateSystem(preserveAspectRatio=
-            false)),
+          textColor={175,175,175},
+          textString="%massFlowUnit")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>

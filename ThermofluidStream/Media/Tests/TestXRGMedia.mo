@@ -3,16 +3,14 @@ model TestXRGMedia "Test for five XRG Media with various components"
   extends Modelica.Icons.Example;
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
-                                    annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
+    annotation (Placement(transformation(extent={{-130,-68},{-110,-48}})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = XRGMedia.R134a_ph,
     redeclare package MediumB = XRGMedia.NH3_ph,
-    redeclare model ConductionElementA =
-        HeatExchangers.Internal.ConductionElementHEX,
-    redeclare model ConductionElementB =
-        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
-    initializeMassFlow=true)
-                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    redeclare model ConductionElementA = HeatExchangers.Internal.ConductionElementHEX,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+      initializeMassFlow=true)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-18,72})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX1(
@@ -28,16 +26,15 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX2(
     redeclare package MediumA = XRGMedia.CO2_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB =
-        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true)
-                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-18,40})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    A=10)                    annotation (Placement(transformation(extent={{20,14},{40,34}})));
+    A=10) annotation (Placement(transformation(extent={{20,14},{40,34}})));
   Boundaries.Source source(redeclare package Medium = XRGMedia.R134a_ph, p0_par=200000)
     annotation (Placement(transformation(extent={{-74,70},{-54,90}})));
   Boundaries.Volume volume(
@@ -49,18 +46,17 @@ model TestXRGMedia "Test for five XRG Media with various components"
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX4(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
-    redeclare model ConductionElementB =
-        HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+    redeclare model ConductionElementB = HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true)
-                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-34,8})));
   Boundaries.Sink sink2(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{84,38},{104,58}})));
   Boundaries.Source source1(redeclare package Medium = XRGMedia.CO2_ph, p0_par=130000)
-                                                                        annotation (Placement(transformation(extent={{-86,38},{-66,58}})));
+    annotation (Placement(transformation(extent={{-86,38},{-66,58}})));
   Boundaries.VolumeFlex volumeFlex(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{-4,38},{16,58}})));
   Examples.Utilities.Receiver receiver(redeclare package Medium =
-        XRGMedia.R134a_ph,                                                           p_start=200000)
+        XRGMedia.R134a_ph, p_start=200000)
     annotation (Placement(transformation(extent={{-36,22},{-56,42}})));
   Boundaries.Sink sink3(redeclare package Medium = XRGMedia.R134a_ph, p0_par=180000)
     annotation (Placement(transformation(extent={{-156,-10},{-176,10}})));
@@ -68,8 +64,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.NH3_ph,
     r(displayUnit="mm") = 0.005,
     l=10,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -78,8 +73,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.CO2_ph,
     r(displayUnit="mm") = 0.005,
     l=15,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -89,8 +83,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.002,
     l=50,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -99,8 +92,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R134a_ph,
     r(displayUnit="mm") = 0.02,
     l=5,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -110,8 +102,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.005,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -133,19 +124,19 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Boundaries.Source source2(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{-102,6},{-82,26}})));
   Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
       Medium =
-        XRGMedia.R1234yf_ph,                                                                             v_in_par=1)
+        XRGMedia.R1234yf_ph, v_in_par=1)
     annotation (Placement(transformation(extent={{-74,6},{-54,26}})));
   Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
       Medium =
-        XRGMedia.R1234yf_ph,                                                                               A_par=2)
+        XRGMedia.R1234yf_ph, A_par=2)
     annotation (Placement(transformation(extent={{52,6},{72,26}})));
   Boundaries.Sink sink(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{112,6},{132,26}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = XRGMedia.R1234yf_ph,
     r(displayUnit="mm") = 0.02,
     l=20,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=500, k2=500))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+      k=500, k2=500))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -156,8 +147,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     redeclare package Medium = XRGMedia.R245fa_ph,
     r(displayUnit="mm") = 0.02,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -174,7 +164,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     m_flow_ref_set=1)
     annotation (Placement(transformation(extent={{-4,-18},{16,-38}})));
   Processes.ConductionElement conductionElement1(redeclare package Medium =
-        XRGMedia.R245fa_ph,                                                                     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+        XRGMedia.R245fa_ph, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
@@ -192,8 +182,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.02,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -326,7 +315,7 @@ equation
       points={{72,-28},{88,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, basicControlValve.u_in) annotation (Line(points={{-17,-50},{6,-50},{6,-36}},     color={0,0,127}));
+  connect(ramp.y, basicControlValve.u_in) annotation (Line(points={{-17,-50},{6,-50},{6,-36}}, color={0,0,127}));
   connect(flowResistance5.inlet, pump.outlet) annotation (Line(
       points={{-108,32},{-100,32}},
       color={28,108,200},

@@ -8,7 +8,7 @@ model PhaseSeperator
     setEnthalpy=true,
     enthalpyFromInput=true,
     p0_par=120000,
-    h0_par=2000)                                            annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
+    h0_par=2000) annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
   Boundaries.PhaseSeparator receiver(
     redeclare package Medium = Medium,
     p_start=110000,
@@ -16,7 +16,7 @@ model PhaseSeperator
     pipe_low=0.05,
     pipe_high=0.15,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
-                    annotation (Placement(transformation(extent={{-10,10},{10,30}})));
+    annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   Boundaries.PhaseSeparator accumulator(
     redeclare package Medium = Medium,
     p_start=110000,
@@ -24,9 +24,9 @@ model PhaseSeperator
     pipe_low=0.85,
     pipe_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
-                    annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
+    annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Boundaries.Sink sink(redeclare package Medium=Medium, p0_par=100000)
-                                                        annotation (Placement(transformation(extent={{76,-30},{96,-10}})));
+    annotation (Placement(transformation(extent={{76,-30},{96,-10}})));
 
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
     redeclare package Medium = Medium,
@@ -56,8 +56,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=5000))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -65,8 +64,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=5000))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
@@ -74,8 +72,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=5000))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{30,10},{50,30}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
@@ -83,8 +80,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=5000))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{30,-30},{50,-10}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(
     redeclare package Medium = Medium,
@@ -123,7 +119,7 @@ model PhaseSeperator
     setEnthalpy=true,
     enthalpyFromInput=true,
     p0_par=120000,
-    h0_par=2000)                                            annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
+    h0_par=2000) annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect6(
     redeclare package Medium = Medium,
     digits=2,
@@ -133,7 +129,7 @@ model PhaseSeperator
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{-56,28},{-36,48}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
-                                                        annotation (Placement(transformation(extent={{76,10},{96,30}})));
+    annotation (Placement(transformation(extent={{76,10},{96,30}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect7(
     redeclare package Medium = Medium,
     digits=2,
@@ -143,7 +139,7 @@ model PhaseSeperator
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar) annotation (Placement(transformation(extent={{64,40},{84,60}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
-                                    annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
+    annotation (Placement(transformation(extent={{-86,-72},{-66,-52}})));
 equation
   connect(source.h0_var, timeTable.y) annotation (Line(points={{-82,20},{-90,20},{-90,-6},{-99,-6}}, color={0,0,127}));
   connect(twoPhaseSensorSelect1.inlet, accumulator.outlet)

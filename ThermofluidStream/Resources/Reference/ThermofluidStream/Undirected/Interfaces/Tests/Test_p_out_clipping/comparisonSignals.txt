@@ -1,0 +1,6 @@
+time
+basicControlValve.m_flow
+flowResistance.m_flow
+flowResistance1.m_flow
+specificValveType.m_flow
+tanValve.m_flow

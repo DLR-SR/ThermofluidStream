@@ -37,11 +37,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[1], foreB) annotation (Line(
-      points={{-30,-1},{0,-1},{0,-100}},
+      points={{-30,-0.5},{0,-0.5},{0,-100}},
       color={28,108,200},
       thickness=0.5));
   connect(foreA, junctionMN.fores[2]) annotation (Line(
-      points={{0,100},{0,1},{-30,1}},
+      points={{0,100},{0,0.5},{-30,0.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -65,18 +65,16 @@ equation
           lineThickness=0.5),
         Text(
           extent={{20,100},{60,60}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
+          textColor={175,175,175},
           textString="A"),
         Text(
           extent={{20,-60},{60,-100}},
-          lineColor={175,175,175},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
-          textString="B")}),    Diagram(coordinateSystem(preserveAspectRatio=
-            false)),
+          textColor={175,175,175},
+          textString="B")}),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: MS Shell Dlg 2;\">Junction with a rear and two fores in a lying T shape.</span></p>
+<p>
+Junction with a rear and two fores in a lying T shape.
+</p>
 </html>"));
 end JunctionRFF;

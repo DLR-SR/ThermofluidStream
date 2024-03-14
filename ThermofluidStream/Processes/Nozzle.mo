@@ -6,12 +6,12 @@ model Nozzle "Model for dynamic pressure difference"
   parameter SI.Area A_out = 1 "Area of outlet";
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance of Nozzle"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity=true    "if true only inlet density is applied"
+  parameter Boolean assumeConstantDensity=true "= true, if only inlet density is applied"
     annotation(Dialog(tab="Advanced"));
 
 protected
-  SI.Density rho_in = Medium.density(inlet.state) "density of medium entering";
-  SI.Density rho_out "density of medium exiting";
+  SI.Density rho_in = Medium.density(inlet.state) "Density of medium entering";
+  SI.Density rho_out "Density of medium exiting";
 
   SI.Velocity v_in;
   SI.Velocity v_out;
@@ -40,7 +40,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -49,21 +49,26 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,60},{-60,0},{0,-60},{60,0},{0,60}}, color={28,108,200}),
-        Line(points={{-40,44},{-40,-44},{40,-44},{40,44},{-40,44}}, color={28,108,
-              200}),
+        Rectangle(
+          extent={{-42,42},{42,-42}},
+          lineColor={28,108,200}),
+        Polygon(
+          points={{0,60},{-60,0},{0,-60},{60,0},{0,60}},
+          lineColor={28,108,200}),
         Ellipse(
-          extent={{-40,44},{40,-44}},
+          extent={{-42,42},{42,-42}},
           lineColor={170,255,170},
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Sphere),
         Ellipse(
-          extent={{-40,44},{40,-44}},
+          extent={{-42,42},{42,-42}},
           lineColor={0,140,72},
           lineThickness=0.5)}),
-                           Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbolent, linear-quadratic).</span></p>
+<p>Implementation of a nozzle taking gas dynamic effects into account.</p>
+<p>By default, the density is assumed to be constant across the component. This assumption can be reverted by setting <code>assumeConstantDensity = false</code> and hence the outlet velocity is computed by the outlet density. Beware that this will lead to a non-linear equation system in the component.</p>
+<p>By definition, the sign of the velocity matches the sign of the mass-flow rate at the inlet.</p>
 </html>"));
 end Nozzle;

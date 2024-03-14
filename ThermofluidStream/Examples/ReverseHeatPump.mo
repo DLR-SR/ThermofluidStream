@@ -2,15 +2,20 @@ within ThermofluidStream.Examples;
 model ReverseHeatPump
   extends Modelica.Icons.Example;
 
-  parameter Boolean switchDuringSimulation = true;
-  parameter Boolean heatingMode = false annotation(Dialog(enable = not switchDuringSimulation));
+  parameter Boolean switchDuringSimulation = true
+    "= true, if heating is switched on during simulation";
+  parameter Boolean heatingMode = false
+    "Constant heating mode if switchDuringSimulation = false"
+    annotation(Dialog(enable = not switchDuringSimulation));
 
   replaceable package SecondaryMedium = Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Secondary medium"
     annotation(choicesAllMatching=true);
 
   replaceable package RefrigerantMedium = Media.myMedia.R134a.R134a_ph
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Refrigerant medium"
     annotation(choicesAllMatching=true);
 
   Processes.Compressor compressor(
@@ -26,8 +31,7 @@ model ReverseHeatPump
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,14})));
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX
-                                           discretizedHEX(
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
     redeclare model ConductionElementA =
@@ -42,8 +46,7 @@ model ReverseHeatPump
         rotation=270,
         origin={-76,92})));
 
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX
-                                           discretizedHEX1(
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX1(
     redeclare package MediumA = SecondaryMedium,
     redeclare package MediumB = RefrigerantMedium,
     redeclare model ConductionElementA =
@@ -58,7 +61,7 @@ model ReverseHeatPump
         rotation=270,
         origin={76,90})));
 
-  FlowControl.BasicControlValve               valveCompressorOutletCooling(
+  FlowControl.BasicControlValve valveCompressorOutletCooling(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
@@ -67,7 +70,7 @@ model ReverseHeatPump
     m_flow_ref_set=0.2) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-26,40})));
-  FlowControl.BasicControlValve               valveCompressorOutletHeating(
+  FlowControl.BasicControlValve valveCompressorOutletHeating(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     invertInput=true,
@@ -77,12 +80,12 @@ model ReverseHeatPump
     m_flow_ref_set=0.2) annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={26,40})));
-  Undirected.Topology.JunctionRRF2 junctionRRF2_1(redeclare package Medium =
-        RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.JunctionRRF2 junctionRRF2_1(
+    redeclare package Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={68,40})));
-  FlowControl.BasicControlValve               valveCompressorInletHeating(
+  FlowControl.BasicControlValve valveCompressorInletHeating(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=true,
@@ -93,7 +96,7 @@ model ReverseHeatPump
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-68,-6})));
-  FlowControl.BasicControlValve               valveCompressorInletCooling(
+  FlowControl.BasicControlValve valveCompressorInletCooling(
     redeclare package Medium = RefrigerantMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     invertInput=false,
@@ -129,9 +132,8 @@ model ReverseHeatPump
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-          material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -143,17 +145,21 @@ model ReverseHeatPump
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={134,54})));
-  Topology.SplitterT1 compressorSplitter(redeclare package Medium =
-        RefrigerantMedium,                                                             L=1e6)
+  Topology.SplitterT1 compressorSplitter(
+    redeclare package Medium = RefrigerantMedium,
+    L=1e6)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,40})));
-  Topology.JunctionT1 junctionT1_1(redeclare package Medium = RefrigerantMedium, L=1e6)
-                                                                                 annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+  Topology.JunctionT1 junctionT1_1(
+    redeclare package Medium = RefrigerantMedium,
+    L=1e6)
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={0,-38})));
-  Undirected.Topology.ConnectRearOutlet connectRearOutlet(redeclare package
-      Medium = RefrigerantMedium, useDefaultStateAsRear=true) annotation (
+  Undirected.Topology.ConnectRearOutlet connectRearOutlet(
+    redeclare package Medium = RefrigerantMedium,
+    useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -176,8 +182,8 @@ model ReverseHeatPump
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.h,
     h_0=260e3,
     V_par=0.005) annotation (Placement(transformation(extent={{-10,170},{10,190}})));
-  Undirected.Topology.JunctionRFF junctionRFFleft(redeclare package Medium =
-        RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.JunctionRFF junctionRFFleft(
+    redeclare package Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-68,40})));
@@ -192,15 +198,13 @@ model ReverseHeatPump
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-40,180})));
-
   Undirected.Processes.FlowResistance flowResistance(
     redeclare package Medium = SecondaryMedium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-          material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -214,19 +218,20 @@ model ReverseHeatPump
         rotation=90,
         origin={0,-10})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.001) annotation (Placement(transformation(extent={{96,10},{116,30}})));
-  Undirected.Topology.ConnectInletFore connectInletFore(redeclare package
-      Medium = RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectInletFore connectInletFore(
+    redeclare package Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-44,40})));
-  Undirected.Topology.ConnectInletFore connectInletFore1(redeclare package
-      Medium = RefrigerantMedium) annotation (Placement(transformation(
+  Undirected.Topology.ConnectInletFore connectInletFore1(
+    redeclare package Medium = RefrigerantMedium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={46,40})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{104,-64},{160,-8}})));
-  Undirected.Topology.ConnectRearOutlet connectRearOutlet1(redeclare package
-      Medium = RefrigerantMedium, useDefaultStateAsRear=true) annotation (
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{122,-78},{178,-22}})));
+  Undirected.Topology.ConnectRearOutlet connectRearOutlet1(
+    redeclare package Medium = RefrigerantMedium,
+    useDefaultStateAsRear=true) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -253,7 +258,7 @@ model ReverseHeatPump
         origin={130,124})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=5e5, uMin=100)
     annotation (Placement(transformation(extent={{100,156},{88,168}})));
-  Modelica.Blocks.Sources.RealExpression realExpression5(y=1)   annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression5(y=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={130,98})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
@@ -278,13 +283,13 @@ model ReverseHeatPump
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=270,
         origin={-124,128})));
-  Modelica.Blocks.Sources.RealExpression realExpression4(y=1)   annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression4(y=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-124,98})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal(realTrue=0, realFalse=1) annotation (Placement(transformation(extent={{-142,-16},{-122,4}})));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression(y=heatingMode) annotation (Placement(transformation(extent={{-212,-32},{-192,-12}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1, initType=Modelica.Blocks.Types.Init.InitialState)
-                                                        annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
+    annotation (Placement(transformation(extent={{-110,-16},{-90,4}})));
   Undirected.Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect(
     redeclare package Medium2Phase = RefrigerantMedium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_oversat_K,
@@ -303,12 +308,14 @@ model ReverseHeatPump
         rotation=90,
         origin={-60,66})));
 
-  Modelica.Blocks.Sources.RealExpression realExpression9(y=(1 - booleanToReal.y)*limiterValve.y + booleanToReal.y)
-                                                                annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression9(
+    y=(1 - booleanToReal.y)*limiterValve.y + booleanToReal.y)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-12,160})));
-  Modelica.Blocks.Sources.RealExpression realExpression8(y=booleanToReal.y*(limiterValve.y - 1) + 1)
-                                                                annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression8(
+    y=booleanToReal.y*(limiterValve.y - 1) + 1)
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={12,160})));
   Modelica.Blocks.Continuous.PI PI_Valve(
@@ -324,7 +331,7 @@ model ReverseHeatPump
     annotation (Placement(transformation(extent={{-7,-7},{7,7}},
         rotation=0,
         origin={1,101})));
-  Modelica.Blocks.Sources.RealExpression realExpression6(y=5)   annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+  Modelica.Blocks.Sources.RealExpression realExpression6(y=5) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-28,102})));
   Modelica.Blocks.Logical.Switch switch1
@@ -337,16 +344,18 @@ model ReverseHeatPump
         extent={{-6,-6},{6,6}},
         rotation=90,
         origin={18,140})));
-  Modelica.Blocks.Sources.BooleanExpression booleanExpression1(y=logicalSwitch.y)
-                                                                             annotation (Placement(transformation(extent={{-34,54},{-14,74}})));
+  Modelica.Blocks.Sources.BooleanExpression booleanExpression1(
+    y=logicalSwitch.y)
+    annotation (Placement(transformation(extent={{-34,54},{-14,74}})));
   Modelica.Blocks.Sources.RealExpression omega_compr(y=3000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={20,-6})));
   Modelica.Blocks.Logical.LogicalSwitch logicalSwitch annotation (Placement(transformation(extent={{-176,-16},{-156,4}})));
-  Modelica.Blocks.Sources.BooleanExpression booleanExpression2(y=switchDuringSimulation)
-                                                                             annotation (Placement(transformation(extent={{-212,-16},{-192,4}})));
+  Modelica.Blocks.Sources.BooleanExpression booleanExpression2(
+    y=switchDuringSimulation)
+    annotation (Placement(transformation(extent={{-212,-16},{-192,4}})));
   Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=50) annotation (Placement(transformation(extent={{-212,8},{-192,28}})));
   Undirected.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
     redeclare package Medium = SecondaryMedium,
@@ -388,15 +397,14 @@ model ReverseHeatPump
     redeclare package Medium = RefrigerantMedium,
     temperatureUnit="degC",
     pressureUnit="bar") annotation (Placement(transformation(extent={{50,-38},{30,-58}})));
-  Sensors.SingleSensorSelect singleSensorSelect(redeclare package Medium =
-        RefrigerantMedium,                                                                    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
+  Sensors.SingleSensorSelect singleSensorSelect(
+    redeclare package Medium = RefrigerantMedium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-14,14})));
 equation
-
-
   connect(compressor.outlet, compressorSplitter.inlet)
     annotation (Line(
       points={{0,24},{0,30}},
@@ -471,12 +479,12 @@ equation
       points={{84,124},{84,134}},
       color={28,108,200},
       thickness=0.5));
-  connect(limiter1.u,PI1. y) annotation (Line(points={{101.2,162},{105,162}},        color={0,0,127}));
+  connect(limiter1.u,PI1. y) annotation (Line(points={{101.2,162},{105,162}}, color={0,0,127}));
   connect(multiSensor_Tpm2.m_flow_out,feedback1. u2)
-    annotation (Line(points={{88,124},{122,124}},                                    color={0,0,127}));
+    annotation (Line(points={{88,124},{122,124}}, color={0,0,127}));
   connect(PI1.u,feedback1. y) annotation (Line(points={{128,162},{130,162},{130,133}},
                                                                            color={0,0,127}));
-  connect(feedback1.u1,realExpression5. y) annotation (Line(points={{130,116},{130,109}},        color={0,0,127}));
+  connect(feedback1.u1,realExpression5. y) annotation (Line(points={{130,116},{130,109}}, color={0,0,127}));
   connect(limiter1.y, boundaryFore1.p0_var) annotation (Line(points={{87.4,162},{78,162},{78,146}},
                                                                                              color={0,0,127}));
   connect(boundaryRear.fore, multiSensor_Tpm1.rear)
@@ -491,13 +499,13 @@ equation
                                                                                                             color={0,0,127}));
   connect(feedback2.u1,realExpression4. y) annotation (Line(points={{-124,120},{-124,109}},
                                                                                           color={0,0,127}));
-  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-78,178},{-78,160}},               color={0,0,127}));
+  connect(limiter2.y, boundaryRear.p0_var) annotation (Line(points={{-99.4,178},{-78,178},{-78,160}}, color={0,0,127}));
   connect(booleanToReal.y, firstOrder.u) annotation (Line(points={{-121,-6},{-112,-6}},
                                                                                       color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletHeating.u_in) annotation (Line(points={{-89,-6},{-76,-6}},color={0,0,127}));
   connect(firstOrder.y, valveCompressorOutletCooling.u_in)
-    annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{-26,-24},{-26,32}},  color={0,0,127}));
-  connect(firstOrder.y, valveCompressorOutletHeating.u_in) annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{26,-24},{26,32}},  color={0,0,127}));
+    annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{-26,-24},{-26,32}}, color={0,0,127}));
+  connect(firstOrder.y, valveCompressorOutletHeating.u_in) annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{26,-24},{26,32}}, color={0,0,127}));
   connect(firstOrder.y, valveCompressorInletCooling.u_in)
     annotation (Line(points={{-89,-6},{-84,-6},{-84,-24},{40,-24},{40,-6},{60,-6}},color={0,0,127}));
   connect(junctionRFFleft.foreB, twoPhaseSensorSelect1.rear)
@@ -512,7 +520,7 @@ equation
       thickness=0.5));
   connect(realExpression8.y, TEVcooling.u_in) annotation (Line(points={{23,160},{40,160},{40,172}}, color={0,0,127}));
   connect(realExpression9.y, TEVheating.u_in) annotation (Line(points={{-23,160},{-40,160},{-40,172}}, color={0,0,127}));
-  connect(switch1.y,feedback_valve. u2) annotation (Line(points={{2,86.6},{2,95.4},{1,95.4}},    color={0,0,127}));
+  connect(switch1.y,feedback_valve. u2) annotation (Line(points={{2,86.6},{2,95.4},{1,95.4}}, color={0,0,127}));
   connect(feedback_valve.u1,realExpression6. y) annotation (Line(points={{-4.6,101},{-4,101},{-4,102},{-17,102}},
                                                                                                             color={0,0,127}));
   connect(twoPhaseSensorSelect1.value_out, switch1.u1) annotation (Line(points={{-60,76},{-18,76},{-18,72.8},{-2.8,72.8}}, color={0,0,127}));
@@ -610,7 +618,15 @@ equation
       points={{84,100},{84,104}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Diagram(coordinateSystem(extent={{-260,-80},{180,220}}), graphics={
+  annotation (
+    experiment(
+      StopTime=200,
+      Tolerance=1e-6,
+      Interval=0.2,
+      __Dymola_Algorithm="Dassl"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Diagram(coordinateSystem(extent={{-260,-80},{180,220}}),
+      graphics={
         Polygon(
           points={{48,42},{48,160},{140,210},{140,42},{48,42}},
           fillColor={215,215,215},
@@ -625,10 +641,8 @@ equation
         Rectangle(extent={{-180,206},{-74,42}}, lineColor={28,108,200}),
         Text(
           extent={{-172,202},{-122,190}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Ambient Air")}),
-    Icon(coordinateSystem),
-    experiment(StopTime=200, Tolerance=1e-6, Interval=0.2, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p>Example of a reversible heatpump for residential air conditioning.  The speciality of this system is, that the direction of the refrigerant flow can be reversed. This means that the heat exchangers can act as evaporator or condenser according to the current cycle operation. Two separate metering devices and a undirected receiver allow to control the superheating temperature after the evaporator in both operating modes. </p>
 <p>The flow direction is controlled by a system of valves and undirected junctions. In the parameter settings it can be chosen between &quot;switching during simulation&quot; or manually switching between cooling and heating mode prior to the simulation.</p>

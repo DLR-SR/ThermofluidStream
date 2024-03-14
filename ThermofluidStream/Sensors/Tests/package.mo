@@ -3,6 +3,8 @@ package Tests "Tests for Sensor package"
   extends Modelica.Icons.ExamplesPackage;
 
 annotation (Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Tests&nbsp;for&nbsp;Sensor&nbsp;package.</span></p>
+<p>
+Tests for Sensor package.
+</p>
 </html>"));
 end Tests;

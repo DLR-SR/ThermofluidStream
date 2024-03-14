@@ -8,7 +8,7 @@ model SpecificValveType "Specific technical valve types"
   replaceable record ZetaValueRecord =
       ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve
     constrainedby
-    ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves               "Select Valve Type"
+    ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves "Select valve type"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
@@ -17,7 +17,7 @@ model SpecificValveType "Specific technical valve types"
       Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient
            == FlowCoeffType.flowDiameter)));
   //Reference Values
-  parameter Real Kvs( unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
+  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
     Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
           Kvs)));
   parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
@@ -65,7 +65,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{-40,0}},
+          points={{-84,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -78,7 +78,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,0},{80,0}},
+          points={{40,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Polygon(
@@ -86,20 +86,20 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Undirected implementation fo the Specific Valve Type.</p>
-<p>This valve models the behaviour of specific valve types.</p>
+<p>Undirected implementation of the specific valve type.</p>
+<p>This valve models the behavior of specific valve types.</p>
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate or a flow-diameter can be set. </p>
 <p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>

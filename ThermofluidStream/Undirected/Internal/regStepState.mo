@@ -1,7 +1,9 @@
 within ThermofluidStream.Undirected.Internal;
 function regStepState "Apply regStep on State"
+  extends Modelica.Icons.Function;
+
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-                                                                "Medium model"
+    "Medium model"
     annotation (choicesAllMatching=true, Documentation(
         info="<html>
 <p>Replaceable medium package for the function.</p>

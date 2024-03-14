@@ -4,9 +4,11 @@ model TanValve "Test for undirected TanValve"
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium package"
-      annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Test.</span></p>
+    "Medium package"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium package used in the Test.
+</p>
 </html>"));
 
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
@@ -24,25 +26,25 @@ model TanValve "Test for undirected TanValve"
     r=0.05,
     l=1,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+      ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+        material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Boundaries.BoundaryFore boundary_fore1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{96,26},{116,46}})));
-  Topology.JunctionRFF2                 junctionRFF2_1(
-                                                     redeclare package Medium = Medium)
+  Topology.JunctionRFF2 junctionRFF2_1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm(redeclare package
-      Medium =                                                                         Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-78,-2},{-58,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm1(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{26,-2},{46,18}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm2(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-12,34},{8,54}})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm3(redeclare package
-      Medium =                                                                          Medium)
+  Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{42,34},{62,54}})));
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
@@ -55,20 +57,18 @@ model TanValve "Test for undirected TanValve"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss =ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{68,26},{88,46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
-        (                                                                                                        material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{64,-10},{84,10}})));
-  Modelica.Blocks.Sources.Pulse    pulse(
+  Modelica.Blocks.Sources.Pulse pulse(
     amplitude=4e4,
     period=10,
     offset=0.8e5)

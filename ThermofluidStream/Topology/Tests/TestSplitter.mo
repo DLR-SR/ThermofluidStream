@@ -3,8 +3,7 @@ model TestSplitter
   extends Modelica.Icons.Example;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
-                                                     constrainedby
-    Media.myMedia.Interfaces.PartialMedium;
+    constrainedby Media.myMedia.Interfaces.PartialMedium;
 
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
@@ -36,11 +35,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, splitterN.outlets[3]) annotation (Line(
-      points={{44,28},{30,28},{30,1.33333},{10,1.33333}},
+      points={{44,28},{30,28},{30,0.666667},{10,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(sink2.inlet, splitterN.outlets[1]) annotation (Line(
-      points={{44,-28},{30,-28},{30,-1.33333},{10,-1.33333}},
+      points={{44,-28},{30,-28},{30,-0.666667},{10,-0.666667}},
       color={28,108,200},
       thickness=0.5));
 

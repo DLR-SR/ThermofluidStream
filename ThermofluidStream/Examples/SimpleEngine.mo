@@ -5,11 +5,11 @@ model SimpleEngine "Simple steam engine"
   package Water = Media.myMedia.Water.StandardWater;
 
 
-  inner DropOfCommons dropOfCommons(L=1e-3,
-                                    assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(
+    L=1e-3,
+    assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{140,-34},{160,-14}})));
-  Utilities.SteamSink
-                  steamSink(
+  Utilities.SteamSink steamSink(
     redeclare package Medium = Water,
     p0_par=100000,
     m_flow_animate=0.25)
@@ -17,13 +17,14 @@ model SimpleEngine "Simple steam engine"
         rotation=90,
         origin={190,90})));
 
-  Processes.ConductionElement     conductionElement(    redeclare package
-      Medium = Water,
+  Processes.ConductionElement conductionElement(
+    redeclare package Medium = Water,
     A=20,
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,
     T_0=573.15)
     annotation (Placement(transformation(extent={{-60,44},{-40,64}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T(displayUnit="degC") = 873.15)
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(
+    T(displayUnit="degC") = 873.15)
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
   Utilities.CrankDrive crankDrive(
     rodLength=3,
@@ -49,13 +50,13 @@ model SimpleEngine "Simple steam engine"
     m0_left=0.1,
     m0_right=0.1,
     x0=0.5) annotation (Placement(transformation(extent={{88,-92},{28,-32}})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector(redeclare
-      package Medium = Water) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector(
+    redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={70,34})));
-  Undirected.Topology.ConnectorInletOutletFore switchConnector1(redeclare
-      package Medium = Water) annotation (Placement(transformation(
+  Undirected.Topology.ConnectorInletOutletFore switchConnector1(
+    redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,54})));
@@ -63,7 +64,7 @@ model SimpleEngine "Simple steam engine"
         rotation=0,
         origin={-10,54})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Water)
-                                   annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={150,54})));
@@ -73,8 +74,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,44},{30,64}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Water,
@@ -82,8 +83,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-2,24},{18,44}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Water,
@@ -91,8 +92,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{70,44},{90,64}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Water,
@@ -100,8 +101,8 @@ model SimpleEngine "Simple steam engine"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.015,
     l=1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{88,24},{108,44}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Water, invertInput=false) annotation (Placement(transformation(extent={{100,64},{120,44}})));
   FlowControl.TanValve tanValve1(redeclare package Medium = Water, invertInput=true) annotation (Placement(transformation(extent={{120,24},{140,44}})));
@@ -123,7 +124,7 @@ model SimpleEngine "Simple steam engine"
     pipe_low=0.9,
     pipe_high=0.95,
     init_method=ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l)
-                   annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
+    annotation (Placement(transformation(extent={{-100,44},{-80,64}})));
   Modelica.Blocks.Continuous.LimPID PI1(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=1e6,
@@ -133,7 +134,7 @@ model SimpleEngine "Simple steam engine"
     y_start=0) annotation (Placement(transformation(extent={{-150,24},{-130,44}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
     annotation (Placement(transformation(extent={{-120,24},{-100,44}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=4)  annotation (Placement(transformation(extent={{-180,24},{-160,44}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=4) annotation (Placement(transformation(extent={{-180,24},{-160,44}})));
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = Water,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
@@ -143,9 +144,9 @@ model SimpleEngine "Simple steam engine"
         rotation=180,
         origin={-96,16})));
   Boundaries.TerminalSource terminalSource(redeclare package Medium = Water) annotation (Placement(transformation(extent={{-130,44},{-110,64}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{156,-118},{212,-62}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,-118},{218,-62}})));
 equation
-  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}},  color={191,0,0}));
+  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}}, color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, crankDrive.flange_a)
     annotation (Line(points={{-130,-65},{-85.5,-65}},
                                                  color={0,0,0}));
@@ -202,7 +203,7 @@ equation
       points={{-10,44},{-10,34},{-2,34}},
       color={28,108,200},
       thickness=0.5));
-  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-85.5,-32},{-85.5,-16},{-79.6,-16}},   color={255,0,255}));
+  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-85.5,-32},{-85.5,-16},{-79.6,-16}}, color={255,0,255}));
   connect(steamSink.inlet, junctionT2_1.outlet) annotation (Line(
       points={{190,80},{190,54},{160,54}},
       color={28,108,200},
@@ -235,28 +236,30 @@ equation
   connect(switch.u, tanValve.u) annotation (Line(points={{-10,62},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
   connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
-        graphics={
-        Rectangle(extent={{-192,96},{-38,6}},    lineColor={28,108,200}),
+  annotation (
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Diagram(
+      coordinateSystem(preserveAspectRatio=false, extent={{-220,-120},{220,120}}),
+      graphics={
+        Rectangle(extent={{-192,96},{-38,6}}, lineColor={28,108,200}),
         Text(
           extent={{-188,94},{-96,82}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Boiler and Preheater"),
         Rectangle(extent={{-30,80},{168,20}}, lineColor={28,108,200}),
         Text(
           extent={{118,78},{180,66}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Valves"),
         Text(
           extent={{-8,-82},{86,-100}},
-          lineColor={28,108,200},
+          textColor={28,108,200},
           textString="Piston and Crank Drive"),
-        Rectangle(extent={{-118,-32},{90,-100}},
-                                              lineColor={28,108,200})}),
+        Rectangle(
+          extent={{-118,-32},{90,-100}},
+          lineColor={28,108,200})}),
         experiment(StopTime=25, Tolerance=1e-6, Interval=0.025),
-        Documentation(info="<html>
+    Documentation(info="<html>
 <p>Basic model of a steam engine. STEAM AND POWER!</p>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"));

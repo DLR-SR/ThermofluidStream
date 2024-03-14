@@ -7,17 +7,19 @@ model BasicControlValve
          ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
   replaceable function valveCharacteristics =
-      ThermofluidStream.FlowControl.Internal.ControlValve.linearCharacteristics
-      constrainedby
-    ThermofluidStream.FlowControl.Internal.ControlValve.partialValveCharacteristics                 "Select valve characteristics"
-        annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"),
-    Documentation(info="<html>
-<p>Characterisic curve of the valve.</p>
+    ThermofluidStream.FlowControl.Internal.ControlValve.linearCharacteristics
+    constrainedby ThermofluidStream.FlowControl.Internal.ControlValve.partialValveCharacteristics
+    "Select valve characteristics"
+    annotation (
+      choicesAllMatching = true,
+      Dialog(group = "Valve parameters"),
+      Documentation(info="<html>
+<p>Characteristic curve of the valve.</p>
 </html>"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
   //Reference Values
-  parameter Real Kvs( unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
+  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
     Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
           Kvs)));
   parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
@@ -42,7 +44,7 @@ equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(
-          points={{-70,0},{-40,0}},
+          points={{-84,0},{-40,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -55,7 +57,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{40,0},{80,0}},
+          points={{40,0},{84,0}},
           color={28,108,200},
           thickness=0.5),
         Polygon(
@@ -63,17 +65,17 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else  {255,255,255}),
+                  {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Undirected implementation of the Basic Control Valve.</p>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>

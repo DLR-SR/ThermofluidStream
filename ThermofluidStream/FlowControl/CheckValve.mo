@@ -1,10 +1,10 @@
 within ThermofluidStream.FlowControl;
-model CheckValve "Valve that allows only postive mass_flow"
+model CheckValve "Valve that allows only positive mass_flow"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
   parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference mass flow"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));
 
 equation
@@ -21,7 +21,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(

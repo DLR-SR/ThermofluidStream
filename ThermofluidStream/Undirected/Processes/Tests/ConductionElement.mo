@@ -4,9 +4,12 @@ model ConductionElement "Test for ConductionElement"
 
   replaceable package Medium = Media.myMedia.Incompressible.Examples.Glycol47
     constrainedby Media.myMedia.Interfaces.PartialMedium
-                                                   "Medium Model"
-      annotation(choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-size: 12pt;\">Medium Model for the test. Be aware that the Component is mainly ment for liquids with low compressablility.</span></p>
+    "Medium Model"
+    annotation(choicesAllMatching=true, Documentation(info="<html>
+<p>
+Medium Model for the test. Be aware that the Component is mainly
+meant for liquids with low compressablility.
+</p>
 </html>"));
 
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement(

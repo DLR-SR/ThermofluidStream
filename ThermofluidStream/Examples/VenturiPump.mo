@@ -1,32 +1,32 @@
 within ThermofluidStream.Examples;
-model VenturiPump "pumping of liquid water using the venturi effect"
+model VenturiPump "Pumping of liquid water using the venturi effect"
 
-    extends Modelica.Icons.Example;
+  extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Water.StandardWater         constrainedby
+  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby
     Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
-  parameter SI.Area A_in_hp=0.0002;
-  parameter SI.Area A_in_lp=0.001;
-  parameter SI.Area A_out=0.003;
-
+  parameter SI.Area A_in_hp=0.0002 "Cross-section area of high pressure inlet boundary";
+  parameter SI.Area A_in_lp=0.001 "Cross-section area of low pressure inlet boundary";
+  parameter SI.Area A_out=0.003 "Cross-section area of outlet boundary";
 
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.25,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,-70},{-10,-50}})));
-  Boundaries.Source  source2_1(
+  Boundaries.Source source2_1(
     redeclare package Medium = Medium,
     T0_par=293.15,
     p0_par=150000)
     annotation (Placement(transformation(extent={{-120,-70},{-100,-50}})));
-  Boundaries.Sink  sink2_1(
-    redeclare package Medium = Medium, p0_par=110000)
+  Boundaries.Sink sink2_1(
+    redeclare package Medium = Medium,
+    p0_par=110000)
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
   Sensors.SingleFlowSensor singleFlowSensor(
     redeclare package Medium = Medium,
@@ -38,7 +38,7 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps)
     annotation (Placement(transformation(extent={{70,-64},{90,-44}})));
-  Boundaries.Source  source2_2(
+  Boundaries.Source source2_2(
     redeclare package Medium = Medium,
     T0_par=293.15,
     p0_par=100000)
@@ -50,8 +50,8 @@ model VenturiPump "pumping of liquid water using the venturi effect"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.1,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (                       material=ThermofluidStream.Processes.Internal.Material.steel))
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+      material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-10})));
@@ -60,19 +60,22 @@ model VenturiPump "pumping of liquid water using the venturi effect"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
-      Medium =                                                                      Medium, A_par=A_in_hp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow(
+    redeclare package Medium = Medium,
+    A_par=A_in_hp)
     annotation (Placement(transformation(extent={{-60,-70},{-40,-50}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
-      Medium =                                                                        Medium, A_par=A_out)
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(
+    redeclare package Medium = Medium,
+    A_par=A_out)
     annotation (Placement(transformation(extent={{40,-70},{60,-50}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow2(redeclare package
-      Medium =                                                                       Medium, A_par=A_in_lp)
+  Boundaries.DynamicPressureInflow dynamicPressureInflow2(
+    redeclare package Medium = Medium,
+    A_par=A_in_lp)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,20})));
-  Topology.DynamicJunctionN  dynamicJunctionN2_1(
+  Topology.DynamicJunctionN dynamicJunctionN2_1(
     redeclare package Medium = Medium,
     N=2,
     A={A_in_hp,A_in_lp},
@@ -87,7 +90,7 @@ model VenturiPump "pumping of liquid water using the venturi effect"
         rotation=270,
         origin={6,50})));
   inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612) annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{76,60},{116,100}})));
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{82,62},{118,98}})));
 equation
   connect(flowResistance1.outlet, checkValve.inlet) annotation (Line(
       points={{0,-20},{0,-30}},
@@ -95,12 +98,12 @@ equation
       thickness=0.5));
   connect(flowResistance.outlet, dynamicJunctionN2_1.inlets[1])
     annotation (Line(
-      points={{-10,-60},{-2,-60},{-2,-61},{10,-61}},
+      points={{-10,-60},{-2,-60},{-2,-60.5},{10,-60.5}},
       color={28,108,200},
       thickness=0.5));
   connect(checkValve.outlet, dynamicJunctionN2_1.inlets[2])
     annotation (Line(
-      points={{0,-50},{0,-59},{10,-59}},
+      points={{0,-50},{0,-59.5},{10,-59.5}},
       color={28,108,200},
       thickness=0.5));
   connect(dynamicJunctionN2_1.outlet, dynamicPressureOutflow.inlet)
@@ -145,13 +148,14 @@ equation
       points={{0,40},{0,30}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
-                                                                 Diagram(
+  annotation (
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
+    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{120,100}})),
     experiment(
       StopTime=1,
-   Tolerance=1e-6,
-   Interval=1e-3,
+      Tolerance=1e-6,
+      Interval=1e-3,
       __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
 <p><br>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>

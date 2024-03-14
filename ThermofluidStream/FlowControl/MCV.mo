@@ -5,11 +5,11 @@ model MCV "Massflow and volume control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput setpoint_var = setpoint if setpointFromInput   "Desired mass-flow [kg/s or m3/s]"
+  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,80}),                           iconTransformation(
+        origin={0,80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
@@ -18,26 +18,26 @@ model MCV "Massflow and volume control valve"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,-80}),                          iconTransformation(
+        origin={0,-80}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,-80})));
 
 
   parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "Enable desired massFlow input";
+  parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
   parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
     annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.volume_flow));
   parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
-  parameter Real k1(unit="1") = 100 "Timeconstant factor"
+  parameter Real k1(unit="1") = 100 "Time constant factor"
     annotation(Dialog(tab="Advanced"));
   parameter Real k2(unit="1") = 100 "Integrator windup factor"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false;
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput enabled";
 
   SI.Density rho_in = Medium.density(inlet.state);
   SI.VolumeFlowRate V_flow = m_flow/rho_in;
@@ -49,7 +49,7 @@ protected
 
   SI.MassFlowRate m_flow_set;
   SI.VolumeFlowRate V_flow_set;
-  Real setpoint;
+  Modelica.Blocks.Interfaces.RealInput setpoint "Internal setpoint connector";
 
   SI.Pressure dr = outlet.r - inlet.r;
   SI.Pressure dr_set;
@@ -62,6 +62,7 @@ initial equation
   dp_int = 0;
 
 equation
+  connect(setpoint_var, setpoint);
   if setpointFromInput then
     m_flow_set = setpoint;
     V_flow_set = setpoint;
@@ -79,7 +80,7 @@ equation
   end if;
 
   // compute pressure drop dynamic very fast, so dr tracks dr_set.
-  // dr is limited, since it can be very high for non-smooth systms (e.g. a jump in input pressure)
+  // dr is limited, since it can be very high for non-smooth systems (e.g. a jump in input pressure)
   TC/k1 * der(dp_int) = max(-1e8, min(1e8,dr)) - dr_set +  dp_corr;
 
   // limit dp to a so that p_out > p_min and no pressure is created
@@ -98,7 +99,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{80,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -132,7 +133,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
-<p>The mass- or volume-flow-setpoint can be set or given by a real signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpint cannot be reached, an optional output leaves it&apos;s &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>
+<p>The mass- or volume-flow-setpoint can be set or given by a real input signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpoint cannot be reached, an optional output leaves its &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>
 <p>Documentation of the used equations:</p>
 <p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.PNG\"/></p>
 </html>"));

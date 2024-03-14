@@ -2,7 +2,10 @@ within ThermofluidStream.Boundaries;
 model Sink "Boundary model of sink"
     replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Medium package used in the Sink. Make sure it is the same as the one the outlet the sink is connected to.</span></p>
+<p>
+Medium package used in the Sink. Make sure it is the same as the one
+the outlet the sink is connected to.
+</p>
 </html>"));
 
   parameter Boolean pressureFromInput = false "If true pressure comes from real input";
@@ -12,15 +15,14 @@ model Sink "Boundary model of sink"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-114,-10},
-            {-94,10}}), iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa")=p0 if pressureFromInput "Pressure setpoint [Pa]"
+  Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure setpoint [Pa]"
     annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=180,
-        origin={20,0}),  iconTransformation(
+        origin={20,0}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=180,
         origin={20,0})));
@@ -28,12 +30,14 @@ model Sink "Boundary model of sink"
 protected
   outer DropOfCommons dropOfCommons;
 
-  SI.Pressure p0;
+  Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r;
 
   SI.Pressure p = Medium.pressure(inlet.state);
 
 equation
+
+  connect(p0_var, p0);
   if not pressureFromInput then
     p0 = p0_par;
   end if;
@@ -57,7 +61,7 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-70,0},{-60,0}},
+          points={{-100,0},{-60,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -75,7 +79,7 @@ equation
         Line(points={{-44,80},{-44,-80}}, color={255,255,255})}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p><span style=\"font-family: Courier New;\">Sink for a thermofluid stream. Ther pressure can be set or given by a real signal.</span></p>
-<p><span style=\"font-family: Courier New;\">The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink akts therefore by definition as the origin of the energy to accelerate the stream. </span></p>
+<p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>
+<p>The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink therefore acts by definition as the origin of the energy to accelerate the stream. </p>
 </html>"));
 end Sink;

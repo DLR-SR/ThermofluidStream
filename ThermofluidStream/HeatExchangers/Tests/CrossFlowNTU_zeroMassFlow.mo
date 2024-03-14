@@ -3,15 +3,15 @@ model CrossFlowNTU_zeroMassFlow
 
   replaceable package MediumA =
       Media.myMedia.Incompressible.Examples.Glycol47
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   replaceable package MediumB = Media.myMedia.Air.DryAirNasa
-    constrainedby Media.myMedia.Interfaces.PartialMedium      annotation(choicesAllMatching = true);
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
 
   extends Modelica.Icons.Example;
 
-  ThermofluidStream.Boundaries.Source sourceA(redeclare package Medium =
-        MediumA,
+  ThermofluidStream.Boundaries.Source sourceA(
+    redeclare package Medium = MediumA,
     T0_par=333.15,
     p0_par=100000)
     annotation (Placement(transformation(
@@ -25,10 +25,10 @@ model CrossFlowNTU_zeroMassFlow
     p0_par=100000) annotation (Placement(transformation(extent={{116,-10},{136,
             10}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
-      Medium = MediumA,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+    redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={60,-10})));
@@ -38,7 +38,7 @@ model CrossFlowNTU_zeroMassFlow
     temperatureFromInput=false,
     T0_par=293.15,
     p0_par=100000)
-               annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,80})));
 
@@ -49,14 +49,15 @@ model CrossFlowNTU_zeroMassFlow
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,-54})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
-      Medium = MediumB,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+    redeclare package Medium = MediumB,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,-24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = MediumB,                       outputMassFlowRate=false,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(
+    redeclare package Medium = MediumB,
+    outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
@@ -74,28 +75,28 @@ model CrossFlowNTU_zeroMassFlow
     "if time < 1500 then sourceA.p0*0.8 else sourceA.p0"
     annotation (Placement(transformation(extent={{162,-10},{142,10}})));
   Processes.FlowResistance flowResistanceA(
-    redeclare package Medium = MediumB,
+    redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+      k=1e5))
     annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.005,
     l=0.5,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1e5))
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+      k=1e5))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,54})));
-  Sensors.MultiSensor_Tpm                   multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumA,
     digits=3,
-    temperatureUnit="degC")   annotation (Placement(transformation(
+    temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-44,-10})));
