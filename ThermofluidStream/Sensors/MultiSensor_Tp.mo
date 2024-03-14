@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model MultiSensor_Tp "Temperature and pressure sensor"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

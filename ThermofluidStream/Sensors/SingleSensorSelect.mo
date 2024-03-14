@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model SingleSensorSelect "Selectable sensor"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

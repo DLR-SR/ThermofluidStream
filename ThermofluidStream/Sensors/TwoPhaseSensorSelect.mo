@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model TwoPhaseSensorSelect "Selectable Sensor for two phase medium"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
