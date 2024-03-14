@@ -1,18 +1,16 @@
 within ThermofluidStream.Sensors;
-model SensorState "Sensor for whole state"
+model SensorState "Sensor for thermodynamic state"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
-  Interfaces.StateOutput state_out(redeclare package Medium = Medium) "Measured value [variable]"
+  Interfaces.StateOutput state_out(redeclare package Medium = Medium) "State output connector"
     annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
 equation

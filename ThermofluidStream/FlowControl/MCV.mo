@@ -1,5 +1,5 @@
 within ThermofluidStream.FlowControl;
-model MCV "Massflow and volume control valve"
+model MCV "Mass flow rate and volume flow rate control valve"
   extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=false, final L = 100, final p_min=p_min_par);
   //the component implements its own clip_p_out and requires a minimum L value for numeric reasons (otherwise dr_set will get very small)
 
@@ -13,7 +13,6 @@ model MCV "Massflow and volume control valve"
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
-
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(
         transformation(extent={{-10,-10},{10,10}},
@@ -22,14 +21,16 @@ model MCV "Massflow and volume control valve"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-110})));
+  parameter Mode mode = Mode.mass_flow "Valve mode"
+    annotation(Dialog(group="Flow rate setpoint"));
+  parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
+    annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.mass_flow));
+  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Volume flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.volume_flow));
 
 
-  parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
-  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
-    annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
-  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
-    annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.volume_flow));
   parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
   parameter Real k1(unit="1") = 100 "Time constant factor"
     annotation(Dialog(tab="Advanced"));
@@ -37,26 +38,25 @@ model MCV "Massflow and volume control valve"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false "= true, if clippingOutput enabled";
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
 
-  SI.Density rho_in = Medium.density(inlet.state);
-  SI.VolumeFlowRate V_flow = m_flow/rho_in;
+  SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
+  SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";
 
   constant SI.Pressure eps = 1;
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
-
-  SI.MassFlowRate m_flow_set;
-  SI.VolumeFlowRate V_flow_set;
+  SI.MassFlowRate m_flow_set "Setpoint mass flow rate";
+  SI.VolumeFlowRate V_flow_set "Setpoint volume flow rate";
   Modelica.Blocks.Interfaces.RealInput setpoint "Internal setpoint connector";
 
-  SI.Pressure dr = outlet.r - inlet.r;
+  SI.Pressure dr = outlet.r - inlet.r "Inertial pressure difference";
   SI.Pressure dr_set;
+
 public
-  SI.Pressure dp_int(start=-1e5);
+  SI.Pressure dp_int(start=-1e5) "Initial pressure difference";
   // dp corr for anti windup "back calculation" compensation after "Integrator windup and how to avoid it" 1989 Astrom
-  SI.Pressure dp_corr = k2*(dp - dp_int);
+  SI.Pressure dp_corr = k2*(dp - dp_int) "Corrected pressure difference";
 
 initial equation
   dp_int = 0;
@@ -72,7 +72,7 @@ equation
     V_flow_set = volumeFlow_set_par;
   end if;
 
-  // compute dr_set required for desired mass-flow or Volume-flow dynamic
+  // Compute dr_set required for desired mass-flow or Volume-flow dynamic
   if mode==Mode.mass_flow then
     dr_set = - L/TC * (m_flow_set - m_flow);
   else

@@ -1,31 +1,34 @@
 within ThermofluidStream.Processes;
 model ConductionElement "Element with quasi-stationary mass and heatport"
   extends Internal.PartialConductionElement;
-  // Configure icon display options
-  parameter Boolean displayVolume = true "= true to display the volume of the element" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayConduction = true "= true to display thermal conductance of the element" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter String parameterString=
-  if displayParameters and displayVolume and displayConduction then
-    "V=%V, "+conductionString
-  elseif displayParameters and displayVolume and not displayConduction then
-    "V=%V"
-  elseif  displayParameters and not displayVolume  and displayConduction then
-    conductionString
-  else "";
-  final parameter String conductionString=
-  if resistanceFromAU then "A=%A, U=%U"
-  else "k=%k_par";
-
-  parameter Boolean resistanceFromAU = true
-    "= true, if thermal conductance given by U*A"
-    annotation(Dialog(group="Thermal Conductance"));
-  parameter SI.Area A = 1 "Contact area of element with medium"
+  parameter Boolean resistanceFromAU = true "= true, if thermal conductance is given by U*A"
+    annotation(Dialog(group="Thermal Conductance"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Area A = 1 "Heat transfer area"
     annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));
-  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
+  parameter SI.CoefficientOfHeatTransfer U = 200 "Thermal transmittance"
     annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));
-  parameter SI.ThermalConductance k_par = 200 "Thermal conductance heatport->fluid"
+  parameter SI.ThermalConductance k_par = 200 "Thermal conductance"
     annotation(Dialog(group="Thermal Conductance", enable=not resistanceFromAU));
   final parameter SI.ThermalConductance k_internal = if resistanceFromAU then A*U else k_par;
+
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayVolume = true "= true, if volume V is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayConduction = true "= true, if thermal conductance is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter String parameterString=
+    if displayParameters and displayVolume and displayConduction then
+      "V=%V, "+conductionString
+    elseif displayParameters and displayVolume and not displayConduction then
+      "V=%V"
+    elseif  displayParameters and not displayVolume  and displayConduction then
+      conductionString
+    else "";
+  final parameter String conductionString=
+    if resistanceFromAU then "A=%A, U=%U"
+    else "k=%k_par";
+  //-----------------------------------------------------------------
+
 equation
   k = k_internal;
 

@@ -3,42 +3,43 @@ model JunctionN "Junction with N inlets and one outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
 
   parameter Integer N(min=1) = 1 "Number of inlets";
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
-  Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "vector of N inlets"
+  Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "Vector of N inlets"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
       iconTransformation(extent={{-120,-20},{-80,20}})));
-  Interfaces.Outlet outlet(redeclare package Medium = Medium) "outlet"
+  Interfaces.Outlet outlet(redeclare package Medium = Medium) "Outlet"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
       iconTransformation(extent={{80,-20},{120,20}})));
 
-  // these are needed by DynamicJunctionN
-  output Real w[N](each unit="1") "regularized weighting factor for specific enthalpy";
-  output SI.Density rho[N] = Medium.density(inlets.state) "density at inlets";
+  // used by DynamicJunctionN
+  output Real w[N](each unit="1") "Regularized weighting factor for specific enthalpy";
+  output SI.Density rho[N] = Medium.density(inlets.state) "Density at inlets";
 
 protected
-  SI.Pressure p[N] = Medium.pressure(inlets.state) "(steady mass-flow) pressure at inlets";
-  SI.SpecificEnthalpy h[N] =  Medium.specificEnthalpy(inlets.state) "specific enthapy at inlets";
-  Medium.MassFraction Xi[Medium.nXi,N] "mass factions at inlets";
+  SI.Pressure p[N] = Medium.pressure(inlets.state) "(Steady mass-flow) pressure at inlets";
+  SI.SpecificEnthalpy h[N] =  Medium.specificEnthalpy(inlets.state) "Specific enthapy at inlets";
+  Medium.MassFraction Xi[Medium.nXi,N] "Mass factions at inlets";
 
-  SI.Pressure p_mix "(steady mass-flow) pressure at the outlet";
-  SI.Pressure r_mix "inertial pressure at outlet";
-  SI.SpecificEnthalpy h_mix "specific enthalpy at outlet";
-  Medium.MassFraction Xi_mix[Medium.nXi] "medium composition at outlet";
+  SI.Pressure p_mix "Outlet (steady mass-flow) pressure";
+  SI.Pressure r_mix "Outlet inertial pressure";
+  SI.SpecificEnthalpy h_mix "Outlet specific enthalpy";
+  Medium.MassFraction Xi_mix[Medium.nXi] "Outlet mass fractions";
 
-  Real w2[N](each unit="1") "regularized weighting factor for steady mass flow pressure";
+  Real w2[N](each unit="1") "Regularized weighting factors for steady mass flow pressure";
 
-  SI.Pressure r_in[N];
+  SI.Pressure r_in[N] "Inertial pressure of inlets";
 
   function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 

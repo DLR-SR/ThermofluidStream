@@ -1,25 +1,24 @@
 within ThermofluidStream.Interfaces;
 partial model SISOFlow "Base Model with basic flow eqautions for SISO"
 
-  import ThermofluidStream.Utilities.Types.InitializationMethods;
-
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  import ThermofluidStream.Utilities.Types.InitializationMethods;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
     <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
       </html>"));
-
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
   parameter StateSelect m_flowStateSelect = StateSelect.default "State selection for mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for mass flow rate"
-    annotation(Dialog(tab= "Initialization", group="Mass flow"));
+    annotation(Dialog(tab= "Initialization", group="Mass flow rate"));
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for mass flow rate"
-    annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.state)));
+    annotation(Dialog(tab= "Initialization", group="Mass flow rate", enable=(initM_flow == InitializationMethods.state)));
   parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for derivative of mass flow rate"
-    annotation(Dialog(tab= "Initialization", group="Mass flow", enable=(initM_flow == InitializationMethods.derivative)));
+    annotation(Dialog(tab= "Initialization", group="Mass flow rate", enable=(initM_flow == InitializationMethods.derivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "= false, if dr_corr=0 (correction of inertial pressure difference)"
     annotation(Dialog(tab="Advanced"));

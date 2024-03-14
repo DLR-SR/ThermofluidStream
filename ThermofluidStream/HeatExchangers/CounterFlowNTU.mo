@@ -2,6 +2,7 @@ within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
   extends ThermofluidStream.HeatExchangers.Internal.PartialNTU;
+
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         origin={-100,-60}), iconTransformation(extent={{-120,-80},{-80,-40}})));

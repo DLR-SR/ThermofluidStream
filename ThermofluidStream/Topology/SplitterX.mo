@@ -3,12 +3,11 @@ model SplitterX "Splits a flow into three subflows"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
@@ -23,7 +22,6 @@ model SplitterX "Splits a flow into three subflows"
     annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
 
 equation
-
   connect(splitterN.inlet, inlet) annotation (Line(
       points={{-32,0},{-100,0}},
       color={28,108,200},

@@ -1,14 +1,14 @@
 SingleSensorSelect
 SingleFlowSensor
-TemperaturePressureSensor
+MultiSensor_Tp
 MultiSensor_Tpm
 TwoPhaseSensorSelect
 SensorState
 SingleSensorX
-MultiSensor_Tp
 DifferenceSensorSelect
 DifferenceTwoPhaseSensorSensorSelect
 DifferenceSensor_Tp
+TemperaturePressureSensor
 MultiSensor_Tpm_v2
 MultiSensor_Tpm_v3
 Tests

@@ -1,6 +1,7 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
 function dp_tau_const_isentrop "Compressor model with parameter characteristic curve and constant isentropic efficiency"
   extends partial_dp_tau;
+
   import R_m = Modelica.Constants.R "General gas constant";
 
   input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1"
@@ -15,36 +16,33 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
     annotation(Dialog(tab="Advanced", enable=true));
   input SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
     annotation(Dialog(tab="Advanced", enable=true));
-
-  input Boolean kappaFromMedia = true "Retrieve kappa from media model?"
+  input Boolean kappaFromMedia = true "=true, if isentropic coefficient is calculated using the media model"
     annotation(Dialog(group = "Isentropic exponent", enable=true));
-  input Real kappa_fixed(unit="1") = 1.4 "Fixed kappa value"
+  input Real kappa_fixed(unit="1") = 1.4 "Isentropic coefficient"
     annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
 
 
 protected
-  SI.Pressure p_in = Medium.pressure(state_in) "Pressure at inlet";
-  SI.Temperature T_in = Medium.temperature(state_in) "Temperature at inlet";
+  SI.Pressure p_in = Medium.pressure(state_in) "Inlet pressure";
+  SI.Temperature T_in = Medium.temperature(state_in) "Inlet temperature";
+  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "Inlet isentropic coefficient";
+  Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "Inlet specific gas constant";
 
-  Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "Isentropic coefficient at inlet";
-  Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "Medium gas constant";
-
-  SI.SpecificEnergy w_t_is "Ideal specific technical work";
-  SI.SpecificEnergy w_t "Actual specific technical work";
-  Real pr(unit="1") "Pressure coefficient = p2/p1";
+  SI.SpecificEnergy w_t_is "Specific technical work (for isentropic reference)";
+  SI.SpecificEnergy w_t "Specific technical work";
+  Real pr(unit="1") "Pressure ratio = p2/p1";
 
 algorithm
-  // calc pr from characteristic curve
+  // Calculate the pressure ratio pr from characteristic curve
   pr := abs(omega)*omega/(omega_ref^2) - skew*omega*m_flow/(omega_ref*m_flow_ref) - abs(m_flow)*m_flow/(m_flow_ref^2) + 1;
   // make sure pressure ratio is always positive
   if pr < 1 then
     pr := k^(pr-1);
   end if;
-  // calc dp
+  // Calculate the pressure difference dp from the pressure ratio pr
   dp := p_in*(pr-1);
 
-  // compute w_t_is for isenthalpic compression
-  // ideal gas assumptions
+  // Compute the technical work for isentropic reference w_t_is
   if pr >= 0 then
     // use this instead of h_in - Medium.isentropicEnthalpy(p_in+dp, state_in);
     // to make it more robust, isentropicEnthalpy fails to solve often

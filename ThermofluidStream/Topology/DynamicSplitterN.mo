@@ -3,20 +3,18 @@ model DynamicSplitterN "Dynamic pressure 1 to N splitter"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-
-  parameter Integer N(min=1) = 1 "Number of outputs";
-  parameter SI.Area A_in "Cross section area of inlet";
+  parameter Boolean assumeConstantDensity=true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Integer N(min=1) = 1 "Number of outlets";
+  parameter SI.Area A_in "Inlet cross section area";
   parameter SI.Area A_out[N] "Cross section area of outlets";
   parameter SI.Area A_splitter = 0.1 "Internal cross section area"
     annotation (Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
-    annotation (Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "inlet"
@@ -86,7 +84,7 @@ equation
           lineColor={170,255,170})}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Splitter that takes into account dynamic pressure.</p>
+<p>Splitter that takes dynamic pressure into account.</p>
 <p>In general the component has two non-linear equation systems of size 1. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false).</p>
 </html>"));
 end DynamicSplitterN;

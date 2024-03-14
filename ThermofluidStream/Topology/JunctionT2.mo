@@ -3,15 +3,15 @@ model JunctionT2 "2 to 1 T-Junction"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing";
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Outlet outlet(redeclare package Medium = Medium)
@@ -28,7 +28,6 @@ model JunctionT2 "2 to 1 T-Junction"
         origin={40,0})));
 
 equation
-
   connect(junctionN.inlets[2], inletB) annotation (Line(
       points={{20,-1},{-39,-1},{-39,0},{-100,0}},
       color={28,108,200},

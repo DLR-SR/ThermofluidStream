@@ -32,11 +32,11 @@ the inlet the source is connected to.
     annotation (Dialog(tab="Advanced"));
 
   // ------ Parameter Display Configuration  ------------------------
-  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par"
+  parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayTemperature = true "= true to display the temperature set value T0_par"
+  parameter Boolean displayTemperature = true "= true, if temperature T0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true to display the inertance value L"
+  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
@@ -65,9 +65,10 @@ the inlet the source is connected to.
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-40,40},{0,80}}), iconTransformation(extent={{-40,40},{0,80}})));
   Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") if not setEnthalpy and temperatureFromInput "Temperature input connector [K]"
-    annotation (Placement(transformation(extent={{-40,0},{0,40}}), iconTransformation(extent={{-40,-20},{0,20}})));
+    annotation (Placement(transformation(extent={{-40,-20},{0,20}}),
+                                                                   iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and enthalpyFromInput "Enthalpy input connector [J/kg]"
-    annotation (Placement(transformation(extent={{-40,-40},{0,0}}), iconTransformation(extent={{-40,-20},{0,20}})));
+    annotation (Placement(transformation(extent={{0,-20},{40,20}}), iconTransformation(extent={{-40,-20},{0,20}})));
   Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg") if xiFromInput "Mass fractions connector [kg/kg]"
     annotation (Placement(transformation(extent={{-40,-80},{0,-40}}), iconTransformation(extent={{-40,-80},{0,-40}})));
   Interfaces.Outlet outlet(redeclare package Medium = Medium)

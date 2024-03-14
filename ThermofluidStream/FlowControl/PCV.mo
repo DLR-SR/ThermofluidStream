@@ -4,7 +4,17 @@ model PCV "Pressure and pressure-drop control valve"
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure(-drop) set value [Pa]"
+
+  parameter Mode mode = Mode.drop "Valve mode"
+    annotation(Dialog(group="Pressure setpoint"));
+  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled";
+  parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
+    annotation(Dialog(group="Pressure setpoint",enable=not pressureFromInput));
+
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization mass flow"
+    annotation(Dialog(tab="Advanced"));
+
+  Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
@@ -13,15 +23,8 @@ model PCV "Pressure and pressure-drop control valve"
         rotation=270,
         origin={0,80})));
 
-  parameter Mode mode = Mode.drop "Valve mode";
-  parameter Boolean pressureFromInput = false "Enable pressure difference input";
-  parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure difference"
-    annotation(Dialog(enable=not pressureFromInput));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization mass flow"
-    annotation(Dialog(tab="Advanced"));
-
 protected
-  Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector";
+  Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";
   SI.Pressure dp_raw "Not normalized desired dp";
 
 equation
@@ -45,7 +48,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (
+    annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-80},{150,-120}},

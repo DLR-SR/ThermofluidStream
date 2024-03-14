@@ -5,7 +5,7 @@ model Volume "Model of a vessel with fixed volume"
 
   parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume";
   parameter Boolean density_derp_h_from_media=false "= true, if the derivative of density by pressure at const specific enthalpy is calculated from media model (only available for some media models)"
-    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
+    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
 

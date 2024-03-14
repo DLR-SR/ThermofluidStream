@@ -3,16 +3,19 @@ model FourWaySwitch
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium;
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
+    <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
+      </html>"));
 
-  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
+  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
+  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
+    annotation(Dialog(tab="Advanced"));
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -21,7 +24,8 @@ model FourWaySwitch
         extent={{-28.2354,51.7646},{11.7646,11.7646}},
         rotation=180,
         origin={91.7646,-28.2354})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
+  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -30,6 +34,14 @@ model FourWaySwitch
         extent={{-27.5,52.5},{12.5,12.5}},
         rotation=180,
         origin={-107.5,-27.5})));
+  Modelica.Blocks.Interfaces.RealInput u
+    annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-100})));
   Switch switch(
     redeclare package Medium = Medium,
     final m_flow_ref=m_flow_ref,
@@ -59,15 +71,6 @@ model FourWaySwitch
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={60,60})));
-  Modelica.Blocks.Interfaces.RealInput u
-    annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-100}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-100})));
-
 protected
   constant Real delta(unit="1") = 0.1;
 

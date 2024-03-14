@@ -1,57 +1,51 @@
 ﻿within ThermofluidStream.Sensors;
-model DifferenceSensorSelect
-  "Sensor to compute difference in selectable measured quantity"
+model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
+
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-
-  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
-    "Medium model A"
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
-  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
-    "Medium model B"
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium "Medium model B"
     annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
-
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum allowed density"
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter Quantities quantity "Quantity the sensor measures";
-
-final parameter String quantityString=
-  if quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_K then "T in K"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_C then "T in °C"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa then "p in Pa"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar then "p in bar"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3 then "d in kg/m3"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg then "v in m3/kg"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg then "h in J/kg"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK then "s in J/(kg.K)"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps then "Velocity of sound in m/s"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK then "cv in J/(kg.K)"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK then "cp in J/(kg.K)"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1 then "kappa"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol then  "M in kg/mol"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa then "r in Pa"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar then "r in bar"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
-  elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
-  else "error";
-
-  parameter Boolean outputValue = false "Enable sensor-value output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=outputValue));
+  parameter Quantities quantity "Measured quantity";
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_K then "T in K"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.T_C then "T in °C"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_Pa then "p in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar then "p in bar"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3 then "d in kg/m3"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg then "v in m3/kg"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg then "h in J/kg"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK then "s in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps then "Velocity of sound in m/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK then "cv in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK then "cp in J/(kg.K)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.kappa_1 then "kappa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol then  "M in kg/mol"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_Pa then "r in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.r_bar then "r in bar"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
+    else "error";
+  parameter Boolean outputValue = false "= true, if sensor output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial output state of sensor"
+  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial value of sensor output"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
@@ -62,7 +56,7 @@ final parameter String quantityString=
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={136,-10}),
         iconTransformation(extent={{120,-20},{80,20}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Difference of measured quantity [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
     annotation (Placement(transformation(extent={{4,-78},{24,-58}}), iconTransformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-90})));

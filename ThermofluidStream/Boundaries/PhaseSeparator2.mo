@@ -18,7 +18,7 @@ model PhaseSeparator2 "Phase separator with two outlets"
   parameter Real pipe2_low(unit="1", min=0, max=1) "Low end of second pipe";
   parameter Real pipe2_high(unit="1", min=0, max=1) "High end of second pipe";
   parameter Boolean density_derp_h_from_media=false "= true, if the derivative of density by pressure at const specific enthalpy is calculated from media model (only available for some media models)"
-     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
+     annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
      annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization method"

@@ -2,8 +2,8 @@ within ThermofluidStream.Processes.Internal;
 partial model PartialConductionElement "Element with quasi-stationary mass and heatport and undetermined heat transfer coefficient"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.Volume V(displayUnit="l")=0.001 "Volume of the element";
-  parameter Internal.InitializationMethodsCondElement init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.inlet "Initialization method for h"
+  parameter SI.Volume V(displayUnit="l")=0.001 "Volume";
+  parameter Internal.InitializationMethodsCondElement init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.inlet "Initialization for specific enthalpy"
     annotation (Dialog(tab="Initialization", group="Enthalpy"));
   parameter Medium.Temperature T_0 = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == Internal.InitializationMethodsCondElement.T)));
@@ -11,36 +11,35 @@ partial model PartialConductionElement "Element with quasi-stationary mass and h
     annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == Internal.InitializationMethodsCondElement.h)));
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean neglectPressureChanges = true "Neglect pressure changes in energy equation"
-    annotation(Dialog(tab="Advanced"));
+  parameter Boolean neglectPressureChanges = true "=true, if pressure changes are neglected"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Time T_e = 100 "Factor for feeding back energy."
-    annotation(Dialog(tab="Advanced", enable = enforce_global_energy_conservation));
+  parameter Boolean enforce_global_energy_conservation = false "= true, if global conservation of energy is enforced"
+    annotation(Dialog(tab="Advanced",group="Global energy conservation"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time T_e = 100 "Time constant for global conservation of energy"
+    annotation(Dialog(tab="Advanced",group="global energy conservation", enable = enforce_global_energy_conservation));
 
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
-    annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
 
-  SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer);
+  SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer) "Volume? specific enthalpy";
 
-  Medium.ThermodynamicState state = Medium.setState_phX(p_in, h, Xi_in);
-  SI.Temperature T = Medium.temperature(state);
-  SI.ThermalConductance k "Thermal conductance heatport->fluid";
+  Medium.ThermodynamicState state = Medium.setState_phX(p_in, h, Xi_in) "Volume thermodynamic state";
+  SI.Temperature T = Medium.temperature(state) "Volume temperature";
+  SI.ThermalConductance k "Thermal conductance";
 
   SI.Energy deltaE_system(start=0, fixed=true) "Energy difference between m_flow*(h_in-h_out) and Q_flow";
 
-  SI.Mass M;
+  SI.Mass M "Mass (of the volume)";
 
 protected
-  SI.Density rho = max(rho_min, Medium.density(state));
+  SI.Density rho = max(rho_min, Medium.density(state)) "Volume density";
 
   //for stability reasons the model for reverse flow is different. see documentation/information
-  SI.SpecificEnthalpy h_in_norm = if noEvent(inlet.m_flow >= 0) then h_in else h;
+  SI.SpecificEnthalpy h_in_norm = if noEvent(inlet.m_flow >= 0) then h_in else h "Inlet specific enthalpy";
 
-  SI.Temperature T_heatPort;
-  SI.HeatFlowRate Q_flow;
+  SI.Temperature T_heatPort "Heatport Temperature";
+  SI.HeatFlowRate Q_flow "Heat flow rate";
 
 initial equation
   if init == Internal.InitializationMethodsCondElement.T then
@@ -52,7 +51,7 @@ initial equation
   end if;
 
 equation
-  assert(noEvent(inlet.m_flow > m_flow_assert), "Negative massflow at Element", dropOfCommons.assertionLevel);
+  assert(noEvent(inlet.m_flow > m_flow_assert), "Negative mass flow rate at inlet", dropOfCommons.assertionLevel);
 
   //mass is assumed to be quasisationary-> this violates the conservation of mass since m_flow_in = -m_flow_out. see documentation/information
   M = V*rho;

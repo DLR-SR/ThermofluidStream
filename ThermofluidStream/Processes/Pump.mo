@@ -1,9 +1,10 @@
 within ThermofluidStream.Processes;
 model Pump "A simple pump model"
+
   extends Internal.PartialTurboComponent(redeclare function dp_tau =
         dp_tau_pump);
 
-  parameter Real max_rel_volume(min=0, max=1, unit="1") = 0.05 "Maximum relative volume change"
+  parameter Real max_rel_volume(min=0, max=1, unit="1") = 0.05 "Maximum relative volume change (checking incompressibility approach)"
     annotation(Dialog(tab="Advanced"));
 
   replaceable function dp_tau_pump =
@@ -20,10 +21,10 @@ Selectable function to choose between different pump models.
 </p>
 </html>"));
 
-  Real eta(unit="1") = if noEvent(abs(W_t)>1e-4) then dp*v_in*m_flow/W_t else 0.0;
+  Real eta(unit="1") = if noEvent(abs(W_t)>1e-4) then dp*v_in*m_flow/W_t else 0.0 "Efficiency";
 
 protected
-  SI.SpecificVolume v_out = 1/max(rho_min, Medium.density(inlet.state));
+  SI.SpecificVolume v_out = 1/max(rho_min, Medium.density(inlet.state)) "Specific volume at outlet";
 
 equation
   // test for incompressibility

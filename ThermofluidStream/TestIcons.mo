@@ -69,7 +69,6 @@ model TestIcons
   ThermofluidStream.Topology.NonPhysical.RTSwitch rTSwitch annotation (Placement(transformation(extent={{-480,100},{-460,120}})));
   ThermofluidStream.Topology.NonPhysical.LeakageA leakageA annotation (Placement(transformation(extent={{-440,100},{-420,120}})));
   ThermofluidStream.Topology.NonPhysical.JunctionRatio junctionRatio1 annotation (Placement(transformation(extent={{-400,100},{-380,120}})));
-  ThermofluidStream.Boundaries.Source source annotation (Placement(transformation(extent={{-40,260},{-20,280}})));
   ThermofluidStream.Boundaries.Sink sink annotation (Placement(transformation(extent={{0,260},{20,280}})));
   ThermofluidStream.Boundaries.TerminalSource terminalSource annotation (Placement(transformation(extent={{40,260},{60,280}})));
   ThermofluidStream.Boundaries.TerminalSink terminalSink annotation (Placement(transformation(extent={{80,260},{100,280}})));
@@ -98,7 +97,7 @@ model TestIcons
   ThermofluidStream.FlowControl.SpecificValveType specificValveType annotation (Placement(transformation(extent={{-494,-36},{-474,-16}})));
   ThermofluidStream.FlowControl.TanValve tanValve annotation (Placement(transformation(extent={{-454,-36},{-434,-16}})));
   ThermofluidStream.FlowControl.CheckValve checkValve annotation (Placement(transformation(extent={{-414,-36},{-394,-16}})));
-  ThermofluidStream.FlowControl.MCV mCV(setpointFromInput=true) annotation (Placement(transformation(extent={{-494,-76},{-474,-56}})));
+  ThermofluidStream.FlowControl.MCV mCV(setpointFromInput=true) annotation (Placement(transformation(extent={{-496,-76},{-476,-56}})));
   ThermofluidStream.FlowControl.PCV pCV(pressureFromInput=true) annotation (Placement(transformation(extent={{-534,-76},{-514,-56}})));
   ThermofluidStream.FlowControl.Switch switch annotation (Placement(transformation(extent={{-374,-76},{-354,-56}})));
   ThermofluidStream.FlowControl.FourWaySwitch fourWaySwitch annotation (Placement(transformation(extent={{-374,-36},{-354,-16}})));
@@ -430,7 +429,7 @@ model TestIcons
   Undirected.Sensors.SingleFlowSensor singleFlowSensor11(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps, outputValue=false) annotation (Placement(transformation(extent={{660,-30},{680,-10}})));
   Undirected.Sensors.SingleFlowSensor singleFlowSensor12(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs, outputValue=true) annotation (Placement(transformation(extent={{700,-30},{720,-10}})));
   Undirected.Sensors.SingleFlowSensor singleFlowSensor13(quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs, outputValue=false) annotation (Placement(transformation(extent={{620,-60},{640,-40}})));
-  Modelica.Electrical.Analog.Basic.Resistor resistor annotation (Placement(transformation(extent={{-400,196},{-380,216}})));
+  Boundaries.Source                   source annotation (Placement(transformation(extent={{-40,260},{-20,280}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-540,-800},{1480,520}}),graphics={
         Rectangle(
           extent={{-566,390},{430,344}},

@@ -1,6 +1,17 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
+
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+
+  parameter Real k1_A=1e2 "Linear flow resistance coefficient at side A"
+    annotation (Dialog(group="Flow resistance coefficients"));
+  parameter Real k2_A=1e2 "Quadratic flow resistance coefficient at side A"
+    annotation (Dialog(group="Flow resistance coefficients"));
+  parameter Real k1_B=1e2 "Linear flow resistance coefficient at side B"
+    annotation (Dialog(group="Flow resistance coefficients"));
+  parameter Real k2_B=1e2 "Quadratic flow resistance coefficient at side B"
+    annotation (Dialog(group="Flow resistance coefficients"));
+
 
   Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-36,90},{4,130}}),  iconTransformation(extent={{-20,-20},{20,20}},
         rotation=180,
@@ -15,7 +26,6 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
   Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{2,-152},{-38,-112}}), iconTransformation(extent={{20,-20},{-20,20}},
         rotation=90,
         origin={0,-100})));
-
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
@@ -43,11 +53,6 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
   Topology.SplitterN splitterN(
     redeclare package Medium = MediumA,
     N=nCells) annotation (Placement(transformation(extent={{60,-70},{40,-50}})));
-
-  parameter Real k1_A=1e2 "Linear flowres factor A" annotation (Dialog(group="laminar-turbulent flowRes"));
-  parameter Real k2_A=1e2 "Quadratic flowres factor A" annotation (Dialog(group="laminar-turbulent flowRes"));
-  parameter Real k1_B=1e2 "Linear flowres factor B" annotation (Dialog(group="laminar-turbulent flowRes"));
-  parameter Real k2_B=1e2 "Quadratic flowres factor B" annotation (Dialog(group="laminar-turbulent flowRes"));
 
 initial equation
 

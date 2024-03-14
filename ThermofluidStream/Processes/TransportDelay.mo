@@ -1,37 +1,41 @@
 within ThermofluidStream.Processes;
 model TransportDelay "Delay Thermofluid state depending on fluid speed"
-  extends Interfaces.SISOFlow(final clip_p_out=false);
-  // Configure icon display options
-  parameter Boolean displayLength = true "= true to display the length of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayRadius = true "= true to display the radius of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1" annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
-  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2" annotation(Evaluate=true, HideResult=true);
 
-  parameter SI.Length l "Length of Delay Pipe";
-  parameter SI.Radius r "Radius of Delay Pipe";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal Density"
+  extends Interfaces.SISOFlow(final clip_p_out=false);
+
+  parameter SI.Length l "Length";
+  parameter SI.Radius r "Radius";
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced"));
   parameter Real v_min(unit="1/s", min=0) = 0.01 "Minimum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
   parameter Real v_max(unit="1/s", min=0) = 50 "Maximum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
 
-  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
-  constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0);
-  constant SI.SpecificVolume v_0 = 1/Medium.density(state_0);
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayLength = true "= true to display the length of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true to display the radius of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1" annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
+  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1" annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2" annotation(Evaluate=true, HideResult=true);
+  //-----------------------------------------------------------------
+
+
+  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]) "Default state";
+  constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0) "Default mass fractions";
+  constant SI.SpecificVolume v_0 = 1/Medium.density(state_0) "Default specific volume";
 
   Real x(unit="1");
   Real v(unit="1/s") = der(x);
 
 protected
-  SI.SpecificInternalEnergy u_in = Medium.specificInternalEnergy(inlet.state);
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state));
+  SI.SpecificInternalEnergy u_in = Medium.specificInternalEnergy(inlet.state) "Inlet internal energy";
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state)) "Inlet specific volume";
 
-  SI.SpecificInternalEnergy u_out;
-  SI.SpecificVolume v_out;
+  SI.SpecificInternalEnergy u_out "Outlet internal energy";
+  SI.SpecificVolume v_out "Outlet specific volume";
 
-  SI.Area A = r^2*Modelica.Constants.pi;
+  SI.Area A = r^2*Modelica.Constants.pi "Cross-sectional area";
 
 initial equation
   x = 0;

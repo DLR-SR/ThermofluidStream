@@ -1,13 +1,11 @@
 within ThermofluidStream.FlowControl;
-model BasicControlValve
-  "Basic valve model with optional flow characteristics for incompressible fluids"
+model BasicControlValve "Basic valve model with optional flow characteristics for incompressible fluids"
+
   extends ThermofluidStream.FlowControl.Internal.PartialValve;
 
-  import FlowCoeffType =
-         ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
+  import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
-  replaceable function valveCharacteristics =
-      Internal.ControlValve.linearCharacteristics
+  replaceable function valveCharacteristics = Internal.ControlValve.linearCharacteristics
     constrainedby Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"),
     Documentation(info="<html>
@@ -16,15 +14,14 @@ model BasicControlValve
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
-    Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
-          Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
+  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
   SI.VolumeFlowRate V_flow_ref=
@@ -34,7 +31,7 @@ protected
     else m_flow_ref_set/rho_ref "Reference volume flow";
 
 equation
-  //Calculate reference mass flow from reference volume flow
+  //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
 
   k_u = valveCharacteristics(u, k_min);

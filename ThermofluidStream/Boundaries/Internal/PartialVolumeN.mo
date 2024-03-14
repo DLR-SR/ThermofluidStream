@@ -13,7 +13,8 @@ inlets and outlets the volume is connected to.
 </html>"));
 
   parameter Integer N = 1 "Number of inlets";
-  parameter Boolean useHeatport = false "= true, if heatPort is enabled";
+  parameter Boolean useHeatport = false "= true, if heatPort is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A = 1 "Heat transfer area"
     annotation(Dialog(enable=useHeatport));
   parameter SI.CoefficientOfHeatTransfer U = 200 "Thermal transmittance"
@@ -43,7 +44,7 @@ inlets and outlets the volume is connected to.
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflow"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean usePreferredMediumStates=false "=true, if preferred medium states are used"
-    annotation(Dialog(tab="Advanced"));
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Interfaces.Inlet inlet[N](redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -186,8 +187,8 @@ equation
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-92,46},{-66,4}},
-          textColor={116,116,116},
+          extent={{-120,50},{-80,20}},
+          textColor={0,0,0},
           textString="%N")}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

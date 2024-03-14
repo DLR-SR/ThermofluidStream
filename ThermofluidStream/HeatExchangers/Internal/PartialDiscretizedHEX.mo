@@ -1,15 +1,13 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
+
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
   extends Internal.DiscretizedHexIcon;
-  // Configure icon display options
-  parameter Boolean displayArea = true "= true, if you wish to display the conductive area of heat exchanger parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
 
-
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-
+  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+    annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
+  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+    annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
   replaceable model ConductionElementA = Internal.ConductionElementHEX
     constrainedby Internal.PartialConductionElementHEX(
       final nCellsParallel=nCellsParallel,
@@ -25,40 +23,57 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
       redeclare package Medium = MediumB,
       final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 
-  parameter Boolean initializeMassFlow=false "Initialize mass flow at inlets?" annotation (Dialog(tab="Initialization", group="Mass flow"));
-  parameter SI.MassFlowRate m_flow_0_A=0 "Initial mass flow for side A" annotation (Dialog(
-      tab="Initialization",
-      group="Mass flow",
-      enable=initializeMassFlow));
-  parameter SI.MassFlowRate m_flow_0_B=0 "Initial mass flow for side B" annotation (Dialog(
-      tab="Initialization",
-      group="Mass flow",
-      enable=initializeMassFlow));
+
+
   parameter Integer nCells=3 "Number of discretization elements";
-  parameter Modelica.Units.SI.Area A=10 "Conductive area of heat exchanger" annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation" annotation (Dialog(group="Heat transfer parameters"));
-  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows" annotation (Dialog(tab="Advanced"));
-  parameter Boolean enforce_global_energy_conservation=false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system" annotation (Dialog(tab="Advanced"));
+  parameter Boolean calculate_efficiency=false "= true, if heat exchanger efficiency is calculated"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  //Parameterization of HEX Wall
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall" annotation (Dialog(group="Heat transfer parameters"));
+  parameter Modelica.Units.SI.Area A=10 "Heat transfer area"
+    annotation (Dialog(group="Heat transfer parameters"));
+  parameter Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
+    annotation (Dialog(group="Heat transfer parameters"));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall"
+    annotation (Dialog(group="Heat transfer parameters"));
 
-  parameter Boolean calculate_efficiency=false "Enable calculation of efficiency";
+  parameter Boolean initializeMassFlow=false "= true, if inlet mass flow rates are initialized"
+    annotation (Dialog(tab="Initialization", group="Mass flow rate"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_0_A=0 "Initial mass flow rate for side A"
+    annotation (Dialog(
+      tab="Initialization",
+      group="Mass flow rate",
+      enable=initializeMassFlow));
+  parameter SI.MassFlowRate m_flow_0_B=0 "Initial mass flow rate for side B"
+    annotation (Dialog(
+      tab="Initialization",
+      group="Mass flow rate",
+      enable=initializeMassFlow));
+  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative mass flow rate"
+    annotation (Dialog(tab="Advanced"));
+  parameter Boolean enforce_global_energy_conservation=false "= true, if global conservation of energy is enforced"
+    annotation (Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow);
-  SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow);
-  SI.Mass M_A=sum(thermalElementA.M);
-  SI.Mass M_B=sum(thermalElementB.M);
-  SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system);
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayArea = true "= true, if heat transfer area A is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1"
+    annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
+  //-----------------------------------------------------------------
+
+  SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow) "Heat flow rate into medium A";
+  SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow) "Heat flow rate into medium B";
+  SI.Mass M_A=sum(thermalElementA.M) "Mass of medium A";
+  SI.Mass M_B=sum(thermalElementB.M) "Mass of medium B";
+  SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system) "Error in global conservation of energy";
+
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
 protected
-  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
   parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
-  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
-
-  function efficiency = Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB);
+  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance"
+    annotation (Dialog(group="Wall parameters"));
+  function efficiency = Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB) "Heat exchanger efficiency";
 
 public
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells) annotation (Placement(transformation(
@@ -68,6 +83,7 @@ public
 
   ConductionElementB thermalElementB[nCells] annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   ConductionElementA thermalElementA[nCells] annotation (Placement(transformation(extent={{10,-50},{-10,-70}})));
+
 protected
   SI.Pressure inletA_r "Inlet A inertial pressure";
   SI.MassFlowRate inletA_m_flow "Inlet A mass flow rate";
@@ -85,11 +101,11 @@ protected
 equation
   assert(
     inletB_m_flow > m_flow_assert,
-    "Negative massflow at Air inlet",
+    "Negative mass flow rate at inlet B",
     dropOfCommons.assertionLevel);
   assert(
     inletA_m_flow > m_flow_assert,
-    "Negative massflow at Refigerant inlet",
+    "Negative massflow at inlet A",
     dropOfCommons.assertionLevel);
 
   //Summary record

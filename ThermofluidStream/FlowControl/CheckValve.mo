@@ -1,8 +1,8 @@
 within ThermofluidStream.FlowControl;
-model CheckValve "Valve that allows only positive mass_flow"
+model CheckValve "Valve that enforces non negative mass flow rates"
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));

@@ -1,46 +1,44 @@
 ﻿within ThermofluidStream.Sensors;
-model MultiSensor_Tp "Sensor for Temperature and pressure"
-
-  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
+model MultiSensor_Tp "Temperature and pressure sensor"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Unit for temperature measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
   final parameter String temperatureString=
     if temperatureUnit == "K" then "K"
     elseif temperatureUnit == "degC" then "°C"
     else "error";
-  parameter Boolean outputTemperature = false "Enable temperature output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean outputPressure = false "Enable pressure output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure)));
+  parameter Boolean outputTemperature = false "= true, if temperature output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean outputPressure = false "= true, if pressure output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure)),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
     annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial value of pressure output"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial value of temperature output"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
   parameter SI.Time TC = 0.1 "PT1 time constant"
     annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
-  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured Temperature [variable]"
+  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature output connector"
     annotation (Placement(transformation(extent={{70,30},{90,50}}), iconTransformation(extent={{70,30},{90,50}})));
-  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured Pressure [variable]"
+  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure output connector"
     annotation (Placement(transformation(extent={{72,-50},{92,-30}}), iconTransformation(extent={{72,-50},{92,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);

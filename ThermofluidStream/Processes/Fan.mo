@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes;
-model Fan "Fan under ideal gas assumption"
+model Fan "Fan using ideal gas assumptions"
   extends Internal.PartialTurboComponent(redeclare function dp_tau=dp_tau_fan);
 
   replaceable function dp_tau_fan = Internal.TurboComponent.pleaseSelect_dp_tau

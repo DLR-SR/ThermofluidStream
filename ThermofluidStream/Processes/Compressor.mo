@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes;
-model Compressor
-  "Compressor under ideal gas assumption"
+model Compressor "Compressor using ideal gas assumptions"
+
   extends Internal.PartialTurboComponent(redeclare function dp_tau =
         dp_tau_compressor);
 

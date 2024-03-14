@@ -1,58 +1,58 @@
 within ThermofluidStream.Processes.Internal;
-partial model PartialTurboComponent "Partial of components that exchange work between a flange and a fluid stream"
+partial model PartialTurboComponent "Partial model of turbo component"
   extends Interfaces.SISOFlow(m_flowStateSelect = StateSelect.prefer, final clip_p_out=true);
 
   import ThermofluidStream.Utilities.Types.InitializationMethods;
   import Quantity = ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
 
-  parameter Boolean omega_from_input = false "Direct omega input"
-    annotation(Dialog(group="Input/Output"));
-  parameter Boolean enableOutput = false "Include output for selectable quantity"
-    annotation(Dialog(group="Input/Output"));
-  parameter Quantity outputQuantity=Quantity.m_flow_kgps "Quantity to output"
-    annotation(Dialog(group="Input/Output", enable=enableOutput));
-  parameter Boolean enableAccessHeatPort = false "Include access heatport"
-    annotation(Dialog(group="Input/Output"));
+  parameter Boolean omega_from_input = false "= true, if omega input connector is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean enableAccessHeatPort = false "= true, if heatPort is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MomentOfInertia J_p = 5e-4 "Moment of inertia"
     annotation(Dialog(group="Parameters", enable=not omega_from_input));
-  parameter SI.AngularVelocity omega_reg = dropOfCommons.omega_reg "Angular velocity used for normalization"
+  parameter Boolean enableOutput = false "= true, if selectable quantity output connector is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Quantity outputQuantity=Quantity.m_flow_kgps "Output quantity"
+    annotation(Dialog(group="Output", enable=enableOutput));
+  parameter SI.AngularVelocity omega_reg = dropOfCommons.omega_reg "Normalization angular velocity"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Mass flow used for normalization"
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Normalization mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum for rho (to make model stable for rho=0 @ p=0)"
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density (relevant at p=0)"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for m_flow"
+  parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for angular velocity"
     annotation(Dialog(tab="Advanced"));
-  parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for omega"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input));
-  parameter SI.AngularVelocity omega_0 = 0 "Initial value for omega"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=(initOmega == InitializationMethods.state)));
+  parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for angular velocity"
+    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=not omega_from_input));
+  parameter SI.AngularVelocity omega_0 = 0 "Initial value for angular velocity"
+    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.state)));
   parameter SI.AngularAcceleration omega_dot_0 = 0 "Initial value for der(omega)"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=(initOmega == InitializationMethods.derivative)));
-  parameter Boolean initPhi = false "If true phi is initialized"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=not omega_from_input));
-  parameter SI.Angle phi_0 = 0 "Initial value for phi"
-    annotation(Dialog(tab= "Initialization", group="Angular", enable=initPhi));
+    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.derivative)));
+  parameter Boolean initPhi = false "= true, if angle is initialized"
+    annotation(Dialog(tab= "Initialization", group="Angle", enable=not omega_from_input),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Angle phi_0 = 0 "Initial value for angle"
+    annotation(Dialog(tab= "Initialization", group="Angle", enable=initPhi));
 
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange(phi=phi, tau=tau) if not omega_from_input "Flange to receive mechanical power"
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange(phi=phi, tau=tau) if not omega_from_input "Flange"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={0,-100}, rotation=-90),
       iconTransformation(extent={{-10,-110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Input to directly set pump speed [rad/s]"
+  Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Angular velocity input connector [rad/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90),
       iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-120}, rotation=90)));
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "Access-heat dumping port"
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "HeatPort"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
                                                                                      rotation=90),
       iconTransformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
                                                                      rotation=90)));
-  Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Measured value [variable]"
+  Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Quantity output connector"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={60,-110})));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
-    constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curves"
+    constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curve"
       annotation(choicesAllMatching=true,
         Documentation(info="<html>
 <p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
@@ -65,21 +65,22 @@ function getQuantity = Sensors.Internal.getFlowQuantity (
       <p>Function to compute a selectable quantity to output. The quantity is associated to the mass flow. </p>
       </html>"));
 
-  SI.Power W_t "technichal work performed on fluid";
-  SI.Power Q_t "work that could not be performed on the fluid, and is dumped to heat port";
-  SI.Torque tau_st "moment that would result in static operation";
+  SI.Power W_t "Power (technichal work flow rate)";
+  SI.Power Q_t "Heat flow rate";
+  SI.Torque tau_st "Steady-state torque";
 
 protected
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state));
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state)) "Inlet specific volume";
 
   // intermediate quantities related to thermodynamical state
-  SI.SpecificEnergy dh "specific technichal work performed under the assumption of positive massflow";
+  SI.SpecificEnergy dh "Difference of specific enthalpy";
 
   // quantities related to inertia of component and mechanical power
-  SI.Angle phi "component angular position";
-  SI.Torque tau "moment from flange";
-  SI.Torque tau_normalized "moment after zero massflow normalization";
-  SI.AngularVelocity omega(stateSelect=omegaStateSelect) "component angular velocity";
+  SI.Angle phi "Angle";
+  SI.AngularVelocity omega(stateSelect=omegaStateSelect) "Angular velocity";
+  SI.Torque tau "Torque";
+  SI.Torque tau_normalized "Normalized torque";
+
 
 initial equation
   if initOmega == InitializationMethods.state then
@@ -95,12 +96,12 @@ initial equation
   end if;
 
 equation
-  // compute dp, tau_st from characteristic curve
+  // Compute pressure difference dp, and steady-state torque tau_st
   (dp, tau_st) = dp_tau(m_flow, omega, inlet.state, m_flow_reg, omega_reg, rho_min);
   h_out = h_in + dh;
   Xi_out = Xi_in;
 
-  // regularize tau_st/W_t such that the equations dont break for m_flow->0
+  // Regularize tau_st/W_t such that the equations does not break for m_flow->0
   W_t = tau_st*omega;
   dh = (m_flow*W_t)/(m_flow^2 + (m_flow_reg)^2);
   if noEvent(W_t >= 0) then
@@ -113,7 +114,7 @@ equation
     tau_normalized = dh*m_flow/(noEvent(if abs(omega)>omega_reg then omega else (if omega < 0 then -omega_reg else omega_reg)));
   end if;
 
-  // omega is either a state or directly given by omega_input (depending on omega_from_input)
+  // Angle and angular velocity
   if noEvent(omega_from_input) then
     tau = 0;
     phi = 0;

@@ -1,97 +1,110 @@
 within ThermofluidStream.HeatExchangers.Internal;
-partial model PartialNTU "Base heat exchanger using the epsilon-NTU method"
+partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU method"
+
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  // Configure icon display options
-  parameter Boolean displayArea = true "= true, if you wish to display the conductive surface parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displaykNTU = true "= true, if you wish to display the heat transfer coefficient parameter value" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1" annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
-  final parameter Boolean d1kNTU = displayParameters and displaykNTU and not d1A  "displaykNTU at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2kNTU = displayParameters and displaykNTU and not d1kNTU  "displaykNTU at position 2" annotation(Evaluate=true, HideResult=true);
+  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model A"
+    annotation (choicesAllMatching=true);
+  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model B"
+    annotation (choicesAllMatching=true);
+
+  parameter Modelica.Units.SI.Area A "Heat transfer area";
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Thermal transmittance";
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
+    annotation (Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow rate for regularization"
+    annotation (Dialog(tab="Advanced", group="Regularization parameters"));
+  parameter Modelica.Units.SI.Time TC=0.01 "Time constant for specific enthalpy difference dh"
+    annotation (Dialog(tab="Advanced"));
+
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayArea = true "= true, if the heat transfer area A is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displaykNTU = true "= true, if  the thermal transmittance k_NTU is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1"
+    annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
+  final parameter Boolean d1kNTU = displayParameters and displaykNTU and not d1A  "displaykNTU at position 1"
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2kNTU = displayParameters and displaykNTU and not d1kNTU  "displaykNTU at position 2"
+    annotation(Evaluate=true, HideResult=true);
+  //-----------------------------------------------------------------
 
 
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching=true);
+
+  Modelica.Units.SI.TemperatureDifference Delta_T_max "Maximum temperature difference";
+
+  Modelica.Units.SI.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
+  Modelica.Units.SI.SpecificEnthalpy dh_B "Specific enthalpy difference medium B";
+
+  SI.HeatFlowRate q_flow "Heat flow rate (Q_flow)";
+  Real effectiveness(unit="1") "Heat exchanger efficiency";
+  Real NTU(unit="1") "Number of transfer units";
+
+  //Inlet and outlet temperatures
+  MediumA.Temperature T_in_MediumA "Inlet temperature of medium A";
+  MediumB.Temperature T_in_MediumB "Inlet temperature of medium B";
+
+  ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
+
 protected
   SI.Pressure inletA_r "Inlet A inertial pressure";
-  SI.MassFlowRate inletA_m_flow "Inlet A mass flow rate";
-  MediumA.ThermodynamicState inletA_state "Inlet A state";
   SI.Pressure inletB_r "Inlet B inertial pressure";
+  SI.Pressure outletA_r "Outlet A inertial pressure";
+  SI.Pressure outletB_r "Outlet B inertial pressure";
+
+  SI.MassFlowRate inletA_m_flow "Inlet A mass flow rate";
   SI.MassFlowRate inletB_m_flow "Inlet B mass flow rate";
+  SI.MassFlowRate outletA_m_flow "Outlet A mass flow rate";
+  SI.MassFlowRate outletB_m_flow "Outlet B mass flow rate";
+
+  MediumA.ThermodynamicState inletA_state "Inlet A state";
   MediumB.ThermodynamicState inletB_state "Inlet B state";
-  SI.Pressure outletA_r "Inlet A inertial pressure";
-  SI.MassFlowRate outletA_m_flow "Inlet A mass flow rate";
   MediumA.ThermodynamicState outletA_state "Outlet A state";
-  SI.Pressure outletB_r "Inlet B inertial pressure";
-  SI.MassFlowRate outletB_m_flow "Inlet B mass flow rate";
   MediumB.ThermodynamicState outletB_state "Outlet B state";
-public
-  parameter Modelica.Units.SI.Area A "Conductive surface";
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of the flow" annotation (Dialog(tab="Advanced"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Overall heat transfer coefficient";
-  parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow for regularization" annotation (Dialog(tab="Advanced", group="Regularization parameters"));
-  parameter Modelica.Units.SI.Time TC=0.01 "Time constant for dh" annotation (Dialog(tab="Advanced"));
 
-  Modelica.Units.SI.TemperatureDifference Delta_T_max "Maximum Temperature Difference";
 
-  Modelica.Units.SI.SpecificEnthalpy dh_A "Enthalpy difference Medium A";
-  Modelica.Units.SI.SpecificEnthalpy dh_B "Enthalpy difference Medium B";
+  Modelica.Units.SI.Pressure p_A=MediumA.pressure(inletA_state) "Inlet A pressure";
+  Modelica.Units.SI.Pressure p_B=MediumB.pressure(inletB_state) "Inlet B pressure";
 
-  SI.HeatFlowRate q_flow "actual heat flow rate";
-  Real effectiveness(unit="1") "effectiveness derived from NTU correlation";
-  Real NTU(unit="1") "Number of Transfer Units";
+  MediumA.MassFraction Xi_A[MediumA.nXi]=MediumA.massFraction(inletA_state) "Inlet A mass fractions";
+  MediumB.MassFraction Xi_B[MediumB.nXi]=MediumB.massFraction(inletB_state) "Inlet B mass fractions";
 
-  //In- and outlet temperatures
-  MediumA.Temperature T_in_MediumA "Inlet temperature of Medium A";
-  MediumB.Temperature T_in_MediumB "Inlet temperature of Medium B";
+  //Inlet and outlet specific enthalpies and enthalpy differences
+  Modelica.Units.SI.SpecificEnthalpy h_in_A "Specific enthalpy at inlet A";
+  Modelica.Units.SI.SpecificEnthalpy h_in_B "Specific enthalpy at inlet B";
+  Modelica.Units.SI.SpecificEnthalpy h_out_A "Specific enthalpy at inlet A";
+  Modelica.Units.SI.SpecificEnthalpy h_out_B "Specific enthalpy at inlet B";
 
-  ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
-protected
-  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
+  SI.HeatFlowRate q_max "Maximum heat flow rate (Q_max)";
+  SI.HeatFlowRate q_flowA "Heat flow rate side A (Q_flowA)";
+  SI.HeatFlowRate q_flowB "Heat flow rate side B (Q_flowB)";
 
-  Modelica.Units.SI.Pressure p_A=MediumA.pressure(inletA_state);
-  Modelica.Units.SI.Pressure p_B=MediumB.pressure(inletB_state);
+  Real C_A(unit="J/(K.s)") "Heat capacity flow rate of Medium A";
+  Real C_B(unit="J/(K.s)") "Heat capacity flow rate of Medium B";
+  Real C_min(unit="J/(K.s)") "Minimum heat capacity flow rate";
+  Real C_max(unit="J/(K.s)") "Maximum heat capacity flow rate";
+  Real C_r(unit="1") "Ratio of heat capacity rates, Cmin/Cmax";
 
-  MediumA.MassFraction Xi_A[MediumA.nXi]=MediumA.massFraction(inletA_state);
-  MediumB.MassFraction Xi_B[MediumB.nXi]=MediumB.massFraction(inletB_state);
+  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_A "Specific heat capacity of Medium A";
+  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_B "Specific heat capacity of Medium B";
 
-  //In- and outlet enthalpies and enthalpy differences
-  Modelica.Units.SI.SpecificEnthalpy h_in_A "Enthalpy at inlet A";
-  Modelica.Units.SI.SpecificEnthalpy h_in_B "Enthalpy at Inlet B";
-  Modelica.Units.SI.SpecificEnthalpy h_out_A "Enthalpy at inlet A";
-  Modelica.Units.SI.SpecificEnthalpy h_out_B "Enthalpy at Inlet B";
+  Modelica.Units.SI.MassFlowRate m_flow_A=inletA_m_flow "Mass flow rate on side A";
+  Modelica.Units.SI.MassFlowRate m_flow_B=inletB_m_flow "Mass flow rate on side B";
 
-  SI.HeatFlowRate q_max "Maximum heat flow rate";
-  SI.HeatFlowRate q_flowA "Heat flow rate side A";
-  SI.HeatFlowRate q_flowB "Heat flow rate side B";
+  SI.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA_state) "Inlet A specific heat capacity";
+  SI.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA_state) "Outlet A specific heat capacity";
+  SI.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB_state) "Inlet B specific heat capacity";
+  SI.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB_state) "Outlet B specific heat capacity";
 
-  Real C_A(unit="J/(K.s)") "Heat capacity rate of Medium A";
-  Real C_B(unit="J/(K.s)") "Heat capacity rate of Medium B";
-  Real C_min(unit="J/(K.s)") "minimum heat capacity rate";
-  Real C_max(unit="J/(K.s)") "maximum heat capacity rate";
-  Real C_r(unit="1") "Cmin/Cmax (ratio of heat capacity rates)";
-
-  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_A "specific heat capacity of Medium A";
-  Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure cp_B "specific heat capacity of Medium B";
-
-  Modelica.Units.SI.MassFlowRate m_flow_A=inletA_m_flow "Mass flow on side A";
-  Modelica.Units.SI.MassFlowRate m_flow_B=inletB_m_flow "Mass flow on side B";
-
-  SI.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA_state);
-  SI.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA_state);
-  SI.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB_state);
-  SI.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB_state);
-
-  constant Real eps(unit="kg/s") = Modelica.Constants.eps;
+  constant Real eps(unit="kg/s") = Modelica.Constants.eps "Mass flow rate regularization";
 
 initial equation
-
   h_out_A = h_in_A;
   h_out_B = h_in_B;
 
 equation
-
   //Balance Equations
   inletA_m_flow + outletA_m_flow= 0;
   inletB_m_flow + outletB_m_flow = 0;
@@ -139,7 +152,7 @@ equation
 
   if noEvent(C_A < C_B) then
 
-    //if both mass flows are smaller than regularization mass flow, no heat is transferred
+    //No heat is transferred, if both mass flow rates are smaller than regularization mass flow rate
     if noEvent(inletA_m_flow < m_flow_reg) and noEvent(inletB_m_flow < m_flow_reg) then
       dh_A = 0;
     else
@@ -157,7 +170,7 @@ equation
 
   else
 
-    //if both mass flows are smaller than regularization mass flow, no heat is transferred
+    //No heat is transferred, if both mass flow rates are smaller than regularization mass flow rate
     if noEvent(inletA_m_flow < m_flow_reg) and noEvent(inletB_m_flow < m_flow_reg) then
       dh_B = 0;
     else

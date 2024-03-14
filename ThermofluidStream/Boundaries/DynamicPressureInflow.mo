@@ -3,7 +3,8 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean assumeConstantDensity=true "= true, if assuming incompressibility, use '= false' for Ma > 0.3";
+  parameter Boolean assumeConstantDensity=true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean velocityFromInput = false "= true, if input connector for outlet velocity is enabled"
     annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Velocity v_in_par = 0 "Inlet velocity"
@@ -13,18 +14,18 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
   parameter SI.Area A_par = 1 "Outlet cross-section area"
     annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
   parameter Boolean extrapolateQuadratic = false "= true, if extrapolating negative velocities purely quadratic"
-    annotation(Dialog(tab="Advanced", group="Regularization"));
+    annotation(Dialog(tab="Advanced", group="Regularization"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
   // ------ Parameter Display Configuration  ------------------------
-  parameter Boolean displayCompressibilityApproach = true "= true to display the value of assumeConstantDensity"
+  parameter Boolean displayCompressibilityApproach = true "= true, if assumeConstantDensity is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInletVelocity = true "= true to display the inlet velocity value v_in_par"
+  parameter Boolean displayInletVelocity = true "= true, if inlet velocity v_in_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayOutletArea = true "= true to display the outlet cross section area value A_par"
+  parameter Boolean displayOutletArea = true "= true, if outlet cross section area A_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true to display the inertance value L"
+  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean dv_in = displayParameters and not velocityFromInput and displayInletVelocity "Display inlet velocity"
     annotation(Evaluate=true, HideResult=true);
@@ -53,15 +54,15 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
   //----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Outlet cross section area input connector [m2]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={88,-56}), iconTransformation(extent={{-20,-20},{20,20}},
+          extent={{-20,20},{20,-20}},
+        rotation=180,
+        origin={120,-60}),iconTransformation(extent={{-20,-20},{20,20}},
         rotation=180,
         origin={120,-60})));
   Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s") if velocityFromInput "Inlet velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-58,-32}),
+        rotation=0,
+        origin={-118,-60}),
                          iconTransformation(extent={{-20,-20},{20,20}},
         rotation=0,
         origin={-120,-60})));

@@ -18,9 +18,9 @@ the outlet the sink is connected to.
     annotation (Dialog(tab="Advanced"));
 
   // ------ Parameter Display Configuration  ------------------------
-  parameter Boolean displayPressure = true "= true to display the pressure set value p0_par"
+  parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true to display the inertance value L"
+  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
@@ -50,8 +50,8 @@ the outlet the sink is connected to.
 
 protected
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
-  SI.Pressure r;
-  SI.Pressure p = Medium.pressure(inlet.state);
+  SI.Pressure r "Inertial pressure";
+  SI.Pressure p = Medium.pressure(inlet.state) "Steady state pressure";
 
 equation
   connect(p0_var, p0);

@@ -4,28 +4,28 @@ package Internal
 
   model SplitterRatio "Splits a flow into two subflows with prescribed ratio"
 
-    extends ThermofluidStream.Utilities.DropOfCommonsPlus;                //Define the display of the component name for your component.
+    extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-    replaceable package Medium =
-        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-      "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+    replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
+      annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-    parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+    parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
       annotation (Dialog(tab="Advanced"));
 
     parameter SI.Time TC = 0.1 "Time constant for RT massflow constraint"
       annotation(Dialog(tab="Advanced"));
     parameter SI.AbsolutePressure p_reg = 1e2 "Regularizaion pressure for pressure drop calculation"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.Density rho_min=dropOfCommons.rho_min "Minimum Density"
+    parameter SI.Density rho_min=dropOfCommons.rho_min "Minimum density"
       annotation(Dialog(tab="Advanced"));
 
-    parameter SplitterModes mode = SplitterModes.pressureDrop "Mode of the splitter. See Doku.";
-    parameter Boolean invert = false "Invert split-ratio input?";
-    parameter SI.Time TC_input = 0.05 "Time constnat for PT1 on split-ratio input"
+    parameter SplitterModes mode = SplitterModes.pressureDrop "Splitter mode (see Documentation)";
+    parameter Boolean invert = false "= true, if splitRatio input is inverted (1-splitRatio)"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+    parameter SI.Time TC_input = 0.05 "Time constant for splitRatio input (PT1)"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.Power P_thresh = 1 "Power threshold for \"create-pressure-warning\""
+    parameter SI.Power P_thresh = 1 "Power threshold for warning"
       annotation(Dialog(tab="Advanced"));
 
     ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
@@ -44,28 +44,28 @@ package Internal
           rotation=90,
           origin={0,-30})));
 
-    SI.SpecificVolume v_in = 1/max(Medium.density(inlet.state), rho_min);
-    SI.SpecificVolume v_A = 1/max(Medium.density(outletA.state), rho_min);
-    SI.SpecificVolume v_B = 1/max(Medium.density(outletB.state), rho_min);
+    SI.SpecificVolume v_in = 1/max(Medium.density(inlet.state), rho_min) "Inlet specific volume";
+    SI.SpecificVolume v_A = 1/max(Medium.density(outletA.state), rho_min) "Outlet A specific volume";
+    SI.SpecificVolume v_B = 1/max(Medium.density(outletB.state), rho_min) "Outlet B specific volume";
 
-    SI.Power P_A = (v_in+v_A)/2*(-outletA.m_flow)*(p_A-p_in);
-    SI.Power P_B = (v_in+v_B)/2*(-outletB.m_flow)*(p_B-p_in);
+    SI.Power P_A = (v_in+v_A)/2*(-outletA.m_flow)*(p_A-p_in) "Loss in enthalpy flow rate (A)";
+    SI.Power P_B = (v_in+v_B)/2*(-outletB.m_flow)*(p_B-p_in) "Loss in enthalpy flow rate (B)";
 
   protected
     SI.AbsolutePressure dp(stateSelect=StateSelect.always, start=0, fixed=true);
-    SI.AbsolutePressure p_A;
-    SI.AbsolutePressure p_B;
+    SI.AbsolutePressure p_A "Outlet A pressure";
+    SI.AbsolutePressure p_B "Outlet B pressure";
 
     SI.Pressure r_I;
-    SI.Pressure r_A;
-    SI.Pressure r_B;
+    SI.Pressure r_A "Outlet A inertial pressure";
+    SI.Pressure r_B "Outlet B inertial pressure";
 
     SI.Pressure r_corr_A;
     SI.Pressure r_corr_B;
 
-    SI.AbsolutePressure p_in = Medium.pressure(inlet.state);
-    SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state);
-    SI.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state);
+    SI.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
+    SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
+    SI.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
 
     Real splitRatioLim(unit="1");
     parameter Real eps(unit="1") = 1e-5 "Numerical minimal distance of input to 0 and 1";
@@ -77,11 +77,11 @@ package Internal
 
   equation
     assert(P_A < P_thresh,
-      "Splitter enforces mass-flow constraint by artificially increasing pressure on outlet A",
+      "Splitter enforces mass flow constraint by artificially increasing pressure on outlet A",
       AssertionLevel.warning);
 
     assert(P_B < P_thresh,
-      "Splitter enforces mass-flow constraint by artificially increasing pressure on outlet B",
+      "Splitter enforces mass flow constraint by artificially increasing pressure on outlet B",
       AssertionLevel.warning);
 
     //conservation of mass

@@ -38,19 +38,19 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-    replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info="<html>
+    replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+      annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-    parameter Boolean assumeConstantDensity = true "= true, if only mass-flow rate will determine the mixing";
+    parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
     parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
       annotation (Dialog(tab="Advanced"));
-    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each branch of component"
+    parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
       annotation (Dialog(tab="Advanced"));
     parameter SI.Time TC_input = 0.05 "Time constant";
-    parameter Boolean invert = false
-      "= true, if difference (1-splitRatio) is used for split ratio, otherwise splitRatio input is used directly";
+    parameter Boolean invert = false "= true, if splitRatio input is inverted (1-splitRatio)"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
@@ -66,22 +66,22 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
 
     // these are needed by DynamicJunctionN
   protected
-    Real w[2](each unit="1") "regularized weighting factor for specific enthalpy";
-    SI.Density rho[2] = {Medium.density(inletA.state),Medium.density(inletB.state)} "density at inlets";
+    Real w[2](each unit="1") "Regularized weighting factor for specific enthalpy";
+    SI.Density rho[2] = {Medium.density(inletA.state),Medium.density(inletB.state)} "Density at inlets";
 
 
-    SI.Pressure p[2] =  {Medium.pressure(inletA.state),Medium.pressure(inletB.state)} "(steady mass-flow) pressure at inlets";
-    SI.SpecificEnthalpy h[2] =  {Medium.specificEnthalpy(inletA.state),Medium.specificEnthalpy(inletB.state)} "specific enthapy at inlets";
-    Medium.MassFraction Xi[Medium.nXi,2] "mass factions at inlets";
+    SI.Pressure p[2] =  {Medium.pressure(inletA.state),Medium.pressure(inletB.state)} "(Steady mass flow) pressure at inlets";
+    SI.Pressure r_in[2] "Inertial pressure at inlets";
+    SI.SpecificEnthalpy h[2] =  {Medium.specificEnthalpy(inletA.state),Medium.specificEnthalpy(inletB.state)} "Specific enthapy at inlets";
+    Medium.MassFraction Xi[Medium.nXi,2] "Mass factions at inlets";
 
-    SI.Pressure p_mix "(steady mass-flow) pressure at the outlet";
-    SI.Pressure r_mix "inertial pressure at outlet";
-    SI.SpecificEnthalpy h_mix "specific enthalpy at outlet";
-    Medium.MassFraction Xi_mix[Medium.nXi] "medium composition at outlet";
+    SI.Pressure p_mix "Outlet (steady mass flow) pressure";
+    SI.Pressure r_mix "Outlet inertial pressure";
+    SI.SpecificEnthalpy h_mix "Outlet specific enthalpy";
+    Medium.MassFraction Xi_mix[Medium.nXi] "Outlet mass fractions";
 
-    Real w2[2](each unit="1") "regularized weighting factor for steady mass flow pressure";
+    Real w2[2](each unit="1") "Regularized weighting factor for steady mass flow pressure";
 
-    SI.Pressure r_in[2];
 
     function mfk = Utilities.Functions.massFractionK(redeclare package Medium = Medium);
 

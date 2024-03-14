@@ -3,7 +3,8 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean assumeConstantDensity= true "= true, if assuming incompressibility, use '= false' for Ma > 0.3";
+  parameter Boolean assumeConstantDensity= true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean areaFromInput = false "= true, if input connector for inlet cross section area is enabled"
     annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A_par = 1 "Inlet cross-section area"
@@ -18,13 +19,13 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
   // ------ Parameter Display Configuration  ------------------------
-  parameter Boolean displayCompressibilityApproach = true "= true to display the value of assumeConstantDensity"
+  parameter Boolean displayCompressibilityApproach = true "= true, if assumeConstantDensity is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInletArea = true "= true to display the inlet area value A_par"
+  parameter Boolean displayInletArea = true "= true, if inlet cross section area A_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayOutletVelocity = true "= true to display the outlet velocity value v_out_par"
+  parameter Boolean displayOutletVelocity = true "= true, if outlet velocity v_out_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true to display the inertance value L"
+  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean displayA = displayInletArea  and not areaFromInput
     annotation(Evaluate=true, HideResult=true);
@@ -58,15 +59,15 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
 
   Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Inlet cross section area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-104,-60}),
+        rotation=0,
+        origin={-120,-60}),
                          iconTransformation(extent={{-20,-20},{20,20}},
         rotation=0,
         origin={-120,-60})));
   Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Outlet velocity input connector [m/s]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-96,-60}), iconTransformation(extent={{-20,-20},{20,20}},
+          extent={{20,-20},{-20,20}},
+        rotation=0,
+        origin={120,-60}), iconTransformation(extent={{-20,-20},{20,20}},
         rotation=180,
         origin={120,-60})));
 

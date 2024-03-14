@@ -3,8 +3,7 @@ model Flow_Resistance "Test for flow resistance"
   extends Modelica.Icons.Example;
 
   import tf = ThermofluidStream;
-  replaceable package Medium = tf.Media.myMedia.Air.SimpleAir
-    "Medium model"
+  replaceable package Medium = tf.Media.myMedia.Air.SimpleAir "Medium model"
     annotation (Documentation(info="<html>
 <p>
 Medium model for the test. Can be anything.
@@ -93,7 +92,6 @@ Medium model for the test. Can be anything.
   tf.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
 equation
-
   connect(source1.outlet, flowResistance3.inlet) annotation (Line(
       points={{-20,-60},{-10,-60}},
       color={28,108,200},

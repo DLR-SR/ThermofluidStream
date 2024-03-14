@@ -1,5 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
+
   extends Internal.PartialDiscretizedHEX;
 
   Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-120,40},{-80,80}}),iconTransformation(extent={{-120,40},{-80,80}})));

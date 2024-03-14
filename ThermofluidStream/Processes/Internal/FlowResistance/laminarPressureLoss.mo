@@ -1,6 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function laminarPressureLoss
-  "Laminar flow loss function (Hagen-Poiseuille)"
+function laminarPressureLoss "Laminar pressure loss function (Hagen-Poiseuille)"
   extends Internal.FlowResistance.partialPressureLoss;
 
   import Modelica.Constants.pi;

@@ -3,23 +3,23 @@ model JunctionNM "Junction with N inlets and M outlets"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Integer N(min=1) = 1 "Number of inputs";
-  parameter Integer M(min=1) = 1 "Number of outputs";
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
-    annotation(Dialog(tab="Advanced"));
+  parameter Integer N(min=1) = 1 "Number of inlets";
+  parameter Integer M(min=1) = 1 "Number of outlets";
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
-  Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "vector of N inlets"
+  Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "Vector of N inlets"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={-100,0})));
-  Interfaces.Outlet outlets[M](redeclare package Medium = Medium) "vector of N outlets"
+  Interfaces.Outlet outlets[M](redeclare package Medium = Medium) "Vector of N outlets"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
   SplitterN splitterN(
@@ -41,7 +41,6 @@ model JunctionNM "Junction with N inlets and M outlets"
         origin={-14,0})));
 
 equation
-
   connect(junctionN.inlets, inlets) annotation (Line(
       points={{-24,0},{-62,0},{-62,0},{-100,0}},
       color={28,108,200},

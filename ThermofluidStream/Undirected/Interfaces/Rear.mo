@@ -1,16 +1,16 @@
 within ThermofluidStream.Undirected.Interfaces;
 connector Rear "Undirected connector outputting the rearward state"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in Fore. Make sure it is the same as the other part of the connection.</p>
 </html>"));
 
-  SI.Pressure r "inertial pressure";
-  flow SI.MassFlowRate m_flow "mass flow rate";
+  SI.Pressure r "Inertial pressure";
+  flow SI.MassFlowRate m_flow "Mass flow rate";
 
-  output Medium.ThermodynamicState state_rearwards "thermodynamic state in rearwards direction";
-  input Medium.ThermodynamicState state_forwards "thermodynamic state in forwards direction";
+  output Medium.ThermodynamicState state_rearwards "Thermodynamic state in rearwards direction";
+  input Medium.ThermodynamicState state_forwards "Thermodynamic state in forwards direction";
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true,initialScale=0.2), graphics={Ellipse(
           extent={{-80.0,80.0},{80.0,-80.0}},

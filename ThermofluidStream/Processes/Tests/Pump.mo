@@ -121,7 +121,6 @@ Medium model for the test. Should be incompressible or with low compressibility.
     p0_par=600000)
     annotation (Placement(transformation(extent={{34,130},{54,150}})));
 equation
-
   connect(pump.omega_input, const.y)
     annotation (Line(points={{8,60},{8,52},{-3,52}}, color={0,0,127}));
   connect(power1.flange, pump1.flange)

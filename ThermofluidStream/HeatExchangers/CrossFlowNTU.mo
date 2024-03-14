@@ -1,6 +1,8 @@
 within ThermofluidStream.HeatExchangers;
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
+
   extends ThermofluidStream.HeatExchangers.Internal.PartialNTU;
+
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         origin={-100,0}),   iconTransformation(extent={{-120,-20},{-80,20}})));

@@ -3,18 +3,18 @@ model Switch
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation(choicesAllMatching=true);
 
-  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
+  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
-  parameter Boolean invertInput = false "Invert input meaning";
-  parameter Boolean initializeOneMassflowSplit = false "Initialize mass-flow ratio (one initial equation)"
-    annotation(Dialog(tab="Initialization"));
+  parameter Boolean invertInput = false "=true, if input single is inverted"
+    annotation (Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean initializeOneMassflowSplit = false "= true, if mass flow rate ratio is initialized"
+    annotation(Dialog(tab="Initialization"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
+    annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));

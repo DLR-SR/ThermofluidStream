@@ -3,7 +3,7 @@ model Reservoir "Model of a reservoir"
   extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=0, final A = 0, final U=0);
 
   parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector enabled"
-    annotation(Dialog(group="Environmental pressure"));
+    annotation(Dialog(group="Environmental pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Pressure p_env_par=1e5 "Environmental pressure set value"
     annotation(Dialog(group="Environmental pressure",enable=not pEnvFromInput));
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area";
@@ -14,9 +14,9 @@ model Reservoir "Model of a reservoir"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure input connector [Pa]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,100}), iconTransformation(
+        origin={0,120}), iconTransformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,119})));

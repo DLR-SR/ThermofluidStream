@@ -3,23 +3,20 @@ model DynamicJunctionNM "Dynamic pressure N to M splitter"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-
+  parameter Boolean assumeConstantDensity=true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Integer N(min=1) = 1 "Number of inputs";
   parameter Integer M(min=1) = 1 "Number of outputs";
-  parameter Boolean assumeConstantDensity=true "If true only mass-flow rate will determine the mixing"
-    annotation(Dialog(tab="Advanced"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
-    annotation (Dialog(tab="Advanced"));
   parameter SI.Area A_in[N] "Cross section area of inlets";
   parameter SI.Area A_out[M] "Cross section area of outlets";
   parameter SI.Area A_splitter = 0.1 "Internal cross section of Junction"
     annotation(Dialog(tab="Advanced"));
-
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
+    annotation (Dialog(tab="Advanced"));
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "vector of N inlets"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0}),
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={-100,0})));
@@ -49,7 +46,6 @@ model DynamicJunctionNM "Dynamic pressure N to M splitter"
         origin={20,0})));
 
 equation
-
   connect(dynamicJunctionN.inlets, inlets) annotation (Line(
       points={{-30,0},{-100,0}},
       color={28,108,200},
