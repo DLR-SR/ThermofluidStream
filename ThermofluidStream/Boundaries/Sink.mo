@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model Sink "Boundary model of sink"
+model Sink "Sink (p)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

@@ -1,10 +1,30 @@
 within ThermofluidStream.Undirected.FlowControl;
-model MCV "Massflow control valve"
+model MCV "Flow rate control valve"
+
   extends Interfaces.SISOBiFlow(final clip_p_out=false, final L = 100, final p_min=p_min_par);
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
+
+
+  parameter Mode mode = Mode.mass_flow "Valve mode"
+    annotation(Dialog(group="Flow rate setpoint"));
+  parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
+    annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.mass_flow));
+  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Volume flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.volume_flow));
+  parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
+  parameter Real k1(unit="1") = 100 "Time constant factor"
+    annotation(Dialog(tab="Advanced"));
+  parameter Real k2(unit="1") = 100 "Integrator windup factor"
+    annotation(Dialog(tab="Advanced"));
+  parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
+    annotation(Dialog(tab="Advanced"));
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
+
+  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
@@ -12,48 +32,33 @@ model MCV "Massflow control valve"
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,80})));
-
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(
         transformation(extent={{-10,-10},{10,10}},
         rotation=270,
+        origin={0,-120}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
         origin={0,-110})));
 
-  parameter Mode mode = Mode.mass_flow "Valve mode";
-  parameter Boolean setpointFromInput = false "= true, if desired flow rate is set via setpoint_var input";
-  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow variable to set"
-    annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.mass_flow));
-  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Mass flow variable to set"
-    annotation(Dialog(enable=(not setpointFromInput) and mode == Mode.volume_flow));
-  parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
-  parameter Real k1(unit="1") = 100 "Timeconstant factor"
-    annotation(Dialog(tab="Advanced"));
-  parameter Real k2(unit="1") = 100 "Integrator windup factor"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
-    annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false "= true, if clippingOutput enabled";
-
-  SI.Density rho_rear_in = Medium.density(rear.state_forwards);
-  SI.Density rho_fore_in = Medium.density(fore.state_rearwards);
-  SI.Density rho_in = Undirected.Internal.regStep(m_flow, rho_rear_in, rho_fore_in, m_flow_reg);
+  SI.Density rho_rear_in = Medium.density(rear.state_forwards) "Inlet density rear port";
+  SI.Density rho_fore_in = Medium.density(fore.state_rearwards) "Inlet density fore port";
+  SI.Density rho_in = Undirected.Internal.regStep(m_flow, rho_rear_in, rho_fore_in, m_flow_reg) "Inlet density";
 
 
-  SI.VolumeFlowRate V_flow_fore = m_flow/rho_rear_in;
-  SI.VolumeFlowRate V_flow_rear = m_flow/rho_fore_in;
-  SI.VolumeFlowRate V_flow = Undirected.Internal.regStep(m_flow, V_flow_fore, V_flow_rear, m_flow_reg);
+  SI.VolumeFlowRate V_flow_fore = m_flow/rho_rear_in "Volume flow rate fore port";
+  SI.VolumeFlowRate V_flow_rear = m_flow/rho_fore_in "Volume flow rate rear port";
+  SI.VolumeFlowRate V_flow = Undirected.Internal.regStep(m_flow, V_flow_fore, V_flow_rear, m_flow_reg) "Volume flow rate";
 
   constant SI.Pressure eps = 1;
-  SI.Pressure dp = Undirected.Internal.regStep(m_flow, dp_fore, -dp_rear, m_flow_reg);
+  SI.Pressure dp = Undirected.Internal.regStep(m_flow, dp_fore, -dp_rear, m_flow_reg) "Pressure difference";
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
-
-  SI.MassFlowRate m_flow_set;
-  SI.VolumeFlowRate V_flow_set;
+  SI.MassFlowRate m_flow_set "Setpoint mass flow rate";
+  SI.VolumeFlowRate V_flow_set "Setpoint volume flow rate";
   Modelica.Blocks.Interfaces.RealInput setpoint "Internal setpoint connector";
 
-  SI.Pressure dr = fore.r - rear.r;
+  SI.Pressure dr = fore.r - rear.r "Inertial pressure difference";
   SI.Pressure dr_set;
 public
   SI.Pressure dp_int(start=-1e5);

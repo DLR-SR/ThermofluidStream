@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model SplitterT1 "Splits a flow into two subflows"
+model SplitterT1 "Splitter with one inlet and two outlets"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

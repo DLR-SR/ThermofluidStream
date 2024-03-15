@@ -1,20 +1,17 @@
-within ThermofluidStream.Undirected.Sensors;
-model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium"
+﻿within ThermofluidStream.Undirected.Sensors;
+model TwoPhaseSensorSelect "Selectable sensor for two phase medium"
   extends Internal.PartialSensor(redeclare package Medium=Medium2Phase);
 
   import Quantities=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  replaceable package Medium2Phase =
-      Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
+  replaceable package Medium2Phase = Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
 <p>Replaceable medium package for the sensor. Medium must be a TwoPase Medium.</p>
 </html>"));
-
-  parameter Quantities quantity "Quantity the sensor measures"
+  parameter Quantities quantity "Measured quantity"
     annotation(choicesAllMatching=true);
-
   final parameter String quantityString=
     if quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg then "x in kg/kg"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.T_sat_K then "T_sat in K"
@@ -25,19 +22,18 @@ model TwoPhaseSensorSelect "Sensor for a selectable quantity of a twoPhaseMedium
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
     else "error";
+  parameter Boolean outputValue = false "= true, if sensor output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = 0 "Start value of sensor output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
 
-  parameter Boolean outputValue = false "Enable sensor-value output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = 0 "Initial output state of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
-
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Measured quantity [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Sensor output connector"
     annotation (Placement(
         transformation(extent={{70,50},{90,70}}),
           iconTransformation(extent={{70,50},{90,70}})));

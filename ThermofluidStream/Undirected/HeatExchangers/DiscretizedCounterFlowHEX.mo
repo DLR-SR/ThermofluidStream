@@ -1,6 +1,6 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-phase working fluids without pressure drop"
-  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
+
   extends Internal.PartialDiscretizedHEX;
 
   Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent={{120,-80},{80,-40}})));
@@ -9,7 +9,6 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
   Interfaces.Fore foreB(redeclare package Medium = MediumB) annotation(Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
 
 initial equation
-
   if initializeMassFlow then
     rearA.m_flow = m_flow_0_A;
     rearB.m_flow = m_flow_0_B;
@@ -20,7 +19,6 @@ equation
   stateA_out=if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
   stateB_in=if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
   stateB_out=if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
-
 
   //Connecting equations (to interconnect pipes)
   //Fluid side B
@@ -45,9 +43,13 @@ equation
 
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,130},{150,90}},
+          extent={{-150,140},{150,100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
+        Text(visible=d1A,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="A = %A"),
         Text(visible=d1A,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},

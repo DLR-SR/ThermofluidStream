@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionX3 "3 to 1 X-Junction"
+model JunctionX3 "Junction with three inlets and one outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

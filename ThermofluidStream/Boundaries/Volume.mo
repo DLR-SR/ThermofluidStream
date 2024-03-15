@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model Volume "Model of a vessel with fixed volume"
+model Volume "Volume of fixed size, closed to the ambient"
 
   extends Internal.PartialVolume;
 

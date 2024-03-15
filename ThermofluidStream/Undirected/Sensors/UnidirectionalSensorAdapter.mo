@@ -1,6 +1,7 @@
 within ThermofluidStream.Undirected.Sensors;
 model UnidirectionalSensorAdapter "Adapter to connect a unidirectional sensor"
-   extends Internal.PartialSensor;
+
+  extends Internal.PartialSensor;
 
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(

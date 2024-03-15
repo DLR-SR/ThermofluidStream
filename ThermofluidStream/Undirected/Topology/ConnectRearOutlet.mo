@@ -1,17 +1,15 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectRearOutlet
-  "Directed/undirected connector with rear and outlet"
+model ConnectRearOutlet "Connects rear port to outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to outlet and port of the Connector.</p>
 </html>"));
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean useDefaultStateAsRear = false "Use Default Medium states as state_rearwards";
+  parameter Boolean useDefaultStateAsRear = false "= true, if default medium state is used for rear.state_rearwards";
 
   Interfaces.Rear rear(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
@@ -30,9 +28,7 @@ model ConnectRearOutlet
         origin={0,-40})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
-  SI.Pressure r_rear, r_outlet;
+  SI.Pressure r_rear, r_outlet "Inertial pressures";
 
 equation
   outlet.state = rear.state_forwards;

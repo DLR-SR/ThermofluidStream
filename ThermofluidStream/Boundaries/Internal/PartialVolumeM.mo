@@ -1,16 +1,16 @@
-within ThermofluidStream.Boundaries.Internal;
-partial model PartialVolumeM "Partial parent class for Volumes with one inlet and M outlet"
+﻿within ThermofluidStream.Boundaries.Internal;
+partial model PartialVolumeM "Partial volume with one inlet and M outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model" annotation (
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Volume. Make sure it is the same as the
 inlets and outlets the volume is connected to.
 </p>
 </html>"));
-
   parameter Integer M_outlets = 1 "Number if outlets";
   parameter Boolean useHeatport = false "=true, if heatPort is enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -59,7 +59,7 @@ inlets and outlets the volume is connected to.
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
   SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d "Mass";
-  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi "Masses";
+  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi "Masses of species";
   SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u "Internal energy";
 
   SI.HeatFlowRate Q_flow "Heat flow rate";

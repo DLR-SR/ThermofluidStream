@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model PhaseSeparator "Parent to receiver and accumulator models"
+model PhaseSeparator "Base model for receiver and accumulator models"
   extends Boundaries.Internal.PartialVolume(
     redeclare replaceable package Medium =
         Media.myMedia.Interfaces.PartialTwoPhaseMedium,

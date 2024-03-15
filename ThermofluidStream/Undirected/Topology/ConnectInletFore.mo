@@ -1,11 +1,9 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectInletFore
-  "Directed/undirected connector with input and fore"
+model ConnectInletFore "Connects inlet to fore port"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
@@ -20,9 +18,7 @@ model ConnectInletFore
         iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
-  SI.Pressure r_fore, r_inlet;
+  SI.Pressure r_fore, r_inlet "Inertial pressures";
 
 equation
   fore.state_forwards = inlet.state;

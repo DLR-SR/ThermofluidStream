@@ -1,10 +1,9 @@
 within ThermofluidStream.Undirected.Boundaries;
-model TerminalRear "Fore Boundary that imposes m_flow = 0"
+model TerminalRear "Zero mass flow rate fore boundary"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Source. Make sure it is the same as
@@ -14,15 +13,15 @@ the one the inlet the source is connected to.
 
   parameter SI.Time TC = 0.1 "Time constant for pressure adaption"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.SpecificEnthalpy h = Medium.h_default "Source enthalpy";
-  parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Source mass fraction";
+  parameter SI.SpecificEnthalpy h = Medium.h_default "Specific enthalpy set value";
+  parameter Medium.MassFraction[Medium.nXi] Xi = Medium.X_default[1:Medium.nXi] "Mass fractions set value";
   parameter SI.Pressure p_0 = Medium.p_default "Initial pressure";
 
   Interfaces.Fore fore(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(extent={{80,-20},{120,20}})));
 
 protected
-  SI.Pressure p(stateSelect=StateSelect.prefer);
+  SI.Pressure p(stateSelect=StateSelect.prefer) "Pressure";
 
 initial equation
   p = p_0;

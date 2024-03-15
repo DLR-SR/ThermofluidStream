@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model MultiSensor_Tpm "Sensor for Temperature, pressure and mass flow rate"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -34,16 +34,16 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass flow rate"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
     annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure or outputMassFlowRate)),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial value of pressure output"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial value of temperature output"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Initial value of mass flow rate output"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure or outputMassFlowRate) and filter_output));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+  parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Start value for mass flow rate output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-120},{-80,-80}})));
@@ -141,7 +141,7 @@ equation
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
         Text(visible=outputMassFlowRate,
-          extent={{150,-22},{75,-52}},
+          extent={{150,-20},{75,-50}},
           textColor={0,0,0},
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),

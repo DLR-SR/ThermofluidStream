@@ -1,15 +1,15 @@
 within ThermofluidStream.Undirected.Boundaries;
-model VolumeMix "Volume with N_fore fores and N_rear rears that allows mixing"
+model VolumeMix "Volume of fixed size, closed to the ambient, with N_fore fore ports and N_rear rear ports"
   extends Internal.PartialVolumeN;
 
-  parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume of the Model";
-  parameter Boolean density_derp_h_from_media = false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
-    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
-  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
+  parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume";
+  parameter Boolean density_derp_h_from_media=false "= true, if the derivative of density by pressure at const specific enthalpy is calculated from media model (only available for some media models)"
+    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
 
 equation
-  assert(abs(density_derp_h) > 1e-12, "The simple Volume model should not be used with incompressible or nearly incompressible media. Consider using the FlexVolume instead.", dropOfCommons.assertionLevel);
+  assert(abs(density_derp_h) > 1e-12, "The simple Volume model should not be used with (nearly) incompressible media. Consider using 'FlexVolume' instead.", dropOfCommons.assertionLevel);
 
   if density_derp_h_from_media then
     density_derp_h = Medium.density_derp_h(medium.state);

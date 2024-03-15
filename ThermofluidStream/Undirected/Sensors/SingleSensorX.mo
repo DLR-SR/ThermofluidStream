@@ -1,27 +1,28 @@
 within ThermofluidStream.Undirected.Sensors;
-model SingleSensorX "Sensor for mass fraction of mixture"
+model SingleSensorX "Mass fractions sensor"
   extends Internal.PartialSensor;
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Boolean outputValue = false "Enable sensor-value output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Initial output state of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
+
+  parameter Boolean outputValue = false "= true, if sensor output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Start value of mass fraction output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of mass fraction vector to display";
 
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"

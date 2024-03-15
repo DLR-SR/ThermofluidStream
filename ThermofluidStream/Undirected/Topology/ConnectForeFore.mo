@@ -1,10 +1,9 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectForeFore "Undirected connector with fore and fore"
+model ConnectForeFore "Connects two fore ports"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to the ports of the Connector.</p>
 </html>"));
@@ -17,9 +16,6 @@ model ConnectForeFore "Undirected connector with fore and fore"
   Interfaces.Fore fore_b(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
         iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
-
-protected
-  outer DropOfCommons dropOfCommons;
 
 equation
   fore_b.state_forwards = fore_a.state_rearwards;

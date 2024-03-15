@@ -23,8 +23,6 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
       redeclare package Medium = MediumB,
       final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side B" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
 
-
-
   parameter Integer nCells=3 "Number of discretization elements";
   parameter Boolean calculate_efficiency=false "= true, if heat exchanger efficiency is calculated"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));

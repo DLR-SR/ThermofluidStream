@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionT2 "2 to 1 T-Junction"
+model JunctionT2 "Junction with two inlets and one outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

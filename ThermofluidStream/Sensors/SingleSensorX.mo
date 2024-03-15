@@ -15,12 +15,13 @@ model SingleSensorX "Sensor for mass fraction"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
     annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Initial value of mass fraction output"
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Start value of mass fraction output"
     annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
+
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of meassured mass fraction";
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)

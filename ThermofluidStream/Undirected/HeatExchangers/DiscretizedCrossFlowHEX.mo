@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
-  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+
+  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells);
 
   Interfaces.Rear rearA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent={{-20,80},{20,120}})));
   Interfaces.Fore foreA(redeclare package Medium = MediumA) annotation(Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent={{-20,-80},{20,-120}})));
@@ -39,7 +39,6 @@ equation
   stateA_out=if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
   stateB_in=if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
   stateB_out=if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
-
 
   //Connecting equations (to interconnect pipes)
 

@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.FlowControl;
 model TanValve "Valve with tan-shaped flow resistance"
-  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=
-        true);
+
+  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=true);
 
   Modelica.Blocks.Interfaces.RealInput u(unit="1") "Valve control input []"
     annotation (Placement(
@@ -12,16 +12,15 @@ model TanValve "Valve with tan-shaped flow resistance"
         rotation=270,
         origin={0,80})));
 
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean invertInput = false "Zero represents a closed valve for non-inverted, open for inverted";
-  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
+  parameter Boolean invertInput = false "= true, if input u is inverted"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real k(unit="(Pa.s)/kg");
   Real u2(unit="1");
 

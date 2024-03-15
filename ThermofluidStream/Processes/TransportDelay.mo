@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes;
-model TransportDelay "Delay Thermofluid state depending on fluid speed"
+model TransportDelay "Delay model based on fluid velocity"
 
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
@@ -13,11 +13,16 @@ model TransportDelay "Delay Thermofluid state depending on fluid speed"
     annotation(Dialog(tab="Advanced"));
 
   // ------ Parameter Display Configuration  ------------------------
-  parameter Boolean displayLength = true "= true to display the length of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayRadius = true "= true to display the radius of delay pipe" annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1" annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
-  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1" annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2" annotation(Evaluate=true, HideResult=true);
+  parameter Boolean displayLength = true "= true, if length l is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true, if radius r is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1"
+    annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
+  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1"
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2"
+    annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
 
@@ -25,8 +30,8 @@ model TransportDelay "Delay Thermofluid state depending on fluid speed"
   constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0) "Default mass fractions";
   constant SI.SpecificVolume v_0 = 1/Medium.density(state_0) "Default specific volume";
 
-  Real x(unit="1");
-  Real v(unit="1/s") = der(x);
+  Real x(unit="1") "Relative position s/l";
+  Real v(unit="1/s") = der(x) "Relative speed v/l";
 
 protected
   SI.SpecificInternalEnergy u_in = Medium.specificInternalEnergy(inlet.state) "Inlet internal energy";

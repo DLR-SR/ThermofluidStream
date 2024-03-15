@@ -1,11 +1,29 @@
 within ThermofluidStream.FlowControl;
-model MCV "Mass flow rate and volume flow rate control valve"
+model MCV "Flow rate control valve"
   extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=false, final L = 100, final p_min=p_min_par);
   //the component implements its own clip_p_out and requires a minimum L value for numeric reasons (otherwise dr_set will get very small)
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
-  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Desired mass-flow [kg/s or m3/s]"
+  parameter Mode mode = Mode.mass_flow "Valve mode"
+    annotation(Dialog(group="Flow rate setpoint"));
+  parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
+    annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.mass_flow));
+  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Volume flow rate set value"
+    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.volume_flow));
+
+  parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
+  parameter Real k1(unit="1") = 100 "Time constant factor"
+    annotation(Dialog(tab="Advanced"));
+  parameter Real k2(unit="1") = 100 "Integrator windup factor"
+    annotation(Dialog(tab="Advanced"));
+  parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
+    annotation(Dialog(tab="Advanced"));
+  parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
+
+  Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
         rotation=270,
@@ -21,24 +39,6 @@ model MCV "Mass flow rate and volume flow rate control valve"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-110})));
-  parameter Mode mode = Mode.mass_flow "Valve mode"
-    annotation(Dialog(group="Flow rate setpoint"));
-  parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
-    annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
-    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.mass_flow));
-  parameter SI.VolumeFlowRate volumeFlow_set_par = 0 "Volume flow rate set value"
-    annotation(Dialog(group="Flow rate setpoint",enable=(not setpointFromInput) and mode == Mode.volume_flow));
-
-
-  parameter SI.Time TC = 0.1 "Time constant of setpoint dynamic";
-  parameter Real k1(unit="1") = 100 "Time constant factor"
-    annotation(Dialog(tab="Advanced"));
-  parameter Real k2(unit="1") = 100 "Integrator windup factor"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
-    annotation(Dialog(tab="Advanced"));
-  parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
 
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";

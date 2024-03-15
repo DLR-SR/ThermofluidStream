@@ -1,10 +1,10 @@
 within ThermofluidStream.Boundaries;
-model VolumeFlex "Vessel that itself is subject to a bulk modulus"
+model VolumeFlex "Flexible volume with fixed bulk modulus, closed to the ambient"
   extends Internal.PartialVolume;
 
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure of volume";
-  parameter SI.Volume V_ref(displayUnit="l") = 0.001 "Volume of the Model at p_ref";
-  parameter SI.BulkModulus K = 1e6 "Bulk modulus of Volume";
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
+  parameter SI.Volume V_ref(displayUnit="l") = 0.001 "Volume at reference pressure";
+  parameter SI.BulkModulus K = 1e6 "Bulk modulus";
 
 equation
   density_derp_h = (V_ref*medium.d)/(V*K);

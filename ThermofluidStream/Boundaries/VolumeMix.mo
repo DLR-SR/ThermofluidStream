@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model VolumeMix "Volume with N inlets"
+model VolumeMix "Volume of fixed size, closed to the ambient, with N inlets"
   extends Internal.PartialVolumeN;
 
   parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume";

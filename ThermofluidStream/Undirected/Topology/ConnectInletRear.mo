@@ -1,15 +1,12 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectInletRear
-  "Directed/undirected connector with input and rear"
+model ConnectInletRear "Connects inlet to rear port"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
-
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
 
@@ -24,11 +21,7 @@ model ConnectInletRear
   ConnectRearRear connectRearRear(redeclare package Medium=Medium, final L=L/2)
     annotation (Placement(transformation(extent={{2,-10},{22,10}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
-
   connect(connectInletFore.fore, connectRearRear.rear_a) annotation (Line(
       points={{-7,0},{9,0}},
       color={28,108,200},

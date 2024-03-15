@@ -1,6 +1,8 @@
 within ThermofluidStream.Processes;
-model ConductionElement "Element with quasi-stationary mass and heatport"
+model ConductionElement "Model of quasi-stationary mass and heat transfer"
+
   extends Internal.PartialConductionElement;
+
   parameter Boolean resistanceFromAU = true "= true, if thermal conductance is given by U*A"
     annotation(Dialog(group="Thermal Conductance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A = 1 "Heat transfer area"
@@ -16,6 +18,8 @@ model ConductionElement "Element with quasi-stationary mass and heatport"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayConduction = true "= true, if thermal conductance is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayAnything = displayParameters and (displayVolume or displayConduction)
+    annotation(Evaluate=true, HideResult=true);
   final parameter String parameterString=
     if displayParameters and displayVolume and displayConduction then
       "V=%V, "+conductionString
@@ -23,10 +27,10 @@ model ConductionElement "Element with quasi-stationary mass and heatport"
       "V=%V"
     elseif  displayParameters and not displayVolume  and displayConduction then
       conductionString
-    else "";
+    else "" annotation(Evaluate=true, HideResult=true);
   final parameter String conductionString=
     if resistanceFromAU then "A=%A, U=%U"
-    else "k=%k_par";
+    else "k=%k_par" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
 equation
@@ -37,12 +41,12 @@ equation
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
           textString=parameterString),
-        Line(visible=not parameterString=="", points={{0,-60},{0,-65}},
+        Line(visible=displayAnything, points={{0,-60},{0,-65}},
                                     color={191,0,0}),
-        Line(visible=not parameterString=="", points={{0,-85},{0,-100}},
+        Line(visible=displayAnything, points={{0,-85},{0,-100}},
                                     color={191,0,0}),
         Line(
-          visible=parameterString == "",
+          visible=not displayAnything,
           points={{0,-60},{0,-100}},
           color={191,0,0})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),

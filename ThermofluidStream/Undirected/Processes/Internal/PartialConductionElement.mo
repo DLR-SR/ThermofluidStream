@@ -1,49 +1,49 @@
 within ThermofluidStream.Undirected.Processes.Internal;
-partial model PartialConductionElement "Partial volume with quasisationary mass and heatport and undetermined heat transfer coefficient"
+partial model PartialConductionElement "Partial model of quasi-stationary mass and heat transfer"
+
   extends Interfaces.SISOBiFlow(final clip_p_out=false);
 
-  parameter SI.Volume V = 1 "Volume of the element";
-  parameter ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "Initialization method for h"
-    annotation (Dialog(tab="Initialization", group="Enthalpy"));
+  parameter ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "Initialization method for specific enthalpy"
+    annotation (Dialog(tab="Initialization", group="Specific enthalpy"));
   parameter SI.Temperature T_0 = Medium.T_default "Initial Temperature"
-    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.T)));
+    annotation(Dialog(tab="Initialization", group="Specific enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.T)));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
-    annotation(Dialog(tab="Initialization", group="Enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
+    annotation(Dialog(tab="Initialization", group="Specific enthalpy", enable=(init == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean neglectPressureChanges = true "Neglect pressure changes in energy equation"
-    annotation(Dialog(tab="Advanced"));
+  parameter Boolean neglectPressureChanges = true "=true, if pressure changes are neglected"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization massflow to switch between positive- and negative-massflow model"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean enforce_global_energy_conservation = false "If true, exact global energy conservation is enforced by feeding back all energy stored locally back in the system"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Time T_e = 100 "Factor for feeding back energy."
-    annotation(Dialog(tab="Advanced", enable = enforce_global_energy_conservation));
+  parameter Boolean enforce_global_energy_conservation = false "= true, if global conservation of energy is enforced"
+    annotation(Dialog(tab="Advanced",group="Global energy conservation"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time T_e = 100 "Time constant for global conservation of energy"
+    annotation(Dialog(tab="Advanced",group="global energy conservation", enable = enforce_global_energy_conservation));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
     annotation (Placement(transformation(extent={{-10,88},{10,108}})));
 
-  SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer);
+  SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer) "Medium specific enthalpy";
 
-  Medium.ThermodynamicState state = Medium.setState_phX(p, h, Xi);
-  SI.Temperature T = Medium.temperature(state);
-  SI.ThermalConductance k "Thermal conductance heatport->fluid";
+  Medium.ThermodynamicState state = Medium.setState_phX(p, h, Xi) "Medium thermodynamic state";
+  SI.Temperature T = Medium.temperature(state) "Medium temperature";
+  SI.ThermalConductance k "Thermal conductance";
 
   SI.Energy deltaE_system(start=0, fixed=true) "Energy difference between m_flow*(h_in-h_out) and Q_flow";
 
-  SI.Mass M;
+  SI.Mass M "Medium mass";
 
 protected
-  SI.Pressure p = Undirected.Internal.regStep(m_flow, p_rear_in, p_fore_in, m_flow_reg);
-  Medium.MassFraction[Medium.nXi] Xi = Undirected.Internal.regStep(m_flow, Xi_rear_in, Xi_fore_in, m_flow_reg);
+  SI.Pressure p = Undirected.Internal.regStep(m_flow, p_rear_in, p_fore_in, m_flow_reg) "Pressure";
+  Medium.MassFraction[Medium.nXi] Xi = Undirected.Internal.regStep(m_flow, Xi_rear_in, Xi_fore_in, m_flow_reg) "Mass fractions";
   //h_in only in rhs of ODE--> h still smooth, better results at low massflow than using regStep
-  SI.SpecificEnthalpy h_in = if m_flow >= 0 then h_rear_in else h_fore_in;
+  SI.SpecificEnthalpy h_in = if m_flow >= 0 then h_rear_in else h_fore_in "Inlet specific enthalpy";
 
-  SI.Density rho = max(rho_min, Medium.density(state));
-  SI.SpecificEnthalpy h_out = Medium.specificEnthalpy(state);
+  SI.Density rho = max(rho_min, Medium.density(state)) "Medium density";
+  SI.SpecificEnthalpy h_out = Medium.specificEnthalpy(state) "Outlet specific enthalpy";
 
-  SI.Temperature T_heatPort;
-  SI.HeatFlowRate Q_flow;
+  SI.Temperature T_heatPort "Heatport temperature";
+  SI.HeatFlowRate Q_flow "Heat flow rate";
 
 initial equation
   if init == Internal.InitializationMethodsCondElement.T then
@@ -86,12 +86,12 @@ equation
 
   Q_flow = k*(T_heatPort - T);
 
-  //forwards model
+  //Forwards model
   dp_fore = 0;
   h_fore_out = h;
   Xi_fore_out = Xi_rear_in;
 
-  //rearwards model
+  //Rearwards model
   dp_rear = 0;
   h_rear_out = h;
   Xi_rear_out = Xi_fore_in;

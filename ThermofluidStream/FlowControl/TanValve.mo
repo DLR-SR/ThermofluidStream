@@ -13,15 +13,13 @@ model TanValve "Valve with tan-shaped flow resistance"
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean invertInput = false "Zero represents a closed valve for non-inverted, open for inverted"
+  parameter Boolean invertInput = false "= true, if input u_in is inverted"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
+  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
-
   Real k(unit="(Pa.s)/kg");
   Real u2(unit="1");
 

@@ -536,25 +536,25 @@ model TestIconParameters
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     displayParameters=true,
     displayArea=false,
-    displaykNTU=false) annotation (Placement(transformation(extent={{16,212},{36,232}})));
+    displaykNTU=false) annotation (Placement(transformation(extent={{20,220},{40,240}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU1(
     displayParameters=true,
     displayArea=true,
-    displaykNTU=false) annotation (Placement(transformation(extent={{56,212},{76,232}})));
+    displaykNTU=false) annotation (Placement(transformation(extent={{60,220},{80,240}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU2(
     displayParameters=true,
     displayArea=false,
-    displaykNTU=true) annotation (Placement(transformation(extent={{96,212},{116,232}})));
+    displaykNTU=true) annotation (Placement(transformation(extent={{100,220},{120,240}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU3(
     displayParameters=true,
     displayArea=true,
-    displaykNTU=true) annotation (Placement(transformation(extent={{136,212},{156,232}})));
-  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{20,152},{40,172}})));
-  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1(displayParameters=true) annotation (Placement(transformation(extent={{56,152},{76,172}})));
-  HeatExchangers.DiscretizedCounterFlowHEX_FR FR_discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{20,112},{40,132}})));
-  HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR1(displayParameters=true) annotation (Placement(transformation(extent={{56,112},{76,132}})));
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX2(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{16,72},{36,92}})));
-  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX3(displayParameters=true) annotation (Placement(transformation(extent={{56,72},{76,92}})));
+    displaykNTU=true) annotation (Placement(transformation(extent={{140,220},{160,240}})));
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{24,160},{44,180}})));
+  HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX1(displayParameters=true) annotation (Placement(transformation(extent={{60,160},{80,180}})));
+  HeatExchangers.DiscretizedCounterFlowHEX_FR FR_discretizedCounterFlowHEX(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{24,120},{44,140}})));
+  HeatExchangers.DiscretizedCounterFlowHEX_FR discretizedCounterFlowHEX_FR1(displayParameters=true) annotation (Placement(transformation(extent={{60,120},{80,140}})));
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX2(displayParameters=true, displayArea=false) annotation (Placement(transformation(extent={{20,80},{40,100}})));
+  Undirected.HeatExchangers.DiscretizedCounterFlowHEX discretizedCounterFlowHEX3(displayParameters=true) annotation (Placement(transformation(extent={{60,80},{80,100}})));
   Undirected.Boundaries.BoundaryRear  boundaryRear(
     displayPressure=false,
     displayTemperature=false,
@@ -1000,41 +1000,41 @@ model TestIconParameters
     displayLength=false,
     displayRadius=false,
     l=1,
-    r=1e-3) annotation (Placement(transformation(extent={{264,244},{284,264}})));
+    r=1e-3) annotation (Placement(transformation(extent={{260,240},{280,260}})));
   Processes.TransportDelay transportDelay1(
     displayParameters=true,
     displayLength=false,
     displayRadius=true,
     l=1,
-    r=1e-3) annotation (Placement(transformation(extent={{304,244},{324,264}})));
+    r=1e-3) annotation (Placement(transformation(extent={{300,240},{320,260}})));
   Processes.TransportDelay transportDelay2(
     displayParameters=true,
     displayLength=true,
     displayRadius=false,
     l=1,
-    r=1e-3) annotation (Placement(transformation(extent={{344,244},{364,264}})));
+    r=1e-3) annotation (Placement(transformation(extent={{340,240},{360,260}})));
   Processes.TransportDelay transportDelay3(
     displayParameters=true,
     displayLength=true,
     displayRadius=true,
     l=1,
-    r=1e-3) annotation (Placement(transformation(extent={{384,244},{404,264}})));
+    r=1e-3) annotation (Placement(transformation(extent={{380,240},{400,260}})));
   Processes.ThermalConvectionPipe thermalConvectionPipe(
     displayParameters=true,
     displayLength=false,
-    displayRadius=false) annotation (Placement(transformation(extent={{264,204},{284,224}})));
+    displayRadius=false) annotation (Placement(transformation(extent={{260,200},{280,220}})));
   Processes.ThermalConvectionPipe thermalConvectionPipe1(
     displayParameters=true,
     displayLength=true,
-    displayRadius=false) annotation (Placement(transformation(extent={{304,204},{324,224}})));
+    displayRadius=false) annotation (Placement(transformation(extent={{300,200},{320,220}})));
   Processes.ThermalConvectionPipe thermalConvectionPipe2(
     displayParameters=true,
     displayLength=false,
-    displayRadius=true) annotation (Placement(transformation(extent={{344,204},{364,224}})));
+    displayRadius=true) annotation (Placement(transformation(extent={{340,200},{360,220}})));
   Processes.ThermalConvectionPipe thermalConvectionPipe3(
     displayParameters=true,
     displayLength=true,
-    displayRadius=true) annotation (Placement(transformation(extent={{384,204},{404,224}})));
+    displayRadius=true) annotation (Placement(transformation(extent={{380,200},{400,220}})));
   Processes.ConductionElement conductionElement(
     displayParameters=true,
     displayVolume=false,
@@ -1057,28 +1057,28 @@ model TestIconParameters
     displayConduction=false,
     resistanceFromAU=false,
     A=1,
-    U=200) annotation (Placement(transformation(extent={{264,124},{284,144}})));
+    U=200) annotation (Placement(transformation(extent={{260,120},{280,140}})));
   Processes.ConductionElement conductionElement5(
     displayParameters=true,
     displayVolume=false,
     displayConduction=true,
     resistanceFromAU=false,
     A=1,
-    U=200) annotation (Placement(transformation(extent={{304,124},{324,144}})));
+    U=200) annotation (Placement(transformation(extent={{300,120},{320,140}})));
   Processes.ConductionElement conductionElement6(
     displayParameters=true,
     displayVolume=true,
     displayConduction=false,
     resistanceFromAU=false,
     A=1,
-    U=200) annotation (Placement(transformation(extent={{344,124},{364,144}})));
+    U=200) annotation (Placement(transformation(extent={{340,120},{360,140}})));
   Processes.ConductionElement conductionElement7(
     displayParameters=true,
     displayVolume=true,
     displayConduction=true,
     resistanceFromAU=false,
     A=1,
-    U=200) annotation (Placement(transformation(extent={{384,124},{404,144}})));
+    U=200) annotation (Placement(transformation(extent={{380,120},{400,140}})));
   Boundaries.Source                   source20(
     displayPressure=false,
     displayTemperature=false,
@@ -2962,9 +2962,6 @@ model TestIconParameters
     A_out=2,
     assumeConstantDensity=false,
     L_value=0.5) annotation (Placement(transformation(extent={{-540,-342},{-520,-322}})));
-  Processes.Pump pump annotation (Placement(transformation(extent={{-200,180},{-180,200}})));
-  Processes.Compressor compressor annotation (Placement(transformation(extent={{-140,180},{-120,200}})));
-  Processes.Turbine turbine annotation (Placement(transformation(extent={{-80,180},{-60,200}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-860,-500},{860,500}}), graphics={
         Text(
           extent={{-500,-2},{-160,-22}},
@@ -2999,11 +2996,11 @@ model TestIconParameters
           textColor={28,108,200},
           textString="Sink"),
         Rectangle(
-          extent={{176,52},{-4,252}},
+          extent={{180,60},{0,260}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
-          extent={{-4,272},{176,252}},
+          extent={{0,280},{180,260}},
           textColor={28,108,200},
           textString="CounterFlowNTU"),
         Rectangle(

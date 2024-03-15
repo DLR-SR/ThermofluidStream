@@ -1,10 +1,12 @@
 within ThermofluidStream.Undirected.Sensors;
-model SingleFlowSensor "Sensor for a selectable quantity associated with the massflow"
-   extends Internal.PartialSensor;
+model SingleFlowSensor "Flow sensor"
+
+  extends Internal.PartialSensor;
+
   import Quantities=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  parameter Quantities quantity "Quantity the sensor measures";
+  parameter Quantities quantity "Meassured quantity";
 
   final parameter String quantityString=
     if quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps then "m_flow in kg/s"
@@ -18,18 +20,18 @@ model SingleFlowSensor "Sensor for a selectable quantity associated with the mas
 
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter Boolean outputValue = false "Enable sensor-value output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
+  parameter Boolean outputValue = false "= true, if sensor output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = 0 "Start value of sensor output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
 
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = value if outputValue "Sensor output connector"
     annotation (Placement(transformation(extent={{70,50},{90,70}}),
         iconTransformation(extent={{70,50},{90,70}})));
 

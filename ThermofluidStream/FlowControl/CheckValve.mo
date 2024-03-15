@@ -1,10 +1,11 @@
 within ThermofluidStream.FlowControl;
-model CheckValve "Valve that enforces non negative mass flow rates"
+model CheckValve "Valve to enforce non negative mass flow rates"
+
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate"
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure for regularization"
     annotation(Dialog(tab="Advanced"));
 
 equation

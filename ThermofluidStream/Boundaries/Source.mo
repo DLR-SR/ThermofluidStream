@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model Source "Boundary model of a source"
+model Source "Source (p,T,Xi) or (p,h,Xi)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -22,7 +22,7 @@ the inlet the source is connected to.
     annotation(Dialog(group="Mass fractions"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.MassFraction Xi0_par[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Mass fractions set value"
     annotation(Dialog(group="Mass fractions", enable = not xiFromInput));
-  parameter Boolean setEnthalpy = false "= true to set specific enthalpy, (= false to set temperature)"
+  parameter Boolean setEnthalpy = false "= true, if specific enthalpy is set, (= false to set temperature)"
     annotation(Dialog(group="Specific enthalpy"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean enthalpyFromInput = false "= true, if specific enthalpy input connector is enabled"
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));

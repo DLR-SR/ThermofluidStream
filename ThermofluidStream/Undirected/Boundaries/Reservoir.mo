@@ -1,18 +1,20 @@
 within ThermofluidStream.Undirected.Boundaries;
-model Reservoir "Model of a reservoir"
+model Reservoir "Simple open tank model"
+
   extends Internal.PartialVolume(final useHeatport=false, final initialize_pressure=false, final A=0, final U=0);
 
-  parameter Boolean pEnvFromInput = false "Enable input";
-  parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area of medium";
-  parameter SI.Pressure p_env_par=1e5 "Environmental pressure"
-    annotation(Dialog(enable=not pEnvFromInput));
-  parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
+  parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector is enabled"
+    annotation(Dialog(group="Environmental pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Pressure p_env_par=1e5 "Environmental pressure set value"
+    annotation(Dialog(group="Environmental pressure",enable=not pEnvFromInput));
+  parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area";
+  parameter SI.Height height_0(displayUnit="cm")=0.1 "Start value of tank level"
     annotation(Dialog(tab="Initialization"));
-  parameter SI.Acceleration g = dropOfCommons.g "Acceleration of gravity";
-  parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir; should be above 0"
+  parameter SI.Acceleration g = dropOfCommons.g "Gravitational acceleration";
+  parameter SI.Height height_min = 0.01 "Minimum tank level"
     annotation(Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,100}), iconTransformation(
@@ -20,16 +22,16 @@ model Reservoir "Model of a reservoir"
         rotation=270,
         origin={0,120})));
 
-  SI.Height height;
+  SI.Height height "Tank level";
 
 protected
-  SI.Pressure p_env;
+  SI.Pressure p_env "Environmental pressure";
 
 initial equation
   height = height_0;
 
 equation
-  assert(height > height_min, "Reservoir fill height must be greater than height_min", dropOfCommons.assertionLevel);
+  assert(height > height_min, "Tank level must be greater than height_min", dropOfCommons.assertionLevel);
 
   density_derp_h = 1/(height*g);
 

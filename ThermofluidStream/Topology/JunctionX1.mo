@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionX1 "2 to 2 X-Junction"
+model JunctionX1 "Splitter/Junction with two inlets and two outlets"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model Reservoir "Model of a reservoir"
+model Reservoir "Simple open tank model"
   extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=0, final A = 0, final U=0);
 
   parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector enabled"
@@ -7,10 +7,10 @@ model Reservoir "Model of a reservoir"
   parameter SI.Pressure p_env_par=1e5 "Environmental pressure set value"
     annotation(Dialog(group="Environmental pressure",enable=not pEnvFromInput));
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area";
-  parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
+  parameter SI.Height height_0(displayUnit="cm")=0.1 "Start value of tank level"
     annotation(Dialog(tab="Initialization"));
   parameter SI.Acceleration g = dropOfCommons.g "Gravitational acceleration";
-  parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir (>0)"
+  parameter SI.Height height_min = 0.01 "Minimum tank level"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure input connector [Pa]"
@@ -21,7 +21,7 @@ model Reservoir "Model of a reservoir"
         rotation=270,
         origin={0,119})));
 
-  SI.Height height "Height";
+  SI.Height height "Tank level";
 
 protected
   SI.Pressure p_env "Environmental pressure";

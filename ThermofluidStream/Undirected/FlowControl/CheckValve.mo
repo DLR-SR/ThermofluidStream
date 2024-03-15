@@ -1,20 +1,20 @@
 within ThermofluidStream.Undirected.FlowControl;
-model CheckValve "Valve that allows only positive mass_flow"
-  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=
-        false);
+model CheckValve "Valve to enforce non negative mass flow rates"
 
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=false);
+
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure for regularization"
     annotation(Dialog(tab="Advanced"));
 
 equation
-  //forwards model
+  //Forwards model
   dp_fore = if m_flow < 0 then p_ref*((m_flow/m_flow_ref)^2) else 0;
   h_fore_out = h_rear_in;
   Xi_fore_out = Xi_rear_in;
 
-  //rearwards model
+  //Rearwards model
   dp_rear = - dp_fore; // - because of the inverted direction
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;

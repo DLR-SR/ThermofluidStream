@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model DynamicJunctionN "Dynamic pressure junction with N inlets"
+model DynamicJunctionN "Junction with N inlets and one outlet, taking dynamic pressure into account"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

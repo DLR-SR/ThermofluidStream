@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model TerminalSink "Sink that imposes m_flow=0"
+model TerminalSink "Zero mass flow rate sink"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

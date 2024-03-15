@@ -1,23 +1,21 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectorInletOutletFore
+model ConnectorInletOutletFore "Connects fore port to directed flow"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
-
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
-    annotation (Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flow rates"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Fore fore(redeclare package Medium = Medium)
@@ -57,9 +55,6 @@ model ConnectorInletOutletFore
       annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
   ThermofluidStream.Sensors.SensorState sensorState(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-10,8},{10,28}})));
-
-protected
-  outer DropOfCommons dropOfCommons;
 
 equation
   connect(junctionRFF2_1.foreA, fore) annotation (Line(

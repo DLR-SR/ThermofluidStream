@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model DynamicJunctionNM "Dynamic pressure N to M splitter"
+model DynamicJunctionNM "Splitter/Junction with N inlets and M outlets, taking dynamic pressure into account"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

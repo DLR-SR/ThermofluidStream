@@ -1,5 +1,5 @@
 within ThermofluidStream.Boundaries;
-model TerminalSource "Source that imposes m_flow = 0"
+model TerminalSource "Zero mass flow rate source"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

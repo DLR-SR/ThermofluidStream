@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -43,13 +43,12 @@ model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
     annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Initial value of sensor output"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
-
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Start value of sensor output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0}),
         iconTransformation(extent={{-120,-20},{-80,20}})));

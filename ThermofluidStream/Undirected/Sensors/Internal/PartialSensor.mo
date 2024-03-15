@@ -3,12 +3,11 @@ partial model PartialSensor "Partial undirected sensor"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(
         info="<html>
 <p>Replaceable medium package for the sensor.</p>
 </html>"));
-
   parameter Integer digits(min=0) = 1 "Number of displayed digits"
     annotation(Dialog(group="Sensor display"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"

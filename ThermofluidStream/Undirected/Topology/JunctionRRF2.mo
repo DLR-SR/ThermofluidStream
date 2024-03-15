@@ -1,15 +1,15 @@
 within ThermofluidStream.Undirected.Topology;
-model JunctionRRF2 "Junction with two rears and a fore"
+model JunctionRRF2 "Junction of two rear and one fore ports"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package for the Junction.</p>
 </html>"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
-    annotation (Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flow rates"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each branch"
     annotation (Dialog(tab="Advanced"));
@@ -29,11 +29,7 @@ model JunctionRRF2 "Junction with two rears and a fore"
   Interfaces.Fore fore(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
-
   connect(junctionMN.rears[1], rearA) annotation (Line(
       points={{30,-0.5},{0,-0.5},{0,-100}},
       color={28,108,200},
