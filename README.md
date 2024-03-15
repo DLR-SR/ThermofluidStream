@@ -9,6 +9,17 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 [![GitHub release](https://img.shields.io/github/release/DLR-SR/ThermofluidStream.svg?sort=semver)](https://github.com/DLR-SR/ThermofluidStream/releases/latest) [![GitHub license](https://img.shields.io/github/license/DLR-SR/ThermofluidStream)](https://github.com/DLR-SR/ThermofluidStream/blob/main/LICENSE) ![GitHub workflow](https://github.com/DLR-SR/ThermofluidStream/actions/workflows/checkCI.yml/badge.svg?event=pull_request) [![Modelica Library Award 2021](https://img.shields.io/badge/award-%F0%9F%A5%87_Modelica_Library_Award_2021-gold?labelColor=grey)](https://2021.international.conference.modelica.org/libraries.html) 
 
+## News
+
+**Meet the developers at our ThermoFluid Stream Community Event!**  This online event shall give all users the possibility to provide feedback and learn about each other. We welcome your feedback.
+- We present the newest additions to our library (Pumps, Heat Exchangers, Media Interfaces, etc.)
+- Users are invited to briefly present their solutions, problems or challenges.
+- Open discussion round on future development.
+
+**Save the Date! June 19, 2024. From 16:30 until 18:30 CEST**
+
+Please [register here](https://terminplaner6.dfn.de/en/b/04557a60c93ea82eafb16a981f7c2aeb-644809) for the online event. It is free. First come, first serve will be applied in case we reach limits regarding presentation time or number of participants. 
+
 ## Highlights
 
 - **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
