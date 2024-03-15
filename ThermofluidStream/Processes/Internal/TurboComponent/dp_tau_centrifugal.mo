@@ -43,7 +43,8 @@ protected
   Real gamma(unit="1") = V_flow_D/V_flow_D_ref "Flow scaling factor";
 
   SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
-  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "Specific volume at inlet";
+  SI.DynamicViscosity eta_in = Medium.dynamicViscosity(state_in) "Dynamic viscosity at inlet";
+  SI.KinematicViscosity mu_in = eta_in*v_in "Kinematic viscosity at inlet";
   SI.SpecificVolume v_ref = 1/rho_ref;
 
   SI.Power W_t "Technical work going into pump";
