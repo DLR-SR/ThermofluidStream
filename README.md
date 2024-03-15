@@ -91,10 +91,6 @@ Further background literature on the methodology:
 - Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
 - Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet.
 
-More details on the modeling of various types of volumes can be found in:
- 
-- M. Meissner, Zimmer, D. (2022) [Robust Modeling of Volumes for Dynamic Simulations of Thermo-Fluid Stream Networks] (https://www.sciencedirect.com/science/article/pii/S2405896322012988). IFAC Papers Online Volume 55 Issue 20. 
-
 ## Tool compatibility 
 - [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica 3.2.3. Pedantic checking has been applied to all components in order to improve cross-tool compatibility. 
 - [Open Modelica](https://www.openmodelica.org/): To a large extent, the library is compatible to Open Modelica. Details in [Issue 10](https://github.com/DLR-SR/ThermofluidStream/issues/10): 
