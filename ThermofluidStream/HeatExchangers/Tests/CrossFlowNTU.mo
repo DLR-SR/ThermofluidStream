@@ -65,7 +65,7 @@ model CrossFlowNTU
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,32})));
-  inner DropOfCommons dropOfCommons
+  inner DropOfCommons dropOfCommons(displayInstanceNames=false)
     annotation (Placement(transformation(extent={{-156,-98},{-136,-78}})));
   ThermofluidStream.HeatExchangers.CrossFlowNTU
                               crossFlowNTU2_1(

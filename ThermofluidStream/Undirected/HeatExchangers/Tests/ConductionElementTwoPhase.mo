@@ -58,6 +58,7 @@ model ConductionElementTwoPhase
     duration=5,
     offset=0.3,
     startTime=20) annotation (Placement(transformation(extent={{-4,36},{16,56}})));
+  inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
 equation
   connect(boundary_rear.fore, flowResistance.rear) annotation (Line(
       points={{-62,0},{-44,0}},

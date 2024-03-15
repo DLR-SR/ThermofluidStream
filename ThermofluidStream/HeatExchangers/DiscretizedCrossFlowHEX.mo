@@ -3,20 +3,6 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
 
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
-  Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-36,90},{4,130}}),  iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={100,-60})));
-  Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(extent={{-148,-86},{-108,-46}}),
-                                                                                                                                iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={-100,-60})));
-  Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{30,90},{-10,130}}), iconTransformation(extent={{20,-20},{-20,20}},
-        rotation=90,
-        origin={0,100})));
-  Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(extent={{2,-152},{-38,-112}}), iconTransformation(extent={{20,-20},{-20,20}},
-        rotation=90,
-        origin={0,-100})));
-
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
@@ -40,7 +26,6 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
         origin={50,-60})));
 
 initial equation
-
   if initializeMassFlow then
     inletB.m_flow = m_flow_0_B;
     flowResistanceA.m_flow = m_flow_0_A/nCells*ones(nCells);
@@ -51,35 +36,17 @@ initial equation
   end if;
 
 equation
-  inletA.state = inletA_state;
-  inletA.m_flow = inletA_m_flow;
-  inletA.r = inletA_r;
-
-  inletB.state = inletB_state;
-  inletB.m_flow = inletB_m_flow;
-  inletB.r = inletB_r;
-
-  outletA.state = outletA_state;
-  outletA.m_flow = outletA_m_flow;
-  outletA.r = outletA_r;
-
-  outletB.state = outletB_state;
-  outletB.m_flow = outletB_m_flow;
-  outletB.r = outletB_r;
-
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
-  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-16,110},{-56,110},{-56,60},{-10,60}},
-                                                                                          color={28,108,200}));
+  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-100,60},{-10,60}}, color={28,108,200}));
   for i in 1:nCells - 1 loop
     connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,60},{56,60},{56,-66},{-128,-66}},
-                                                                                               color={28,108,200}));
+  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,60},{100,60}}, color={28,108,200}));
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}},   color={191,0,0}));
   connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-50},{0,-42},{0,-42},{0,-10},{0,-10}},   color={191,0,0}));
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{10,110},{80,110},{80,-60},{60,-60}},
+      points={{100,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
@@ -95,7 +62,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outletA) annotation (Line(
-      points={{-80,-60},{-50,-60},{-50,-132},{-18,-132}},
+      points={{-80,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={

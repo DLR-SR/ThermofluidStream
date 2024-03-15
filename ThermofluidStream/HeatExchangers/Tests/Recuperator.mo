@@ -129,7 +129,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm4.outlet, evaporator.inletB) annotation (Line(
-      points={{24,-4},{10,-4}},
+      points={{24,-4},{18,-4},{18,-4},{10,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality3.inlet, multiSensor_Tpm4.inlet)
@@ -143,7 +143,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.inlet, evaporator.outletB) annotation (Line(
-      points={{-22,-4},{-10,-4}},
+      points={{-22,-4},{-16,-4},{-16,-4},{-10,-4}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect2.inlet, evaporator.outletB)
@@ -170,11 +170,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.outlet, evaporator.inletA) annotation (Line(
-      points={{-20,8},{-10,8}},
+      points={{-20,8},{-16,8},{-16,8},{-10,8}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletA, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{10,8},{24,8}},
+      points={{10,8},{18,8},{18,8},{24,8}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.inlet, evaporator.inletA)

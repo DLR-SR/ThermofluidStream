@@ -87,16 +87,18 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
 
 protected
+  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration"; //This parameter is not used anymore, and should be removed at some point
   parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
   parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
 
   function efficiency = ThermofluidStream.HeatExchangers.Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB);
 
   // no regstep since this is only used as a output
-  MediumA.ThermodynamicState stateA_in;
-  MediumA.ThermodynamicState stateA_out;
-  MediumB.ThermodynamicState stateB_in;
-  MediumB.ThermodynamicState stateB_out;
+
+  MediumA.ThermodynamicState stateA_in=if noEvent(rearA.m_flow) > 0 then rearA.state_forwards else foreA.state_rearwards;
+  MediumA.ThermodynamicState stateA_out=if noEvent(rearA.m_flow) > 0 then foreA.state_forwards else rearA.state_rearwards;
+  MediumB.ThermodynamicState stateB_in=if noEvent(rearB.m_flow) > 0 then rearB.state_forwards else foreB.state_rearwards;
+  MediumB.ThermodynamicState stateB_out=if noEvent(rearB.m_flow) > 0 then foreB.state_forwards else rearB.state_rearwards;
 
 public
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells) annotation (Placement(transformation(

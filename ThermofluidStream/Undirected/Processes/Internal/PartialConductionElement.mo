@@ -3,6 +3,7 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
 
   extends Interfaces.SISOBiFlow(final clip_p_out=false);
 
+  parameter SI.Volume V(displayUnit="l")=0.001 "Volume";
   parameter ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement init=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "Initialization method for specific enthalpy"
     annotation (Dialog(tab="Initialization", group="Specific enthalpy"));
   parameter SI.Temperature T_0 = Medium.T_default "Initial Temperature"
