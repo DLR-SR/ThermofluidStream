@@ -76,8 +76,8 @@ protected
   //Inlet and outlet specific enthalpies and enthalpy differences
   Modelica.Units.SI.SpecificEnthalpy h_in_A "Specific enthalpy at inlet A";
   Modelica.Units.SI.SpecificEnthalpy h_in_B "Specific enthalpy at inlet B";
-  Modelica.Units.SI.SpecificEnthalpy h_out_A "Specific enthalpy at inlet A";
-  Modelica.Units.SI.SpecificEnthalpy h_out_B "Specific enthalpy at inlet B";
+  Modelica.Units.SI.SpecificEnthalpy h_out_A "Specific enthalpy at outlet A";
+  Modelica.Units.SI.SpecificEnthalpy h_out_B "Specific enthalpy at outlet B";
 
   SI.HeatFlowRate q_max "Maximum heat flow rate (Q_max)";
   SI.HeatFlowRate q_flowA "Heat flow rate side A (Q_flowA)";
