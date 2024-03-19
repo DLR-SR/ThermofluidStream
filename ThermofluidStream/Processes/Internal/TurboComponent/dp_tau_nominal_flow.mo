@@ -2,11 +2,11 @@ within ThermofluidStream.Processes.Internal.TurboComponent;
 function dp_tau_nominal_flow "Pump model with the nominal massflow model"
   extends partial_dp_tau;
 
-  input Boolean parametrizeByDesignPoint= false "If true scale by scaling parameters"
+  input Boolean parametrizeByDesignPoint= false "= true, if pump characteristic curve is computed from one design point"
     annotation(Dialog(enable=true));
   input SI.Pressure dp_D=500000 "Design pressure difference"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
-  input SI.VolumeFlowRate V_flow_D(displayUnit="l/min")=0.0016666666666667 "Design Volume flow"
+  input SI.VolumeFlowRate V_flow_D(displayUnit="l/min")=0.0016666666666667 "Design volume flow rate"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
   input SI.AngularVelocity omega_D=314.2 "Design angular velocity"
     annotation(Dialog(group="Design Point", enable=parametrizeByDesignPoint));
@@ -23,15 +23,15 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
 
 protected
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "Inlet specific volume";
 
-  SI.VolumeFlowRate V_flow_nominal "Nominal volume flow through pump";
-  SI.VolumeFlowRate V_flow "Actual volume flow through pump";
+  SI.VolumeFlowRate V_flow_nominal "Nominal volume flow rate";
+  SI.VolumeFlowRate V_flow "Volume flow rate";
   //slip = (V_flow_nominal - V_flow)/V_flow_nominal
 
-  SI.Volume V_r = if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input;
-  Real k_p(unit="N.s/(m5)") = if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input;
-  Real k_fric(unit="N.s/(m2)") = if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input;
+  SI.Volume V_r = if parametrizeByDesignPoint then V_flow_D*radPrevolution/omega_D/(1-slip_D) else V_r_input "Pump volume";
+  Real k_p(unit="N.s/(m5)") = if parametrizeByDesignPoint then dp_D/(slip_D/(1-slip_D)*V_flow_D) else k_p_input "Linear pressure factor";
+  Real k_fric(unit="N.s/(m2)") = if parametrizeByDesignPoint then (dp_D*(1-slip_D))/(slip_D*omega_D)*(1/eta_D-1) else k_fric_input "Linear frication factor";
 
   constant Real radPrevolution(unit="rad") = 2*Modelica.Constants.pi;
 

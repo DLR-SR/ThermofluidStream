@@ -1,17 +1,17 @@
 within ThermofluidStream.Processes.Tests;
 model ConvectivePipe
-
   extends Modelica.Icons.Example;
 
-replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby Media.myMedia.Interfaces.PartialMedium annotation(choicesAllMatching = true);
+  replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
+    constrainedby Media.myMedia.Interfaces.PartialMedium
+    annotation(choicesAllMatching = true);
 
   ThermalConvectionPipe thermalConvection(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.003,
     l=6.65)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
   Boundaries.Source source(
     redeclare package Medium = Medium,
     temperatureFromInput=false,
@@ -30,7 +30,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(C=0.0001, T(fixed=true))

@@ -18,24 +18,24 @@ model SimpleStream "Steam splitting and joining"
     annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
   Topology.JunctionT1 junctionrT1_1(
     redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{60,-20},{40,0}})));
+    annotation (Placement(transformation(extent={{40,-20},{60,0}})));
   Processes.ConductionElement thermalConduction(
     redeclare package Medium = Medium,
-    L=100) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
+    L=100) annotation (Placement(transformation(extent={{-40,20},{-20,0}})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heatCapacitor(
     C=4e2,
     T(start=368.15, fixed=true))
     annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm(displayInstanceName=dropOfCommons.displayInstanceNames,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm1(displayInstanceName=dropOfCommons.displayInstanceNames,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{70,-10},{90,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm2(displayInstanceName=dropOfCommons.displayInstanceNames,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
-  Sensors.MultiSensor_Tpm multiSensor_Tpm4(
+  Sensors.MultiSensor_Tpm multiSensor_Tpm4(displayInstanceName=dropOfCommons.displayInstanceNames,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{10,-30},{30,-50}})));
   Processes.FlowResistance flowResistance1(
@@ -64,7 +64,7 @@ model SimpleStream "Steam splitting and joining"
     l=20,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{100,-20},{120,0}})));
-  inner DropOfCommons dropOfCommons
+  inner DropOfCommons dropOfCommons(displayInstanceNames=false)
     annotation (Placement(transformation(extent={{-140,20},{-120,40}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{122,-58},{158,-22}})));
 equation
@@ -85,8 +85,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(thermalConduction.heatPort, heatCapacitor.port)
-    annotation (Line(points={{-30,19.8},{-30,30}},
-                                                 color={191,0,0}));
+    annotation (Line(points={{-30,20},{-30,30}}, color={191,0,0}));
   connect(thermalConduction.outlet, multiSensor_Tpm.inlet) annotation (Line(
       points={{-20,10},{-10,10}},
       color={28,108,200},

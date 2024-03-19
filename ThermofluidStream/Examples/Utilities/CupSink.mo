@@ -23,7 +23,10 @@ Medium model in cup.
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,100})));
 
@@ -31,7 +34,7 @@ Medium model in cup.
     redeclare package Medium = Medium,
     r(displayUnit="cm") = 0.05,
     l(displayUnit="cm") = 0.01,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=10))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -46,7 +49,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.inlet, inlet) annotation (Line(
-      points={{0,52},{0,52},{0,100}},
+      points={{0,52},{0,100},{0,100}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

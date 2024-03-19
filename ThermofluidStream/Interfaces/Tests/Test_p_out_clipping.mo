@@ -26,7 +26,7 @@ Medium package used in the Test.
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Processes.Fan fan(redeclare package Medium = Medium,
@@ -72,7 +72,7 @@ Medium package used in the Test.
     A_out=0.1,
     L_value=100,
     assumeConstantDensity=true)
-    annotation (Placement(transformation(extent={{-8,-2},{12,18}})));
+    annotation (Placement(transformation(extent={{-10,0},{10,20}})));
 equation
   connect(source.outlet, splitterN.inlet) annotation (Line(
       points={{-80,0},{-70,0}},
@@ -84,51 +84,51 @@ equation
       thickness=0.5));
   connect(splitterN.outlets[6], flowResistance.inlet)
     annotation (Line(
-      points={{-50,1.66667},{-40,1.66667},{-40,50},{-10,50}},
+      points={{-50,0.833333},{-40,0.833333},{-40,50},{-10,50}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[5], fan.inlet)
     annotation (Line(
-      points={{-50,1},{-38,1},{-38,30},{-10,30}},
+      points={{-50,0.5},{-38,0.5},{-38,30},{-10,30}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[3], basicControlValve.inlet)
     annotation (Line(
-      points={{-50,-0.333333},{-36,-0.333333},{-36,-10},{-10,-10}},
+      points={{-50,-0.166667},{-36,-0.166667},{-36,-10},{-10,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], specificValveType.inlet)
     annotation (Line(
-      points={{-50,-1},{-38,-1},{-38,-30},{-10,-30}},
+      points={{-50,-0.5},{-38,-0.5},{-38,-30},{-10,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[1], tanValve.inlet)
     annotation (Line(
-      points={{-50,-1.66667},{-40,-1.66667},{-40,-50},{-10,-50}},
+      points={{-50,-0.833333},{-40,-0.833333},{-40,-50},{-10,-50}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, junctionN.inlets[6])
     annotation (Line(
-      points={{10,50},{40,50},{40,1.66667},{50,1.66667}},
+      points={{10,50},{40,50},{40,0.833333},{50,0.833333}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.inlets[5], fan.outlet) annotation (Line(
-      points={{50,1},{38,1},{38,30},{10,30}},
+      points={{50,0.5},{38,0.5},{38,30},{10,30}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.inlets[3], basicControlValve.outlet)
     annotation (Line(
-      points={{50,-0.333333},{36,-0.333333},{36,-10},{10,-10}},
+      points={{50,-0.166667},{36,-0.166667},{36,-10},{10,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(specificValveType.outlet, junctionN.inlets[2])
     annotation (Line(
-      points={{10,-30},{38,-30},{38,-1},{50,-1}},
+      points={{10,-30},{38,-30},{38,-0.5},{50,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(tanValve.outlet, junctionN.inlets[1])
     annotation (Line(
-      points={{10,-50},{40,-50},{40,-1.66667},{50,-1.66667}},
+      points={{10,-50},{40,-50},{40,-0.833333},{50,-0.833333}},
       color={28,108,200},
       thickness=0.5));
   connect(realExpression.y, tanValve.u) annotation (Line(points={{-59,-20},{-30,-20},{-30,-38},{0,-38},{0,-42}}, color={0,0,127}));
@@ -136,12 +136,12 @@ equation
   connect(basicControlValve.u_in, tanValve.u) annotation (Line(points={{0,-2},{0,2},{-30,2},{-30,-38},{0,-38},{0,-42}}, color={0,0,127}));
   connect(nozzle.inlet, splitterN.outlets[4])
     annotation (Line(
-      points={{-8,8},{-30,8},{-30,0.333333},{-50,0.333333}},
+      points={{-10,10},{-30,10},{-30,0.166667},{-50,0.166667}},
       color={28,108,200},
       thickness=0.5));
   connect(nozzle.outlet, junctionN.inlets[4])
     annotation (Line(
-      points={{12,8},{30,8},{30,0.333333},{50,0.333333}},
+      points={{10,10},{30,10},{30,0.166667},{50,0.166667}},
       color={28,108,200},
       thickness=0.5));
   annotation (experiment(StopTime=1, Tolerance=1e-6, Interval=0.001), Documentation(info="<html>

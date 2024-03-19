@@ -1,21 +1,21 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectorInletOutletFore
+model ConnectorInletOutletFore "Connects fore port to directed flow"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
-
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
-    annotation (Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flow rates"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Fore fore(redeclare package Medium = Medium)
@@ -56,9 +56,6 @@ model ConnectorInletOutletFore
   ThermofluidStream.Sensors.SensorState sensorState(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-10,8},{10,28}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   connect(junctionRFF2_1.foreA, fore) annotation (Line(
       points={{0,-10},{0,-52},{0,-100},{0,-100}},
@@ -94,8 +91,12 @@ equation
       points={{-10,18},{-40,18},{-40,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{10,18},{30,18},{30,4}}, color={162,29,33}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,-4}}, color={162,29,33}));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},
@@ -113,5 +114,5 @@ equation
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)));
+          lineThickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)));
 end ConnectorInletOutletFore;

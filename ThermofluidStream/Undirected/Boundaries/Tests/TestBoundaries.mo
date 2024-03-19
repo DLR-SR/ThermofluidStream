@@ -22,7 +22,7 @@ model TestBoundaries "Tests for the rear and fore boundary"
     height=-100000,
     offset=140000,
     startTime=5)
-    annotation (Placement(transformation(extent={{60,34},{48,46}})));
+    annotation (Placement(transformation(extent={{60,40},{48,52}})));
   TerminalRear terminal_rear(redeclare package Medium =
         Media.myMedia.Air.SimpleAir)
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
@@ -35,13 +35,13 @@ model TestBoundaries "Tests for the rear and fore boundary"
     height=-100000,
     offset=140000,
     startTime=5)
-    annotation (Placement(transformation(extent={{60,-16},{48,-4}})));
+    annotation (Placement(transformation(extent={{60,-10},{48,2}})));
   BoundaryRear boundary_rear1(
     redeclare package Medium = Media.myMedia.Air.SimpleAir,
     pressureFromInput=true,
     T0_par=293.15,
     p0_par=100000) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,-50})));
   TerminalFore terminal_fore(redeclare package Medium =
@@ -54,11 +54,10 @@ model TestBoundaries "Tests for the rear and fore boundary"
     height=-100000,
     offset=140000,
     startTime=5)
-    annotation (Placement(transformation(extent={{-56,-56},{-44,-44}})));
+    annotation (Placement(transformation(extent={{-56,-50},{-44,-38}})));
 equation
   connect(step.y, boundary_fore.p0_var)
-    annotation (Line(points={{47.4,40},{40,40},{40,46},{32,46}},
-                                                   color={0,0,127}));
+    annotation (Line(points={{47.4,46},{32,46}},   color={0,0,127}));
   connect(boundary_fore.rear, boundary_rear.fore) annotation (Line(
       points={{20,40},{-20,40}},
       color={28,108,200},
@@ -67,10 +66,8 @@ equation
       points={{20,-10},{-20,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{47.4,-10},{40,-10},{40,-4},{32,-4}},
-                                                                                         color={0,0,127}));
-  connect(step2.y, boundary_rear1.p0_var) annotation (Line(points={{-43.4,-50},{-38,-50},{-38,-56},{-32,-56}},
-                                                                                           color={0,0,127}));
+  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{47.4,-4},{32,-4}},   color={0,0,127}));
+  connect(step2.y, boundary_rear1.p0_var) annotation (Line(points={{-43.4,-44},{-32,-44}}, color={0,0,127}));
   connect(boundary_rear1.fore, terminal_fore.rear) annotation (Line(
       points={{-20,-50},{20,-50}},
       color={28,108,200},

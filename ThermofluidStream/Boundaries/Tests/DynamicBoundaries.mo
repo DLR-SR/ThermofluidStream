@@ -9,7 +9,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
   DynamicPressureInflow dynamicPressureInflow(redeclare package Medium=Medium,
     areaFromInput=true,
     velocityFromInput=true)
-    annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
+    annotation (Placement(transformation(extent={{-50,10},{-30,-10}})));
   DynamicPressureOutflow dynamicPressureOutflow(redeclare package Medium=Medium,
     areaFromInput=false,
     velocityFromInput=false,
@@ -50,14 +50,14 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
   Modelica.Blocks.Sources.Ramp ramp(
     height=1,
     duration=0.5,
-    startTime=0.4) annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
+    startTime=0.4) annotation (Placement(transformation(extent={{-100,10},{-80,30}})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.01)
     annotation (Placement(transformation(extent={{60,20},{80,40}})));
   Modelica.Blocks.Sources.Ramp ramp1(
     height=-0.98e-3,
     duration=0.4,
     offset=1e-3,
-    startTime=0) annotation (Placement(transformation(extent={{0,20},{-20,40}})));
+    startTime=0) annotation (Placement(transformation(extent={{0,22},{-20,42}})));
   Source source2(redeclare package Medium = Medium, p0_par=101000)
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   DynamicPressureInflow dynamicPressureInflow2(
@@ -71,7 +71,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     areaFromInput=true,
     velocityFromInput=true,
     assumeConstantDensity=true)
-    annotation (Placement(transformation(extent={{30,50},{50,70}})));
+    annotation (Placement(transformation(extent={{30,70},{50,50}})));
   Sink sink2(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   Processes.FlowResistance flowResistance2(
@@ -85,12 +85,12 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
   Modelica.Blocks.Sources.Ramp ramp2(
     height=1,
     duration=0.5,
-    startTime=0.4) annotation (Placement(transformation(extent={{0,80},{20,100}})));
+    startTime=0.4) annotation (Placement(transformation(extent={{88,80},{68,100}})));
   Modelica.Blocks.Sources.Ramp ramp3(
     height=-0.95e-3,
     duration=0.4,
     offset=1e-3,
-    startTime=0) annotation (Placement(transformation(extent={{80,80},{60,100}})));
+    startTime=0) annotation (Placement(transformation(extent={{-20,80},{0,100}})));
   Source source3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
   DynamicPressureInflow dynamicPressureInflow3(
@@ -204,8 +204,10 @@ equation
       points={{30,-40},{10,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(dynamicPressureInflow.v_in_var, ramp.y) annotation (Line(points={{-40,10},{-40,30},{-59,30}}, color={0,0,127}));
-  connect(dynamicPressureInflow.A_var, ramp1.y) annotation (Line(points={{-34,10},{-34,30},{-21,30}}, color={0,0,127}));
+  connect(dynamicPressureInflow.v_in_var, ramp.y) annotation (Line(points={{-52,6},{-58,6},{-58,20},{-79,20}},
+                                                                                                        color={0,0,127}));
+  connect(dynamicPressureInflow.A_var, ramp1.y) annotation (Line(points={{-28,6},{-24,6},{-24,32},{-21,32}},
+                                                                                                      color={0,0,127}));
   connect(source2.outlet,dynamicPressureInflow2. inlet)
     annotation (Line(
       points={{-60,60},{-50,60}},
@@ -225,8 +227,10 @@ equation
       points={{30,60},{10,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{21,90},{34,90},{34,70}}, color={0,0,127}));
-  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{59,90},{40,90},{40,70}}, color={0,0,127}));
+  connect(ramp2.y,dynamicPressureOutflow2. v_out_var) annotation (Line(points={{67,90},{58,90},{58,66},{52,66}},
+                                                                                                         color={0,0,127}));
+  connect(ramp3.y,dynamicPressureOutflow2. A_var) annotation (Line(points={{1,90},{20,90},{20,66},{28,66}},
+                                                                                                     color={0,0,127}));
   connect(source3.outlet,dynamicPressureInflow3. inlet)
     annotation (Line(
       points={{-60,-60},{-50,-60}},

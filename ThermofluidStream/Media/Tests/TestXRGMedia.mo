@@ -12,7 +12,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
       initializeMassFlow=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-18,72})));
+        origin={-16,60})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX1(
     redeclare package MediumA = XRGMedia.NH3_ph,
     redeclare package MediumB = XRGMedia.CO2_ph,
@@ -22,7 +22,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
         HeatExchangers.Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=false) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={30,56})));
+        origin={32,48})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX2(
     redeclare package MediumA = XRGMedia.CO2_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
@@ -30,19 +30,19 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initializeMassFlow=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-18,40})));
+        origin={-16,36})));
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
     A=10) annotation (Placement(transformation(extent={{20,14},{40,34}})));
   Boundaries.Source source(redeclare package Medium = XRGMedia.R134a_ph, p0_par=200000)
-    annotation (Placement(transformation(extent={{-74,70},{-54,90}})));
+    annotation (Placement(transformation(extent={{-64,56},{-44,76}})));
   Boundaries.Volume volume(
     redeclare package Medium = XRGMedia.NH3_ph,
     useInlet=false,
     p_start=200000,
-    V_par=0.1) annotation (Placement(transformation(extent={{102,54},{82,74}})));
-  Boundaries.Sink sink1(redeclare package Medium = XRGMedia.NH3_ph) annotation (Placement(transformation(extent={{-38,54},{-58,74}})));
+    V_par=0.1) annotation (Placement(transformation(extent={{98,44},{78,64}})));
+  Boundaries.Sink sink1(redeclare package Medium = XRGMedia.NH3_ph) annotation (Placement(transformation(extent={{-32,44},{-52,64}})));
   HeatExchangers.DiscretizedCounterFlowHEX discretizedHEX4(
     redeclare package MediumA = XRGMedia.R1234yf_ph,
     redeclare package MediumB = XRGMedia.R134a_ph,
@@ -50,16 +50,16 @@ model TestXRGMedia "Test for five XRG Media with various components"
     initializeMassFlow=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-34,8})));
-  Boundaries.Sink sink2(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{84,38},{104,58}})));
+        origin={-34,12})));
+  Boundaries.Sink sink2(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{98,32},{118,52}})));
   Boundaries.Source source1(redeclare package Medium = XRGMedia.CO2_ph, p0_par=130000)
-    annotation (Placement(transformation(extent={{-86,38},{-66,58}})));
-  Boundaries.VolumeFlex volumeFlex(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{-4,38},{16,58}})));
+    annotation (Placement(transformation(extent={{-92,32},{-72,52}})));
+  Boundaries.VolumeFlex volumeFlex(redeclare package Medium = XRGMedia.CO2_ph) annotation (Placement(transformation(extent={{-2,32},{18,52}})));
   Examples.Utilities.Receiver receiver(redeclare package Medium =
         XRGMedia.R134a_ph, p_start=200000)
-    annotation (Placement(transformation(extent={{-36,22},{-56,42}})));
+    annotation (Placement(transformation(extent={{-32,20},{-52,40}})));
   Boundaries.Sink sink3(redeclare package Medium = XRGMedia.R134a_ph, p0_par=180000)
-    annotation (Placement(transformation(extent={{-156,-10},{-176,10}})));
+    annotation (Placement(transformation(extent={{-156,-4},{-176,16}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = XRGMedia.NH3_ph,
     r(displayUnit="mm") = 0.005,
@@ -68,7 +68,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={62,64})));
+        origin={58,54})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = XRGMedia.CO2_ph,
     r(displayUnit="mm") = 0.005,
@@ -77,7 +77,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-50,48})));
+        origin={-52,42})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = XRGMedia.CO2_ph,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -87,7 +87,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={68,48})));
+        origin={66,42})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = XRGMedia.R134a_ph,
     r(displayUnit="mm") = 0.02,
@@ -96,7 +96,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={76,0})));
+        origin={76,6})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = XRGMedia.R134a_ph,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -106,41 +106,39 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-118,32})));
+        origin={-118,30})));
   Processes.ConductionElement conductionElement(redeclare package Medium =
         XRGMedia.R134a_ph)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=180,
-        origin={34,0})));
+        origin={34,6})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = XRGMedia.R134a_ph)
-    annotation (Placement(transformation(extent={{-142,-10},{-122,10}})));
+    annotation (Placement(transformation(extent={{-142,-4},{-122,16}})));
   Topology.SplitterT2 splitterT2_1(redeclare package Medium = XRGMedia.R134a_ph)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
-        origin={142,32})));
-  Processes.Nozzle nozzle(redeclare package Medium = XRGMedia.R1234yf_ph, A_out=5) annotation (Placement(transformation(extent={{-14,6},{6,26}})));
-  Boundaries.Source source2(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{-102,6},{-82,26}})));
-  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package
-      Medium =
+        origin={142,30})));
+  Processes.Nozzle nozzle(redeclare package Medium = XRGMedia.R1234yf_ph, A_out=5) annotation (Placement(transformation(extent={{-14,8},{6,28}})));
+  Boundaries.Source source2(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{-116,8},{-96,28}})));
+  Boundaries.DynamicPressureInflow dynamicPressureInflow(redeclare package Medium =
         XRGMedia.R1234yf_ph, v_in_par=1)
-    annotation (Placement(transformation(extent={{-74,6},{-54,26}})));
-  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package
-      Medium =
+    annotation (Placement(transformation(extent={{-76,8},{-56,28}})));
+  Boundaries.DynamicPressureOutflow dynamicPressureOutflow(redeclare package Medium =
         XRGMedia.R1234yf_ph, A_par=2)
-    annotation (Placement(transformation(extent={{52,6},{72,26}})));
-  Boundaries.Sink sink(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{112,6},{132,26}})));
+    annotation (Placement(transformation(extent={{52,8},{72,28}})));
+  Boundaries.Sink sink(redeclare package Medium = XRGMedia.R1234yf_ph) annotation (Placement(transformation(extent={{114,8},{134,28}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = XRGMedia.R1234yf_ph,
     r(displayUnit="mm") = 0.02,
     l=20,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=500, k2=500))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={90,16})));
+        origin={94,18})));
   Boundaries.Sink sink4(redeclare package Medium = XRGMedia.R245fa_ph, p0_par=100000)
     annotation (Placement(transformation(extent={{88,-38},{108,-18}})));
   Processes.FlowResistance flowResistance7(
@@ -166,7 +164,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Processes.ConductionElement conductionElement1(redeclare package Medium =
         XRGMedia.R245fa_ph, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
     annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={34,-28})));
   Modelica.Blocks.Sources.Ramp ramp(duration=1, startTime=4.5) annotation (Placement(transformation(extent={{-38,-60},{-18,-40}})));
@@ -175,7 +173,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     omega_from_input=true,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow)
-    annotation (Placement(transformation(extent={{-80,42},{-100,22}})));
+    annotation (Placement(transformation(extent={{-78,40},{-98,20}})));
   Modelica.Blocks.Sources.Constant const(k=6300) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = XRGMedia.R134a_ph,
@@ -186,117 +184,117 @@ model TestXRGMedia "Test for five XRG Media with various components"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={86,32})));
+        origin={78,30})));
 equation
   connect(discretizedHEX.inletB, discretizedHEX1.outletA)
     annotation (Line(
-      points={{-8,64},{12,64},{12,64},{19.8,64}},
+      points={{-6,54},{22,54}},
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, discretizedHEX.inletA) annotation (Line(
-      points={{-54,80},{-36,80},{-36,80},{-28,80}},
+      points={{-44,66},{-26,66}},
       color={28,108,200},
       thickness=0.5));
   connect(sink1.inlet, discretizedHEX.outletB) annotation (Line(
-      points={{-38,64},{-28.2,64}},
+      points={{-32,54},{-26,54}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX1.inletB, volumeFlex.outlet) annotation (Line(
-      points={{20,48},{16,48}},
+      points={{22,42},{18,42}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX2.outletA, volumeFlex.inlet) annotation (Line(
-      points={{-7.8,48},{-12,48},{-12,48},{-4,48}},
+      points={{-6,42},{-2,42}},
       color={28,108,200},
       thickness=0.5));
   connect(receiver.inlet, discretizedHEX2.outletB) annotation (Line(
-      points={{-36,32},{-28.2,32}},
+      points={{-32,30},{-26,30}},
       color={28,108,200},
       thickness=0.5));
   connect(volume.outlet, flowResistance1.inlet) annotation (Line(
-      points={{82,64},{72,64}},
+      points={{78,54},{68,54}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, discretizedHEX1.inletA) annotation (Line(
-      points={{52,64},{42,64},{42,64},{40,64}},
+      points={{48,54},{42,54}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(
-      points={{-66,48},{-60,48}},
+      points={{-72,42},{-62,42}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, discretizedHEX2.inletA)
     annotation (Line(
-      points={{-40,48},{-30,48},{-30,48},{-28,48}},
+      points={{-42,42},{-26,42}},
       color={28,108,200},
       thickness=0.5));
   connect(sink2.inlet, flowResistance3.outlet) annotation (Line(
-      points={{84,48},{78,48}},
+      points={{98,42},{76,42}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance4.outlet, conductionElement.inlet)
     annotation (Line(
-      points={{66,0},{44,0}},
+      points={{66,6},{44,6}},
       color={28,108,200},
       thickness=0.5));
   connect(conductionElement.outlet, discretizedHEX4.inletB)
     annotation (Line(
-      points={{24,0},{-10,0},{-10,-1.77636e-15},{-24,-1.77636e-15}},
+      points={{24,6},{-24,6}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, junctionT2_1.inletA)
     annotation (Line(
-      points={{-128,32},{-132,32},{-132,10}},
+      points={{-128,30},{-132,30},{-132,16}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX4.outletB, junctionT2_1.inletB)
     annotation (Line(
-      points={{-44.2,0},{-72,0},{-72,0},{-122,0}},
+      points={{-44,6},{-142,6}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_1.outlet, sink3.inlet) annotation (Line(
-      points={{-142,0},{-156,0}},
+      points={{-122,6},{-156,6}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX4.outletA, nozzle.inlet) annotation (Line(
-      points={{-23.8,16},{-24,16},{-24,16},{-14,16}},
+      points={{-24,18},{-14,18}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX.outletA, splitterT2_1.inlet)
     annotation (Line(
-      points={{-7.8,80},{142,80},{142,42}},
+      points={{-6,66},{142,66},{142,40}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT2_1.outletB, flowResistance4.inlet)
     annotation (Line(
-      points={{142,22},{142,0},{86,0}},
+      points={{142,20},{142,6},{86,6}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX1.outletB, flowResistance3.inlet)
     annotation (Line(
-      points={{40.2,48},{38,48},{38,48},{58,48}},
+      points={{42,42},{56,42}},
       color={28,108,200},
       thickness=0.5));
   connect(dynamicPressureOutflow.outlet, flowResistance6.inlet)
     annotation (Line(
-      points={{72,16},{80,16}},
+      points={{72,18},{84,18}},
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, flowResistance6.outlet) annotation (Line(
-      points={{112,16},{100,16}},
+      points={{114,18},{104,18}},
       color={28,108,200},
       thickness=0.5));
   connect(dynamicPressureInflow.outlet, discretizedHEX4.inletA)
     annotation (Line(
-      points={{-54,16},{-44,16},{-44,16},{-44,16}},
+      points={{-56,18},{-44,18}},
       color={28,108,200},
       thickness=0.5));
   connect(source2.outlet, dynamicPressureInflow.inlet)
     annotation (Line(
-      points={{-82,16},{-74,16}},
+      points={{-96,18},{-76,18}},
       color={28,108,200},
       thickness=0.5));
-  connect(conductionElement.heatPort, conductionElement1.heatPort) annotation (Line(points={{34,-9.8},{34,-18.2}},color={191,0,0}));
+  connect(conductionElement.heatPort, conductionElement1.heatPort) annotation (Line(points={{34,-4},{34,-18}},    color={191,0,0}));
   connect(source3.outlet, basicControlValve.inlet) annotation (Line(
       points={{-12,-28},{-4,-28}},
       color={28,108,200},
@@ -317,36 +315,36 @@ equation
       thickness=0.5));
   connect(ramp.y, basicControlValve.u_in) annotation (Line(points={{-17,-50},{6,-50},{6,-36}}, color={0,0,127}));
   connect(flowResistance5.inlet, pump.outlet) annotation (Line(
-      points={{-108,32},{-100,32}},
+      points={{-108,30},{-98,30}},
       color={28,108,200},
       thickness=0.5));
   connect(pump.inlet, receiver.outlet) annotation (Line(
-      points={{-80,32},{-56,32}},
+      points={{-78,30},{-52,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(const.y, pump.omega_input) annotation (Line(points={{-107,62},{-90,62},{-90,42}}, color={0,0,127}));
+  connect(const.y, pump.omega_input) annotation (Line(points={{-107,62},{-88,62},{-88,42}}, color={0,0,127}));
   connect(splitterT2_1.outletA, flowResistance8.inlet) annotation (Line(
-      points={{132,32},{96,32}},
+      points={{132,30},{88,30}},
       color={28,108,200},
       thickness=0.5));
   connect(discretizedHEX2.inletB, counterFlowNTU.outletB)
     annotation (Line(
-      points={{-8,32},{6,32},{6,30},{19,30}},
+      points={{-6,30},{20,30}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU.inletB, flowResistance8.outlet)
     annotation (Line(
-      points={{41.2,30},{60,30},{60,32},{76,32}},
+      points={{40,30},{68,30}},
       color={28,108,200},
       thickness=0.5));
   connect(nozzle.outlet, counterFlowNTU.inletA)
     annotation (Line(
-      points={{6,16},{14,16},{14,18},{18.8,18}},
+      points={{6,18},{20,18}},
       color={28,108,200},
       thickness=0.5));
   connect(counterFlowNTU.outletA, dynamicPressureOutflow.inlet)
     annotation (Line(
-      points={{41,18},{46,18},{46,16},{52,16}},
+      points={{40,18},{52,18}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,

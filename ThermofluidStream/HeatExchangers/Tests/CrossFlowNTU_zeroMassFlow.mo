@@ -29,9 +29,9 @@ model CrossFlowNTU_zeroMassFlow
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={60,-10})));
+        origin={40,10})));
 
   ThermofluidStream.Boundaries.Source sourceB(
     redeclare package Medium = MediumB,
@@ -97,12 +97,12 @@ model CrossFlowNTU_zeroMassFlow
     redeclare package Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-44,-10})));
+        origin={-40,10})));
 equation
   connect(sinkA.inlet, multiSensor_Tpm1.outlet) annotation (Line(
-      points={{116,0},{70,0}},
+      points={{116,0},{83,0},{83,-1.77636e-15},{50,-1.77636e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkB.inlet, multiSensor_Tpm2.outlet) annotation (Line(
@@ -118,7 +118,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(crossFlowNTU.outletA, multiSensor_Tpm1.inlet) annotation (Line(
-      points={{10,0},{28,0},{28,1.77636e-15},{50,1.77636e-15}},
+      points={{10,0},{15,0},{15,1.33227e-15},{30,1.33227e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(p_out_B.y, sinkB.p0_var)
@@ -134,7 +134,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(crossFlowNTU.inletA, multiSensor_Tpm4.outlet) annotation (Line(
-      points={{-10,0},{-34,0}},
+      points={{-10,0},{-15,0},{-15,-1.77636e-15},{-30,-1.77636e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceA.outlet,flowResistanceA. inlet) annotation (Line(
@@ -142,7 +142,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm4.inlet,flowResistanceA. outlet) annotation (Line(
-      points={{-54,1.77636e-15},{-64,1.77636e-15},{-64,0},{-82,0}},
+      points={{-50,1.77636e-15},{-50,0},{-82,0}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=

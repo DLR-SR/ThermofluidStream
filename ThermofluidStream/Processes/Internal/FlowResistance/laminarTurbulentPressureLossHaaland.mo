@@ -1,35 +1,28 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function laminarTurbulentPressureLossHaaland "Laminar and turbulent flow regimes pressure loss function (Haaland 1983)"
+function laminarTurbulentPressureLossHaaland "Pressure loss function (Haaland 1983) for laminar, transient and turbulent flow regimes"
   extends Internal.FlowResistance.partialPressureLoss;
 
   import Modelica.Constants.pi;
 
-  // Inputs
-  input SI.ReynoldsNumber Re_laminar = 2000
-    "Upper Reynolds number boundary for laminar flow in pipe"
+  input SI.ReynoldsNumber Re_laminar = 2000 "Upper limit for laminar flow (Reynolds number)"
     annotation(Dialog(enable=true));
-  input SI.ReynoldsNumber Re_turbulent = 4000
-    "Lower Reynolds number boundary for turbulent flow in pipe"
+  input SI.ReynoldsNumber Re_turbulent = 4000 "Lower limit for turbulent flow (Reynolds number)"
     annotation(Dialog(enable=true));
-  input Real shape_factor(unit="1") = 64
-    "Laminar pressure loss factor based on Hagen-Poiseuille loss"
+  input Real shape_factor(unit="1") = 64 "Laminar pressure loss factor (Hagen-Poiseuille)"
     annotation(Dialog(enable=true));
   input Real n(unit="1") = 1 "Transition coefficient (see documentation)"
     annotation(Dialog(enable=true));
-
-  input SI.Length ks_input(min=1e-7) = 1e-7 "Pipe roughness" annotation (Dialog(
-        enable=(material == ThermofluidStream.Processes.Internal.Material.other)));
-
-  input ThermofluidStream.Processes.Internal.Material material=
-      ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
+  input SI.Length ks_input(min=1e-7) = 1e-7 "Surface roughness"
+    annotation (Dialog(enable=(material == ThermofluidStream.Processes.Internal.Material.other)));
+  input ThermofluidStream.Processes.Internal.Material material = ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation (Dialog(enable=true));
 
 protected
-  SI.Length ks "Pipe roughness";
+  SI.Length ks "Surface roughness";
 
-  SI.Length diameter=r*2 "Diameter of pipe";
-  SI.Area area=pi*r^2 "Area of pipe";
-  Real relative_roughness "Relative roughness of pipe";
+  SI.Length diameter=r*2 "Diameter";
+  SI.Area area=pi*r^2 "Cross-sectional area";
+  Real relative_roughness "Relative surface roughness";
 
   SI.ReynoldsNumber Re_abs "Absolute value of Reynolds number";
   SI.ReynoldsNumber Re_abs_limited "Limited absolute value of Reynolds number";
@@ -38,7 +31,7 @@ protected
   SI.Pressure pressureLossLaminar "Laminar pressure loss";
   SI.Pressure pressureLossTurbulent "Turbulent pressure loss";
 
-  constant SI.ReynoldsNumber Re_small=1e-5 "Lower bound of turbulent Reynolds number to avoid division by zero";
+  constant SI.ReynoldsNumber Re_small=1e-5 "Lower limit of turbulent Reynolds number to avoid division by zero";
 
 algorithm
   if material == ThermofluidStream.Processes.Internal.Material.concrete then
@@ -78,7 +71,7 @@ algorithm
     x=Re_abs);
 
   annotation (Documentation(info="<html>
-<p>Pressure loss after&nbsp;Darcy&ndash;Weisbach, which is valid in laminar and turbulent flow regimes.</p>
+<p>Pressure loss after&nbsp;Darcy&ndash;Weisbach, for laminar, (transient?) and turbulent flow.</p>
 <p>The friction factor is based on Haaland 1983.</p>
 <p>Haaland, S. E. Simple and Explicit Formulas for the Friction Factor in Turbulent Pipe Flow. Journal of Fluids Engineering 105, 89-90; 10.1115/1.3240948 (1983).</p>
 </html>"));

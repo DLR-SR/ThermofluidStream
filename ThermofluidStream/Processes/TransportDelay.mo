@@ -1,31 +1,46 @@
 within ThermofluidStream.Processes;
-model TransportDelay "Delay Thermofluid state depending on fluid speed"
+model TransportDelay "Delay model based on fluid velocity"
+
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.Length l "Length of Delay Pipe";
-  parameter SI.Radius r "Radius of Delay Pipe";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal Density"
+  parameter SI.Length l "Length";
+  parameter SI.Radius r "Radius";
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced"));
   parameter Real v_min(unit="1/s", min=0) = 0.01 "Minimum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
   parameter Real v_max(unit="1/s", min=0) = 50 "Maximum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
 
-  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
-  constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0);
-  constant SI.SpecificVolume v_0 = 1/Medium.density(state_0);
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayLength = true "= true, if length l is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayRadius = true "= true, if radius r is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean d1l = displayParameters and displayLength  "displayLength at position 1"
+    annotation(Evaluate=true, HideResult=true); //d1l -> Display at position 1 l=length
+  final parameter Boolean d1r = displayParameters and displayRadius and not d1l  "displayRadius at position 1"
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean d2r = displayParameters and displayRadius and not d1r  "displayRadius at position 2"
+    annotation(Evaluate=true, HideResult=true);
+  //-----------------------------------------------------------------
 
-  Real x(unit="1");
-  Real v(unit="1/s") = der(x);
+
+  constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]) "Default state";
+  constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0) "Default mass fractions";
+  constant SI.SpecificVolume v_0 = 1/Medium.density(state_0) "Default specific volume";
+
+  Real x(unit="1") "Relative position s/l";
+  Real v(unit="1/s") = der(x) "Relative speed v/l";
 
 protected
-  SI.SpecificInternalEnergy u_in = Medium.specificInternalEnergy(inlet.state);
-  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state));
+  SI.SpecificInternalEnergy u_in = Medium.specificInternalEnergy(inlet.state) "Inlet internal energy";
+  SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state)) "Inlet specific volume";
 
-  SI.SpecificInternalEnergy u_out;
-  SI.SpecificVolume v_out;
+  SI.SpecificInternalEnergy u_out "Outlet internal energy";
+  SI.SpecificVolume v_out "Outlet specific volume";
 
-  SI.Area A = r^2*Modelica.Constants.pi;
+  SI.Area A = r^2*Modelica.Constants.pi "Cross-sectional area";
 
 initial equation
   x = 0;
@@ -63,7 +78,23 @@ equation
 <p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts2.PNG\"/> <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts.PNG\"/> </p>
 <p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
 </html>"),
-Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(visible=d1l,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="l = %l"),
+        Text(visible=d1r,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="r = %r"),
+        Text(visible=d2r,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString="r = %r"),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

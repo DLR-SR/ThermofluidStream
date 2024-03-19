@@ -56,7 +56,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
+    annotation (Placement(transformation(extent={{-70,6},{-50,26}})));
   Boundaries.BoundaryFore boundaryFore6(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -89,7 +89,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
+    annotation (Placement(transformation(extent={{-70,-36},{-50,-16}})));
   Boundaries.BoundaryFore boundaryFore8(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -120,7 +120,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{-70,-60},{-50,-40}})));
+    annotation (Placement(transformation(extent={{-70,-66},{-50,-46}})));
   Boundaries.BoundaryFore boundaryFore7(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -157,7 +157,7 @@ Medium package used in the Test.
     period=2.5,
     offset=0.5e5,
     startTime=0)
-    annotation (Placement(transformation(extent={{112,-88},{92,-68}})));
+    annotation (Placement(transformation(extent={{112,-96},{92,-76}})));
   Boundaries.BoundaryRear boundaryRear(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -345,12 +345,12 @@ Medium package used in the Test.
 
 equation
 
-  connect(pulse1.y, boundaryRear3.p0_var) annotation (Line(points={{-49,10},{-30,
-          10},{-30,16},{-22,16}}, color={0,0,127}));
-  connect(trapezoid.y, boundaryFore6.p0_var) annotation (Line(points={{-49,-20},
-          {-30,-20},{-30,-26},{-22,-26}}, color={0,0,127}));
-  connect(pulse3.y, boundaryFore8.p0_var) annotation (Line(points={{-49,-50},{-30,
-          -50},{-30,-56},{-22,-56}}, color={0,0,127}));
+  connect(pulse1.y, boundaryRear3.p0_var) annotation (Line(points={{-49,16},{-22,16}},
+                                  color={0,0,127}));
+  connect(trapezoid.y, boundaryFore6.p0_var) annotation (Line(points={{-49,-26},{-22,-26}},
+                                          color={0,0,127}));
+  connect(pulse3.y, boundaryFore8.p0_var) annotation (Line(points={{-49,-56},{-22,-56}},
+                                     color={0,0,127}));
   connect(pulse5.y,mCV. setpoint_var) annotation (Line(points={{-49,60},{10,60},
           {10,48}}, color={0,0,127}));
   connect(trapezoid2.y,mCV5. setpoint_var) annotation (Line(points={{-49,100},{10,
@@ -427,8 +427,8 @@ equation
       points={{50,-80},{60,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid1.y, boundaryRear4.p0_var) annotation (Line(points={{91,-78},
-          {84,-78},{84,-86},{72,-86}}, color={0,0,127}));
+  connect(trapezoid1.y, boundaryRear4.p0_var) annotation (Line(points={{91,-86},{72,-86}},
+                                       color={0,0,127}));
   connect(boundaryRear6.fore, mCV6.rear) annotation (Line(
       points={{-12,168},{-2,168}},
       color={28,108,200},

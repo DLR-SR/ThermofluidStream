@@ -20,7 +20,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,30},{10,50}})));
   Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
@@ -57,7 +57,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)

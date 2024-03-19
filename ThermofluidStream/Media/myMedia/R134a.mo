@@ -1071,7 +1071,7 @@ the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwe
 
       // annotation(smoothOrder=5);
       annotation (
-        derivative=dDewEnthalpy_dPressure_der_sat, 
+        derivative=dDewEnthalpy_dPressure_der_sat,
         Documentation(info="<html>
 <p>This function calculates the vapor phase enthalpy of R134a from the state variable p (absolute pressure). It is modelled by cubic splines which are fitted with non-equidistant grid points derived from
 the fundamental equation of state of Tillner-Roth and Baehr (1994) and the Maxwell criteria.

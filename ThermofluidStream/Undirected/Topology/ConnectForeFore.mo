@@ -1,8 +1,9 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectForeFore "Undirected connector with fore and fore"
+model ConnectForeFore "Connects two fore ports"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to the ports of the Connector.</p>
 </html>"));
@@ -16,9 +17,6 @@ model ConnectForeFore "Undirected connector with fore and fore"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
         iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   fore_b.state_forwards = fore_a.state_rearwards;
   fore_a.state_forwards = fore_b.state_rearwards;
@@ -27,13 +25,17 @@ equation
 
   annotation (Icon(
       graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Line(
           points={{-20,0},{20,0}},
           color={28,108,200},
           thickness=0.5)},
-      coordinateSystem(preserveAspectRatio=false)),
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect two undirected rear ports. </p>
 <p>Basically the connector switches the names of output and input of the two ports.</p>

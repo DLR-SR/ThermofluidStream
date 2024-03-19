@@ -3,19 +3,19 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
 
   import ThermofluidStream.Utilities.Types.InitializationMethods;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
       <p>Medium package used in the Component. Make sure it is the same as the one both ports are connected to.</p>
       </html>"));
-
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter StateSelect m_flowStateSelect = StateSelect.default "State select for m_flow"
+  parameter StateSelect m_flowStateSelect = StateSelect.default "State select for mass flow rate"
     annotation(Dialog(tab="Advanced"));
-  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for m_flow"
+  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for mass flow rate"
     annotation(Dialog(tab= "Initialization"));
-  parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
+  parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for mass flow rate"
     annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.state)));
   parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
     annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.derivative)));
@@ -34,34 +34,33 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
 
-  SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = rear.m_flow;
+  SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = rear.m_flow "Mass flow rate";
 
-  // delta pressure computation
+  // Pressure difference computation
   SI.Pressure dp_fore; // delta = fore - rear
   SI.Pressure dp_rear; // delta = rear - fore
 
+  // Inertial pressure correction
   SI.Pressure dr_corr_fore; //forward direction; delta = fore - rear
   SI.Pressure dr_corr_rear; //rearward direction; delta = rear - fore
   SI.Pressure dr_corr; // regstep regulated one used; delta = fore - rear
 
+  //Inlet state quantities
 protected
-  outer DropOfCommons dropOfCommons;
-
-  // input state quantities
   SI.Pressure p_rear_in = Medium.pressure(rear.state_forwards) "Pressure of medium entering";
   SI.Pressure p_fore_in = Medium.pressure(fore.state_rearwards) "Pressure of medium entering";
-  SI.SpecificEnthalpy h_rear_in = Medium.specificEnthalpy(rear.state_forwards) "Enthalpy of medium enetering";
-  SI.SpecificEnthalpy h_fore_in = Medium.specificEnthalpy(fore.state_rearwards) "Enthalpy of medium enetering";
-  Medium.MassFraction Xi_rear_in[Medium.nXi] = Medium.massFraction(rear.state_forwards) "Mass fraction of medium entering";
-  Medium.MassFraction Xi_fore_in[Medium.nXi] = Medium.massFraction(fore.state_rearwards) "Mass fraction of medium entering";
+  SI.SpecificEnthalpy h_rear_in = Medium.specificEnthalpy(rear.state_forwards) "Specific enthalpy of medium entering";
+  SI.SpecificEnthalpy h_fore_in = Medium.specificEnthalpy(fore.state_rearwards) "Specific enthalpy of medium entering";
+  Medium.MassFraction Xi_rear_in[Medium.nXi] = Medium.massFraction(rear.state_forwards) "Mass fractions of medium entering";
+  Medium.MassFraction Xi_fore_in[Medium.nXi] = Medium.massFraction(fore.state_rearwards) "Mass fractions of medium entering";
 
-  //outlet state quantities
+  //Outlet state quantities
   SI.Pressure p_rear_out "Pressure of medium exiting";
   SI.Pressure p_fore_out "Pressure of medium exiting";
-  SI.SpecificEnthalpy h_rear_out "Enthalpy of medium exiting";
-  SI.SpecificEnthalpy h_fore_out "Enthalpy of medium exiting";
-  Medium.MassFraction Xi_rear_out[Medium.nXi] "Mass fraction of medium exiting";
-  Medium.MassFraction Xi_fore_out[Medium.nXi] "Mass fraction of medium exiting";
+  SI.SpecificEnthalpy h_rear_out "Speicifc enthalpy of medium exiting";
+  SI.SpecificEnthalpy h_fore_out "Specific enthalpy of medium exiting";
+  Medium.MassFraction Xi_rear_out[Medium.nXi] "Mass fractions of medium exiting";
+  Medium.MassFraction Xi_fore_out[Medium.nXi] "Mass fractions of medium exiting";
 
 initial equation
   if initM_flow == InitializationMethods.state then

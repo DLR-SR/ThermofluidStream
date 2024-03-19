@@ -29,7 +29,7 @@ Medium package used in the Test.
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = medium,
@@ -74,26 +74,26 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{26,0},{46,20}})));
 
   Modelica.Blocks.Sources.Constant const2(k=1.1e5)
-    annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
+    annotation (Placement(transformation(extent={{-170,-4},{-150,16}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{66,50},{86,70}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{68,-10},{88,10}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = medium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e3))
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
 equation
@@ -119,13 +119,13 @@ equation
       thickness=0.5));
   connect(ramp.y, slideValveInverse.u_in)
     annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
-  connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,0},{-149,0}},
+  connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,6},{-149,6}},
                                                 color={0,0,127}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-96,60},{-80,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,0},{-124,0},{-124,6},{-108,6}},
+  connect(const2.y, source1.p0_var) annotation (Line(points={{-149,6},{-108,6}},
                                color={0,0,127}));
   connect(multiSensor_Tpm3.outlet, flowResistance6.inlet) annotation (Line(
       points={{46,60},{66,60}},

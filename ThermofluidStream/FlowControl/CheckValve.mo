@@ -1,10 +1,11 @@
 within ThermofluidStream.FlowControl;
-model CheckValve "Valve that allows only positive mass_flow"
+model CheckValve "Valve to enforce non negative mass flow rates"
+
   extends Interfaces.SISOFlow(final clip_p_out=false);
 
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure for regularization"
     annotation(Dialog(tab="Advanced"));
 
 equation
@@ -12,7 +13,11 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -50,7 +55,7 @@ equation
         Line(
           points={{0,-30},{20,-10}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Valve that allows positive mass_flow and builds up a large pressure difference against negative mass_flow.</p>
 </html>"));

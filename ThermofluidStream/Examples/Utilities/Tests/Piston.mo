@@ -20,14 +20,14 @@ model Piston "Test for Piston model"
     p0_right=300000,
     m0_left=3,
     m0_right=0.75,
-    x0=0.5) annotation (Placement(transformation(extent={{-14,-66},{20,-30}})));
+    x0=0.5) annotation (Placement(transformation(extent={{-6,-60},{14,-40}})));
 
   Modelica.Mechanics.Translational.Sources.LinearSpeedDependentForce
     linearSpeedDependentForce(
     f_nominal=-1e6,
     ForceDirection=false,
     v_nominal=1)
-    annotation (Placement(transformation(extent={{66,-58},{48,-40}})));
+    annotation (Placement(transformation(extent={{60,-60},{40,-40}})));
   Boundaries.Source source(redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par(displayUnit="K") = 500,
@@ -55,7 +55,7 @@ model Piston "Test for Piston model"
     redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={16,10})));
+        origin={10,10})));
   FlowControl.Switch switch(redeclare package Medium = Medium, initializeOneMassflowSplit=true)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
@@ -77,7 +77,7 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=10))
     annotation (Placement(transformation(extent={{-46,0},{-26,20}})));
   Processes.FlowResistance flowResistance2(
@@ -87,7 +87,7 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=10))
     annotation (Placement(transformation(extent={{-46,-30},{-26,-10}})));
   Processes.FlowResistance flowResistance1(
@@ -98,7 +98,7 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=10))
     annotation (Placement(transformation(extent={{34,0},{54,20}})));
   Processes.FlowResistance flowResistance3(
@@ -109,7 +109,7 @@ model Piston "Test for Piston model"
     L_value=1e-3,
     r=0.1,
     l=0.01,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=10))
     annotation (Placement(transformation(extent={{34,-30},{54,-10}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Medium, invertInput=false) annotation (Placement(transformation(extent={{64,20},{84,0}})));
@@ -125,24 +125,22 @@ initial equation
 
 equation
 
-  connect(linearSpeedDependentForce.flange, piston2_1.flange) annotation (Line(points={{48,-49},{40,-49},{40,-49.8},{20,-49.8}},
-                                                                                                                             color={0,127,0}));
+  connect(linearSpeedDependentForce.flange, piston2_1.flange) annotation (Line(points={{40,-50},{40,-50.2},{14,-50.2}},      color={0,127,0}));
 
-  connect(piston2_1.x_out, showRealValue.numberPort) annotation (Line(points={{13.2,-58.8},{13.2,-72},{30.5,-72}},
-                                                                                                                 color={0,0,127}));
+  connect(piston2_1.x_out, showRealValue.numberPort) annotation (Line(points={{10,-55},{10,-72},{30.5,-72}},     color={0,0,127}));
   connect(switchConnector.fore, piston2_1.port_left)
     annotation (Line(
-      points={{-10,-30},{-10,-44.4},{-10.6,-44.4}},
+      points={{-10,-30},{-10,-46},{-6,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(switchConnector1.fore, piston2_1.port_right)
     annotation (Line(
-      points={{16,0},{16,-44.4},{16.6,-44.4}},
+      points={{10,0},{10,-10},{20,-10},{20,-46},{14,-46}},
       color={28,108,200},
       thickness=0.5));
   connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}}, color={0,0,127}));
   connect(flowResistance.outlet, switchConnector1.inlet) annotation (Line(
-      points={{-26,10},{6,10}},
+      points={{-26,10},{0,10}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, switchConnector.inlet)
@@ -155,7 +153,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.inlet, switchConnector1.outlet) annotation (Line(
-      points={{34,10},{26,10}},
+      points={{34,10},{20,10}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.inlet, switchConnector.outlet) annotation (Line(
@@ -163,7 +161,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_1.outlet, steamSink.inlet) annotation (Line(
-      points={{114,10},{124,10},{124,26}},
+      points={{94,10},{124,10},{124,26}},
       color={28,108,200},
       thickness=0.5));
   connect(tanValve.inlet, flowResistance1.outlet) annotation (Line(
@@ -176,7 +174,7 @@ equation
       thickness=0.5));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{74,-12},{74,2}}, color={0,0,127}));
   connect(junctionT2_1.inletB, tanValve.outlet) annotation (Line(
-      points={{94,10},{84,10}},
+      points={{114,10},{84,10}},
       color={28,108,200},
       thickness=0.5));
   connect(tanValve1.outlet, junctionT2_1.inletA) annotation (Line(
@@ -194,7 +192,7 @@ equation
       points={{-66,0},{-66,-20},{-46,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-66,18},{-66,28},{58,28},{58,-4},{74,-4},{74,2}}, color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-66,22},{-66,28},{58,28},{58,-4},{74,-4},{74,2}}, color={0,0,127}));
     annotation (
       experiment(StopTime=15, Tolerance=1e-6, Interval=0.015),
         Documentation(info="<html>

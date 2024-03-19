@@ -4,8 +4,7 @@ model Turbine "Test for turbines"
 
   import tf = ThermofluidStream;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
-    "Medium model"
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir "Medium model"
     annotation (Documentation(info="<html>
 <p>
 Medium model for the test. Should be an ideal gas or close to that.
@@ -23,7 +22,8 @@ Medium model for the test. Should be an ideal gas or close to that.
     p0_par=100000)
     annotation (Placement(transformation(extent={{86,6},{106,26}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
+  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={68,-78})));
@@ -63,8 +63,7 @@ Medium model for the test. Should be an ideal gas or close to that.
     annotation (Placement(transformation(extent={{-54,-72},{-34,-52}})));
 
 equation
-
-  connect(turbine.omega_input, const.y) annotation (Line(points={{4,10},{4,0},{-7,0}}, color={0,0,127}));
+  connect(turbine.omega_input, const.y) annotation (Line(points={{4,8},{4,0},{-7,0}},  color={0,0,127}));
   connect(source.outlet, splitterN.inlet) annotation (Line(
       points={{-80,16},{-66,16}},
       color={28,108,200},

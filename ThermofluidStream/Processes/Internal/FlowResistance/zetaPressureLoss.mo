@@ -1,15 +1,17 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function zetaPressureLoss "Pressure loss function based on zeta value"
+function zetaPressureLoss "Pressure loss coefficient function"
   extends Internal.FlowResistance.partialPressureLoss;
 
-  input Real zeta( unit = "1") "Zeta value of component"
+  input Real zeta( unit = "1") "Pressure loss coefficient (dp = zeta*rho/2*v^2)"
     annotation(Dialog(enable=true));
 
-  input Boolean fromGeometry = true "Calculate reference area from geometry inputs?" annotation(Dialog(enable = true));
-  input SI.Area A = Modelica.Constants.pi*r*r "Custom reference area for dp calculation" annotation(Dialog(enable = not fromGeometry));
+  input Boolean fromGeometry = true "= true, if cross-sectional area if calculated from geometry"
+    annotation(Dialog(enable = true, group="Cross-sectional area"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  input SI.Area A = Modelica.Constants.pi*r*r "Cross-sectional area"
+    annotation(Dialog(group="Cross-sectional area", enable = not fromGeometry));
 
 protected
-  SI.Area A_zeta "Reference area either from radius or set by parameter";
+  SI.Area A_zeta "Cross-sectional area";
 
 algorithm
   if fromGeometry then
@@ -23,14 +25,14 @@ algorithm
   annotation (Documentation(info="<html>
 <p>
 For specific components (armatures, fittings, pipe sections, grids, ...),
-the zeta value is often given in the data sheet.
+the pressure loss coefficient is often given in the data sheet.
 </p>
 <p>
 Together with a given (or calculated) reference area&nbsp;A, the pressure
 drop can be calculated:
 </p>
 <blockquote><pre>
-dp := zeta/(2*rho) * m_flow^2/A^2
+dp := zeta * rho/2 * v^2 = zeta/(2*rho) * m_flow^2/A^2
 </pre></blockquote>
 <p>
 The square of the mass-flow is regularized using the

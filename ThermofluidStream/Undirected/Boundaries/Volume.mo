@@ -1,11 +1,12 @@
 within ThermofluidStream.Undirected.Boundaries;
-model Volume "Model of a vessel with fixed volume"
+model Volume "Volume of fixed size, closed to the ambient"
+
   extends Internal.PartialVolume;
 
-  parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume of the Model";
-  parameter Boolean density_derp_h_from_media = false "EXPERIMENTAL: get density_derp_h from media model. The function is only implemented for some Media."
-    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)));
-  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure upper bound; Approx. 1e-5 for air, 1e-7 for water"
+  parameter SI.Volume V_par(displayUnit="l") = 0.001 "Volume";
+  parameter Boolean density_derp_h_from_media=false "= true, if the derivative of density by pressure at const specific enthalpy is calculated from media model (only available for some media models)"
+    annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
 
 equation
@@ -23,7 +24,11 @@ equation
   state_out_rear = medium.state;
   state_out_fore = medium.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true),graphics={
+       Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Conceptually a volume is a sink and asource. It therefore defines the level of inertial pressure r in a closed loop and acts as aloop breaker.</p>
 <p>This simple volume will become singular for incompressible fluids and close to singular for fluids with very low compressibility. For both cases we advise to use VolumeFlex or a Reservoir instead.</p>

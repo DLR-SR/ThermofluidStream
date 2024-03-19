@@ -2,13 +2,13 @@ within ThermofluidStream.Utilities;
 package Types "Types that are not units needed."
   extends Modelica.Icons.TypesPackage;
   type InitializationMethods = enumeration(
-    none
+      none
       "No initialization",
-    steadyState
+      steadyState
       "Steady state initialization (derivatives of states are zero)",
-    state
+      state
       "Initialization with initial states",
-    derivative
+      derivative
       "Initialization with initial derivatives of states")
     "Choices for initialization of a state."
     annotation (

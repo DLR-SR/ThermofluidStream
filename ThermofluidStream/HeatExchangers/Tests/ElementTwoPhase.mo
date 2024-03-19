@@ -14,7 +14,7 @@ model ElementTwoPhase
     U_tp_nom=1000,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-    annotation (Placement(transformation(extent={{-10,70},{10,90}})));
+    annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   Boundaries.Sink sink(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
@@ -42,7 +42,7 @@ model ElementTwoPhase
     U_tp_nom=750,
     m_flow_nom=0.5,
     redeclare package Medium = MediumRefrigerant)
-    annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
+    annotation (Placement(transformation(extent={{-10,-20},{10,-40}})));
   Boundaries.Sink sink1(
     redeclare package Medium = MediumRefrigerant,
     pressureFromInput=false,
@@ -187,7 +187,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(prescribedTemperature.port, conductionElementHEX_twoPhase1.heatPort)
-    annotation (Line(points={{-20,-10},{0,-10},{0,-20.2}}, color={191,0,0}));
+    annotation (Line(points={{-20,-10},{0,-10},{0,-20}},   color={191,0,0}));
   connect(trapezoid.y, prescribedTemperature.T) annotation (Line(points={{-79,-10},{-42,-10}}, color={0,0,127}));
   connect(volume.outlet, mCV2.inlet) annotation (Line(
       points={{10,50},{20,50}},

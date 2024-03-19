@@ -22,21 +22,21 @@ model Condenser
     redeclare package Medium = MediumAir, p0_par=90000)
     annotation (Placement(transformation(extent={{104,0},{124,20}})));
 
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package
-      Medium = MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium =
+               MediumAir,
     temperatureUnit="degC",
     pressureUnit="bar") annotation (
       Placement(transformation(
         extent={{-11,-10},{11,10}},
         rotation=0,
         origin={-35,20})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
-      Medium = MediumAir,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package Medium =
+               MediumAir,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={54,20})));
+        origin={50,20})));
 
   ThermofluidStream.Boundaries.Source sourceB(
     redeclare package Medium = MediumRefrigerant,
@@ -56,20 +56,20 @@ model Condenser
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={10,-80})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package
-      Medium = MediumRefrigerant,
-    digits=3,
-    temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
-        rotation=90,
-        origin={20,-24})));
-  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package
-      Medium = MediumRefrigerant,
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(redeclare package Medium =
+               MediumRefrigerant,
     digits=3,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
-        origin={0,44})));
+        origin={0,-24})));
+  ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm3(redeclare package Medium =
+               MediumRefrigerant,
+    digits=3,
+    temperatureUnit="degC")
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={0,46})));
   inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{212,-94},{232,-74}})));
   DiscretizedCrossFlowHEX condenser(
@@ -81,13 +81,13 @@ model Condenser
     k_wall=150,
     nCells=20) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={2,10})));
+        origin={4,10})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumAir,
     m_flow_0=0.5,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-82,0},{-62,20}})));
 
@@ -97,7 +97,7 @@ model Condenser
     m_flow_0=0.3,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -106,27 +106,27 @@ model Condenser
   Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
-        origin={42,-24})));
+        origin={-12,-24})));
   Sensors.SingleSensorSelect singleSensorSelect1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-14,44})));
+        origin={-12,46})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
-        origin={34,-24})));
+        origin={-24,-24})));
   Sensors.TwoPhaseSensorSelect sensorVaporQuality1(
     redeclare package Medium = MediumRefrigerant,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-22,44})));
+        origin={-24,46})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumAir,
     m_flow_0=0,
@@ -160,39 +160,39 @@ equation
       thickness=0.5));
   connect(singleSensorSelect1.inlet, multiSensor_Tpm3.inlet)
     annotation (Line(
-      points={{-14,54},{-14,60},{10,60},{10,54}},
+      points={{-12,56},{-12,60},{10,60},{10,56}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality1.inlet, multiSensor_Tpm3.inlet)
     annotation (Line(
-      points={{-22,54},{-22,60},{10,60},{10,54}},
+      points={{-24,56},{-24,60},{10,60},{10,56}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorVaporQuality.inlet, multiSensor_Tpm2.inlet)
     annotation (Line(
-      points={{34,-14},{34,-6},{10,-6},{10,-14}},
+      points={{-24,-14},{10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect.inlet, multiSensor_Tpm2.inlet)
     annotation (Line(
-      points={{42,-14},{42,-6},{10,-6},{10,-14}},
+      points={{-12,-14},{10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.outlet, condenser.inletA) annotation (Line(
-      points={{-24,10},{-8,10}},
+      points={{-24,10},{-6,10}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, multiSensor_Tpm1.inlet)
     annotation (Line(
-      points={{12,10},{28.2,10},{28.2,10},{44,10}},
+      points={{14,10},{40,10}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletB, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{10,-0.2},{10,-14}},
+      points={{10,0},{10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.inletB, multiSensor_Tpm3.outlet) annotation (Line(
-      points={{10,20},{10,34}},
+      points={{10,20},{10,36}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceB.outlet, mCV1.inlet) annotation (Line(
@@ -200,7 +200,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(mCV1.outlet, multiSensor_Tpm3.inlet) annotation (Line(
-      points={{10,74},{10,54}},
+      points={{10,74},{10,56}},
       color={28,108,200},
       thickness=0.5));
   connect(sinkA.inlet, mCV.outlet) annotation (Line(
@@ -208,7 +208,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(mCV.inlet, multiSensor_Tpm1.outlet) annotation (Line(
-      points={{74,10},{64,10}},
+      points={{74,10},{60,10}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=

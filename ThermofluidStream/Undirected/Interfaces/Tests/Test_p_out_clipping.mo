@@ -21,7 +21,7 @@ Medium package used in the Test.
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   FlowControl.BasicControlValve basicControlValve(
@@ -58,7 +58,7 @@ Medium package used in the Test.
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100,
       k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));

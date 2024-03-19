@@ -31,7 +31,7 @@ extends Modelica.Icons.Example;
     redeclare package Medium = Medium_liquid,
     r=0.005,
     l=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-80,50})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
@@ -167,7 +167,7 @@ extends Modelica.Icons.Example;
 equation
   connect(multiSensor_Tpm1.inlet, heatExchange_CounterFlowNTU.outletB)
     annotation (Line(
-      points={{70,20},{79,20}},
+      points={{70,20},{80,20}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.outlet, flexVolume.inlet) annotation (Line(
@@ -206,7 +206,7 @@ equation
       thickness=0.5));
   connect(multiSensor_Tpm5.outlet, heatExchange_CounterFlowNTU.inletA)
     annotation (Line(
-      points={{72,8},{78.8,8}},
+      points={{72,8},{80,8}},
       color={28,108,200},
       thickness=0.5));
   connect(sink.inlet, fan.outlet) annotation (Line(
@@ -219,7 +219,7 @@ equation
     annotation (Line(points={{-110,50},{-130,50}}, color={191,0,0}));
   connect(heatExchange_CounterFlowNTU.inletB, multiSensor_Tpm6.outlet)
     annotation (Line(
-      points={{101.2,20},{110,20}},
+      points={{100,20},{110,20}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm6.inlet, flowResistance.outlet) annotation (Line(
@@ -228,7 +228,7 @@ equation
       thickness=0.5));
   connect(heatExchange_CounterFlowNTU.outletA, multiSensor_Tpm7.inlet)
     annotation (Line(
-      points={{101,8},{110,8}},
+      points={{100,8},{110,8}},
       color={28,108,200},
       thickness=0.5));
   connect(fan.inlet, multiSensor_Tpm7.outlet) annotation (Line(
@@ -253,7 +253,7 @@ equation
     annotation (Line(points={{-139,-50},{-122,-50}}, color={0,0,127}));
   connect(gain1.y, feedback.u1)
     annotation (Line(points={{-99,-50},{-88,-50}},   color={0,0,127}));
-  connect(multiSensor_Tpm3.m_flow_out, feedback.u2) annotation (Line(points={{-70,16},{-80,16},{-80,-42}},
+  connect(multiSensor_Tpm3.m_flow_out, feedback.u2) annotation (Line(points={{-68.2,16},{-80,16},{-80,-42}},
                                   color={0,0,127}));
   connect(PI.y, speed.w_ref)
     annotation (Line(points={{-39,-50},{-30,-50},{-30,-30}},

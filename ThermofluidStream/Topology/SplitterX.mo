@@ -1,12 +1,13 @@
 within ThermofluidStream.Topology;
-model SplitterX "Splits a flow into three subflows"
+model SplitterX "Splitter with one inlet and three outlets"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance on each Branch of Component"
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
@@ -20,11 +21,7 @@ model SplitterX "Splits a flow into three subflows"
   SplitterN splitterN(final N=3, final L=L, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
-
   connect(splitterN.inlet, inlet) annotation (Line(
       points={{-32,0},{-100,0}},
       color={28,108,200},
@@ -41,21 +38,29 @@ equation
       points={{-12,-0.666667},{0,-0.666667},{0,-100},{3.55271e-15,-100}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Line(visible= not displayInstanceName,
+          points={{0,0},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,0},{0,20}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,70},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
         Line(
-          points={{-100,0},{0,0}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{0,0},{0,-100}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{0,0},{0,100}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{0,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
@@ -65,16 +70,16 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-20,100},{-60,60}},
+          extent={{-20,120},{-60,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{20,-60},{60,-100}},
+          extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B"),
         Text(
-          extent={{50, 60},{90, 20}},
+          extent={{80,-20},{120,-60}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)));
 end SplitterX;

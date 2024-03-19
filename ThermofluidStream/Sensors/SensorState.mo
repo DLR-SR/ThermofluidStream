@@ -1,24 +1,28 @@
 within ThermofluidStream.Sensors;
-model SensorState "Sensor for whole state"
+model SensorState "Sensor for thermodynamic state"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
-  Interfaces.StateOutput state_out(redeclare package Medium = Medium) "Measured value [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+  Interfaces.StateOutput state_out(redeclare package Medium = Medium) "State output connector"
+    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
 
 equation
   inlet.m_flow = 0;
 
   state_out.state = inlet.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,80},{150,40}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
           extent={{-54,24},{66,-36}},
           lineColor={0,0,0},
@@ -37,8 +41,11 @@ equation
         Text(
           extent={{-60,30},{60,-30}},
           textColor={28,108,200},
-          textString="state")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textString="state"),
+        Line(
+          points={{60,0},{78,0}},
+          color={162,29,33})}),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring the full state.</p>
 <p>This sensor can be connected to a fluid stream without a junction.</p>

@@ -30,8 +30,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+         k=100))
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -39,8 +39,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+         k=100))
     annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
   ThermofluidStream.Boundaries.Reservoir reservoir2(
     redeclare package Medium = Medium,
@@ -67,8 +67,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+         k=100))
     annotation (Placement(transformation(extent={{-32,20},{-12,40}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
@@ -76,8 +76,8 @@ model Reservoir "Test for Reservoir"
     r=0.1,
     l=10,
     redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
-        (k=100))
+        ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+         k=100))
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
     annotation (Placement(transformation(extent={{40,-20},{60,0}})));
@@ -115,8 +115,9 @@ equation
       points={{50,-70},{58,-70}},
       color={28,108,200},
       thickness=0.5));
-  connect(reservoir.pEnv_input, ramp1.y) annotation (Line(points={{10,-60},{10,-32},{-45,-32}}, color={0,0,127}));
-  connect(reservoir2.pEnv_input, ramp.y) annotation (Line(points={{10,40},{10,68},{-45,68}}, color={0,0,127}));
+  connect(reservoir.pEnv_input, ramp1.y) annotation (Line(points={{10,-58},{10,-32},{-45,-32}}, color={0,0,127}));
+  connect(reservoir2.pEnv_input, ramp.y) annotation (Line(points={{10,41.9},{10,68},{-45,68}},
+                                                                                             color={0,0,127}));
 
 annotation (
   experiment(StopTime=10, Tolerance=1e-6, Interval=0.01),
