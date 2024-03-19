@@ -55,10 +55,9 @@ model CounterFlowNTU
       Medium = MediumB, outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{60,20},{40,40}})));
-  inner DropOfCommons dropOfCommons
-    annotation (Placement(transformation(extent={{-156,-98},{-136,-78}})));
-  ThermofluidStream.HeatExchangers.CounterFlowNTU
-                                counterFlowNTU3_1(
+  inner DropOfCommons dropOfCommons(displayInstanceNames=false, displayParameters=false)
+    annotation (Placement(transformation(extent={{-158,-98},{-138,-78}})));
+  ThermofluidStream.HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
@@ -95,15 +94,15 @@ equation
       points={{-116,20},{-100,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm3.outlet, counterFlowNTU3_1.inletB) annotation (Line(
+  connect(multiSensor_Tpm3.outlet, counterFlowNTU.inletB) annotation (Line(
       points={{40,20},{20,20},{20,8},{10,8}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm.outlet, counterFlowNTU3_1.inletA) annotation (Line(
+  connect(multiSensor_Tpm.outlet, counterFlowNTU.inletA) annotation (Line(
       points={{-40,-20},{-20,-20},{-20,-4},{-10,-4}},
       color={28,108,200},
       thickness=0.5));
-  connect(counterFlowNTU3_1.outletA, multiSensor_Tpm1.inlet) annotation (Line(
+  connect(counterFlowNTU.outletA, multiSensor_Tpm1.inlet) annotation (Line(
       points={{10,-4},{20,-4},{20,-20},{40,-20}},
       color={28,108,200},
       thickness=0.5));
@@ -123,7 +122,7 @@ equation
       points={{60,20},{82,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(counterFlowNTU3_1.outletB, mCV.inlet) annotation (Line(
+  connect(counterFlowNTU.outletB, mCV.inlet) annotation (Line(
       points={{-10,8},{-20,8},{-20,20},{-40,20}},
       color={28,108,200},
       thickness=0.5));

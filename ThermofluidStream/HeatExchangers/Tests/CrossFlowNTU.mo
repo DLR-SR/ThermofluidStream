@@ -67,8 +67,7 @@ model CrossFlowNTU
         origin={-10,32})));
   inner DropOfCommons dropOfCommons(displayInstanceNames=false)
     annotation (Placement(transformation(extent={{-156,-98},{-136,-78}})));
-  ThermofluidStream.HeatExchangers.CrossFlowNTU
-                              crossFlowNTU2_1(
+  ThermofluidStream.HeatExchangers.CrossFlowNTU crossFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -107,19 +106,19 @@ model CrossFlowNTU
         rotation=180,
         origin={82,0})));
 equation
-  connect(multiSensor_Tpm3.outlet, crossFlowNTU2_1.inletB) annotation (Line(
+  connect(multiSensor_Tpm3.outlet, crossFlowNTU.inletB) annotation (Line(
       points={{0,22},{0,10},{1.77636e-15,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(crossFlowNTU2_1.outletB, multiSensor_Tpm2.inlet) annotation (Line(
+  connect(crossFlowNTU.outletB, multiSensor_Tpm2.inlet) annotation (Line(
       points={{-1.77636e-15,-10},{-1.77636e-15,-12},{0,-12},{0,-14}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm.outlet, crossFlowNTU2_1.inletA) annotation (Line(
+  connect(multiSensor_Tpm.outlet, crossFlowNTU.inletA) annotation (Line(
       points={{-30,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(crossFlowNTU2_1.outletA, multiSensor_Tpm1.inlet) annotation (Line(
+  connect(crossFlowNTU.outletA, multiSensor_Tpm1.inlet) annotation (Line(
       points={{10,0},{15,0},{15,1.33227e-15},{30,1.33227e-15}},
       color={28,108,200},
       thickness=0.5));
