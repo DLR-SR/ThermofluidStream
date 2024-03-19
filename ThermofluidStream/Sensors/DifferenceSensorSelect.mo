@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.Boundaries.Internal;
+within ThermofluidStream.Undirected.Boundaries.Internal;
 partial model PartialVolumeN "Partial volume with N_fore fore ports and N_rear rear ports"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

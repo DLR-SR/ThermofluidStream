@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model DifferenceTwoPhaseSensorSensorSelect "Sensor for selectable quantatiy difference of two phase media"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

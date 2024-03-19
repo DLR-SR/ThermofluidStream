@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Undirected.Sensors;
+within ThermofluidStream.Undirected.Sensors;
 model SingleSensorSelect "Selectable sensor"
 
   extends Internal.PartialSensor;

@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Boundaries.Internal;
+within ThermofluidStream.Boundaries.Internal;
 partial model PartialVolume "Partial volume with one inlet and one outlet"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
