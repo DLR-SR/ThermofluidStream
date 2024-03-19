@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors.Internal;
+within ThermofluidStream.Sensors.Internal;
 package Types "Types used in the Sensor Package"
 
   extends Modelica.Icons.TypesPackage;
