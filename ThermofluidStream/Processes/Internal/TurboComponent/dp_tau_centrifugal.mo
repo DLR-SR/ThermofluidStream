@@ -44,7 +44,7 @@ protected
 
   SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "Specific volume at inlet";
   SI.DynamicViscosity eta_in = Medium.dynamicViscosity(state_in) "Dynamic viscosity at inlet";
-  SI.KinematicViscosity mu_in = eta_in*v_in "Kinematic viscosity at inlet";
+  SI.KinematicViscosity nu_in = eta_in*v_in "Kinematic viscosity at inlet";
   SI.SpecificVolume v_ref = 1/rho_ref;
 
   SI.Power W_t "Technical work going into pump";
@@ -93,9 +93,9 @@ protected
 
 algorithm
   //limit abs(omega) to effectiveley limit the Re_mod to Re_mod_min
-  omega_hat  := max(Re_mod_min/(omega_s^1.5*f_q^0.75)/r^2*mu_in, abs(omega));
+  omega_hat  := max(Re_mod_min/(omega_s^1.5*f_q^0.75)/r^2*nu_in, abs(omega));
   V_flow_BEP := K_D*omega_hat;
-  Re_mod     := (omega_hat*r^2)/(mu_in)*(omega_s^1.5*f_q^0.75);
+  Re_mod     := (omega_hat*r^2)/(nu_in)*(omega_s^1.5*f_q^0.75);
 
   // compute corresponding volume flow of water and factors
   f_Q    := Re_mod^(-6.7/(Re_mod^0.735));
