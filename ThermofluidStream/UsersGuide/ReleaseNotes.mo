@@ -17,6 +17,10 @@ This section summarizes the changes that have been performed on the library.
     and
     <a href=\"modelica://ThermofluidStream.Undirected.Sensors.SingleSensorSelect\">undirected SingleSensorSelect</a>.
   </li>
+  <li>
+    Added the ability to display class instance names and relevant parameters by a global parameter in <code>dropOfCommons</code>.
+    The parameter can be overwritten on component level (layout tab) to only display the names of selected class instances and/or parameters.
+  </li>
 </ul>
 
 <h4>Version 1.1.0 (2023-10-06)</h4>
