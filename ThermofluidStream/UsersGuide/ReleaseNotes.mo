@@ -9,6 +9,16 @@ class ReleaseNotes "Release notes"
 This section summarizes the changes that have been performed on the library.
 </p>
 
+<h4>Version 1.2.0-dev (202Y-MM-DD)</h4>
+<ul>
+  <li>
+    Velocity of sound can be measured with
+    <a href=\"modelica://ThermofluidStream.Sensors.SingleSensorSelect\">SingleSensorSelect</a>
+    and
+    <a href=\"modelica://ThermofluidStream.Undirected.Sensors.SingleSensorSelect\">undirected SingleSensorSelect</a>.
+  </li>
+</ul>
+
 <h4>Version 1.1.0 (2023-10-06)</h4>
 <ul>
   <li>

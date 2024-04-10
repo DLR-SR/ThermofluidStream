@@ -40,6 +40,8 @@ algorithm
     value := Medium.density(state);
   elseif quantity == Types.Quantities.v_m3pkg then
     value := 1/(max(rho_min, Medium.density(state)));
+  elseif quantity == Types.Quantities.a_mps then
+    value := Medium.velocityOfSound(state);
   elseif quantity == Types.Quantities.cv_JpkgK then
     value := Medium.specificHeatCapacityCv(state);
   elseif quantity == Types.Quantities.cp_JpkgK then

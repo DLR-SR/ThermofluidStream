@@ -106,6 +106,11 @@ model TestSensors "Test model for all sensors."
   SingleSensorSelect singleSensorSelect13(redeclare package Medium = Medium2,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cp_JpkgK)
     annotation (Placement(transformation(extent={{-74,-12},{-54,8}})));
+  SingleSensorSelect singleSensorSelect14(
+    redeclare package Medium = Medium2,
+    outputValue=true,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.a_mps)
+    annotation (Placement(transformation(extent={{-84,28},{-104,48}})));
   MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium2,
     digits=2,
@@ -430,7 +435,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor.inlet, flowResistance.outlet) annotation (Line(
-      points={{20,74},{10,74}},
+      points={{20.4,74},{10,74}},
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor3.outlet, singleFlowSensor4.inlet) annotation (Line(
@@ -557,6 +562,10 @@ equation
   connect(singleSensorX2.inlet, flowResistance2.inlet)
     annotation (Line(
       points={{4,-124},{0,-124},{0,-100},{50,-100}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect14.inlet, source1.outlet) annotation (Line(
+      points={{-84,38},{-78,38},{-78,-6},{-80,-6}},
       color={28,108,200},
       thickness=0.5));
   annotation (experiment(StopTime=1, Tolerance=1e-6, Interval=0.001),
