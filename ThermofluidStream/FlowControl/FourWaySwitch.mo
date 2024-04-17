@@ -38,9 +38,6 @@ model FourWaySwitch
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={0,-100}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
         origin={0,-100})));
   Switch switch(
     redeclare package Medium = Medium,
