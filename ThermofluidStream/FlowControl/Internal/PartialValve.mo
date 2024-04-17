@@ -48,8 +48,8 @@ equation
         Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
-          textColor=dropOfCommons.instanceNameColor)}),                                Diagram(
-        coordinateSystem(preserveAspectRatio=true)),
+          textColor=dropOfCommons.instanceNameColor)}),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Partial implementation of a physical valve.
