@@ -203,7 +203,7 @@ equation
       points={{-10,44},{-10,34},{-2,34}},
       color={28,108,200},
       thickness=0.5));
-  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-90,-40},{-90,-16},{-79.6,-16}},     color={255,0,255}));
+  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-90,-40},{-90,-16},{-79.6,-16}}, color={255,0,255}));
   connect(steamSink.inlet, junctionT2_1.outlet) annotation (Line(
       points={{190,80},{190,54},{160,54}},
       color={28,108,200},
