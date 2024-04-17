@@ -127,7 +127,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor8.inlet, source2_2.outlet) annotation (Line(
-      points={{1.77636e-15,60},{1.77636e-15,66},{0,66},{0,70}},
+      points={{0,60},{0,66},{0,70}},
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor1.inlet, dynamicPressureOutflow.outlet)
