@@ -246,7 +246,7 @@ equation
         points={{56,-60},{40,-60},{40,50}},
         color={0,0,0}));
   connect(fan1.inlet, heatExchange_CounterFlowNTU2.outletA) annotation (Line(
-      points={{66,-50},{66,1.77636e-15}},
+      points={{66,-50},{66,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, junctionT1_1.inletA) annotation (Line(
