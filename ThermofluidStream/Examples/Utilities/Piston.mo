@@ -55,8 +55,8 @@ model Piston "Piston model with steam on both sides"
         origin={100,42},
         rotation=90)));
   Modelica.Mechanics.Translational.Interfaces.Flange_a flange
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={100,0},    rotation=0),
-      iconTransformation(extent={{-10,-10},{10,10}}, origin={100,0},    rotation=0)));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={100,0}, rotation=0),
+      iconTransformation(extent={{-10,-10},{10,10}}, origin={100,0}, rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput x_out(unit="") = x if outputX "Unitless piston position []"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}}, origin={60,-48}, rotation=-90),
       iconTransformation(extent={{-10,-10},{10,10}}, origin={60,-48}, rotation=-90)));
