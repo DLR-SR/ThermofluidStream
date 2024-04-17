@@ -1,25 +1,29 @@
 within ThermofluidStream.Undirected.FlowControl;
-model CheckValve "Valve that allows only positive mass_flow"
-  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=
-        false);
+model CheckValve "Valve to enforce non negative mass flow rates"
 
-  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow"
+  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=false);
+
+  parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure"
+  parameter SI.Pressure p_ref = 1e5 "Reference pressure for regularization"
     annotation(Dialog(tab="Advanced"));
 
 equation
-  //forwards model
+  //Forwards model
   dp_fore = if m_flow < 0 then p_ref*((m_flow/m_flow_ref)^2) else 0;
   h_fore_out = h_rear_in;
   Xi_fore_out = Xi_rear_in;
 
-  //rearwards model
+  //Rearwards model
   dp_rear = - dp_fore; // - because of the inverted direction
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -57,7 +61,7 @@ equation
         Line(
           points={{0,-30},{20,-10}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Undirected implementation of CheckValve.</p>
 <p>Valve that allows positive mass_flow and builds up a large pressure difference against negative mass_flow.</p>

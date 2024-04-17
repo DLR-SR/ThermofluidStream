@@ -1,13 +1,30 @@
 within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
-  extends Internal.PartialNTU;
+
+  extends ThermofluidStream.HeatExchangers.Internal.PartialNTU;
 
 equation
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
   effectiveness = if noEvent(C_r < 1) then (1 - exp(-NTU*(1 - C_r)))/(1 - C_r*exp(-NTU*(1 - C_r))) else NTU/(1 + NTU);
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(visible=d1A,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="A = %A"),
+        Text(visible=d1kNTU,
+          extent={{-150,-90},{150,-120}},
+          textColor={0,0,0},
+          textString="k_NTU = %k_NTU"),
+        Text(visible=d2kNTU,
+          extent={{-150,-130},{150,-160}},
+          textColor={0,0,0},
+          textString="k_NTU = %k_NTU"),
         Rectangle(
           extent={{-70,66},{84,-86}},
           lineColor={215,215,215},
@@ -29,11 +46,11 @@ equation
           color=DynamicSelect({215,215,215}, if T_in_MediumA < T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Text(
-          extent={{-120,-74},{-80,-114}},
+          extent={{-120,0},{-80,-40}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{82,112},{122,72}},
+          extent={{80,40},{120,0}},
           textColor={175,175,175},
           textString="B"),
         Line(
@@ -100,7 +117,7 @@ equation
           points={{50,-28},{60,-24}},
           color=DynamicSelect({215,215,215}, if T_in_MediumA > T_in_MediumB then {238,46,47} else {21,85,157}),
           thickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Basic model of a counter-flow heat exchanger based on the effectiveness-NTU method.</p>
 <p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>

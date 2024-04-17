@@ -1,33 +1,31 @@
 within ThermofluidStream.FlowControl;
 model SpecificValveType "Specific technical valve types"
+
   extends ThermofluidStream.FlowControl.Internal.PartialValve;
 
-  import FlowCoeffType =
-         ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
+  import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
 
   replaceable record zetaValueRecord = Internal.Curves.SlideValveZetaCurve
     constrainedby Internal.Curves.PartialCharacteristicZetaCurves "Select valve type"
-      annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
+    annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
-  parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
+  parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient"
+    annotation(Dialog(group = "Valve parameters"));
   //Set valve data as parameter
-  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter" annotation (
-      Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient
-           == FlowCoeffType.flowDiameter)));
+  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter"
+    annotation (Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)" annotation(Evaluate = true,
-    Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.
-          Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s" annotation(Evaluate = true,
-  Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
+  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+  parameter SI.MassFlowRate m_flow_ref_set "Reference mass flow rate"
+    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2
-    "Cross-sectional valve area";
+  Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional area";
   constant zetaValueRecord valveData;
 
   SI.VolumeFlowRate V_flow_ref=
@@ -49,19 +47,19 @@ protected
 
 equation
 
-  //Calculate reference mass flow from reference volume flow
+  //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
 
-  //Retrieving zeta value from actuation signal
+  //Retrieving pressure loss coefficient from actuation signal
   combiTable1D_zeta.u = u;
   zeta = combiTable1D_zeta.y[1];
 
-  //Evaluate characteristic for given zeta curve
+  //Evaluate characteristic for given pressure loss curve
   k_u_zeta = sqrt(zeta1/zeta);
 
   k_u = k_min + (1 - k_min)*k_u_zeta;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-100,0},{-40,0}},
           color={28,108,200},
@@ -72,8 +70,8 @@ equation
           thickness=0.5,
           pattern=LinePattern.Dash),
         Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
+          points={{0,0},{0,80}},
+          color={0,0,127},
           thickness=0.5),
         Line(
           points={{40,0},{100,0}},
@@ -94,7 +92,7 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This valve models the behavior of specific valve types.</p>
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>

@@ -1,46 +1,56 @@
 within ThermofluidStream.Sensors;
-model SingleFlowSensor
-  "Sensor for a selectable quantity associated with the massflow"
+model SingleFlowSensor "Flow rate sensor"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
   import Quantities=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model"
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter Quantities quantity "Quantity the sensor measures";
+  parameter Quantities quantity "Measured quantity";
+
+  final parameter String quantityString=
+    if quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps then "m_flow in kg/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_gps then "m_flow in g/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps then "V_flow in m3/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin then "V_flow in l/min"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps then "H_flow in J/s"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in J/(K.s)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in J/(K.s)"
+    else "error";
+
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter Boolean outputValue = false "Enable sensor-value output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=outputValue));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real value_0(unit=Internal.getFlowUnit(quantity)) = 0 "Initial output state of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=outputValue and filter_output));
+  parameter Boolean outputValue = false "= true, if sensor output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real value_0(unit=Internal.getFlowUnit(quantity)) = 0 "Start value of sensor output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-120,-80},{-80,-40}}),
-        iconTransformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
+        iconTransformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{80,-80},{120,-40}}),
-        iconTransformation(extent={{80,-80},{120,-40}})));
-  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Measured quantity [variable]"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
+  Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Sensor output connector"
+    annotation (Placement(transformation(extent={{70,50},{90,70}}),
+        iconTransformation(extent={{70,50},{90,70}})));
 
   output Real value(unit=Internal.getFlowUnit(quantity));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
   Real direct_value(unit=Internal.getFlowUnit(quantity));
   output SI.MassFlowRate m_flow = inlet.m_flow;
 
@@ -69,40 +79,47 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-25},{150,-65}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-54,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-100,-60},{100,-60}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{0,-26},{0,-60}}, color={0,0,0}),
+        Line(points={{0,34},{0,0}},    color={0,0,0}),
         Ellipse(
-          extent={{-6,-54},{6,-66}},
+          extent={{-6,6},{6,-6}},
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,90},{60,30}},
           textColor={28,108,200},
           textString=DynamicSelect("value", String(
               value,
               format="1."+String(digits)+"f"))),
         Text(
-          extent={{0,25},{60,75}},
-          textColor={175,175,175},
-          textString="%quantity")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+          extent={{-150,130},{150,100}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Line(visible=outputValue,
+          points={{60,60},{78,60}},
+          color={0,0,127})}),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>A sensor measuring a selectable flow quantity associated with the massflow.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>

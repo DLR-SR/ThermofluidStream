@@ -1,15 +1,15 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectRearOutlet
-  "Directed/undirected connector with rear and outlet"
+model ConnectRearOutlet "Connects rear port to outlet"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to outlet and port of the Connector.</p>
 </html>"));
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
-  parameter Boolean useDefaultStateAsRear = false "Use Default Medium states as state_rearwards";
+  parameter Boolean useDefaultStateAsRear = false "= true, if default medium state is used for rear.state_rearwards";
 
   Interfaces.Rear rear(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
@@ -22,12 +22,13 @@ model ConnectRearOutlet
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
-        origin={0,40})));
+        origin={0,40}), iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=270,
+        origin={0,-40})));
 
 protected
-  outer DropOfCommons dropOfCommons;
-
-  SI.Pressure r_rear, r_outlet;
+  SI.Pressure r_rear, r_outlet "Inertial pressures";
 
 equation
   outlet.state = rear.state_forwards;
@@ -44,19 +45,20 @@ equation
 
   annotation (Icon(
       graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Line(
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5),
-        Line(points={{2,58},{0,58}}, color={28,108,200}),
-        Line(
-          points={{0,0},{0,60}},
-          color={162,29,33},
-          arrow={Arrow.Filled,Arrow.None},
-          arrowSize = 20)},
-      coordinateSystem(preserveAspectRatio=false)),
+        Line(visible = not useDefaultStateAsRear,
+          points={{0,0},{0,-60}},
+          color={162,29,33})},
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect a unidirectional inlet to a undirected fore port. </p>
 <p>The state from the forward direction of the rear port is handed to the outlet, the total pressure as well as the massflow of outlet and port are set equal. </p>

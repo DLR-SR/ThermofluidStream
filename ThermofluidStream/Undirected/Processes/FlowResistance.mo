@@ -2,45 +2,48 @@ within ThermofluidStream.Undirected.Processes;
 model FlowResistance "Flow resistance model"
   extends Interfaces.SISOBiFlow(final L=if computeL then l/(r^2*pi) else L_value, final clip_p_out=true);
 
-  import Modelica.Constants.pi "Constant Pi";
+  import Modelica.Constants.pi "Constant number pi";
 
-  parameter SI.Radius r(min=0) "Radius of pipe";
-  parameter SI.Length l(min=0) "Length of pipe";
-  parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance of pipe"
-    annotation(Dialog(enable=not computeL, tab="Advanced"));
-  parameter Boolean computeL = true "Compute L from r and l"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
-    annotation(Dialog(tab="Advanced"));
-
-  replaceable function pLoss =
-      ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
-    constrainedby
-    ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss "Pressure loss function"
+  parameter SI.Radius r(min=0) "Radius";
+  parameter SI.Length l(min=0) "Length";
+  replaceable function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
+    constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
+    "Pressure loss function"
     annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>Pressure loss function used in the flow resistance.</p>
 </html>"));
 
-protected
-  SI.Density rho_rear_in = max(rho_min, Medium.density(rear.state_forwards)) "density of medium entering";
-  SI.DynamicViscosity mu_rear_in = Medium.dynamicViscosity(rear.state_forwards) "dynamic viscosity of medium entering";
+  parameter Boolean computeL = true "= true, if inertance L is computed from the geometry"
+    annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
+    annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
+  parameter SI.Density rho_min = dropOfCommons.rho_min "Minium inlet density"
+    annotation(Dialog(tab="Advanced"));
 
-  SI.Density rho_fore_in = max(rho_min, Medium.density(fore.state_rearwards)) "density of medium entering";
-  SI.DynamicViscosity mu_fore_in = Medium.dynamicViscosity(fore.state_rearwards) "dynamic viscosity of medium entering";
+protected
+  SI.Density rho_rear_in = max(rho_min, Medium.density(rear.state_forwards)) "Inlet density of rear port";
+  SI.DynamicViscosity mu_rear_in = Medium.dynamicViscosity(rear.state_forwards) "Inlet dynamic viscosity of rear port";
+
+  SI.Density rho_fore_in = max(rho_min, Medium.density(fore.state_rearwards)) "Inlet density of fore port";
+  SI.DynamicViscosity mu_fore_in = Medium.dynamicViscosity(fore.state_rearwards) "Inlet dynamic viscosity of fore port";
 
 equation
-  //forwards model
+  //Forwards model
   dp_fore = -pLoss(m_flow, rho_rear_in, mu_rear_in, r, l);
   h_fore_out = h_rear_in;
   Xi_fore_out = Xi_rear_in;
 
-  //rearwards model
+  //Rearwards model
   dp_rear = -pLoss(-m_flow, rho_fore_in, mu_fore_in, r, l);
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,120},{150,80}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -74,7 +77,7 @@ equation
           thickness=0.5,
           smooth=Smooth.Bezier,
           origin={0,25},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Undirected implementation of the FlowResistance with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
 </html>"));

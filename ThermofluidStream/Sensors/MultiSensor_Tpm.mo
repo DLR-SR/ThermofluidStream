@@ -1,5 +1,8 @@
 within ThermofluidStream.Sensors;
-model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
+model MultiSensor_Tpm "Sensor for Temperature, pressure and mass flow rate"
+
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
@@ -8,44 +11,50 @@ model MultiSensor_Tpm "Sensor for Temperature, pressure and mass-flow"
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Unit for temperature measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter ThermofluidStream.Sensors.Internal.Types.MassFlowUnit massFlowUnit = "(kg/s)" "Unit for mass-flow measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.MassFlowUnit massFlowUnit = "(kg/s)" "Mass flow rate unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter Boolean outputTemperature = false "Enable temperature output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean outputPressure = false "Enable pressure output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean outputMassFlowRate = false "Enable massFlow output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure or outputMassFlowRate)));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(Dialog(tab="Initialization", enable=filter_output));
-  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Initial output massflow of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure or outputMassFlowRate) and filter_output));
+  final parameter String temperatureString=
+    if temperatureUnit == "K" then "K"
+    elseif temperatureUnit == "degC" then "°C"
+    else "error";
+  final parameter String massFlowString=
+    if massFlowUnit == "(kg/s)" then "kg/s"
+    elseif massFlowUnit == "(g/s)" then "g/s"
+    else "error";
+  parameter Boolean outputTemperature = false "= true, if temperature output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean outputPressure = false "= true, if pressure output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean outputMassFlowRate = false "= true, if mass flow rate output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure or outputMassFlowRate)),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+  parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Start value for mass flow rate output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-120},{-80,-80}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{80,-120},{120,-80}})));
-  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{80,40},{120,80}})));
-  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Measured pressure [variable]"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
-  Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate "Measured massflow [kg/s]"
-    annotation (Placement(transformation(extent={{80,-80},{120,-40}})));
+  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature output connector"
+    annotation (Placement(transformation(extent={{72,50},{92,70}})));
+  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure output connector"
+    annotation (Placement(transformation(extent={{72,-10},{92,10}})));
+  Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate "Mass flow rate output connector"
+    annotation (Placement(transformation(extent={{72,-70},{92,-50}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -100,7 +109,41 @@ equation
     m_flow = direct_m_flow;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+         Text(visible=displayInstanceName,
+          extent={{-150,-160},{150,-120}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+         Text(visible=not outputTemperature,
+          extent={{150,70},{68,40}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputPressure,
+          extent={{150,20},{68,-10}},
+          textColor={0,0,0},
+          textString=pressureUnit,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputMassFlowRate,
+          extent={{150,-30},{68,-60}},
+          textColor={0,0,0},
+          textString=massFlowString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputTemperature,
+          extent={{150,98},{75,68}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputPressure,
+          extent={{150,38},{75,8}},
+          textColor={0,0,0},
+          textString=pressureUnit,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputMassFlowRate,
+          extent={{150,-20},{75,-50}},
+          textColor={0,0,0},
+          textString=massFlowString,
+          horizontalAlignment=TextAlignment.Left),
         Rectangle(
           extent={{-54,74},{66,-86}},
           lineColor={0,0,0},
@@ -141,19 +184,16 @@ equation
           textString=DynamicSelect("m", String(
               m_flow,
               format="1."+String(digits)+"f"))),
-        Text(
-          extent={{-120,80},{-60,28}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,32},{-60,-20}},
-          textColor={175,175,175},
-          textString="%pressureUnit"),
-        Text(
-          extent={{-120,-20},{-60,-72}},
-          textColor={175,175,175},
-          textString="%massFlowUnit")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+        Line(visible=outputTemperature,
+          points={{60,60},{78,60}},
+          color={0,0,127}),
+        Line(visible=outputPressure,
+          points={{60,0},{78,0}},
+          color={0,0,127}),
+        Line(visible=outputMassFlowRate,
+          points={{60,-60},{78,-60}},
+          color={0,0,127})}),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring temperature, pressure and massflow at once.</p>
 <p>This sensor must be included into the fluid stream, since it measures massflow. </p>

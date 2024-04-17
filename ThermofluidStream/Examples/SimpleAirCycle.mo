@@ -109,12 +109,12 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         rotation=90,
         origin={0,-40})));
   Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=90,
         origin={20,-94})));
   ThermofluidStream.Topology.JunctionT1
                       junctionT1_2(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=270,
         origin={0,60})));
   Topology.SplitterT1 splitterT1_2(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
@@ -166,39 +166,39 @@ initial equation
 equation
   connect(heatExchange_CounterFlowNTU.outletA, heatExchange_CounterFlowNTU1.inletA)
     annotation (Line(
-      points={{-66,29},{-66,-8.8}},
+      points={{-66,30},{-66,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(heatExchange_CounterFlowNTU1.outletB, compressor.inlet)
     annotation (Line(
-      points={{-54,-9},{-54,0}},
+      points={{-54,-10},{-54,0}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outlet, heatExchange_CounterFlowNTU.inletB)
     annotation (Line(
-      points={{-54,20},{-54,28.8}},
+      points={{-54,20},{-54,30}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine.flange, compressor.flange)
     annotation (Line(points={{-40,50},{-40,10},{-44,10}},
         color={0,0,0}));
   connect(turbine.inlet, heatExchange_CounterFlowNTU.outletB) annotation (Line(
-      points={{-50,60},{-54,60},{-54,51}},
+      points={{-50,60},{-54,60},{-54,50}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine1.inlet, heatExchange_CounterFlowNTU2.outletB) annotation (
       Line(
-      points={{50,60},{54,60},{54,21}},
+      points={{50,60},{54,60},{54,20}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT1_1.outletA, heatExchange_CounterFlowNTU1.inletB)
     annotation (Line(
-      points={{-10,-40},{-54,-40},{-54,-31.2}},
+      points={{-10,-40},{-54,-40},{-54,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT1_1.outletB, heatExchange_CounterFlowNTU2.inletB)
     annotation (Line(
-      points={{10,-40},{54,-40},{54,-1.2}},
+      points={{10,-40},{54,-40},{54,5.32907e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet, splitterT1_1.inlet) annotation (Line(
@@ -210,7 +210,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sink1.inlet,junctionT1_2. outlet) annotation (Line(
-      points={{100,110},{1.77636e-15,110},{1.77636e-15,70}},
+      points={{100,110},{0,110},{0,70}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine1.outlet,junctionT1_2. inletA) annotation (Line(
@@ -227,16 +227,16 @@ equation
       thickness=0.5));
   connect(splitterT1_2.outletB, heatExchange_CounterFlowNTU.inletA) annotation (
      Line(
-      points={{-40,90},{-66,90},{-66,51.2}},
+      points={{-40,90},{-66,90},{-66,50}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterT1_2.outletA, heatExchange_CounterFlowNTU2.inletA)
     annotation (Line(
-      points={{-20,90},{66,90},{66,21.2}},
+      points={{-20,90},{66,90},{66,20}},
       color={28,108,200},
       thickness=0.5));
   connect(fan.inlet, heatExchange_CounterFlowNTU1.outletA) annotation (Line(
-      points={{-66,-50},{-66,-31}},
+      points={{-66,-50},{-66,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(fan.flange, turbine.flange) annotation (Line(
@@ -246,7 +246,7 @@ equation
         points={{56,-60},{40,-60},{40,50}},
         color={0,0,0}));
   connect(fan1.inlet, heatExchange_CounterFlowNTU2.outletA) annotation (Line(
-      points={{66,-50},{66,-1}},
+      points={{66,-50},{66,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, junctionT1_1.inletA) annotation (Line(

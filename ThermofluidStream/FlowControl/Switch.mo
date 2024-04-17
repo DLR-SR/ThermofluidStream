@@ -1,18 +1,20 @@
 within ThermofluidStream.FlowControl;
 model Switch
 
-  replaceable package Medium =
-      ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation(choicesAllMatching=true);
 
-  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance of the flow"
-    annotation(Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow";
+  parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
-  parameter Boolean invertInput = false "Invert input meaning";
-  parameter Boolean initializeOneMassflowSplit = false "Initialize mass-flow ratio (one initial equation)"
-    annotation(Dialog(tab="Initialization"));
+  parameter Boolean invertInput = false "=true, if input single is inverted"
+    annotation (Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean initializeOneMassflowSplit = false "= true, if mass flow rate ratio is initialized"
+    annotation(Dialog(tab="Initialization"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
+    annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
@@ -22,8 +24,10 @@ model Switch
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
 
   Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80}),
-      iconTransformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-130}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120})));
 
   ThermofluidStream.FlowControl.TanValve tanValve(redeclare package Medium = Medium,
                                                   final invertInput=invertInput,
@@ -51,7 +55,6 @@ model Switch
   Real u2 = (if not invertInput then u else 1-u);
 
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
   constant Real delta(unit="1") = 0.1;
 
 initial equation
@@ -85,10 +88,14 @@ equation
       points={{6.66134e-16,50},{0,50},{0,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-80}}, color={0,0,127}));
-  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-80}}, color={0,0,127}));
+  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-130}},color={0,0,127}));
+  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-130}},color={0,0,127}));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible= displayInstanceName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -116,5 +123,5 @@ equation
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=true)));
 end Switch;

@@ -1,32 +1,37 @@
 within ThermofluidStream.Undirected.Boundaries;
-model Reservoir "Model of a reservoir"
+model Reservoir "Simple open tank model"
+
   extends Internal.PartialVolume(final useHeatport=false, final initialize_pressure=false, final A=0, final U=0);
 
-  parameter Boolean pEnvFromInput = false "Enable input";
-  parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area of medium";
-  parameter SI.Pressure p_env_par=1e5 "Environmental pressure"
-    annotation(Dialog(enable=not pEnvFromInput));
-  parameter SI.Height height_0(displayUnit="cm")=0.1 "Initial height of medium"
+  parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector is enabled"
+    annotation(Dialog(group="Environmental pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Pressure p_env_par=1e5 "Environmental pressure set value"
+    annotation(Dialog(group="Environmental pressure",enable=not pEnvFromInput));
+  parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area";
+  parameter SI.Height height_0(displayUnit="cm")=0.1 "Start value of tank level"
     annotation(Dialog(tab="Initialization"));
-  parameter SI.Acceleration g = dropOfCommons.g "Acceleration of gravity";
-  parameter SI.Height height_min = 0.01 "Minimum height of fluid in reservoir; should be above 0"
+  parameter SI.Acceleration g = dropOfCommons.g "Gravitational acceleration";
+  parameter SI.Height height_min = 0.01 "Minimum tank level"
     annotation(Dialog(tab="Advanced"));
 
-  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure [Pa]"
+  Modelica.Blocks.Interfaces.RealInput pEnv_input(unit="Pa") = p_env if pEnvFromInput "Environmental pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,100})));
+        origin={0,100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
 
-  SI.Height height;
+  SI.Height height "Tank level";
 
 protected
-  SI.Pressure p_env;
+  SI.Pressure p_env "Environmental pressure";
 
 initial equation
   height = height_0;
 
 equation
-  assert(height > height_min, "Reservoir fill height must be greater than height_min", dropOfCommons.assertionLevel);
+  assert(height > height_min, "Tank level must be greater than height_min", dropOfCommons.assertionLevel);
 
   density_derp_h = 1/(height*g);
 
@@ -41,34 +46,91 @@ equation
   state_out_rear = medium.state;
   state_out_fore = medium.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Rectangle(
+          extent={{-62,98},{64,12}},
+          lineColor={28,108,200},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+       Text(visible=displayInstanceName,
+          extent={{-150,60},{150,100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Line(visible= not displayInstanceName and pEnvFromInput, points={{0,60},{0,100}}, color={0,0,127}),
+        Ellipse(
+          extent={{-56,52},{64,-8}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-58,22},{64,-56}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-56,-28},{64,-88}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,-20},{60,-80}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-60,28},{60,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-60,28},{-60,-52}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{60,28},{60,-52}},
+          color={28,108,200},
+          thickness=0.5),
        Ellipse(
-          extent={{-54,-26},{54,26}},
+          extent={{-54,-46},{54,6}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Backward),
-        Line(
-          points={{0,-56}, {0,4}},
-          color={28,108,200},
-          thickness=0.5),
         Polygon(
-          points={{0,-56},{20,-36},{-20,-36}},
+          points={{0,-12},{20,-32},{-20,-32}},
           fillPattern=FillPattern.Solid,
           fillColor={28,108,200},
           pattern=LinePattern.None),
+        Line(
+          points={{0,-72},{0,-12}},
+          color={28,108,200},
+          thickness=0.5),
         Polygon(
-          points={{0,4},{20,-16},{-20,-16}},
+          points={{0,-74},{20,-54},{-20,-54}},
           fillPattern=FillPattern.Solid,
           fillColor={28,108,200},
           pattern=LinePattern.None),
         Ellipse(
-          extent={{-60,80},{60,20}},
+          extent={{-60,60},{60,0}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),
-            Diagram(coordinateSystem(preserveAspectRatio=false)),
+            Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 This is a volume, that is open at the top and therefore maintains environmental

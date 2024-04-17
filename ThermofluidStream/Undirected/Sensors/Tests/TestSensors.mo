@@ -21,28 +21,28 @@ model TestSensors "Test for the undirected sensors"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=100,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-40,-8},{-20,12}})));
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   Boundaries.BoundaryRear boundary_rear(
     redeclare package Medium = Medium,
     T0_par=373.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={-120,2})));
+        origin={-120,0})));
   Boundaries.BoundaryFore boundary_fore(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=303.15,
-    p0_par=110000) annotation (Placement(transformation(extent={{84,-8},{104,12}})));
+    p0_par=110000) annotation (Placement(transformation(extent={{84,-10},{104,10}})));
   inner DropOfCommons dropOfCommons(m_flow_reg=0.01)
     annotation (Placement(transformation(extent={{-130,22},{-110,42}})));
   Modelica.Blocks.Sources.Step step(
     height=-80000,
     offset=140000,
     startTime=5)
-    annotation (Placement(transformation(extent={{120,-4},{108,8}})));
+    annotation (Placement(transformation(extent={{120,0},{108,12}})));
   MultiSensor_Tpm multiSensor_Tpm(redeclare package Medium = Medium,
     temperatureUnit="degC",
     pressureUnit="bar",
@@ -50,44 +50,44 @@ model TestSensors "Test for the undirected sensors"
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
   SingleSensorSelect singleSensorSelect(redeclare package Medium = Medium,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar)
-    annotation (Placement(transformation(extent={{-10,0},{10,20}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   UnidirectionalSensorAdapter unidirectionalSensorAdapter(
     redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{20,0},{40,8}})));
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect sensor_vaporQuality1(
     redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation (Placement(transformation(extent={{50,12},{70,32}})));
+    annotation (Placement(transformation(extent={{50,28},{70,8}})));
   SingleFlowSensor singleFlowSensor(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps)
-    annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
+    annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   TwoPhaseSensorSelect sensor_vaporQuality2(
     redeclare package Medium2Phase = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
-    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,0},{70,20}})));
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=100,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-40,52},{-20,72}})));
+    annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
   Boundaries.BoundaryRear boundary_rear1(
     redeclare package Medium = Medium,
     T0_par=373.15,
     p0_par=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={-120,62})));
+        origin={-120,60})));
   Boundaries.BoundaryFore boundary_fore1(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=303.15,
-    p0_par=110000) annotation (Placement(transformation(extent={{84,52},{104,72}})));
+    p0_par=110000) annotation (Placement(transformation(extent={{80,50},{100,70}})));
   Modelica.Blocks.Sources.Step step1(
     height=-80000,
     offset=140000,
     startTime=5)
-    annotation (Placement(transformation(extent={{120,56},{108,68}})));
+    annotation (Placement(transformation(extent={{120,60},{108,72}})));
   MultiSensor_Tpm multiSensor_Tpm1(
     redeclare package Medium = Medium,
     temperatureUnit="degC",
@@ -101,27 +101,29 @@ model TestSensors "Test for the undirected sensors"
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
     filter_output=true,
     init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
-    value_0=1) annotation (Placement(transformation(extent={{-10,60},{10,80}})));
+    value_0=1) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Medium,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps,
-    filter_output=true) annotation (Placement(transformation(extent={{-70,60},{-50,80}})));
+    filter_output=true) annotation (Placement(transformation(extent={{-70,50},{-50,70}})));
   TwoPhaseSensorSelect sensor_vaporQuality4(
     redeclare package Medium2Phase = Medium,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
     filter_output=true,
-    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,60},{70,80}})));
+    redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,50},{70,70}})));
   UnidirectionalSensorAdapter unidirectionalSensorAdapter1(
     redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{20,64},{40,56}})));
+    annotation (Placement(transformation(extent={{20,70},{40,50}})));
   ThermofluidStream.Sensors.DifferenceTwoPhaseSensorSensorSelect differenceTwoPhaseSensorSensorSelect(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa,
     outputValue=true,
-    filter_output=true) annotation (Placement(transformation(extent={{50,52},{70,32}})));
+    filter_output=true) annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+        rotation=90,
+        origin={30,34})));
   Boundaries.BoundaryRear boundary_rear2(
     redeclare package Medium = Medium2,
     T0_par=373.15,
@@ -141,102 +143,100 @@ model TestSensors "Test for the undirected sensors"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=100,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
-  SingleSensorX singleSensorX(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{-100,-32},{-80,-12}})));
+    annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
+  SingleSensorX singleSensorX(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
   SingleSensorX singleSensorX1(
     redeclare package Medium = Medium2,
     digits=2,
     outputValue=true,
     filter_output=true,
-    row=2) annotation (Placement(transformation(extent={{-70,-32},{-50,-12}})));
-  SensorState sensorState(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{20,-32},{40,-12}})));
+    row=2) annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
+  SensorState sensorState(redeclare package Medium = Medium2) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
 equation
   connect(step.y, boundary_fore.p0_var)
-    annotation (Line(points={{107.4,2},{102,2},{102,8},{96,8}},
-                                                   color={0,0,127}));
+    annotation (Line(points={{107.4,6},{96,6}},    color={0,0,127}));
   connect(singleSensorSelect.rear, flowResistance.fore) annotation (Line(
-      points={{-10,2},{-20,2}},
+      points={{-10,0},{-20,0}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect.fore, unidirectionalSensorAdapter.rear)
     annotation (Line(
-      points={{10,2},{20,2}},
+      points={{10,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
   connect(sensor_vaporQuality1.inlet, unidirectionalSensorAdapter.outlet)
     annotation (Line(
-      points={{50,22},{30,22},{30,6}},
+      points={{50,18},{30,18},{30,10}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.fore, singleFlowSensor.rear) annotation (Line(
-      points={{-80,2},{-70,2}},
+      points={{-80,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.rear, singleFlowSensor.fore) annotation (Line(
-      points={{-40,2},{-50,2}},
+      points={{-40,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
   connect(unidirectionalSensorAdapter.fore, sensor_vaporQuality2.rear)
     annotation (Line(
-      points={{40,2},{50,2}},
+      points={{40,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_fore.rear, sensor_vaporQuality2.fore)
     annotation (Line(
-      points={{84,2},{70,2}},
+      points={{84,0},{70,0}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_rear.fore, multiSensor_Tpm.rear) annotation (Line(
-      points={{-110,2},{-100,2}},
+      points={{-110,-8.88178e-16},{-106,-8.88178e-16},{-106,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{107.4,62},{102,62},{102,68},{96,68}},
-                                                                                          color={0,0,127}));
+  connect(step1.y, boundary_fore1.p0_var) annotation (Line(points={{107.4,66},{92,66}},   color={0,0,127}));
   connect(singleSensorSelect1.rear, flowResistance1.fore)
     annotation (Line(
-      points={{-10,62},{-20,62}},
+      points={{-10,60},{-20,60}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.fore, singleFlowSensor1.rear)
     annotation (Line(
-      points={{-80,62},{-70,62}},
+      points={{-80,60},{-70,60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.rear, singleFlowSensor1.fore)
     annotation (Line(
-      points={{-40,62},{-50,62}},
+      points={{-40,60},{-50,60}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_fore1.rear, sensor_vaporQuality4.fore)
     annotation (Line(
-      points={{84,62},{70,62}},
+      points={{80,60},{70,60}},
       color={28,108,200},
       thickness=0.5));
   connect(boundary_rear1.fore, multiSensor_Tpm1.rear)
     annotation (Line(
-      points={{-110,62},{-100,62}},
+      points={{-110,60},{-100,60}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect1.fore, unidirectionalSensorAdapter1.rear)
     annotation (Line(
-      points={{10,62},{20,62}},
+      points={{10,60},{20,60}},
       color={28,108,200},
       thickness=0.5));
   connect(unidirectionalSensorAdapter1.fore, sensor_vaporQuality4.rear)
     annotation (Line(
-      points={{40,62},{50,62}},
+      points={{40,60},{50,60}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceTwoPhaseSensorSensorSelect.inletA, unidirectionalSensorAdapter.outlet)
     annotation (Line(
-      points={{50.4,38},{30,38},{30,6}},
+      points={{30,24},{30,10}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceTwoPhaseSensorSensorSelect.inletB, unidirectionalSensorAdapter1.outlet)
     annotation (Line(
-      points={{50.4,46},{30,46},{30,58}},
+      points={{30,44},{30,50}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorX.rear, boundary_rear2.fore) annotation (Line(
@@ -244,7 +244,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.rear, singleSensorX1.fore) annotation (Line(
-      points={{-38,-30},{-50,-30}},
+      points={{-40,-30},{-50,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorX1.rear, singleSensorX.fore) annotation (Line(
@@ -252,7 +252,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.fore, sensorState.rear) annotation (Line(
-      points={{-18,-30},{20,-30}},
+      points={{-20,-30},{20,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorState.fore, boundary_fore2.rear) annotation (Line(

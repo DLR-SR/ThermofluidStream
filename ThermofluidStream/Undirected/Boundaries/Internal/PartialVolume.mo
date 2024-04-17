@@ -1,45 +1,52 @@
 within ThermofluidStream.Undirected.Boundaries.Internal;
-partial model PartialVolume "Partial parent class for Volumes with one fore and one rear"
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (
+partial model PartialVolume "Partial volume with one fore port and one rear port"
+
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (
       choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Volume. Make sure it is the same as
 the fores and rears the volume is connected to.
 </p>
 </html>"));
+  parameter Boolean useHeatport = false "=true, if heatport is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean useRear = true "= true, if rear port is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean useFore = true "= true, if fore port is enabled"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Area A = 1 "Heat transfer area"
+    annotation(Dialog(enable=useHeatport));
+  parameter SI.CoefficientOfHeatTransfer U = 200 "Thermal transmittance"
+    annotation(Dialog(enable=useHeatport));
 
-  parameter Boolean useHeatport = false "If true heatport is added";
-  parameter Boolean useRear = true "If true rear is added";
-  parameter Boolean useFore = true "If true fore is added";
-  parameter SI.Area A = 1 "Contact area of volume with medium"
-    annotation(Dialog(enable=useHeatport));
-  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
-    annotation(Dialog(enable=useHeatport));
-  parameter Boolean initialize_pressure = true "If true: initialize Pressure"
-    annotation(Dialog(tab= "Initialization"));
-  parameter SI.Pressure p_start = Medium.p_default "Initial Pressure"
-    annotation(Dialog(tab= "Initialization", enable=initialize_pressure));
-  parameter Boolean initialize_energy = true "Initialize specific inner energy with temperature or specific enthalpy condition"
-    annotation(Dialog(tab= "Initialization"));
-  parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
-  parameter Boolean use_hstart = false "True: specific enthalpy condition instead of temperature"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy));
-  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
-    annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
-  parameter Boolean initialize_Xi = true "If true: initialize mass fractions"
-     annotation(Dialog(tab= "Initialization"));
-  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
-    annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance at inlet and outlet"
+  parameter Boolean initialize_pressure = true "=true, if pressure is initialized"
+    annotation(Dialog(tab= "Initialization",group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Pressure p_start = Medium.p_default "Initial pressure set value"
+    annotation(Dialog(tab= "Initialization",group="Pressure", enable=initialize_pressure));
+  parameter Boolean initialize_energy = true "= true, if internal energy is initialized"
+    annotation(Dialog(tab= "Initialization",group="Temperature"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Temperature T_start = Medium.T_default "Initial Temperature set value"
+    annotation(Dialog(tab= "Initialization",group="Temperature", enable=initialize_energy and (not use_hstart)));
+  parameter Boolean initialize_Xi = true "=true, if mass fractions are iinitialized"
+    annotation(Dialog(tab= "Initialization",group="Mass fractions"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fractions set values"
+    annotation(Dialog(tab= "Initialization",group="Mass fractions", enable=initialize_Xi));
+  parameter Boolean use_hstart = false "=true, if internal energy is initialized with specific enthalpy"
+    annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy set value"
+    annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy and use_hstart));
+
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of rear/fore ports"
     annotation (Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter Real k_volume_damping(unit="1") = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
-  parameter Boolean usePreferredMediumStates=false "Use medium states instead of the ones differentiated in this component"
-    annotation(Dialog(tab="Advanced"));
+  parameter Boolean usePreferredMediumStates=false "=true, if preferred medium states are used"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) if useHeatport
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
@@ -52,44 +59,42 @@ the fores and rears the volume is connected to.
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
-  SI.Volume V;
+  SI.Volume V "Volume";
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
-  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d;
-  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi;
-  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u;
+  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d "Mass";
+  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi "Mases of species";
+  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u "Internal energy";
 
-  SI.HeatFlowRate Q_flow;
-  SI.Power W_v;
+  SI.HeatFlowRate Q_flow "Heat flow rate";
+  SI.Power W_v "Work due to change in volume (Volumenänderungsarbeit)";
 
 protected
-  outer DropOfCommons dropOfCommons;
-
-  SI.Temperature T_heatPort;
+  SI.Temperature T_heatPort "Heat port temperature";
 
   //if port.m_flow > 0 -> it is sink (r=medium.p-p_in) else it is source (r=0)
-  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg);
-  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg);
+  SI.Pressure r_rear_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_rear, medium.p - Medium.pressure(state_in_rear), 0, m_flow_reg) "Rear port inertial pressure";
+  SI.Pressure r_fore_intern = ThermofluidStream.Undirected.Internal.regStep(m_flow_fore, medium.p - Medium.pressure(state_in_fore), 0, m_flow_reg) "Fore port inertial pressure";
   // dont regstep variables that are only in der(state), to increase accuracy
-  SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear;
-  SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore;
-  SI.MassFlowRate Xi_flow_rear[Medium.nXi] = (if m_flow_rear >= 0 then Medium.massFraction(state_in_rear) else Xi_out_rear) * m_flow_rear;
-  SI.MassFlowRate Xi_flow_fore[Medium.nXi] = (if m_flow_fore >= 0 then Medium.massFraction(state_in_fore) else Xi_out_fore) * m_flow_fore;
+  SI.EnthalpyFlowRate H_flow_rear = (if m_flow_rear >= 0 then Medium.specificEnthalpy(state_in_rear) else h_out_rear) * m_flow_rear "Rear port enthalpy flow rate";
+  SI.EnthalpyFlowRate H_flow_fore = (if m_flow_fore >= 0 then Medium.specificEnthalpy(state_in_fore) else h_out_fore) * m_flow_fore "Fore port enthalpy flow rate";
+  SI.MassFlowRate Xi_flow_rear[Medium.nXi] = (if m_flow_rear >= 0 then Medium.massFraction(state_in_rear) else Xi_out_rear) * m_flow_rear "Rear port mass flow rates of species";
+  SI.MassFlowRate Xi_flow_fore[Medium.nXi] = (if m_flow_fore >= 0 then Medium.massFraction(state_in_fore) else Xi_out_fore) * m_flow_fore "Fore port mass flow rates of species";
 
-  Medium.ThermodynamicState state_out_rear;
-  SI.SpecificEnthalpy h_out_rear = Medium.specificEnthalpy(state_out_rear);
+  Medium.ThermodynamicState state_out_rear "Rear port outlet state";
+  SI.SpecificEnthalpy h_out_rear = Medium.specificEnthalpy(state_out_rear) "Rear port outlet state specific enthalpy";
   Medium.MassFraction Xi_out_rear[Medium.nXi] = Medium.massFraction(state_out_rear);
-  Medium.ThermodynamicState state_out_fore;
-  SI.SpecificEnthalpy h_out_fore = Medium.specificEnthalpy(state_out_fore);
-  Medium.MassFraction Xi_out_fore[Medium.nXi] = Medium.massFraction(state_out_fore);
+  Medium.ThermodynamicState state_out_fore "Fore port outlet state";
+  SI.SpecificEnthalpy h_out_fore = Medium.specificEnthalpy(state_out_fore) "Fore port outlet state specific enthalpy";
+  Medium.MassFraction Xi_out_fore[Medium.nXi] = Medium.massFraction(state_out_fore) "Fore port outlet state mass fractions";
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
-  SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure";
-  SI.Pressure r_damping = d*der(M);
+  SI.DerDensityByPressure density_derp_h "Partial derivative of density by pressure at constant specific enthalpy";
+  SI.Pressure r_damping = d*der(M) "Inertial pressure damping";
 
-  SI.Pressure r_rear_port, r_fore_port;
-  SI.MassFlowRate m_flow_rear, m_flow_fore;
-  Medium.ThermodynamicState state_in_rear, state_in_fore;
+  SI.Pressure r_rear_port, r_fore_port "Inertial pressures at rear/fore port";
+  SI.MassFlowRate m_flow_rear, m_flow_fore "Mass flow rates at rear/fore port";
+  Medium.ThermodynamicState state_in_rear, state_in_fore "Inlet states at rear/fore port";
 
 initial equation
   if initialize_pressure then
@@ -132,7 +137,7 @@ equation
     state_in_fore = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]);
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Ellipse(
           extent={{-56,76},{64,16}},
           lineColor={28,108,200},
@@ -184,7 +189,7 @@ equation
         Line(
           points={{60,50},{60,-52}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This is the partial parent class for all undirected volumes with only one fore and rear. It is partial and is missing one equation for its volume or medium pressure and one for the volume work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>

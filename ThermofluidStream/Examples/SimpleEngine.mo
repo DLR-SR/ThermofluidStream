@@ -22,7 +22,7 @@ model SimpleEngine "Simple steam engine"
     A=20,
     init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.T,
     T_0=573.15)
-    annotation (Placement(transformation(extent={{-60,44},{-40,64}})));
+    annotation (Placement(transformation(extent={{-60,64},{-40,44}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(
     T(displayUnit="degC") = 873.15)
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
@@ -32,13 +32,13 @@ model SimpleEngine "Simple steam engine"
     translationMass=1e2,
     J_flyweel=1e2,
     phi0=-1.5707963267949)
-    annotation (Placement(transformation(extent={{12,-32},{-118,-98}})));
+    annotation (Placement(transformation(extent={{0,-40},{-120,-100}})));
   Modelica.Mechanics.Rotational.Sources.LinearSpeedDependentTorque
     linearSpeedDependentTorque(
     tau_nominal=-100,
     TorqueDirection=false,
     w_nominal=1)
-    annotation (Placement(transformation(extent={{-152,-76},{-130,-54}})));
+    annotation (Placement(transformation(extent={{-160,-80},{-140,-60}})));
 
   Utilities.Piston piston(
     redeclare package Medium = Water,
@@ -49,7 +49,7 @@ model SimpleEngine "Simple steam engine"
     initializeX=false,
     m0_left=0.1,
     m0_right=0.1,
-    x0=0.5) annotation (Placement(transformation(extent={{88,-92},{28,-32}})));
+    x0=0.5) annotation (Placement(transformation(extent={{80,-100},{20,-40}})));
   Undirected.Topology.ConnectorInletOutletFore switchConnector(
     redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -65,7 +65,7 @@ model SimpleEngine "Simple steam engine"
         origin={-10,54})));
   Topology.JunctionT2 junctionT2_1(redeclare package Medium = Water)
     annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}},
+        extent={{-10,10},{10,-10}},
         rotation=0,
         origin={150,54})));
   Processes.FlowResistance flowResistance3(
@@ -140,24 +140,24 @@ model SimpleEngine "Simple steam engine"
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
     outputValue=true,
     filter_output=false) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-96,16})));
   Boundaries.TerminalSource terminalSource(redeclare package Medium = Water) annotation (Placement(transformation(extent={{-130,44},{-110,64}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,-118},{218,-62}})));
 equation
-  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,63.8}}, color={191,0,0}));
+  connect(fixedTemperature.port, conductionElement.heatPort) annotation (Line(points={{-60,80},{-50,80},{-50,64}},   color={191,0,0}));
   connect(linearSpeedDependentTorque.flange, crankDrive.flange_a)
-    annotation (Line(points={{-130,-65},{-85.5,-65}},
+    annotation (Line(points={{-140,-70},{-90,-70}},
                                                  color={0,0,0}));
   connect(switchConnector.fore, piston.port_left)
     annotation (Line(
-      points={{70,24},{70,-44},{82,-44},{82,-56}},
+      points={{70,24},{70,-57.4},{80,-57.4}},
       color={28,108,200},
       thickness=0.5));
   connect(switchConnector1.fore, piston.port_right)
     annotation (Line(
-      points={{50,44},{50,-44},{34,-44},{34,-56}},
+      points={{50,44},{50,-44},{20,-44},{20,-57.4}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, switchConnector1.inlet)
@@ -203,7 +203,7 @@ equation
       points={{-10,44},{-10,34},{-2,34}},
       color={28,108,200},
       thickness=0.5));
-  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-85.5,-32},{-85.5,-16},{-79.6,-16}}, color={255,0,255}));
+  connect(crankDrive.h_out, booleanToReal.u) annotation (Line(points={{-90,-40},{-90,-16},{-79.6,-16}}, color={255,0,255}));
   connect(steamSink.inlet, junctionT2_1.outlet) annotation (Line(
       points={{190,80},{190,54},{160,54}},
       color={28,108,200},
@@ -223,7 +223,7 @@ equation
       points={{-86,16},{-70,16},{-70,54},{-60,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-106,16},{-140,16},{-140,22}}, color={0,0,127}));
+  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-104.2,16},{-140,16},{-140,22}}, color={0,0,127}));
   connect(heating_element.Q_flow, PI1.y) annotation (Line(points={{-120,34},{-129,34}}, color={0,0,127}));
   connect(terminalSource.outlet, boiler.inlet) annotation (Line(
       points={{-110,54},{-100,54}},
@@ -233,9 +233,9 @@ equation
       points={{-20,54},{-40,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(switch.u, tanValve.u) annotation (Line(points={{-10,62},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
+  connect(switch.u, tanValve.u) annotation (Line(points={{-10,66},{-10,74},{-24,74},{-24,14},{110,14},{110,46}}, color={0,0,127}));
   connect(tanValve1.u, tanValve.u) annotation (Line(points={{130,42},{130,48},{122,48},{122,40},{110,40},{110,46}}, color={0,0,127}));
-  connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{12,-65},{28,-65}}, color={0,127,0}));
+  connect(crankDrive.flange_b, piston.flange) annotation (Line(points={{0,-70},{20,-70}},  color={0,127,0}));
   annotation (
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(

@@ -55,7 +55,7 @@ model Reservoir "Test for Reservoir"
     A=10,
     U=300,
     T_0=293.15) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
+        extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-28,42})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(Q_flow=1e6)
@@ -65,7 +65,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100))
     annotation (Placement(transformation(extent={{-46,-66},{-26,-46}})));
   Processes.FlowResistance flowResistance2(
@@ -73,7 +73,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100))
     annotation (Placement(transformation(extent={{16,-66},{36,-46}})));
 equation
@@ -86,7 +86,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(const.y, pump.omega_input)
-    annotation (Line(points={{29,-2},{44,-2},{44,10}}, color={0,0,127}));
+    annotation (Line(points={{29,-2},{44,-2},{44,8}},  color={0,0,127}));
 
 
   connect(flowResistance.outlet, conductionElement.inlet)
@@ -99,7 +99,7 @@ equation
       points={{-28,32},{-28,20},{-10,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(fixedHeatFlow.port, conductionElement.heatPort) annotation (Line(points={{-58,42},{-37.8,42},{-37.8,42}}, color={191,0,0}));
+  connect(fixedHeatFlow.port, conductionElement.heatPort) annotation (Line(points={{-58,42},{-38,42},{-38,42}},     color={191,0,0}));
   connect(reservoir.inlet, flowResistance1.outlet) annotation (Line(
       points={{-14,-56},{-26,-56}},
       color={28,108,200},
@@ -116,7 +116,7 @@ equation
       points={{44,-56},{36,-56}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-46}}, color={0,0,127}));
+  connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-44.1}}, color={0,0,127}));
   annotation (experiment(
       StopTime=10,
    Tolerance=1e-6,

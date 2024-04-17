@@ -1,49 +1,53 @@
 within ThermofluidStream.Sensors;
-model DifferenceSensor_Tp
-  "Sensor difference in Temperature and pressure"
+model DifferenceSensor_Tp "Sensor for Temperature and pressure difference"
+
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
-  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium
-    "Medium model A"
+  replaceable package MediumA = Media.myMedia.Interfaces.PartialMedium "Medium model A"
     annotation (choicesAllMatching=true,
       Documentation(info="<html>
         <p>Medium Model for the positive input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
         </html>"));
-  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium
-    "Medium model B"
+  replaceable package MediumB = Media.myMedia.Interfaces.PartialMedium "Medium model B"
     annotation (choicesAllMatching=true,
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
-
   parameter Integer digits(min=0) = 1 "Number of displayed digits";
-  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Unit for temperature measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Unit for pressure measurement and output"
+  parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
-  parameter Boolean outputTemperature = false "Enable temperature output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean outputPressure = false "Enable pressure output"
-    annotation(Dialog(group="Output Value"));
-  parameter Boolean filter_output = false "Filter sensor-value to break algebraic loops"
-    annotation(Dialog(group="Output Value", enable=(outputTemperature or outputPressure)));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor lowpass"
-    annotation(choicesAllMatching=true, Dialog(tab="Initialization", enable=filter_output));
-  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Initial output pressure of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Initial output temperature of sensor"
-    annotation(Dialog(tab="Initialization", enable=filter_output and init==InitMode.state));
-  parameter SI.Time TC = 0.1 "PT1 time constant"
-    annotation(Dialog(tab="Advanced", enable=(outputTemperature or outputPressure) and filter_output));
 
+  final parameter String temperatureString=
+    if temperatureUnit == "K" then "K"
+    elseif temperatureUnit == "degC" then "°C"
+    else "error";
+
+  parameter Boolean outputTemperature = false "=true, if temperature difference output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean outputPressure = false "=true, if pressure difference output is enabled"
+    annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
+    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
+  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+    annotation(Dialog(group="Output", enable=filter_output));
+  parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature difference output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+  parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure difference output"
+    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}), iconTransformation(extent={{-120,40},{-80,80}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80})));
-  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Difference of measured Temperature [variable]"
-    annotation (Placement(transformation(extent={{80,20},{120,60}})));
-  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Difference of measured pressure [variable]"
-    annotation (Placement(transformation(extent={{80,-60},{120,-20}})));
+    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}), iconTransformation(extent={{-120,-80},{-80,-40}})));
+  Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature difference output connector"
+    annotation (Placement(transformation(extent={{70,30},{90,50}}), iconTransformation(extent={{70,30},{90,50}})));
+  Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure difference output connector"
+    annotation (Placement(transformation(extent={{70,-50},{90,-30}}), iconTransformation(extent={{70,-50},{90,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -97,7 +101,11 @@ equation
     T = direct_T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Rectangle(
           extent={{-54,54},{66,-66}},
           lineColor={0,0,0},
@@ -125,49 +133,67 @@ equation
           textString=DynamicSelect("p", String(
               p,
               format="1."+String(digits)+"f"))),
-        Text(
-          extent={{-120,55},{-60,5}},
-          textColor={175,175,175},
-          textString="%temperatureUnit"),
-        Text(
-          extent={{-120,-5},{-60,-55}},
-          textColor={175,175,175},
+        Text(visible=not outputTemperature,
+          extent={{70,45},{130,15}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=not outputPressure,
+          extent={{70,-15},{130,-45}},
+          textColor={0,0,0},
+          horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
+        Text(visible= outputTemperature,
+          extent={{75,78},{135,48}},
+          textColor={0,0,0},
+          textString=temperatureString,
+          horizontalAlignment=TextAlignment.Left),
+        Text(visible=outputPressure,
+          extent={{75,-2},{135,-32}},
+          textColor={0,0,0},
+          textString="%pressureUnit",
+          horizontalAlignment=TextAlignment.Left),
         Line(
-          points={{-80,80},{-80,-80}},
+          points={{-80,60},{-80,-60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,-80},{-80,-80}},
+          points={{-100,-60},{-80,-60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-100,80},{-80,80}},
+          points={{-100,60},{-80,60}},
           color={28,108,200},
           thickness=0.5),
         Line(
-          points={{-70,80},{-50,80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-10,0},{10,0}},
-          color={28,108,200},
-          thickness=0.5,
-          origin={-60,80},
-          rotation=90),
-        Line(
-          points={{-70,-80},{-50,-80}},
+          points={{-108,-30},{-92,-30}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-72,92},{-48,68}},
+          extent={{-110,100},{-90,80}},
           lineColor={28,108,200},
           lineThickness=0.5),
+        Line(visible=outputTemperature,
+          points={{60,40},{78,40}},
+          color={0,0,127}),
+        Line(visible=outputPressure,
+          points={{60,-40},{78,-40}},
+          color={0,0,127}),
+        Line(
+          points={{-108,90},{-92,90}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-8,0},{8,0}},
+          color={28,108,200},
+          thickness=0.5,
+          origin={-100,90},
+          rotation=90),
         Ellipse(
-          extent={{-72,-68},{-48,-92}},
+          extent={{-110,-20},{-90,-40}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sensor for measuring difference in temperature and pressure at once.</p>
 <p>This sensor can be connected to two fluid streams without a junction.</p>

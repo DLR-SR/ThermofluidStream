@@ -1,5 +1,6 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
+
   extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
 
   Processes.FlowResistance flowResistanceA[nCells](
@@ -10,22 +11,21 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
       each k=50)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-30,-80})));
+        origin={-30,-60})));
   Topology.JunctionN junctionN(
     redeclare package Medium = MediumA,
     N=nCells) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-70,-80})));
+        origin={-70,-60})));
   Topology.SplitterN splitterN(
     redeclare package Medium = MediumA,
     N=nCells) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={50,-80})));
+        origin={50,-60})));
 
 initial equation
-
   if initializeMassFlow then
     inletB.m_flow = m_flow_0_B;
     flowResistanceA.m_flow = m_flow_0_A/nCells*ones(nCells);
@@ -38,60 +38,68 @@ initial equation
 equation
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
-  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-100,80},{-10,80}}, color={28,108,200}));
+  connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-100,60},{-10,60}}, color={28,108,200}));
   for i in 1:nCells - 1 loop
     connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
-  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,80},{100,80}}, color={28,108,200}));
-  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,70.2},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}}, color={191,0,0}));
-  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-70.2},{0,-42},{0,-42},{0,-10},{0,-10}}, color={191,0,0}));
+  connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,60},{100,60}}, color={28,108,200}));
+  connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}},   color={191,0,0}));
+  connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-50},{0,-42},{0,-42},{0,-10},{0,-10}},   color={191,0,0}));
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{100,-80},{60,-80}},
+      points={{100,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
-      points={{40,-80},{10,-80}},
+      points={{40,-60},{10,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(thermalElementA.outlet, flowResistanceA.inlet) annotation (Line(
-      points={{-10,-80},{-20,-80}},
+      points={{-10,-60},{-20,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA.outlet, junctionN.inlets) annotation (Line(
-      points={{-40,-80},{-60,-80}},
+      points={{-40,-60},{-60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outletA) annotation (Line(
-      points={{-80,-80},{-100,-80}},
+      points={{-80,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,160},{150,120}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Line(
+          points={{0,78},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
         Text(
-          extent={{-72,76},{-60,64}},
+          extent={{-66,54},{-54,42}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-42,76},{-30,64}},
+          extent={{-40,54},{-28,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-10,76},{2,64}},
+          extent={{-12,54},{0,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{20,76},{32,64}},
+          extent={{16,54},{28,42}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{50,76},{62,64}},
+          extent={{42,54},{54,42}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{10,134},{50,94}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,-94},{120,-134}},
+          extent={{80,0},{120,-40}},
           textColor={175,175,175},
           textString="B")}), Documentation(info="<html>
 <p>The cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>

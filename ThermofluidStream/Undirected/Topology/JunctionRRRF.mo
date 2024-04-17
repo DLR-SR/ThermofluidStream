@@ -1,13 +1,15 @@
 within ThermofluidStream.Undirected.Topology;
-model JunctionRRRF "Junction with tree rears and a fore"
+model JunctionRRRF "Junction of tree rear and one fore ports"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
+    annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package for the Junction.</p>
 </html>"));
-  parameter Boolean assumeConstantDensity = true "If true only mass-flow rate will determine the mixing"
-    annotation (Dialog(tab="Advanced"));
-  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
+  parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold for small mass flow rates"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each branch"
     annotation (Dialog(tab="Advanced"));
@@ -29,9 +31,6 @@ model JunctionRRRF "Junction with tree rears and a fore"
   Interfaces.Rear rearC(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
   connect(rearA, junctionMN.rears[2]) annotation (Line(
       points={{0,100},{0,0}},
@@ -49,17 +48,29 @@ equation
       points={{20,0},{60,0},{60,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Line(visible= not displayInstanceName,
+          points={{0,0},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,0},{0,20}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(visible= displayInstanceName,
+          points={{0,70},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
         Line(
           points={{-100,0},{0,0}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{0,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{0,0},{0,100}},
           color={28,108,200},
           thickness=0.5),
         Line(
@@ -73,18 +84,18 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,100},{-20,60}},
+          extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{-50,-20},{-90,-60}},
+          extent={{-80,-20},{-120,-60}},
           textColor={175,175,175},
           textString="B"),
         Text(
-          extent={{60,-100},{20,-60}},
+          extent={{-20,-120},{-60,-80}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Junction with three rears and a fore in a x shape.</p>
 </html>"));

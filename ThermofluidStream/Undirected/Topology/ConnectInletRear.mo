@@ -1,13 +1,12 @@
 within ThermofluidStream.Undirected.Topology;
-model ConnectInletRear
-  "Directed/undirected connector with input and rear"
+model ConnectInletRear "Connects inlet to rear port"
 
-  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
-    "Medium of the connection"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
+  replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
 <p>This is the replaceable package that determines the medium of the Connector. Make sure it fits the medium in all models connected to inlet and port of the Connector.</p>
 </html>"));
-
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
 
@@ -22,11 +21,7 @@ model ConnectInletRear
   ConnectRearRear connectRearRear(redeclare package Medium=Medium, final L=L/2)
     annotation (Placement(transformation(extent={{2,-10},{22,10}})));
 
-protected
-  outer DropOfCommons dropOfCommons;
-
 equation
-
   connect(connectInletFore.fore, connectRearRear.rear_a) annotation (Line(
       points={{-7,0},{9,0}},
       color={28,108,200},
@@ -41,13 +36,17 @@ equation
       thickness=0.5));
   annotation (Icon(
       graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,65},{150,25}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
         Line(
           points={{-30,0},{30,0}},
           color={28,108,200},
           thickness=0.5)},
-      coordinateSystem(preserveAspectRatio=false)),
+      coordinateSystem(preserveAspectRatio=true)),
      Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This connector can be used to connect a unidirectional outlet to a undirected fore port. </p>
 <p>The state from the inlet is given to the backward direction of the rear port, the total pressure as well as the massflow of inlet and port are set equal. </p>

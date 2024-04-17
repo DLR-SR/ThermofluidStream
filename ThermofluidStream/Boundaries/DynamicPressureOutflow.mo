@@ -1,45 +1,84 @@
 within ThermofluidStream.Boundaries;
-model DynamicPressureOutflow
-  "Flow from a reference velocity through a certain cross section"
+model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
+
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean areaFromInput = false "Use input connector for cross section area?";
-  parameter Boolean velocityFromInput = false "Use input connector for inlet speed?";
-  parameter SI.Area A_par = 1 "Cross-section area of outlet boundary"
-    annotation(Dialog(enable=not areaFromInput));
-  parameter SI.Velocity v_out_par = 0 "Reference velocity for p0. Positive velocity points from inside the boundary to outside"
-    annotation(Dialog(enable=not velocityFromInput));
-  parameter Boolean assumeConstantDensity=true "If true only inlet density is applied"
-    annotation(Dialog(tab="Advanced"));
-  parameter Boolean extrapolateQuadratic = false "If true extrapolation for neagive velocities is done purly quadratic"
+  parameter Boolean assumeConstantDensity= true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean areaFromInput = false "= true, if input connector for inlet cross section area is enabled"
+    annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Area A_par = 1 "Inlet cross-section area"
+    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
+  parameter Boolean velocityFromInput = false "= true, if input connector for outlet velocity is enabled"
+    annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.Velocity v_out_par = 0 "Outlet velocity set value"
+    annotation(Dialog(group="Nozzle / Diffusor definition",enable=not velocityFromInput));
+  parameter Boolean extrapolateQuadratic = false "= true, if extrapolating negative velocities purely quadratic"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization", enable = not extrapolateQuadratic));
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Area input connector [m2]" annotation (Placement(transformation(
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayCompressibilityApproach = true "= true, if assumeConstantDensity is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInletArea = true "= true, if inlet cross section area A_par is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayOutletVelocity = true "= true, if outlet velocity v_out_par is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayA = displayInletArea  and not areaFromInput
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean dv_out = displayOutletVelocity and not velocityFromInput
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String compressibilityString = if assumeConstantDensity then "incompressible" else "compressible"
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos1=
+    if displayCompressibilityApproach then
+      compressibilityString
+    elseif displayA then
+      "A_in = %A_par"
+    elseif displayInertance then
+      "L = %L"
+    else ""
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos2=
+    if displayCompressibilityApproach and displayA then
+      "A_in = %A_par"
+    elseif displayInertance and not displayPos1 == "L = %L" then
+      "L = %L"
+    else ""
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String displayPos3=
+    if displayCompressibilityApproach and displayA and displayInertance then
+      "L = %L"
+    else ""
+    annotation(Evaluate=true, HideResult=true);
+  //----------------------------------------------------------------
+
+
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Inlet cross section area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,100}), iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,100})));
-  Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Velocity input connector [m/s]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-60,100}), iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-60,100})));
+        rotation=0,
+        origin={-120,-60})));
+  Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Outlet velocity input connector [m/s]" annotation (Placement(transformation(
+          extent={{20,-20},{-20,20}},
+        rotation=0,
+        origin={120,-60}), iconTransformation(extent={{-20,-20},{20,20}},
+        rotation=180,
+        origin={120,-60})));
 
 protected
-  Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of inlet boundary";
+  Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for inlet cross-section area";
 
-  SI.Velocity v_in;
-  Modelica.Blocks.Interfaces.RealInput v_out(unit="m/s") "Internal connector for reference velocity";
+  SI.Velocity v_in "Inlet velocity";
+  Modelica.Blocks.Interfaces.RealInput v_out(unit="m/s") "Internal connector for outlet velocity";
+  SI.Velocity v_mean "Mean velocity";
+  SI.Velocity delta_v "Velocity difference";
 
-  SI.Density rho_in =  Medium.density(inlet.state) "density of medium entering";
-  SI.Density rho_out "density of medium exiting";
-
-  SI.Velocity v_mean;
-  SI.Velocity delta_v;
+  SI.Density rho_in =  Medium.density(inlet.state) "Inlet density";
+  SI.Density rho_out "Outlet density";
+  SI.Density rho_mean "Mean density";
 
 equation
    connect(A_var, A);
@@ -71,13 +110,34 @@ equation
       m_flow_reg);
   end if;
   delta_v = v_in - v_out;
-
-  dp = (rho_in+rho_out)*0.5*delta_v*v_mean;
+  rho_mean = 0.5*(rho_in + rho_out);
+  dp = rho_mean*delta_v*v_mean;
   h_out = h_in + delta_v*v_mean;
   Xi_out = Xi_in;
 
   annotation (
    Icon(graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,140},{150,100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(visible=displayParameters,
+          extent={{-150,-100},{150,-130}},
+          textColor={0,0,0},
+          textString=displayPos1),
+        Text(visible=displayParameters,
+          extent={{-150,-140},{150,-170}},
+          textColor={0,0,0},
+          textString=displayPos2),
+        Text(visible=displayParameters,
+          extent={{-150,-180},{150,-210}},
+          textColor={0,0,0},
+          textString=displayPos3),
+        Text(visible=dv_out,
+          extent={{210,-45},{15,-75}},
+          textColor={0,0,0},
+          textString="v_out = %v_out_par",
+          horizontalAlignment=TextAlignment.Left),
         Rectangle(
           extent={{-58,76},{6,-84}},
           lineColor={28,108,200},
@@ -112,7 +172,9 @@ equation
         Line(
           points={{-60,80},{-60,-80}},
           color={0,127,0},
-          thickness=0.5)}),
+          thickness=0.5),
+        Line(visible=areaFromInput, points={{-100,-60},{-92,-60},{-60,0}}, color={28,108,200}),
+        Line(visible=velocityFromInput, points={{100,-60},{60,-60},{0,0}}, color={28,108,200})}),
     Documentation(info="<html>
 <p>This outflow boundary is supposed to end an area of the model where dynamic pressure is taken into account. The area is started with <a href=\"modelica://ThermofluidStream.Boundaries.DynamicPressureInflow\">DynamicPressureInflows</a>. </p>
 <p>Components that take dynamic pressure into account (marked with green symbols) should only be used in areas surrounded by DynamicPressureInflows and DynamicPressureOutflows. </p>

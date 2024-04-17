@@ -46,7 +46,7 @@ equation
 
   (der(omega)*J_flyweel -h*der(v)*translationMass) = flange_a.tau +tau_f;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{300,100}}),
                          graphics={
         Ellipse(

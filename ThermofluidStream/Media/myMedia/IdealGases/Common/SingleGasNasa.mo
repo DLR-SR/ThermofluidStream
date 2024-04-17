@@ -102,8 +102,7 @@ Temperature T (= " + String(T) + " K) is not in the allowed range
       annotation(Inline=true,smoothOrder=2);
     end setState_dTX;
 
-      redeclare function extends setSmoothState
-    "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
+      redeclare function extends setSmoothState "Return thermodynamic state so that it smoothly approximates: if x > 0 then state_a else state_b"
       algorithm
     state := ThermodynamicState(p=myMedia.Common.smoothStep(
             x,

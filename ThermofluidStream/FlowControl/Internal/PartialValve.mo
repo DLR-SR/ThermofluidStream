@@ -3,10 +3,11 @@ partial model PartialValve "Partial implementation of a physical valve"
 
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
-  parameter Boolean invertInput = false "= true, if input u_in inverted, i.e. 0=open, 1=closed";
-  parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0 (fraction of maximum mass flow at u = 1)";
+  parameter Boolean invertInput = false "= true, if input u_in is inverted"
+    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
 
-  Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control signal []"
+  Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control input signal []"
     annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
@@ -21,13 +22,12 @@ partial model PartialValve "Partial implementation of a physical valve"
     annotation (Dialog(tab="Advanced", group="Reference values"));
 
 protected
-  final constant Real secondsPerHour(final unit="s/h") = 3600 "Parameter for unit conversion";
+  final constant Real secondsPerHour(final unit="s/h") = 3600 "Unit conversion parameter";
 
   //Medium properties
-  Modelica.Units.SI.Density rho=Medium.density(inlet.state)
-    "Medium density at inlet";
+  Modelica.Units.SI.Density rho=Medium.density(inlet.state) "Inlet density";
 
-  SI.MassFlowRate m_flow_ref "Reference mass flow derived from flow coefficient inputs";
+  SI.MassFlowRate m_flow_ref "Reference mass flow rate derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";
 
 equation
@@ -44,8 +44,12 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Text(visible=displayInstanceName,
+          extent={{-150,-60},{150,-100}},
+          textString="%name",
+          textColor=dropOfCommons.instanceNameColor)}),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Partial implementation of a physical valve.

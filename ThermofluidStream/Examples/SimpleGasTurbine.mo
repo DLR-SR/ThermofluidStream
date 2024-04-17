@@ -64,18 +64,15 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   Sensors.MultiSensor_Tp multiSensor_Tp(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{16,-4},{36,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{16,-4},{36,16}})));
   Sensors.MultiSensor_Tp multiSensor_Tp1(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{76,-4},{96,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{76,-4},{96,16}})));
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-104,-4},{-84,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-104,-4},{-84,16}})));
   Modelica.Blocks.Continuous.LimPID PI(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=2000,
@@ -140,8 +137,8 @@ equation
       points={{16,6},{10,6},{10,-10},{40,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(multiSensor_Tpm1.m_flow_out, product1.u1) annotation (Line(points={{
-          -40,-6},{-30,-6},{-30,60},{-13.6,60},{-13.6,47.2}}, color={0,0,127}));
+  connect(multiSensor_Tpm1.m_flow_out, product1.u1) annotation (Line(points={{-41.8,-6},{-30,-6},{-30,60},{-13.6,60},{-13.6,47.2}},
+                                                              color={0,0,127}));
   connect(q_limits.y, product1.u2) annotation (Line(points={{5.4,52},{-6.4,52},
           {-6.4,47.2}}, color={0,0,127}));
   connect(PI.y, q_limits.u)

@@ -28,16 +28,16 @@ model CrossFlowNTU
     temperatureUnit="degC",
     pressureUnit="bar") annotation (
       Placement(transformation(
-        extent={{-11,10},{11,-10}},
+        extent={{-11,-10},{11,10}},
         rotation=0,
-        origin={-43,-10})));
+        origin={-41,10})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(redeclare package
       Medium = MediumA,
     digits=3,
     temperatureUnit="degC") annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={42,-10})));
+        origin={40,10})));
 
   ThermofluidStream.Boundaries.Source sourceB(
     redeclare package Medium = MediumB,
@@ -65,9 +65,9 @@ model CrossFlowNTU
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-10,32})));
-  inner DropOfCommons dropOfCommons
+  inner DropOfCommons dropOfCommons(displayInstanceNames=false)
     annotation (Placement(transformation(extent={{-156,-98},{-136,-78}})));
-  HeatExchangers.CrossFlowNTU crossFlowNTU(
+  ThermofluidStream.HeatExchangers.CrossFlowNTU crossFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
     A=10) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -76,7 +76,7 @@ model CrossFlowNTU
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-92,-10},{-72,10}})));
   Processes.FlowResistance flowResistanceB(
@@ -84,7 +84,7 @@ model CrossFlowNTU
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss(
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -107,19 +107,19 @@ model CrossFlowNTU
         origin={82,0})));
 equation
   connect(multiSensor_Tpm3.outlet, crossFlowNTU.inletB) annotation (Line(
-      points={{0,22},{0,10}},
+      points={{0,22},{0,10},{1.77636e-15,10}},
       color={28,108,200},
       thickness=0.5));
   connect(crossFlowNTU.outletB, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{0,-10},{0,-14}},
+      points={{-1.77636e-15,-10},{-1.77636e-15,-12},{0,-12},{0,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.outlet, crossFlowNTU.inletA) annotation (Line(
-      points={{-32,0},{-10,0}},
+      points={{-30,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
   connect(crossFlowNTU.outletA, multiSensor_Tpm1.inlet) annotation (Line(
-      points={{10,0},{28,0},{28,1.77636e-15},{32,1.77636e-15}},
+      points={{10,0},{15,0},{15,1.33227e-15},{30,1.33227e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceA.outlet, flowResistanceA.inlet) annotation (Line(
@@ -127,7 +127,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.inlet, flowResistanceA.outlet) annotation (Line(
-      points={{-54,0},{-72,0}},
+      points={{-52,0},{-72,0}},
       color={28,108,200},
       thickness=0.5));
   connect(sourceB.outlet, flowResistanceB.inlet) annotation (Line(
@@ -150,7 +150,7 @@ equation
       thickness=0.5));
   connect(multiSensor_Tpm1.outlet, mCV1.inlet)
     annotation (Line(
-      points={{52,-1.77636e-15},{62,-1.77636e-15},{62,0},{72,0}},
+      points={{50,-1.77636e-15},{61,-1.77636e-15},{61,1.55431e-15},{72,1.55431e-15}},
       color={28,108,200},
       thickness=0.5));
   connect(mCV1.outlet, sinkA.inlet) annotation (Line(

@@ -26,7 +26,7 @@ Medium package used in the Test.
     amplitude=2e5,
     period=0.5,
     offset=1e5)
-    annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
+    annotation (Placement(transformation(extent={{-80,-4},{-60,16}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     r=0.1,
@@ -35,7 +35,7 @@ Medium package used in the Test.
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 equation
-  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-75,0},{-60,0},{-60,6},{-42,6}}, color={0,0,127}));
+  connect(pulse.y, boundary_rear.p0_var) annotation (Line(points={{-59,6},{-42,6}},                 color={0,0,127}));
 
   connect(boundary_rear.fore, checkValve.rear) annotation (Line(
       points={{-30,0},{-22,0}},

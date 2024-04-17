@@ -1,26 +1,25 @@
 within ThermofluidStream.HeatExchangers.Internal;
 model ConductionElementHEX_twoPhase "ConductionElement for two-phase fluids"
-  extends PartialConductionElementHEX(redeclare replaceable package Medium =
-        Media.myMedia.Interfaces.PartialTwoPhaseMedium);
+  extends PartialConductionElementHEX(redeclare replaceable package Medium = Media.myMedia.Interfaces.PartialTwoPhaseMedium);
 
   import Modelica.Math;
 
-  parameter SI.CoefficientOfHeatTransfer U_liq_nom = 700 "Nominal coefficient of heat transfer for liquid region";
-  parameter SI.CoefficientOfHeatTransfer U_vap_nom = 500 "Nominal coefficient of heat transfer for vapour region";
-  parameter SI.CoefficientOfHeatTransfer U_tp_nom = 1000 "Nominal coefficient of heat transfer for two-phase region";
+  parameter SI.CoefficientOfHeatTransfer U_liq_nom = 700 "Nominal coefficient of heat transfer for liquid flow";
+  parameter SI.CoefficientOfHeatTransfer U_vap_nom = 500 "Nominal coefficient of heat transfer for vapour flow";
+  parameter SI.CoefficientOfHeatTransfer U_tp_nom = 1000 "Nominal coefficient of heat transfer for condensation/evaporation";
 
-  parameter SI.MassFlowRate m_flow_nom = 0.3 "Nominal mass-flow rate for heat transfer calculation";
+  parameter SI.MassFlowRate m_flow_nom = 0.3 "Nominal mass flow rate for heat transfer calculation";
   parameter SI.MassFraction delta_x = 0.05 "Value for interpolation width";
 
   constant Real Re_exp_cond(unit="1") = 0.4 "Reynolds-Exponent for heat transfer calculation at condensation (Yan&Lin, 1999)";
   constant Real Re_exp_evap(unit="1") = 0.5 "Reynolds-Exponent for heat transfer calculation at evaporation (Yan&Lin, 1999)";
 
-  Real x "Vapor quality calculated from enthalpies";
+  Real x "Vapor quality calculated from specific enthalpies";
 
 protected
-  SI.CoefficientOfHeatTransfer U_liq "Coefficient of heat transfer for liquid region";
-  SI.CoefficientOfHeatTransfer U_tp "Coefficient of heat transfer for two-phase region";
-  SI.CoefficientOfHeatTransfer U_vap "Coefficient of heat transfer for vapour region";
+  SI.CoefficientOfHeatTransfer U_liq "Coefficient of heat transfer for liquid flow";
+  SI.CoefficientOfHeatTransfer U_tp "Coefficient of heat transfer for condensation/evaporation";
+  SI.CoefficientOfHeatTransfer U_vap "Coefficient of heat transfer for vapour flow";
 
   SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Dew enthalpy at inlet";
   SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Bubble enthalpy at inlet";
@@ -44,7 +43,7 @@ equation
       elseif x < 1 + delta_x then U_tp + 0.5*(U_vap - U_tp)*(1 + Math.sin((x - 1)*Modelica.Constants.pi/(2*delta_x)))
       else U_vap));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Line(
          points={{-100,0},{100,0}},
          thickness=0.5,
@@ -163,7 +162,7 @@ equation
           lineColor={28,108,200},
           fillColor={5,188,158},
           fillPattern=FillPattern.Solid)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Implementation of the Conduction Element for the DiscritizedHex.</p>
 <p>Concerning the heat transfer coefficient it is assumed, that the main term influencing the coefficient of heat transfer is the mass flow rate. Therefore a nominal value for the heat transfer coefficient at a nominal mass flow rate can be set. The reynolds exponents for normalization of the heat transfer coefficient for evaporation and condensation are taken from Yan, Yi-Yie, &amp; Lin, T.-F. (1999). Condensation heat transfer and pressure drop of refrigerant R-134a in a small pipe. International Journal of Heat and Mass Transfer, 42(4) and Yan, Y.-Y., &amp; Lin, T.-F. (1999). Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger. Journal of Heat Transfer, 121(1). Furthermore a minimum value U_min for the coefficient of heat transfer is set to ensure heat transfer at zero mass flow.</p>

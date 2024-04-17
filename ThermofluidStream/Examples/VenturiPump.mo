@@ -3,8 +3,7 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
 
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby
-    Media.myMedia.Interfaces.PartialMedium
+  replaceable package Medium = Media.myMedia.Water.StandardWater constrainedby Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching=true);
 
   parameter SI.Area A_in_hp=0.0002 "Cross-section area of high pressure inlet boundary";
@@ -32,12 +31,12 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps)
-    annotation (Placement(transformation(extent={{-90,-64},{-70,-44}})));
+    annotation (Placement(transformation(extent={{-90,-70},{-70,-50}})));
   Sensors.SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Medium,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps)
-    annotation (Placement(transformation(extent={{70,-64},{90,-44}})));
+    annotation (Placement(transformation(extent={{70,-70},{90,-50}})));
   Boundaries.Source source2_2(
     redeclare package Medium = Medium,
     T0_par=293.15,
@@ -88,8 +87,9 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={6,50})));
-  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612) annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
+        origin={0,50})));
+  inner DropOfCommons dropOfCommons(p_min(displayUnit="Pa") = 612, displayInstanceNames=false)
+    annotation (Placement(transformation(extent={{-90,12},{-70,32}})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{82,62},{118,98}})));
 equation
   connect(flowResistance1.outlet, checkValve.inlet) annotation (Line(
@@ -127,7 +127,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor8.inlet, source2_2.outlet) annotation (Line(
-      points={{0,60},{0,70}},
+      points={{0,60},{0,66},{0,70}},
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor1.inlet, dynamicPressureOutflow.outlet)
@@ -145,7 +145,7 @@ equation
       thickness=0.5));
   connect(singleFlowSensor8.outlet, dynamicPressureInflow2.inlet)
     annotation (Line(
-      points={{0,40},{0,30}},
+      points={{0,40},{0,36},{0,30}},
       color={28,108,200},
       thickness=0.5));
   annotation (
