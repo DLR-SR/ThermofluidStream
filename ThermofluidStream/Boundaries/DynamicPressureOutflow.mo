@@ -60,9 +60,6 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
   Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Inlet cross section area input connector [m2]" annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-120,-60}),
-                         iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=0,
         origin={-120,-60})));
   Modelica.Blocks.Interfaces.RealInput v_out_var(unit="m/s") if velocityFromInput "Outlet velocity input connector [m/s]" annotation (Placement(transformation(
           extent={{20,-20},{-20,20}},
