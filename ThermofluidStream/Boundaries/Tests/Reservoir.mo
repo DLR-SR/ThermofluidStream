@@ -116,8 +116,7 @@ equation
       points={{44,-56},{36,-56}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-44.1}},
-                                                                                               color={0,0,127}));
+  connect(ramp.y, reservoir.pEnv_input) annotation (Line(points={{-59,-18},{-4,-18},{-4,-44.1}}, color={0,0,127}));
   annotation (experiment(
       StopTime=10,
    Tolerance=1e-6,
