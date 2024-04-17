@@ -273,7 +273,7 @@ equation
       points={{10,-90},{20,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(trapezoid1.y, source4.p0_var) annotation (Line(points={{-57,-84},{-32,-84}},                     color={0,0,127}));
+  connect(trapezoid1.y, source4.p0_var) annotation (Line(points={{-57,-84},{-32,-84}}, color={0,0,127}));
   connect(mCV5.inlet, source5.outlet) annotation (Line(
       points={{-10,70},{-20,70}},
       color={28,108,200},
