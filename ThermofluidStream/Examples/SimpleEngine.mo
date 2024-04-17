@@ -223,8 +223,7 @@ equation
       points={{-86,16},{-70,16},{-70,54},{-60,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-104.2,16},{-140,16},{-140,22}},
-                                                                                                          color={0,0,127}));
+  connect(singleSensorSelect.value_out, PI1.u_m) annotation (Line(points={{-104.2,16},{-140,16},{-140,22}}, color={0,0,127}));
   connect(heating_element.Q_flow, PI1.y) annotation (Line(points={{-120,34},{-129,34}}, color={0,0,127}));
   connect(terminalSource.outlet, boiler.inlet) annotation (Line(
       points={{-110,54},{-100,54}},
