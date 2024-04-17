@@ -68,7 +68,7 @@ inlets and outlets the volume is connected to.
   SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u "Internal energy";
 
   SI.HeatFlowRate Q_flow "Heat flow rate";
-  SI.Power W_v "Volumenänderungsarbeitsstrom (work due to change of volume)";
+  SI.Power W_v "Work due to change of volume";  // Volumenaenderungsarbeitsstrom
 
 protected
   SI.Temperature T_heatPort "Heat port temperature";
