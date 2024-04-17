@@ -145,7 +145,7 @@ equation
       thickness=0.5));
   connect(singleFlowSensor8.outlet, dynamicPressureInflow2.inlet)
     annotation (Line(
-      points={{-1.77636e-15,40},{-1.77636e-15,36},{0,36},{0,30}},
+      points={{0,40},{0,36},{0,30}},
       color={28,108,200},
       thickness=0.5));
   annotation (
