@@ -260,7 +260,7 @@ equation
       points={{10,-60},{20,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse3.y, source3.p0_var) annotation (Line(points={{-59,-54},{-32,-54}},                     color={0,0,127}));
+  connect(pulse3.y, source3.p0_var) annotation (Line(points={{-59,-54},{-32,-54}}, color={0,0,127}));
   connect(mCV4.inlet, source4.outlet) annotation (Line(
       points={{-10,-90},{-20,-90}},
       color={28,108,200},
