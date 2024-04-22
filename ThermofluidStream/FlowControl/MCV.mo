@@ -26,10 +26,13 @@ model MCV "Flow rate control valve"
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayFlowRate = true "= true, if mass flow rate massFlow_set_par or volume flow rate volumeFlow_set_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not setpointFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-
+  final parameter Boolean displayM = mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayV = mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow
+    annotation(Evaluate=true, HideResult=true);
   final parameter String displayString=
-    if mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow then "m_flow = %massFlow_set_par"
-    elseif mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow then "V_flow = %volumeFlow_set_par"
+    if displayM then "m_flow = %massFlow_set_par"
+    elseif displayV then "V_flow = %volumeFlow_set_par"
     else "error";
   //-----------------------------------------------------------------
 
