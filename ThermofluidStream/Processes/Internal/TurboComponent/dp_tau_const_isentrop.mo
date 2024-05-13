@@ -4,11 +4,11 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
 
   import R_m = Modelica.Constants.R "General gas constant";
 
-  input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1"
+  input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1-skew (at m_flow = m_flow_ref)"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real skew(unit="1") = 0 "Scewness factor for mixed part of pr equation"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
-  input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass flow rate, that produces pr=1-s (at omega = omega_ref)"
+  input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass flow rate, that produces pr=1-skew (at omega = omega_ref)"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real eta(unit="1") = 1 "Isentropic efficienty"
     annotation(Dialog(enable=true));
