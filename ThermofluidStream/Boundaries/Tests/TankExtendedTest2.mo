@@ -103,5 +103,5 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=20, __Dymola_Algorithm="Dassl"));
+    experiment(StopTime=5000, __Dymola_Algorithm="Dassl"));
 end TankExtendedTest2;

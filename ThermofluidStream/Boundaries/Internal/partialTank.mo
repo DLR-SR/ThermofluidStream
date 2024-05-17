@@ -118,9 +118,9 @@ protected
 
   Modelica.Units.SI.MassFlowRate m_flow_in[N_inlets] = inlet.m_flow;
   Modelica.Units.SI.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
-  Real fSmooth[M_outlets];
-  Real fFull;
-  Real outletOnSurface[M_outlets];
+  Boolean fFull;
+  Boolean fEmpty;
+  Real shiftOutlet[M_outlets];
   Modelica.Units.SI.Density liquidDensity=Medium.Liquid.density(medium.state)
    "density of the liquid in the tank";
   Modelica.Units.SI.Density gasDensity=Medium.Gas.density(medium.state)
@@ -172,44 +172,49 @@ equation
     h_in[i] =  if noEvent(m_flow_in[i] >= 0) then Medium.specificEnthalpy(inlet[i].state) else medium.h;
     Xi_in[:,i] = if noEvent(m_flow_in[i] >= 0) then Medium.massFraction(inlet[i].state) else medium.Xi;
   end for;
-
-    //when the tank is nearly filled with liquid, and there is an outlet on the surface, liquid must be able to get out
-    fFull=(medium.Xi[1]-0.0001)/sqrt((medium.Xi[1]-0.0001)^2+0.0000001^2);
+  //indication on tank nearly filled with liquid
+  fFull = if V_liquid > 0.995*V_ref then true else false;
+  //indication on tank nearly emptied of liquid
+  fEmpty = if V_liquid < 0.003*V_ref then true else false;
 
 
   for i in 1:M_outlets loop
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
 
-    h_out[i] = if noEvent(-m_flow_out[i] >= 0) then Medium.specificEnthalpy(state_out[i])  else medium.h;
-    Xi_out[:,i] = if noEvent(-m_flow_out[i] >= 0) then Medium.massFraction(state_out[i]) else medium.Xi;
-   //when the tank is nearly filled with liquid, and there is an outlet on the surface, liquid must be able to get out
-        if fFull < 0 and staticHeadOutlets[i]<10*outletTransition then
-          outletOnSurface[i]=fFull;
-        else
-          outletOnSurface[i]=1;
-        end if;
+    h_out[i] = if noEvent(-m_flow_out[i] >= 0) then Medium.specificEnthalpy(
+      state_out[i]) else medium.h;
+    Xi_out[:, i] = if noEvent(-m_flow_out[i] >= 0) then Medium.massFraction(
+      state_out[i]) else medium.Xi;
 
-     //Liquid at outlet if staticHeadOutlets >0, gas at outlet if staticHeadOutlets <=0, smooth transition
-     //The full tank situation is handled by moving the transition point for the switch
-     //between gas and liquid down 4*outletTransition when the tank is full of
-     //liquid and the staticHead indicates that this outlet is within
-     //10*outletTransition from the surface.
+    staticHeadOutlets_Pa_relative[i] = liquidDensity*acceleration.a*normAcc*
+      staticHeadOutlets[i];
 
-
-    fSmooth[i] = (staticHeadOutlets[i]- outletTransition*(1+outletOnSurface[i])/2+
-    4*outletTransition*(1-outletOnSurface[i])/2)/
-    sqrt((staticHeadOutlets[i]-outletTransition*(1+outletOnSurface[i])/2+
-    4*outletTransition*(1-outletOnSurface[i])/2)^2+(0.1*outletTransition)^2);
-
-    staticHeadOutlets_Pa_relative[i] = liquidDensity*acceleration.a*normAcc*staticHeadOutlets[i];
-
-
-
-    state_out[i] = Medium.setState_pTX(medium.p + max(0,staticHeadOutlets_Pa_relative[i]),
-    medium.T,
-    {max(0,(1-fSmooth[i])/2*(1+outletOnSurface[i])/2+medium.Xi[1]*(1-outletOnSurface[i])/2),
-    (1+fSmooth[i])/2*(1+outletOnSurface[i])/2+medium.Xi[2]*(1-outletOnSurface[i])/2});
+    //due to the transition interval of the reg_step, connectors must be shifted inside the tank
+    //perimeters when the tank is nearly filled with liquid and there is an outlet on the surface
+    //or when the tank is nearly empty and there is an outlet on the surface
+    //The full case is moved further down to get better numeric performance with more gas remaining
+    if fFull and abs(staticHeadOutlets[i]) < 4*outletTransition then
+      shiftOutlet[i] = 3;
+    elseif fEmpty and abs(staticHeadOutlets[i]) < 3*outletTransition then
+      shiftOutlet[i] = -1;
+    else
+      shiftOutlet[i] = 0;
+    end if;
+    //liquid at outlet if static head >0, else gas, with smooth transition
+    state_out[i] = Medium.setState_pTX(
+      medium.p + max(0, staticHeadOutlets_Pa_relative[i]),
+      medium.T,
+      {ThermofluidStream.Undirected.Internal.regStep(
+        staticHeadOutlets[i] +shiftOutlet[i]*outletTransition,
+        0,
+        1,
+        outletTransition),ThermofluidStream.Undirected.Internal.regStep(
+        staticHeadOutlets[i] + shiftOutlet[i]*outletTransition,
+        1,
+        0,
+        outletTransition)});
   end for;
+
 
   V_liquid= MXi[end]/liquidDensity;
 
