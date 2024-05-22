@@ -20,6 +20,8 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 Please [register here](https://terminplaner6.dfn.de/en/b/04557a60c93ea82eafb16a981f7c2aeb-644809) for the online event. It is free. First come, first serve will be applied in case we reach limits regarding presentation time or number of participants. 
 
+[Preliminary Prorgram](https://github.com/DLR-SR/ThermofluidStream/issues/179) is now available.
+
 ## Highlights
 
 - **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
