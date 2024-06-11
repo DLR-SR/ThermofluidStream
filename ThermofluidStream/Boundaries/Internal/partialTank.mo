@@ -49,9 +49,7 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.Length outletTransition=0.01 "Width of band for smooth transition between gas and liquid at outlet"
                                                                                                                                  annotation(Dialog(tab="Advanced"));
-  parameter Boolean chaoticLife=false "Allows small gas bubbles to go through liquid even if staticHead is positive, experimental. Large increase in simulation time."
-                                                                                                                                                                      annotation(Dialog(tab="Advanced"));
-  parameter Modelica.Units.SI.Volume gasBubbleVolume=0.0001 "Tuning parameter for size of gas bubbles" annotation(Dialog(tab="Advanced",enable=chaoticLife));
+
 
   Interfaces.Inlet inlet[N_inlets](redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -125,7 +123,6 @@ protected
    "density of the liquid in the tank";
   Modelica.Units.SI.Density gasDensity=Medium.Gas.density(medium.state)
    "density of the gas in the tank";
-   Real fChaoticLife[N_inlets];
 initial equation
   if initialize_pressure then
     medium.p=p_start;
@@ -160,13 +157,8 @@ equation
   der(outlet.m_flow)*L = outlet.r - r_damping*ones(M_outlets);
 
   for i in 1:N_inlets loop
-    if chaoticLife and abs(der(M))< 1e-1 and Xi_in[1,i]> 0.8 then
-     fChaoticLife[i]=abs(inlet[i].r)/sqrt((inlet[i].r)^2+1e-4^2);
-    else
-      fChaoticLife[i]=0;
-    end if;
     staticHeadInlets_Pa_relative[i]=liquidDensity*acceleration.a*normAcc*staticHeadInlets[i];
-    r[i] + p_in[i] = medium.p + (1-gasBubbleVolume/V_ref*fChaoticLife[i])*max(0,staticHeadInlets_Pa_relative[i]);
+    r[i] + p_in[i] = medium.p + max(0,staticHeadInlets_Pa_relative[i]);
 
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
     h_in[i] =  if noEvent(m_flow_in[i] >= 0) then Medium.specificEnthalpy(inlet[i].state) else medium.h;
