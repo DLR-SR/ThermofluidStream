@@ -120,4 +120,11 @@ for i in 1:M_outlets loop
       yLength/2,zLength/2}))*normAcc + D;
 end for;
 
+  annotation (Documentation(revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
+</html>"));
 end TankCuboid;

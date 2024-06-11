@@ -112,5 +112,11 @@ textString="%toPosition"),
 <p><br>Note that it is only the position difference that influence the pressure difference, not the absolute positions.</p>
 <p>If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;</p>
 <p>is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
+</html>", revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
 </html>"));
 end StaticHead;

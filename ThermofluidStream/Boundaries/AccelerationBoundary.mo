@@ -91,5 +91,11 @@ to specify system wide accelerartion.",Icon(coordinateSystem(preserveAspectRatio
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p><br>This component sets&nbsp;and&nbsp;broadcasts an&nbsp;acceleration&nbsp;vector.&nbsp;The default&nbsp;is fixed&nbsp;in&nbsp;negative&nbsp;z-direction&nbsp;with&nbsp;length&nbsp;of&nbsp;DropOfCommons.g. The acceleration can be set either by inputs or real expressions.</p>
+</html>", revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
 </html>"));
 end AccelerationBoundary;

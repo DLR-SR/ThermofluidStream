@@ -319,5 +319,11 @@ equation
     Documentation(info="<html>
 <p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>
 <p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false).</p>
+</html>", revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
 </html>"));
 end PartialTank;

@@ -126,5 +126,12 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=20, __Dymola_Algorithm="Dassl"));
+    experiment(StopTime=20, __Dymola_Algorithm="Dassl"),
+    Documentation(revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
+</html>"));
 end TankExtendedTest7_fillingClosedTank;
