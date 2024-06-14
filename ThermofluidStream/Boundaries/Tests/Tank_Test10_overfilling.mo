@@ -10,12 +10,12 @@ extends Modelica.Icons.Example;
     T0_par=295.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{122,-88},{102,-68}})));
+    annotation (Placement(transformation(extent={{100,-80},{80,-60}})));
   inner AccelerationBoundary                  acceleration
-    annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
+    annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
         AssertionLevel.warning)
-    annotation (Placement(transformation(extent={{-96,-54},{-76,-34}})));
+    annotation (Placement(transformation(extent={{-80,0},{-60,20}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium =
         Medium,
@@ -27,7 +27,7 @@ extends Modelica.Icons.Example;
         zeta=1,
         fromGeometry=true,
         A=0.00005))
-    annotation (Placement(transformation(extent={{88,-88},{68,-68}})));
+    annotation (Placement(transformation(extent={{60,-80},{40,-60}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium =
         Medium,
@@ -41,7 +41,7 @@ extends Modelica.Icons.Example;
         A=0.00005))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=-90,
-        origin={58,14})));
+        origin={50,10})));
   ThermofluidStream.Boundaries.TankCuboid tank1(
     redeclare package Medium = Medium,
     K=30000000,
@@ -62,7 +62,7 @@ extends Modelica.Icons.Example;
     xLength=1,
     yLength=1,
     zLength=1)
-    annotation (Placement(transformation(extent={{14,-66},{-6,-46}})));
+    annotation (Placement(transformation(extent={{12,-40},{-8,-20}})));
   Processes.FlowResistance                   flowResistance3(
     redeclare package Medium = Medium,
     l=1,
@@ -73,45 +73,50 @@ extends Modelica.Icons.Example;
         zeta=1,
         fromGeometry=true,
         A=0.00005))
-    annotation (Placement(transformation(extent={{-14,-94},{-34,-74}})));
+    annotation (Placement(transformation(extent={{-20,-40},{-40,-20}})));
   Sink sink(redeclare package Medium =
         Medium,p0_par=100000)
-    annotation (Placement(transformation(extent={{-40,-94},{-60,-74}})));
+    annotation (Placement(transformation(extent={{-58,-40},{-78,-20}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     T0_par=295.15,
     p0_par=101000,
     Xi0_par={0,1})
-    annotation (Placement(transformation(extent={{100,26},{80,46}})));
-  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{62,-88},{42,-68}})));
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={50,58})));
+  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium
+      =                                                                          Medium)
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=270,
+        origin={30,-50})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
-      points={{102,-78},{88,-78}},
+      points={{80,-70},{60,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, sink.inlet) annotation (Line(
-      points={{-34,-84},{-40,-84}},
+      points={{-40,-30},{-58,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, tank1.inlet[1]) annotation (Line(
-      points={{58,4},{58,-56},{50,-56},{50,-56.5},{14,-56.5}},
+      points={{50,0},{50,-30.5},{12,-30.5}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet, flowResistance2.inlet) annotation (Line(
-      points={{80,36},{70,36},{70,38},{58,38},{58,24}},
+      points={{50,48},{50,20}},
       color={28,108,200},
       thickness=0.5));
   connect(tank1.outlet[1], flowResistance3.inlet) annotation (Line(
-      points={{-6,-56},{-14,-56},{-14,-70},{-6,-70},{-6,-84},{-14,-84}},
+      points={{-8,-30},{-20,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, checkValve.inlet) annotation (Line(
-      points={{68,-78},{62,-78}},
+      points={{40,-70},{30,-70},{30,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(checkValve.outlet, tank1.inlet[2]) annotation (Line(
-      points={{42,-78},{30,-78},{30,-76},{14,-76},{14,-55.5}},
+      points={{30,-40},{30,-29.5},{12,-29.5}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

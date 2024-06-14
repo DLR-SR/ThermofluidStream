@@ -260,11 +260,9 @@ required from medium model JP8.");
     MM := Gas.molarMass(state_G)*Liquid.molarMass(state_L) / (state.X[nS]*Gas.molarMass(state_G) + (1-state.X[nS])*Liquid.molarMass(state_L));
  end molarMass;
    annotation (Documentation(info="<html>
-<p>Gas&nbsp;medium&nbsp;combined&nbsp;with&nbsp;incompressible&nbsp;medium.&nbsp;Only&nbsp;the parameters&nbsp;to&nbsp;PartialMedium&nbsp;</p>
-<p>&nbsp;&nbsp;and&nbsp;selection&nbsp;of&nbsp;Gas&nbsp;and&nbsp;Liquid&nbsp;are&nbsp;incomplete.&nbsp;Observe&nbsp;that&nbsp;this&nbsp;first implementation&nbsp;</p>
-<p>&nbsp;&nbsp;only&nbsp;works&nbsp;for&nbsp;Gases&nbsp;and&nbsp;Liquids&nbsp;with&nbsp;one&nbsp;substance&nbsp;each.</p>
-<p>It is assumed that the gas and the liquid do not interact. This is a simplification since many  </p>
-<p>substances mix , e. g. water and air where there is air molecules mixed into the liquid water </p>
-<p>and water steam mixed in the air.</p>
+<p>Gas&nbsp;medium&nbsp;combined&nbsp;with&nbsp;incompressible&nbsp;medium.&nbsp;Only&nbsp;the parameters&nbsp;to&nbsp;PartialMedium&nbsp;&nbsp;and&nbsp;selection&nbsp;of&nbsp;Gas&nbsp;and&nbsp;Liquid&nbsp;are&nbsp;incomplete.&nbsp;</p>
+<p>Observe&nbsp;that&nbsp;this&nbsp;first implementation&nbsp;only&nbsp;works&nbsp;for&nbsp;Gases&nbsp;and&nbsp;Liquids&nbsp;with&nbsp;one&nbsp;substance&nbsp;each.</p>
+<p>It is assumed that the gas and the liquid do not interact. This is a simplification since many substances mix , e. g. water and air where there is air molecules mixed into the liquid water and water steam mixed in the air.</p>
+<p>To calculate the media properties a linear interpolation between the gas and liquid is performed depending on the mass-fraction. Depending on the chosen poperty this may be more or less meaningful. Whenever possible, one shall therefore use the propertis of gas and liquid directly.</p>
 </html>"));
 end PartialGasAndIncompressible;

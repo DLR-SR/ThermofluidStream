@@ -1,8 +1,5 @@
 within ThermofluidStream.Boundaries.Internal;
-partial model PartialTank "To complete the partialTank, equations for total tank volume V,
-  centreOfMass, staticHeadInlets and staticHeadOutlets needs to be provided. This
-  separation is made to make it easy to implement arbitrary geometries. In this 
-  component, medium.p is interpreted as the pressure at the liquid surface."
+partial model PartialTank "Partial Tank model for media that are partial gas and incompressible liquid"
   replaceable package Medium =
       ThermofluidStream.Media.myMedia.GasAndIncompressible.PartialGasAndIncompressible
     "Medium model" annotation (
@@ -93,9 +90,12 @@ inlets and outlets the volume is connected to.
 
 Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
 
+
+
 protected
   outer DropOfCommons dropOfCommons;
   outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
+
   Modelica.Units.SI.Pressure p_in[N_inlets] = Medium.pressure(inlet.state);
   Modelica.Units.SI.SpecificEnthalpy h_in[N_inlets];
   Medium.MassFraction Xi_in[Medium.nXi,N_inlets];
@@ -116,6 +116,10 @@ protected
 
   Modelica.Units.SI.MassFlowRate m_flow_in[N_inlets] = inlet.m_flow;
   Modelica.Units.SI.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
+
+  final parameter Real ThresholdFull = 0.995 "threshold value near 1 to indicate when full";
+  final parameter Real ThesholdEmpty = 0.003 "threshold value near 0 to indicate when empty";
+
   Boolean fFull;
   Boolean fEmpty;
   Real shiftOutlet[M_outlets];
@@ -165,9 +169,9 @@ equation
     Xi_in[:,i] = if noEvent(m_flow_in[i] >= 0) then Medium.massFraction(inlet[i].state) else medium.Xi;
   end for;
   //indication on tank nearly filled with liquid
-  fFull = if V_liquid > 0.995*V_ref then true else false;
+  fFull = if V_liquid > ThresholdFull*V_ref then true else false;
   //indication on tank nearly emptied of liquid
-  fEmpty = if V_liquid < 0.003*V_ref then true else false;
+  fEmpty = if V_liquid < ThesholdEmpty*V_ref then true else false;
 
 
   for i in 1:M_outlets loop
@@ -318,7 +322,9 @@ equation
           textString="a")}),Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>
-<p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false).</p>
+<p>To complete the partialTank, equations for total tank volume V, centreOfMass, staticHeadInlets and staticHeadOutlets needs to be provided. This separation is made to make it easy to implement arbitrary geometries. In this component, medium.p is interpreted as the pressure at the liquid surface.</p>
+<p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false)</p>
+<p><span style=\"color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions.</span></p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,

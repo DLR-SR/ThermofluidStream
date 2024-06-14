@@ -18,17 +18,17 @@ model TankExtendedTest2
     tankCenter={0.5,0.5,0.5},
     xLength=1,
     yLength=1,
-    zLength=1) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
+    zLength=1) annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium =
         Medium,
     T0_par=295.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{-76,10},{-56,30}})));
+    annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium =
         Medium, p0_par=100000)
-    annotation (Placement(transformation(extent={{44,-8},{64,12}})));
+    annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   inner AccelerationBoundary                  acceleration(setFromExpressions=
         true, az=-dropOfCommons.g*10)
     annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
@@ -41,7 +41,7 @@ model TankExtendedTest2
     T0_par=293.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
+    annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium =
         Medium,
@@ -53,7 +53,7 @@ model TankExtendedTest2
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-42,10},{-22,30}})));
+    annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium =
         Medium,
@@ -65,7 +65,7 @@ model TankExtendedTest2
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-32,-22},{-12,-2}})));
+    annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium =
         Medium,
@@ -75,30 +75,30 @@ model TankExtendedTest2
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
-    annotation (Placement(transformation(extent={{18,-8},{38,12}})));
+    annotation (Placement(transformation(extent={{30,-10},{50,10}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
-      points={{-56,20},{-42,20}},
+      points={{-60,30},{-40,30}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, tank.inlet[1]) annotation (Line(
-      points={{-22,20},{-16,20},{-16,10},{-18,10},{-18,1.5},{-10,1.5}},
+      points={{-20,30},{-10,30},{-10,-0.5},{0,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet, flowResistance1.inlet) annotation (Line(
-      points={{-40,-10},{-40,-12},{-32,-12}},
+      points={{-60,-30},{-40,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, tank.inlet[2]) annotation (Line(
-      points={{-12,-12},{-10,-12},{-10,2.5}},
+      points={{-20,-30},{-10,-30},{-10,0.5},{0,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(tank.outlet[1], flowResistance2.inlet) annotation (Line(
-      points={{10,2},{18,2}},
+      points={{20,0},{30,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, sink.inlet) annotation (Line(
-      points={{38,2},{44,2}},
+      points={{50,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

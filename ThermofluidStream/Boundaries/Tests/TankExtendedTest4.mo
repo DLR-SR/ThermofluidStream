@@ -19,26 +19,26 @@ model TankExtendedTest4
     xLength=1,
     yLength=1,
     zLength=1)
-    annotation (Placement(transformation(extent={{-52,-8},{-32,12}})));
+    annotation (Placement(transformation(extent={{-10,30},{10,50}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium =
         Medium,
     T0_par=295.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{-110,10},{-90,30}})));
+    annotation (Placement(transformation(extent={{-100,50},{-80,70}})));
   inner AccelerationBoundary                  acceleration
-    annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
+    annotation (Placement(transformation(extent={{-92,-80},{-72,-60}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
         AssertionLevel.warning)
-    annotation (Placement(transformation(extent={{-58,-82},{-38,-62}})));
+    annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium =
         Medium,
     T0_par=293.15,
     p0_par=103000,
     Xi0_par={0,1})
-    annotation (Placement(transformation(extent={{-104,-18},{-84,2}})));
+    annotation (Placement(transformation(extent={{-100,10},{-80,30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium =
         Medium,
@@ -50,7 +50,7 @@ model TankExtendedTest4
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-76,10},{-56,30}})));
+    annotation (Placement(transformation(extent={{-60,50},{-40,70}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium =
         Medium,
@@ -62,7 +62,7 @@ model TankExtendedTest4
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-74,-22},{-54,-2}})));
+    annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium =
         Medium,
@@ -74,7 +74,7 @@ model TankExtendedTest4
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-24,-8},{-4,12}})));
+    annotation (Placement(transformation(extent={{20,30},{40,50}})));
   TankCuboid tank1(
     redeclare package Medium = Medium,
     N_inlets=1,
@@ -91,10 +91,10 @@ model TankExtendedTest4
     xLength=1,
     yLength=1,
     zLength=1)
-    annotation (Placement(transformation(extent={{38,-48},{58,-28}})));
+    annotation (Placement(transformation(extent={{10,-40},{-10,-20}})));
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium =
         Medium, p0_par=100000)
-    annotation (Placement(transformation(extent={{116,-54},{136,-34}})));
+    annotation (Placement(transformation(extent={{-80,-40},{-100,-20}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium =
         Medium,
@@ -106,58 +106,60 @@ model TankExtendedTest4
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{90,-54},{110,-34}})));
+    annotation (Placement(transformation(extent={{-40,-40},{-60,-20}})));
   ThermofluidStream.Processes.StaticHead staticHead(
     redeclare package Medium =
         Medium,
     fromPosition={0,1,0},
     toPosition={0,0,-0.5},
     displayPositions=true)
-    annotation (Placement(transformation(extent={{6,-8},{26,12}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={62,0})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(
     Q_flow=50000,
     T_ref=318.15,
     alpha=1)
-    annotation (Placement(transformation(extent={{22,-88},{42,-68}})));
+    annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
-      points={{-90,20},{-76,20}},
+      points={{-80,60},{-60,60}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, tank.inlet[1]) annotation (Line(
-      points={{-56,20},{-56,10},{-60,10},{-60,1.5},{-52,1.5}},
+      points={{-40,60},{-20,60},{-20,39.5},{-10,39.5}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet, flowResistance1.inlet) annotation (Line(
-      points={{-84,-8},{-84,-12},{-74,-12}},
+      points={{-80,20},{-60,20}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, tank.inlet[2]) annotation (Line(
-      points={{-54,-12},{-52,-12},{-52,2.5}},
+      points={{-40,20},{-20,20},{-20,40.5},{-10,40.5}},
       color={28,108,200},
       thickness=0.5));
   connect(tank.outlet[1], flowResistance2.inlet) annotation (Line(
-      points={{-32,2},{-24,2}},
+      points={{10,40},{20,40}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.outlet, sink1.inlet) annotation (Line(
-      points={{110,-44},{116,-44}},
+      points={{-60,-30},{-80,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(tank1.outlet[1], flowResistance3.inlet) annotation (Line(
-      points={{58,-38},{80,-38},{80,-44},{90,-44}},
+      points={{-10,-30},{-40,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance2.outlet, staticHead.inlet) annotation (Line(
-      points={{-4,2},{6,2}},
+      points={{40,40},{62,40},{62,10}},
       color={28,108,200},
       thickness=0.5));
   connect(staticHead.outlet, tank1.inlet[1]) annotation (Line(
-      points={{26,2},{36,2},{36,-24},{30,-24},{30,-38},{38,-38}},
+      points={{62,-10},{62,-30},{10,-30}},
       color={28,108,200},
       thickness=0.5));
   connect(tank1.heatPort, fixedHeatFlow.port)
-    annotation (Line(points={{48,-46},{48,-78},{42,-78}}, color={191,0,0}));
+    annotation (Line(points={{0,-38},{0,-70},{-10,-70}},  color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=2000, __Dymola_Algorithm="Dassl"),
