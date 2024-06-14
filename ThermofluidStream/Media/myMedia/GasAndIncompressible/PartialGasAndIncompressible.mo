@@ -34,11 +34,6 @@ partial package PartialGasAndIncompressible
        import Modelica.Math.Polynomials;
 
     equation
-    assert(T >= -40+273 and T <= 120+273, "
-Temperature T (=" + String(T) + " K) is not in the allowed range
-233 K <= T <= 393 K 
-required from medium model JP8.");
-    // below is cut in from MixtureGasNasa and not adapted for Gas+Liquid yet
     MM = molarMass(state);
     h = h_TX(T, X);
     R_s = {Gas.data.R_s, Modelica.Constants.R/Liquid.MM_const}*X;
