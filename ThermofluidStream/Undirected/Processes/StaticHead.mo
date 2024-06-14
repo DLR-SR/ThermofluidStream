@@ -64,11 +64,11 @@ Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-100,-2},{100,-2}},
+          points={{-100,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-56,52},{64,-68}},
+          extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},
@@ -84,42 +84,42 @@ Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           textString="%forePosition"),
         Line(
           points={{28,70},{-16,12}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Text(
-          extent={{-46,2},{8,-40}},
-          textColor={28,108,200},
+          extent={{-46,4},{8,-38}},
+          textColor={206,103,0},
           textString="a"),
         Line(
           points={{-18,10},{-16,26}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-18,10},{-4,14}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-2,-2},{0,14}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{44,58},{0,0}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-2,-2},{12,2}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{14,-14},{16,2}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{60,46},{16,-12}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{14,-14},{28,-10}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1)}));
 end StaticHead;

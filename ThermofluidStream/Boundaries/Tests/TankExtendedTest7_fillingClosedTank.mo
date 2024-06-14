@@ -28,7 +28,7 @@ model TankExtendedTest7_fillingClosedTank
     Xi0_par={1,0})
     annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
   inner AccelerationBoundary                  acceleration
-    annotation (Placement(transformation(extent={{-72,-80},{-52,-60}})));
+    annotation (Placement(transformation(extent={{-80,-80},{-60,-60}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
         AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));

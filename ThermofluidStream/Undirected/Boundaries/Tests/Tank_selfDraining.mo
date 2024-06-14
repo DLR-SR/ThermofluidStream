@@ -20,7 +20,7 @@ model Tank_selfDraining
     yLength=1,
     zLength=1) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
   inner ThermofluidStream.Boundaries.AccelerationBoundary acceleration(
-      setFromExpressions=true, az=-dropOfCommons.g*10)
+                               az=-dropOfCommons.g*10)
     annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
         AssertionLevel.warning)

@@ -21,7 +21,7 @@ model TestLiqLoopJP8DryAir
     outputTemperature=true,
     outputMassFlowRate=true,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-12,6},{-40,-24}})));
+    annotation (Placement(transformation(extent={{-14,8},{-38,-16}})));
   ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
     redeclare package MediumA = TertiaryMedium,
     redeclare package MediumB = SecondaryMedium,
@@ -52,23 +52,23 @@ model TestLiqLoopJP8DryAir
     omega_from_input=true,
     redeclare function dp_tau_pump =
         ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal)
-    annotation (Placement(transformation(extent={{92,-82},{112,-62}})));
+    annotation (Placement(transformation(extent={{100,-80},{120,-60}})));
   ThermofluidStream.Processes.ConductionElement conductionElement(redeclare
       package Medium = TertiaryMedium)
-    annotation (Placement(transformation(extent={{4,-84},{24,-64}})));
+    annotation (Placement(transformation(extent={{0,-80},{20,-60}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
     annotation (Placement(transformation(extent={{-6,-58},{14,-38}})));
   Modelica.Blocks.Sources.RealExpression heat(y=40000)
     annotation (Placement(transformation(extent={{-46,-60},{-26,-40}})));
   ThermofluidStream.Boundaries.Reservoir reservoir(redeclare package Medium =
         TertiaryMedium)
-    annotation (Placement(transformation(extent={{-52,-86},{-32,-66}})));
+    annotation (Placement(transformation(extent={{-52,-80},{-32,-60}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
     redeclare package Medium = TertiaryMedium,
     outputTemperature=true,
     outputMassFlowRate=false,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{82,6},{36,-18}})));
+    annotation (Placement(transformation(extent={{74,6},{50,-18}})));
   ThermofluidStream.Boundaries.Source
                     source1(redeclare package Medium = SecondaryMedium,
     temperatureFromInput=false,
@@ -97,23 +97,23 @@ model TestLiqLoopJP8DryAir
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{44,26},{64,46}})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=7e5, uMin=100)
-    annotation (Placement(transformation(extent={{144,34},{132,46}})));
+    annotation (Placement(transformation(extent={{144,20},{132,32}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=1000,
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1e5)
-    annotation (Placement(transformation(extent={{170,30},{150,50}})));
+    annotation (Placement(transformation(extent={{170,16},{150,36}})));
   Modelica.Blocks.Math.Feedback feedback1
-    annotation (Placement(transformation(extent={{198,30},{178,50}})));
+    annotation (Placement(transformation(extent={{198,16},{178,36}})));
   Modelica.Blocks.Sources.RealExpression refFlow_setPoint1(y=30)
-    annotation (Placement(transformation(extent={{224,30},{204,50}})));
+    annotation (Placement(transformation(extent={{224,16},{204,36}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm
                           multiSensor_Tpm4(
     redeclare package Medium = SecondaryMedium,
     outputMassFlowRate=true,
     temperatureUnit="degC")
-    annotation (Placement(transformation(extent={{-48,42},{-24,20}})));
+    annotation (Placement(transformation(extent={{-46,44},{-22,22}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-102,-60},{-82,-40}})));
   Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=600, uMin=50)
@@ -132,7 +132,7 @@ model TestLiqLoopJP8DryAir
   redeclare package MediumA = TertiaryMedium,
   redeclare package MediumB = TertiaryMedium,
       outputTemperature=true)
-    annotation (Placement(transformation(extent={{28,-80},{48,-100}})));
+    annotation (Placement(transformation(extent={{34,-80},{54,-100}})));
   Modelica.Blocks.Math.Gain gain(k=-1)
     annotation (Placement(transformation(extent={{-4,-116},{-14,-106}})));
   Modelica.Blocks.Sources.RealExpression inlet_temp(y=283.15)
@@ -140,36 +140,36 @@ model TestLiqLoopJP8DryAir
 equation
 
   connect(pump.outlet,flowResistance1. inlet) annotation (Line(
-      points={{112,-72},{142,-72},{142,6},{114,6}},
+      points={{120,-70},{142,-70},{142,6},{114,6}},
       color={28,108,200},
       thickness=0.5));
   connect(conductionElement.outlet,pump. inlet) annotation (Line(
-      points={{24,-74},{84,-74},{84,-88},{92,-88},{92,-72}},
+      points={{20,-70},{100,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(heating_element.port,conductionElement. heatPort) annotation (Line(
-        points={{14,-48},{14,-64.2}},                                color={191,
+        points={{14,-48},{14,-80},{10,-80}},                         color={191,
           0,0}));
   connect(heat.y,heating_element. Q_flow) annotation (Line(points={{-25,-50},{-25,
           -48},{-6,-48}},    color={0,0,127}));
   connect(reservoir.outlet,conductionElement. inlet) annotation (Line(
-      points={{-32,-76},{-4,-76},{-4,-74},{4,-74}},
+      points={{-32,-70},{0,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm1.outlet,reservoir. inlet) annotation (Line(
-      points={{-40,6},{-40,14},{-54,14},{-54,-60},{-62,-60},{-62,-76},{-52,-76}},
+      points={{-38,8},{-68,8},{-68,-70},{-52,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, multiSensor_Tpm2.inlet) annotation (Line(
-      points={{94,6},{82,6}},
+      points={{94,6},{74,6}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletA, multiSensor_Tpm1.inlet) annotation (Line(
-      points={{4,6},{-12,6},{-12,6}},
+      points={{4,8},{-14,8}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm2.outlet, evaporator.inletA) annotation (Line(
-      points={{36,6},{28,6},{28,6},{24,6}},
+      points={{50,6},{28,6},{28,8},{24,8}},
       color={28,108,200},
       thickness=0.5));
   connect(source1.outlet,flowResistance2. inlet) annotation (Line(
@@ -181,46 +181,46 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(limiter1.y,sink1. p0_var)
-    annotation (Line(points={{131.4,40},{88,40},{88,26}},
-                                                     color={0,0,127}));
+    annotation (Line(points={{131.4,26},{88,26}},    color={0,0,127}));
   connect(limiter1.u,PI1. y)
-    annotation (Line(points={{145.2,40},{149,40}},     color={0,0,127}));
+    annotation (Line(points={{145.2,26},{149,26}},     color={0,0,127}));
   connect(PI1.u,feedback1. y)
-    annotation (Line(points={{172,40},{179,40}},     color={0,0,127}));
+    annotation (Line(points={{172,26},{179,26}},     color={0,0,127}));
   connect(feedback1.u1,refFlow_setPoint1. y)
-    annotation (Line(points={{196,40},{203,40}},     color={0,0,127}));
+    annotation (Line(points={{196,26},{203,26}},     color={0,0,127}));
   connect(flowResistance2.outlet,multiSensor_Tpm4. inlet) annotation (Line(
-      points={{-64,44},{-56,44},{-56,42},{-48,42}},
+      points={{-64,44},{-46,44}},
       color={28,108,200},
       thickness=0.5));
   connect(evaporator.outletB, multiSensor_Tpm3.inlet) annotation (Line(
-      points={{24,22},{32,22},{32,26},{44,26}},
+      points={{24,20},{32,20},{32,26},{44,26}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm4.outlet, evaporator.inletB) annotation (Line(
-      points={{-24,42},{-20,42},{-20,40},{-14,40},{-14,22},{4,22}},
+      points={{-22,44},{-14,44},{-14,20},{4,20}},
       color={28,108,200},
       thickness=0.5));
   connect(limiter2.u,PI2. y)
     annotation (Line(points={{36.8,-134},{25,-134}},   color={0,0,127}));
-  connect(limiter2.y, pump.omega_input) annotation (Line(points={{50.6,-134},{78,
-          -134},{78,-138},{102,-138},{102,-82}}, color={0,0,127}));
-  connect(multiSensor_Tpm1.T_out, feedback1.u2) annotation (Line(points={{-40,-18},
-          {-48,-18},{-48,-30},{188,-30},{188,32}}, color={0,0,127}));
+  connect(limiter2.y, pump.omega_input) annotation (Line(points={{50.6,-134},{
+          110,-134},{110,-82}},                  color={0,0,127}));
+  connect(multiSensor_Tpm1.T_out, feedback1.u2) annotation (Line(points={{-35.84,
+          -11.2},{-44,-11.2},{-44,-26},{188,-26},{188,18}},
+                                                   color={0,0,127}));
   connect(feedback2.y, PI2.u)
     annotation (Line(points={{-13,-134},{2,-134}}, color={0,0,127}));
   connect(feedback2.u1, refFlow_setPoint2.y)
     annotation (Line(points={{-30,-134},{-45,-134}}, color={0,0,127}));
   connect(differenceSensor_Tp.inletA, conductionElement.inlet) annotation (Line(
-      points={{28,-98},{-4,-98},{-4,-74},{4,-74}},
+      points={{34,-96},{-4,-96},{-4,-70},{0,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensor_Tp.inletB, conductionElement.outlet) annotation (
       Line(
-      points={{28,-82},{26,-82},{26,-74},{24,-74}},
+      points={{34,-84},{26,-84},{26,-70},{20,-70}},
       color={28,108,200},
       thickness=0.5));
-  connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{48,-94},
+  connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{52,-94},
           {56,-94},{56,-111},{-3,-111}}, color={0,0,127}));
   connect(feedback2.u2, gain.y) annotation (Line(points={{-22,-126},{-22,-111},
           {-14.5,-111}}, color={0,0,127}));

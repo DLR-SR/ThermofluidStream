@@ -470,27 +470,17 @@ equation
         Ellipse(extent={{-60,24},{60,-32}}, lineColor={28,108,200}),
         Line(
           points={{20,100},{-24,42}},
-          color={28,108,200},
-          arrow={Arrow.None,Arrow.Filled},
-          thickness=1),
-        Line(
-          points={{36,88},{-8,30}},
-          color={28,108,200},
+          color={206,103,0},
           arrow={Arrow.None,Arrow.Filled},
           thickness=1),
         Line(
           points={{52,78},{8,20}},
-          color={28,108,200},
-          arrow={Arrow.None,Arrow.Filled},
-          thickness=1),
-        Line(
-          points={{68,66},{24,8}},
-          color={28,108,200},
+          color={206,103,0},
           arrow={Arrow.None,Arrow.Filled},
           thickness=1),
         Line(
           points={{84,56},{40,-2}},
-          color={28,108,200},
+          color={206,103,0},
           arrow={Arrow.None,Arrow.Filled},
           thickness=1),
         Text(
@@ -503,7 +493,7 @@ equation
           textString="%N_outlets"),
         Text(
           extent={{40,102},{84,70}},
-          textColor={28,108,200},
+          textColor={206,103,0},
           textString="a"),
         Text(
           extent={{98,-70},{124,-112}},

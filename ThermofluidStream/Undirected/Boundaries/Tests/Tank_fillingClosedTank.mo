@@ -21,14 +21,14 @@ model Tank_fillingClosedTank
     xLength=1,
     yLength=1,
     zLength=1)
-    annotation (Placement(transformation(extent={{-52,-8},{-32,12}})));
+    annotation (Placement(transformation(extent={{-40,-6},{-20,14}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium =
         Medium,
     T0_par=295.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{-110,10},{-90,30}})));
+    annotation (Placement(transformation(extent={{-104,-2},{-84,18}})));
   inner ThermofluidStream.Boundaries.AccelerationBoundary acceleration
     annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
@@ -45,7 +45,7 @@ model Tank_fillingClosedTank
         zeta=1,
         fromGeometry=false,
         A=0.0028))
-    annotation (Placement(transformation(extent={{-76,10},{-56,30}})));
+    annotation (Placement(transformation(extent={{-70,-2},{-50,18}})));
   TankCuboid tank1(
     redeclare package Medium = Medium,
     N_inlets=0,
@@ -66,35 +66,35 @@ model Tank_fillingClosedTank
     xLength=1,
     yLength=1,
     zLength=1)
-    annotation (Placement(transformation(extent={{64,-50},{84,-30}})));
+    annotation (Placement(transformation(extent={{66,-6},{86,14}})));
   Processes.StaticHead staticHead2(redeclare package Medium = Medium,forePosition={0,0,-0.7}, rearPosition={0,0,1})
-    annotation (Placement(transformation(extent={{-14,-58},{12,-30}})));
+    annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   Processes.FlowResistance flowResistance3(redeclare package Medium = Medium,
     r=0.03,
     l=1,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
-    annotation (Placement(transformation(extent={{24,-54},{44,-34}})));
+    annotation (Placement(transformation(extent={{34,-10},{54,10}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
-      points={{-90,20},{-76,20}},
+      points={{-84,8},{-70,8}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.outlet, tank.inlet[1]) annotation (Line(
-      points={{-56,20},{-56,10},{-60,10},{-60,6},{-51.8,6}},
+      points={{-50,8},{-39.8,8}},
       color={28,108,200},
       thickness=0.5));
   connect(tank.fore[1], staticHead2.rear) annotation (Line(
-      points={{-32.2,-2.6},{-24,-2.6},{-24,-44},{-14,-44}},
+      points={{-20.2,-0.6},{-18,0},{0,0}},
       color={28,108,200},
       thickness=0.5));
   connect(staticHead2.fore, flowResistance3.rear) annotation (Line(
-      points={{12,-44},{24,-44}},
+      points={{20,0},{34,0}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.fore, tank1.rear[1]) annotation (Line(
-      points={{44,-44},{54,-44},{54,-44.6},{64,-44.6}},
+      points={{54,0},{52,0},{52,-0.6},{66,-0.6}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

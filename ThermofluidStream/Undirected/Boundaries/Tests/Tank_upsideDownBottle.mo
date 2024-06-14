@@ -23,7 +23,7 @@ model Tank_upsideDownBottle
     xLength=0.05,
     yLength=0.05,
     zLength=0.2)
-    annotation (Placement(transformation(extent={{-10,48},{10,68}})));
+    annotation (Placement(transformation(extent={{0,38},{20,58}})));
   inner ThermofluidStream.Boundaries.AccelerationBoundary acceleration
     annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
@@ -50,7 +50,7 @@ model Tank_upsideDownBottle
     xLength=0.1,
     yLength=0.1,
     zLength=0.2)
-    annotation (Placement(transformation(extent={{14,-66},{-6,-46}})));
+    annotation (Placement(transformation(extent={{34,-76},{14,-56}})));
   Processes.FlowResistance flowResistance(
   redeclare package Medium = Medium,
     r=0.03,
@@ -58,7 +58,7 @@ model Tank_upsideDownBottle
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
-    annotation (Placement(transformation(extent={{-22,-78},{-42,-58}})));
+    annotation (Placement(transformation(extent={{0,-80},{-20,-60}})));
   Processes.FlowResistance flowResistance3(
   redeclare package Medium = Medium,
     r=0.01,
@@ -68,28 +68,28 @@ model Tank_upsideDownBottle
           zeta=1)) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
-        origin={-2,12})));
+        origin={42,0})));
   BoundaryFore boundaryFore(
   redeclare package Medium = Medium,
     T0_par=293.15,
     p0_par=100000,
     Xi0_par={1,0})
-    annotation (Placement(transformation(extent={{-50,-64},{-70,-44}})));
+    annotation (Placement(transformation(extent={{-40,-80},{-60,-60}})));
 equation
   connect(flowResistance3.rear, tank.fore[1]) annotation (Line(
-      points={{-2,22},{-2,44},{18,44},{18,53.4},{9.8,53.4}},
+      points={{42,10},{42,43.4},{19.8,43.4}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance3.fore, tank1.rear[1]) annotation (Line(
-      points={{-2,2},{-2,-42},{22,-42},{22,-60.6},{14,-60.6}},
+      points={{42,-10},{42,-70.6},{34,-70.6}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.fore, boundaryFore.rear) annotation (Line(
-      points={{-42,-68},{-48,-68},{-48,-60},{-44,-60},{-44,-54},{-50,-54}},
+      points={{-20,-70},{-40,-70}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance.rear, tank1.fore[1]) annotation (Line(
-      points={{-22,-68},{-14,-68},{-14,-60.6},{-5.8,-60.6}},
+      points={{0,-70},{0,-70.6},{14.2,-70.6}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

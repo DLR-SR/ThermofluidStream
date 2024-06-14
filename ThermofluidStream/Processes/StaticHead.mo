@@ -48,70 +48,67 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-56,54},{64,-66}},
+          extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(visible=displayPositions,
-          extent={{-164,120},{0,20}},
+          extent={{-164,118},{0,18}},
           textColor={28,108,200},
           textString="%fromPosition"),
         Text(
           visible=displayPositions,
-          extent={{-2,-20},{160,-118}},
+          extent={{0,-20},{162,-118}},
           textColor={28,108,200},
 textString="%toPosition"),
         Line(
           points={{28,72},{-16,14}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Text(
           extent={{-46,4},{8,-38}},
-          textColor={28,108,200},
+          textColor={206,103,0},
           textString="a"),
         Line(
           points={{-18,12},{-16,28}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-18,12},{-4,16}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-2,0},{0,16}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{44,60},{0,2}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{-2,0},{12,4}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{14,-12},{16,4}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{60,48},{16,-10}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1),
         Line(
           points={{14,-12},{28,-8}},
-          color={28,108,200},
+          color={206,103,0},
           thickness=1)}),  Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>Implementation of static head in a pipe. The acceleration field is defined in the component </p>
-<p>SAABdefinedMedia.Acceleration. Default is pure graviation in the negative z-direction.</p>
+<p>Implementation of static head in a pipe. </p>
+<p><span style=\"font-family: Arial;\">To specify the acceleration vector, please use the&nbsp;<a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>&nbsp;component.</span></p>
+<p>Default is pure graviation in the negative z-direction.</p>
 <p><br>Energy is moved between potential energy in an acceleration field and internal energy (pressure).</p>
-<p><br>The main assumption is that the density is constant for the pressure change along the pipe. That would </p>
-<p>be the case for non-compressible fluids and many gases at low Mach numbers. For more insight in this </p>
-<p>look into the difference between the simplified and generalised forms of the Bernoulli equation.</p>
-<p><br>Note that it is only the position difference that influence the pressure difference, not the absolute positions.</p>
-<p>If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;</p>
-<p>is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
+<p><br>The main assumption is that the density is constant for the pressure change along the pipe. That would be the case for non-compressible fluids and many gases at low Mach numbers. For more insight in this look into the difference between the simplified and generalised forms of the Bernoulli equation.</p>
+<p><br>Note that it is only the position difference that influence the pressure difference, not the absolute positions. If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
