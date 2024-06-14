@@ -14,6 +14,7 @@ model TankCuboid
      Modelica.Units.SI.Length D;
 
 protected
+   final parameter Real eps_geometry = 0.0000001 "numerical epsilon for geometric considerations";
    Modelica.Units.SI.Length D1;
    Modelica.Units.SI.Length D2;
    Modelica.Units.SI.Length D3;
@@ -53,7 +54,7 @@ equation
   V_ref =xLength*yLength*zLength;
 
   assert((Modelica.Math.Vectors.length(normAcc)>0.99 and Modelica.Math.Vectors.length(normAcc)<1.01),"Acceleration vector is not normalized",level = AssertionLevel.error);
-  assert(-0.0000001 <= normAcc[2] and normAcc[2] <= 0.0000001,"Acceleration in y-direction not supported by squareBlockGeometry",level=AssertionLevel.warning);
+  assert(-eps_geometry <= normAcc[2] and normAcc[2] <= eps_geometry,"Acceleration in y-direction not supported by squareBlockGeometry",level=AssertionLevel.warning);
   assert(V_liquid<=V_ref,"Trying to fit more liquid into tank than it holds",level=AssertionLevel.warning);
 
   centreOfMass =tankCenter;//constant in first implementation
@@ -96,11 +97,11 @@ equation
     end if;
   end if;
 
-  if abs(nx) <= 0.0000001 then
+  if abs(nx) <= eps_geometry then
     D =D2;
     AzLimit =0;
     AxLimit =0;
-  elseif abs(nz) <= 0.0000001 then
+  elseif abs(nz) <= eps_geometry then
     D =D3;
     AzLimit =0;
     AxLimit =0;

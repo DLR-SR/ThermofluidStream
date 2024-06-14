@@ -118,7 +118,7 @@ protected
   Modelica.Units.SI.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
 
   final parameter Real ThresholdFull = 0.995 "threshold value near 1 to indicate when full";
-  final parameter Real ThesholdEmpty = 0.003 "threshold value near 0 to indicate when empty";
+  final parameter Real ThresholdEmpty = 0.003 "threshold value near 0 to indicate when empty";
 
   Boolean fFull;
   Boolean fEmpty;
@@ -171,7 +171,7 @@ equation
   //indication on tank nearly filled with liquid
   fFull = if V_liquid > ThresholdFull*V_ref then true else false;
   //indication on tank nearly emptied of liquid
-  fEmpty = if V_liquid < ThesholdEmpty*V_ref then true else false;
+  fEmpty = if V_liquid < ThresholdEmpty*V_ref then true else false;
 
 
   for i in 1:M_outlets loop

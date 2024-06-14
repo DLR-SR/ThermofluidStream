@@ -185,6 +185,10 @@ protected
 
   Modelica.Units.SI.MassFlowRate m_flow_in[N_inlets]=inlet.m_flow;
   Modelica.Units.SI.MassFlowRate m_flow_out[N_outlets]=outlet.m_flow;
+
+  final parameter Real ThresholdFull = 0.995 "threshold value near 1 to indicate when full";
+  final parameter Real ThresholdEmpty = 0.003 "threshold value near 0 to indicate when empty";
+
   Boolean fFull;
   Boolean fEmpty;
   Real shiftOutlet[N_outlets];
@@ -265,9 +269,9 @@ equation
   end for;
 
   //indication on tank nearly filled with liquid
-  fFull = if V_liquid > 0.995*V_ref then true else false;
+  fFull = if V_liquid > ThresholdFull*V_ref then true else false;
   //indication on tank nearly emptied of liquid
-  fEmpty = if V_liquid < 0.003*V_ref then true else false;
+  fEmpty = if V_liquid < ThresholdEmpty*V_ref then true else false;
 
   for i in 1:N_outlets loop
     // fix potential instabilities by setting the outgoing enthalpy and mass fraction to the medium state
