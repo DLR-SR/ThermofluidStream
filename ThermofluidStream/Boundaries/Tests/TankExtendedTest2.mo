@@ -29,9 +29,9 @@ model TankExtendedTest2
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium =
         Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
-  inner AccelerationBoundary                  acceleration(setFromExpressions=
-        true, az=-dropOfCommons.g*10)
-    annotation (Placement(transformation(extent={{-88,-86},{-68,-66}})));
+  inner AccelerationBoundary                  acceleration(
+              az=-dropOfCommons.g*10)
+    annotation (Placement(transformation(extent={{-90,-80},{-70,-60}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=
         AssertionLevel.warning)
     annotation (Placement(transformation(extent={{-58,-82},{-38,-62}})));
