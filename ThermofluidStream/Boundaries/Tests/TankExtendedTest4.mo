@@ -108,12 +108,11 @@ model TankExtendedTest4
         A=0.0028))
     annotation (Placement(transformation(extent={{-40,-40},{-60,-20}})));
   ThermofluidStream.Processes.StaticHead staticHead(
-    redeclare package Medium =
-        Medium,
+    redeclare package Medium = Medium,
     fromPosition={0,1,0},
     toPosition={0,0,-0.5},
-    displayPositions=true)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    displayPositions=true) annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=270,
         origin={62,0})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(

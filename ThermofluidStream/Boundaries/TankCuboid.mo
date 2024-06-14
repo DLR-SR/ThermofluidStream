@@ -132,5 +132,6 @@ SAAB Aerosystems, 2024
 <p>In order to ensure that the surface is level is perpendicular to the xz-plane, the acceleration in y-direction is neglected.</p>
 <p>To specify the acceleration vector, please use the <a href=\"ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a> component.</p>
 <p>The tank works only with media that have gas and incompressible parts contained in them.</p>
+<p><span style=\"font-family: Arial; color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions</span></p>
 </html>"));
 end TankCuboid;

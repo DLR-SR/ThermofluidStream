@@ -76,7 +76,10 @@ model TankExtendedTest7_fillingClosedTank
     yLength=1,
     zLength=1)
     annotation (Placement(transformation(extent={{60,-40},{40,-20}})));
-  Processes.StaticHead staticHead(redeclare package Medium = Medium, fromPosition={0,1,0}, toPosition={0,0,-0.7})
+  Processes.StaticHead staticHead(
+    redeclare package Medium = Medium,
+    fromPosition={0,1,0},
+    toPosition={0,0,-0.7})
     annotation (Placement(transformation(extent={{40,20},{60,40}})));
   Processes.FlowResistance                   flowResistance1(
     redeclare package Medium = Medium,
@@ -89,7 +92,10 @@ model TankExtendedTest7_fillingClosedTank
         fromGeometry=false,
         A=0.0028))
     annotation (Placement(transformation(extent={{20,-40},{0,-20}})));
-  Processes.StaticHead staticHead1(redeclare package Medium = Medium,fromPosition={0,0,-0.7}, toPosition={0,1,0})
+  Processes.StaticHead staticHead1(
+    redeclare package Medium = Medium,
+    fromPosition={0,0,-0.7},
+    toPosition={0,1,0})
     annotation (Placement(transformation(extent={{-10,-40},{-30,-20}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(

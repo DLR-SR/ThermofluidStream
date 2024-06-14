@@ -106,9 +106,10 @@ textString="%toPosition"),
 <p>Implementation of static head in a pipe. </p>
 <p><span style=\"font-family: Arial;\">To specify the acceleration vector, please use the&nbsp;<a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>&nbsp;component.</span></p>
 <p>Default is pure graviation in the negative z-direction.</p>
-<p><br>Energy is moved between potential energy in an acceleration field and internal energy (pressure).</p>
-<p><br>The main assumption is that the density is constant for the pressure change along the pipe. That would be the case for non-compressible fluids and many gases at low Mach numbers. For more insight in this look into the difference between the simplified and generalised forms of the Bernoulli equation.</p>
-<p><br>Note that it is only the position difference that influence the pressure difference, not the absolute positions. If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
+<p>Energy is moved between potential energy in an acceleration field and internal energy (pressure).</p>
+<p>The main assumption is that the density is constant for the pressure change along the pipe. That would be the case for non-compressible fluids and many gases at low Mach numbers. For more insight in this look into the difference between the simplified and generalised forms of the Bernoulli equation.</p>
+<p>Note that it is only the position difference that influence the pressure difference, not the absolute positions. If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
+<p><span style=\"font-family: Arial; color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions</span></p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,

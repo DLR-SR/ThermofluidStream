@@ -42,11 +42,13 @@ equation
 
 
   annotation (Documentation(info="<html>
-<p>Undirected implementation of the transport delay.</p>
-<p>Delays the temperature and massFraction, not pressure, since pressure differences propagate with speed of sound, and since delaying only steady state pressure p not inertial pressure r might lead to undesirable behavior.</p>
-<p>Note that this component uses the spatialDistribution operator, that has some artefacts (see Fig. 1) for high and low non-dimensional speeds v (possibly due to inerpolation or extrapolation of the function). Therefore minimum and maximum speed in the non-dimensional coordinate x (inlet @ x=0, outlet @ x=1) is limited. The default limits are [0.01, 50], so the delay is limited by default to [0.02s, 100s]. This limit can be adjusted in the advanced parameters tab.</p>
-<p><img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts2.PNG\"/> <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Tests.TransportDelay_artefacts.PNG\"/> </p>
-<p style=\"margin-left: 250px;\">Fig. 1: artefacts of the TransportDelay</p>
+<p><span style=\"font-family: Arial;\">Implementation of static head in a pipe. Bidirectional implementation.</span></p>
+<p><span style=\"font-family: Arial;\">To specify the acceleration vector, please use the&nbsp;<a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>&nbsp;component.</span></p>
+<p><span style=\"font-family: Arial;\">Default is pure graviation in the negative z-direction.</span></p>
+<p>Energy is moved between potential energy in an acceleration field and internal energy (pressure).</p>
+<p>The main assumption is that the density is constant for the pressure change along the pipe. That would be the case for non-compressible fluids and many gases at low Mach numbers. For more insight in this look into the difference between the simplified and generalised forms of the Bernoulli equation.</p>
+<p>Note that it is only the position difference that influence the pressure difference, not the absolute positions. If&nbsp;the&nbsp;inlet&nbsp;pressure&nbsp;is&nbsp;not&nbsp;sufficient&nbsp;to&nbsp;overcome&nbsp;the&nbsp;acceleration&nbsp;field between&nbsp;the&nbsp;pipe&nbsp;ends&nbsp;the&nbsp;static&nbsp;head&nbsp;is&nbsp;less&nbsp;than&nbsp;the&nbsp;length&nbsp;given&nbsp;by&nbsp;the&nbsp;position&nbsp;difference in the acceleration direction.</p>
+<p><span style=\"color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions</span></p>
 </html>"),
 Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Ellipse(

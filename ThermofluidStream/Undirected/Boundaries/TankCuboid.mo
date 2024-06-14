@@ -1,6 +1,6 @@
 within ThermofluidStream.Undirected.Boundaries;
 model TankCuboid
-  "This is a cuboid tank in an acceleration field. Acceleration in y-direction is neglected"
+  "This is a cuboid tank in an acceleration field for the special case of the liquid surface normal to xz-plane."
   extends ThermofluidStream.Undirected.Boundaries.Internal.PartialTankUndirected;
   //Everything media related is located in the partialTank. Below is only geometry
   //dependent equations for the computation of static head and, for now, a
@@ -136,4 +136,10 @@ for i in 1:N_fores loop
       yLength/2,zLength/2}))*normAcc + D;
 end for;
 
+  annotation (Documentation(info="<html>
+<p><span style=\"font-family: Arial;\">In order to ensure that the surface is level is perpendicular to the xz-plane, the acceleration in y-direction is neglected.</span></p>
+<p><span style=\"font-family: Arial;\">To specify the acceleration vector, please use the&nbsp;<a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>&nbsp;component.</span></p>
+<p><span style=\"font-family: Arial;\">The tank works only with media that have gas and incompressible parts contained in them.</span></p>
+<p><span style=\"font-family: Arial; color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions</span></p>
+</html>"));
 end TankCuboid;
