@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model EdgedOrifice "Pressure drop due to sharp edged orifice using Modelica.Fluid.Dissipation.PressureLoss.Orifice"
 
   extends ThermofluidStream.Interfaces.SISOFlow(final L = if computeL then l_0/(d_0^2*pi/4) else L_value, final clip_p_out = true);

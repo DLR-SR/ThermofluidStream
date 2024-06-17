@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model CurvedBend "Pressure drop due to curved bend using Modelica.Fluid.Dissipation.PressureLoss.Bend"
 
   extends Internal.Interfaces.SISOFlowBend(final L=if computeL then (d/2*pi/180*delta/(d^2*pi/4)) else L_value, final
