@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo;
 record Stratos25slash1to6 "Pump coefficients of a Wilo Stratos 25/1-6 pump"
   extends
-    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficientsEfficiency(
+    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients(
     final setHead=false,
     final head_ref=0,
     w_ref=Modelica.Units.Conversions.from_rpm(2540),

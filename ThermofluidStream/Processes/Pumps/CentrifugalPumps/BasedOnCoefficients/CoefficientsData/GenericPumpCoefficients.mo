@@ -1,5 +1,5 @@
-﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData;
-record GenericPumpCoefficientsEfficiency "Generic pump coefficient record (suitable for scaling)"
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData;
+record GenericPumpCoefficients "Generic pump coefficient record"
 
   extends Modelica.Icons.Record;
 
@@ -27,4 +27,4 @@ record GenericPumpCoefficientsEfficiency "Generic pump coefficient record (suita
   source="modelica://ThermofluidStream/Resources/Doku/Pumps/etaQ30.png"),Parameters(group="Power curve parameters",
   source="modelica://ThermofluidStream/Resources/Doku/Pumps/PQ30.png")),
   defaultComponentPrefixes = "parameter");
-end GenericPumpCoefficientsEfficiency;
+end GenericPumpCoefficients;

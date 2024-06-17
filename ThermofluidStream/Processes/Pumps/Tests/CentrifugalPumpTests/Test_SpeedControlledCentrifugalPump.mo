@@ -24,13 +24,13 @@ model Test_SpeedControlledCentrifugalPump
     speedControlledCentrifugalPumpCoefficients(
     redeclare package Medium = Medium_liquid,
     redeclare CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo.CronolineIL80slash220dash4slash4 coefficients,
-
     displaySetpoint=true,
     displayInertance=false,
     setpointFromInput=true) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-30,-100})));
+
 equation
   connect(w_sine1.y, speedControlledCentrifugalPumpCoefficients.w_var)
     annotation (Line(points={{-59,-140},{-30,-140},{-30,-108}}, color={0,0,127}));

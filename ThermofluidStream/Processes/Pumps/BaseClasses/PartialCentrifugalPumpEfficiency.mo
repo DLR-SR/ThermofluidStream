@@ -11,7 +11,7 @@ partial model PartialCentrifugalPumpEfficiency "Base model of centrifugal pump b
     final eta_ref=coefficients.eta_ref);
 
   replaceable parameter
-    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficientsEfficiency
+    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients
     coefficients "Pump coefficients" annotation (choicesAllMatching=true);
 protected
   final parameter Real c1_power =  coefficients.Vr_peak^2*(2*coefficients.Vr_peak + coefficients.c2_head*(2*coefficients.Vr_peak-1) +  coefficients.c3_power)

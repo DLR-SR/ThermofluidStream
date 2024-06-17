@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo;
 record CronolineIL80slash220dash4slash4 "Pump coefficients of a Wilo Cronoline-IL 80/220-4/4 pump"
   extends
-    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficientsEfficiency(
+    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients(
     final setHead=false,
     final head_ref=0,
     w_ref=Modelica.Units.Conversions.from_rpm(1450),

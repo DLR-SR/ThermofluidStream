@@ -34,12 +34,12 @@ model Test_CentrifugalPump
   Modelica.Mechanics.Rotational.Components.Inertia inertia1(J=1, w(fixed=true, start=0))
                                                                                         annotation (Placement(transformation(extent={{-70,
             -180},{-50,-160}})));
-  CentrifugalPumps.BasedOnMeasurements.CentrifugalPumpMeasurements centrifugalPumpMeasurements(redeclare package Medium
-      = Medium_liquid, redeclare
+  CentrifugalPumps.BasedOnMeasurements.CentrifugalPumpMeasurements centrifugalPumpMeasurements(redeclare package Medium =
+        Medium_liquid, redeclare
       CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo.CronolineIL80slash220dash4slash4 data)
     annotation (Placement(transformation(extent={{-20,80},{-40,100}})));
-  CentrifugalPumps.BasedOnCoefficients.CentrifugalPumpCoefficients centrifugalPumpCoefficients(redeclare package Medium
-      = Medium_liquid, redeclare
+  CentrifugalPumps.BasedOnCoefficients.CentrifugalPumpCoefficients centrifugalPumpCoefficients(redeclare package Medium =
+        Medium_liquid, redeclare
       CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo.CronolineIL80slash220dash4slash4 coefficients)
     annotation (Placement(transformation(extent={{-20,-110},{-40,-90}})));
 equation

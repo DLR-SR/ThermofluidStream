@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo;
 record TopS30slash5 "Pump coefficients of a staged Wilo-Top-S 30/5 pump"
   extends
-    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficientsEfficiency(
+    ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients(
     final setHead=false,
     final head_ref=0,
     w_ref=Modelica.Units.Conversions.from_rpm(2320.000000),

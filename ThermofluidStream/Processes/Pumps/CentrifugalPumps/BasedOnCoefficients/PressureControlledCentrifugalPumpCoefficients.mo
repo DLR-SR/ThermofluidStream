@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients;
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients;
 model PressureControlledCentrifugalPumpCoefficients
   "Ideal controlled (pressure, pressure difference) centrifugal pump based on 3+1+2 coefficients for head, power and efficiency"
 

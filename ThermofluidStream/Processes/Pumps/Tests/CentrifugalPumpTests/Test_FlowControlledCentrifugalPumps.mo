@@ -36,7 +36,7 @@ model Test_FlowControlledCentrifugalPumps
     flowControlledCentrifugalPumpCoefficients(
     displayInstanceName=true,
     redeclare package Medium = Medium_liquid,
-    redeclare CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficientsEfficiency coefficients(
+    redeclare CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients coefficients(
       rho_ref=1000,
       w_ref=157.07963267949,
       head_ref=10,
