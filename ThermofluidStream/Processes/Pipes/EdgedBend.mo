@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipation.PressureLoss.Bend"
 
   extends Internal.Interfaces.SISOFlowBend(final L=if computeL then (10*d/(d^2*pi/4)) else L_value, final clip_p_out=

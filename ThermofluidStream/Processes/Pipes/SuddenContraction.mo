@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.Dissipation.PressureLoss.Orifice"
 
   extends Internal.Interfaces.SISOFlow_nonConstArea(final L=L_value, final clip_p_out=true);
