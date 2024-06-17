@@ -24,6 +24,11 @@ Documentation(info="<html>
 </html>",   revisions="<html>
 <ul>
 <li>
+June 17, 2024, by Raphael Gebhart:
+<br>
+Transferred from <a href=\"https://github.com/lbl-srg/modelica-buildings\">Buildings Library</a> to  <a href=\"https://github.com/DLR-SR/ThermofluidStream\">ThermofluidStream Library</a>.
+</li>
+<li>
 March 29, 2023, by Hongxiang Fu:<br>
 Deleted angular speed parameters with the unit rpm.
 This is for
