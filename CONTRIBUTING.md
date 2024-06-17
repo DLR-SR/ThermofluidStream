@@ -26,7 +26,8 @@ The [workflow for outside collaborators](https://guides.github.com/activities/fo
    [review](https://help.github.com/articles/about-pull-request-reviews/)
    the potential changes with collaborators and add follow-up commits before
    the changes are merged into the repository.
-   * If you have not already signed the Modelica Association Contributor License Agreement (CLA) you need to do so one-time.
-   You can sign the CLA electronically using the CLA Assistant service and your GitHub account. There is no need to scan and send any documents by mail.
+   * Please mark the authorship of the content you submitted. By submitting, you agree to the overall license of the library. 
+   <!-- * If you have not already signed the Modelica Association Contributor License Agreement (CLA) you need to do so one-time.
+   You can sign the CLA electronically using the CLA Assistant service and your GitHub account. There is no need to scan and send any documents by mail. -->
 7. Update your branch with the requested changes. If necessary, merge the latest
    master into your branch and solve all merge conflicts in your branch.
