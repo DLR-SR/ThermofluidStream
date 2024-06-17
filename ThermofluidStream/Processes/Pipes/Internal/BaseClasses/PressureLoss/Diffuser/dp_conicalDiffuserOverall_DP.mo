@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Diffuser;
+﻿within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Diffuser;
 function dp_conicalDiffuserOverall_DP "Pressure loss of conical diffuser | calculate pressure loss | uniform velocity profile | overall flow regime"
 
   extends Modelica.Icons.Function;

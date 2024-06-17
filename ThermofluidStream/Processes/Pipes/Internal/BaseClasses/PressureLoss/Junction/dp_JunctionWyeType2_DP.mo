@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction;
+﻿within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction;
 function dp_JunctionWyeType2_DP
   extends Modelica.Icons.Function;
 

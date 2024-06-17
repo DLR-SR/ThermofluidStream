@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter;
+﻿within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter;
 function dp_SplitterWyeType2_DP "Pressure loss of wye splitter of type A_s + A_b = A_c | calculate pressure loss in each channel"
   extends Modelica.Icons.Function;
 
