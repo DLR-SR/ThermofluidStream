@@ -1,4 +1,4 @@
-within ThermofluidStream.Sensors;
+﻿within ThermofluidStream.Sensors;
 model MultiSensor_Tp "Temperature and pressure sensor"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
@@ -23,14 +23,12 @@ model MultiSensor_Tp "Temperature and pressure sensor"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean outputPressure = false "= true, if pressure output is enabled"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean outputValue = outputTemperature or outputPressure
-    annotation(Evaluate=true,HideResult=true);
   parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
-    annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
+    annotation(Dialog(group="Output", enable=outputTemperature or outputPressure),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
-    annotation(Dialog(group="Output", enable= outputValue and filter_output));
+    annotation(Dialog(group="Output", enable= (outputTemperature or outputPressure) and filter_output));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
-    annotation(Dialog(group="Output", enable= outputValue and filter_output));
+    annotation(Dialog(group="Output", enable= (outputTemperature or outputPressure) and filter_output));
   parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature output"
     annotation(Dialog(group="Output", enable=outputTemperature and filter_output and init==InitMode.state));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure output"
