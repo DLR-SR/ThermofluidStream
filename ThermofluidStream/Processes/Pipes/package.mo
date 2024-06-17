@@ -15,5 +15,5 @@ package Pipes
           color={28,108,200},
           thickness=0.75)},                                                                                                                                                                                                        coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     Documentation(info=
-        "<html><head></head><body>Package containing basic piping components, such as pipes, bends and topolgy components.<div><br><div><br></div><div>&nbsp;<em>[P. Jordan; HTWG Konstanz; 03/24]</em></div></div></body></html>"));
+        "<html><body>Package containing basic piping components, such as pipes, bends and topolgy components.<div><br><div><br></div><div>&nbsp;<em>[P. Jordan; HTWG Konstanz; 03/24]</em></div></div></body></html>"));
 end Pipes;

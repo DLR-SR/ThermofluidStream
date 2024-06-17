@@ -7,7 +7,7 @@ package UsersGuide "User's Guide"
     Documentation(info="<html>
 <body>
 <p>
-This is the <strong>Fluid</strong>&nbsp;fork by <strong>HTWG Konstanz</strong> containing <strong>piping components</strong> as well as <strong>water turbines </strong>(Pelton and Francis) fitted to the DLR library <b>ThermofluidStream</b>.
+This is the <strong>Fluid</strong>&nbsp;fork by <strong>HTWG Konstanz</strong> containing <strong>piping components</strong> as well as <strong>water turbines </strong>(Pelton and Francis) fitted to the DLR library <strong>ThermofluidStream</strong>.
 </p>
 
 <p>
