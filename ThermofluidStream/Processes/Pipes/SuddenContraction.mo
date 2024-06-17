@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes;
+﻿within ThermofluidStream.Processes.Pipes;
 model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.Dissipation.PressureLoss.Orifice"
 
   extends Internal.Interfaces.SISOFlow_nonConstArea(final L=L_value, final clip_p_out=true);
@@ -69,9 +69,8 @@ equation
       </tr>
       </tbody></table>
       
-      <br></p></p><p><em><br></em></p><p><em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
-  <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" width=\"350\" height=\"100\">
-  </p></body></html>",     revisions = "<html><head></head><body><ol><li>Fixed base model: In former implementation with <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">SISOFlow</a>&nbsp;the change of static pressure due to the change of velocity between inlet and outlet was not considered. Current Implementation with <a href=\"modelica://Fluid_HTWG.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a>&nbsp;does consider change of static pressure due to change of velocity along flow path. (12/23 P. Jordan)</li></ol><div><br></div><div>  <em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
+      <br></p></body></html>",
+                           revisions = "<html><head></head><body><ol><li>Fixed base model: In former implementation with <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">SISOFlow</a>&nbsp;the change of static pressure due to the change of velocity between inlet and outlet was not considered. Current Implementation with <a href=\"modelica://Fluid_HTWG.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a>&nbsp;does consider change of static pressure due to change of velocity along flow path. (12/23 P. Jordan)</li></ol><div><br></div><div>  <em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
   <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
   </p></body></html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}),

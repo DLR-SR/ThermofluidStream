@@ -14,9 +14,6 @@ package Pipes
           points={{-77,0},{77,0}},
           color={28,108,200},
           thickness=0.75)},                                                                                                                                                                                                        coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-    Documentation(info="<html><head></head><body><p>
-
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
-
-</p></body></html>"));
+    Documentation(info=
+        "<html><head></head><body>Package containing basic piping components, such as pipes, bends and topolgy components.<div><br><div><br></div><div>&nbsp;<em>[P. Jordan; HTWG Konstanz; 03/24]</em></div></div></body></html>"));
 end Pipes;

@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes;
+﻿within ThermofluidStream.Processes.Pipes;
 model EdgedOrifice "Pressure drop due to sharp edged orifice using Modelica.Fluid.Dissipation.PressureLoss.Orifice"
 
   extends ThermofluidStream.Interfaces.SISOFlow(final L = if computeL then l_0/(d_0^2*pi/4) else L_value, final clip_p_out = true);
@@ -83,7 +83,7 @@ equation
       </tbody></table>
   
   <em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
-  <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" width=\"350\" height=\"100\">
+  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
   </p></body></html>"),
     Icon(coordinateSystem(preserveAspectRatio=true, extent = {{-100, -100}, {100, 100}}), graphics={
       Text(visible=displayInstanceName,

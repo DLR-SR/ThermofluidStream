@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.UsersGuide;
+﻿within ThermofluidStream.Processes.Pipes.UsersGuide;
 package References "Nomenclature, Literature References"
   extends Modelica.Icons.References;
 

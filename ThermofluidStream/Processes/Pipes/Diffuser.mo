@@ -107,7 +107,7 @@ equation
       </tbody></table>
       
 <p></p><div><br></div><div>  <em>[P. Jordan; HTWG Konstanz; 01/24]</em><p></p><p>
-  <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" width=\"350\" height=\"100\">
+  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
   </p></div></body></html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
     Text(visible=displayInstanceName,

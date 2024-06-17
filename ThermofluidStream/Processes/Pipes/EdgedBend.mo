@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes;
+﻿within ThermofluidStream.Processes.Pipes;
 model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipation.PressureLoss.Bend"
 
   extends Internal.Interfaces.SISOFlowBend(final L=if computeL then (10*d/(d^2*pi/4)) else L_value, final clip_p_out=
@@ -93,7 +93,7 @@ equation
           </tr>
        </tbody></table>
   <em><br></em></p><p><em><br></em></p><p><em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
-  <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" width=\"350\" height=\"100\">
+  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
   </p></body></html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}),
     graphics={

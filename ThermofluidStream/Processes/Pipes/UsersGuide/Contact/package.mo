@@ -12,5 +12,5 @@ package Contact
     
     
     <h4>Contact</h4>
-    <p>Prof. Dr. Peter Stein:<span class=\"Apple-tab-span\" style=\"white-space: pre;\">        </span><a href=\"mailto:pstein@htwg-konstanz.de\">pstein@htwg-konstanz.de</a>.</p><p>Philipp Jordan:&nbsp;<span class=\"Apple-tab-span\" style=\"white-space:pre\">                </span><a href=\"mailto:philipp.jordan@htwg-konstanz.de\">philipp.jordan@htwg-konstanz.de</a>.</p><p><img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\"></p></body></html>"));
+    <p>Prof. Dr. Peter Stein:<span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span><a href=\"mailto:pstein@htwg-konstanz.de\">pstein@htwg-konstanz.de</a>.</p><p>Philipp Jordan:&nbsp;<span class=\"Apple-tab-span\" style=\"white-space:pre\">		</span><a href=\"mailto:philipp.jordan@htwg-konstanz.de\">philipp.jordan@htwg-konstanz.de</a>.</p><p><img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\"></p></body></html>"));
 end Contact;
