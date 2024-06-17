@@ -9,23 +9,20 @@ record TopS25slash10 "Pump data for a staged Wilo-Top-S 25/10 pump"
     dp={110125.414283,106765.16619,100392.787862,92220.6199738,81651.34693,70879.932776,60307.3708281,50930.4520427,
         41152.0339559,29575.0912725,22388.3296727},
     P={192.787993617,238.762280675,272.937843988,301.381574494,326.18493197,344.613937245,359.220335761,369.040720135,
-        376.979332273,382.887700535,382.887700535})
+        376.979332273,382.887700535,382.887700535});
    annotation (
 defaultComponentPrefixes="parameter",
 defaultComponentName="per",
-Documentation(info="<html>
-  <p>Data from:
-  <a href=\"http://productfinder.wilo.com/en/COM/product/0000001000029c210002003a/fc_product_datasheet\">
-  http://productfinder.wilo.com/en/COM/product/0000001000029c210002003a/fc_product_datasheet
-  </a>
-  </p>
-  <p>See
-  <a href=\"modelica://Buildings.Fluid.Movers.Data.Pumps.Wilo.Stratos25slash1to6\">
-  Buildings.Fluid.Movers.Data.Pumps.Wilo.Stratos25slash1to6
-  </a>
-  for more information about how the data is derived.
-  </p>
-  </html>",revisions="<html>
+    Documentation(info="<html>
+<p>
+<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_data.pdf\">Data sheet of Wilo-Top-S 25/10</a>
+</p>
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_head.png\" alt=\"Wilo-Top-S 25/10 head\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_power.png\" alt=\"Wilo-Top-S 25/10 power\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_efficiency.png\" alt=\"Wilo-Top-S 25/10 efficiency\" width=\"800\">
+</p>
+</html>", revisions="<html>
 <ul>
 <li>
 March 29, 2023, by Hongxiang Fu:<br>
@@ -57,16 +54,5 @@ January 19, 2016, by Filip Jorissen:<br>
 First implementation.
 </li>
 </ul>
-</html>"));
-
-  annotation (Documentation(info="<html>
-<p>
-<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_data.pdf\">Data sheet of Wilo-Top-S 25/10</a>
-</p>
-<p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_head.png\" alt=\"Wilo-Top-S 25/10 head\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_power.png\" alt=\"Wilo-Top-S 25/10 power\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS25_10_efficiency.png\" alt=\"Wilo-Top-S 25/10 efficiency\" width=\"800\">
-</p>
 </html>"));
 end TopS25slash10;

@@ -17,7 +17,7 @@ Documentation(info="<html>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos25_1-6_data.pdf\">Data sheet of Wilo Stratos 25/1-6</a>
 </p>
 <p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumpss/WiloStratos25_1-6_head.png\" alt=\"Wilo Stratos 25/1-6 head\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos25_1-6_head.png\" alt=\"Wilo Stratos 25/1-6 head\" width=\"800\">
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos25_1-6_power.png\" alt=\"Wilo Stratos 25/1-6 power\" width=\"800\">
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos25_1-6_efficiency.png\" alt=\"Wilo Stratos 25/1-6 efficiency\" width=\"800\">
 </p>

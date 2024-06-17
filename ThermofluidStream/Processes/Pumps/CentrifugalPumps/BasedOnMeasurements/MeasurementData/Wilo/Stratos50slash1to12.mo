@@ -15,7 +15,7 @@ defaultComponentPrefixes="parameter",
 defaultComponentName="per",
 Documentation(info="<html>
 <p>
-<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos50_1-12_data.pdf\">Data sheet of Wilo Stratos 50/1-12</a>
+<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos80_1-12_data.pdf\">Data sheet of Wilo Stratos 80/1-12</a>
 </p>
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos50_1-12_head.png\" alt=\"Wilo Stratos 50/1-12 head\" width=\"800\">
