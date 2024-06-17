@@ -26,13 +26,13 @@ Documentation(info="<html>
   revisions="<html>
 <ul>
 <li>
-March 29, 2023, by Hongxiang Fu:<br/>
+March 29, 2023, by Hongxiang Fu:<br>
 Deleted angular speed parameters with the unit rpm.
 This is for
 <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1704\">IBPSA, #1704</a>.
 </li>
 <li>
-October 14, 2021, by Hongxiang Fu:<br/>
+October 14, 2021, by Hongxiang Fu:<br>
 Rewrote the statements using <code>use_powerCharacteristic</code>
 to support the implementation of
 <a href=\"Modelica://Buildings.Fluid.Movers.BaseClasses.Euler\">
@@ -41,17 +41,17 @@ This is for
 <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2668\">#2668</a>.
 </li>
 <li>
-February 17, 2016, by Michael Wetter:<br/>
+February 17, 2016, by Michael Wetter:<br>
 Updated parameter names for
 <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/396\">#396</a>.
 </li>
 <li>
-February 17, 2016, by Michael Wetter:<br/>
+February 17, 2016, by Michael Wetter:<br>
 Updated parameter names for
 <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/396\">#396</a>.
 </li>
 <li>
-January 19, 2016, by Filip Jorissen:<br/>
+January 19, 2016, by Filip Jorissen:<br>
 First implementation.
 </li>
 </ul>
