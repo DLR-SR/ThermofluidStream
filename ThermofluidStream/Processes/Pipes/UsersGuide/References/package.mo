@@ -6,7 +6,7 @@ package References "Nomenclature, Literature References"
     DocumentationClass = true,
     Documentation(info="<html>
 <body>
-<p><b>Literature</b></p>
+<p>Literature</p>
 <ul>
 <li>Idel'chik, I. E.: Handbook of Hydraulic Resistance : Coefficients of Local Resistance and of Friction. : Israel Program for Scientific Translations, 1966.</li>
 <li>Idel'chik, I. E.: Handbook of Hydraulic Resistance. : CRC-Press, 1994.</li>
@@ -16,7 +16,7 @@ package References "Nomenclature, Literature References"
 <li>Zhang, Zh.: Freistrahlturbinen: Hydromechanik und Auslegung. Springer Vieweg, 2009.</li>
 </ul>
 
-<p><b>Libraries</b></p>
+<p>Libraries</p>
 <ul>
 <li>Modelica Association (2020). \"ModelicaStandardLibrary MSL v4.0.0\".</li>
 <li>Zimmer, Dirk (2020).\"Robust object-oriented formulation of directed thermofluid stream networks\". In: Mathematical and Computer Modelling of Dynamical Systems 26.3, pp. 204– 233. DOI: 10.1080/13873954.2020.1757726. <br><a href=\"https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726\">https://www.tandfonline.com/doi/full/10.1080/13873954.2020.1757726</a></li>
