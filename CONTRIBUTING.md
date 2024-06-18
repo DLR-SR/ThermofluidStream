@@ -1,6 +1,6 @@
 Thanks for considering to contribute to the DLR Thermofluid Stream Library.
 
-Contributing can be done by either filing an issue or by contributing code.
+You can contribute either by reporting an issue or by contributing code.
 
 When filing an issue, please include all information necessary to reproduce,
 and state what package is affected.
