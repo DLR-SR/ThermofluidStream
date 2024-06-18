@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model SplitterY "Pressure drop of an Y-shaped splitter"
 
   extends Internal.Interfaces.partialSplitterY;

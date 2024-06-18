@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes;
+within ThermofluidStream.Processes.Pipes;
 model JunctionY "Pressure drop of an Y-shaped junction"
 
   extends Internal.Interfaces.partialJunctionY;
