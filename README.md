@@ -111,11 +111,14 @@ Individual authors of this organization are:
 
 
 ### Further Notable Contributions
-We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure and liquid and gas media mixtures.
+We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure as well as media models for liquid and gas mixtures.
 
-We want to express our gratitude to Peter Stein and Philipp Jordan from HTWG Konstanz for their pipe models based on Idelchik.
+<img src="/doc/saab_logo.png" width="120">
 
-We would like to thank very much [@wischhusen](https://github.com/wischhusen) from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf
+We want to express our gratitude to Peter Stein and Philipp Jordan from [HTWG Konstanz](https://www.htwg-konstanz.de/) for their pipe models based on Idelchik.
+
+We would like to thank very much [@wischhusen](https://github.com/wischhusen) from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf.
+
 <img src="/doc/XRG_Logo 2015_4c.png" width="120">
 
 ### Alumni
