@@ -45,12 +45,12 @@ algorithm
   annotation (
     Documentation(info="<html>
 <p>
-<strong>The implementation of the function is based on \"Handbook of Hydraulic Resistance\" in its first translated Version from 1960! The book has been republished in several updated versions since then!<strong>
+<strong>The implementation of the function is based on \"Handbook of Hydraulic Resistance\" in its first translated Version from 1960! The book has been republished in several updated versions since then!</strong>
 </p>
 
 <p>
 Function calculating the pressure loss of a Y-shaped junction of type I (<strong>Fig. 1</strong>, currently not yet available) as f(F_c, F_b, w_c, w_b, w_s, alpha, rho, k, A), where:
-
+</p>
 
 <ul>
 <li>F_c: cross sectional area of common channel [m^2]</li>
@@ -125,7 +125,7 @@ The <strong>pressure loss coefficient of the straight channel zeta_cs</strong> i
 <li>case 1 (alpha &lt;= 60°): <code>zeta_cs = 1 - (1 - Q_relbc)^2 - k * F_relbc * Q_relbc^2</code>, where k is the same coefficient discribed above. </li>
 <li>case 2 (alpha = 90°): <code>zeta_cs = 1.55 * Q_relbc - Q_relbc^2</code></li>
 <li>case 3 (60° &lt; alpha &lt;90°): As before linear interpolation between the function at alpha &lt;= 60 and alpha = 90 is used to determine the pressure loss in case 3.</li>
-
+</ul>
 <p>
 The following figures, pressure loss coefficients of the branching channel <strong>Fig.2</strong> and straight channel <strong>Fig.3</strong> at alpha = 30° are shown. (Currently not yet available)
 </p>
