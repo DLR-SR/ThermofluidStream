@@ -58,9 +58,7 @@ equation
   assert(m_flow > 0 and Re > 3.3e3 or m_flow < 0 and Re > 1e4, "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
     defaultComponentName = "sudden_expansion",
-    Documentation(info="",                                         revisions = "<html><head></head><body><ol><li>Fixed base model: In former implementation with <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">SISOFlow</a>&nbsp;the change of static pressure due to the change of velocity between inlet and outlet was not considered. Current Implementation with <a href=\"modelica://Fluid_HTWG.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a>&nbsp;does consider change of static pressure due to change of velocity along flow path. (12/23 P. Jordan)</li></ol><div><br></div><div>  <em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
-  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
-  </p></body></html>"),
+    Documentation(info="",                                         revisions=""),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
       Text(visible=displayInstanceName,
           extent={{-150,110},{150,70}},
