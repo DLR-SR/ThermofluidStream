@@ -107,7 +107,7 @@ equation
 <p>
 This component models a <strong>Y-shaped Splitter</strong>. It computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference, 
 some medium properties and the geometry of the Splitter. The component is valid for <strong>compressible calculation</strong> of <strong>one phase medium </strong> and <strong>branching angles from 15°-90°</strong>. 
-This model is a <strong>splitter component only. Therfore flows <strong>contrary</strong> to the intended flow direction immediatly mean <strong>inccorect results</strong> and can lead to the 
+This model is a <strong>splitter</strong> component only. Therfore flows <strong>contrary</strong> to the intended flow direction immediatly mean <strong>inccorect results</strong> and can lead to the 
 <strong>model crashing</strong>. The model is used best with <strong>two given mass flow rates</strong> and <strong>one pressure boundary</strong> and <strong>steady state</strong> or 
 <strong>slowly changing</strong> boundary conditions. If two pressure buondaries are used be careful to prevent back flow into the component.
 <p>
@@ -118,7 +118,7 @@ for fluid splitting components. For the pressure loss calculation the functions
 See their documentation for a detailed description on the pressure loss calculation and figuers containing pressure loss coefficieint charts.
 </p>
 <p>
-<strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>. 
+<strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>). 
 Be aware that <strong>the book has been updated</strong> since then. Those functions calculate and feed back the pressure loss at each channel as well as the pressure loss coefficient with respect to the velocity 
 in the common channel (inlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter\">click here</a>.
 </p>
