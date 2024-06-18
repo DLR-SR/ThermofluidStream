@@ -58,7 +58,33 @@ equation
   assert(m_flow > 0 and Re > 3.3e3 or m_flow < 0 and Re > 1e4, "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
     defaultComponentName = "sudden_expansion",
-    Documentation(info="",                                         revisions=""),
+    Documentation(info="<html>
+<p>
+This component models a <strong>sudden pipe expansion</strong>. It computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure 
+difference, some medium properties and the geometry of the expansion. The component is valid for both <strong>incompressible and compressible calculation</strong> up to at least Ma 0.3 at 
+pipe outlet and <strong>one phase medium</strong>.
+</p>
+<p> 
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common 
+flow balances. For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_DP\">dp_suddenChange_DP</a> by Modelica is implemented. 
+The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_con\">dp_suddenChange_IN_con</a> &amp; 
+<a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_var\">dp_suddenChange_IN_var</a> are overwritten with the input parameters defining the geometry of the expansion and 
+fluid properties. For more information on the underlying pressure loss function, <a href=\"modelica://Modelica.Fluid.Dissipation.Utilities.SharedDocumentation.PressureLoss.Orifice.dp_suddenChange\">click here</a>. 
+To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
+</p>
+<p>
+The following figure, a resistance coefficient chart representing the pressure loss model under common conditions is shown. (Currently not yet available)
+</p>
+<p>
+<em>[P. Jordan; HTWG Konstanz; 10/23]</em>
+</p>
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>
+
+
+",                                                                 revisions=""),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
       Text(visible=displayInstanceName,
           extent={{-150,110},{150,70}},
