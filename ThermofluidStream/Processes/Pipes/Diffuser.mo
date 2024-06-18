@@ -86,7 +86,35 @@ equation
   assert(m_flow > 0, "Model can not handle negative mass flow through component!", AssertionLevel.warning);
   annotation (
     defaultComponentName = "diffuser",
-    Documentation(info=""),
+    Documentation(info="<html>
+<p>
+This component models a <strong>diffuser</strong>. It computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference, some medium properties 
+and the geometry of the diffuser. The component is valid for <strong>both incompressible and compressible calculation</strong> up to at least Ma 0.3 at pipe outlet and <strong>one phase medium.</strong>
+</p>
+<p>
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common flow balances 
+for components with non constant cross sectional areas. For the calculation of pressure loss the function 
+<a href=\"modelica://Fluid_HTWG.Pipes.BaseClasses.PressureLoss.Diffuser.dp_conicalDiffuserOverall_DP\">dp_conicalDiffuserOverall_DP</a> is used. It is based on the formulas and data provided in 
+\"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>). Be aware that there <strong>the book has been updated</strong> since then.
+</p>
+<p>
+The function calculates and feeds back the pressure loss as well as total pressure loss coefficient and the partial pressure loss coefficientes due to diffuser enlargement and wall friction. 
+For more information <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Diffuser.dp_conicalDiffuserOverall_DP\">click here</a>. The functions assumes pressure loss coefficient 
+due to diffuser enlargement to be independent from Reynolds Number, constant wall fricition along diffuser length and uniform velocity profile at inlet.
+</p>
+<p>
+To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
+</p>
+<p>
+The following figure pressure loss of the diffuser in the described in the figure is shown. (Currently not yet available)     
+</p>
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
     Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
