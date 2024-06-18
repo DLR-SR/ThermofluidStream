@@ -69,5 +69,29 @@ equation
   end if;
   outlet.state = Medium.setState_phX(p_out, h_out, Xi_out);
   annotation (
-    Documentation(info=""));
+    Documentation(info="<html>
+<p> 
+Extended version of <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">SISOFlow</a> to <strong>restore Bernoulli's principle</strong> (change of static pressure due to change of velocity), 
+i.e. diffusors (different crosssectional area of inlet and outlet).
+</p>
+<p>
+<code>p_out = p_in + dq + dp</code>
+</p>
+
+<p>
+Change of static pressure due to change of velocity dq:
+</p>
+
+<p>
+<code>dq = rho/2 * (c_in^2 - c_out^2)</code>
+</p>
+
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>"));
 end SISOFlow_nonConstArea;

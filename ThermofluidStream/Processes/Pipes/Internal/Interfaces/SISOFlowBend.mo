@@ -74,5 +74,8 @@ equation
   outlet.state = Medium.setState_phX(p_out, h_out, Xi_out);
 
   annotation (Documentation(info="<html>
+<p>
+Duplicate of <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">SISOFlow</a> (with rotated outlet connector).
+</p>
 </html>"));
 end SISOFlowBend;
