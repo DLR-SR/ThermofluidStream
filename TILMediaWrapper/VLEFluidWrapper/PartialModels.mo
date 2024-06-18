@@ -38,10 +38,9 @@ package PartialModels
 <li>&QUOT;substanceNames&QUOT; - VLEFluidName 1, VLEFluidName 2, and so on. Array which lists the substance names. </li>
 <li>mixingRatio_propertyCalculation - Array with the mixing ratio of all substances. </li>
 </ul>
-<p><b>Access additional substances:</b> </p>
-<p>To acces the properties of an additional substance, it is possible to create a new substance reccord. For more information on the acces of additional propeties see the <a href=\"Modelica:TILMedia.UsersGuide.SubstanceRecord\">substance record documentation</a>. </p>
-<p>Furthermore it is possible to parameterize this VLEFluide base record, using a VLEFluid substance name, listed in the <a href=\"Modelica:TILMedia.UsersGuide.SubstanceNames\">substance names documentation</a>. An example how to parameterize the base VLEFluid model is shown below. However note that this is only a local configuration and therefore only accesible in the corresponding model.</p>
-<p><img src=\"modelica://TILMedia/Images/Base_VLE_Parameter_frame.PNG\"/> </p>
+<p><strong>Access additional substances:</strong> </p>
+<p>To acces the properties of an additional substance, it is possible to create a new substance record. For more information on the acces of additional properties see the <a href=\"Modelica:TILMedia.UsersGuide.SubstanceRecord\">substance record documentation</a>. </p>
+<p>Furthermore it is possible to parameterize this VLEFluide base record, using a VLEFluid substance name, listed in the <a href=\"Modelica:TILMedia.UsersGuide.SubstanceNames\">substance names documentation</a>.</p>
 </html>"));
   end BaseVLEFluid;
 
