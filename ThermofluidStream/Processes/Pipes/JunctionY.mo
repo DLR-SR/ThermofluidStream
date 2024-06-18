@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes;
+﻿within ThermofluidStream.Processes.Pipes;
 model JunctionY "Pressure drop of an Y-shaped junction"
 
   extends Internal.Interfaces.partialJunctionY;
@@ -111,5 +111,48 @@ equation
           points={{-80,0},{80,0}},
           color={0,140,72},
           thickness=0.5)},                                                                          coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-    Documentation(info=""));
+    Documentation(info="<html>
+<p>
+This component models a <strong>Y-shaped Junction</strong>. It computes the <strong>pressure loss</strong> of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference,
+some medium properties and the geometry of the Junction. In addition, the thermodynamic state resulting from mixing of the two fluid flow of possibly differnt states is determined. 
+It is not possible to mix different media models. The component is valid for <strong>compressible calculation</strong> of <strong>one phase media</strong> and <strong>branching angles from 15°-90°</strong>. 
+This model is a <strong>junction</strong> component only. Therfore flows <strong>contrary</strong> to the intended flow direction immediatly mean <strong>inccorect results</strong> and can lead to the 
+<strong>model crashing</strong>. The model is used best with <strong>two given mass flow rates, one pressure boundary and steady state or slowly changing buondary conditions</strong>. 
+If two pressure boundaries are used, be careful to prevent back flow into the component.
+</p>
+
+<p>
+The Y-Junction component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialJunctionY\">partialJunctionY</a> implementing the common flow balances 
+for fluid merging components. For the pressure loss calculation the functions <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_SplitterWyeType1_DP</a>
+and <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_JunctionWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
+See their documentation for a detailed description on the pressure loss calculation an figuers containing pressure loss coefficieint charts.
+
+</p>
+<strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>). 
+Be aware that there <strong>the book has been updated</strong> since then. Those functions calculate and feed back the pressure loss at each channel as well as the pressure loss coefficient with respect 
+to the velocity in the common channel (outlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction\">click here</a>.
+</p>
+
+<p>
+The different types of splitter geometry are defined as described in Idelchik (1960) where:
+</p>
+
+<ul>
+<li>Type I: Fb + Fs &gt; Fc and Fc = Fs \"straight pipe with attached pipe branch\"</li>
+<li> Type II: Fb + Fs = Fc \"two smaller branches merging into a straight pipe, whereby the total inlet and outlet area remains the same\"</li>
+</ul>
+
+<p>
+Sketches of both splitter types are shown in <strong>Fig. 1</strong>. (Currently not yet available)
+</p>
+
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+
+</html>"));
 end JunctionY;
