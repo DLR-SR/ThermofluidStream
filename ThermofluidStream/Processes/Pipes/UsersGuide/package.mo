@@ -5,25 +5,20 @@ package UsersGuide "User's Guide"
   annotation (
     DocumentationClass = true,
     Documentation(info="<html>
-<h4>Authors</h4>
-<blockquote>
-Philipp Jordan, Peter Stein<br>
-HTWG Konstanz<br>Alfred-Wachtel-Str. 8<br>
-D-78462 Konstanz<br>
-Web: <a href=\"https://www.htwg-konstanz.de\">www.htwg-konstanz.de</a>
-</blockquote>
-    
-<h4>Contact</h4>
 <p>
-Prof. Dr. Peter Stein: <a href=\"mailto:pstein@htwg-konstanz.de\">pstein@htwg-konstanz.de</a>.
+This is the <strong>Fluid</strong> fork by <strong>HTWG Konstanz</strong> containing <strong>piping components</strong> as well as 
+<strong>water turbines </strong>(Pelton and Francis) fitted to the DLR library <strong>ThermofluidStream</strong>.</p>
+<p>
+The <strong>Pipes Package</strong> consists of regulary straight pipes (including heat transfer), bends, flow contraction and expansion as well as flow con- and diverging components.
 </p>
 <p>
-Philipp Jordan: <a href=\"mailto:philipp.jordan@htwg-konstanz.de\">philipp.jordan@htwg-konstanz.de</a>.
+In the <strong>HydroPower Package</strong> components modelling hydraulic turbines (Pelton and Francis) can be found.
 </p>
-
 <p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+All components provided in this fork have been developed by HTWG Konstanz graduate Philipp Jordan under academic supervision by Prof. Dr. Peter Stein.
 </p>
-
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">  
+</p>
 </html>"));
 end UsersGuide;
