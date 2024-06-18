@@ -35,5 +35,73 @@ algorithm
   dp_b := zeta_cb*rho/2*w_c^2;
   dp_s := zeta_cs*rho/2*w_c^2;
   annotation (
-    Documentation(info=""));
+    Documentation(info="<html>
+<p>
+The implementation of the function is based on \"Handbook of Hydraulic Resistance\" in its first translated Version from 1960! The book has been republished in several updated versions since then!
+Function calculating the pressure loss of a Y-shaped splitter of type I (<strong>Fig. 1</strong>) as f(w_c,w_b,w_s, alpha, rho). (Currently not yet available)
+</p>
+
+<p>
+where:
+</p>
+
+<ul>
+<li>w_c: velocity at common channel [m/s]</li>
+<li>w_b: velocity at branching channel [m/s]</li>
+<li>w_s: velocity at straight channel [m/s]</li>
+<li>alpha: branching angle [rad]</li>
+<li>rho: density [kg/m^3]</li>
+</ul>
+
+<p>
+Calculation according to Idelchik (1960). The pressure loss is calculated as
+</p>
+
+<ul>
+<li>in branch: <code>dp_b = rho/2 * zeta_cb * w_c^2</code></li>
+<li>in straight channel: <code>dp_s = rho/2 * zeta_cs * w_c^2</code></li>
+</ul>
+
+<p>
+As you can see above both pressure loss calculation are with respect to the velocity at the common branch. The pressure loss coefficient of the branch zeta_cb is calculated as: <code>zeta_cb = A' * zeta'_cb<code>
+</p>
+
+<ul>
+<li>A': coefficient of velocity ratio w_b/w_c</li>
+<li>zeta_cb': uncorrected pressure loss coefficient</li>
+</ul>
+
+<p>
+According to Idel'chik while <code>w_relbc = w_b/w_c &lt;= 0.8, A'= 1</code> and if <code>w_relbc &gt; 0.8</code> then <code>A' = 0.8</code>.
+Since the velocity ratio may change during simulations, the discontinuity in A' is circumvented by the stepsmoother function used in region <code>0.8 &lt; w_relbc &lt; 1.05</code>.
+</p>
+
+<p>
+The uncorrected pressure loss coefficient <code>zeta'_cb</code> is determined by the formula:
+</p>
+
+<p>
+<code> zeta'_cb = 1 + w_relbc^2 - 2*cos(alpha)</code>
+</p>
+
+<p>
+The pressure loss coefficient at the straight channel for all brnaching angles is described as:
+</p>
+
+<p>
+<code> zeta_cs = 0.4*(1-w_relsc)^2</code>
+</p> 
+
+<p>
+The following figure <b>Fig.2</b>, pressure loss coefficients of the branching channel are shown. (Currently not yet available) 
+
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+
+</html>"));
 end dp_SplitterWyeType1_DP;
