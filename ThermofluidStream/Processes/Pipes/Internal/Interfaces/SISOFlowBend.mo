@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.Interfaces;
+﻿within ThermofluidStream.Processes.Pipes.Internal.Interfaces;
 partial model SISOFlowBend "Duplicate of SISOFlow (rotated outlet by 90°)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

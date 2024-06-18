@@ -86,29 +86,7 @@ equation
   assert(m_flow > 0, "Model can not handle negative mass flow through component!", AssertionLevel.warning);
   annotation (
     defaultComponentName = "diffuser",
-    Documentation(info="<html><head></head><body><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">This component models a <b>diffuser</b>. It&nbsp;computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference, some medium properties and the geometry of the diffuser. The component is valid for&nbsp;<strong>both incompressible and compressible calculation</strong>&nbsp;up to at least Ma 0.3 at pipe outlet and&nbsp;<strong>one phase medium.</strong></div><p>The pipe bend component is using the partial model <a href=\"modelica://Fluid_HTWG.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common flow balances for components with non constant cross sectional areas.  For the calculation of pressure loss the function <a href=\"modelica://Fluid_HTWG.Pipes.BaseClasses.PressureLoss.Diffuser.dp_conicalDiffuserOverall_DP\">dp_conicalDiffuserOverall_DP</a>&nbsp;is used. It is based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<b>1960)</b>. Be aware that there <b>the book has been updated</b> since then.</p><p>The function calculates and feeds back the pressure loss as well as total pressure loss coefficient and the partial pressure loss coefficientes due to diffuser enlargement and wall friction. For more information <a href=\"modelica://Fluid_HTWG.Pipes.BaseClasses.PressureLoss.Diffuser.dp_conicalDiffuserOverall_DP\">click here</a>. The functions assumes pressure loss coefficient due to diffuser enlargement to be independent from Reynolds Number, constant wall fricition along diffuser length and uniform velocity profile at inlet.</p><p>To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.</p><p>The following figure <b>Fig.1</b>, &nbsp;pressure loss of the diffuser in the described in the figure is shown.
-      
-      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-      <caption align=\"bottom\"><strong>Fig. 1:</strong> Pressure loss of diffuser vs. Reynolds Number</caption>
-      <tbody><tr>
-      <td>
-        <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/Diffuser/diffusor_dp_sketch.png\" alt=\"Pressure loss of diffuser vs. Reynolds Number\" width=\"750\" height=\"575\">
-      </td>
-      </tr>
-      </tbody></table>
-            </p><p></p><b>Fig.2</b> below shows the resistance coefficients of the diffuser described in the figure above.<br><br><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-      <caption align=\"bottom\"><strong>Fig. 2:</strong> Pressure loss coefficient of diffuser vs. Reynolds Number</caption>
-      
-      <tbody><tr>
-      <td>
-        <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/Diffuser/diffusor_zeta.png\" alt=\"Pressure loss coefficient of diffuser vs. Reynolds Number\" width=\"1000\" height=\"483\">
-      </td>
-      </tr>
-      </tbody></table>
-      
-<p></p><div><br></div><div>  <em>[P. Jordan; HTWG Konstanz; 01/24]</em><p></p><p>
-  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
-  </p></div></body></html>"),
+    Documentation(info=""),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
     Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},

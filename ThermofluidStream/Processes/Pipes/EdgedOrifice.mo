@@ -66,25 +66,7 @@ equation
   assert(0.0149 <= l_0/d_0 and l_0/d_0 <= 15, "Ratio of vena length l_0 and perimeter at vena is outside valid range. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
     defaultComponentName = "edged_orifice",
-    Documentation(info="<html><head></head><body><p>This orifice model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference, some medium properties and the geometry of the orifice.
-            </p><p>If the resistance coefficient of a real component is known, it is recommended to <strong>calibrate the model</strong> to this value <b>varying&nbsp;the Darcy friciton parameter</b>.
-  </p><p>This component is an adaptation of <a href=\"modelica://Modelica.Fluid.Fittings.Orifices.ThickEdgedOrifice\">ThickEdgedOrifice</a> by Modelica to make it compatible with ThermofludiStream library.</p>
-            <p></p><p>The model is usable for <strong>both incompressible and compressible calculation</strong> up to at least Ma 0.3 at pipe outlet and <strong>one phase medium</strong>. The best performance is achieved when using <strong>steady state</strong> or slowly changing boundary conditions. Numerical stability is best by <strong>given mass flow rate and one given pressure boundary</strong>. When using <strong>two pressure boundaries</strong> deviations due to inertia have to be accepted. The Model is <strong> not valid for hydraulic shock calculation</strong> (sudden change of pressure or mass flow rate).
-            </p><p>The pipe bend component is using the partial model <a href=\"modelica://Fluid_HTWG.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_DP\">dp_thickEdgedOverall_DP</a> by Modelica is implemented and <b>extended by an additional input</b> which allows the manual <b>adjustment of the Darcy friction factor</b>. The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOveral_IN_con\">dp_curvedOverall_IN_con</a> &amp; <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var\">dp_thickEdgedOverall_IN_var</a> are overwritten with the input parameters defining the orifice geometry and fluid properties. For more information on the underlying pressure loss function, <a href=\"modelica://Modelica.Fluid.Dissipation.Utilities.SharedDocumentation.PressureLoss.Orifice.dp_thickEdgedOverall\">click here</a>. To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
-            </p><p>The following figure, a resistance coefficient charts representing the pressure loss model under common conditions is shown.
-            
-      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-        <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. ratio of vena contraction l_0/d_0</caption>
-          <tbody><tr>
-            <td>
-              <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/EdgedOrifice/orifice.png\" alt=\"Resistance coefficient ζ vs. ratio of vena contraction l_0/d_0\" width=\"1000\" height=\"491\">
-            </td>
-          </tr>
-      </tbody></table>
-  
-  <em>[P. Jordan; HTWG Konstanz; 10/23]</em></p><p>
-  <img src=\"modelica://Fluid_HTWG/Resources/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"175\" height=\"50\">
-  </p></body></html>"),
+    Documentation(info=""),
     Icon(coordinateSystem(preserveAspectRatio=true, extent = {{-100, -100}, {100, 100}}), graphics={
       Text(visible=displayInstanceName,
           extent={{-150,110},{150,70}},
