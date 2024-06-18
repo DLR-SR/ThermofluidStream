@@ -70,7 +70,62 @@ equation
     Dialog(enable = (material == ThermofluidStream.Processes.Internal.Material.other)),
     choices(choice = ThermofluidStream.Processes.Internal.Material.concrete "Concrete ks=5mm", choice = ThermofluidStream.Processes.Internal.Material.wood "Wood ks=0.5mm", choice = ThermofluidStream.Processes.Internal.Material.castIron "Cast Iron ks=0.25mm", choice = ThermofluidStream.Processes.Internal.Material.galvanizedIron "Galvanized Iron ks=0.15mm", choice = ThermofluidStream.Processes.Internal.Material.steel "Steel ks=0.059mm", choice = ThermofluidStream.Processes.Internal.Material.drawnPipe "Drawn Pipe ks=0.0015mm"),
     defaultComponentName = "edged_bend",
-    Documentation(info=""),
+    Documentation(info="<html>
+<p>
+This pipe bend model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference, some medium properties and the geometry of the pipe bend.
+</p>
+<p>
+The pressure loss of the model refers to a <strong>flowpath length l = 5*d_hyd upstream as well as downstream of the edge</strong>. If the adjacent components are pipes, these must be adjusted accordingly.
+</p>
+<p>
+Note that the <strong>results may differ from actual values</strong>. Due to <strong>complex flow behavior in pipe bends, widely applicable formulas are approximations only</strong>. If the pressure drop 
+coefficient of a real component is known, it is recommended to <strong>calibrate the model</strong> to this value <strong>using the roughness parameter</strong>.
+</p>
+<p>
+This component is an adaptation of <a href=\"modelica://Modelica.Fluid.Fittings.Bends.EdgedBend\">EdgedBend</a> by Modelica to make it compatible with ThermofludiStream library.
+</p>
+<p>
+The model is usable for <strong>both incompressible and compressible calculation</strong> up to at least Ma 0.3 at pipe outlet and <strong>one phase medium</strong>. The best performance is achieved 
+when using <strong>steady state</strong> or slowly changing boundary conditions. Numerical stability is best by <strong>given mass flow rate and one given pressure boundary</strong>. 
+When using <strong>two pressure boundaries</strong> deviations due to inertia have to be accepted. The Model is <strong> not valid for hydraulic shock calculation</strong> (sudden change of pressure or 
+mass flow rate).
+</p>
+<p>
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  For the 
+calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.edgedOverall_DP\">dp_edgedOverall_DP</a> by Modelica is implemented. The input records 
+<a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con\">dp_edgedOverall_IN_con</a> &amp; 
+<a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var\">dp_edgedOverall_IN_var</a> are overwritten with the input parameters defining the pipe bend geometry and fluid properties. 
+For more information on the underlying pressure loss function, <a href=\"modelica://Modelica.Fluid.Dissipation.Utilities.SharedDocumentation.PressureLoss.Bend.dp_edgedOverall\">click here</a>. 
+To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
+</p>
+<p>
+The following 2 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.
+            
+      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
+        <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different curvature angles δ</caption>
+          <tbody><tr>
+            <td>
+              <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/EdgedBend/edgedBend_case1.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different curvature angles δ\" width=\"1000\" height=\"491\">
+            </td>
+          </tr>
+      </tbody></table>
+      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
+        <caption align=\"bottom\"><strong>Fig. 2:</strong> Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different relative roughness Δ</caption>
+          <tbody><tr>
+            <td>
+              <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/EdgedBend/edgedBend_case_2.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of pipe bend for different relative roughness Δ\" width=\"1000\" height=\"491\">
+            </td>
+          </tr>
+       </tbody></table>
+</p>
+<p>
+<em>[P. Jordan; HTWG Konstanz; 10/23]</em>
+</p>
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</p>
+</html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}),
     graphics={
     Text(visible=displayInstanceName,
