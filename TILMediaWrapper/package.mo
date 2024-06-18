@@ -9,7 +9,7 @@ package TILMediaWrapper "Wrapper for the TIL Media Suite"
     ThermofluidStream(version="1.1.0"),
     TILMedia(version="3.15.0")),
   Documentation(info="<html>
-<p>This is the interface to the <b>VLE-Fluid</b> (<b>V</b>apor-<b>L</b>iquid<b> E</b>quilibrium) media models from TILMedia Suite by TLK-Thermo GmbH. </p>
+<p>This is the interface to the <strong>VLE-Fluid</strong> (<strong>V</strong>apor-<strong>L</strong>iquid<strong> E</strong>quilibrium) media models from TILMedia Suite by TLK-Thermo GmbH. </p>
 <p style=\"color:orange;\">This package only provides the functionality of an interface to the TILMedia Suite and doesn&apos;t include the media models itself! For usage of the media models, a license of the TILMedia Suite is necessary.</p>
 </html>"),
     Icon(graphics={
