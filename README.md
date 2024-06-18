@@ -106,15 +106,20 @@ Deutsches Zentrum für Luft- und Raumfahrt, Institut für Systemdynamik und Rege
 
 Individual authors of this organization are:
 - [@dzimmer](https://github.com/dzimmer)
-- [@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner)
+- [@RaphaelGebhart](https://github.com/RaphaelGebhart)
 - [@nieweber](https://github.com/orgs/DLR-SR/people/nieweber)
 
 
 ### Further Notable Contributions
-We would like to thank very much Stefan Wischhusen from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf:
-- [@wischhusen](https://github.com/wischhusen)
-<img src="/doc/XRG_Logo 2015_4c.png" width="120"> 
+We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure and liquid and gas media mixtures.
 
+We want to express our gratitude to Peter Stein and Philipp Jordan from HTWG Konstanz for their pipe models based on Idelchik.
+
+We would like to thank very much [@wischhusen](https://github.com/wischhusen) from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf
+<img src="/doc/XRG_Logo 2015_4c.png" width="120">
+
+### Alumni
+- [@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner)
 
 ## Acknowledgements
 
