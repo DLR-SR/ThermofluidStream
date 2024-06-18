@@ -81,6 +81,9 @@ To improve the accuracy when compressible media are used, center state fluid pro
 The following figure, a resistance coefficient chart representing the pressure loss model under common conditions is shown. (Currently not yet available)
 </p>
 <p>
+<em>[P. Jordan; HTWG Konstanz; 10/23]</em>
+</p>
+<p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
 </p>
 </html>",                  revisions=""),
