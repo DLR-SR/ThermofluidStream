@@ -17,10 +17,10 @@ package Pipes
     Documentation(info="<html>
 <p>
 Package containing basic piping components, such as pipes, bends and topolgy components.
-<\\p>
+</p>
 <p>
 <em>[P. Jordan; HTWG Konstanz; 03/24]</em>
-<\\p>
+</p>
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">  
 </p>
