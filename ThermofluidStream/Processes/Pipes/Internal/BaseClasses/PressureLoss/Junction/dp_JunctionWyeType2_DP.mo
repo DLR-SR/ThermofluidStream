@@ -89,7 +89,7 @@ As you can see above both pressure loss calculation are with respect to the velo
 </p>
 
 <p>
-case 1 (alpha &lt;= 60°): <code>zeta_cb = 1 + w_relbc^2 - 2*F_relcs*(1 - Q_relbc)^2 - k * F_relcb*(Q_relbc)^2 + K_b<code>
+case 1 (alpha &lt;= 60°): <code>zeta_cb = 1 + w_relbc^2 - 2*F_relcs*(1 - Q_relbc)^2 - k * F_relcb*(Q_relbc)^2 + K_b</code>
 </p>
 
 <ul>
@@ -142,7 +142,7 @@ The interpolation is done by linear segments since \"CombiTable2Dv\" does not pe
 
 
 <p>
-For case 2 (alpha = 90°): <code>zeta_cb = 1 + w_relbc^2 - 2*F_relcs*(1 - Q_relbc)^2 + K_b.
+For case 2 (alpha = 90°): <code>zeta_cb = 1 + w_relbc^2 - 2*F_relcs*(1 - Q_relbc)^2 + K_b</code>
 </p>
 
 <p> 
@@ -150,6 +150,7 @@ case 3 (60° &lt; alpha &lt;90°): Since there is no aproximation formula nor da
 The <strong>pressure loss coefficient of the straight channel zeta_cs</strong> is calculated as:
 case 1 (alpha &lt;= 60°): <code>zeta_cs = 1 + F_relcs^2 * (1-Q_relbc)^2 - k * F_relcb * Q_relbc^2 + K_s</code>, where k is the same coefficient discribed above and K_s the free term correction of the area ratio. 
 As befor K_s is implemented using table interpolation of 2-dimensional table and vector in- and output.
+</p>
 
 <table>
   <tr>
