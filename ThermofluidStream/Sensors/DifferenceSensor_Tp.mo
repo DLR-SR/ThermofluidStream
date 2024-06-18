@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Sensors;
+within ThermofluidStream.Sensors;
 model DifferenceSensor_Tp "Sensor for Temperature and pressure difference"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
