@@ -99,23 +99,7 @@ For more information on the underlying pressure loss function, <a href=\"modelic
 To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
 <p>
-The following 2 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.            
-      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-        <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different curvature angles δ</caption>
-          <tbody><tr>
-            <td>
-              <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/EdgedBend/edgedBend_case1.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different curvature angles δ\" width=\"1000\" height=\"491\">
-            </td>
-          </tr>
-      </tbody></table>
-      <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-        <caption align=\"bottom\"><strong>Fig. 2:</strong> Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different relative roughness Δ</caption>
-          <tbody><tr>
-            <td>
-              <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/EdgedBend/edgedBend_case_2.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of pipe bend for different relative roughness Δ\" width=\"1000\" height=\"491\">
-            </td>
-          </tr>
-       </tbody></table>
+The following 2 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown. (Currently not yet available)
 </p>
 <p>
 <em>[P. Jordan; HTWG Konstanz; 10/23]</em>

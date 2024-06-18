@@ -98,31 +98,7 @@ are overwritten with the input parameters defining the pipe bend geometry and fl
 center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
 <p>
-The following 3 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.      
-  <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-  <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different curvature angles δ</caption>
-    <tbody><tr>
-      <td>
-        <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/CurvedBend/PipeBend_case1.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different curvature angles δ\" width=\"1000\" height=\"491\">
-      </td>
-    </tr>
-  </tbody></table>
-  <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-  <caption align=\"bottom\"><strong>Fig. 2:</strong> Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different relative curvature R_0/d with close up view (2.5e5 &lt; Re &lt; 5e5) </caption>
-    <tbody><tr>
-      <td>
-        <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/CurvedBend/PipeBend_case2.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for relative curvature R_0/d\" width=\"1000\" height=\"1000\">
-      </td>
-    </tr>
-  </tbody></table>
-  <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
-  <caption align=\"bottom\"><strong>Fig. 3:</strong> Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different relative roughness Δ</caption>
-    <tbody><tr>
-      <td>
-        <img src=\"modelica://Fluid_HTWG/Resources/Images/Fluid/Pipes/CurvedBend/PipeBend_case3.png\" alt=\"Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different relative roughness Δ\" width=\"1000\" height=\"491\">
-      </td>
-    </tr>
-  </tbody></table>
+The following 3 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown. (Currently not yet availble)      
 </p>
 <p>
 <em>[P. Jordan; HTWG Konstanz; 10/23]</em>
