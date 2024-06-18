@@ -72,7 +72,6 @@ equation
   annotation (
     Dialog(enable = (material == ThermofluidStream.Processes.Internal.Material.other)),
     choices(choice = ThermofluidStream.Processes.Internal.Material.concrete "Concrete ks=5mm", choice = ThermofluidStream.Processes.Internal.Material.wood "Wood ks=0.5mm", choice = ThermofluidStream.Processes.Internal.Material.castIron "Cast Iron ks=0.25mm", choice = ThermofluidStream.Processes.Internal.Material.galvanizedIron "Galvanized Iron ks=0.15mm", choice = ThermofluidStream.Processes.Internal.Material.steel "Steel ks=0.059mm", choice = ThermofluidStream.Processes.Internal.Material.drawnPipe "Drawn Pipe ks=0.0015mm"),
-    defaultComponentName = "curved_bend",
     Documentation(info="<html>
 <p>
 This curved pipe bend model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference,
@@ -99,8 +98,7 @@ are overwritten with the input parameters defining the pipe bend geometry and fl
 center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
 <p>
-The following 3 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.
-      
+The following 3 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.      
   <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
   <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. Reynoldsnumber of curved pipe bend for different curvature angles δ</caption>
     <tbody><tr>
@@ -126,14 +124,12 @@ The following 3 figures, resistance coefficient charts representing the pressure
     </tr>
   </tbody></table>
 </p>
-
 <p>
 <em>[P. Jordan; HTWG Konstanz; 10/23]</em>
 </p>
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
 </p>
-
 </html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}), graphics={
         Text(visible=displayInstanceName,

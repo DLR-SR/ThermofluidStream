@@ -99,8 +99,7 @@ For more information on the underlying pressure loss function, <a href=\"modelic
 To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
 <p>
-The following 2 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.
-            
+The following 2 figures, resistance coefficient charts representing the pressure loss model under common conditions are shown.            
       <table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
         <caption align=\"bottom\"><strong>Fig. 1:</strong> Resistance coefficient ζ vs. Reynoldsnumber of edged pipe bend for different curvature angles δ</caption>
           <tbody><tr>
@@ -123,7 +122,6 @@ The following 2 figures, resistance coefficient charts representing the pressure
 </p>
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
-</p>
 </p>
 </html>"),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}),
