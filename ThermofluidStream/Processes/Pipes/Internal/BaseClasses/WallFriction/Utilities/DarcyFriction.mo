@@ -78,5 +78,31 @@ algorithm
   end if;
   lambda := lambda2/Re^2;
   annotation (
-    Documentation(info=""));
+    Documentation(info="<html>
+<p>
+Function calculating Darcy friction factor lambda as f(m_flow, D_h, Delta, rho, mu, Re1, Re2), where:
+</p>
+
+<ul>
+<li>m_flow: mass flow rate [kg/s]</li>
+<li>D_h: hydraulic diameter [m]</li>
+<li>Delta: relative roughness [m/m]</li>
+<li>rho: density [kg/m^3]</li>
+<li>mu: dynamic viscosity [Pa.s]</li>
+<li>Re1: lower Reynolds Number boundary for laminar-turbulent transition flow regime [-]</li>
+<li>Re2: upper Reynolds Number boundary for laminar-turbulent transition flow regime [-]</li>
+</ul>
+
+<p>
+The function is extracted from <a href=\"modelica://Modelica.Fluid.Pipes.BaseClasses.WallFriction.Detailed.Internal.dp_fric_of_m_flow\">dp_fric_of_m_flow</a>.
+</p>
+
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>"));
 end DarcyFriction;
