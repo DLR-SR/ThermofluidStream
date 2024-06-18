@@ -48,7 +48,7 @@ Calculation according to Idelchik (1960). The pressure loss is calculated as:
 
 <ul>
 <li>in branch: <code>dp_b = rho/2 * zeta_cb * w_c^2</code></li>
-<li>in straight channel: <cdoe>dp_s = rho/2 * zeta_cs * w_c^2</code></li>
+<li>in straight channel: <code>dp_s = rho/2 * zeta_cs * w_c^2</code></li>
 </ul>
 
 <p>
