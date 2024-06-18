@@ -93,7 +93,8 @@ The pressure loss coefficient at the straight channel for all brnaching angles i
 </p> 
 
 <p>
-The following figure <b>Fig.2</b>, pressure loss coefficients of the branching channel are shown. (Currently not yet available) 
+The following figure <strong>Fig.2</strong>, pressure loss coefficients of the branching channel are shown. (Currently not yet available) 
+</p>
 
 <p>
 <em>[P. Jordan; HTWG Konstanz; 01/24]</em>
