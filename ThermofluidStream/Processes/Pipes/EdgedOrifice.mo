@@ -70,17 +70,21 @@ equation
 <p>
 This orifice model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference, some medium properties and the geometry of the orifice.
 </p>
+
 <p>
 If the resistance coefficient of a real component is known, it is recommended to <strong>calibrate the model</strong> to this value <strong>varying the Darcy friciton parameter</strong>.
 </p>
+
 <p>
 This component is an adaptation of <a href=\"modelica://Modelica.Fluid.Fittings.Orifices.ThickEdgedOrifice\">ThickEdgedOrifice</a> by Modelica to make it compatible with ThermofludiStream library.
 </p>
+
 <p>
 The model is usable for <strong>both incompressible and compressible calculation</strong> up to at least Ma 0.3 at pipe outlet and <strong>one phase medium</strong>. The best performance is achieved 
 when using <strong>steady state</strong> or slowly changing boundary conditions. Numerical stability is best by <strong>given mass flow rate and one given pressure boundary</strong>. When using 
 <strong>two pressure boundaries</strong> deviations due to inertia have to be accepted. The Model is <strong> not valid for hydraulic shock calculation</strong> (sudden change of pressure or mass flow rate).
 </p>
+
 <p>
 The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.
 For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_DP\">dp_thickEdgedOverall_DP</a> by Modelica is implemented and 
@@ -90,12 +94,15 @@ The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.O
 properties. For more information on the underlying pressure loss function, <a href=\"modelica://Modelica.Fluid.Dissipation.Utilities.SharedDocumentation.PressureLoss.Orifice.dp_thickEdgedOverall\">click here</a>. 
 To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
+
 <p>
 The following figure, a resistance coefficient charts representing the pressure loss model under common conditions is shown. (Currently not yet available)
 </p>           
+
 <p>
 <em>[P. Jordan; HTWG Konstanz; 10/23]</em>
 </p>
+
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
 </p>

@@ -64,11 +64,13 @@ This component models a <strong>sudden pipe contraction</strong>. It computes th
 some medium properties and the geometry of the contraction. The model is valid for <strong>both incompressible and compressible calculation</strong> up to at least Ma 0.3 at pipe outlet and
 <strong>one phase medium.</strong>
 </p>
+
 <p>
 The pressure loss is calculated with the <strong>same functions </strong> used in the <a href=\"modelica://ThermofluidStream.Processes.Pipes.SuddenExpansion\">SuddenExpansion</a> model. To obtain an 
 <strong>inverse effect</strong>, the function is subjected to a <strong>virtual negative mass flow</strong>. The negative mass flow is compensated by a change of sign in the pressure drop. 
 The <strong>mass flow through the base model is not affected</strong> by this.
 </p>
+
 <p>
 The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common flow balances.  
 For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_DP\">dp_suddenChange_DP</a> by Modelica is implemented. 
@@ -77,12 +79,15 @@ The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.O
 fluid properties. For more information on the underlying pressure loss function, <a href=\"modelica://Modelica.Fluid.Dissipation.Utilities.SharedDocumentation.PressureLoss.Orifice.dp_suddenChange\">click here</a>. 
 To improve the accuracy when compressible media are used, center state fluid properties (mean dynamic viscosity &amp; mean density) are defined and refered to in the pressure loss function.
 </p>
+
 <p>
 The following figure, a resistance coefficient chart representing the pressure loss model under common conditions is shown. (Currently not yet available)
 </p>
+
 <p>
 <em>[P. Jordan; HTWG Konstanz; 10/23]</em>
 </p>
+
 <p>
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
 </p>
