@@ -107,5 +107,32 @@ equation
     preserveAspectRatio = true,
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}})),
     Diagram(coordinateSystem(preserveAspectRatio = true)),
-    Documentation(info=""));
+    Documentation(info="<html>
+<p>
+Extension of <a href=\"ThermofluidStream.Topology.JunctionN\">JunctionN</a>. The inlets vector is replaced with two independent inlets and Bernuolli's principle 
+(change of static pressure due to change of velocity <code>dq</code>) as well as pressure loss variables <code>dp</code> for each branch (pressure loss of branch and straight channel are computed in the 
+extending model) are added.
+</p>
+
+<p>
+Each inlet pressure <code>p_in</code> and the associated pressure changes <code>dp</code> and <code>dq</code> are added together and equated with the mixing pressure and the inertial pressure used by
+ThermofluidStream.
+</p>
+
+<p>
+The other state properties mass fraction and specific enthalpy are massflow averaged and defined as outlet state quantities as well.
+</p>
+
+<p>
+For implementation of other junction configurations it is suggested to copy the code and adjust the icon positioning as needed.
+</p>
+
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>"));
 end partialJunctionY;
