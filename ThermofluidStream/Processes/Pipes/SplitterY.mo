@@ -103,5 +103,40 @@ equation
           points={{-80,0},{80,0}},
           color={0,140,72},
           thickness=0.5)},                                                                          coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-    Documentation(info=""));
+    Documentation(info="<html>
+<p>
+This component models a <strong>Y-shaped Splitter</strong>. It computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference, 
+some medium properties and the geometry of the Splitter. The component is valid for <strong>compressible calculation</strong> of <strong>one phase medium </strong> and <strong>branching angles from 15°-90°</strong>. 
+This model is a <strong>splitter component only. Therfore flows <strong>contrary</strong> to the intended flow direction immediatly mean <strong>inccorect results</strong> and can lead to the 
+<strong>model crashing</strong>. The model is used best with <strong>two given mass flow rates</strong> and <strong>one pressure boundary</strong> and <strong>steady state</strong> or 
+<strong>slowly changing</strong> boundary conditions. If two pressure buondaries are used be careful to prevent back flow into the component.
+<p>
+The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialSplitterY\">partialSplitterY</a> implementing the common flow balances 
+for fluid splitting components. For the pressure loss calculation the functions 
+<a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP\">dp_SplitterWyeType1_DP</a> and 
+<a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP\">dp_SplitterWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
+See their documentation for a detailed description on the pressure loss calculation and figuers containing pressure loss coefficieint charts.
+</p>
+<p>
+<strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>. 
+Be aware that <strong>the book has been updated</strong> since then. Those functions calculate and feed back the pressure loss at each channel as well as the pressure loss coefficient with respect to the velocity 
+in the common channel (inlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter\">click here</a>.
+</p>
+<p>
+The different types of splitter geometry are defined as described in Idelchik (1960) where:
+<ul>
+<li>Type I: Fb + Fs &gt; Fc and Fc = Fs \"straight pipe with attached pipe branch\"</li>
+<li>Type II: Fb + Fs = Fc \"straight pipe splitting in two smaller branches, whereby the inlet and total outlet area remain the same\"</li>
+</ul>
+</p>
+<p>
+Sketches of both splitter types are shown in <strong>Fig. 1</strong>. (Currently not yet available)
+</p>
+<p>
+<em>[P. Jordan; HTWG Konstanz; 01/24]</em>
+</p>
+<p>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
+</p>
+</html>"));
 end SplitterY;
