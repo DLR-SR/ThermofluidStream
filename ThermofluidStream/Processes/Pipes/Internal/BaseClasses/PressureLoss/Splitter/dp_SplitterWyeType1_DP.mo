@@ -63,7 +63,7 @@ Calculation according to Idelchik (1960). The pressure loss is calculated as
 </ul>
 
 <p>
-As you can see above both pressure loss calculation are with respect to the velocity at the common branch. The pressure loss coefficient of the branch zeta_cb is calculated as: <code>zeta_cb = A' * zeta'_cb<code>
+As you can see above both pressure loss calculation are with respect to the velocity at the common branch. The pressure loss coefficient of the branch zeta_cb is calculated as: <code>zeta_cb = A' * zeta'_cb</code>
 </p>
 
 <ul>
