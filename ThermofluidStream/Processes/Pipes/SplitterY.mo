@@ -110,6 +110,7 @@ some medium properties and the geometry of the Splitter. The component is valid 
 This model is a <strong>splitter</strong> component only. Therfore flows <strong>contrary</strong> to the intended flow direction immediatly mean <strong>inccorect results</strong> and can lead to the 
 <strong>model crashing</strong>. The model is used best with <strong>two given mass flow rates</strong> and <strong>one pressure boundary</strong> and <strong>steady state</strong> or 
 <strong>slowly changing</strong> boundary conditions. If two pressure buondaries are used be careful to prevent back flow into the component.
+</p>
 <p>
 The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialSplitterY\">partialSplitterY</a> implementing the common flow balances 
 for fluid splitting components. For the pressure loss calculation the functions 
