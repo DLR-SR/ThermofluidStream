@@ -37,7 +37,10 @@ algorithm
   annotation (
     Documentation(info="<html>
 <p>
-The implementation of the function is based on \"Handbook of Hydraulic Resistance\" in its first translated Version from 1960! The book has been republished in several updated versions since then!
+<strong>The implementation of the function is based on \"Handbook of Hydraulic Resistance\" in its first translated Version from 1960! The book has been republished in several updated versions since then!</strong>
+</p>
+
+<p>
 Function calculating the pressure loss of a Y-shaped splitter of type I (<strong>Fig. 1</strong>) as f(w_c,w_b,w_s, alpha, rho). (Currently not yet available)
 </p>
 
