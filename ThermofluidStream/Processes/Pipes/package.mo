@@ -15,7 +15,9 @@ package Pipes
           color={28,108,200},
           thickness=0.75)},                                                                                                                                                                                                        coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     Documentation(info="<html>
+<p>
 Package containing basic piping components, such as pipes, bends and topolgy components.
+<\\p>
 <p>
 <em>[P. Jordan; HTWG Konstanz; 03/24]</em>
 <\\p>
