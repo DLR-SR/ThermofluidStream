@@ -24,7 +24,8 @@ model FlowResistance "Flow resistance model"
           redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
           "Laminar-turbulent (Cheng2008)"),
         choice(
-          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
+          redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
           "Laminar-turbulent (Haaland1983)"),
         choice(
           redeclare function pLoss =
