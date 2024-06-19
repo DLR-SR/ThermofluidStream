@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction.Internal;
+within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction.Internal;
 function lin_interpol_Y1_60_90
   // Input variables
   input Real alpha_deg "Branching angle";
