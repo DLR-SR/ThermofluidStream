@@ -380,8 +380,8 @@ package PartialModels
     end dDewEnthalpy_dPressure;
     annotation (
       Documentation(info="<html>
-<p>FLE (fluid-liquid-equilibrium) fluids are the correspondance of a TwoPhaseMedium within the TIL media. </p>
-<p>This wrapper makes the functional and the class interface accassable over the MSL Media interfaces PartialMedium and PartialTwoPhaseMedium.</p>
+<p>VLE (vapor-liquid-equilibrium) fluids are the correspondance of a TwoPhaseMedium within the TIL media. </p>
+<p>This wrapper makes the functional and the class interface accessible over the MSL Media interfaces PartialMedium and PartialTwoPhaseMedium.</p>
 <p>The state is represented by p and h (Xi is empty).</p>
 </html>"));
   end VLEFluid_ph;
