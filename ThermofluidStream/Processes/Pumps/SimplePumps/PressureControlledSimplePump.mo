@@ -6,7 +6,7 @@ model PressureControlledSimplePump "Ideally controlled pump with fixed efficienc
 
   import SetpointMode = ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure;
 
-  parameter SetpointMode setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.SimplePumpSetpointMode.dp      "Pump setpoint (dp or p_out)"
+  parameter SetpointMode setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp      "Pump setpoint (dp or p_out)"
     annotation (Dialog(group="Setpoint"));
   parameter Boolean setpointFromInput = false "= true, if setpoint input connector is enabled"
     annotation(Dialog(group="Setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
