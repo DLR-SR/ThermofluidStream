@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SingleSensorSelect "Selectable sensor"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
 
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -43,9 +43,9 @@ model SingleSensorSelect "Selectable sensor"
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
-    annotation(Dialog(group="Output", enable=filter_output));
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter Real value_0(unit=Internal.getUnit(quantity)) = 0 "Start value of sensor output"
-    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable= outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));

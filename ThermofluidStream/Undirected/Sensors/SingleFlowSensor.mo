@@ -27,9 +27,9 @@ model SingleFlowSensor "Flow sensor"
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
-    annotation(Dialog(group="Output", enable=filter_output));
+    annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = 0 "Start value of sensor output"
-    annotation(Dialog(group="Output", enable=filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getFlowUnit(quantity)) = value if outputValue "Sensor output connector"
     annotation (Placement(transformation(extent={{70,50},{90,70}}),

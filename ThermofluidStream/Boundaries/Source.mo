@@ -34,30 +34,53 @@ the inlet the source is connected to.
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayTemperature = true "= true, if temperature T0_par is displayed"
+  parameter Boolean displayTemperature = true "= true, if temperature T0_par or specific enthalpy h0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayMassFractions = false "= true, if mass fractions Xi0_par are displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not xiFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  // parameter Boolean displayTemperatureOrEnthalpy = true "= true, if temperature T0_par or specific enthalpy h0_par is displayed"
+  //  annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayT = displayTemperature and not temperatureFromInput and not setEnthalpy
     annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayH = displayTemperature and not enthalpyFromInput and setEnthalpy
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayXi = displayMassFractions and not xiFromInput
+    annotation(Evaluate=true, HideResult=true);
+
   final parameter String displayPos1=
     if displayP then
       "p = %p0_par"
     elseif displayT then
       "T = %T0_par"
+    elseif displayH then
+      "h = %h0_par"
+    elseif displayXi then
+      "Xi = %Xi0_par"
     elseif displayInertance then
       "L = %L"
     else "";
   final parameter String displayPos2=
     if displayP and displayT then
       "T = %T0_par"
-    elseif  displayInertance and (displayP or displayT) then
+    elseif displayP and displayH then
+      "h = %h0_par"
+    elseif displayXi and (displayP or displayT or displayH)  then
+      "Xi = %Xi0_par"
+    elseif  displayInertance and (displayP or displayT or displayH or displayXi) then
       "L = %L"
     else "";
   final parameter String displayPos3=
-    if displayP and  displayT and displayInertance then
+    if displayXi and displayP and (displayT or displayH)  then
+      "Xi = %Xi0_par"
+    elseif  displayInertance and not displayPos2 == "L = %L" and not displayPos1 == "L = %L" then
+      "L = %L"
+    else "";
+  final parameter String displayPos4=
+    if displayP and  (displayT or displayH) and displayXi  and displayInertance then
       "L = %L"
     else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
@@ -121,6 +144,10 @@ equation
           extent={{-150,-170},{150,-200}},
           textColor={0,0,0},
           textString=displayPos3),
+        Text(visible=displayParameters,
+          extent={{-150,-240},{150,-210}},
+          textColor={0,0,0},
+          textString=displayPos4),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},
