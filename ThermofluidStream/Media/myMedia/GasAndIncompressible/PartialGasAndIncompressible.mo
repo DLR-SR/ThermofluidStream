@@ -15,9 +15,9 @@ partial package PartialGasAndIncompressible
         reducedX=false,
     AbsolutePressure(displayUnit="kPa"));
   replaceable package Gas =
-      ThermofluidStream.Media.myMedia.Air.DryAirNasa;
+      ThermofluidStream.Media.myMedia.Interfaces.PartialPureSubstance;
   replaceable package Liquid =
-      ThermofluidStream.Media.myMedia.Incompressible.Examples.JP8;
+      ThermofluidStream.Media.myMedia.Interfaces.PartialPureSubstance;
   redeclare record ThermodynamicState
     Modelica.Units.SI.AbsolutePressure p "Pressure";
     Modelica.Units.SI.Temperature T "Temperature";
