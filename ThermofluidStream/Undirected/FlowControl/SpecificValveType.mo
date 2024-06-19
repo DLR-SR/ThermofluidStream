@@ -12,16 +12,16 @@ model SpecificValveType "Specific technical valve types"
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient"
     annotation(Dialog(group = "Valve parameters"));
   //Set valve data as parameter
-  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter"
+  parameter Modelica.Units.SI.Diameter d_valve(start = 0) "Flow diameter"
     annotation (Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
+  parameter Real Kvs(unit = "m3/h", start = 0)  "Kvs-value (metric) from data sheet (valve fully open)"
     annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+  parameter Real Cvs_US(start = 0) "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
     annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+  parameter Real Cvs_UK(start = 0) "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
     annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s"
+  parameter SI.MassFlowRate m_flow_ref_set(start = 0) "Set reference mass flow in kg/s"
     annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
