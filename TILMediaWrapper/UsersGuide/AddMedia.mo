@@ -9,7 +9,7 @@ class AddMedia "Add Custom Media Model"
 <p>The media of each substance record is defined in the substance name of the media that has to be wrapped. All the substance names available in the TIL (and also Refprop and Coolprop media names) can be found in the <a href=\"TILMedia.UsersGuide.SubstanceNames\">User&apos;s Guide of the TILMedia Suite</a>. </p>
 <p>The substance name looks somehow like TILMedia.METHANOL or Refprop.R134A.FLD. This substance name has to be set in the parameter vleFluidNames as String value. </p>
 <p>In most cases, for VLEFluid substances, the other parameters can be left unchanged unless the user does not want to mix the fluid with other substances. </p>
-<p style = \"color:orange;\">!Keep in mind that in the current state, the wrapper only covers VLE-Fluid media models!</p>
+<p style = \"color:#ff5500;\">!Keep in mind that in the current state, the wrapper only covers VLE-Fluid media models!</p>
 <h4>2. Create new package for the custom media model</h4>
 <p>In the second step, the defined substance record from step 1 has to be defined as FluidType in the VLEFluid_ph model. To do so, make a local copy of an existing media package (for example <a href=\"TILMediaWrapper.VLEFluidWrapper.Methanol\">Methanol</a>) and replace the substance record by the one you just created. </p>
 <h4>3. Use the custom media model in TFS</h4>
