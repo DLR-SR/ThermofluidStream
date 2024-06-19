@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction;
+﻿within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction;
 function dp_JunctionWyeType2_DP
   extends Modelica.Icons.Function;
 
@@ -18,9 +18,9 @@ function dp_JunctionWyeType2_DP
   // Output variables
   output SI.Pressure dp_b "Pressure loss at branching inlet";
   output SI.Pressure dp_s "Pressure loss at straight inlet";
-  output Types.PressureLossCoefficient zeta_cb
+  output ThermofluidStream.Processes.Pipes.Internal.Types.PressureLossCoefficient zeta_cb
     "Pressure loss coefficient of branching inlet w.r.t. (common) outlet velocity";
-  output Types.PressureLossCoefficient zeta_cs
+  output ThermofluidStream.Processes.Pipes.Internal.Types.PressureLossCoefficient zeta_cs
     "Pressure loss coefficient of straight inlet w.r.t. (common) outlet velocity";
   //output Real w_rel_bc = w_b/w_c "velocity ratio of branch and common channel";
   //output Real w_rel_sc = w_s/w_c "velocity ratio of main passage and common channel";

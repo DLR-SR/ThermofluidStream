@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipation.PressureLoss.Bend"
 
-  extends Internal.Interfaces.SISOFlowBend(final L=if computeL then (10*d/(d^2*pi/4)) else L_value, final clip_p_out=
+  extends Interfaces.SISOFlowBend(         final L=if computeL then (10*d/(d^2*pi/4)) else L_value, final clip_p_out=
         true);
 
   //Geometry
@@ -11,7 +11,7 @@ model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipatio
     annotation(Dialog(group="Geometry"));
   parameter ThermofluidStream.Processes.Internal.Material material = ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation(Dialog(group="Roughness"));
-  parameter SI.Length ks_input "Roughness of pipe"
+  parameter SI.Length ks "Roughness of pipe"
     annotation(Dialog(group="Roughness"),enable = material == ThermofluidStream.Processes.Internal.Material.other);
   //Initialization
   parameter StateSelect dpStateSelect = StateSelect.default "State select for pressure difference dp"
@@ -40,19 +40,19 @@ protected
   SI.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
   SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
   SI.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
-  final parameter SI.Length ks=
+  final parameter SI.Length ks_internal=
    if material == ThermofluidStream.Processes.Internal.Material.concrete then 5e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.wood then 0.5e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.castIron then 0.25e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.galvanizedIron then 0.15e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.steel then 0.059e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.drawnPipe then 0.0015e-3
-   else ks_input "Pipe roughness";
+   else ks "Pipe roughness";
 
   final parameter Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con In_con(
     d_hyd=d,
     delta=delta,
-    K=ks) "Input record constants";
+    K=ks_internal) "Input record constants";
   Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var In_var(eta=mu, rho=rho) "Input record variables";
 equation
   // Computation of mean dynamic viscosity and mean density
@@ -62,14 +62,13 @@ equation
     In_con,
     In_var,
     m_flow);
-  assert(ks < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
+  assert(ks_internal < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
   assert(5 <= delta*180/pi and delta*180/pi <= 180, "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
   h_out = h_in;
   Xi_out = Xi_in;
   annotation (
     Dialog(enable = (material == ThermofluidStream.Processes.Internal.Material.other)),
     choices(choice = ThermofluidStream.Processes.Internal.Material.concrete "Concrete ks=5mm", choice = ThermofluidStream.Processes.Internal.Material.wood "Wood ks=0.5mm", choice = ThermofluidStream.Processes.Internal.Material.castIron "Cast Iron ks=0.25mm", choice = ThermofluidStream.Processes.Internal.Material.galvanizedIron "Galvanized Iron ks=0.15mm", choice = ThermofluidStream.Processes.Internal.Material.steel "Steel ks=0.059mm", choice = ThermofluidStream.Processes.Internal.Material.drawnPipe "Drawn Pipe ks=0.0015mm"),
-    defaultComponentName = "edged_bend",
     Documentation(info="<html>
 <p>
 This pipe bend model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference, some medium properties and the geometry of the pipe bend.
@@ -96,7 +95,7 @@ mass flow rate).
 </p>
 
 <p>
-The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  For the 
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  For the 
 calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.edgedOverall_DP\">dp_edgedOverall_DP</a> by Modelica is implemented. The input records 
 <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_con\">dp_edgedOverall_IN_con</a> &amp; 
 <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_edgedOverall_IN_var\">dp_edgedOverall_IN_var</a> are overwritten with the input parameters defining the pipe bend geometry and fluid properties. 

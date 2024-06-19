@@ -65,7 +65,6 @@ equation
   assert(Re > 1e3, "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
   assert(0.0149 <= l_0/d_0 and l_0/d_0 <= 15, "Ratio of vena length l_0 and perimeter at vena is outside valid range. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
-    defaultComponentName = "edged_orifice",
     Documentation(info="<html>
 <p>
 This orifice model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference, some medium properties and the geometry of the orifice.
@@ -86,7 +85,7 @@ when using <strong>steady state</strong> or slowly changing boundary conditions.
 </p>
 
 <p>
-The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.
 For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_DP\">dp_thickEdgedOverall_DP</a> by Modelica is implemented and 
 <strong>extended by an additional input</strong> which allows the manual <strong>adjustment of the Darcy friction factor</strong>. (This was removed to increase the compatibility with Modelica.Fluid but may be added again)
 The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOveral_IN_con\">dp_curvedOverall_IN_con</a> &amp; 

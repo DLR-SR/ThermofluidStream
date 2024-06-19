@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss;
+within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss;
 package Junction
   extends Modelica.Icons.VariantsPackage;
 

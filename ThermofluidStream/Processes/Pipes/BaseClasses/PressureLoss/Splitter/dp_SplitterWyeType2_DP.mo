@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter;
+﻿within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Splitter;
 function dp_SplitterWyeType2_DP "Pressure loss of wye splitter of type A_s + A_b = A_c | calculate pressure loss in each channel"
   extends Modelica.Icons.Function;
 
@@ -14,8 +14,10 @@ function dp_SplitterWyeType2_DP "Pressure loss of wye splitter of type A_s + A_b
   // Output variables
   output SI.Pressure dp_b "Pressure loss of branching pipe";
   output SI.Pressure dp_s "Pressure loss of straight pipe";
-  output Types.PressureLossCoefficient zeta_cb "Pressure loss coefficient of branching pipe w.r.t. inlet velocity";
-  output Types.PressureLossCoefficient zeta_cs "Pressure loss coefficient of straight pipe w.r.t. inlet velocity";
+  output Internal.Types.PressureLossCoefficient zeta_cb
+    "Pressure loss coefficient of branching pipe w.r.t. inlet velocity";
+  output Internal.Types.PressureLossCoefficient zeta_cs
+    "Pressure loss coefficient of straight pipe w.r.t. inlet velocity";
 protected
   Real w_rel_bc = if abs(w_c) >= eps then w_b/w_c else 0 "Velocity ratio branch/inlet";
   Real w_rel_sc = if abs(w_c) >= eps then w_s/w_c else 0 "Velocity ratio main/inlet";

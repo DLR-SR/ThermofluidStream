@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model SplitterY "Pressure drop of an Y-shaped splitter"
 
-  extends Internal.Interfaces.partialSplitterY;
+  extends Interfaces.partialSplitterY;
 
   // Geometry
   parameter SI.Length d_in "(Common) inlet diameter"
@@ -40,8 +40,7 @@ protected
 equation
   // Distinction between type 1 and type 2 splitter
   if Y_type1 then
-    (DP_branching,DP_straight,zeta_branching,zeta_straight) =
-      Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP(
+    (DP_branching,DP_straight,zeta_branching,zeta_straight) =BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP(
       w_c=c_in,
       w_b=c_branching,
       w_s=c_straight,
@@ -50,8 +49,7 @@ equation
       eps=eps);
     // pressure loss function of type 1
   else
-    (DP_branching,DP_straight,zeta_branching,zeta_straight) =
-      Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP(
+    (DP_branching,DP_straight,zeta_branching,zeta_straight) =BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP(
       w_c=c_in,
       w_b=c_branching,
       w_s=c_straight,
@@ -113,17 +111,17 @@ This model is a <strong>splitter</strong> component only. Therfore flows <strong
 </p>
 
 <p>
-The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialSplitterY\">partialSplitterY</a> implementing the common flow balances 
+The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.partialSplitterY\">partialSplitterY</a> implementing the common flow balances 
 for fluid splitting components. For the pressure loss calculation the functions 
-<a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP\">dp_SplitterWyeType1_DP</a> and 
-<a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP\">dp_SplitterWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
+<a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP\">dp_SplitterWyeType1_DP</a> and 
+<a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP\">dp_SplitterWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
 See their documentation for a detailed description on the pressure loss calculation and figuers containing pressure loss coefficieint charts.
 </p>
 
 <p>
 <strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>). 
 Be aware that <strong>the book has been updated</strong> since then. Those functions calculate and feed back the pressure loss at each channel as well as the pressure loss coefficient with respect to the velocity 
-in the common channel (inlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter\">click here</a>.
+in the common channel (inlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Splitter\">click here</a>.
 </p>
 
 <p>

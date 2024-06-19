@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model SuddenExpansion "Pressure drop due to expansion using Modelica.Fluid.Dissipation.PressureLoss.Orifice"
 
-  extends Internal.Interfaces.SISOFlow_nonConstArea(final L=L_value, final clip_p_out=true);
+  extends Interfaces.SISOFlow_nonConstArea(         final L=L_value, final clip_p_out=true);
 
   //Geometry
   parameter SI.Length d_1 "Inlet diameter"
@@ -57,7 +57,6 @@ equation
   Xi_out = Xi_in;
   assert(m_flow > 0 and Re > 3.3e3 or m_flow < 0 and Re > 1e4, "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
-    defaultComponentName = "sudden_expansion",
     Documentation(info="<html>
 <p>
 This component models a <strong>sudden pipe expansion</strong>. It computes the pressure loss of the fluid depending on the massflow rate or the massflow rate depending on a given pressure 
@@ -66,7 +65,7 @@ pipe outlet and <strong>one phase medium</strong>.
 </p>
 
 <p> 
-The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common 
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.SISOFlow_nonConstArea\">SISOFlow_nonConstArea</a> implementing the common 
 flow balances. For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_DP\">dp_suddenChange_DP</a> by Modelica is implemented. 
 The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_con\">dp_suddenChange_IN_con</a> &amp; 
 <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_var\">dp_suddenChange_IN_var</a> are overwritten with the input parameters defining the geometry of the expansion and 

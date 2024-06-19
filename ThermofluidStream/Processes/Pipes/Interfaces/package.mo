@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal;
+within ThermofluidStream.Processes.Pipes;
 package Interfaces
   extends Modelica.Icons.InterfacesPackage;
 

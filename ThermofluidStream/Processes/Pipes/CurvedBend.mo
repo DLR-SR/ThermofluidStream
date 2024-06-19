@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model CurvedBend "Pressure drop due to curved bend using Modelica.Fluid.Dissipation.PressureLoss.Bend"
 
-  extends Internal.Interfaces.SISOFlowBend(final L=if computeL then (d/2*pi/180*delta/(d^2*pi/4)) else L_value, final
+  extends Interfaces.SISOFlowBend(         final L=if computeL then (d/2*pi/180*delta/(d^2*pi/4)) else L_value, final
       clip_p_out=true);
 
   //Geometry
@@ -13,7 +13,7 @@ model CurvedBend "Pressure drop due to curved bend using Modelica.Fluid.Dissipat
     annotation(Dialog(group="Geometry"));
   parameter ThermofluidStream.Processes.Internal.Material material = ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation(Dialog(group="Roughness"));
-  parameter SI.Length ks_input "Roughness of pipe"
+  parameter SI.Length ks "Roughness of pipe"
     annotation(Dialog(group="Roughness"),enable = material == ThermofluidStream.Processes.Internal.Material.other);
   //Initialization
   parameter StateSelect dpStateSelect = StateSelect.default "State select for dp"
@@ -41,18 +41,18 @@ protected
   SI.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
   SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
   SI.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
-  final parameter SI.Length ks=
+  final parameter SI.Length ks_internal=
     if material == ThermofluidStream.Processes.Internal.Material.concrete then 5e-3
     elseif material == ThermofluidStream.Processes.Internal.Material.wood then 0.5e-3
     elseif material == ThermofluidStream.Processes.Internal.Material.castIron then 0.25e-3
     elseif material == ThermofluidStream.Processes.Internal.Material.galvanizedIron then 0.15e-3
     elseif material == ThermofluidStream.Processes.Internal.Material.steel then 0.059e-3
     elseif material == ThermofluidStream.Processes.Internal.Material.drawnPipe then 0.0015e-3
-    else ks_input "Pipe roughness";
+    else ks "Pipe roughness";
   final parameter Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_con In_con(
     d_hyd=d,
     delta=delta,
-    K=ks,
+    K=ks_internal,
     R_0=R) "Input record constants";
   Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var In_var(eta=mu, rho=rho) "Input record variables";
 algorithm
@@ -60,7 +60,7 @@ algorithm
   mu := (mu_in + mu_out)/2;
   rho := (rho_in + rho_out)/2;
 equation
-  assert(ks < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
+  assert(ks_internal < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
   assert(5 <= delta*180/pi and delta*180/pi <= 180, "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
   assert(0.49 <= R/d and R/d <= 15, "Realative curvatue R/d should be between boundaries 0.5 <= R/d <= 15. If ratio is greater deiviations have to be accapted.", AssertionLevel.warning);
   -dp = Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_DP(
@@ -93,7 +93,7 @@ This component is an adaptation of <a href=\"modelica://Modelica.Fluid.Fittings.
 </p>
 
 <p> 
-The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  
+The pipe bend component is using the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.SISOFlowBend\">SISOFlowBend</a> implementing the common flow balances.  
 For the calculation of pressure loss the function <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_DP\">dp_curvedOverall_DP</a> by Modelica is implemented. 
 The input records <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_con\">dp_curvedOverall_IN_con</a> 
 &amp; <a href=\"modelica://Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_IN_var\">dp_curvedOverall_IN_var</a> 

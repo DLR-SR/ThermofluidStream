@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model JunctionY "Pressure drop of an Y-shaped junction"
 
-  extends Internal.Interfaces.partialJunctionY;
+  extends Interfaces.partialJunctionY;
 
   // Geometry
   parameter SI.Length d_straight "Straight inlet diameter"
@@ -45,8 +45,7 @@ equation
   // Distinction between type 1 and type 2 junction
   if Y_type1 then
     // Pressure loss function of type 1
-    (DP_branching,DP_straight,zeta_branching,zeta_straight) =
-      Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP(
+    (DP_branching,DP_straight,zeta_branching,zeta_straight) =BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP(
       F_c=A_out,
       F_b=A_branching,
       w_c=c_mix,
@@ -58,8 +57,7 @@ equation
       eps=eps);
   else
     // Pressure loss function of type 2
-    (DP_branching,DP_straight,zeta_branching,zeta_straight) =
-      Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType2_DP(
+    (DP_branching,DP_straight,zeta_branching,zeta_straight) =BaseClasses.PressureLoss.Junction.dp_JunctionWyeType2_DP(
       F_c=A_out,
       F_b=A_branching,
       F_s=A_straight,
@@ -122,16 +120,16 @@ If two pressure boundaries are used, be careful to prevent back flow into the co
 </p>
 
 <p>
-The Y-Junction component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialJunctionY\">partialJunctionY</a> implementing the common flow balances 
-for fluid merging components. For the pressure loss calculation the functions <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_SplitterWyeType1_DP</a>
-and <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_JunctionWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
+The Y-Junction component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Interfaces.partialJunctionY\">partialJunctionY</a> implementing the common flow balances 
+for fluid merging components. For the pressure loss calculation the functions <a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_SplitterWyeType1_DP</a>
+and <a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_JunctionWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
 See their documentation for a detailed description on the pressure loss calculation an figuers containing pressure loss coefficieint charts.
 </p>
 
 <p>
 <strong>PLEASE NOTE:</strong> Those functions are based on the formulas and data provided in \"Handbook of Hydraulic Resistance\" by Idel'chik (<strong>1960</strong>). 
 Be aware that there <strong>the book has been updated</strong> since then. Those functions calculate and feed back the pressure loss at each channel as well as the pressure loss coefficient with respect 
-to the velocity in the common channel (outlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction\">click here</a>.
+to the velocity in the common channel (outlet section). For more information on the pressure loss function <a href=\"modelica://ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss.Junction\">click here</a>.
 </p>
 
 <p>

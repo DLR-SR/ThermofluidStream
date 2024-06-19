@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss;
+within ThermofluidStream.Processes.Pipes.BaseClasses.PressureLoss;
 package Splitter
   extends Modelica.Icons.VariantsPackage;
 
