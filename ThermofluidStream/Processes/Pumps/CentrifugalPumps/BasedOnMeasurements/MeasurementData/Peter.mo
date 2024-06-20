@@ -1,27 +1,25 @@
-within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo;
-record Stratos30slash1to4 "Pump data for a Wilo Stratos 30/1-4 pump"
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData;
+record Peter "Old TFS Pump"
   extends ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.GenericPump(
     rho_ref=1000,
-    w_ref=Modelica.Units.Conversions.from_rpm(1800),
-    V_flow={5.55555555556e-07,0.000402190923318,0.00052269170579,0.000643192488263,0.000752738654147,0.000866979655712,
-        0.000973395931142,0.00108607198748,0.00115962441315},
-    P={14.2085618951,21.2596204596,23.3573239437,25.1349149442,26.581943662,27.9121571534,28.8498841148,29.4981726255,
-        29.7520982304},
-    dp={17066.9518717,16997.0053476,16437.4331551,15528.1283422,14408.9839572,13149.9465241,11681.0695187,9932.40641711,
-        8533.47593583},
+    w_ref=Modelica.Units.Conversions.from_rpm(1450),
+    V_flow = {0, 0.000459, 0.000918, 0.001377, 0.001836, 0.002295, 0.002754, 0.003213, 0.003672, 0.004131,0.004590},
+    P = {55.866142, 78.950351, 99.019996, 116.075076, 130.115592, 141.141543, 149.152930, 154.149752, 156.132010, 155.099703, 151.052832},
+    dp = {47089.773689, 50056.225473, 51383.453487, 51071.457733, 49120.238210, 45529.794918, 40300.127856, 33431.237026, 24923.122426, 14775.784058, 2989.221920},
     final setHead=false,
     final head = {0});// head ist not used since setHead=false. I set final head = {0}; to hide it in the parameter window (for less confusion i hope)
+
   annotation (
 defaultComponentPrefixes="parameter",
 defaultComponentName="per",
 Documentation(info="<html>
 <p>
-<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos30_1-4_data.pdf\">Data sheet of Wilo Stratos 30/1-4</a>
+Data sheed currently not yet available.
 </p>
 <p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos30_1-4_head.png\" alt=\"Wilo Stratos 30/1-4 head\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos30_1-4_power.png\" alt=\"Wilo Stratos 30/1-4 power\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos30_1-4_efficiency.png\" alt=\"Wilo Stratos 30/1-4 efficiency\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_head.png\" alt=\"Old TFS Pump head\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_power.png\" alt=\"Old TFS Pump power\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_efficiency.png\" alt=\"Old TFS Pump efficiency\" width=\"800\">
 </p>
 </html>",   revisions="<html>
 <ul>
@@ -46,6 +44,11 @@ This is for
 <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2668\">#2668</a>.
 </li>
 <li>
+June 01, 2017, by Iago Cupeiro:
+<br>
+Changed data link to English version
+</li>
+<li>
 February 17, 2016, by Michael Wetter:<br>
 Updated parameter names for
 <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/396\">#396</a>.
@@ -61,4 +64,4 @@ Added <code>defaultComponentPrefixes</code> and
 </li>
 </ul>
 </html>"));
-end Stratos30slash1to4;
+end Peter;

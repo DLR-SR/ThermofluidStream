@@ -2,12 +2,13 @@ within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.Me
 record VeroLine50slash150dash4slash2
   "Pump data for a Wilo Veroline IP-E 50/150-4/2 pump"
   extends ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.GenericPump(
-    setHead=false,
     rho_ref=1000,
     w_ref=Modelica.Units.Conversions.from_rpm(2900),
     V_flow={0.0,0.00277777,0.00555555,0.00833333,0.01111111,0.01388888,0.01666666},
     P={1607.8,2235.3,2862.7,3529.4,4078.4,4392.2,4666.7},
-    dp={255400,253000,250600,248200,232010,199640,156470});
+    dp={255400,253000,250600,248200,232010,199640,156470},
+    final setHead=false,
+    final head = {0});// head ist not used since setHead=false. I set final head = {0}; to hide it in the parameter window (for less confusion i hope)
   annotation (
 defaultComponentPrefixes="parameter",
 defaultComponentName="per",

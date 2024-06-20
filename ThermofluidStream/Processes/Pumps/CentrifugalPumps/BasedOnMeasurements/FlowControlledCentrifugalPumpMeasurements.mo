@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements;
+﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements;
 model FlowControlledCentrifugalPumpMeasurements "Ideal controlled (mass flow rate, volume flow rate) centrifugal pump based on measurement data at reference speed"
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialFlowControlledCentrifugalPumpMeasurements;
 

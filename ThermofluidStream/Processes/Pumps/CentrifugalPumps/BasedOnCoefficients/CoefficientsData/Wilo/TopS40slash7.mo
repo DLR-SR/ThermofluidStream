@@ -18,7 +18,6 @@ record TopS40slash7 "Pump coefficients of a staged Wilo-Top-S 40/7 pump"
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS40_7_data.pdf\">Data sheet of Wilo-Top-S 40/7</a>

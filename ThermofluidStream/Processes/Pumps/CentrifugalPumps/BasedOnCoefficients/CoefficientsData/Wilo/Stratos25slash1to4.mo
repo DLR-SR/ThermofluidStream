@@ -18,7 +18,6 @@ record Stratos25slash1to4 "Pump coefficients of a Wilo Stratos 25/1-4 pump"
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos25_1-4_data.pdf\">Data sheet of Wilo Stratos 25/1-4</a>

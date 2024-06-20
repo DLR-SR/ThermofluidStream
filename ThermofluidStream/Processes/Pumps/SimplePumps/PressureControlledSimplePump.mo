@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pumps.SimplePumps;
+﻿within ThermofluidStream.Processes.Pumps.SimplePumps;
 model PressureControlledSimplePump "Ideally controlled pump with fixed efficiency (outlet pressure or pressure difference)"
 
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialSimplePump(final clip_p_out=if setpoint == SetpointMode.dp
@@ -6,13 +6,13 @@ model PressureControlledSimplePump "Ideally controlled pump with fixed efficienc
 
   import SetpointMode = ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure;
 
-  parameter SetpointMode setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp      "Pump setpoint (dp or p_out)"
+  parameter SetpointMode setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp "Pump setpoint (dp or p_out)"
     annotation (Dialog(group="Setpoint"));
   parameter Boolean setpointFromInput = false "= true, if setpoint input connector is enabled"
     annotation(Dialog(group="Setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.PressureDifference  dp_par=0 "Constant pressure difference"
+  parameter SI.PressureDifference dp_par = 0 "Constant pressure difference"
     annotation(Dialog(group="Setpoint",enable=not setpointFromInput and setpoint==SetpointMode.dp));
-  parameter SI.PressureDifference  p_out_par=0 "Constant outlet pressure"
+  parameter SI.PressureDifference p_out_par = 0 "Constant outlet pressure"
     annotation(Dialog(group="Setpoint",enable=not setpointFromInput and setpoint==SetpointMode.p_out));
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displaySetpoint = true "= true, if setpoint value (either dp_par or p_out_par) is displayed"
@@ -22,27 +22,27 @@ model PressureControlledSimplePump "Ideally controlled pump with fixed efficienc
   parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String setpointModeString=
-    if setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp   then "Δp"
-    elseif setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.p_out   then "p"
+    if setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp then "Δp"
+    elseif setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.p_out then "p"
     else "error";
   final parameter String setpointValueString=
-    if setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp   then  "dp = %dp_par"
-    elseif setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.p_out   then  "p_out = %p_out_par"
+    if setpoint == ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.dp then "dp = %dp_par"
+    elseif setpoint == ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModePressure.p_out then "p_out = %p_out_par"
     else "error";
   final parameter String displayPos1=
     if displaySetpoint then setpointValueString
-    elseif displayEfficiency then "eta_is = %eta_is"
+    elseif displayEfficiency then "eta = %eta_is"
     elseif displayInertance then "L = %L"
     else "";
   final parameter String displayPos2=
-    if displayEfficiency and displaySetpoint  then "eta_is = %eta_is"
+    if displayEfficiency and displaySetpoint  then "η = %eta_is"
     elseif displayInertance and (displaySetpoint or displayEfficiency)  then "L = %L"
     else "";
   final parameter String displayPos3=
     if displayInertance and displaySetpoint and displayEfficiency then "L = %L"
     else "";
   final parameter String displayPos4=
-    if displayEfficiency then "eta_is = %eta_is"
+    if displayEfficiency then "η = %eta_is"
     elseif displayInertance then "L = %L"
     else "";
   final parameter String displayPos5=

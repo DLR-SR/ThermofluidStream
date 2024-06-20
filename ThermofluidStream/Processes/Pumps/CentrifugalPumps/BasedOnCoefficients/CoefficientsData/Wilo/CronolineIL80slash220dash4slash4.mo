@@ -18,7 +18,6 @@ record CronolineIL80slash220dash4slash4 "Pump coefficients of a Wilo Cronoline-I
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloCronoline-IL80_220-4_4_data.pdf\">Data sheet of Wilo Cronoline-IL 80/220-4/4</a>

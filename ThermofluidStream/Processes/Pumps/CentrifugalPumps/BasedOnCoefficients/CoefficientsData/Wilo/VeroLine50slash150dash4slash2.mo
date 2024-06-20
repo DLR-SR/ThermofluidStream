@@ -18,7 +18,6 @@ record VeroLine50slash150dash4slash2 "Pump coefficients of a Wilo Veroline IP-E 
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloVerolineIP-E50_150-4_2_data.pdf\">Data sheet of Wilo Veroline IP-E 50/150-4/2</a>

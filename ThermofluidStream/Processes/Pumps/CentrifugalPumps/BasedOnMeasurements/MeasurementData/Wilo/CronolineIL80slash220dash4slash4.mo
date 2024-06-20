@@ -1,7 +1,6 @@
 within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo;
 record CronolineIL80slash220dash4slash4 "Pump data for a Wilo Cronoline-IL 80/220-4/4 pump"
   extends ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.GenericPump(
-    setHead=false,
     rho_ref=1000,
     w_ref=Modelica.Units.Conversions.from_rpm(1450),
     V_flow={0.00303454715219,0.00578898225957,0.00863678804855,0.0113912231559,0.0146125116713,0.0181605975724,
@@ -9,7 +8,9 @@ record CronolineIL80slash220dash4slash4 "Pump data for a Wilo Cronoline-IL 80/22
     P={1905.29339941,2202.03582759,2548.86483304,2812.07908132,3146.06691483,3435.07911022,3592.75276695,3710.09774539,
         3774.78991597,3793.34692457},
     dp={168215.17064,166653.242326,164291.843595,161128.282627,154367.77774,142807.085577,128439.498542,108468.216086,
-        92889.3102384,86895.3009775});
+        92889.3102384,86895.3009775},
+    final setHead=false,
+    final head = {0});// head ist not used since setHead=false. I set final head = {0}; to hide it in the parameter window (for less confusion i hope)
   annotation (
 defaultComponentPrefixes="parameter",
 defaultComponentName="per",

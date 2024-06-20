@@ -18,7 +18,6 @@ record TopS30slash5 "Pump coefficients of a staged Wilo-Top-S 30/5 pump"
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloTopS30_5_data.pdf\">Data sheet of Wilo-Top-S 30/5</a>

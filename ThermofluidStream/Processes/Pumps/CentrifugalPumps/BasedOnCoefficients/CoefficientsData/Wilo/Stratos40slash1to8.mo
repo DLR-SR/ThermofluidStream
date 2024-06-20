@@ -18,7 +18,6 @@ record Stratos40slash1to8 "Pump coefficients of a Wilo Stratos 40/1-8 pump"
 
   annotation (
 defaultComponentPrefixes="parameter",
-defaultComponentName="per",
 Documentation(info="<html>
 <p>
 <a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos40_1-8_data.pdf\">Data sheet of Wilo Stratos 40/1-8</a>

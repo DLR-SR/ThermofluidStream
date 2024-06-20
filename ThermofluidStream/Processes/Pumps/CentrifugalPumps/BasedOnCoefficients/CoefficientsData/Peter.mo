@@ -1,31 +1,32 @@
-within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo;
-record Stratos80slash1to12 "Pump coefficients of a Wilo Stratos 80/1-12 pump"
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData;
+record Peter "Old TFS Pump"
   extends
     ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData.GenericPumpCoefficients(
     final setHead=false,
     final head_ref=0,
-    w_ref=Modelica.Units.Conversions.from_rpm(2610),
+    w_ref=Modelica.Units.Conversions.from_rpm(3000),
     rho_ref=1000.000000,
-    V_flow_ref=0.018984,
-    dp_ref=75862.218346,
-    eta_ref=0.655295,
-    c2_head=0.703855,
-    c3_power=-0.366218,
-    Vr_peak=0.516851);
+   V_flow_ref = 0.004697,
+   dp_ref = 47089.773689,
+   eta_ref = 0.748209,
+    c2_head = 0.822790,
+    c3_power= -0.713646,
+    Vr_peak=0.546026);
+
 // For your information
-// c_power={0.184645,0.740660,-0.366218}
-// dpr_peak = 0.516851; Pressure rise ratio (dp/dp_ref) at peak efficiency
+// c_power={0.252570, 1.137747, -0.713646}; Coefficients of second order power approximation polynomial
+// dpr_peak = 0.905810; Pressure rise ratio (dp/dp_ref) at peak efficiency
 
   annotation (
 defaultComponentPrefixes="parameter",
 Documentation(info="<html>
 <p>
-<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos80_1-12_data.pdf\">Data sheet of Wilo Stratos 80/1-12</a>
+Data sheed currently not yet available.
 </p>
 <p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos80_1-12_head.png\" alt=\"Wilo Stratos 80/1-12 head\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos80_1-12_power.png\" alt=\"Wilo Stratos 80/1-12 power\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/WiloStratos80_1-12_efficiency.png\" alt=\"Wilo Stratos 80/1-12 efficiency\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_head.png\" alt=\"Old TFS Pump head\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_power.png\" alt=\"Old TFS Pump power\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_efficiency.png\" alt=\"Old TFS Pump efficiency\" width=\"800\">
 </p>
 </html>",   revisions="<html>
 <ul>
@@ -50,6 +51,11 @@ This is for
 <a href=\"https://github.com/lbl-srg/modelica-buildings/issues/2668\">#2668</a>.
 </li>
 <li>
+June 01, 2017, by Iago Cupeiro:
+<br>
+Changed data link to English version
+</li>
+<li>
 February 17, 2016, by Michael Wetter:<br>
 Updated parameter names for
 <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/396\">#396</a>.
@@ -65,4 +71,4 @@ Added <code>defaultComponentPrefixes</code> and
 </li>
 </ul>
 </html>"));
-end Stratos80slash1to12;
+end Peter;

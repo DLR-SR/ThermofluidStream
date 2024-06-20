@@ -36,7 +36,8 @@ model Test_CentrifugalPump
             -180},{-50,-160}})));
   CentrifugalPumps.BasedOnMeasurements.CentrifugalPumpMeasurements centrifugalPumpMeasurements(redeclare package Medium =
         Medium_liquid, redeclare
-      CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo.CronolineIL80slash220dash4slash4 data)
+      ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo.CronolineIL80slash220dash4slash4
+      data)
     annotation (Placement(transformation(extent={{-20,80},{-40,100}})));
   CentrifugalPumps.BasedOnCoefficients.CentrifugalPumpCoefficients centrifugalPumpCoefficients(redeclare package Medium =
         Medium_liquid, redeclare
