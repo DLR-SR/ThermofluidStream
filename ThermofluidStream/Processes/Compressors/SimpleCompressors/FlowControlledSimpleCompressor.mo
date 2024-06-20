@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Compressors.SimpleCompressors;
+within ThermofluidStream.Processes.Compressors.SimpleCompressors;
 model FlowControlledSimpleCompressor "Ideally controlled compressor (mass flow rate, volume flow rate) with fixed isentropic efficiency suitable for compressible media (real gas)"
 
   extends ThermofluidStream.Processes.Compressors.BaseClasses.PartialFlowControlledSimpleCompressor;

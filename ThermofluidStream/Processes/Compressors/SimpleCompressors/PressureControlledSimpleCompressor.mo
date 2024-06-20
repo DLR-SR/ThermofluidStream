@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Compressors.SimpleCompressors;
+within ThermofluidStream.Processes.Compressors.SimpleCompressors;
 model PressureControlledSimpleCompressor "Ideally controlled compressor (outlet pressure or pressure difference) with fixed isentropic efficiency  suitable for compressible media (real gas)"
 
   extends ThermofluidStream.Processes.Compressors.BaseClasses.PartialSimpleCompressor(final clip_p_out=if setpoint == SetpointMode.dp then true else false);
