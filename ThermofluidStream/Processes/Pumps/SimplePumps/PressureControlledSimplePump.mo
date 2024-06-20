@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pumps.SimplePumps;
+within ThermofluidStream.Processes.Pumps.SimplePumps;
 model PressureControlledSimplePump "Ideally controlled pump with fixed efficiency (outlet pressure or pressure difference)"
 
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialSimplePump(final clip_p_out=if setpoint == SetpointMode.dp

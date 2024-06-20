@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData;
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients.CoefficientsData;
 record GenericPumpCoefficients "Generic pump coefficient record"
 
   extends Modelica.Icons.Record;

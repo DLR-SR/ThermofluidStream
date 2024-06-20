@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pumps.SimplePumps;
+within ThermofluidStream.Processes.Pumps.SimplePumps;
 model FlowControlledSimplePump "Ideally controlled pump (mass flow rate, volume flow rate) with fixed efficiency"
 
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialFlowControlledSimplePump;
