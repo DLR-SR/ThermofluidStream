@@ -1,7 +1,9 @@
 FlowResistance
 TurboComponent
+Types
 PartialTurboComponent
 PartialConductionElement
+SISOFlowMassFlowRate
 InitializationMethodsCondElement
 Material
 ShapeOfResistance
