@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.IdealGasConstantKappa;
+within ThermofluidStream.Processes.Sources.IdealGasConstantKappa;
 model FlowSourceIdealGas
   "Ideal flow source (fixed mass flow rate or volume flow rate) with fixed isentropic efficiency assuming ideal gas with constant isentropic exponent suitable as simple compressor/blower/fan"
 

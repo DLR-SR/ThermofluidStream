@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.IncompressibleFluid;
+within ThermofluidStream.Processes.Sources.IncompressibleFluid;
 model FlowSourceIncompressibleFluid
  "Ideal flow source (fixed mass flow rate or volume flow rate) with fixed isentropic efficiency assuming incompressible fluid suitable as simple pump"
   extends ThermofluidStream.Processes.Sources.BaseClasses.PartialFlowSourceIncompressibleFluid;

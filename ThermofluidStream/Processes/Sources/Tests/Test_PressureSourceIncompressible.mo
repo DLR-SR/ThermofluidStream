@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.Tests;
+within ThermofluidStream.Processes.Sources.Tests;
 model Test_PressureSourceIncompressible
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater

@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.AllMediaBasedOnEntropy;
+within ThermofluidStream.Processes.Sources.AllMediaBasedOnEntropy;
 model FlowSource
   "Ideal flow source (fixed mass flow rate or volume flow rate) with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
 

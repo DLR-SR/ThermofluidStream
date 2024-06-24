@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.Tests.Utilities;
+within ThermofluidStream.Processes.Sources.Tests.Utilities;
 model CompressorIsentropicEfficiencyConstKappa
   "Analytic Solution for compression of ideal gas with given constant kappa (using media specific enthalpy), isentropic efficiency, inlet and outlet pressure"
 

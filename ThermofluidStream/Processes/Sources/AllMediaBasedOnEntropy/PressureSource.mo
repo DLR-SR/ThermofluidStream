@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.AllMediaBasedOnEntropy;
+within ThermofluidStream.Processes.Sources.AllMediaBasedOnEntropy;
 model PressureSource "Ideal pressure source (fixed pressure difference, pressure ratio or outlet pressure) with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
   extends ThermofluidStream.Processes.Sources.BaseClasses.PartialPressureSource(      final clip_p_out=if setpoint ==
         SetpointMode.dp                                                                                                               then true else false);

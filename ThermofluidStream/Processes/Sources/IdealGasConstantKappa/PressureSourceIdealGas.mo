@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.IdealGasConstantKappa;
+within ThermofluidStream.Processes.Sources.IdealGasConstantKappa;
 model PressureSourceIdealGas "Ideal pressure source (fixed pressure difference, pressure ratio or outlet pressure) with fixed isentropic efficiency assuming ideal gas with constant isentropic exponent suitable as simple compressor/blower/fan"
 
   extends ThermofluidStream.Processes.Sources.BaseClasses.PartialPressureSourceIdealGas(final clip_p_out=if setpoint == SetpointMode.dp then true else false);

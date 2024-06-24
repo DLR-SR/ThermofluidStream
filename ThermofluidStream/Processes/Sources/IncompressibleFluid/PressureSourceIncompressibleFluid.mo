@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Sources.IncompressibleFluid;
+within ThermofluidStream.Processes.Sources.IncompressibleFluid;
 model PressureSourceIncompressibleFluid
   "Ideal pressure source (fixed pressure difference, pressure ratio or outlet pressure) with fixed isentropic efficiency assuming incompressible fluid suitable as simple pump"
 

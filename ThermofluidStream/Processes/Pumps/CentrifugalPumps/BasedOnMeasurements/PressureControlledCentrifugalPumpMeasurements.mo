@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements;
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements;
 model PressureControlledCentrifugalPumpMeasurements "Ideal controlled (pressure, pressure difference) centrifugal pump based on measurement data at reference speed"
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialPressureControlledCentrifugalPumpMeasurements(final clip_p_out=if setpoint == SetpointMode.dp  then true else false);
 
