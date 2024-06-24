@@ -78,8 +78,8 @@ the inlet the source is connected to.
     outputValue=true) annotation (Placement(transformation(extent={{38,-54},{18,-34}})));
   Sensors.SensorState sensorState(displayInstanceName=false, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
-  Utilities.CompressorIsentropicEfficiencyConstKappa compressorIsentropicEfficiencyConstKappa(redeclare package Medium
-      = Medium, eta_is=eta) annotation (Placement(transformation(extent={{-8,-60},{12,-40}})));
+  Utilities.CompressorIsentropicEfficiencyConstKappa compressorIsentropicEfficiencyConstKappa(redeclare package Medium =
+        Medium, eta_is=eta) annotation (Placement(transformation(extent={{-8,-60},{12,-40}})));
 equation
   connect(source.outlet, flowSource.inlet)
     annotation (Line(

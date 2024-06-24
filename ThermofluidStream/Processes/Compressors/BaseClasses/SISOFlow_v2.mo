@@ -70,7 +70,7 @@ Therefor the pressure difference is adapted based on the inertial pressure <code
 </p>
 
 <p>
-<code>TC * der(dp) = outlet.r - inlet.r;
+<code>TC * der(dp) = outlet.r - inlet.r;</code>
 </p> 
 
 

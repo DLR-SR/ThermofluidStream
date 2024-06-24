@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy;
+within ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy;
 model PressureSource "Ideal pressure source (fixed pressure difference, pressure ratio or outlet pressure) with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
   extends ThermofluidStream.Processes.Compressors.BaseClasses.PartialPressureSource(  final clip_p_out=if setpoint == SetpointMode.dp then true else false);
 
@@ -123,7 +123,7 @@ equation
           textColor={28,108,200},
           textString=setpointModeString)}), Documentation(info="<html>
 <p>
-Ideal pressure source usable as both pump (incompressible media) or compressor/blower/fan (compressible media) with fixed isentropic efficiency <code>eta_is<code>. The outlet enthalpy <code>h_out</code> is thereby calculated based on the medium entropy function:  
+Ideal pressure source usable as both pump (incompressible media) or compressor/blower/fan (compressible media) with fixed isentropic efficiency <code>eta_is</code>. The outlet enthalpy <code>h_out</code> is thereby calculated based on the medium entropy function:  
 </p>
 <p>
 <code>
