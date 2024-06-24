@@ -1,0 +1,4 @@
+within ThermofluidStream.Processes.Compressors.Internal.Types;
+type CompressorSetpointModeFlow = enumeration(
+    m_flow "Mass flow rate",
+    V_flow "Volume flow rate") "Setpoint mode (mass flow rate, volume flow rate) for controlled compressor";

@@ -20,6 +20,8 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 Please [register here](https://terminplaner6.dfn.de/en/b/04557a60c93ea82eafb16a981f7c2aeb-644809) for the online event. It is free. First come, first serve will be applied in case we reach limits regarding presentation time or number of participants. 
 
+[Preliminary Prorgram](https://github.com/DLR-SR/ThermofluidStream/issues/179) is now available.
+
 ## Highlights
 
 - **Winner of the 2021 Modelica Library Award (1st prize) at the International Modelica Conference**
@@ -104,15 +106,23 @@ Deutsches Zentrum für Luft- und Raumfahrt, Institut für Systemdynamik und Rege
 
 Individual authors of this organization are:
 - [@dzimmer](https://github.com/dzimmer)
-- [@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner)
+- [@RaphaelGebhart](https://github.com/RaphaelGebhart)
 - [@nieweber](https://github.com/orgs/DLR-SR/people/nieweber)
 
 
 ### Further Notable Contributions
-We would like to thank very much Stefan Wischhusen from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf:
-- [@wischhusen](https://github.com/wischhusen)
-<img src="/doc/XRG_Logo 2015_4c.png" width="120"> 
+We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure as well as media models for liquid and gas mixtures.
 
+<img src="/doc/saab_logo.png" width="120">
+
+We want to express our gratitude to Peter Stein and Philipp Jordan from [HTWG Konstanz](https://www.htwg-konstanz.de/) for their pipe models based on Idelchik.
+
+We would like to thank very much [@wischhusen](https://github.com/wischhusen) from [XRG Simulation GmbH](https://www.xrg-simulation.de) for additional open-source Media models such as R1234yf.
+
+<img src="/doc/XRG_Logo 2015_4c.png" width="120">
+
+### Alumni
+- [@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner)
 
 ## Acknowledgements
 
