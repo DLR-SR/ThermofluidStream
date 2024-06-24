@@ -81,8 +81,8 @@ the inlet the source is connected to.
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=10,
     r=1e-2) annotation (Placement(transformation(extent={{50,-30},{70,-10}})));
-  Utilities.CompressorIsentropicEfficiencyConstKappa compressorIsentropicEfficiencyConstKappa(redeclare package Medium
-      = Medium, eta_is=eta) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
+  Utilities.CompressorIsentropicEfficiencyConstKappa compressorIsentropicEfficiencyConstKappa(redeclare package Medium =
+        Medium, eta_is=eta) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
   Sensors.SensorState sensorState(displayInstanceName=false, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-52,-60},{-32,-40}})));
   Sensors.SingleSensorSelect singleSensorSelect5(

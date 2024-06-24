@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Compressors.IdealGasConstantKappa;
+within ThermofluidStream.Processes.Compressors.IdealGasConstantKappa;
 model FlowSourceIdealGas
   "Ideal flow source (fixed mass flow rate or volume flow rate) with fixed isentropic efficiency assuming ideal gas with constant isentropic exponent suitable as simple compressor/blower/fan"
 
@@ -107,12 +107,13 @@ equation
           textColor={28,108,200},
           textString=setpointModeString)}), Documentation(info="<html>
 <p>
-Ideal pressure source assuming ideal gas with constant isentropic exponent <code>kappa</code> suitable as simple compressor/blower/fan with fixed isentropic efficiency <code>eta_is<code>.<br>
+Ideal pressure source assuming ideal gas with constant isentropic exponent <code>kappa</code> suitable as simple compressor/blower/fan with fixed isentropic efficiency <code>eta_is</code>.<br>
 Use <a href=\"modelica://ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy.PressureSource\">PressureSource</a> for non ideal gas/fluid.<br>
 The outlet enthalpy <code>h_out</code> is calculed assuming ideal gas with constant isentropic exponent <code>kappa</code>:
 </p>
 
 <p>
+<code>
  h_out = h_in + w_t;<br>
  w_t = w_t_is/eta_is;<br>
  w_t_is = h_out_is - h_in;<br>

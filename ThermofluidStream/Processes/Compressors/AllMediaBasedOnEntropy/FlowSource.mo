@@ -1,4 +1,4 @@
-﻿within ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy;
+within ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy;
 model FlowSource
   "Ideal flow source (fixed mass flow rate or volume flow rate) with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
 
@@ -107,7 +107,7 @@ equation
           textColor={28,108,200},
           textString=setpointModeString)}), Documentation(info="<html>
 <p>
-Ideal flow source usable as both pump (incompressible media) or compressor/blower/fan (compressible media) with fixed isentropic efficiency <code>eta_is<code>. The outlet enthalpy <code>h_out</code> is thereby calculated based on the medium entropy function:  
+Ideal flow source usable as both pump (incompressible media) or compressor/blower/fan (compressible media) with fixed isentropic efficiency <code>eta_is</code>. The outlet enthalpy <code>h_out</code> is thereby calculated based on the medium entropy function:  
 </p>
 <p>
 <code>
