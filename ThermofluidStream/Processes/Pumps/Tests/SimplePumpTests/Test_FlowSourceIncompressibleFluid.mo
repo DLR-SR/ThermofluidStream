@@ -1,6 +1,6 @@
-within ThermofluidStream.Processes.Sources.Tests.SimplePumpTests;
-model Test_FlowControlledSimplePump
-  extends ThermofluidStream.Processes.Sources.Tests.SimplePumpTests.BaseClasses.PartialTest_SimplePump;
+within ThermofluidStream.Processes.Pumps.Tests.SimplePumpTests;
+model Test_FlowSourceIncompressibleFluid
+  extends ThermofluidStream.Processes.Pumps.Tests.BaseClasses.PartialTest_SimplePump;
   Modelica.Blocks.Sources.Sine m_flow_sine(
     amplitude=0.9,
     f=5e-4,
@@ -11,7 +11,7 @@ model Test_FlowControlledSimplePump
     f=5e-4,
     offset=1e-3,
     startTime=1e3) annotation (Placement(transformation(extent={{-120,-30},{-100,-10}})));
-  IncompressibleFluid.FlowSourceIncompressibleFluid flowControlledSimplePump(
+  Sources.IncompressibleFluid.FlowSourceIncompressibleFluid flowControlledSimplePump(
     redeclare package Medium = Medium_liquid,
     displaySetpoint=true,
     displayEfficiency=false,
@@ -35,4 +35,4 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
-end Test_FlowControlledSimplePump;
+end Test_FlowSourceIncompressibleFluid;

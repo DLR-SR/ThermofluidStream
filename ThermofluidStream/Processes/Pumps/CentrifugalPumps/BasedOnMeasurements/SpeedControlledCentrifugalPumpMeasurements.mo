@@ -26,8 +26,6 @@ model SpeedControlledCentrifugalPumpMeasurements "Ideal controlled (angular velo
   Modelica.Blocks.Interfaces.RealInput w_var(unit="rad/s") if setpointFromInput "Angular velocity input connector [rad/s]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=90,
         origin={0,-80})));
 protected
   Modelica.Blocks.Interfaces.RealInput w_internal(unit = "rad/s") "Internal connector for angular velocity [rad/s]";

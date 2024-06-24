@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Sources.Tests;
+within ThermofluidStream.Processes.Pumps.Tests;
 package SimplePumpTests
   extends Modelica.Icons.ExamplesPackage;
 

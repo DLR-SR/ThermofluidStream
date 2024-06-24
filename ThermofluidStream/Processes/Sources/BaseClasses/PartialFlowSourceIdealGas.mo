@@ -2,7 +2,7 @@ within ThermofluidStream.Processes.Sources.BaseClasses;
 partial model PartialFlowSourceIdealGas
   "Base model of a flow source with fixed isentropic efficiency assuming ideal gas with constant isentropic exponent suitable as simple compressor/blower/fan"
 
-  extends ThermofluidStream.Processes.Sources.BaseClasses.SISOFlow_v2;
+  extends ThermofluidStream.Processes.Internal.SISOFlowMassFlowRate;
 
   parameter Real eta_is(min=0,max=1) = 1 "Fixed isentropic efficiency";
   parameter Boolean kappaFromMedia = true "=true, if isentropic coefficient is calculated using the media model"

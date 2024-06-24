@@ -24,14 +24,14 @@ model PressureSource "Ideal pressure source (fixed pressure difference, pressure
   parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String setpointModeString=
-    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp                       then "Δp"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr                       then "pr"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out                       then "p"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp then "Δp"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr then "pr"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out then "p"
     else "error";
   final parameter String setpointValueString=
-    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp                       then  "dp = %dp_par"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr                       then  "pr = %pr_par"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out                       then  "p_out = %p_out_par"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp then  "dp = %dp_par"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr then  "pr = %pr_par"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out then  "p_out = %p_out_par"
     else "error";
   final parameter String displayPos1=
     if displaySetpoint then setpointValueString
@@ -57,20 +57,14 @@ model PressureSource "Ideal pressure source (fixed pressure difference, pressure
   Modelica.Blocks.Interfaces.RealInput dp_var(unit="Pa") if setpointFromInput and setpoint ==SetpointMode.dp  "Pressure difference input connector [Pa]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=90,
         origin={0,-80})));
   Modelica.Blocks.Interfaces.RealInput pr_var(unit="1") if setpointFromInput and setpoint ==SetpointMode.pr   "Pressure ratio input connector [1]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-80})));
 
   Modelica.Blocks.Interfaces.RealInput p_out_var(unit="Pa") if setpointFromInput and setpoint ==SetpointMode.p_out  "Outlet pressure input connector [Pa]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-80})));
 protected

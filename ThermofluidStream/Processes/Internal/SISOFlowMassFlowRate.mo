@@ -1,5 +1,5 @@
-within ThermofluidStream.Processes.Sources.BaseClasses;
-partial model SISOFlow_v2 "SISO Flow to set mass flow rate"
+within ThermofluidStream.Processes.Internal;
+partial model SISOFlowMassFlowRate "SISO Flow to set mass flow rate"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -79,4 +79,4 @@ Therefor the pressure difference is adapted based on the inertial pressure <code
 This approach is also used in <a href=\"modelica://ThermofluidStream.Boundaries.TerminalSource\">TerminalSource</a>.
 </p>
 </html>"));
-end SISOFlow_v2;
+end SISOFlowMassFlowRate;

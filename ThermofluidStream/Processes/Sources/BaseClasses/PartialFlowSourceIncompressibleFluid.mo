@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes.Sources.BaseClasses;
 partial model PartialFlowSourceIncompressibleFluid "Base model of flow controlled simple pump"
-  extends ThermofluidStream.Processes.Pumps.BaseClasses.SISOFlow_v2;
+  extends ThermofluidStream.Processes.Internal.SISOFlowMassFlowRate;
 
   parameter Real eta_is(min=0,max=1) = 1 "Fixed isentropic efficiency";
   parameter Real Delta_rho_rel = 1e-3 "Maximum compressibility |rho_out - rho_in|/rho"

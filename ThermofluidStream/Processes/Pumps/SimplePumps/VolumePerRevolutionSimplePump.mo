@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Sources.IncompressibleFluid;
+within ThermofluidStream.Processes.Pumps.SimplePumps;
 model VolumePerRevolutionSimplePump "Most simple pump with V_flow = k*f"
   extends ThermofluidStream.Processes.Sources.BaseClasses.PartialPressureSourceIncompressibleFluid(
                                                                           final clip_p_out=true);
@@ -8,7 +8,7 @@ model VolumePerRevolutionSimplePump "Most simple pump with V_flow = k*f"
   parameter Real eta_vol(min=0,max=1) = 1 "Fixed volumetric efficiency";
   parameter SI.Time TC = 1e-5 "Time constant for coupling Mechanics - ThermofluidStream to avoid nonlinear equation";
 
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   SI.Torque tau = flange.tau "Torque";
   SI.Angle phi = flange.phi "Angle";
   SI.AngularVelocity w "Angular velocity";

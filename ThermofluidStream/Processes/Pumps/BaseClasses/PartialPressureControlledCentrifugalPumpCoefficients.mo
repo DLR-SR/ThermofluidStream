@@ -1,7 +1,8 @@
 within ThermofluidStream.Processes.Pumps.BaseClasses;
-partial model PartialFlowControlledCentrifugalPumpEfficiency "Base model of flow controlled centrifugal pump based on 3+1+2 coefficients for head, power and efficiency"
+partial model PartialPressureControlledCentrifugalPumpCoefficients
+  "Base model of pressure controlled centrifugal pump based on 3+1+2 coefficients for head, power and efficiency"
 
-  extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialFlowControlledCentrifugalPump(
+  extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialPressureControlledCentrifugalPump(
     final w_ref=coefficients.w_ref,
     final rho_ref=coefficients.rho_ref,
     final V_flow_ref=coefficients.V_flow_ref,
@@ -19,4 +20,4 @@ protected
   final parameter Real c2_power =  1 - 3*coefficients.Vr_peak^2 + coefficients.c2_head*(2*coefficients.Vr_peak - 3*coefficients.Vr_peak^2)- 2*coefficients.c3_power*coefficients.Vr_peak
     "Second (linear) coefficient of 2nd order power approximation polynomial"; // c2_power = 1 - 3*Vrp^2 + ch2*(2*Vrp-3*Vrp^2) - 2*cP3*Vrp
 
-end PartialFlowControlledCentrifugalPumpEfficiency;
+end PartialPressureControlledCentrifugalPumpCoefficients;

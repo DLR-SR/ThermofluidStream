@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients;
 model CentrifugalPumpCoefficients "Centrifugal pump based on 3+1+2 coefficients for head, power and efficiency"
   extends ThermofluidStream.Processes.Pumps.BaseClasses.PartialCentrifugalPumpEfficiency;
-  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   SI.Angle phi = flange.phi "Angle";
 equation
   tau = flange.tau;

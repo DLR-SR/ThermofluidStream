@@ -18,6 +18,7 @@ partial model PartialPressureControlledCentrifugalPump "Base model of pressure c
   final parameter SI.Power P_ref = head_ref*rho_ref*Modelica.Constants.g_n*V_flow_ref "Reference power";
   final parameter SI.Torque tau_ref = P_ref/w_ref "Reference torque";
 protected
+  Real pr = p_out/p_in "Pressure ratio";
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.Density rho = rho_in "Density";
   SI.VolumeFlowRate V_flow = m_flow/rho "Volume flow rate";

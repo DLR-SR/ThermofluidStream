@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Sources.BaseClasses;
 partial model PartialFlowSource "Base model of a pressure source with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
 
-  extends ThermofluidStream.Processes.Sources.BaseClasses.SISOFlow_v2;
+  extends ThermofluidStream.Processes.Internal.SISOFlowMassFlowRate;
 
   parameter Boolean compressor = true "=true, if compressor icon is used, = false if pump icon is used"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));

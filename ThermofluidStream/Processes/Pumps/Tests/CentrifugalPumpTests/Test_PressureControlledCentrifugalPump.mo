@@ -36,7 +36,6 @@ model Test_PressureControlledCentrifugalPump
     pressureControlledCentrifugalPumpCoefficients(
     redeclare package Medium = Medium_liquid,
     redeclare CentrifugalPumps.BasedOnCoefficients.CoefficientsData.Wilo.CronolineIL80slash220dash4slash4 coefficients,
-
     displaySetpoint=true,
     displayInertance=false,
     setpoint=ThermofluidStream.Processes.Internal.Types.PumpSetpointModePressure.p_out,

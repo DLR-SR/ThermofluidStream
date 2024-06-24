@@ -1,6 +1,6 @@
-within ThermofluidStream.Processes.Sources.Tests.SimplePumpTests;
+within ThermofluidStream.Processes.Pumps.Tests.SimplePumpTests;
 model Test_VolumePerRevolutionSimplePump
-  extends ThermofluidStream.Processes.Sources.Tests.SimplePumpTests.BaseClasses.PartialTest_SimplePump;
+  extends ThermofluidStream.Processes.Pumps.Tests.BaseClasses.PartialTest_SimplePump;
 
   Modelica.Mechanics.Rotational.Sources.Speed speed annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   Modelica.Blocks.Sources.Sine w_sine(
@@ -16,7 +16,7 @@ model Test_VolumePerRevolutionSimplePump
     startTime=1e3) annotation (Placement(transformation(extent={{-120,-50},{-100,-30}})));
   Modelica.Mechanics.Rotational.Components.Inertia inertia(J=1, w(fixed=true, start=0)) annotation (Placement(transformation(extent={{-60,-50},
             {-40,-30}})));
-  IncompressibleFluid.VolumePerRevolutionSimplePump simplePump(redeclare package Medium = Medium_liquid, V=1e-3)
+  Pumps.SimplePumps.VolumePerRevolutionSimplePump simplePump(redeclare package Medium = Medium_liquid, V=1e-3)
     annotation (Placement(transformation(extent={{-20,10},{-40,30}})));
 equation
   connect(w_sine.y,speed. w_ref) annotation (Line(points={{-99,-10},{-82,-10}}, color={0,0,127}));

@@ -1,13 +1,12 @@
 ﻿within ThermofluidStream.Processes.Sources.IdealGasConstantKappa;
 model PressureSourceIdealGas "Ideal pressure source (fixed pressure difference, pressure ratio or outlet pressure) with fixed isentropic efficiency assuming ideal gas with constant isentropic exponent suitable as simple compressor/blower/fan"
 
-  extends ThermofluidStream.Processes.Sources.BaseClasses.PartialPressureSourceIdealGas(      final clip_p_out=if setpoint ==
-        SetpointMode.dp                                                                                                                       then true else false);
+  extends ThermofluidStream.Processes.Sources.BaseClasses.PartialPressureSourceIdealGas(final clip_p_out=if setpoint == SetpointMode.dp then true else false);
 
   import SetpointMode = ThermofluidStream.Processes.Internal.Types.SetpointModePressure;
 
-  parameter SetpointMode setpoint=ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp
-    "Compressor setpoint (dp, pr or p_out)" annotation (Dialog(group="Setpoint"));
+  parameter SetpointMode setpoint=ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp "Compressor setpoint (dp, pr or p_out)"
+    annotation (Dialog(group="Setpoint"));
   parameter Boolean setpointFromInput = false "= true, if setpoint input connector is enabled"
     annotation(Dialog(group="Setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.PressureDifference  dp_par=0 "Constant pressure difference p_out - p_in"
@@ -24,14 +23,14 @@ model PressureSourceIdealGas "Ideal pressure source (fixed pressure difference, 
   parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String setpointModeString=
-    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp                        then "Δp"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr                        then "pr"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out                        then "p"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp then "Δp"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr then "pr"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out then "p"
     else "error";
   final parameter String setpointValueString=
-    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp                        then "dp = %dp_par"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr                        then "pr = %pr_par"
-    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out                        then "p_out = %p_out_par"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp then "dp = %dp_par"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.pr then "pr = %pr_par"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.SetpointModePressure.p_out then "p_out = %p_out_par"
     else "error";
   final parameter String displayPos1=
     if displaySetpoint then setpointValueString
@@ -57,19 +56,13 @@ model PressureSourceIdealGas "Ideal pressure source (fixed pressure difference, 
   Modelica.Blocks.Interfaces.RealInput dp_var(unit="Pa") if setpointFromInput and setpoint ==SetpointMode.dp  "Pressure difference input connector [Pa]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=90,
         origin={0,-80})));
   Modelica.Blocks.Interfaces.RealInput pr_var(unit="1") if setpointFromInput and setpoint ==SetpointMode.pr  "Pressure ratio input connector [-]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=90,
         origin={0,-80})));
   Modelica.Blocks.Interfaces.RealInput p_out_var(unit="Pa") if setpointFromInput and setpoint ==SetpointMode.p_out  "Outlet pressure input connector [Pa]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-80}),                                            iconTransformation(extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-80})));
 protected

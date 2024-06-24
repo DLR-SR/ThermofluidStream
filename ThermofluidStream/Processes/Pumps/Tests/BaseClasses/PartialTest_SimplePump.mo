@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Sources.Tests.SimplePumpTests.BaseClasses;
+within ThermofluidStream.Processes.Pumps.Tests.BaseClasses;
 partial model PartialTest_SimplePump "Basic cooling cycle with a load"
 extends Modelica.Icons.Example;
 

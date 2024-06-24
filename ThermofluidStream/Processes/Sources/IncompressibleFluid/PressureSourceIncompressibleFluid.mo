@@ -6,15 +6,15 @@ model PressureSourceIncompressibleFluid
 
   import SetpointMode = ThermofluidStream.Processes.Internal.Types.SetpointModePressure;
 
-  parameter SetpointMode setpoint=ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp
-    "Pump setpoint (dp, pr or p_out)" annotation (Dialog(group="Setpoint"));
+  parameter SetpointMode setpoint=ThermofluidStream.Processes.Internal.Types.SetpointModePressure.dp "Pump setpoint (dp, pr or p_out)"
+    annotation (Dialog(group="Setpoint"));
   parameter Boolean setpointFromInput = false "= true, if setpoint input connector is enabled"
     annotation(Dialog(group="Setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.PressureDifference dp_par = 0 "Constant pressure difference p_out - p_in"
     annotation(Dialog(group="Setpoint",enable=not setpointFromInput and setpoint==SetpointMode.dp));
   parameter Real pr_par = 1 "Constant pressure ratio p_out/p_in"
     annotation(Dialog(group="Setpoint",enable=not setpointFromInput and setpoint==SetpointMode.pr));
-  parameter SI.PressureDifference p_out_par = 0 "Constant outlet pressure"
+  parameter SI.PressureDifference p_out_par = Medium.p_default "Constant outlet pressure"
     annotation(Dialog(group="Setpoint",enable=not setpointFromInput and setpoint==SetpointMode.p_out));
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displaySetpoint = true "= true, if setpoint value (either dp_par or p_out_par) is displayed"

@@ -1,6 +1,6 @@
 within ThermofluidStream.Processes.Pumps.BaseClasses;
 partial model PartialFlowControlledCentrifugalPump "Base model of flow controlled centrifugal pump"
-  extends ThermofluidStream.Processes.Pumps.BaseClasses.SISOFlow_v2;
+  extends ThermofluidStream.Processes.Internal.SISOFlowMassFlowRate;
 
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
