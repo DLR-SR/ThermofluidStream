@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients;
+﻿within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnCoefficients;
 model FlowControlledCentrifugalPumpCoefficients
   "Ideal controlled (mass flow rate, volume flow rate) centrifugal pump based on 3+1+2 coefficients for head, power and efficiency"
 
@@ -10,12 +10,12 @@ model FlowControlledCentrifugalPumpCoefficients
   parameter Boolean displayInertance = false "= true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String setpointModeString=
-    if setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.m_flow          then "ṁ"
-    elseif setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.V_flow          then "V"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.m_flow                then "ṁ"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.V_flow                then "V"
     else "error";
   final parameter String setpointValueString=
-    if setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.m_flow             then "m_flow = %m_flow_par"
-    elseif setpoint ==ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.V_flow             then "V_flow = %V_flow_par"
+    if setpoint ==ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.m_flow                   then "m_flow = %m_flow_par"
+    elseif setpoint ==ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.V_flow                   then "V_flow = %V_flow_par"
     else "error";
   final parameter String displayPos1=
     if displaySetpoint  then setpointValueString
@@ -26,9 +26,10 @@ model FlowControlledCentrifugalPumpCoefficients
     else "";
   //-----------------------------------------------------------------
 
-  import SetpointMode = ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow;
+  import SetpointMode = ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow;
 
-  parameter SetpointMode setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.m_flow            "Pump setpoint (m_flow or V_flow)" annotation (Dialog(group="Setpoint"));
+  parameter SetpointMode setpoint=ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.m_flow
+    "Pump setpoint (m_flow or V_flow)" annotation (Dialog(group="Setpoint"));
   parameter Boolean setpointFromInput = false "= true, if setpoint input connector is enabled"
     annotation(Dialog(group="Setpoint"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_par=0 "Constant mass flow rate"

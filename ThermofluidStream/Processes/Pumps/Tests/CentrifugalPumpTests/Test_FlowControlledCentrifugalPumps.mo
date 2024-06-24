@@ -21,13 +21,14 @@ model Test_FlowControlledCentrifugalPumps
     f=5e-4,
     offset=1e-3,
     startTime=1e3) annotation (Placement(transformation(extent={{-100,-170},{-80,-150}})));
-  CentrifugalPumps.BasedOnMeasurements.FlowControlledCentrifugalPumpMeasurements flowControlledCentrifugalPumpMeasurements(
+  CentrifugalPumps.BasedOnMeasurements.FlowControlledCentrifugalPumpMeasurements
+    flowControlledCentrifugalPumpMeasurements(
     displayInstanceName=true,
     redeclare package Medium = Medium_liquid,
     redeclare CentrifugalPumps.BasedOnMeasurements.MeasurementData.Wilo.CronolineIL80slash220dash4slash4 data,
     displaySetpoint=true,
     displayInertance=false,
-    setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.m_flow,
+    setpoint=ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.m_flow,
     setpointFromInput=true) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -46,7 +47,7 @@ model Test_FlowControlledCentrifugalPumps
       c3_power=-0.28),
     displaySetpoint=true,
     displayInertance=false,
-    setpoint=ThermofluidStream.Processes.Pumps.Internal.Types.PumpSetpointModeFlow.m_flow,
+    setpoint=ThermofluidStream.Processes.Internal.Types.PumpSetpointModeFlow.m_flow,
     setpointFromInput=true) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
