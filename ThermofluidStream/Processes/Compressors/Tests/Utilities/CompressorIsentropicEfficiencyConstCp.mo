@@ -1,14 +1,15 @@
-within ThermofluidStream.Processes.Compressors.Tests.Utilities;
-model CompressorIsentropicEfficiency "Analytic Solution for compression of ideal gas with given constant kappa, isentropic efficiency, inlet and outlet pressure"
+﻿within ThermofluidStream.Processes.Compressors.Tests.Utilities;
+model CompressorIsentropicEfficiencyConstCp
+  "Analytic Solution for compression of ideal gas with given constant kappa, isentropic efficiency, inlet and outlet pressure"
 
   extends Modelica.Blocks.Icons.Block;
 
   parameter Real eta_is(min=0,max=1)=1;
   Modelica.Blocks.Interfaces.RealOutput T2(unit="K") annotation (Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
 
-  Modelica.Units.SI.SpecificEnergy wt_is;
-  Modelica.Units.SI.SpecificEnergy wt;
-  Modelica.Units.SI.Temperature T2_is;
+  SI.SpecificEnergy wt_is;
+  SI.SpecificEnergy wt;
+  SI.Temperature T2_is;
   Modelica.Blocks.Interfaces.RealInput kappa annotation (Placement(transformation(extent={{-140,40},{-100,80}}),   iconTransformation(extent={{-140,40},{-100,80}})));
   Modelica.Blocks.Interfaces.RealInput cp annotation (Placement(transformation(extent={{-140,0},{-100,40}}),    iconTransformation(extent={{-140,0},{-100,40}})));
   Modelica.Blocks.Interfaces.RealInput p1(unit="Pa") annotation (Placement(transformation(extent={{-140,-40},{-100,0}}), iconTransformation(extent={{-140,-40},{-100,0}})));
@@ -46,4 +47,4 @@ algorithm
           textString="ideal gas
 const cp
 compression")}));
-end CompressorIsentropicEfficiency;
+end CompressorIsentropicEfficiencyConstCp;

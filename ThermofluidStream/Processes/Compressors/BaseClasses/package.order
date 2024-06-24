@@ -1,3 +1,5 @@
 SISOFlow_v2
-PartialSimpleCompressor
-PartialFlowControlledSimpleCompressor
+PartialPressureSource
+PartialFlowSource
+PartialPressureSourceIdealGas
+PartialFlowSourceIdealGas

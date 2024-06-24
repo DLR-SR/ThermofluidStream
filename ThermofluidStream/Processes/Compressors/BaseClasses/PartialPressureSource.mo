@@ -1,7 +1,8 @@
 within ThermofluidStream.Processes.Compressors.BaseClasses;
-partial model PartialFlowControlledSimpleCompressor "Base model of flow controlled simple compressor"
+partial model PartialPressureSource
+  "Base model of a pressure source with fixed isentropic efficiency suitable as both pump (incompressible media) or compressor/blower/fan (compressible media)"
 
-  extends ThermofluidStream.Processes.Compressors.BaseClasses.SISOFlow_v2;
+  extends ThermofluidStream.Interfaces.SISOFlow;
 
   parameter Real eta_is(min=0,max=1) = 1 "Fixed isentropic efficiency";
 
@@ -10,11 +11,7 @@ public
   SI.SpecificEnthalpy w_t "Specific technical work";
   SI.Power P "Power (technichal work flow rate)";
 protected
-  SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
-public
-  SI.Density rho = rho_in "Density";
-  SI.VolumeFlowRate V_flow = m_flow/rho "Volume flow rate";
-protected
+  Real pr = p_out/p_in "Pressure ratio";
   SI.SpecificEntropy s_in = Medium.specificEntropy(inlet.state);
   SI.SpecificEnthalpy h_out_is = Medium.specificEnthalpy_psX(
       p_out,
@@ -55,5 +52,7 @@ equation
         Line(
           points={{-30,-52},{56,-20}},
           color={28,108,200},
-          thickness=0.5)}));
-end PartialFlowControlledSimpleCompressor;
+          thickness=0.5)}), Documentation(info="<html>
+See <a href=\"modelica://ThermofluidStream.Processes.Compressors.AllMediaBasedOnEntropy.PressureSource\">PressureSource</a> for its usage and for further information.
+</html>"));
+end PartialPressureSource;

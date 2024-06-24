@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Compressors;
-package SimpleCompressors
+package AllMediaBasedOnEntropy
   extends Modelica.Icons.Package;
 
 annotation (Icon(graphics={
@@ -28,4 +28,4 @@ annotation (Icon(graphics={
           points={{-30,-52},{56,-20}},
           color={28,108,200},
           thickness=0.5)}));
-end SimpleCompressors;
+end AllMediaBasedOnEntropy;
