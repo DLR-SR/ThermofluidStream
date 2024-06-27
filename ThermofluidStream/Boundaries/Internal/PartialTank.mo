@@ -123,10 +123,11 @@ protected
   Boolean fFull;
   Boolean fEmpty;
   Real shiftOutlet[M_outlets];
-  Modelica.Units.SI.Density liquidDensity=Medium.Liquid.density(medium.state)
-   "density of the liquid in the tank";
-  Modelica.Units.SI.Density gasDensity=Medium.Gas.density(medium.state)
-   "density of the gas in the tank";
+  Modelica.Units.SI.Density liquidDensity=Medium.Liquid.density(Medium.Liquid.setState_pTX(medium.state.p,medium.state.T,{1}))
+  "density of the liquid in the tank";
+  Modelica.Units.SI.Density gasDensity=Medium.Gas.density(Medium.Gas.setState_pTX(medium.state.p,medium.state.T,{1}))
+  "density of the gas in the tank";
+  
 initial equation
   if initialize_pressure then
     medium.p=p_start;
