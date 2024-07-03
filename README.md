@@ -11,16 +11,9 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ## News
 
-**Meet the developers at our ThermoFluid Stream Community Event!**  This online event shall give all users the possibility to provide feedback and learn about each other. We welcome your feedback.
-- We present the newest additions to our library (Pumps, Heat Exchangers, Media Interfaces, etc.)
-- Users are invited to briefly present their solutions, problems or challenges.
-- Open discussion round on future development.
+**Thank you all for participating at the TFS Community Event!**  It is great to have new contributors on board and we were very happy to meet our users and see so many applications.
 
-**Save the Date! June 19, 2024. From 16:30 until 18:30 CEST**
-
-Please [register here](https://terminplaner6.dfn.de/en/b/04557a60c93ea82eafb16a981f7c2aeb-644809) for the online event. It is free. First come, first serve will be applied in case we reach limits regarding presentation time or number of participants. 
-
-[Preliminary Prorgram](https://github.com/DLR-SR/ThermofluidStream/issues/179) is now available.
+[Final program and presentations](./community/2024-06-19-event/) are now available.
 
 ## Highlights
 
