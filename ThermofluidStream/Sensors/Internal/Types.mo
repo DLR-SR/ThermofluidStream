@@ -44,9 +44,9 @@ package Types "Types used in the Sensor Package"
       m_flow_gps "Mass flow rate (g/s)",
       V_flow_m3ps "Volume flow rate (m3/s)",
       V_flow_lpMin "Volume flow rate (l/min)",
-      H_flow_Jps "Enthalpy flow rate (J/s)",
-      S_flow_JpKs "Entropy flow rate (J/(K.s))",
-      Cp_flow_JpKs "Heat capacity flow rate (J/(K.s))");
+      H_flow_Jps "Enthalpy flow rate (W)",
+      S_flow_JpKs "Entropy flow rate (W/K)",
+      Cp_flow_JpKs "Heat capacity flow rate (W/K)");
   type TwoPhaseQuantities = enumeration(
       x_kgpkg "Vapor quality (kg/kg)",
       T_sat_K "Saturation temperature (K)",

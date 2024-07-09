@@ -4,11 +4,11 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
 
   import R_m = Modelica.Constants.R "General gas constant";
 
-  input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1"
+  input Real omega_ref(unit="rad/s")= 1000 "Reference speed, that produces pr=1-skew (at m_flow = m_flow_ref)"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real skew(unit="1") = 0 "Scewness factor for mixed part of pr equation"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
-  input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass_flow, that produces pr=-1"
+  input Real m_flow_ref(unit="kg/s") = 0.25 "Reference mass flow rate, that produces pr=1-skew (at omega = omega_ref)"
     annotation(Dialog(group="Pressure ratio curve", enable=true));
   input Real eta(unit="1") = 1 "Isentropic efficienty"
     annotation(Dialog(enable=true));
@@ -17,7 +17,7 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
   input SI.Volume V_ref= 0.001 "Reference volume for chocke torque calculation"
     annotation(Dialog(tab="Advanced", enable=true));
   input Boolean kappaFromMedia = true "=true, if isentropic coefficient is calculated using the media model"
-    annotation(Dialog(group = "Isentropic exponent", enable=true));
+    annotation(Dialog(group = "Isentropic exponent", enable=true),choices(checkBox=true));
   input Real kappa_fixed(unit="1") = 1.4 "Isentropic coefficient"
     annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
 
