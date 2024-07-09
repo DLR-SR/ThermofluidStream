@@ -1,5 +1,5 @@
-within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData;
-record Peter "Old TFS Pump"
+within ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.Grundfos;
+record GrundfosMAGNA3_32120_F_N "Pump data for a Grundfos MAGNA3 32-120 F N pump, also used in ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal"
   extends ThermofluidStream.Processes.Pumps.CentrifugalPumps.BasedOnMeasurements.MeasurementData.GenericPump(
     rho_ref=1000,
     w_ref=Modelica.Units.Conversions.from_rpm(1450),
@@ -14,12 +14,13 @@ defaultComponentPrefixes="parameter",
 defaultComponentName="per",
 Documentation(info="<html>
 <p>
-Data sheed currently not yet available.
+<a href=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Grundfos_MAGNA3_32120_F_N_data.pdf\">Data sheet of Grundfos MAGNA3 32-120 F N</a> also used in
+ <a href=\"modelica://ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal\">ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal</a>
 </p>
 <p>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_head.png\" alt=\"Old TFS Pump head\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_power.png\" alt=\"Old TFS Pump power\" width=\"800\">
-<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Peter_efficiency.png\" alt=\"Old TFS Pump efficiency\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Grundfos_MAGNA3_32120_F_N_head.png\" alt=\"Grundfos MAGNA3 32-120 F N head\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Grundfos_MAGNA3_32120_F_N_power.png\" alt=\"Grundfos MAGNA3 32-120 F N power\" width=\"800\">
+<img src=\"modelica://ThermofluidStream/Resources/Doku/Pumps/Grundfos_MAGNA3_32120_F_N_efficiency.png\" alt=\"Grundfos MAGNA3 32-120 F N efficiency\" width=\"800\">
 </p>
 </html>",   revisions="<html>
 <ul>
@@ -64,4 +65,4 @@ Added <code>defaultComponentPrefixes</code> and
 </li>
 </ul>
 </html>"));
-end Peter;
+end GrundfosMAGNA3_32120_F_N;
