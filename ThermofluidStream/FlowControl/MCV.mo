@@ -23,6 +23,21 @@ model MCV "Flow rate control valve"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
 
+  // ------ Parameter Display Configuration  ------------------------
+  parameter Boolean displayFlowRate = true "= true, if mass flow rate massFlow_set_par or volume flow rate volumeFlow_set_par is displayed"
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not setpointFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Boolean displayM = mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow
+    annotation(Evaluate=true, HideResult=true);
+  final parameter Boolean displayV = mode == ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow
+    annotation(Evaluate=true, HideResult=true);
+  final parameter String displayString=
+    if displayM then "m_flow = %massFlow_set_par"
+    elseif displayV then "V_flow = %volumeFlow_set_par"
+    else "error";
+  //-----------------------------------------------------------------
+
+
+
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
     annotation (Placement(
         transformation(extent={{-20,-20},{20,20}},
@@ -99,6 +114,10 @@ equation
           extent={{-150,-60},{150,-100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
+        Text(visible=displayParameters and displayFlowRate and not setpointFromInput,
+          extent={{-150,70},{150,100}},
+          textColor={0,0,0},
+          textString=displayString),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -134,7 +153,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{40,60},{60,80}},
+          extent={{60,40},{80,60}},
           lineColor={0,0,0},
           fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
           fillPattern=FillPattern.Solid),

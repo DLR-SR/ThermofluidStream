@@ -1,5 +1,6 @@
 within ThermofluidStream.Undirected.Sensors;
 model SensorState "State sensor"
+
   extends Internal.PartialSensor;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
