@@ -15,14 +15,15 @@ model SpecificValveType "Specific technical valve types"
   parameter Modelica.Units.SI.Diameter d_valve "Flow diameter"
     annotation (Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Reference mass flow rate"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter Real Kvs(unit = "m3/h") = 0 "Kvs-value (metric) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
+  parameter Real Cvs_US = 0 "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+  parameter Real Cvs_UK = 0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+  parameter SI.MassFlowRate m_flow_ref_set = 0
+                                              "Reference mass flow rate"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
   Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional area";
@@ -46,6 +47,17 @@ protected
   Real zeta1(unit="1") = valveData.zetaTable[end,2] "zeta value for fully open valve";
 
 equation
+
+  //this if clause shall ensure that valid parameters have been entered
+  if flowCoefficient == FlowCoeffType.Kvs then
+    assert(Kvs > 0, "Invalid coefficeint for Kvs. Default value 0 shall not be used", level=AssertionLevel.error);
+  elseif flowCoefficient == FlowCoeffType.Cvs_US then
+    assert(Cvs_US > 0, "Invalid coefficeint for Cvs_US. Default value 0 shall not be used", level=AssertionLevel.error);
+  elseif flowCoefficient == FlowCoeffType.Cvs_UK then
+    assert(Cvs_UK > 0, "Invalid coefficeint for Cvs_UK. Default value 0 shall not be used", level=AssertionLevel.error);
+  else
+    assert(m_flow_ref_set > 0, "Invalid coefficeint for m_flow_ref_set. Default value 0 shall not be used", level=AssertionLevel.error);
+  end if;
 
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
