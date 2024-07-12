@@ -5,8 +5,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
 
   import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
-  replaceable function valveCharacteristics =
-      Internal.ControlValve.linearCharacteristics
+  replaceable function valveCharacteristics = Internal.ControlValve.linearCharacteristics
     constrainedby Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"),
     Documentation(info="<html>
@@ -21,7 +20,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
   parameter Real Cvs_UK  = 0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set  = 0 "Set reference mass flow in kg/s"
+  parameter SI.MassFlowRate m_flow_ref_set  = 0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
