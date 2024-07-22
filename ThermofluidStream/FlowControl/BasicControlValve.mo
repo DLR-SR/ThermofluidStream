@@ -24,7 +24,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  SI.VolumeFlowRate V_flow_ref=
+  final parameter SI.VolumeFlowRate V_flow_ref=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
