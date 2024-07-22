@@ -47,9 +47,10 @@ initial equation
     assert(m_flow_ref_set > 0, "Invalid coefficeint for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
-equation
   //Calculate reference mass flow from reference volume flow
   m_flow_ref = V_flow_ref*rho_ref;
+
+equation
 
   k_u = valveCharacteristics(u, k_min);
 

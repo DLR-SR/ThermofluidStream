@@ -61,9 +61,10 @@ initial equation
     assert(m_flow_ref_set > 0, "Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
-equation
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
+
+equation
 
   //Retrieving pressure loss coefficient from input
   combiTable1D_zeta.u = u;
