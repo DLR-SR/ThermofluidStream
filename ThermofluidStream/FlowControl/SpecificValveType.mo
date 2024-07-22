@@ -45,8 +45,8 @@ protected
   Real zeta(unit="1", start = 0) "zeta value for pressure loss calculation";
   final parameter Real zeta1(unit="1") = valveData.zetaTable[end,2] "zeta value for fully open valve";
 
-equation
 
+initial equation
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
@@ -59,6 +59,9 @@ equation
   else
     assert(d_valve > 0, "Invalid coefficient for d_valve. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
+
+
+equation
 
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;

@@ -5,7 +5,8 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
 
   import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
-  replaceable function valveCharacteristics = Internal.ControlValve.linearCharacteristics
+  replaceable function valveCharacteristics =
+      Internal.ControlValve.linearCharacteristics
     constrainedby Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
       annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"),
     Documentation(info="<html>
@@ -30,7 +31,7 @@ protected
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
     else m_flow_ref_set/rho_ref "Reference volume flow";
 
-equation
+initial equation
 
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
@@ -42,6 +43,9 @@ equation
   else
     assert(m_flow_ref_set > 0, "Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
+
+
+equation
 
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;

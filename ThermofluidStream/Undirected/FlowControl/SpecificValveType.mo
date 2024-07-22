@@ -47,7 +47,7 @@ protected
     elseif flowCoefficient == FlowCoeffType.flowDiameter then A_valve*sqrt((2/zeta1)*(dp_ref/rho_ref))
     else m_flow_ref_set/rho_ref "Reference volume flow rate";
 
-equation
+initial equation
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 shall not be used", level=AssertionLevel.error);
@@ -61,7 +61,7 @@ equation
     assert(m_flow_ref_set > 0, "Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
-
+equation
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
 

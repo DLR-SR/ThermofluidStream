@@ -35,7 +35,7 @@ protected
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
     else m_flow_ref_set/rho_ref "Reference volume flow rate";
 
-equation
+initial equation
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
@@ -47,6 +47,7 @@ equation
     assert(m_flow_ref_set > 0, "Invalid coefficeint for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
+equation
   //Calculate reference mass flow from reference volume flow
   m_flow_ref = V_flow_ref*rho_ref;
 
