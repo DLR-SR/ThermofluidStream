@@ -29,7 +29,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  SI.VolumeFlowRate V_flow_ref=
+  final parameter SI.VolumeFlowRate V_flow_ref=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
@@ -38,13 +38,13 @@ protected
 equation
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
-    assert(Kvs > 0, "Invalid coefficeint for Kvs. Default value 0 shall not be used", level=AssertionLevel.error);
+    assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   elseif flowCoefficient == FlowCoeffType.Cvs_US then
-    assert(Cvs_US > 0, "Invalid coefficeint for Cvs_US. Default value 0 shall not be used", level=AssertionLevel.error);
+    assert(Cvs_US > 0, "Invalid coefficient for Cvs_US. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   elseif flowCoefficient == FlowCoeffType.Cvs_UK then
-    assert(Cvs_UK > 0, "Invalid coefficeint for Cvs_UK. Default value 0 shall not be used", level=AssertionLevel.error);
+    assert(Cvs_UK > 0, "Invalid coefficient for Cvs_UK. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   else
-    assert(m_flow_ref_set > 0, "Invalid coefficeint for m_flow_ref_set. Default value 0 shall not be used", level=AssertionLevel.error);
+    assert(m_flow_ref_set > 0, "Invalid coefficeint for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
   //Calculate reference mass flow from reference volume flow
