@@ -5,28 +5,29 @@ model SpecificValveType "Specific technical valve types"
 
   import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
 
-  replaceable record ZetaValueRecord = ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve
+  replaceable record ZetaValueRecord =
+    ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve
     constrainedby ThermofluidStream.FlowControl.Internal.Curves.PartialCharacteristicZetaCurves "Select valve type"
     annotation(choicesAllMatching = true, Dialog(group = "Valve parameters"));
 
   parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient"
     annotation(Dialog(group = "Valve parameters"));
-  //Set valve data as parameter
-  parameter Modelica.Units.SI.Diameter d_valve "Flow diameter"
-    annotation (Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter Real Kvs(unit = "m3/h") = 0 "Kvs-value (metric) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
+  parameter Real Cvs_US = 0 "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+  parameter Real Cvs_UK = 0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+  parameter SI.MassFlowRate m_flow_ref_set = 0 "Reference mass flow rate"
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  //Set valve data as parameter
+  parameter SI.Diameter d_valve = 0 "Flow diameter"
+    annotation (Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
 
 protected
   constant ZetaValueRecord valveData;
-  Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional valve area";
+  final parameter SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional valve area";
 
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";
   Real k_u_zeta(unit="1") "Kv/Kvs respecting zeta curve";
@@ -37,18 +38,33 @@ protected
   final table = valveData.zetaTable) "Interpolation of pressure loss coefficient datapoints";
 
   Real zeta(unit="1", start = 0) "Pressure loss coefficient";
-  Real zeta1(unit="1") = valveData.zetaTable[end,2] "Pressure loss coefficient for fully opened valve";
+  final parameter Real zeta1(unit="1") = valveData.zetaTable[end,2] "Pressure loss coefficient for fully opened valve";
 
-  SI.VolumeFlowRate V_flow_ref=
+  final parameter SI.VolumeFlowRate V_flow_ref=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.flowDiameter then A_valve*sqrt((2/zeta1)*(dp_ref/rho_ref))
     else m_flow_ref_set/rho_ref "Reference volume flow rate";
 
-equation
+initial equation
+  //this if clause shall ensure that valid parameters have been entered
+  if flowCoefficient == FlowCoeffType.Kvs then
+    assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 shall not be used", level=AssertionLevel.error);
+  elseif flowCoefficient == FlowCoeffType.Cvs_US then
+    assert(Cvs_US > 0, "Invalid coefficient for Cvs_US. Default value 0 shall not be used", level=AssertionLevel.error);
+  elseif flowCoefficient == FlowCoeffType.Cvs_UK then
+    assert(Cvs_UK > 0, "Invalid coefficient for Cvs_UK. Default value 0 shall not be used", level=AssertionLevel.error);
+  elseif flowCoefficient == FlowCoeffType.flowDiameter then
+    assert(d_valve > 0, "Invalid coefficient for d_valve. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+  else
+    assert(m_flow_ref_set > 0, "Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+  end if;
+
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
+
+equation
 
   //Retrieving pressure loss coefficient from input
   combiTable1D_zeta.u = u;
