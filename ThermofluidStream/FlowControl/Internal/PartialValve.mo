@@ -27,7 +27,7 @@ protected
   //Medium properties
   Modelica.Units.SI.Density rho=Medium.density(inlet.state) "Inlet density";
 
-  SI.MassFlowRate m_flow_ref "Reference mass flow rate derived from flow coefficient inputs";
+  parameter SI.MassFlowRate m_flow_ref(fixed = false) "Reference mass flow rate derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";
 
 equation

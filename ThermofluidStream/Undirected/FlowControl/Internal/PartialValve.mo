@@ -29,7 +29,7 @@ protected
   Modelica.Units.SI.Density rho_rear_in=Medium.density(rear.state_forwards) "Inlet density rear port";
   Modelica.Units.SI.Density rho_fore_in=Medium.density(fore.state_rearwards) "Inlet density fore port";
 
-  SI.MassFlowRate m_flow_ref "Reference mass flow derived from flow coefficient inputs";
+  parameter SI.MassFlowRate m_flow_ref(fixed=false) "Reference mass flow derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";
 
 equation
