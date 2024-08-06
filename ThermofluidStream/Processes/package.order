@@ -1,6 +1,8 @@
 Pipes
 FlowResistance
 TransportDelay
+Sources
+Pumps
 Pump
 Compressor
 Turbine
@@ -8,5 +10,6 @@ Fan
 ThermalConvectionPipe
 ConductionElement
 Nozzle
+StaticHead
 Internal
 Tests
