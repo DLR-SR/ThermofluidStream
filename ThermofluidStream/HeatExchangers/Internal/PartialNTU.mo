@@ -232,12 +232,11 @@ flow regularization close to zero:
   </li>
 </ul>
 </p>
-<p>
-The heat exchanger time constant <code>TC<\\code> is necessary to ensure robust simulation. It can approximate the transient behavior using a first order ODE. 
-The time constant is related to the ratio of thermal inertia (wall + fluid) <code>dU/dT<\\code> to enthalpy flow rate 'inertia' <code>dH_flow/dT</code>:
-<\\p>
+The heat exchanger time constant <code>TC</code> is necessary to ensure robust simulation. It can approximate the transient behavior using a first order ODE. 
+The time constant is related to the ratio of thermal inertia (wall + fluid) <code>dU/dT</code> to enthalpy flow rate 'inertia' <code>dH_flow/dT</code>:
+</p>
 <p>
  <code>TC ~ (m_Wall*c_Wall + m_Fluid*c_Fluid)/(m_flow*c_Fluid)</code>.
-<\\p>
+</p>
 </html>"));
 end PartialNTU;
