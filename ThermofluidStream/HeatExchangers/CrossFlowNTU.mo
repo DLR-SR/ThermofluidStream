@@ -173,5 +173,12 @@ equation
 <p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>
 <p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
+<p>
+The heat exchanger time constant <code>TC<\\code> is necessary to ensure robust simulation. It can approximate the transient behavior using a first order ODE. 
+The time constant is related to the ratio of thermal inertia (wall + fluid) <code>dU/dT<\\code> to enthalpy flow rate 'inertia' <code>dH_flow/dT</code>:
+<\\p>
+<p>
+ <code>TC ~ (m_Wall*c_Wall + m_Fluid*c_Fluid)/(m_flow*c_Fluid)</code>.
+<\\p>
 </html>"));
 end CrossFlowNTU;
