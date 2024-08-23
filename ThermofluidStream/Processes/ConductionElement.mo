@@ -61,16 +61,8 @@ equation
     k_internal = k_par;
   end if;
 
-  // To avoid the warning 'k_internal/U_internal is removed, since it is not used', they are set to be zero (if they are not used). There might be a nicer solution to this issue
-  if resistanceFromAU then
-    k_internal = 0;
-  end if;
-  if not resistanceFromAU then
-    U_internal = 0;
-  end if;
-
-  k = if resistanceFromAU then U_internal*A else k_internal;
-
+  k_internal = A*U_internal;
+  k = k_internal;
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
       Text(
           extent={{-150,-60},{150,-90}},
