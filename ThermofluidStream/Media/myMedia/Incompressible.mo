@@ -77,6 +77,1156 @@ package Incompressible
       annotation (__DLR_experiment(StopTime=1.01));
   end TestGlycol;
 
+    package Dowcal100
+      "Concentration 60 volume%, ethylene glycol-based mixed with water"
+      extends ThermofluidStream.Media.myMedia.Incompressible.TableBased(
+        mediumName="Dowcal100_60%",
+        T_min=Modelica.Units.Conversions.from_degC(-50),
+        T_max=Modelica.Units.Conversions.from_degC(175),
+        TinK=false,
+        T0=273.15,
+        tableConductivity =
+      [-50, 0.393;
+       -45, 0.394;
+       -40, 0.395;
+       -35, 0.395;
+       -30, 0.396;
+       -25, 0.396;
+       -20, 0.396;
+       -15, 0.396;
+       -10, 0.397;
+       -5, 0.397;
+       0, 0.396;
+       5, 0.396;
+       10, 0.396;
+       15, 0.396;
+       20, 0.395;
+       25, 0.395;
+       30, 0.394;
+       35, 0.393;
+       40, 0.392;
+       45, 0.391;
+       50, 0.39;
+       55, 0.389;
+       60, 0.388;
+       65, 0.387;
+       70, 0.385;
+       75, 0.384;
+       80, 0.383;
+       85, 0.381;
+       90, 0.379;
+       95, 0.377;
+       100, 0.375;
+       105, 0.373;
+       110, 0.371;
+       115, 0.369;
+       120, 0.367;
+       125, 0.365;
+       130, 0.362;
+       135, 0.36;
+       140, 0.357;
+       145, 0.354;
+       150, 0.352;
+       155, 0.349;
+       160, 0.346;
+       165, 0.343;
+       170, 0.34;
+       175, 0.336],
+    tableDensity =
+      [-50, 1143;
+       -45, 1139.1;
+       -40, 1135.3;
+       -35, 1131.5;
+       -30, 1127.8;
+       -25, 1124.2;
+       -20, 1120.6;
+       -15, 1117.1;
+       -10, 1113.6;
+       -5, 1110.2;
+       0, 1106.9;
+       5, 1103.6;
+       10, 1100.3;
+       15, 1097.1;
+       20, 1094;
+       25, 1090.9;
+       30, 1087.9;
+       35, 1084.9;
+       40, 1081.9;
+       45, 1079;
+       50, 1076.1;
+       55, 1073.3;
+       60, 1070.5;
+       65, 1067.7;
+       70, 1065;
+       75, 1062.4;
+       80, 1059.7;
+       85, 1057.1;
+       90, 1054.6;
+       95, 1052;
+       100, 1049.5;
+       105, 1047.1;
+       110, 1044.7;
+       115, 1042.3;
+       120, 1039.9;
+       125, 1037.6;
+       130, 1035.3;
+       135, 1033;
+       140, 1030.8;
+       145, 1028.6;
+       150, 1026.4;
+       155, 1024.2;
+       160, 1022.1;
+       165, 1020;
+       170, 1017.9;
+       175, 1015.9],
+    tableHeatCapacity =
+      [-50, 2900;
+       -45, 2920;
+       -40, 2940;
+       -35, 2960;
+       -30, 2980;
+       -25, 3000;
+       -20, 3020;
+       -15, 3040;
+       -10, 3060;
+       -5, 3080;
+       0, 3100;
+       5, 3120;
+       10, 3140;
+       15, 3160;
+       20, 3180;
+       25, 3210;
+       30, 3230;
+       35, 3250;
+       40, 3270;
+       45, 3290;
+       50, 3310;
+       55, 3330;
+       60, 3350;
+       65, 3370;
+       70, 3390;
+       75, 3410;
+       80, 3430;
+       85, 3450;
+       90, 3470;
+       95, 3490;
+       100, 3510;
+       105, 3530;
+       110, 3550;
+       115, 3580;
+       120, 3600;
+       125, 3620;
+       130, 3640;
+       135, 3660;
+       140, 3680;
+       145, 3700;
+       150, 3720;
+       155, 3740;
+       160, 3760;
+       165, 3780;
+       170, 3800;
+       175, 3820],
+    tableVaporPressure =
+      [-50, 0;
+       -45, 0;
+       -40, 0;
+       -35, 0;
+       -30, 0;
+       -25, 0;
+       -20, 100;
+       -15, 100;
+       -10, 200;
+       -5, 200;
+       0, 400;
+       5, 500;
+       10, 800;
+       15, 1100;
+       20, 1500;
+       25, 2100;
+       30, 2900;
+       35, 3900;
+       40, 5100;
+       45, 6700;
+       50, 8800;
+       55, 11300;
+       60, 14400;
+       65, 18200;
+       70, 22900;
+       75, 28400;
+       80, 35100;
+       85, 43000;
+       90, 52300;
+       95, 63200;
+       100, 76000;
+       105, 90800;
+       110, 108000;
+       115, 127000;
+       120, 150000;
+       125, 175000;
+       130, 204000;
+       135, 236000;
+       140, 273000;
+       145, 314000;
+       150, 359000;
+       155, 410000;
+       160, 466000;
+       165, 527000;
+       170, 595000;
+       175, 670000],
+    tableViscosity =
+      [-50, 1.5;
+       -45, 0.692;
+       -40, 0.357;
+       -35, 0.202;
+       -30, 0.122;
+       -25, 0.0787;
+       -20, 0.0532;
+       -15, 0.0374;
+       -10, 0.0273;
+       -5, 0.0205;
+       0, 0.0158;
+       5, 0.0125;
+       10, 0.0101;
+       15, 0.00823;
+       20, 0.00684;
+       25, 0.00576;
+       30, 0.00491;
+       35, 0.00423;
+       40, 0.00369;
+       45, 0.00324;
+       50, 0.00286;
+       55, 0.00255;
+       60, 0.00229;
+       65, 0.00207;
+       70, 0.00188;
+       75, 0.00172;
+       80, 0.00157;
+       85, 0.00145;
+       90, 0.00134;
+       95, 0.00124;
+       100, 0.00116;
+       105, 0.00108;
+       110, 0.00101;
+       115, 0.000952;
+       120, 0.000897;
+       125, 0.000847;
+       130, 0.000802;
+       135, 0.00076;
+       140, 0.000723;
+       145, 0.000688;
+       150, 0.000657;
+       155, 0.000628;
+       160, 0.000601;
+       165, 0.000576;
+       170, 0.000553;
+       175, 0.000532]);
+
+        annotation (Documentation(info="<html>
+<p>The data in the Dowcal100 media is taken from https://www.dow.com/en-us/market/mkt-building-construction/sub-build-heating-cooling-refrigeration/heat-transfer-fluid-selection-calculator.html.</p>
+<p>&quot;An ethylene glycol-based heat transfer fluid used in various industrial applications, highly recommended for heating applications&quot;</p>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_density_T.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_specHeat_T.png\"/></p>
+<p>Dynamic viscosity (double the viscosity od Dowcal100E)</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_dynVis_T.png\"/></p>
+<p>Thermal conductivity</p>
+<p><br><img src=\"modelica://SAABdefinedMedia/TestDowcal100_thermCond_T.png\"/></p>
+</html>"));
+    end Dowcal100;
+
+    model TestDowcal100 "Test Dowcal Medium model"
+      extends Modelica.Icons.Example;
+      package Medium =
+          ThermofluidStream.Media.myMedia.Incompressible.Examples.Dowcal100
+                                "Medium model (Dowcal100)";
+      Medium.BaseProperties medium;
+
+      Medium.DynamicViscosity eta=Medium.dynamicViscosity(medium.state);
+      Medium.ThermalConductivity lambda=Medium.thermalConductivity(medium.state);
+      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
+      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
+      Medium.SpecificInternalEnergy u=Medium.specificInternalEnergy(medium.state);
+      Medium.SpecificInternalEnergy h=Medium.specificEnthalpy(medium.state);
+      Medium.SpecificInternalEnergy d=Medium.density(medium.state);
+    protected
+      constant Modelica.Units.SI.Time timeUnit=1;
+      constant Modelica.Units.SI.Temperature Ta=1;
+    equation
+      medium.p = 1.013e5;
+      medium.T = Medium.T_min + time/timeUnit*Ta;
+        annotation (__DLR_experiment(StopTime=1.01),
+        experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
+        Documentation(info="<html>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_density_T.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_specHeat_T.png\"/></p>
+<p>Dynamic viscosity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_dynVis_T.png\"/></p>
+<p>Thermal conductivity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_thermCond_T.png\"/></p>
+</html>"));
+    end TestDowcal100;
+
+    model TestLiqLoopDowcal100
+
+        replaceable package SecondaryMedium =
+          ThermofluidStream.Media.XRGMedia.CO2_ph constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      replaceable package RefrigerantMedium =
+        ThermofluidStream.Media.XRGMedia.CO2_ph  constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      replaceable package TertiaryMedium =
+        ThermofluidStream.Media.myMedia.Incompressible.Examples.Dowcal100
+                  constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+        redeclare package Medium = TertiaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{-12,6},{-40,-24}})));
+      ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
+        redeclare package MediumA = TertiaryMedium,
+        redeclare package MediumB = SecondaryMedium,
+        redeclare model ConductionElementA =
+            ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX,
+        redeclare model ConductionElementB =
+            ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+        initializeMassFlow=false,
+        nCells=10,
+        A=15,
+        V_Hex(displayUnit="m3"),
+        k_wall=50) annotation (Placement(transformation(
+            extent={{10,10},{-10,-10}},
+            rotation=180,
+            origin={14,14})));
+
+      ThermofluidStream.Processes.FlowResistance flowResistance1(
+        redeclare package Medium = TertiaryMedium,
+        initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+        r=0.05,
+        l=1,
+        redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+            (k=1e4))
+        annotation (Placement(transformation(extent={{114,-4},{94,16}})));
+      ThermofluidStream.Processes.Pump pump(redeclare package Medium =
+            TertiaryMedium,
+        omega_from_input=true,
+        redeclare function dp_tau_pump =
+            ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        annotation (Placement(transformation(extent={{92,-82},{112,-62}})));
+      ThermofluidStream.Processes.ConductionElement conductionElement(redeclare
+          package Medium = TertiaryMedium)
+        annotation (Placement(transformation(extent={{4,-84},{24,-64}})));
+      Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
+        annotation (Placement(transformation(extent={{-6,-58},{14,-38}})));
+      Modelica.Blocks.Sources.RealExpression heat(y=40000)
+        annotation (Placement(transformation(extent={{-46,-60},{-26,-40}})));
+      ThermofluidStream.Boundaries.Reservoir reservoir(redeclare package Medium =
+            TertiaryMedium)
+        annotation (Placement(transformation(extent={{-52,-86},{-32,-66}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+        redeclare package Medium = TertiaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=false,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{82,6},{36,-18}})));
+      ThermofluidStream.Boundaries.Source
+                        source1(redeclare package Medium = SecondaryMedium,
+        temperatureFromInput=false,
+        T0_par=283.15,
+        p0_par(displayUnit="Pa") = (SecondaryMedium.saturationPressure(263.15)))
+        annotation (Placement(transformation(extent={{-132,34},{-112,54}})));
+      ThermofluidStream.Boundaries.Sink
+                      sink1(redeclare package Medium = SecondaryMedium,
+          pressureFromInput=true)
+        annotation (Placement(transformation(extent={{76,16},{96,36}})));
+      ThermofluidStream.Processes.FlowResistance
+                               flowResistance2(
+        redeclare package Medium = SecondaryMedium,
+        initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+        r=0.05,
+        l=1,
+        redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+            (k=1e4))
+        annotation (Placement(transformation(extent={{-84,34},{-64,54}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm
+                              multiSensor_Tpm3(
+        redeclare package Medium = SecondaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{44,26},{64,46}})));
+      Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=7e5, uMin=100)
+        annotation (Placement(transformation(extent={{144,34},{132,46}})));
+      Modelica.Blocks.Continuous.PI PI1(
+        k=1000,
+        T=0.1,
+        initType=Modelica.Blocks.Types.Init.InitialOutput,
+        y_start=1e5)
+        annotation (Placement(transformation(extent={{170,30},{150,50}})));
+      Modelica.Blocks.Math.Feedback feedback1
+        annotation (Placement(transformation(extent={{198,30},{178,50}})));
+      Modelica.Blocks.Sources.RealExpression refFlow_setPoint1(y=30)
+        annotation (Placement(transformation(extent={{224,30},{204,50}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm
+                              multiSensor_Tpm4(
+        redeclare package Medium = SecondaryMedium,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{-48,42},{-24,20}})));
+      inner ThermofluidStream.DropOfCommons dropOfCommons
+        annotation (Placement(transformation(extent={{-102,-60},{-82,-40}})));
+      Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=600, uMin=50)
+        annotation (Placement(transformation(extent={{38,-140},{50,-128}})));
+      Modelica.Blocks.Continuous.PI PI2(
+        k=-5,
+        T=0.1,
+        initType=Modelica.Blocks.Types.Init.InitialOutput,
+        y_start=300)
+        annotation (Placement(transformation(extent={{4,-144},{24,-124}})));
+      Modelica.Blocks.Math.Feedback feedback2
+        annotation (Placement(transformation(extent={{-32,-124},{-12,-144}})));
+      Modelica.Blocks.Sources.RealExpression refFlow_setPoint2(y=15)
+        annotation (Placement(transformation(extent={{-66,-144},{-46,-124}})));
+      ThermofluidStream.Sensors.DifferenceSensor_Tp differenceSensor_Tp(
+      redeclare package MediumA = TertiaryMedium,
+      redeclare package MediumB = TertiaryMedium,
+          outputTemperature=true)
+        annotation (Placement(transformation(extent={{28,-80},{48,-100}})));
+      Modelica.Blocks.Math.Gain gain(k=-1)
+        annotation (Placement(transformation(extent={{-4,-116},{-14,-106}})));
+      Modelica.Blocks.Sources.RealExpression inlet_temp(y=283.15)
+        annotation (Placement(transformation(extent={{-164,34},{-144,54}})));
+    equation
+      connect(pump.outlet,flowResistance1. inlet) annotation (Line(
+          points={{112,-72},{142,-72},{142,6},{114,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(conductionElement.outlet,pump. inlet) annotation (Line(
+          points={{24,-74},{84,-74},{84,-88},{92,-88},{92,-72}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(heating_element.port,conductionElement. heatPort) annotation (Line(
+            points={{14,-48},{14,-64.2}},                                color={191,
+              0,0}));
+      connect(heat.y,heating_element. Q_flow) annotation (Line(points={{-25,-50},{-25,
+              -48},{-6,-48}},    color={0,0,127}));
+      connect(reservoir.outlet,conductionElement. inlet) annotation (Line(
+          points={{-32,-76},{-4,-76},{-4,-74},{4,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm1.outlet,reservoir. inlet) annotation (Line(
+          points={{-40,6},{-40,14},{-54,14},{-54,-60},{-62,-60},{-62,-76},{-52,-76}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(flowResistance1.outlet, multiSensor_Tpm2.inlet) annotation (Line(
+          points={{94,6},{82,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(evaporator.outletA, multiSensor_Tpm1.inlet) annotation (Line(
+          points={{4,6},{-12,6},{-12,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm2.outlet, evaporator.inletA) annotation (Line(
+          points={{36,6},{28,6},{28,6},{24,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(source1.outlet,flowResistance2. inlet) annotation (Line(
+          points={{-112,44},{-84,44}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(sink1.inlet,multiSensor_Tpm3. outlet) annotation (Line(
+          points={{76,26},{64,26}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(limiter1.y,sink1. p0_var)
+        annotation (Line(points={{131.4,40},{88,40},{88,26}},
+                                                         color={0,0,127}));
+      connect(limiter1.u,PI1. y)
+        annotation (Line(points={{145.2,40},{149,40}},     color={0,0,127}));
+      connect(PI1.u,feedback1. y)
+        annotation (Line(points={{172,40},{179,40}},     color={0,0,127}));
+      connect(feedback1.u1,refFlow_setPoint1. y)
+        annotation (Line(points={{196,40},{203,40}},     color={0,0,127}));
+      connect(flowResistance2.outlet,multiSensor_Tpm4. inlet) annotation (Line(
+          points={{-64,44},{-56,44},{-56,42},{-48,42}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(evaporator.outletB, multiSensor_Tpm3.inlet) annotation (Line(
+          points={{24,22},{32,22},{32,26},{44,26}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm4.outlet, evaporator.inletB) annotation (Line(
+          points={{-24,42},{-20,42},{-20,40},{-14,40},{-14,22},{4,22}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(limiter2.u,PI2. y)
+        annotation (Line(points={{36.8,-134},{25,-134}},   color={0,0,127}));
+      connect(limiter2.y, pump.omega_input) annotation (Line(points={{50.6,-134},{78,
+              -134},{78,-138},{102,-138},{102,-82}}, color={0,0,127}));
+      connect(multiSensor_Tpm1.T_out, feedback1.u2) annotation (Line(points={{-40,-18},
+              {-48,-18},{-48,-30},{188,-30},{188,32}}, color={0,0,127}));
+      connect(feedback2.y, PI2.u)
+        annotation (Line(points={{-13,-134},{2,-134}}, color={0,0,127}));
+      connect(feedback2.u1, refFlow_setPoint2.y)
+        annotation (Line(points={{-30,-134},{-45,-134}}, color={0,0,127}));
+      connect(differenceSensor_Tp.inletA, conductionElement.inlet) annotation (Line(
+          points={{28,-98},{-4,-98},{-4,-74},{4,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(differenceSensor_Tp.inletB, conductionElement.outlet) annotation (
+          Line(
+          points={{28,-82},{26,-82},{26,-74},{24,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{48,-94},
+              {56,-94},{56,-111},{-3,-111}}, color={0,0,127}));
+      connect(feedback2.u2, gain.y) annotation (Line(points={{-22,-126},{-22,-111},
+              {-14.5,-111}}, color={0,0,127}));
+      annotation (
+        Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,100}}),
+            graphics={
+            Ellipse(lineColor = {75,138,73},
+                    fillColor={255,255,255},
+                    fillPattern = FillPattern.Solid,
+                    extent={{-82,-178},{192,98}}),
+            Polygon(lineColor = {0,0,255},
+                    fillColor = {75,138,73},
+                    pattern = LinePattern.None,
+                    fillPattern = FillPattern.Solid,
+                    points={{-18,74},{170,-46},{-18,-158},{-18,74}})}),
+        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,
+                100}})));
+    end TestLiqLoopDowcal100;
+
+    package Dowcal100E
+      "Concentration 60 volume%, ethylene glycol-based mixed with water"
+      extends ThermofluidStream.Media.myMedia.Incompressible.TableBased(
+        mediumName="Dowcal100E_60%",
+        T_min=Modelica.Units.Conversions.from_degC(-50),
+        T_max=Modelica.Units.Conversions.from_degC(175),
+        TinK=false,
+        T0=273.15,
+    tableConductivity =
+      [-50, 0.393;
+       -45, 0.393;
+       -40, 0.394;
+       -35, 0.394;
+       -30, 0.394;
+       -25, 0.395;
+       -20, 0.395;
+       -15, 0.395;
+       -10, 0.395;
+       -5, 0.395;
+       0, 0.394;
+       5, 0.394;
+       10, 0.394;
+       15, 0.393;
+       20, 0.393;
+       25, 0.392;
+       30, 0.391;
+       35, 0.39;
+       40, 0.389;
+       45, 0.388;
+       50, 0.387;
+       55, 0.386;
+       60, 0.385;
+       65, 0.384;
+       70, 0.382;
+       75, 0.381;
+       80, 0.379;
+       85, 0.377;
+       90, 0.376;
+       95, 0.374;
+       100, 0.372;
+       105, 0.37;
+       110, 0.368;
+       115, 0.366;
+       120, 0.363;
+       125, 0.361;
+       130, 0.359;
+       135, 0.356;
+       140, 0.353;
+       145, 0.351;
+       150, 0.348;
+       155, 0.345;
+       160, 0.342;
+       165, 0.339;
+       170, 0.336;
+       175, 0.333],
+    tableDensity =
+      [-50, 1115.3;
+       -45, 1113.3;
+       -40, 1111.1;
+       -35, 1108.9;
+       -30, 1106.5;
+       -25, 1104.2;
+       -20, 1101.7;
+       -15, 1099.1;
+       -10, 1096.5;
+       -5, 1093.9;
+       0, 1091.1;
+       5, 1088.3;
+       10, 1085.5;
+       15, 1082.6;
+       20, 1079.6;
+       25, 1076.6;
+       30, 1073.5;
+       35, 1070.4;
+       40, 1067.3;
+       45, 1064;
+       50, 1060.8;
+       55, 1057.5;
+       60, 1054.2;
+       65, 1050.8;
+       70, 1047.4;
+       75, 1043.9;
+       80, 1040.5;
+       85, 1037;
+       90, 1033.4;
+       95, 1029.8;
+       100, 1026.2;
+       105, 1022.6;
+       110, 1018.9;
+       115, 1015.2;
+       120, 1011.5;
+       125, 1007.7;
+       130, 1003.9;
+       135, 1000.1;
+       140, 996.3;
+       145, 992.4;
+       150, 988.5;
+       155, 984.6;
+       160, 980.7;
+       165, 976.8;
+       170, 972.8;
+       175, 968.8],
+    tableHeatCapacity =
+      [-50, 2880;
+       -45, 2900;
+       -40, 2920;
+       -35, 2940;
+       -30, 2960;
+       -25, 2980;
+       -20, 3000;
+       -15, 3020;
+       -10, 3040;
+       -5, 3060;
+       0, 3080;
+       5, 3110;
+       10, 3130;
+       15, 3150;
+       20, 3170;
+       25, 3190;
+       30, 3210;
+       35, 3230;
+       40, 3250;
+       45, 3270;
+       50, 3290;
+       55, 3310;
+       60, 3330;
+       65, 3350;
+       70, 3380;
+       75, 3400;
+       80, 3420;
+       85, 3440;
+       90, 3460;
+       95, 3480;
+       100, 3500;
+       105, 3520;
+       110, 3540;
+       115, 3560;
+       120, 3580;
+       125, 3600;
+       130, 3620;
+       135, 3650;
+       140, 3670;
+       145, 3690;
+       150, 3710;
+       155, 3730;
+       160, 3750;
+       165, 3770;
+       170, 3790;
+       175, 3810],
+    tableVaporPressure =
+      [-50, 0;
+       -45, 0;
+       -40, 0;
+       -35, 0;
+       -30, 0;
+       -25, 0;
+       -20, 100;
+       -15, 100;
+       -10, 200;
+       -5, 200;
+       0, 400;
+       5, 500;
+       10, 800;
+       15, 1100;
+       20, 1500;
+       25, 2100;
+       30, 2800;
+       35, 3800;
+       40, 5100;
+       45, 6700;
+       50, 8700;
+       55, 11200;
+       60, 14300;
+       65, 18100;
+       70, 22700;
+       75, 28200;
+       80, 34800;
+       85, 42600;
+       90, 51900;
+       95, 62700;
+       100, 75400;
+       105, 90100;
+       110, 107000;
+       115, 126000;
+       120, 149000;
+       125, 174000;
+       130, 202000;
+       135, 235000;
+       140, 271000;
+       145, 311000;
+       150, 356000;
+       155, 407000;
+       160, 462000;
+       165, 523000;
+       170, 591000;
+       175, 665000],
+    tableViscosity =
+      [-50, 0.636;
+       -45, 0.352;
+       -40, 0.208;
+       -35, 0.13;
+       -30, 0.0847;
+       -25, 0.0576;
+       -20, 0.0406;
+       -15, 0.0295;
+       -10, 0.022;
+       -5, 0.0168;
+       0, 0.0131;
+       5, 0.0104;
+       10, 0.0084;
+       15, 0.00689;
+       20, 0.00572;
+       25, 0.00481;
+       30, 0.00409;
+       35, 0.00351;
+       40, 0.00304;
+       45, 0.00266;
+       50, 0.00234;
+       55, 0.00208;
+       60, 0.00186;
+       65, 0.00167;
+       70, 0.00151;
+       75, 0.00137;
+       80, 0.00125;
+       85, 0.00114;
+       90, 0.00105;
+       95, 0.000971;
+       100, 0.000900;
+       105, 0.000838;
+       110, 0.000782;
+       115, 0.000732;
+       120, 0.000687;
+       125, 0.000647;
+       130, 0.00061;
+       135, 0.000577;
+       140, 0.000547;
+       145, 0.000520;
+       150, 0.000495;
+       155, 0.000472;
+       160, 0.000451;
+       165, 0.000432;
+       170, 0.000414;
+       175, 0.000397]);
+
+        annotation (Documentation(info="<html>
+<p>The data in the Dowcal100E media is taken from https://www.dow.com/en-us/market/mkt-building-construction/sub-build-heating-cooling-refrigeration/heat-transfer-fluid-selection-calculator.html.</p>
+<p><br>&quot;An ethylene glycol-based heat transfer fluid used in various industrial applications, highly recommended for heating applications&quot;</p>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_density_T.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_specHeat_T.png\"/></p>
+<p>Dynamic viscosity (about half of Dowcal100)</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_dynVis_T.png\"/></p>
+<p>Thermal conductivity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_thermCond.png\"/></p>
+</html>"));
+    end Dowcal100E;
+
+    model TestDowcal100E "Test Dowcal100E Medium model"
+      extends Modelica.Icons.Example;
+      package Medium =
+          ThermofluidStream.Media.myMedia.Incompressible.Examples.Dowcal100E
+                                "Medium model (Dowcal100E)";
+      Medium.BaseProperties medium;
+
+      Medium.DynamicViscosity eta=Medium.dynamicViscosity(medium.state);
+      Medium.ThermalConductivity lambda=Medium.thermalConductivity(medium.state);
+      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
+      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
+      Medium.SpecificInternalEnergy u=Medium.specificInternalEnergy(medium.state);
+      Medium.SpecificInternalEnergy h=Medium.specificEnthalpy(medium.state);
+      Medium.SpecificInternalEnergy d=Medium.density(medium.state);
+    protected
+      constant Modelica.Units.SI.Time timeUnit=1;
+      constant Modelica.Units.SI.Temperature Ta=1;
+    equation
+      medium.p = 1.013e5;
+      medium.T = Medium.T_min + time/timeUnit*Ta;
+        annotation (__DLR_experiment(StopTime=1.01),
+        experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
+        Documentation(info="<html>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_density_T.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_specHeat_T.png\"/></p>
+<p>Dynamic viscosity (about half of Dowcal100)</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_dynVis_T.png\"/></p>
+<p>Thermal conductivity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_thermCond.png\"/></p>
+</html>"));
+    end TestDowcal100E;
+
+    package JP8 "Jet propulsion 8, JetA with additives, typical density"
+      // Data from Handbook of Aviation Fuel properties, Coordinating Research Council Inc., 1983
+      //Density data between -40 degC and 90 degC, linear in T, relative density data linear up to 120 degC
+      //density could vary with 30 % between batches, the typical density used here is an average of measured data
+      //Heat capacity data between 30 degC and 180 degC, linear in T
+      //Thermal conductivity data between -8 degC and 220 degC, linear in T
+      //Kinematic viscosity data between -50 and 145 degC, log(viscosity) is linear in T
+      //True vapor pressure data between 50 degC and 140 degC, log(VaporPressure) is linear in 1/T(in Kelvin)
+      extends ThermofluidStream.Media.myMedia.Incompressible.TableBased(
+        mediumName="Jet propulsion 8 (JetA with additives)",
+        T_min=Modelica.Units.Conversions.from_degC(-40),
+        T_max=Modelica.Units.Conversions.from_degC(120),
+        enthalpyOfT=true,
+        TinK=false,
+        T0=273.15,
+        npolDensity=1,
+        tableDensity=[-40,852; 90,758],
+        npolHeatCapacity=1,
+        tableHeatCapacity=[30,2000;  180,2650],
+        npolConductivity =1,
+        tableConductivity=[-8,0.12; 220,0.08],
+        npolViscosity = 4,
+        tableViscosity=[-50,0.016; -40,0.0095; -30,0.006; -20,0.0042; -10,0.0032; 30,0.0014; 70,0.0008;110,0.00053; 144,0.0004],
+        npolVaporPressure= 4,
+        tableVaporPressure=[50,1300; 72,3200; 112,12500;  143,32000]);
+        annotation (Documentation(info="<html>
+<h4>JP8</h4>
+<p>JP8 is a jet propulsion fuel often used in military aircraft. It is essentially the same as JetA, but with some additives that e.g. allows for higher mass flows without static electricity build up. The data of this implementation comes from&nbsp;Handbook&nbsp;of&nbsp;Aviation&nbsp;Fuel&nbsp;properties,&nbsp;Coordinating&nbsp;Research&nbsp;Council&nbsp;Inc.(USA),&nbsp;1983. There are both more detailed property models available, for example in REFPROP, or with more attention to computational robustness, for example in Modelon&acute;s Fuel library. The data used in this model does not take into account properties important for combustion of the fuel, only those important for transportation and heat storage.</p>
+<p>&nbsp;The main source of the density gives data&nbsp;between&nbsp;-40&nbsp;degC&nbsp;and&nbsp;90&nbsp;degC,&nbsp;linear&nbsp;in&nbsp;T,&nbsp;but complemetary relative&nbsp;density&nbsp;data&nbsp;is given as linear&nbsp;up&nbsp;to&nbsp;120&nbsp;degC, which implies that linear extraploation can be possible above 90 degC. Observe that the density&nbsp;can&nbsp;vary&nbsp;with&nbsp;30&percnt;&nbsp;between&nbsp;batches or over time as the ligther fractions tend to evaporate depending on manner of storage.&nbsp;The&nbsp;typical&nbsp;density&nbsp;used&nbsp;here&nbsp;is&nbsp;an&nbsp;average&nbsp;of&nbsp;measured&nbsp;data.</p>
+<p><br>The heat&nbsp;capacity&nbsp;data is given&nbsp;between&nbsp;30&nbsp;degC&nbsp;and&nbsp;180&nbsp;degC,&nbsp;linear&nbsp;in&nbsp;T.</p>
+<p><br>The thermal&nbsp;conductivity&nbsp;data&nbsp;is given between&nbsp;-8&nbsp;degC&nbsp;and&nbsp;220&nbsp;degC,&nbsp;linear&nbsp;in&nbsp;T.</p>
+<p><br>The kinematic&nbsp;viscosity&nbsp;data&nbsp;is given between&nbsp;-50&nbsp;and&nbsp;145&nbsp;degC,&nbsp;with log(viscosity)&nbsp;linear&nbsp;in&nbsp;T.</p>
+<p><br>The true&nbsp;vapor&nbsp;pressure&nbsp;data&nbsp;is given between&nbsp;50&nbsp;degC&nbsp;and&nbsp;140&nbsp;degC,&nbsp;with log(VaporPressure)&nbsp;linear&nbsp;in&nbsp;1/T(in&nbsp;Kelvin).</p>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_density.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_specHeat.png\"/></p>
+<p>Dynamic viscosity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_dynVis.png\"/></p>
+<p>Thermal conductivity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_thermCond.png\"/></p>
+</html>", revisions="<html>
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+Simulation and Thermal Analysis,
+Vehicle Systems,
+SAAB Aerosystems, 2024
+</p>
+</html>"));
+    end JP8;
+
+    model TestJP8 "Test JP8 Medium model"
+      extends Modelica.Icons.Example;
+      package Medium =
+          ThermofluidStream.Media.myMedia.Incompressible.Examples.JP8
+                                "Jet fuel medium model";
+      Medium.BaseProperties medium;
+
+      Medium.DynamicViscosity eta=Medium.dynamicViscosity(medium.state);
+      Medium.ThermalConductivity lambda=Medium.thermalConductivity(medium.state);
+      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
+      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
+      Medium.SpecificInternalEnergy u=Medium.specificInternalEnergy(medium.state);
+      Medium.SpecificInternalEnergy h=Medium.specificEnthalpy(medium.state);
+      Medium.SpecificInternalEnergy d=Medium.density(medium.state);
+      Real n=Medium.nS;
+    protected
+      constant Modelica.Units.SI.Time timeUnit=1;
+      constant Modelica.Units.SI.Temperature Ta=1;
+    equation
+      medium.p = 1.013e5;
+      medium.T = Medium.T_min + time/timeUnit*Ta;
+        annotation (
+        experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
+        Documentation(info="<html>
+<p>Density</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_density.png\"/></p>
+<p>Heat capacity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_specHeat.png\"/></p>
+<p>Dynamic viscosity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_dynVis.png\"/></p>
+<p>Thermal conductivity</p>
+<p><img src=\"modelica://SAABdefinedMedia/TestJP8_thermCond.png\"/></p>
+</html>"));
+    end TestJP8;
+
+    model TestLiqLoopJP8
+
+        replaceable package SecondaryMedium =
+          ThermofluidStream.Media.XRGMedia.CO2_ph constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      replaceable package RefrigerantMedium =
+        ThermofluidStream.Media.XRGMedia.CO2_ph  constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      replaceable package TertiaryMedium =
+        ThermofluidStream.Media.myMedia.Incompressible.Examples.JP8
+                             constrainedby
+        ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        annotation(choicesAllMatching=true);
+
+      ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
+        redeclare package Medium = TertiaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{-12,6},{-40,-24}})));
+      ThermofluidStream.HeatExchangers.DiscretizedCounterFlowHEX evaporator(
+        redeclare package MediumA = TertiaryMedium,
+        redeclare package MediumB = SecondaryMedium,
+        redeclare model ConductionElementA =
+            ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX,
+        redeclare model ConductionElementB =
+            ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX_twoPhase,
+        initializeMassFlow=false,
+        nCells=10,
+        A=15,
+        V_Hex(displayUnit="m3"),
+        k_wall=50) annotation (Placement(transformation(
+            extent={{10,10},{-10,-10}},
+            rotation=180,
+            origin={14,14})));
+
+      ThermofluidStream.Processes.FlowResistance flowResistance1(
+        redeclare package Medium = TertiaryMedium,
+        initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+        r=0.05,
+        l=1,
+        redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+            (k=1e4))
+        annotation (Placement(transformation(extent={{114,-4},{94,16}})));
+      ThermofluidStream.Processes.Pump pump(redeclare package Medium =
+            TertiaryMedium,
+        omega_from_input=true,
+        redeclare function dp_tau_pump =
+            ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        annotation (Placement(transformation(extent={{92,-82},{112,-62}})));
+      ThermofluidStream.Processes.ConductionElement conductionElement(redeclare
+          package Medium = TertiaryMedium)
+        annotation (Placement(transformation(extent={{4,-84},{24,-64}})));
+      Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow heating_element
+        annotation (Placement(transformation(extent={{-6,-58},{14,-38}})));
+      Modelica.Blocks.Sources.RealExpression heat(y=40000)
+        annotation (Placement(transformation(extent={{-46,-60},{-26,-40}})));
+      ThermofluidStream.Boundaries.Reservoir reservoir(redeclare package Medium =
+            TertiaryMedium)
+        annotation (Placement(transformation(extent={{-52,-86},{-32,-66}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm2(
+        redeclare package Medium = TertiaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=false,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{82,6},{36,-18}})));
+      ThermofluidStream.Boundaries.Source
+                        source1(redeclare package Medium = SecondaryMedium,
+        temperatureFromInput=false,
+        T0_par=283.15,
+        p0_par(displayUnit="Pa") = (SecondaryMedium.saturationPressure(263.15)))
+        annotation (Placement(transformation(extent={{-132,34},{-112,54}})));
+      ThermofluidStream.Boundaries.Sink
+                      sink1(redeclare package Medium = SecondaryMedium,
+          pressureFromInput=true)
+        annotation (Placement(transformation(extent={{76,16},{96,36}})));
+      ThermofluidStream.Processes.FlowResistance
+                               flowResistance2(
+        redeclare package Medium = SecondaryMedium,
+        initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+        r=0.05,
+        l=1,
+        redeclare function pLoss =
+            ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+            (k=1e4))
+        annotation (Placement(transformation(extent={{-84,34},{-64,54}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm
+                              multiSensor_Tpm3(
+        redeclare package Medium = SecondaryMedium,
+        outputTemperature=true,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{44,26},{64,46}})));
+      Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=7e5, uMin=100)
+        annotation (Placement(transformation(extent={{144,34},{132,46}})));
+      Modelica.Blocks.Continuous.PI PI1(
+        k=1000,
+        T=0.1,
+        initType=Modelica.Blocks.Types.Init.InitialOutput,
+        y_start=1e5)
+        annotation (Placement(transformation(extent={{170,30},{150,50}})));
+      Modelica.Blocks.Math.Feedback feedback1
+        annotation (Placement(transformation(extent={{198,30},{178,50}})));
+      Modelica.Blocks.Sources.RealExpression refFlow_setPoint1(y=30)
+        annotation (Placement(transformation(extent={{224,30},{204,50}})));
+      ThermofluidStream.Sensors.MultiSensor_Tpm
+                              multiSensor_Tpm4(
+        redeclare package Medium = SecondaryMedium,
+        outputMassFlowRate=true,
+        temperatureUnit="degC")
+        annotation (Placement(transformation(extent={{-48,42},{-24,20}})));
+      inner ThermofluidStream.DropOfCommons dropOfCommons
+        annotation (Placement(transformation(extent={{-102,-60},{-82,-40}})));
+      Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=600, uMin=50)
+        annotation (Placement(transformation(extent={{38,-140},{50,-128}})));
+      Modelica.Blocks.Continuous.PI PI2(
+        k=-5,
+        T=0.1,
+        initType=Modelica.Blocks.Types.Init.InitialOutput,
+        y_start=300)
+        annotation (Placement(transformation(extent={{4,-144},{24,-124}})));
+      Modelica.Blocks.Math.Feedback feedback2
+        annotation (Placement(transformation(extent={{-32,-124},{-12,-144}})));
+      Modelica.Blocks.Sources.RealExpression refFlow_setPoint2(y=15)
+        annotation (Placement(transformation(extent={{-66,-144},{-46,-124}})));
+      ThermofluidStream.Sensors.DifferenceSensor_Tp differenceSensor_Tp(
+      redeclare package MediumA = TertiaryMedium,
+      redeclare package MediumB = TertiaryMedium,
+          outputTemperature=true)
+        annotation (Placement(transformation(extent={{28,-80},{48,-100}})));
+      Modelica.Blocks.Math.Gain gain(k=-1)
+        annotation (Placement(transformation(extent={{-4,-116},{-14,-106}})));
+      Modelica.Blocks.Sources.RealExpression inlet_temp(y=283.15)
+        annotation (Placement(transformation(extent={{-164,34},{-144,54}})));
+    equation
+      connect(pump.outlet,flowResistance1. inlet) annotation (Line(
+          points={{112,-72},{142,-72},{142,6},{114,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(conductionElement.outlet,pump. inlet) annotation (Line(
+          points={{24,-74},{84,-74},{84,-88},{92,-88},{92,-72}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(heating_element.port,conductionElement. heatPort) annotation (Line(
+            points={{14,-48},{14,-64.2}},                                color={191,
+              0,0}));
+      connect(heat.y,heating_element. Q_flow) annotation (Line(points={{-25,-50},{-25,
+              -48},{-6,-48}},    color={0,0,127}));
+      connect(reservoir.outlet,conductionElement. inlet) annotation (Line(
+          points={{-32,-76},{-4,-76},{-4,-74},{4,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm1.outlet,reservoir. inlet) annotation (Line(
+          points={{-40,6},{-40,14},{-54,14},{-54,-60},{-62,-60},{-62,-76},{-52,-76}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(flowResistance1.outlet, multiSensor_Tpm2.inlet) annotation (Line(
+          points={{94,6},{82,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(evaporator.outletA, multiSensor_Tpm1.inlet) annotation (Line(
+          points={{4,6},{-12,6},{-12,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm2.outlet, evaporator.inletA) annotation (Line(
+          points={{36,6},{28,6},{28,6},{24,6}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(source1.outlet,flowResistance2. inlet) annotation (Line(
+          points={{-112,44},{-84,44}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(sink1.inlet,multiSensor_Tpm3. outlet) annotation (Line(
+          points={{76,26},{64,26}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(limiter1.y,sink1. p0_var)
+        annotation (Line(points={{131.4,40},{88,40},{88,26}},
+                                                         color={0,0,127}));
+      connect(limiter1.u,PI1. y)
+        annotation (Line(points={{145.2,40},{149,40}},     color={0,0,127}));
+      connect(PI1.u,feedback1. y)
+        annotation (Line(points={{172,40},{179,40}},     color={0,0,127}));
+      connect(feedback1.u1,refFlow_setPoint1. y)
+        annotation (Line(points={{196,40},{203,40}},     color={0,0,127}));
+      connect(flowResistance2.outlet,multiSensor_Tpm4. inlet) annotation (Line(
+          points={{-64,44},{-56,44},{-56,42},{-48,42}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(evaporator.outletB, multiSensor_Tpm3.inlet) annotation (Line(
+          points={{24,22},{32,22},{32,26},{44,26}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(multiSensor_Tpm4.outlet, evaporator.inletB) annotation (Line(
+          points={{-24,42},{-20,42},{-20,40},{-14,40},{-14,22},{4,22}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(limiter2.u,PI2. y)
+        annotation (Line(points={{36.8,-134},{25,-134}},   color={0,0,127}));
+      connect(limiter2.y, pump.omega_input) annotation (Line(points={{50.6,-134},{78,
+              -134},{78,-138},{102,-138},{102,-82}}, color={0,0,127}));
+      connect(multiSensor_Tpm1.T_out, feedback1.u2) annotation (Line(points={{-40,-18},
+              {-48,-18},{-48,-30},{188,-30},{188,32}}, color={0,0,127}));
+      connect(feedback2.y, PI2.u)
+        annotation (Line(points={{-13,-134},{2,-134}}, color={0,0,127}));
+      connect(feedback2.u1, refFlow_setPoint2.y)
+        annotation (Line(points={{-30,-134},{-45,-134}}, color={0,0,127}));
+      connect(differenceSensor_Tp.inletA, conductionElement.inlet) annotation (Line(
+          points={{28,-98},{-4,-98},{-4,-74},{4,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(differenceSensor_Tp.inletB, conductionElement.outlet) annotation (
+          Line(
+          points={{28,-82},{26,-82},{26,-74},{24,-74}},
+          color={28,108,200},
+          thickness=0.5));
+      connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{48,-94},
+              {56,-94},{56,-111},{-3,-111}}, color={0,0,127}));
+      connect(feedback2.u2, gain.y) annotation (Line(points={{-22,-126},{-22,-111},
+              {-14.5,-111}}, color={0,0,127}));
+      annotation (
+        Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,100}}),
+            graphics={
+            Ellipse(lineColor = {75,138,73},
+                    fillColor={255,255,255},
+                    fillPattern = FillPattern.Solid,
+                    extent={{-82,-178},{192,98}}),
+            Polygon(lineColor = {0,0,255},
+                    fillColor = {75,138,73},
+                    pattern = LinePattern.None,
+                    fillPattern = FillPattern.Solid,
+                    points={{-18,74},{170,-46},{-18,-158},{-18,74}})}),
+        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,
+                100}})));
+    end TestLiqLoopJP8;
   annotation (
     Documentation(info="<html>
 

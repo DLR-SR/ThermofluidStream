@@ -5,3 +5,8 @@ TerminalSourceSink
 VolumesDirectCoupling
 DynamicBoundaries
 PhaseSeperator
+TankExtendedTest2
+TankExtendedTest5
+TankExtendedTest4
+TankExtendedTest7_fillingClosedTank
+Tank_Test10_overfilling
