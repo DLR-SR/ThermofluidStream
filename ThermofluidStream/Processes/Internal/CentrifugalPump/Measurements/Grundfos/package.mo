@@ -7,7 +7,7 @@ Only measurements at reference speed <code>w = w_ref</code> are considered and e
 for <a href=\"modelica://ThermofluidStream.Processes.CentrifugalPump\">CentrifugalPump</a>.<br>
 There is no warranty for the data.<br>
 <a href=\"modelica://ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal\">dp_tau_centrifugal</a>
-is based on <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Grundfos.GrundfosMAGNA3_32120_F_N\">GrundfosMAGNA3_32120_F_N</a>.<br>
+is based on <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Grundfos.GrundfosMAGNA3_32120_F_N\">GrundfosMAGNA3_32120_F_N</a>.
 </p>
 </html>
 "));

@@ -8,5 +8,6 @@ This package contains measurement data for <a href=\"modelica://ThermofluidStrea
 Only measurements at reference speed <code>w = w_ref</code> are considered and extended based on similarity laws
 for <a href=\"modelica://ThermofluidStream.Processes.CentrifugalPump\">CentrifugalPump</a>.<br>
 There is no warranty for the data.
+</p>
 </html>"));
 end Measurements;
