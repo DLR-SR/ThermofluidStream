@@ -13,11 +13,10 @@ model CentrifugalPump "Model of a centrifugal pump"
   // Data
   parameter Boolean dataFromMeasurements = true "= true, if measurement data shall be given, (=false, if coefficients shall be set)"
     annotation(Dialog(group="Data"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.CoefficientsData.GenericPumpCoefficients
-    coefficients "Pump coefficients"
+  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.CoefficientsData.GenericPumpCoefficients coefficients "Pump coefficients"
     annotation (Dialog(group="Data", enable=not dataFromMeasurements), choicesAllMatching=true);
-  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.MeasurementData.GenericPump measurements
-    "Pump measurement data" annotation (Dialog(group="Data", enable=dataFromMeasurements), choicesAllMatching=true);
+  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.MeasurementData.GenericPump measurements "Pump measurement data"
+    annotation (Dialog(group="Data", enable=dataFromMeasurements), choicesAllMatching=true);
   final parameter ThermofluidStream.Processes.Internal.CentrifugalPump.InternalCoefficients coefficients2=if
       dataFromMeasurements then ThermofluidStream.Processes.Internal.CentrifugalPump.pumpCoefficientsFromMeasurements(
       measurements) else ThermofluidStream.Processes.Internal.CentrifugalPump.pumpCoefficientsFromCoefficients(
@@ -192,8 +191,7 @@ equation
 
   w = der(phi);
   if pumpMode == PumpMode.flowControlled or pumpMode == PumpMode.pressureControlled then
-    // To avoid systems of nonlinear equations the quadratic equation head_r = f(w_r) is already solved for head_r
-    w_r = 1/(2*c_head[1])*(-c_head[2]*V_r + sqrt(c_head[2]^2*V_r^2 - 4*c_head[1]*(c_head[3]*V_r^2 - head_r)));
+    w_r = 1/(2*c_head[1])*(-c_head[2]*V_r + sqrt(c_head[2]^2*V_r^2 - 4*c_head[1]*(c_head[3]*V_r^2 - head_r))); // To avoid systems of nonlinear equations the quadratic equation head_r = f(w_r) is solved for w_r explicitly
   elseif pumpMode == PumpMode.speedControlled or pumpMode == PumpMode.flange then
     head_r =  c_head[1]*w_r^2 + c_head[2]*w_r*V_r + c_head[3]*V_r^2; // c_head[1] = 1, c_head[3] = - (1 + c_head[2])
   end if;
@@ -202,7 +200,7 @@ equation
   P = tau*w;
   h_out = h_in + w_t;
   eta_is = dp*V_flow/max(P,P_reg);
-  w_t = P/max(m_flow,m_flow_reg); //P*m_flow/(m_flow^2 + m_flow_reg^2);
+  w_t = P/max(m_flow,m_flow_reg);
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
