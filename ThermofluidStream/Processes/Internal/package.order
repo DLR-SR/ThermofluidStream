@@ -1,9 +1,10 @@
 FlowResistance
 TurboComponent
+CentrifugalPump
 Types
 PartialTurboComponent
 PartialConductionElement
-SISOFlowMassFlowRate
+SISOFlowAdvanced
 InitializationMethodsCondElement
 Material
 ShapeOfResistance

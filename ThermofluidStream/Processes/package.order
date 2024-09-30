@@ -1,8 +1,7 @@
 Pipes
 FlowResistance
 TransportDelay
-Sources
-Pumps
+CentrifugalPump
 Pump
 Compressor
 Turbine
