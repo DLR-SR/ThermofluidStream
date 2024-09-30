@@ -273,13 +273,13 @@ with:
 </p>
 
 <ul>
-<li>relative head <code>head_r = head/head_ref</code>, relative angular velocity <code>w_r = w/w_ref</code> and relative volume flow rate <code>V_r = V_flow/V_flow_ref</code></li> 
-<li>reference angular velocity <code>w_ref</code>, reference head <code>head_ref = head(w=w_ref,V_flow = V_flow_ref)</code> and reference volume flow rate <code>V_flow_ref = V_flow(w=w_ref,head = 0)</code></li>
-<li>coefficients <code>c_head[1] = 1</code>, <code>c_head[2]</code> and <code>c_head[3] = 1 - c_head[2]</code></li>
+<li> relative head <code>head_r = head/head_ref</code>, relative angular velocity <code>w_r = w/w_ref</code> and relative volume flow rate <code>V_r = V_flow/V_flow_ref</code></li> 
+<li> reference angular velocity <code>w_ref</code>, reference head <code>head_ref = head(w=w_ref,V_flow = V_flow_ref)</code> and reference volume flow rate <code>V_flow_ref = V_flow(w=w_ref,head = 0)</code></li>
+<li> coefficients <code>c_head[1] = 1</code>, <code>c_head[2]</code> and <code>c_head[3] = 1 - c_head[2]</code></li>
 </ul>
 
 <p>
-Power <code>P = tau*w</code> (torque <code>tau</code>) is a quadratic polynomial of angular velocity <code>w</code> and volume flow rate <code>V_flow</code:
+Power <code>P = tau*w</code> (torque <code>tau</code>) is a quadratic polynomial of angular velocity <code>w</code> and volume flow rate <code>V_flow</code>:
 </p>
 
 <blockquote><pre>
@@ -291,9 +291,9 @@ with:
 </p>
 
 <ul>
-<li>relative torque <code>tau_r = tau/tau_ref</code> and relative density <code>rho_r = rho/rho_ref</code></li> 
-<li>reference torque <code>tau_ref = head_ref*g*rho_ref*V_flow_ref/w_ref</code> and reference efficiency <code>eta_ref = max head*V_flow/P</code></li>
-<li>coefficients <code>c_power[1]</code>, <code>c_power[2]</code> and <code>c_power[3]</code></li>
+<li> relative torque <code>tau_r = tau/tau_ref</code> and relative density <code>rho_r = rho/rho_ref</code></li> 
+<li> reference torque <code>tau_ref = head_ref*g*rho_ref*V_flow_ref/w_ref</code> and reference efficiency <code>eta_ref = max head*V_flow/P</code></li>
+<li> coefficients <code>c_power[1]</code>, <code>c_power[2]</code> and <code>c_power[3]</code></li>
 </ul>
 
 <p>
@@ -308,10 +308,10 @@ The centrifugal pump can be used in different <a href=\"modelica://ThermofluidSt
 </p>
 
 <ul>
-<li><code>flange</code> enables a mechanical connector</li>
-<li><code>flowControlled</code> enables to set mass or volume flow rate by parameter or from input signal</li>
-<li><code>pressureControlled</code> enables to set outlet pressure, pressure ratio or pressure difference by parameter or from input signal.</li>
-<li><code>speedControlled</code> enables to set angular velocity by parameter or from input signal.</li>
+<li> <code>flange</code> enables a mechanical connector</li>
+<li> <code>flowControlled</code> enables to set mass or volume flow rate by parameter or from input signal</li>
+<li> <code>pressureControlled</code> enables to set outlet pressure, pressure ratio or pressure difference by parameter or from input signal.</li>
+<li> <code>speedControlled</code> enables to set angular velocity by parameter or from input signal.</li>
 </ul>
 
 <p>

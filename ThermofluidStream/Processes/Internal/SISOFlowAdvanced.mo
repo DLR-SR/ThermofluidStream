@@ -84,7 +84,6 @@ equation
   outlet.state = Medium.setState_phX(p_out, h_out, Xi_out);
 
   annotation (Documentation(info="<html>
-<p>
 <ul>
 <li>For <code>setFlow=false</code>, this model is equivalent to <a href=\"modelica://ThermofluidStream.Interfaces.SISOFlow\">ThermofluidStream.Interfaces.SISOFlow</a>, i.e it uses the approach:
 <blockquote><pre>
@@ -105,7 +104,7 @@ where the mass flow rate <code>m_flow</code> is given and the <strong>pressure d
 (positive) inertial pressure difference <code>dr =  outlet.r - inlet.r</code>.<br>
 Currently the time constant <code>TC</code> is used as a numerical tool. It might have a physical explanation considering the pressure change <code>der(dp)</code> 
 of a volume for a given inflow/outflow.<br>
-<strong>Use <code>dp(start=0)</code> or <code>dp(final start=0)</code> if <code>setFlow=true</code>.<strong>
+Use <code>dp(start=0)</code> or <code>dp(final start=0)</code> if <code>setFlow=true</code>.
 </li>
 </ul>
 
