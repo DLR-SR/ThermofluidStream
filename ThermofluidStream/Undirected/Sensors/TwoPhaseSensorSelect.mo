@@ -87,7 +87,7 @@ equation
         Text(
           extent={{-60,90},{60,30}},
           textColor={28,108,200},
-          textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
