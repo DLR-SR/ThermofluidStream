@@ -14,11 +14,7 @@ partial model PartialValve "Partial valve model"
     annotation (Dialog(tab="Advanced", group="Reference values"));
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control signal []"
-    annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
   Real u(unit="1") "Actuation input for flow calculation";
 

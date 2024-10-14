@@ -28,11 +28,9 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
     annotation(Dialog(tab="Advanced", enable=clip_p_out));
 
   Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
   SI.MassFlowRate m_flow(stateSelect=m_flowStateSelect) = rear.m_flow "Mass flow rate";
 

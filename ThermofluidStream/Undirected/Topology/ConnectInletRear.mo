@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectInletRear "Connects inlet to rear port"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -11,27 +11,31 @@ model ConnectInletRear "Connects inlet to rear port"
     annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-40,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-50,-20},{-10,20}})));
   Interfaces.Rear rear(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={40,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
-  ConnectInletFore connectInletFore(redeclare package Medium=Medium, final L=L/2)
-    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
-  ConnectRearRear connectRearRear(redeclare package Medium=Medium, final L=L/2)
-    annotation (Placement(transformation(extent={{2,-10},{22,10}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}}),iconTransformation(extent={{10,-20},{50,20}})));
+  ConnectInletFore connectInletFore(
+    displayInstanceName=true,
+    redeclare package Medium=Medium,
+    final L=L/2)
+    annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
+  ConnectRearRear connectRearRear(
+    displayInstanceName=true,
+    redeclare package Medium=Medium,
+    final L=L/2)
+    annotation (Placement(transformation(extent={{30,-10},{50,10}})));
 
 equation
   connect(connectInletFore.fore, connectRearRear.rear_a) annotation (Line(
-      points={{-7,0},{9,0}},
+      points={{-37,0},{37,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inlet, connectInletFore.inlet) annotation (Line(
-      points={{-40,0},{-13,0}},
+      points={{-100,0},{-43,0}},
       color={28,108,200},
       thickness=0.5));
   connect(connectRearRear.rear_b, rear) annotation (Line(
-      points={{15,0},{40,0}},
+      points={{43,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(

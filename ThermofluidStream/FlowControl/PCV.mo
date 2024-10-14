@@ -15,13 +15,7 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";

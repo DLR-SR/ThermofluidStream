@@ -53,16 +53,14 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
       annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
     Interfaces.Outlet outlet(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
+      annotation (Placement(transformation(extent={{80,-20},{120,20}})));
     Interfaces.Inlet inletA(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
     Interfaces.Inlet inletB(redeclare package Medium = Medium)
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={100,0})));
+      annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-          rotation=90,
-          origin={0,-30})));
+    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1)
+      annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-30})));
 
     // these are needed by DynamicJunctionN
   protected
@@ -163,7 +161,7 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
             textColor={175,175,175},
             textString="A"),
           Text(
-            extent={{80,-20},{120,-60}},
+            extent={{-120,-20},{-80,-60}},
             textColor={175,175,175},
             textString="B")}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),

@@ -19,13 +19,11 @@ model ConnectorInletOutletFore "Connects fore port to directed flow"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-120},{20,-80}}), iconTransformation(extent={{-20,-120},{20,-80}})));
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}})));
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}), iconTransformation(extent={{-120,-20},{
-            -80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(extent={{80,-20},{120,
-            20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   ThermofluidStream.FlowControl.CheckValve checkValve(
     redeclare package Medium = Medium,
     final L=L,
@@ -42,7 +40,7 @@ model ConnectorInletOutletFore "Connects fore port to directed flow"
     redeclare package Medium = Medium,
     final L=L,
     final useDefaultStateAsRear=false)
-      annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+      annotation (Placement(transformation(extent={{20,10},{40,-10}})));
   ConnectInletFore connectInletFore(
     redeclare package Medium = Medium,
     final L=L)
@@ -91,7 +89,7 @@ equation
       points={{-10,18},{-40,18},{-40,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,-4}}, color={162,29,33}));
+  connect(sensorState.state_out, connectRearOutlet.state_rear) annotation (Line(points={{8,18},{30,18},{30,4}},  color={162,29,33}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},

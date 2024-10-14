@@ -15,31 +15,20 @@ model FourWaySwitch
     annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
+    annotation (Placement(transformation(extent={{-120,40},{-80,80}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={100,-60}), iconTransformation(
-        extent={{-28.2354,51.7646},{11.7646,11.7646}},
-        rotation=180,
-        origin={91.7646,-28.2354})));
+    annotation (Placement(transformation(extent={{-20,20},{20,-20}},rotation=180,origin={100,-60})));
   ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
+    annotation (Placement(transformation(extent={{80,40},{120,80}})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-100,-60}), iconTransformation(
-        extent={{-27.5,52.5},{12.5,12.5}},
-        rotation=180,
-        origin={-107.5,-27.5})));
+    annotation (Placement(transformation(extent={{-20,20},{20,-20}},rotation=180,origin={-100,-60})));
   Modelica.Blocks.Interfaces.RealInput u
     annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-100})));
   Switch switch(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     final m_flow_ref=m_flow_ref,
     final p_ref=p_ref,
@@ -51,6 +40,7 @@ model FourWaySwitch
         rotation=180,
         origin={-60,60})));
   Switch switch1(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     final m_flow_ref=m_flow_ref,
     final p_ref=p_ref,
@@ -61,11 +51,11 @@ model FourWaySwitch
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={60,-60})));
-  ThermofluidStream.Topology.JunctionT2 junctionT2_1(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-70,-70},{-50,-50}})));
-  ThermofluidStream.Topology.JunctionT2 junctionT2_2(redeclare package Medium = Medium)
+  ThermofluidStream.Topology.JunctionT2 junctionT2_1(displayInstanceName=true, redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-50,-70},{-70,-50}})));
+  ThermofluidStream.Topology.JunctionT2 junctionT2_2(displayInstanceName=true, redeclare package Medium = Medium)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=180,
         origin={60,60})));
 protected
@@ -86,15 +76,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_1.outlet,outletB) annotation (Line(
-      points={{-50,-60},{-100,-60}},
+      points={{-70,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.outletA, junctionT2_1.inletB) annotation (Line(
-      points={{50,-60},{-70,-60}},
+      points={{50,-60},{-50,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_2.inletB, switch.outletA) annotation (Line(
-      points={{70,60},{-50,60}},
+      points={{50,60},{-50,60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.outletB, junctionT2_2.inletA) annotation (Line(
@@ -102,7 +92,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(junctionT2_2.outlet, outletA) annotation (Line(
-      points={{50,60},{86,60},{86,60},{100,60}},
+      points={{70,60},{86,60},{86,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
   connect(switch1.u, switch.u) annotation (Line(points={{60,-72},{60,-76},{0,-76},{0,76},{-60,76},{-60,72}}, color={0,0,127}));
