@@ -9,7 +9,7 @@ model MultiSensor_Tpm "Undirected sensor for Temperature, pressure and mass flow
 <p>Replaceable medium package for the sensor.</p>
 </html>"));
 
-  parameter Integer digits(min=0) = 1 "Number of displayed digits"
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed"
     annotation(Dialog(group="Sensor display"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));

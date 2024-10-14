@@ -15,7 +15,7 @@ model DifferenceSensor_Tp "Sensor for Temperature and pressure difference"
     Documentation(info="<html>
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
@@ -125,15 +125,11 @@ equation
         Text(
           extent={{-60,55},{60,5}},
           textColor={28,108,200},
-          textString=DynamicSelect("T", String(
-              T,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect("T", " "+String(T,significantDigits=digits)+" ")),
         Text(
           extent={{-60,-5},{60,-55}},
           textColor={28,108,200},
-          textString=DynamicSelect("p", String(
-              p,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect("p", " "+String(p,significantDigits=digits)+" ")),
         Text(visible=not outputTemperature,
           extent={{70,45},{130,15}},
           textColor={0,0,0},

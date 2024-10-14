@@ -11,7 +11,7 @@ model SingleSensorSelect "Selectable sensor"
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Quantities quantity "Measured quantity";
@@ -102,9 +102,7 @@ equation
         Text(
           extent={{-60,30},{60,-30}},
           textColor={28,108,200},
-          textString=DynamicSelect("value", String(
-              value,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},

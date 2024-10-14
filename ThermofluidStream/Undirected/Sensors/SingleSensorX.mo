@@ -10,7 +10,7 @@ model SingleSensorX "Mass fractions sensor"
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
 
   parameter Boolean outputValue = false "= true, if sensor output is enabled"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -83,7 +83,7 @@ equation
         Text(
           extent={{-60,90},{60,30}},
           textColor={28,108,200},
-          textString=DynamicSelect("value", String(display_value, format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" 0.0 ", " "+String(display_value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,130},{150,100}},
           textColor={0,0,0},

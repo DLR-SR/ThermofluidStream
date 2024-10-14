@@ -11,7 +11,7 @@ model MultiSensor_Tpm "Sensor for temperature, pressure and mass flow rate"
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
@@ -169,21 +169,15 @@ equation
         Text(
           extent={{-60,80},{60,30}},
           textColor={28,108,200},
-          textString=DynamicSelect("T", String(
-              T,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect("T", " "+String(T,significantDigits=digits)+" ")),
         Text(
           extent={{-60,30},{60,-20}},
           textColor={28,108,200},
-          textString=DynamicSelect("p", String(
-              p,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect("p", " "+String(p,significantDigits=digits)+" ")),
         Text(
           extent={{-60,-20},{60,-70}},
           textColor={28,108,200},
-          textString=DynamicSelect("m", String(
-              m_flow,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect("m", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(visible=outputTemperature,
           points={{60,60},{78,60}},
           color={0,0,127}),
