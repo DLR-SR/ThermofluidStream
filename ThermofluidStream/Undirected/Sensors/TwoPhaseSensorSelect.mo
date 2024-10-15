@@ -85,7 +85,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,90},{60,30}},
+          extent={{-60,86},{60,34}},
           textColor={28,108,200},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(

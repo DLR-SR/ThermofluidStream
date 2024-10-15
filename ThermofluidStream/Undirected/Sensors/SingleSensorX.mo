@@ -76,7 +76,7 @@ equation
           pattern=LinePattern.None),
         Line(points={{0,34},{0,0}}, color={0,0,0}),
         Rectangle(
-          extent={{-60,90},{60,30}},
+          extent={{-60,86},{60,34}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),

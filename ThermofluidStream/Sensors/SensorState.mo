@@ -39,7 +39,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-60,26},{60,-26}},
           textColor={28,108,200},
           textString="state"),
         Line(
