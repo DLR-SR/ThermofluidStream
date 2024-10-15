@@ -22,21 +22,21 @@ equation
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,84},{66,24}},
+          extent={{-74,84},{66,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(points={{0,34},{0,0}},    color={0,0,0}),
         Rectangle(
-          extent={{-60,90},{60,30}},
+          extent={{-80,90},{60,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,86},{60,34}},
+          extent={{-80,86},{60,34}},
           textColor={28,108,200},
-          textString="state"),
+          textString=" state "),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},
