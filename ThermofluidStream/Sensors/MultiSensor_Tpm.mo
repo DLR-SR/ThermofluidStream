@@ -168,15 +168,15 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-80,76},{60,28}},
-          textColor={28,108,200},
+          textColor={0,0,0},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
           extent={{-80,24},{60,-24}},
-          textColor={28,108,200},
+          textColor={0,0,0},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
           extent={{-80,-28},{60,-76}},
-          textColor={28,108,200},
+          textColor={0,0,0},
           textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(visible=outputTemperature,
           points={{60,60},{78,60}},

@@ -123,7 +123,7 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-60,26},{60,-26}},
-          textColor={28,108,200},
+          textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,-40},{150,-70}},
