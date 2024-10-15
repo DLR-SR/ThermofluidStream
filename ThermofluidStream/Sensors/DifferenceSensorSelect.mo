@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -121,7 +121,7 @@ equation
           extent={{-60,26},{60,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(
+        Text(visible = displayParameters,
           extent={{-150,-40},{150,-70}},
           textColor={0,0,0},
           textString=quantityString),

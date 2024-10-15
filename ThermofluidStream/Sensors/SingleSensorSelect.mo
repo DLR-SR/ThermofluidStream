@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SingleSensorSelect "Selectable sensor"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -99,7 +99,7 @@ equation
           extent={{-80,26},{80,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(
+        Text(visible = displayParameters,
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString=quantityString),

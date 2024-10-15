@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SingleSensorX "Sensor for mass fraction"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -81,7 +81,7 @@ equation
           extent={{-80,26},{60,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(display_value,significantDigits=digits)+" ")),
-        Text(
+        Text(visible = displayParameters,
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString="X[%row] in kg/kg"),

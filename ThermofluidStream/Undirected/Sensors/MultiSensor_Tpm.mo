@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Sensors;
 model MultiSensor_Tpm "Undirected sensor for Temperature, pressure and mass flow rate"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(
@@ -143,32 +143,32 @@ equation
           extent={{-150,-160},{150,-120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-         Text(visible=not outputTemperature,
+         Text(visible= displayParameters and not outputTemperature,
           extent={{150,77},{90,47}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputPressure,
+        Text(visible= displayParameters and not outputPressure,
           extent={{150,25},{90,-5}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputMassFlowRate,
+        Text(visible= displayParameters and not outputMassFlowRate,
           extent={{150,-27},{90,-57}},
           textColor={0,0,0},
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputTemperature,
+        Text(visible= displayParameters and outputTemperature,
           extent={{155,98},{95,68}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputPressure,
+        Text(visible= displayParameters and outputPressure,
           extent={{155,38},{95,8}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputMassFlowRate,
+        Text(visible= displayParameters and outputMassFlowRate,
           extent={{155,-22},{95,-52}},
           textColor={0,0,0},
           textString=massFlowString,
