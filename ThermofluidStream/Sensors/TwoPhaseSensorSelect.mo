@@ -39,7 +39,7 @@ model TwoPhaseSensorSelect "Selectable Sensor for two phase medium"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 

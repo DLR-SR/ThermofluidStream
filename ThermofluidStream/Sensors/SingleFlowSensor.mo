@@ -45,8 +45,7 @@ model SingleFlowSensor "Flow rate sensor"
     annotation (Placement(transformation(extent={{80,-20},{120,20}}),
         iconTransformation(extent={{80,-20},{120,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{70,50},{90,70}}),
-        iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
   output Real value(unit=Internal.getFlowUnit(quantity));
 

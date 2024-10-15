@@ -10,7 +10,7 @@ model SensorState "State sensor"
         </html>"));
 
   ThermofluidStream.Interfaces.StateOutput state_out(redeclare package Medium = Medium) "State output connector"
-    annotation (Placement(transformation(extent={{70,50},{90,70}}), iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
 equation
 
@@ -44,7 +44,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(
-          points={{60,60},{78,60}},
+          points={{60,60},{100,60}},
           color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

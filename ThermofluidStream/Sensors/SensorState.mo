@@ -11,7 +11,7 @@ model SensorState "Sensor for thermodynamic state"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Interfaces.StateOutput state_out(redeclare package Medium = Medium) "State output connector"
-    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
 equation
   inlet.m_flow = 0;
@@ -39,7 +39,7 @@ equation
           textColor={0,0,0},
           textString=" state "),
         Line(
-          points={{60,0},{78,0}},
+          points={{60,0},{100,0}},
           color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

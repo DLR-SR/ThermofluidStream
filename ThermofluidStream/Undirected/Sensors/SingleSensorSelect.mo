@@ -44,9 +44,7 @@ model SingleSensorSelect "Selectable sensor"
 
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(
-        transformation(extent={{70,50},{90,70}}),
-          iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
   Real value(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity));
 
