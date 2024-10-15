@@ -30,16 +30,16 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-80,30},{60,-30}},
+          extent={{-80,30},{80,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-80,26},{60,-26}},
+          extent={{-80,15},{80,-15}},
           textColor={0,0,0},
           textString=" state "),
         Line(
-          points={{60,0},{100,0}},
+          points={{80,0},{100,0}},
           color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model MultiSensor_Tpm "Sensor for temperature, pressure and mass flow rate"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -114,32 +114,32 @@ equation
           extent={{-150,-160},{150,-120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-         Text(visible= displayParameters and not outputTemperature,
+         Text(visible= not outputTemperature,
           extent={{150,77},{90,47}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible= displayParameters and not outputPressure,
+        Text(visible= not outputPressure,
           extent={{150,25},{90,-5}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible= displayParameters and not outputMassFlowRate,
+        Text(visible= not outputMassFlowRate,
           extent={{150,-27},{90,-57}},
           textColor={0,0,0},
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible= displayParameters and outputTemperature,
+        Text(visible= outputTemperature,
           extent={{155,98},{95,68}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible= displayParameters and outputPressure,
+        Text(visible= outputPressure,
           extent={{155,38},{95,8}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible= displayParameters and outputMassFlowRate,
+        Text(visible= outputMassFlowRate,
           extent={{155,-20},{95,-50}},
           textColor={0,0,0},
           textString=massFlowString,

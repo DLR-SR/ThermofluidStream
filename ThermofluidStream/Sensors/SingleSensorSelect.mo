@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SingleSensorSelect "Selectable sensor"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
 
   import ThermofluidStream.Sensors.Internal.Types.Quantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -35,6 +35,8 @@ model SingleSensorSelect "Selectable sensor"
   elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
   elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
   else "error";
+  parameter Boolean adaptDisplay = false "=false, for standard display, =true if display is adapted"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter Boolean outputValue = false "= true, if sensor output is enabled"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -95,14 +97,23 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Text(
+        Text(visible = not outputValue or (outputValue and not adaptDisplay),
           extent={{-80,26},{80,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(visible = displayParameters,
+        Text(visible = not adaptDisplay,
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString=quantityString),
+        Text(visible = adaptDisplay and not outputValue,
+          horizontalAlignment=TextAlignment.Left,
+          extent={{90,15},{250,-15}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Text(visible = adaptDisplay and outputValue,
+          extent={{-80,15},{80,-15}},
+          textColor={0,0,0},
+          textString=" "+quantityString+" "),
         Line(visible=outputValue,
           points={{80,0},{100,0}},
           color={0,0,127})}),
