@@ -84,7 +84,7 @@ equation
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-74,54},{66,-66}},
+          extent={{-74,54},{86,-66}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,

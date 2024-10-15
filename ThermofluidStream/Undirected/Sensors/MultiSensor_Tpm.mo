@@ -174,7 +174,7 @@ equation
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
         Rectangle(
-          extent={{-74,74},{66,-86}},
+          extent={{-74,74},{86,-86}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
