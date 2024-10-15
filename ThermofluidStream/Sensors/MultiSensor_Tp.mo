@@ -90,16 +90,16 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-80,60},{60,-60}},
+          extent={{-80,60},{80,-60}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-80,56},{60,6}},
+          extent={{-80,56},{80,6}},
           textColor={0,0,0},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-80,-6},{60,-56}},
+          extent={{-80,-6},{80,-56}},
           textColor={0,0,0},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
          Text(visible=not outputTemperature,
@@ -123,10 +123,10 @@ equation
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
         Line(visible=outputTemperature,
-          points={{60,40},{100,40}},
+          points={{80,40},{100,40}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,-40},{100,-40}},
+          points={{80,-40},{100,-40}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

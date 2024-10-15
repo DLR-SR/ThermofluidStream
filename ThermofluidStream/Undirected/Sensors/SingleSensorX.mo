@@ -76,12 +76,12 @@ equation
           pattern=LinePattern.None),
         Line(points={{0,34},{0,0}}, color={0,0,0}),
         Rectangle(
-          extent={{-80,86},{60,34}},
+          extent={{-80,86},{80,34}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-80,90},{60,30}},
+          extent={{-80,90},{80,30}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(display_value,significantDigits=digits)+" ")),
         Text(
@@ -95,7 +95,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(visible=outputValue,
-          points={{60,60},{100,60}},
+          points={{80,60},{100,60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
