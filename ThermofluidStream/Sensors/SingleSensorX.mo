@@ -25,7 +25,7 @@ model SingleSensorX "Sensor for mass fraction"
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of meassured mass fraction";
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Mass fraction output connector"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
