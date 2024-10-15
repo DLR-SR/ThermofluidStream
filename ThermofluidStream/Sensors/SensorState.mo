@@ -9,7 +9,7 @@ model SensorState "Sensor for thermodynamic state"
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.StateOutput state_out(redeclare package Medium = Medium) "State output connector"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 

@@ -51,15 +51,11 @@ model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
     annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0}),
-        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={136,-10}),
-        iconTransformation(extent={{120,-20},{80,20}})));
+    annotation (Placement(transformation(extent={{120,-20},{80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{4,-78},{24,-58}}), iconTransformation(extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-90})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-90})));
 
   output Real value(unit=Internal.getUnit(quantity)) "Computed difference in the selected quantity";
 

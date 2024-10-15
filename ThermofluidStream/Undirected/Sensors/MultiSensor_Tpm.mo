@@ -15,9 +15,9 @@ model MultiSensor_Tpm "Undirected sensor for Temperature, pressure and mass flow
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-100}),iconTransformation(extent={{-120,-120},{-80,-80}})));
+    annotation (Placement(transformation(extent={{-120,-120},{-80,-80}})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-100}),iconTransformation(extent={{80,-120},{120,-80}})));
+    annotation (Placement(transformation(extent={{80,-120},{120,-80}})));
 
 /*  function regStepSt = Undirected.Internal.regStepState (
     redeclare package Medium = Medium) "RegStep function for a state"

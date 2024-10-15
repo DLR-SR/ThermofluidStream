@@ -48,7 +48,7 @@ model SingleSensorSelect "Selectable sensor"
     annotation(Dialog(group="Output", enable= outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
