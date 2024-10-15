@@ -167,17 +167,17 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Text(
-          extent={{-60,80},{60,30}},
+          extent={{-60,76},{60,28}},
           textColor={28,108,200},
-          textString=DynamicSelect("T", " "+String(T,significantDigits=digits)+" ")),
+          textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,30},{60,-20}},
+          extent={{-60,24},{60,-24}},
           textColor={28,108,200},
-          textString=DynamicSelect("p", " "+String(p,significantDigits=digits)+" ")),
+          textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-20},{60,-70}},
+          extent={{-60,-28},{60,-76}},
           textColor={28,108,200},
-          textString=DynamicSelect("m", " "+String(m_flow,significantDigits=digits)+" ")),
+          textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(visible=outputTemperature,
           points={{60,60},{78,60}},
           color={0,0,127}),

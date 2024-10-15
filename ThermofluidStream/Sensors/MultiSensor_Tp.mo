@@ -99,13 +99,13 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,55},{60,5}},
+          extent={{-60,56},{60,6}},
           textColor={28,108,200},
-          textString=DynamicSelect("T", " "+String(T,significantDigits=digits)+" ")),
+          textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-5},{60,-55}},
+          extent={{-60,-6},{60,-56}},
           textColor={28,108,200},
-          textString=DynamicSelect("p", " "+String(p,significantDigits=digits)+" ")),
+          textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
          Text(visible=not outputTemperature,
           extent={{70,45},{130,15}},
           textColor={0,0,0},

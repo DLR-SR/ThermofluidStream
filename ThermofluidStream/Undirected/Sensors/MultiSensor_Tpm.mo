@@ -189,23 +189,17 @@ equation
           fillPattern=FillPattern.Solid),
         Line(points={{0,-80},{0,-100}},color={0,0,0}),
         Text(
-          extent={{-60,80},{60,30}},
+          extent={{-60,76},{60,28}},
           textColor={28,108,200},
-          textString=DynamicSelect("T", String(
-                  T,
-                  format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,30},{60,-20}},
+          extent={{-60,24},{60,-24}},
           textColor={28,108,200},
-          textString=DynamicSelect("p", String(
-                  p,
-                  format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-20},{60,-70}},
+          extent={{-60,-28},{60,-76}},
           textColor={28,108,200},
-          textString=DynamicSelect("m", String(
-                  m_flow,
-                  format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(
           points={{-100,-100},{100,-100}},
           color={28,108,200},
