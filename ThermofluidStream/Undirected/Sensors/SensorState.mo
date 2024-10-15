@@ -29,12 +29,12 @@ equation
           pattern=LinePattern.None),
         Line(points={{0,34},{0,0}},    color={0,0,0}),
         Rectangle(
-          extent={{-80,90},{60,30}},
+          extent={{-80,90},{80,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-80,86},{60,34}},
+          extent={{-80,86},{80,34}},
           textColor={0,0,0},
           textString=" state "),
         Ellipse(
@@ -44,7 +44,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(
-          points={{60,60},{100,60}},
+          points={{80,60},{100,60}},
           color={162,29,33})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

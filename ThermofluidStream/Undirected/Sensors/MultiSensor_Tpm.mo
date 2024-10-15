@@ -180,21 +180,21 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-80,80},{60,-80}},
+          extent={{-80,80},{80,-80}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(points={{0,-80},{0,-100}},color={0,0,0}),
         Text(
-          extent={{-80,76},{60,28}},
+          extent={{-80,76},{80,28}},
           textColor={0,0,0},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-80,24},{60,-24}},
+          extent={{-80,24},{80,-24}},
           textColor={0,0,0},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
-          extent={{-80,-28},{60,-76}},
+          extent={{-80,-28},{80,-76}},
           textColor={0,0,0},
           textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(
@@ -208,13 +208,13 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Line(visible=outputTemperature,
-          points={{60,60},{100,60}},
+          points={{80,60},{100,60}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,0},{100,0}},
+          points={{80,0},{100,0}},
           color={0,0,127}),
         Line(visible=outputMassFlowRate,
-          points={{60,-60},{100,-60}},
+          points={{80,-60},{100,-60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
