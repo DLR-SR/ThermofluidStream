@@ -93,7 +93,7 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Line(visible=outputValue,
-          points={{60,60},{78,60}},
+          points={{60,60},{100,60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
