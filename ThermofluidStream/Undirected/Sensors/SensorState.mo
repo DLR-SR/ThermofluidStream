@@ -35,7 +35,7 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-80,86},{60,34}},
-          textColor={28,108,200},
+          textColor={0,0,0},
           textString=" state "),
         Ellipse(
           extent={{-5,5},{5,-5}},
