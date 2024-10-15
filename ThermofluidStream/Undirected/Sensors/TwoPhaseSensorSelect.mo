@@ -23,6 +23,9 @@ model TwoPhaseSensorSelect "Selectable sensor for two phase medium"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_Pa then "p - p_sat in Pa"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_oversat_bar then "p - p_sat in bar"
     else "error";
+  parameter Boolean adaptDisplay = false "=false, for standard display, =true if display is adapted"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true, choices(checkBox=true));
+
   parameter Boolean outputValue = false "= true, if sensor output is enabled"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean filter_output = false "= true, if sensor output is filtered (to break algebraic loops)"
@@ -82,14 +85,23 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Text(
+        Text(visible = not outputValue or (outputValue and not adaptDisplay),
           extent={{-80,86},{80,34}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(visible = displayParameters,
+        Text(visible = not adaptDisplay,
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
           textString=quantityString),
+        Text(visible = adaptDisplay and not outputValue,
+          horizontalAlignment=TextAlignment.Left,
+          extent={{90,75},{250,45}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Text(visible = adaptDisplay and outputValue,
+          extent={{-80,75},{80,45}},
+          textColor={0,0,0},
+          textString=" "+quantityString+" "),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},

@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model SingleSensorX "Sensor for mass fraction"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -23,6 +23,9 @@ model SingleSensorX "Sensor for mass fraction"
     annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of meassured mass fraction";
+
+  parameter Boolean adaptDisplay = false "=false, for standard display, =true if display is adapted"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -73,20 +76,29 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-80,30},{60,-30}},
+          extent={{-80,30},{80,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-80,26},{60,-26}},
+        Text(visible = not outputValue or (outputValue and not adaptDisplay),
+          extent={{-80,26},{80,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(display_value,significantDigits=digits)+" ")),
-        Text(visible = displayParameters,
+        Text(visible = not adaptDisplay,
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString="X[%row] in kg/kg"),
+        Text(visible = adaptDisplay and not outputValue,
+          horizontalAlignment=TextAlignment.Left,
+          extent={{90,15},{250,-15}},
+          textColor={0,0,0},
+          textString="X[%row] in kg/kg"),
+        Text(visible = adaptDisplay and outputValue,
+          extent={{-80,15},{80,-15}},
+          textColor={0,0,0},
+          textString=" X[%row] in kg/kg "),
         Line(visible=outputValue,
-          points={{60,0},{100,0}},
+          points={{80,0},{100,0}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
