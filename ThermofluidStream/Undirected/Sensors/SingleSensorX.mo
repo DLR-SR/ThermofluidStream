@@ -84,7 +84,7 @@ equation
           extent={{-80,90},{80,30}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(display_value,significantDigits=digits)+" ")),
-        Text(
+        Text(visible = displayParameters,
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
           textString="X[%row] in kg/kg"),

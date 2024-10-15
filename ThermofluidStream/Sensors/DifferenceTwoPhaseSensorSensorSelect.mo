@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model DifferenceTwoPhaseSensorSensorSelect "Sensor for selectable quantatiy difference of two phase media"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   import Quantities = ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities;
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
@@ -113,7 +113,7 @@ equation
           extent={{-60,26},{60,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(
+        Text(visible = displayParameters,
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString=quantityString),

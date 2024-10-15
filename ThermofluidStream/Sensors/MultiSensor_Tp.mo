@@ -1,7 +1,7 @@
 within ThermofluidStream.Sensors;
 model MultiSensor_Tp "Temperature and pressure sensor"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false);
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName = false, displayParameters=true);
 
   import InitMode = ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor;
 
@@ -102,22 +102,22 @@ equation
           extent={{-80,-6},{80,-56}},
           textColor={0,0,0},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
-         Text(visible=not outputTemperature,
+         Text(visible=displayParameters and not outputTemperature,
           extent={{90,46},{150,16}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputPressure,
+        Text(visible=displayParameters and not outputPressure,
           extent={{90,-16},{150,-46}},
           textColor={0,0,0},
           horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
-        Text(visible= outputTemperature,
+        Text(visible= displayParameters and outputTemperature,
           extent={{95,78},{155,48}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputPressure,
+        Text(visible= displayParameters and outputPressure,
           extent={{95,-2},{155,-32}},
           textColor={0,0,0},
           textString="%pressureUnit",
