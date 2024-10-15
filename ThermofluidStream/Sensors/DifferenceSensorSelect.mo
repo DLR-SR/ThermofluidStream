@@ -103,22 +103,18 @@ equation
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-74,24},{86,-36}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-100,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-80,30},{80,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,26},{60,-26}},
+          extent={{-80,26},{80,-26}},
           textColor={0,0,0},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
@@ -126,7 +122,7 @@ equation
           textColor={0,0,0},
           textString=quantityString),
         Ellipse(
-          extent={{70,30},{90,10}},
+          extent={{90,40},{110,20}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(visible=outputValue,
@@ -136,22 +132,22 @@ equation
           points={{0,-30},{0,-40}},
           color={0,0,127}),
         Line(
-          points={{72,20},{88,20}},
+          points={{92,30},{108,30}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-90,30},{-70,10}},
+          extent={{-110,40},{-90,20}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(
-          points={{-88,20},{-72,20}},
+          points={{-108,30},{-92,30}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{-8,0},{8,0}},
           color={28,108,200},
           thickness=0.5,
-          origin={-80,20},
+          origin={-100,30},
           rotation=90)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
