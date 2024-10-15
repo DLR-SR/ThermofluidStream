@@ -177,27 +177,27 @@ equation
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
         Rectangle(
-          extent={{-54,74},{66,-86}},
+          extent={{-74,74},{66,-86}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-60,80},{60,-80}},
+          extent={{-80,80},{60,-80}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(points={{0,-80},{0,-100}},color={0,0,0}),
         Text(
-          extent={{-60,76},{60,28}},
+          extent={{-80,76},{60,28}},
           textColor={28,108,200},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,24},{60,-24}},
+          extent={{-80,24},{60,-24}},
           textColor={28,108,200},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-28},{60,-76}},
+          extent={{-80,-28},{60,-76}},
           textColor={28,108,200},
           textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(

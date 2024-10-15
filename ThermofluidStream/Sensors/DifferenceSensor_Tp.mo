@@ -118,16 +118,16 @@ equation
           color={28,108,200},
           thickness=0.5),
         Rectangle(
-          extent={{-60,60},{60,-60}},
+          extent={{-80,60},{60,-60}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,56},{60,6}},
+          extent={{-80,56},{60,6}},
           textColor={28,108,200},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-6},{60,-56}},
+          extent={{-80,-6},{60,-56}},
           textColor={28,108,200},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(visible=not outputTemperature,

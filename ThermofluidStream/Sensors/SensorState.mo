@@ -24,7 +24,7 @@ equation
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-74,24},{66,-36}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
@@ -34,14 +34,14 @@ equation
           color={28,108,200},
           thickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-80,30},{60,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,26},{60,-26}},
+          extent={{-80,26},{60,-26}},
           textColor={28,108,200},
-          textString="state"),
+          textString=" state "),
         Line(
           points={{60,0},{78,0}},
           color={162,29,33})}),
