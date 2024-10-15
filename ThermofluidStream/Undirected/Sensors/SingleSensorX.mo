@@ -26,7 +26,7 @@ model SingleSensorX "Mass fractions sensor"
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of mass fraction vector to display";
 
   Modelica.Blocks.Interfaces.RealOutput value_out[Medium.nX](each unit="kg/kg") = value if outputValue "Measured value [variable]"
-    annotation (Placement(transformation(extent={{72,50},{92,70}}), iconTransformation(extent={{72,50},{92,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
   output Real value[Medium.nX](each unit="kg/kg") "Computed value of the selected Quantity";
   output Real display_value(unit="kg/kg") = value[row] "Row of the value vector to display";

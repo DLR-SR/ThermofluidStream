@@ -50,7 +50,7 @@ model SingleSensorSelect "Selectable sensor"
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{72,-10},{92,10}}), iconTransformation(extent={{72,-10},{92,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
   output Real value(unit=Internal.getUnit(quantity)) "Computed value of the selected quantity";
 
