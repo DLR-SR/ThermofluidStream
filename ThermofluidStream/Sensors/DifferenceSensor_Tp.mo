@@ -113,10 +113,6 @@ equation
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-80,0},{0,0}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
           extent={{-80,60},{60,-60}},
           lineColor={0,0,0},
@@ -150,10 +146,6 @@ equation
           textColor={0,0,0},
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
-        Line(
-          points={{-80,60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
         Line(
           points={{-100,-60},{-80,-60}},
           color={28,108,200},
