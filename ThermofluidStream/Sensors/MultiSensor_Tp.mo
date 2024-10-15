@@ -78,7 +78,7 @@ equation
     T = direct_T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensorTp",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
