@@ -109,7 +109,7 @@ equation
     m_flow = direct_m_flow;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensorTpm",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
          Text(visible=displayInstanceName,
           extent={{-150,-160},{150,-120}},
           textString="%name",

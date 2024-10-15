@@ -63,7 +63,7 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="massFractionSensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",

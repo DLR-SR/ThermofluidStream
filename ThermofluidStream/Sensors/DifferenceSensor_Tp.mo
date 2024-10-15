@@ -102,7 +102,7 @@ equation
     T = direct_T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="differentialSensorTp",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",

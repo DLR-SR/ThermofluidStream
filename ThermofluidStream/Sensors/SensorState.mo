@@ -18,7 +18,7 @@ equation
 
   state_out.state = inlet.state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="stateSensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,80},{150,40}},
           textString="%name",

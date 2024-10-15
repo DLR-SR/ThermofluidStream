@@ -16,7 +16,7 @@ equation
 
   state_out.state = state;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="stateSensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",
