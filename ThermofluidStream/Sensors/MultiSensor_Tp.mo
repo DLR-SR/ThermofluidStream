@@ -123,10 +123,10 @@ equation
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
         Line(visible=outputTemperature,
-          points={{60,40},{78,40}},
+          points={{60,40},{100,40}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,-40},{78,-40}},
+          points={{60,-40},{100,-40}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

@@ -114,7 +114,7 @@ equation
           textColor={0,0,0},
           textString=quantityString),
         Line(visible=outputValue,
-          points={{60,60},{78,60}},
+          points={{60,60},{100,60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
