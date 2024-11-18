@@ -9,7 +9,7 @@ class ReleaseNotes "Release notes"
 This section summarizes the changes that have been performed on the library.
 </p>
 
-<h4>Version 1.2.0-dev (202Y-MM-DD)</h4>
+<h4>Version 1.2.0 (2024-11-18)</h4>
 <ul>
   <li>
     Velocity of sound can be measured with
@@ -20,6 +20,15 @@ This section summarizes the changes that have been performed on the library.
   <li>
     Added the ability to display class instance names and relevant parameters by a global parameter in <code>dropOfCommons</code>.
     The parameter can be overwritten on component level (layout tab) to only display the names of selected class instances and/or parameters.
+  </li>
+  <li>
+    Improved compressible media assert and include <code>assertionLevel</code> from <code>dropOfCommons</code>.
+  </li>
+  <li>
+    Added <a href=\"modelica://ThermofluidStream.Processes.Pipes\">pipes package</a> provided by HTWG Konstanz. The package consists of regulary straight pipes, bends, flow contraction and expansion as well as flow con- and diverging components.
+  </li>
+  <li>
+    Add default values for valve parameters and asserts for check. 
   </li>
 </ul>
 
