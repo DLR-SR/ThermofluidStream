@@ -22,7 +22,7 @@ model Test_Junction
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=200000,
-    T0_par=293.15) annotation (Placement(transformation(extent={{-56,20},{-36,40}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{-74,20},{-54,40}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -31,6 +31,13 @@ model Test_Junction
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=1,
     r=1e-2) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+  FlowResistance                             flowResistance1(
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+    l=1,
+    r=1e-2) annotation (Placement(transformation(extent={{-44,20},{-24,40}})));
 equation
   connect(junctionY.outlet, flowResistance.inlet)
     annotation (Line(
@@ -41,14 +48,19 @@ equation
       points={{60,0},{40,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(junctionY.inlet_branching, source1.outlet)
-    annotation (Line(
-      points={{-6,8},{-6,30},{-36,30}},
-      color={28,108,200},
-      thickness=0.5));
   connect(junctionY.inlet_straight, source.outlet)
     annotation (Line(
       points={{-10,0},{-20,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source1.outlet, flowResistance1.inlet)
+    annotation (Line(
+      points={{-54,30},{-44,30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance1.outlet, junctionY.inlet_branching)
+    annotation (Line(
+      points={{-24,30},{-6,30},{-6,8}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
