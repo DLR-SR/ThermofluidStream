@@ -9,7 +9,7 @@ class ReleaseNotes "Release notes"
 This section summarizes the changes that have been performed on the library.
 </p>
 
-<h4>Version 1.2.0-dev (202Y-MM-DD)</h4>
+<h4>Version 1.2.0 (2024-11-18)</h4>
 <ul>
   <li>
     Velocity of sound can be measured with
