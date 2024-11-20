@@ -23,6 +23,10 @@ algorithm
     value := m_flow * Medium.specificHeatCapacityCp(state);
   elseif quantity == Types.MassFlowQuantities.H_flow_Jps then
     value := m_flow * Medium.specificEnthalpy(state);
+  elseif quantity == Types.MassFlowQuantities.H_flow_kJps then
+    value := 1e-3*m_flow * Medium.specificEnthalpy(state);
+  elseif quantity == Types.MassFlowQuantities.H_flow_MJps then
+    value := 1e-6*m_flow * Medium.specificEnthalpy(state);
   elseif quantity == Types.MassFlowQuantities.m_flow_kgps then
     value := m_flow;
   elseif quantity == Types.MassFlowQuantities.m_flow_gps then
