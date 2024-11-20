@@ -24,9 +24,9 @@ model Nozzle "Model for dynamic pressure difference"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayInertance = false "=true, if inertance L is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Boolean dA_in = displayInletArea and not area_in_FromInput "Display inlet area"
+  final parameter Boolean dA_in = displayParameters and displayInletArea and not area_in_FromInput "Display inlet area"
     annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean dA_out = displayOutletArea and not area_out_FromInput "Display outlet area"
+  final parameter Boolean dA_out = displayParameters and displayOutletArea and not area_out_FromInput "Display outlet area"
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayA = dA_in or dA_out "Display inlet area or display outlet area"
     annotation(Evaluate=true, HideResult=true);
@@ -60,18 +60,10 @@ model Nozzle "Model for dynamic pressure difference"
     else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
-  Modelica.Blocks.Interfaces.RealInput A_in_var(unit = "m2") if area_in_FromInput "Inlet cross-sectional area input connector [m2]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,170}), iconTransformation(extent={{20,-20},{-20,20}},
-        rotation=180,
-        origin={-120,-60})));
-  Modelica.Blocks.Interfaces.RealInput A_out_var(unit = "m2") if area_out_FromInput "Outlet cross-sectional area input connector [m2]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,170}), iconTransformation(extent={{20,-20},{-20,20}},
-        rotation=0,
-        origin={120,-60})));
+  Modelica.Blocks.Interfaces.RealInput A_in_var(unit = "m2") if area_in_FromInput "Inlet cross-sectional area input connector [m2]"
+    annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
+  Modelica.Blocks.Interfaces.RealInput A_out_var(unit = "m2") if area_out_FromInput "Outlet cross-sectional area input connector [m2]"
+    annotation (Placement(transformation(extent={{140,-80},{100,-40}})));
 
 
 protected

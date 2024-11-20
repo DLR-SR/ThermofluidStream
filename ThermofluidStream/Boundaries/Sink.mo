@@ -39,14 +39,7 @@ the outlet the sink is connected to.
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={20,0}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={20,0})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=180,origin={20,0})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";

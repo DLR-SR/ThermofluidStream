@@ -17,11 +17,9 @@ model JunctionMN "Generalized junction/splitter for undirected flow"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Rear rears[N](redeclare package Medium = Medium) "Rear ports"
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
+      annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Fore fores[M](redeclare package Medium = Medium) "Fore ports"
-      annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={100,0})));
+      annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
   SI.Pressure p_mix "(Steady-state) pressure of mixture (assuming positive mass flow rates)";
 

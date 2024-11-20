@@ -17,38 +17,42 @@ model Switch
     annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
 
   Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-130}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={0,-120})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-120})));
 
-  ThermofluidStream.FlowControl.TanValve tanValve(redeclare package Medium = Medium,
-                                                  final invertInput=invertInput,
-                                                  final m_flow_ref=m_flow_ref,
-                                                  final p_ref=p_ref,
-                                                  final relativeLeakiness=relativeLeakiness,
-                                  outlet(m_flow(stateSelect=StateSelect.prefer)))
+  ThermofluidStream.FlowControl.TanValve tanValve(
+    displayInstanceName=true,
+    redeclare package Medium = Medium,
+    final invertInput=invertInput,
+    final m_flow_ref=m_flow_ref,
+    final p_ref=p_ref,
+    final relativeLeakiness=relativeLeakiness,
+    outlet(m_flow(stateSelect=StateSelect.prefer)))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,40})));
-  ThermofluidStream.FlowControl.TanValve tanValve1(redeclare package Medium = Medium,
-                                                  final invertInput=not invertInput,
-                                                  final m_flow_ref=m_flow_ref,
-                                                  final p_ref=p_ref,
-                                                  final relativeLeakiness=relativeLeakiness)
+  ThermofluidStream.FlowControl.TanValve tanValve1(
+    displayInstanceName=true,
+    redeclare package Medium = Medium,
+    final invertInput=not invertInput,
+    final m_flow_ref=m_flow_ref,
+    final p_ref=p_ref,
+    final relativeLeakiness=relativeLeakiness)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={40,0})));
-  ThermofluidStream.Topology.SplitterT2 splitterT2_1(redeclare package Medium = Medium, L=0)
+  ThermofluidStream.Topology.SplitterT2 splitterT2_1(
+    displayInstanceName=true,
+    redeclare package Medium = Medium,
+    L=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
   // for dynamic select of graphics only
@@ -88,8 +92,8 @@ equation
       points={{6.66134e-16,50},{0,50},{0,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-130}},color={0,0,127}));
-  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-130}},color={0,0,127}));
+  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-120}},color={0,0,127}));
+  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-120}},color={0,0,127}));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName,

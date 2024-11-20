@@ -29,7 +29,7 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean dv_in = displayParameters and not velocityFromInput and displayInletVelocity "Display inlet velocity"
     annotation(Evaluate=true, HideResult=true);
-  final parameter Boolean displayA = displayOutletArea and not areaFromInput "Display outlet cross section area"
+  final parameter Boolean displayA = displayParameters and displayOutletArea and not areaFromInput "Display outlet cross section area"
     annotation(Evaluate=true, HideResult=true);
   final parameter String compressibilityString = if assumeConstantDensity then "incompressible" else "compressible"
     annotation(Evaluate=true, HideResult=true);
@@ -53,19 +53,10 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
     else "" annotation(Evaluate=true, HideResult=true);
   //----------------------------------------------------------------
 
-  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Outlet cross section area input connector [m2]" annotation (Placement(transformation(
-          extent={{-20,20},{20,-20}},
-        rotation=180,
-        origin={120,-60}),iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=180,
-        origin={120,-60})));
-  Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s") if velocityFromInput "Inlet velocity input connector [m/s]" annotation (Placement(transformation(
-          extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={-118,-60}),
-                         iconTransformation(extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={-120,-60})));
+  Modelica.Blocks.Interfaces.RealInput A_var(unit = "m2") if areaFromInput "Outlet cross section area input connector [m2]"
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=180,origin={120,-60})));
+  Modelica.Blocks.Interfaces.RealInput v_in_var(unit="m/s") if velocityFromInput "Inlet velocity input connector [m/s]"
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=0,origin={-120,-60})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of outlet";

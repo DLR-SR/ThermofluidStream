@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectForeOutlet "Connects fore port to outlet"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -12,40 +12,38 @@ model ConnectForeOutlet "Connects fore port to outlet"
   parameter Boolean useDefaultStateAsRear = false "=true, if default medium state is used for rear.state_rearwards";
 
   Interfaces.Fore fore(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-40,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),iconTransformation(extent={{-60,-20},{-20,20}})));
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={40,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
-  ConnectRearOutlet connectRearOutlet(redeclare package Medium=Medium, final L=L/2, final useDefaultStateAsRear = useDefaultStateAsRear)
-    annotation (Placement(transformation(extent={{0,-10},{20,10}})));
-  ConnectForeFore connectForeFore(redeclare package Medium=Medium, final L=L/2)
-    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}}),iconTransformation(extent={{20,-20},{60,20}})));
+  ConnectRearOutlet connectRearOutlet(
+    displayInstanceName=true,
+    redeclare package Medium=Medium,
+    final L=L/2,
+    final useDefaultStateAsRear = useDefaultStateAsRear)
+    annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+  ConnectForeFore connectForeFore(
+    displayInstanceName=true,
+    redeclare package Medium=Medium,
+    final L=L/2)
+    annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   ThermofluidStream.Interfaces.StateInput state_rear(redeclare package Medium=Medium) if not useDefaultStateAsRear
-    annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,40}), iconTransformation(
-        extent={{20,-20},{-20,20}},
-        rotation=270,
-        origin={0,-40})));
+    annotation (Placement(transformation(extent={{20,-20},{-20,20}},rotation=270,origin={0,-40})));
 
 equation
 
   connect(connectRearOutlet.rear, connectForeFore.fore_b) annotation (Line(
-      points={{7,0},{-7,0}},
+      points={{37,0},{-37,0}},
       color={28,108,200},
       thickness=0.5));
   connect(connectRearOutlet.outlet, outlet) annotation (Line(
-      points={{13,0},{40,0}},
+      points={{43,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(connectForeFore.fore_a, fore) annotation (Line(
-      points={{-13,0},{-40,0}},
+      points={{-43,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(connectRearOutlet.state_rear, state_rear) annotation (Line(points={{10,-4},{10,12},{0,12},{0,40}},
+  connect(connectRearOutlet.state_rear, state_rear) annotation (Line(points={{40,-4},{40,-12},{0,-12},{0,-40}},
                                  color={162,29,33}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true),
       graphics={

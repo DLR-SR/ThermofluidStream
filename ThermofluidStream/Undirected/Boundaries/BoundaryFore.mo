@@ -62,20 +62,16 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
   //-----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60}),
-      iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,60})));
   Modelica.Blocks.Interfaces.RealInput T0_var(unit = "K") if not setEnthalpy and temperatureFromInput "Temperature input connector [K]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,20}),
-      iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and enthalpyFromInput "Enthalpy input connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-20}),
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-20,0}),
       iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,0})));
   Modelica.Blocks.Interfaces.RealInput xi_var[Medium.nXi](each unit = "kg/kg") if xiFromInput "Mass fraction connector [kg/kg]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60}),
-      iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60}), iconTransformation(extent={{-20,-20},{20,20}}, rotation=180, origin={20,-60})));
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-      iconTransformation(extent={{-80,-20},{-120,20}})));
+    annotation (Placement(transformation(extent={{-80,-20},{-120,20}})));
 
 protected
   SI.Pressure p_forwards = Medium.pressure(rear.state_forwards);

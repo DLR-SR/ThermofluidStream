@@ -11,28 +11,37 @@ model SplitterT1 "Splitter with one inlet and two outlets"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,100})));
   Interfaces.Outlet outletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100})));
-  SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
+  SplitterN splitterN(
+    displayInstanceName=true,
+    final N=2,
+    final L=L,
+    redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
 equation
   connect(splitterN.inlet, inlet) annotation (Line(
-      points={{-28,0},{-100,0}},
+      points={{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], outletA) annotation (Line(
-      points={{-8,0.5},{0,0.5},{0,100}},
+      points={{-20,0.5},{0,0.5},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(outletB, splitterN.outlets[1]) annotation (Line(
-      points={{0,-100},{0,-0.5},{-8,-0.5}},
+      points={{0,-100},{0,-0.5},{-20,-0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "splitter",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-65},{150,-25}},
           textString="%name",

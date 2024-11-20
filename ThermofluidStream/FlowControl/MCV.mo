@@ -39,21 +39,9 @@ model MCV "Flow rate control valve"
 
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
-    annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
-    annotation (Placement(
-        transformation(extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-120}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-110})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
 
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";

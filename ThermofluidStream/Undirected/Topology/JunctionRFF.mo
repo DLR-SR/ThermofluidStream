@@ -15,12 +15,13 @@ model JunctionRFF "Junction of one rear and two fore ports"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Rear rear(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Fore foreA(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,80},{20,120}})));
   Interfaces.Fore foreB(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}})));
   JunctionMN junctionMN(
+    displayInstanceName=true,
     final M=2,
     final N=1,
     final assumeConstantDensity=assumeConstantDensity,
@@ -31,7 +32,7 @@ model JunctionRFF "Junction of one rear and two fore ports"
 
 equation
   connect(junctionMN.rears[1], rear) annotation (Line(
-      points={{-50,0},{-76,0},{-76,0},{-100,0}},
+      points={{-50,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[1], foreB) annotation (Line(
@@ -42,7 +43,7 @@ equation
       points={{0,100},{0,0.5},{-30,0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junction",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",

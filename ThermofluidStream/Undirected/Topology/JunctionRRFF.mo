@@ -15,14 +15,15 @@ model JunctionRRFF "Junction of two rear and two fore ports"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Rear reara(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Rear rearb(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,80},{20,120}})));
   Interfaces.Fore foreB(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   Interfaces.Fore foreA(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}})));
   JunctionMN junctionMN(
+    displayInstanceName=true,
     final M=2,
     final N=2,
     final assumeConstantDensity=assumeConstantDensity,
@@ -33,22 +34,22 @@ model JunctionRRFF "Junction of two rear and two fore ports"
 
 equation
   connect(foreB, junctionMN.fores[2]) annotation (Line(
-      points={{100,0},{40,0},{40,0.5},{10,0.5}},
+      points={{100,0},{98,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(foreA, junctionMN.fores[1]) annotation (Line(
-      points={{0,-100},{0,-20},{10,-20},{10,-0.5}},
+      points={{0,-100},{0,-14},{18,-14},{18,-0.5},{10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.rears[1], reara) annotation (Line(
-      points={{-10,-0.5},{-40,-0.5},{-40,0},{-100,0}},
+      points={{-10,-0.5},{-12,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(rearb, junctionMN.rears[2]) annotation (Line(
-      points={{0,100},{0,20},{-10,20},{-10,0.5}},
+      points={{0,100},{0,14},{-18,14},{-18,0.5},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",

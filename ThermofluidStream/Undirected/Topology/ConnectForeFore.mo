@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectForeFore "Connects two fore ports"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -11,11 +11,9 @@ model ConnectForeFore "Connects two fore ports"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Fore fore_a(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-50,-20},{-10,20}})));
   Interfaces.Fore fore_b(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
+    annotation (Placement(transformation(extent={{10,-20},{50,20}})));
 
 equation
   fore_b.state_forwards = fore_a.state_rearwards;

@@ -31,10 +31,8 @@ model ThermalConvectionPipe "Very simple model of thermal convection"
 
   Integer turb_flag "= 0 for laminar flow, = 1 for turbulent flow (Re > 2300)";
 
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
-      Placement(transformation(extent={{-10,-110},{10,-90}}),
-                                                            iconTransformation(
-          extent={{-10,-110},{10,-90}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
 
 protected
