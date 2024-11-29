@@ -197,9 +197,9 @@ protected
   //Real shiftRearUp[N_rears];
   Real shiftFore[N_fores];
   //Real shiftForeUp[N_fores];
-  Medium.Density liquidDensity=Medium.Incompressible.density(medium.state)
+  Medium.Density liquidDensity=Medium.Incompressible.density(Medium.Incompressible.setState_pTX(medium.state.p,medium.state.T))
     "density of the liquid in the tank";
-  Medium.Density gasDensity=Medium.SingleGas.density(medium.state)
+  Medium.Density gasDensity=Medium.SingleGas.density(Medium.SingleGas.setState_pTX(medium.state.p,medium.state.T))
     "density of the gas in the tank";
   Real fChaoticLife[N_inlets];
 initial equation

@@ -123,9 +123,9 @@ protected
   Boolean fFull;
   Boolean fEmpty;
   Real shiftOutlet[M_outlets];
-  Medium.Density liquidDensity=Medium.Incompressible.density(medium.state)
+  Medium.Density liquidDensity=Medium.Incompressible.density(Medium.Incompressible.setState_pTX(medium.state.p,medium.state.T))
    "density of the liquid in the tank";
-  Medium.Density gasDensity=Medium.SingleGas.density(medium.state)
+  Medium.Density gasDensity=Medium.SingleGas.density(Medium.SingleGas.setState_pTX(medium.state.p,medium.state.T))
    "density of the gas in the tank";
 initial equation
   if initialize_pressure then
