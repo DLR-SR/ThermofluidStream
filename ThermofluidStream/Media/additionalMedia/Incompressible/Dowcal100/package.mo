@@ -243,7 +243,7 @@ package Dowcal100 "Concentration 60 volume%, ethylene glycol-based mixed with wa
     175, 0.000532]);
 
      annotation (Documentation(info="<html>
-<p>The data in the Dowcal100 media is taken from https://www.dow.com/en-us/market/mkt-building-construction/sub-build-heating-cooling-refrigeration/heat-transfer-fluid-selection-calculator.html.</p>
+<p>The data in the Dowcal100 media is taken from https://www.dow.com/en-us/market/mkt-building-construction/sub-build-heating-cooling-refrigeration/heat-transfer-fluid-selection-calculator.html in Jan 2024.</p>
 <p>&quot;An ethylene glycol-based heat transfer fluid used in various industrial applications, highly recommended for heating applications&quot;</p>
 <p>Density</p>
 <p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_density_T.png\"/></p>

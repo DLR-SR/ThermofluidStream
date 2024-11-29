@@ -311,9 +311,10 @@ equation
           textColor={206,103,0},
           textString="a")}),Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. </p>
+<p>This Volume is the parent class for Accumulator and Receiver models that separate the two phases and are able to output gas, liquid or two-phase medium, depending on its liquid level and the height of the outlet. Numerical stiffness is handled the same way as in the VolumeFlex.</p>
 <p>To complete the partialTank, equations for total tank volume V, centreOfMass, staticHeadInlets and staticHeadOutlets needs to be provided. This separation is made to make it easy to implement arbitrary geometries. In this component, medium.p is interpreted as the pressure at the liquid surface.</p>
 <p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false)</p>
+<p>The fundamental idea of the model is based on work by Hans Ellstroem (https://www.researchgate.net/profile/Soeren-Steinkellner/publication/312590863_MODELLING_AND_SIMULATION_OF_FUEL_SYSTEMS_IN_MILITARY_AIRCRAFTS/links/5884927e4585150dde47b6aa/MODELLING-AND-SIMULATION-OF-FUEL-SYSTEMS-IN-MILITARY-AIRCRAFTS.pdf).</p>
 <p><span style=\"color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions.</span></p>
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,

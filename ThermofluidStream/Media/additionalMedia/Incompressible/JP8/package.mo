@@ -33,13 +33,13 @@ package JP8 "Jet propulsion 8, JetA with additives, typical density"
 <p><br>The kinematic&nbsp;viscosity&nbsp;data&nbsp;is given between&nbsp;-50&nbsp;and&nbsp;145&nbsp;degC,&nbsp;with log(viscosity)&nbsp;linear&nbsp;in&nbsp;T.</p>
 <p><br>The true&nbsp;vapor&nbsp;pressure&nbsp;data&nbsp;is given between&nbsp;50&nbsp;degC&nbsp;and&nbsp;140&nbsp;degC,&nbsp;with log(VaporPressure)&nbsp;linear&nbsp;in&nbsp;1/T(in&nbsp;Kelvin).</p>
 <p>Density</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_density.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_density.png\"/></p>
 <p>Heat capacity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_specHeat.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_specHeat.png\"/></p>
 <p>Dynamic viscosity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_dynVis.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_dynVis.png\"/></p>
 <p>Thermal conductivity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_thermCond.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_thermCond.png\"/></p>
 </html>",
         revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
