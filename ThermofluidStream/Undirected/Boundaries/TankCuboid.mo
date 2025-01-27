@@ -22,8 +22,8 @@ protected
    Real nx=normAcc[1];
    Real nz=normAcc[3];
    Modelica.Units.SI.Area Area = V_liquid/yLength;
-   Modelica.Units.SI.Length AxLimit;
-   Modelica.Units.SI.Length AzLimit;
+   Modelica.Units.SI.Area AxLimit;
+   Modelica.Units.SI.Area AzLimit;
 
 initial equation
 
@@ -63,36 +63,36 @@ equation
   if nz<0 then
     if nx<0 then
       //small triangle of liquid
-      D1 =sqrt(2*nx*nz*Area);
+      D1 =sqrt(2*abs(nx*nz)*Area);
       //rectangle plus triangle of liquid, bottom mostly in z-direction
       D2 =-nz*Area/xLength - nx*xLength/2;
       //rectangle plus triangle of liquid, bottom mostly in x-direction
       D3 =-nx*Area/zLength - nz*zLength/2;
       // Full apart from small triangle of gas
-      D4 =-(nx*xLength + nz*zLength) - sqrt(2*nx*nz*(xLength*zLength - Area));
+      D4 =-(nx*xLength + nz*zLength) - sqrt(2*abs(nx*nz)*(xLength*zLength - Area));
 
     else
       //nx >=0
-      D1 =-nx*xLength + sqrt(-2*nx*nz*Area);
+      D1 =-nx*xLength + sqrt(2*abs(nx*nz)*Area);
       D2 =-nz*Area/xLength - nx*xLength/2;
       D3 =nx*Area/zLength - nx*xLength - nz*zLength/2;
-      D4 =-nz*zLength - sqrt(-2*nx*nz*(xLength*zLength - Area));
+      D4 =-nz*zLength - sqrt(2*abs(nx*nz)*(xLength*zLength - Area));
 
     end if;
   else
     //nz >=0
       if nx < 0 then
-        D1 =-nz*zLength + sqrt(-2*nx*nz*Area);
+        D1 =-nz*zLength + sqrt(2*abs(nx*nz)*Area);
         D2 =nz*Area/xLength - nx*xLength/2 - nz*zLength;
         D3 =-nx*Area/zLength - nz*zLength/2;
-        D4 =-nx*xLength - sqrt(-2*nx*nz*(xLength*zLength - Area));
+        D4 =-nx*xLength - sqrt(2*abs(nx*nz)*(xLength*zLength - Area));
 
       else
         //nx>=0
-        D1 =-(nx*xLength + nz*zLength) + sqrt(2*nx*nz*Area);
+        D1 =-(nx*xLength + nz*zLength) + sqrt(2*abs(nx*nz)*Area);
         D2 =nz*Area/xLength - nx*xLength/2 - nz*zLength;
         D3 =nx*Area/zLength - nx*xLength - nz*zLength/2;
-        D4 =-sqrt(2*nx*nz*(xLength*zLength - Area));
+        D4 =-sqrt(2*abs(nx*nz)*(xLength*zLength - Area));
 
     end if;
   end if;
