@@ -1,0 +1,54 @@
+{
+  "version" : "2",
+  "id" : "63c8046d-bf3b-4a82-98f6-09a6e1538f3f",
+  "experiment" : {
+    "base" : {
+      "analysis" : {
+        "variableFilters" : [ ],
+        "selectedType" : "dynamic",
+        "choices" : [ {
+          "type" : "dynamic",
+          "parameters" : {
+            "final_time" : 25,
+            "start_time" : 0
+          },
+          "simulationOptions" : {
+            "dynamic_diagnostics" : false,
+            "ncp" : 1000
+          },
+          "solverOptions" : {
+            "store_event_points" : true
+          },
+          "compilerOptions" : {
+            "generate_html_diagnostics" : false,
+            "include_protected_variables" : false
+          },
+          "runtimeOptions" : { }
+        } ],
+        "expansion" : {
+          "discreteAlgorithm" : {
+            "noOfSamples" : 0,
+            "seed" : 0
+          },
+          "continuousAlgorithm" : {
+            "type" : "SOBOL",
+            "noOfSamples" : 10,
+            "seed" : 0
+          }
+        }
+      },
+      "modifiers" : {
+        "initializeFrom" : "",
+        "variables" : [ {
+          "name" : "trapezoid.amplitude",
+          "expression" : "1.5"
+        } ]
+      }
+    }
+  },
+  "metadata" : {
+    "created" : "2025-04-11 19:08:57.530155954",
+    "lastModified" : "2025-04-11T19:23:43.797062860Z",
+    "name" : "Experiment 1"
+  }
+}

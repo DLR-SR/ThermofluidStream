@@ -64,8 +64,8 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
 
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
 
-protected
   parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
+protected
 
   Modelica.Units.SI.Pressure p_A=MediumA.pressure(inletA.state) "Inlet A pressure";
   Modelica.Units.SI.Pressure p_B=MediumB.pressure(inletB.state) "Inlet B pressure";

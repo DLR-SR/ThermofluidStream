@@ -1,7 +1,12 @@
 {
   "name": "Thermofluidstream",
   "format": "1.0.0",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "Modelica",
+      "versionSpecifier": "4.0.0"
+    }
+  ],
   "content": [
     {
       "relpath": "ThermofluidStream",
@@ -64,6 +69,13 @@
       "contentType": "GENERIC",
       "defaultDisabled": true,
       "id": "bf313e3c81f544e480257769f62ad69d"
+    },
+    {
+      "relpath": "Examples",
+      "contentType": "MODELICA",
+      "name": "Examples",
+      "defaultDisabled": false,
+      "id": "030ebf9f6f814647b860ae6580b29725"
     }
   ],
   "executionOptions": []
