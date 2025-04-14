@@ -47,35 +47,10 @@
       "id": "7c56884aa265475b8c6c388a6fa8326e"
     },
     {
-      "relpath": "ReferenceResults",
-      "contentType": "REFERENCE_RESULTS",
-      "defaultDisabled": false,
-      "id": "5b6e7f0fbc3248178e8a397ee3550195"
-    },
-    {
       "relpath": "Resources/ExperimentDefinitions",
       "contentType": "EXPERIMENT_DEFINITIONS",
       "defaultDisabled": false,
       "id": "7c0cf26cfdd04ff198522c9ea7d6298e"
-    },
-    {
-      "relpath": "community",
-      "contentType": "GENERIC",
-      "defaultDisabled": true,
-      "id": "1452459b29cd4cde99434e8891e54284"
-    },
-    {
-      "relpath": "doc",
-      "contentType": "GENERIC",
-      "defaultDisabled": true,
-      "id": "bf313e3c81f544e480257769f62ad69d"
-    },
-    {
-      "relpath": "Examples",
-      "contentType": "MODELICA",
-      "name": "Examples",
-      "defaultDisabled": false,
-      "id": "030ebf9f6f814647b860ae6580b29725"
     }
   ],
   "executionOptions": []
