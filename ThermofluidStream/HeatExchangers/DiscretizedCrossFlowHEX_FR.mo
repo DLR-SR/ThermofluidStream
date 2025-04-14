@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
 
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+  extends Internal.PartialDiscretizedHEXCrossFlow(nCellsParallel=nCells,crossFlow=true);
 
   parameter Real k1_A=1e2 "Linear flow resistance coefficient at side A"
     annotation (Dialog(group="Flow resistance coefficients"));

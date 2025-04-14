@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers;
 model CrossFlowNTU "Cross flow heat exchanger using the epsilon-NTU method"
 
-  extends ThermofluidStream.HeatExchangers.Internal.PartialNTU(crossFlow=true);
+  extends ThermofluidStream.HeatExchangers.Internal.PartialNTUCrossFlow(crossFlow=true);
 
 equation
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)

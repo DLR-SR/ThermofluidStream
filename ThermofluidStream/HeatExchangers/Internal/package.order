@@ -1,8 +1,12 @@
+PartialCounterFlowInterface
+PartialCrossFlowInterface
 PartialConductionElementHEX
 ConductionElementHEX
 ConductionElementHEX_twoPhase
 DiscretizedHEXSummary
 DiscretizedHexIcon
 calculateEfficiency
-PartialDiscretizedHEX
-PartialNTU
+PartialDiscretizedHEXCrossFlow
+PartialDiscretizedHEXCounterFlow
+PartialNTUCounterFlow
+PartialNTUCrossFlow

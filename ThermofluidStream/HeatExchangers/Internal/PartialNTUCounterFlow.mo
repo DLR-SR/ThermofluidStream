@@ -1,7 +1,8 @@
 within ThermofluidStream.HeatExchangers.Internal;
-partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU method"
+partial model PartialNTUCounterFlow "Partial heat exchanger model using the epsilon-NTU method"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
 
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model A"
     annotation (choicesAllMatching=true);
@@ -30,23 +31,23 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
+ 
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)  annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={-100,-60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{-120,-80},{-80,-40}})));
+        origin={-100,-60}), iconTransformation(extent={{-120,-80},{-80,-40}})));
   ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
-        origin={100,-60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{80,-80},{120,-40}})));
+        origin={100,-60}), iconTransformation(extent={{80,-80},{120,-40}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={100,60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
+        origin={100,60}), iconTransformation(extent={{120,80},{80,40}}, rotation=0)));
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,
-        origin={-100,60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,80},{-120,40}}, rotation=if crossFlow then -90 else 0)));
-
+        origin={-100,60}), iconTransformation(extent={{-80,80},{-120,40}}, rotation=0)));
 
 
   Modelica.Units.SI.TemperatureDifference Delta_T_max "Maximum temperature difference";
@@ -232,4 +233,4 @@ flow regularization close to zero:
   </li>
 </ul>
 </html>"));
-end PartialNTU;
+end PartialNTUCounterFlow;
