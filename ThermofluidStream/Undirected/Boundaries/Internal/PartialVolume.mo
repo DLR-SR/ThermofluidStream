@@ -51,11 +51,9 @@ the fores and rears the volume is connected to.
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) if useHeatport
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
   Interfaces.Rear rear(redeclare package Medium=Medium, m_flow=m_flow_rear, r=r_rear_port, state_rearwards=state_out_rear, state_forwards=state_in_rear) if useRear
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Fore fore(redeclare package Medium=Medium, m_flow=m_flow_fore, r=r_fore_port, state_forwards=state_out_fore, state_rearwards=state_in_fore) if useFore
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
