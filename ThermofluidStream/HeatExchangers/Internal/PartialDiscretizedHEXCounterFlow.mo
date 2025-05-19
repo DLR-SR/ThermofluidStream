@@ -1,22 +1,23 @@
 within ThermofluidStream.HeatExchangers.Internal;
-partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-  extends Internal.DiscretizedHexIcon;
+partial model PartialDiscretizedHEXCounterFlow "Base class for discretized heat exchangers"
 
-  replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
+  extends .ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends .ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
+
+  replaceable package MediumA = .ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
     annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-  replaceable package MediumB = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
+  replaceable package MediumB = .ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side B"
     annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-  replaceable model ConductionElementA = Internal.ConductionElementHEX
-    constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementA = .ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX
+    constrainedby .ThermofluidStream.HeatExchangers.Internal.PartialConductionElementHEX(
       final nCellsParallel=nCellsParallel,
       final A=A/nCells,
       final V=V_Hex/nCells,
       redeclare package Medium = MediumA,
       final enforce_global_energy_conservation=enforce_global_energy_conservation) "Heat transfer element model for side A" annotation (choicesAllMatching=true, Dialog(group="Medium definitions"));
-  replaceable model ConductionElementB = Internal.ConductionElementHEX
-    constrainedby Internal.PartialConductionElementHEX(
+  replaceable model ConductionElementB = .ThermofluidStream.HeatExchangers.Internal.ConductionElementHEX
+    constrainedby .ThermofluidStream.HeatExchangers.Internal.PartialConductionElementHEX(
       final nCellsParallel=1,
       final A=A/nCells,
       final V=V_Hex/nCells,
@@ -27,26 +28,26 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
   parameter Boolean calculate_efficiency=false "= true, if heat exchanger efficiency is calculated"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  parameter Modelica.Units.SI.Area A=10 "Heat transfer area"
+  parameter .Modelica.Units.SI.Area A=10 "Heat transfer area"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
+  parameter .Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall"
+  parameter .Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
   parameter Boolean initializeMassFlow=false "= true, if inlet mass flow rates are initialized"
     annotation (Dialog(tab="Initialization", group="Mass flow rate"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.MassFlowRate m_flow_0_A=0 "Initial mass flow rate for side A"
+  parameter .Modelica.Units.SI.MassFlowRate m_flow_0_A=0 "Initial mass flow rate for side A"
     annotation (Dialog(
       tab="Initialization",
       group="Mass flow rate",
       enable=initializeMassFlow));
-  parameter SI.MassFlowRate m_flow_0_B=0 "Initial mass flow rate for side B"
+  parameter .Modelica.Units.SI.MassFlowRate m_flow_0_B=0 "Initial mass flow rate for side B"
     annotation (Dialog(
       tab="Initialization",
       group="Mass flow rate",
       enable=initializeMassFlow));
-  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative mass flow rate"
+  parameter .Modelica.Units.SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative mass flow rate"
     annotation (Dialog(tab="Advanced"));
   parameter Boolean enforce_global_energy_conservation=false "= true, if global conservation of energy is enforced"
     annotation (Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -58,34 +59,34 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
     annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
   //-----------------------------------------------------------------
 
-  Interfaces.Inlet inletB(redeclare package Medium = MediumB)
-    annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent=if crossFlow then {{120,-80},{80,-40}} else {{-120,40},{-80,80}})));
-  Interfaces.Outlet outletB(redeclare package Medium = MediumB)
-    annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent=if crossFlow then {{-80,-80},{-120,-40}} else {{80,40},{120,80}})));
-  Interfaces.Inlet inletA(redeclare package Medium = MediumA)
-    annotation (Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,-80},{80,-40}}, rotation=if crossFlow then -90 else 0)));
-  Interfaces.Outlet outletA(redeclare package Medium = MediumA)
-    annotation (Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,-80},{-120,-40}}, rotation=if crossFlow then -90 else 0)));
+  .ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB)
+    annotation (Placement(transformation(extent={{-120,40},{-80,80}}), iconTransformation(extent={{-120,40},{-80,80}})));
+  .ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB)
+    annotation (Placement(transformation(extent={{80,40},{120,80}}), iconTransformation(extent={{80,40},{120,80}})));
+  .ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA)
+    annotation (Placement(transformation(extent={{120,-80},{80,-40}}), iconTransformation(extent={{120,-80},{80,-40}}, rotation=0)));
+  .ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA)
+    annotation (Placement(transformation(extent={{-80,-80},{-120,-40}}), iconTransformation(extent={{-80,-80},{-120,-40}}, rotation=0)));
 
 
-  SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow) "Heat flow rate into medium A";
-  SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow) "Heat flow rate into medium B";
-  SI.Mass M_A=sum(thermalElementA.M) "Mass of medium A";
-  SI.Mass M_B=sum(thermalElementB.M) "Mass of medium B";
-  SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system) "Error in global conservation of energy";
+  .Modelica.Units.SI.HeatFlowRate Q_flow_A=sum(thermalElementA.heatPort.Q_flow) "Heat flow rate into medium A";
+  .Modelica.Units.SI.HeatFlowRate Q_flow_B=sum(thermalElementB.heatPort.Q_flow) "Heat flow rate into medium B";
+  .Modelica.Units.SI.Mass M_A=sum(thermalElementA.M) "Mass of medium A";
+  .Modelica.Units.SI.Mass M_B=sum(thermalElementB.M) "Mass of medium B";
+  .Modelica.Units.SI.Energy deltaE_system=sum(thermalElementA.deltaE_system) + sum(thermalElementB.deltaE_system) "Error in global conservation of energy";
 
 
-  ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
+  .ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of Quantities";
 
 protected
   parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
   parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
-  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance"
+  parameter .Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance"
     annotation (Dialog(group="Wall parameters"));
-  function efficiency = Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB) "Heat exchanger efficiency";
+  function efficiency = .ThermofluidStream.HeatExchangers.Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB) "Heat exchanger efficiency";
 
 public
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells) annotation (Placement(transformation(
+  .Modelica.Thermal.HeatTransfer.Components.ThermalConductor thermalConductor[nCells](each G=G/nCells) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,0})));
@@ -179,4 +180,4 @@ changes the medium-/short-term dynamics of the system and is, therefore,
 disabled by default.
 </p>
 </html>"));
-end PartialDiscretizedHEX;
+end PartialDiscretizedHEXCounterFlow;

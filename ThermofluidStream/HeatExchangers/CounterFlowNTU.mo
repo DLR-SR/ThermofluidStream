@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers;
 model CounterFlowNTU "Counter flow heat exchanger using the epsilon-NTU method"
 
-  extends ThermofluidStream.HeatExchangers.Internal.PartialNTU;
+  extends ThermofluidStream.HeatExchangers.Internal.PartialNTUCounterFlow;
 
 equation
   //Calculating heat exchanger effectiveness derived from NTU correlations (see VDI Waermeatlas)
