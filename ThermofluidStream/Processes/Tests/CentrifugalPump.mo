@@ -273,7 +273,7 @@ equation
 Model to demonstrate the usage of <a href=\"modelica://ThermofluidStream.Processes.CentrifugalPump\">CentrifugalPump</a>. See its documentation for further information on the model.
 </p>
 <p>
-You may connect any of the input signal to the <code>centrifugalPump</code> for the corresponding <code>pumpMode</code> (only initialization might has to be changed to avoid warnings:
+You may connect any of the input signal to the <code>centrifugalPump</code> for the corresponding <code>pumpMode</code>:
 </p>
 <ul>
 <li><code>pumpMode = pumpMode.flange</code> enables a mechanical connector. Set <code>flowResistance.initM_flow = state, flowResistance.m_flow_0 = 0</code> and eventually 
