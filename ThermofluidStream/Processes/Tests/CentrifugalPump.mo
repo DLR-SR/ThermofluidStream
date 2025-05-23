@@ -30,6 +30,7 @@ extends Modelica.Icons.Example;
         origin={-90,0})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium_liquid,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.02,
     l=100,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
