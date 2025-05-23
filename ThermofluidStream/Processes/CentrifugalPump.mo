@@ -104,7 +104,6 @@ public
   SI.Angle phi(start=0) "Angle";
 protected
   Modelica.Blocks.Interfaces.RealInput setpoint_internal "Internal connector for setpoint [SI-units]";
-protected
   Real pr = p_out/p_in "Pressure ratio";
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.Density rho = rho_in "Density";
