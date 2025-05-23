@@ -260,7 +260,7 @@ reference head, speed, volume flow rate, power, torque and density</li>
 </ul>
 
 <p>
-The centrifugal pump can be parameterized either with a <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.GenericPump\">measurements record</a> 
+The centrifugal pump can be parameterized either with a <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.GenericPump\">measurement record</a> 
 or with a <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.Coefficients.GenericPump\">coefficient record</a>. 
 There are already <code>measurements records</code> and <code>coefficient records</code> for some examplary centrifugal pumps.<br>
 User specific pumps can be added by creating a new <code>measurement record</code> or by calculating the <code>coefficient record</code> using the example 
