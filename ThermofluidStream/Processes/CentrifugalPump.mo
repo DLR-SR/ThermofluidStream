@@ -125,7 +125,9 @@ protected
   Real rho_n = rho/rho_ref "Normalized density";
 equation
   connect(setpoint_internal, setpoint_var);
-
+  if pumpMode == PumpMode.flange then
+    setpoint_internal = 0;
+  end if;
   if not setpointFromInput then
     if pumpMode == PumpMode.flowControlled then
       if setpointFlow == SetpointModeFlow.m_flow then
