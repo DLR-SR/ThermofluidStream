@@ -31,13 +31,13 @@
   <defs
      id="defs5773" />
   <sodipodi:namedview
-     inkscape:current-layer="g102"
+     inkscape:current-layer="g90"
      inkscape:window-maximized="1"
      inkscape:window-y="-6"
      inkscape:window-x="1273"
-     inkscape:cy="238"
-     inkscape:cx="252.5"
-     inkscape:zoom="1"
+     inkscape:cy="127.27922"
+     inkscape:cx="275.41809"
+     inkscape:zoom="1.4142136"
      showgrid="false"
      id="namedview5771"
      inkscape:window-height="1010"
@@ -9190,7 +9190,7 @@
          font-size="20px"
          fill="#bf0000"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke-width:0.367796"
-         inkscape:label="Cabin Air">Cabin Air</text>
+         inkscape:label="Cabin Air">cabin air</text>
       <text
          id="text5747-4-3"
          y="94.434319"
@@ -9201,7 +9201,11 @@
          font-size="20px"
          fill="#bf0000"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke-width:0.367796"
-         inkscape:label="Vapor Cycle">Vapor Cycle</text>
+         inkscape:label="Vapor Cycle"><tspan
+           sodipodi:role="line"
+           id="tspan3"
+           x="443.77908"
+           y="94.434319">vapor cycle</tspan></text>
       <text
          id="text5747-4-3-1"
          y="345.74185"
@@ -9217,7 +9221,7 @@
            id="tspan80"
            x="385.47873"
            y="345.74185"
-           style="stroke-width:0.367796">Glycol Loops</tspan></text>
+           style="stroke-width:0.367796">glycol loops</tspan></text>
       <text
          id="text5747-4-3-1-2"
          y="332.20813"
@@ -9232,8 +9236,8 @@
            sodipodi:role="line"
            x="763.9079"
            y="332.20813"
-           id="tspan81"
-           style="stroke-width:0.367796">Cooling Air</tspan></text>
+           style="stroke-width:0.367796"
+           id="tspan1">cooling air</tspan></text>
       <text
          id="text5747-4-3-1-2-4"
          y="79.017448"
@@ -9249,7 +9253,7 @@
            x="762.92242"
            y="79.017448"
            id="tspan81-8"
-           style="stroke-width:0.367796">Cooling Air</tspan></text>
+           style="stroke-width:0.367796">cooling air</tspan></text>
     </g>
     <g
        id="g103"
@@ -11933,7 +11937,7 @@
                x="1634.2142"
                y="609.41437"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.0016px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none"
-               id="tspan85">discreticed HEX</tspan></text>
+               id="tspan85">discretized HEX</tspan></text>
         </g>
         <g
            id="g96"
@@ -12687,7 +12691,7 @@
                x="42.172997"
                y="76.309471"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.0016px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.37795"
-               id="tspan83">source, sink,</tspan></text>
+               id="tspan83">source, sink</tspan></text>
         </g>
         <g
            id="g88"
