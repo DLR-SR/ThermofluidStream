@@ -6,7 +6,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     "Medium (ram and bleed air)"
     annotation(choicesAllMatching = true);
 
-  parameter SI.Radius r = 0.05 "Ram air duct radius";
+  parameter SI.Radius r=0.07   "Ram air duct radius";
   inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
     displayInstanceNames=true,
     displayParameters=true)
@@ -15,18 +15,18 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{-18,102},{18,138}})));
   Boundaries.Source bleedInlet(
     redeclare package Medium = Medium,
-    T0_par=493.15,
-    p0_par=250000,
+    T0_par=473.15,
+    p0_par=220000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{-4,-130},{-24,-110}})));
-  Boundaries.Sink packDischarge(redeclare package Medium = Medium,       p0_par=75000)
+  Boundaries.Sink packDischarge(redeclare package Medium = Medium, p0_par=80000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={-54,110})));
+        origin={-54,116})));
   Boundaries.Source ramInlet(
     redeclare package Medium = Medium,
     T0_par=243.15,
-    p0_par=30000,
+    p0_par=25000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{-160,40},{-140,60}})));
   Boundaries.DynamicPressureInflow dynamicPressure(
     displayInstanceName=false,
@@ -49,8 +49,9 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     omega_from_input=false,
     initPhi=false,
-    redeclare function dp_tau_compressor = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-        omega_ref=2000,
+    redeclare function dp_tau_compressor =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=2500,
         skew=1,
         m_flow_ref=1,
         eta=0.9))
@@ -80,7 +81,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   HeatExchangers.CounterFlowNTU                   mainHex(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    A=7,
+    A=2,
+    k_NTU=200,
     L=1,
     displaykNTU=false) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -90,6 +92,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     A=3,
+    k_NTU=200,
     L=1,
     displaykNTU=false) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -108,7 +111,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.FlowResistance pipe(
     redeclare package Medium = Medium,
     r=r,
-    l=40,
+    l=20,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
             ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
@@ -123,18 +126,19 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     L_value=0) annotation (Placement(transformation(extent={{-80,-110},{-100,-130}})));
   Boundaries.Source bleedInlet1(
     redeclare package Medium = Medium,
-    T0_par=493.15,
-    p0_par=250000,
+    T0_par=473.15,
+    p0_par=220000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{4,-130},{24,-110}})));
-  Boundaries.Sink packDischarge1(redeclare package Medium = Medium,       p0_par=75000)
+  Boundaries.Sink packDischarge1(redeclare package Medium = Medium, p0_par=
+        80000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={52,112})));
+        origin={52,118})));
   Boundaries.Source ramInlet1(
     redeclare package Medium = Medium,
     T0_par=243.15,
-    p0_par=30000,
+    p0_par=25000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{160,40},{140,60}})));
   Boundaries.DynamicPressureInflow dynamicPressure1(
     displayInstanceName=false,
@@ -176,7 +180,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   HeatExchangers.CounterFlowNTU                   hex(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    A=10,
+    A=5,
+    k_NTU=200,
     L=1,
     displaykNTU=false)
     annotation (Placement(transformation(
@@ -195,7 +200,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.FlowResistance pipe1(
     redeclare package Medium = Medium,
     r=r,
-    l=40,
+    l=20,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
             ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -209,11 +214,6 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     computeL=false,
     L_value=0) annotation (Placement(transformation(extent={{80,-110},{100,-130}})));
 equation
-  connect(turbine.outlet, packDischarge.inlet)
-    annotation (Line(
-      points={{-54,70},{-54,100}},
-      color={28,108,200},
-      thickness=0.5));
   connect(ramInlet.outlet, dynamicPressure.inlet)
     annotation (Line(
       points={{-140,50},{-120,50}},
@@ -280,7 +280,7 @@ equation
       thickness=0.5));
   connect(turbine1.outlet, packDischarge1.inlet)
     annotation (Line(
-      points={{52,70},{52,102}},
+      points={{52,70},{52,108}},
       color={28,108,200},
       thickness=0.5));
   connect(ramInlet1.outlet, dynamicPressure1.inlet)
@@ -317,6 +317,10 @@ equation
   connect(ramOutlet.inlet, outflowLoss.outlet)
     annotation (Line(
       points={{-120,-120},{-100,-120}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(packDischarge.inlet, turbine.outlet) annotation (Line(
+      points={{-54,106},{-54,70}},
       color={28,108,200},
       thickness=0.5));
   annotation (
