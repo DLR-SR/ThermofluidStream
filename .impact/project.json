@@ -1,0 +1,57 @@
+{
+  "name": "ThermofluidStream",
+  "format": "1.0.0",
+  "dependencies": [
+    {
+      "name": "Modelica",
+      "versionSpecifier": "4.0.0"
+    }
+  ],
+  "content": [
+    {
+      "relpath": "ThermofluidStream",
+      "contentType": "MODELICA",
+      "name": "ThermofluidStream",
+      "defaultDisabled": false,
+      "id": "e74f4457bc544294b6e50858706270d6"
+    },
+    {
+      "relpath": "TILMediaWrapper",
+      "contentType": "MODELICA",
+      "name": "TILMediaWrapper",
+      "defaultDisabled": false,
+      "id": "a79a8cc6a9174ffdb2dd3823e48003ac"
+    },
+    {
+      "relpath": "Resources/Views",
+      "contentType": "VIEWS",
+      "defaultDisabled": false,
+      "id": "aac16222f99f466c964a95374ce14877"
+    },
+    {
+      "relpath": "Resources/Favorites",
+      "contentType": "FAVORITES",
+      "defaultDisabled": false,
+      "id": "a8b7ca68eff743bbbe6ef284693f7c5b"
+    },
+    {
+      "relpath": "Resources/CustomFunctions",
+      "contentType": "CUSTOM_FUNCTIONS",
+      "defaultDisabled": false,
+      "id": "41005c09694840d1a8846873932506b8"
+    },
+    {
+      "relpath": "Resources/Custom",
+      "contentType": "GENERIC",
+      "defaultDisabled": false,
+      "id": "7c56884aa265475b8c6c388a6fa8326e"
+    },
+    {
+      "relpath": "Resources/ExperimentDefinitions",
+      "contentType": "EXPERIMENT_DEFINITIONS",
+      "defaultDisabled": false,
+      "id": "7c0cf26cfdd04ff198522c9ea7d6298e"
+    }
+  ],
+  "executionOptions": []
+}
