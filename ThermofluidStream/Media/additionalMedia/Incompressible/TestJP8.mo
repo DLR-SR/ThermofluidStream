@@ -21,7 +21,7 @@ equation
      medium.p = 1.013e5;
      medium.T = Medium.T_min + time/timeUnit*Ta;
        annotation (
-       experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
+       __DLR_experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
        Documentation(info="<html>
 <p>Density</p>
 <p><img src=\"modelica://SAABdefinedMedia/TestJP8_density.png\"/></p>
