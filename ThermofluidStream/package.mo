@@ -22,7 +22,20 @@ package ThermofluidStream "Library for the modeling of thermofluid streams"
       from(
         version="0.2.1",
         to="0.3.0",
-        script="modelica://ThermofluidStream/Resources/Scripts/Conversion/ConvertTFS_from_0.2.1_to_0.3.0.mos.mos")),
+        script="modelica://ThermofluidStream/Resources/Scripts/Conversion/ConvertTFS_from_0.2.1_to_0.3.0.mos.mos"),
+      from(
+        version="1.1.0",
+        to="Intermediate",
+        change(
+          item=convertClass("ThermofluidStream.TestConductionElement", "ThermofluidStream.TestConductionElementIcon"),
+          item=convertElement("ThermofluidStream.TestConductionElement", "realExpression", "heatTransferCoefficient"),
+          item=convertElement("ThermofluidStream.TestConductionElement", "heatTransferCoefficient1",
+              "thermalTransmittance"),
+          item=convertElement("ThermofluidStream.TestConductionElement", "step", "heatTransferCoefficient_step"),
+          item=convertClass("ThermofluidStream.TestConductionElement",
+              "ThermofluidStream.Processes.Tests.TestConductionElement"),
+          item=convertClass("ThermofluidStream.Processes.Tests.TestConductionElement",
+              "ThermofluidStream.Processes.Tests.ConductionElement2")))),
     Documentation(info="<html>
 <p>
 The DLR ThermofluidStream Library is a&nbsp;free open-source library for the
