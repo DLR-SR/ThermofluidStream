@@ -9,7 +9,11 @@ algorithm
   if quantity == Types.MassFlowQuantities.Cp_flow_JpKs then
     unit :="J/(K.s)";
   elseif quantity == Types.MassFlowQuantities.H_flow_Jps then
-    unit :="J/s";
+    unit :="W";
+  elseif quantity == Types.MassFlowQuantities.H_flow_kJps then
+    unit :="kW";
+  elseif quantity == Types.MassFlowQuantities.H_flow_MJps then
+    unit :="MW";
   elseif quantity == Types.MassFlowQuantities.m_flow_kgps then
     unit :="kg/s";
   elseif quantity == Types.MassFlowQuantities.V_flow_m3ps then

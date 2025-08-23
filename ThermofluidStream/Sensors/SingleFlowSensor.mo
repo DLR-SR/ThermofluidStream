@@ -21,6 +21,8 @@ model SingleFlowSensor "Flow rate sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps then "V_flow in m3/s"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin then "V_flow in l/min"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps then "H_flow in W"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps then "H_flow in kW"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_MJps then "H_flow in MW"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in W/K"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in W/K"
     else "error";
