@@ -26,6 +26,8 @@ model SingleSensorSelect "Selectable sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_Pa then "(p+r) in Pa"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
     else "error";
+  parameter Boolean adaptDisplay = false "=false, for standard display, =true if display is adapted"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
@@ -44,9 +46,7 @@ model SingleSensorSelect "Selectable sensor"
 
 
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(
-        transformation(extent={{70,50},{90,70}}),
-          iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
   function getQuantity = ThermofluidStream.Sensors.Internal.getQuantity (
     redeclare package Medium = Medium) "Quantity compute function"
@@ -77,31 +77,40 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensor", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,84},{66,24}},
+          extent={{-74,84},{86,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(points={{0,34},{0,0}},    color={0,0,0}),
         Rectangle(
-          extent={{-60,90},{60,30}},
+          extent={{-80,90},{80,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-60,90},{60,30}},
-          textColor={28,108,200},
-          textString=DynamicSelect("value", String(value, format="1."+String(digits)+"f"))),
-        Text(
+        Text(visible = not outputValue or (outputValue and not adaptDisplay),
+          extent={{-80,86},{80,34}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
+        Text(visible = not adaptDisplay,
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
           textString=quantityString),
+        Text(visible = adaptDisplay and not outputValue,
+          horizontalAlignment=TextAlignment.Left,
+          extent={{90,75},{250,45}},
+          textColor={0,0,0},
+          textString=quantityString),
+        Text(visible = adaptDisplay and outputValue,
+          extent={{-80,75},{80,45}},
+          textColor={0,0,0},
+          textString=" "+quantityString+" "),
         Ellipse(
           extent={{-5,5},{5,-5}},
           lineColor={28,108,200},
@@ -109,7 +118,7 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(visible=outputValue,
-          points={{60,60},{78,60}},
+          points={{80,60},{100,60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

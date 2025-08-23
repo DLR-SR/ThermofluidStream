@@ -8,15 +8,15 @@ partial model PartialSensor "Partial undirected sensor"
         info="<html>
 <p>Replaceable medium package for the sensor.</p>
 </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits"
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed"
     annotation(Dialog(group="Sensor display"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-80}), iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-80}), iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
 /*  function regStepSt = Undirected.Internal.regStepState (
     redeclare package Medium = Medium) "RegStep function for a state"
