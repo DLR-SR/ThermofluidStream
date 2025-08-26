@@ -14,8 +14,7 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation (Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow rate for regularization"
     annotation (Dialog(tab="Advanced", group="Regularization parameters"));
-  parameter Modelica.Units.SI.Time TC=0.01 "Heat exchanger time constant"
-    annotation (Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time TC=0.01 "Heat exchanger time constant (increase as recommended in the documentation)";
 
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayArea = true "= true, if the heat transfer area A is displayed"
@@ -231,12 +230,31 @@ flow regularization close to zero:
     is transferred
   </li>
 </ul>
-<p>
-The heat exchanger time constant <code>TC</code> is necessary to ensure robust simulation. It can approximate the transient behavior using a first order ODE. 
-The time constant is related to the ratio of thermal inertia (wall + fluid) <code>dU/dT</code> to enthalpy flow rate 'inertia' <code>dH_flow/dT</code>:
-</p>
-<p>
- <code>TC ~ (m_Wall*c_Wall + m_Fluid*c_Fluid)/(m_flow*c_Fluid)</code>.
-</p>
-</html>"));
+
+  <h6>Time constant</h6>
+
+  <p>
+    The model approximates the transient behavior with a first-order ordinary differential equation.<br>
+    Its time constant <code>TC</code> can be approximated by the 
+    ratio of thermal inertia (wall + fluid) <code>dU / dT</code> to the enthalpy flow 
+    rate \"inertia\" <code>dH_flow / dT</code>:
+  </p>
+
+  <p>
+    <code>TC ~ (m_dryHEX * c_dryHEX + m_Fluid * c_Fluid) / (m_flow_Fluid * c_Fluid)</code> ,
+  </p>
+  <p>
+    where <code>m</code> is the mass, <code>m_flow</code> is the mass flow rate, <code>c</code> is the specific heat capacity, 
+    <code>U</code> is the internal energy, <code>T</code> is the temperature and <code>H_flow = m_flow*h</code> is the enthalpy flow rate.
+  </p>
+
+  <p>
+    On the other hand the time constant avoids algebraic loops.
+  </p>
+
+  <p>
+    <strong>The default time constant <code>TC = 0.01</code> is not realistic and will be updated in the next major release.</strong>    
+  </p>
+</html>
+"));
 end PartialNTU;
