@@ -241,7 +241,7 @@ flow regularization close to zero:
   </p>
 
   <p>
-    <code>TC ~ (m_dryHEX * c_dryHEX + m_Fluid * c_Fluid) / (m_flow_Fluid * c_Fluid)</code> ,
+    <code>TC &prop; (m_dryHEX * c_dryHEX + m_Fluid * c_Fluid) / (m_flow_Fluid * c_Fluid)</code> ,
   </p>
   <p>
     where <code>m</code> is the mass, <code>m_flow</code> is the mass flow rate, <code>c</code> is the specific heat capacity, 
