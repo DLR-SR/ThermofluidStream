@@ -123,5 +123,10 @@ equation
 <p>The equations are derived from the generic effectiveness-NTU relations which can be found in the &quot;VDI W&auml;rmeatlas&quot; and noumerous standard literature.</p>
 <p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
+
+  <h5>Heat exchanger time constant</h5>
+  <p>
+    See the documentation of the model <a href=\"modelica://ThermofluidStream.HeatExchangers.Internal.PartialNTU\">PartialNTU</a> for further information.
+  </p>
 </html>"));
 end CounterFlowNTU;
