@@ -231,30 +231,32 @@ flow regularization close to zero:
   </li>
 </ul>
 
-  <h6>Time constant</h6>
+  <h4>Heat exchanger time constant</h4>
 
   <p>
-    The model approximates the transient behavior with a first-order ordinary differential equation.<br>
-    Its time constant <code>TC</code> can be approximated by the 
+    The model approximates the transient behavior of the heat exchanger with a first-order ordinary differential equation.<br>
+    Based on the conservation of energy one can derive that its time constant <code>TC</code> can be approximated by the 
     ratio of thermal inertia (wall + fluid) <code>dU / dT</code> to the enthalpy flow 
     rate \"inertia\" <code>dH_flow / dT</code>:
   </p>
 
   <p>
-    <code>TC &prop; (m_dryHEX * c_dryHEX + m_Fluid * c_Fluid) / (m_flow_Fluid * c_Fluid)</code> ,
+    <code>TC ~ (m_HEX * c_HEX + m_FluidA * c_FluidA + m_FluidB * c_FluidB) / (m_flow_FluidA * c_FluidA + m_flow_FluidB * c_FluidB)</code> ,
   </p>
   <p>
     where <code>m</code> is the mass, <code>m_flow</code> is the mass flow rate, <code>c</code> is the specific heat capacity, 
     <code>U</code> is the internal energy, <code>T</code> is the temperature and <code>H_flow = m_flow*h</code> is the enthalpy flow rate.
   </p>
-
   <p>
-    On the other hand the time constant avoids algebraic loops.
+    <strong>The default time constant <code>TC = 0.01</code> is not realistic and will be updated in the next major release.</strong> 
+    Eor example a heat exchanger with a mass of <code>10 kg</code> and mass flow rates of <code>0.5 kg/s</code> of air on both sides has a time constant in the magnitude of about <code>10 s</code>.    
+    The default time constant can also lead to a stiff system, and thereby increase simulation time.
+  </p>
+  <p>
+    Note that the time constant also avoids algebraic loops and may also be beneficial from a numerical point of view.
   </p>
 
-  <p>
-    <strong>The default time constant <code>TC = 0.01</code> is not realistic and will be updated in the next major release.</strong>    
-  </p>
+
 </html>
 "));
 end PartialNTU;
