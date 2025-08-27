@@ -231,7 +231,7 @@ flow regularization close to zero:
   </li>
 </ul>
 
-  <h4>Heat exchanger time constant</h4>
+  <h5>Heat exchanger time constant</h5>
 
   <p>
     The model approximates the transient behavior of the heat exchanger with a first-order ordinary differential equation.<br>
