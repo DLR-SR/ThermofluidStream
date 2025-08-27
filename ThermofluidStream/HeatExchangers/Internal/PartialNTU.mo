@@ -249,7 +249,7 @@ flow regularization close to zero:
   </p>
   <p>
     <strong>The default time constant <code>TC = 0.01</code> is not realistic and will be updated in the next major release.</strong> 
-    Eor example a heat exchanger with a mass of <code>10 kg</code> and mass flow rates of <code>0.5 kg/s</code> of air on both sides has a time constant in the magnitude of about <code>10 s</code>.    
+    For example a heat exchanger with a mass of <code>10 kg</code> and mass flow rates of <code>0.5 kg/s</code> of air on both sides has a time constant in the magnitude of about <code>10 s</code>.    
     The default time constant can also lead to a stiff system, and thereby increase simulation time.
   </p>
   <p>
