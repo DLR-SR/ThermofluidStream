@@ -174,7 +174,7 @@ equation
 <p>For stream dominated applications the following assumptions are made for mass flow regularization close to zero:</p>
 <p>- if the mass flow on both sides of the heat exchanger is zero, no heat is transferred</p>
   
-  <h6>Heat exchanger time constant</h6>
+  <h5>Heat exchanger time constant</h5>
   <p>
     See the documentation of the model <a href=\"modelica://ThermofluidStream.HeatExchangers.Internal.PartialNTU\">PartialNTU</a> for further information.
   </p>
