@@ -1,4 +1,4 @@
-within ThermofluidStream.Processes.Tests;
+within ThermofluidStream.Processes.Tests.Utilities;
 model Power "Constant power with limited tourque"
   Modelica.Mechanics.Rotational.Interfaces.Flange_b flange
     annotation (Placement(transformation(extent={{66,-10},{86,10}})));

@@ -63,11 +63,10 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
     number=thermalConvection.v_m)
     annotation (Placement(transformation(extent={{10,-8},{30,-28}})));
     */
-  Utilities.showRealValue showRealValue2(
+  .ThermofluidStream.Utilities.showRealValue showRealValue2(
     use_numberPort=false,
     description="HP.T",
-    number=thermalConvection.heatPort.T - 273.15)
-    annotation (Placement(transformation(extent={{-38,30},{-18,10}})));
+    number=thermalConvection.heatPort.T - 273.15) annotation (Placement(transformation(extent={{-38,30},{-18,10}})));
   Modelica.Blocks.Sources.Step step(
     height=10,
     offset=10 + 273.15,
@@ -93,11 +92,10 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={46,34})));
-  Utilities.showRealValue showRealValue3(
+  .ThermofluidStream.Utilities.showRealValue showRealValue3(
     use_numberPort=false,
     description="HP.T",
-    number=thermalConvection1.heatPort.T - 273.15)
-    annotation (Placement(transformation(extent={{34,28},{54,8}})));
+    number=thermalConvection1.heatPort.T - 273.15) annotation (Placement(transformation(extent={{34,28},{54,8}})));
 equation
   connect(source.outlet, flowResistance.inlet) annotation (Line(
       points={{-90,0},{-84,0}},

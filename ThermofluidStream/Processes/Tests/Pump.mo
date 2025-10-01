@@ -51,8 +51,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     redeclare function dp_tau_pump =
         tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
-  tf.Processes.Tests.Power power1(P=8000, tau_max=150)
-    annotation (Placement(transformation(extent={{-24,2},{-4,22}})));
+  tf.Processes.Tests.Utilities.Power power1(P=8000, tau_max=150) annotation (Placement(transformation(extent={{-24,2},{-4,22}})));
   tf.Topology.SplitterN splitterN(N=4, redeclare package Medium = Medium,
     L=0)
     annotation (Placement(transformation(extent={{-70,58},{-50,78}})));
@@ -89,8 +88,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
         V_r_input=0.0006,
         k_p_input=1e8))
     annotation (Placement(transformation(extent={{-2,-56},{18,-36}})));
-  tf.Processes.Tests.Power power2(P=5000, tau_max=150)
-    annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));
+  tf.Processes.Tests.Utilities.Power power2(P=5000, tau_max=150) annotation (Placement(transformation(extent={{-24,-78},{-4,-58}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
         283.15) annotation (Placement(transformation(extent={{62,-36},{42,-16}})));

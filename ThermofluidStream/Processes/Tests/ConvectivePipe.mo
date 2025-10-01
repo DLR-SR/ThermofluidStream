@@ -63,11 +63,10 @@ model ConvectivePipe
     number=thermalConvection.v_m)
     annotation (Placement(transformation(extent={{10,-8},{30,-28}})));
     */
-  Utilities.showRealValue showRealValue2(
+  .ThermofluidStream.Utilities.showRealValue showRealValue2(
     use_numberPort=false,
     description="HP.T",
-    number=thermalConvection.heatPort.T - 273.15)
-    annotation (Placement(transformation(extent={{-20,30},{0,10}})));
+    number=thermalConvection.heatPort.T - 273.15) annotation (Placement(transformation(extent={{-20,30},{0,10}})));
   Modelica.Blocks.Sources.Step step(
     height=10,
     offset=10 + 273.15,

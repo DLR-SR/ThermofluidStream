@@ -58,8 +58,7 @@ Medium model for the test. Should be an ideal gas or close to that.
         m_flow_ref=0.01,
         eta=0.8,
         V_ref=0.0001)) annotation (Placement(transformation(extent={{-6,-30},{14,-10}})));
-  Power power1(P=50000, tau_max=300)
-    annotation (Placement(transformation(extent={{-28,-50},{-8,-30}})));
+  tf.Processes.Tests.Utilities.Power power1(P=50000, tau_max=300) annotation (Placement(transformation(extent={{-28,-50},{-8,-30}})));
   tf.Topology.SplitterN splitterN(N=2, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-74,6},{-54,26}})));
   tf.Topology.JunctionN junctionN(N=2, redeclare package Medium = Medium)

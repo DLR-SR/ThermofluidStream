@@ -10,7 +10,9 @@ function internalCoefficientsFromCoefficients "Calculates InteralCoefficients re
     V_flow_ref=data.V_flow_peak,
     eta_ref=data.eta_peak,
     c_head={ch0,ch1,ch2},
-    c_power={cp0,cp1,cp2}) "Internal pump coefficients";
+    c_power={cp0,cp1,cp2},
+    P_ref = data.rho_ref*Modelica.Constants.g_n*data.head_ref_internal* data.V_flow_peak/data.eta_peak,
+    tau_ref = data.rho_ref*Modelica.Constants.g_n*data.head_ref_internal* data.V_flow_peak/data.eta_peak/data.w_ref) "Internal pump coefficients";
 
 protected
   Real ch0 = data.h_0n "First head coefficient";

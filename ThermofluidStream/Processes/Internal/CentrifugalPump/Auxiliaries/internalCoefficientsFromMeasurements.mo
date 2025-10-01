@@ -51,6 +51,8 @@ algorithm
   coefficients.V_flow_ref:=V_flow_ref;
   coefficients.c_head:=c_head;
   coefficients.c_power:=c_power;
+  coefficients.P_ref:=P_ref;
+  coefficients.tau_ref:=P_ref/data.w_ref;
 
   annotation (Documentation(info="<html>
 <p>
