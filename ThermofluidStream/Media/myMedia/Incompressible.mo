@@ -512,6 +512,15 @@ which is only exactly true for a fluid with constant density d=d0.
      annotation(Inline=true,smoothOrder=2);
     end specificInternalEnergy;
 
+    redeclare function extends isobaricExpansionCoefficient
+      "Return isobaric expansion coefficient (beta) as a function of the thermodynamic state record"
+    protected
+      Real T_table;
+    algorithm
+      T_table := if TinK then state.T else Cv.to_degC(state.T);
+      beta := -Polynomials.derivativeValue(poly_rho, T_table) / Polynomials.evaluate(poly_rho, T_table);
+    end isobaricExpansionCoefficient;
+
     function T_ph "Compute temperature from pressure and specific enthalpy"
       extends Modelica.Icons.Function;
       input AbsolutePressure p "Pressure";
