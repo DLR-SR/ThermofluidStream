@@ -17,7 +17,7 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor for selectable quantatiy diff
     <p>Medium Model for the negative input of the sensor. Make sure it is the same for the stream the sensors inputs are connected.</p>
       </html>"));
 
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter Quantities quantity "Measured quantity";
 
     final parameter String quantityString=
@@ -43,16 +43,11 @@ model DifferenceTwoPhaseSensorSensorSelect "Sensor for selectable quantatiy diff
     annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,80}),
-        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,-80}),
-        iconTransformation(extent={{120,-20},{80,20}})));
+    annotation (Placement(transformation(extent={{120,-20},{80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{28,-90},{48,-70}}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-90})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-90})));
 
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed difference in the selected quantity";
 
@@ -94,32 +89,26 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="differentialSensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-74,24},{86,-36}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-100,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-80,30},{80,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
-          textColor={28,108,200},
-          textString=DynamicSelect("value", String(
-              value,
-              format="1."+String(digits)+"f"))),
+          extent={{-80,26},{80,-26}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
@@ -131,25 +120,25 @@ equation
           points={{0,-70},{0,-80}},
           color={0,0,127}),
         Ellipse(
-          extent={{-90,30},{-70,10}},
+          extent={{-110,40},{-90,20}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(
-          points={{-88,20},{-72,20}},
+          points={{-108,30},{-92,30}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{-8,0},{8,0}},
           color={28,108,200},
           thickness=0.5,
-          origin={-80,20},
+          origin={-100,30},
           rotation=90),
         Line(
-          points={{72,20},{88,20}},
+          points={{92,30},{108,30}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{70,30},{90,10}},
+          extent={{90,40},{110,20}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),

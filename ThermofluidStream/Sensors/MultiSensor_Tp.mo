@@ -10,7 +10,7 @@ model MultiSensor_Tp "Temperature and pressure sensor"
       Documentation(info="<html>
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter ThermofluidStream.Sensors.Internal.Types.TemperatureUnit temperatureUnit = "K" "Temperature unit (display and output)"
     annotation(choicesAllMatching = true, Evaluate = true);
   parameter ThermofluidStream.Sensors.Internal.Types.PressureUnit pressureUnit = "Pa" "Pressure unit (display and output)"
@@ -35,11 +35,11 @@ model MultiSensor_Tp "Temperature and pressure sensor"
     annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature output connector"
-    annotation (Placement(transformation(extent={{70,30},{90,50}}), iconTransformation(extent={{70,30},{90,50}})));
+    annotation (Placement(transformation(extent={{100,30},{120,50}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure output connector"
-    annotation (Placement(transformation(extent={{72,-50},{92,-30}}), iconTransformation(extent={{72,-50},{92,-30}})));
+    annotation (Placement(transformation(extent={{100,-50},{120,-30}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -78,63 +78,55 @@ equation
     T = direct_T;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensorTp",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,54},{66,-66}},
+          extent={{-74,54},{86,-66}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-100,0},{0,0}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
-          extent={{-60,60},{60,-60}},
+          extent={{-80,60},{80,-60}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,55},{60,5}},
-          textColor={28,108,200},
-          textString=DynamicSelect("T", String(
-              T,
-              format="1."+String(digits)+"f"))),
+          extent={{-80,56},{80,6}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-5},{60,-55}},
-          textColor={28,108,200},
-          textString=DynamicSelect("p", String(
-              p,
-              format="1."+String(digits)+"f"))),
-         Text(visible=not outputTemperature,
-          extent={{70,45},{130,15}},
+          extent={{-80,-6},{80,-56}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
+         Text(visible= not outputTemperature,
+          extent={{90,46},{150,16}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputPressure,
-          extent={{70,-15},{130,-45}},
+        Text(visible= not outputPressure,
+          extent={{90,-16},{150,-46}},
           textColor={0,0,0},
           horizontalAlignment=TextAlignment.Left,
           textString="%pressureUnit"),
         Text(visible= outputTemperature,
-          extent={{75,78},{135,48}},
+          extent={{95,78},{155,48}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputPressure,
-          extent={{75,-2},{135,-32}},
+        Text(visible= outputPressure,
+          extent={{95,-2},{155,-32}},
           textColor={0,0,0},
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
         Line(visible=outputTemperature,
-          points={{60,40},{78,40}},
+          points={{80,40},{100,40}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,-40},{78,-40}},
+          points={{80,-40},{100,-40}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

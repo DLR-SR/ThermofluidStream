@@ -9,15 +9,15 @@ model MultiSensor_Tpm "Undirected sensor for Temperature, pressure and mass flow
 <p>Replaceable medium package for the sensor.</p>
 </html>"));
 
-  parameter Integer digits(min=0) = 1 "Number of displayed digits"
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed"
     annotation(Dialog(group="Sensor display"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,-100}),iconTransformation(extent={{-120,-120},{-80,-80}})));
+    annotation (Placement(transformation(extent={{-120,-120},{-80,-80}})));
   Interfaces.Fore fore(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-100}),iconTransformation(extent={{80,-120},{120,-80}})));
+    annotation (Placement(transformation(extent={{80,-120},{120,-80}})));
 
 /*  function regStepSt = Undirected.Internal.regStepState (
     redeclare package Medium = Medium) "RegStep function for a state"
@@ -73,14 +73,11 @@ public
 
 
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature output connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,60}),
-        iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure output connector"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={82,0}),
-        iconTransformation(extent={{72,-10},{92,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate "Mass flow rate output connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,-60}),
-        iconTransformation(extent={{72,-70},{92,-50}})));
+    annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
   output Real T(final quantity="ThermodynamicTemperature", final unit=temperatureUnit);
@@ -141,71 +138,65 @@ equation
     m_flow = direct_m_flow;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensorTpm",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-160},{150,-120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-         Text(visible=not outputTemperature,
-          extent={{150,70},{68,40}},
+         Text(visible= not outputTemperature,
+          extent={{150,77},{90,47}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputPressure,
-          extent={{150,20},{68,-10}},
+        Text(visible= not outputPressure,
+          extent={{150,25},{90,-5}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=not outputMassFlowRate,
-          extent={{150,-30},{68,-60}},
+        Text(visible= not outputMassFlowRate,
+          extent={{150,-27},{90,-57}},
           textColor={0,0,0},
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputTemperature,
-          extent={{150,98},{75,68}},
+        Text(visible= outputTemperature,
+          extent={{155,98},{95,68}},
           textColor={0,0,0},
           textString=temperatureString,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputPressure,
-          extent={{150,38},{75,8}},
+        Text(visible= outputPressure,
+          extent={{155,38},{95,8}},
           textColor={0,0,0},
           textString=pressureUnit,
           horizontalAlignment=TextAlignment.Left),
-        Text(visible=outputMassFlowRate,
-          extent={{150,-22},{75,-52}},
+        Text(visible= outputMassFlowRate,
+          extent={{155,-22},{95,-52}},
           textColor={0,0,0},
           textString=massFlowString,
           horizontalAlignment=TextAlignment.Left),
         Rectangle(
-          extent={{-54,74},{66,-86}},
+          extent={{-74,84},{86,-76}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{-60,80},{60,-80}},
+          extent={{-80,90},{80,-70}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(points={{0,-80},{0,-100}},color={0,0,0}),
+        Line(points={{0,-70},{0,-100}},color={0,0,0}),
         Text(
-          extent={{-60,80},{60,30}},
-          textColor={28,108,200},
-          textString=DynamicSelect("T", String(
-                  T,
-                  format="1."+String(digits)+"f"))),
+          extent={{-80,86},{80,38}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,30},{60,-20}},
-          textColor={28,108,200},
-          textString=DynamicSelect("p", String(
-                  p,
-                  format="1."+String(digits)+"f"))),
+          extent={{-80,34},{80,-14}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
-          extent={{-60,-20},{60,-70}},
-          textColor={28,108,200},
-          textString=DynamicSelect("m", String(
-                  m_flow,
-                  format="1."+String(digits)+"f"))),
+          extent={{-80,-18},{80,-66}},
+          textColor={0,0,0},
+          textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(
           points={{-100,-100},{100,-100}},
           color={28,108,200},
@@ -217,13 +208,13 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Line(visible=outputTemperature,
-          points={{60,60},{78,60}},
+          points={{80,60},{100,60}},
           color={0,0,127}),
         Line(visible=outputPressure,
-          points={{60,0},{78,0}},
+          points={{80,0},{100,0}},
           color={0,0,127}),
         Line(visible=outputMassFlowRate,
-          points={{60,-60},{78,-60}},
+          points={{80,-60},{100,-60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
