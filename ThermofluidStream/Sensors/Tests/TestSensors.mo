@@ -31,7 +31,7 @@ model TestSensors "Test model for all sensors."
   Boundaries.Sink sink(redeclare package Medium = Medium2)
     annotation (Placement(transformation(extent={{80,-24},{100,-4}})));
   Boundaries.Sink sink1(redeclare package Medium = Medium1, p0_par=100000)
-    annotation (Placement(transformation(extent={{96,44},{116,64}})));
+    annotation (Placement(transformation(extent={{98,44},{118,64}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium1,
     m_flowStateSelect=StateSelect.prefer,
@@ -82,12 +82,12 @@ model TestSensors "Test model for all sensors."
     redeclare package Medium = Medium1,
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg)
-    annotation (Placement(transformation(extent={{-74,36},{-54,56}})));
+    annotation (Placement(transformation(extent={{-74,144},{-54,164}})));
   SingleSensorSelect singleSensorSelect9(
     redeclare package Medium = Medium2,
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)
-    annotation (Placement(transformation(extent={{-84,16},{-104,36}})));
+    annotation (Placement(transformation(extent={{-84,-4},{-104,16}})));
   SingleSensorSelect singleSensorSelect10(redeclare package Medium = Medium2,
     outputValue=true,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3,
@@ -200,8 +200,10 @@ model TestSensors "Test model for all sensors."
     annotation (Placement(transformation(extent={{68,44},{88,64}})));
   SingleFlowSensor singleFlowSensor5(
     redeclare package Medium = Medium1,
+    digits=1,
     outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation (Placement(transformation(extent={{68,64},{88,84}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps)
+                                                                                     annotation (Placement(transformation(extent={{68,64},{88,84}})));
   TwoPhaseSensorSelect twoPhaseSensorSelect(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
     annotation (Placement(transformation(extent={{-74,-58},{-54,-38}})));
   TwoPhaseSensorSelect twoPhaseSensorSelect1(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.p_sat_Pa)
@@ -306,6 +308,32 @@ model TestSensors "Test model for all sensors."
     outputValue=true,
     filter_output=true,
     row=3) annotation (Placement(transformation(extent={{4,-142},{24,-122}})));
+  SingleSensorSelect singleSensorSelect15(
+    redeclare package Medium = Medium1,
+    digits=2,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_kJpkg)
+    annotation (Placement(transformation(extent={{-74,156},{-54,176}})));
+  SingleSensorSelect singleSensorSelect16(
+    redeclare package Medium = Medium2,
+    outputValue=true,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_kJpkgK)
+    annotation (Placement(transformation(extent={{-84,8},{-104,28}})));
+  SingleSensorSelect singleSensorSelect17(
+    redeclare package Medium = Medium1,
+    digits=2,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpmol)
+    annotation (Placement(transformation(extent={{-74,168},{-54,188}})));
+  SingleSensorSelect singleSensorSelect18(
+    redeclare package Medium = Medium1,
+    digits=2,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpkmol)
+    annotation (Placement(transformation(extent={{-74,180},{-54,200}})));
+  SingleFlowSensor singleFlowSensor6(
+    redeclare package Medium = Medium1,
+    outputValue=true,
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_MJps)
+                                                                                     annotation (Placement(transformation(extent={{94,64},
+            {114,84}})));
 equation
   connect(flowResistance.inlet, source.outlet) annotation (Line(
       points={{-10,74},{-80,74}},
@@ -316,7 +344,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect9.inlet, source1.outlet) annotation (Line(
-      points={{-84,26},{-78,26},{-78,-14},{-80,-14}},
+      points={{-84,6},{-78,6},{-78,-14},{-80,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect13.inlet, source1.outlet) annotation (Line(
@@ -336,7 +364,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect8.inlet, source.outlet) annotation (Line(
-      points={{-74,46},{-78,46},{-78,74},{-80,74}},
+      points={{-74,154},{-78,154},{-78,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect7.inlet, source.outlet) annotation (Line(
@@ -443,16 +471,8 @@ equation
       points={{64,54},{68,54}},
       color={28,108,200},
       thickness=0.5));
-  connect(sink1.inlet, singleFlowSensor4.outlet) annotation (Line(
-      points={{96,54},{88,54}},
-      color={28,108,200},
-      thickness=0.5));
   connect(singleFlowSensor1.outlet, singleFlowSensor5.inlet) annotation (Line(
       points={{64,74},{68,74}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(singleFlowSensor5.outlet, singleFlowSensor2.inlet) annotation (Line(
-      points={{88,74},{94,74},{94,70},{14,70},{14,54},{20,54}},
       color={28,108,200},
       thickness=0.5));
   connect(twoPhaseSensorSelect.inlet, flowResistance1.inlet) annotation (Line(
@@ -567,6 +587,40 @@ equation
       thickness=0.5));
   connect(singleSensorSelect14.inlet, source1.outlet) annotation (Line(
       points={{-84,38},{-78,38},{-78,-14},{-80,-14}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect15.inlet, source.outlet)
+    annotation (Line(
+      points={{-74,166},{-78,166},{-78,74},{-80,74}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect16.inlet, source1.outlet)
+    annotation (Line(
+      points={{-84,18},{-78,18},{-78,-14},{-80,-14}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect17.inlet, source.outlet)
+    annotation (Line(
+      points={{-74,178},{-78,178},{-78,74},{-80,74}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleSensorSelect18.inlet, source.outlet)
+    annotation (Line(
+      points={{-74,190},{-78,190},{-78,74},{-80,74}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleFlowSensor4.outlet, sink1.inlet)
+    annotation (Line(
+      points={{88,54},{98,54}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleFlowSensor5.outlet, singleFlowSensor6.inlet)
+    annotation (Line(
+      points={{88,74},{94,74}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(singleFlowSensor6.outlet, singleFlowSensor2.inlet) annotation (Line(
+      points={{114,74},{122,74},{122,70},{16,70},{16,54},{20,54}},
       color={28,108,200},
       thickness=0.5));
   annotation (experiment(StopTime=1, Tolerance=1e-6, Interval=0.001),

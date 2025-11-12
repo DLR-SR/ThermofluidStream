@@ -34,8 +34,12 @@ algorithm
     value :=Modelica.Units.Conversions.to_bar(Medium.pressure(state) + r);
   elseif quantity == Types.Quantities.h_Jpkg then
     value := Medium.specificEnthalpy(state);
+  elseif quantity == Types.Quantities.h_kJpkg then
+    value := 1e-3*Medium.specificEnthalpy(state);
   elseif quantity == Types.Quantities.s_JpkgK then
     value := Medium.specificEntropy(state);
+  elseif quantity == Types.Quantities.s_kJpkgK then
+    value := 1e-3*Medium.specificEntropy(state);
   elseif quantity == Types.Quantities.rho_kgpm3 then
     value := Medium.density(state);
   elseif quantity == Types.Quantities.v_m3pkg then
@@ -50,6 +54,8 @@ algorithm
     value := Medium.isentropicExponent(state);
   elseif quantity == Types.Quantities.MM_kgpmol then
     value := Medium.molarMass(state);
+  elseif quantity == Types.Quantities.MM_kgpkmol then
+    value := 1e3*Medium.molarMass(state);
   else
     value :=0;
   end if;
