@@ -57,5 +57,45 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
-</html>"));
+</html>", info="<html>
+<p>
+The <strong>DropOfCommons</strong> defines global parameters and settings
+for simulation models. This model serves several purposes:
+</p>
+<ul>
+<li> It provides <strong>default physical constants</strong> (e.g., gravity acceleration) and flow properties
+     (e.g., inertance) that are used by all components in the model.</li>
+<li> It defines <strong>regularization parameters</strong> (e.g., minimal density, minimal pressure,
+     mass flow threshold, angular velocity, and volume damping factor) that ensure numerical
+     stability of transient simulations.</li>
+<li> It defines <strong>global assertion and error handling</strong> behavior via the
+     <code>assertionLevel</code> parameter.</li>
+<li> It provides <strong>layout and visualization settings</strong> for model diagrams,
+     such as displaying instance names and parameter values.</li>
+</ul>
+<p>
+Since the global parameters defined in DropOfCommons are used by multiple ThermofluidStream
+components, exactly one instance of this model needs to be present at the top level
+of a simulation model. The basic declaration is:
+</p>
+
+<blockquote><pre>
+<strong>inner</strong> ThermofluidStream.DropOfCommons dropOfCommons
+</pre></blockquote>
+
+<p>
+Note, it must be an <strong>inner</strong> declaration with instance name <strong>dropOfCommons</strong>
+so that all components of a ThermofluidStream model can reference it. When dragging the
+\"DropOfCommons\" object from the package browser into the diagram layer, this declaration
+is automatically generated (defined via annotations in the model).
+</p>
+
+<p>
+All flow, density, pressure, and visualization parameters in a simulation model
+are resolved relative to the settings in this dropOfCommons instance. Adjusting these
+parameters allows controlling global simulation behavior, visualization preferences, and
+regularization methods consistently across all components.
+</p>
+</html>
+"));
 end DropOfCommons;
