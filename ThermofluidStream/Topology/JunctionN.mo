@@ -101,6 +101,6 @@ equation
           textString="%N")}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Generic junction with an array of <b>N</b> upstream connections and one downstream connection. Use this model for parameterized merge structures.</p>
+<p>Generic junction with an array of <strong>N</strong> upstream connections and one downstream connection. Use this model for parameterized merge structures.</p>
 </html>"));
 end JunctionN;

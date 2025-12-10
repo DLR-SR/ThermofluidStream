@@ -94,6 +94,6 @@ equation
           textString="%M")}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Generic <b>N-to-M</b> junction for manifold-style networks with multiple inlets and multiple outlets. Use this model to represent compact distribution or collection nodes in scalable architectures where both the number of incoming and outgoing branches is configurable.</p>
+<p>Generic <strong>N-to-M</strong> junction for manifold-style networks with multiple inlets and multiple outlets. Use this model to represent compact distribution or collection nodes in scalable architectures where both the number of incoming and outgoing branches is configurable.</p>
 </html>"));
 end JunctionNM;
