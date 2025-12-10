@@ -101,5 +101,9 @@ equation
           extent={{80,-60},{120,-20}},
           textColor={175,175,175},
           textString="b")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Alternative multiport X-junction with the same primary topology role as JunctionX1.</p>
+<p>Use it as a drop-in alternative during model refinement if needed.</p>
+</html>"));
 end JunctionX2;
