@@ -56,7 +56,8 @@ model Piston "Test for Piston model"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={10,10})));
-  FlowControl.Switch switch(redeclare package Medium = Medium, initializeOneMassflowSplit=true)
+  FlowControl.Switch switch(redeclare package Medium = Medium,
+      initializeOneMassflowSplit=false)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-66,10})));
@@ -83,6 +84,7 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     computeL=false,
     L_value=1e-3,
     r=0.1,
@@ -125,17 +127,19 @@ initial equation
 
 equation
 
-  connect(linearSpeedDependentForce.flange, piston2_1.flange) annotation (Line(points={{40,-50},{40,-50.2},{14,-50.2}},      color={0,127,0}));
+  connect(linearSpeedDependentForce.flange, piston2_1.flange) annotation (Line(points={{40,-50},
+          {40,-50},{14,-50}},                                                                                                color={0,127,0}));
 
-  connect(piston2_1.x_out, showRealValue.numberPort) annotation (Line(points={{10,-55},{10,-72},{30.5,-72}},     color={0,0,127}));
+  connect(piston2_1.x_out, showRealValue.numberPort) annotation (Line(points={{10,
+          -54.8},{10,-72},{30,-72}},                                                                             color={0,0,127}));
   connect(switchConnector.fore, piston2_1.port_left)
     annotation (Line(
-      points={{-10,-30},{-10,-46},{-6,-46}},
+      points={{-10,-30},{-10,-45.8},{-6,-45.8}},
       color={28,108,200},
       thickness=0.5));
   connect(switchConnector1.fore, piston2_1.port_right)
     annotation (Line(
-      points={{10,0},{10,-10},{20,-10},{20,-46},{14,-46}},
+      points={{10,0},{10,-10},{20,-10},{20,-45.8},{14,-45.8}},
       color={28,108,200},
       thickness=0.5));
   connect(pulse.y, firstOrder.u) annotation (Line(points={{-43,56},{-32,56}}, color={0,0,127}));
