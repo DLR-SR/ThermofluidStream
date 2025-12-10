@@ -73,5 +73,8 @@ equation
           extent={{20,-80},{60,-120}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Three-port junction for merging two upstream streams into one downstream stream. Use this model to represent a directed merge of two branches into a single line. The component is intended for steady (non-dynamic) topology definition and helps maintain consistent and readable network architecture. </p>
+</html>"));
 end JunctionT1;

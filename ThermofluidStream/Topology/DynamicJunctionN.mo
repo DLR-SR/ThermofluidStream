@@ -86,7 +86,7 @@ equation
 because velocity can directly be set, instead of A,
 that will need regularization for low massflow.")}),
     Documentation(info="<html>
-<p>Junction that takes dynamic pressure into account.</p>
+<p>Dynamic variant of the generic <strong>N-to-1</strong> junction. This model includes dynamic pressure/momentum effects and is intended for transient simulations of merging nodes.</p>
 <p>This junction model (see fig. 1) mixes fluids of different velocity entering the mixing chamber by different cross section areas and outputs the mixed fluid on an outlet with a separate area.</p>
 <p>The pressure balance is done on the steady-state pressure, and mixing (red) assumes to preserve the kinetic energy of the fluid, resulting in an effective mixing velocity and area. This implies, that the mixing area A_mix changes during the simulation, which can be interpreted as narrowing down the mixing area by flow separation. </p>
 <p>After mixing the fluid is accelerated to match the outlet area. </p>

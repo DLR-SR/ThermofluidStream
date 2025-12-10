@@ -99,5 +99,8 @@ equation
           extent={{-120,-20},{-80,-60}},
           textColor={175,175,175},
           textString="%N")}),
-      Diagram(coordinateSystem(preserveAspectRatio=true)));
+      Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Generic junction with an array of <strong>N</strong> upstream connections and one downstream connection. Use this model for parameterized merge structures.</p>
+</html>"));
 end JunctionN;

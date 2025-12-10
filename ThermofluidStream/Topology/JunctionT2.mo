@@ -73,5 +73,8 @@ equation
           extent={{-120,60},{-80,20}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Alternative three-port junction for combining two inlet branches into one outlet branch. Functionally equivalent to JunctionT1 in terms of topology, but implemented with an alternative internal formulation. </p>
+</html>"));
 end JunctionT2;
