@@ -18,7 +18,9 @@ Medium model for the test. Can be anything.
   tf.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning)
+  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
+    displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 
   tf.Processes.FlowResistance flowResistance(
@@ -87,7 +89,7 @@ Medium model for the test. Can be anything.
   tf.Boundaries.Source source3(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
-    p0_par=300000)
+    p0_par=110000)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   tf.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
