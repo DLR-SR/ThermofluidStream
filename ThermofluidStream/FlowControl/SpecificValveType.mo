@@ -24,6 +24,8 @@ model SpecificValveType "Specific technical valve types"
   parameter SI.Diameter d_valve = 0 "Flow diameter"
     annotation (Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
 
+  Real phi(min = 0, max = 1) "Normalized pressure";
+
 protected
   final parameter SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional area";
   constant zetaValueRecord valveData;
@@ -74,7 +76,24 @@ equation
 
   k_u = k_min + (1 - k_min)*k_u_zeta;
 
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(dp_ref) + p_min)));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Ellipse(
+          extent={{-58,56},{62,-64}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
+          fillPattern=FillPattern.Solid),
         Line(
           points={{-100,0},{-40,0}},
           color={28,108,200},
@@ -107,7 +126,14 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(extent={{-100,-100},{0,-60}},
+          textColor={0,0,0},
+          textString="dp [bar] ="),
+        Text(extent={{10,-100},{90,-60}},
+          textColor={0,0,0},
+          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This valve models the behavior of specific valve types.</p>
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>

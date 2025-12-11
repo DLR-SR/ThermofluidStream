@@ -36,7 +36,7 @@ model MCV "Flow rate control valve"
     else "error";
   //-----------------------------------------------------------------
 
-
+   Real phi(min = 0, max = 1) "Normalized pressure";
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
@@ -92,6 +92,10 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(p_in) + p_min)));
+
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName and not enableClippingOutput,
@@ -121,7 +125,7 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor={255,255,255},
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
           fillPattern=FillPattern.Solid),
         Line(
           points={{40,0},{-48,0}},
@@ -148,7 +152,13 @@ equation
         Line(visible=enableClippingOutput and not displayInstanceName,
           points={{0,-110},{0,-60}},
           color={0,0,127},
-          thickness=0.5)}),
+          thickness=0.5),
+        Text(extent={{-100,-100},{0,-60}},
+          textColor={0,0,0},
+          textString="dp [bar] ="),
+        Text(extent={{10,-100},{90,-60}},
+          textColor={0,0,0},
+          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
