@@ -60,6 +60,11 @@ equation
 
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,4},{0,106}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Ellipse(
           extent={{-58,56},{62,-64}},
           lineColor={28,108,200},
@@ -83,10 +88,6 @@ equation
           thickness=0.5,
           pattern=LinePattern.Dash),
         Line(
-          points={{0,0},{0,80}},
-          color={0,0,127},
-          thickness=0.5),
-        Line(
           points={{40,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
@@ -106,10 +107,10 @@ equation
           fillPattern=FillPattern.Solid,
           origin={0,-20},
           rotation=180),
-        Text(extent={{-100,-100},{0,-60}},
+        Text(extent={{-100,60},{0,100}},
           textColor={0,0,0},
           textString="dp [bar] ="),
-        Text(extent={{10,-100},{90,-60}},
+        Text(extent={{10,60},{90,100}},
           textColor={0,0,0},
           textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
                            Diagram(coordinateSystem(preserveAspectRatio=true)),

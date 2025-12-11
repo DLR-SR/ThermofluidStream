@@ -92,10 +92,17 @@ equation
       points={{6.66134e-16,50},{0,50},{0,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(tanValve1.u, u) annotation (Line(points={{40,-8},{40,-20},{0,-20},{0,-120}},color={0,0,127}));
-  connect(tanValve.u, u) annotation (Line(points={{-8,40},{-20,40},{-20,-20},{0,-20},{0,-120}},color={0,0,127}));
+  connect(tanValve1.u, u) annotation (Line(points={{40,-12},{40,-20},{0,-20},{0,
+          -120}},                                                                     color={0,0,127}));
+  connect(tanValve.u, u) annotation (Line(points={{-12,40},{-20,40},{-20,-20},{
+          0,-20},{0,-120}},                                                                    color={0,0,127}));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,-102},{0,0}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Text(visible= displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",

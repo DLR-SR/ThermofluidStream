@@ -3,7 +3,11 @@ model TanValve "Valve with tan-shaped flow resistance"
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
   Modelica.Blocks.Interfaces.RealInput u(unit="1") "Valve control signal []"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
@@ -38,6 +42,11 @@ equation
 
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,0},{0,102}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Ellipse(
           extent={{-58,56},{62,-64}},
           lineColor={28,108,200},
@@ -65,10 +74,6 @@ equation
           thickness=0.5,
           pattern=LinePattern.Dash),
         Line(
-          points={{0,0},{0,80}},
-          color={0,0,127},
-          thickness=0.5),
-        Line(
           points={{40,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
@@ -88,10 +93,10 @@ equation
           fillPattern=FillPattern.Solid,
           origin={0,-20},
           rotation=180),
-        Text(extent={{-100,-100},{0,-60}},
+        Text(extent={{-100,60},{0,100}},
           textColor={0,0,0},
           textString="dp [bar] ="),
-        Text(extent={{10,-100},{90,-60}},
+        Text(extent={{10,60},{90,100}},
           textColor={0,0,0},
           textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
                            Diagram(coordinateSystem(preserveAspectRatio=true)),

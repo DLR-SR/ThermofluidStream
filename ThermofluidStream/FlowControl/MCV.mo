@@ -39,7 +39,11 @@ model MCV "Flow rate control valve"
    Real phi(min = 0, max = 1) "Normalized pressure";
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
 
@@ -98,6 +102,11 @@ equation
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,0},{0,102}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Text(visible= displayInstanceName and not enableClippingOutput,
           extent={{-150,-80},{150,-120}},
           textString="%name",
@@ -140,10 +149,6 @@ equation
           points={{-52,30},{52,30}},
           color={28,108,200},
           thickness=0.5),
-        Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
-          thickness=0.5),
         Ellipse(
           extent={{60,40},{80,60}},
           lineColor={0,0,0},
@@ -153,10 +158,10 @@ equation
           points={{0,-110},{0,-60}},
           color={0,0,127},
           thickness=0.5),
-        Text(extent={{-100,-100},{0,-60}},
+        Text(extent={{-100,60},{0,100}},
           textColor={0,0,0},
           textString="dp [bar] ="),
-        Text(extent={{10,-100},{90,-60}},
+        Text(extent={{10,60},{90,100}},
           textColor={0,0,0},
           textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),

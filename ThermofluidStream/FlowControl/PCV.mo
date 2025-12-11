@@ -15,7 +15,11 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
 
 
   Real phi(min = 0, max = 1) "Normalized pressure";
@@ -52,7 +56,13 @@ equation
 
 
     annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
-    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
+            100}}),                                  graphics={
+        Line(
+          points={{0,-2},{0,100}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Text(visible=displayInstanceName,
           extent={{-150,-80},{150,-120}},
           textString="%name",
@@ -87,14 +97,10 @@ equation
           points={{-52,30},{52,30}},
           color={28,108,200},
           thickness=0.5),
-        Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
-          thickness=0.5),
-        Text(extent={{-100,-100},{0,-60}},
+        Text(extent={{-100,60},{0,100}},
           textColor={0,0,0},
           textString="dp [bar] ="),
-        Text(extent={{10,-100},{90,-60}},
+        Text(extent={{10,60},{90,100}},
           textColor={0,0,0},
           textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
                             Diagram(coordinateSystem(preserveAspectRatio=true)),
