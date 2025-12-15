@@ -61,7 +61,7 @@ name of the variable value that is displayed is also shown below the icon):
 </p>
 
 <p>
-<img src=\"modelica://Modelica/Resources/Images/Blocks/Interaction/RealValue.png\"
+<img src=\"modelica://Modelica/Resources/Images/Blocks/Interaction/Show/RealValue.png\"
      alt=\"RealValue.png\">
 </p>
 

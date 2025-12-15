@@ -85,5 +85,8 @@ equation
           extent={{80,-20},{120,-60}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Multi-branch splitter for distributing one upstream stream into multiple downstream branches in an X-type topology. Use this component when you need a compact representation of a higher-order split without cascading several T-splitters.</p>
+</html>"));
 end SplitterX;
