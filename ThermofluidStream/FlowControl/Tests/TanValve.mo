@@ -10,16 +10,20 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
+    displayInstanceNames=false,
+    displayParameters=false)
     annotation (Placement(transformation(extent={{52,-82},{72,-62}})));
   Boundaries.Source source(redeclare package Medium=Medium,
     pressureFromInput=true, T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-106,-10},{-86,10}})));
   Boundaries.Sink sink(redeclare package Medium=Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{98,-10},{118,10}})));
-  FlowControl.TanValve tanValve(redeclare package Medium = Medium, invertInput=false)
+  FlowControl.TanValve tanValve(
+    displayInstanceName=true,   redeclare package Medium = Medium, invertInput=false)
     annotation (Placement(transformation(extent={{16,26},{36,46}})));
   Processes.FlowResistance flowResistance(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     r=0.05,
     l=1,
@@ -115,7 +119,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(ramp.y, tanValve.u)
-    annotation (Line(points={{9,74},{26,74},{26,44}}, color={0,0,127}));
+    annotation (Line(points={{9,74},{26,74},{26,48}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{120,100}})),
     experiment(StopTime=100, Tolerance=1e-6, Interval=0.1, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>

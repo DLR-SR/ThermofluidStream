@@ -45,15 +45,15 @@ some medium properties and the geometry of the pipe.
     annotation (Dialog(group = "Geometry"));
   parameter ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Cross section shape"
     annotation (Dialog(group = "Geometry",enable = true));
-  parameter SI.Radius r(min=0) = 0 "Radius"
+  parameter SI.Radius r(min=0)=0   "Radius"
     annotation (Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular)));
-  parameter SI.Length a(min=0) = 0 "Rectangle width"
+  parameter SI.Length a(min=0)=0   "Rectangle width"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Length b(min=0) = 0 "Rectangle height"
+  parameter SI.Length b(min=0)=0   "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCrossInput(min=0) = 0 "Cross-sectional area"
+  parameter SI.Area areaCrossInput(min=0)=0   "Cross-sectional area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
-  parameter SI.Length perimeterInput(min=0) = 0 "Wetted perimeter"
+  parameter SI.Length perimeterInput(min=0)=0   "Wetted perimeter"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter Boolean computeL = true "= true, if inertance L is computed from the geometry"
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -135,12 +135,10 @@ equation
           smooth=Smooth.Bezier,
           origin={0,25},
           rotation=180),
-        Text(extent={{10,-100},{90,-60}},
+        Text(visible=displayParameters,
+          extent={{-100,-64},{100,-94}},
           textColor={0,0,0},
-          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2))),
-        Text(extent={{-100,-100},{0,-60}},
-          textColor={0,0,0},
-          textString="dp [bar] =")}),
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
                            Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>

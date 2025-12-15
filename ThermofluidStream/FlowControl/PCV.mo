@@ -1,6 +1,7 @@
 within ThermofluidStream.FlowControl;
 model PCV "Pressure and pressure-drop control valve"
-  extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=true);
+  extends ThermofluidStream.Interfaces.SISOFlow(displayParameters=true,
+                                                final clip_p_out=true);
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
@@ -97,13 +98,12 @@ equation
           points={{-52,30},{52,30}},
           color={28,108,200},
           thickness=0.5),
-        Text(extent={{-100,60},{0,100}},
+        Text(
+          visible=displayParameters,
+          extent={{-100,96},{100,66}},
           textColor={0,0,0},
-          textString="dp [bar] ="),
-        Text(extent={{10,60},{90,100}},
-          textColor={0,0,0},
-          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
-                            Diagram(coordinateSystem(preserveAspectRatio=true)),
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on the chosen valve mode.</p>
 <p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This is done either by parameter <code>pressure_set_par</code> or via input connector <code>pressure_set_var</code> when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>

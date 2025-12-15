@@ -64,13 +64,11 @@ equation
           points={{0,-30},{20,-10}},
           color={28,108,200},
           thickness=0.5),
-        Text(extent={{-100,-100},{0,-60}},
+        Text(visible=displayParameters,
+          extent={{-100,-64},{100,-94}},
           textColor={0,0,0},
-          textString="dp [bar] ="),
-        Text(extent={{10,-100},{90,-60}},
-          textColor={0,0,0},
-          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
-                            Diagram(coordinateSystem(preserveAspectRatio=true)),
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Valve that allows positive mass_flow and builds up a large pressure difference against negative mass_flow.</p>
 </html>"));

@@ -10,7 +10,9 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning,
+      displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -20,6 +22,7 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,20},{70,40}})));
   ThermofluidStream.FlowControl.MCV mCV(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
@@ -43,11 +46,13 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.FlowControl.MCV mCV1(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     massFlow_set_par=0.1,
-    volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-10},
+            {10,10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     r=0.1,
@@ -71,6 +76,7 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink2(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
   ThermofluidStream.FlowControl.MCV mCV2(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
@@ -102,6 +108,7 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,-70},{70,-50}})));
   ThermofluidStream.FlowControl.MCV mCV3(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
@@ -130,6 +137,7 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink4(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,-100},{70,-80}})));
   ThermofluidStream.FlowControl.MCV mCV4(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
@@ -161,6 +169,7 @@ Medium package used in the Test.
   ThermofluidStream.Boundaries.Sink sink5(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{50,60},{70,80}})));
   ThermofluidStream.FlowControl.MCV mCV5(
+    displayInstanceName=true,
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
@@ -286,8 +295,10 @@ equation
       points={{10,70},{20,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(pulse5.y, mCV.setpoint_var) annotation (Line(points={{-59,50},{0,50},{0,38}}, color={0,0,127}));
-  connect(trapezoid2.y, mCV5.setpoint_var) annotation (Line(points={{-59,90},{0,90},{0,78}}, color={0,0,127}));
+  connect(pulse5.y, mCV.setpoint_var) annotation (Line(points={{-59,50},{0,50},
+          {0,42}},                                                                      color={0,0,127}));
+  connect(trapezoid2.y, mCV5.setpoint_var) annotation (Line(points={{-59,90},{0,
+          90},{0,82}},                                                                       color={0,0,127}));
   connect(mCV6.inlet,source6. outlet) annotation (Line(
       points={{-8,140},{-18,140}},
       color={28,108,200},

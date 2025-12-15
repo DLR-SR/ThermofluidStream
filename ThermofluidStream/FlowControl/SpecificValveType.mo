@@ -128,12 +128,11 @@ equation
           fillPattern=FillPattern.Solid,
           origin={0,-20},
           rotation=180),
-        Text(extent={{-100,60},{0,100}},
+        Text(
+          visible=displayParameters,
+          extent={{-100,96},{100,66}},
           textColor={0,0,0},
-          textString="dp [bar] ="),
-        Text(extent={{10,60},{90,100}},
-          textColor={0,0,0},
-          textString=DynamicSelect("0.0", String(dp/1e5, significantDigits=2)))}),
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
                            Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This valve models the behavior of specific valve types.</p>
