@@ -54,7 +54,7 @@ algorithm
 
   //absolute Reynolds number
   Re_abs := abs(m_flow)*diameter/(area*mu);
-  Re_abs_limited := max(Re_small, min(1, Re_abs));
+  Re_abs_limited := max(Re_small, Re_abs);
 
   friction_factor :=
     (-1.8/n*log10((6.9/Re_abs_limited)^n + (relative_roughness/3.75)^(1.11*n)))^(-2);
