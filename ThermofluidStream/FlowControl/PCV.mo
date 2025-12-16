@@ -1,6 +1,7 @@
 within ThermofluidStream.FlowControl;
 model PCV "Pressure and pressure-drop control valve"
-  extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=true);
+  extends ThermofluidStream.Interfaces.SISOFlow(displayParameters=true,
+                                                final clip_p_out=true);
 
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
@@ -15,7 +16,14 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,100}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
+
+
+  Real phi(min = 0, max = 1) "Normalized pressure";
 
 protected
   Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";
@@ -42,8 +50,20 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(p_in) + p_min)));
+
+
     annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
-    Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
+            100}}),                                  graphics={
+        Line(
+          points={{0,-2},{0,100}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Text(visible=displayInstanceName,
           extent={{-150,-80},{150,-120}},
           textString="%name",
@@ -63,7 +83,7 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor={255,255,255},
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
           fillPattern=FillPattern.Solid),
         Line(
           points={{40,0},{-48,0}},
@@ -78,10 +98,12 @@ equation
           points={{-52,30},{52,30}},
           color={28,108,200},
           thickness=0.5),
-        Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+        Text(
+          visible=displayParameters,
+          extent={{-100,96},{100,66}},
+          textColor={0,0,0},
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on the chosen valve mode.</p>
 <p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This is done either by parameter <code>pressure_set_par</code> or via input connector <code>pressure_set_var</code> when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>

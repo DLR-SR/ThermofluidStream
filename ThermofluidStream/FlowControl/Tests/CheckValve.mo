@@ -11,14 +11,17 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
+    displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{52,-82},{72,-62}})));
   Boundaries.Source source(redeclare package Medium=Medium,
     pressureFromInput=true, T0_par(displayUnit="K") = 300)
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Boundaries.Sink sink(redeclare package Medium=Medium, p0_par=200000)
     annotation (Placement(transformation(extent={{52,-10},{72,10}})));
-  ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium=Medium, L=
+  ThermofluidStream.FlowControl.CheckValve checkValve(
+    displayInstanceName=true,                         redeclare package Medium=Medium, L=
         1e-4,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
     annotation (Placement(transformation(extent={{-22,-10},{-2,10}})));
@@ -27,7 +30,8 @@ Medium package used in the Test.
     period=0.5,
     offset=1e5)
     annotation (Placement(transformation(extent={{-96,-4},{-76,16}})));
-  Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
+  Processes.FlowResistance flowResistance(
+    displayInstanceName=true,             redeclare package Medium=Medium,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)

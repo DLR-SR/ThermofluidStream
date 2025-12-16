@@ -10,7 +10,9 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
+      displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{52,-82},{72,-62}})));
   Boundaries.Source source(redeclare package Medium=Medium,
     pressureFromInput=false,T0_par(displayUnit="K") = 300,

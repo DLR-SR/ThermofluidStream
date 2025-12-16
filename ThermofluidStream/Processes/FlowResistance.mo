@@ -45,15 +45,15 @@ some medium properties and the geometry of the pipe.
     annotation (Dialog(group = "Geometry"));
   parameter ShapeOfResistance shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular "Cross section shape"
     annotation (Dialog(group = "Geometry",enable = true));
-  parameter SI.Radius r(min=0) = 0 "Radius"
+  parameter SI.Radius r(min=0)=0   "Radius"
     annotation (Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.circular)));
-  parameter SI.Length a(min=0) = 0 "Rectangle width"
+  parameter SI.Length a(min=0)=0   "Rectangle width"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Length b(min=0) = 0 "Rectangle height"
+  parameter SI.Length b(min=0)=0   "Rectangle height"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.rectangle)));
-  parameter SI.Area areaCrossInput(min=0) = 0 "Cross-sectional area"
+  parameter SI.Area areaCrossInput(min=0)=0   "Cross-sectional area"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
-  parameter SI.Length perimeterInput(min=0) = 0 "Wetted perimeter"
+  parameter SI.Length perimeterInput(min=0)=0   "Wetted perimeter"
     annotation(Dialog(group = "Geometry", enable=(shape == ThermofluidStream.Processes.Internal.ShapeOfResistance.other)));
   parameter Boolean computeL = true "= true, if inertance L is computed from the geometry"
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -75,14 +75,25 @@ some medium properties and the geometry of the pipe.
 
   final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4 "Hydraulic cross-sectional area";
 
+  Real phi(min = 0, max = 1) "Normalized pressure";
+
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
   SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
+
+
 
 equation
   dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);
   h_out = h_in;
   Xi_out = Xi_in;
+
+
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(p_out-p_in) / (abs(p_in) + p_min)));
+
+
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -105,7 +116,7 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor={255,255,255},
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
           fillPattern=FillPattern.Solid),
         Line(
           points={{40,0},{-48,0}},
@@ -123,7 +134,12 @@ equation
           thickness=0.5,
           smooth=Smooth.Bezier,
           origin={0,25},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(visible=displayParameters,
+          extent={{-100,-64},{100,-94}},
+          textColor={0,0,0},
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Implementation of a flow resistance pipe with different selectable

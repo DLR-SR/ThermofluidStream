@@ -11,7 +11,9 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel=AssertionLevel.warning,
+      displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{70,-88},{90,-68}})));
   ThermofluidStream.FlowControl.PCV pCV(
     redeclare package Medium = Medium,
@@ -194,8 +196,10 @@ equation
       points={{30,60},{40,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(ramp1.y, pCV3.pressure_set_var) annotation (Line(points={{-49,40},{-10,40},{-10,28}}, color={0,0,127}));
-  connect(ramp.y, pCV4.pressure_set_var) annotation (Line(points={{-49,80},{-10,80},{-10,68}}, color={0,0,127}));
+  connect(ramp1.y, pCV3.pressure_set_var) annotation (Line(points={{-49,40},{
+          -10,40},{-10,32}},                                                                    color={0,0,127}));
+  connect(ramp.y, pCV4.pressure_set_var) annotation (Line(points={{-49,80},{-10,
+          80},{-10,72}},                                                                       color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}})),

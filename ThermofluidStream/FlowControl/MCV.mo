@@ -36,10 +36,14 @@ model MCV "Flow rate control valve"
     else "error";
   //-----------------------------------------------------------------
 
-
+   Real phi(min = 0, max = 1) "Normalized pressure";
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
 
@@ -92,8 +96,17 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(p_in) + p_min)));
+
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,0},{0,102}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
         Text(visible= displayInstanceName and not enableClippingOutput,
           extent={{-150,-80},{150,-120}},
           textString="%name",
@@ -121,7 +134,7 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor={255,255,255},
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
           fillPattern=FillPattern.Solid),
         Line(
           points={{40,0},{-48,0}},
@@ -136,10 +149,6 @@ equation
           points={{-52,30},{52,30}},
           color={28,108,200},
           thickness=0.5),
-        Line(
-          points={{0,0},{0,60}},
-          color={28,108,200},
-          thickness=0.5),
         Ellipse(
           extent={{60,40},{80,60}},
           lineColor={0,0,0},
@@ -148,8 +157,7 @@ equation
         Line(visible=enableClippingOutput and not displayInstanceName,
           points={{0,-110},{0,-60}},
           color={0,0,127},
-          thickness=0.5)}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)),
+          thickness=0.5)}),Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
 <p>The mass- or volume-flow-setpoint can be set or given by a real input signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpoint cannot be reached, an optional output leaves its &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>

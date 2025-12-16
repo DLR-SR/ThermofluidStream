@@ -24,6 +24,9 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
   parameter SI.MassFlowRate m_flow_ref_set =  0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
+  Real phi(min = 0, max = 1) "Normalized pressure";
+
+
 protected
   final parameter SI.VolumeFlowRate V_flow_ref=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
@@ -49,10 +52,32 @@ initial equation
 
 equation
 
-
   k_u = valveCharacteristics(u, k_min);
 
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(dp_ref) + p_min)));
+
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,4},{0,106}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
+        Ellipse(
+          extent={{-58,56},{62,-64}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
+          fillPattern=FillPattern.Solid),
         Line(
           points={{-100,0},{-40,0}},
           color={28,108,200},
@@ -62,10 +87,6 @@ equation
           color={28,108,200},
           thickness=0.5,
           pattern=LinePattern.Dash),
-        Line(
-          points={{0,0},{0,80}},
-          color={0,0,127},
-          thickness=0.5),
         Line(
           points={{40,0},{100,0}},
           color={28,108,200},
@@ -85,7 +106,13 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(
+          visible=displayParameters,
+          extent={{-100,96},{100,66}},
+          textColor={0,0,0},
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>
 <p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>

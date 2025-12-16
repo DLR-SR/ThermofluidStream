@@ -3,7 +3,11 @@ model TanValve "Valve with tan-shaped flow resistance"
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
   Modelica.Blocks.Interfaces.RealInput u(unit="1") "Valve control signal []"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80}),
+        iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
@@ -12,6 +16,8 @@ model TanValve "Valve with tan-shaped flow resistance"
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
   parameter SI.Pressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
+
+  Real phi(min = 0, max = 1) "Normalized pressure";
 
 protected
   Real k(unit="(Pa.s)/kg");
@@ -30,7 +36,30 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+  // Adding color to the icon
+  // Normalize pressure ratio into [0,1]
+  phi = max(0, min(1, abs(dp) / (abs(p_in) + p_min)));
+
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{0,0},{0,102}},
+          color={28,108,200},
+          thickness=0.5,
+          pattern=LinePattern.Dot),
+        Ellipse(
+          extent={{-58,56},{62,-64}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor = DynamicSelect({255,255,255}, {255,integer(255*(1 - phi)),integer(255*(1 - phi))}),
+          fillPattern=FillPattern.Solid),
         Text(visible=displayInstanceName,
           extent={{-150,-60},{150,-100}},
           textString="%name",
@@ -44,10 +73,6 @@ equation
           color={28,108,200},
           thickness=0.5,
           pattern=LinePattern.Dash),
-        Line(
-          points={{0,0},{0,80}},
-          color={0,0,127},
-          thickness=0.5),
         Line(
           points={{40,0},{100,0}},
           color={28,108,200},
@@ -67,7 +92,13 @@ equation
                   {28,108,200} else {255,255,255}),
           fillPattern=FillPattern.Solid,
           origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(
+          visible=displayParameters,
+          extent={{-100,96},{100,66}},
+          textColor={0,0,0},
+          textString=DynamicSelect("", "dp = " + String(dp/1e5, significantDigits=2) + " bar"))}),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>The TanValve is the most basic valve and can be used when no valve type is set yet. </p>
 <p>It adjusts its flow resistance coefficient according to a tangens of the input. The pole of the tan function can lead to numerical problems.</p>

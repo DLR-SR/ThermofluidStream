@@ -11,7 +11,9 @@ Medium package used in the Test.
 </p>
 </html>"));
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
+      displayInstanceNames=true,
+    displayParameters=true)
     annotation (Placement(transformation(extent={{-170,94},{-150,114}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = medium,
@@ -118,7 +120,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(ramp.y, slideValveInverse.u_in)
-    annotation (Line(points={{153,20},{0,20},{0,8}}, color={0,0,127}));
+    annotation (Line(points={{153,20},{0,20},{0,12}},color={0,0,127}));
   connect(source.p0_var, const2.y) annotation (Line(points={{-108,66},{-108,60},{-140,60},{-140,6},{-149,6}},
                                                 color={0,0,127}));
   connect(source.outlet, flowResistance.inlet) annotation (Line(
@@ -151,7 +153,7 @@ equation
       points={{-40,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(slideValve.u_in, ramp.y) annotation (Line(points={{0,68},{0,90},{120,
+  connect(slideValve.u_in, ramp.y) annotation (Line(points={{0,72},{0,90},{120,
           90},{120,20},{153,20}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-180,-100},{180,120}})),
     experiment(
