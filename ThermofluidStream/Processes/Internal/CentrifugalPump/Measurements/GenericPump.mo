@@ -6,7 +6,7 @@ record GenericPump "Generic measurement data record for centrifugal pumps"
   parameter SI.Density rho_ref(displayUnit="kg/l") = 1000 "Reference density";
   parameter SI.AngularVelocity  w_ref(displayUnit="rpm") = 314.1592653589793 "Reference angular velocity"; // 3000 rpm
   final parameter Integer N = size(V_flow,1) "Number of data points";
-  parameter SI.VolumeFlowRate V_flow[:](displayUnit="m3/h") = {0,2.777777777778e-3,4.166666666667e-3} "Volume flow rate data points"
+  parameter SI.VolumeFlowRate V_flow[:](each displayUnit="m3/h") = {0,2.777777777778e-3,4.166666666667e-3} "Volume flow rate data points"
     annotation (Dialog(group="Volume flow rate")); // {0,10,15} m3/h
   parameter Boolean setHead = true "= true, if head data points shall be given (= false, if pressure difference shall be given instead)"
     annotation(Dialog(group="Head/Pressure rise"),Evaluate=true, HideResult=true, choices(checkBox=true));
