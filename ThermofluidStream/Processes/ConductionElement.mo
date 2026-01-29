@@ -95,7 +95,7 @@ equation
     <li><code>useHeatTransferPropertyInput = true</code> and <code>resistanceFromAU = true</code>: enables the <code>U</code> input (overall heat transfer coefficient)</li>
     <li><code>useHeatTransferPropertyInput = true</code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> input (thermal conductance)</li>
     <li><code>useHeatTransferPropertyInput = false</code> and <code>resistanceFromAU = true</code>: enables the <code>U</code> parameter (overall heat transfer coefficient)</li>
-    <li><code>useHeatTransferPropertyInput = fals>/code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> parameter (thermal conductance)</li>
+    <li><code>useHeatTransferPropertyInput = false</code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> parameter (thermal conductance)</li>
   </ul>
 </html>"));
 end ConductionElement;
