@@ -20,9 +20,9 @@ model DropOfCommons "Model for global parameters"
 
   parameter AssertionLevel assertionLevel = AssertionLevel.error "Global assertion level";
 
-  parameter Boolean displayInstanceNames = false "= true, if ThermofluidStream instance names are displayed" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayParameters = false "= true, if displaying parameters is enabled" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter Integer instanceNameColor[3] = {28,108,200}; // {28,108,200}
+  parameter Boolean displayInstanceNames = true "= true, if ThermofluidStream instance names are displayed" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayParameters = true "= true, if displaying parameters is enabled" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter Integer instanceNameColor[3] = {28,108,200}; // Default Color: {28,108,200}
 
   annotation (defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",
