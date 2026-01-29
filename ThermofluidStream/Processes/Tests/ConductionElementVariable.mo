@@ -20,8 +20,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1, k2
-          =1e5),
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-200,40},{-180,60}})));
@@ -42,7 +41,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1, k2=1e5),
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-200,-60},{-180,-40}})));
@@ -58,13 +57,13 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1, k2=1e5),
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-20,40},{0,60}})));
   Processes.ConductionElement conductionElement2(
     redeclare package Medium = Medium,
-    resistanceFromInput=true,
+    useHeatTransferPropertyInput=true,
     A=2)                                        annotation (Placement(transformation(extent={{40,40},{60,60}})));
   Modelica.Blocks.Sources.RealExpression heatTransferCoefficient(y=100)
     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
@@ -78,13 +77,13 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1, k2=1e5),
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-20,-40},{0,-60}})));
   Processes.ConductionElement conductionElement3(
     redeclare package Medium = Medium,
-    resistanceFromInput=true,
+    useHeatTransferPropertyInput=true,
     resistanceFromAU=false,
     A=2)                                        annotation (Placement(transformation(extent={{40,-40},{60,-60}})));
   Modelica.Blocks.Sources.RealExpression thermalConductance(y=200)
@@ -99,13 +98,13 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1, k2=1e5),
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{160,40},{180,60}})));
   Processes.ConductionElement conductionElement4(
     redeclare package Medium = Medium,
-    resistanceFromInput=true,
+    useHeatTransferPropertyInput=true,
     A=2)                                        annotation (Placement(transformation(extent={{220,40},{240,60}})));
   Modelica.Blocks.Sources.Step heatTransferCoefficient_step(
     height=100,
@@ -208,7 +207,7 @@ equation
     Documentation(info="<html>
   <p>
     This test verifies the four possible ways to define the thermal conductance:
-    <code>resistanceFromAU = true/false</code> and <code>resistanceFromInput = true/false</code>.
+    <code>resistanceFromAU = true/false</code> and <code>useHeatTransferPropertyInput = true/false</code>.
     All four configurations produce the same result in a simple test and do not generate warnings or errors.
   </p>
 

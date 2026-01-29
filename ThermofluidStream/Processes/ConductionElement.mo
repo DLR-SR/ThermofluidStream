@@ -3,16 +3,16 @@ model ConductionElement "Model of quasi-stationary mass and heat transfer"
 
   extends Internal.PartialConductionElement;
 
-  parameter Boolean resistanceFromInput = false "= true, if input connector for either U or k_par is enabled"
+  parameter Boolean useHeatTransferPropertyInput = false "= true, if input connector for either U or k_par is enabled"
     annotation(Dialog(group="Thermal Conductance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean resistanceFromAU = true "= true, if thermal conductance is given by U*A"
     annotation(Dialog(group="Thermal Conductance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A = 1 "Heat transfer area"
     annotation(Dialog(group="Thermal Conductance", enable=resistanceFromAU));
   parameter SI.CoefficientOfHeatTransfer U = 200 "Overall heat transfer coefficient"
-    annotation(Dialog(group="Thermal Conductance", enable=(resistanceFromAU and not resistanceFromInput)));
+    annotation(Dialog(group="Thermal Conductance", enable=(resistanceFromAU and not useHeatTransferPropertyInput)));
   parameter SI.ThermalConductance k_par = 200 "Thermal conductance"
-    annotation(Dialog(group="Thermal Conductance", enable=(not resistanceFromAU and not resistanceFromInput)));
+    annotation(Dialog(group="Thermal Conductance", enable=(not resistanceFromAU and not useHeatTransferPropertyInput)));
   //final parameter SI.ThermalConductance k_internal = if resistanceFromAU then A*U else k_par;
 
   // ------ Parameter Display Configuration  ------------------------
@@ -31,17 +31,17 @@ model ConductionElement "Model of quasi-stationary mass and heat transfer"
       conductionString
     else "" annotation(Evaluate=true, HideResult=true);
   final parameter String conductionString=
-    if resistanceFromInput and resistanceFromAU then "A=%A"
-    elseif not resistanceFromInput and resistanceFromAU  then "A=%A, U=%U"
-    elseif not resistanceFromInput and not resistanceFromAU then "k=%k_par"
+    if useHeatTransferPropertyInput and resistanceFromAU then "A=%A"
+    elseif not useHeatTransferPropertyInput and resistanceFromAU  then "A=%A, U=%U"
+    elseif not useHeatTransferPropertyInput and not resistanceFromAU then "k=%k_par"
     else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
-  Modelica.Blocks.Interfaces.RealInput U_var(unit = "W/(m2.K)") if (resistanceFromInput and resistanceFromAU) "Overall heat transfer coefficient input connector [W/(m2.K)]"
+  Modelica.Blocks.Interfaces.RealInput U_var(unit = "W/(m2.K)") if (useHeatTransferPropertyInput and resistanceFromAU) "Overall heat transfer coefficient input connector [W/(m2.K)]"
     annotation (Placement(transformation(extent={{-20,20},{20,-20}},
         rotation=90,
         origin={-60,-120})));
-  Modelica.Blocks.Interfaces.RealInput k_var(unit="W/K") if (resistanceFromInput and not resistanceFromAU) "Thermal conductance input connector [W/K]"
+  Modelica.Blocks.Interfaces.RealInput k_var(unit="W/K") if (useHeatTransferPropertyInput and not resistanceFromAU) "Thermal conductance input connector [W/K]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},
         rotation=90,
         origin={-60,-120})));
@@ -52,12 +52,12 @@ protected
 
 equation
   connect(U_var, U_internal);
-  if resistanceFromAU and not resistanceFromInput then
+  if resistanceFromAU and not useHeatTransferPropertyInput then
     U_internal = U;
   end if;
 
   connect(k_var, k_internal);
-  if not resistanceFromAU and not resistanceFromInput then
+  if not resistanceFromAU and not useHeatTransferPropertyInput then
     k_internal = k_par;
   end if;
 
@@ -69,10 +69,10 @@ equation
           textColor={0,0,0},
           textString=parameterString),
         Line(
-          visible=not displayAnything,
           points={{0,-60},{0,-100}},
-          color={191,0,0}),
-        Line(visible = resistanceFromInput,
+          color={191,0,0},
+          pattern=LinePattern.Dot),
+        Line(visible = useHeatTransferPropertyInput,
         points={{-60,-100},{0,-100}}, color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
