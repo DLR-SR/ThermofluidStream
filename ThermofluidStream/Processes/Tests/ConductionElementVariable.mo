@@ -1,5 +1,6 @@
 within ThermofluidStream.Processes.Tests;
-model ConductionElement2 "Test the thermal conduction of ConductionElement, could be removed"
+model ConductionElementVariable
+  "Test the thermal conduction of ConductionElement, could be removed"
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater constrainedby
     Media.myMedia.Interfaces.PartialMedium "Medium model"
@@ -86,7 +87,7 @@ the inlet the source is connected to.
     resistanceFromInput=true,
     resistanceFromAU=false,
     A=2)                                        annotation (Placement(transformation(extent={{40,-40},{60,-60}})));
-  Modelica.Blocks.Sources.RealExpression thermalTransmittance(y=200)
+  Modelica.Blocks.Sources.RealExpression thermalConductance(y=200)
     annotation (Placement(transformation(extent={{-20,-14},{0,-34}})));
   Boundaries.Source source4(
     redeclare package Medium = Medium,
@@ -177,7 +178,7 @@ equation
       points={{60,-50},{80,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(thermalTransmittance.y, conductionElement3.k_var)
+  connect(thermalConductance.y, conductionElement3.k_var)
     annotation (Line(points={{1,-24},{44,-24},{44,-38}}, color={0,0,127}));
   connect(source4.outlet, flowResistance4.inlet)
     annotation (Line(
@@ -213,4 +214,4 @@ equation
   Also the test for a step in heat transfer coefficient works.
 </p>
 </html>"));
-end ConductionElement2;
+end ConductionElementVariable;
