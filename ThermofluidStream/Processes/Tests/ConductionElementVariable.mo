@@ -206,12 +206,14 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-300,-200},{300,200}})),
     Documentation(info="<html>
-<p>
-  Test to check the 4 possible ways to define the thermal conductance: resistanceFromAU = true/false and resistanceFromInput = true/false. All give the same result for a simple test and do not give warnings or errors.
-</p>
+  <p>
+    This test verifies the four possible ways to define the thermal conductance:
+    <code>resistanceFromAU = true/false</code> and <code>resistanceFromInput = true/false</code>.
+    All four configurations produce the same result in a simple test and do not generate warnings or errors.
+  </p>
 
-<p>
-  Also the test for a step in heat transfer coefficient works.
-</p>
+  <p>
+    Additionally, the test confirms that a step change in the heat transfer coefficient is handled correctly.
+  </p>
 </html>"));
 end ConductionElementVariable;
