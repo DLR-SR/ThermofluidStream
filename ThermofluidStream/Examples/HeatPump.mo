@@ -81,7 +81,7 @@ model HeatPump
   Boundaries.Source source(redeclare package Medium = Air,
     T0_par=293.15,
     p0_par=100000)
-    annotation (Placement(transformation(extent={{-160,78},{-140,98}})));
+    annotation (Placement(transformation(extent={{-160,86},{-140,106}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Air,
     r=1,
@@ -93,7 +93,7 @@ model HeatPump
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-110,88})));
+        origin={-110,96})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Air,
     r=1,
@@ -218,7 +218,8 @@ model HeatPump
   Sensors.SingleSensorSelect singleSensorSelect3(
     redeclare package Medium = Air,
     digits=1,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C) annotation (Placement(transformation(extent={{-120,100},{-100,120}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C) annotation (Placement(transformation(extent={{-120,
+            108},{-100,128}})));
   Sensors.SingleSensorSelect singleSensorSelect4(
     redeclare package Medium = Air,
     digits=1,
@@ -303,11 +304,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(source.outlet, flowResistance1.inlet) annotation (Line(
-      points={{-140,88},{-120,88}},
+      points={{-140,96},{-120,96}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance1.outlet, condenser.inletA) annotation (Line(
-      points={{-100,88},{-90,88}},
+      points={{-100,96},{-94,96},{-94,88},{-90,88}},
       color={28,108,200},
       thickness=0.5));
   connect(condenser.outletA, fan.inlet) annotation (Line(
@@ -388,7 +389,7 @@ equation
       thickness=0.5));
   connect(singleSensorSelect3.inlet, flowResistance1.inlet)
     annotation (Line(
-      points={{-120,110},{-126,110},{-126,88},{-120,88}},
+      points={{-120,118},{-126,118},{-126,96},{-120,96}},
       color={28,108,200},
       thickness=0.5));
   connect(singleSensorSelect4.inlet, flowResistance2.inlet)
