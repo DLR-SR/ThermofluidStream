@@ -17,17 +17,20 @@ model JunctionX2 "Splitter/Junction with two inlets and two outlets"
   Interfaces.Outlet outleta(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=180, origin={-100,0})));
   Interfaces.Outlet outletb(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=0, origin={100,0})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   Interfaces.Inlet inletB(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
-  JunctionNM junctionNM(N=2, M=2, redeclare package Medium = Medium, final L=L,
-    final assumeConstantDensity = assumeConstantDensity, final m_flow_eps=m_flow_eps)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,20})));
+  JunctionNM junctionNM(
+    displayInstanceName=true,
+    N=2,
+    M=2,
+    redeclare package Medium = Medium,
+    final L=L,
+    final assumeConstantDensity = assumeConstantDensity,
+    final m_flow_eps=m_flow_eps)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,20})));
 
 equation
 
@@ -47,7 +50,7 @@ equation
       points={{0,-100},{0,-40},{40,-40},{40,52},{0.5,52},{0.5,30}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junctionX", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -98,5 +101,9 @@ equation
           extent={{80,-60},{120,-20}},
           textColor={175,175,175},
           textString="b")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Alternative multiport X-junction with the same primary topology role as JunctionX1.</p>
+<p>Use it as a drop-in alternative during model refinement if needed.</p>
+</html>"));
 end JunctionX2;

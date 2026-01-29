@@ -12,6 +12,7 @@ model Test_SuddenContraction
 
   ThermofluidStream.Processes.Pipes.SuddenContraction suddenContraction(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     d_1=1e-2,
     d_2=0.5e-2) annotation (Placement(transformation(extent={{-8,-10},{12,10}})));
   ThermofluidStream.Boundaries.Source source(

@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectRearRear "Connects two rear ports"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -11,11 +11,9 @@ model ConnectRearRear "Connects two rear ports"
     annotation(Dialog(tab="Advanced"));
 
   Interfaces.Rear rear_a(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-50,-20},{-10,20}})));
   Interfaces.Rear rear_b(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
+    annotation (Placement(transformation(extent={{10,-20},{50,20}})));
 
 equation
   rear_b.state_rearwards = rear_a.state_forwards;

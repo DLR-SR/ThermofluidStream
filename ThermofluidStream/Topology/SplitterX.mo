@@ -15,27 +15,31 @@ model SplitterX "Splitter with one inlet and three outlets"
   Interfaces.Outlet outletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20}, {20,20}}, rotation=90, origin={0,100})));
   Interfaces.Outlet outletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={3.55271e-15,-100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=270, origin={0,-100})));
   Interfaces.Outlet outletC(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20}, {20,20}},rotation=0,origin={100,0})));
-  SplitterN splitterN(final N=3, final L=L, redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+  SplitterN splitterN(
+    displayInstanceName=true,
+    final N=3,
+    final L=L,
+    redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
 equation
   connect(splitterN.inlet, inlet) annotation (Line(
-      points={{-32,0},{-100,0}},
+      points={{-40,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[3], outletA) annotation (Line(
-      points={{-12,0.666667},{0,0.666667},{0,100}},
+      points={{-20,0.666667},{0,0.666667},{0,100}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[2], outletC) annotation (Line(
-      points={{-12,0},{100,0}},
+      points={{-20,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[1], outletB) annotation (Line(
-      points={{-12,-0.666667},{0,-0.666667},{0,-100},{3.55271e-15,-100}},
+      points={{-20,-0.666667},{0,-0.666667},{0,-100}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -81,5 +85,8 @@ equation
           extent={{80,-20},{120,-60}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Multi-branch splitter for distributing one upstream stream into multiple downstream branches in an X-type topology. Use this component when you need a compact representation of a higher-order split without cascading several T-splitters.</p>
+</html>"));
 end SplitterX;

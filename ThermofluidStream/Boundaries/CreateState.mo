@@ -51,15 +51,13 @@ model CreateState "Create state signal as output"
       Placement(transformation(extent={{80,-20},{120,20}}), iconTransformation(
           extent={{80,-20},{120,20}})));
   Modelica.Blocks.Interfaces.RealInput p_inp(unit="Pa") if PFromInput "Input for pressure [Pa]"
-    annotation (Placement(transformation(extent={{-120,40},{-80,80}}),
-        iconTransformation(extent={{-120,40},{-80,80}})));
+    annotation (Placement(transformation(extent={{-120,40},{-80,80}})));
   Modelica.Blocks.Interfaces.RealInput T_inp(unit="K") if not setEnthalpy and TFromInput "Input for Temperature [K]"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealInput h0_var(unit = "J/kg") if setEnthalpy and hFromInput "Enthalpy input connector [J/kg]"
-    annotation (Placement(transformation(extent={{-40,-20},{0,20}}),iconTransformation(extent={{-40,-20},{0,20}})));
+    annotation (Placement(transformation(extent={{-40,-20},{0,20}}),iconTransformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealInput Xi_inp[Medium.nXi](each unit="kg/kg") if XiFromInput "Vector input for Mass fraction [kg/kg]"
-    annotation (Placement(transformation(extent={{-120,-80},{-80,-40}}),
-        iconTransformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-120,-80},{-80,-40}})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput p(unit="Pa") "Internal pressure connector";

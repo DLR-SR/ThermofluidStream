@@ -16,7 +16,8 @@ model Test_SplitterY
     Y_type1=true,
     d_in=0.1,
     alpha=0.5235987755983) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{36,20},{56,40}})));
+  ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{52,20},
+            {72,40}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=110000,
@@ -29,6 +30,13 @@ model Test_SplitterY
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=1,
     r=1e-2) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+  FlowResistance                             flowResistance1(
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+    l=1,
+    r=1e-2) annotation (Placement(transformation(extent={{20,20},{40,40}})));
 equation
   connect(splitterY.inlet, flowResistance.outlet) annotation (Line(
       points={{-10,0},{-20,0}},
@@ -42,8 +50,13 @@ equation
       points={{10,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitterY.outlet_branching, sink.inlet) annotation (Line(
-      points={{6.6,8.6},{6.6,30},{36,30}},
+  connect(splitterY.outlet_branching, flowResistance1.inlet) annotation (Line(
+      points={{6.6,8.6},{6.6,24},{6,24},{6,30},{20,30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(flowResistance1.outlet, sink.inlet)
+    annotation (Line(
+      points={{40,30},{52,30}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

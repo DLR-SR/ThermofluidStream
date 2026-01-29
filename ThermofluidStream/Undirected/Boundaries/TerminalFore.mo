@@ -17,8 +17,7 @@ the one the inlet the source is connected to.
   parameter SI.Pressure p_0 = Medium.p_default "Initial pressure";
 
   Interfaces.Rear rear(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-                                                                      iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
 protected
   SI.Pressure p(stateSelect=StateSelect.prefer) "Pressure";

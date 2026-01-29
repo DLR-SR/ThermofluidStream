@@ -13,7 +13,7 @@ block showRealValue "Show Real value from numberPort or from number input field 
   final parameter Boolean displayVariablefinal = displayVariable and not use_numberPort;
 
   Modelica.Blocks.Interfaces.RealInput numberPort if use_numberPort "Number to be shown in diagram layer if use_numberPort = true [variable]"
-    annotation (HideResult=true,Placement(transformation(extent={{-130,-15},{-100,15}})));
+    annotation (HideResult=true,Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput showNumber "Number shown on screen [variable]";
 
 equation
@@ -61,7 +61,7 @@ name of the variable value that is displayed is also shown below the icon):
 </p>
 
 <p>
-<img src=\"modelica://Modelica/Resources/Images/Blocks/Interaction/RealValue.png\"
+<img src=\"modelica://Modelica/Resources/Images/Blocks/Interaction/Show/RealValue.png\"
      alt=\"RealValue.png\">
 </p>
 

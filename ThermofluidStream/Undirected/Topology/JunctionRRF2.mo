@@ -14,7 +14,15 @@ model JunctionRRF2 "Junction of two rear and one fore ports"
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each branch"
     annotation (Dialog(tab="Advanced"));
 
+  Interfaces.Rear rearA(redeclare package Medium=Medium)
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}})));
+  Interfaces.Rear rearB(redeclare package Medium=Medium)
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+  Interfaces.Fore fore(redeclare package Medium=Medium)
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+
   JunctionMN junctionMN(
+    displayInstanceName=true,
     final M=1,
     final N=2,
     final assumeConstantDensity=assumeConstantDensity,
@@ -22,27 +30,20 @@ model JunctionRRF2 "Junction of two rear and one fore ports"
     final L=L,
     redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{30,-10},{50,10}})));
-  Interfaces.Rear rearA(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100})));
-  Interfaces.Rear rearB(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
-  Interfaces.Fore fore(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0})));
-
 equation
   connect(junctionMN.rears[1], rearA) annotation (Line(
       points={{30,-0.5},{0,-0.5},{0,-100}},
       color={28,108,200},
       thickness=0.5));
   connect(fore, junctionMN.fores[1]) annotation (Line(
-      points={{100,0},{76,0},{76,0},{50,0}},
+      points={{100,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
   connect(rearB, junctionMN.rears[2]) annotation (Line(
-      points={{-100,0},{-36,0},{-36,0.5},{30,0.5}},
+      points={{-100,0},{-98,0.5},{30,0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
   Text(visible=displayInstanceName,
           extent={{-150,25},{150,65}},
           textString="%name",

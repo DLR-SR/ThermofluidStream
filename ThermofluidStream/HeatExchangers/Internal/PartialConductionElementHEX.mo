@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers.Internal;
 partial model PartialConductionElementHEX "Parent for CEs for discretizedHEX"
   extends Processes.Internal.PartialConductionElement(
-    final init= Processes.Internal.InitializationMethodsCondElement.inlet,
+    init= Processes.Internal.InitializationMethodsCondElement.inlet,
     final neglectPressureChanges=true);
 
     parameter SI.Area A = 1 "Heat transfer area";

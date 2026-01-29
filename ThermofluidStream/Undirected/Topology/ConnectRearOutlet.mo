@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectRearOutlet "Connects rear port to outlet"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -12,20 +12,11 @@ model ConnectRearOutlet "Connects rear port to outlet"
   parameter Boolean useDefaultStateAsRear = false "= true, if default medium state is used for rear.state_rearwards";
 
   Interfaces.Rear rear(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-50,-20},{-10,20}})));
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
+    annotation (Placement(transformation(extent={{10,-20},{50,20}})));
   ThermofluidStream.Interfaces.StateInput state_rear(redeclare package Medium=Medium, state = rear.state_rearwards) if not useDefaultStateAsRear
-    annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,40}), iconTransformation(
-        extent={{20,-20},{-20,20}},
-        rotation=270,
-        origin={0,-40})));
+    annotation (Placement(transformation(extent={{20,-20},{-20,20}},rotation=270,origin={0,-40})));
 
 protected
   SI.Pressure r_rear, r_outlet "Inertial pressures";

@@ -20,7 +20,7 @@ model EdgedOrifice "Pressure drop due to sharp edged orifice using Modelica.Flui
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration dp_acceleraton_0 = 0 "Initial value for der(dp)"
     annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
   parameter SI.Pressure dp_smooth = 1 "Start linearisation for decreasing pressure loss"
-    annotation(Dialog(tab = "Initalization"));
+    annotation(Dialog(tab = "Initialization"));
   //Advanced
   parameter Boolean computeL = true "= true, if inertance L is computed from the geometry"
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));

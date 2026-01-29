@@ -3,13 +3,7 @@ model TanValve "Valve with tan-shaped flow resistance"
   extends Interfaces.SISOFlow(final clip_p_out=true);
 
   Modelica.Blocks.Interfaces.RealInput u(unit="1") "Valve control signal []"
-    annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));

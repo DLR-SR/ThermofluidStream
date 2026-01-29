@@ -14,49 +14,45 @@ model JunctionX1 "Splitter/Junction with two inlets and two outlets"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Outlet outleta(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{20,-20},{-20,20}}, rotation=180, origin={100,0}),  iconTransformation(
-        extent={{20,-20},{-20,20}},
-        rotation=180,
-        origin={100,0})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   Interfaces.Outlet outletb(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=-90,
-        origin={0,-100})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,-100})));
   Interfaces.Inlet inletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{20,-20},{-20,20}}, rotation=180, origin={-100,0}),iconTransformation(
-        extent={{20,-20},{-20,20}},
-        rotation=180,
-        origin={-100,0})));
-  JunctionNM junctionNM(N=2, M=2, redeclare package Medium = Medium, final L=L,
-    final assumeConstantDensity = assumeConstantDensity, final m_flow_eps=m_flow_eps)
-    annotation (Placement(transformation(extent={{20,-20},{-20,20}},
-        rotation=180)));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+  JunctionNM junctionNM(
+    displayInstanceName=true,
+    N=2,
+    M=2,
+    redeclare package Medium = Medium,
+    final L=L,
+    final assumeConstantDensity = assumeConstantDensity,
+    final m_flow_eps=m_flow_eps)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
 equation
   connect(inletB, junctionNM.inlets[2]) annotation (Line(
-      points={{-100,0},{-20,0},{-20,-1}},
+      points={{-100,0},{-98,0.5},{-10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionNM.outlets[1], outleta) annotation (Line(
-      points={{20,1},{100,1},{100,0}},
+      points={{10,-0.5},{12,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(inletA, junctionNM.inlets[1]) annotation (Line(
-      points={{0,100},{0,20},{-40,20},{-40,1},{-20,1}},
+      points={{0,100},{0,14},{-18,14},{-18,-0.5},{-10,-0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(outletb, junctionNM.outlets[2]) annotation (Line(
-      points={{0,-100},{0,-20},{30,-20},{30,-1},{20,-1}},
+      points={{0,-100},{0,-14},{18,-14},{18,0.5},{10,0.5}},
       color={28,108,200},
       thickness=0.5));
   connect(outleta, outleta) annotation (Line(
       points={{100,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junctionX", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -109,6 +105,7 @@ equation
           textString="b")}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
+<p>Multiport junction for X-type connection patterns where several branches meet and redistribute flow. Use this component to model compact, directed interconnections in networks that would otherwise require multiple sequential T-junctions.</p>
 <p>Medium package used in the component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
 end JunctionX1;

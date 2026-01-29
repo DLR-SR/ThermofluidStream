@@ -51,12 +51,9 @@ inlets and outlets the volume is connected to.
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) if useHeatport
     annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
   Interfaces.Inlet inlet(redeclare package Medium=Medium, m_flow=m_flow_in, r=r_in, state=state_in) if useInlet
-    annotation (Placement(transformation(extent={{-120,
-            -20},{-80,20}}),
-                        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium, m_flow=m_flow_out, r=r_out, state=state_out) if useOutlet
-    annotation (Placement(transformation(extent={{80,-20},
-            {120,20}}), iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 

@@ -21,10 +21,11 @@ model Test_CurvedBend
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Processes.Pipes.CurvedBend curvedBend(
     redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     d=1e-2,
     delta=1.5707963267949,
     R=15e-2,
-    ks_input=1e-6) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    ks=1e-6)       annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Sources.Sine pressure_sine(
     amplitude=0.4e5,
     f=3,

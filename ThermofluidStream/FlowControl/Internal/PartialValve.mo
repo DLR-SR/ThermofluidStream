@@ -8,11 +8,7 @@ partial model PartialValve "Partial implementation of a physical valve"
   parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control input signal []"
-    annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
   Real u(unit="1") "Actuation input for flow calculation";
   parameter Modelica.Units.SI.Pressure dp_ref=1e5

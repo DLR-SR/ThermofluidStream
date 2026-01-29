@@ -15,40 +15,40 @@ model JunctionRRRF "Junction of tree rear and one fore ports"
     annotation (Dialog(tab="Advanced"));
 
   Interfaces.Rear rearA(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,100})));
+    annotation (Placement(transformation(extent={{-20,80},{20,120}})));
   Interfaces.Fore fore(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={100,0})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+  Interfaces.Rear rearB(redeclare package Medium=Medium)
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+  Interfaces.Rear rearC(redeclare package Medium=Medium)
+    annotation (Placement(transformation(extent={{-20,-120},{20,-80}})));
   JunctionMN junctionMN(
+    displayInstanceName=true,
     final M=1,
     final N=3,
     final assumeConstantDensity=assumeConstantDensity,
     final m_flow_reg=m_flow_reg,
     final L=L,
     redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{0,-10},{20,10}})));
-  Interfaces.Rear rearB(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-100,0})));
-  Interfaces.Rear rearC(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100})));
-
+    annotation (Placement(transformation(extent={{20,-10},{40,10}})));
 equation
   connect(rearA, junctionMN.rears[2]) annotation (Line(
-      points={{0,100},{0,0}},
+      points={{0,100},{0,0},{20,0}},
       color={28,108,200},
       thickness=0.5));
   connect(rearB, junctionMN.rears[1]) annotation (Line(
-      points={{-100,0},{0,0},{0,-0.666667}},
+      points={{-100,0},{-98,-0.666667},{20,-0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(rearC, junctionMN.rears[3]) annotation (Line(
-      points={{0,-100},{0,0.666667}},
+      points={{0,-100},{0,0.666667},{20,0.666667}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionMN.fores[1], fore) annotation (Line(
-      points={{20,0},{60,0},{60,0},{100,0}},
+      points={{40,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,65},{150,25}},
           textString="%name",

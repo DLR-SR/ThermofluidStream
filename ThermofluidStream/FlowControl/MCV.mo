@@ -39,21 +39,9 @@ model MCV "Flow rate control valve"
 
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
-    annotation (Placement(
-        transformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
-    annotation (Placement(
-        transformation(extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-120}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-110})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
 
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";
@@ -166,6 +154,6 @@ equation
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
 <p>The mass- or volume-flow-setpoint can be set or given by a real input signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpoint cannot be reached, an optional output leaves its &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>
 <p>Documentation of the used equations:</p>
-<p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.PNG\"/></p>
+<p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.png\"/></p>
 </html>"));
 end MCV;

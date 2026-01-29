@@ -35,21 +35,13 @@ partial model PartialTurboComponent "Partial model of turbo component"
     annotation(Dialog(tab= "Initialization", group="Angle", enable=initPhi));
 
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flange(phi=phi, tau=tau) if not omega_from_input "Flange"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={0,-100}, rotation=-90),
-      iconTransformation(extent={{-10,-110},{10,-90}})));
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Angular velocity input connector [rad/s]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-100}, rotation=-90),
-      iconTransformation(extent={{-20,-20},{20,20}}, origin={0,-120}, rotation=90)));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-120}, rotation=90)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "HeatPort"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
-                                                                                     rotation=90),
-      iconTransformation(extent={{-10,-10},{10,10}}, origin={-60,-100},
-                                                                     rotation=90)));
+    annotation (Placement(transformation(extent={{-70,-110},{-50,-90}})));
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Quantity output connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-80,-100}, rotation=270), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={60,-110})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={60,-110})));
 
   replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curve"

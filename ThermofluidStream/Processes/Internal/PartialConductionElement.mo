@@ -21,7 +21,8 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
   parameter SI.Time T_e = 100 "Time constant for global conservation of energy"
     annotation(Dialog(tab="Advanced",group="global energy conservation", enable = enforce_global_energy_conservation));
 
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort) annotation (Placement(transformation(extent={{-10,-110},{10,-90}}), iconTransformation(extent={{-10,-110},{10,-90}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
+    annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
   SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer) "Volume? specific enthalpy";
 

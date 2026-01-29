@@ -1,7 +1,7 @@
 within ThermofluidStream.Undirected.Topology;
 model ConnectInletFore "Connects inlet to fore port"
 
-  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus(displayInstanceName=false);
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (Documentation(info="<html>
@@ -11,11 +11,9 @@ model ConnectInletFore "Connects inlet to fore port"
     annotation(Dialog(tab="Advanced"));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={-30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={-30,0})));
+    annotation (Placement(transformation(extent={{-50,-20},{-10,20}})));
   Interfaces.Fore fore(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={30,0}),
-        iconTransformation(extent={{-20,-20},{20,20}}, origin={30,0})));
+    annotation (Placement(transformation(extent={{10,-20},{50,20}})));
 
 protected
   SI.Pressure r_fore, r_inlet "Inertial pressures";

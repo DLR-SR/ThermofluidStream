@@ -2,267 +2,325 @@ within ThermofluidStream.Examples;
 model SimpleAirCycle "Basic bootstrap cooling cycle"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium_ram = ThermofluidStream.Media.myMedia.Air.MoistAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Ram air"
-    annotation(choicesAllMatching = true);
-  replaceable package Medium_bleed = ThermofluidStream.Media.myMedia.Air.MoistAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    "Bleed air"
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+    "Medium (ram and bleed air)"
     annotation(choicesAllMatching = true);
 
-  Boundaries.Source source(
-    redeclare package Medium=Medium_ram,
+  parameter SI.Radius r=0.07   "Ram air duct radius";
+  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning,
+    displayInstanceNames=true,
+    displayParameters=true)
+    annotation (Placement(transformation(extent={{-10,60},{10,80}})));
+
+  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{-18,102},{18,138}})));
+  Boundaries.Source bleedInlet(
+    redeclare package Medium = Medium,
+    T0_par=473.15,
+    p0_par=220000,
+    Xi0_par={0}) annotation (Placement(transformation(extent={{-4,-130},{-24,-110}})));
+  Boundaries.Sink packDischarge(redeclare package Medium = Medium, p0_par=80000)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-54,116})));
+  Boundaries.Source ramInlet(
+    redeclare package Medium = Medium,
     T0_par=243.15,
-    p0_par=30000,
-    Xi0_par={0})
-    annotation (Placement(transformation(extent={{-120,100},{-100,120}})));
-  Boundaries.Sink sink(
-    redeclare package Medium=Medium_ram,
+    p0_par=25000,
+    Xi0_par={0}) annotation (Placement(transformation(extent={{-160,40},{-140,60}})));
+  Boundaries.DynamicPressureInflow dynamicPressure(
+    displayInstanceName=false,
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
+    assumeConstantDensity=false,
+    velocityFromInput=false,
+    v_in_par=230,
+    A_par=r^2*Modelica.Constants.pi,
+    displayOutletArea=false) annotation (Placement(transformation(extent={{-120,40},{-100,60}})));
+  Boundaries.Sink ramOutlet(
+    redeclare package Medium = Medium,
     pressureFromInput=false,
-    p0_par=22000)
+    p0_par=30000) annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=0,
+        origin={-130,-120})));
+  Processes.Compressor compressor(
+    redeclare package Medium = Medium,
+    omega_from_input=false,
+    initPhi=false,
+    redeclare function dp_tau_compressor =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=2500,
+        skew=1,
+        m_flow_ref=1,
+        eta=0.9))
+                annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-54,0})));
+  Processes.Turbine turbine(
+    redeclare package Medium = Medium,
+    L=5e2,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
+    omega_from_input=false,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    omega_0=0,
+    initPhi=true,
+    phi_0=0,
+    redeclare function dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=Modelica.Constants.inf,
+        m_flow_ref=0.36,
+        skew=-0.2,
+        k=2,
+        eta=0.93))
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-54,60})));
+  HeatExchangers.CounterFlowNTU                   mainHex(
+    redeclare package MediumA = Medium,
+    redeclare package MediumB = Medium,
+    A=2,
+    k_NTU=200,
+    L=1,
+    displaykNTU=false) annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=270,
+        origin={-60,30})));
+  HeatExchangers.CounterFlowNTU                   primaryHex(
+    redeclare package MediumA = Medium,
+    redeclare package MediumB = Medium,
+    A=3,
+    k_NTU=200,
+    L=1,
+    displaykNTU=false) annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=270,
+        origin={-60,-30})));
+  Processes.Fan fan(redeclare package Medium = Medium,     redeclare function dp_tau_fan =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=500,
+        skew=1,
+        m_flow_ref=0.21,
+        eta=0.7))
+                annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=270,
+        origin={-66,-90})));
+  Processes.FlowResistance pipe(
+    redeclare package Medium = Medium,
+    r=r,
+    l=20,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
+            ThermofluidStream.Processes.Internal.Material.steel))
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={-66,-60})));
+  Processes.FlowResistance outflowLoss(
+    redeclare package Medium = Medium,
+    r=r,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
+    computeL=false,
+    L_value=0) annotation (Placement(transformation(extent={{-80,-110},{-100,-130}})));
+  Boundaries.Source bleedInlet1(
+    redeclare package Medium = Medium,
+    T0_par=473.15,
+    p0_par=220000,
+    Xi0_par={0}) annotation (Placement(transformation(extent={{4,-130},{24,-110}})));
+  Boundaries.Sink packDischarge1(redeclare package Medium = Medium, p0_par=
+        80000)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={52,118})));
+  Boundaries.Source ramInlet1(
+    redeclare package Medium = Medium,
+    T0_par=243.15,
+    p0_par=25000,
+    Xi0_par={0}) annotation (Placement(transformation(extent={{160,40},{140,60}})));
+  Boundaries.DynamicPressureInflow dynamicPressure1(
+    displayInstanceName=false,
+    redeclare package Medium = Medium,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
+    assumeConstantDensity=false,
+    velocityFromInput=false,
+    v_in_par=230,
+    A_par=r^2*Modelica.Constants.pi,
+    displayOutletArea=false) annotation (Placement(transformation(extent={{120,40},{100,60}})));
+  Boundaries.Sink ramOutlet1(
+    redeclare package Medium = Medium,
+    pressureFromInput=false,
+    p0_par=30000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={110,-110})));
-  Boundaries.Source source1(
-    redeclare package Medium=Medium_bleed,
-    T0_par=493.15,
-    p0_par=250000,
-    Xi0_par={0})
-    annotation (Placement(transformation(extent={{-120,-120},{-100,-100}})));
-  Boundaries.Sink sink1(
-    redeclare package Medium=Medium_bleed,
-    p0_par=75000)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={110,110})));
-  ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
-    redeclare package MediumA = Medium_ram,
-    redeclare package MediumB = Medium_bleed,
-    A=7,
-    L=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-60,40})));
-  ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU1(
-    redeclare package MediumA = Medium_ram,
-    redeclare package MediumB = Medium_bleed,
-    A=3,
-    L=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-60,-20})));
-  Processes.Compressor compressor(
-    redeclare package Medium = Medium_bleed,
-    omega_from_input=false,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    initPhi=true,
-    redeclare function dp_tau_compressor =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-      omega_ref=2000,
-      skew=1,
-      m_flow_ref=1,
-      eta=0.9)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-54,10})));
-  inner DropOfCommons dropOfCommons(assertionLevel = AssertionLevel.warning)
-    annotation (Placement(transformation(extent={{-140,0},{-120,20}})));
-
-  Processes.Turbine turbine(
-    redeclare package Medium = Medium_bleed,
-    L=5e2,
-    omega_from_input=false,
-    redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-      omega_ref=Modelica.Constants.inf,
-      m_flow_ref=0.36,
-      skew=-0.2,
-      k=2,
-      eta=0.93))
-    annotation (Placement(transformation(extent={{-50,50},{-30,70}})));
-  ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU2(
-    redeclare package MediumA = Medium_ram,
-    redeclare package MediumB = Medium_bleed,
-    A=10,
-    L=1) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=270,
-        origin={60,10})));
+        origin={120,-120})));
   Processes.Turbine turbine1(
-    redeclare package Medium = Medium_bleed,
+    redeclare package Medium = Medium,
     L=5e2,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    m_flow_0=0,
     omega_from_input=false,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    omega_0=0,
     initPhi=true,
-    redeclare function dp_tau_turbine =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-      omega_ref=Modelica.Constants.inf,
-      m_flow_ref=0.39,
-      skew=-0.2,
-      k=2,
-      eta=0.93))
-    annotation (Placement(transformation(extent={{50,50},{30,70}})));
-  Topology.SplitterT1 splitterT1_1(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={0,-40})));
-  Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=90,
-        origin={20,-94})));
-  ThermofluidStream.Topology.JunctionT1
-                      junctionT1_2(redeclare package Medium=Medium_bleed) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
+    phi_0=0,
+    redeclare function dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=Modelica.Constants.inf,
+        m_flow_ref=0.3658,
+        skew=-0.2,
+        k=2,
+        eta=0.93))
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={0,60})));
-  Topology.SplitterT1 splitterT1_2(redeclare package Medium=Medium_ram) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,90})));
-  Processes.Fan fan(
-    redeclare package Medium = Medium_ram,
-    redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-      omega_ref=500,
-      skew=1,
-      m_flow_ref=0.21,
-      eta=0.7)) annotation (Placement(transformation(
+        origin={52,60})));
+  HeatExchangers.CounterFlowNTU                   hex(
+    redeclare package MediumA = Medium,
+    redeclare package MediumB = Medium,
+    A=5,
+    k_NTU=200,
+    L=1,
+    displaykNTU=false)
+    annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
-        origin={-66,-60})));
-  Processes.Fan fan1(
-    redeclare package Medium = Medium_ram,
-    redeclare function dp_tau_fan =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
-      omega_ref=1000,
-      skew=1,
-      eta=0.7)) annotation (Placement(transformation(
+        origin={58,0})));
+  Processes.Fan fan1(redeclare package Medium = Medium,     redeclare function dp_tau_fan =
+        Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+        omega_ref=1000,
+        skew=1,
+        eta=0.7))
+                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={66,-60})));
-  Processes.FlowResistance flowResistance(
-    redeclare package Medium = Medium_ram,
-    r=0.05,
-    l=40,
-    redeclare function pLoss =
-        Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-      material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-40,-104},{-20,-84}})));
-  Processes.FlowResistance flowResistance1(
-    redeclare package Medium = Medium_ram,
-    r=0.05,
-    l=40,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
-      material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{60,-104},{40,-84}})));
-  ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{102,-18},{138,18}})));
-initial equation
-  heatExchange_CounterFlowNTU.inletA.m_flow = 0.1;
-  heatExchange_CounterFlowNTU.inletB.m_flow = 0.1;
-  heatExchange_CounterFlowNTU2.inletA.m_flow = 0.1;
-  heatExchange_CounterFlowNTU2.inletB.m_flow = 0.1;
+        origin={64,-90})));
+  Processes.FlowResistance pipe1(
+    redeclare package Medium = Medium,
+    r=r,
+    l=20,
+    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
+            ThermofluidStream.Processes.Internal.Material.steel))
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={64,-60})));
+  Processes.FlowResistance outflowLoss1(
+    redeclare package Medium = Medium,
+    r=r,
+    l=1,
+    redeclare function pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
+    computeL=false,
+    L_value=0) annotation (Placement(transformation(extent={{80,-110},{100,-130}})));
 equation
-  connect(heatExchange_CounterFlowNTU.outletA, heatExchange_CounterFlowNTU1.inletA)
+  connect(ramInlet.outlet, dynamicPressure.inlet)
     annotation (Line(
-      points={{-66,30},{-66,-10}},
+      points={{-140,50},{-120,50}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchange_CounterFlowNTU1.outletB, compressor.inlet)
+  connect(pipe.outlet, fan.inlet)
     annotation (Line(
-      points={{-54,-10},{-54,0}},
+      points={{-66,-70},{-66,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, heatExchange_CounterFlowNTU.inletB)
+  connect(fan.outlet, outflowLoss.inlet)
     annotation (Line(
-      points={{-54,20},{-54,30}},
+      points={{-66,-100},{-66,-120},{-80,-120}},
       color={28,108,200},
       thickness=0.5));
+  connect(bleedInlet.outlet, primaryHex.inletA)
+    annotation (Line(
+      points={{-24,-120},{-54,-120},{-54,-40}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(primaryHex.outletA, compressor.inlet)
+    annotation (Line(
+      points={{-54,-20},{-54,-10}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(compressor.outlet, mainHex.inletA)
+    annotation (Line(
+      points={{-54,10},{-54,20}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mainHex.outletA, turbine.inlet)
+    annotation (Line(
+      points={{-54,40},{-54,44},{-54,44},{-54,50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(dynamicPressure.outlet, mainHex.inletB)
+    annotation (Line(
+      points={{-100,50},{-66,50},{-66,40}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(mainHex.outletB, primaryHex.inletB)
+    annotation (Line(
+      points={{-66,20},{-66,-20}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(primaryHex.outletB, pipe.inlet)
+    annotation (Line(
+      points={{-66,-40},{-66,-50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(fan.flange, compressor.flange)
+    annotation (Line(points={{-56,-90},{-38,-90},{-38,0},{-44,0},{-44,-6.10623e-16}}, color={0,0,0}));
   connect(turbine.flange, compressor.flange)
-    annotation (Line(points={{-40,50},{-40,10},{-44,10}},
-        color={0,0,0}));
-  connect(turbine.inlet, heatExchange_CounterFlowNTU.outletB) annotation (Line(
-      points={{-50,60},{-54,60},{-54,50}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(turbine1.inlet, heatExchange_CounterFlowNTU2.outletB) annotation (
-      Line(
-      points={{50,60},{54,60},{54,20}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(splitterT1_1.outletA, heatExchange_CounterFlowNTU1.inletB)
+    annotation (Line(points={{-44,60},{-38,60},{-38,-6.10623e-16},{-44,-6.10623e-16}}, color={0,0,0}));
+  connect(bleedInlet1.outlet, hex.inletB)
     annotation (Line(
-      points={{-10,-40},{-54,-40},{-54,-30}},
+      points={{24,-120},{52,-120},{52,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitterT1_1.outletB, heatExchange_CounterFlowNTU2.inletB)
+  connect(hex.outletB, turbine1.inlet)
     annotation (Line(
-      points={{10,-40},{54,-40},{54,5.32907e-15}},
+      points={{52,10},{52,50}},
       color={28,108,200},
       thickness=0.5));
-  connect(source1.outlet, splitterT1_1.inlet) annotation (Line(
-      points={{-100,-110},{-4.44089e-16,-110},{-4.44089e-16,-50}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(junctionT1_1.outlet, sink.inlet) annotation (Line(
-      points={{20,-104},{20,-110},{100,-110}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(sink1.inlet,junctionT1_2. outlet) annotation (Line(
-      points={{100,110},{0,110},{0,70}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(turbine1.outlet,junctionT1_2. inletA) annotation (Line(
-      points={{30,60},{10,60}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(turbine.outlet,junctionT1_2. inletB) annotation (Line(
-      points={{-30,60},{-10,60}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(source.outlet, splitterT1_2.inlet) annotation (Line(
-      points={{-100,110},{-30,110},{-30,100}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(splitterT1_2.outletB, heatExchange_CounterFlowNTU.inletA) annotation (
-     Line(
-      points={{-40,90},{-66,90},{-66,50}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(splitterT1_2.outletA, heatExchange_CounterFlowNTU2.inletA)
+  connect(turbine1.outlet, packDischarge1.inlet)
     annotation (Line(
-      points={{-20,90},{66,90},{66,20}},
+      points={{52,70},{52,108}},
       color={28,108,200},
       thickness=0.5));
-  connect(fan.inlet, heatExchange_CounterFlowNTU1.outletA) annotation (Line(
-      points={{-66,-50},{-66,-30}},
+  connect(ramInlet1.outlet, dynamicPressure1.inlet)
+    annotation (Line(
+      points={{140,50},{120,50}},
       color={28,108,200},
       thickness=0.5));
-  connect(fan.flange, turbine.flange) annotation (Line(
-        points={{-56,-60},{-40,-60},{-40,50}},
-        color={0,0,0}));
-  connect(fan1.flange, turbine1.flange) annotation (Line(
-        points={{56,-60},{40,-60},{40,50}},
-        color={0,0,0}));
-  connect(fan1.inlet, heatExchange_CounterFlowNTU2.outletA) annotation (Line(
-      points={{66,-50},{66,0}},
+  connect(dynamicPressure1.outlet, hex.inletA)
+    annotation (Line(
+      points={{100,50},{64,50},{64,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance.outlet, junctionT1_1.inletA) annotation (Line(
-      points={{-20,-94},{10,-94}},
+  connect(hex.outletA, pipe1.inlet)
+    annotation (Line(
+      points={{64,-10},{64,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance.inlet, fan.outlet) annotation (Line(
-      points={{-40,-94},{-66,-94},{-66,-70}},
+  connect(pipe1.outlet, fan1.inlet)
+    annotation (Line(
+      points={{64,-70},{64,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance1.inlet, fan1.outlet) annotation (Line(
-      points={{60,-94},{66,-94},{66,-70}},
+  connect(fan1.outlet, outflowLoss1.inlet)
+    annotation (Line(
+      points={{64,-100},{64,-120},{80,-120}},
       color={28,108,200},
       thickness=0.5));
-  connect(flowResistance1.outlet, junctionT1_1.inletB) annotation (Line(
-      points={{40,-94},{30,-94}},
+  connect(outflowLoss1.outlet, ramOutlet1.inlet)
+    annotation (Line(
+      points={{100,-120},{110,-120}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(turbine1.flange, fan1.flange) annotation (Line(points={{42,60},{34,60},{34,-90},{54,-90}}, color={0,0,0}));
+  connect(ramOutlet.inlet, outflowLoss.outlet)
+    annotation (Line(
+      points={{-120,-120},{-100,-120}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(packDischarge.inlet, turbine.outlet) annotation (Line(
+      points={{-54,106},{-54,70}},
       color={28,108,200},
       thickness=0.5));
   annotation (
@@ -272,38 +330,23 @@ equation
       Interval=0.1),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(
-      coordinateSystem(preserveAspectRatio=false, extent={{-140,-120},{140,120}}),
+      coordinateSystem(preserveAspectRatio=false, extent={{-160,-140},{160,140}}),
       graphics={
         Text(
-          extent={{-122,98},{-94,92}},
-          textColor={28,108,200},
-          textString="ram inlet"),
-        Text(
-          extent={{-114,-90},{-80,-98}},
-          textColor={28,108,200},
-          textString="bleed inlet"),
-        Text(
-          extent={{90,100},{130,92}},
-          textColor={28,108,200},
-          textString="pack discharge"),
-        Text(
-          extent={{94,-88},{128,-96}},
-          textColor={28,108,200},
-          textString="ram outlet"),
-        Rectangle(extent={{-78,70},{-24,-72}},  lineColor={28,108,200},
-          fillColor={239,248,255},
-          fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-80,80},{-22,72}},
+          extent={{-90,90},{-30,80}},
           textColor={28,108,200},
           textString="three wheel bootstrap"),
-        Rectangle(extent={{26,70},{78,-72}},  lineColor={28,108,200},
+        Rectangle(extent={{30,80},{90,-106}}, lineColor={28,108,200},
           fillColor={239,248,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{26,80},{80,72}},
+          extent={{30,90},{90,80}},
           textColor={28,108,200},
-          textString="simple cycle")}),
+          textString="simple cycle"),
+        Rectangle(extent={{-90,80},{-30,-106}},
+                                              lineColor={28,108,200},
+          fillColor={239,248,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
 <p>
 Very simple implementation of a bootstrap air cycle used in an aircraft&apos;s

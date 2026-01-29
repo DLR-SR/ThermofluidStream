@@ -59,7 +59,7 @@ initial equation
 equation
   inlet.m_flow + outlet.m_flow = 0;
   outlet.r = inlet.r + dr_corr - der(inlet.m_flow)*L;
-  dq = Medium.density(inlet.state)/2*(c_in^2 - c_out^2);
+  dq = Medium.density(inlet.state)/2*(c_out^2 - c_in^2);
   if clip_p_out then
     p_out = max(p_min, p_in + dp + dq);
     dr_corr = dp + dq - (p_out - p_in);

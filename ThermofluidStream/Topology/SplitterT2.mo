@@ -15,8 +15,12 @@ model SplitterT2 "Splitter with one inlet and two oulets"
   Interfaces.Outlet outletA(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
   Interfaces.Outlet outletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
-  SplitterN splitterN(final N=2, final L=L, redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+  SplitterN splitterN(
+    displayInstanceName=true,
+    final N=2,
+    final L=L,
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
 equation
@@ -25,14 +29,14 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets[1], outletB) annotation (Line(
-      points={{-20,-0.5},{-20,0},{100,0}},
+      points={{-20,-0.5},{-18,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(outletA, splitterN.outlets[2]) annotation (Line(
       points={{0,100},{0,0.5},{-20,0.5}},
       color={28,108,200},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName = "splitter",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
        Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",
@@ -63,5 +67,9 @@ equation
           extent={{80,60},{120,20}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Alternative three-port splitter for dividing one upstream stream into two downstream branches. </p>
+<p>This model provides the same functional topology role as SplitterT1 but with an alternative internal formulation. </p>
+</html>"));
 end SplitterT2;

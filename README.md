@@ -11,9 +11,11 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ## News
 
-**Thank you all for participating at the TFS Community Event!**  It is great to have new contributors on board and we were very happy to meet our users and see so many applications.
+**Tutorial at the Modelica Conference 2025**
 
-[Final program and presentations](./community/2024-06-19-event/) are now available.
+We will give a tutorial on *Modeling complex thermal architectures using the DLR ThermoFluid Stream Library* at the [Modelica Conference 2025 Luzern](https://modelica.org/events/modelica2025/#agenda). The [Tutorial Abstract Booklet](https://modelica.org/events/modelica2025/Tutorial_Abstracts_16th_Modelica_and_FMI_Conference.pdf) is now available.
+
+We look forward to meeting you there and sharing ideas.
 
 ## Highlights
 
@@ -123,9 +125,13 @@ This work has been partially supported by the Helmholtz Gemeinschaft in frame of
 
 The used **continuous integration** stuff originates in parts from that used in the development of the Modelica Standard Library. We would like to thank MAP-Lib project members who established this CI for their valuable work.
 
-
 ## Tutorial
-At the 15th International Modelica Conference 2023, a tutorial is held about modeling of complex architectures using the library.
+At the 16th International Modelica Conference 2025, a tutorial is held about modeling of complex architectures using the library.
 The modeling templates can be downloaded here:
-[TFS_Tutorial.zip](https://github.com/nieweber/ThermofluidStream/files/12841619/TFS_Tutorial.zip)
+[ThermoFluidStreamTutorial.zip](https://github.com/RaphaelGebhart/ThermofluidStream/blob/2025_Tutorial/ThermoFluidStreamTutorial.zip)
+(Version 2023: [TFS_Tutorial.zip](https://github.com/nieweber/ThermofluidStream/files/12841619/TFS_Tutorial.zip))
+
+
+
+
 
