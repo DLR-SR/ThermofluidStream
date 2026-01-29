@@ -86,14 +86,16 @@ equation
     The advantage of this approach is that multiple ConductionElements can be connected in series without causing oscillations or fast eigenvalues between their masses. The ConductionElement implements conservation of mass and energy equations for the fluid contained within the component.
   </p>
   <p>
-    For further details, see the documentation of the <a href=\"modelica://ThermofluidStream.Processes.Internal.PartialConductionElement\">mother class</a>.
+    For further details, see the documentation of the base class <a href=\"modelica://ThermofluidStream.Processes.Internal.PartialConductionElement\">Internal.PartialConductionElement</a>.
   </p>
   <p>
-    The <code>ResistanceFromInput</code> option can be selected to enable input connectors for the overall heat transfer coefficient <code>U</code> or the thermal conductance <code>k</code>. The <code>resistanceFromAU</code> checkbox determines which input is activated:
+    The <code>useHeatTransferPropertyInput</code> option can be selected to enable input connectors for the overall heat transfer coefficient <code>U</code> or the thermal conductance <code>k = U*A</code>. The <code>resistanceFromAU</code> checkbox determines which quantity is activated:
   </p>
   <ul>
-    <li><code>ResistanceFromInput = true</code> and <code>resistanceFromAU = true</code>: enables the <code>U</code> input (overall heat transfer coefficient)</li>
-    <li><code>ResistanceFromInput = true</code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> input (thermal conductance)</li>
+    <li><code>useHeatTransferPropertyInput = true</code> and <code>resistanceFromAU = true</code>: enables the <code>U</code> input (overall heat transfer coefficient)</li>
+    <li><code>useHeatTransferPropertyInput = true</code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> input (thermal conductance)</li>
+    <li><code>useHeatTransferPropertyInput = false</code> and <code>resistanceFromAU = true</code>: enables the <code>U</code> parameter (overall heat transfer coefficient)</li>
+    <li><code>useHeatTransferPropertyInput = fals>/code> and <code>resistanceFromAU = false</code>: enables the <code>k</code> parameter (thermal conductance)</li>
   </ul>
 </html>"));
 end ConductionElement;
