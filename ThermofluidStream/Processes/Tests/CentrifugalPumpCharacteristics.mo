@@ -115,7 +115,7 @@ equation
         Documentation(info="<html>
   <p>
     Test model for centrifugal pump characteristics uaed in the
-    <a href=\\\"modelica://ThermofluidStream.Processes.CentrifugalPump\">
+    <a href=\"modelica://ThermofluidStream.Processes.CentrifugalPump\">
       CentrifugalPump
     </a> model.
   </p>
