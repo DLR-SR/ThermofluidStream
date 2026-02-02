@@ -7,6 +7,7 @@ Turbine
 ConvectivePipe
 ConvectivePipe_serial
 ConductionElement
+ConductionElementVariable
 TransportDelay
 Nozzle
 Power

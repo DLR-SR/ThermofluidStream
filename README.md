@@ -125,9 +125,13 @@ This work has been partially supported by the Helmholtz Gemeinschaft in frame of
 
 The used **continuous integration** stuff originates in parts from that used in the development of the Modelica Standard Library. We would like to thank MAP-Lib project members who established this CI for their valuable work.
 
-
 ## Tutorial
-At the 15th International Modelica Conference 2023, a tutorial is held about modeling of complex architectures using the library.
+At the 16th International Modelica Conference 2025, a tutorial is held about modeling of complex architectures using the library.
 The modeling templates can be downloaded here:
-[TFS_Tutorial.zip](https://github.com/nieweber/ThermofluidStream/files/12841619/TFS_Tutorial.zip)
+[ThermoFluidStreamTutorial.zip](https://github.com/RaphaelGebhart/ThermofluidStream/blob/2025_Tutorial/ThermoFluidStreamTutorial.zip)
+(Version 2023: [TFS_Tutorial.zip](https://github.com/nieweber/ThermofluidStream/files/12841619/TFS_Tutorial.zip))
+
+
+
+
 

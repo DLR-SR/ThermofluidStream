@@ -87,7 +87,7 @@ equation
           lineColor={170,255,170})}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Junction/Splitter that takes into account dynamic pressure.</p>
+<p>Dynamic multiport <strong>N-to-M</strong> junction for transient manifold behavior. Use this model in complex distribution/collection nodes where dynamic pressure effects are important. </p>
 <p>In general the component has four non-linear equation systems of size 1. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false).</p>
 </html>"));
 end DynamicJunctionNM;

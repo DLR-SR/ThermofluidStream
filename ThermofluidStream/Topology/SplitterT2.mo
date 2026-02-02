@@ -67,5 +67,9 @@ equation
           extent={{80,60},{120,20}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Alternative three-port splitter for dividing one upstream stream into two downstream branches. </p>
+<p>This model provides the same functional topology role as SplitterT1 but with an alternative internal formulation. </p>
+</html>"));
 end SplitterT2;

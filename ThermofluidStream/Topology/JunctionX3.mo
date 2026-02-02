@@ -96,5 +96,9 @@ equation
           extent={{60,-120},{20,-80}},
           textColor={175,175,175},
           textString="C")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Higher-order junction for merging multiple upstream branches into a single downstream branch within an X-type topology family. </p>
+<p>Use this model when you need a compact representation of a multi-inlet merge.</p>
+</html>"));
 end JunctionX3;
