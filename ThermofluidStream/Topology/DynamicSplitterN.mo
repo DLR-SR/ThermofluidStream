@@ -84,7 +84,7 @@ equation
           lineColor={170,255,170})}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Splitter that takes dynamic pressure into account.</p>
+<p>Dynamic variant of the generic splitter with one upstream connection and <strong>N</strong> downstream connections. This model accounts for dynamic pressure/momentum effects and is suitable for transient analyses where inertial behavior in branching nodes is relevant. Be aware that dynamic formulations can increase model stiffness and nonlinear complexity.</p>
 <p>In general the component has two non-linear equation systems of size 1. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false).</p>
 </html>"));
 end DynamicSplitterN;

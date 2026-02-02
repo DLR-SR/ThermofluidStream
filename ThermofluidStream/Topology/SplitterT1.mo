@@ -73,5 +73,10 @@ equation
           extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B")}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)));
+    Diagram(coordinateSystem(preserveAspectRatio=true)),
+    Documentation(info="<html>
+<p>Three-port splitter for branching a single flow path into two downstream branches. </p>
+<p>Use this model to create a clear, directed network structure when dividing mass flow into two parallel paths. </p>
+<p>The component is intended for steady (non-dynamic) topology definition within ThermoFluidStream networks.</p>
+</html>"));
 end SplitterT1;

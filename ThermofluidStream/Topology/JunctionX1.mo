@@ -105,6 +105,7 @@ equation
           textString="b")}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
+<p>Multiport junction for X-type connection patterns where several branches meet and redistribute flow. Use this component to model compact, directed interconnections in networks that would otherwise require multiple sequential T-junctions.</p>
 <p>Medium package used in the component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
 end JunctionX1;
