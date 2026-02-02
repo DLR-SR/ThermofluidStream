@@ -136,5 +136,12 @@ equation
     Time is used as a proxy for the mass flow rate (linear relation): <code>time = 0</code> corresponds to zero mass flow rate, and <code>time = 1</code> corresponds to the reference mass flow rate.<br>
     To,e <code>time &lt; 0</code> is used for \"start up\".
   </p>
-</html>",                      revisions=""));
+</html>",                      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end CentrifugalPumpCharacteristics;
