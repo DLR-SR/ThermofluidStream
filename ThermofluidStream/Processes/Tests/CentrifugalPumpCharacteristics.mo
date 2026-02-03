@@ -105,7 +105,7 @@ equation
   connect(feedback1.u2, singleFlowSensor1.value_out) annotation (Line(points={{80,-22},{80,-10},{-20,-10},{-20,-24},{-32,-24}}, color={0,0,127}));
   connect(massFlowRamp.y, feedback1.u1) annotation (Line(points={{109,0},{101.5,0},{101.5,-30},{88,-30}},
                                                                                                    color={0,0,127}));
-  annotation (experiment(StartTime=-0.1,StopTime=1.0),
+  annotation (experiment(StartTime=-0.1, StopTime=1.0, Tolerance=1e-6, Interval=1e-3, __Dymola_Algorithm="Dassl"),
     Icon(coordinateSystem(extent={{-100,-80},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},{140,100}}), graphics={Text(
           extent={{-40,100},{38,82}},

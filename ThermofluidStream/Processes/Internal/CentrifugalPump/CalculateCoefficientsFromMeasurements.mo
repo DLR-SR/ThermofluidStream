@@ -31,7 +31,7 @@ algorithm
   //print("Analytical zero     = " + String(u_analytical[1], format="2.16f"));
   //print("Numerical zero      = " + String(u_numerical[1], format="2.16f"));
   //print("Absolute difference = " + String(u_err[1], format="2.0e"));
-  annotation (Documentation(revisions="<html>
+  annotation (experiment(StopTime=1.0, Tolerance=1e-6, Interval=1e-3, __Dymola_Algorithm="Dassl"), Documentation(revisions="<html>
 <ul>
 <li>
 May 2025, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
