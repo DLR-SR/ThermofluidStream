@@ -114,7 +114,7 @@ equation
     experiment(StopTime=1),
         Documentation(info="<html>
   <p>
-    Test model for centrifugal pump characteristics uaed in the
+    Test model for centrifugal pump characteristics used in the
     <a href=\"modelica://ThermofluidStream.Processes.CentrifugalPump\">
       CentrifugalPump
     </a> model.
@@ -129,12 +129,23 @@ equation
   <p>
     In particular, the pump pressure rise
     <code>measurements.dp</code> is compared against
-    <code>coefficients.dp</code> for varying flow rates at design rotational speed.
+    <code>coefficients.dp</code> for varying flow rates at design rotational speed. 
   </p>
 
   <p>
     Time is used as a proxy for the mass flow rate (linear relation): <code>time = 0</code> corresponds to zero mass flow rate, and <code>time = 1</code> corresponds to the reference mass flow rate.<br>
-    To,e <code>time &lt; 0</code> is used for \"start up\".
+    Time <code>time &lt; 0</code> is used for \"start up\".
+  </p>
+
+  <p>
+    Time is used as a proxy for the mass flow rate (linear relation): <code>time = 0</code> corresponds to zero mass flow rate, and <code>time = 1</code> corresponds to the reference mass flow rate.<br>
+    Time <code>time &lt; 0</code> is used for \"start up\".
+  </p>
+
+  <p>
+    <code>measurements</code> and <code>coefficients</code> may differ slightly. 
+    Their difference depends on the number of significant used to create the coeffiencts records, see 
+    <a href=\"modelica://ThermofluidStream.Processes.Internal.CentrifugalPump.CalculateCoefficientsFromMeasurements\">CalculateCoefficientsFromMeasurements</a>.
   </p>
 </html>",                      revisions="<html>
   <ul>
