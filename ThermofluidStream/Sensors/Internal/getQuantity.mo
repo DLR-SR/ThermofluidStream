@@ -1,6 +1,6 @@
 within ThermofluidStream.Sensors.Internal;
 function getQuantity "Computes selected quantity from state"
-  extends Modelica.Icons.Function;
+  extends Modelica.Icons.ObsoleteModel;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model"
@@ -54,7 +54,7 @@ algorithm
     value :=0;
   end if;
 
-  annotation (Documentation(info="<html>
+  annotation (Documentation(obsolete="Use Sensors.Internal.GetQuantity instead", info="<html>
 <p>Helper function to get a quantity from an Thermofluid state.</p>
 </html>"));
 end getQuantity;

@@ -69,13 +69,13 @@ model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
 protected
   Real direct_value(unit=Internal.getUnit(quantity));
 
-  function getQuantityA = Internal.getQuantity(redeclare package Medium=MediumA) "Quantity compute function A"
+  Internal.GetQuantity getQuantityA(redeclare package Medium=MediumA, quantity=quantity, rho_min=rho_min) "Quantity compute function"
     annotation (Documentation(info="<html>
-      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
+      <p>This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively.</p>
       </html>"));
-  function getQuantityB = Internal.getQuantity(redeclare package Medium=MediumB) "Quantity compute function B"
+  Internal.GetQuantity getQuantityB(redeclare package Medium=MediumB, quantity=quantity, rho_min=rho_min) "Quantity compute function"
     annotation (Documentation(info="<html>
-      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
+      <p>This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively.</p>
       </html>"));
 
 initial equation
@@ -90,8 +90,14 @@ equation
   inletA.m_flow = 0;
   inletB.m_flow = 0;
 
-  valueA =  getQuantityA(inletA.state, inletA.r, quantity, rho_min);
-  valueB =  getQuantityB(inletB.state, inletB.r, quantity, rho_min);
+  getQuantityA.r = inletA.r;
+  getQuantityA.state = inletA.state;
+
+  getQuantityB.r = inletB.r;
+  getQuantityB.state = inletB.state;
+
+  valueA = getQuantityA.value;
+  valueB = getQuantityB.value;
 
   direct_value = valueA - valueB;
 

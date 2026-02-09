@@ -1,5 +1,6 @@
 Types
 getQuantity
+GetQuantity
 getFlowQuantity
 getTwoPhaseQuantity
 getUnit
