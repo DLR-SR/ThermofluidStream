@@ -39,9 +39,15 @@ model MCV "Flow rate control valve"
 
 
   Modelica.Blocks.Interfaces.RealInput setpoint_var if setpointFromInput "Flow rate input connector"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90, origin={0,-120}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120})));
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=0,  origin={110,-60}), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={110,-60})));
 
   SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";
@@ -95,17 +101,13 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName and not enableClippingOutput,
-          extent={{-150,-80},{150,-120}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Text(visible= displayInstanceName and enableClippingOutput,
-          extent={{-150,-60},{150,-100}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible=displayParameters and displayFlowRate and not setpointFromInput,
-          extent={{-150,70},{150,100}},
-          textColor={0,0,0},
-          textString=displayString),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -141,14 +143,19 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{60,40},{80,60}},
+          extent=DynamicSelect({{10,10},{80,80}}, if abs(dp - dp_int) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
           lineColor={0,0,0},
-          fillColor = DynamicSelect({255,255,255}, if abs(dp - dp_int) <= eps then {0,140,72} else {238,46,47}),
+          fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
         Line(visible=enableClippingOutput and not displayInstanceName,
           points={{0,-110},{0,-60}},
           color={0,0,127},
-          thickness=0.5)}),
+          thickness=0.5),
+        Line(visible = setpointFromInput,
+          points={{0,-60},{0,-100}},
+          color={0,0,127},
+          pattern=LinePattern.Dash,
+          thickness=1)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
