@@ -15,7 +15,7 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
+    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90, origin={0,-120})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";
@@ -45,7 +45,7 @@ equation
     annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,-80},{150,-120}},
+          extent={{-150,120},{150,80}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Ellipse(
@@ -81,7 +81,12 @@ equation
         Line(
           points={{0,0},{0,60}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          thickness=0.5),
+        Line(visible= pressureFromInput,
+          points={{0,-60},{0,-100}},
+          color={0,0,127},
+          pattern=LinePattern.Dash,
+          thickness=1)}),   Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on the chosen valve mode.</p>
 <p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This is done either by parameter <code>pressure_set_par</code> or via input connector <code>pressure_set_var</code> when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>
