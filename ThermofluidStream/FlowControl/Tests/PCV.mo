@@ -33,7 +33,7 @@ Medium package used in the Test.
     redeclare package Medium = Medium,
     L=10,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet,
+    mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet_pressure,
     pressure_set_par=150000) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   ThermofluidStream.Boundaries.VolumeFlex volumeFlex2Valve3(
     redeclare package Medium = Medium,
@@ -95,7 +95,7 @@ Medium package used in the Test.
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=10,
-    mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet,
+    mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet_pressure,
     pressureFromInput=true,
     pressure_set_par(displayUnit="bar")) annotation (Placement(transformation(extent={{-10,70},{10,90}})));
   Modelica.Blocks.Sources.Ramp rampValve1(
