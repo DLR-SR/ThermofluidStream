@@ -17,6 +17,8 @@ model PCV "Pressure and pressure-drop control valve"
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90, origin={0,-120})));
 
+  constant SI.Pressure eps = 1;
+
 protected
   Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";
   SI.Pressure dp_raw "Not normalized desired dp";
@@ -45,7 +47,7 @@ equation
     annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
-          extent={{-150,120},{150,80}},
+          extent={{-150,140},{150,100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Ellipse(
@@ -82,6 +84,11 @@ equation
           points={{0,0},{0,60}},
           color={28,108,200},
           thickness=0.5),
+        Ellipse(
+          extent=DynamicSelect({{10,10},{80,80}}, if abs(dp - dp_raw) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
+          lineColor={0,0,0},
+          fillColor = {238,46,47},
+          fillPattern=FillPattern.Solid),
         Line(visible= pressureFromInput,
           points={{0,-60},{0,-100}},
           color={0,0,127},

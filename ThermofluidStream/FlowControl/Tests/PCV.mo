@@ -183,5 +183,5 @@ equation
 <p>Test for the PCV.</p>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
 </html>"),
-    __Dymola_Commands(file="D:/Dymola_local/plot_scripts/PlotSetupTestPCV.mos" "PlotSetupTestPCV"));
+    __Dymola_Commands(file="D:/Dymola_local/plot_scripts/PlotSetupTestPCV.mos" "PlotSetupTestPCV", file="D:/Dymola_local/plot_scripts/PlotSetupTestPCV.mos" "dsada"));
 end PCV;

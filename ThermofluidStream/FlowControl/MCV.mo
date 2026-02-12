@@ -101,7 +101,7 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName and not enableClippingOutput,
-          extent={{-150,120},{150,80}},
+          extent={{-150,140},{150,100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Text(visible= displayInstanceName and enableClippingOutput,
