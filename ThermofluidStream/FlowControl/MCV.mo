@@ -6,7 +6,10 @@ model MCV "Flow rate control valve"
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
   parameter Mode mode = Mode.mass_flow "Valve mode"
-    annotation(Dialog(group="Flow rate setpoint"));
+    annotation(Dialog(group="Flow rate setpoint"),
+      choices(
+        choice = mass_flow "Control mass_flow",
+        choice = volume_flow "Control volume_flow"));
   parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
     annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
