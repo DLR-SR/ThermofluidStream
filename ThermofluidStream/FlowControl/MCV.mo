@@ -6,10 +6,7 @@ model MCV "Flow rate control valve"
   import Mode = ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode;
 
   parameter Mode mode = Mode.mass_flow "Valve mode"
-    annotation(Dialog(group="Flow rate setpoint"),
-      choices(
-        choice = mass_flow "Control mass_flow",
-        choice = volume_flow "Control volume_flow"));
+    annotation(Dialog(group="Flow rate setpoint"));
   parameter Boolean setpointFromInput = false "= true, if flow rate input connector is enabled"
     annotation(Dialog(group="Flow rate setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate massFlow_set_par = 0 "Mass flow rate set value"
@@ -146,7 +143,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent=DynamicSelect({{10,10},{80,80}}, if abs(dp - dp_int) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
+          extent=DynamicSelect({{0,0},{0,0}}, if abs(dp - dp_int) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
           lineColor={0,0,0},
           fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
@@ -162,7 +159,7 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This component can be used to emulate a mass- or volume-flow regulated valve, depending on its mode. </p>
-<p>The mass- or volume-flow-setpoint can be set or given by a real input signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpoint cannot be reached, an optional output leaves its &quot;zero&quot; value and a visual wanring is shown (circle becomes red). </p>
+<p>The mass- or volume-flow-setpoint can be set or given by a real input signal, and the valve tries to enforce a PT1- dynamic on this setpoint, within its pressure limits. The valve will not create pressure, or let the outlet pressure drop below p_min. To avoid this, the internally integrated pressure-drop is clipped. If it is clipped and hence the setpoint cannot be reached, an optional output leaves its &quot;zero&quot; value and a visual warning is shown in the form of a red circle on the icon. </p>
 <p>Documentation of the used equations:</p>
 <p><img src=\"modelica://ThermoFluidStream/Resources/Doku/ThermofluidStream.FlowControl.MCV.png\"/></p>
 </html>"));
