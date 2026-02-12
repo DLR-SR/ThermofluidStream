@@ -6,12 +6,9 @@ model PCV "Pressure and pressure-drop control valve"
 
 
   parameter Mode mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.drop "Valve mode"
-    annotation(
-      Dialog(group="Pressure setpoint"),
-      choices(
-        choice = pressure_drop "Control outlet pressure",
-        choice = outlet_pressure "Control pressure drop"));
-  parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled";
+    annotation(Dialog(group="Pressure setpoint"));
+  parameter Boolean pressureFromInput = false "= if true, the pressure input connector is enabled"
+    annotation(Dialog(group="Pressure setpoint"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
     annotation(Dialog(group="Pressure setpoint",enable=not pressureFromInput));
 
@@ -48,7 +45,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation( //Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true), -commented out since this line should affect nothing
+  annotation(
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
@@ -89,7 +86,7 @@ equation
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent=DynamicSelect({{10,10},{80,80}}, if abs(dp - dp_raw) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
+          extent=DynamicSelect({{0,0},{0,0}}, if abs(dp - dp_raw) <= eps then {{0,0},{0,0}} else {{10,10},{80,80}}),
           lineColor={0,0,0},
           fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
@@ -102,6 +99,7 @@ equation
 <p>This component can be used to emulate a pressure-drop or output-pressure regulated control valve, depending on the chosen valve mode.</p>
 <p>Depending on the parameter <code>mode</code>, either the pressure at the outlet <code>p_out</code> or the pressure difference <code>dp</code> between inlet and outlet can be stipulated. This is done either by parameter <code>pressure_set_par</code> or via input connector <code>pressure_set_var</code> when setting <code>pressureFromInput = true</code>. The resulting mass flow will be determined by its usual dynamics.</p>
 <p>Setting <code>dp</code> instead of <code>p_out</code> has advantages, when <code>p_out</code> is determined by a volume at the outlet (for instance an accumulator).</p>
-<p>The pressure difference <code>dp</code> is normalized, such that it cannot create pressure and it is zero for zero or negative mass flow. </p>
+<p>The pressure difference <code>dp</code> is normalized, such that it cannot create pressure and it is zero for zero or negative mass flow.</p>
+<p>If the desired pressure drop or outlet pressure, i.e. the target pressure drop in either case, can&apos;t be reached, a red dot shows up on the icon.</p>
 </html>"));
 end PCV;
