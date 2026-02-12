@@ -5,8 +5,12 @@ model PCV "Pressure and pressure-drop control valve"
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
 
-  parameter Mode mode = Mode.drop "Valve mode"
-    annotation(Dialog(group="Pressure setpoint"));
+  parameter Mode mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.drop "Valve mode"
+    annotation(
+      Dialog(group="Pressure setpoint"),
+      choices(
+        choice = pressure_drop "Control outlet pressure",
+        choice = outlet_pressure "Control pressure drop"));
   parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled";
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
     annotation(Dialog(group="Pressure setpoint",enable=not pressureFromInput));
@@ -44,7 +48,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-    annotation(Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true),
+  annotation( //Dialog(group="Pressure setpoint"),Evaluate=true, HideResult=true, choices(checkBox=true), -commented out since this line should affect nothing
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
