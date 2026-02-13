@@ -75,6 +75,6 @@ equation
           textString="B")}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Alternative three-port junction for combining two inlet branches into one outlet branch. Functionally equivalent to JunctionT1 in terms of topology, but implemented with an alternative internal formulation. </p>
+<p>Alternative three-port junction for combining two inlet branches into one outlet branch. Functionally equivalent to JunctionT1 in terms of topology. </p>
 </html>"));
 end JunctionT2;
