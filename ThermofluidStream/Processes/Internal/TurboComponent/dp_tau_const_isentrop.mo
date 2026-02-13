@@ -130,14 +130,14 @@ When pr&nbsp;&lt;&nbsp;1, the reciprocal pressure ratio 1/pr&nbsp;= p_inlet/p_ou
 is more interesting. It can be seen for different values of skew in fig. 2.
 </p>
 <div>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Internal.dp_tau_const_polytrop_skewness.png\"/>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Internal.dp_tau_const_polytrop_skewness.PNG\"/>
 </div>
 <p>
 Fig. 1: different skewness factors for omega/omega_ref=1. pressure ratio pr over
 m_dot/m_dot_ref
 </p>
 <div>
-<img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Internal.dp_tau_const_polytrop_skewness2.png\"/>
+<img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Processes.Internal.dp_tau_const_polytrop_skewness2.PNG\"/>
 </div>
 <p>
 Fig. 2: different skewness factors for omega/omega_ref=1. Reciprocal pressure ratio
