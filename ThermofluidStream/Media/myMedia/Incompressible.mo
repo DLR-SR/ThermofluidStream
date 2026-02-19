@@ -392,6 +392,21 @@ which is only exactly true for a fluid with constant density d=d0.
      annotation(smoothOrder=2);
     end thermalConductivity;
 
+    redeclare function extends isobaricExpansionCoefficient
+      "Return isobaric expansion coefficient (beta) as a function of the thermodynamic state record"
+    algorithm
+      beta := -density_derT_p(state) / density(state);
+    annotation(
+        Documentation(info = "<html><head></head><body><p>The isobaric expansion coefficient <code>beta</code> is defined as</p>
+<blockquote><pre>1/v * der(v,T)
+</pre></blockquote>
+<p>with <code>v</code> = <code>1/d</code>, at constant pressure <code>p</code>.
+Using the chain rule:</p>
+<blockquote><pre>1/v * der(v,T) = d * (-der(d, T) / d^2)
+= -der(d, T) / d</pre><pre><br></pre></blockquote>
+</body></html>"));
+    end isobaricExpansionCoefficient;
+
     function s_T "Compute specific entropy"
       extends Modelica.Icons.Function;
       input Temperature T "Temperature";
@@ -497,6 +512,18 @@ which is only exactly true for a fluid with constant density d=d0.
     algorithm
       ddph :=0; //incompressable and h = cp*T; h=const; -> T=const
     end density_derp_h;
+
+    redeclare function extends density_derh_p
+        "Return density derivative w.r.t. specific enthalpy at constant pressure"
+    algorithm
+      ddhp := density_derT_p(state) / specificHeatCapacityCp(state);
+    end density_derh_p;
+
+    redeclare function extends density_derT_p
+        "Return density derivative w.r.t. temperature at constant pressure"
+    algorithm
+      ddTp := Polynomials.derivativeValue(poly_rho, if TinK then state.T else Cv.to_degC(state.T));
+    end density_derT_p;
 
     redeclare function extends specificEnthalpy
       "Return specific enthalpy as a function of the thermodynamic state record"
