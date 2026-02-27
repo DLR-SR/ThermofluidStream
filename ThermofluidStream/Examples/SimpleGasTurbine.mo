@@ -72,7 +72,8 @@ model SimpleGasTurbine "Simple version of a Gas Turbine"
   Sensors.MultiSensor_Tp multiSensor_Tp2(
     redeclare package Medium = Medium,
     digits=3,
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-104,-4},{-84,16}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-104,0},{
+            -84,20}})));
   Modelica.Blocks.Continuous.LimPID PI(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=2000,
@@ -109,7 +110,7 @@ equation
     annotation (Line(points={{-110,-60},{-80,-60},{-80,-20}},
                                                            color={0,0,0}));
   connect(multiSensor_Tp2.inlet, source.outlet) annotation (Line(
-      points={{-104,6},{-110,6},{-110,-10},{-120,-10}},
+      points={{-104,10},{-110,10},{-110,-10},{-120,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(speedSensor.flange, turbine.flange)

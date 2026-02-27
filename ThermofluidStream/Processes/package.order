@@ -9,6 +9,6 @@ Fan
 ThermalConvectionPipe
 ConductionElement
 Nozzle
+StaticHead
 Internal
 Tests
-StaticHead

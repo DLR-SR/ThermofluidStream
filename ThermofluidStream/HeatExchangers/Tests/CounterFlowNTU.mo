@@ -55,7 +55,7 @@ model CounterFlowNTU
       Medium = MediumB, outputMassFlowRate=false,
     temperatureUnit="degC")
     annotation (Placement(transformation(extent={{60,20},{40,40}})));
-  inner DropOfCommons dropOfCommons(displayInstanceNames=false, displayParameters=false)
+  inner DropOfCommons dropOfCommons
     annotation (Placement(transformation(extent={{-158,-98},{-138,-78}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = MediumA,

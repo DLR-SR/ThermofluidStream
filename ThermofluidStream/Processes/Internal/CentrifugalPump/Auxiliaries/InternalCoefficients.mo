@@ -13,8 +13,8 @@ record InternalCoefficients "Coefficient record used in CentrifugalPump"
   parameter Real c_head[3] = {1,0.23,-1.23} "Coefficients of second order head approximation polynomial";
   parameter Real c_power[3] = {0.20, 0.55,-0.28} "Coefficients of second order torque approximation polynomial (P=tau*w)";
 
-  final parameter SI.Power P_ref = rho_ref*Modelica.Constants.g_n*head_ref*V_flow_ref/eta_ref "Reference power";
-  final parameter SI.Torque tau_ref = P_ref/w_ref "Reference torque";
+  parameter SI.Power P_ref = rho_ref*Modelica.Constants.g_n*head_ref*V_flow_ref/eta_ref "Reference power";
+  parameter SI.Torque tau_ref = P_ref/w_ref "Reference torque";
 
   annotation(defaultComponentPrefixes = "parameter", Documentation(info="<html>
 <p>

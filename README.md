@@ -33,7 +33,7 @@ The DLR ThermoFluid Stream Library uses a [innovative computational scheme](http
 
 Watch the <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank">introductory video</a> from the 2021 Modelica Conference and read the <a href="https://www.mdpi.com/2079-9292/11/22/3790" target="_blank">corresponding paper in MDPI electronics</a>  (<a href="https://ecp.ep.liu.se/index.php/modelica/article/view/199/159" target="_blank">short version</a>):
 
-<a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.PNG" 
+<a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.png" 
 alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
 
 ## License, Terms of Use, Literature

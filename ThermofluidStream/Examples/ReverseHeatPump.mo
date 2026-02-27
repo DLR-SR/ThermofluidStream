@@ -558,7 +558,7 @@ equation
       thickness=0.5));
   connect(multiSensor_Tpm6.rear, TEVcooling.fore)
     annotation (Line(
-      points={{70,130},{70,180},{50,180}},
+      points={{70,130},{60,130},{60,180},{50,180}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionT1_1.inletB, multiSensor_Tpm.outlet)

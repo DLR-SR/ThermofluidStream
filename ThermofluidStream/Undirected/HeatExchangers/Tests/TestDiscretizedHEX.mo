@@ -30,7 +30,8 @@ model TestDiscretizedHEX
     pressureFromInput=true,
     h0_par=300e3,
     T0_par=278.15,
-    p0_par=400000) annotation (Placement(transformation(extent={{-82,0},{-102,20}})));
+    p0_par=400000) annotation (Placement(transformation(extent={{-74,-20},{-94,
+            0}})));
   Boundaries.BoundaryRear boundary_rear1(
     redeclare package Medium = MediumRefrigerant,
     setEnthalpy=true,
@@ -83,7 +84,7 @@ model TestDiscretizedHEX
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
-    annotation (Placement(transformation(extent={{-50,0},{-70,20}})));
+    annotation (Placement(transformation(extent={{-42,-20},{-62,0}})));
   Modelica.Blocks.Continuous.PI PI1(
     k=-10000,
     T=0.1,
@@ -111,7 +112,7 @@ model TestDiscretizedHEX
     redeclare package Medium = MediumRefrigerant,
     temperatureUnit="degC",
     pressureUnit="bar")
-    annotation (Placement(transformation(extent={{-20,10},{-40,-10}})));
+    annotation (Placement(transformation(extent={{-18,-10},{-38,-30}})));
   Modelica.Blocks.Continuous.PI PI(
     k=10000,
     T=0.001,
@@ -133,12 +134,13 @@ model TestDiscretizedHEX
     height=-26e5,
     duration=10,
     offset=30e5,
-    startTime=15) annotation (Placement(transformation(extent={{-148,6},{-128,26}})));
+    startTime=15) annotation (Placement(transformation(extent={{-120,-14},{-100,
+            6}})));
 equation
   connect(boundary_rear.p0_var, const1.y) annotation (Line(points={{-84,28},{-92,28},{-92,32},{-99,32}},
                                                                                        color={0,0,127}));
   connect(boundary_fore1.rear, flowResistanceB.fore) annotation (Line(
-      points={{-82,10},{-70,10}},
+      points={{-74,-10},{-62,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(PI1.y,limiter1. u) annotation (Line(points={{115,56},{136,56},{136,28},{127.2,28}},
@@ -153,7 +155,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm3.fore, flowResistanceB.rear) annotation (Line(
-      points={{-40,10},{-50,10}},
+      points={{-38,-10},{-42,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(feedback.y,PI. u)
@@ -175,11 +177,12 @@ equation
       points={{-38,22},{-42,22}},
       color={28,108,200},
       thickness=0.5));
-  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-94,16},{-127,16}},                          color={0,0,127}));
+  connect(boundary_fore1.p0_var, ramp3.y) annotation (Line(points={{-86,-4},{
+          -99,-4}},                                                                                              color={0,0,127}));
   connect(ramp2.y, feedback1.u1) annotation (Line(points={{9,56},{40,56}},                  color={0,0,127}));
   connect(feedback.u1, ramp1.y) annotation (Line(points={{0,-48},{-19,-48}}, color={0,0,127}));
   connect(discretizedHEX.foreB, multiSensor_Tpm3.rear) annotation (Line(
-      points={{-14,10},{-20,10}},
+      points={{-14,10},{-16,10},{-16,-10},{-18,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(multiSensor_Tpm.fore, discretizedHEX.rearA) annotation (Line(

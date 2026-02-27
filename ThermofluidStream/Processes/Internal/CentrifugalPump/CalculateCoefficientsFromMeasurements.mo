@@ -2,7 +2,9 @@ within ThermofluidStream.Processes.Internal.CentrifugalPump;
 model CalculateCoefficientsFromMeasurements "Determine and print pump coefficients based on measurements"
   extends Modelica.Icons.Example;
   import Modelica.Utilities.Streams.print;
-  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Wilo.CronolineIL80slash220dash4slash4 measurements "Measurements" annotation (Dialog(group="Data"), choicesAllMatching=true);
+  replaceable parameter ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Wilo.Stratos25slash1to4 measurements
+    constrainedby ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.GenericPump  "Measurements"
+    annotation (Dialog(group="Data"), choicesAllMatching=true);
   final parameter ThermofluidStream.Processes.Internal.CentrifugalPump.Auxiliaries.InternalCoefficients c=ThermofluidStream.Processes.Internal.CentrifugalPump.Auxiliaries.internalCoefficientsFromMeasurements(measurements) "Pump coefficients internally used in the centrifugal pump model";
   final parameter ThermofluidStream.Processes.Internal.CentrifugalPump.Coefficients.GenericPump coefficients=ThermofluidStream.Processes.Internal.CentrifugalPump.Auxiliaries.coefficientsFromInternalCoefficients(c);
 
@@ -29,7 +31,7 @@ algorithm
   //print("Analytical zero     = " + String(u_analytical[1], format="2.16f"));
   //print("Numerical zero      = " + String(u_numerical[1], format="2.16f"));
   //print("Absolute difference = " + String(u_err[1], format="2.0e"));
-  annotation (Documentation(revisions="<html>
+  annotation (experiment(StopTime=1.0, Tolerance=1e-6, Interval=1e-3, __Dymola_Algorithm="Dassl"), Documentation(revisions="<html>
 <ul>
 <li>
 May 2025, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
