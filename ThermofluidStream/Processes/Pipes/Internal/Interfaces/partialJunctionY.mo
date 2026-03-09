@@ -41,7 +41,7 @@ partial model partialJunctionY "Duplicate of JunctionN considering dynamic effec
   SI.AbsolutePressure p[2] = {p_straight, p_branching} "Total pressure inlets [straight branching]";
 
   SI.Pressure dq_straight "Dynamic pressure difference straight inlet - outlet";
-  SI.Pressure dq_branching "Dynamic pressure difference straight inlet - outlet";
+  SI.PressureDifference dq_branching "Dynamic pressure difference straight inlet - outlet";
 
   SI.Pressure dp_straight "Pressure difference straight inlet - outlet";
   SI.Pressure dp_branching "Pressure difference branching inlet - outlet";
