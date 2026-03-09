@@ -8,7 +8,7 @@ partial function partialPressureLoss "Partial pressure loss function"
   input SI.Length r(min=0) "Radius";
   input SI.Length l(min=0) "Length";
 
-  output SI.AbsolutePressure pressureLoss "pressure loss (dp)";
+  output SI.PressureDifference pressureLoss "pressure loss (dp)";
 
   annotation(Inline=true, smoothOrder=100,
     Documentation(info="<html>
