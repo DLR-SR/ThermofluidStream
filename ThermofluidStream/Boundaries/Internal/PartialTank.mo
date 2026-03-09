@@ -112,8 +112,7 @@ protected
 
   SI.Pressure r[N_inlets];
 
-  SI.Temperature
- T_heatPort;
+  SI.Temperature T_heatPort;
 
   Medium.MassFlowRate m_flow_in[N_inlets] = inlet.m_flow;
   Medium.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
