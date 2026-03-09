@@ -23,8 +23,7 @@ inlets and outlets the volume is connected to.
   parameter Boolean initialize_energy=false
     "Initialize specific inner energy with temperature or specific enthalpy condition"
     annotation (Dialog(tab="Initialization"));
-  parameter SI.Temperature
- T_start=Medium.T_default
+  parameter SI.Temperature T_start = Medium.T_default
     "Initial Temperature" annotation (Dialog(tab="Initialization", enable=
           initialize_energy and (not use_hstart)));
   parameter Boolean use_hstart=false
