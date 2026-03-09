@@ -101,8 +101,7 @@ protected
   SI.MassFraction Xi_in[Medium.nXi,N_inlets];
 
   Medium.ThermodynamicState state_out[M_outlets];
-  SI.SpecificEnthalpy
- h_out[M_outlets];
+  SI.SpecificEnthalpy h_out[M_outlets];
   SI.MassFraction Xi_out[Medium.nXi,M_outlets];
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
