@@ -6,8 +6,7 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
   parameter SI.Volume V(displayUnit="l")=0.001 "Volume";
   parameter Internal.InitializationMethodsCondElement init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.inlet "Initialization for specific enthalpy"
     annotation (Dialog(tab="Initialization", group="Specific enthalpy"));
-  parameter SI.Temperature
- T_0 = Medium.T_default "Initial Temperature"
+  parameter SI.Temperature T_0 = Medium.T_default "Initial Temperature"
     annotation(
                Dialog(tab="Initialization", group="Specific enthalpy", enable=(init == Internal.InitializationMethodsCondElement.T)));
   parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
