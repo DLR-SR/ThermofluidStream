@@ -11,7 +11,7 @@ partial model PartialValve "Partial implementation of a physical valve"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
   Real u(unit="1") "Actuation input for flow calculation";
-  parameter SI.Pressure dp_ref=1e5
+  parameter SI.AbsolutePressure dp_ref=1e5
     "Reference pressure difference"
     annotation (Dialog(tab="Advanced", group="Reference values"));
   parameter SI.Density rho_ref=1000 "Reference density"
