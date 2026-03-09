@@ -166,8 +166,7 @@ protected
 
   SI.Pressure r_rear[N_rears];
   SI.Pressure r_fore[N_fores];
-  SI.SpecificEnthalpy
- h_rear[N_rears];
+  SI.SpecificEnthalpy h_rear[N_rears];
   SI.SpecificEnthalpy
  h_fore[N_fores];
   SI.MassFraction Xi_rear[Medium.nXi,N_rears];
