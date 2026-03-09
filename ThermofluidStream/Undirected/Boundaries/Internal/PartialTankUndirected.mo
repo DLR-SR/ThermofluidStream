@@ -29,8 +29,7 @@ inlets and outlets the volume is connected to.
   parameter Boolean use_hstart=false
     "True: specific enthalpy condition instead of Temperature"
     annotation (Dialog(tab="Initialization", enable=initialize_energy));
-  parameter SI.SpecificEnthalpy
- h_start=Medium.h_default
+  parameter SI.SpecificEnthalpy h_start=Medium.h_default
     "Initial specific enthalpy" annotation (Dialog(tab="Initialization", enable
         =initialize_energy and use_hstart));
   parameter Boolean initialize_Xi=false "If true: initialize mass fractions"
