@@ -7,7 +7,7 @@ function DarcyFriction
   input SI.Length Delta(min = 0) "Relaitiv roughness";
   input SI.Density rho "Inlet density";
   input SI.DynamicViscosity mu "Dynamic viscosity";
-  input Real Re1 "Lower boundary Re for laminar-turbulent transition regime";
+  input SI.ReynoldsNumber Re1 "Lower boundary Re for laminar-turbulent transition regime";
   input Real Re2 "Upper boundary Re for laminar-turbulent transition regime";
   output Internal.Types.DarcyFrictionFactor lambda "Darcy friction factor";
 protected
