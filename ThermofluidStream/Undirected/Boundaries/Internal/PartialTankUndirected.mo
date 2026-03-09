@@ -141,7 +141,7 @@ inlets and outlets the volume is connected to.
     "distance perpendicular to liquid surface";
   SI.Pressure staticHeadInlets_Pa_relative[N_inlets]
     "relative pressure to liquid surface";
-  SI.AbsolutePressure staticHeadOutlets_Pa_relative[N_outlets]
+  SI.Pressure staticHeadOutlets_Pa_relative[N_outlets]
     "relative pressure to liquid surface";
   SI.AbsolutePressure staticHeadRears_Pa_relative[N_rears]
     "relative pressure to liquid surface";
