@@ -29,7 +29,7 @@ protected
 
   Real friction_factor(unit="1");
   SI.PressureDifference pressureLossLaminar "Laminar pressure loss";
-  SI.AbsolutePressure pressureLossTurbulent "Turbulent pressure loss";
+  SI.PressureDifference pressureLossTurbulent "Turbulent pressure loss";
 
   constant SI.ReynoldsNumber Re_small=1e-5 "Lower limit of turbulent Reynolds number to avoid division by zero";
 
