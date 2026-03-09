@@ -154,8 +154,7 @@ protected
   outer DropOfCommons dropOfCommons;
   outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
   SI.AbsolutePressure p_in[N_inlets]=Medium.pressure(inlet.state);
-  SI.SpecificEnthalpy
- h_in[N_inlets];
+  SI.SpecificEnthalpy h_in[N_inlets];
   SI.MassFraction Xi_in[Medium.nXi,N_inlets];
 
   Medium.ThermodynamicState state_out[N_outlets];
