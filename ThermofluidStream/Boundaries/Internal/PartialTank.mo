@@ -85,7 +85,7 @@ inlets and outlets the volume is connected to.
 
    SI.Length staticHeadInlets[N_inlets] "distance perpendicular to liquid surface, 0 if above surface";
    SI.Length staticHeadOutlets[M_outlets] "distance perpendicular to liquid surface, 0 if above surface";
-   SI.AbsolutePressure staticHeadInlets_Pa_relative[N_inlets] "relative pressure to liquid surface, 0 if above surface";
+   SI.Pressure staticHeadInlets_Pa_relative[N_inlets] "relative pressure to liquid surface, 0 if above surface";
    SI.AbsolutePressure staticHeadOutlets_Pa_relative[M_outlets] "relative pressure to liquid surface, 0 if above surface";
 
 Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
