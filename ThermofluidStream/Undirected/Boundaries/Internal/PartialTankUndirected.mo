@@ -158,8 +158,7 @@ protected
   SI.MassFraction Xi_in[Medium.nXi,N_inlets];
 
   Medium.ThermodynamicState state_out[N_outlets];
-  SI.SpecificEnthalpy
- h_out[N_outlets];
+  SI.SpecificEnthalpy h_out[N_outlets];
   SI.MassFraction Xi_out[Medium.nXi,N_outlets];
 
   Medium.ThermodynamicState state_out_rear[N_rears];
