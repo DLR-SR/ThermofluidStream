@@ -180,8 +180,7 @@ protected
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h,
     1e-10)))) "Friction factor for coupled boundaries";
   //SI.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
-  SI.DerDensityByPressure
- density_derp_h=(V_ref*medium.d)/(V*K)
+  SI.DerDensityByPressure density_derp_h=(V_ref*medium.d)/(V*K)
     "Partial derivative of density by pressure";
 
   SI.Pressure r_damping=d*der(M);
