@@ -145,7 +145,7 @@ inlets and outlets the volume is connected to.
     "relative pressure to liquid surface";
   SI.Pressure staticHeadRears_Pa_relative[N_rears]
     "relative pressure to liquid surface";
-  SI.AbsolutePressure staticHeadFores_Pa_relative[N_fores]
+  SI.Pressure staticHeadFores_Pa_relative[N_fores]
     "relative pressure to liquid surface";
 
   Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
