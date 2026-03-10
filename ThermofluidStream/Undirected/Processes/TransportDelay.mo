@@ -5,7 +5,7 @@ model TransportDelay "Delay model based on fluid velocity"
 
   parameter SI.Length l "Length";
   parameter SI.Radius r "Radius";
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced"));
   parameter Real v_min(unit="1/s", min=0) = 0.01 "Minimum nondimensional speed"
     annotation(Dialog(tab="Advanced"));
@@ -26,20 +26,20 @@ model TransportDelay "Delay model based on fluid velocity"
   //-----------------------------------------------------------------
 
   constant Medium.ThermodynamicState state_0 = Medium.setState_phX(Medium.p_default, Medium.h_default, Medium.X_default[1:Medium.nXi]) "Default medium state";
-  constant SI.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0) "Default mass fractions";
+  constant Medium.MassFraction Xi_0[Medium.nXi] = Medium.massFraction(state_0) "Default mass fractions";
   constant SI.SpecificVolume v_0 = 1/Medium.density(state_0) "Default specific volume";
 
   Real x(unit="1") "Relative position s/l";
   Real v(unit="1/s") "Relative speed v/l";
 
 protected
-  SI.SpecificInternalEnergy u_rear_in = Medium.specificInternalEnergy(rear.state_forwards) "Inlet internal energy rear port";
-  SI.SpecificInternalEnergy u_fore_in = Medium.specificInternalEnergy(fore.state_rearwards) "Inlet internal energy fore port";
+  Medium.SpecificInternalEnergy u_rear_in = Medium.specificInternalEnergy(rear.state_forwards) "Inlet internal energy rear port";
+  Medium.SpecificInternalEnergy u_fore_in = Medium.specificInternalEnergy(fore.state_rearwards) "Inlet internal energy fore port";
   SI.SpecificVolume v_rear_in = 1/max(rho_min, Medium.density(rear.state_forwards)) "Inlet specific volume rear port";
   SI.SpecificVolume v_fore_in = 1/max(rho_min, Medium.density(fore.state_rearwards)) "Inlet specific volume fore port";
 
-  SI.SpecificInternalEnergy u_rear_out "Outlet internal energy rear port";
-  SI.SpecificInternalEnergy u_fore_out "Outlet internal energy fore port";
+  Medium.SpecificInternalEnergy u_rear_out "Outlet internal energy rear port";
+  Medium.SpecificInternalEnergy u_fore_out "Outlet internal energy fore port";
   SI.SpecificVolume v_rear_out "Outlet specific volume rear port";
   SI.SpecificVolume v_fore_out "Outlet specific volume fore port";
 

@@ -70,12 +70,12 @@ protected
   Modelica.Blocks.Interfaces.RealInput A_in_internal(unit = "m2") "Internal connector for inlet cross-sectional area";
   Modelica.Blocks.Interfaces.RealInput A_out_internal(unit = "m2") "Internal connector for outlet cross-section area";
 
-  SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
-  SI.Density rho_out "Outlet density";
+  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho_out "Outlet density";
 
   SI.Velocity v_in "Inlet velocity";
   SI.Velocity v_out "Outlet velocity";
-  //SI.Density rho_mean;
+  //Medium.Density rho_mean;
 equation
 
    connect(A_in_var, A_in_internal);

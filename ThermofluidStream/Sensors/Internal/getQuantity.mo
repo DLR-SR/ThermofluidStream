@@ -12,7 +12,7 @@ function getQuantity "Computes selected quantity from state"
   input Medium.ThermodynamicState state;
   input SI.Pressure r;
   input Types.Quantities quantity;
-  input SI.Density rho_min;
+  input Medium.Density rho_min;
   output Real value;
 
 algorithm

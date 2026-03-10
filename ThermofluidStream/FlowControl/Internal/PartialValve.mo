@@ -11,17 +11,17 @@ partial model PartialValve "Partial implementation of a physical valve"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
 
   Real u(unit="1") "Actuation input for flow calculation";
-  parameter SI.AbsolutePressure dp_ref=1e5
+  parameter Medium.AbsolutePressure dp_ref=1e5
     "Reference pressure difference"
     annotation (Dialog(tab="Advanced", group="Reference values"));
-  parameter SI.Density rho_ref=1000 "Reference density"
+  parameter Medium.Density rho_ref=1000 "Reference density"
     annotation (Dialog(tab="Advanced", group="Reference values"));
 
 protected
   final constant Real secondsPerHour(final unit="s/h") = 3600 "Unit conversion parameter";
 
   //Medium properties
-  SI.Density rho=Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho=Medium.density(inlet.state) "Inlet density";
 
   parameter SI.MassFlowRate m_flow_ref(fixed = false) "Reference mass flow rate derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";

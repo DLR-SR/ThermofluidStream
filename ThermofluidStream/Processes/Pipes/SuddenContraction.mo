@@ -17,7 +17,7 @@ model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.D
     annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   //Advanced
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal density"
   annotation(Dialog(tab = "Advanced"));
   parameter StateSelect dpStateSelect = StateSelect.default "State select for dp"
     annotation(Dialog(tab = "Advanced"));
@@ -26,8 +26,8 @@ model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.D
   parameter Boolean assumeConstantMaterialProperties=true "= true, if constant density and dynamic viscosity is assumed (use '= false' e.g. for Ma > 0.3)"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  SI.Density rho "Mean density";
-  SI.DynamicViscosity mu "Mean dynamic viscosity";
+  Medium.Density rho "Mean density";
+  Medium.DynamicViscosity mu "Mean dynamic viscosity";
   final parameter Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_con In_con(
     A_1=A_1,
     A_2=A_2,
@@ -36,10 +36,10 @@ model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.D
   Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_suddenChange_IN_var In_var(eta=mu, rho=rho) "Input record variables";
   SI.ReynoldsNumber Re = d_1*abs(m_flow)/A_1/mu "Reynoldsnumber";
 protected
-  SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "density of medium entering";
-  SI.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "density of medium exiting";
-  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "dynamic viscosity of medium entering";
-  SI.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "dynamic viscosity of medium exiting";
+  Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "density of medium entering";
+  Medium.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "density of medium exiting";
+  Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "dynamic viscosity of medium entering";
+  Medium.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "dynamic viscosity of medium exiting";
   final parameter SI.Area A_1 = pi/4*d_1^2 "Inlet cross-sectional area";
   final parameter SI.Area A_2 = pi/4*d_2^2 "Outlet cross-sectional area";
 equation

@@ -17,12 +17,12 @@ function regStepState "Apply regStep on State"
   output Medium.ThermodynamicState state;
 
 protected
-  SI.AbsolutePressure p;
-  SI.SpecificEnthalpy h;
-  SI.MassFraction Xi[Medium.nXi];
+  Medium.AbsolutePressure p;
+  Medium.SpecificEnthalpy h;
+  Medium.MassFraction Xi[Medium.nXi];
 
-  SI.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(state_forwards);
-  SI.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(state_rearwards);
+  Medium.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(state_forwards);
+  Medium.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(state_rearwards);
 
 algorithm
   p := regStep(m_flow, Medium.pressure(state_forwards), Medium.pressure(state_rearwards), m_flow_reg);

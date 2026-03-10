@@ -19,7 +19,7 @@ partial model PartialTurboComponent "Partial model of turbo component"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Normalization mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density (relevant at p=0)"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum density (relevant at p=0)"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for angular velocity"
     annotation(Dialog(tab="Advanced"));
@@ -65,7 +65,7 @@ protected
   SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(inlet.state)) "Inlet specific volume";
 
   // intermediate quantities related to thermodynamical state
-  SI.SpecificEnergy dh "Difference of specific enthalpy";
+  Medium.SpecificEnergy dh "Difference of specific enthalpy";
 
   // quantities related to inertia of component and mechanical power
   SI.Angle phi "Angle";

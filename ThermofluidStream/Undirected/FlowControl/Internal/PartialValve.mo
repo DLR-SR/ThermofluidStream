@@ -10,7 +10,7 @@ partial model PartialValve "Partial valve model"
 
   parameter SI.Pressure dp_ref=1e5 "Reference pressure difference"
     annotation (Dialog(tab="Advanced", group="Reference values"));
-  parameter SI.Density rho_ref=1000 "Reference density"
+  parameter Medium.Density rho_ref=1000 "Reference density"
     annotation (Dialog(tab="Advanced", group="Reference values"));
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control signal []"
@@ -22,8 +22,8 @@ protected
   constant Real secondsPerHour(final unit="s/h") = 3600 "Parameter for unit conversion";
 
   //Medium properties
-  SI.Density rho_rear_in=Medium.density(rear.state_forwards) "Inlet density rear port";
-  SI.Density rho_fore_in=Medium.density(fore.state_rearwards) "Inlet density fore port";
+  Medium.Density rho_rear_in=Medium.density(rear.state_forwards) "Inlet density rear port";
+  Medium.Density rho_fore_in=Medium.density(fore.state_rearwards) "Inlet density fore port";
 
   parameter SI.MassFlowRate m_flow_ref(fixed=false) "Reference mass flow derived from flow coefficient inputs";
   Real k_u(unit="1") "Kv/Kvs, respecting flow characteristics";

@@ -6,11 +6,11 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
   parameter SI.Volume V(displayUnit="l")=0.001 "Volume";
   parameter Internal.InitializationMethodsCondElement init=ThermofluidStream.Processes.Internal.InitializationMethodsCondElement.inlet "Initialization for specific enthalpy"
     annotation (Dialog(tab="Initialization", group="Specific enthalpy"));
-  parameter SI.Temperature T_0 = Medium.T_default "Initial Temperature"
+  parameter Medium.Temperature T_0 = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab="Initialization", group="Specific enthalpy", enable=(init == Internal.InitializationMethodsCondElement.T)));
-  parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
+  parameter Medium.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab="Initialization", group="Specific enthalpy", enable=(init == Internal.InitializationMethodsCondElement.h)));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal density"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean neglectPressureChanges = true "=true, if pressure changes are neglected"
     annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -24,10 +24,10 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort(Q_flow=Q_flow, T=T_heatPort)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
-  SI.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer) "Volume? specific enthalpy";
+  Medium.SpecificEnthalpy h(start=Medium.h_default, stateSelect = StateSelect.prefer) "Volume? specific enthalpy";
 
   Medium.ThermodynamicState state = Medium.setState_phX(p_in, h, Xi_in) "Volume thermodynamic state";
-  SI.Temperature T = Medium.temperature(state) "Volume temperature";
+  Medium.Temperature T = Medium.temperature(state) "Volume temperature";
   SI.ThermalConductance k "Thermal conductance";
 
   SI.Energy deltaE_system(start=0, fixed=true) "Energy difference between m_flow*(h_in-h_out) and Q_flow";
@@ -35,12 +35,12 @@ partial model PartialConductionElement "Partial model of quasi-stationary mass a
   SI.Mass M "Mass (of the volume)";
 
 protected
-  SI.Density rho = max(rho_min, Medium.density(state)) "Volume density";
+  Medium.Density rho = max(rho_min, Medium.density(state)) "Volume density";
 
   //for stability reasons the model for reverse flow is different. see documentation/information
-  SI.SpecificEnthalpy h_in_norm = if noEvent(inlet.m_flow >= 0) then h_in else h "Inlet specific enthalpy";
+  Medium.SpecificEnthalpy h_in_norm = if noEvent(inlet.m_flow >= 0) then h_in else h "Inlet specific enthalpy";
 
-  SI.Temperature T_heatPort "Heatport Temperature";
+  Medium.Temperature T_heatPort "Heatport Temperature";
   SI.HeatFlowRate Q_flow "Heat flow rate";
 
 initial equation

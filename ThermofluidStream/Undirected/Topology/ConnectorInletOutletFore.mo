@@ -11,7 +11,7 @@ model ConnectorInletOutletFore "Connects fore port to directed flow"
     annotation(Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.AbsolutePressure p_ref = 1e5 "Reference pressure"
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean assumeConstantDensity = true "= true, if mixture states are determined by mass flow rates"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));

@@ -5,7 +5,7 @@ model Reservoir "Simple open tank model"
 
   parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector is enabled"
     annotation(Dialog(group="Environmental pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.AbsolutePressure p_env_par=1e5 "Environmental pressure set value"
+  parameter Medium.AbsolutePressure p_env_par=1e5 "Environmental pressure set value"
     annotation(Dialog(group="Environmental pressure",enable=not pEnvFromInput));
   parameter SI.Area A_surf(displayUnit="cm2")=0.01 "Base area";
   parameter SI.Height height_0(displayUnit="cm")=0.1 "Start value of tank level"
@@ -25,7 +25,7 @@ model Reservoir "Simple open tank model"
   SI.Height height "Tank level";
 
 protected
-  SI.AbsolutePressure p_env "Environmental pressure";
+  Medium.AbsolutePressure p_env "Environmental pressure";
 
 initial equation
   height = height_0;

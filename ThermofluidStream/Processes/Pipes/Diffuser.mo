@@ -24,7 +24,7 @@ model Diffuser "Pressure drop of a conical diffusor"
     Dialog(tab = "Advanced", enable = not computeL));
   parameter Boolean computeL = true "Compute L from r and l"
     annotation(Dialog(tab = "Advanced"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal input density"
     annotation(Dialog(tab = "Advanced"));
   parameter StateSelect dpStateSelect = StateSelect.default "State select for dp"
     annotation(Dialog(tab = "Advanced"));
@@ -43,18 +43,18 @@ model Diffuser "Pressure drop of a conical diffusor"
     elseif material == ThermofluidStream.Processes.Internal.Material.drawnPipe then 0.0015e-3
     else ks "Pipe roughness";
 
-  SI.Density rho "Mean density";
-  SI.DynamicViscosity mu "Mean dynamic viscosity";
+  Medium.Density rho "Mean density";
+  Medium.DynamicViscosity mu "Mean dynamic viscosity";
   SI.ReynoldsNumber Re = d_1*abs(m_flow)/A_1/mu "Reynolds Number";
   Internal.Types.PressureLossCoefficient zeta_dif "Total pressure loss coefficient of diffuser";
   Internal.Types.PressureLossCoefficient zeta_exp "Pressure loss coefficient due to diffuser enlargement";
   Internal.Types.PressureLossCoefficient zeta_fr "Pressure loss coefficient of diffuser due to wall friction";
 
 protected
-  SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
-  SI.Density rho_out = if assumeConstantDensity then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
-  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
-  SI.DynamicViscosity mu_out = if assumeConstantDensity then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
+  Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
+  Medium.Density rho_out = if assumeConstantDensity then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
+  Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
+  Medium.DynamicViscosity mu_out = if assumeConstantDensity then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
 
   SI.Pressure DP "Pressure difference (-dp)";
 

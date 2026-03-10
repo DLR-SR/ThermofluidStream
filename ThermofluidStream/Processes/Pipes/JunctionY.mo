@@ -31,9 +31,9 @@ model JunctionY "Pressure drop of an Y-shaped junction"
     annotation(Placement(visible = true, transformation(origin = {50, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
   Real A_rel_bc = A_branching/A_out "Area ratio branch/ (common) outlet";
-  SI.Density rho_straight = Medium.density(inlet_straight.state) "Density straight inlet";
-  SI.Density rho_branching = Medium.density(inlet_branching.state) "Density branching inlet";
-  SI.Density rho_out = if assumeConstantDensity then (rho_straight + rho_branching)/2 else Medium.density(outlet.state) "Outlet density";
+  Medium.Density rho_straight = Medium.density(inlet_straight.state) "Density straight inlet";
+  Medium.Density rho_branching = Medium.density(inlet_branching.state) "Density branching inlet";
+  Medium.Density rho_out = if assumeConstantDensity then (rho_straight + rho_branching)/2 else Medium.density(outlet.state) "Outlet density";
   final parameter Real alpha_deg = alpha*180/pi "Branching angle (in deg)";
   Real Q_rel_bc;
 

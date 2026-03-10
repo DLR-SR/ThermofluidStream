@@ -12,7 +12,7 @@ model StaticHead "Static head model"
   parameter ThermofluidStream.Utilities.Units.Inertance L_value=dropOfCommons.L
     "Inertance of pipe" annotation (Dialog(tab="Advanced", enable=not computeL));
 
-  parameter SI.Density rho_min=dropOfCommons.rho_min
+  parameter Medium.Density rho_min=dropOfCommons.rho_min
     "Minimal input density" annotation (Dialog(tab="Advanced"));
 
     SI.Length staticHead_forwards "static head in m";

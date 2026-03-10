@@ -27,7 +27,7 @@ model ThermalConvectionPipe "Very simple model of thermal convection"
   //-----------------------------------------------------------------
 
   Medium.ThermodynamicState center_state = Medium.setState_phX(p_in,h_in+dh/2,Xi_in) "State at (h_in+h_out)/2";
-  SI.Temperature T = Medium.temperature(center_state) "Temperature at center state";
+  Medium.Temperature T = Medium.temperature(center_state) "Temperature at center state";
 
   Integer turb_flag "= 0 for laminar flow, = 1 for turbulent flow (Re > 2300)";
 
@@ -43,21 +43,21 @@ protected
   constant SI.NusseltNumber Nu_laminar = 4.36 "Nusselt number for laminar flow";
   SI.CoefficientOfHeatTransfer h_avg "Average heat transfer coefficient";
 
-  SI.ThermalConductivity k =  Medium.thermalConductivity(center_state) "Center state thermal conductivity ";
+  Medium.ThermalConductivity k =  Medium.thermalConductivity(center_state) "Center state thermal conductivity ";
 
-  SI.Density rho = Medium.density(center_state) "Center state density";
+  Medium.Density rho = Medium.density(center_state) "Center state density";
   SI.Mass M = V*rho "Mass";
-  SI.SpecificEnthalpy dh "Specific enthalpy difference (outlet-inlet)";
+  Medium.SpecificEnthalpy dh "Specific enthalpy difference (outlet-inlet)";
 
   //Flow characteristics
-  SI.DynamicViscosity mu = Medium.dynamicViscosity(center_state) "Center state dynamic viscosity";
+  Medium.DynamicViscosity mu = Medium.dynamicViscosity(center_state) "Center state dynamic viscosity";
   SI.ReynoldsNumber Re_D "Reynolds number";
   SI.NusseltNumber Nu_turb "Nusselt number for turbulent flow";
-  SI.PrandtlNumber Pr = Medium.prandtlNumber(center_state) "Center state Prandtl number";
+  Medium.PrandtlNumber Pr = Medium.prandtlNumber(center_state) "Center state Prandtl number";
 
   SI.Velocity v_m "Mean fluid velocity";
 
-  //SI.VelocityOfSound c = Medium.velocityOfSound(center_state) "Velocity of sound";
+  //Medium.VelocityOfSound c = Medium.velocityOfSound(center_state) "Velocity of sound";
 
   parameter Real eps(unit="1") = Modelica.Constants.eps;
 

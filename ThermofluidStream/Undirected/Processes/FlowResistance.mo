@@ -17,15 +17,15 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minium inlet density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minium inlet density"
     annotation(Dialog(tab="Advanced"));
 
 protected
-  SI.Density rho_rear_in = max(rho_min, Medium.density(rear.state_forwards)) "Inlet density of rear port";
-  SI.DynamicViscosity mu_rear_in = Medium.dynamicViscosity(rear.state_forwards) "Inlet dynamic viscosity of rear port";
+  Medium.Density rho_rear_in = max(rho_min, Medium.density(rear.state_forwards)) "Inlet density of rear port";
+  Medium.DynamicViscosity mu_rear_in = Medium.dynamicViscosity(rear.state_forwards) "Inlet dynamic viscosity of rear port";
 
-  SI.Density rho_fore_in = max(rho_min, Medium.density(fore.state_rearwards)) "Inlet density of fore port";
-  SI.DynamicViscosity mu_fore_in = Medium.dynamicViscosity(fore.state_rearwards) "Inlet dynamic viscosity of fore port";
+  Medium.Density rho_fore_in = max(rho_min, Medium.density(fore.state_rearwards)) "Inlet density of fore port";
+  Medium.DynamicViscosity mu_fore_in = Medium.dynamicViscosity(fore.state_rearwards) "Inlet dynamic viscosity of fore port";
 
 equation
   //Forwards model

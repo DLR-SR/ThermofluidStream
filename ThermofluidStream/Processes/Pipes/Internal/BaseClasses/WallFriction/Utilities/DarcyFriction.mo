@@ -5,8 +5,8 @@ function DarcyFriction
   input SI.MassFlowRate m_flow "Mass flow rate";
   input SI.Length D_h "Hydraulic diameter";
   input SI.Length Delta(min = 0) "Relaitiv roughness";
-  input SI.Density rho "Inlet density";
-  input SI.DynamicViscosity mu "Dynamic viscosity";
+  input Medium.Density rho "Inlet density";
+  input Medium.DynamicViscosity mu "Dynamic viscosity";
   input Real Re1 "Lower boundary Re for laminar-turbulent transition regime";
   input Real Re2 "Upper boundary Re for laminar-turbulent transition regime";
   output Types.DarcyFrictionFactor lambda "Darcy friction factor";

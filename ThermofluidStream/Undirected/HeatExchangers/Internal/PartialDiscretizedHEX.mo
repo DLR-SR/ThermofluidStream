@@ -56,7 +56,7 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h "h0",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "rear",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore "fore"));
-  parameter SI.SpecificEnthalpy h0_A=MediumA.h_default "Start value for specific enthalpy side A" annotation (Dialog(
+  parameter MediumA.SpecificEnthalpy h0_A=MediumA.h_default "Start value for specific enthalpy side A" annotation (Dialog(
       tab="Initialization",
       group="Enthalpy",
       enable=(init_A == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
@@ -64,7 +64,7 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h "h0",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "rear",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore "fore"));
-  parameter SI.SpecificEnthalpy h0_B=MediumB.h_default "Start value for specific enthalpy side B" annotation (Dialog(
+  parameter MediumB.SpecificEnthalpy h0_B=MediumB.h_default "Start value for specific enthalpy side B" annotation (Dialog(
       tab="Initialization",
       group="Enthalpy",
       enable=(init_B == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));

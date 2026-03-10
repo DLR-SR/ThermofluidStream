@@ -12,14 +12,14 @@ model StaticHead "Static head model"
   parameter ThermofluidStream.Utilities.Units.Inertance L_value=dropOfCommons.L
     "Inertance of pipe" annotation (Dialog(tab="Advanced", enable=not computeL));
 
-  parameter SI.Density rho_min=dropOfCommons.rho_min
+  parameter Medium.Density rho_min=dropOfCommons.rho_min
     "Minimal input density" annotation (Dialog(tab="Advanced"));
 
     SI.Length staticHead "static head in m";
     SI.Pressure staticHead_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
  parameter Boolean displayPositions=true "show positions in icon";
 protected
-  SI.Density rho_in=max(rho_min, Medium.density(inlet.state))
+  Medium.Density rho_in=max(rho_min, Medium.density(inlet.state))
     "Density of medium entering";
     outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
 equation

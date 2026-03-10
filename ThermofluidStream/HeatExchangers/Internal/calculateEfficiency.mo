@@ -19,25 +19,25 @@ function calculateEfficiency "Calculates heat exchanger efficiency"
   output Real efficiency(unit="1") = 0 "Heat exchanger efficiency";
 
 protected
-  SI.SpecificEnthalpy h_A_in = MediumA.specificEnthalpy(state_A_in) "Inlet A specific enthalpy";
-  SI.SpecificEnthalpy h_B_in = MediumB.specificEnthalpy(state_B_in) "Inlet B specific enthalpy";
+  MediumA.SpecificEnthalpy h_A_in = MediumA.specificEnthalpy(state_A_in) "Inlet A specific enthalpy";
+  MediumB.SpecificEnthalpy h_B_in = MediumB.specificEnthalpy(state_B_in) "Inlet B specific enthalpy";
 
-  SI.AbsolutePressure p_A = MediumA.pressure(state_A_out) "Outlet A pressure";
-  SI.AbsolutePressure p_B = MediumB.pressure(state_B_out) "Outlet B pressure";
+  MediumA.AbsolutePressure p_A = MediumA.pressure(state_A_out) "Outlet A pressure";
+  MediumB.AbsolutePressure p_B = MediumB.pressure(state_B_out) "Outlet B pressure";
 
-  SI.MassFraction[MediumA.nXi] Xi_A = MediumA.massFraction(state_A_out) "Outlet A mass fractions";
-  SI.MassFraction[MediumB.nXi] Xi_B = MediumB.massFraction(state_B_out) "Outlet B mass fractions";
+  MediumA.MassFraction[MediumA.nXi] Xi_A = MediumA.massFraction(state_A_out) "Outlet A mass fractions";
+  MediumB.MassFraction[MediumB.nXi] Xi_B = MediumB.massFraction(state_B_out) "Outlet B mass fractions";
 
-  SI.Temperature T_A_in = MediumA.temperature(state_A_in) "Inlet A temperature";
-  SI.Temperature T_B_in = MediumB.temperature(state_B_in) "Inlet B temperature";
+  MediumA.Temperature T_A_in = MediumA.temperature(state_A_in) "Inlet A temperature";
+  MediumB.Temperature T_B_in = MediumB.temperature(state_B_in) "Inlet B temperature";
 
   constant SI.SpecificEnthalpy dh_0 = 1e4 "Initial specific enthalpy difference";
   constant SI.SpecificEnthalpy dh_fin = 1e1 "Stop condition";
   constant Real devisor(unit="1") = 3.5;
   SI.SpecificEnthalpy dh "Specific enthalpy difference";
 
-  SI.SpecificEnthalpy dh_A=0 "Medium A specific enthalpy difference";
-  SI.SpecificEnthalpy dh_B=0 "medium B specific enthalpy difference";
+  MediumA.SpecificEnthalpy dh_A=0 "Medium A specific enthalpy difference";
+  MediumB.SpecificEnthalpy dh_B=0 "medium B specific enthalpy difference";
 
   constant SI.Power eps = 1e-8 "Minimum power";
 

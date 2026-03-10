@@ -17,19 +17,19 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(enable=useHeatport));
  parameter Boolean initialize_pressure = true "If true: initialize Pressure"
     annotation(Dialog(tab= "Initialization"));
-  parameter SI.AbsolutePressure p_start = Medium.p_default "Initial Pressure"
+  parameter Medium.AbsolutePressure p_start = Medium.p_default "Initial Pressure"
     annotation(Dialog(tab= "Initialization", enable=initialize_pressure));
   parameter Boolean initialize_energy = false "Initialize specific inner energy with temperature or specific enthalpy condition"
     annotation(Dialog(tab= "Initialization"));
-  parameter SI.Temperature T_start = Medium.T_default "Initial Temperature"
+  parameter Medium.Temperature T_start = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
   parameter Boolean use_hstart = false "True: specific enthalpy condition instead of Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
-  parameter SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
+  parameter Medium.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
   parameter Boolean initialize_Xi = false "If true: initialize mass fractions"
     annotation(Dialog(tab= "Initialization"));
-  parameter SI.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
+  parameter Medium.MassFraction Xi_0[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Initial mass fraction"
     annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
   parameter Boolean initialize_LiquidMass = true "If true: initialize with mass of the liquid medium component. Initialize_Xi must be false."
     annotation(Dialog(tab= "Initialization", enable=not initialize_Xi));
@@ -44,8 +44,7 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab="Advanced"));
   parameter Boolean usePreferredMediumStates=false "Use medium states instead of the ones differentiated in this component"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Length outletTransition=0.01 "Width of band for smooth transition between gas and liquid at outlet"
-                                                                                                                                 annotation(Dialog(tab="Advanced"));
+  parameter SI.Length outletTransition=0.01 "Width of band for smooth transition between gas and liquid at outlet"               annotation(Dialog(tab="Advanced"));
 
 
   Interfaces.Inlet inlet[N_inlets](redeclare package Medium=Medium)
@@ -59,7 +58,7 @@ inlets and outlets the volume is connected to.
 
   SI.Volume V;
   SI.Volume V_liquid;
-  parameter SI.AbsolutePressure p_ref = 1e5 "Reference pressure of tank when volume is measured";
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure of tank when volume is measured";
   //The tank gets a bulk modulus to handle the stiffness of incompressible media better
   SI.Volume V_ref(displayUnit="l") "Volume of the tank at p_ref";
   parameter SI.BulkModulus K = 5e7 "Bulk modulus of tank (used also for stiffness modulation)";
@@ -96,23 +95,23 @@ protected
   outer DropOfCommons dropOfCommons;
   outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
 
-  SI.AbsolutePressure p_in[N_inlets] = Medium.pressure(inlet.state);
-  SI.SpecificEnthalpy h_in[N_inlets];
-  SI.MassFraction Xi_in[Medium.nXi,N_inlets];
+  Medium.AbsolutePressure p_in[N_inlets] = Medium.pressure(inlet.state);
+  Medium.SpecificEnthalpy h_in[N_inlets];
+  Medium.MassFraction Xi_in[Medium.nXi,N_inlets];
 
   Medium.ThermodynamicState state_out[M_outlets];
-  SI.SpecificEnthalpy h_out[M_outlets];
-  SI.MassFraction Xi_out[Medium.nXi,M_outlets];
+  Medium.SpecificEnthalpy h_out[M_outlets];
+  Medium.MassFraction Xi_out[Medium.nXi,M_outlets];
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
-  //SI.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
-   SI.DerDensityByPressure density_derp_h=(V_ref*medium.d)/(V*K) "Partial derivative of density by pressure";
+  //Medium.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
+   Medium.DerDensityByPressure density_derp_h=(V_ref*medium.d)/(V*K) "Partial derivative of density by pressure";
 
   SI.Pressure r_damping = d*der(M);
 
   SI.Pressure r[N_inlets];
 
-  SI.Temperature T_heatPort;
+  Medium.Temperature T_heatPort;
 
   Medium.MassFlowRate m_flow_in[N_inlets] = inlet.m_flow;
   Medium.MassFlowRate m_flow_out[M_outlets] = outlet.m_flow;
@@ -123,9 +122,9 @@ protected
   Boolean fFull;
   Boolean fEmpty;
   Real shiftOutlet[M_outlets];
-  SI.Density liquidDensity=Medium.Incompressible.density(Medium.Incompressible.setState_pTX(medium.state.p,medium.state.T))
+  Medium.Density liquidDensity=Medium.Incompressible.density(Medium.Incompressible.setState_pTX(medium.state.p,medium.state.T))
    "density of the liquid in the tank";
-  SI.Density gasDensity=Medium.SingleGas.density(Medium.SingleGas.setState_pTX(medium.state.p,medium.state.T))
+  Medium.Density gasDensity=Medium.SingleGas.density(Medium.SingleGas.setState_pTX(medium.state.p,medium.state.T))
    "density of the gas in the tank";
 initial equation
   if initialize_pressure then

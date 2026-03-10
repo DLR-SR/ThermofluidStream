@@ -22,7 +22,7 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "= false, if dr_corr=0 (correction of inertial pressure difference)"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.AbsolutePressure p_min = dropOfCommons.p_min "Minimum steady-state output pressure"
+  parameter Medium.AbsolutePressure p_min = dropOfCommons.p_min "Minimum steady-state output pressure"
     annotation(Dialog(tab="Advanced", enable=clip_p_out));
 
   Inlet inlet(redeclare package Medium=Medium)
@@ -38,14 +38,14 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
 
   // inlet state quantities
 protected
-  SI.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
-  SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
-  SI.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
+  Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
+  Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
+  Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
 
   //outlet state quantities
-  SI.AbsolutePressure p_out "Outlet pressure";
-  SI.SpecificEnthalpy h_out "Outlet specific enthalpy";
-  SI.MassFraction Xi_out[Medium.nXi] "Outlet mass fractions";
+  Medium.AbsolutePressure p_out "Outlet pressure";
+  Medium.SpecificEnthalpy h_out "Outlet specific enthalpy";
+  Medium.MassFraction Xi_out[Medium.nXi] "Outlet mass fractions";
 
 initial equation
   if initM_flow == InitializationMethods.state then

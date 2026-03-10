@@ -26,13 +26,13 @@ model EdgedOrifice "Pressure drop due to sharp edged orifice using Modelica.Flui
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter ThermofluidStream.Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal input density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal input density"
     annotation(Dialog(tab = "Advanced"));
   parameter Boolean assumeConstantMaterialProperties=true "= true, if constant density and dynamic viscosity is assumed (use '= false' e.g. for Ma > 0.3)"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  SI.Density rho "Mean density";
-  SI.DynamicViscosity mu "Mean dynamic viscosity";
+  Medium.Density rho "Mean density";
+  Medium.DynamicViscosity mu "Mean dynamic viscosity";
   final parameter Modelica.Fluid.Dissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con In_con(
     A_0=A_0,
     C_0=d_0,
@@ -46,11 +46,11 @@ protected
   final parameter SI.Area A_0 = pi/4*d_0^2 "Cross-sectional area of vena contraction";
   final parameter SI.Area A_1 = pi/4*d_1^2 "Cross-sectional area of pipe";
 
-  SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
-  SI.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
+  Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
+  Medium.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
 
-  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
-  SI.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
+  Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
+  Medium.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
 equation
   // Computation of mean dynamic viscosity and mean density
   mu = (mu_in + mu_out)/2;

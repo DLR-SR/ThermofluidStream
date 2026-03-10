@@ -70,9 +70,9 @@ protected
   SI.Velocity v_mean "Mean velocity";
   SI.Velocity delta_v "Velocity difference";
 
-  SI.Density rho_in =  Medium.density(inlet.state) "Inlet density";
-  SI.Density rho_out "Outlet density";
-  SI.Density rho_mean "Mean density";
+  Medium.Density rho_in =  Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho_out "Outlet density";
+  Medium.Density rho_mean "Mean density";
 
 equation
    connect(A_var, A);

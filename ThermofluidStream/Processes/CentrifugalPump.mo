@@ -84,7 +84,7 @@ model CentrifugalPump "Model of a centrifugal pump"
 
 protected
   final parameter SI.AngularVelocity w_ref = coeff.w_ref "Reference speed";
-  final parameter SI.Density rho_ref = coeff.rho_ref "Reference density";
+  final parameter Medium.Density rho_ref = coeff.rho_ref "Reference density";
   final parameter Real head_ref = coeff.head_ref "Reference for head, preferably (V_flow = 0,w_ref)";
   final parameter Real V_flow_ref = coeff.V_flow_ref "Reference for volume flow rate, preferably V_flow(head=0,w_ref)";
   final parameter Real eta_ref = coeff.eta_ref "Reference for efficiency, preferably max eta(V_flow)";
@@ -105,15 +105,15 @@ public
 protected
   Modelica.Blocks.Interfaces.RealInput setpoint_internal "Internal connector for setpoint [SI-units]";
   Real pr = p_out/p_in "Pressure ratio";
-  SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
-  SI.Density rho = rho_in "Density";
+  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho = rho_in "Density";
 
 public
   SI.VolumeFlowRate V_flow = m_flow/rho "Volume flow rate";
   SI.AngularVelocity w(start=w_ref) "Speed";
   SI.Torque tau "Torque";
   SI.Height head "Head";
-  SI.SpecificEnthalpy w_t "Specific technical work";
+  Medium.SpecificEnthalpy w_t "Specific technical work";
   SI.Power P "Power (technichal work flow rate)";
   Real eta_is "Isentropic efficiency";
 protected

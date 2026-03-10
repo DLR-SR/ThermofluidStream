@@ -61,9 +61,9 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
 protected
   Modelica.Blocks.Interfaces.RealInput A(unit = "m2") "Internal connector for cross-section area of outlet";
 
-  SI.Density rho_in =  Medium.density(inlet.state) "Inlet density";
-  SI.Density rho_out "Outlet density";
-  SI.Density rho_mean "Mean density";
+  Medium.Density rho_in =  Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho_out "Outlet density";
+  Medium.Density rho_mean "Mean density";
 
   Modelica.Blocks.Interfaces.RealInput v_in(unit="m/s") "Internal connector for inlet velocity";
   SI.Velocity v_out "Outlet velocity";

@@ -21,23 +21,23 @@ model JunctionMN "Generalized junction/splitter for undirected flow"
   Interfaces.Fore fores[M](redeclare package Medium = Medium) "Fore ports"
       annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  SI.AbsolutePressure p_mix "(Steady-state) pressure of mixture (assuming positive mass flow rates)";
+  Medium.AbsolutePressure p_mix "(Steady-state) pressure of mixture (assuming positive mass flow rates)";
 
 protected
   SI.Pressure rs[M+N] "Inertial pressure of rear and fore ports";
   SI.Pressure r_mix "Inertial pressure of mixture (assuming positive mass flow rates)";
 
   SI.MassFlowRate inflows[M+N] "Mass flow rates of rear and fore ports (assuming positive mass flow rates)";
-  SI.Density rhos[M+N] "Density of rear and fore ports";
+  Medium.Density rhos[M+N] "Density of rear and fore ports";
 
-  SI.AbsolutePressure ps[M+N] "Pressure of medium entering";
-  SI.AbsolutePressure ps_out[M+N] "Pressure of medium exeting";
+  Medium.AbsolutePressure ps[M+N] "Pressure of medium entering";
+  Medium.AbsolutePressure ps_out[M+N] "Pressure of medium exeting";
 
-  SI.SpecificEnthalpy hs[M+N] "Specific enthalpy of medium entering";
-  SI.SpecificEnthalpy hs_out[M+N] "Specific enthalpy of medium exeting";
+  Medium.SpecificEnthalpy hs[M+N] "Specific enthalpy of medium entering";
+  Medium.SpecificEnthalpy hs_out[M+N] "Specific enthalpy of medium exeting";
 
-  SI.MassFraction Xis[Medium.nXi,M+N] "Mass fractions of medium entering";
-  SI.MassFraction Xis_out[Medium.nXi,M+N] "Mass fraction of medium exeting";
+  Medium.MassFraction Xis[Medium.nXi,M+N] "Mass fractions of medium entering";
+  Medium.MassFraction Xis_out[Medium.nXi,M+N] "Mass fraction of medium exeting";
 
 equation
   //Rear ports 1:N

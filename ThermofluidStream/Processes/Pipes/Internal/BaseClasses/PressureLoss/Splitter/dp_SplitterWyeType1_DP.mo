@@ -8,7 +8,7 @@ function dp_SplitterWyeType1_DP "Pressure loss of wye splitter of type A_s + A_b
   input SI.Velocity w_b "Velocity of branching outlet";
   input SI.Velocity w_s "Velocity of straight outlet";
   input SI.Angle alpha "Branching angle";
-  input SI.Density rho "Medium density";
+  input Medium.Density rho "Medium density";
   input SI.Velocity eps "To avoid division by zero";
   // Output variables
   output SI.Pressure dp_b "Pressure loss of branching outlet";

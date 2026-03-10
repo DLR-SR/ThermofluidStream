@@ -10,7 +10,7 @@ model ConductionElementHEX_twoPhase "ConductionElement for two-phase fluids"
   parameter SI.CoefficientOfHeatTransfer U_tp_nom = 1000 "Nominal coefficient of heat transfer for two-phase region";
 
   parameter SI.MassFlowRate m_flow_nom = 0.3 "Nominal mass-flow rate for heat transfer calculation";
-  parameter SI.MassFraction delta_x = 0.05 "Value for interpolation width";
+  parameter Medium.MassFraction delta_x = 0.05 "Value for interpolation width";
 
   constant Real Re_exp_cond(unit="1") = 0.4 "Reynolds-Exponent for heat transfer calculation at condensation (Yan&Lin, 1999)";
   constant Real Re_exp_evap(unit="1") = 0.5 "Reynolds-Exponent for heat transfer calculation at evaporation (Yan&Lin, 1999)";
@@ -22,8 +22,8 @@ protected
   SI.CoefficientOfHeatTransfer U_tp "Coefficient of heat transfer for two-phase region";
   SI.CoefficientOfHeatTransfer U_vap "Coefficient of heat transfer for vapour region";
 
-  SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Dew enthalpy at inlet";
-  SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Bubble enthalpy at inlet";
+  Medium.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Dew enthalpy at inlet";
+  Medium.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(Medium.pressure(state))) "Bubble enthalpy at inlet";
 
 initial equation
   assert(init <> Processes.Internal.InitializationMethodsCondElement.port, "This initialization will lead to large nonlinear equation systems. Please choose 'h0', 'rear' or 'fore'.");

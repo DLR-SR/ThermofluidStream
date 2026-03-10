@@ -19,9 +19,9 @@ model Piston "Piston model with steam on both sides"
 
   parameter Boolean initializeX = true "Initialize piston position"
     annotation(Dialog(tab="Initials"));
-  parameter SI.AbsolutePressure p0_left = 1e5 "Left side initial temperature"
+  parameter Medium.AbsolutePressure p0_left = 1e5 "Left side initial temperature"
     annotation(Dialog(tab="Initials"));
-  parameter SI.AbsolutePressure p0_right = 1e5 "Right side initial temperature"
+  parameter Medium.AbsolutePressure p0_right = 1e5 "Right side initial temperature"
     annotation(Dialog(tab="Initials"));
   parameter SI.Mass m0_left = 2 "Left side initial mass"
     annotation(Dialog(tab="Initials"));
@@ -75,8 +75,8 @@ model Piston "Piston model with steam on both sides"
       0,
       m_flow_reg);
 
-  SI.EnthalpyFlowRate H_flow_left = (if noEvent(m_flow_left >= 0) then Medium.specificEnthalpy(state_in_left) else medium_left.h) * m_flow_left;
-  SI.EnthalpyFlowRate H_flow_right = (if noEvent(m_flow_right >= 0) then Medium.specificEnthalpy(state_in_right) else medium_right.h) * m_flow_right;
+  Medium.EnthalpyFlowRate H_flow_left = (if noEvent(m_flow_left >= 0) then Medium.specificEnthalpy(state_in_left) else medium_left.h) * m_flow_left;
+  Medium.EnthalpyFlowRate H_flow_right = (if noEvent(m_flow_right >= 0) then Medium.specificEnthalpy(state_in_right) else medium_right.h) * m_flow_right;
   SI.MassFlowRate Xi_flow_left[Medium.nXi] = (if noEvent(m_flow_left >= 0) then Medium.massFraction(state_in_left) else medium_left.Xi) * m_flow_left;
   SI.MassFlowRate Xi_flow_right[Medium.nXi] = (if noEvent(m_flow_right >= 0) then Medium.massFraction(state_in_right) else medium_right.Xi) * m_flow_left;
 

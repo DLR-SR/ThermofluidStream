@@ -27,12 +27,12 @@ partial model PartialSensor "Partial undirected sensor"
   Medium.ThermodynamicState state = Medium.setState_phX(p_reg, h_reg, Xi_reg); //= regStepSt(rear.m_flow, rear.state_forwards, rear.state_rearwards, m_flow_reg);
 
 protected
- SI.AbsolutePressure p_reg= Undirected.Internal.regStep(rear.m_flow, Medium.pressure(rear.state_forwards), Medium.pressure(rear.state_rearwards), m_flow_reg);
-  SI.SpecificEnthalpy h_reg = Undirected.Internal.regStep(rear.m_flow, Medium.specificEnthalpy(rear.state_forwards), Medium.specificEnthalpy(rear.state_rearwards), m_flow_reg);
-  SI.MassFraction Xi_reg[Medium.nXi];
+ Medium.AbsolutePressure p_reg= Undirected.Internal.regStep(rear.m_flow, Medium.pressure(rear.state_forwards), Medium.pressure(rear.state_rearwards), m_flow_reg);
+  Medium.SpecificEnthalpy h_reg = Undirected.Internal.regStep(rear.m_flow, Medium.specificEnthalpy(rear.state_forwards), Medium.specificEnthalpy(rear.state_rearwards), m_flow_reg);
+  Medium.MassFraction Xi_reg[Medium.nXi];
 
-  SI.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(rear.state_forwards);
-  SI.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(rear.state_rearwards);
+  Medium.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(rear.state_forwards);
+  Medium.MassFraction Xi_rearwards[Medium.nXi] = Medium.massFraction(rear.state_rearwards);
 
 equation
   for i in 1:Medium.nXi loop

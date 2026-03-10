@@ -24,7 +24,7 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "If true, set dr_corr to zero"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.AbsolutePressure p_min = dropOfCommons.p_min "Minimal steady-state output pressure"
+  parameter Medium.AbsolutePressure p_min = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced", enable=clip_p_out));
 
   Fore fore(redeclare package Medium = Medium)
@@ -45,20 +45,20 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
 
   //Inlet state quantities
 protected
-  SI.AbsolutePressure p_rear_in = Medium.pressure(rear.state_forwards) "Pressure of medium entering";
-  SI.AbsolutePressure p_fore_in = Medium.pressure(fore.state_rearwards) "Pressure of medium entering";
-  SI.SpecificEnthalpy h_rear_in = Medium.specificEnthalpy(rear.state_forwards) "Specific enthalpy of medium entering";
-  SI.SpecificEnthalpy h_fore_in = Medium.specificEnthalpy(fore.state_rearwards) "Specific enthalpy of medium entering";
-  SI.MassFraction Xi_rear_in[Medium.nXi] = Medium.massFraction(rear.state_forwards) "Mass fractions of medium entering";
-  SI.MassFraction Xi_fore_in[Medium.nXi] = Medium.massFraction(fore.state_rearwards) "Mass fractions of medium entering";
+  Medium.AbsolutePressure p_rear_in = Medium.pressure(rear.state_forwards) "Pressure of medium entering";
+  Medium.AbsolutePressure p_fore_in = Medium.pressure(fore.state_rearwards) "Pressure of medium entering";
+  Medium.SpecificEnthalpy h_rear_in = Medium.specificEnthalpy(rear.state_forwards) "Specific enthalpy of medium entering";
+  Medium.SpecificEnthalpy h_fore_in = Medium.specificEnthalpy(fore.state_rearwards) "Specific enthalpy of medium entering";
+  Medium.MassFraction Xi_rear_in[Medium.nXi] = Medium.massFraction(rear.state_forwards) "Mass fractions of medium entering";
+  Medium.MassFraction Xi_fore_in[Medium.nXi] = Medium.massFraction(fore.state_rearwards) "Mass fractions of medium entering";
 
   //Outlet state quantities
-  SI.AbsolutePressure p_rear_out "Pressure of medium exiting";
-  SI.AbsolutePressure p_fore_out "Pressure of medium exiting";
-  SI.SpecificEnthalpy h_rear_out "Speicifc enthalpy of medium exiting";
-  SI.SpecificEnthalpy h_fore_out "Specific enthalpy of medium exiting";
-  SI.MassFraction Xi_rear_out[Medium.nXi] "Mass fractions of medium exiting";
-  SI.MassFraction Xi_fore_out[Medium.nXi] "Mass fractions of medium exiting";
+  Medium.AbsolutePressure p_rear_out "Pressure of medium exiting";
+  Medium.AbsolutePressure p_fore_out "Pressure of medium exiting";
+  Medium.SpecificEnthalpy h_rear_out "Speicifc enthalpy of medium exiting";
+  Medium.SpecificEnthalpy h_fore_out "Specific enthalpy of medium exiting";
+  Medium.MassFraction Xi_rear_out[Medium.nXi] "Mass fractions of medium exiting";
+  Medium.MassFraction Xi_fore_out[Medium.nXi] "Mass fractions of medium exiting";
 
 initial equation
   if initM_flow == InitializationMethods.state then

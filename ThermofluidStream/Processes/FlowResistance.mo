@@ -59,7 +59,7 @@ some medium properties and the geometry of the pipe.
     annotation(Dialog(tab="Advanced",group="Inertance"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal inlet density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal inlet density"
     annotation(Dialog(tab="Advanced"));
 
   final parameter SI.Length D_h = 4*areaCross/perimeter "Hydraulic diameter";
@@ -76,8 +76,8 @@ some medium properties and the geometry of the pipe.
   final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4 "Hydraulic cross-sectional area";
 
 protected
-  SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
-  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
+  Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
+  Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
 
 equation
   dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);

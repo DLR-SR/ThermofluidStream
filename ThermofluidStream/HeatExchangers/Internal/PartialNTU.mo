@@ -50,8 +50,8 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
 
   SI.TemperatureDifference Delta_T_max "Maximum temperature difference";
 
-  SI.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
-  SI.SpecificEnthalpy dh_B "Specific enthalpy difference medium B";
+  MediumA.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
+  MediumB.SpecificEnthalpy dh_B "Specific enthalpy difference medium B";
 
   SI.HeatFlowRate q_flow "Heat flow rate A to B (Q_flow)";
   Real effectiveness(unit="1") "Heat exchanger efficiency";
@@ -66,17 +66,17 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
 protected
   parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
 
-  SI.AbsolutePressure p_A=MediumA.pressure(inletA.state) "Inlet A pressure";
-  SI.AbsolutePressure p_B=MediumB.pressure(inletB.state) "Inlet B pressure";
+  MediumA.AbsolutePressure p_A=MediumA.pressure(inletA.state) "Inlet A pressure";
+  MediumB.AbsolutePressure p_B=MediumB.pressure(inletB.state) "Inlet B pressure";
 
   MediumA.MassFraction Xi_A[MediumA.nXi]=MediumA.massFraction(inletA.state) "Inlet A mass fractions";
   MediumB.MassFraction Xi_B[MediumB.nXi]=MediumB.massFraction(inletB.state) "Inlet B mass fractions";
 
   //Inlet and outlet specific enthalpies and enthalpy differences
-  SI.SpecificEnthalpy h_in_A "Specific enthalpy at inlet A";
-  SI.SpecificEnthalpy h_in_B "Specific enthalpy at inlet B";
-  SI.SpecificEnthalpy h_out_A "Specific enthalpy at outlet A";
-  SI.SpecificEnthalpy h_out_B "Specific enthalpy at outlet B";
+  MediumA.SpecificEnthalpy h_in_A "Specific enthalpy at inlet A";
+  MediumB.SpecificEnthalpy h_in_B "Specific enthalpy at inlet B";
+  MediumA.SpecificEnthalpy h_out_A "Specific enthalpy at outlet A";
+  MediumB.SpecificEnthalpy h_out_B "Specific enthalpy at outlet B";
 
   SI.HeatFlowRate q_max "Maximum heat flow rate A to B (Q_flow_max)";
   SI.HeatFlowRate q_flowA "Heat flow rate A to B (Q_flowA)";
@@ -94,10 +94,10 @@ protected
   SI.MassFlowRate m_flow_A=inletA.m_flow "Mass flow rate on side A";
   SI.MassFlowRate m_flow_B=inletB.m_flow "Mass flow rate on side B";
 
-  SI.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA.state) "Inlet A specific heat capacity";
-  SI.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA.state) "Outlet A specific heat capacity";
-  SI.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB.state) "Inlet B specific heat capacity";
-  SI.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB.state) "Outlet B specific heat capacity";
+  MediumA.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA.state) "Inlet A specific heat capacity";
+  MediumA.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA.state) "Outlet A specific heat capacity";
+  MediumB.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB.state) "Inlet B specific heat capacity";
+  MediumB.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB.state) "Outlet B specific heat capacity";
 
   constant Real eps(unit="kg/s") = Modelica.Constants.eps "Mass flow rate regularization";
 

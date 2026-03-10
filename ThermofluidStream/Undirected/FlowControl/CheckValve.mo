@@ -5,7 +5,7 @@ model CheckValve "Valve to enforce non negative mass flow rates"
 
   parameter SI.MassFlowRate m_flow_ref = dropOfCommons.m_flow_reg "Reference mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.AbsolutePressure p_ref = 1e5 "Reference pressure for regularization"
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure for regularization"
     annotation(Dialog(tab="Advanced"));
 
 equation

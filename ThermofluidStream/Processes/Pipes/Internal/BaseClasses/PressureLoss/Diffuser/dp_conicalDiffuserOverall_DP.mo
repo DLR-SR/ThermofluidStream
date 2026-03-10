@@ -11,8 +11,8 @@ function dp_conicalDiffuserOverall_DP "Pressure loss of conical diffuser | calcu
   input SI.Area A_1 "Outlet area";
   input SI.Angle alpha "Central divergence angle";
   input SI.Length Delta(min = 0) "Relative roughness of diffuser walls";
-  input SI.Density rho "Density";
-  input SI.DynamicViscosity mu "Dynamic viscosity";
+  input Medium.Density rho "Density";
+  input Medium.DynamicViscosity mu "Dynamic viscosity";
   // Output variables
   output SI.Pressure dp "Pressure loss (>0)";
   output Types.PressureLossCoefficient zeta_dif "Pressure loss coefficient of diffuser";
