@@ -68,7 +68,7 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
 </ul>
 <p style=\"margin-left: 40px;\"><strong><span style=\"font-family: Courier New;\">inner</span></strong> ThermofluidStream.DropOfCommons dropOfCommons </p>
 <p>Note, it must be an <strong>inner</strong> declaration with instance name <strong>dropOfCommons</strong> so that all components of a ThermofluidStream model can reference it. When dragging the &quot;DropOfCommons&quot; object from the package browser into the diagram layer, this declaration is automatically generated (defined via annotations in the model). </p>
-<p>Note, it must be an <b>inner</b> declaration with instance name <b>dropOfCommons</b> so that all components of a ThermofluidStream model can reference it. When dragging the &quot;DropOfCommons&quot; object from the package browser into the diagram layer, this declaration is automatically generated (defined via annotations in the model). </p>
+<p>Note, it must be an <strong>inner</strong> declaration with instance name <strong>dropOfCommons</strong>so that all components of a ThermofluidStream model can reference it. When dragging the &quot;DropOfCommons&quot; object from the package browser into the diagram layer, this declaration is automatically generated (defined via annotations in the model). </p>
 <p>All flow, density, pressure, and visualization parameters in a simulation model are resolved relative to the settings in this dropOfCommons instance. Adjusting these parameters allows controlling global simulation behavior, visualization preferences, and regularization methods consistently across all components. </p>
 </html>"));
 end DropOfCommons;
