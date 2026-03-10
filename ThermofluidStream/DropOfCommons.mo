@@ -22,7 +22,6 @@ model DropOfCommons "Model for global parameters"
 
   parameter Boolean displayInstanceNames = true "= true, if ThermofluidStream instance names are displayed" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayParameters = true "= true, if displaying parameters is enabled" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showColor = false "= true, if displaying the flow resistance is enabled" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Integer instanceNameColor[3] = {28,108,200}; // Default Color: {28,108,200}
 
   annotation (defaultComponentName="dropOfCommons",
