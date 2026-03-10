@@ -59,10 +59,8 @@ some medium properties and the geometry of the pipe.
       tab="Advanced",
       group="Inertance",
       enable=not computeL));
-  parameter SI.Density rho_min=dropOfCommons.rho_min "Minimal inlet density"
-    annotation (Dialog(tab="Advanced"));
-  parameter SI.Pressure p_reference = 6e5
-    "Reference value for the intensity of coloring";
+  parameter SI.Density rho_min=dropOfCommons.rho_min "Minimal inlet density" annotation (Dialog(tab="Advanced"));
+  parameter SI.Pressure p_ref_color = 6e5 "Reference value for the intensity of coloring" annotation(Dialog(tab="Layout", group="Visuals"));
 
   Real phi(min=0, max=1) "Normalized pressure for coloring the flow resistance";
 
@@ -90,7 +88,7 @@ equation
     l);
   h_out = h_in;
   Xi_out = Xi_in;
-  phi = noEvent(max(0, min(1, abs(dp)/p_reference)));
+  phi = noEvent(max(0, min(1, abs(dp)/p_ref_color)));
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -114,7 +112,7 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor=DynamicSelect({255,255,255}, if dropOfCommons.showColor == true
+          fillColor=DynamicSelect({255,255,255}, if dropOfCommons.displayColor == true
                then {255,integer(255*(1 - phi)),integer(255*(1 - phi))} else {255,
               255,255}),
           fillPattern=FillPattern.Solid),
