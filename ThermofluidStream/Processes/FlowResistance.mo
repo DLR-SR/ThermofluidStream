@@ -66,7 +66,7 @@ some medium properties and the geometry of the pipe.
   final parameter SI.Length perimeter=if shape == ShapeOfResistance.circular
        then 2*pi*r elseif shape == ShapeOfResistance.rectangle then 2*a + 2*b
        else perimeterInput "Perimeter";
-  parameter Boolean showPressureDrop=true "true, if pressure drop is displayed"
+  parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
     annotation (
     Dialog(tab="Layout", group="Display variables"),
     Evaluate=true,
