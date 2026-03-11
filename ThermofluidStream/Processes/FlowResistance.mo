@@ -69,7 +69,7 @@ some medium properties and the geometry of the pipe.
     else perimeterInput "Perimeter";
   parameter Boolean showPressureDrop = true "= true, if pressure drop is displayed" annotation(Dialog(tab="Layout", group="Display variables"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter ThermofluidStream.Processes.Internal.Types.PressureUnit pressureDropUnit = ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa "Unit for displayed pressure drop" annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop), Evaluate=true, HideResult=true);
-  parameter Integer pressureDropSignificantDigits(min=0) = 0 "Significant digits for displayed pressure drop" annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop), Evaluate=true, HideResult=true);
+  parameter Integer pressureDropSignificantDigits(min=1) = 1 "Significant digits for displayed pressure drop" annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop), Evaluate=true, HideResult=false);
 
 
   final parameter SI.Area areaCross=
