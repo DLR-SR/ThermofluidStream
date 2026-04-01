@@ -64,7 +64,8 @@ model ThreeWayValve
   BasicControlValve basicControlValve1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
-    final invertInput=invertInput,
+    final invertInput=not
+                         (invertInput),
     redeclare function valveCharacteristics = valveCharacteristics,
     flowCoefficient=flowCoefficient,
     Kvs=Kvs,
