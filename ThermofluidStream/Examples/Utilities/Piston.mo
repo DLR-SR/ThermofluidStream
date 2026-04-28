@@ -21,7 +21,7 @@ model Piston "Piston model with steam on both sides"
     annotation(Dialog(tab="Initials"));
   parameter Medium.AbsolutePressure p0_left = 1e5 "Left side initial pressure"
     annotation(Dialog(tab="Initials"));
-  parameter Medium.AbsolutePressure p0_right = 1e5 "Right side initial temperature"
+  parameter Medium.AbsolutePressure p0_right = 1e5 "Right side initial pressure"
     annotation(Dialog(tab="Initials"));
   parameter SI.Mass m0_left = 2 "Left side initial mass"
     annotation(Dialog(tab="Initials"));
