@@ -242,7 +242,7 @@ equation
     annotation (Line(points={{-30,10},{-30,-8}},             color={0,0,0}));
   connect(speed1.w_ref, gain.y) annotation (Line(points={{58,-80},{41,-80}},
                      color={0,0,127}));
-  connect(PID.y, showRealValue.numberPort) annotation (Line(points={{-139,-50},{-130,-50},{-130,-16},{-122,-16}},
+  connect(PID.y, showRealValue.numberPort) annotation (Line(points={{-139,-50},{-130,-50},{-130,-16},{-121.5,-16}},
                                                color={0,0,127}));
   connect(PID.u_s, pump_speed.y)
     annotation (Line(points={{-162,-50},{-170,-50},{-170,-20},{-161,-20}},
@@ -262,7 +262,7 @@ equation
     annotation (Line(points={{-71,-50},{-62,-50}},   color={0,0,127}));
   connect(PID.y, gain.u) annotation (Line(points={{-139,-50},{-130,-50},{-130,-80},{18,-80}},
                           color={0,0,127}));
-  connect(showRealValue2.numberPort, feedback.u1) annotation (Line(points={{-98,-30},{-92,-30},{-92,-50},{-88,-50}},
+  connect(showRealValue2.numberPort, feedback.u1) annotation (Line(points={{-98.5,-30},{-92,-30},{-92,-50},{-88,-50}},
                                                          color={0,0,127}));
   connect(prescribedHeatFlow.Q_flow, combiTimeTable.y[1])
     annotation (Line(points={{-150,50},{-159,50}}, color={0,0,127}));

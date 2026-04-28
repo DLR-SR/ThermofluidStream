@@ -2,7 +2,8 @@ within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Exampl
 model TestSimpleLoopJP8DryAir
 
       replaceable package SecondaryMedium =
-        ThermofluidStream.Media.XRGMedia.CO2_ph constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
+        ThermofluidStream.Media.XRGMedia.CO2_ph constrainedby
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
       annotation(choicesAllMatching=true);
 
     replaceable package RefrigerantMedium =
@@ -11,7 +12,8 @@ model TestSimpleLoopJP8DryAir
       annotation(choicesAllMatching=true);
 
     replaceable package TertiaryMedium =
-      ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.JP8DryAir      constrainedby
+      ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.JP8DryAir
+                                                                                        constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
       annotation(choicesAllMatching=true);
   //     TertiaryMedium.BaseProperties terMedium;
