@@ -135,20 +135,20 @@ equation
           origin={0,25},
           rotation=180),
         Text(
-          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa,
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString=DynamicSelect("dp in Pa", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
+          textString=DynamicSelect(if true then "dp in Pa" else "", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
         Text(
-          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.kPa,
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.kPa,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString=DynamicSelect("dp in kPa", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
+          textString=DynamicSelect(if true then "dp in kPa" else "", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
         Text(
-          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.bar,
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.bar,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString=DynamicSelect("dp in bar", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
+          textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Implementation of a flow resistance pipe with different selectable
