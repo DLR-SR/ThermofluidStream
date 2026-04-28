@@ -67,22 +67,15 @@ some medium properties and the geometry of the pipe.
        then 2*pi*r elseif shape == ShapeOfResistance.rectangle then 2*a + 2*b
        else perimeterInput "Perimeter";
   parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
-    annotation (
-    Dialog(tab="Layout", group="Display variables"),
-    Evaluate=true,
-    HideResult=true,
-    choices(checkBox=true));
-  parameter ThermofluidStream.Processes.Internal.Types.PressureUnit
-    pressureDropUnit=ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa "Unit for displayed pressure drop"
-    annotation (Dialog(tab="Layout", group="Display variables", enable=showPressureDrop), Evaluate=true, HideResult=true);
-  parameter Integer pressureDropSignificantDigits(min=1) = 1
-    "Significant digits for displayed pressure drop" annotation (
-    Dialog(
-      tab="Layout",
-      group="Display variables",
-      enable=showPressureDrop),
-    Evaluate=true,
-    HideResult=false);
+    annotation(
+      Dialog(tab="Layout", group="Display variables", enable=displayParameters),
+      Evaluate=true,
+      HideResult=true,
+      choices(checkBox=true));
+  parameter ThermofluidStream.Processes.Internal.Types.PressureUnit pressureDropUnit = ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
+    annotation (Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
+  parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
 
 
   final parameter SI.Area areaCross=
@@ -142,20 +135,20 @@ equation
           origin={0,25},
           rotation=180),
         Text(
-          visible= dropOfCommons.displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa,
+          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString=DynamicSelect("", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
+          textString=DynamicSelect("dp in Pa", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
         Text(
-          visible= dropOfCommons.displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.kPa,
+          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.kPa,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-            textString=DynamicSelect("", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
+          textString=DynamicSelect("dp in kPa", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
         Text(
-          visible= dropOfCommons.displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.bar,
+          visible= displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Processes.Internal.Types.PressureUnit.bar,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString=DynamicSelect("", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
+          textString=DynamicSelect("dp in bar", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Implementation of a flow resistance pipe with different selectable
