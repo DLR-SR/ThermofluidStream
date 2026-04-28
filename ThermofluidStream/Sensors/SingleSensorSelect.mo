@@ -57,10 +57,13 @@ model SingleSensorSelect "Selectable sensor"
 protected
   Real direct_value(unit=Internal.getUnit(quantity));
 
-  function getQuantity = Internal.getQuantity(redeclare package Medium=Medium) "Quantity compute function"
-    annotation (Documentation(info="<html>
-      <p>This function computes the selected quantity from state. r and rho_min are neddet for the quantities r/p_total and v respectively.</p>
-      </html>"));
+  Internal.GetQuantityBlock getQuantity(
+    redeclare package Medium = Medium,
+    r = inlet.r,
+    state = inlet.state,
+    quantity=quantity,
+    rho_min=rho_min)
+    "This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively";
 
 initial equation
   if filter_output and init==InitMode.steadyState then
@@ -71,7 +74,7 @@ initial equation
 
 equation
   inlet.m_flow = 0;
-  direct_value = getQuantity(inlet.state, inlet.r, quantity, rho_min);
+  direct_value = getQuantity.value;
 
   if filter_output then
     der(value) * TC = direct_value-value;
