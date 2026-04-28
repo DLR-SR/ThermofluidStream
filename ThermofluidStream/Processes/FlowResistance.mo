@@ -62,11 +62,21 @@ some medium properties and the geometry of the pipe.
   parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal inlet density"
     annotation(Dialog(tab="Advanced"));
 
-  final parameter SI.Length D_h = 4*areaCross/perimeter "Hydraulic diameter";
-  final parameter SI.Length perimeter=
-    if shape == ShapeOfResistance.circular then 2*pi*r
-    elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
-    else perimeterInput "Perimeter";
+  final parameter SI.Length D_h=4*areaCross/perimeter "Hydraulic diameter";
+  final parameter SI.Length perimeter=if shape == ShapeOfResistance.circular
+       then 2*pi*r elseif shape == ShapeOfResistance.rectangle then 2*a + 2*b
+       else perimeterInput "Perimeter";
+  parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
+    annotation(
+      Dialog(tab="Layout", group="Display variables", enable=displayParameters),
+      Evaluate=true,
+      HideResult=true,
+      choices(checkBox=true));
+  parameter ThermofluidStream.Types.PressureUnit pressureDropUnit=ThermofluidStream.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
+  parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
+
 
   final parameter SI.Area areaCross=
     if shape == ShapeOfResistance.circular then pi*r*r
@@ -123,7 +133,22 @@ equation
           thickness=0.5,
           smooth=Smooth.Bezier,
           origin={0,25},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.Pa,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in Pa" else "", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.kPa,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in kPa" else "", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.bar,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>
 Implementation of a flow resistance pipe with different selectable

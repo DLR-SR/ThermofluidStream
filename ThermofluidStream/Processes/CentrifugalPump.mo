@@ -43,7 +43,7 @@ model CentrifugalPump "Model of a centrifugal pump"
 
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Mass flow rate for regularization"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Power P_reg = dropOfCommons.m_flow_reg/1000*1e5 "Power for regularization (eta = 0 for P < eps_P)"
+  parameter SI.Power P_reg = 1 "Power for regularization (eta = 0 for P < P_reg)"
     annotation(Dialog(tab="Advanced"));
 
   // ------ Parameter Display Configuration  ------------------------
@@ -174,14 +174,14 @@ equation
   if pumpMode == PumpMode.flowControlled or pumpMode == PumpMode.pressureControlled then
     w_n = 1/(2*c_head[1])*(-c_head[2]*V_n + sqrt(c_head[2]^2*V_n^2 - 4*c_head[1]*(c_head[3]*V_n^2 - h_n))); // To avoid systems of nonlinear equations the quadratic equation head_n = f(w_n) is solved for w_n explicitly
   elseif pumpMode == PumpMode.speedControlled or pumpMode == PumpMode.flange then
-    h_n =  c_head[1]*w_n^2 + c_head[2]*w_n*V_n + c_head[3]*V_n*abs(V_n); // Simple extension for negative flow
+    h_n =  c_head[1]*w_n^2 + c_head[2]*abs(w_n)*V_n + c_head[3]*V_n*abs(V_n); // Simple extension for negative flow
   end if;
-  tau_n =  smooth(0, if noEvent(V_n > 0) then rho_n*(c_power[1]*w_n^2 + c_power[2]*w_n*V_n + c_power[3]*V_n^2) else rho_n*c_power[1]*w_n^2); // Simple extension for negative flow
+  tau_n =  smooth(0, if noEvent(V_n > 0) then rho_n*(c_power[1]*w_n^2 + c_power[2]*abs(w_n)*V_n + c_power[3]*V_n^2) else rho_n*c_power[1]*w_n^2); // Simple extension for negative flow
   dp = head*rho*Modelica.Constants.g_n;
   P = tau*w;
   h_out = h_in + w_t;
   Xi_out = Xi_in;
-  eta_is = dp*V_flow/max(P,P_reg);
+  eta_is = if noEvent(P >= P_reg) then dp*V_flow/P else 0;
   w_t = P/max(m_flow,m_flow_reg);
   annotation (Icon(graphics={
         Text(visible=displayInstanceName,
@@ -318,11 +318,11 @@ further modifications are necessary.
 </p>
 
 </html>", revisions="<html>
-<ul>
-<li>
-May 2025, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-Initial version.
-</li>
-</ul>
+  <ul>
+    <li>
+      May 2025, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end CentrifugalPump;

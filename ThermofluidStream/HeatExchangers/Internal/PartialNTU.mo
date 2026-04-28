@@ -9,7 +9,7 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation (choicesAllMatching=true);
 
   parameter Modelica.Units.SI.Area A "Heat transfer area";
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Thermal transmittance";
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_NTU=50 "Overall heat transfer coefficient";
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow rate for regularization"
@@ -19,7 +19,7 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayArea = true "= true, if the heat transfer area A is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displaykNTU = true "= true, if  the thermal transmittance k_NTU is displayed"
+  parameter Boolean displaykNTU = true "= true, if  the overall heat transfer coefficient k_NTU is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Boolean d1A = displayParameters and displayArea  "displayArea at position 1"
     annotation(Evaluate=true, HideResult=true); //d1A -> Display at position 1 A=Area
@@ -53,7 +53,7 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
   Modelica.Units.SI.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
   Modelica.Units.SI.SpecificEnthalpy dh_B "Specific enthalpy difference medium B";
 
-  SI.HeatFlowRate q_flow "Heat flow rate (Q_flow)";
+  SI.HeatFlowRate q_flow "Heat flow rate A to B (Q_flow)";
   Real effectiveness(unit="1") "Heat exchanger efficiency";
   Real NTU(unit="1") "Number of transfer units";
 
@@ -78,9 +78,9 @@ protected
   Modelica.Units.SI.SpecificEnthalpy h_out_A "Specific enthalpy at outlet A";
   Modelica.Units.SI.SpecificEnthalpy h_out_B "Specific enthalpy at outlet B";
 
-  SI.HeatFlowRate q_max "Maximum heat flow rate (Q_max)";
-  SI.HeatFlowRate q_flowA "Heat flow rate side A (Q_flowA)";
-  SI.HeatFlowRate q_flowB "Heat flow rate side B (Q_flowB)";
+  SI.HeatFlowRate q_max "Maximum heat flow rate A to B (Q_flow_max)";
+  SI.HeatFlowRate q_flowA "Heat flow rate A to B (Q_flowA)";
+  SI.HeatFlowRate q_flowB "Heat flow rate B to A (Q_flowB)";
 
   Real C_A(unit="J/(K.s)") "Heat capacity flow rate of Medium A";
   Real C_B(unit="J/(K.s)") "Heat capacity flow rate of Medium B";
@@ -166,9 +166,6 @@ equation
     //Based on regularization for mass flow
     dh_B = (m_flow_B*q_flowB)/(m_flow_B^2 + (m_flow_reg/10)^2);
 
-    der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
-    der(h_out_B)*TC = h_in_B - dh_B - h_out_B;
-
   else
 
     //No heat is transferred, if both mass flow rates are smaller than regularization mass flow rate
@@ -183,11 +180,10 @@ equation
 
     //Based on regularization for mass flow
     dh_A = (m_flow_A*q_flowA)/(m_flow_A^2 + (m_flow_reg/10)^2);
-
-    der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
-    der(h_out_B)*TC = h_in_B - dh_B - h_out_B;
-
   end if;
+
+  der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
+  der(h_out_B)*TC = h_in_B - dh_B - h_out_B;
 
   outletA.state = MediumA.setState_phX(
     p_A,
