@@ -48,7 +48,7 @@ package Internal
     SI.Power P_B = (v_in+v_B)/2*(-outletB.m_flow)*(p_B-p_in) "Loss in enthalpy flow rate (B)";
 
   protected
-    Medium.AbsolutePressure dp(stateSelect=StateSelect.always, start=0, fixed=true);
+    SI.PressureDifference dp(stateSelect=StateSelect.always, start=0, fixed=true);
     Medium.AbsolutePressure p_A "Outlet A pressure";
     Medium.AbsolutePressure p_B "Outlet B pressure";
 
