@@ -6,8 +6,8 @@ block GetQuantityBlock "Computes selected quantity from state"
     Documentation(info = "<html>
       <p>Medium Model for the function. Make sure it implements the needed functions.</p>
         </html>"));
-  parameter Types.Quantities quantity;
-  parameter Modelica.Units.SI.Density rho_min;
+  parameter Types.Quantities quantity "Measured quantity";
+  parameter Modelica.Units.SI.Density rho_min "Minimum density for volume flow rate calculation";
 
   input Medium.ThermodynamicState state;
   input Modelica.Units.SI.Pressure r;
