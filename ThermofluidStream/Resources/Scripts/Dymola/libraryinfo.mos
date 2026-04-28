@@ -1,0 +1,10 @@
+LibraryInfoMenuCommand(
+  category="libraries",
+  text="ThermofluidStream 1.2.0",
+  reference="ThermofluidStream",
+  version="1.2.0",
+  ModelicaVersion = ">= 4.0",
+  isModel=true,
+  description="ThermofluidStream Library by DLR",
+  iconName = "../../logo_thermofluid.svg",
+  pos=1154)
