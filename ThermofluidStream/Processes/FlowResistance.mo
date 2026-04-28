@@ -72,8 +72,8 @@ some medium properties and the geometry of the pipe.
       Evaluate=true,
       HideResult=true,
       choices(checkBox=true));
-  parameter ThermofluidStream.Processes.Internal.Types.PressureUnit pressureDropUnit = ThermofluidStream.Processes.Internal.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
-    annotation (Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
+  parameter ThermofluidStream.Types.PressureUnit pressureDropUnit=ThermofluidStream.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
   parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
     annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
 
