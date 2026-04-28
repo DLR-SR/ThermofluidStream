@@ -71,6 +71,17 @@ some medium properties and the geometry of the pipe.
       areaCrossInput "Cross-sectional area";
   final parameter SI.Area areaHydraulic=pi*D_h*D_h*1/4
     "Hydraulic cross-sectional area";
+  parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
+    annotation(
+      Dialog(tab="Layout", group="Display variables", enable=displayParameters),
+      Evaluate=true,
+      HideResult=true,
+      choices(checkBox=true));
+  parameter ThermofluidStream.Types.PressureUnit pressureDropUnit=ThermofluidStream.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
+  parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
+
 
   Real phi(min=0, max=1) "Normalized pressure for coloring the flow resistance";
 
@@ -132,8 +143,22 @@ equation
           thickness=0.5,
           smooth=Smooth.Bezier,
           origin={0,25},
-          rotation=180)}),
-    Diagram(coordinateSystem(preserveAspectRatio=true)),
+          rotation=180),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.Pa,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in Pa" else "", "dp = " + String(-dp, significantDigits=pressureDropSignificantDigits)+ " Pa")),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.kPa,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in kPa" else "", "dp = " + String(-dp/1e3, significantDigits=pressureDropSignificantDigits)+ " kPa")),
+        Text(
+          visible = displayParameters and showPressureDrop and pressureDropUnit == ThermofluidStream.Types.PressureUnit.bar,
+          extent={{-150,-70},{150,-100}},
+          textColor={0,0,0},
+          textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). </p>
 <p>The pressure drop can be displayed with the coloring (<code>displayColor</code> in the <strong>DropOfCommons</strong>). <code>p_ref_color</code> can be adjusted depending on expected pressure drop and intensity of coloring. Coloring ranges from 0 to 100 &percnt; red, with 100 &percnt; red at <code>dp = dp_ref_color</code>.</p>
