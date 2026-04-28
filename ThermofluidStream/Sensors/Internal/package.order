@@ -1,8 +1,8 @@
 Types
-getQuantity
-GetQuantity1
+GetQuantityBlock
 getFlowQuantity
 getTwoPhaseQuantity
 getUnit
 getFlowUnit
 getTwoPhaseUnit
+getQuantity

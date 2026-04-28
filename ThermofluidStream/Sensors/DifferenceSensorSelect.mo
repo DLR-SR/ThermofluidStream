@@ -69,14 +69,20 @@ model DifferenceSensorSelect "Sensor for selectable quantatiy difference"
 protected
   Real direct_value(unit=Internal.getUnit(quantity));
 
-  Internal.GetQuantity getQuantityA(redeclare package Medium=MediumA, quantity=quantity, rho_min=rho_min) "Quantity compute function"
-    annotation (Documentation(info="<html>
-      <p>This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively.</p>
-      </html>"));
-  Internal.GetQuantity getQuantityB(redeclare package Medium=MediumB, quantity=quantity, rho_min=rho_min) "Quantity compute function"
-    annotation (Documentation(info="<html>
-      <p>This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively.</p>
-      </html>"));
+  Internal.GetQuantityBlock getQuantityA(
+    redeclare package Medium = MediumA,
+    r=inletA.r,
+    state=inletA.state,
+    quantity=quantity,
+    rho_min=rho_min)
+    "This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively";
+  Internal.GetQuantityBlock getQuantityB(
+    redeclare package Medium = MediumB,
+    r=inletB.r,
+    state=inletB.state,
+    quantity=quantity,
+    rho_min=rho_min)
+    "This block computes the selected quantity from state. r and rho_min are needed for the quantities r/p_total and v respectively";
 
 initial equation
   if filter_output and init==InitMode.steadyState then
@@ -89,12 +95,6 @@ equation
 
   inletA.m_flow = 0;
   inletB.m_flow = 0;
-
-  getQuantityA.r = inletA.r;
-  getQuantityA.state = inletA.state;
-
-  getQuantityB.r = inletB.r;
-  getQuantityB.state = inletB.state;
 
   valueA = getQuantityA.value;
   valueB = getQuantityB.value;

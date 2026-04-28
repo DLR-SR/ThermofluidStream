@@ -1,5 +1,5 @@
 within ThermofluidStream.Sensors.Internal;
-block GetQuantity1 "Computes selected quantity from state"
+block GetQuantityBlock "Computes selected quantity from state"
   extends Modelica.Blocks.Icons.Block;
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching = true,
@@ -12,6 +12,7 @@ block GetQuantity1 "Computes selected quantity from state"
   input Medium.ThermodynamicState state;
   input Modelica.Units.SI.Pressure r;
   output Real value;
+
 equation
   if quantity == Types.Quantities.T_K then
     value = Medium.temperature(state);
@@ -54,4 +55,4 @@ equation
     Documentation(info = "<html>
 <p>Helper block to get a quantity from an Thermofluid state.</p>
 </html>"));
-end GetQuantity1;
+end GetQuantityBlock;
