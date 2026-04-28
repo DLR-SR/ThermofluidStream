@@ -56,7 +56,7 @@ protected
   Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
   Medium.DynamicViscosity mu_out = if assumeConstantDensity then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
 
-  SI.Pressure DP "Pressure difference (-dp)";
+  SI.PressureDifference DP "Pressure difference (-dp)";
 
   final parameter SI.Area A_1 = pi/4*d_1^2 "Inlet cross-sectional area";
   final parameter SI.Area A_2 = pi/4*d_2^2 "Outlet cross-sectional area";
