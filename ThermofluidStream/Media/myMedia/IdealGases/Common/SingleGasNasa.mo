@@ -4,7 +4,7 @@ partial package SingleGasNasa
 
   extends Interfaces.PartialPureSubstance(
      ThermoStates=ThermofluidStream.Media.myMedia.Interfaces.Choices.IndependentVariables.pT,
-     redeclare final record FluidConstants =
+     redeclare record FluidConstants =
         ThermofluidStream.Media.myMedia.Interfaces.Types.IdealGas.FluidConstants,
      mediumName=data.name,
      substanceNames={data.name},
