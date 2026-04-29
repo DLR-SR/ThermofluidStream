@@ -3,10 +3,10 @@ package TILMediaWrapper "Wrapper for the TIL Media Suite"
   extends Modelica.Icons.Package;
 
   annotation (
-  version="0.1.2",
+  version="0.1.3",
   uses(
-    Modelica(version="4.0.0"),
-    ThermofluidStream(version="1.2.0"),
+    Modelica(version="4.1.0"),
+    ThermofluidStream(version="1.3.0"),
     TILMedia(version="3.15.0")),
   Documentation(info="<html>
 <p>This is the interface to the <strong>VLE-Fluid</strong> (<strong>V</strong>apor-<strong>L</strong>iquid<strong> E</strong>quilibrium) media models from TILMedia Suite by TLK-Thermo GmbH. </p>

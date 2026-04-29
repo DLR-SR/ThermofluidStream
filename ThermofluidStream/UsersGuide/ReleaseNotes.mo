@@ -84,6 +84,7 @@ by corrected equations, improved regularization and updated media functions.
   <li>Improved <code>CentrifugalPump</code> compatibility with OpenModelica/OMEdit.</li>
   <li>New and updated tool metadata for Dymola and Modelon Impact.</li>
   <li>Several bug fixes in media, pressure-loss calculations, pumps, tests and documentation assets.</li>
+  <li>Updated dependency to Modelica Standard Library 4.1.0 and Complex 4.1.0.</li>
 </ul>
 
 <h4>New components and functionality</h4>
@@ -237,6 +238,9 @@ by corrected equations, improved regularization and updated media functions.
   <li>Added Modelon Impact metadata.</li>
   <li>Updated README files, examples, documentation assets and example graphics.</li>
   <li>Excluded an intentionally failing model from regression testing.</li>
+  <li>Updated the required Modelica Standard Library version from 4.0.0 to 4.1.0.
+  No Modelica conversion script is expected to be required for this dependency update,
+  but simulation results may change due to fixes and changes in the Modelica Standard Library.</li>
 </ul>
 
 </html>"));
