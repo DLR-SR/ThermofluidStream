@@ -22,6 +22,7 @@ model DropOfCommons "Model for global parameters"
 
   parameter Boolean displayInstanceNames = true "= true, if ThermofluidStream instance names are displayed" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayParameters = true "= true, if displaying parameters is enabled" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayColor = false "= true, if pressure drop is displayed in color" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Integer instanceNameColor[3] = {28,108,200} "Color of the component name"; // Default Color: {28,108,200}
 
   annotation (defaultComponentName="dropOfCommons",
@@ -63,7 +64,7 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
 <li>It provides <strong>default physical constants</strong> (e.g., gravity acceleration) and flow properties (e.g., inertance) that are used by all components in the model.</li>
 <li>It defines <strong>regularization parameters</strong> (e.g., minimal density, minimal pressure, mass flow threshold, angular velocity, and volume damping factor) that ensure numerical stability of transient simulations. These parameters must be adjusted to match the characteristics of the simulated system, for example, if the system&rsquo;s design involves mass flows on the order of magnitude of the regularization threshold (m_flow_reg), or angular velocities near omega_reg, their values should be updated to prevent artificial inaccuracies. Detailed information on the volume damping factor is available in the <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolume\">PartialVolume</a> documentation.</li>
 <li>It defines <strong>global assertion and error handling</strong> behavior via the <span style=\"font-family: Courier New;\">assertionLevel</span> parameter.</li>
-<li>It provides <strong>layout and visualization settings</strong> for model diagrams, such as displaying instance names and parameter values.</li>
+<li>It provides <strong>layout and visualization settings</strong> for model diagrams, such as displaying instance names, parameter values and color-coded visualization for e.g. resistance pressure drop.</li>
 </ul>
 <p>Since the global parameters defined in DropOfCommons are used by multiple ThermofluidStream components, exactly one instance of this model needs to be present at the top level of a simulation model. The basic declaration is: </p>
 <p style=\"margin-left: 40px;\"><strong><span style=\"font-family: Courier New;\">inner</span></strong> ThermofluidStream.DropOfCommons dropOfCommons </p>
