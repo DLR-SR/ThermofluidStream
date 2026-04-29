@@ -44,7 +44,7 @@ If you have other issues contact:
 
 </html>",
     revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<p><img src="modelica:/ThermofluidStream/Resources/dlr_logo.png"/>(c) 2020-2026, Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</p>
 </html>"));
 
 end Contact;

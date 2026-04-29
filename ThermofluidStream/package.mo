@@ -56,7 +56,7 @@ For copyright and license, see
       <img width=\"72\" src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
     </td>
     <td valign=\"middle\">
-      <strong>Copyright &copy; DLR Institut f&uuml;r Systemdynamik und Regelungstechnik</strong>
+      <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>
     </td>
   </tr>
 </table>

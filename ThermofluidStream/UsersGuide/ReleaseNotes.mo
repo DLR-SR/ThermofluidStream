@@ -37,8 +37,8 @@ should be updated, especially <code>version</code>, <code>versionDate</code>,
 
 <blockquote><pre>
 annotation(version      = &quot;1.3.0&quot;,
-           versionDate  = &quot;2026-04-29&quot;,
-           dateModified = &quot;2026-04-29&quot;,
+           versionDate  = &quot;2026-04-30&quot;,
+           dateModified = &quot;2026-04-30&quot;,
            revisionId   = &quot;$F&#8203;ormat:%h %ci$&quot;)
 </pre></blockquote>
 
@@ -61,7 +61,7 @@ the released version represents when the library is exported from a Git tag.
 </html>"));
 end VersionManagement;
 
-class Version_1_3_0 "Version 1.3.0 (April 29, 2026)"
+class Version_1_3_0 "Version 1.3.0 (April 30, 2026)"
   extends Modelica.Icons.ReleaseNotes;
 
   annotation (Documentation(info="<html>
