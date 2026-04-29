@@ -53,7 +53,7 @@ model TestLiqLoopDowcal100
            TertiaryMedium,
        omega_from_input=true,
        redeclare function dp_tau_pump =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal(useLegacyReynolds = false))
        annotation (Placement(transformation(extent={{92,-82},{112,-62}})));
 
      ThermofluidStream.Processes.ConductionElement conductionElement(redeclare
@@ -242,5 +242,13 @@ equation
                    fillPattern = FillPattern.Solid,
                    points={{-18,74},{170,-46},{-18,-158},{-18,74}})}),
        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,
-               100}})));
+               100}})),
+    Documentation(info="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Introduced new version of <code>dp_tau_const_isentrop</code> pump function.
+    </li>
+  </ul>
+</html>"));
 end TestLiqLoopDowcal100;

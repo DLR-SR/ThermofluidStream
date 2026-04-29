@@ -45,7 +45,10 @@ equation
 <p>It can be chosen between</p>
 <ul>
 <li>Nominal-flow pump, where a nominal flow is computed and the difference between it and the actual flow is linearly producing a pressure</li>
-<li>Centrifugal pump, which implements the equations of a scalable centrifugal pump.</li>
+<li>Centrifugal pump, which implements the equations of a scalable centrifugal pump. Please note that the function uses by default a legacy 
+implementation to ensure backward compatibility. The legacy formulation is retained to support existing models but is considered deprecated and 
+its use will trigger a warning at runtime. Users are strongly encouraged to migrate to the updated implementation, as the legacy version will be removed in the next major release.
+Please see <a href=\"modelica://ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal\">dp_tau_centrifugal</a> documentation for more information</li>
 </ul>
 </html>"));
 end Pump;

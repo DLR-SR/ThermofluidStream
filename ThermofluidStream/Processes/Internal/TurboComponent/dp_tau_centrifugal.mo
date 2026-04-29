@@ -1,10 +1,13 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
 function dp_tau_centrifugal "Model of a centrifugal pump"
 
+
   extends partial_dp_tau;
 
   import Modelica.Constants.g_n;
 
+  input Boolean useLegacyReynolds = true "= true, if legacy Reynolds formulation is used (overestimates viscosity). Set to false to enable the corrected formulation. Will be removed in ThermoFluidStream v2.0."
+    annotation(Dialog(enable=true), Evaluate=true, choices(checkBox = true));
   input Boolean parametrizeByScaling = true "= true, if pump characteristic curve is computed from one design point"
     annotation(Dialog(enable=true));
   input SI.Height TDH_D = 3.6610 "Design pressure head (max efficiency)"
@@ -37,14 +40,15 @@ function dp_tau_centrifugal "Model of a centrifugal pump"
     annotation(Dialog(group="TQ characteristic", enable=not parametrizeByScaling));
   input Real Re_mod_min(unit="1") = 1e2 "Minimum modified Reynolds number"
     annotation(Dialog(tab="Advanced", enable=true));
-
+  input String name = getInstanceName() "Hack to access the instance name";
 protected
   Real alpha(unit="1") = TDH_D/TDH_D_ref "Pressure scaling factor";
   Real beta(unit="1") = omega_D/omega_D_ref "Speed scaling factor";
   Real gamma(unit="1") = V_flow_D/V_flow_D_ref "Flow scaling factor";
 
   SI.SpecificVolume v_in =  1/max(rho_min, Medium.density(state_in)) "Inlet specific volume";
-  SI.SpecificVolume mu_in = Medium.dynamicViscosity(state_in) "Inlet dynamic viscosity";
+  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(state_in) "Inlet dynamic viscosity";
+  SI.KinematicViscosity nu_in = mu_in* ( if useLegacyReynolds then 1 else v_in) "Inlet kinematic viscosity";
   SI.SpecificVolume v_ref = 1/rho_ref "Reference specific volume";
 
   SI.Power W_t "Power (technical work flow rate)";
@@ -92,10 +96,22 @@ protected
   Real f_eta(unit="1") "Scaling factor for efficiency";
 
 algorithm
+  assert(not useLegacyReynolds,
+    "\n"
+    + "====================================================================================\n"
+    + "              ThermoFluidStream WARNING – DEPRECATED BEHAVIOR\n"
+    + "====================================================================================\n"
+    + "Legacy Reynolds formulation is enabled in pump characteristic 'dp_tau_centrifugal'.\n"
+    + "This behavior is DEPRECATED and will be REMOVED in v2.0.\n"
+    + "Action required: Set useLegacyReynolds = false to enable the corrected formulation.\n"
+    + "Component: "  + name + "\n"
+    + "Remark: Use OMEdit or Dymola 2025x and later to avoid repeated warnings.\n"
+    + "====================================================================================\n",
+    AssertionLevel.warning);
   //limit abs(omega) to effectiveley limit the Re_mod to Re_mod_min
-  omega_hat  := max(Re_mod_min/(omega_s^1.5*f_q^0.75)/r^2*mu_in, abs(omega));
+  omega_hat  := max(Re_mod_min/(omega_s^1.5*f_q^0.75)/r^2*nu_in, abs(omega));
   V_flow_BEP := K_D*omega_hat;
-  Re_mod     := (omega_hat*r^2)/(mu_in)*(omega_s^1.5*f_q^0.75);
+  Re_mod     := (omega_hat*r^2)/(nu_in)*(omega_s^1.5*f_q^0.75);
 
   // compute corresponding volume flow of water and factors
   f_Q    := Re_mod^(-6.7/(Re_mod^0.735));
@@ -111,29 +127,119 @@ algorithm
   dp := g_n*TDH/v_in;
 
   annotation (Documentation(info="<html>
-<p>Centrifugal pump with HQ and TQ characteristic curve. </p>
-<p>HQ curve: <code>TDH&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;f_H&nbsp;*(a_h*omega*abs(omega)&nbsp;-&nbsp;b_h*omega*abs(V_flow)&nbsp;-&nbsp;c_h*V_flow*abs(V_flow));</code></p>
-<p>TQ curve: <code>tau_st&nbsp;:=&nbsp;(f_Q*f_H/f_eta)*(&nbsp;v_ref/v_in*a_t*abs(omega)*V_flow&nbsp;-&nbsp;v_ref/v_in*b_t*abs(V_flow)*V_flow&nbsp;+&nbsp;v_i*abs(omega)*omega&nbsp;+&nbsp;v_s*abs(omega));</code></p>
-<p>Both characteristics are generalized to all four quadrants of the V_flow/omega plot.</p>
-<p>The parameters a,b,c,v can be set directly or by three scaling factors alpha, beta and gamma, which scale the reference pump.</p>
-<p>Reference pump:</p>
-<blockquote><pre>
-omega_D = 314.2 rad/s
-V_flow_D = 3.06e-3 m3/s
-TDH_D = 3.6610 m
+  <p>
+    <strong>Deprecation notice:</strong>
+  </p>
 
-a_h_ref =  4.864e-5 m.s2/rad2;
-b_h_ref = -2.677 s2/(m2.rad);
-c_h_ref =  3.967e+5 s2/m5;
-a_t_ref =  5.427e-1 N.m.s2/(rad.m3);
-b_t_ref =  2.777e+4 N.m.s2/m6;
-v_i_ref =  1.218e-6 N.m.s2/rad2;
-v_s_ref =  1.832e-4 N.m.s/rad;
-f_q_ref =  1;
-K_D_ref =  9.73e-06 m3/rad;
-rho_ref_ref = 1.00e3 kg/m3;
-r_ref   =  1.60e-2 m;
-</pre></blockquote>
-<p>The characteristic curves are getting scaled to accommodate different densities and viscosities (according to G&uuml;lich, Kreiselpumpen: Handbuch f&uuml;r Entwicklung, Anlageplanung und Betrieb, 3. Auflage, Chap. 13.1).</p>
+  <p>
+    The legacy Reynolds formulation (<code>useLegacyReynolds = true</code>) is <strong>deprecated</strong>. 
+    When enabled, a warning is issued to inform the user about
+    the upcoming removal.
+    The legacy option will be <strong>removed in v2.0</strong> of the ThermoFluidStream Library.
+  </p>
+
+  <p>
+    <strong>Recommended usage:</strong>
+  </p>
+
+  <ul>
+    <li>
+      Update your models to <code>useLegacyReynolds = false</code> and use it for all new models.
+    </li>
+    <li>
+      Only enable the legacy option to reproduce results from older simulations.
+    </li>
+    <li>
+      Plan to remove any explicit legacy usage before upgrading to v2.0.
+    </li>
+  </ul>
+  
+  <p>
+    <strong>Remark:</strong>
+  </p>  
+
+  <p>
+    The legacy Reynolds formulation overestimated friction effects by a factor of 1000.
+    Depending on the operating point, the legacy formulation may lead to deviations
+    of the pump characteristic by a factor of approximately 2–5 compared to
+    the corrected implementation.
+    Simulation results will likely change. Closed loop controllers might have to be adapted.
+  </p>
+    
+  <p>
+    <strong>Documentation:</strong>
+  </p>
+
+  <p>
+    Centrifugal pump model with head–flow (<code>H–Q</code>) and torque–flow (<code>T–Q</code>) characteristic curves.
+  </p>
+
+  <p>
+    H–Q characteristic:<br>
+    <code>
+      TDH := f_H * (a_h*omega*abs(omega)
+            - b_h*omega*abs(V_flow)
+            - c_h*V_flow*abs(V_flow));
+    </code>
+  </p>
+
+  <p>
+    T–Q characteristic:<br>
+    <code>
+      tau_st := (f_Q*f_H/f_eta) *
+                (v_ref/v_in*a_t*abs(omega)*V_flow
+               - v_ref/v_in*b_t*abs(V_flow)*V_flow
+               + v_i*abs(omega)*omega
+               + v_s*abs(omega));
+    </code>
+  </p>
+
+  <p>
+    Both characteristic curves are extended to all four quadrants of the
+    <code>V_flow</code>–<code>omega</code> operating map.
+  </p>
+
+  <p>
+    The parameters <code>a</code>, <code>b</code>, <code>c</code>, and <code>v</code> can either be specified directly or derived from three scaling
+    factors <code>alpha</code>, <code>beta</code>, and <code>gamma</code>, which scale a reference pump.
+  </p>
+
+  <p>
+    Reference pump parameters:
+  </p>
+
+  <blockquote>
+    <pre>
+omega_D     = 314.2 rad/s
+V_flow_D    = 3.06e-3 m3/s
+TDH_D       = 3.6610 m
+
+a_h_ref     =  4.864e-5 m.s2/rad2
+b_h_ref     = -2.677 s2/(m2.rad)
+c_h_ref     =  3.967e+5 s2/m5
+a_t_ref     =  5.427e-1 N.m.s2/(rad.m3)
+b_t_ref     =  2.777e+4 N.m.s2/m6
+v_i_ref     =  1.218e-6 N.m.s2/rad2
+v_s_ref     =  1.832e-4 N.m.s/rad
+f_q_ref     =  1
+K_D_ref     =  9.73e-06 m3/rad
+rho_ref_ref =  1.00e3 kg/m3
+r_ref       =  1.60e-2 m
+    </pre>
+  </blockquote>
+
+  <p>
+    The characteristic curves are scaled to account for variations in fluid
+    density and viscosity, following the approach described in
+    Gülich, <em>Kreiselpumpen: Handbuch für Entwicklung, Anlageplanung und Betrieb</em>,
+    3rd edition, Chapter&nbsp;13.1.
+  </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Fixed mu_in,nu_in (dynamic,kinematic) viscosity bug.
+    </li>
+  </ul>
 </html>"));
 end dp_tau_centrifugal;

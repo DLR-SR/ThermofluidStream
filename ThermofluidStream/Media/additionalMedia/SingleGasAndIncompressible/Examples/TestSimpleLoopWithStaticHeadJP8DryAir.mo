@@ -33,7 +33,7 @@ model TestSimpleLoopWithStaticHeadJP8DryAir
            TertiaryMedium,
        omega_from_input=true,
        redeclare function dp_tau_pump =
-        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal(useLegacyReynolds = false))
        annotation (Placement(transformation(extent={{92,-90},{112,-70}})));
 
      ThermofluidStream.Processes.ConductionElement conductionElement(redeclare
@@ -222,5 +222,12 @@ Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024
 </p>
+</html>", info="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Introduced new version of <code>dp_tau_const_isentrop</code> pump function.
+    </li>
+  </ul>
 </html>"));
 end TestSimpleLoopWithStaticHeadJP8DryAir;

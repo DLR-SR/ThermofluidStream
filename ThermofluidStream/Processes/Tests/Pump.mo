@@ -33,10 +33,8 @@ Medium model for the test. Should be incompressible or with low compressibility.
     redeclare package Medium = Medium,
     L=100000,
     omega_from_input=true,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
-    m_acceleration_0=0.2,
-    redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-2,62},{18,82}})));
 
   Modelica.Blocks.Sources.Constant const(k=800)
@@ -48,8 +46,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
-    redeclare function dp_tau_pump =
-        tf.Processes.Internal.TurboComponent.dp_tau_centrifugal)
+    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   tf.Processes.Tests.Power power1(P=8000, tau_max=150)
     annotation (Placement(transformation(extent={{-24,2},{-4,22}})));
@@ -185,5 +182,13 @@ equation
     experiment(StopTime=30, Tolerance=1e-6, Interval=0.03),
         Documentation(info="<html>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a></p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Changed <code>pump.initM_flow</code> from <code>acceleration</code> to <code>state</code>.<br>
+      Introduced new version of <code>dp_tau_const_isentrop</code> pump function.
+    </li>
+  </ul>
 </html>"));
 end Pump;
