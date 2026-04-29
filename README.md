@@ -12,7 +12,7 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ## News
 
 30.04.2026: Release of TFS 1.3.0 (Minor Release); 
-## Release 1.3.0 Highlights
+Release 1.3.0 Highlights
 
 - Updated dependencies to **Modelica Standard Library 4.1.0** and **Complex 4.1.0**.
 - Added new **`CentrifugalPump`** model with characteristic-based parameterization and test models.
