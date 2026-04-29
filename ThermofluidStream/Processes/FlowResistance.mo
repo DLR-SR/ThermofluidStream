@@ -63,7 +63,11 @@ some medium properties and the geometry of the pipe.
     annotation(Dialog(tab="Advanced"));
   parameter SI.Pressure dp_ref_color = 1e5 "Reference pressure drop value for the intensity of coloring" annotation(Dialog(tab="Layout", group="Visuals", enable=dropOfCommons.displayColor));
 
-  final parameter SI.Length D_h = 4*areaCross/perimeter "Hydraulic diameter";
+  final parameter SI.Length D_h=4*areaCross/perimeter "Hydraulic diameter";
+  final parameter SI.Length perimeter=if shape == ShapeOfResistance.circular
+       then 2*pi*r elseif shape == ShapeOfResistance.rectangle then 2*a + 2*b
+       else perimeterInput "Perimeter";
+  parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
   final parameter SI.Length perimeter=
     if shape == ShapeOfResistance.circular then 2*pi*r
     elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
