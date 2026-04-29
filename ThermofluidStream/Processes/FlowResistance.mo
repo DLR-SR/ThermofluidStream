@@ -68,11 +68,6 @@ some medium properties and the geometry of the pipe.
        then 2*pi*r elseif shape == ShapeOfResistance.rectangle then 2*a + 2*b
        else perimeterInput "Perimeter";
   parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
-  final parameter SI.Length perimeter=
-    if shape == ShapeOfResistance.circular then 2*pi*r
-    elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
-    else perimeterInput "Perimeter";
-parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
     annotation(
       Dialog(tab="Layout", group="Display variables", enable=displayParameters),
       Evaluate=true,
@@ -82,6 +77,8 @@ parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
     annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
   parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
     annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
+  
+  
   final parameter SI.Area areaCross=
     if shape == ShapeOfResistance.circular then pi*r*r
     elseif shape == ShapeOfResistance.rectangle then a*b
@@ -159,7 +156,7 @@ equation
           textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). </p>
-<p>The pressure drop can be displayed with the coloring (<code>displayColor</code> in the <strong>DropOfCommons</strong>). <code>p_ref_color</code> can be adjusted depending on expected pressure drop and intensity of coloring. Coloring ranges from 0 to 100 &percnt; red, with 100 &percnt; red at <code>dp = dp_ref_color</code>.</p>
+<p>The pressure drop can be displayed with the coloring (<code>displayColor</code> in the <strong>DropOfCommons</strong>). The parameter <code>dp_ref_color</code> can be adjusted depending on expected pressure drop and intensity of coloring. Coloring ranges from 0 to 100 &percnt; red, with 100 &percnt; red at <code>dp = dp_ref_color</code>.</p>
 <p><code>dp_ref_color</code> needs to be defined according to the use case.</p>
 </html>"));
 end FlowResistance;
