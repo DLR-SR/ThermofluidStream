@@ -11,11 +11,20 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ## News
 
-**Tutorial at the Modelica Conference 2025**
+30.04.2026: Release of TFS 1.3.0 (Minor Release); 
+## Release 1.3.0 Highlights
 
-We will give a tutorial on *Modeling complex thermal architectures using the DLR ThermoFluid Stream Library* at the [Modelica Conference 2025 Luzern](https://modelica.org/events/modelica2025/#agenda). The [Tutorial Abstract Booklet](https://modelica.org/events/modelica2025/Tutorial_Abstracts_16th_Modelica_and_FMI_Conference.pdf) is now available.
+- Updated dependencies to **Modelica Standard Library 4.1.0** and **Complex 4.1.0**.
+- Added new **`CentrifugalPump`** model with characteristic-based parameterization and test models.
+- Added **`StaticHead`** and **`TankCuboid`** components.
+- Improved **OpenModelica/OMEdit compatibility**, especially for `CentrifugalPump` and `SingleSensorSelect`.
+- Improved **pressure-drop visualization** for `FlowResistance` and valve components.
+- Extended **incompressible media** with additional thermodynamic properties.
+- Improved **moist-air media functions**, including `isentropicExponent` and `specificEntropy`.
+- Fixed Reynolds-number calculation in **`dp_tau_centrifugal`**.
+- Improved NTU heat exchanger documentation and simplified `PartialNTU`.
+- Added and updated **Dymola** and **Modelon Impact** metadata.
 
-We look forward to meeting you there and sharing ideas.
 
 ## Highlights
 
@@ -95,24 +104,23 @@ Further background literature on the methodology:
 
 ## Authors and Contributors
 
-The library is provided by the [DLR Institute of System Dynamics and Control](https://www.dlr.de/sr/en) and the [DLR Institute of System Architectures in Aeronautics](https://www.dlr.de/en/sl).
+The library is provided by [DLR Institute of System Architectures in Aeronautics](https://www.dlr.de/sl) and the [DLR Institute of Robotics and Mechatronics](https://www.dlr.de/rm).
 
 <img src="/doc/DLR_Logo_engl_grau.png" width="300">  
 Deutsches Zentrum für Luft- und Raumfahrt, Münchener Strasse 20, 82234 Wessling-Oberpfaffenhofen, Germany  
 
 Individual authors of these organizations are:
 
-### DLR Institute of System Dynamics and Control
-- Dirk Zimmer ([@dzimmer](https://github.com/dzimmer))
-- Michael Meißner ([@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner))
-
 ### DLR Institute of System Architectures in Aeronautics
 - Niels Weber ([@nieweber](https://github.com/nieweber))
 - Tobias Reischl ([@tobiasreischl](https://github.com/tobiasreischl))
 - Corentin Lepais ([@CorentinLepais](https://github.com/CorentinLepais))
 - Raphael Gebhart ([@RaphaelGebhart](https://github.com/RaphaelGebhart))
-- Silvan Keim
-- Niclas Dotzauer
+- Silvan Keim ([@SilvanKeim](https://github.com/SilvanKeim))
+- Niclas Dotzauer ([@Nicsda](https://github.com/Nicsda))
+
+### DLR Institute of Robotics and Mechatronics
+- Dirk Zimmer ([@dzimmer](https://github.com/dzimmer))
 
 ### Further Notable Contributions
 We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure as well as media models for liquid and gas mixtures.
@@ -126,7 +134,7 @@ We would like to thank very much [@wischhusen](https://github.com/wischhusen) fr
 <img src="/doc/XRG_Logo 2015_4c.png" width="120">
 
 ### Alumni
-- [@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner)
+- Michael Meißner ([@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner))
 
 ## Acknowledgements
 

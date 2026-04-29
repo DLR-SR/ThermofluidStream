@@ -7,15 +7,15 @@ class Contact "Contact"
       info="<html>
 <h4>Authors</h4>
 
-<h5>DLR Institute of System Dynamics and Control</h5>
+<h5>DLR Institute of Robotics and Mechatronics</h5>
 <blockquote>
   Michael Mei&szlig;ner and Dirk Zimmer<br>
   Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
-  Institute of System Dynamics and Control<br>
+  Institute of Robotics and Mechatronics<br>
   Oberpfaffenhofen<br>
   M&uuml;nchener Stra&szlig;e 20<br>
   D-82234 We&szlig;ling<br>
-  Web: <a href=\"https://rmc.dlr.de/sr/\">rmc.dlr.de/sr/</a>
+  Web: <a href=\"https://rmc.dlr.de/rm/\">rmc.dlr.de/rm/</a>
 </blockquote>
 
 <h5>DLR Institute of System Architectures in Aeronautics</h5>
@@ -27,7 +27,7 @@ class Contact "Contact"
   Oberpfaffenhofen<br>
   M&uuml;nchener Stra&szlig;e 20<br>
   D-82234 We&szlig;ling<br>
-  Web: <a href=\"https://www.dlr.de/en/sl\">www.dlr.de/en/sl</a>
+  Web: <a href=\"https://www.dlr.de/sl\">www.dlr.de/sl</a>
 </blockquote>
 
 

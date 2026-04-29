@@ -27,10 +27,10 @@ Involved institutes:
 </p>
 <ul>
   <li>
-    <a href=\"https://www.dlr.de/sr/en\">Institute of System Dynamics and Control</a>
+    <a href=\"https://www.dlr.de/rm\">Institute of Robotics and Mechatronics</a>
   </li>
   <li>
-    <a href=\"https://www.dlr.de/en/sl\">Institute of System Architectures in Aeronautics</a>
+    <a href=\"https://www.dlr.de/sl\">Institute of System Architectures in Aeronautics</a>
   </li>
 </ul>
 

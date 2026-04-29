@@ -5,11 +5,11 @@ abstract: The DLR Thermofluid Stream Library is a free open-source library for t
 authors:
   - family-names: Zimmer
     given-names: Dirk
-    affiliation: DLR Institute of System Dynamics and Control
+	affiliation: DLR Institute of Robotics and Mechatronics	
   - family-names: Meißner
     given-names: Michael
     orcid: "https://orcid.org/0000-0001-7092-7520"
-    affiliation: DLR Institute of System Dynamics and Control
+    affiliation: DLR Institute of Robotics and Mechatronics
   - family-names: Weber
     given-names: Niels
     affiliation: DLR Institute of System Architectures in Aeronautics
