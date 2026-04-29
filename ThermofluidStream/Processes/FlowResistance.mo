@@ -85,7 +85,7 @@ some medium properties and the geometry of the pipe.
     else areaCrossInput "Cross-sectional area";
 
   final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4 "Hydraulic cross-sectional area";
-  Real phi(min=0, max=1) "Normalized pressure for coloring the flow resistance";
+  Real phi(unit = "1", min=0, max=1) "Normalized pressure for coloring the flow resistance";
 
 protected
   SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
