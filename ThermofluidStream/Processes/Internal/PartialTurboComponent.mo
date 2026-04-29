@@ -73,6 +73,7 @@ protected
   SI.Torque tau "Torque";
   SI.Torque tau_normalized "Normalized torque";
 
+
 initial equation
   if initOmega == InitializationMethods.state then
     omega = omega_0;
