@@ -15,7 +15,7 @@ package Internal
 
     parameter SI.Time TC = 0.1 "Time constant for RT massflow constraint"
       annotation(Dialog(tab="Advanced"));
-    parameter Medium.AbsolutePressure p_reg = 1e2 "Regularizaion pressure for pressure drop calculation"
+    parameter SI.Pressure p_reg = 1e2 "Regularizaion pressure for pressure drop calculation"
       annotation(Dialog(tab="Advanced"));
     parameter Medium.Density rho_min=dropOfCommons.rho_min "Minimum density"
       annotation(Dialog(tab="Advanced"));
