@@ -77,8 +77,6 @@ some medium properties and the geometry of the pipe.
     annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
   parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
     annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
-  
-  
   final parameter SI.Area areaCross=
     if shape == ShapeOfResistance.circular then pi*r*r
     elseif shape == ShapeOfResistance.rectangle then a*b
