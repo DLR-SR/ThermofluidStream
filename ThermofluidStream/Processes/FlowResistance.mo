@@ -61,6 +61,7 @@ some medium properties and the geometry of the pipe.
     annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
   parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal inlet density"
     annotation(Dialog(tab="Advanced"));
+  parameter SI.Pressure dp_ref_color = 1e5 "Reference pressure drop value for the intensity of coloring" annotation(Dialog(tab="Layout", group="Visuals", enable=dropOfCommons.displayColor));
 
   final parameter SI.Length D_h=4*areaCross/perimeter "Hydraulic diameter";
   final parameter SI.Length perimeter=if shape == ShapeOfResistance.circular
@@ -76,14 +77,13 @@ some medium properties and the geometry of the pipe.
     annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
   parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
     annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
-
-
   final parameter SI.Area areaCross=
     if shape == ShapeOfResistance.circular then pi*r*r
     elseif shape == ShapeOfResistance.rectangle then a*b
     else areaCrossInput "Cross-sectional area";
 
   final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4 "Hydraulic cross-sectional area";
+  Real phi(unit = "1", min=0, max=1) "Normalized pressure for coloring the flow resistance";
 
 protected
   Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
@@ -93,7 +93,9 @@ equation
   dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);
   h_out = h_in;
   Xi_out = Xi_in;
-
+  phi = if dropOfCommons.displayColor then
+    noEvent(max(0, min(1, abs(dp)/dp_ref_color)))
+    else 0;
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
@@ -115,7 +117,8 @@ equation
           extent={{-60,60},{60,-60}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor={255,255,255},
+          fillColor=DynamicSelect({255,255,255}, if dropOfCommons.displayColor == true
+               then {255,integer(255*(1 - phi)),integer(255*(1 - phi))} else {255,255,255}),
           fillPattern=FillPattern.Solid),
         Line(
           points={{40,0},{-48,0}},
@@ -150,9 +153,8 @@ equation
           textColor={0,0,0},
           textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>
-Implementation of a flow resistance pipe with different selectable
-flow resistance functions (laminar, laminar-turbulent, linear-quadratic).
-</p>
+<p>Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). </p>
+<p>The pressure drop can be displayed with the coloring (<code>displayColor</code> in the <strong>DropOfCommons</strong>). The parameter <code>dp_ref_color</code> can be adjusted depending on expected pressure drop and intensity of coloring. Coloring ranges from 0 to 100 &percnt; red, with 100 &percnt; red at <code>dp = dp_ref_color</code>.</p>
+<p><code>dp_ref_color</code> needs to be defined according to the use case.</p>
 </html>"));
 end FlowResistance;
