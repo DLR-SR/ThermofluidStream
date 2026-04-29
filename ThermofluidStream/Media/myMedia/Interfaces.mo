@@ -2222,7 +2222,7 @@ Note that the (small) influence of the pressure term p/d is neglected.
       output ThermodynamicState state "Thermodynamic state record";
     algorithm
       state := ThermodynamicState(p=p, T=Modelica.Math.exp(s/cp_const +
-        Modelica.Math.log(reference_T)))
+        Modelica.Math.log(T0)))
         "Here the incompressible limit is used, with cp as heat capacity";
     end setState_psX;
 
