@@ -68,7 +68,16 @@ some medium properties and the geometry of the pipe.
     if shape == ShapeOfResistance.circular then 2*pi*r
     elseif shape == ShapeOfResistance.rectangle then 2*a+2*b
     else perimeterInput "Perimeter";
-
+parameter Boolean showPressureDrop=true "= true, if pressure drop is displayed"
+    annotation(
+      Dialog(tab="Layout", group="Display variables", enable=displayParameters),
+      Evaluate=true,
+      HideResult=true,
+      choices(checkBox=true));
+  parameter ThermofluidStream.Types.PressureUnit pressureDropUnit=ThermofluidStream.Types.PressureUnit.Pa "Unit used for displaying the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable=showPressureDrop and displayParameters), Evaluate=true, HideResult=true);
+  parameter Integer pressureDropSignificantDigits(min=1) = 1 "Number of significant digits used to display the pressure drop"
+    annotation(Dialog(tab="Layout", group="Display variables", enable = showPressureDrop and displayParameters));
   final parameter SI.Area areaCross=
     if shape == ShapeOfResistance.circular then pi*r*r
     elseif shape == ShapeOfResistance.rectangle then a*b
