@@ -38,7 +38,7 @@ alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
 
 ## License, Terms of Use, Literature
 
-Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermodluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
+Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermofluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
 
 If you publish work that is based on this library, please cite the following two papers. 
 
@@ -94,17 +94,25 @@ Further background literature on the methodology:
 - [Modelon Impact](https://www.modelon.com/modelon-impact/): The library is reported to be fully compatible to Modelon Impact. Details in [Issue 19](https://github.com/DLR-SR/ThermofluidStream/issues/19). 
 
 ## Authors and Contributors
-The Library is provided by the [DLR Institute of System Dynamics and Control](https://www.dlr.de/sr/en). 
 
- <img src="/doc/DLR_Logo_engl_grau.png" width="300"> 
-Deutsches Zentrum für Luft- und Raumfahrt, Institut für Systemdynamik und Regelungstechnik, Münchener Strasse 20, 82234 Wessling-Oberpfaffenhofen, Germany  
+The library is provided by the [DLR Institute of System Dynamics and Control](https://www.dlr.de/sr/en) and the [DLR Institute of System Architectures in Aeronautics](https://www.dlr.de/en/sl).
 
-Individual authors of this organization are:
-- [@dzimmer](https://github.com/dzimmer)
-- [@RaphaelGebhart](https://github.com/RaphaelGebhart)
-- [@nieweber](https://github.com/nieweber)
-- [@tobiasreischl](https://github.com/tobiasreischl)
-- [@CorentinLepais](https://github.com/CorentinLepais)
+<img src="/doc/DLR_Logo_engl_grau.png" width="300">  
+Deutsches Zentrum für Luft- und Raumfahrt, Münchener Strasse 20, 82234 Wessling-Oberpfaffenhofen, Germany  
+
+Individual authors of these organizations are:
+
+### DLR Institute of System Dynamics and Control
+- Dirk Zimmer ([@dzimmer](https://github.com/dzimmer))
+- Michael Meißner ([@mimeissner](https://github.com/orgs/DLR-SR/people/mimeissner))
+
+### DLR Institute of System Architectures in Aeronautics
+- Niels Weber ([@nieweber](https://github.com/nieweber))
+- Tobias Reischl ([@tobiasreischl](https://github.com/tobiasreischl))
+- Corentin Lepais ([@CorentinLepais](https://github.com/CorentinLepais))
+- Raphael Gebhart ([@RaphaelGebhart](https://github.com/RaphaelGebhart))
+- Silvan Keim
+- Niclas Dotzauer
 
 ### Further Notable Contributions
 We are very grateful to [@IngelaLind](https://github.com/IngelaLind) from [Saab Aeronautics](http://www.saabgroup.com/), Linköping, Sweden for all models regarding static head pressure as well as media models for liquid and gas mixtures.
@@ -122,7 +130,7 @@ We would like to thank very much [@wischhusen](https://github.com/wischhusen) fr
 
 ## Acknowledgements
 
-This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Chistopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz form TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility.
+This work has been partially supported by the Helmholtz Gemeinschaft in frame of the research project for on-board diagnosis. Hence we would also like to thank the team of Robert Bosch GmbH for feedback and motivating use-case scenarios. Further thanks goes to Christopher Laughman from Mitsubishi Electronic Research Center for providing initial feedback. Also the work of Tobias Krenz from TU Darmstadt was providing motivating use cases of the new approach. We are still grateful to Airbus and our former colleagues Dr Alexander Pollok and Dr. Daniel Bender who were pioneering the new methodology. Also we like to thank our colleague Dr. Peter Eschenbacher for his valuable modeling experience on valves and pumps. We would like to thank the Open Modelica Team for their support regarding tool compatibility.
 
 The used **continuous integration** stuff originates in parts from that used in the development of the Modelica Standard Library. We would like to thank MAP-Lib project members who established this CI for their valuable work.
 

@@ -1,4 +1,4 @@
-Thanks for considering to contribute to the DLR Thermofluid Stream Library.
+Thank you for considering to contribute to the DLR Thermofluid Stream Library.
 
 You can contribute either by reporting an issue or by contributing code.
 

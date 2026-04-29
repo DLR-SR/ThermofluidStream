@@ -6,13 +6,28 @@ class Contact "Contact"
     Documentation(
       info="<html>
 <h4>Authors</h4>
+
+<h5>DLR Institute of System Dynamics and Control</h5>
 <blockquote>
-  Micheal Mei&szlig;ner, Niels Weber and Dirk Zimmer<br>
+  Michael Mei&szlig;ner and Dirk Zimmer<br>
   Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
-  Institut f&uuml;r Systemdynamik und Regelungstechnik (SR)<br> 
+  Institute of System Dynamics and Control<br>
+  Oberpfaffenhofen<br>
   M&uuml;nchener Stra&szlig;e 20<br>
   D-82234 We&szlig;ling<br>
   Web: <a href=\"https://rmc.dlr.de/sr/\">rmc.dlr.de/sr/</a>
+</blockquote>
+
+<h5>DLR Institute of System Architectures in Aeronautics</h5>
+<blockquote>
+  Niels Weber, Tobias Reischl, Corentin Lepais, Raphael Gebhart,
+  Silvan Keim and Niclas Dotzauer<br>
+  Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
+  Institute of System Architectures in Aeronautics<br>
+  Oberpfaffenhofen<br>
+  M&uuml;nchener Stra&szlig;e 20<br>
+  D-82234 We&szlig;ling<br>
+  Web: <a href=\"https://www.dlr.de/en/sl\">www.dlr.de/en/sl</a>
 </blockquote>
 
 

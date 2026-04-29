@@ -4,7 +4,7 @@
   "dependencies": [
     {
       "name": "Modelica",
-      "versionSpecifier": "4.0.0"
+      "versionSpecifier": "4.1.0"
     }
   ],
   "content": [
