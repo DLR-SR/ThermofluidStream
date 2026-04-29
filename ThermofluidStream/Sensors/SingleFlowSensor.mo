@@ -25,7 +25,7 @@ model SingleFlowSensor "Flow rate sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in W/K"
     else "error";
 
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter Boolean outputValue = false "= true, if sensor output is enabled"
     annotation(Dialog(group="Output"),Evaluate=true, HideResult=true, choices(checkBox=true));

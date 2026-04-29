@@ -12,7 +12,7 @@ model DropOfCommons "Model for global parameters"
     annotation(Dialog(group="Regularization"));
   parameter SI.Density rho_min = 1e-10 "Minimum allowed density"
     annotation(Dialog(group="Regularization"));
-  parameter SI.Pressure p_min = 100 "Minimal steady-state pressure"
+  parameter SI.AbsolutePressure p_min = 100 "Minimal steady-state pressure"
     annotation(Dialog(group="Regularization"));
   parameter Real k_volume_damping(unit="1")= 0.1 "Volume damping factor multiplicator"
     annotation(Dialog(group="Regularization"));

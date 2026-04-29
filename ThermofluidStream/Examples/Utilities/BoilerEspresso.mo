@@ -11,7 +11,7 @@ phases of the water in the boiler.
 </p>
 </html>"));
 
-  parameter SI.Pressure p_0 = 1e5 "Start pressure";
+  parameter Medium.AbsolutePressure p_0 = 1e5 "Start pressure";
   parameter SI.Volume V = 1 "Boiler volume";
   parameter SI.ThermalConductance UA_HX = 200 "Heat transfer coefficient times contact area to medium to Water Pipe";
   parameter SI.ThermalConductance UA_heat = 200 "Heat transfer coefficient times contact area to medium to left Heatport";

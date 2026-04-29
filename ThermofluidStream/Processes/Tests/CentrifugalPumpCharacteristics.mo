@@ -5,12 +5,12 @@ model CentrifugalPumpCharacteristics "Test model for CentrifugalPump"
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
     annotation(choicesAllMatching = true);
   parameter Real w_n=0.2 "Normalized speed";
-  parameter SI.Temperature T=293.15
+  parameter Medium.Temperature T=293.15
                              "Temperature";
-  parameter SI.Pressure p=100000
+  parameter Medium.AbsolutePressure p=100000
                           "Pressue";
   final parameter Medium.ThermodynamicState state = Medium.setState_pT(p,T);
-  final parameter SI.Density rho = Medium.density(state);
+  final parameter Medium.Density rho = Medium.density(state);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Boundaries.Source source(

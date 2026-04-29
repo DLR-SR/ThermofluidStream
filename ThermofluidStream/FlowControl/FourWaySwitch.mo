@@ -9,7 +9,7 @@ model FourWaySwitch
       </html>"));
 
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));

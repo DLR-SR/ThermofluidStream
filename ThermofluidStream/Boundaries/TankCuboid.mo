@@ -8,23 +8,23 @@ model TankCuboid
   //centreOfMass, staticHeadInlets and staticHeadOutlets needs to be provided.
   //The division is made to easily implement any geometry, regardless of complexity.
 
-  parameter Modelica.Units.SI.Length xLength "Length in x-direction" annotation(Dialog(tab="General",group="Geometry"));
-  parameter Modelica.Units.SI.Length yLength "Length in y-direction" annotation(Dialog(tab="General",group="Geometry"));
-  parameter Modelica.Units.SI.Length zLength "Length in z-direction" annotation(Dialog(tab="General",group="Geometry"));
-     Modelica.Units.SI.Length D;
+  parameter SI.Length xLength "Length in x-direction" annotation(Dialog(tab="General",group="Geometry"));
+  parameter SI.Length yLength "Length in y-direction" annotation(Dialog(tab="General",group="Geometry"));
+  parameter SI.Length zLength "Length in z-direction" annotation(Dialog(tab="General",group="Geometry"));
+     SI.Length D;
 
 protected
    final parameter Real eps_geometry = 0.0000001 "numerical epsilon for geometric considerations";
 
-   Modelica.Units.SI.Length D1;
-   Modelica.Units.SI.Length D2;
-   Modelica.Units.SI.Length D3;
-   Modelica.Units.SI.Length D4;
+   SI.Length D1;
+   SI.Length D2;
+   SI.Length D3;
+   SI.Length D4;
    Real nx=normAcc[1];
    Real nz=normAcc[3];
-   Modelica.Units.SI.Area Area = V_liquid/yLength;
-   Modelica.Units.SI.Area AxLimit;
-   Modelica.Units.SI.Area AzLimit;
+   SI.Area Area = V_liquid/yLength;
+   SI.Area AxLimit;
+   SI.Area AzLimit;
 
 initial equation
 

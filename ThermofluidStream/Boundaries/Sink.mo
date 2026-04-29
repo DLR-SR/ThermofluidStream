@@ -12,7 +12,7 @@ the outlet the sink is connected to.
 </html>"));
   parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled"
     annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.Pressure p0_par = Medium.p_default "Pressure set value"
+  parameter Medium.AbsolutePressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not pressureFromInput));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced"));
@@ -44,7 +44,7 @@ the outlet the sink is connected to.
 protected
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r "Inertial pressure";
-  SI.Pressure p = Medium.pressure(inlet.state) "Steady state pressure";
+  Medium.AbsolutePressure p = Medium.pressure(inlet.state) "Steady state pressure";
 
 equation
   connect(p0_var, p0);

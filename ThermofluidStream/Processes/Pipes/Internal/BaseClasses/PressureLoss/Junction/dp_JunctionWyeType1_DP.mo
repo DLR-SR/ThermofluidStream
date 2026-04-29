@@ -11,7 +11,7 @@ function dp_JunctionWyeType1_DP
   input SI.Velocity w_s "Velocity at straight inlet";
   input SI.Angle alpha_deg "Branching angle in degree";
   input Real A "Correction factor at alpha = 90°";
-  input SI.Density rho_c "Density of fluid at (common) outlet";
+  input Medium.Density rho_c "Density of fluid at (common) outlet";
   input SI.Velocity eps "To avoid division by zero";
   // Output variables
   output SI.Pressure dp_b "Pressure loss at branching inlet";

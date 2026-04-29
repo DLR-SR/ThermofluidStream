@@ -29,11 +29,11 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
   parameter Boolean calculate_efficiency=false "= true, if heat exchanger efficiency is calculated"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  parameter Modelica.Units.SI.Area A=10 "Heat transfer area"
+  parameter SI.Area A=10 "Heat transfer area"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
+  parameter SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer of pipe wall"
+  parameter SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer of pipe wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
   parameter Boolean initializeMassFlow=false "= true, if inlet mass flow rates are initialized"
@@ -56,7 +56,7 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h "h0",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "rear",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore "fore"));
-  parameter SI.SpecificEnthalpy h0_A=MediumA.h_default "Start value for specific enthalpy side A" annotation (Dialog(
+  parameter MediumA.SpecificEnthalpy h0_A=MediumA.h_default "Start value for specific enthalpy side A" annotation (Dialog(
       tab="Initialization",
       group="Enthalpy",
       enable=(init_A == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
@@ -64,7 +64,7 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h "h0",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.rear "rear",
       choice=ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.fore "fore"));
-  parameter SI.SpecificEnthalpy h0_B=MediumB.h_default "Start value for specific enthalpy side B" annotation (Dialog(
+  parameter MediumB.SpecificEnthalpy h0_B=MediumB.h_default "Start value for specific enthalpy side B" annotation (Dialog(
       tab="Initialization",
       group="Enthalpy",
       enable=(init_B == ThermofluidStream.Undirected.Processes.Internal.InitializationMethodsCondElement.h)));
@@ -89,7 +89,7 @@ partial model PartialDiscretizedHEX "Base class for undirected discretized heat 
 protected
   parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration"; //This parameter is not used anymore, and should be removed at some point
   parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
-  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
+  parameter SI.ThermalConductance G=k_wall*A "Wall thermal conductance" annotation (Dialog(group="Wall parameters"));
 
   function efficiency = ThermofluidStream.HeatExchangers.Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB);
 

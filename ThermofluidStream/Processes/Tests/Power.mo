@@ -7,7 +7,7 @@ model Power "Constant power with limited tourque"
   parameter SI.Torque tau_max "Max tourque";
 
 protected
-  Modelica.Units.SI.AngularVelocity omega=der(flange.phi);
+  SI.AngularVelocity omega=der(flange.phi);
   constant Real eps(unit="1") = 1e-7;
 
 equation

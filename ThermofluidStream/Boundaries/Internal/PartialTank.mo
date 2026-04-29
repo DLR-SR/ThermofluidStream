@@ -11,21 +11,21 @@ inlets and outlets the volume is connected to.
 </html>"));
 
   parameter Boolean useHeatport = false "If true heatport is added";
-  parameter Modelica.Units.SI.Area A = 1 "Contact area of volume with medium"
+  parameter SI.Area A = 1 "Contact area of volume with medium"
     annotation(Dialog(enable=useHeatport));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
+  parameter SI.CoefficientOfHeatTransfer U = 200 "Heat transfer coefficient to medium"
     annotation(Dialog(enable=useHeatport));
  parameter Boolean initialize_pressure = true "If true: initialize Pressure"
     annotation(Dialog(tab= "Initialization"));
-  parameter Modelica.Units.SI.Pressure p_start = Medium.p_default "Initial Pressure"
+  parameter Medium.AbsolutePressure p_start = Medium.p_default "Initial Pressure"
     annotation(Dialog(tab= "Initialization", enable=initialize_pressure));
   parameter Boolean initialize_energy = false "Initialize specific inner energy with temperature or specific enthalpy condition"
     annotation(Dialog(tab= "Initialization"));
-  parameter Modelica.Units.SI.Temperature T_start = Medium.T_default "Initial Temperature"
+  parameter Medium.Temperature T_start = Medium.T_default "Initial Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and (not use_hstart)));
   parameter Boolean use_hstart = false "True: specific enthalpy condition instead of Temperature"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy));
-  parameter Modelica.Units.SI.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
+  parameter Medium.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab= "Initialization", enable=initialize_energy and use_hstart));
   parameter Boolean initialize_Xi = false "If true: initialize mass fractions"
     annotation(Dialog(tab= "Initialization"));
@@ -33,19 +33,18 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab= "Initialization", enable=initialize_Xi));
   parameter Boolean initialize_LiquidMass = true "If true: initialize with mass of the liquid medium component. Initialize_Xi must be false."
     annotation(Dialog(tab= "Initialization", enable=not initialize_Xi));
-  parameter Modelica.Units.SI.Mass M_liq_start=0 "Initial mass of the liquid"
+  parameter SI.Mass M_liq_start=0 "Initial mass of the liquid"
     annotation(Dialog(tab= "Initialization", enable=initialize_LiquidMass));
 
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance at inlet and outlet"
     annotation (Dialog(tab="Advanced"));
   parameter Real k_volume_damping(unit="1") = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
-  parameter Modelica.Units.SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
+  parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflows"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean usePreferredMediumStates=false "Use medium states instead of the ones differentiated in this component"
     annotation(Dialog(tab="Advanced"));
-  parameter Modelica.Units.SI.Length outletTransition=0.01 "Width of band for smooth transition between gas and liquid at outlet"
-                                                                                                                                 annotation(Dialog(tab="Advanced"));
+  parameter SI.Length outletTransition=0.01 "Width of band for smooth transition between gas and liquid at outlet"               annotation(Dialog(tab="Advanced"));
 
 
   Interfaces.Inlet inlet[N_inlets](redeclare package Medium=Medium)
@@ -57,36 +56,36 @@ inlets and outlets the volume is connected to.
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
-  Modelica.Units.SI.Volume V;
-  Modelica.Units.SI.Volume V_liquid;
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure of tank when volume is measured";
+  SI.Volume V;
+  SI.Volume V_liquid;
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure of tank when volume is measured";
   //The tank gets a bulk modulus to handle the stiffness of incompressible media better
   SI.Volume V_ref(displayUnit="l") "Volume of the tank at p_ref";
   parameter SI.BulkModulus K = 5e7 "Bulk modulus of tank (used also for stiffness modulation)";
 
-  //Modelica.Units.SI.Volume V_gas "Gas volume in Tank";
+  //SI.Volume V_gas "Gas volume in Tank";
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
-  Modelica.Units.SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d;
-  Modelica.Units.SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi;
-  Modelica.Units.SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u;
+  SI.Mass M(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = V*medium.d;
+  SI.Mass MXi[Medium.nXi](each stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.Xi;
+  SI.Energy U_med(stateSelect=if usePreferredMediumStates then StateSelect.default else StateSelect.always) = M*medium.u;
 
-  Modelica.Units.SI.HeatFlowRate Q_flow;
-  Modelica.Units.SI.Power W_v;
-   parameter Modelica.Units.SI.Length tankCenter[3]={0,0,0} "Position of the tank center" annotation(Dialog(tab="General",group="Geometry"));
+  SI.HeatFlowRate Q_flow;
+  SI.Power W_v;
+   parameter SI.Length tankCenter[3]={0,0,0} "Position of the tank center" annotation(Dialog(tab="General",group="Geometry"));
    parameter Integer N_inlets = 2 "Number of inlets"
                                                     annotation(Dialog(tab="General",group="Geometry"));
    parameter Integer M_outlets = 2 "Number of outlets"
                                                       annotation(Dialog(tab="General",group="Geometry"));
 
-   parameter Modelica.Units.SI.Length inletPositions[N_inlets,3]={{0,0,0},{0,0,0}} "Positions of all inlets" annotation(Dialog(tab="General",group="Geometry"));
-   parameter Modelica.Units.SI.Length outletPositions[M_outlets,3]={{0,0,0},{0,0,0}} "Positions of all outlets" annotation(Dialog(tab="General",group="Geometry"));
-   Modelica.Units.SI.Length centerOfMass[3];
+   parameter SI.Length inletPositions[N_inlets,3]={{0,0,0},{0,0,0}} "Positions of all inlets" annotation(Dialog(tab="General",group="Geometry"));
+   parameter SI.Length outletPositions[M_outlets,3]={{0,0,0},{0,0,0}} "Positions of all outlets" annotation(Dialog(tab="General",group="Geometry"));
+   SI.Length centerOfMass[3];
 
-   Modelica.Units.SI.Length staticHeadInlets[N_inlets] "distance perpendicular to liquid surface, 0 if above surface";
-   Modelica.Units.SI.Length staticHeadOutlets[M_outlets] "distance perpendicular to liquid surface, 0 if above surface";
-   Medium.AbsolutePressure staticHeadInlets_Pa_relative[N_inlets] "relative pressure to liquid surface, 0 if above surface";
-   Medium.AbsolutePressure staticHeadOutlets_Pa_relative[M_outlets] "relative pressure to liquid surface, 0 if above surface";
+   SI.Length staticHeadInlets[N_inlets] "distance perpendicular to liquid surface, 0 if above surface";
+   SI.Length staticHeadOutlets[M_outlets] "distance perpendicular to liquid surface, 0 if above surface";
+   SI.Pressure staticHeadInlets_Pa_relative[N_inlets] "relative pressure to liquid surface, 0 if above surface";
+   SI.Pressure staticHeadOutlets_Pa_relative[M_outlets] "relative pressure to liquid surface, 0 if above surface";
 
 Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
 
@@ -105,12 +104,12 @@ protected
   Medium.MassFraction Xi_out[Medium.nXi,M_outlets];
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h, 1e-10)))) "Friction factor for coupled boundaries";
-  //Modelica.Units.SI.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
+  //Medium.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
    Medium.DerDensityByPressure density_derp_h=(V_ref*medium.d)/(V*K) "Partial derivative of density by pressure";
 
-  Medium.AbsolutePressure r_damping = d*der(M);
+  SI.Pressure r_damping = d*der(M);
 
-  Medium.AbsolutePressure r[N_inlets];
+  SI.Pressure r[N_inlets];
 
   Medium.Temperature T_heatPort;
 

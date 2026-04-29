@@ -17,7 +17,7 @@ model TanValve "Valve with tan-shaped flow resistance"
   parameter Boolean invertInput = false "= true, if input u is inverted"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_ref = 0.1 "Reference mass flow rate";
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
+  parameter Medium.AbsolutePressure p_ref = 1e5 "Reference pressure";
   parameter Real relativeLeakiness(unit="1") = 1e-3 "Imperfection of valve";
 
 protected

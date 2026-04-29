@@ -7,7 +7,7 @@ function dp_SplitterWyeType2_DP "Pressure loss of wye splitter of type A_s + A_b
   input SI.Velocity w_b "Branching pipe velocity";
   input SI.Velocity w_s "Straight pipe velocity";
   input SI.Angle alpha "Branching angle";
-  input SI.Density rho "Medium density";
+  input Medium.Density rho "Medium density";
   input Real k "Scaling factor for family of curves at alpha = 90°";
   input Real K_b_prime "Correction factor for branching angle alpha";
   input SI.Velocity eps "To avoid division by zero";

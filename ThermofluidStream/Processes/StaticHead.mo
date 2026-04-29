@@ -2,24 +2,24 @@ within ThermofluidStream.Processes;
 model StaticHead "Static head model"
   extends ThermofluidStream.Interfaces.SISOFlow(final L=L_value, final clip_p_out=true);
 
-  parameter Modelica.Units.SI.Length fromPosition[3]
+  parameter SI.Length fromPosition[3]
     "Coordinates for the position the static head is computed from" annotation (Dialog(group="Geometry",
         enable=true));
-  parameter Modelica.Units.SI.Length toPosition[3]
+  parameter SI.Length toPosition[3]
     "Coordinates for the position the static head is computed to" annotation (Dialog(group="Geometry",
         enable=true));
 
   parameter ThermofluidStream.Utilities.Units.Inertance L_value=dropOfCommons.L
     "Inertance of pipe" annotation (Dialog(tab="Advanced", enable=not computeL));
 
-  parameter Modelica.Units.SI.Density rho_min=dropOfCommons.rho_min
+  parameter Medium.Density rho_min=dropOfCommons.rho_min
     "Minimal input density" annotation (Dialog(tab="Advanced"));
 
-    Modelica.Units.SI.Length staticHead "static head in m";
-    Modelica.Units.SI.Pressure staticHead_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
+    SI.Length staticHead "static head in m";
+    SI.Pressure staticHead_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
  parameter Boolean displayPositions=true "show positions in icon";
 protected
-  Modelica.Units.SI.Density rho_in=max(rho_min, Medium.density(inlet.state))
+  Medium.Density rho_in=max(rho_min, Medium.density(inlet.state))
     "Density of medium entering";
     outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
 equation

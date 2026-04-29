@@ -12,7 +12,7 @@ function getFlowQuantity "Computes selected quantity from state and massflow"
   input Medium.ThermodynamicState state;
   input SI.MassFlowRate m_flow;
   input Types.MassFlowQuantities quantity;
-  input SI.Density rho_min;
+  input Medium.Density rho_min;
   output Real value;
 
 protected

@@ -29,7 +29,7 @@ partial model SISOFlowAdvanced "Advanced model for SISOFlow"
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "= false, if dr_corr=0 (correction of inertial pressure difference)"
     annotation(Dialog(tab="Advanced", enable = not setFlow));
-  parameter SI.Pressure p_min = dropOfCommons.p_min "Minimum steady-state output pressure"
+  parameter Medium.AbsolutePressure p_min = dropOfCommons.p_min "Minimum steady-state output pressure"
     annotation(Dialog(tab="Advanced", enable= not setFlow and clip_p_out));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -43,13 +43,13 @@ partial model SISOFlowAdvanced "Advanced model for SISOFlow"
 
   // inlet state quantities
 protected
-  SI.Pressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
-  SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
+  Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
+  Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
   Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
 
   //outlet state quantities
-  SI.Pressure p_out "Outlet pressure";
-  SI.SpecificEnthalpy h_out "Outlet specific enthalpy";
+  Medium.AbsolutePressure p_out "Outlet pressure";
+  Medium.SpecificEnthalpy h_out "Outlet specific enthalpy";
   Medium.MassFraction Xi_out[Medium.nXi] "Outlet mass fractions";
 
 initial equation

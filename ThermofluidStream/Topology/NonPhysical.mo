@@ -65,17 +65,17 @@ package NonPhysical "Junctions and splitters with non-physical constraints"
     // these are needed by DynamicJunctionN
   protected
     Real w[2](each unit="1") "Regularized weighting factor for specific enthalpy";
-    SI.Density rho[2] = {Medium.density(inletA.state),Medium.density(inletB.state)} "Density at inlets";
+    Medium.Density rho[2] = {Medium.density(inletA.state),Medium.density(inletB.state)} "Density at inlets";
 
 
-    SI.Pressure p[2] =  {Medium.pressure(inletA.state),Medium.pressure(inletB.state)} "(Steady mass flow) pressure at inlets";
+    Medium.AbsolutePressure p[2] =  {Medium.pressure(inletA.state),Medium.pressure(inletB.state)} "(Steady mass flow) pressure at inlets";
     SI.Pressure r_in[2] "Inertial pressure at inlets";
-    SI.SpecificEnthalpy h[2] =  {Medium.specificEnthalpy(inletA.state),Medium.specificEnthalpy(inletB.state)} "Specific enthapy at inlets";
+    Medium.SpecificEnthalpy h[2] =  {Medium.specificEnthalpy(inletA.state),Medium.specificEnthalpy(inletB.state)} "Specific enthapy at inlets";
     Medium.MassFraction Xi[Medium.nXi,2] "Mass factions at inlets";
 
-    SI.Pressure p_mix "Outlet (steady mass flow) pressure";
+    Medium.AbsolutePressure p_mix "Outlet (steady mass flow) pressure";
     SI.Pressure r_mix "Outlet inertial pressure";
-    SI.SpecificEnthalpy h_mix "Outlet specific enthalpy";
+    Medium.SpecificEnthalpy h_mix "Outlet specific enthalpy";
     Medium.MassFraction Xi_mix[Medium.nXi] "Outlet mass fractions";
 
     Real w2[2](each unit="1") "Regularized weighting factor for steady mass flow pressure";

@@ -8,7 +8,7 @@ model PCV "Pressure and pressure-drop control valve"
   parameter Mode mode = Mode.drop "Valve mode"
     annotation(Dialog(group="Pressure setpoint"));
   parameter Boolean pressureFromInput = false "= true, if pressure input connector is enabled";
-  parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
+  parameter Medium.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
     annotation(Dialog(group="Pressure setpoint",enable=not pressureFromInput));
 
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization mass flow"

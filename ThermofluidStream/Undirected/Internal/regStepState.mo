@@ -17,8 +17,8 @@ function regStepState "Apply regStep on State"
   output Medium.ThermodynamicState state;
 
 protected
-  SI.Pressure p;
-  SI.SpecificEnthalpy h;
+  Medium.AbsolutePressure p;
+  Medium.SpecificEnthalpy h;
   Medium.MassFraction Xi[Medium.nXi];
 
   Medium.MassFraction Xi_forwards[Medium.nXi] = Medium.massFraction(state_forwards);

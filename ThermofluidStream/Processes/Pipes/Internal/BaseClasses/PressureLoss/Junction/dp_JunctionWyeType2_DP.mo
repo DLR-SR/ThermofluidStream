@@ -13,7 +13,7 @@ function dp_JunctionWyeType2_DP
   input SI.Angle alpha_deg "Branching angle in degree";
   input Real K_s[3] "Free term correction for straight inlet";
   input Real K_b[3] "Free term correction for branching inlet";
-  input SI.Density rho_c "Density of fluid at (common) outlet";
+  input Medium.Density rho_c "Density of fluid at (common) outlet";
   input SI.Velocity eps "To avoid division by zero";
   // Output variables
   output SI.Pressure dp_b "Pressure loss at branching inlet";

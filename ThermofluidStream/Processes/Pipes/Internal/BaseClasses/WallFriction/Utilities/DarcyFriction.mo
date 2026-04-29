@@ -2,24 +2,24 @@ within ThermofluidStream.Processes.Pipes.Internal.BaseClasses.WallFriction.Utili
 function DarcyFriction
   extends Modelica.Icons.Function;
 
-  input Modelica.Units.SI.MassFlowRate m_flow "Mass flow rate";
-  input Modelica.Units.SI.Length D_h "Hydraulic diameter";
-  input Modelica.Units.SI.Length Delta(min = 0) "Relaitiv roughness";
-  input Modelica.Units.SI.Density rho "Inlet density";
-  input Modelica.Units.SI.DynamicViscosity mu "Dynamic viscosity";
+  input SI.MassFlowRate m_flow "Mass flow rate";
+  input SI.Length D_h "Hydraulic diameter";
+  input SI.Length Delta(min = 0) "Relaitiv roughness";
+  input Medium.Density rho "Inlet density";
+  input Medium.DynamicViscosity mu "Dynamic viscosity";
   input Real Re1 "Lower boundary Re for laminar-turbulent transition regime";
   input Real Re2 "Upper boundary Re for laminar-turbulent transition regime";
   output Types.DarcyFrictionFactor lambda "Darcy friction factor";
 protected
-  Modelica.Units.SI.Area A_0 = pi/4*D_h^2;
+  SI.Area A_0 = pi/4*D_h^2;
 
   function interpolateInRegion2 "Interpolation in log-log space using a cubic Hermite polynomial, where x=log10(Re), y=log10(lambda2)"
     extends Modelica.Icons.Function;
-    input Modelica.Units.SI.ReynoldsNumber Re "Known independent variable";
-    input Modelica.Units.SI.ReynoldsNumber Re1 "Boundary between laminar regime and transition";
-    input Modelica.Units.SI.ReynoldsNumber Re2 "Boundary between transition and turbulent regime";
+    input SI.ReynoldsNumber Re "Known independent variable";
+    input SI.ReynoldsNumber Re1 "Boundary between laminar regime and transition";
+    input SI.ReynoldsNumber Re2 "Boundary between transition and turbulent regime";
     input Real Delta(min = 0) "Relative roughness";
-    input Modelica.Units.SI.MassFlowRate m_flow "Mass flow rate from inlet to outlet";
+    input SI.MassFlowRate m_flow "Mass flow rate from inlet to outlet";
     output Real lambda2 "Unknown return value";
     output Real dlambda2_dm_flow "Derivative of return value";
     // point lg(lambda2(Re1)) with derivative at lg(Re1)

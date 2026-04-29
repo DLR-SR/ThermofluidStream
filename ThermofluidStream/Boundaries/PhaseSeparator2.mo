@@ -19,11 +19,11 @@ model PhaseSeparator2 "Phase separator with two outlets"
   parameter Real pipe2_high(unit="1", min=0, max=1) "High end of second pipe";
   parameter Boolean density_derp_h_from_media=false "= true, if the derivative of density by pressure at const specific enthalpy is calculated from media model (only available for some media models)"
      annotation(Dialog(tab="Advanced", group="Damping", enable=(k_volume_damping > 0)),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
+  parameter Medium.DerDensityByPressure density_derp_h_set = 1e-6 "Derivative of density by pressure at const specific enthalpy set value (e.g approx. 1e-5 for air, 1e-7 for water)"
      annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
   parameter Init init_method = ThermofluidStream.Boundaries.Internal.InitializationMethodsPhaseSeperator.l "Initialization method"
     annotation(Dialog(tab="Initialization"));
-  parameter SI.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
+  parameter Medium.SpecificEnthalpy h_0 = Medium.h_default "Initial specific enthalpy"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.h)));
   parameter SI.Mass M_0 = 1 "Initial mass"
     annotation(Dialog(tab="Initialization", enable=(init_method==Init.M)));
@@ -39,14 +39,14 @@ model PhaseSeparator2 "Phase separator with two outlets"
 
 protected
   Medium.MassFraction x = (medium.h-h_bubble)/(h_dew - h_bubble) "Calculated vapor quality of medium that can go below zero and above one";
-  SI.SpecificEnthalpy h_pipe1 "Specific enthalpy of medium in first pipe";
-  SI.SpecificEnthalpy h_pipe2 "Specific enthalpy of medium in second pipe";
+  Medium.SpecificEnthalpy h_pipe1 "Specific enthalpy of medium in first pipe";
+  Medium.SpecificEnthalpy h_pipe2 "Specific enthalpy of medium in second pipe";
 
-  SI.Density d_liq = Medium.bubbleDensity(Medium.setSat_p(medium.p)) "Bubble density at saturation";
-  SI.Density d_gas = Medium.dewDensity(Medium.setSat_p(medium.p)) "Dew density at saturation";
+  Medium.Density d_liq = Medium.bubbleDensity(Medium.setSat_p(medium.p)) "Bubble density at saturation";
+  Medium.Density d_gas = Medium.dewDensity(Medium.setSat_p(medium.p)) "Dew density at saturation";
 
-  SI.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(medium.p))-1 "Specific bubble enthalpy";
-  SI.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Specific dew enthalpy";
+  Medium.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(medium.p))-1 "Specific bubble enthalpy";
+  Medium.SpecificEnthalpy h_dew = Medium.dewEnthalpy(Medium.setSat_p(medium.p))+1 "Specific dew enthalpy";
 
 initial equation
   assert(pipe1_high > pipe1_low, "Upper pipe end must be higher then lower end.", AssertionLevel.error);

@@ -20,7 +20,7 @@ model MCV "Flow rate control valve"
     annotation(Dialog(tab="Advanced"));
   parameter Real k2(unit="1") = 100 "Integrator windup factor"
     annotation(Dialog(tab="Advanced"));
-  parameter SI.Pressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
+  parameter Medium.AbsolutePressure p_min_par = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab="Advanced"));
   parameter Boolean enableClippingOutput = false "= true, if clippingOutput is enabled";
 
@@ -29,9 +29,9 @@ model MCV "Flow rate control valve"
   Modelica.Blocks.Interfaces.RealOutput clippingOutput = (dp - dp_int) if enableClippingOutput ""
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-110})));
 
-  SI.Density rho_rear_in = Medium.density(rear.state_forwards) "Inlet density rear port";
-  SI.Density rho_fore_in = Medium.density(fore.state_rearwards) "Inlet density fore port";
-  SI.Density rho_in = Undirected.Internal.regStep(m_flow, rho_rear_in, rho_fore_in, m_flow_reg) "Inlet density";
+  Medium.Density rho_rear_in = Medium.density(rear.state_forwards) "Inlet density rear port";
+  Medium.Density rho_fore_in = Medium.density(fore.state_rearwards) "Inlet density fore port";
+  Medium.Density rho_in = Undirected.Internal.regStep(m_flow, rho_rear_in, rho_fore_in, m_flow_reg) "Inlet density";
 
 
   SI.VolumeFlowRate V_flow_fore = m_flow/rho_rear_in "Volume flow rate fore port";

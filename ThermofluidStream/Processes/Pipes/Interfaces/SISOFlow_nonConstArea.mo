@@ -24,7 +24,7 @@ partial model SISOFlow_nonConstArea "SISOFlow considering dynamic effects due to
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "If false, set dr_corr to zero"
     annotation(Dialog(tab = "Advanced"));
-  parameter SI.Pressure p_min = dropOfCommons.p_min "Minimal steady-state output pressure"
+  parameter Medium.AbsolutePressure p_min = dropOfCommons.p_min "Minimal steady-state output pressure"
     annotation(Dialog(tab = "Advanced", enable = clip_p_out));
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation(Placement(transformation(extent = {{-120, -20}, {-80, 20}}), iconTransformation(extent = {{-120, -20}, {-80, 20}})));
@@ -41,12 +41,12 @@ partial model SISOFlow_nonConstArea "SISOFlow considering dynamic effects due to
   SI.Pressure dq "Dynamic pressure difference dq = q_out - q_in";
   // Inlet state quantities
 protected
-  SI.Pressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
-  SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthaply";
+  Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
+  Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthaply";
   Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
   // Outlet state quantities
-  SI.Pressure p_out "Outlet pressure";
-  SI.SpecificEnthalpy h_out "Outlet specific enthaply";
+  Medium.AbsolutePressure p_out "Outlet pressure";
+  Medium.SpecificEnthalpy h_out "Outlet specific enthaply";
   Medium.MassFraction Xi_out[Medium.nXi] "Outlet mass fractions";
 initial equation
   if initM_flow == InitializationMethods.state then

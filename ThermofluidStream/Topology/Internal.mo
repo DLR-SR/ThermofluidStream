@@ -15,9 +15,9 @@ package Internal
 
     parameter SI.Time TC = 0.1 "Time constant for RT massflow constraint"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.AbsolutePressure p_reg = 1e2 "Regularizaion pressure for pressure drop calculation"
+    parameter SI.Pressure p_reg = 1e2 "Regularizaion pressure for pressure drop calculation"
       annotation(Dialog(tab="Advanced"));
-    parameter SI.Density rho_min=dropOfCommons.rho_min "Minimum density"
+    parameter Medium.Density rho_min=dropOfCommons.rho_min "Minimum density"
       annotation(Dialog(tab="Advanced"));
 
     parameter SplitterModes mode = SplitterModes.pressureDrop "Splitter mode (see Documentation)";
@@ -48,9 +48,9 @@ package Internal
     SI.Power P_B = (v_in+v_B)/2*(-outletB.m_flow)*(p_B-p_in) "Loss in enthalpy flow rate (B)";
 
   protected
-    SI.AbsolutePressure dp(stateSelect=StateSelect.always, start=0, fixed=true);
-    SI.AbsolutePressure p_A "Outlet A pressure";
-    SI.AbsolutePressure p_B "Outlet B pressure";
+    SI.PressureDifference dp(stateSelect=StateSelect.always, start=0, fixed=true);
+    Medium.AbsolutePressure p_A "Outlet A pressure";
+    Medium.AbsolutePressure p_B "Outlet B pressure";
 
     SI.Pressure r_I;
     SI.Pressure r_A "Outlet A inertial pressure";
@@ -59,14 +59,14 @@ package Internal
     SI.Pressure r_corr_A;
     SI.Pressure r_corr_B;
 
-    SI.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
-    SI.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
-    SI.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
+    Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure";
+    Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy";
+    Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions";
 
     Real splitRatioLim(unit="1");
     parameter Real eps(unit="1") = 1e-5 "Numerical minimal distance of input to 0 and 1";
 
-    parameter SI.AbsolutePressure p_min = dropOfCommons.p_min;
+    parameter Medium.AbsolutePressure p_min = dropOfCommons.p_min;
 
   initial equation
     splitRatioLim = min(1-eps, max(eps, if invert then 1-splitRatio else splitRatio));

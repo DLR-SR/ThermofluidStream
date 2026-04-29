@@ -27,7 +27,7 @@ model SingleSensorSelect "Selectable sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.Quantities.p_total_bar then "(p+r) in bar"
     else "error";
 
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimum density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
 
   parameter Boolean outputValue = false "= true, if sensor output is enabled"

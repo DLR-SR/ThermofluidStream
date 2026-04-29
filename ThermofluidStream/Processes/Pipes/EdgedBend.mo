@@ -28,18 +28,18 @@ model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipatio
     annotation(Dialog(tab = "Advanced", enable = not computeL));
   parameter Boolean computeL = true "Compute L from r and l"
     annotation(Dialog(tab = "Advanced"));
-  parameter SI.Density rho_min = dropOfCommons.rho_min "Minimal density"
+  parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal density"
     annotation (Dialog(tab = "Advanced"));
   parameter Boolean assumeConstantMaterialProperties=true "= true, if constant density and dynamic viscosity is assumed (use '= false' e.g. for Ma > 0.3)"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  SI.Density rho "Mean density";
-  SI.DynamicViscosity mu "Mean dynamic viscosity";
+  Medium.Density rho "Mean density";
+  Medium.DynamicViscosity mu "Mean dynamic viscosity";
 protected
-  SI.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
-  SI.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
-  SI.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
-  SI.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
+  Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
+  Medium.Density rho_out = if assumeConstantMaterialProperties then rho_in else max(rho_min, Medium.density(outlet.state)) "Outlet density";
+  Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
+  Medium.DynamicViscosity mu_out = if assumeConstantMaterialProperties then mu_in else Medium.dynamicViscosity(outlet.state) "Outlet dynamic viscosity";
   final parameter SI.Length ks_internal=
    if material == ThermofluidStream.Processes.Internal.Material.concrete then 5e-3
    elseif material == ThermofluidStream.Processes.Internal.Material.wood then 0.5e-3

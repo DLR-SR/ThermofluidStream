@@ -27,18 +27,18 @@ partial model partialJunctionY "Duplicate of JunctionN considering dynamic effec
   Real w_straight(unit = "1") "Regularized weighting factor for specific enthalpy inlet straight";
   Real w_branching(unit = "1") "Regularized weighting factor for specific enthalpy inlet branching";
 
-  SI.Density rho_straight = Medium.density(inlet_straight.state) "Density at straight inlet";
-  SI.Density rho_branching = Medium.density(inlet_branching.state) "Density at branching inlet";
-  SI.Density rho[2] = {rho_straight, rho_branching} "Density at inlet [straight branching]";
+  Medium.Density rho_straight = Medium.density(inlet_straight.state) "Density at straight inlet";
+  Medium.Density rho_branching = Medium.density(inlet_branching.state) "Density at branching inlet";
+  Medium.Density rho[2] = {rho_straight, rho_branching} "Density at inlet [straight branching]";
 
   Real w[2] = {w_straight, w_branching} "Regularized weighting factor for specific enthalpy";
 
-  SI.Pressure p_in_straight = Medium.pressure(inlet_straight.state) "(steady mass-flow) pressure straight inlet";
-  SI.Pressure p_in_branching = Medium.pressure(inlet_branching.state) "(steady mass-flow) pressure branching inlet";
+  Medium.AbsolutePressure p_in_straight = Medium.pressure(inlet_straight.state) "(steady mass-flow) pressure straight inlet";
+  Medium.AbsolutePressure p_in_branching = Medium.pressure(inlet_branching.state) "(steady mass-flow) pressure branching inlet";
 
-  SI.Pressure p_straight "Total pressure straight inlet";
-  SI.Pressure p_branching "Total pressure branching inlet";
-  SI.Pressure p[2] = {p_straight, p_branching} "Total pressure inlets [straight branching]";
+  Medium.AbsolutePressure p_straight "Total pressure straight inlet";
+  Medium.AbsolutePressure p_branching "Total pressure branching inlet";
+  Medium.AbsolutePressure p[2] = {p_straight, p_branching} "Total pressure inlets [straight branching]";
 
   SI.Pressure dq_straight "Dynamic pressure difference straight inlet - outlet";
   SI.Pressure dq_branching "Dynamic pressure difference straight inlet - outlet";
@@ -47,15 +47,15 @@ partial model partialJunctionY "Duplicate of JunctionN considering dynamic effec
   SI.Pressure dp_branching "Pressure difference branching inlet - outlet";
   SI.Pressure dp[2] = {dp_straight, dp_branching} "Pressure differences inlets [straight branching]";
 
-  SI.SpecificEnthalpy h_straight = Medium.specificEnthalpy(inlet_straight.state) "Specific enthapy inlet straight";
-  SI.SpecificEnthalpy h_branching = Medium.specificEnthalpy(inlet_branching.state) "Specific enthapy inlet branching";
-  SI.SpecificEnthalpy h[2] = {h_straight, h_branching} "Specific enthapy inlets [straight branching]";
-  SI.SpecificEnthalpy h_mix "Outlet specific enthalpy";
+  Medium.SpecificEnthalpy h_straight = Medium.specificEnthalpy(inlet_straight.state) "Specific enthapy inlet straight";
+  Medium.SpecificEnthalpy h_branching = Medium.specificEnthalpy(inlet_branching.state) "Specific enthapy inlet branching";
+  Medium.SpecificEnthalpy h[2] = {h_straight, h_branching} "Specific enthapy inlets [straight branching]";
+  Medium.SpecificEnthalpy h_mix "Outlet specific enthalpy";
 
   Medium.MassFraction Xi[Medium.nXi, 2] "Mass factions inlets [straight branching]";
   Medium.MassFraction Xi_mix[Medium.nXi] "Mass fractions outlet";
 
-  SI.Pressure p_mix "Outlet (steady mass-flow) pressure";
+  Medium.AbsolutePressure p_mix "Outlet (steady mass-flow) pressure";
   SI.Pressure r_mix "Outlet inertial pressure";
 
   SI.Velocity c_straight "Velocity straight inlet";

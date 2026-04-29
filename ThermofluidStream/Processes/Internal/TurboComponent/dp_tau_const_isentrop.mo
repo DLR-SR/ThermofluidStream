@@ -23,7 +23,7 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
 
 
 protected
-  SI.Pressure p_in = Medium.pressure(state_in) "Inlet pressure";
+  Medium.AbsolutePressure p_in = Medium.pressure(state_in) "Inlet pressure";
   SI.Temperature T_in = Medium.temperature(state_in) "Inlet temperature";
   Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "Inlet isentropic coefficient";
   Real R(unit="J/(kg.K)") = R_m/Medium.molarMass(state_in) "Inlet specific gas constant";

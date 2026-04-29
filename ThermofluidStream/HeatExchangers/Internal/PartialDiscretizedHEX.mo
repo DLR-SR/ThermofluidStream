@@ -27,11 +27,11 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
   parameter Boolean calculate_efficiency=false "= true, if heat exchanger efficiency is calculated"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  parameter Modelica.Units.SI.Area A=10 "Heat transfer area"
+  parameter SI.Area A=10 "Heat transfer area"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
+  parameter SI.Volume V_Hex=0.001 "Volume for heat transfer calculation"
     annotation (Dialog(group="Heat transfer parameters"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall"
+  parameter SI.CoefficientOfHeatTransfer k_wall=100 "Coefficient of heat transfer for pipe wall"
     annotation (Dialog(group="Heat transfer parameters"));
 
   parameter Boolean initializeMassFlow=false "= true, if inlet mass flow rates are initialized"
@@ -80,7 +80,7 @@ partial model PartialDiscretizedHEX "Base class for discretized heat exchangers"
 protected
   parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
   parameter Integer nCellsParallel=1 "Number of discretization elements in parallel";
-  parameter Modelica.Units.SI.ThermalConductance G=k_wall*A "Wall thermal conductance"
+  parameter SI.ThermalConductance G=k_wall*A "Wall thermal conductance"
     annotation (Dialog(group="Wall parameters"));
   function efficiency = Internal.calculateEfficiency (redeclare package MediumA = MediumA, redeclare package MediumB = MediumB) "Heat exchanger efficiency";
 

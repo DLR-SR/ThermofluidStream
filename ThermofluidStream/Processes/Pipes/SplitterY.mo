@@ -27,9 +27,9 @@ model SplitterY "Pressure drop of an Y-shaped splitter"
   // Real c_sc = if abs(c_in) > eps then abs(c_straight/c_in) else 0 "Velocity ratio (straight outlet)/(common inlet)";
   Real A_sc = A_straight/A_in "Area ratio straight/common inlet";
 protected
-  SI.Density rho_in = Medium.density(inlet.state) "Inlet density";
-  SI.Density rho_straight = if assumeConstantDensity then rho_in else Medium.density(outlet_straight.state) "Inlet density";
-  SI.Density rho_branching = if assumeConstantDensity then rho_in else Medium.density(outlet_branching.state) "Inlet density";
+  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density";
+  Medium.Density rho_straight = if assumeConstantDensity then rho_in else Medium.density(outlet_straight.state) "Inlet density";
+  Medium.Density rho_branching = if assumeConstantDensity then rho_in else Medium.density(outlet_branching.state) "Inlet density";
   Real alpha_deg = alpha*180/pi "Branching angle (in deg)";
   // Table of correction factor K_b_prime for dependency of pressure loss at branching pipe zeta_branch on branching angle alpha
   Modelica.Blocks.Tables.CombiTable1Ds K_b(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, smoothness = Modelica.Blocks.Types.Smoothness.MonotoneContinuousDerivative1, table = [0, 0.03; 15, 0.04; 30, 0.16; 45, 0.36; 60, 0.64; 90, 1; 95, 1])

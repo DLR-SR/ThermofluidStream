@@ -10,9 +10,9 @@ inlets and outlets the volume is connected to.
 </html>"));
 
   parameter Boolean useHeatport=false "If true heatport is added";
-  parameter Modelica.Units.SI.Area A=1 "Contact area of volume with medium"
+  parameter SI.Area A=1 "Contact area of volume with medium"
     annotation (Dialog(enable=useHeatport));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer U=200
+  parameter SI.CoefficientOfHeatTransfer U=200
     "Heat transfer coefficient to medium"
     annotation (Dialog(enable=useHeatport));
   parameter Boolean initialize_pressure=true "If true: initialize Pressure"
@@ -23,7 +23,7 @@ inlets and outlets the volume is connected to.
   parameter Boolean initialize_energy=false
     "Initialize specific inner energy with temperature or specific enthalpy condition"
     annotation (Dialog(tab="Initialization"));
-  parameter Medium.Temperature T_start=Medium.T_default
+  parameter Medium.Temperature T_start = Medium.T_default
     "Initial Temperature" annotation (Dialog(tab="Initialization", enable=
           initialize_energy and (not use_hstart)));
   parameter Boolean use_hstart=false
@@ -40,7 +40,7 @@ inlets and outlets the volume is connected to.
   parameter Boolean initialize_LiquidMass=true
     "If true: initialize with mass of the liquid medium component. Initialize_Xi must be false."
     annotation (Dialog(tab="Initialization", enable=not initialize_Xi));
-  parameter Modelica.Units.SI.Mass M_liq_start=0 "Initial mass of the liquid"
+  parameter SI.Mass M_liq_start=0 "Initial mass of the liquid"
     annotation (Dialog(tab="Initialization", enable=initialize_LiquidMass));
 
   parameter Utilities.Units.Inertance L=dropOfCommons.L
@@ -58,13 +58,13 @@ inlets and outlets the volume is connected to.
     "Regularization threshold of mass flow rate"
     annotation (Dialog(tab="Advanced"));
 
-  parameter Modelica.Units.SI.Length outletTransition=0.01
+  parameter SI.Length outletTransition=0.01
     "Width of band for smooth transition between gas and liquid at outlet"
     annotation (Dialog(tab="Advanced"));
   parameter Boolean chaoticLife=false
     "Allows small gas bubbles to go from inlet through liquid even if staticHead is positive, experimental. Large increase in simulation time."
     annotation (Dialog(tab="Advanced"));
-  parameter Modelica.Units.SI.Volume gasBubbleVolume=0.0001
+  parameter SI.Volume gasBubbleVolume=0.0001
     "Tuning parameter for size of gas bubbles"
     annotation (Dialog(tab="Advanced", enable=chaoticLife));
 
@@ -86,8 +86,8 @@ inlets and outlets the volume is connected to.
 
   Medium.BaseProperties medium(preferredMediumStates=usePreferredMediumStates);
 
-  Modelica.Units.SI.Volume V;
-  Modelica.Units.SI.Volume V_liquid;
+  SI.Volume V;
+  SI.Volume V_liquid;
   parameter Medium.AbsolutePressure p_ref=1e5
     "Reference pressure of tank when volume is measured";
   //The tank gets a bulk modulus to handle the stiffness of incompressible media better
@@ -96,17 +96,17 @@ inlets and outlets the volume is connected to.
     "Bulk modulus of tank (used also for stiffness modulation)";
 
   //setting the state is to prohibit dynamic state selection e.g. in VolumesDirectCoupling
-  Modelica.Units.SI.Mass M(stateSelect=if usePreferredMediumStates then
+  SI.Mass M(stateSelect=if usePreferredMediumStates then
         StateSelect.default else StateSelect.always) = V*medium.d;
-  Modelica.Units.SI.Mass MXi[Medium.nXi](each stateSelect=if
+  SI.Mass MXi[Medium.nXi](each stateSelect=if
         usePreferredMediumStates then StateSelect.default else StateSelect.always)
      = M*medium.Xi;
-  Modelica.Units.SI.Energy U_med(stateSelect=if usePreferredMediumStates then
+  SI.Energy U_med(stateSelect=if usePreferredMediumStates then
         StateSelect.default else StateSelect.always) = M*medium.u;
 
-  Modelica.Units.SI.HeatFlowRate Q_flow;
-  Modelica.Units.SI.Power W_v;
-  parameter Modelica.Units.SI.Length tankCenter[3]={0,0,0}
+  SI.HeatFlowRate Q_flow;
+  SI.Power W_v;
+  parameter SI.Length tankCenter[3]={0,0,0}
     "Position of the tank center"
     annotation (Dialog(tab="General", group="Geometry"));
   parameter Integer N_inlets=2 "Number of inlets"
@@ -117,35 +117,35 @@ inlets and outlets the volume is connected to.
     annotation (Dialog(tab="General", group="Geometry"));
   parameter Integer N_fores=2 "Number of fores"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Modelica.Units.SI.Length inletPositions[N_inlets,3]={{0,0,0} for i in
+  parameter SI.Length inletPositions[N_inlets,3]={{0,0,0} for i in
           1:N_inlets} "Positions of all inlets"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Modelica.Units.SI.Length outletPositions[N_outlets,3]={{0,0,0} for
+  parameter SI.Length outletPositions[N_outlets,3]={{0,0,0} for
       i in 1:N_outlets} "Positions of all outlets"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Modelica.Units.SI.Length rearPositions[N_rears,3]={{0,0,0} for i in
+  parameter SI.Length rearPositions[N_rears,3]={{0,0,0} for i in
           1:N_rears} "Positions of all rears"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Modelica.Units.SI.Length forePositions[N_fores,3]={{0,0,0} for i in
+  parameter SI.Length forePositions[N_fores,3]={{0,0,0} for i in
           1:N_fores} "Positions of all fores"
     annotation (Dialog(tab="General", group="Geometry"));
-  Modelica.Units.SI.Length centreOfMass[3];
+  SI.Length centreOfMass[3];
 
-  Modelica.Units.SI.Length staticHeadInlets[N_inlets]
+  SI.Length staticHeadInlets[N_inlets]
     "distance perpendicular to liquid surface";
-  Modelica.Units.SI.Length staticHeadOutlets[N_outlets]
+  SI.Length staticHeadOutlets[N_outlets]
     "distance perpendicular to liquid surface";
-  Modelica.Units.SI.Length staticHeadRears[N_rears]
+  SI.Length staticHeadRears[N_rears]
     "distance perpendicular to liquid surface";
-  Modelica.Units.SI.Length staticHeadFores[N_fores]
+  SI.Length staticHeadFores[N_fores]
     "distance perpendicular to liquid surface";
-  Medium.AbsolutePressure staticHeadInlets_Pa_relative[N_inlets]
+  SI.Pressure staticHeadInlets_Pa_relative[N_inlets]
     "relative pressure to liquid surface";
-  Medium.AbsolutePressure staticHeadOutlets_Pa_relative[N_outlets]
+  SI.Pressure staticHeadOutlets_Pa_relative[N_outlets]
     "relative pressure to liquid surface";
-  Medium.AbsolutePressure staticHeadRears_Pa_relative[N_rears]
+  SI.Pressure staticHeadRears_Pa_relative[N_rears]
     "relative pressure to liquid surface";
-  Medium.AbsolutePressure staticHeadFores_Pa_relative[N_fores]
+  SI.Pressure staticHeadFores_Pa_relative[N_fores]
     "relative pressure to liquid surface";
 
   Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
@@ -164,8 +164,8 @@ protected
   Medium.ThermodynamicState state_out_rear[N_rears];
   Medium.ThermodynamicState state_out_fore[N_fores];
 
-  Medium.AbsolutePressure r_rear[N_rears];
-  Medium.AbsolutePressure r_fore[N_fores];
+  SI.Pressure r_rear[N_rears];
+  SI.Pressure r_fore[N_fores];
   Medium.SpecificEnthalpy h_rear[N_rears];
   Medium.SpecificEnthalpy h_fore[N_fores];
   Medium.MassFraction Xi_rear[Medium.nXi,N_rears];
@@ -173,13 +173,13 @@ protected
 
   Real d(unit="1/(m.s)") = k_volume_damping*sqrt(abs(2*L/(V*max(density_derp_h,
     1e-10)))) "Friction factor for coupled boundaries";
-  //Modelica.Units.SI.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
+  //Medium.DerDensityByPressure density_derp_h=1e-5 "Partial derivative of density by pressure";
   Medium.DerDensityByPressure density_derp_h=(V_ref*medium.d)/(V*K)
     "Partial derivative of density by pressure";
 
-  Medium.AbsolutePressure r_damping=d*der(M);
+  SI.Pressure r_damping=d*der(M);
 
-  Medium.AbsolutePressure r[N_inlets];
+  SI.Pressure r[N_inlets];
 
   Medium.Temperature T_heatPort;
 

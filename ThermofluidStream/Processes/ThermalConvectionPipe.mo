@@ -43,21 +43,21 @@ protected
   constant SI.NusseltNumber Nu_laminar = 4.36 "Nusselt number for laminar flow";
   SI.CoefficientOfHeatTransfer h_avg "Average heat transfer coefficient";
 
-  SI.ThermalConductivity k =  Medium.thermalConductivity(center_state) "Center state thermal conductivity ";
+  Medium.ThermalConductivity k =  Medium.thermalConductivity(center_state) "Center state thermal conductivity ";
 
-  SI.Density rho = Medium.density(center_state) "Center state density";
+  Medium.Density rho = Medium.density(center_state) "Center state density";
   SI.Mass M = V*rho "Mass";
-  SI.SpecificEnthalpy dh "Specific enthalpy difference (outlet-inlet)";
+  Medium.SpecificEnthalpy dh "Specific enthalpy difference (outlet-inlet)";
 
   //Flow characteristics
-  SI.DynamicViscosity mu = Medium.dynamicViscosity(center_state) "Center state dynamic viscosity";
+  Medium.DynamicViscosity mu = Medium.dynamicViscosity(center_state) "Center state dynamic viscosity";
   SI.ReynoldsNumber Re_D "Reynolds number";
   SI.NusseltNumber Nu_turb "Nusselt number for turbulent flow";
-  SI.PrandtlNumber Pr = Medium.prandtlNumber(center_state) "Center state Prandtl number";
+  Medium.PrandtlNumber Pr = Medium.prandtlNumber(center_state) "Center state Prandtl number";
 
   SI.Velocity v_m "Mean fluid velocity";
 
-  //SI.VelocityOfSound c = Medium.velocityOfSound(center_state) "Velocity of sound";
+  //Medium.VelocityOfSound c = Medium.velocityOfSound(center_state) "Velocity of sound";
 
   parameter Real eps(unit="1") = Modelica.Constants.eps;
 

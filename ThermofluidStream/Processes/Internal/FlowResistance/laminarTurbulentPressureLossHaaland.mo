@@ -28,8 +28,8 @@ protected
   SI.ReynoldsNumber Re_abs_limited "Limited absolute value of Reynolds number";
 
   Real friction_factor(unit="1");
-  SI.Pressure pressureLossLaminar "Laminar pressure loss";
-  SI.Pressure pressureLossTurbulent "Turbulent pressure loss";
+  SI.PressureDifference pressureLossLaminar "Laminar pressure loss";
+  SI.PressureDifference pressureLossTurbulent "Turbulent pressure loss";
 
   constant SI.ReynoldsNumber Re_small=1e-5 "Lower limit of turbulent Reynolds number to avoid division by zero";
 

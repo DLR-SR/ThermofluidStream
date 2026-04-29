@@ -14,7 +14,7 @@ Medium model needet to compute properties from the inlet_state.
   input Medium.ThermodynamicState state_in "Inlet state";
   input Medium.MassFlowRate m_flow_norm "Normalization mass flow rate";
   input SI.AngularVelocity omega_norm "Normalization angular velocity";
-  input Medium.Density rho_min "Minimum density (relevant at p=0)";
+  input SI.Density rho_min "Minimum density (relevant at p=0)";
 
   output SI.Pressure dp "Pressure difference";
   output SI.Torque tau_st "Steady state torque";
