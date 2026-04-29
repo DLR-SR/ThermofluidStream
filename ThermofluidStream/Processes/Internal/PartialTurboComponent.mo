@@ -172,12 +172,5 @@ equation
 <li>If one wants to prescribe a speed of the component, instead of being interested in the omega dynamics, enable omegaFromInput.</li>
 <li>The heatport is only of interest, if the overall energy of the system must be conserved.</li>
 </ul>
-</html>", revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Added showLegacyWarning, required for warning of legacy dp_tau_const_isentrop function.
-    </li>
-  </ul>
 </html>"));
 end PartialTurboComponent;
