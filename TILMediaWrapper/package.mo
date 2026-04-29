@@ -3,7 +3,7 @@ package TILMediaWrapper "Wrapper for the TIL Media Suite"
   extends Modelica.Icons.Package;
 
   annotation (
-  version="0.1.3",
+  version="0.1.2",
   uses(
     Modelica(version="4.1.0"),
     ThermofluidStream(version="1.3.0"),
