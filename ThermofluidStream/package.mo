@@ -5,14 +5,14 @@ package ThermofluidStream "Library for the modeling of thermofluid streams"
   import Modelica.Units.SI;
 
   annotation (
-    version = "1.2.0",
-    versionDate = "2024-11-18",
-    dateModified = "2024-11-18 16:54:00Z",
+    version = "1.3.0",
+	versionDate = "2026-04-30",
+	dateModified = "2026-04-30",
     uses(
-      Modelica(version="4.0.0"),
-      Complex(version="4.0.0")),
+      Modelica(version="4.1.0"),
+      Complex(version="4.1.0")),
     conversion(
-      noneFromVersion="1.1.0",
+      noneFromVersion="1.2.0",
       from(
         version="1.0.0",
         script="modelica://ThermofluidStream/Resources/Scripts/Conversion/ConvertTFS_from_1.0.0_to_1.1.0.mos"),
@@ -56,7 +56,7 @@ For copyright and license, see
       <img width=\"72\" src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
     </td>
     <td valign=\"middle\">
-      <strong>Copyright &copy; DLR Institut f&uuml;r Systemdynamik und Regelungstechnik</strong>
+      <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>
     </td>
   </tr>
 </table>

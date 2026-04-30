@@ -7,24 +7,36 @@ class License "Copyright and license"
       info="<html>
 <p>
 All files in this directory (<em>ThermofluidStream</em>) and in all
-subdirectories, especially all files that build package \"ThermofluidStream\"
-and all files in \"ThermofluidStream/Resources/\" and \"ThermofluidStream/help/\"
+subdirectories, especially all files that build package &quot;ThermofluidStream&quot;
+and all files in &quot;ThermofluidStream/Resources/&quot; and &quot;ThermofluidStream/help/&quot;
 are licensed by <strong>DLR</strong> under the
 <strong>3-Clause BSD License</strong>.
 </p>
 
 <h4>Licensor</h4>
 <p>
-Deutsches Zentrum f&uuml;r Luft- und Raumfahrt (DLR)<br>
-<a href=\"https://www.dlr.de/sr/en\">Institut f&uuml;r Systemdynamik und Regelungstechnik (SR)</a><br>
+Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
+Oberpfaffenhofen<br>
 M&uuml;nchener Stra&szlig;e 20<br>
 D-82234 We&szlig;ling<br>
 Germany
 </p>
 
+<p>
+Involved institutes:
+</p>
+<ul>
+  <li>
+    <a href=\"https://www.dlr.de/rm\">Institute of Robotics and Mechatronics</a>
+  </li>
+  <li>
+    <a href=\"https://www.dlr.de/sl\">Institute of System Architectures in Aeronautics</a>
+  </li>
+</ul>
+
 <h4>Copyright</h4>
 <p>
-&copy; 2020-2023, DLR Institut f&uuml;r Systemdynamik und Regelungstechnik
+&copy; 2020-2026, Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)
 <br>All rights reserved.
 </p>
 
@@ -48,7 +60,7 @@ be used to endorse or promote products derived from this software without specif
 prior written permission.
 </p>
 <p>
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY
 EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
 OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
 IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -62,8 +74,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 ---
 <p>
 The above is the license, and is the standard
-<a href=\"https://opensource.org/licenses/BSD-3-Clause\">3-clause BSD-license</a>
-with DLR Institut f&uuml;r Systemdynamik und Regelungstechnik as copyright holder.
+<a href=\"https://opensource.org/licenses/BSD-3-Clause\">3-clause BSD license</a>
+with Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR) as copyright holder.
 </p>
 </html>",
       revisions="<html>

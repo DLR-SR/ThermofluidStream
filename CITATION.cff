@@ -1,16 +1,45 @@
-cff-version: 1.2.0
-message: If you use this software, please cite it using these metadata.
-title: The DLR Thermofluid Stream Library
-abstract: The DLR Thermofluid Stream Library is a free open-source library for the robust modeling of complex thermofluid architectures. Designed to be easy to use and easy to adapt and enriched by a number of examples, this library can be used as basis for many different applications such as thermal management of electric cars, power plants, or building physics.
+cff-version: "1.2.0"
+message: "If you use this software, please cite it using these metadata."
+title: "The DLR Thermofluid Stream Library"
+abstract: "The DLR Thermofluid Stream Library is a free open-source library for the robust modeling of complex thermofluid architectures. Designed to be easy to use and easy to adapt and enriched by a number of examples, this library can be used as basis for many different applications such as thermal management of electric cars, power plants, or building physics."
+
 authors:
-  - family-names: Zimmer
-    given-names: Dirk
-  - family-names: Mei{\ss}ner
-    given-names: Michael
+  - family-names: "Zimmer"
+    given-names: "Dirk"
+    affiliation: "DLR Institute of Robotics and Mechatronics"
+
+  - family-names: "Meißner"
+    given-names: "Michael"
     orcid: "https://orcid.org/0000-0001-7092-7520"
-  - family-names: Weber
-    given-names: Niels
-version: 0.2
-date-released: "2021-07-28"
-license: 3-Clause BSD License
+    affiliation: "DLR Institute of Robotics and Mechatronics"
+
+  - family-names: "Weber"
+    given-names: "Niels"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+  - family-names: "Reischl"
+    given-names: "Tobias"
+    orcid: "https://orcid.org/0009-0008-6259-0532"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+  - family-names: "Lepais"
+    given-names: "Corentin"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+  - family-names: "Gebhart"
+    given-names: "Raphael"
+    orcid: "https://orcid.org/0009-0004-3996-3485"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+  - family-names: "Keim"
+    given-names: "Silvan"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+  - family-names: "Dotzauer"
+    given-names: "Niclas"
+    affiliation: "DLR Institute of System Architectures in Aeronautics"
+
+version: "1.3.0"
+date-released: "2026-04-30"
+license: "BSD-3-Clause"
 repository-code: "https://github.com/DLR-SR/ThermofluidStream"
