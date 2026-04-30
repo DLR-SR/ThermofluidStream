@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes;
-model CentrifugalPump "Model of a centrifugal pump"
+model CentrifugalPump "Model of a centrifugal pump (under development; subject to change; see documentation)"
   import ThermofluidStream.Processes.Internal.Types.PumpMode;
   import ThermofluidStream.Processes.Internal.Types.SetpointModeFlow;
   import ThermofluidStream.Processes.Internal.Types.SetpointModePressure;
@@ -234,6 +234,26 @@ equation
           extent={{-30,20},{30,-20}},
           textColor={28,108,200},
           textString=setpointModeString)}), Documentation(info="<html>
+  <p>
+    <strong>
+      Remark: This model is scheduled for release in v1.3.0 due to its advantages.
+      However, it currently combines multiple features that are likely to be
+      separated into dedicated models in future revisions. Please take this into account.
+    </strong>
+  </p>
+  <ul>
+    <li>
+      The capability to prescribe the mass flow rate (<code>flowControlled</code>)
+      is intended to be moved to a simplified model (ideal flow source,
+      incompressible fluid, fixed isentropic efficiency).
+    </li>
+    <li>
+      The capability to prescribe the pressure (<code>pressureControlled</code>)
+      is intended to be moved to a simplified model (ideal pressure source,
+      incompressible fluid, fixed isentropic efficiency).
+    </li>
+  </ul>
+
 <p>
 Model of a centrifugal pump based on similarity laws: volume flow rate <code>V_flow &sim; w</code>, head/pressure difference <code>head &sim; w^2</code>, power <code>P &sim; rho*w^3</code>, 
 where <code>rho</code> is the density  and <code>w</code> is the pump speed.<br> 
