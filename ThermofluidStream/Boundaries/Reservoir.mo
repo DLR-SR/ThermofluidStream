@@ -1,6 +1,6 @@
 within ThermofluidStream.Boundaries;
 model Reservoir "Simple open tank model"
-  extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=150000, final A = 0, final U=0);
+  extends Internal.PartialVolume(final useHeatport = false, final initialize_pressure=false, final p_start=Medium.p_default, final A = 0, final U=0);
 
   parameter Boolean pEnvFromInput = false "=true, if environmental pressure input connector enabled"
     annotation(Dialog(group="Environmental pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
