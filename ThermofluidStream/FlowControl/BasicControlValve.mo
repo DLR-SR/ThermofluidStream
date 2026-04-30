@@ -2,6 +2,7 @@ within ThermofluidStream.FlowControl;
 model BasicControlValve "Basic valve model with optional flow characteristics for incompressible fluids"
 
   extends ThermofluidStream.FlowControl.Internal.PartialValve;
+  extends ThermofluidStream.FlowControl.Internal.ValveIcon;
 
   import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic;
 
@@ -52,40 +53,8 @@ equation
 
   k_u = valveCharacteristics(u, k_min);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
-        Line(
-          points={{-100,0},{-40,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{40,0},{-40,0}},
-          color={28,108,200},
-          thickness=0.5,
-          pattern=LinePattern.Dash),
-        Line(
-          points={{0,0},{0,80}},
-          color={0,0,127},
-          thickness=0.5),
-        Line(
-          points={{40,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Polygon(
-          points={{-20,40},{0,0},{20,40},{-20,40}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else {255,255,255}),
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-20,20},{0,-20},{20,20},{-20,20}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else {255,255,255}),
-          fillPattern=FillPattern.Solid,
-          origin={0,-20},
-          rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+  annotation (Icon(coordinateSystem(preserveAspectRatio=true)),
+                           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This model serves for most incompressible applications where basic control valves are needed. </p>
 <p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>
