@@ -427,8 +427,8 @@ end gasMixtureViscosity;
     input Real[nX] kappa =  zeros(nX) "Association Factors";
     output DynamicViscosity etaMixture "Mixture viscosity (Pa.s)";
   protected
-  constant Real[size(y,1)] Vc =  Vcrit*1000000 "Critical volumes (cm3/mol)";
-  constant Real[size(y,1)] M =  MolecularWeights*1000
+  Real[size(y,1)] Vc =  Vcrit*1000000 "Critical volumes (cm3/mol)";
+  Real[size(y,1)] M =  MolecularWeights*1000
       "Molecular weights (g/mol)";
   Integer n = size(y,1) "Number of mixed elements";
   Real sigmam3 "Mixture sigma3 in Angstrom";

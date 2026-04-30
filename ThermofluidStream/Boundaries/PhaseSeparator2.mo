@@ -5,8 +5,8 @@ model PhaseSeparator2 "Phase separator with two outlets"
         Media.myMedia.Interfaces.PartialTwoPhaseMedium,
     useHeatport=false,
     final initialize_energy=false,
-    final T_start=0,
-    final h_start=0,
+    final T_start=Medium.T_default,
+    final h_start=Medium.h_default,
     final use_hstart=false,
     final M_outlets=2);
 

@@ -11,8 +11,8 @@ model TestJP8 "Test JP8 Medium model"
      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
      Medium.SpecificInternalEnergy u=Medium.specificInternalEnergy(medium.state);
-     Medium.SpecificInternalEnergy h=Medium.specificEnthalpy(medium.state);
-     Medium.SpecificInternalEnergy d=Medium.density(medium.state);
+     Medium.SpecificEnthalpy h=Medium.specificEnthalpy(medium.state);
+     Medium.Density d=Medium.density(medium.state);
      Real n=Medium.nS;
 protected
      constant Modelica.Units.SI.Time timeUnit=1;
