@@ -7,17 +7,6 @@ class Contact "Contact"
       info="<html>
 <h4>Authors</h4>
 
-<h5>DLR Institute of Robotics and Mechatronics</h5>
-<blockquote>
-  Michael Mei&szlig;ner and Dirk Zimmer<br>
-  Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
-  Institute of Robotics and Mechatronics<br>
-  Oberpfaffenhofen<br>
-  M&uuml;nchener Stra&szlig;e 20<br>
-  D-82234 We&szlig;ling<br>
-  Web: <a href=\"https://www.dlr.de/rm\">www.dlr.de/rm</a>
-</blockquote>
-
 <h5>DLR Institute of System Architectures in Aeronautics</h5>
 <blockquote>
   Niels Weber, Tobias Reischl, Corentin Lepais, Raphael Gebhart,
@@ -28,6 +17,17 @@ class Contact "Contact"
   M&uuml;nchener Stra&szlig;e 20<br>
   D-82234 We&szlig;ling<br>
   Web: <a href=\"https://www.dlr.de/sl\">www.dlr.de/sl</a>
+</blockquote>
+
+<h5>DLR Institute of Robotics and Mechatronics</h5>
+<blockquote>
+  Michael Mei&szlig;ner and Dirk Zimmer<br>
+  Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)<br>
+  Institute of Robotics and Mechatronics<br>
+  Oberpfaffenhofen<br>
+  M&uuml;nchener Stra&szlig;e 20<br>
+  D-82234 We&szlig;ling<br>
+  Web: <a href=\"https://www.dlr.de/rm\">www.dlr.de/rm</a>
 </blockquote>
 
 <h4>Contact</h4>
@@ -56,8 +56,8 @@ Also we like to thank our colleague Dr. Peter Eschenbacher for his
 valuable modeling experience on valves and pumps.
 </p>
 </html>",
-    revisions="<html>
-<p><img src="modelica:/ThermofluidStream/Resources/dlr_logo.png"/>(c) 2020-2026, Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</p>
+revisions="<html>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2026, Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</p>
 </html>"));
 
 end Contact;

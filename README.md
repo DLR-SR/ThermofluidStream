@@ -41,13 +41,9 @@ Watch the <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank">introductory vi
 <a href="https://youtu.be/u0Y7z0MyKd4" target="_blank"><img src="/doc/VideoThermoFluidCover.png" 
 alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
 
-## License, Terms of Use, Literature
+## Literature
 
-Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermofluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
-
-We also welcome feedback in form of issues raised here on GitHub. Also when you have positive feedback, you can feel free to raise an issue to share your experience. Have fun!
-
-Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
+The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in:
 
 - Zimmer, D., N. Weber, M. Meissner  (2021) [Robust Simulation of Stream-Dominated Thermo-Fluid Systems: From Directed to Non-Directed Flows](https://www.sne-journal.org/sne-volumes/volume-31/sne-314-articles/robust-simulation-of-stream-dominated-thermo-fluid-systems-from-directed-to-non-directed-flows). Simulation Notes Europe, Volume 31(4):177-184
 - Zimmer, Dirk, Michael Meißner, Niels Weber (2021) [The DLR ThermoFluidStream Library](https://ecp.ep.liu.se/index.php/modelica/article/view/199). 14th International Modelica Conference, Linköping, Sweden.
