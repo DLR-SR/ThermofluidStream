@@ -5,10 +5,6 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 ![](/doc/example.svg)
 
 
-## Status
-
-[![GitHub release](https://img.shields.io/github/release/DLR-SR/ThermofluidStream.svg?sort=semver)](https://github.com/DLR-SR/ThermofluidStream/releases/latest) [![GitHub license](https://img.shields.io/github/license/DLR-SR/ThermofluidStream)](https://github.com/DLR-SR/ThermofluidStream/blob/main/LICENSE) ![GitHub workflow](https://github.com/DLR-SR/ThermofluidStream/actions/workflows/checkCI.yml/badge.svg?event=pull_request) [![Modelica Library Award 2021](https://img.shields.io/badge/award-%F0%9F%A5%87_Modelica_Library_Award_2021-gold?labelColor=grey)](https://2021.international.conference.modelica.org/libraries.html) 
-
 ## News
 
 30.04.2026: Release of TFS 1.3.0 (Minor Release); 
@@ -49,36 +45,6 @@ alt="IMAGE ALT TEXT HERE" height="200" border="1" /></a>
 
 Likewise to Modelica Library of the Modelica Standard Library, the DLR Thermofluid Stream Library is published under the [3-Clause BSD License](https://modelica.org/licenses/modelica-3-clause-bsd.html).
 
-If you publish work that is based on this library, please cite the following two papers. 
-
-```
-@article{TFS2022,
-author = {Zimmer, Dirk and Meißner, Michael and Weber, Niels},
-title = {The DLR ThermoFluid Stream Library},
-journal = {Electronics},
-volume = {11},
-year = {2022},
-number = {22},
-doi = {10.3390/electronics11223790},
-URL = {https://www.mdpi.com/2079-9292/11/22/3790},
-ISSN = {2079-9292}
-}
-
-@article{RobustZimmer2020,
-author = {Dirk Zimmer},
-title = {Robust object-oriented formulation of directed thermofluid stream networks},
-journal = {Mathematical and Computer Modelling of Dynamical Systems},
-volume = {26},
-number = {3},
-pages = {204-233},
-year  = {2020},
-publisher = {Taylor & Francis},
-doi = {10.1080/13873954.2020.1757726},
-URL = {https://doi.org/10.1080/13873954.2020.1757726}
-}
-
-```
-
 We also welcome feedback in form of issues raised here on GitHub. Also when you have positive feedback, you can feel free to raise an issue to share your experience. Have fun!
 
 Further literature: The principal considerations for creating a solution for non-directed flows (or bidirectionality) is presented in
@@ -93,9 +59,11 @@ More details on the modeling of various types of volumes can be found in:
 
 Further background literature on the methodology:
 
-- Zimmer, Dirk, Daniel Bender, Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference (Tokyo, Japan).
-- Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
-- Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference (Regensburg, Germany). Linköping University Electronic Press, Linköpings universitet.
+- Zimmer, Dirk, Michael Meißner, Niels Weber (2022). [The DLR ThermoFluid Stream Library](https://www.mdpi.com/2079-9292/11/22/3790). Electronics, Volume 11(22), 3790.
+- Zimmer, Dirk (2020). [Robust object-oriented formulation of directed thermofluid stream networks](https://doi.org/10.1080/13873954.2020.1757726). Mathematical and Computer Modelling of Dynamical Systems, Volume 26(3), pp. 204–233.
+- Zimmer, Dirk, Daniel Bender, Alexander Pollok (2018). [Robust Modeling of Directed Thermofluid Flows in Complex Networks](https://elib.dlr.de/120701/1/Japan2018Robust.pdf). Proceedings of the 2nd Japanese Modelica Conference, Tokyo, Japan.
+- Zimmer, Dirk (2019b). [Towards hard real-time simulation of complex fluid networks](https://ep.liu.se/ecp/157/059/ecp19157059.pdf). Proceedings of the 13th International Modelica Conference, Regensburg, Germany. Linköping University Electronic Press, Linköpings universitet, pp. 579–587.
+- Otter, M. et al. (2019). [Thermodynamic Property and Fluid Modeling with Modern Programming Language Constructs](https://ep.liu.se/ecp/157/060/ecp19157060.pdf). Proceedings of the 13th International Modelica Conference, Regensburg, Germany. Linköping University Electronic Press, Linköpings universitet.
 
 ## Tool compatibility 
 - [Dymola](https://www.3ds.com/products-services/catia/products/dymola/): The library has been developed using Dymola and is based on Modelica Standard Library 4.1.0. Pedantic checking has been applied to improve cross-tool compatibility.

@@ -85,6 +85,7 @@ by corrected equations, improved regularization and updated media functions.
   <li>New and updated tool metadata for Dymola and Modelon Impact.</li>
   <li>Several bug fixes in media, pressure-loss calculations, pumps, tests and documentation assets.</li>
   <li>Updated dependency to Modelica Standard Library 4.1.0 and Complex 4.1.0.</li>
+  <li>New valve icon in FlowControl</li>
 </ul>
 
 <h4>New components and functionality</h4>
