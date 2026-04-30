@@ -44,12 +44,5 @@ partial model ValveIcon
           extent={{40,100},{100,70}},
           textColor={0,0,0},
           textString=DynamicSelect("u", String(u, format="1.2f")))}),
-               Diagram(coordinateSystem(preserveAspectRatio=true)),
-    Documentation(info="<html>
-<p>This model serves for most incompressible applications where basic control valves are needed. </p>
-<p><br>The modeler has the ability to choose between different valve characteristics and flow coefficients.</p>
-<p>The three standard curve characteristics (linear, parabolic, equal-percentage) are implemented and can be chosen.</p>
-<p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate can be set. </p>
-<p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>
-</html>"));
+               Diagram(coordinateSystem(preserveAspectRatio=true)));
 end ValveIcon;
