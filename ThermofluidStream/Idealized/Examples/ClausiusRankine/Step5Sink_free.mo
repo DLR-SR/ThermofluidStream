@@ -158,7 +158,7 @@ see User's Guide",
 
   <p>
     Furthermore, since the mass flow rate setpoint is non differentiable, <code>considerInertance = false</code> is required, see 
-    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <p>

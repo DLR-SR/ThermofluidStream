@@ -153,7 +153,7 @@ see User's Guide",
 
   <p>
     Since the compressor outlet pressure is varying with time this inverse calculation requires <code>considerInertance = false</code>, also see 
-    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <p>
