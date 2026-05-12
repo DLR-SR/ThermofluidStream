@@ -83,7 +83,7 @@ equation
   </p>
 
   <p>
-    Note that the inertance <code>L</code> and the parameter <code>neglectInertance</code> are provided for convenience, but they have no effect on the model.
+    Note that the inertance <code>L</code> and the parameter <code>considerInertance</code> are provided for convenience, but they have no effect on the model.
   </p>
 </html>", revisions="<html>
   <ul>

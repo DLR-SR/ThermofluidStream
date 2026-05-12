@@ -281,7 +281,7 @@ equation
 
   <p>
     This example uses <code>pseudoInversion</code> \"controllers\" instead of explicit determination of mass flow rates. 
-    With this <code>neglectInertance</code> is not required.
+    With this <code>considerInertance</code> becomes possible again.
   </p>
 </html>"));
 end PseudoInversion;

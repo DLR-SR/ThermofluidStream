@@ -311,7 +311,7 @@ equation
 </html>", info="<html>
   <p>
     By introducing a <code>pseudoInversion</code> \"controller\" for the mass flow rate,
-    <code>neglectInertance</code> is no longer required.
+    <code>considerInertance</code> becomes possible again.
   </p>
 </html>"));
 end Step6bMassFlowRate;
