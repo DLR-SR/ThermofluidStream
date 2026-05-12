@@ -1,7 +1,7 @@
 within ThermofluidStream;
 model DropOfCommons "Model for global parameters"
 
-  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use"  annotation(
+  parameter Boolean considerInertance = true "=true, if transient momentum (inertance) term is considered; disable only for advanced use"  annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
     annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
