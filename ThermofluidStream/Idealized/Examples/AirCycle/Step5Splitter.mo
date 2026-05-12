@@ -3,11 +3,11 @@ model Step5Splitter
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{120,80},{140,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{120,80},{140,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
@@ -34,8 +34,8 @@ model Step5Splitter
     use_numberPort=false,
     number=(inletEnthalpyFlowRate.value - (outlet1EnthalpyFlowRate.value + outlet2EnthalpyFlowRate.value))/(compressor.P + turbine.P),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Sources.Sink_free airSink(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{100,-10},{120,10}})));
+  Sources.Sink_free airSink(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{100,-10},{120,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
@@ -43,8 +43,8 @@ model Step5Splitter
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{0,10},{20,-10}})));
   Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
-  Sources.Sink_free airSink1(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{120,-40},{140,-20}})));
+  Sources.Sink_free airSink1(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{120,-40},{140,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRateValveRamp(
     height=1,
     duration=1,
@@ -66,18 +66,18 @@ model Step5Splitter
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation(Placement(transformation(extent={{90,-40},{110,-20}})));
 equation
-  connect(compressor.outlet, heatExchangerSideA.inlet)
-    annotation(Line(
+  connect(compressor.outlet, heatExchangerSideA.inlet)annotation(
+    Line(
       points={{-50,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerSideA.outlet, splitter.inlet)
-    annotation(Line(
+  connect(heatExchangerSideA.outlet, splitter.inlet)annotation(
+    Line(
       points={{-10,0},{0,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitter.outletB, turbine.inlet)
-    annotation(Line(
+  connect(splitter.outletB, turbine.inlet)annotation(
+    Line(
       points={{20,0},{30,0}},
       color={28,108,200},
       thickness=0.5));

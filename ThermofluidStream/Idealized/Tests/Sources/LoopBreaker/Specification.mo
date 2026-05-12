@@ -9,11 +9,11 @@ model Specification "Example - Loop breaker"
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-160,140},{-180,160}})));
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{240,180},{260,200}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{240,180},{260,200}})));
 
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
@@ -108,8 +108,8 @@ model Specification "Example - Loop breaker"
     offset=1e5,
     startTime=0) annotation(Placement(transformation(extent={{180,-90},{200,-70}})));
   Modelica.Blocks.Sources.RealExpression h_const1(y=Medium.bubbleEnthalpy(Medium.setSat_p(1e5)) + 0.9*(
-        Medium.dewEnthalpy(Medium.setSat_p(1e5)) - Medium.bubbleEnthalpy(Medium.setSat_p(1e5))))
-    annotation(Placement(transformation(extent={{180,-120},{200,-100}})));
+        Medium.dewEnthalpy(Medium.setSat_p(1e5)) - Medium.bubbleEnthalpy(Medium.setSat_p(1e5))))annotation(
+    Placement(transformation(extent={{180,-120},{200,-100}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-200,140},{-220,160}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-200,60},{-220,80}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-108,60},{-128,80}})));
@@ -128,8 +128,8 @@ equation
   connect(p_sine.y, loopBreaker7.p_out_prescribed) annotation(Line(points={{221,80},{220,80},{220,138}}, color={0,0,127}));
   connect(p_ramp1.y, loopBreaker10.p_out_prescribed) annotation(Line(points={{201,-80},{200,-80},{200,-32}},
                                                                                                     color={0,0,127}));
-  connect(loopBreaker.outlet, massFlowRateSource.inlet)
-    annotation(Line(
+  connect(loopBreaker.outlet, massFlowRateSource.inlet)annotation(
+    Line(
       points={{-180,150},{-200,150}},
       color={28,108,200},
       thickness=0.5));
@@ -137,10 +137,10 @@ equation
       points={{-220,150},{-226,150},{-226,166},{-154,166},{-154,150},{-160,150}},
       color={28,108,200},
       thickness=0.5));
-  connect(m_flow_ramp.y, massFlowRateSource2.m_flow_prescribed)
-    annotation(Line(points={{-219,40},{-210,40},{-210,62}}, color={0,0,127}));
-  connect(loopBreaker2.outlet, massFlowRateSource2.inlet)
-    annotation(Line(
+  connect(m_flow_ramp.y, massFlowRateSource2.m_flow_prescribed)annotation(
+    Line(points={{-219,40},{-210,40},{-210,62}}, color={0,0,127}));
+  connect(loopBreaker2.outlet, massFlowRateSource2.inlet)annotation(
+    Line(
       points={{-180,70},{-200,70}},
       color={28,108,200},
       thickness=0.5));
@@ -148,8 +148,8 @@ equation
       points={{-220,70},{-228,70},{-228,88},{-154,88},{-154,70},{-160,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker3.outlet, massFlowRateSource3.inlet)
-    annotation(Line(
+  connect(loopBreaker3.outlet, massFlowRateSource3.inlet)annotation(
+    Line(
       points={{-94,70},{-108,70}},
       color={28,108,200},
       thickness=0.5));
@@ -157,11 +157,11 @@ equation
       points={{-128,70},{-136,70},{-136,86},{-68,86},{-68,70},{-74,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(m_flow_sine.y, massFlowRateSource3.m_flow_prescribed)
-    annotation(Line(points={{-129,40},{-118,40},{-118,62}},
+  connect(m_flow_sine.y, massFlowRateSource3.m_flow_prescribed)annotation(
+    Line(points={{-129,40},{-118,40},{-118,62}},
                                                           color={0,0,127}));
-  connect(massFlowRateSource10.inlet, loopBreaker10.outlet)
-    annotation(Line(
+  connect(massFlowRateSource10.inlet, loopBreaker10.outlet)annotation(
+    Line(
       points={{180,-20},{200,-20}},
       color={28,108,200},
       thickness=0.5));
@@ -169,8 +169,8 @@ equation
       points={{160,-20},{154,-20},{154,-4},{226,-4},{226,-20},{220,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateSource8.inlet, loopBreaker8.outlet)
-    annotation(Line(
+  connect(massFlowRateSource8.inlet, loopBreaker8.outlet)annotation(
+    Line(
       points={{-60,-20},{-40,-20}},
       color={28,108,200},
       thickness=0.5));
@@ -178,10 +178,10 @@ equation
       points={{-80,-20},{-86,-20},{-86,-4},{-14,-4},{-14,-20},{-20,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(m_flow_sine1.y, massFlowRateSource7.m_flow_prescribed)
-    annotation(Line(points={{181,120},{190,120},{190,142}}, color={0,0,127}));
-  connect(massFlowRateSource7.inlet, loopBreaker7.outlet)
-    annotation(Line(
+  connect(m_flow_sine1.y, massFlowRateSource7.m_flow_prescribed)annotation(
+    Line(points={{181,120},{190,120},{190,142}}, color={0,0,127}));
+  connect(massFlowRateSource7.inlet, loopBreaker7.outlet)annotation(
+    Line(
       points={{200,150},{220,150}},
       color={28,108,200},
       thickness=0.5));
@@ -189,10 +189,10 @@ equation
       points={{180,150},{174,150},{174,166},{246,166},{246,150},{240,150}},
       color={28,108,200},
       thickness=0.5));
-  connect(m_flow_ramp1.y, massFlowRateSource6.m_flow_prescribed)
-    annotation(Line(points={{69,130},{80,130},{80,142}},    color={0,0,127}));
-  connect(massFlowRateSource6.inlet, loopBreaker6.outlet)
-    annotation(Line(
+  connect(m_flow_ramp1.y, massFlowRateSource6.m_flow_prescribed)annotation(
+    Line(points={{69,130},{80,130},{80,142}},    color={0,0,127}));
+  connect(massFlowRateSource6.inlet, loopBreaker6.outlet)annotation(
+    Line(
       points={{90,150},{112,150}},
       color={28,108,200},
       thickness=0.5));
@@ -200,8 +200,8 @@ equation
       points={{70,150},{64,150},{64,166},{132,166},{132,150}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateSource5.inlet, loopBreaker5.outlet)
-    annotation(Line(
+  connect(massFlowRateSource5.inlet, loopBreaker5.outlet)annotation(
+    Line(
       points={{-10,150},{10,150}},
       color={28,108,200},
       thickness=0.5));

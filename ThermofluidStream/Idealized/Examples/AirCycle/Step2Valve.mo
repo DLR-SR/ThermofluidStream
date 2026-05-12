@@ -3,11 +3,11 @@ model Step2Valve
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
@@ -40,23 +40,23 @@ model Step2Valve
                            annotation(Placement(transformation(extent={{0,-60},{20,-40}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
 equation
-  connect(compressor.outlet, cooler.inlet)
-    annotation(Line(
+  connect(compressor.outlet, cooler.inlet)annotation(
+    Line(
       points={{-30,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler.outlet, valve.inlet)
-    annotation(Line(
+  connect(cooler.outlet, valve.inlet)annotation(
+    Line(
       points={{10,0},{30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSource.outlet, compressor.inlet)
-    annotation(Line(
+  connect(airSource.outlet, compressor.inlet)annotation(
+    Line(
       points={{-70,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(valve.outlet, airSink.inlet)
-    annotation(Line(
+  connect(valve.outlet, airSink.inlet)annotation(
+    Line(
       points={{50,0},{70,0}},
       color={28,108,200},
       thickness=0.5));

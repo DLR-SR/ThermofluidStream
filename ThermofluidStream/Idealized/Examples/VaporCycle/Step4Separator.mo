@@ -4,8 +4,8 @@ model Step4Separator
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter Medium.Temperature T_Evaporator=253.15   "Evaporator temperature";
   parameter Medium.Temperature T_Condensor=323.15   "Condensor temperature";
@@ -30,8 +30,8 @@ model Step4Separator
         rotation=90,
         origin={50,-40})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{120,100},{140,120}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{120,100},{140,120}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
@@ -98,43 +98,43 @@ model Step4Separator
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_separatorLiqOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{-38,-16},{-58,4}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{-38,-16},{-58,4}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_evapOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{20,-44},{40,-64}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{20,-44},{40,-64}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_evapValveOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{-40,-80},{-60,-60}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{-40,-80},{-60,-60}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_evapCmpOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{70,4},{90,-16}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{70,4},{90,-16}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_condValveOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{-16,30},{4,10}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{-16,30},{4,10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_condOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{-44,80},{-64,60}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{-44,80},{-64,60}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_condCmpOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{64,80},{84,60}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{64,80},{84,60}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_separatorVapOut(
     redeclare package Medium = Medium,
     digits=3,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{20,32},{40,12}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{20,32},{40,12}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 10000) annotation(Placement(transformation(extent={{-40,-110},{-20,-90}})));
 equation
   connect(valve1.outlet, evaporator.inlet) annotation(Line(
@@ -153,8 +153,8 @@ equation
       points={{50,50},{50,70},{10,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker2.outlet,compressor2. inlet)
-    annotation(Line(
+  connect(loopBreaker2.outlet,compressor2. inlet)annotation(
+    Line(
       points={{42,6},{50,6},{50,30}},
       color={28,108,200},
       thickness=0.5));
@@ -186,33 +186,33 @@ equation
       points={{-38,-6},{-10,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_evapValveOut.inlet, valve1.outlet)
-    annotation(Line(
+  connect(vaporQual_evapValveOut.inlet, valve1.outlet)annotation(
+    Line(
       points={{-40,-70},{-30,-70},{-30,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_evapOut.inlet, evaporator.outlet)
-    annotation(Line(
+  connect(vaporQual_evapOut.inlet, evaporator.outlet)annotation(
+    Line(
       points={{20,-54},{14,-54},{14,-70},{10,-70}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_evapCmpOut.inlet, compressor1.outlet)
-    annotation(Line(
+  connect(vaporQual_evapCmpOut.inlet, compressor1.outlet)annotation(
+    Line(
       points={{70,-6},{50,-6},{50,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_condValveOut.inlet, valve2.outlet)
-    annotation(Line(
+  connect(vaporQual_condValveOut.inlet, valve2.outlet)annotation(
+    Line(
       points={{-16,20},{-30,20},{-30,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_condOut.inlet, condensor.outlet)
-    annotation(Line(
+  connect(vaporQual_condOut.inlet, condensor.outlet)annotation(
+    Line(
       points={{-44,70},{-10,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQual_condCmpOut.inlet, compressor2.outlet)
-    annotation(Line(
+  connect(vaporQual_condCmpOut.inlet, compressor2.outlet)annotation(
+    Line(
       points={{64,70},{50,70},{50,50}},
       color={28,108,200},
       thickness=0.5));

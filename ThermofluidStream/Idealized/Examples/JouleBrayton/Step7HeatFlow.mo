@@ -3,13 +3,13 @@ model Step7HeatFlow
   extends Modelica.Icons.Example;
 
   replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{140,80},{160,100}})));
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{140,80},{160,100}})));
 
   Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Air,
@@ -74,8 +74,8 @@ model Step7HeatFlow
                     waterSource(
     redeclare package Medium = Water,
     p0_par=100000,
-    T0_par=293.15)
-    annotation(Placement(transformation(
+    T0_par=293.15)annotation(
+    Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-50,30})));
@@ -110,23 +110,23 @@ model Step7HeatFlow
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
     outputValue=true) annotation(Placement(transformation(extent={{24,10},{4,30}})));
 equation
-  connect(airSource.outlet, lowPressureCompressor.inlet)
-    annotation(Line(
+  connect(airSource.outlet, lowPressureCompressor.inlet)annotation(
+    Line(
       points={{-136,0},{-120,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(firstCombustion.outlet, highPressureTurbine.inlet)
-    annotation(Line(
+  connect(firstCombustion.outlet, highPressureTurbine.inlet)annotation(
+    Line(
       points={{30,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureTurbine.outlet, secondCombustion.inlet)
-    annotation(Line(
+  connect(highPressureTurbine.outlet, secondCombustion.inlet)annotation(
+    Line(
       points={{70,0},{90,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(secondCombustion.outlet, lowPressureTurbine.inlet)
-    annotation(Line(
+  connect(secondCombustion.outlet, lowPressureTurbine.inlet)annotation(
+    Line(
       points={{110,0},{130,0}},
       color={28,108,200},
       thickness=0.5));
@@ -138,13 +138,13 @@ equation
                                                                                                                                    color={255,170,85}));
   connect(lowPressurePower.E_flow_out, generatorPower.E_flow_in) annotation(Line(points={{181.7,-30},{198,-30}},    color={255,170,85}));
   connect(lowPressureCompressor.P_out, lowPressureShaft.E_flow_in) annotation(Line(points={{-110,-7},{-110,-40},{18,-40}},   color={255,170,85}));
-  connect(coolerWaterSide.inlet,waterSource. outlet)
-    annotation(Line(
+  connect(coolerWaterSide.inlet,waterSource. outlet)annotation(
+    Line(
       points={{-70,30},{-60,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSink.inlet,coolerWaterSide. outlet)
-    annotation(Line(
+  connect(waterSink.inlet,coolerWaterSide. outlet)annotation(
+    Line(
       points={{-100,30},{-90,30}},
       color={28,108,200},
       thickness=0.5));

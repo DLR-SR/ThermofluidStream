@@ -3,11 +3,11 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{180,72},{200,92}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{180,72},{200,92}})));
 
   ThermofluidStream.Boundaries.Source sourceA(
     redeclare package Medium = Medium,

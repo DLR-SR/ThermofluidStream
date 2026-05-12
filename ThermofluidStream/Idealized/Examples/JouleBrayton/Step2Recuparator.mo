@@ -3,11 +3,11 @@ model Step2Recuparator
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
@@ -53,33 +53,33 @@ model Step2Recuparator
         rotation=90,
         origin={-30,40})));
 equation
-  connect(combustion.outlet, turbine.inlet)
-    annotation(Line(
+  connect(combustion.outlet, turbine.inlet)annotation(
+    Line(
       points={{48,-6},{68,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, recuperator.inletA)
-    annotation(Line(
+  connect(compressor.outlet, recuperator.inletA)annotation(
+    Line(
       points={{-32,-6},{-10,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperator.outletA, combustion.inlet)
-    annotation(Line(
+  connect(recuperator.outletA, combustion.inlet)annotation(
+    Line(
       points={{10,-6},{28,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSink.inlet, recuperator.outletB)
-    annotation(Line(
+  connect(airSink.inlet, recuperator.outletB)annotation(
+    Line(
       points={{-30,30},{-30,6},{-10,6}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperator.inletB, turbine.outlet)
-    annotation(Line(
+  connect(recuperator.inletB, turbine.outlet)annotation(
+    Line(
       points={{10,6},{96,6},{96,-6},{88,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSource.outlet, compressor.inlet)
-    annotation(Line(
+  connect(airSource.outlet, compressor.inlet)annotation(
+    Line(
       points={{-72,-6},{-52,-6}},
       color={28,108,200},
       thickness=0.5));

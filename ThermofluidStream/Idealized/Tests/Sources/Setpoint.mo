@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Sources;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{78,180},{98,200}})));
   ThermofluidStream.Boundaries.Source source(

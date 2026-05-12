@@ -33,14 +33,14 @@ model PseudoSource "Model to set the outlet state"
   parameter Boolean showMassFractions = false "= true to show the fixed mass fraction values Xi_out_fixed" annotation(
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput p_out_prescribed(unit="Pa") if pSpec ==ValueSpecification.Prescribed  "Prescribed outlet pressure [Pa]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput p_out_prescribed(unit="Pa") if pSpec ==ValueSpecification.Prescribed  "Prescribed outlet pressure [Pa]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput T_out_prescribed(unit="K") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.Temperature  "Outlet temperature input connector [K]"
    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={60,-120})));
-  Modelica.Blocks.Interfaces.RealInput h_out_prescribed(unit="J/kg") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.SpecificEnthalpy  "Outlet specific enthalpy input connector [J/kg]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={20,-120})));
-  Modelica.Blocks.Interfaces.RealInput Xi_out_prescribed[Medium.nXi](each unit = "kg/kg") if XiSpec ==ValueSpecification.Prescribed  "Outlet mass fractions connector [kg/kg]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-20,-120})));
+  Modelica.Blocks.Interfaces.RealInput h_out_prescribed(unit="J/kg") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.SpecificEnthalpy  "Outlet specific enthalpy input connector [J/kg]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={20,-120})));
+  Modelica.Blocks.Interfaces.RealInput Xi_out_prescribed[Medium.nXi](each unit = "kg/kg") if XiSpec ==ValueSpecification.Prescribed  "Outlet mass fractions connector [kg/kg]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-20,-120})));
 
   SI.TemperatureDifference dT "Temperature difference";
   SI.SpecificEnthalpy dh "Difference in specific enthalpy";

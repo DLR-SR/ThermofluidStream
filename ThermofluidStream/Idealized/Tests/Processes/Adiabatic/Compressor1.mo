@@ -4,8 +4,8 @@ model Compressor1 "Forward and inverse calculation compressor test model"
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -64,13 +64,13 @@ model Compressor1 "Forward and inverse calculation compressor test model"
     dp_fixed=100000) annotation(Placement(transformation(extent={{50,-60},{70,-80}})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{0,-36},{20,-16}})));
 equation
-  connect(source.outlet, compressor.inlet)
-    annotation(Line(
+  connect(source.outlet, compressor.inlet)annotation(
+    Line(
       points={{-70,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, sink.inlet)
-    annotation(Line(
+  connect(compressor.outlet, sink.inlet)annotation(
+    Line(
       points={{-40,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));

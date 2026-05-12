@@ -5,12 +5,12 @@ model Inversion
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true,
-    neglectInertance=true)
-    annotation(Placement(transformation(extent={{140,80},{160,100}})));
+    neglectInertance=true)annotation(
+    Placement(transformation(extent={{140,80},{160,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic highPressurePump(
     redeclare package Medium = Medium,
@@ -46,10 +46,10 @@ model Inversion
     displayInstanceName=true,
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{130,40},{150,60}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))
-    annotation(Placement(transformation(extent={{100,-50},{80,-30}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{130,40},{150,60}})));
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))annotation(
+    Placement(transformation(extent={{100,-50},{80,-30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressurePump(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -84,17 +84,17 @@ model Inversion
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
-    outputValue=true)
-    annotation(Placement(transformation(
+    outputValue=true)annotation(
+    Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-2,-40})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints
-    annotation(Placement(transformation(extent={{-10,-84},{30,-60}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+    Placement(transformation(extent={{-10,-84},{30,-60}})));
   Modelica.Blocks.Sources.RealExpression mixingTemperature(y(
       unit="K",
-      displayUnit="degC") = 403.15)
-    annotation(Placement(transformation(extent={{-50,-82},{-30,-62}})));
+      displayUnit="degC") = 403.15)annotation(
+    Placement(transformation(extent={{-50,-82},{-30,-62}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate1(
     description="efficency",
     use_numberPort=false,
@@ -109,8 +109,8 @@ model Inversion
     significantDigits=3) annotation(Placement(transformation(extent={{-10,-120},{10,-100}})));
   EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = 288000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
 equation
-  connect(highPressurePump.outlet, heater.inlet)
-    annotation(Line(
+  connect(highPressurePump.outlet, heater.inlet)annotation(
+    Line(
       points={{-90,-20},{-100,-20},{-100,10}},
       color={28,108,200},
       thickness=0.5));
@@ -142,13 +142,13 @@ equation
       points={{10,20},{0,20},{0,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, highPressurePump.inlet)
-    annotation(Line(
+  connect(loopBreaker.outlet, highPressurePump.inlet)annotation(
+    Line(
       points={{-50,-20},{-70,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, lowPressurePump.inlet)
-    annotation(Line(
+  connect(condensor.outlet, lowPressurePump.inlet)annotation(
+    Line(
       points={{70,-20},{50,-20}},
       color={28,108,200},
       thickness=0.5));
@@ -160,12 +160,12 @@ equation
       points={{-10,-20},{-20,-20},{-20,-40},{-12,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u2)
-    annotation(Line(points={{6.2,-40},{10,-40},{10,-72},{-6,-72}}, color={0,0,127}));
-  connect(inverseBlockConstraints.y2, massFlowRateSource.m_flow_prescribed)
-    annotation(Line(points={{27,-72},{20,-72},{20,12}}, color={0,0,127}));
-  connect(mixingTemperature.y, inverseBlockConstraints.u1)
-    annotation(Line(points={{-29,-72},{-12,-72}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, inverseBlockConstraints.u2)annotation(
+    Line(points={{6.2,-40},{10,-40},{10,-72},{-6,-72}}, color={0,0,127}));
+  connect(inverseBlockConstraints.y2, massFlowRateSource.m_flow_prescribed)annotation(
+    Line(points={{27,-72},{20,-72},{20,12}}, color={0,0,127}));
+  connect(mixingTemperature.y, inverseBlockConstraints.u1)annotation(
+    Line(points={{-29,-72},{-12,-72}}, color={0,0,127}));
   connect(mixingPreheater.outlet, loopBreaker.inlet) annotation(Line(
       points={{-10,-20},{-30,-20}},
       color={28,108,200},

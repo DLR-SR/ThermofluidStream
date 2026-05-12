@@ -3,16 +3,16 @@ model Step9FinalResultsReversed
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   SI.Temperature T1 = compressor1.T_out;
   SI.Temperature T2 = compressor1.T_in;
   Real x = T2/T1;
   Real eta = 0.96;
   Real eta1 = (1 + eta*(x-1))/(eta*x);
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-20,180},{0,200}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -191,8 +191,8 @@ model Step9FinalResultsReversed
     displayParameters=false,
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)
-    annotation(Placement(transformation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)annotation(
+    Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={116,64})));

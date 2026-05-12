@@ -3,8 +3,8 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter SI.AngularVelocity w(displayUnit="rpm") = 209.43951023932 "Engine speed";
   parameter Integer z = 6 "Number of cylinders";
@@ -23,8 +23,8 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
   SI.Volume V_h = V3-V4 "Engine displacement volume";
   SI.MassFlowRate m_flow = rho3*V_h*z*Modelica.Units.Conversions.to_Hz(w)/2 "Averaged mass flow rate";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{220,60},{240,80}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{220,60},{240,80}})));
 
   Processes.PolytropicPerfectGas
                       engineCompression(

@@ -81,18 +81,18 @@ model DryAirNASA1PseudoInversion
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
-  connect(compression.outlet, combustion.inlet)
-    annotation(Line(
+  connect(compression.outlet, combustion.inlet)annotation(
+    Line(
       points={{-70,-28},{-30,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, expansion.inlet)
-    annotation(Line(
+  connect(combustion.outlet, expansion.inlet)annotation(
+    Line(
       points={{-10,-28},{10,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(expansion.outlet, gasExchange.inlet)
-    annotation(Line(
+  connect(expansion.outlet, gasExchange.inlet)annotation(
+    Line(
       points={{30,-28},{70,-28}},
       color={28,108,200},
       thickness=0.5));

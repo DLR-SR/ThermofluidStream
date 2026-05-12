@@ -4,11 +4,11 @@ model SplitterNeglectInertance "Example - Splitter requiring neglectInertance = 
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{100,-120},{120,-100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{100,-120},{120,-100}})));
 
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,

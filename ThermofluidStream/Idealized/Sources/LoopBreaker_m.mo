@@ -5,8 +5,8 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
   import ThermalSpecification = ThermofluidStream.Types.ThermalSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the inlet mass flow rate" annotation(Dialog(group="Mass flow rate"), Evaluate=true);
   parameter SI.MassFlowRate m_flow_in_par = 0 "Fixed inlet mass flow rate" annotation(
     Dialog(group="Mass flow rate",
@@ -33,8 +33,8 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
       enable = XiSpec ==ValueSpecification.Fixed),
       HideResult = not XiSpec == ValueSpecification.Fixed);
 
-  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"annotation(
+    Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
@@ -58,21 +58,21 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String name = getInstanceName();
 
-  Modelica.Blocks.Interfaces.RealInput m_flow_in_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed inlet mass flow rate [kg/s]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-100,-120})));
-  Modelica.Blocks.Interfaces.RealInput p_out_prescribed(unit="Pa") if pSpec ==ValueSpecification.Prescribed  "Prescribed outlet pressure [Pa]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput T_out_prescribed(unit="K") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.Temperature  "Prescribed outlet temperature [K]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={60,-120})));
-  Modelica.Blocks.Interfaces.RealInput h_out_prescribed(unit="J/kg") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.SpecificEnthalpy  "Prescribed outlet specific enthalpy [J/kg]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={20,-120})));
-  Modelica.Blocks.Interfaces.RealInput Xi_out_prescribed[Medium.nXi](each unit = "kg/kg") if XiSpec ==ValueSpecification.Prescribed  "Prescribed outlet mass fractions [kg/kg]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-20,-120})));
+  Modelica.Blocks.Interfaces.RealInput m_flow_in_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed inlet mass flow rate [kg/s]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-100,-120})));
+  Modelica.Blocks.Interfaces.RealInput p_out_prescribed(unit="Pa") if pSpec ==ValueSpecification.Prescribed  "Prescribed outlet pressure [Pa]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput T_out_prescribed(unit="K") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.Temperature  "Prescribed outlet temperature [K]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={60,-120})));
+  Modelica.Blocks.Interfaces.RealInput h_out_prescribed(unit="J/kg") if thermalValueSpec ==ValueSpecification.Prescribed  and thermalSpec ==ThermalSpecification.SpecificEnthalpy  "Prescribed outlet specific enthalpy [J/kg]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={20,-120})));
+  Modelica.Blocks.Interfaces.RealInput Xi_out_prescribed[Medium.nXi](each unit = "kg/kg") if XiSpec ==ValueSpecification.Prescribed  "Prescribed outlet mass fractions [kg/kg]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-20,-120})));
 
-  ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
-  ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{80,-20},{120,20}})));
+  ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{-120,-20},{-80,20}})));
+  ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{80,-20},{120,20}})));
 
   SI.MassFlowRate m_flow_out = -outlet.m_flow "Outlet mass flow rate" annotation(
     HideResult = true);

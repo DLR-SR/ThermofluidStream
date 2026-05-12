@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

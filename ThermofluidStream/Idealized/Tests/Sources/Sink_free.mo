@@ -5,11 +5,11 @@ model Sink_free "Example - free sink"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{220,122},{240,142}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{220,122},{240,142}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -123,8 +123,8 @@ model Sink_free "Example - free sink"
   Modelica.Blocks.Sources.Sine h_sine(
     amplitude=(Medium.specificEnthalpy_pT(1e5, 273.15 + 200) - Medium.specificEnthalpy_pT(1e5, 273.15 + 120)),
     f=1,
-    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120))
-    annotation(Placement(transformation(extent={{80,26},{100,46}})));
+    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120))annotation(
+    Placement(transformation(extent={{80,26},{100,46}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-170,92},{-150,112}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,50},{-150,70}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,-30},{-150,-10}})));

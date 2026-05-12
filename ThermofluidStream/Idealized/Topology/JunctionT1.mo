@@ -2,10 +2,10 @@ within ThermofluidStream.Idealized.Topology;
 model JunctionT1 "Junction T1, inlet A or B is free - Underdetermined (1 equation)"
 
   extends BaseClasses.Junction(displayParameters=true, displayInstanceName=false);
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
-  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
+  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
 equation
 
   stateA = inletA.state;

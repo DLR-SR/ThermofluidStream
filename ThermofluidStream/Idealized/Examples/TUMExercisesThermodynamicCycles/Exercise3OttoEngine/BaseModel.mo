@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exer
 model BaseModel
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   parameter Medium.AbsolutePressure p1 = 100000 "Pressure before compression";
   parameter Medium.Temperature T1(displayUnit="K") = 300 "Temperature before compression";
   parameter Real compressionRatio = 10 "Compression ratio";
@@ -14,8 +14,8 @@ model BaseModel
   final parameter SI.SpecificVolume v1 = 1/d1 "Specific volume before compression";
   final parameter SI.SpecificVolume v2 = 1/d2 "Specific volume after compression";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{160,80},{180,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{160,80},{180,100}})));
 
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-160,-100},{180,100}})),

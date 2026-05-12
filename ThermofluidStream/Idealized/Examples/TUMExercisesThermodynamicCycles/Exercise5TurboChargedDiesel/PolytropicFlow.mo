@@ -3,8 +3,8 @@ model PolytropicFlow "Turbocharged diesel engine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter SI.AngularVelocity w(displayUnit="rpm") = 209.43951023932 "Engine speed";
   parameter Integer z = 6 "Number of cylinders";
@@ -23,8 +23,8 @@ model PolytropicFlow "Turbocharged diesel engine"
   SI.Volume V_h = V3-V4 "Engine displacement volume";
   SI.MassFlowRate m_flow = rho3*V_h*z*Modelica.Units.Conversions.to_Hz(w)/2 "Averaged mass flow rate";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{220,60},{240,80}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{220,60},{240,80}})));
 
   Processes.PolytropicPerfectGas
                       engineCompression(
@@ -72,8 +72,8 @@ model PolytropicFlow "Turbocharged diesel engine"
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{-100,-90},{-120,-110}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints
-    annotation(Placement(transformation(extent={{-70,-76},{-30,-52}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+    Placement(transformation(extent={{-70,-76},{-30,-52}})));
   Modelica.Blocks.Sources.RealExpression pseudoSourcePower(y(
       unit="W") = 0) annotation(Placement(transformation(extent={{-40,-74},{-60,-54}})));
   Processes.Isenthalpic valve(

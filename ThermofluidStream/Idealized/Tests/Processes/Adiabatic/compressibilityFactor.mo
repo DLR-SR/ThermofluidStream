@@ -3,8 +3,8 @@ model compressibilityFactor "Test model to check compressibility factor"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter Real Tr = 1.1 "Reduced temperature";
   constant Medium.Temperature T_crit = 647.096 "Critical temperature";
   final parameter Medium.Temperature T=Tr*T_crit "Temperature";

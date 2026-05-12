@@ -4,12 +4,12 @@ model Step4RamAirFlowInverse
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true,
-    neglectInertance=false)
-    annotation(Placement(transformation(extent={{80,80},{100,100}})));
+    neglectInertance=false)annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Boundaries.Source airSource(
     redeclare package Medium = Medium,
@@ -33,8 +33,8 @@ model Step4RamAirFlowInverse
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{50,40},{30,60}})));
   Sources.Sink_free coolingAirSink(redeclare package Medium = Medium,
-      neglectInertance=true)
-    annotation(Placement(transformation(extent={{-30,40},{-50,60}})));
+      neglectInertance=true)annotation(
+    Placement(transformation(extent={{-30,40},{-50,60}})));
   Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,

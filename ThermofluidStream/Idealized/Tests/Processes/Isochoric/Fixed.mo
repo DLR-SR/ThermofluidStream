@@ -3,8 +3,8 @@ model Fixed "Example - Isochoric process"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
   parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
@@ -14,8 +14,8 @@ model Fixed "Example - Isochoric process"
   final parameter Medium.SpecificHeatCapacity cv = Medium.specificHeatCapacityCv(Medium.setState_pT(p_in, T_in));
   final parameter SI.HeatFlowRate Q_flow = m_flow*cv*dT "Heat flow rate";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{140,140},{160,160}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{140,140},{160,160}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

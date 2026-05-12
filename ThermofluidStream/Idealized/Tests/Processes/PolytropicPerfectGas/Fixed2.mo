@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model Fixed2
   extends ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas.PartialFixed;
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{286,194},{306,214}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{286,194},{306,214}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

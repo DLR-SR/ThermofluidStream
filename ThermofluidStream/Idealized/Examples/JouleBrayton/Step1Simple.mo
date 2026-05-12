@@ -3,11 +3,11 @@ model Step1Simple
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
@@ -48,13 +48,13 @@ model Step1Simple
         rotation=0,
         origin={80,-6})));
 equation
-  connect(combustion.outlet, turbine.inlet)
-    annotation(Line(
+  connect(combustion.outlet, turbine.inlet)annotation(
+    Line(
       points={{10,-6},{30,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSource.outlet, compressor.inlet)
-    annotation(Line(
+  connect(airSource.outlet, compressor.inlet)annotation(
+    Line(
       points={{-72,-6},{-52,-6}},
       color={28,108,200},
       thickness=0.5));

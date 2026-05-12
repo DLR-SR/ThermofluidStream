@@ -5,12 +5,12 @@ model Step7Compressor2
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-20,180},{0,200}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -175,8 +175,8 @@ equation
       thickness=0.5));
   connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{19,130},{16,130},{16,140},{12,140}},
                                                                                                                         color={0,0,127}));
-  connect(turbine1.outlet,turbine2. inlet)
-    annotation(Line(
+  connect(turbine1.outlet,turbine2. inlet)annotation(
+    Line(
       points={{0,140},{0,10}},
       color={28,108,200},
       thickness=0.5));
@@ -191,8 +191,8 @@ equation
                                                                                                               color={0,0,127}));
   connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,110},{70,110},{70,130},{62,130}},
                                                                                                                                 color={0,0,127}));
-  connect(turbine2.outlet,turbine3. inlet)
-    annotation(Line(
+  connect(turbine2.outlet,turbine3. inlet)annotation(
+    Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},
       thickness=0.5));

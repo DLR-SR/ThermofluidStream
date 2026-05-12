@@ -5,11 +5,11 @@ model Sink_free_NeglectInertance "Example - free sink"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{40,60},{60,80}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{40,60},{60,80}})));
 
   Modelica.Blocks.Sources.Pulse m_flow_pulse1(
     amplitude=1,
@@ -49,8 +49,8 @@ model Sink_free_NeglectInertance "Example - free sink"
   Modelica.Blocks.Sources.Sine h_sine1(
     amplitude=(Medium.specificEnthalpy_pT(1e5, 273.15 + 200) - Medium.specificEnthalpy_pT(1e5, 273.15 + 120)),
     f=1,
-    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120))
-    annotation(Placement(transformation(extent={{80,-40},{100,-20}})));
+    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120))annotation(
+    Placement(transformation(extent={{80,-40},{100,-20}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate10(
     redeclare package Medium = Medium,
     neglectInertance=true,

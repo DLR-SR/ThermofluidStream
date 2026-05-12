@@ -79,10 +79,10 @@ model Adiabatic "Adiabatic process"
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
-  EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
-  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
+  EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"annotation(
+    Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
 
   SI.Efficiency eta_is "Isentropic efficiency";
   SI.SpecificEnthalpy dh "Difference in specific enthalpy dh = h_out - h_in";

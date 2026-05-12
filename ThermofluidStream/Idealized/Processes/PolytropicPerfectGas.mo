@@ -9,14 +9,14 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   import ProcessSpecification = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
-  parameter PowerSignal powerSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Power signal configuration"
-    annotation(Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)"
-    annotation(Dialog(group="Specification"), Evaluate=true);
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference      "Quantity used to define the outlet state"
-    annotation(Dialog(group="Specification"), Evaluate=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
+  parameter PowerSignal powerSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Power signal configuration"annotation(
+    Dialog(group="Specification"), Evaluate=true, HideResult=true);
+  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)"annotation(
+    Dialog(group="Specification"), Evaluate=true);
+  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference      "Quantity used to define the outlet state"annotation(
+    Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(Dialog(group="Specification", enable=not outletSpec == OutletSpecification.Unspecified), Evaluate=true);
   parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)" annotation(
     Dialog(group="Specification",
@@ -46,8 +46,8 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificVolume),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificVolume);
-  parameter ProcessSpecification processSpec =ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency      "Quantity used to define the process"
-    annotation(Dialog(group="Specification"), Evaluate=true);
+  parameter ProcessSpecification processSpec =ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency      "Quantity used to define the process"annotation(
+    Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification processValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(Dialog(group="Specification"), Evaluate=true);
   parameter SI.Efficiency eta_pol_fixed = 1 "Fixed polytropic efficiency" annotation(
     Dialog(group="Specification",
@@ -78,10 +78,10 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput processSpec_prescribed if processValueSpec ==ValueSpecification.Prescribed  "Prescribed process specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
-  EnergyFlow.Interfaces.EnergyFlowInput P_in = P if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
-  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
+  EnergyFlow.Interfaces.EnergyFlowInput P_in = P if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"annotation(
+    Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
 
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet temperature";
   Medium.Density rho_in = Medium.density(inlet.state) "Inlet density" annotation(

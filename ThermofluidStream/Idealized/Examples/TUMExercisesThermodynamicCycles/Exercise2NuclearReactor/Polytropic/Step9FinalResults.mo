@@ -4,12 +4,12 @@ model Step9FinalResults
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-20,180},{0,200}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -182,8 +182,8 @@ model Step9FinalResults
     displayParameters=false,
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)
-    annotation(Placement(transformation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)annotation(
+    Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={90,78})));

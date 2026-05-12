@@ -4,14 +4,14 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter Medium.AbsolutePressure p_Condensor=5000 "Condensor pressure";
   parameter Medium.SpecificEnthalpy h_bubble = Medium.bubbleEnthalpy(Medium.setSat_p(p_Condensor)) "Bubble enthalpy at condensor pressure";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{100,80},{120,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{100,80},{120,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic pump(
     redeclare package Medium = Medium,
@@ -59,8 +59,8 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
     displayInstanceName=true,
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)
-    annotation(Placement(transformation(extent={{62,30},{82,50}})));
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    Placement(transformation(extent={{62,30},{82,50}})));
   ThermofluidStream.Utilities.showRealValue heaterOutletTemperature(
     description="T_4",
     use_numberPort=false,
@@ -81,33 +81,33 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
     significantDigits=3) annotation(Placement(transformation(extent={{-20,-60},{0,-40}})));
   EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = 288000000) annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
 equation
-  connect(heater.outlet, turbine.inlet)
-    annotation(Line(
+  connect(heater.outlet, turbine.inlet)annotation(
+    Line(
       points={{-70,30},{-70,80},{50,80},{50,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.inlet, condensor.outlet)
-    annotation(Line(
+  connect(loopBreaker.inlet, condensor.outlet)annotation(
+    Line(
       points={{20,-10},{50,-10},{50,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, condensor.inlet)
-    annotation(Line(
+  connect(turbine.outlet, condensor.inlet)annotation(
+    Line(
       points={{50,50},{50,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, pump.inlet)
-    annotation(Line(
+  connect(loopBreaker.outlet, pump.inlet)annotation(
+    Line(
       points={{0,-10},{-40,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump.outlet, heater.inlet)
-    annotation(Line(
+  connect(pump.outlet, heater.inlet)annotation(
+    Line(
       points={{-60,-10},{-70,-10},{-70,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQualitySensor.inlet, turbine.outlet)
-    annotation(Line(
+  connect(vaporQualitySensor.inlet, turbine.outlet)annotation(
+    Line(
       points={{62,40},{50,40},{50,50}},
       color={28,108,200},
       thickness=0.5));

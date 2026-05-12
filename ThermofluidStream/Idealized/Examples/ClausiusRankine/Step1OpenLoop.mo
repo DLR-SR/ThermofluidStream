@@ -3,12 +3,12 @@ model Step1OpenLoop
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-     displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{80,80},{100,100}})));
+     displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
@@ -28,8 +28,8 @@ model Step1OpenLoop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
-  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000)
-    annotation(Placement(transformation(extent={{70,-10},{90,10}})));
+  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000)annotation(
+    Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -51,18 +51,18 @@ equation
       points={{0,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSource.outlet, pump.inlet)
-    annotation(Line(
+  connect(waterSource.outlet, pump.inlet)annotation(
+    Line(
       points={{-60,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSink.inlet, flowResistance.outlet)
-    annotation(Line(
+  connect(waterSink.inlet, flowResistance.outlet)annotation(
+    Line(
       points={{70,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, flowResistance.inlet)
-    annotation(Line(
+  connect(turbine.outlet, flowResistance.inlet)annotation(
+    Line(
       points={{30,0},{40,0}},
       color={28,108,200},
       thickness=0.5));

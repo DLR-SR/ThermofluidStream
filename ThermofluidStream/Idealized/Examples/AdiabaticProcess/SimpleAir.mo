@@ -3,8 +3,8 @@ model SimpleAir
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter SI.Pressure p_in=100000 "Fixed inlet pressure";
   parameter SI.Temperature T_in=293.15 "Fixed inlet temperature";
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";

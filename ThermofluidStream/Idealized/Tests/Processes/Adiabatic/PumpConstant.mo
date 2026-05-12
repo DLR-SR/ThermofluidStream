@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.Adiabatic;
 model PumpConstant "Same as Pump but with inputs specified as parameters"
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

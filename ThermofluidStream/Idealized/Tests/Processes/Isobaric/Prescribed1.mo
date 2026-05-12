@@ -3,8 +3,8 @@ model Prescribed1 "Example - Isobaric cycle process"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   SI.MassFlowRate m_flow = massFlowRate.y "Mass flow rate";
   Medium.AbsolutePressure p = inletPressure.y "Pressure (inlet = outlet)";
   Medium.Temperature T_in = inletTemperature.y "Inlet temperature";
@@ -35,8 +35,8 @@ model Prescribed1 "Example - Isobaric cycle process"
   SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work";
   SI.Power P = m_flow*w_exp_net "Net power (net expansion work flow rate)";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{260,78},{280,98}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{260,78},{280,98}})));
 
   Modelica.Blocks.Sources.SawTooth inletPressure(
     amplitude=1e5,

@@ -7,10 +7,10 @@ model Inversion1 "Example - Inversion with non-linear equations solver and h as 
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(
       unit="K",
-      displayUnit="degC") = 298.15)
-    annotation(Placement(transformation(extent={{74,-40},{54,-20}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints
-    annotation(Placement(transformation(extent={{20,-42},{-20,-18}})));
+      displayUnit="degC") = 298.15)annotation(
+    Placement(transformation(extent={{74,-40},{54,-20}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+    Placement(transformation(extent={{20,-42},{-20,-18}})));
 equation
   connect(temperatureSetpoint.y, inverseBlockConstraints.u1) annotation(Line(points={{53,-30},{22,-30}},   color={0,0,127}));
   connect(inverseBlockConstraints.y2, massFlowRateB.m_flow_prescribed) annotation(Line(points={{-17,-30},{-12,-30},{-12,-8},{-30,

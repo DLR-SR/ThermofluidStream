@@ -3,8 +3,8 @@ class UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
 class AdiabaticThermodynamicModels
-  extends Modelica.Icons.Information;
-    annotation(Documentation(info="<html>
+  extends Modelica.Icons.Information;annotation(
+    Documentation(info="<html>
   <p>
     Various models from
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a>
@@ -67,8 +67,8 @@ class AdiabaticThermodynamicModels
 end AdiabaticThermodynamicModels;
 
 class BalancedModels
-  extends Modelica.Icons.Information;
-    annotation(Documentation(info="<html>
+  extends Modelica.Icons.Information;annotation(
+    Documentation(info="<html>
  <p>
     Some models are not balanced:
   </p>
@@ -129,8 +129,8 @@ class BalancedModels
 end BalancedModels;
 
 class EnergyFlow
-  extends Modelica.Icons.Information;
-    annotation(Documentation(info="<html>
+  extends Modelica.Icons.Information;annotation(
+    Documentation(info="<html>
   <p>
     The energy flow connector is compatible with standard Modelica Real input and output connectors. 
     It was introduced to emphasize its physical meaning and to clearly differentiate power and heat flow from, for example, control signals.
@@ -154,8 +154,8 @@ class EnergyFlow
 end EnergyFlow;
 
 class neglectInertance
-  extends Modelica.Icons.Information;
-    annotation(Documentation(info="<html>
+  extends Modelica.Icons.Information;annotation(
+    Documentation(info="<html>
   <p>    
     Inverse calculations are supported, for example determining the mass flow rate from a specified temperature difference and heat flow.<br> 
     Such inverse calculations may require to remove the derivative of the mass flow rate <code>der(m_flow)</code>, refered to as <strong>neglectInertance</strong>.<br>

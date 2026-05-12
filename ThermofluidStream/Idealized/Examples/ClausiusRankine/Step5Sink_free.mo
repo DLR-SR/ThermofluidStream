@@ -5,13 +5,13 @@ model Step5Sink_free
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     L=0,
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{120,80},{140,100}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
@@ -33,8 +33,8 @@ model Step5Sink_free
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  Sources.Sink_free waterSink(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{120,-10},{140,10}})));
+  Sources.Sink_free waterSink(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{120,-10},{140,10}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-14,-40},{6,-20}})));
   Processes.Isobaric preheater(
     redeclare package Medium = Medium,
@@ -67,8 +67,8 @@ model Step5Sink_free
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-120,-80},{-100,-60}})));
 equation
-  connect(pump.outlet, preheater.inlet)
-    annotation(Line(
+  connect(pump.outlet, preheater.inlet)annotation(
+    Line(
       points={{-50,0},{-40,0}},
       color={28,108,200},
       thickness=0.5));
@@ -84,18 +84,18 @@ equation
       points={{60,0},{80,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet,waterSink. inlet)
-    annotation(Line(
+  connect(turbine.outlet,waterSink. inlet)annotation(
+    Line(
       points={{100,0},{120,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSource.outlet, massFlowRateSource.inlet)
-    annotation(Line(
+  connect(waterSource.outlet, massFlowRateSource.inlet)annotation(
+    Line(
       points={{-120,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateSource.outlet, pump.inlet)
-    annotation(Line(
+  connect(massFlowRateSource.outlet, pump.inlet)annotation(
+    Line(
       points={{-80,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));

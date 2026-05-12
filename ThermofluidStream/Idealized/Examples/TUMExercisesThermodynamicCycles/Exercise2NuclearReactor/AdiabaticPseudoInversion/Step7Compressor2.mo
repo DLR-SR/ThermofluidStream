@@ -4,12 +4,12 @@ model Step7Compressor2
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=false,                           displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-20,180},{0,200}})));
+    neglectInertance=false,                           displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
@@ -203,8 +203,8 @@ equation
       points={{-20,100},{0,100},{0,140}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine1.outlet,turbine2. inlet)
-    annotation(Line(
+  connect(turbine1.outlet,turbine2. inlet)annotation(
+    Line(
       points={{0,140},{0,10}},
       color={28,108,200},
       thickness=0.5));
@@ -212,8 +212,8 @@ equation
       points={{0,-10},{0,-40},{-10,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.outlet,turbine3. inlet)
-    annotation(Line(
+  connect(turbine2.outlet,turbine3. inlet)annotation(
+    Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},
       thickness=0.5));

@@ -4,11 +4,11 @@ model Step3Superheater
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{120,80},{140,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
@@ -28,8 +28,8 @@ model Step3Superheater
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000)
-    annotation(Placement(transformation(extent={{120,-10},{140,10}})));
+  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000)annotation(
+    Placement(transformation(extent={{120,-10},{140,10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -63,23 +63,23 @@ model Step3Superheater
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-110,-40},{-90,-20}})));
 equation
-  connect(waterSource.outlet, pump.inlet)
-    annotation(Line(
+  connect(waterSource.outlet, pump.inlet)annotation(
+    Line(
       points={{-120,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSink.inlet, flowResistance.outlet)
-    annotation(Line(
+  connect(waterSink.inlet, flowResistance.outlet)annotation(
+    Line(
       points={{120,0},{110,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, flowResistance.inlet)
-    annotation(Line(
+  connect(turbine.outlet, flowResistance.inlet)annotation(
+    Line(
       points={{80,0},{90,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump.outlet, preheater.inlet)
-    annotation(Line(
+  connect(pump.outlet, preheater.inlet)annotation(
+    Line(
       points={{-80,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));

@@ -4,14 +4,14 @@ model Step1Simple
 
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{180,80},{200,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{180,80},{200,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic pump(
     redeclare package Medium = Water,
@@ -91,13 +91,13 @@ equation
       points={{90,-40},{100,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump.inlet, loopBreaker.outlet)
-    annotation(Line(
+  connect(pump.inlet, loopBreaker.outlet)annotation(
+    Line(
       points={{40,-40},{70,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump.outlet, heatExchangerWaterSide.inlet)
-    annotation(Line(
+  connect(pump.outlet, heatExchangerWaterSide.inlet)annotation(
+    Line(
       points={{20,-40},{12,-40},{12,-10}},
       color={28,108,200},
       thickness=0.5));
@@ -105,8 +105,8 @@ equation
       points={{130,-10},{130,-40},{120,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerWaterSide.outlet, turbineCR.inlet)
-    annotation(Line(
+  connect(heatExchangerWaterSide.outlet, turbineCR.inlet)annotation(
+    Line(
       points={{12,10},{12,30},{130,30},{130,10}},
       color={28,108,200},
       thickness=0.5));
@@ -114,8 +114,8 @@ equation
       points={{-120,40},{-100,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, turbineJB.inlet)
-    annotation(Line(
+  connect(combustion.outlet, turbineJB.inlet)annotation(
+    Line(
       points={{-80,40},{-60,40}},
       color={28,108,200},
       thickness=0.5));
@@ -123,13 +123,13 @@ equation
       points={{-160,40},{-140,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbineJB.outlet, heatExchangerAirSide.inlet)
-    annotation(Line(
+  connect(turbineJB.outlet, heatExchangerAirSide.inlet)annotation(
+    Line(
       points={{-40,40},{-30,40},{-30,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerAirSide.outlet,airSink. inlet)
-    annotation(Line(
+  connect(heatExchangerAirSide.outlet,airSink. inlet)annotation(
+    Line(
       points={{-30,-10},{-30,-20}},
       color={28,108,200},
       thickness=0.5));

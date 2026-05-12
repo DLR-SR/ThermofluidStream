@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model Fixed "Example - Isochoric process"
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   parameter SI.MassFlowRate m_flow=0   "Mass flow rate";
   parameter Medium.AbsolutePressure p=200000 "Pressure (inlet = outlet)";
@@ -38,8 +38,8 @@ model Fixed "Example - Isochoric process"
   final parameter SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work";
   final parameter SI.Power P = m_flow*w_exp_net "Net power (net expansion work flow rate)";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{300,80},{320,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{300,80},{320,100}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

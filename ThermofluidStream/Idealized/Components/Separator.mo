@@ -1,11 +1,11 @@
 within ThermofluidStream.Idealized.Components;
 model Separator "Model of a phase separator for two-phase medium - Overdetermined (1 equation)"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"
-    annotation(choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialTwoPhaseMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each component"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each component"annotation(
+    Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
@@ -15,14 +15,14 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     Dialog(group="Warnings"));
   final parameter String name = getInstanceName();
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{120,-80},{80,-40}})));
-  ThermofluidStream.Interfaces.Outlet outletLiquid(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{-80,-80},{-120,-40}})));
+  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{120,-80},{80,-40}})));
+  ThermofluidStream.Interfaces.Outlet outletLiquid(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{-80,-80},{-120,-40}})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
                                             annotation(Placement(transformation(extent={{-120,40},{-80,80}})));
-  ThermofluidStream.Interfaces.Outlet outletVapor(redeclare package Medium = Medium)
-    annotation(Placement(transformation(extent={{80,40},{120,80}})));
+  ThermofluidStream.Interfaces.Outlet outletVapor(redeclare package Medium = Medium)annotation(
+    Placement(transformation(extent={{80,40},{120,80}})));
 
   Medium.AbsolutePressure p = p_A "Pressure";
   Medium.AbsolutePressure p_A = Medium.pressure(inletA.state) "Pressure A";
@@ -43,10 +43,10 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,50},{10,70}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(p)))
-    annotation(Placement(transformation(extent={{40,30},{20,50}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(p)))
-    annotation(Placement(transformation(extent={{-40,-50},{-20,-30}})));
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(p)))annotation(
+    Placement(transformation(extent={{40,30},{20,50}})));
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(p)))annotation(
+    Placement(transformation(extent={{-40,-50},{-20,-30}})));
 
 equation
 
@@ -56,23 +56,23 @@ equation
     "In \"" + name +"\" the inlet pressures differ beyond the specified tolerance.",
     assertionLevel);
 
-  connect(inletB, isobaricHeatFlowPort1.inlet)
-    annotation(Line(
+  connect(inletB, isobaricHeatFlowPort1.inlet)annotation(
+    Line(
       points={{-100,60},{-10,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(inletA, isobaricHeatFlowPort.inlet)
-    annotation(Line(
+  connect(inletA, isobaricHeatFlowPort.inlet)annotation(
+    Line(
       points={{100,-60},{10,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(isobaricHeatFlowPort.outlet, outletLiquid)
-    annotation(Line(
+  connect(isobaricHeatFlowPort.outlet, outletLiquid)annotation(
+    Line(
       points={{-10,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(isobaricHeatFlowPort1.outlet, outletVapor)
-    annotation(Line(
+  connect(isobaricHeatFlowPort1.outlet, outletVapor)annotation(
+    Line(
       points={{10,60},{100,60}},
       color={28,108,200},
       thickness=0.5));

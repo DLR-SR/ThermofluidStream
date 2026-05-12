@@ -5,12 +5,12 @@ model Step9FinalResults
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-40,220},{-20,240}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-40,220},{-20,240}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -212,8 +212,8 @@ model Step9FinalResults
     displayParameters=false,
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)
-    annotation(Placement(transformation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)annotation(
+    Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={98,158})));
@@ -242,8 +242,8 @@ equation
       thickness=0.5));
   connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{-61,160},{-64,160},{-64,170},{-68,170}},
                                                                                                                         color={0,0,127}));
-  connect(turbine1.outlet,turbine2. inlet)
-    annotation(Line(
+  connect(turbine1.outlet,turbine2. inlet)annotation(
+    Line(
       points={{-80,170},{-80,40}},
       color={28,108,200},
       thickness=0.5));
@@ -259,8 +259,8 @@ equation
                                                                                                               color={0,0,127}));
   connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{-41.8,140},{-10,140},{-10,160},{-18,160}},
                                                                                                                                 color={0,0,127}));
-  connect(turbine2.outlet,turbine3. inlet)
-    annotation(Line(
+  connect(turbine2.outlet,turbine3. inlet)annotation(
+    Line(
       points={{-80,20},{-80,-50}},
       color={28,108,200},
       thickness=0.5));

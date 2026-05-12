@@ -4,16 +4,16 @@ model Polytropic
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir (T_max=2000)
                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   parameter Medium.AbsolutePressure p1=100000 "Pressure before compression";
   parameter Medium.Temperature T1(displayUnit="K")=300 "Temperature before compression";
   parameter Real compressionRatio = 23 "Compression ratio";
   parameter Medium.Density rho1 = Medium.density_pT(p1,T1) "Density before compression";
 
   parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-160,78},{-140,98}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-160,78},{-140,98}})));
 
   Processes.PolytropicPerfectGas
                            compression(
@@ -72,28 +72,28 @@ model Polytropic
     significantDigits=4) annotation(Placement(transformation(extent={{-62,-100},{-42,-80}})));
   EnergyFlow.Components.Sum shaftPower(n_in=3) annotation(Placement(transformation(extent={{48,-46},{60,-34}})));
 equation
-  connect(compression.outlet, combustion.inlet)
-    annotation(Line(
+  connect(compression.outlet, combustion.inlet)annotation(
+    Line(
       points={{-50,10},{-30,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, expansion.inlet)
-    annotation(Line(
+  connect(combustion.outlet, expansion.inlet)annotation(
+    Line(
       points={{-10,10},{10,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(expansion.outlet, gasExchange.inlet)
-    annotation(Line(
+  connect(expansion.outlet, gasExchange.inlet)annotation(
+    Line(
       points={{30,10},{50,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, compression.inlet)
-    annotation(Line(
+  connect(loopBreaker.outlet, compression.inlet)annotation(
+    Line(
       points={{-20,50},{-80,50},{-80,10},{-70,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(gasExchange.outlet, loopBreaker.inlet)
-    annotation(Line(
+  connect(gasExchange.outlet, loopBreaker.inlet)annotation(
+    Line(
       points={{70,10},{80,10},{80,50},{0,50}},
       color={28,108,200},
       thickness=0.5));

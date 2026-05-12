@@ -4,12 +4,12 @@ model Inversion
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Refrigerant = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Refrigerant,
@@ -21,8 +21,8 @@ model Inversion
         rotation=0,
         origin={-40,40})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{140,80},{160,100}})));
+    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{140,80},{160,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Refrigerant,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
@@ -38,8 +38,8 @@ model Inversion
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-70,-10})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Refrigerant.dewEnthalpy(Refrigerant.setSat_p(1e5)))
-    annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Refrigerant.dewEnthalpy(Refrigerant.setSat_p(1e5)))annotation(
+    Placement(transformation(extent={{-120,-10},{-100,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Refrigerant,
     eta_fixed=0.8,
@@ -77,8 +77,8 @@ model Inversion
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={24,40})));
-  Modelica.Blocks.Sources.RealExpression h_dew1(y=Refrigerant.dewEnthalpy(Refrigerant.setSat_p(6e5)))
-    annotation(Placement(transformation(extent={{0,50},{20,70}})));
+  Modelica.Blocks.Sources.RealExpression h_dew1(y=Refrigerant.dewEnthalpy(Refrigerant.setSat_p(6e5)))annotation(
+    Placement(transformation(extent={{0,50},{20,70}})));
   Sources.LoopBreaker lowPressureLoopBreaker(
     redeclare package Medium = Refrigerant,
     p_out_fixed=100000,
@@ -157,18 +157,18 @@ model Inversion
     displayVariable=false,
     significantDigits=3) annotation(Placement(transformation(extent={{100,-100},{120,-80}})));
 equation
-  connect(evaporator.inlet, lowPressureValve.outlet)
-    annotation(Line(
+  connect(evaporator.inlet, lowPressureValve.outlet)annotation(
+    Line(
       points={{-70,-20},{-70,-40},{-50,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outlet, lowPressureLoopBreaker.inlet)
-    annotation(Line(
+  connect(evaporator.outlet, lowPressureLoopBreaker.inlet)annotation(
+    Line(
       points={{-70,0},{-70,12}},
       color={28,108,200},
       thickness=0.5));
-  connect(lowPressureLoopBreaker.outlet, lowPressureCompressor.inlet)
-    annotation(Line(
+  connect(lowPressureLoopBreaker.outlet, lowPressureCompressor.inlet)annotation(
+    Line(
       points={{-70,32},{-70,40},{-50,40}},
       color={28,108,200},
       thickness=0.5));
@@ -180,13 +180,13 @@ equation
       points={{-30,40},{-6,40},{-6,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureCompressor.outlet, condensor.inlet)
-    annotation(Line(
+  connect(highPressureCompressor.outlet, condensor.inlet)annotation(
+    Line(
       points={{70,40},{80,40},{80,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, highPressureValve.inlet)
-    annotation(Line(
+  connect(condensor.outlet, highPressureValve.inlet)annotation(
+    Line(
       points={{80,-10},{80,-40},{50,-40}},
       color={28,108,200},
       thickness=0.5));
@@ -194,8 +194,8 @@ equation
       points={{30,-40},{6,-40},{6,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureLoopBreaker.outlet, highPressureCompressor.inlet)
-    annotation(Line(
+  connect(highPressureLoopBreaker.outlet, highPressureCompressor.inlet)annotation(
+    Line(
       points={{34,40},{50,40}},
       color={28,108,200},
       thickness=0.5));

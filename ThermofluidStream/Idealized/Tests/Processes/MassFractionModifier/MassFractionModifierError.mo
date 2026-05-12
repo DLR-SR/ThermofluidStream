@@ -3,11 +3,11 @@ model MassFractionModifierError "Example - MassFractionModifier"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{140,140},{160,160}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{140,140},{160,160}})));
 
   Modelica.Blocks.Sources.Pulse massFlowRate(period=0.3) annotation(Placement(transformation(extent={{110,0},{90,20}})));
   Modelica.Blocks.Sources.Pulse pressure(

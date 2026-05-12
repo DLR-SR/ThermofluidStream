@@ -3,8 +3,8 @@ model ConstantPropertyLiquidWater
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Water.ConstantPropertyLiquidWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

@@ -3,8 +3,8 @@ model gammaSpec "Test model to check gamma specification"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"
-    annotation(choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

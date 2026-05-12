@@ -4,11 +4,11 @@ model Step4Turbine3
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation(choicesAllMatching=true);
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation(Placement(transformation(extent={{-200,180},{-180,200}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+    Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -113,8 +113,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{19,60},{16,60},{16,70},{12,70}}, color={0,0,127}));
-  connect(turbine1.outlet,turbine2. inlet)
-    annotation(Line(
+  connect(turbine1.outlet,turbine2. inlet)annotation(
+    Line(
       points={{0,70},{0,10}},
       color={28,108,200},
       thickness=0.5));
@@ -127,8 +127,8 @@ equation
   connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
   connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,60},{56,60}}, color={0,0,127}));
   connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,40},{70,40},{70,60},{62,60}}, color={0,0,127}));
-  connect(turbine2.outlet,turbine3. inlet)
-    annotation(Line(
+  connect(turbine2.outlet,turbine3. inlet)annotation(
+    Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},
       thickness=0.5));
