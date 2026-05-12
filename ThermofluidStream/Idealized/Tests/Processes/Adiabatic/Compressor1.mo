@@ -16,12 +16,12 @@ model Compressor1 "Forward and inverse calculation compressor test model"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Sources.Ramp pressureRatio(
     height=98.999,
     duration=0.9,
@@ -35,7 +35,7 @@ model Compressor1 "Forward and inverse calculation compressor test model"
   .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{80,40},{100,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor1(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     specifyOutlet=false,
@@ -45,7 +45,7 @@ model Compressor1 "Forward and inverse calculation compressor test model"
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 300000,
-    dp_nom=5000000) annotation(Placement(transformation(extent={{50,40},{70,60}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{50,40},{70,60}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -56,12 +56,12 @@ model Compressor1 "Forward and inverse calculation compressor test model"
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{50,-60},{70,-80}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{50,-60},{70,-80}})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{0,-36},{20,-16}})));
 equation
   connect(source.outlet, compressor.inlet) annotation(

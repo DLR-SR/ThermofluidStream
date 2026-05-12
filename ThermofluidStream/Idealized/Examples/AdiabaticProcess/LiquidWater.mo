@@ -15,11 +15,11 @@ model LiquidWater
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic fullMedium(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-10,50},{10,70}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   Modelica.Blocks.Sources.Ramp pressureDifference(
     height=100e5,
     duration=1,
@@ -32,11 +32,11 @@ model LiquidWater
   .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-10},{40,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic incompressibleFluid(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -45,11 +45,11 @@ model LiquidWater
   .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-60},{40,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic isothermalReference(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-10,-60},{10,-40}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
 equation
   connect(source.outlet, fullMedium.inlet) annotation(Line(
       points={{-20,60},{-10,60}},
@@ -85,7 +85,7 @@ equation
     Documentation(info="<html>
   <p>
     This model compares various 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
     using an exemplary pressurization of liquid water 
     (<a href=\"modelica://ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater\">TwoPhaseWater</a>).
   </p>

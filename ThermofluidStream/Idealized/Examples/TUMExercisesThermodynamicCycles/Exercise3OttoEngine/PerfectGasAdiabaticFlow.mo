@@ -6,12 +6,12 @@ model PerfectGasAdiabaticFlow
 
   ThermofluidStream.Idealized.Processes.Adiabatic compression(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=1,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=p1*(1/compressionRatio)^(-gamma)) annotation(Placement(transformation(extent={{-70,0},{-50,20}})));
+    p_out_fixed=p1*(1/compressionRatio)^(-gamma)) annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
   ThermofluidStream.Idealized.Processes.Isochoric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
@@ -19,11 +19,11 @@ model PerfectGasAdiabaticFlow
     T_out_fixed(displayUnit="K") = T3) annotation(Placement(transformation(extent={{-30,0},{-10,20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=1,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,0},{30,20}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,0},{30,20}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,

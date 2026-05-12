@@ -1,8 +1,8 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialIdealGas "Base class for adiabatic thermodynamic models assuming an ideal gas (p*v = R*T)"
   // unknowns - equations = 2
 
-  extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic;
+  extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic;
   // unknowns - equations = 2
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;

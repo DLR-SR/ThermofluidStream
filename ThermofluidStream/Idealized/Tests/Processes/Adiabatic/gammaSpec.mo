@@ -15,11 +15,11 @@ model gammaSpec "Test model to check gamma specification"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasState(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-60,40},{-40,60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Modelica.Blocks.Sources.LogFrequencySweep
                                pressureRatio(
     wMin=1,
@@ -34,11 +34,11 @@ model gammaSpec "Test model to check gamma specification"
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,40},{90,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasFixed(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{40,40},{60,60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{40,40},{60,60}})));
 equation
   connect(source.outlet, idealGasState.inlet) annotation(Line(
       points={{-70,50},{-60,50}},
@@ -70,7 +70,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     Checks <code>gammaSpec</code> (<code>ValueSpecification.Fixed</code> vs <code>ValueSpecification.State</code>) for 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>.
   </p>
 </html>", revisions="<html>
   <ul>

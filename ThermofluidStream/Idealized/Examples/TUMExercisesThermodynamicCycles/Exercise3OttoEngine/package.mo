@@ -20,12 +20,12 @@ package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
       <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium
       (ideal gas with temperature-dependent <code>cp</code>).
       For <code>SimpleAir</code>, the
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">PerfectGas</a>
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas\">PerfectGas</a>
       or
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma\">IdealGas</a>
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma\">IdealGas</a>
       <code>ThermodynamicModel</code> have to be used.
       For <code>DryAirNasa</code>, the
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">Universal</a>
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium\">Universal</a>
       <code>ThermodynamicModel</code> is recommended.
     </li>
 

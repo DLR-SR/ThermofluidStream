@@ -25,20 +25,20 @@ model SimpleAir
 
   Processes.Adiabatic compression(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
-    pr_fixed=compressionRatio^gamma) annotation(Placement(transformation(extent={{-70,0},{-50,20}})));
+    pr_fixed=compressionRatio^gamma) annotation (Placement(transformation(extent={{-70,0},{-50,20}})));
   Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = 1700) annotation(Placement(transformation(extent={{-30,0},{-10,20}})));
   Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
-    pr_fixed=compressionRatio^(-gamma)) annotation(Placement(transformation(extent={{10,0},{30,20}})));
+    pr_fixed=compressionRatio^(-gamma)) annotation (Placement(transformation(extent={{10,0},{30,20}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,

@@ -1,8 +1,8 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialIncompressibleFluid "Base class for adiabatic thermodynamic models assuming an incompressible fluid (rho = const)"
   // unknowns - equations = 1
 
-  extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic;
+  extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic;
   // unknowns - equations = 2
 
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(

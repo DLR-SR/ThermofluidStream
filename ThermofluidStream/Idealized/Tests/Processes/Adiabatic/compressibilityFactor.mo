@@ -21,10 +21,10 @@ model compressibilityFactor "Test model to check compressibility factor"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGas(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     showEfficiency=false,
-    showPowerDirection=false) annotation(Placement(transformation(extent={{-10,10},{10,30}})));
+    showPowerDirection=false) annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -33,10 +33,10 @@ model compressibilityFactor "Test model to check compressibility factor"
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-30},{40,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGas(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, gamma, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, gamma, cp = const",
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     showEfficiency=false,
-    showPowerDirection=false) annotation(Placement(transformation(extent={{-10,-30},{10,-10}})));
+    showPowerDirection=false) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Modelica.Blocks.Sources.Ramp reducedPressure(
     height=min(7, 0.9e8/p_crit),
     duration=1,
@@ -75,7 +75,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     Applies a ramp in reduced pressure for constant reduced temperature to check the compressibility factors <code>Z_in, Z_out</code> and the corresponding warning
-    in <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>. 
+    in <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>. 
     The inlet and outlet states are equal. 
   </p>
 </html>", revisions="<html>

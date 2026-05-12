@@ -11,20 +11,20 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=350000) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
+    p_out_fixed=350000) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   ThermofluidStream.Boundaries.Source
                                 source(
     redeclare package Medium = Medium,
@@ -52,12 +52,12 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     T_out_fixed(displayUnit="K") = 320) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=1000000) annotation(Placement(transformation(extent={{-20,-10},{0,10}})));
+    p_out_fixed=1000000) annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
   ThermofluidStream.Utilities.showRealValue lowPressureCompressorOutletTemperature(
     description="T_2",
     use_numberPort=false,
@@ -268,7 +268,7 @@ equation
     <li>
       <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.ReferenceAir\">ReferenceAir</a> 
       (e.g. <code>ReferenceAir.Air_ph</code>) fails when used with the 
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium\">
         FullMedium
       </a> thermodynamic model, but works with the other formulations.
     </li>

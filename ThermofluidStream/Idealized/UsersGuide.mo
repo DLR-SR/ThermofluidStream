@@ -8,7 +8,7 @@ class AdiabaticThermodynamicModels
     Documentation(info="<html>
   <p>
     Various models from
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a>
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a>
     can be used to calculate the isentropic reference process required for an adiabatic process with a given isentropic efficiency
     (<a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Processes.Adiabatic</a>
     and
@@ -17,28 +17,28 @@ class AdiabaticThermodynamicModels
 
   <ul>
     <li>
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">FullMedium</a> -
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium\">FullMedium</a> -
       entropy-based model with no thermodynamic simplifications. Computes <code>h_out_is = h(p_out, s_in)</code>.
     </li>
     <li>
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma\">IdealGasConstantGamma</a> -
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma\">IdealGasConstantGamma</a> -
       assumes ideal gas (<code>p*v = R*T</code>) with constant isentropic exponent <code>gamma</code>.
       Computes <code>h_out_is = h(p_out, T_out_is)</code>, where
       <code>T_out_is = T_in*(p_out/p_in)^((gamma-1)/gamma)</code>.
     </li>
     <li>
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">PerfectGas</a> - 
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas\">PerfectGas</a> - 
       assumes perfect gas (<code>p*v = R*T</code>, <code>cp = const</code>).
       Computes <code>h_out_is = h_in + cp*(T_out_is - T_in)</code>, where
       <code>T_out_is = T_in*(p_out/p_in)^((gamma-1)/gamma)</code>.
     </li>
     <li>
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid\">IncompressibleFluid</a> -
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid\">IncompressibleFluid</a> -
       assumes incompressible fluid (<code>rho = const</code>).
       Computes <code>h_out_is = dp/rho_in + h_in</code>.
     </li>
     <li>
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference\">IsothermalReference</a> - 
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference\">IsothermalReference</a> - 
       assumes constant temperature (<code>T = const</code>) for the isentropic reference process, which is true for incompressible fluid. It then computes
       <code>h_out_is = h(p_out, T_in)</code>.
     </li>

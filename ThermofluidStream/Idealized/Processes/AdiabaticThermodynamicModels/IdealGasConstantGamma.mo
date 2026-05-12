@@ -1,7 +1,7 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model IdealGasConstantGamma "Adiabatic process, ideal gas (p*v = R*T), gamma = const"
 
-  extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas;
+  extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas;
   // unknowns - equations = 2
 
   Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(state_in) "Inlet specific enthalpy";

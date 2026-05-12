@@ -18,11 +18,11 @@ model CO2
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstGamma(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-10,40},{10,60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Modelica.Blocks.Sources.Ramp pressureRatio(
     height=1,
     duration=1,
@@ -35,11 +35,11 @@ model CO2
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{120,40},{140,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGas(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, gamma, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, gamma, cp = const",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{90,40},{110,60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{90,40},{110,60}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=p_in,
@@ -48,11 +48,11 @@ model CO2
   ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-60},{40,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic incompressibleFluid(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-10,-40},{10,-60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-40},{10,-60}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=p_in,
@@ -61,11 +61,11 @@ model CO2
   ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{120,-60},{140,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic isothermalReference(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{90,-40},{110,-60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{90,-40},{110,-60}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     p0_par=p_in,
@@ -74,11 +74,11 @@ model CO2
   Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
   Processes.Adiabatic fullMedium(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-110,40},{-90,60}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-110,40},{-90,60}})));
 
 equation
   connect(source.outlet, idealGasConstGamma.inlet) annotation(Line(
@@ -138,7 +138,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     This model compares different 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
     using an exemplary compression of an ideal gas with temperature-dependent specific heat capacity and isentropic exponent
     (<a href=\"modelica://ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2\">IdealGases.SingleGases.CO2</a>).
   </p>

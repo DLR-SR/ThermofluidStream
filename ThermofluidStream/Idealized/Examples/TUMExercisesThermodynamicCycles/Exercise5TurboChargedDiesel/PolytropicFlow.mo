@@ -50,11 +50,11 @@ model PolytropicFlow "Turbocharged diesel engine"
                      annotation(Placement(transformation(extent={{0,10},{20,30}})));
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=p2) annotation(Placement(transformation(extent={{-120,-46},{-100,-26}})));
+    p_out_fixed=p2) annotation (Placement(transformation(extent={{-120,-46},{-100,-26}})));
   Processes.Isobaric cooler(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
@@ -67,11 +67,11 @@ model PolytropicFlow "Turbocharged diesel engine"
   Modelica.Blocks.Sources.RealExpression realExpression(y=m_flow) annotation(Placement(transformation(extent={{-200,-110},{-180,-90}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{-100,-90},{-120,-110}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{-100,-90},{-120,-110}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{-70,-76},{-30,-52}})));
   Modelica.Blocks.Sources.RealExpression pseudoSourcePower(y(

@@ -16,12 +16,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{180,200},{200,220}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-110,138},{-90,158}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-110,138},{-90,158}})));
   Modelica.Blocks.Sources.Ramp pressureRatio(
     height=98.999,
     duration=0.9,
@@ -35,12 +35,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_LinearWork(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -49,12 +49,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-90,-166},{-70,-146}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_Enthalpy(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-120,-146},{-100,-166}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-120,-146},{-100,-166}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -63,7 +63,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{60,160},{80,180}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump1(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     specifyOutlet=false,
@@ -73,7 +73,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 5000,
-    dp_nom=5000000) annotation(Placement(transformation(extent={{30,160},{50,180}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{30,160},{50,180}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -84,12 +84,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   ThermofluidStream.Idealized.Processes.Adiabatic pump2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{48,114},{68,94}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{48,114},{68,94}})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{-40,100},{-20,120}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
@@ -99,7 +99,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{78,30},{98,50}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_LinearWork1(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     specifyOutlet=false,
@@ -109,7 +109,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 5000,
-    dp_nom=5000000) annotation(Placement(transformation(extent={{48,30},{68,50}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{48,30},{68,50}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -120,12 +120,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_LinearWork2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{48,-34},{68,-54}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{48,-34},{68,-54}})));
   Modelica.Blocks.Math.Gain gain1(k=-1) annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
@@ -135,7 +135,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   .ThermofluidStream.Boundaries.Sink_m sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{80,-126},{100,-106}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_Enthalpy1(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     specifyOutlet=false,
@@ -145,7 +145,7 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 5000,
-    dp_nom=5000000) annotation(Placement(transformation(extent={{50,-126},{70,-106}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{50,-126},{70,-106}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -156,12 +156,12 @@ model Pump "Pump model with different adiabatic models (isentropic, perfect gas,
   ThermofluidStream.Idealized.Processes.Adiabatic pumpIncompressibleFluid_Enthalpy2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{48,-190},{68,-210}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{48,-190},{68,-210}})));
   Modelica.Blocks.Math.Gain gain2(k=-1) annotation(Placement(transformation(extent={{-20,-166},{0,-146}})));
 equation
   connect(source.outlet, pump.inlet) annotation(Line(

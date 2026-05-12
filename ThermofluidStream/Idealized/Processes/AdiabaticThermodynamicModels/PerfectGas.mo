@@ -1,7 +1,7 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
 
-  extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas;
+  extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas;
   // unknowns - equations = 2
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;

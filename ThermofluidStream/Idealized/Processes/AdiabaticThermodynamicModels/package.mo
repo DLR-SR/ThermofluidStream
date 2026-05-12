@@ -1,5 +1,6 @@
-within ThermofluidStream.Idealized.Processes.Utilities;
+within ThermofluidStream.Idealized.Processes;
 package AdiabaticThermodynamicModels
+  extends Modelica.Icons.UtilitiesPackage;
   annotation(Documentation(info="<html>
   <p>
     Package of adiabatic assumption models used in 

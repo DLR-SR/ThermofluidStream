@@ -1,7 +1,7 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model IncompressibleFluid "Adiabatic process, incompressible fluid (rho = const): h_out_is = dp/rho_in + h_in"
 
-  extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIncompressibleFluid;
+  extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIncompressibleFluid;
   // unknowns - equations = 1
 
 equation

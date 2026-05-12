@@ -7,19 +7,19 @@ model Adiabatic "Adiabatic process"
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
   import PowerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
 
-  replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
-    constrainedby ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic
+  replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium
+    constrainedby ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic
     "Thermodynamic model used for adiabatic process calculation" annotation(
     Evaluate = true, choices(
-      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
+      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium
         "h_out_is = h(p_out, s_in)"),
-      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma
+      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma
         "p*v = R*T, gamma = const"),
-      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas
+      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas
         "p*v = R*T, cp = const"),
-      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid
+      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid
         "rho = const: h_out_is = dp/rho_in + h_in"),
-      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference
+      choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference
         "h_out_is = h(p_out, T_in)")));
 
   parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
@@ -247,7 +247,7 @@ equation
   <p>
     Different assumptions can be used to calculate the adiabatic reversible
     reference process, see 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow\">Utilities.AdiabaticModels</a>:
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.Flow\">Utilities.AdiabaticModels</a>:
   </p>
   
   <ul>

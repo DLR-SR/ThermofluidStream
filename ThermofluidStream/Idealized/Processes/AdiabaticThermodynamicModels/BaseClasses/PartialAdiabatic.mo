@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses;
+within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialAdiabatic "Base class for adiabatic thermodynamic models for given outlet pressure"
   // unknowns - equations = 2
 

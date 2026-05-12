@@ -16,12 +16,12 @@ model Pump1 "Pump model with the adiabatic process"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{120,80},{140,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   Modelica.Blocks.Sources.Ramp pressureRatio(
     height=98.999,
     duration=0.9,
@@ -35,7 +35,7 @@ model Pump1 "Pump model with the adiabatic process"
   .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{100,30},{120,50}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump1(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     specifyOutlet=false,
@@ -45,7 +45,7 @@ model Pump1 "Pump model with the adiabatic process"
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 5000,
-    dp_nom=5000000) annotation(Placement(transformation(extent={{70,30},{90,50}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{70,30},{90,50}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -56,12 +56,12 @@ model Pump1 "Pump model with the adiabatic process"
   ThermofluidStream.Idealized.Processes.Adiabatic pump2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation(Placement(transformation(extent={{68,-34},{88,-54}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{68,-34},{88,-54}})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{0,-10},{20,10}})));
 equation
   connect(source.outlet, pump.inlet) annotation(Line(
