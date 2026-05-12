@@ -3,7 +3,7 @@ model Step3Staged
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   parameter Medium.Temperature T_Evaporator1 = 253.15 "Evaporator 1 temperature";
@@ -32,8 +32,7 @@ model Step3Staged
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,-44})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=false,                           displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,0},{100,20}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor1(
     redeclare package Medium = Medium,
