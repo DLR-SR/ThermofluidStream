@@ -5,7 +5,7 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     choicesAllMatching=true);
 
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each component"annotation(
-    Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = neglectInertance);
   parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
