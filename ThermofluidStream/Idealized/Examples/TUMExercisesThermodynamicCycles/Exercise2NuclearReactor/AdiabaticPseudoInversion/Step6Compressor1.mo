@@ -4,11 +4,11 @@ model Step6Compressor1
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -120,11 +120,11 @@ model Step6Compressor1
     temperatureFromInput=true,
     T0_par(displayUnit="K"),
     T0_var(start=300),
-    p0_var(start=50e5))      annotation(Placement(transformation(
+    p0_var(start=50e5))     annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={160,50})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation(Placement(transformation(extent={{72,10},{92,30}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)  annotation(Placement(transformation(extent={{72,10},{92,30}})));
   EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
   EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{40,-80},{60,-60}})));
   EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{60,-80},{40,-100}})));
@@ -139,34 +139,34 @@ model Step6Compressor1
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{40,50},{20,70}})));
+              annotation(Placement(transformation(extent={{40,50},{20,70}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{66,50},{46,70}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=-0.5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{40,-30},{20,-10}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{70,-30},{50,-10}})));
+                                        annotation(Placement(transformation(extent={{70,-30},{50,-10}})));
   Modelica.Blocks.Continuous.Integrator integrator2(
     k=5e5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{40,-122},{20,-102}})));
   Modelica.Blocks.Math.Feedback feedback2
-                                         annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
+                                        annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
   Modelica.Blocks.Continuous.Integrator integrator3(
     k=1e4,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{126,10},{146,30}})));
+              annotation(Placement(transformation(extent={{126,10},{146,30}})));
   Modelica.Blocks.Math.Feedback feedback3
-                                         annotation(Placement(transformation(extent={{100,30},{120,10}})));
+                                        annotation(Placement(transformation(extent={{100,30},{120,10}})));
   Modelica.Blocks.Continuous.Integrator integrator4(
     k=100,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=400)
-               annotation(Placement(transformation(extent={{240,30},{220,50}})));
+              annotation(Placement(transformation(extent={{240,30},{220,50}})));
   Modelica.Blocks.Math.Feedback feedback4
-                                         annotation(Placement(transformation(extent={{270,50},{250,30}})));
+                                        annotation(Placement(transformation(extent={{270,50},{250,30}})));
 equation
   connect(reactor.outlet,turbine1. inlet) annotation(Line(
       points={{-100,30},{-100,100},{0,100},{0,90}},
@@ -176,7 +176,7 @@ equation
       points={{20,30},{0,30},{0,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine1.outlet,turbine2. inlet)annotation(
+  connect(turbine1.outlet,turbine2. inlet) annotation(
     Line(
       points={{0,70},{0,10}},
       color={28,108,200},
@@ -185,7 +185,7 @@ equation
       points={{0,-10},{0,-48},{20,-48}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.outlet,turbine3. inlet)annotation(
+  connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},

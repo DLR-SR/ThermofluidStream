@@ -5,11 +5,11 @@ model Step6ClosedLoop
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
@@ -66,12 +66,12 @@ model Step6ClosedLoop
     height=99e5,
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(pressure.y)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(pressure.y))) annotation(
     Placement(transformation(extent={{-50,-40},{-30,-20}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(pressure.y)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(pressure.y))) annotation(
     Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
-  connect(pump.outlet, preheater.inlet)annotation(
+  connect(pump.outlet, preheater.inlet) annotation(
     Line(
       points={{-60,0},{-40,0}},
       color={28,108,200},
@@ -96,7 +96,7 @@ equation
       points={{80,0},{90,0},{90,-60},{40,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, pump.inlet)annotation(
+  connect(loopBreaker.outlet, pump.inlet) annotation(
     Line(
       points={{-20,-60},{-110,-60},{-110,0},{-80,0}},
       color={28,108,200},

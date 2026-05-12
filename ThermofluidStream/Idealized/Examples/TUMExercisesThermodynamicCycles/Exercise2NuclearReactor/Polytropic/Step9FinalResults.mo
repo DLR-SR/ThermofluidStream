@@ -4,11 +4,11 @@ model Step9FinalResults
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -40,7 +40,7 @@ model Step9FinalResults
     p_out_fixed=5240000,
     T_out_fixed(displayUnit="K") = 1060,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-                                   annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270,
+                                  annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270,
         origin={-80,0})));
   EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{-50,10},{-30,-10}})));
   Processes.PolytropicPerfectGas turbine3(
@@ -84,7 +84,7 @@ model Step9FinalResults
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
     eta_is_fixed=0.96,
     h_out(start=Medium.specificEnthalpy_pT(70e5, 376)))
-                                   annotation(Placement(transformation(
+                                  annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={40,92})));
@@ -119,7 +119,7 @@ model Step9FinalResults
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-20,-22})));
-  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)   annotation(Placement(transformation(extent={{20,-50},{0,-30}})));
+  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)  annotation(Placement(transformation(extent={{20,-50},{0,-30}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation(Placement(transformation(extent={{-10,-52},{30,-28}})));
   Processes.PolytropicPerfectGas compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
@@ -182,7 +182,7 @@ model Step9FinalResults
     displayParameters=false,
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)annotation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK) annotation(
     Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
@@ -219,8 +219,7 @@ equation
       points={{-70,-150},{-140,-150},{-140,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerColdSide.Q_flow_out,heatExchangerHotSide. Q_flow_in) annotation(Line(points={{-60,-143},{-60,-128}},
-                                                                                                                           color={255,170,85}));
+  connect(heatExchangerColdSide.Q_flow_out,heatExchangerHotSide. Q_flow_in) annotation(Line(points={{-60,-143},{-60,-128}},color={255,170,85}));
   connect(heatExchangerColdSide.inlet,compressor1. outlet) annotation(Line(
       points={{-50,-150},{156,-150},{156,140},{40,140},{40,102}},
       color={28,108,200},

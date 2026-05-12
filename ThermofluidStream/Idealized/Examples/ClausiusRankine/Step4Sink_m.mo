@@ -4,10 +4,10 @@ model Step4Sink_m
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
@@ -57,12 +57,12 @@ model Step4Sink_m
     number=(-turbine.dh - pump.dh)/(superheater.outlet.state.h - preheater.inlet.state.h + Modelica.Constants.eps),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
 equation
-  connect(waterSource.outlet, pump.inlet)annotation(
+  connect(waterSource.outlet, pump.inlet) annotation(
     Line(
       points={{-120,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump.outlet, preheater.inlet)annotation(
+  connect(pump.outlet, preheater.inlet) annotation(
     Line(
       points={{-80,0},{-60,0}},
       color={28,108,200},
@@ -79,7 +79,7 @@ equation
       points={{40,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet,waterSink. inlet)annotation(
+  connect(turbine.outlet,waterSink. inlet) annotation(
     Line(
       points={{80,0},{100,0}},
       color={28,108,200},

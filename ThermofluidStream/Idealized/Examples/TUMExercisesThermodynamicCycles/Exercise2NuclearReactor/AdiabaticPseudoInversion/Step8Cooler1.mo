@@ -107,7 +107,7 @@ model Step8Cooler1
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={180,170})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation(Placement(transformation(extent={{30,60},{50,80}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)  annotation(Placement(transformation(extent={{30,60},{50,80}})));
   Processes.Adiabatic compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -117,7 +117,7 @@ model Step8Cooler1
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={150,0})));
-  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)   annotation(Placement(transformation(extent={{40,-54},{60,-34}})));
+  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)  annotation(Placement(transformation(extent={{40,-54},{60,-34}})));
   EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{40,-80},{60,-60}})));
   EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{60,-80},{40,-100}})));
   EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation(Placement(transformation(extent={{100,-100},{80,-80}})));
@@ -135,25 +135,25 @@ model Step8Cooler1
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{-40,120},{-20,140}})));
+              annotation(Placement(transformation(extent={{-40,120},{-20,140}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-68,120},{-48,140}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=-0.5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{-70,-30},{-50,-10}})));
+                                        annotation(Placement(transformation(extent={{-70,-30},{-50,-10}})));
   Modelica.Blocks.Continuous.Integrator integrator2(
     k=5e5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{-32,-130},{-12,-110}})));
   Modelica.Blocks.Math.Feedback feedback2
-                                         annotation(Placement(transformation(extent={{-64,-130},{-44,-110}})));
+                                        annotation(Placement(transformation(extent={{-64,-130},{-44,-110}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y(
       unit="W",
-      displayUnit="MW") = -6000000)                                    annotation(Placement(transformation(extent={{-200,60},{-180,80}})));
+      displayUnit="MW") = -6000000)                                   annotation(Placement(transformation(extent={{-200,60},{-180,80}})));
   Modelica.Blocks.Math.Feedback feedback5
-                                         annotation(Placement(transformation(extent={{-170,60},{-150,80}})));
+                                        annotation(Placement(transformation(extent={{-170,60},{-150,80}})));
   Modelica.Blocks.Continuous.Integrator integrator5(
     k=-1e-5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
@@ -163,25 +163,25 @@ model Step8Cooler1
         rotation=90,
         origin={-100,70})));
   Modelica.Blocks.Math.Feedback feedback3
-                                         annotation(Placement(transformation(extent={{60,80},{80,60}})));
+                                        annotation(Placement(transformation(extent={{60,80},{80,60}})));
   Modelica.Blocks.Continuous.Integrator integrator3(
     k=1e4,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{86,60},{106,80}})));
+              annotation(Placement(transformation(extent={{86,60},{106,80}})));
   Modelica.Blocks.Continuous.Integrator integrator4(
     k=100,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=400)
-               annotation(Placement(transformation(extent={{240,90},{220,110}})));
+              annotation(Placement(transformation(extent={{240,90},{220,110}})));
   Modelica.Blocks.Math.Feedback feedback4
-                                         annotation(Placement(transformation(extent={{270,110},{250,90}})));
+                                        annotation(Placement(transformation(extent={{270,110},{250,90}})));
   Modelica.Blocks.Continuous.Integrator integrator6(
     k=1e-3,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=1) annotation(Placement(transformation(extent={{100,-54},{120,-34}})));
   Modelica.Blocks.Math.Feedback feedback6
-                                         annotation(Placement(transformation(extent={{70,-34},{90,-54}})));
+                                        annotation(Placement(transformation(extent={{70,-34},{90,-54}})));
   Processes.Isobaric cooler1(
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -196,21 +196,21 @@ model Step8Cooler1
     redeclare package Medium = Medium,
     p_out_fixed=7000000,
     T_out_fixed(displayUnit="K") = 780)
-                     annotation(Placement(transformation(
+                    annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-50,-220})));
   Modelica.Blocks.Math.Feedback feedback7
-                                         annotation(Placement(transformation(extent={{108,-206},{88,-186}})));
+                                        annotation(Placement(transformation(extent={{108,-206},{88,-186}})));
   Modelica.Blocks.Continuous.Integrator integrator7(
     k=-10,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{78,-206},{58,-186}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y(
       unit="W",
-      displayUnit="W") = 0)                                            annotation(Placement(transformation(extent={{132,-206},{112,-186}})));
+      displayUnit="W") = 0)                                           annotation(Placement(transformation(extent={{132,-206},{112,-186}})));
   Modelica.Blocks.Math.Feedback feedback8
-                                         annotation(Placement(transformation(extent={{60,-240},{80,-220}})));
+                                        annotation(Placement(transformation(extent={{60,-240},{80,-220}})));
 equation
   connect(temperatureSensor.inlet, turbine1.outlet) annotation(Line(
       points={{-20,100},{0,100},{0,140}},

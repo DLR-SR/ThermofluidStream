@@ -9,9 +9,9 @@ model FixedTransferEfficiency
     offset=-0.3e6,
     startTime=0.2) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
   Components.FixedTransferEfficiency transfer1(outputDissipation=true)
-                                              annotation(Placement(transformation(extent={{-8,-28},{8,-12}})));
+                                             annotation(Placement(transformation(extent={{-8,-28},{8,-12}})));
   Components.FixedTransferEfficiency transfer2(eta=0,    outputDissipation=true)
-                                              annotation(Placement(transformation(extent={{-8,-48},{8,-32}})));
+                                             annotation(Placement(transformation(extent={{-8,-48},{8,-32}})));
   Modelica.Blocks.Sources.SawTooth sawTooth1(
     amplitude=1e6,
     period=0.3,

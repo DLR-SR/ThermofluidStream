@@ -3,7 +3,7 @@ model CompressorConstant "Compressor model with different adiabatic models (isen
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
@@ -157,7 +157,7 @@ model CompressorConstant "Compressor model with different adiabatic models (isen
   Modelica.Blocks.Math.Gain gain1(k=-1) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Math.Gain gain2(k=-1) annotation(Placement(transformation(extent={{-10,-130},{10,-110}})));
 equation
-  connect(source.outlet, compressor.inlet)annotation(
+  connect(source.outlet, compressor.inlet) annotation(
     Line(
       points={{-80,100},{-70,100}},
       color={28,108,200},
@@ -166,7 +166,7 @@ equation
       points={{-80,-20},{-70,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, sink.inlet)annotation(
+  connect(compressor.outlet, sink.inlet) annotation(
     Line(
       points={{-50,100},{-40,100}},
       color={28,108,200},

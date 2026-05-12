@@ -4,10 +4,10 @@ model Step3Turbine2
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -48,7 +48,7 @@ model Step3Turbine2
     p_out_fixed=5240000,
     T_out_fixed(displayUnit="K") = 1060,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-                                   annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
+                                  annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
   EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{30,10},{50,-10}})));
 equation
   connect(source.outlet, reactor.inlet) annotation(Line(

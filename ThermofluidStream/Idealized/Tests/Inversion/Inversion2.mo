@@ -1,17 +1,17 @@
 within ThermofluidStream.Idealized.Tests.Inversion;
 model Inversion2 "Example - Inversion with temperature as iteration variable"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(sourceB(T0_var(start=Medium.T_default), temperatureFromInput=true), junction(h_mix(start=Medium.specificEnthalpy_pT(1e5, 273.15 + 20))));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{-40,-44},{0,-20}})));
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(
       unit="K",
       displayUnit="degC") = 298.15) annotation(Placement(transformation(extent={{-80,-42},{-60,-22}})));
 equation
-  connect(temperatureSetpoint.y, inverseBlockConstraints.u1)annotation(
+  connect(temperatureSetpoint.y, inverseBlockConstraints.u1) annotation(
     Line(points={{-59,-32},{-42,-32}}, color={0,0,127}));
-  connect(singleSensorSelect.value_out, inverseBlockConstraints.u2)annotation(
+  connect(singleSensorSelect.value_out, inverseBlockConstraints.u2) annotation(
     Line(points={{30,1.8},{30,-12},{-26,-12},{-26,-32},{-36,-32}}, color={0,0,127}));
-  connect(inverseBlockConstraints.y2, sourceB.T0_var)annotation(
+  connect(inverseBlockConstraints.y2, sourceB.T0_var) annotation(
     Line(points={{-3,-32},{-6,-32},{-6,-8},{-84,-8},{-84,10},{-72,10}}, color={0,0,127}));
   annotation(
     Icon(coordinateSystem(preserveAspectRatio=false)),

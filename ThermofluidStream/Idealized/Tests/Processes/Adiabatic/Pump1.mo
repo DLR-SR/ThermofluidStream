@@ -4,7 +4,7 @@ model Pump1 "Pump model with the adiabatic process"
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
@@ -26,7 +26,7 @@ model Pump1 "Pump model with the adiabatic process"
     height=98.999,
     duration=0.9,
     offset=1.001)
-              annotation(Placement(transformation(extent={{-122,-64},{-102,-44}})));
+             annotation(Placement(transformation(extent={{-122,-64},{-102,-44}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,

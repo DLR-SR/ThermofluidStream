@@ -4,10 +4,10 @@ model Step8VaporQualityInversion
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
@@ -66,16 +66,16 @@ model Step8VaporQualityInversion
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
     outputValue=true) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{60,38},{100,62}})));
-  Modelica.Blocks.Sources.RealExpression vaporQualitySetpoint(y=0.95)annotation(
+  Modelica.Blocks.Sources.RealExpression vaporQualitySetpoint(y=0.95) annotation(
     Placement(transformation(extent={{30,40},{50,60}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=0) annotation(Placement(transformation(extent={{-50,-90},{-30,-70}})));
 equation
-  connect(pump.outlet, preheater.inlet)annotation(
+  connect(pump.outlet, preheater.inlet) annotation(
     Line(
       points={{-60,0},{-40,0}},
       color={28,108,200},
@@ -100,19 +100,19 @@ equation
       points={{80,0},{90,0},{90,-60},{40,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, pump.inlet)annotation(
+  connect(loopBreaker.outlet, pump.inlet) annotation(
     Line(
       points={{-20,-60},{-110,-60},{-110,0},{-80,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, vaporQualitySensor.inlet)annotation(
+  connect(turbine.outlet, vaporQualitySensor.inlet) annotation(
     Line(
       points={{80,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(vaporQualitySensor.value_out, inverseBlockConstraints.u2)annotation(
+  connect(vaporQualitySensor.value_out, inverseBlockConstraints.u2) annotation(
     Line(points={{118,0},{124,0},{124,22},{74,22},{74,50},{64,50}}, color={0,0,127}));
-  connect(vaporQualitySetpoint.y, inverseBlockConstraints.u1)annotation(
+  connect(vaporQualitySetpoint.y, inverseBlockConstraints.u1) annotation(
     Line(points={{51,50},{58,50}}, color={0,0,127}));
   connect(outletPressure.y, pump.outletSpec_prescribed) annotation(Line(points={{-79,-30},{-60,-30},{-60,-12}}, color={0,0,127}));
   connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-39,-30},{-20,-30},{-20,-12}}, color={0,0,127}));

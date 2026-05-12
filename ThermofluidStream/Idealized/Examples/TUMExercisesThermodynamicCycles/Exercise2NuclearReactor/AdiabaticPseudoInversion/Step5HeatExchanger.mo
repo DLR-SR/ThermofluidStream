@@ -109,20 +109,20 @@ model Step5HeatExchanger
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{40,48},{20,68}})));
+              annotation(Placement(transformation(extent={{40,48},{20,68}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{70,48},{50,68}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=-0.5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{40,-32},{20,-12}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{70,-32},{50,-12}})));
+                                        annotation(Placement(transformation(extent={{70,-32},{50,-12}})));
   Modelica.Blocks.Continuous.Integrator integrator2(
     k=5e5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{40,-122},{20,-102}})));
   Modelica.Blocks.Math.Feedback feedback2
-                                         annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
+                                        annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
 equation
   connect(reactor.outlet,turbine1. inlet) annotation(Line(
       points={{-100,30},{-100,100},{0,100},{0,90}},

@@ -3,10 +3,10 @@ model Step3RamAir
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Boundaries.Source airSource(
@@ -17,7 +17,7 @@ model Step3RamAir
     height=2e5,
     duration=1,
     offset=1e5 + 1)
-                annotation(Placement(transformation(extent={{-80,-50},{-60,-30}})));
+               annotation(Placement(transformation(extent={{-80,-50},{-60,-30}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
     description="COP",
     use_numberPort=false,

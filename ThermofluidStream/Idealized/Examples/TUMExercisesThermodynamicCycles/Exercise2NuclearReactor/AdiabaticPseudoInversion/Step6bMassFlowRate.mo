@@ -119,11 +119,11 @@ model Step6bMassFlowRate
     temperatureFromInput=true,
     T0_par(displayUnit="K"),
     T0_var(start=300),
-    p0_var(start=50e5))      annotation(Placement(transformation(
+    p0_var(start=50e5))     annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={160,50})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation(Placement(transformation(extent={{72,10},{92,30}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)  annotation(Placement(transformation(extent={{72,10},{92,30}})));
   EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{40,-80},{60,-60}})));
   EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{60,-80},{40,-100}})));
   EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation(Placement(transformation(extent={{100,-100},{80,-80}})));
@@ -137,43 +137,43 @@ model Step6bMassFlowRate
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{40,50},{20,70}})));
+              annotation(Placement(transformation(extent={{40,50},{20,70}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{66,50},{46,70}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=-0.5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{40,-30},{20,-10}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{70,-30},{50,-10}})));
+                                        annotation(Placement(transformation(extent={{70,-30},{50,-10}})));
   Modelica.Blocks.Continuous.Integrator integrator2(
     k=5e5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{40,-122},{20,-102}})));
   Modelica.Blocks.Math.Feedback feedback2
-                                         annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
+                                        annotation(Placement(transformation(extent={{70,-122},{50,-102}})));
   Modelica.Blocks.Continuous.Integrator integrator3(
     k=1e4,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{126,10},{146,30}})));
+              annotation(Placement(transformation(extent={{126,10},{146,30}})));
   Modelica.Blocks.Math.Feedback feedback3
-                                         annotation(Placement(transformation(extent={{100,30},{120,10}})));
+                                        annotation(Placement(transformation(extent={{100,30},{120,10}})));
   Modelica.Blocks.Continuous.Integrator integrator4(
     k=100,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=400)
-               annotation(Placement(transformation(extent={{240,30},{220,50}})));
+              annotation(Placement(transformation(extent={{240,30},{220,50}})));
   Modelica.Blocks.Math.Feedback feedback4
-                                         annotation(Placement(transformation(extent={{270,50},{250,30}})));
+                                        annotation(Placement(transformation(extent={{270,50},{250,30}})));
   Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-100,60})));
   Modelica.Blocks.Sources.RealExpression realExpression(y(
       unit="W",
-      displayUnit="MW") = -6000000)                                    annotation(Placement(transformation(extent={{-200,50},{-180,70}})));
+      displayUnit="MW") = -6000000)                                   annotation(Placement(transformation(extent={{-200,50},{-180,70}})));
   Modelica.Blocks.Math.Feedback feedback5
-                                         annotation(Placement(transformation(extent={{-176,50},{-156,70}})));
+                                        annotation(Placement(transformation(extent={{-176,50},{-156,70}})));
   Modelica.Blocks.Continuous.Integrator integrator5(
     k=-1e-5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,

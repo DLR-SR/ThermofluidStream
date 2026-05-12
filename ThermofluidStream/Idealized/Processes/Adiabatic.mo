@@ -9,7 +9,7 @@ model Adiabatic "Adiabatic process"
 
   replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
     constrainedby ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic
-    "Thermodynamic model used for adiabatic process calculation" annotation(
+    "Thermodynamic model used for adiabatic process calculation" annotation(
     Evaluate = true, choices(
       choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
         "h_out_is = h(p_out, s_in)"),
@@ -75,20 +75,20 @@ model Adiabatic "Adiabatic process"
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
+  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
-  EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"annotation(
+  EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
-  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"annotation(
+  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
 
   SI.Efficiency eta_is "Isentropic efficiency";
   SI.SpecificEnthalpy dh "Difference in specific enthalpy dh = h_out - h_in";
   Real pr = p_out/p_in "Pressure ratio";
   SI.Power P "Power (technical work flow rate)";
-  SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)" annotation(
+  SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)" annotation(
     HideResult = true);
 
   final ThermodynamicModel adiabaticModel(

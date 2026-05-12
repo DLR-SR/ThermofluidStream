@@ -9,10 +9,10 @@ model Specification "Example - mass flow loop breaker"
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-210,150},{-230,170}})));
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{160,60},{180,80}})));
 
   .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker2(
@@ -115,7 +115,7 @@ model Specification "Example - mass flow loop breaker"
     offset=1e5,
     startTime=0) annotation(Placement(transformation(extent={{80,-50},{100,-30}})));
   Modelica.Blocks.Sources.RealExpression h_const1(y=Medium.bubbleEnthalpy(Medium.setSat_p(1e5)) + 0.9*(
-        Medium.dewEnthalpy(Medium.setSat_p(1e5)) - Medium.bubbleEnthalpy(Medium.setSat_p(1e5))))annotation(
+        Medium.dewEnthalpy(Medium.setSat_p(1e5)) - Medium.bubbleEnthalpy(Medium.setSat_p(1e5)))) annotation(
     Placement(transformation(extent={{80,-74},{100,-54}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-20,130},{-40,150}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-80,-50},{-100,-30}})));

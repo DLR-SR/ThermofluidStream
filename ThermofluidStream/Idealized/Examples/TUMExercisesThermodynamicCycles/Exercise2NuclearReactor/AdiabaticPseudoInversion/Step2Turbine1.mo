@@ -4,10 +4,10 @@ model Step2Turbine1
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -55,7 +55,7 @@ model Step2Turbine1
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{60,46},{40,66}})));
+              annotation(Placement(transformation(extent={{60,46},{40,66}})));
 equation
   connect(source.outlet, reactor.inlet) annotation(Line(
       points={{-100,-2},{-100,10}},

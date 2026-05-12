@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Adiabatic;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -82,7 +82,7 @@ model Setpoint
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
-  Modelica.Blocks.Sources.RealExpression realExpression2(y=2)  annotation(Placement(transformation(extent={{-110,-40},{-90,-20}})));
+  Modelica.Blocks.Sources.RealExpression realExpression2(y=2) annotation(Placement(transformation(extent={{-110,-40},{-90,-20}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -126,7 +126,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{200,-10},{220,10}})));
-  Modelica.Blocks.Sources.RealExpression realExpression3(y=2)   annotation(Placement(transformation(extent={{250,-40},{230,-20}})));
+  Modelica.Blocks.Sources.RealExpression realExpression3(y=2)  annotation(Placement(transformation(extent={{250,-40},{230,-20}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -150,7 +150,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-100,-90},{-80,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=2e5)
-                                                               annotation(Placement(transformation(extent={{-110,-120},{-90,-100}})));
+                                                              annotation(Placement(transformation(extent={{-110,-120},{-90,-100}})));
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     p0_par=100000,

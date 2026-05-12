@@ -3,7 +3,7 @@ model PolytropicFlow "Turbocharged diesel engine"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   parameter SI.AngularVelocity w(displayUnit="rpm") = 209.43951023932 "Engine speed";
@@ -23,7 +23,7 @@ model PolytropicFlow "Turbocharged diesel engine"
   SI.Volume V_h = V3-V4 "Engine displacement volume";
   SI.MassFlowRate m_flow = rho3*V_h*z*Modelica.Units.Conversions.to_Hz(w)/2 "Averaged mass flow rate";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{220,60},{240,80}})));
 
   Processes.PolytropicPerfectGas
@@ -47,7 +47,7 @@ model PolytropicFlow "Turbocharged diesel engine"
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
     rho_out_fixed=rho3)
-                      annotation(Placement(transformation(extent={{0,10},{20,30}})));
+                     annotation(Placement(transformation(extent={{0,10},{20,30}})));
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
@@ -62,7 +62,7 @@ model PolytropicFlow "Turbocharged diesel engine"
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=p1,
-    T0_par(displayUnit="K") = T1)  annotation(Placement(transformation(extent={{-160,-46},{-140,-26}})));
+    T0_par(displayUnit="K") = T1) annotation(Placement(transformation(extent={{-160,-46},{-140,-26}})));
   Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-140,-110},{-160,-90}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=m_flow) annotation(Placement(transformation(extent={{-200,-110},{-180,-90}})));
   Processes.Adiabatic turbine(
@@ -72,7 +72,7 @@ model PolytropicFlow "Turbocharged diesel engine"
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{-100,-90},{-120,-110}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{-70,-76},{-30,-52}})));
   Modelica.Blocks.Sources.RealExpression pseudoSourcePower(y(
       unit="W") = 0) annotation(Placement(transformation(extent={{-40,-74},{-60,-54}})));
@@ -124,8 +124,7 @@ equation
       points={{-140,-36},{-120,-36}},
       color={28,108,200},
       thickness=0.5));
-  connect(realExpression.y, sink.m_flow_prescribed) annotation(Line(points={{-179,-100},{-152,-100}},
-                                                                                                     color={0,0,127}));
+  connect(realExpression.y, sink.m_flow_prescribed) annotation(Line(points={{-179,-100},{-152,-100}},color={0,0,127}));
   connect(turbine.outlet, sink.inlet) annotation(Line(
       points={{-120,-100},{-140,-100}},
       color={28,108,200},

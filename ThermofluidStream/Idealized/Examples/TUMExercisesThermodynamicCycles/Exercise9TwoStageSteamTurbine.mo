@@ -4,10 +4,10 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump2(
     redeclare package Medium = Medium,
@@ -36,7 +36,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-120},{-10,-100}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5))) annotation(
     Placement(transformation(extent={{-50,-140},{-30,-120}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump1(
     redeclare package Medium = Medium,
@@ -62,7 +62,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
     redeclare package Medium = Medium,
     p_out_fixed(displayUnit="bar") = 5800000,
     T_out_fixed(displayUnit="K") = 723)
-                     annotation(Placement(transformation(
+                    annotation(Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-60,60})));
@@ -108,7 +108,7 @@ equation
       points={{-80,20},{-80,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(lowPressureTurbine.outlet, condensor.inlet)annotation(
+  connect(lowPressureTurbine.outlet, condensor.inlet) annotation(
     Line(
       points={{70,60},{80,60},{80,-110},{10,-110}},
       color={28,108,200},
@@ -121,17 +121,17 @@ equation
       points={{-50,-10},{-50,10},{-70,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatingNetwork.outlet, pump2.inlet)annotation(
+  connect(heatingNetwork.outlet, pump2.inlet) annotation(
     Line(
       points={{-10,-80},{-50,-80},{-50,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, pump1.inlet)annotation(
+  connect(condensor.outlet, pump1.inlet) annotation(
     Line(
       points={{-10,-110},{-80,-110},{-80,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, highPressureTurbine.inlet)annotation(
+  connect(loopBreaker.outlet, highPressureTurbine.inlet) annotation(
     Line(
       points={{-50,60},{-30,60}},
       color={28,108,200},

@@ -3,10 +3,10 @@ model PseudoInversion
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic highPressurePump(
@@ -43,9 +43,9 @@ model PseudoInversion
     displayInstanceName=true,
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation(
     Placement(transformation(extent={{130,40},{150,60}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5))) annotation(
     Placement(transformation(extent={{100,-50},{80,-30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressurePump(
     redeclare package Medium = Medium,
@@ -55,20 +55,20 @@ model PseudoInversion
   Topology.JunctionT2 mixingPreheater(
     displayInstanceName=true,
     redeclare package Medium = Medium)
-                           annotation(Placement(transformation(extent={{10,-30},{-10,-10}})));
+                          annotation(Placement(transformation(extent={{10,-30},{-10,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureTurbineStage(
     redeclare package Medium = Medium,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{10,40},{30,60}})));
-  ThermofluidStream.Topology.SplitterT2  splitter(displayInstanceName=false, redeclare package Medium = Medium)annotation(
+  ThermofluidStream.Topology.SplitterT2  splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{50,60},{70,40}})));
   Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{30,10},{10,30}})));
   Sources.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     p_out_fixed(displayUnit="bar") = 1000000,
     T_out_fixed=403.15)
-                     annotation(Placement(transformation(
+                    annotation(Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-70,-20})));
@@ -79,14 +79,14 @@ model PseudoInversion
     outputValue=true,
     filter_output=true,
     init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
-    value_0=273.15 + 130)annotation(
+    value_0=273.15 + 130) annotation(
     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-20,-40})));
   Modelica.Blocks.Sources.RealExpression mixingTemperature(y(
       unit="K",
-      displayUnit="degC") = 403.15)annotation(
+      displayUnit="degC") = 403.15) annotation(
     Placement(transformation(extent={{-60,-80},{-40,-60}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate1(
     description="efficency",
@@ -104,7 +104,7 @@ model PseudoInversion
   Modelica.Blocks.Continuous.Integrator integrator(
     k=10,
     initType=Modelica.Blocks.Types.Init.InitialState,
-    y_start=0)annotation(
+    y_start=0) annotation(
     Placement(transformation(extent={{-4,-80},{16,-60}})));
   EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = 288000000) annotation(Placement(transformation(extent={{-160,10},{-140,30}})));
   Processes.Isobaric pseudoHeatTransfer(
@@ -112,7 +112,7 @@ model PseudoInversion
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed=403.15) annotation(Placement(transformation(extent={{-30,-30},{-50,-10}})));
 equation
-  connect(highPressurePump.outlet, heater.inlet)annotation(
+  connect(highPressurePump.outlet, heater.inlet) annotation(
     Line(
       points={{-110,-20},{-120,-20},{-120,10}},
       color={28,108,200},
@@ -145,12 +145,12 @@ equation
       points={{10,20},{0,20},{0,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, highPressurePump.inlet)annotation(
+  connect(loopBreaker.outlet, highPressurePump.inlet) annotation(
     Line(
       points={{-80,-20},{-90,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, lowPressurePump.inlet)annotation(
+  connect(condensor.outlet, lowPressurePump.inlet) annotation(
     Line(
       points={{70,-20},{50,-20}},
       color={28,108,200},

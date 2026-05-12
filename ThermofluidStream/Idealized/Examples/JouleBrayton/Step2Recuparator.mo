@@ -3,10 +3,10 @@ model Step2Recuparator
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.Adiabatic compressor(
@@ -53,32 +53,32 @@ model Step2Recuparator
         rotation=90,
         origin={-30,40})));
 equation
-  connect(combustion.outlet, turbine.inlet)annotation(
+  connect(combustion.outlet, turbine.inlet) annotation(
     Line(
       points={{48,-6},{68,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, recuperator.inletA)annotation(
+  connect(compressor.outlet, recuperator.inletA) annotation(
     Line(
       points={{-32,-6},{-10,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperator.outletA, combustion.inlet)annotation(
+  connect(recuperator.outletA, combustion.inlet) annotation(
     Line(
       points={{10,-6},{28,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSink.inlet, recuperator.outletB)annotation(
+  connect(airSink.inlet, recuperator.outletB) annotation(
     Line(
       points={{-30,30},{-30,6},{-10,6}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperator.inletB, turbine.outlet)annotation(
+  connect(recuperator.inletB, turbine.outlet) annotation(
     Line(
       points={{10,6},{96,6},{96,-6},{88,-6}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSource.outlet, compressor.inlet)annotation(
+  connect(airSource.outlet, compressor.inlet) annotation(
     Line(
       points={{-72,-6},{-52,-6}},
       color={28,108,200},

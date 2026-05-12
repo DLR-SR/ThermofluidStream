@@ -29,7 +29,7 @@ model PerfectGasAdiabaticFlow
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,0},{70,20}})));
-  Modelica.Blocks.Sources.RealExpression outletPressure(y=Medium.pressure(combustion.outlet.state)*(compressionRatio)^(-gamma))annotation(
+  Modelica.Blocks.Sources.RealExpression outletPressure(y=Medium.pressure(combustion.outlet.state)*(compressionRatio)^(-gamma)) annotation(
     Placement(transformation(extent={{60,-30},{40,-10}})));
   Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
@@ -57,27 +57,27 @@ model PerfectGasAdiabaticFlow
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
   EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{100,-50},{120,-30}})));
 equation
-  connect(compression.outlet, combustion.inlet)annotation(
+  connect(compression.outlet, combustion.inlet) annotation(
     Line(
       points={{-50,10},{-30,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, expansion.inlet)annotation(
+  connect(combustion.outlet, expansion.inlet) annotation(
     Line(
       points={{-10,10},{10,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(expansion.outlet, gasExchange.inlet)annotation(
+  connect(expansion.outlet, gasExchange.inlet) annotation(
     Line(
       points={{30,10},{50,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, compression.inlet)annotation(
+  connect(loopBreaker.outlet, compression.inlet) annotation(
     Line(
       points={{-20,50},{-80,50},{-80,10},{-70,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(gasExchange.outlet, loopBreaker.inlet)annotation(
+  connect(gasExchange.outlet, loopBreaker.inlet) annotation(
     Line(
       points={{70,10},{80,10},{80,50},{0,50}},
       color={28,108,200},

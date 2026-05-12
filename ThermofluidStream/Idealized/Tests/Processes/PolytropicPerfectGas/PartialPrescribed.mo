@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model PartialPrescribed
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium annotation(
     choicesAllMatching = true);
 
   SI.Pressure p_in=inletPressure.y;
@@ -67,9 +67,9 @@ model PartialPrescribed
     k=1,
     T=0.01,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=0)      annotation(Placement(transformation(extent={{-340,-160},{-320,-140}})));
+    y_start=0)     annotation(Placement(transformation(extent={{-340,-160},{-320,-140}})));
   EnergyFlow.Sources.PrescribedEnergyFlow energyFlowSource annotation(Placement(transformation(extent={{300,-10},{280,10}})));
-  Modelica.Blocks.Sources.RealExpression power(y=P)           annotation(Placement(transformation(extent={{340,-10},{320,10}})));
+  Modelica.Blocks.Sources.RealExpression power(y=P)          annotation(Placement(transformation(extent={{340,-10},{320,10}})));
   Modelica.Blocks.Sources.RealExpression compressionRatio(y=rhoRatio) annotation(Placement(transformation(extent={{-340,-10},{-320,10}})));
   Modelica.Blocks.Sources.SawTooth massFlowRate1(
     amplitude=-2,

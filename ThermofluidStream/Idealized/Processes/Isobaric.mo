@@ -8,11 +8,11 @@ model Isobaric "Isobaric process"
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration"annotation(
+  parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)"annotation(
+  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
     Dialog(group="Specification"), Evaluate=true);
-  parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified"annotation(
+  parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet),
@@ -22,49 +22,49 @@ model Isobaric "Isobaric process"
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
-  parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)" annotation(
+  parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)" annotation(
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.TemperatureDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
-  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
+  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletTemperature  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
-  parameter SI.SpecificEnthalpy dh_fixed(displayUnit="kJ/kg") = 0 "Fixed specific enthalpy difference (dh = h_out - h_in)" annotation(
+  parameter SI.SpecificEnthalpy dh_fixed(displayUnit="kJ/kg") = 0 "Fixed specific enthalpy difference (dh = h_out - h_in)" annotation(
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.SpecificEnthalpyDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.SpecificEnthalpyDifference or not specifyOutlet);
-  parameter SI.SpecificEnthalpy h_out_fixed(displayUnit="kJ/kg") = Medium.h_default "Fixed outlet specific enthalpy" annotation(
+  parameter SI.SpecificEnthalpy h_out_fixed(displayUnit="kJ/kg") = Medium.h_default "Fixed outlet specific enthalpy" annotation(
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletSpecificEnthalpy  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificEnthalpy or not specifyOutlet);
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)" annotation(
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
+  parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
     Dialog(group="Warnings",
       enable = heatFlowSignal == HeatFlowSignal.Input),
       HideResult = not heatFlowSignal == HeatFlowSignal.Input);
-  parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure" annotation(
+  parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure" annotation(
     Dialog(
       enable =systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
       HideResult = systemSpec == ThermoFluidStream.Idealized.Types.SystemModel.Flow);
   final parameter String name = getInstanceName() "Instance name";
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]"annotation(
+  EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
-  EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]"annotation(
+  EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
-  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if systemSpec == SystemSpecification.Cycle "Power (mean net expansion work for systemSpec == Cycle), directed out of the system [W]"annotation(
+  EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if systemSpec == SystemSpecification.Cycle "Power (mean net expansion work for systemSpec == Cycle), directed out of the system [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={-100,-110})));
 
-  Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet state temperature" annotation(
+  Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet state temperature" annotation(
     HideResult=true);
-  Medium.Temperature T_out "Outlet state temperature" annotation(
+  Medium.Temperature T_out "Outlet state temperature" annotation(
     HideResult=true);
 
   SI.TemperatureDifference dT = T_out - T_in "Temperature difference (T_out - T_in)";
@@ -74,27 +74,27 @@ model Isobaric "Isobaric process"
   SI.HeatFlowRate Q_flow "Heat flow rate";
 
   // Periodic closed cycle system process
-  Medium.SpecificEnergy u_in = h_in - p/rho_in "Inlet specific internal energy" annotation(
+  Medium.SpecificEnergy u_in = h_in - p/rho_in "Inlet specific internal energy" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  Medium.SpecificEnergy u_out = h_out - p/rho_out "Outlet specific internal energy" annotation(
+  Medium.SpecificEnergy u_out = h_out - p/rho_out "Outlet specific internal energy" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy du = u_out - u_in "Difference in specific internal energy(u_out - u_in)" annotation(
+  SI.SpecificEnergy du = u_out - u_in "Difference in specific internal energy(u_out - u_in)" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density" annotation(
+  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  Medium.Density rho_out "Outlet density" annotation(
+  Medium.Density rho_out "Outlet density" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificVolume v_in = 1/rho_in "Inlet specific volume" annotation(
+  SI.SpecificVolume v_in = 1/rho_in "Inlet specific volume" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificVolume v_out = 1/rho_out "Outlet specific volume" annotation(
+  SI.SpecificVolume v_out = 1/rho_out "Outlet specific volume" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_exp "Specific expansion work" annotation(
+  SI.SpecificEnergy w_exp "Specific expansion work" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_amb "Specific ambient pressure work" annotation(
+  SI.SpecificEnergy w_amb "Specific ambient pressure work" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_exp_net "Net specific expansion work" annotation(
+  SI.SpecificEnergy w_exp_net "Net specific expansion work" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-  SI.Power P "Power (mean net expansion work)" annotation(
+  SI.Power P "Power (mean net expansion work)" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
 
 protected

@@ -3,10 +3,10 @@ model PseudoSource "Example - PseudoSource"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir   constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,140},{160,160}})));
 
   Modelica.Blocks.Sources.Pulse massFlowRate(period=0.3) annotation(Placement(transformation(extent={{110,110},{90,130}})));
@@ -74,7 +74,7 @@ model PseudoSource "Example - PseudoSource"
     period=0.3,
     offset=0.5e5,
     startTime=0.05)
-                   annotation(Placement(transformation(extent={{120,10},{100,30}})));
+                  annotation(Placement(transformation(extent={{120,10},{100,30}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     pressureFromInput=true,

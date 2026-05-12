@@ -3,22 +3,22 @@ model Sink_free "Sink (free) - Underdetermined (1 equation)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true, Documentation(info="<html>
 <p>
 Medium package used in the Sink. Make sure it is the same as the one
 the outlet the sink is connected to.
 </p>
 </html>"));
-  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance"annotation(
-    Dialog(tab="Advanced", enable = = not considerInertance), Evaluate = not considerInertance, HideResult = not considerInertance);
-  parameter Boolean considerInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
-    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
-  ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)annotation(
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), Evaluate = not considerInertance, HideResult = not considerInertance);
+  ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-  SI.Pressure r "Inertial pressure" annotation(
+  SI.Pressure r "Inertial pressure" annotation(
     HideResult=true);
 
 equation

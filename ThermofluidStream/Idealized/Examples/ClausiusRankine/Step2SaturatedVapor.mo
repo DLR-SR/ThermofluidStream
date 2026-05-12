@@ -4,10 +4,10 @@ model Step2SaturatedVapor
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.Adiabatic pump(
@@ -29,7 +29,7 @@ model Step2SaturatedVapor
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
-  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000)annotation(
+  ThermofluidStream.Boundaries.Sink waterSink(redeclare package Medium = Medium, p0_par=90000) annotation(
     Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
@@ -60,17 +60,17 @@ equation
       points={{0,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSource.outlet, pump.inlet)annotation(
+  connect(waterSource.outlet, pump.inlet) annotation(
     Line(
       points={{-60,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSink.inlet, flowResistance.outlet)annotation(
+  connect(waterSink.inlet, flowResistance.outlet) annotation(
     Line(
       points={{70,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, flowResistance.inlet)annotation(
+  connect(turbine.outlet, flowResistance.inlet) annotation(
     Line(
       points={{30,0},{40,0}},
       color={28,108,200},

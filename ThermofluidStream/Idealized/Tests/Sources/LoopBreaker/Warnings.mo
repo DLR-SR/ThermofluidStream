@@ -13,10 +13,10 @@ model Warnings "Example - Loop breaker"
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{80,20},{100,40}})));
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,120},{140,140}})));
 
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{110,20},{130,40}})));

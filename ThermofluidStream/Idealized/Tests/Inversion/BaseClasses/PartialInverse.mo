@@ -3,10 +3,10 @@ model PartialInverse "Base model defining the mixing problem"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Boundaries.Source
@@ -37,7 +37,7 @@ model PartialInverse "Base model defining the mixing problem"
         rotation=270,
         origin={30,10})));
 equation
-  connect(junction.outlet, sink.inlet)annotation(
+  connect(junction.outlet, sink.inlet) annotation(
     Line(
       points={{10,50},{40,50}},
       color={28,108,200},

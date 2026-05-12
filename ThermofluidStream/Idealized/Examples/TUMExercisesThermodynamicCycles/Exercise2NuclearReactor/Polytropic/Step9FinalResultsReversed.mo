@@ -3,7 +3,7 @@ model Step9FinalResultsReversed
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   SI.Temperature T1 = compressor1.T_out;
@@ -11,7 +11,7 @@ model Step9FinalResultsReversed
   Real x = T2/T1;
   Real eta = 0.96;
   Real eta1 = (1 + eta*(x-1))/(eta*x);
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -43,7 +43,7 @@ model Step9FinalResultsReversed
     p_out_fixed=5240000,
     T_out_fixed(displayUnit="K") = 1060,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-                                   annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270,
+                                  annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270,
         origin={-80,0})));
   EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{-50,10},{-30,-10}})));
   Processes.PolytropicPerfectGas turbine3(
@@ -132,7 +132,7 @@ model Step9FinalResultsReversed
         rotation=90,
         origin={90,50})));
   Modelica.Blocks.Math.Gain gain1(k=-1)
-                                       annotation(Placement(transformation(extent={{0,-10},{20,10}})));
+                                      annotation(Placement(transformation(extent={{0,-10},{20,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=compressor1.outlet.state.p) annotation(Placement(transformation(extent={{30,-34},{50,-14}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=compressor1.outlet.state.T) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -191,12 +191,12 @@ model Step9FinalResultsReversed
     displayParameters=false,
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK)annotation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_JpkgK) annotation(
     Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={116,64})));
-  Modelica.Blocks.Sources.RealExpression realExpression4(y=eta1)         annotation(Placement(transformation(extent={{20,50},{40,70}})));
+  Modelica.Blocks.Sources.RealExpression realExpression4(y=eta1)        annotation(Placement(transformation(extent={{20,50},{40,70}})));
 equation
   connect(reactor.outlet,turbine1. inlet) annotation(Line(
       points={{-140,10},{-140,100},{-80,100},{-80,90}},

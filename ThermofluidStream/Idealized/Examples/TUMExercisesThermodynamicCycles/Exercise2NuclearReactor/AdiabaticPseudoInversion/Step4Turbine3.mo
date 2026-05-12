@@ -4,10 +4,10 @@ model Step4Turbine3
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -93,20 +93,20 @@ model Step4Turbine3
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{40,48},{20,68}})));
+              annotation(Placement(transformation(extent={{40,48},{20,68}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{68,48},{48,68}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=-0.5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{40,-34},{20,-14}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{70,-34},{50,-14}})));
+                                        annotation(Placement(transformation(extent={{70,-34},{50,-14}})));
   Modelica.Blocks.Continuous.Integrator integrator2(
     k=5e5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=0) annotation(Placement(transformation(extent={{60,-124},{40,-104}})));
   Modelica.Blocks.Math.Feedback feedback2
-                                         annotation(Placement(transformation(extent={{90,-124},{70,-104}})));
+                                        annotation(Placement(transformation(extent={{90,-124},{70,-104}})));
 equation
   connect(source.outlet, reactor.inlet) annotation(Line(
       points={{-100,-2},{-100,10}},
@@ -120,7 +120,7 @@ equation
       points={{20,30},{0,30},{0,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine1.outlet,turbine2. inlet)annotation(
+  connect(turbine1.outlet,turbine2. inlet) annotation(
     Line(
       points={{0,70},{0,10}},
       color={28,108,200},
@@ -129,7 +129,7 @@ equation
       points={{0,-10},{0,-50},{20,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.outlet,turbine3. inlet)annotation(
+  connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},

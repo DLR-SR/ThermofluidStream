@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Volume;
 model PressureVessel
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
     parameter SI.Radius r = 1 "Radius (sphere)";

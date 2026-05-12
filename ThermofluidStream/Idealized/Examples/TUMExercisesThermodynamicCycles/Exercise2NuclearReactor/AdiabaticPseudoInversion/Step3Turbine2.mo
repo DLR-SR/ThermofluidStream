@@ -4,10 +4,10 @@ model Step3Turbine2
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -69,7 +69,7 @@ model Step3Turbine2
     k=1e6,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=70e5)
-               annotation(Placement(transformation(extent={{54,48},{34,68}})));
+              annotation(Placement(transformation(extent={{54,48},{34,68}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{82,48},{62,68}})));
   Modelica.Blocks.Sources.RealExpression turbine1OutletTemperature(y(unit="K") = 1110) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -80,7 +80,7 @@ model Step3Turbine2
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1) annotation(Placement(transformation(extent={{60,-32},{40,-12}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{90,-32},{70,-12}})));
+                                        annotation(Placement(transformation(extent={{90,-32},{70,-12}})));
 equation
   connect(source.outlet, reactor.inlet) annotation(Line(
       points={{-100,-2},{-100,10}},
@@ -94,7 +94,7 @@ equation
       points={{20,30},{0,30},{0,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine1.outlet,turbine2. inlet)annotation(
+  connect(turbine1.outlet,turbine2. inlet) annotation(
     Line(
       points={{0,70},{0,10}},
       color={28,108,200},

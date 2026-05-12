@@ -3,7 +3,8 @@ class UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
 class AdiabaticThermodynamicModels
-  extends Modelica.Icons.Information;annotation(
+  extends Modelica.Icons.Information;
+                                     annotation(
     Documentation(info="<html>
   <p>
     Various models from
@@ -67,7 +68,8 @@ class AdiabaticThermodynamicModels
 end AdiabaticThermodynamicModels;
 
 class BalancedModels
-  extends Modelica.Icons.Information;annotation(
+  extends Modelica.Icons.Information;
+                                     annotation(
     Documentation(info="<html>
  <p>
     Some models are not balanced:
@@ -129,7 +131,8 @@ class BalancedModels
 end BalancedModels;
 
 class EnergyFlow
-  extends Modelica.Icons.Information;annotation(
+  extends Modelica.Icons.Information;
+                                     annotation(
     Documentation(info="<html>
   <p>
     The energy flow connector is compatible with standard Modelica Real input and output connectors. 
@@ -154,7 +157,8 @@ class EnergyFlow
 end EnergyFlow;
 
 class neglectInertance
-  extends Modelica.Icons.Information;annotation(
+  extends Modelica.Icons.Information;
+                                     annotation(
     Documentation(info="<html>
   <p>    
     Inverse calculations are supported, for example determining the mass flow rate from a specified temperature difference and heat flow.<br> 

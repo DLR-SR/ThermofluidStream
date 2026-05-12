@@ -4,10 +4,10 @@ model Step9VaporQualityPseudoInversion
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
@@ -67,7 +67,7 @@ model Step9VaporQualityPseudoInversion
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
     outputValue=true) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Sources.RealExpression vaporQualitySetpoint(y=0.95)annotation(
+  Modelica.Blocks.Sources.RealExpression vaporQualitySetpoint(y=0.95) annotation(
     Placement(transformation(extent={{-60,40},{-40,60}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(
     T=0.1,
@@ -79,7 +79,7 @@ model Step9VaporQualityPseudoInversion
     y_start=0) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-30,60},{-10,40}})));
 equation
-  connect(pump.outlet, preheater.inlet)annotation(
+  connect(pump.outlet, preheater.inlet) annotation(
     Line(
       points={{-60,0},{-40,0}},
       color={28,108,200},
@@ -104,12 +104,12 @@ equation
       points={{80,0},{90,0},{90,-60},{40,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, pump.inlet)annotation(
+  connect(loopBreaker.outlet, pump.inlet) annotation(
     Line(
       points={{-20,-60},{-110,-60},{-110,0},{-80,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, vaporQualitySensor.inlet)annotation(
+  connect(turbine.outlet, vaporQualitySensor.inlet) annotation(
     Line(
       points={{80,0},{100,0}},
       color={28,108,200},

@@ -3,7 +3,7 @@ model cpSpec "Test model to check cp specification"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   ThermofluidStream.Boundaries.Source source(
@@ -25,7 +25,7 @@ model cpSpec "Test model to check cp specification"
     wMin=1,
     wMax=2,
     duration=1)
-              annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
+             annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,

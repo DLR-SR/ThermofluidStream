@@ -4,10 +4,10 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{100,-120},{120,-100}})));
 
   ThermofluidStream.Boundaries.Source source3(
@@ -165,8 +165,7 @@ equation
       points={{-70,-70},{-70,-40},{-50,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(m_flow_pulse6.y,firstOrder2. u) annotation(Line(points={{-79,-130},{-72,-130}},
-                                                                                         color={0,0,127}));
+  connect(m_flow_pulse6.y,firstOrder2. u) annotation(Line(points={{-79,-130},{-72,-130}},color={0,0,127}));
   connect(firstOrder2.y,massFlowRateA2. m_flow_prescribed) annotation(Line(points={{-49,-130},{-40,-130},{-40,-118}},
                                                                                                              color={0,0,127}));
   connect(m_flow_pulse5.y,massFlowRateB4. m_flow_prescribed) annotation(Line(points={{-69,-20},{-40,-20},{-40,-32}},

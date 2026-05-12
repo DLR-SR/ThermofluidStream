@@ -4,15 +4,15 @@ model NeglectInertance
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
-  parameter SI.Mass m = 75 "Mass to be cooled" annotation(
+  parameter SI.Mass m = 75 "Mass to be cooled" annotation(
     Dialog(group="Cooling requirement"));
-  parameter SI.SpecificHeatCapacity c = 2e3 "Specific heat capacity" annotation(
+  parameter SI.SpecificHeatCapacity c = 2e3 "Specific heat capacity" annotation(
     Dialog(group="Cooling requirement"));
-  parameter SI.TemperatureDifference dT = 40 "Temperature difference" annotation(
+  parameter SI.TemperatureDifference dT = 40 "Temperature difference" annotation(
     Dialog(group="Cooling requirement"));
-  parameter SI.Time duration(displayUnit="min")=900 "Time" annotation(
+  parameter SI.Time duration(displayUnit="min")=900 "Time" annotation(
     Dialog(group="Cooling requirement"));
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
@@ -26,7 +26,7 @@ model NeglectInertance
         rotation=90,
         origin={18,-40})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Medium,
@@ -45,7 +45,7 @@ model NeglectInertance
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-20,-80},{0,-60}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-70,-126},{-50,-106}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Medium,
@@ -80,13 +80,13 @@ model NeglectInertance
     p_out_fixed=600000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-12,-4},{8,16}})));
-  Modelica.Blocks.Sources.RealExpression h_dew1(y=Medium.dewEnthalpy(Medium.setSat_p(6e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_dew1(y=Medium.dewEnthalpy(Medium.setSat_p(6e5))) annotation(
     Placement(transformation(extent={{42,-30},{22,-10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQuality(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg)annotation(
+    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation(
     Placement(transformation(extent={{-78,-4},{-98,16}})));
   ThermofluidStream.Utilities.showRealValue lowPressureCompressorOutletTemperature(
     description="T_2",
@@ -121,7 +121,7 @@ model NeglectInertance
   EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = m*c*dT/duration) annotation(Placement(transformation(extent={{-80,-100},{-60,-80}})));
   EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.95) annotation(Placement(transformation(extent={{90,-10},{110,10}})));
   EnergyFlow.Components.Sum shaftPower(n_in=2) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraintsannotation(
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{92,34},{52,58}})));
   Modelica.Blocks.Sources.RealExpression temperature(y(
       unit="K",
@@ -137,17 +137,17 @@ equation
       points={{-70,-50},{-70,-70},{-50,-70}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, lowPressureCompressor.inlet)annotation(
+  connect(loopBreaker.outlet, lowPressureCompressor.inlet) annotation(
     Line(
       points={{0,-70},{18,-70},{18,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outlet, loopBreaker.inlet)annotation(
+  connect(evaporator.outlet, loopBreaker.inlet) annotation(
     Line(
       points={{-30,-70},{-20,-70}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureCompressor.outlet, condensor.inlet)annotation(
+  connect(highPressureCompressor.outlet, condensor.inlet) annotation(
     Line(
       points={{20,50},{20,70},{-18,70}},
       color={28,108,200},
@@ -172,7 +172,7 @@ equation
       points={{-20,6},{-12,6}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker1.outlet, highPressureCompressor.inlet)annotation(
+  connect(loopBreaker1.outlet, highPressureCompressor.inlet) annotation(
     Line(
       points={{8,6},{20,6},{20,30}},
       color={28,108,200},
@@ -187,8 +187,7 @@ equation
   connect(h_bubble.y, condensor.outletSpec_prescribed) annotation(Line(points={{-21,90},{-38,90},{-38,82}}, color={0,0,127}));
   connect(heatFlow.E_flow_out, evaporator.Q_flow_in) annotation(Line(points={{-59,-90},{-40,-90},{-40,-78}}, color={255,170,85}));
   connect(shaftPower.E_flow_out, losses.E_flow_in) annotation(Line(points={{81.7,0},{88,0}},  color={255,170,85}));
-  connect(highPressureCompressor.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{27,40},{40,40},{40,4},{60,4},{60,-1.5}},
-                                                                                                                                  color={255,170,85}));
+  connect(highPressureCompressor.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{27,40},{40,40},{40,4},{60,4},{60,-1.5}},color={255,170,85}));
   connect(lowPressureCompressor.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{25,-40},{46,-40},{46,-2},{60,-2},{60,1.5}},
                                                                                                                                  color={255,170,85}));
   connect(highPressureCompressor.eta_prescribed, inverseBlockConstraints.y1) annotation(Line(points={{32,46},{51,46}}, color={0,0,127}));

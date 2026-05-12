@@ -3,10 +3,10 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-100,80},{-80,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
@@ -110,22 +110,22 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
   EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.97) annotation(Placement(transformation(extent={{160,-40},{180,-20}})));
   EnergyFlow.Components.Sum shaftPower(n_in=3) annotation(Placement(transformation(extent={{120,-40},{140,-20}})));
 equation
-  connect(source.outlet, lowPressureCompressor.inlet)annotation(
+  connect(source.outlet, lowPressureCompressor.inlet) annotation(
     Line(
       points={{-120,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(lowPressureCompressor.outlet, cooler.inlet)annotation(
+  connect(lowPressureCompressor.outlet, cooler.inlet) annotation(
     Line(
       points={{-80,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler.outlet, highPressureCompressor.inlet)annotation(
+  connect(cooler.outlet, highPressureCompressor.inlet) annotation(
     Line(
       points={{-40,0},{-20,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, turbine.inlet)annotation(
+  connect(combustion.outlet, turbine.inlet) annotation(
     Line(
       points={{80,0},{100,0}},
       color={28,108,200},

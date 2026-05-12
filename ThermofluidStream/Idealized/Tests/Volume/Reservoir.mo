@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Volume;
 model Reservoir
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -36,7 +36,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(reservoirPressure.y, isenthalpic.outletSpec_prescribed) annotation(Line(points={{-39,-30},{-30,-30},{-30,-12}}, color={0,0,127}));
-   annotation(experiment(StopTime=100), Documentation(info="<html> 
+  annotation(experiment(StopTime=100), Documentation(info="<html> 
   <p> 
     This model represents a continuously filled reservoir. 
     At some point, the system may become non-physical, as the valve would need to raise the pressure, which is indicated by a warning. 

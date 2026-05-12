@@ -3,10 +3,10 @@ model Step7BootStrapCycle
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
@@ -76,59 +76,59 @@ model Step7BootStrapCycle
         rotation=90,
         origin={0,30})));
 equation
-  connect(compressor.outlet, cooler.inlet)annotation(
+  connect(compressor.outlet, cooler.inlet) annotation(
     Line(
       points={{-60,0},{-40,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSource.outlet, compressor.inlet)annotation(
+  connect(airSource.outlet, compressor.inlet) annotation(
     Line(
       points={{-96,0},{-80,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateSource.outlet, valve.inlet)annotation(
+  connect(massFlowRateSource.outlet, valve.inlet) annotation(
     Line(
       points={{30,-30},{40,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateValve.y, massFlowRateSource.m_flow_prescribed)annotation(
+  connect(massFlowRateValve.y, massFlowRateSource.m_flow_prescribed) annotation(
     Line(points={{-19,-46},{20,-46},{20,-38}}, color={0,0,127}));
-  connect(valve.outlet, junctionT1_1.inletA)annotation(
+  connect(valve.outlet, junctionT1_1.inletA) annotation(
     Line(
       points={{60,-30},{70,-30},{70,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(junctionT1_1.outlet,airSink. inlet)annotation(
+  connect(junctionT1_1.outlet,airSink. inlet) annotation(
     Line(
       points={{80,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler.outlet, splitter.inlet)annotation(
+  connect(cooler.outlet, splitter.inlet) annotation(
     Line(
       points={{-20,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitter.outletB, massFlowRateSource.inlet)annotation(
+  connect(splitter.outletB, massFlowRateSource.inlet) annotation(
     Line(
       points={{0,-10},{0,-30},{10,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, junctionT1_1.inletB)annotation(
+  connect(turbine.outlet, junctionT1_1.inletB) annotation(
     Line(
       points={{70,20},{70,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor1.inlet, splitter.outletA)annotation(
+  connect(compressor1.inlet, splitter.outletA) annotation(
     Line(
       points={{0,20},{0,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor1.outlet, cooler2.inlet)annotation(
+  connect(compressor1.outlet, cooler2.inlet) annotation(
     Line(
       points={{0,40},{0,60},{20,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler2.outlet, turbine.inlet)annotation(
+  connect(cooler2.outlet, turbine.inlet) annotation(
     Line(
       points={{40,60},{70,60},{70,40}},
       color={28,108,200},

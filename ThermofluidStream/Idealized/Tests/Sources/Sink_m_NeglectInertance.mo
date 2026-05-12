@@ -5,10 +5,10 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{60,100},{80,120}})));
 
   Modelica.Blocks.Sources.Pulse m_flow_pulse1(
@@ -87,8 +87,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(sink9.m_flow_prescribed, m_flow_pulse4.y) annotation(Line(points={{22,-50},{39,-50}}, color={0,0,127}));
-  connect(p_pulse4.y, source9.p0_var) annotation(Line(points={{-49,-44},{-22,-44}},
-                                                                                   color={0,0,127}));
+  connect(p_pulse4.y, source9.p0_var) annotation(Line(points={{-49,-44},{-22,-44}},color={0,0,127}));
   connect(h_pulse1.y, source9.h0_var) annotation(Line(points={{-49,-80},{-34.5,-80},{-34.5,-50},{-22,-50}},
                                                                                                      color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false), graphics={

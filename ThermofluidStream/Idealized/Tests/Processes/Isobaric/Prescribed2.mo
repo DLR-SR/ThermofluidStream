@@ -3,7 +3,7 @@ model Prescribed2 "Example - Isobaric cycle process"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
   SI.MassFlowRate m_flow = massFlowRate.y "Mass flow rate";
   Medium.AbsolutePressure p = inletPressure.y "Pressure (inlet = outlet)";
@@ -35,7 +35,7 @@ model Prescribed2 "Example - Isobaric cycle process"
   SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work";
   SI.Power P = m_flow*w_exp_net "Net power (net expansion work flow rate)";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{220,60},{240,80}})));
 
   Modelica.Blocks.Sources.SawTooth inletPressure(
@@ -61,7 +61,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     startTime=0.4) annotation(Placement(transformation(extent={{-240,-80},{-220,-60}})));
   Modelica.Blocks.Sources.RealExpression heatFlowRate(y=Q_flow) annotation(Placement(transformation(extent={{230,-50},{210,-30}})));
   EnergyFlow.Sources.PrescribedEnergyFlow
-                                     energyFlowSource                annotation(Placement(transformation(extent={{190,-50},{170,-30}})));
+                                     energyFlowSource               annotation(Placement(transformation(extent={{190,-50},{170,-30}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -76,7 +76,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{-90,0},{-70,20}})));
+                  annotation(Placement(transformation(extent={{-90,0},{-70,20}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-30,0},{-10,20}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out1(
     redeclare package Medium = Medium,
@@ -88,7 +88,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{4,0},{24,20}})));
+                  annotation(Placement(transformation(extent={{4,0},{24,20}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{64,0},{84,20}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh1(
     redeclare package Medium = Medium,
@@ -100,7 +100,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{104,0},{124,20}})));
+                  annotation(Placement(transformation(extent={{104,0},{124,20}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{164,0},{184,20}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out1(
     redeclare package Medium = Medium,
@@ -125,7 +125,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{-90,-80},{-70,-60}})));
+                  annotation(Placement(transformation(extent={{-90,-80},{-70,-60}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -138,7 +138,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{4,-80},{24,-60}})));
+                  annotation(Placement(transformation(extent={{4,-80},{24,-60}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -151,7 +151,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
-                   annotation(Placement(transformation(extent={{104,-80},{124,-60}})));
+                  annotation(Placement(transformation(extent={{104,-80},{124,-60}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -193,10 +193,8 @@ equation
       points={{154,10},{164,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(source.p0_var, inletPressure.y) annotation(Line(points={{-182,16},{-196,16},{-196,50},{-219,50}},
-                                                                                                           color={0,0,127}));
-  connect(source.T0_var, inletTemperature.y) annotation(Line(points={{-182,10},{-219,10}},
-                                                                                          color={0,0,127}));
+  connect(source.p0_var, inletPressure.y) annotation(Line(points={{-182,16},{-196,16},{-196,50},{-219,50}},color={0,0,127}));
+  connect(source.T0_var, inletTemperature.y) annotation(Line(points={{-182,10},{-219,10}},color={0,0,127}));
   connect(temperatureDifference.y,dT1. outletSpec_prescribed) annotation(Line(points={{-219,-30},{-140,-30},{-140,-2}},  color={0,0,127}));
   connect(outletTemperature.y,T_out1. outletSpec_prescribed) annotation(Line(points={{-31,-20},{-40,-20},{-40,-2}},     color={0,0,127}));
   connect(specificEnthalpyDifference.y,dh1. outletSpec_prescribed) annotation(Line(points={{63,-20},{54,-20},{54,-2}},     color={0,0,127}));
@@ -208,8 +206,7 @@ equation
   connect(heatFlowRate.y, energyFlowSource.E_flow) annotation(Line(points={{209,-40},{192,-40}}, color={0,0,127}));
   connect(source1.p0_var, inletPressure.y) annotation(Line(points={{-82,16},{-90,16},{-90,50},{-219,50}},  color={0,0,127}));
   connect(source4.p0_var, inletPressure.y) annotation(Line(points={{12,16},{4,16},{4,50},{-219,50}},    color={0,0,127}));
-  connect(source5.p0_var, inletPressure.y) annotation(Line(points={{112,16},{104,16},{104,50},{-219,50}},
-                                                                                                         color={0,0,127}));
+  connect(source5.p0_var, inletPressure.y) annotation(Line(points={{112,16},{104,16},{104,50},{-219,50}},color={0,0,127}));
   connect(source1.T0_var, inletTemperature.y) annotation(Line(points={{-82,10},{-94,10},{-94,30},{-200,30},{-200,10},{-219,10}},color={0,0,127}));
   connect(source4.T0_var, inletTemperature.y) annotation(Line(points={{12,10},{0,10},{0,30},{-200,30},{-200,10},{-219,10}},  color={0,0,127}));
   connect(source5.T0_var, inletTemperature.y) annotation(Line(points={{112,10},{100,10},{100,30},{-200,30},{-200,10},{-219,10}},

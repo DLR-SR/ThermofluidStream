@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.EnergyFlow.Sources;
 model PrescribedEnergyFlow "Prescribed energy flow rate boundary condition"
 
-  Modelica.Blocks.Interfaces.RealInput E_flow(unit="W")annotation(
+  Modelica.Blocks.Interfaces.RealInput E_flow(unit="W") annotation(
     Placement(transformation(extent={{-140,-20},{-100,20}})));
 
   Interfaces.EnergyFlowOutput E_flow_out annotation(Placement(transformation(extent={{100,-10},{120,10}})));

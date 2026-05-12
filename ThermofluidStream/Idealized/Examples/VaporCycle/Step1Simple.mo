@@ -3,7 +3,7 @@ model Step1Simple
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
@@ -14,7 +14,7 @@ model Step1Simple
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,0})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{82,80},{102,100}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
@@ -37,14 +37,14 @@ model Step1Simple
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{10,-40},{30,-20}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-40,-70},{-20,-50}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformanceSpecific(
     description="COP specific",
     use_numberPort=false,
     number=(evaporator.dh)/(compressor.dh),
     displayVariable=false) annotation(Placement(transformation(extent={{40,-80},{60,-60}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(condensorPressure.y)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(condensorPressure.y))) annotation(
     Placement(transformation(extent={{40,40},{20,60}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformanceExtensive(
     description="COP extensive",
@@ -56,27 +56,27 @@ model Step1Simple
     duration=1,
     offset=2e5) annotation(Placement(transformation(extent={{80,0},{60,20}})));
 equation
-  connect(compressor.outlet, condensor.inlet)annotation(
+  connect(compressor.outlet, condensor.inlet) annotation(
     Line(
       points={{40,10},{40,30},{10,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(valve.outlet, evaporator.inlet)annotation(
+  connect(valve.outlet, evaporator.inlet) annotation(
     Line(
       points={{-30,-10},{-30,-30},{-20,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, compressor.inlet)annotation(
+  connect(loopBreaker.outlet, compressor.inlet) annotation(
     Line(
       points={{30,-30},{40,-30},{40,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, valve.inlet)annotation(
+  connect(condensor.outlet, valve.inlet) annotation(
     Line(
       points={{-10,30},{-30,30},{-30,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outlet, loopBreaker.inlet)annotation(
+  connect(evaporator.outlet, loopBreaker.inlet) annotation(
     Line(
       points={{0,-30},{10,-30}},
       color={28,108,200},

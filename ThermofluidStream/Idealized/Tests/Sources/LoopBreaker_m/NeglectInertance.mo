@@ -5,10 +5,10 @@ model NeglectInertance "Example - mass flow loop breaker"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,40},{140,60}})));
 
   .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
@@ -36,7 +36,7 @@ model NeglectInertance "Example - mass flow loop breaker"
     period=0.3,
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{40,-30},{20,-10}})));
-  Modelica.Blocks.Sources.RealExpression h_const(y=Medium.dewEnthalpy(Medium.setSat_p(1e5)))annotation(
+  Modelica.Blocks.Sources.RealExpression h_const(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-40,-30},{-20,-10}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker9(
     redeclare package Medium = Medium,

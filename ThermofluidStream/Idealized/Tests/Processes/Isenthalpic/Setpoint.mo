@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Isenthalpic;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -21,7 +21,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,70},{90,90}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic dpLoss1(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{40,70},{60,90}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.2e5)
-                                                               annotation(Placement(transformation(extent={{30,40},{50,60}})));
+                                                              annotation(Placement(transformation(extent={{30,40},{50,60}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -43,7 +43,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=0.2)
-                                                               annotation(Placement(transformation(extent={{30,-40},{50,-20}})));
+                                                              annotation(Placement(transformation(extent={{30,-40},{50,-20}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -65,7 +65,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{40,-90},{60,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=0.8e5)
-                                                               annotation(Placement(transformation(extent={{30,-120},{50,-100}})));
+                                                              annotation(Placement(transformation(extent={{30,-120},{50,-100}})));
 equation
   connect(source.outlet, dpLoss.inlet) annotation(Line(
       points={{-70,80},{-60,80}},

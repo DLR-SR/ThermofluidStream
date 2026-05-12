@@ -53,15 +53,15 @@ model DryAirNASA1PseudoInversion
     k=1e7,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1e5)
-               annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
+              annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-108,40},{-88,60}})));
   Modelica.Blocks.Math.Feedback feedback1
-                                         annotation(Placement(transformation(extent={{10,40},{30,60}})));
+                                        annotation(Placement(transformation(extent={{10,40},{30,60}})));
   Modelica.Blocks.Continuous.Integrator integrator1(
     k=1e7,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1e5)
-               annotation(Placement(transformation(extent={{38,40},{58,60}})));
+              annotation(Placement(transformation(extent={{38,40},{58,60}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
@@ -81,17 +81,17 @@ model DryAirNASA1PseudoInversion
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
-  connect(compression.outlet, combustion.inlet)annotation(
+  connect(compression.outlet, combustion.inlet) annotation(
     Line(
       points={{-70,-28},{-30,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(combustion.outlet, expansion.inlet)annotation(
+  connect(combustion.outlet, expansion.inlet) annotation(
     Line(
       points={{-10,-28},{10,-28}},
       color={28,108,200},
       thickness=0.5));
-  connect(expansion.outlet, gasExchange.inlet)annotation(
+  connect(expansion.outlet, gasExchange.inlet) annotation(
     Line(
       points={{30,-28},{70,-28}},
       color={28,108,200},
@@ -112,8 +112,7 @@ equation
       points={{-90,-28},{-100,-28},{-100,20},{-10,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(compression.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{-80,-35},{-80,-64},{100,-64},{100,-62.25}},
-                                                                                                                          color={255,170,85}));
+  connect(compression.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{-80,-35},{-80,-64},{100,-64},{100,-62.25}},color={255,170,85}));
   connect(expansion.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{20,-35},{20,-60.75},{100,-60.75}},color={255,170,85}));
   connect(density2.y, feedback.u1) annotation(Line(points={{-119,50},{-106,50}}, color={0,0,127}));
   connect(sensorDensity2.value_out, feedback.u2) annotation(Line(points={{-60,4.2},{-60,34},{-98,34},{-98,42}},                   color={0,0,127}));

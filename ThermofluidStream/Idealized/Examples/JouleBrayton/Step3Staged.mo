@@ -3,10 +3,10 @@ model Step3Staged
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
 
   Processes.Adiabatic lowPressureCompressor(
@@ -35,7 +35,7 @@ model Step3Staged
     height=18.98e5,
     duration=1,
     offset=1.01e5)
-                annotation(Placement(transformation(extent={{-150,-50},{-130,-30}})));
+               annotation(Placement(transformation(extent={{-150,-50},{-130,-30}})));
   ThermofluidStream.Utilities.showRealValue efficiencySpecific(
     description="efficiency specific",
     use_numberPort=false,
@@ -74,47 +74,47 @@ model Step3Staged
 
     p_out_fixed=100000) annotation(Placement(transformation(extent={{130,-10},{150,10}})));
 equation
-  connect(airSource.outlet, lowPressureCompressor.inlet)annotation(
+  connect(airSource.outlet, lowPressureCompressor.inlet) annotation(
     Line(
       points={{-136,0},{-120,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(airSink.inlet, recuperator.outletB)annotation(
+  connect(airSink.inlet, recuperator.outletB) annotation(
     Line(
       points={{-38,34},{-38,12},{-30,12}},
       color={28,108,200},
       thickness=0.5));
-  connect(lowPressureCompressor.outlet, cooler.inlet)annotation(
+  connect(lowPressureCompressor.outlet, cooler.inlet) annotation(
     Line(
       points={{-100,0},{-90,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler.outlet, highPressureCompressor.inlet)annotation(
+  connect(cooler.outlet, highPressureCompressor.inlet) annotation(
     Line(
       points={{-70,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperator.outletA, firstCombustion.inlet)annotation(
+  connect(recuperator.outletA, firstCombustion.inlet) annotation(
     Line(
       points={{-10,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureCompressor.outlet, recuperator.inletA)annotation(
+  connect(highPressureCompressor.outlet, recuperator.inletA) annotation(
     Line(
       points={{-40,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(firstCombustion.outlet, highPressureTurbine.inlet)annotation(
+  connect(firstCombustion.outlet, highPressureTurbine.inlet) annotation(
     Line(
       points={{30,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(highPressureTurbine.outlet, secondCombustion.inlet)annotation(
+  connect(highPressureTurbine.outlet, secondCombustion.inlet) annotation(
     Line(
       points={{70,0},{90,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(secondCombustion.outlet, lowPressureTurbine.inlet)annotation(
+  connect(secondCombustion.outlet, lowPressureTurbine.inlet) annotation(
     Line(
       points={{110,0},{130,0}},
       color={28,108,200},

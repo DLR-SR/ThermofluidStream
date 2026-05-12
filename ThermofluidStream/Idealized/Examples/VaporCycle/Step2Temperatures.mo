@@ -3,7 +3,7 @@ model Step2Temperatures
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
   parameter Medium.Temperature T_Evaporator = 253.15 "Evaporator temperature";
 
@@ -18,7 +18,7 @@ model Step2Temperatures
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,0})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{82,80},{102,100}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
@@ -58,33 +58,33 @@ model Step2Temperatures
     offset(
       unit="K",
       displayUnit="degC") = 273.15)
-                         annotation(Placement(transformation(extent={{120,0},{100,20}})));
+                        annotation(Placement(transformation(extent={{120,0},{100,20}})));
   Modelica.Blocks.Sources.RealExpression condenserPressure(y=Medium.saturationPressure(condensorTemperature.y))
-                                                           annotation(Placement(transformation(extent={{80,0},{60,20}})));
+                                                          annotation(Placement(transformation(extent={{80,0},{60,20}})));
   Modelica.Blocks.Sources.RealExpression condenserOutletEnthalpy(y=Medium.bubbleEnthalpy(Medium.setSat_T(condensorTemperature.y)))
-                                                                                   annotation(Placement(transformation(extent={{40,40},{20,60}})));
+                                                                                  annotation(Placement(transformation(extent={{40,40},{20,60}})));
 equation
-  connect(compressor.outlet, condensor.inlet)annotation(
+  connect(compressor.outlet, condensor.inlet) annotation(
     Line(
       points={{40,10},{40,30},{10,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(valve.outlet, evaporator.inlet)annotation(
+  connect(valve.outlet, evaporator.inlet) annotation(
     Line(
       points={{-30,-10},{-30,-30},{-20,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(loopBreaker.outlet, compressor.inlet)annotation(
+  connect(loopBreaker.outlet, compressor.inlet) annotation(
     Line(
       points={{30,-30},{40,-30},{40,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(condensor.outlet, valve.inlet)annotation(
+  connect(condensor.outlet, valve.inlet) annotation(
     Line(
       points={{-10,30},{-30,30},{-30,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(evaporator.outlet, loopBreaker.inlet)annotation(
+  connect(evaporator.outlet, loopBreaker.inlet) annotation(
     Line(
       points={{0,-30},{10,-30}},
       color={28,108,200},

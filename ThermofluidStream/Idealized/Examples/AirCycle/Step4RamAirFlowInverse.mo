@@ -8,7 +8,7 @@ model Step4RamAirFlowInverse
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-                            annotation(
+                           annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Boundaries.Source airSource(
@@ -19,7 +19,7 @@ model Step4RamAirFlowInverse
     height=2e5,
     duration=1,
     offset=1e5 + 1)
-                annotation(Placement(transformation(extent={{-80,-50},{-60,-30}})));
+               annotation(Placement(transformation(extent={{-80,-50},{-60,-30}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
     description="COP",
     use_numberPort=false,

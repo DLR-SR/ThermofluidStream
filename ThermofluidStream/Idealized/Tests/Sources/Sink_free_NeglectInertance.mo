@@ -5,10 +5,10 @@ model Sink_free_NeglectInertance "Example - free sink"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{40,60},{60,80}})));
 
   Modelica.Blocks.Sources.Pulse m_flow_pulse1(
@@ -49,7 +49,7 @@ model Sink_free_NeglectInertance "Example - free sink"
   Modelica.Blocks.Sources.Sine h_sine1(
     amplitude=(Medium.specificEnthalpy_pT(1e5, 273.15 + 200) - Medium.specificEnthalpy_pT(1e5, 273.15 + 120)),
     f=1,
-    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120))annotation(
+    offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120)) annotation(
     Placement(transformation(extent={{80,-40},{100,-20}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate10(
     redeclare package Medium = Medium,
@@ -66,8 +66,7 @@ model Sink_free_NeglectInertance "Example - free sink"
 equation
   connect(p_ramp2.y, source11.p0_var) annotation(Line(points={{-59,0},{-32,0}},   color={0,0,127}));
   connect(p_ramp3.y, source12.p0_var) annotation(Line(points={{101,0},{128,0}},   color={0,0,127}));
-  connect(h_sine1.y, source12.h0_var) annotation(Line(points={{101,-30},{114,-30},{114,-6},{128,-6}},
-                                                                                                     color={0,0,127}));
+  connect(h_sine1.y, source12.h0_var) annotation(Line(points={{101,-30},{114,-30},{114,-6},{128,-6}},color={0,0,127}));
   connect(source10.outlet, massFlowRate10.inlet) annotation(Line(
       points={{-180,-6},{-170,-6}},
       color={28,108,200},

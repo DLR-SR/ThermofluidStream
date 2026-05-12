@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Isochoric;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -26,7 +26,7 @@ model Setpoint
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,50},{-90,70}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=20)  annotation(Placement(transformation(extent={{-120,20},{-100,40}})));
+  Modelica.Blocks.Sources.RealExpression realExpression(y=20) annotation(Placement(transformation(extent={{-120,20},{-100,40}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -63,7 +63,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,50},{210,70}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=20)  annotation(Placement(transformation(extent={{240,20},{220,40}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=20) annotation(Placement(transformation(extent={{240,20},{220,40}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -86,7 +86,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-30},{-90,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=313.15)
-                                                               annotation(Placement(transformation(extent={{-120,-60},{-100,-40}})));
+                                                              annotation(Placement(transformation(extent={{-120,-60},{-100,-40}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -125,7 +125,7 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,-30},{210,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=313.15)
-                                                                annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
+                                                               annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{-40,20},{-20,40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource1(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{60,20},{80,40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource2(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{160,20},{180,40}})));

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model FixedCantBeBalanced "Example - Isochoric process"
   extends Modelica.Icons.Example;
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{160,120},{180,140}})));
 
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_T_out(

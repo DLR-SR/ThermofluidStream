@@ -3,10 +3,10 @@ model Step6Junction
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
@@ -56,17 +56,17 @@ model Step6Junction
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation(Placement(transformation(extent={{110,-10},{130,10}})));
   Topology.JunctionT2 junction(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{70,10},{90,-10}})));
 equation
-  connect(compressor.outlet, heatExchangerSideA.inlet)annotation(
+  connect(compressor.outlet, heatExchangerSideA.inlet) annotation(
     Line(
       points={{-60,0},{-40,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerSideA.outlet, splitter.inlet)annotation(
+  connect(heatExchangerSideA.outlet, splitter.inlet) annotation(
     Line(
       points={{-20,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitter.outletB, turbine.inlet)annotation(
+  connect(splitter.outletB, turbine.inlet) annotation(
     Line(
       points={{10,0},{20,0}},
       color={28,108,200},

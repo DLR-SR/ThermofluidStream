@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model Fixed "Example - Isochoric process"
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   parameter SI.MassFlowRate m_flow=0   "Mass flow rate";
@@ -38,13 +38,13 @@ model Fixed "Example - Isochoric process"
   final parameter SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work";
   final parameter SI.Power P = m_flow*w_exp_net "Net power (net expansion work flow rate)";
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{300,80},{320,100}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-420,30},{-400,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-420,30},{-400,50}})));
   Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-360,30},{-340,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT1(
     redeclare package Medium = Medium,
@@ -58,7 +58,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-320,30},{-300,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-320,30},{-300,50}})));
   Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-260,30},{-240,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out1(
     redeclare package Medium = Medium,
@@ -73,7 +73,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-200,30},{-180,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-200,30},{-180,50}})));
   Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-140,30},{-120,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh1(
     redeclare package Medium = Medium,
@@ -88,7 +88,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-100,30},{-80,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-100,30},{-80,50}})));
   Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-40,30},{-20,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out1(
     redeclare package Medium = Medium,
@@ -103,7 +103,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-420,-10},{-400,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-420,-10},{-400,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-360,-10},{-340,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT2(
     redeclare package Medium = Medium,
@@ -119,7 +119,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-320,-10},{-300,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-320,-10},{-300,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-260,-10},{-240,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out2(
     redeclare package Medium = Medium,
@@ -135,7 +135,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-200,-10},{-180,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-200,-10},{-180,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2(
     redeclare package Medium = Medium,
@@ -151,7 +151,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out2(
     redeclare package Medium = Medium,
@@ -167,7 +167,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-260,-70},{-240,-50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-260,-70},{-240,-50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT3(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -183,7 +183,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{20,30},{40,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{20,30},{40,50}})));
   Boundaries.Sink_m sink8(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{80,30},{100,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT1c(
     redeclare package Medium = Medium,
@@ -197,7 +197,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{120,30},{140,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{120,30},{140,50}})));
   Boundaries.Sink_m sink10(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{180,30},{200,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out1c(
     redeclare package Medium = Medium,
@@ -212,7 +212,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{240,30},{260,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{240,30},{260,50}})));
   Boundaries.Sink_m sink11(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{300,30},{320,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh1c(
     redeclare package Medium = Medium,
@@ -227,7 +227,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{340,30},{360,50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{340,30},{360,50}})));
   Boundaries.Sink_m sink12(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{400,30},{420,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out1c(
     redeclare package Medium = Medium,
@@ -242,7 +242,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source13(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{20,-10},{40,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{20,-10},{40,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink13(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{80,-10},{100,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT2c(
     redeclare package Medium = Medium,
@@ -255,11 +255,11 @@ model Fixed "Example - Isochoric process"
     p_inf=p_inf,
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource1(E_flow=Q_flow)
-                                                                     annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
+                                                                    annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Boundaries.Source source14(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{120,-10},{140,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{120,-10},{140,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink14(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,-10},{200,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out2c(
     redeclare package Medium = Medium,
@@ -275,7 +275,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source15(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{240,-10},{260,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{240,-10},{260,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink15(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{300,-10},{320,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2c(
     redeclare package Medium = Medium,
@@ -291,7 +291,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source16(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{340,-10},{360,10}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{340,-10},{360,10}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink16(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{400,-10},{420,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out2c(
     redeclare package Medium = Medium,
@@ -307,7 +307,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Boundaries.Source source17(
     redeclare package Medium = Medium,
     p0_par=p,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{180,-70},{200,-50}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{180,-70},{200,-50}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT3c(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,

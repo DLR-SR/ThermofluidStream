@@ -11,7 +11,7 @@ model PseudoInversion1 "Example - Pseudo-inversion using a feedback control loop
       displayUnit="degC") = 298.15) annotation(Placement(transformation(extent={{80,-30},{60,-10}})));
 equation
   connect(feedback.y, integrator.u) annotation(Line(points={{21,-20},{2,-20}}, color={0,0,127}));
-  connect(integrator.y, massFlowRateB.m_flow_prescribed)annotation(
+  connect(integrator.y, massFlowRateB.m_flow_prescribed) annotation(
     Line(points={{-21,-20},{-30,-20},{-30,2}}, color={0,0,127}));
   connect(singleSensorSelect.value_out, feedback.u2) annotation(Line(points={{30,1.8},{30,-12}}, color={0,0,127}));
   connect(feedback.u1, temperatureSetpoint1.y) annotation(Line(points={{38,-20},{59,-20}}, color={0,0,127}));

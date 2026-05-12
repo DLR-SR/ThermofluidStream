@@ -3,7 +3,7 @@ model CO2
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Pressure p_in=100000 "Fixed inlet pressure";
   parameter SI.Temperature T_in=293.15 "Fixed inlet temperature";
@@ -13,7 +13,7 @@ model CO2
     redeclare package Medium = Medium,
     p0_par=p_in,
     temperatureFromInput=false,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-40,40},{-20,60}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-40,40},{-20,60}})));
   .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,40},{40,60}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstGamma(
@@ -31,7 +31,7 @@ model CO2
     redeclare package Medium = Medium,
     p0_par=p_in,
     temperatureFromInput=false,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{60,40},{80,60}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{60,40},{80,60}})));
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{120,40},{140,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGas(
     redeclare package Medium = Medium,
@@ -44,7 +44,7 @@ model CO2
     redeclare package Medium = Medium,
     p0_par=p_in,
     temperatureFromInput=false,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
   ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-60},{40,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic incompressibleFluid(
     redeclare package Medium = Medium,
@@ -57,7 +57,7 @@ model CO2
     redeclare package Medium = Medium,
     p0_par=p_in,
     temperatureFromInput=false,
-    T0_par=T_in)   annotation(Placement(transformation(extent={{60,-60},{80,-40}})));
+    T0_par=T_in)  annotation(Placement(transformation(extent={{60,-60},{80,-40}})));
   ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{120,-60},{140,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic isothermalReference(
     redeclare package Medium = Medium,

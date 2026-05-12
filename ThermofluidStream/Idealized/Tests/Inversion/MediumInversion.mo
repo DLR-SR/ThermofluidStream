@@ -3,7 +3,7 @@ model MediumInversion "Calculate (p,T) = f(h,s)"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
  Medium.BaseProperties medium(p(start=1e5),T(start=300)); //Different p.start, T.start might eventually let the simulation fail

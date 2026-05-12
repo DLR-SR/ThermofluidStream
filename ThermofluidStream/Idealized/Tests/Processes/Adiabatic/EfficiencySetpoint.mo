@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Adiabatic;
 model EfficiencySetpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -28,12 +28,12 @@ model EfficiencySetpoint
     dp_fixed=100000) annotation(Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.7) annotation(Placement(transformation(extent={{0,-40},{20,-20}})));
 equation
-  connect(source.outlet,compressor. inlet)annotation(
+  connect(source.outlet,compressor. inlet) annotation(
     Line(
       points={{-76,0},{-66,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet,sink. inlet)annotation(
+  connect(compressor.outlet,sink. inlet) annotation(
     Line(
       points={{-46,0},{-36,0}},
       color={28,108,200},

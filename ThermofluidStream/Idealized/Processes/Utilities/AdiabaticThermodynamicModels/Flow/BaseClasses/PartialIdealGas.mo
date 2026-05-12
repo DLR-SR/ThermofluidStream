@@ -8,21 +8,21 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
   parameter ValueSpecification gammaSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
-  parameter Medium.IsentropicExponent gamma_fixed = 1.4 "Fixed isentropic exponent" annotation(
+  parameter Medium.IsentropicExponent gamma_fixed = 1.4 "Fixed isentropic exponent" annotation(
     Dialog(group="Assumptions",
       enable = gammaSpec ==ValueSpecification.Fixed),
       HideResult = not gammaSpec == ValueSpecification.Fixed);
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings"));
-  parameter Real relTolZ = 0.05 "Relative tolerance of compressibility factor at inlet and outlet (tolerance for ideal gas behaviour)" annotation(
+  parameter Real relTolZ = 0.05 "Relative tolerance of compressibility factor at inlet and outlet (tolerance for ideal gas behaviour)" annotation(
     Dialog(group="Warnings"));
-  parameter Real relTolGamma = 1e-2 "Relative tolerance for isentropic exponent gamma_in, gamma_out" annotation(
+  parameter Real relTolGamma = 1e-2 "Relative tolerance for isentropic exponent gamma_in, gamma_out" annotation(
     Dialog(group="Warnings",
       enable = gammaSpec ==ValueSpecification.State),
       HideResult = not gammaSpec == ValueSpecification.State);
   final parameter String name = getInstanceName();
 
-  Medium.Temperature T_in = Medium.temperature(state_in) "Inlet temperature" annotation(
+  Medium.Temperature T_in = Medium.temperature(state_in) "Inlet temperature" annotation(
     HideResult=true);
   Medium.Temperature T_out_is "Isentropic outlet temperature";
 
@@ -30,7 +30,7 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   Medium.IsentropicExponent gamma_in = Medium.isentropicExponent(state_in) "Isentropic exponent (inlet)";
   Medium.IsentropicExponent gamma_out = Medium.isentropicExponent(Medium.setState_phX(p_out,h_out,Xi_in)) "Isentropic exponent (outlet)";
 
-  Real delta_gamma_rel = abs(gamma_out - gamma_in)/max(gamma_out,gamma_in) "Relative difference of isentropic exponents gamma_in, gamma_out" annotation(
+  Real delta_gamma_rel = abs(gamma_out - gamma_in)/max(gamma_out,gamma_in) "Relative difference of isentropic exponents gamma_in, gamma_out" annotation(
     HideResult = not gammaSpec == ValueSpecification.State);
 
   Real Z_in  "Compressibility factor at inlet";
@@ -38,16 +38,16 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
 
   Medium.ThermodynamicState state_out = Medium.setState_phX(p_out, h_out, Xi_in) "Outlet state";
 
-  SI.Density rho_in = Medium.density(state_in) "Inlet density" annotation(
+  SI.Density rho_in = Medium.density(state_in) "Inlet density" annotation(
     HideResult=true);
-  SI.Density rho_out = Medium.density(state_out) "Outlet density" annotation(
+  SI.Density rho_out = Medium.density(state_out) "Outlet density" annotation(
     HideResult=true);
-  SI.MolarMass M = Medium.molarMass(state_in) "Molar mass" annotation(
+  SI.MolarMass M = Medium.molarMass(state_in) "Molar mass" annotation(
     HideResult=true); // M = M_in = M_out
 
   Real isInletIdealGas = sign(Z_in - 1/(1 + relTolZ))*sign(1 + relTolZ - Z_in) "= 1.0 if Z_in within tolerance, = -1.0 if tolerance is exceeded"; // Real instead of Boolean to avoid events
   Real isOutletIdealGas = sign(Z_out - 1/(1 + relTolZ))*sign(1 + relTolZ - Z_out) "= 1.0 if Z_out within tolerance, = -1.0 if tolerance is exceeded"; // Real instead of Boolean to avoid events
-  Real isGammaWithinTol = sign(relTolGamma - delta_gamma_rel) "= 1.0 if gamma within tolerance, = -1.0 if tolerance is exceeded" annotation(
+  Real isGammaWithinTol = sign(relTolGamma - delta_gamma_rel) "= 1.0 if gamma within tolerance, = -1.0 if tolerance is exceeded" annotation(
     HideResult = not gammaSpec == ValueSpecification.State);// Real instead of Boolean to avoid events
 
 equation

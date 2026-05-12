@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium"annotation(
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
@@ -20,7 +20,7 @@ model Setpoint
     T0_par=293.15) annotation(Placement(transformation(extent={{-140,120},{-120,140}})));
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-80,120},{-60,140}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT1(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,120},{-90,140}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=20)  annotation(Placement(transformation(extent={{-120,90},{-100,110}})));
+  Modelica.Blocks.Sources.RealExpression realExpression(y=20) annotation(Placement(transformation(extent={{-120,90},{-100,110}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -54,7 +54,7 @@ model Setpoint
     specifyOutlet=true,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,120},{210,140}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=20)  annotation(Placement(transformation(extent={{240,90},{220,110}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=20) annotation(Placement(transformation(extent={{240,90},{220,110}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -77,7 +77,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,40},{-90,60}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=313.15)
-                                                               annotation(Placement(transformation(extent={{-120,10},{-100,30}})));
+                                                              annotation(Placement(transformation(extent={{-120,10},{-100,30}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -116,7 +116,7 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,40},{210,60}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=313.15)
-                                                                annotation(Placement(transformation(extent={{240,10},{220,30}})));
+                                                               annotation(Placement(transformation(extent={{240,10},{220,30}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -140,7 +140,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-30},{-90,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=20e3)
-                                                               annotation(Placement(transformation(extent={{-120,-60},{-100,-40}})));
+                                                              annotation(Placement(transformation(extent={{-120,-60},{-100,-40}})));
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -180,7 +180,7 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,-30},{210,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression5(y=20e3)
-                                                                annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
+                                                               annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
   ThermofluidStream.Boundaries.Source source15(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -205,7 +205,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-100},{-90,-80}})));
   Modelica.Blocks.Sources.RealExpression realExpression6(y=228e3)
-                                                               annotation(Placement(transformation(extent={{-120,-130},{-100,-110}})));
+                                                              annotation(Placement(transformation(extent={{-120,-130},{-100,-110}})));
   ThermofluidStream.Boundaries.Source source17(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -246,7 +246,7 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,-100},{210,-80}})));
   Modelica.Blocks.Sources.RealExpression realExpression7(y=228e3)
-                                                                annotation(Placement(transformation(extent={{240,-130},{220,-110}})));
+                                                               annotation(Placement(transformation(extent={{240,-130},{220,-110}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{-40,90},{-20,110}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource1(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{60,90},{80,110}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource2(E_flow(displayUnit="kW") = 1000) annotation(Placement(transformation(extent={{160,90},{180,110}})));

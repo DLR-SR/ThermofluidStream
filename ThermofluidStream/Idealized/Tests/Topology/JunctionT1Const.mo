@@ -3,10 +3,10 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,72},{200,92}})));
 
   ThermofluidStream.Boundaries.Source sourceA(
@@ -16,7 +16,7 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
   ThermofluidStream.Boundaries.Sink
                     sink(redeclare package Medium = Medium,
     p0_par=100000,
-    L=1e4)                                                  annotation(Placement(transformation(extent={{-110,40},{-90,60}})));
+    L=1e4)                                                 annotation(Placement(transformation(extent={{-110,40},{-90,60}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -40,14 +40,14 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
                     sink1(
     redeclare package Medium = Medium,
     p0_par=100000,
-    L=1e4)                                                  annotation(Placement(transformation(extent={{30,40},{50,60}})));
+    L=1e4)                                                 annotation(Placement(transformation(extent={{30,40},{50,60}})));
   ThermofluidStream.Processes.FlowResistance
                        flowResistanceA(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=1e5) "Linear-quadratic",
     l=1,
-    r=1)                                                                                        annotation(Placement(transformation(extent={{-20,60},{0,80}})));
+    r=1)                                                                                       annotation(Placement(transformation(extent={{-20,60},{0,80}})));
   ThermofluidStream.Boundaries.Source sourceA1(
     redeclare package Medium = Medium,
     p0_par=200000,

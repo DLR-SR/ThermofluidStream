@@ -7,11 +7,11 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
   parameter ValueSpecification cpSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
-  parameter Medium.SpecificHeatCapacity cp_fixed = 1000 "Constant specific heat capacity" annotation(
+  parameter Medium.SpecificHeatCapacity cp_fixed = 1000 "Constant specific heat capacity" annotation(
     Dialog(group="Assumptions",
       enable = cpSpec ==ValueSpecification.Fixed),
       HideResult = not cpSpec == ValueSpecification.Fixed);
-  parameter Real relTolCp = 1e-2 "Relative tolerance between specific isobaric heat capacities cp_in, cp_out" annotation(
+  parameter Real relTolCp = 1e-2 "Relative tolerance between specific isobaric heat capacities cp_in, cp_out" annotation(
     Dialog(group="Warnings",
       enable = cpSpec ==ValueSpecification.State),
       HideResult = not cpSpec == ValueSpecification.State);
@@ -21,9 +21,9 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
   Medium.SpecificHeatCapacity cp "Specific isobaric heat capacity";
   Medium.SpecificHeatCapacity cp_in = Medium.specificHeatCapacityCp(state_in) "Specific isobaric heat capacity (inlet)";
   Medium.SpecificHeatCapacity cp_out = Medium.specificHeatCapacityCp(Medium.setState_phX(p_out,h_out,Xi_in)) "Specific isobaric heat capacity (outlet)";
-  Real delta_cp_rel = abs(cp_out - cp_in)/max(cp_out,cp_in) "Relative difference of specific heat capacities cp_in, cp_out" annotation(
+  Real delta_cp_rel = abs(cp_out - cp_in)/max(cp_out,cp_in) "Relative difference of specific heat capacities cp_in, cp_out" annotation(
     HideResult = not cpSpec == ValueSpecification.State);
-  Real isCpWithinTol = sign(relTolCp - delta_cp_rel) "= 1.0 if within tolerance, = -1.0 if tolerance is exceeded" annotation(
+  Real isCpWithinTol = sign(relTolCp - delta_cp_rel) "= 1.0 if within tolerance, = -1.0 if tolerance is exceeded" annotation(
     HideResult = not cpSpec == ValueSpecification.State);
 
 equation

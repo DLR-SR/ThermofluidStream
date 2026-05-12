@@ -5,11 +5,11 @@ model Step8Cooler1
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -112,7 +112,7 @@ model Step8Cooler1
         rotation=90,
         origin={160,150})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints3(y1(start=300))
-                                                                        annotation(Placement(transformation(extent={{212,158},{252,182}})));
+                                                                       annotation(Placement(transformation(extent={{212,158},{252,182}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y(unit="K") = 376) annotation(Placement(transformation(extent={{242,160},{222,180}})));
   ThermofluidStream.Sensors.SingleSensorSelect temperatureSensor3(
     displayInstanceName=true,
@@ -123,8 +123,8 @@ model Step8Cooler1
         rotation=0,
         origin={180,170})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints4(y1(start=60e5))
-                                                                        annotation(Placement(transformation(extent={{88,60},{128,84}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation(Placement(transformation(extent={{118,62},{98,82}})));
+                                                                       annotation(Placement(transformation(extent={{88,60},{128,84}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)  annotation(Placement(transformation(extent={{118,62},{98,82}})));
   Processes.Adiabatic compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -136,7 +136,7 @@ model Step8Cooler1
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={160,0})));
-  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)   annotation(Placement(transformation(extent={{120,-40},{100,-20}})));
+  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)  annotation(Placement(transformation(extent={{120,-40},{100,-20}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation(Placement(transformation(extent={{90,-42},{130,-18}})));
   Processes.Isobaric cooler1(
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
@@ -152,7 +152,7 @@ model Step8Cooler1
     redeclare package Medium = Medium,
     p_out_fixed=7000000,
     T_out_fixed(displayUnit="K") = 780)
-                     annotation(Placement(transformation(
+                    annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-52,-200})));
@@ -181,7 +181,7 @@ equation
       thickness=0.5));
   connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{19,130},{16,130},{16,140},{12,140}},
                                                                                                                         color={0,0,127}));
-  connect(turbine1.outlet,turbine2. inlet)annotation(
+  connect(turbine1.outlet,turbine2. inlet) annotation(
     Line(
       points={{0,140},{0,10}},
       color={28,108,200},
@@ -193,11 +193,10 @@ equation
   connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation(Line(points={{12,-6},{16,-6},{16,-20},{19,-20}}, color={0,0,127}));
   connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation(Line(points={{49,-20},{56,-20}}, color={0,0,127}));
   connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
-  connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,130},{56,130}},
-                                                                                                              color={0,0,127}));
+  connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,130},{56,130}},color={0,0,127}));
   connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,110},{70,110},{70,130},{62,130}},
                                                                                                                                 color={0,0,127}));
-  connect(turbine2.outlet,turbine3. inlet)annotation(
+  connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},

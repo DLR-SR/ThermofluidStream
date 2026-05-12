@@ -4,16 +4,16 @@ model Sink_m "Example - mass flow sink"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"annotation(
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-62,140},{-42,160}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par=293.15)           annotation(Placement(transformation(extent={{-252,70},{-232,90}})));
+    T0_par=293.15)          annotation(Placement(transformation(extent={{-252,70},{-232,90}})));
   .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-210,70},{-190,90}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse(
     amplitude=1,
