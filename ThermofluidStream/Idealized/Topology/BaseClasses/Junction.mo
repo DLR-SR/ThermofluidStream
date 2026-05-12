@@ -18,7 +18,7 @@ partial model Junction "Partial junction"
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"annotation(
     Dialog(tab="Advanced",
       enable = = not considerInertance),
-      HideResult = neglectInertance);
+      HideResult = not considerInertance);
   parameter Boolean considerInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(

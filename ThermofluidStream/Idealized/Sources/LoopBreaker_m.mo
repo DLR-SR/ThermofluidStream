@@ -34,7 +34,7 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
       HideResult = not XiSpec == ValueSpecification.Fixed);
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"annotation(
-    Dialog(tab="Advanced", enable = = not considerInertance), HideResult = neglectInertance);
+    Dialog(tab="Advanced", enable = = not considerInertance), HideResult = not considerInertance);
   parameter Boolean considerInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
