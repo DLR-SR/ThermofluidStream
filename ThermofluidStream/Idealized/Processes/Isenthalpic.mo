@@ -87,15 +87,15 @@ equation
   Xi_out = Xi_in;
 
   annotation (Icon(graphics={
-    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.PressureLoss,
+    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="ΔpLoss = %dpLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.RelativePressureLoss,
+    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="prLoss = %prLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="p_out = %p_out_fixed"),
