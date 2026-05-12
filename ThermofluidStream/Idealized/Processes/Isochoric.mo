@@ -95,11 +95,11 @@ equation
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
 
   annotation (Icon(graphics={
-     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
+     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
        extent={{-150,-70},{150,-100}},
        textColor={0,0,0},
        textString="ΔT = %dT_fixed"),
-     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
        extent={{-150,-70},{150,-100}},
        textColor={0,0,0},
        textString="T_out = %T_out_fixed"),
