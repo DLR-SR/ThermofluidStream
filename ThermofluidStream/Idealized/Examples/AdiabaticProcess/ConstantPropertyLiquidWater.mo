@@ -11,7 +11,7 @@ model ConstantPropertyLiquidWater
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=298.15) annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
-  .ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,50},{40,70}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,50},{40,70}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic fullMedium(
     redeclare package Medium = Medium,
@@ -29,7 +29,7 @@ model ConstantPropertyLiquidWater
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  .ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
+  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic incompressibleFluid(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid "rho = const, Version 1",
@@ -42,7 +42,7 @@ model ConstantPropertyLiquidWater
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
-  .ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
+  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
   ThermofluidStream.Idealized.Processes.Adiabatic isothermalReference(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",

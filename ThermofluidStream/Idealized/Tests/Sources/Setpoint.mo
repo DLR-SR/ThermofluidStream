@@ -11,13 +11,13 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-180,78},{-160,98}})));
-  ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-140,78},{-120,98}})));
+  ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-140,78},{-120,98}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-100,78},{-80,98}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,78},{-40,98}})));
+  ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,78},{-40,98}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.7) annotation (Placement(transformation(extent={{-20,78},{-40,98}})));
   ThermofluidStream.Idealized.Sources.LoopBreaker T(
     redeclare package Medium = Medium,
@@ -46,25 +46,25 @@ model Setpoint
   Modelica.Blocks.Sources.RealExpression p1(y=1e5) annotation (Placement(transformation(extent={{-68,-130},{-48,-110}})));
   Modelica.Blocks.Sources.RealExpression Xi1[1](y={0.1}) annotation (Placement(transformation(extent={{-68,-102},{-48,-82}})));
   Modelica.Blocks.Sources.RealExpression thermal1(y=0) annotation (Placement(transformation(extent={{-68,-116},{-48,-96}})));
-  ThermofluidStream.Idealized.LoopBreaker_m T2(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m T2(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=100000,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{44,-10},{64,10}})));
-  ThermofluidStream.Idealized.LoopBreaker_m h2(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m h2(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=0) annotation (Placement(transformation(extent={{104,-10},{124,10}})));
-  ThermofluidStream.Idealized.LoopBreaker_m T3(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m T3(
     redeclare package Medium = Medium,
     XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{44,-50},{64,-30}})));
-  ThermofluidStream.Idealized.LoopBreaker_m h3(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m h3(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,

@@ -35,7 +35,7 @@ model PseudoSource "Example - PseudoSource"
     pressureFromInput=true,
     temperatureFromInput=true,
     xiFromInput=true) annotation (Placement(transformation(extent={{-50,110},{-30,130}})));
-  ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,110},{50,130}})));
+  ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,110},{50,130}})));
   Modelica.Blocks.Sources.Pulse massFractions(
     amplitude=-0.2,
     period=0.3,
@@ -56,7 +56,7 @@ model PseudoSource "Example - PseudoSource"
         {0.2}),
     Xi_out_fixed={0.2},
     showMassFractions=true) annotation (Placement(transformation(extent={{-10,70},{10,90}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,70},{50,90}})));
+  ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,70},{50,90}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -68,7 +68,7 @@ model PseudoSource "Example - PseudoSource"
     T_out_fixed=308.15,
     Xi_out_fixed={0.2},
     showMassFractions=true) annotation (Placement(transformation(extent={{-10,30},{10,50}})));
-  ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,30},{50,50}})));
+  ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,30},{50,50}})));
   Modelica.Blocks.Sources.Pulse pressure1(
     amplitude=2.5e5,
     period=0.3,
@@ -87,7 +87,7 @@ model PseudoSource "Example - PseudoSource"
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     Xi_out_fixed={0.2},
     showMassFractions=true) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  ThermofluidStream.Idealized.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+  ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   Modelica.Blocks.Sources.Pulse temperature1(
     amplitude=50,
     period=0.3,
@@ -106,7 +106,7 @@ model PseudoSource "Example - PseudoSource"
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     Xi_out_fixed={0.2},
     showMassFractions=true) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
-  ThermofluidStream.Idealized.Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
+  ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
   Modelica.Blocks.Sources.Pulse specificEnthalpy(
     amplitude=Medium.specificEnthalpy_pTX(
         2e5,
@@ -134,7 +134,7 @@ model PseudoSource "Example - PseudoSource"
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15,
     showMassFractions=true) annotation (Placement(transformation(extent={{-12,-90},{8,-70}})));
-  ThermofluidStream.Idealized.Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-90},{50,-70}})));
+  ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-90},{50,-70}})));
   Modelica.Blocks.Sources.Pulse massFractions1(
     amplitude=-0.4,
     period=0.3,
@@ -152,7 +152,7 @@ model PseudoSource "Example - PseudoSource"
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     showMassFractions=true) annotation (Placement(transformation(extent={{-10,-130},{10,-110}})));
-  ThermofluidStream.Idealized.Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-130},{50,-110}})));
+  ThermofluidStream.Boundaries.Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-130},{50,-110}})));
 equation
   connect(firstOrder.u, massFlowRate.y) annotation (Line(points={{82,120},{89,120}}, color={0,0,127}));
   connect(source.outlet, pseudoSource.inlet) annotation (Line(

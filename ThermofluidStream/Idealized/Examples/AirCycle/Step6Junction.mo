@@ -34,7 +34,7 @@ model Step6Junction
     use_numberPort=false,
     number=(inletEnthalpyFlowRate.value - outletEnthalpyFlowRate.value)/(compressor.P + turbine.P),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation (Placement(transformation(extent={{0,40},{20,60}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,-10},{160,10}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,-10},{160,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,

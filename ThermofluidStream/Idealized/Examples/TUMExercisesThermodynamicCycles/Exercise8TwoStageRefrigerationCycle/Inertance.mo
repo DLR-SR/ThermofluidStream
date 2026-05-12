@@ -38,7 +38,7 @@ model Inertance
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-80},{-30,-60}})));
-  LoopBreaker_m loopBreaker(
+  Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,

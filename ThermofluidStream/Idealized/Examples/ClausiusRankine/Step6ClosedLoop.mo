@@ -38,7 +38,7 @@ model Step6ClosedLoop
 
     T_out_fixed=473.15,
     dT_fixed=50) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
-  LoopBreaker_m loopBreaker(
+  Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,

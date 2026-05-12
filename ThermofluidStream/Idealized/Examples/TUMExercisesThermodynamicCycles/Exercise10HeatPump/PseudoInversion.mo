@@ -99,7 +99,7 @@ model PseudoInversion
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={150,-76})));
-  Sink_m sinkWater(redeclare package Medium = Water, m_flow_fixed=0.2) annotation (Placement(transformation(
+  Boundaries.Sink_m sinkWater(redeclare package Medium = Water, m_flow_fixed=0.2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={150,-16})));

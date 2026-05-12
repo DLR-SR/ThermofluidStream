@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
 model Warnings "Example - Loop breaker"
   extends Modelica.Icons.Example;
-  ThermofluidStream.Idealized.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     tol_p=tol_p,

@@ -43,7 +43,7 @@ model Step1Simple
     use_numberPort=false,
     number=(-turbine.dh - compressor.dh)/(combustion.dh),
     displayVariable=false) annotation (Placement(transformation(extent={{0,40},{20,60}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={80,-6})));

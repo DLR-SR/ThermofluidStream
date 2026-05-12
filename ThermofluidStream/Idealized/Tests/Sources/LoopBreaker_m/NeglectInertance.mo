@@ -11,7 +11,7 @@ model NeglectInertance "Example - mass flow loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
     annotation (Placement(transformation(extent={{120,40},{140,60}})));
 
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker1(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
@@ -23,7 +23,7 @@ model NeglectInertance "Example - mass flow loop breaker"
     period=0.3,
     offset=1,
     startTime=0.1) annotation (Placement(transformation(extent={{-60,-30},{-80,-10}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker4(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker4(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
@@ -38,7 +38,7 @@ model NeglectInertance "Example - mass flow loop breaker"
     startTime=0.1) annotation (Placement(transformation(extent={{40,-30},{20,-10}})));
   Modelica.Blocks.Sources.RealExpression h_const(y=Medium.dewEnthalpy(Medium.setSat_p(1e5)))
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker9(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker9(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,

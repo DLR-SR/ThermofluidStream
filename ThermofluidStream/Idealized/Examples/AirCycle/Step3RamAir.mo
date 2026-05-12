@@ -23,13 +23,13 @@ model Step3RamAir
     use_numberPort=false,
     number=(inletSpecificEnthalpy.value - outletSpecificEnthalpy.value)/(compressor.dh + turbine.dh),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation (Placement(transformation(extent={{0,-60},{20,-40}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Boundaries.Source
                                 coolingAirSource(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation (Placement(transformation(extent={{50,40},{30,60}})));
-  Sink_m coolingAirSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,40},{-50,60}})));
+  Boundaries.Sink_m coolingAirSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,40},{-50,60}})));
   Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,

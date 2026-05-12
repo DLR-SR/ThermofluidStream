@@ -44,7 +44,7 @@ model DryAirNASA1
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-60,-4})));
-  LoopBreaker_m loopBreaker(
+  Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,

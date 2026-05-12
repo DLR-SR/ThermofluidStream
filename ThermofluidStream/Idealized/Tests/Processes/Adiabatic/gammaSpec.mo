@@ -11,7 +11,7 @@ model gammaSpec "Test model to check gamma specification"
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-90,40},{-70,60}})));
-  .ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,40},{-10,60}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,40},{-10,60}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasState(
     redeclare package Medium = Medium,
@@ -31,7 +31,7 @@ model gammaSpec "Test model to check gamma specification"
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{10,40},{30,60}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,40},{90,60}})));
+  ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,40},{90,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasFixed(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),

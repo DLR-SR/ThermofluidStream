@@ -25,7 +25,7 @@ model Step4RamAirFlowInverse
     use_numberPort=false,
     number=(inletSpecificEnthalpy.value - outletSpecificEnthalpy.value)/(compressor.dh + turbine.dh),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation (Placement(transformation(extent={{0,-60},{20,-40}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Boundaries.Source
                                 coolingAirSource(
     redeclare package Medium = Medium,

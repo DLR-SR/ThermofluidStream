@@ -10,7 +10,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-240,120},{-220,140}})));
-  ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,120},{-160,140}})));
+  ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,120},{-160,140}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT(redeclare package Medium = Medium, dT_fixed=20) annotation (Placement(transformation(extent={{-210,120},{-190,140}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{240,160},{260,180}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -18,7 +18,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-140,120},{-120,140}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,120},{-60,140}})));
+  ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,120},{-60,140}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT1(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,120},{-90,140}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=20)  annotation (Placement(transformation(extent={{-120,90},{-100,110}})));
   ThermofluidStream.Boundaries.Source source2(
@@ -26,7 +26,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,120},{-20,140}})));
-  ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,120},{40,140}})));
+  ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,120},{40,140}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -60,7 +60,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-240,40},{-220,60}})));
-  ThermofluidStream.Idealized.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,40},{-160,60}})));
+  ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,40},{-160,60}})));
   ThermofluidStream.Idealized.Processes.Isobaric T(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
@@ -71,7 +71,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-140,40},{-120,60}})));
-  ThermofluidStream.Idealized.Sink_m sink6(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
+  ThermofluidStream.Boundaries.Sink_m sink6(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   ThermofluidStream.Idealized.Processes.Isobaric T1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
@@ -83,7 +83,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
-  ThermofluidStream.Idealized.Sink_m sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,40},{40,60}})));
+  ThermofluidStream.Boundaries.Sink_m sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,40},{40,60}})));
   ThermofluidStream.Idealized.Processes.Isobaric T2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -122,7 +122,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-240,-30},{-220,-10}})));
-  ThermofluidStream.Idealized.Sink_m sink10(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,-30},{-160,-10}})));
+  ThermofluidStream.Boundaries.Sink_m sink10(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,-30},{-160,-10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
@@ -134,7 +134,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-140,-30},{-120,-10}})));
-  ThermofluidStream.Idealized.Sink_m sink11(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
+  ThermofluidStream.Boundaries.Sink_m sink11(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
@@ -146,7 +146,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  ThermofluidStream.Idealized.Sink_m sink12(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  ThermofluidStream.Boundaries.Sink_m sink12(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -186,7 +186,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-240,-100},{-220,-80}})));
-  ThermofluidStream.Idealized.Sink_m sink15(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,-100},{-160,-80}})));
+  ThermofluidStream.Boundaries.Sink_m sink15(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,-100},{-160,-80}})));
   ThermofluidStream.Idealized.Processes.Isobaric h(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
@@ -199,7 +199,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-140,-100},{-120,-80}})));
-  ThermofluidStream.Idealized.Sink_m sink16(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
+  ThermofluidStream.Boundaries.Sink_m sink16(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   ThermofluidStream.Idealized.Processes.Isobaric h1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
@@ -211,7 +211,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
-  ThermofluidStream.Idealized.Sink_m sink17(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
+  ThermofluidStream.Boundaries.Sink_m sink17(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
   ThermofluidStream.Idealized.Processes.Isobaric h2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,

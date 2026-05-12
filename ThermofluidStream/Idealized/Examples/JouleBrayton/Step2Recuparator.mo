@@ -48,7 +48,7 @@ model Step2Recuparator
     redeclare package MediumB = Medium,
     A=10,
     k_NTU=200) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,40})));

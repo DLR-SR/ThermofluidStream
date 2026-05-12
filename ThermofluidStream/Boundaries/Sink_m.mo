@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized;
+within ThermofluidStream.Boundaries;
 model Sink_m "Sink (m_flow)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;

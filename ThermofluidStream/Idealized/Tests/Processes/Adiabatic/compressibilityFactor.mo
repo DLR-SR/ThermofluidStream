@@ -17,7 +17,7 @@ model compressibilityFactor "Test model to check compressibility factor"
     pressureFromInput=true,
     temperatureFromInput=false,
     T0_par=T)      annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
-  .ThermofluidStream.Idealized.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{18,10},{38,30}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{18,10},{38,30}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGas(
     redeclare package Medium = Medium,
@@ -30,7 +30,7 @@ model compressibilityFactor "Test model to check compressibility factor"
     pressureFromInput=true,
     temperatureFromInput=false,
     T0_par=T)      annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGas(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, gamma, cp = const",

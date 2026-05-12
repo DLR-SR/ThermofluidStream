@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized;
+within ThermofluidStream.Idealized.Sources;
 model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 

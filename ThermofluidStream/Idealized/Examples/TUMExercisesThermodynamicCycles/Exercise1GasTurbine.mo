@@ -41,7 +41,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     number=losses.E_flow_out/combustion.Q_flow,
     displayVariable=false,
     significantDigits=4) annotation (Placement(transformation(extent={{100,-80},{120,-60}})));
-  Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=5.8) annotation (Placement(transformation(
+  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=5.8) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={10,70})));

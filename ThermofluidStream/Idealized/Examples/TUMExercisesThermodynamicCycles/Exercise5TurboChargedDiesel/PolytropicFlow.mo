@@ -63,7 +63,7 @@ model PolytropicFlow "Turbocharged diesel engine"
     redeclare package Medium = Medium,
     p0_par=p1,
     T0_par(displayUnit="K") = T1)  annotation (Placement(transformation(extent={{-160,-46},{-140,-26}})));
-  Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,-110},{-160,-90}})));
+  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,-110},{-160,-90}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=m_flow) annotation (Placement(transformation(extent={{-200,-110},{-180,-90}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,

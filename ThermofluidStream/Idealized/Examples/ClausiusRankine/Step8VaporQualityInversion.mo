@@ -32,7 +32,7 @@ model Step8VaporQualityInversion
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,10},{40,-10}})));
-  LoopBreaker_m loopBreaker(
+  Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,

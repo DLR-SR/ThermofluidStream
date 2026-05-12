@@ -52,7 +52,7 @@ model Step3Staged
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_out_Evaporator1) annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
-  ThermofluidStream.Idealized.LoopBreaker_m loopBreaker1(
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,

@@ -35,7 +35,7 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-70,20})));
-  LoopBreaker_m loopBreaker(
+  Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=84.316,
     p_out_fixed(displayUnit="bar") = p_Condensor,

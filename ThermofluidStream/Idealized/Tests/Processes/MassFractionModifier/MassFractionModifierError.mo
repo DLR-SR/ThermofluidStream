@@ -34,7 +34,7 @@ model MassFractionModifierError "Example - MassFractionModifier"
     temperatureFromInput=true,
     xiFromInput=true)
                    annotation (Placement(transformation(extent={{-50,0},{-30,20}})));
-  ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,0},{50,20}})));
+  ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,0},{50,20}})));
   Modelica.Blocks.Sources.Pulse massFractions(
     amplitude=-0.2,
     period=0.3,

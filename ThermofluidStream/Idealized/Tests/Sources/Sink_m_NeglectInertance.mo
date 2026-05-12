@@ -21,7 +21,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
     neglectInertance=true,
     p0_par=100000,
     T0_par=293.15) annotation (Placement(transformation(extent={{-30,40},{-10,60}})));
-  .ThermofluidStream.Idealized.Sink_m sink4(
+  .ThermofluidStream.Boundaries.Sink_m sink4(
     redeclare package Medium = Medium,
     neglectInertance=true,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,40},{30,60}})));
@@ -35,7 +35,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
     pressureFromInput=true,
     neglectInertance=true,
     T0_par=293.15) annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  .ThermofluidStream.Idealized.Sink_m sink5(
+  .ThermofluidStream.Boundaries.Sink_m sink5(
     redeclare package Medium = Medium,
     neglectInertance=true,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
@@ -56,7 +56,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation (Placement(transformation(extent={{-30,-60},{-10,-40}})));
-  .ThermofluidStream.Idealized.Sink_m sink9(
+  .ThermofluidStream.Boundaries.Sink_m sink9(
     redeclare package Medium = Medium,
     neglectInertance=true,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-60},{30,-40}})));

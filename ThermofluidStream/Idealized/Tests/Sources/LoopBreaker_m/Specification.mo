@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
 model Specification "Example - mass flow loop breaker"
   extends Modelica.Icons.Example;
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
 
@@ -15,7 +15,7 @@ model Specification "Example - mass flow loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
     annotation (Placement(transformation(extent={{160,60},{180,80}})));
 
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker2(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker2(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
 
@@ -27,7 +27,7 @@ model Specification "Example - mass flow loop breaker"
     duration=1,
     offset=1,
     startTime=0) annotation (Placement(transformation(extent={{-180,50},{-200,70}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker3(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker3(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
 
@@ -38,12 +38,12 @@ model Specification "Example - mass flow loop breaker"
     amplitude=1,
     f=2,
     offset=0) annotation (Placement(transformation(extent={{-100,50},{-120,70}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker5(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker5(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-50,150},{-70,170}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker6(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker6(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -53,7 +53,7 @@ model Specification "Example - mass flow loop breaker"
     duration=1,
     offset=1,
     startTime=0) annotation (Placement(transformation(extent={{120,130},{100,150}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker7(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker7(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -81,7 +81,7 @@ model Specification "Example - mass flow loop breaker"
     amplitude=0.1e5,
     f=2,
     offset=1e5) annotation (Placement(transformation(extent={{140,130},{160,150}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker8(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker8(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
@@ -98,7 +98,7 @@ model Specification "Example - mass flow loop breaker"
     duration=1,
     offset=Medium.bubbleEnthalpy(Medium.setSat_p(1e5)),
     startTime=0) annotation (Placement(transformation(extent={{-160,-50},{-140,-30}})));
-  .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker10(
+  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker10(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
