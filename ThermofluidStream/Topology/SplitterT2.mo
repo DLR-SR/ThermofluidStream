@@ -70,16 +70,16 @@ equation
           extent={{80,60},{120,20}},
           textColor={175,175,175},
           textString="B"),
-        Ellipse(visible = not considerInertance,
+        Ellipse(
           extent={{80,-20},{100,-40}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Ellipse(visible = not considerInertance,
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Ellipse(
           extent={{20,100},{40,80}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid)}),
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Alternative three-port splitter for dividing one upstream stream into two downstream branches. </p>

@@ -77,16 +77,16 @@ equation
           extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
           textString="B"),
-        Ellipse(visible = not considerInertance,
+        Ellipse(
           extent={{20,100},{40,80}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Ellipse(visible = not considerInertance,
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Ellipse(
           extent={{22,-80},{42,-100}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid)}),
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Three-port splitter for branching a single flow path into two downstream branches. </p>

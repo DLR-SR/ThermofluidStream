@@ -202,10 +202,20 @@ equation
           points={{60,0},{100,0}},
           color={28,108,200},
           thickness=0.5),
+        Ellipse(
+          extent={{-100,40},{-80,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if useInlet and not considerInertance then FillPattern.Solid else FillPattern.None),
+        Ellipse(
+          extent={{80,40},{100,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if useOutlet and not considerInertance then FillPattern.Solid else FillPattern.None),
         Ellipse(visible = enableFreeInlet,
           extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
         Rectangle(visible = enableFreeInlet,
-          extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None)}),                                                                               Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>

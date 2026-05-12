@@ -91,7 +91,12 @@ equation
           points={{-28,80},{-28,-80}},
           color={255,255,255},
           thickness=0.5),
-        Line(points={{-44,80},{-44,-80}}, color={255,255,255})}),
+        Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
+        Ellipse(
+          extent={{-100,40},{-80,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
                                             Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

@@ -88,21 +88,21 @@ equation
           extent={{80,-20},{120,-60}},
           textColor={175,175,175},
           textString="C"),
-        Ellipse(visible = not considerInertance,
+        Ellipse(
           extent={{20,100},{40,80}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Ellipse(visible = not considerInertance,
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Ellipse(
           extent={{80,40},{100,20}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid),
-        Ellipse(visible = not considerInertance,
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Ellipse(
           extent={{20,-80},{40,-100}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid)}),
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Multi-branch splitter for distributing one upstream stream into multiple downstream branches in an X-type topology. Use this component when you need a compact representation of a higher-order split without cascading several T-splitters.</p>

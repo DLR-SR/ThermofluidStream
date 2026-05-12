@@ -103,11 +103,11 @@ equation
           color={255,255,255},
           thickness=0.5),
         Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
-        Ellipse(visible = not considerInertance,
+        Ellipse(
           extent={{-100,40},{-80,20}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid)}), Diagram(
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}), Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>

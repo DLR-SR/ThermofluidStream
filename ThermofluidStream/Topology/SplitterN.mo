@@ -69,11 +69,11 @@ equation
           extent={{120,-20},{80,-60}},
           textColor={175,175,175},
           textString="%N"),
-        Ellipse(visible = not considerInertance,
+        Ellipse(
           extent={{80,40},{100,20}},
-          lineColor={238,46,47},
           fillColor={238,46,47},
-          fillPattern=FillPattern.Solid)}),
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Generic splitter with one upstream connection and an array of <strong>N</strong> downstream connections. Use this model to parameterize the number of branches and avoid building large splitter trees manually. This is the recommended approach for scalable network templates.</p>
