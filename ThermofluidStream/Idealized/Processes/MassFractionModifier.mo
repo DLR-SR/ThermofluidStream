@@ -77,15 +77,15 @@ equation
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
           textString="X"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference,
+        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
           textString="ΔXi = %dXi_fixed"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Composition.OutletMassFractions,
+        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Composition.OutletMassFractions,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
           textString="Xi_out = %Xi_out_fixed"),
-        Line(visible = outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Prescribed,
+        Line(visible = outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100}},
           color={0,0,127})}), Documentation(info="<html>
   <p>

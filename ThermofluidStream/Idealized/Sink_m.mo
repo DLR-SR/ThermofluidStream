@@ -57,7 +57,7 @@ equation
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible=displayParameters and showMassFlowRate and m_flowSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
+        Text(visible=displayParameters and showMassFlowRate and m_flowSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
           textString="ṁ = %m_flow_fixed"),
