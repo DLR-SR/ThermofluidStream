@@ -41,7 +41,7 @@ model Step6Junction
     p_out_fixed=100000) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
-  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
+  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRateValveRamp(
     height=1,
     duration=1,

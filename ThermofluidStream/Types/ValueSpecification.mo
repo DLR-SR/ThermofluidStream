@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Utilities.Types;
+within ThermofluidStream.Types;
 type ValueSpecification = enumeration(
   Fixed,
   Prescribed) "Specifies how the value of a quantity is defined"

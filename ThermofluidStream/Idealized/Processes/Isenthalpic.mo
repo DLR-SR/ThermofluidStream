@@ -3,32 +3,32 @@ model Isenthalpic "Isenthalpic process"
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic;
-  import ValueSpecification = ThermofluidStream.Idealized.Utilities.Types.ValueSpecification;
+  import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter Boolean enforcePressureDrop = true "Enforce pressure drop in flow direction (prevents non-physical isenthalpic pressure rise)"
     annotation(Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.PressureLoss      "Quantity used to define the outlet state"
     annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter SI.PressureDifference dpLoss_fixed = 0 "Fixed pressure loss (dpLoss = p_in - p_out)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.PressureLoss),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.PressureLoss),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.PressureLoss);
   parameter Real prLoss_fixed = 0 "Fixed relative pressure loss (prLoss = dpLoss/p_in)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.RelativePressureLoss),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.RelativePressureLoss),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.RelativePressureLoss);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletPressure),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletPressure),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletPressure);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)"
     annotation(Dialog(group="Warnings", enable = not enforcePressureDrop));
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dpLoss_fixed, prLoss_fixed or p_out_fixed)"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
+    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String name = getInstanceName();
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec == ValueSpecification.Prescribed "Prescribed outlet specification [SI-units]"
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
 
   Real isDPLossSetAligned = sign(m_flow*dpLoss_set) "= 1.0, if set pressure loss is aligned with flow direction"; // Real to avoid events
@@ -57,7 +57,7 @@ equation
     assertionLevel);
 
   connect(outletSpec_actual, outletSpec_prescribed);
-  if outletValueSpec == ValueSpecification.Fixed then
+  if outletValueSpec ==ValueSpecification.Fixed  then
     if outletSpec == OutletSpecification.PressureLoss then
       outletSpec_actual = dpLoss_fixed;
     end if;

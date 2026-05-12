@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Utilities.Types;
+within ThermofluidStream.Types;
 type ValueSpecification2 = enumeration(
   State,
   Fixed) "Specifies how the value of a quantity is defined (version 2)"

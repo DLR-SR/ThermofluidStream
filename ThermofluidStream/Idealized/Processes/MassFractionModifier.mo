@@ -3,23 +3,23 @@ model MassFractionModifier "Mass fraction modifier"
   extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=false);
 
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition;
-  import ValueSpecification = ThermofluidStream.Idealized.Utilities.Types.ValueSpecification;
+  import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference      "Quantity used to define the outlet state"
     annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter ThermofluidStream.Idealized.Utilities.Types.MassFractionDifference dXi_fixed[Medium.nXi]=fill(0, Medium.nXi) "Fixed difference in mass fractions (dXi = Xi_out - Xi_in)" annotation (Dialog(group="Specification", enable=outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.MassFractionsDifference), HideResult=not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.MassFractionsDifference);
+  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter ThermofluidStream.Types.MassFractionDifference dXi_fixed[Medium.nXi]=fill(0, Medium.nXi) "Fixed difference in mass fractions (dXi = Xi_out - Xi_in)" annotation (Dialog(group="Specification", enable=outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.MassFractionsDifference), HideResult=not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.MassFractionsDifference);
   parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec ==OutletSpecification.OutletMassFractions),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletMassFractions),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletMassFractions);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dXi_fixed or Xi_out_fixed)"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and outletValueSpec == ValueSpecification.Fixed),Evaluate=true, HideResult=true, choices(checkBox=true));
+    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and outletValueSpec ==ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed[Medium.nXi] if outletValueSpec == ValueSpecification.Prescribed "Prescribed outlet specification [kg/kg]"
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed[Medium.nXi] if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [kg/kg]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
 
-  ThermofluidStream.Idealized.Utilities.Types.MassFractionDifference dXi[Medium.nXi] "Difference in mass fractions";
+  ThermofluidStream.Types.MassFractionDifference dXi[Medium.nXi] "Difference in mass fractions";
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet temperature"
     annotation(HideResult=true);
 
@@ -33,7 +33,7 @@ equation
   assert(noEvent(sum(Xi_out) <= 1), "sum(Xi_out) may not exceed one.", AssertionLevel.error);
 
   connect(outletSpec_actual, outletSpec_prescribed);
-  if outletValueSpec == ValueSpecification.Fixed then
+  if outletValueSpec ==ValueSpecification.Fixed  then
     if outletSpec == OutletSpecification.MassFractionsDifference then
       outletSpec_actual = dXi_fixed;
     end if;

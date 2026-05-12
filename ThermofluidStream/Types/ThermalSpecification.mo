@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Utilities.Types;
+within ThermofluidStream.Types;
 type ThermalSpecification = enumeration(
   Temperature,
   SpecificEnthalpy) "Specifies how the thermal state quantity is defined"

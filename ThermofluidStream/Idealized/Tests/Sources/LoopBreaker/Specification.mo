@@ -5,7 +5,7 @@ model Specification "Example - Loop breaker"
     redeclare package Medium = Medium,
 
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-160,140},{-180,160}})));
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
@@ -19,7 +19,7 @@ model Specification "Example - Loop breaker"
     redeclare package Medium = Medium,
 
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-160,60},{-180,80}})));
   Modelica.Blocks.Sources.Ramp m_flow_ramp(
     height=1,
@@ -30,7 +30,7 @@ model Specification "Example - Loop breaker"
     redeclare package Medium = Medium,
 
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-74,60},{-94,80}})));
   Modelica.Blocks.Sources.Sine m_flow_sine(
     amplitude=1,
@@ -38,11 +38,11 @@ model Specification "Example - Loop breaker"
     offset=0) annotation (Placement(transformation(extent={{-150,30},{-130,50}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker5(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{30,140},{10,160}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker6(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{132,140},{112,160}})));
   Modelica.Blocks.Sources.Ramp m_flow_ramp1(
     height=1,
@@ -51,7 +51,7 @@ model Specification "Example - Loop breaker"
     startTime=0) annotation (Placement(transformation(extent={{48,120},{68,140}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker7(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{240,140},{220,160}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse1(
     amplitude=1,
@@ -78,8 +78,8 @@ model Specification "Example - Loop breaker"
     offset=1e5) annotation (Placement(transformation(extent={{200,70},{220,90}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker8(
     redeclare package Medium = Medium,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{-20,-30},{-40,-10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse3(
@@ -94,9 +94,9 @@ model Specification "Example - Loop breaker"
     startTime=0) annotation (Placement(transformation(extent={{-60,-90},{-40,-70}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker10(
     redeclare package Medium = Medium,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{220,-30},{200,-10}})));
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{220,-30},{200,-10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse5(
     amplitude=1,
     period=0.3,
@@ -111,13 +111,13 @@ model Specification "Example - Loop breaker"
         Medium.dewEnthalpy(Medium.setSat_p(1e5)) - Medium.bubbleEnthalpy(Medium.setSat_p(1e5))))
     annotation (Placement(transformation(extent={{180,-120},{200,-100}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-200,140},{-220,160}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-200,60},{-220,80}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-108,60},{-128,80}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,140},{-30,160}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,140},{70,160}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,140},{180,160}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,-30},{-80,-10}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{180,-30},{160,-10}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-200,60},{-220,80}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-108,60},{-128,80}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,140},{-30,160}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,140},{70,160}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,140},{180,160}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,-30},{-80,-10}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{180,-30},{160,-10}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(extent={{-50,110},{-30,130}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(extent={{-100,-60},{-80,-40}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(extent={{140,-60},{160,-40}})));

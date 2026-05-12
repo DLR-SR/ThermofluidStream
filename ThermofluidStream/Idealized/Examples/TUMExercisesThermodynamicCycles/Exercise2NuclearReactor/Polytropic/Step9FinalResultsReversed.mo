@@ -26,7 +26,7 @@ model Step9FinalResultsReversed
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 1110,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
     eta_is_fixed=0.94) annotation (Placement(transformation(
@@ -50,7 +50,7 @@ model Step9FinalResultsReversed
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 844.5) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
@@ -82,7 +82,7 @@ model Step9FinalResultsReversed
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
     redeclare package Medium = Medium,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=90,
         origin={90,80})));
@@ -103,7 +103,7 @@ model Step9FinalResultsReversed
         rotation=180,
         origin={20,-120})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation (Placement(transformation(extent={{-20,70},{0,90}})));
-  Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+  Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={90,-120})));
@@ -113,13 +113,13 @@ model Step9FinalResultsReversed
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
     redeclare package Medium = Medium,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={90,-30})));
   Processes.Isobaric cooler1(
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K"),

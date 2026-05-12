@@ -24,8 +24,8 @@ model NeglectInertance "Example - Loop breaker"
     startTime=0.1) annotation (Placement(transformation(extent={{-140,-10},{-120,10}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{34,20},{14,40}})));
@@ -38,8 +38,8 @@ model NeglectInertance "Example - Loop breaker"
     annotation (Placement(transformation(extent={{-6,-40},{14,-20}})));
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{146,20},{126,40}})));
@@ -56,15 +56,15 @@ model NeglectInertance "Example - Loop breaker"
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,20},{-120,40}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,20},{-120,40}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource1(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{0,20},{-20,40}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{0,20},{-20,40}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource2(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{106,20},{86,40}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{106,20},{86,40}})));
 equation
   connect(loopBreaker.outlet, massFlowRateSource.inlet) annotation (Line(
       points={{-86,30},{-100,30}},

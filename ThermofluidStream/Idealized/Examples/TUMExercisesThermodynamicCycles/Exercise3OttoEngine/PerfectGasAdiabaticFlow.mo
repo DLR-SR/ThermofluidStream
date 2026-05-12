@@ -23,7 +23,7 @@ model PerfectGasAdiabaticFlow
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=1,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,0},{30,20}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,0},{30,20}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
@@ -35,7 +35,7 @@ model PerfectGasAdiabaticFlow
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,40},{-20,60}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",

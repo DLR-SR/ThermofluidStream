@@ -17,7 +17,7 @@ model Setpoint
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-100,78},{-80,98}})));
-  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,78},{-40,98}})));
+  ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,78},{-40,98}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.7) annotation (Placement(transformation(extent={{-20,78},{-40,98}})));
   ThermofluidStream.Idealized.Sources.LoopBreaker T(
     redeclare package Medium = Medium,
@@ -26,20 +26,20 @@ model Setpoint
   ThermofluidStream.Idealized.Sources.LoopBreaker h(
     redeclare package Medium = Medium,
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=0) annotation (Placement(transformation(extent={{-48,-10},{-28,10}})));
   ThermofluidStream.Idealized.Sources.LoopBreaker T1(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    XiSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,-50},{-120,-30}})));
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,-50},{-120,-30}})));
   ThermofluidStream.Idealized.Sources.LoopBreaker h1(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    XiSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-48,-50},{-28,-30}})));
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-48,-50},{-28,-30}})));
   Modelica.Blocks.Sources.RealExpression p(y=1e5) annotation (Placement(transformation(extent={{-160,-128},{-140,-108}})));
   Modelica.Blocks.Sources.RealExpression Xi[1](y={0.1}) annotation (Placement(transformation(extent={{-160,-100},{-140,-80}})));
   Modelica.Blocks.Sources.RealExpression thermal(y=293.15) annotation (Placement(transformation(extent={{-160,-114},{-140,-94}})));
@@ -55,22 +55,22 @@ model Setpoint
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=0) annotation (Placement(transformation(extent={{104,-10},{124,10}})));
   ThermofluidStream.Idealized.LoopBreaker_m T3(
     redeclare package Medium = Medium,
-    XiSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{44,-50},{64,-30}})));
+    XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{44,-50},{64,-30}})));
   ThermofluidStream.Idealized.LoopBreaker_m h3(
     redeclare package Medium = Medium,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    XiSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{104,-50},{124,-30}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{104,-50},{124,-30}})));
   Modelica.Blocks.Sources.RealExpression p2(y=1e5) annotation (Placement(transformation(extent={{24,-128},{44,-108}})));
   Modelica.Blocks.Sources.RealExpression Xi2[1](y={0.1}) annotation (Placement(transformation(extent={{24,-100},{44,-80}})));
   Modelica.Blocks.Sources.RealExpression thermal2(y=293.15) annotation (Placement(transformation(extent={{24,-114},{44,-94}})));
@@ -79,10 +79,10 @@ model Setpoint
   Modelica.Blocks.Sources.RealExpression thermal3(y=0) annotation (Placement(transformation(extent={{84,-114},{104,-94}})));
   ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-170,-10},{-150,10}})));
   ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-52},{-150,-32}})));
+  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-52},{-150,-32}})));
   Modelica.Blocks.Sources.RealExpression m_flow(y=1) annotation (Placement(transformation(extent={{-190,-80},{-170,-60}})));
   Modelica.Blocks.Sources.RealExpression m_flow1(y=1) annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
+  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
   Modelica.Blocks.Sources.RealExpression m_flow2(y=1) annotation (Placement(transformation(extent={{20,-80},{40,-60}})));
   Modelica.Blocks.Sources.RealExpression m_flow3(y=1) annotation (Placement(transformation(extent={{80,-80},{100,-60}})));
 equation

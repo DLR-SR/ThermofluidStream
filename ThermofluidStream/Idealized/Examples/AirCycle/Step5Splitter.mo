@@ -42,7 +42,7 @@ model Step5Splitter
     p_out_fixed=100000) annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{0,10},{20,-10}})));
-  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
+  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   Sources.Sink_free airSink1(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{120,-40},{140,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRateValveRamp(

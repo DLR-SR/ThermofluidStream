@@ -25,7 +25,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Idealized.Processes.Isochoric dT1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{-100,100},{-80,120}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -36,7 +36,7 @@ model Fixed "Example - Isochoric process"
   ThermofluidStream.Idealized.Processes.Isochoric T_out1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{10,100},{30,120}})));
   ThermofluidStream.Boundaries.Source source2(
@@ -48,7 +48,7 @@ model Fixed "Example - Isochoric process"
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{-100,60},{-80,80}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow=Q_flow) annotation (Placement(transformation(extent={{-120,30},{-100,50}})));
@@ -61,7 +61,7 @@ model Fixed "Example - Isochoric process"
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{10,60},{30,80}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource1(E_flow=Q_flow) annotation (Placement(transformation(extent={{-10,30},{10,50}})));
@@ -75,7 +75,7 @@ model Fixed "Example - Isochoric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource2(E_flow=Q_flow) annotation (Placement(transformation(extent={{-120,-30},{-100,-10}})));

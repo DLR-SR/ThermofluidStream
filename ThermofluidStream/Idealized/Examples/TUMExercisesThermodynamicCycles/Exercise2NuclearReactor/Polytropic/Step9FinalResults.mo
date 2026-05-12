@@ -23,7 +23,7 @@ model Step9FinalResults
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 1110,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
     eta_is_fixed=0.94) annotation (Placement(transformation(
@@ -47,7 +47,7 @@ model Step9FinalResults
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 844.5) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
@@ -123,9 +123,9 @@ model Step9FinalResults
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation (Placement(transformation(extent={{-10,-52},{30,-28}})));
   Processes.PolytropicPerfectGas compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={50,0})));

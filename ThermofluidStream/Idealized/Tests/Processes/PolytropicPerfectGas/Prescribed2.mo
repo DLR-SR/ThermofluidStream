@@ -16,8 +16,8 @@ model Prescribed2
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,180},{-220,200}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,180},{-220,200}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -28,8 +28,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,130},{-220,150}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,130},{-220,150}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -40,8 +40,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,80},{-220,100}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,80},{-220,100}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -52,8 +52,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,30},{-220,50}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,30},{-220,50}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -64,8 +64,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-20},{-220,0}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-20},{-220,0}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -76,8 +76,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-70},{-220,-50}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-70},{-220,-50}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -88,8 +88,8 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-120},{-220,-100}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-120},{-220,-100}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -99,9 +99,9 @@ model Prescribed2
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,180},{-110,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,180},{-110,200}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -112,9 +112,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,130},{-110,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,130},{-110,150}})));
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -125,9 +125,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,80},{-110,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,80},{-110,100}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -138,9 +138,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,30},{-110,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,30},{-110,50}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -151,9 +151,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-20},{-110,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-20},{-110,0}})));
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -164,9 +164,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
   ThermofluidStream.Boundaries.Source source13(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -177,9 +177,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-120},{-110,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-120},{-110,-100}})));
   ThermofluidStream.Boundaries.Source source14(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -189,9 +189,9 @@ model Prescribed2
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,180},{0,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,180},{0,200}})));
   ThermofluidStream.Boundaries.Source source15(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -202,9 +202,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,130},{0,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,130},{0,150}})));
   ThermofluidStream.Boundaries.Source source16(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -215,9 +215,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,80},{0,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,80},{0,100}})));
   ThermofluidStream.Boundaries.Source source17(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -228,9 +228,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,30},{0,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,30},{0,50}})));
   ThermofluidStream.Boundaries.Source source18(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -241,9 +241,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
   ThermofluidStream.Boundaries.Source source19(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -254,9 +254,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
   ThermofluidStream.Boundaries.Source source20(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -267,9 +267,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
   ThermofluidStream.Boundaries.Source source21(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -279,9 +279,9 @@ model Prescribed2
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,180},{110,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,180},{110,200}})));
   ThermofluidStream.Boundaries.Source source22(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -292,9 +292,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,130},{110,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,130},{110,150}})));
   ThermofluidStream.Boundaries.Source source23(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -305,9 +305,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,80},{110,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,80},{110,100}})));
   ThermofluidStream.Boundaries.Source source25(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -318,9 +318,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-20},{110,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-20},{110,0}})));
   ThermofluidStream.Boundaries.Source source26(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -331,9 +331,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-70},{110,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-70},{110,-50}})));
   ThermofluidStream.Boundaries.Source source27(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -344,9 +344,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-120},{110,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-120},{110,-100}})));
   ThermofluidStream.Boundaries.Source source28(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -357,9 +357,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-20},{220,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-20},{220,0}})));
   ThermofluidStream.Boundaries.Source source29(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -370,9 +370,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-70},{220,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-70},{220,-50}})));
   ThermofluidStream.Boundaries.Source source30(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -383,9 +383,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
   ThermofluidStream.Boundaries.Source source24(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -396,9 +396,9 @@ model Prescribed2
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,30},{220,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,30},{220,50}})));
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation (Line(
       points={{-250,190},{-240,190}},

@@ -50,7 +50,7 @@ model SimpleAir
     redeclare package Medium = Medium,
     m_flow_in_par=m_flow,
     p_out_fixed=p1,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,40},{-20,60}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",

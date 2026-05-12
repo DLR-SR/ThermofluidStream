@@ -24,7 +24,7 @@ model Step7HeatFlow
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.8,
     specifyOutlet=false,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     enableFilter=true) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.Boundaries.Source
                     airSource(
@@ -103,7 +103,7 @@ model Step7HeatFlow
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,10},{0,-10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,10},{0,-10}})));
   ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect(
     displayInstanceName=false,
     redeclare package Medium = Air,

@@ -3,7 +3,7 @@ model Sink_m "Sink (m_flow)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
-  import ValueSpecification = ThermofluidStream.Idealized.Utilities.Types.ValueSpecification;
+  import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true, Documentation(info="<html>
@@ -12,21 +12,21 @@ Medium package used in the Sink. Make sure it is the same as the one
 the outlet the sink is connected to.
 </p>
 </html>"));
-  parameter ValueSpecification m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter SI.MassFlowRate m_flow_fixed = 0 "Fixed mass flow rate"
     annotation(Dialog(group="Mass flow rate",
-      enable = m_flowSpec == ValueSpecification.Fixed),
+      enable = m_flowSpec ==ValueSpecification.Fixed),
       HideResult = not m_flowSpec == ValueSpecification.Fixed);
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
     annotation(Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
   parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable = displayParameters and m_flowSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
+    annotation(Dialog(tab="Layout",group="Display parameters",enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
-  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec == ValueSpecification.Prescribed "Prescribed mass flow rate [kg/s]"
+  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed mass flow rate [kg/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=180,origin={20,0})));
 
   Medium.AbsolutePressure p = Medium.pressure(inlet.state) "Steady state pressure"
@@ -39,7 +39,7 @@ protected
 
 equation
   connect(m_flow_prescribed, m_flow);
-  if m_flowSpec == ValueSpecification.Fixed then
+  if m_flowSpec ==ValueSpecification.Fixed  then
     m_flow = m_flow_fixed;
   end if;
 

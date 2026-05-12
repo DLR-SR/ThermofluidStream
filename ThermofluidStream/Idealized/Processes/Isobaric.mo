@@ -6,7 +6,7 @@ model Isobaric "Isobaric process"
   import SystemSpecification = ThermofluidStream.Idealized.Types.SystemModel;
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
-  import ValueSpecification = ThermofluidStream.Idealized.Utilities.Types.ValueSpecification;
+  import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration"
     annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true);
@@ -16,29 +16,29 @@ model Isobaric "Isobaric process"
     annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference      "Quantity used to define the outlet state"
     annotation (Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
+  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
   parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.TemperatureDifference and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.TemperatureDifference and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
   parameter SI.SpecificEnthalpy dh_fixed(displayUnit="kJ/kg") = 0 "Fixed specific enthalpy difference (dh = h_out - h_in)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.SpecificEnthalpyDifference and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.SpecificEnthalpyDifference and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.SpecificEnthalpyDifference or not specifyOutlet);
   parameter SI.SpecificEnthalpy h_out_fixed(displayUnit="kJ/kg") = Medium.h_default "Fixed outlet specific enthalpy"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletSpecificEnthalpy and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificEnthalpy and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificEnthalpy or not specifyOutlet);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)"
     annotation(Dialog(tab="Layout", group="Display parameters",
-      enable = displayParameters and outletValueSpec == ValueSpecification.Fixed and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
+      enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction"
     annotation(Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)"
@@ -51,7 +51,7 @@ model Isobaric "Isobaric process"
       HideResult = systemSpec == ThermoFluidStream.Idealized.Types.SystemModel.Flow);
   final parameter String name = getInstanceName() "Instance name";
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed "Prescribed outlet specification [SI-units]"
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]"
     annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
@@ -102,7 +102,7 @@ protected
 
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
-  if specifyOutlet and outletValueSpec == ValueSpecification.Fixed then
+  if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
     if outletSpec == OutletSpecification.TemperatureDifference then
       outletSpec_actual = dT_fixed;
     elseif outletSpec ==OutletSpecification.OutletTemperature then

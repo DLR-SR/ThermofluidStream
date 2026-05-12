@@ -25,7 +25,7 @@ model Setpoint
   ThermofluidStream.Idealized.Processes.Isochoric dT1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=20)  annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
@@ -61,7 +61,7 @@ model Setpoint
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{190,50},{210,70}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=20)  annotation (Placement(transformation(extent={{240,20},{220,40}})));
   ThermofluidStream.Boundaries.Source source5(
@@ -84,7 +84,7 @@ model Setpoint
   ThermofluidStream.Idealized.Processes.Isochoric T1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,-30},{-90,-10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,-30},{-90,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=313.15)
                                                                annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
   ThermofluidStream.Boundaries.Source source7(
@@ -122,7 +122,7 @@ model Setpoint
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{190,-30},{210,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=313.15)
                                                                 annotation (Placement(transformation(extent={{240,-60},{220,-40}})));

@@ -21,7 +21,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=10,
     p_inf=100000) annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -34,7 +34,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=10,
     p_inf=150000) annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   ThermofluidStream.Boundaries.Source source2(
@@ -47,7 +47,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=10,
     p_inf=50000) annotation (Placement(transformation(extent={{90,20},{110,40}})));
   ThermofluidStream.Boundaries.Source source3(
@@ -60,7 +60,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=-10,
     p_inf=100000) annotation (Placement(transformation(extent={{-120,-40},{-100,-20}})));
   ThermofluidStream.Boundaries.Source source4(
@@ -73,7 +73,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=-10,
     p_inf=150000) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   ThermofluidStream.Boundaries.Source source5(
@@ -86,7 +86,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=-10,
     p_inf=50000) annotation (Placement(transformation(extent={{90,-40},{110,-20}})));
 equation

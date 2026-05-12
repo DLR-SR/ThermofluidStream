@@ -19,7 +19,7 @@ model Setpoint
     temperatureFromInput=false,
     T0_par=293.15) annotation (Placement(transformation(extent={{-130,70},{-110,90}})));
   ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-70,70},{-50,90}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic dp1(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,70},{-80,90}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic dp1(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,70},{-80,90}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=1e5) annotation (Placement(transformation(extent={{-110,40},{-90,60}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
@@ -58,7 +58,7 @@ model Setpoint
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{200,70},{220,90}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=1e5) annotation (Placement(transformation(extent={{250,40},{230,60}})));
   ThermofluidStream.Boundaries.Source source5(
@@ -81,7 +81,7 @@ model Setpoint
   ThermofluidStream.Idealized.Processes.Adiabatic pr1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=2)  annotation (Placement(transformation(extent={{-110,-40},{-90,-20}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
@@ -124,7 +124,7 @@ model Setpoint
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{200,-10},{220,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=2)   annotation (Placement(transformation(extent={{250,-40},{230,-20}})));
   ThermofluidStream.Boundaries.Source source10(
@@ -148,7 +148,7 @@ model Setpoint
   ThermofluidStream.Idealized.Processes.Adiabatic p_out1(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-90},{-80,-70}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-90},{-80,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=2e5)
                                                                annotation (Placement(transformation(extent={{-110,-120},{-90,-100}})));
   ThermofluidStream.Boundaries.Source source12(
@@ -193,7 +193,7 @@ model Setpoint
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{200,-90},{220,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression5(y=2e5) annotation (Placement(transformation(extent={{250,-120},{230,-100}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 1000) annotation (Placement(transformation(extent={{-30,40},{-10,60}})));

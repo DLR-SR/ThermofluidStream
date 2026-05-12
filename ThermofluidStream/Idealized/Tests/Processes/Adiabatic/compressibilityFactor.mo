@@ -22,7 +22,7 @@ model compressibilityFactor "Test model to check compressibility factor"
   ThermofluidStream.Idealized.Processes.Adiabatic idealGas(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     showEfficiency=false,
     showPowerDirection=false) annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -34,7 +34,7 @@ model compressibilityFactor "Test model to check compressibility factor"
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGas(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, gamma, cp = const",
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Fixed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     showEfficiency=false,
     showPowerDirection=false) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Modelica.Blocks.Sources.Ramp reducedPressure(

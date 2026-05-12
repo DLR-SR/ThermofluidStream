@@ -73,7 +73,7 @@ model Step2VaryingMassFlowRate
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
-  Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+  Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-30,-30})));

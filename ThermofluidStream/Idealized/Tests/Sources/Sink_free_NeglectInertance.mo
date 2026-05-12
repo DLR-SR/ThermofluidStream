@@ -54,15 +54,15 @@ model Sink_free_NeglectInertance "Example - free sink"
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate10(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-16},{-150,4}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-16},{-150,4}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate11(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-16},{10,4}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-16},{10,4}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate12(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{150,-16},{170,4}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{150,-16},{170,4}})));
 equation
   connect(p_ramp2.y, source11.p0_var) annotation (Line(points={{-59,0},{-32,0}},   color={0,0,127}));
   connect(p_ramp3.y, source12.p0_var) annotation (Line(points={{101,0},{128,0}},   color={0,0,127}));

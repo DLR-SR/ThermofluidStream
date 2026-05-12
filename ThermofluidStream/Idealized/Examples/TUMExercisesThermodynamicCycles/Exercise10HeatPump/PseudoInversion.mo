@@ -31,7 +31,7 @@ model PseudoInversion
     redeclare package Medium = Refrigerant,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-70,-10})));
@@ -50,7 +50,7 @@ model PseudoInversion
     redeclare package Medium = Refrigerant,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -70,8 +70,8 @@ model PseudoInversion
     redeclare package Medium = Refrigerant,
 
     p_out_fixed=600000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={24,40})));
@@ -80,8 +80,8 @@ model PseudoInversion
   Sources.LoopBreaker lowPressureLoopBreaker(
     redeclare package Medium = Refrigerant,
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-70,22})));
@@ -161,7 +161,7 @@ model PseudoInversion
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={104,18})));
-  Sources.MassFlowRate massFlowRate(redeclare package Medium = Refrigerant, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+  Sources.MassFlowRate massFlowRate(redeclare package Medium = Refrigerant, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={80,18})));

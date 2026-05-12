@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Inversion;
 model Inversion1 "Example - Inversion with non-linear equations solver and h as iteration variable"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(
-    massFlowRateB(m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed),
+    massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed),
     junction(h_mix(start=Medium.h_default)),
     dropOfCommons(neglectInertance=true));
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;

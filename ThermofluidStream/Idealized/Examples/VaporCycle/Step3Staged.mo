@@ -55,7 +55,7 @@ model Step3Staged
   ThermofluidStream.Idealized.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator1,
     p_out_fixed=p_Evaporator1) annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
@@ -92,7 +92,7 @@ model Step3Staged
   ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
     p_out_fixed=p_Evaporator2,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator2) annotation (Placement(transformation(extent={{10,10},{30,30}})));
 equation
   connect(compressor1.outlet, condensor1.inlet) annotation(

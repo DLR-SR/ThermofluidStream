@@ -14,7 +14,7 @@ model Step2Temperatures
     redeclare package Medium = Medium,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,0})));
@@ -23,7 +23,7 @@ model Step2Temperatures
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,40},{-10,20}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,40},{-10,20}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
@@ -39,7 +39,7 @@ model Step2Temperatures
   ThermofluidStream.Idealized.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     p_out_fixed=p_Evaporator,
     h_out_fixed=h_EvaporatorOut) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformanceSpecific(

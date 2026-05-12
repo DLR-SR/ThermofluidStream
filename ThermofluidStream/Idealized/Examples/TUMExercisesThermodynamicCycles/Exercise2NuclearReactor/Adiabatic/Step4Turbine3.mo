@@ -31,7 +31,7 @@ model Step4Turbine3
     eta_fixed=0.94,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=7000000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
@@ -59,7 +59,7 @@ model Step4Turbine3
   Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    etaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
     p_out_fixed=5240000,
     eta_is(start=1),
@@ -78,7 +78,7 @@ model Step4Turbine3
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=5240000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,

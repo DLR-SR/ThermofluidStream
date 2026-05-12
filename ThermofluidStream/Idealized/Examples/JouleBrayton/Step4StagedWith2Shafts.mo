@@ -14,7 +14,7 @@ model Step4StagedWith2Shafts
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pr_fixed=2,
     p_out_fixed=200000) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
   Processes.Adiabatic highPressureTurbine(
@@ -23,7 +23,7 @@ model Step4StagedWith2Shafts
     enableFilter=false,
     eta_fixed=0.8,
     specifyOutlet=false,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outlet(state(p(start=Medium.p_default)))) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.Boundaries.Source
                     airSource(

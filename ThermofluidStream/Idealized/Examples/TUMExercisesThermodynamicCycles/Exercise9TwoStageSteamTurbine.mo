@@ -35,7 +35,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-120},{-10,-100}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-120},{-10,-100}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))
     annotation (Placement(transformation(extent={{-50,-140},{-30,-120}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump1(

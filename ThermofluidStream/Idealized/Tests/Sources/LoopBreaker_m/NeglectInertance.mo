@@ -13,7 +13,7 @@ model NeglectInertance "Example - mass flow loop breaker"
 
   .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
 
     p_out_fixed=100000,
@@ -25,9 +25,9 @@ model NeglectInertance "Example - mass flow loop breaker"
     startTime=0.1) annotation (Placement(transformation(extent={{-60,-30},{-80,-10}})));
   .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker4(
     redeclare package Medium = Medium,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{10,-10},{-10,10}})));
@@ -40,9 +40,9 @@ model NeglectInertance "Example - mass flow loop breaker"
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   .ThermofluidStream.Idealized.LoopBreaker_m loopBreaker9(
     redeclare package Medium = Medium,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{110,-10},{90,10}})));

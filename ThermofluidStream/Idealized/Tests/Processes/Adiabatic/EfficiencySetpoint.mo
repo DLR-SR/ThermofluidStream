@@ -24,7 +24,7 @@ model EfficiencySetpoint
   ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor1(
     redeclare package Medium = Medium,
-    etaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.7) annotation (Placement(transformation(extent={{0,-40},{20,-20}})));
 equation

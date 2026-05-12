@@ -21,12 +21,12 @@ model JunctionT1 "Example - JunctionT1 with different processes"
     duration=1,
     offset=1) annotation (Placement(transformation(extent={{-160,100},{-140,120}})));
   ThermofluidStream.Topology.SplitterT2 splitter1(displayInstanceName=true, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-170,90},{-150,70}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,30},{-120,50}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,30},{-120,50}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampA(
     height=-3,
     duration=1,
     offset=2) annotation (Placement(transformation(extent={{-160,10},{-140,30}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,90},{-120,70}})));
+  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-140,90},{-120,70}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
@@ -81,7 +81,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA2(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     m_flow_fixed=2) annotation (Placement(transformation(extent={{-150,-90},{-130,-70}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric5(
     redeclare package Medium = Medium,
@@ -93,7 +93,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
     redeclare package Medium = Medium,
     neglectInertance=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dT_fixed=-15) annotation (Placement(transformation(extent={{-110,-90},{-90,-70}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction2(
     neglectInertance=true,

@@ -39,7 +39,7 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
     redeclare package Medium = Medium,
     m_flow_in_par=84.316,
     p_out_fixed(displayUnit="bar") = p_Condensor,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_bubble) annotation (Placement(transformation(extent={{20,-20},{0,0}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,

@@ -15,10 +15,10 @@ model cpSpec "Test model to check cp specification"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pefectGasState(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Modelica.Blocks.Sources.LogFrequencySweep
                                pressureRatio(
@@ -34,10 +34,10 @@ model cpSpec "Test model to check cp specification"
   ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,40},{90,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGasFixed(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification2.Fixed, cpSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed, cpSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{40,40},{60,60}})));
 equation
   connect(source.outlet, pefectGasState.inlet) annotation (Line(

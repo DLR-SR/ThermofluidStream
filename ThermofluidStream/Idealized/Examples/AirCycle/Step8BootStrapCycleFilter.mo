@@ -29,12 +29,12 @@ model Step8BootStrapCycleFilter
     use_numberPort=false,
     number=(-cooler.Q_flow - cooler2.Q_flow)/(compressor.P + Modelica.Constants.eps),
     displayVariable=false) annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
-  Sink_m airSink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
+  Sink_m airSink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
-  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
+  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRate(
     height=1,
     duration=1,

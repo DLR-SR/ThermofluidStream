@@ -33,17 +33,17 @@ model Sink_m "Example - mass flow sink"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation (Placement(transformation(extent={{-252,-50},{-232,-30}})));
-  .ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-50},{-190,-30}})));
+  .ThermofluidStream.Idealized.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-50},{-190,-30}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation (Placement(transformation(extent={{-252,-90},{-232,-70}})));
-  .ThermofluidStream.Idealized.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-90},{-190,-70}})));
+  .ThermofluidStream.Idealized.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-90},{-190,-70}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation (Placement(transformation(extent={{-252,30},{-232,50}})));
-  .ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,30},{-190,50}})));
+  .ThermofluidStream.Idealized.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,30},{-190,50}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialState) annotation (Placement(transformation(extent={{-160,30},{-180,50}})));
   Modelica.Blocks.Sources.Ramp m_flow_ramp1(
     height=1,
@@ -58,12 +58,12 @@ model Sink_m "Example - mass flow sink"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation (Placement(transformation(extent={{-30,-50},{-10,-30}})));
-  .ThermofluidStream.Idealized.Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-50},{30,-30}})));
+  .ThermofluidStream.Idealized.Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-50},{30,-30}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation (Placement(transformation(extent={{-30,-90},{-10,-70}})));
-  .ThermofluidStream.Idealized.Sink_m sink7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-90},{30,-70}})));
+  .ThermofluidStream.Idealized.Sink_m sink7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-90},{30,-70}})));
   Modelica.Blocks.Sources.Pulse p_pulse(
     amplitude=1e5,
     period=0.4,
@@ -82,7 +82,7 @@ model Sink_m "Example - mass flow sink"
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation (Placement(transformation(extent={{-30,30},{-10,50}})));
-  .ThermofluidStream.Idealized.Sink_m sink8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,30},{30,50}})));
+  .ThermofluidStream.Idealized.Sink_m sink8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,30},{30,50}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialState) annotation (Placement(transformation(extent={{60,30},{40,50}})));
   Modelica.Blocks.Sources.Pulse p_pulse1(
     amplitude=1e5,
@@ -104,14 +104,14 @@ model Sink_m "Example - mass flow sink"
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation (Placement(transformation(extent={{160,-40},{180,-20}})));
-  .ThermofluidStream.Idealized.Sink_m sink10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-40},{220,-20}})));
+  .ThermofluidStream.Idealized.Sink_m sink10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-40},{220,-20}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation (Placement(transformation(extent={{160,-120},{180,-100}})));
-  .ThermofluidStream.Idealized.Sink_m sink11(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
+  .ThermofluidStream.Idealized.Sink_m sink11(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
   Modelica.Blocks.Sources.Pulse p_pulse3(
     amplitude=1e5,
     period=0.4,
@@ -145,7 +145,7 @@ model Sink_m "Example - mass flow sink"
   .ThermofluidStream.Idealized.Sink_m sink12(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,110},{220,130}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,110},{220,130}})));
   Modelica.Blocks.Sources.Pulse p_pulse5(
     amplitude=1e5,
     period=0.4,

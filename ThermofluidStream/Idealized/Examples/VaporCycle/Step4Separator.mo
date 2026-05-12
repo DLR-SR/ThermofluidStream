@@ -25,7 +25,7 @@ model Step4Separator
     redeclare package Medium = Medium,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,-40})));
@@ -48,7 +48,7 @@ model Step4Separator
     h_out_fixed=h_out_Evaporator) annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
   Sources.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator,
     p_out_fixed=p_Evaporator,
     neglectInertance=true,
@@ -76,15 +76,15 @@ model Step4Separator
   ThermofluidStream.Idealized.Processes.Isenthalpic valve2(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-30,40})));
   ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
-    pSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     neglectInertance=true,
     showPressure=false,
     showThermalSpecification=false) annotation (Placement(transformation(extent={{22,-4},{42,16}})));

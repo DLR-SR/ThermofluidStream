@@ -10,413 +10,413 @@ model Prescribed1
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,180},{-250,200}})));
-  Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,180},{-190,200}})));
+  Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,180},{-190,200}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_pol(
     redeclare package Medium = Medium,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,180},{-220,200}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,180},{-220,200}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,130},{-250,150}})));
-  Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,130},{-190,150}})));
+  Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,130},{-190,150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,130},{-220,150}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,130},{-220,150}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,80},{-250,100}})));
-  Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,80},{-190,100}})));
+  Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,80},{-190,100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,80},{-220,100}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,80},{-220,100}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,30},{-250,50}})));
-  Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,30},{-190,50}})));
+  Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,30},{-190,50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,30},{-220,50}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,30},{-220,50}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,-20},{-250,0}})));
-  Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-20},{-190,0}})));
+  Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-20},{-190,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-20},{-220,0}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-20},{-220,0}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,-70},{-250,-50}})));
-  Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-70},{-190,-50}})));
+  Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-70},{-190,-50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-70},{-220,-50}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-70},{-220,-50}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,-120},{-250,-100}})));
-  Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-120},{-190,-100}})));
+  Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-120},{-190,-100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_eta_pol(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-120},{-220,-100}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-120},{-220,-100}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,180},{-140,200}})));
-  Sink_m sink7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,180},{-80,200}})));
+  Sink_m sink7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,180},{-80,200}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_n(
     redeclare package Medium = Medium,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,180},{-110,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,180},{-110,200}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,130},{-140,150}})));
-  Sink_m sink8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,130},{-80,150}})));
+  Sink_m sink8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,130},{-80,150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,130},{-110,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,130},{-110,150}})));
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,80},{-140,100}})));
-  Sink_m sink9(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
+  Sink_m sink9(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,80},{-110,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,80},{-110,100}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,30},{-140,50}})));
-  Sink_m sink10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
+  Sink_m sink10(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,30},{-110,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,30},{-110,50}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,-20},{-140,0}})));
-  Sink_m sink11(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
+  Sink_m sink11(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-20},{-110,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-20},{-110,0}})));
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,-70},{-140,-50}})));
-  Sink_m sink12(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-70},{-80,-50}})));
+  Sink_m sink12(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-70},{-80,-50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-70},{-110,-50}})));
   ThermofluidStream.Boundaries.Source source13(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,-120},{-140,-100}})));
-  Sink_m sink13(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-120},{-80,-100}})));
+  Sink_m sink13(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-120},{-80,-100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_n(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-120},{-110,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-120},{-110,-100}})));
   ThermofluidStream.Boundaries.Source source14(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,180},{-30,200}})));
-  Sink_m sink14(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,180},{30,200}})));
+  Sink_m sink14(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,180},{30,200}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_is(
     redeclare package Medium = Medium,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,180},{0,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,180},{0,200}})));
   ThermofluidStream.Boundaries.Source source15(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,130},{-30,150}})));
-  Sink_m sink15(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,130},{30,150}})));
+  Sink_m sink15(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,130},{30,150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,130},{0,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,130},{0,150}})));
   ThermofluidStream.Boundaries.Source source16(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,80},{-30,100}})));
-  Sink_m sink16(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,80},{30,100}})));
+  Sink_m sink16(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,80},{30,100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,80},{0,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,80},{0,100}})));
   ThermofluidStream.Boundaries.Source source17(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,30},{-30,50}})));
-  Sink_m sink17(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,30},{30,50}})));
+  Sink_m sink17(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,30},{30,50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,30},{0,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,30},{0,50}})));
   ThermofluidStream.Boundaries.Source source18(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,-20},{-30,0}})));
-  Sink_m sink18(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-20},{30,0}})));
+  Sink_m sink18(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-20},{30,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
   ThermofluidStream.Boundaries.Source source19(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,-70},{-30,-50}})));
-  Sink_m sink19(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-70},{30,-50}})));
+  Sink_m sink19(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-70},{30,-50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-70},{0,-50}})));
   ThermofluidStream.Boundaries.Source source20(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,-120},{-30,-100}})));
-  Sink_m sink20(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-120},{30,-100}})));
+  Sink_m sink20(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-120},{30,-100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_eta_is(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
   ThermofluidStream.Boundaries.Source source21(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,180},{80,200}})));
-  Sink_m sink21(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,180},{140,200}})));
+  Sink_m sink21(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,180},{140,200}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_T_out(
     redeclare package Medium = Medium,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,180},{110,200}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,180},{110,200}})));
   ThermofluidStream.Boundaries.Source source22(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,130},{80,150}})));
-  Sink_m sink22(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,130},{140,150}})));
+  Sink_m sink22(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,130},{140,150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,130},{110,150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,130},{110,150}})));
   ThermofluidStream.Boundaries.Source source23(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,80},{80,100}})));
-  Sink_m sink23(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,80},{140,100}})));
+  Sink_m sink23(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,80},{140,100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,80},{110,100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,80},{110,100}})));
   ThermofluidStream.Boundaries.Source source25(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,-20},{80,0}})));
-  Sink_m sink25(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-20},{140,0}})));
+  Sink_m sink25(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-20},{140,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-20},{110,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-20},{110,0}})));
   ThermofluidStream.Boundaries.Source source26(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
-  Sink_m sink26(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-70},{140,-50}})));
+  Sink_m sink26(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-70},{140,-50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-70},{110,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-70},{110,-50}})));
   ThermofluidStream.Boundaries.Source source27(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{60,-120},{80,-100}})));
-  Sink_m sink27(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-120},{140,-100}})));
+  Sink_m sink27(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{120,-120},{140,-100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-120},{110,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-120},{110,-100}})));
   ThermofluidStream.Boundaries.Source source28(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{170,-20},{190,0}})));
-  Sink_m sink28(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-20},{250,0}})));
+  Sink_m sink28(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-20},{250,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_p_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-20},{220,0}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-20},{220,0}})));
   ThermofluidStream.Boundaries.Source source29(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{170,-70},{190,-50}})));
-  Sink_m sink29(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-70},{250,-50}})));
+  Sink_m sink29(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-70},{250,-50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_p_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-70},{220,-50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-70},{220,-50}})));
   ThermofluidStream.Boundaries.Source source30(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{170,-120},{190,-100}})));
-  Sink_m sink30(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-120},{250,-100}})));
+  Sink_m sink30(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-120},{250,-100}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_p_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-120},{220,-100}})));
   ThermofluidStream.Boundaries.Source source24(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{170,30},{190,50}})));
-  Sink_m sink24(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,30},{250,50}})));
+  Sink_m sink24(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,30},{250,50}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_p_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,30},{220,50}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,30},{220,50}})));
   ThermofluidStream.Boundaries.Source source31(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-270,-170},{-250,-150}})));
-  Sink_m sink31(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-170},{-190,-150}})));
+  Sink_m sink31(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-210,-170},{-190,-150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas P_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-170},{-220,-150}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-240,-170},{-220,-150}})));
   ThermofluidStream.Boundaries.Source source32(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-160,-170},{-140,-150}})));
-  Sink_m sink32(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-170},{-80,-150}})));
+  Sink_m sink32(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-170},{-80,-150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas P_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-170},{-110,-150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-130,-170},{-110,-150}})));
   ThermofluidStream.Boundaries.Source source33(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,-170},{-30,-150}})));
-  Sink_m sink33(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-170},{30,-150}})));
+  Sink_m sink33(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-170},{30,-150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas P_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-170},{0,-150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-170},{0,-150}})));
   ThermofluidStream.Boundaries.Source source35(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{170,-170},{190,-150}})));
-  Sink_m sink35(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-170},{250,-150}})));
+  Sink_m sink35(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{230,-170},{250,-150}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas P_p_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
-    processValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-170},{220,-150}})));
+    processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{200,-170},{220,-150}})));
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation (Line(
       points={{-250,190},{-240,190}},

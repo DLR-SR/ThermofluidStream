@@ -9,7 +9,7 @@ model Warnings "Example - Loop breaker"
     tol_m_flow=tol_m_flow,
     tol_Xi=tol_Xi,
     p_out_fixed=100000,
-    thermalSpec=ThermofluidStream.Idealized.Utilities.Types.ThermalSpecification.Temperature,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{80,20},{100,40}})));
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
@@ -19,11 +19,11 @@ model Warnings "Example - Loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
     annotation (Placement(transformation(extent={{120,120},{140,140}})));
 
-  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaric(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,20},{10,40}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -31,7 +31,7 @@ model Warnings "Example - Loop breaker"
     setEnthalpy=false) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
   ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource1(
     redeclare package Medium = Medium,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     m_flow_fixed=0) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   ThermofluidStream.Idealized.Topology.JunctionT2 junction(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,40},{70,20}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep(
@@ -45,7 +45,7 @@ model Warnings "Example - Loop breaker"
   parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1 "Absolute tolerance for pressure p_in, p_out";
   parameter SI.SpecificEnthalpy tol_h=500 "Absolute tolerance for specific enthalpy h_in, h_out";
   parameter SI.MassFlowRate tol_m_flow=1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out";
-  ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,20},{40,40}})));
+  ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,20},{40,40}})));
   Modelica.Blocks.Math.Gain gain3(k=tol_m_flow) annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep1(
     wMin=0.1,

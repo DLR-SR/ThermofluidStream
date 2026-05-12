@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Utilities.Types;
+within ThermofluidStream.Types;
 type MassFractionDifference = Real (
   quantity="MassFractionDifference",
   final unit="kg/kg",

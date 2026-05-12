@@ -24,7 +24,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
   .ThermofluidStream.Idealized.Sink_m sink4(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,40},{30,60}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,40},{30,60}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
     amplitude=1,
     period=0.3,
@@ -38,7 +38,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
   .ThermofluidStream.Idealized.Sink_m sink5(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   Modelica.Blocks.Sources.Pulse p_pulse2(
     amplitude=1e5,
     period=0.4,
@@ -59,7 +59,7 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
   .ThermofluidStream.Idealized.Sink_m sink9(
     redeclare package Medium = Medium,
     neglectInertance=true,
-    m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-60},{30,-40}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-60},{30,-40}})));
   Modelica.Blocks.Sources.Pulse p_pulse4(
     amplitude=1e5,
     period=0.4,

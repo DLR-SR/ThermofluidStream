@@ -26,7 +26,7 @@ model Step8Cooler1
     eta_fixed=0.94,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=7000000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
@@ -50,7 +50,7 @@ model Step8Cooler1
   Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    etaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
     p_out_fixed=5240000,
     eta_is(start=1),
@@ -69,7 +69,7 @@ model Step8Cooler1
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=5240000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
@@ -127,10 +127,10 @@ model Step8Cooler1
   Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation (Placement(transformation(extent={{118,62},{98,82}})));
   Processes.Adiabatic compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    etaSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     eta_is(start=1)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -140,7 +140,7 @@ model Step8Cooler1
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation (Placement(transformation(extent={{90,-42},{130,-18}})));
   Processes.Isobaric cooler1(
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K"),

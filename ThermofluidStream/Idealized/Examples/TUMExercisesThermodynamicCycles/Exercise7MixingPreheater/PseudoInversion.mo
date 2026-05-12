@@ -32,7 +32,7 @@ model PseudoInversion
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-30},{70,-10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-30},{70,-10}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate(
     description="m_flow_36",
     use_numberPort=false,
@@ -63,7 +63,7 @@ model PseudoInversion
     p_out_fixed=1000000) annotation (Placement(transformation(extent={{10,40},{30,60}})));
   ThermofluidStream.Topology.SplitterT2  splitter(displayInstanceName=false, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{50,60},{70,40}})));
-  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Idealized.Utilities.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,10},{10,30}})));
+  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,10},{10,30}})));
   Sources.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     p_out_fixed(displayUnit="bar") = 1000000,
