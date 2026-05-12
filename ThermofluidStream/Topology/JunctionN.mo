@@ -60,7 +60,11 @@ equation
     w[i] = (abs(inlets[i].m_flow)+m_flow_eps) / (sum(abs(inlets.m_flow))+N*m_flow_eps);
     w2[i] = ((abs(inlets[i].m_flow) + m_flow_eps)/rho[i]) / (sum((abs(inlets.m_flow) + m_flow_eps*ones(N))./rho));
   end for;
-  der(outlet.m_flow) * L =  outlet.r - r_mix;
+  if L > Modelica.Constants.eps then
+    der(outlet.m_flow) * L =  outlet.r - r_mix;
+  else
+    0 = outlet.r - r_mix;
+  end if;
 
   if not assumeConstantDensity then
     p_mix = sum(w2.*p);

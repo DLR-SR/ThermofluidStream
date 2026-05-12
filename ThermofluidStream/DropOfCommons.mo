@@ -2,8 +2,9 @@ within ThermofluidStream;
 model DropOfCommons "Model for global parameters"
 
   parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
-      annotation(Dialog(tab="Advanced"));
-
+      annotation(Dialog(tab="Advanced", enable = not neglectInertance), Evaluate = neglectInertance, HideResult = neglectInertance);
+  parameter Boolean neglectInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MassFlowRate m_flow_reg = 0.01
     "Regularization threshold of mass flow rate"
     annotation(Dialog(group="Regularization"));
@@ -54,7 +55,12 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
           pattern=LinePattern.None,
           smooth=Smooth.Bezier,
           fillColor={19,76,141},
-          fillPattern=FillPattern.Solid)}), Diagram(
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{40,-90},{80,-90},{80,-70},{60,-70},{60,-30},{40,-30},{40,-90}},
+          fillColor= {162,29,33},
+          fillPattern= if neglectInertance then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None)}),      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>

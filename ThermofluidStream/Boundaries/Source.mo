@@ -28,9 +28,10 @@ the inlet the source is connected to.
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy and not enthalpyFromInput));
+  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
-    annotation (Dialog(tab="Advanced"));
-
+    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -122,8 +123,11 @@ equation
    if not enthalpyFromInput or not setEnthalpy then
      h0 = h0_par;
    end if;
-
-  L*der(outlet.m_flow) = outlet.r - 0;
+  if not neglectInertance then
+    L*der(outlet.m_flow) = outlet.r - 0;
+  else
+    outlet.r = 0;
+  end if;
   outlet.state =  if not setEnthalpy then Medium.setState_pTX(p0,T0,Xi0) else Medium.setState_phX(p0, h0, Xi0);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -177,7 +181,12 @@ equation
         Line(
           points={{12,80},{12,-80}},
           color={255,255,255},
-          thickness=1)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          thickness=1),
+        Ellipse(visible = neglectInertance,
+          extent={{80,40},{100,20}},
+          lineColor={238,46,47},
+          fillColor={238,46,47},
+          fillPattern=FillPattern.Solid)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>

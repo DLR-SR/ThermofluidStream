@@ -14,9 +14,10 @@ the outlet the sink is connected to.
     annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.AbsolutePressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not pressureFromInput));
+  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
-    annotation (Dialog(tab="Advanced"));
-
+    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -51,8 +52,11 @@ equation
   if not pressureFromInput then
     p0 = p0_par;
   end if;
-
-  der(inlet.m_flow)*L = inlet.r - r;
+  if not neglectInertance then
+    der(inlet.m_flow)*L = inlet.r - r;
+  else
+    0 = inlet.r - r;
+  end if;
   r + p = p0;
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
@@ -98,7 +102,12 @@ equation
           points={{-28,80},{-28,-80}},
           color={255,255,255},
           thickness=0.5),
-        Line(points={{-44,80},{-44,-80}}, color={255,255,255})}), Diagram(
+        Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
+        Ellipse(visible = neglectInertance,
+          extent={{-100,40},{-80,20}},
+          lineColor={238,46,47},
+          fillColor={238,46,47},
+          fillPattern=FillPattern.Solid)}), Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>

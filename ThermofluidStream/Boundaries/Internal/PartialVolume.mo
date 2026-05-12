@@ -38,9 +38,12 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy set value"
     annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy and use_hstart));
-
+  parameter Boolean enableFreeInlet = false "true, if inlet is free (volume creates no pressure boundary condition)"
+    annotation(Dialog(tab="Advanced", enable = useInlet),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
+    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
+    annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
   parameter Real k_volume_damping(unit="1", min=0) = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflow"
@@ -112,10 +115,18 @@ equation
   assert(-m_flow_out > m_flow_assert, "Positive mass flow rate at Volume outlet", dropOfCommons.assertionLevel);
   assert(M > 0, "Negative mass inside the volume");
 
-  der(m_flow_in)*L = r_in - r - r_damping;
-  der(m_flow_out)*L = r_out - r_damping;
+  if not neglectInertance then
+    der(m_flow_in)*L = r_in - r - r_damping;
+    der(m_flow_out)*L = r_out - r_damping;
+  else
+    0 = r_in - r - r_damping;
+    0 = r_out - r_damping;
+  end if;
 
-  r + p_in = medium.p;
+  if not enableFreeInlet then
+    r + p_in = medium.p;
+  else
+  end if;
 
   der(M) = m_flow_in + m_flow_out;
   der(U_med) = W_v + Q_flow + h_in*m_flow_in + h_out*m_flow_out;
@@ -190,7 +201,11 @@ equation
         Line(visible=useOutlet,
           points={{60,0},{100,0}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          thickness=0.5),
+        Ellipse(visible = enableFreeInlet,
+          extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
+        Rectangle(visible = enableFreeInlet,
+          extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>
