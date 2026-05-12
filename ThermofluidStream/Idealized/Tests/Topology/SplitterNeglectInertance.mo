@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Topology;
-model SplitterNeglectInertance "Example - Splitter requiring neglectInertance = true"
+model SplitterNeglectInertance "Example - Splitter requiring considerInertance = false"
   extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
@@ -190,7 +190,7 @@ equation
         Text(
           extent={{80,-30},{160,-50}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -202,7 +202,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    Non differentiable mass flow rates require <code>neglectInertance = true</code>.
+    Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
 </html>"));
 end SplitterNeglectInertance;

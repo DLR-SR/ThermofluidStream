@@ -258,7 +258,7 @@ equation
         Text(
           extent={{-110,90},{-30,70}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -274,7 +274,7 @@ see User's Guide",
   </p>
 
   <p>
-    This example solves for the mass flow rate and requires <code>neglectInertance = true</code>.
+    This example solves for the mass flow rate and requires <code>considerInertance = false</code>.
   </p>
 
   <h4>Problem description</h4>

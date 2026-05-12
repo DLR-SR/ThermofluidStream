@@ -282,7 +282,7 @@ different media, e.g. TwoPhaseWater, ConstantPropertyLiquidWater"),
         Text(
           extent={{-190,210},{-110,190}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left),
         Polygon(
@@ -312,7 +312,7 @@ see User's Guide",
   </ul>
 
   <p>
-    The third formulation requires <code>neglectInertance = true</code> if <code>p_out</code> is time-dependent.
+    The third formulation requires <code>considerInertance = false</code> if <code>p_out</code> is time-dependent.
   </p>
 </html>", revisions="<html>
   <ul>

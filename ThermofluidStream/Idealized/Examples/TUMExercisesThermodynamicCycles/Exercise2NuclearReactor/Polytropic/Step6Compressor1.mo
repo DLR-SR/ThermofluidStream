@@ -206,7 +206,7 @@ equation
         Text(
           extent={{-170,190},{-90,170}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -218,7 +218,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    The nonlinear solver only converges for <code>neglectInertance = true</code>.
+    The nonlinear solver only converges for <code>considerInertance = false</code>.
   </p>
 </html>"));
 end Step6Compressor1;

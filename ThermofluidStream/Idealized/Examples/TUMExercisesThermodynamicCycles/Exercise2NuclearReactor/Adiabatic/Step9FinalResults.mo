@@ -393,7 +393,7 @@ equation
         Text(
           extent={{-190,230},{-110,210}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>

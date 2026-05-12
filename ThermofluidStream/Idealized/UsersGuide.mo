@@ -161,8 +161,8 @@ class neglectInertance
     Such inverse calculations may require to remove the derivative of the mass flow rate <code>der(m_flow)</code>, refered to as <strong>neglectInertance</strong>.<br>
     <strong>neglectInertance</strong> currently requires a dedicated TFS branch:
     <a href=\"https://github.com/RaphaelGebhart/ThermofluidStream/tree/InertanceSwitch\">github.com/RaphaelGebhart/ThermofluidStream/tree/InertanceSwitch</a>.<br>
-    Examples using <code>neglectInertance = true</code> are highlighted with a red <strong>L</strong>.<br> 
-    Components with <code>neglectInertance = true</code> use a red dot in the graphical layer for highlighting.<br>
+    Examples using <code>considerInertance = false</code> are highlighted with a red <strong>L</strong>.<br> 
+    Components with <code>considerInertance = false</code> use a red dot in the graphical layer for highlighting.<br>
     Various approaches for inverse calculations are documented in the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion\">Inversion</a> package.
   </p>
 </html>", revisions="<html>

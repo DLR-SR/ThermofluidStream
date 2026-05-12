@@ -35,7 +35,7 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"annotation(
     Dialog(tab="Advanced", enable = = not considerInertance), HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+  parameter Boolean considerInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
@@ -216,7 +216,7 @@ equation
   </p>
 
   <p>
-    Discontinuous mass flow rates require <code>neglectInertance = true</code>. 
+    Discontinuous mass flow rates require <code>considerInertance = false</code>. 
   </p>
 
 </html>", revisions="<html>

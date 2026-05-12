@@ -146,7 +146,7 @@ equation
       + "  The mass flow rate is set to zero. \n",
     assertionLevel);
     m_flow = 0; 
-    One should only set m_flow = 0 for neglectInertance = true. Since neglectInertance is not yet pushed to TFS.main, I can not use it here. Therefor calculating m_flow from Q_flow at dh < eps is not currently not supported   
+    One should only set m_flow = 0 for considerInertance = false. Since neglectInertance is not yet pushed to TFS.main, I can not use it here. Therefor calculating m_flow from Q_flow at dh < eps is not currently not supported   
     */
     Q_flow = m_flow*q;
   elseif heatFlowSignal == HeatFlowSignal.Input and not specifyOutlet and noEvent(abs(m_flow) < eps) then

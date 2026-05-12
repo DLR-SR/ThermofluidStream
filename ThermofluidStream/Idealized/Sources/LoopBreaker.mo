@@ -30,7 +30,7 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"annotation(
     Dialog(tab="Advanced", enable = = not considerInertance), HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+  parameter Boolean considerInertance = false "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(

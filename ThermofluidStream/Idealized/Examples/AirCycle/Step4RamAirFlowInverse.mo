@@ -136,7 +136,7 @@ equation
         Text(
           extent={{-90,110},{-10,90}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -152,7 +152,7 @@ see User's Guide",
   </p>
 
   <p>
-    Since the compressor outlet pressure is varying with time this inverse calculation requires <code>neglectInertance = true</code>, also see 
+    Since the compressor outlet pressure is varying with time this inverse calculation requires <code>considerInertance = false</code>, also see 
     <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 

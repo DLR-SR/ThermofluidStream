@@ -259,7 +259,7 @@ equation
     Modification of the 
     <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.Adiabatic.Compressor\">Compressor</a> example
     using a constant pressure ratio instead of a time-dependent one.<br>
-    In this case, <code>neglectInertance = true</code> is not required, since the pressure ratio remains constant.
+    In this case, <code>considerInertance = false</code> is not required, since the pressure ratio remains constant.
   </p>
 </html>", revisions="<html>
   <ul>

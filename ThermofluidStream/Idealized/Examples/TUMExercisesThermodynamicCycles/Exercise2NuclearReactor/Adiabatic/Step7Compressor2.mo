@@ -294,7 +294,7 @@ equation
         Text(
           extent={{-170,190},{-90,170}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>

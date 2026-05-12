@@ -106,12 +106,12 @@ equation
         Text(
           extent={{-50,110},{30,90}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(info="<html>
   <p>
-    Non differentiable mass flow rates require <code>neglectInertance = true</code>.
+    Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
 </html>", revisions="<html>
   <ul>

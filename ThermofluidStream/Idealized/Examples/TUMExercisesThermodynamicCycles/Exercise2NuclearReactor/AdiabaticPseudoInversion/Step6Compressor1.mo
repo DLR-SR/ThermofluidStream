@@ -296,7 +296,7 @@ equation
         Text(
           extent={{-170,190},{-90,170}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -308,10 +308,10 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    This step requires <code>neglectInertance = true</code>. Otherwise, the simulation fails with
+    This step requires <code>considerInertance = false</code>. Otherwise, the simulation fails with
     <code>Failed to differentiate the equation for compressor1.adiabaticModel.h_out_is = [...] in order to reduce the DAE index.</code>
     This implies that the inverse calculation of the mass flow rate at <code>reactor</code> is only possible when
-    <code>neglectInertance = true</code>. This issue is resolved in the next step.
+    <code>considerInertance = false</code>. This issue is resolved in the next step.
   </p>
 </html>"));
 end Step6Compressor1;

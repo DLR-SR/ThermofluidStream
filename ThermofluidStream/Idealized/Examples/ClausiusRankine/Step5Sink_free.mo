@@ -141,7 +141,7 @@ equation
         Text(
           extent={{-110,90},{-30,70}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
@@ -157,7 +157,7 @@ see User's Guide",
   </p>
 
   <p>
-    Furthermore, since the mass flow rate setpoint is non differentiable, <code>neglectInertance = true</code> is required, see 
+    Furthermore, since the mass flow rate setpoint is non differentiable, <code>considerInertance = false</code> is required, see 
     <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 

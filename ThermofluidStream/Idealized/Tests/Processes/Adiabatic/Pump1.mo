@@ -102,7 +102,7 @@ equation
         Text(
           extent={{-110,90},{-30,70}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left),
         Polygon(

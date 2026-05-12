@@ -817,7 +817,7 @@ equation
 
   <p>
     When the mass flow rate <code>m_flow</code> is calculated from time varying power <code>P</code> and time varying outlet state (specific enthalpy difference <code>dh</code>) 
-    <code>neglectInertance = true</code> should be used. Otherwise the resulting mass flow rate has to be continuous, which is impractical, and can cause warnings or errors.
+    <code>considerInertance = false</code> should be used. Otherwise the resulting mass flow rate has to be continuous, which is impractical, and can cause warnings or errors.
   </p>
 </html>
 "),        Diagram(graphics={
@@ -829,7 +829,7 @@ equation
         Text(
           extent={{-376,220},{-296,200}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}));
 end Prescribed2;

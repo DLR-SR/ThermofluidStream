@@ -30,7 +30,7 @@ equation
         Text(
           extent={{-90,130},{-10,110}},
           textColor={238,46,47},
-          textString="requires neglectInertance = true
+          textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(info="<html>
