@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
 model NeglectInertance "Example - Loop breaker"
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby

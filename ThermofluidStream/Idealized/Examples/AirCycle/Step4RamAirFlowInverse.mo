@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step4RamAirFlowInverse
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(

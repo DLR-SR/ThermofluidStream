@@ -4,7 +4,7 @@ model Inversion1 "Example - Inversion with non-linear equations solver and h as 
     massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed),
     junction(h_mix(start=Medium.h_default)),
     dropOfCommons(considerInertance=false));
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(
       unit="K",
       displayUnit="degC") = 298.15) annotation(

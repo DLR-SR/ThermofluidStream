@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater;
 model Inversion
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby

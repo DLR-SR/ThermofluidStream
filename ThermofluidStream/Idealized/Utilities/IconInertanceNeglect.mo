@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Utilities;
-class IconNeglectInertance "Icon for neglect inertance = true"
+class IconInertanceNeglect "Icon for considerInertance = false"
 
   annotation(Icon(graphics={
         Polygon(
@@ -12,4 +12,4 @@ class IconNeglectInertance "Icon for neglect inertance = true"
     <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 </html>"));
-end IconNeglectInertance;
+end IconInertanceNeglect;

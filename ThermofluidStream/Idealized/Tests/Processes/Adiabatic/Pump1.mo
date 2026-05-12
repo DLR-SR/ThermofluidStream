@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.Adiabatic;
 model Pump1 "Pump model with the adiabatic process"
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(

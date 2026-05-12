@@ -4,7 +4,7 @@ class UsersGuide "User's Guide"
 
 class AdiabaticThermodynamicModels
   extends Modelica.Icons.Information;
-                                     annotation(
+  annotation(
     Documentation(info="<html>
   <p>
     Various models from
@@ -69,7 +69,7 @@ end AdiabaticThermodynamicModels;
 
 class BalancedModels
   extends Modelica.Icons.Information;
-                                     annotation(
+  annotation(
     Documentation(info="<html>
  <p>
     Some models are not balanced:
@@ -156,18 +156,31 @@ class EnergyFlow
 </html>"));
 end EnergyFlow;
 
-class neglectInertance
+class InertanceNeglect
   extends Modelica.Icons.Information;
-                                     annotation(
+  annotation(
     Documentation(info="<html>
-  <p>    
-    Inverse calculations are supported, for example determining the mass flow rate from a specified temperature difference and heat flow.<br> 
-    Such inverse calculations may require to remove the derivative of the mass flow rate <code>der(m_flow)</code>, refered to as <strong>neglectInertance</strong>.<br>
-    <strong>neglectInertance</strong> currently requires a dedicated TFS branch:
-    <a href=\"https://github.com/RaphaelGebhart/ThermofluidStream/tree/InertanceSwitch\">github.com/RaphaelGebhart/ThermofluidStream/tree/InertanceSwitch</a>.<br>
-    Examples using <code>considerInertance = false</code> are highlighted with a red <strong>L</strong>.<br> 
-    Components with <code>considerInertance = false</code> use a red dot in the graphical layer for highlighting.<br>
-    Various approaches for inverse calculations are documented in the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion\">Inversion</a> package.
+  <p>
+    Inverse calculations are supported, for example, determining the mass flow rate
+    from a specified temperature difference and heat flow.<br>
+
+    Such inverse calculations may require removing the derivative of the mass flow
+    rate <code>der(m_flow)</code>. This can be achieved by setting
+    <code>considerInertance = false</code> for all affected models, e.g., via
+    <code>dropOfCommons.considerInertance</code>. See
+    <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.<br>
+
+    Setting <code>considerInertance = false</code> is intended for advanced use only.<br>
+
+    Examples using <code>considerInertance = false</code> are marked with a red
+    <strong>L</strong>.<br>
+
+    Components with <code>considerInertance = false</code> are highlighted by a red
+    dot in the graphical layer.<br>
+
+    Various approaches for inverse calculations are documented in the
+    <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion\">Inversion</a>
+    package.
   </p>
 </html>", revisions="<html>
   <ul>
@@ -177,7 +190,7 @@ class neglectInertance
     </li>
   </ul>
 </html>"));
-end neglectInertance;
+end InertanceNeglect;
 
 class References "References"
   extends Modelica.Icons.References;

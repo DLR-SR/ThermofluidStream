@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model Prescribed2
   extends ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas.PartialPrescribed;
-  extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
