@@ -12,14 +12,14 @@ the outlet the sink is connected to.
 </html>"));
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced", enable = not neglectInertance), Evaluate = neglectInertance, HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
 
-  SI.Pressure r "Inertial pressure"
-    annotation(HideResult=true);
+  SI.Pressure r "Inertial pressure" annotation(
+    HideResult=true);
 
 equation
   r = inlet.r;

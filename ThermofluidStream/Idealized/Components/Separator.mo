@@ -6,13 +6,13 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
 
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each component"
     annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
-  parameter AssertionLevel assertionLevel=AssertionLevel.warning "Assertion level for dp_AB"
-    annotation(Dialog(group="Warnings"));
-  parameter Real relTol_dp_AB = 1e-3 "Relative tolerance for inlet pressure difference pA, pB"
-    annotation(Dialog(group="Warnings"));
+  parameter AssertionLevel assertionLevel=AssertionLevel.warning "Assertion level for dp_AB" annotation(
+    Dialog(group="Warnings"));
+  parameter Real relTol_dp_AB = 1e-3 "Relative tolerance for inlet pressure difference pA, pB" annotation(
+    Dialog(group="Warnings"));
   final parameter String name = getInstanceName();
 
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)

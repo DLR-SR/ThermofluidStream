@@ -6,15 +6,15 @@ model MassFlowRate "Generic mass flow rate source - Overdetermined (1 equation)"
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter SI.MassFlowRate m_flow_fixed = 0 "Fixed mass flow rate"
-    annotation(Dialog(group="Specification",
+  parameter SI.MassFlowRate m_flow_fixed = 0 "Fixed mass flow rate" annotation(
+    Dialog(group="Specification",
       enable = m_flowSpec ==ValueSpecification.Fixed),
       HideResult = not m_flowSpec == ValueSpecification.Fixed);
-  parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed mass flow rate [kg/s]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed mass flow rate [kg/s]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
 
 protected
   Modelica.Blocks.Interfaces.RealInput m_flow_actual(unit = "kg/s") "Actual mass flow rate [kg/s], required due to the conditional connector m_flow_prescribed";

@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model PartialPrescribed
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    annotation(choicesAllMatching = true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium annotation(
+    choicesAllMatching = true);
 
   SI.Pressure p_in=inletPressure.y;
   SI.Temperature T_in=inletTemperature.y;

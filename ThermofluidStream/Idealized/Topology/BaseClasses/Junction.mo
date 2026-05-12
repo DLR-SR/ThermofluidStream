@@ -9,8 +9,8 @@ partial model Junction "Partial junction"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Specification free =ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A      "Free inlet"
-    annotation(choices(__Dymola_radioButtons=true,
+  parameter Specification free =ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A      "Free inlet" annotation(
+    choices(__Dymola_radioButtons=true,
     choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "A",
     choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B "B"),Evaluate=true);
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
@@ -19,12 +19,12 @@ partial model Junction "Partial junction"
     annotation (Dialog(tab="Advanced",
       enable = not neglectInertance),
       HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level"
-    annotation(Dialog(group="Warnings"));
-  parameter Real relTol_dp_AB = 1e-3 "Relative tolerance for inlet pressure difference pA, pB"
-    annotation(Dialog(group="Warnings"));
+  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
+    Dialog(group="Warnings"));
+  parameter Real relTol_dp_AB = 1e-3 "Relative tolerance for inlet pressure difference pA, pB" annotation(
+    Dialog(group="Warnings"));
   final parameter String name = getInstanceName();
 
   //Real equalInletPressures "= 1.0 if within tolerance, = -1.0 if tolerance is exceeded";

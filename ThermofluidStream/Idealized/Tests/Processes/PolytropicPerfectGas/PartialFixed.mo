@@ -2,8 +2,8 @@ within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model PartialFixed "Parameter definition"
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium
-    annotation(choicesAllMatching = true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium annotation(
+    choicesAllMatching = true);
   parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
   parameter Real pRatio=2  "Fixed pressure ratio (pRatio = p_out/p_in)";

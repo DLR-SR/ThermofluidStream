@@ -2,6 +2,6 @@ within ThermofluidStream.Idealized.Types.OutletSpecification;
 type Composition = enumeration(
   MassFractionsDifference,
   OutletMassFractions) "Options for specifying the outlet mass fractions in MassFractionModifier"
-    annotation(choices(__Dymola_radioButtons=true,
-        choice =ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference   "Mass fractions difference",
-        choice =ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions   "Outlet mass fractions"));
+annotation(choices(__Dymola_radioButtons=true,
+  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference "Mass fractions difference",
+  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions "Outlet mass fractions"));

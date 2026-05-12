@@ -2,13 +2,13 @@ within ThermofluidStream.Idealized.EnergyFlow.Components;
 model FixedTransferEfficiency "Model with fixed transfer efficiency"
 
   parameter SI.Efficiency eta(final max = 1) = 1 "Transfer efficiency";
-  parameter Boolean outputDissipation = false "= true, if dissipation output connector is enabled"
-    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean outputDissipation = false "= true, if dissipation output connector is enabled" annotation(
+    Evaluate=true, HideResult=true, choices(checkBox=true));
   Real direction = sign(E_flow_in) "= 1.0 if physical direction of power flow is from input to output, = -1.0 if opposite";
-  Interfaces.EnergyFlowInput E_flow_in
-    annotation(Placement(transformation(extent={{-140,-20},{-100,20}}), iconTransformation(extent={{-140,-20},{-100,20}})));
-  Interfaces.EnergyFlowOutput E_flow_out
-    annotation(Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
+  Interfaces.EnergyFlowInput E_flow_in annotation(
+    Placement(transformation(extent={{-140,-20},{-100,20}}), iconTransformation(extent={{-140,-20},{-100,20}})));
+  Interfaces.EnergyFlowOutput E_flow_out annotation(
+    Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
   Interfaces.EnergyFlowOutput E_flow_dissipation_out = -E_flow_dissipation if outputDissipation "Dissipative energy flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

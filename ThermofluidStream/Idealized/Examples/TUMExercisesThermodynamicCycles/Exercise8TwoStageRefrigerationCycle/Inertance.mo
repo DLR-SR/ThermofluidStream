@@ -5,14 +5,14 @@ model Inertance
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true);
-  parameter SI.Mass m = 75 "Mass to be cooled"
-    annotation(Dialog(group="Cooling requirement"));
-  parameter SI.SpecificHeatCapacity c = 2e3 "Specific heat capacity"
-    annotation(Dialog(group="Cooling requirement"));
-  parameter SI.TemperatureDifference dT = 40 "Temperature difference"
-    annotation(Dialog(group="Cooling requirement"));
-  parameter SI.Time duration(displayUnit="min")=900 "Time"
-    annotation(Dialog(group="Cooling requirement"));
+  parameter SI.Mass m = 75 "Mass to be cooled" annotation(
+    Dialog(group="Cooling requirement"));
+  parameter SI.SpecificHeatCapacity c = 2e3 "Specific heat capacity" annotation(
+    Dialog(group="Cooling requirement"));
+  parameter SI.TemperatureDifference dT = 40 "Temperature difference" annotation(
+    Dialog(group="Cooling requirement"));
+  parameter SI.Time duration(displayUnit="min")=900 "Time" annotation(
+    Dialog(group="Cooling requirement"));
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,

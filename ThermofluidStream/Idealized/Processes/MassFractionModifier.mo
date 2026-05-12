@@ -8,19 +8,19 @@ model MassFractionModifier "Mass fraction modifier"
   parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference "Quantity used to define the outlet state" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ThermofluidStream.Types.MassFractionDifference dXi_fixed[Medium.nXi]=fill(0, Medium.nXi) "Fixed difference in mass fractions (dXi = Xi_out - Xi_in)" annotation (Dialog(group="Specification", enable=outletValueSpec == ValueSpecification.Fixed and outletSpec ==OutletSpecification.MassFractionsDifference),  HideResult=not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.MassFractionsDifference);
-  parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions"
-    annotation(Dialog(group="Specification",
+  parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions" annotation(
+    Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletMassFractions),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletMassFractions);
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dXi_fixed or Xi_out_fixed)"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and outletValueSpec ==ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dXi_fixed or Xi_out_fixed)" annotation(
+    Dialog(tab="Layout",group="Display parameters",enable=displayParameters and outletValueSpec ==ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed[Medium.nXi] if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [kg/kg]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed[Medium.nXi] if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [kg/kg]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
 
   ThermofluidStream.Types.MassFractionDifference dXi[Medium.nXi] "Difference in mass fractions";
-  Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet temperature"
-    annotation(HideResult=true);
+  Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet temperature" annotation(
+    HideResult=true);
 
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual[Medium.nXi] "Actual outlet specification [kg/kg], required due to the conditional connector outletSpec_prescribed";

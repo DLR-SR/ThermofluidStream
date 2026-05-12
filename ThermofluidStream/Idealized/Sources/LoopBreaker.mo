@@ -8,47 +8,47 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (choicesAllMatching=true);
   parameter ValueSpecification pSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet pressure is fixed or prescribed" annotation (Dialog(group="Pressure"), Evaluate=true);
-  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
-    annotation(Dialog(group="Pressure",
+  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
+    Dialog(group="Pressure",
       enable = pSpec ==ValueSpecification.Fixed),
       HideResult = not pSpec == ValueSpecification.Fixed);
   parameter ThermalSpecification thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature "Thermal quantity used to define the outlet state" annotation (Dialog(group="Thermal"), Evaluate=true);
   parameter ValueSpecification thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet thermal quantity is fixed or prescribed" annotation (Dialog(group="Thermal"), Evaluate=true);
-  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature"
-    annotation(Dialog(group="Thermal",
+  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
+    Dialog(group="Thermal",
       enable = thermalSpec ==ThermalSpecification.Temperature  and thermalValueSpec ==ValueSpecification.Fixed),
       HideResult = not thermalSpec == ThermalSpecification.Temperature or not thermalValueSpec == ValueSpecification.Fixed);
-  parameter Medium.SpecificEnthalpy h_out_fixed = Medium.h_default "Fixed outlet specific enthalpy"
-    annotation(Dialog(group="Thermal",
+  parameter Medium.SpecificEnthalpy h_out_fixed = Medium.h_default "Fixed outlet specific enthalpy" annotation(
+    Dialog(group="Thermal",
       enable = thermalSpec ==ThermalSpecification.SpecificEnthalpy  and thermalValueSpec ==ValueSpecification.Fixed),
       HideResult = not thermalSpec == ThermalSpecification.SpecificEnthalpy or not thermalValueSpec == ValueSpecification.Fixed);
   parameter ValueSpecification XiSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet mass fractions are fixed or prescribed" annotation (Dialog(group="Mass fractions"), Evaluate=true);
-  parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions"
-    annotation(Dialog(group="Mass fractions",
+  parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions" annotation(
+    Dialog(group="Mass fractions",
       enable = XiSpec ==ValueSpecification.Fixed),
       HideResult = not XiSpec == ValueSpecification.Fixed);
 
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
     annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
 
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level"
-    annotation(Dialog(tab="Advanced",group="Accepted errors"));
-  parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1e-5*Medium.p_default "Absolute tolerance for pressure p_in, p_out"
-    annotation(Dialog(tab="Advanced",group="Accepted errors"));
-  parameter SI.SpecificEnthalpy tol_h = 500 "Absolute tolerance for specific enthalpy h_in, h_out"
-    annotation(Dialog(tab="Advanced",group="Accepted errors"));
-  parameter SI.MassFlowRate tol_m_flow = 1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out"
-    annotation(Dialog(tab="Advanced",group="Accepted errors"));
-  parameter SI.MassFlowRate tol_Xi = 1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out"
-    annotation(Dialog(tab="Advanced",group="Accepted errors"));
-  parameter Boolean showPressure = true "= true to show the fixed outlet pressure value p_out_fixed"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and pSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showThermalSpecification = true "= true to show the fixed outlet thermal specification value (either T_out_fixed or h_out_fixed)"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and thermalValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showMassFractions = false "= true to show the fixed outlet mass fraction values Xi_out_fixed"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
+    Dialog(tab="Advanced",group="Accepted errors"));
+  parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1e-5*Medium.p_default "Absolute tolerance for pressure p_in, p_out" annotation(
+    Dialog(tab="Advanced",group="Accepted errors"));
+  parameter SI.SpecificEnthalpy tol_h = 500 "Absolute tolerance for specific enthalpy h_in, h_out" annotation(
+    Dialog(tab="Advanced",group="Accepted errors"));
+  parameter SI.MassFlowRate tol_m_flow = 1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out" annotation(
+    Dialog(tab="Advanced",group="Accepted errors"));
+  parameter SI.MassFlowRate tol_Xi = 1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out" annotation(
+    Dialog(tab="Advanced",group="Accepted errors"));
+  parameter Boolean showPressure = true "= true to show the fixed outlet pressure value p_out_fixed" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and pSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showThermalSpecification = true "= true to show the fixed outlet thermal specification value (either T_out_fixed or h_out_fixed)" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and thermalValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showMassFractions = false "= true to show the fixed outlet mass fraction values Xi_out_fixed" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String name = getInstanceName();
 
   Modelica.Blocks.Interfaces.RealInput p_out_prescribed(unit="Pa") if pSpec ==ValueSpecification.Prescribed  "Prescribed outlet pressure [Pa]"
@@ -65,16 +65,16 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-  SI.MassFlowRate m_flow_in = inlet.m_flow "Mass flow rate"
-    annotation(HideResult=true);
-  Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure"
-    annotation(HideResult=true);
-  Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy"
-    annotation(HideResult=true);
-  Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions"
-    annotation(HideResult=true);
-  SI.MassFlowRate m_flow_out = -outlet.m_flow "Mass flow rate outlet"
-    annotation(HideResult=true);
+  SI.MassFlowRate m_flow_in = inlet.m_flow "Mass flow rate" annotation(
+    HideResult=true);
+  Medium.AbsolutePressure p_in = Medium.pressure(inlet.state) "Inlet pressure" annotation(
+    HideResult=true);
+  Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(inlet.state) "Inlet specific enthalpy" annotation(
+    HideResult=true);
+  Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(inlet.state) "Inlet mass fractions" annotation(
+    HideResult=true);
+  SI.MassFlowRate m_flow_out = -outlet.m_flow "Mass flow rate outlet" annotation(
+    HideResult=true);
   SI.MassFlowRate dm_flow "Mass flow rate difference";
   SI.Pressure dp "Pressure difference";
   SI.SpecificEnthalpy dh "Specific enthalpy difference";

@@ -7,9 +7,10 @@ model Adiabatic "Adiabatic process"
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
   import PowerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
 
-  replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium constrainedby ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic
-    "Thermodynamic model used for adiabatic process calculation"
-    annotation(Evaluate = true, choices(
+  replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
+    constrainedby ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic
+    "Thermodynamic model used for adiabatic process calculation" annotation(
+    Evaluate = true, choices(
       choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
         "h_out_is = h(p_out, s_in)"),
       choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma
@@ -21,66 +22,63 @@ model Adiabatic "Adiabatic process"
       choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference
         "h_out_is = h(p_out, T_in)")));
 
-  parameter PowerSignal powerSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Power signal configuration"
-    annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified"
-    annotation (Dialog(group="Specification"),Evaluate=true,HideResult=true,choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation (
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
-  parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)"
-    annotation(Dialog(group="Specification",
+  parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
+    Dialog(group="Specification"), Evaluate=true, HideResult=true);
+  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
+    Dialog(group="Specification"),Evaluate=true,HideResult=true,choices(checkBox=true));
+  parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
+  parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
+  parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)" annotation(
+    Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureDifference  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Real pr_fixed = 1 "Fixed pressure ratio (pr = p_out/p_in)"
-    annotation(Dialog(group="Specification",
+  parameter Real pr_fixed = 1 "Fixed pressure ratio (pr = p_out/p_in)" annotation(
+    Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureRatio  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
-    annotation(Dialog(group="Specification",
+  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
+    Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.OutletPressure  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed);
-  parameter ValueSpecification etaSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation (Dialog(group="Efficiency"), Evaluate=true);
-  parameter SI.Efficiency eta_fixed = 1 "Fixed isentropic efficiency"
-    annotation(Dialog(group="Efficiency",
+  parameter ValueSpecification etaSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation(
+    Dialog(group="Efficiency"), Evaluate=true);
+  parameter SI.Efficiency eta_fixed = 1 "Fixed isentropic efficiency" annotation(
+    Dialog(group="Efficiency",
       enable = etaSpec ==ValueSpecification.Fixed),
       HideResult = not etaSpec == ValueSpecification.Fixed);
-  parameter Boolean enableFilter = true "=true to enable a first order filter for the outlet pressure"
-    annotation(Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
+  parameter Boolean enableFilter = true "=true to enable a first order filter for the outlet pressure" annotation(
+    Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = not specifyOutlet and powerSignal == PowerSignal.Input), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.Time TC = 1 "Filter time constant"
-    annotation(Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
+  parameter SI.Time TC = 1 "Filter time constant" annotation(
+    Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter SI.Power P_nom = 1 "Nominal power (influences filter time constant)"
-    annotation(Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
+  parameter SI.Power P_nom = 1 "Nominal power (influences filter time constant)" annotation(
+    Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter SI.PressureDifference dp_nom = 1e5 "Nominal pressure difference (influences filter time constant)"
-    annotation(Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
+  parameter SI.PressureDifference dp_nom = 1e5 "Nominal pressure difference (influences filter time constant)" annotation(
+    Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (filter initialization)"
-    annotation(Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
+  parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (filter initialization)" annotation(
+    Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed or p_out_fixed)"
-    annotation(Dialog(tab="Layout", group="Display parameters",
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed or p_out_fixed)" annotation(
+    Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and specifyOutlet and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showEfficiency = true "= true to show the fixed isentropic efficiency value eta_is_fixed"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showPowerDirection = true "= true to show the actual power direction"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showEfficiency = true "= true to show the fixed isentropic efficiency value eta_is_fixed" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"
@@ -90,8 +88,8 @@ model Adiabatic "Adiabatic process"
   SI.SpecificEnthalpy dh "Difference in specific enthalpy dh = h_out - h_in";
   Real pr = p_out/p_in "Pressure ratio";
   SI.Power P "Power (technical work flow rate)";
-  SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)"
-    annotation(HideResult = true);
+  SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)" annotation(
+    HideResult = true);
 
   final ThermodynamicModel adiabaticModel(
     redeclare final package Medium = Medium,

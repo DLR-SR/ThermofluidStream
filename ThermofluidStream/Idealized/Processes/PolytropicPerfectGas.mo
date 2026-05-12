@@ -18,123 +18,123 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference      "Quantity used to define the outlet state"
     annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification", enable=not outletSpec == OutletSpecification.Unspecified), Evaluate=true);
-  parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)"
-    annotation(Dialog(group="Specification",
+  parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)" annotation(
+    Dialog(group="Specification",
       enable = outletSpec == OutletSpecification.PressureDifference and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Real pRatio_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)"
-    annotation(Dialog(group="Specification",
+  parameter Real pRatio_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)" annotation(
+    Dialog(group="Specification",
       enable = outletSpec == OutletSpecification.PressureRatio and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
-    annotation(Dialog(group="Specification",
+  parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
+    Dialog(group="Specification",
       enable = (outletSpec == OutletSpecification.OutletPressure and outletValueSpec ==ValueSpecification.Fixed)  or (processSpec == ProcessSpecification.OutletPressure and processValueSpec ==ValueSpecification.Fixed)),
       HideResult = (not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed) and (not processSpec == ProcessSpecification.OutletPressure or not processValueSpec == ValueSpecification.Fixed));
-  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature"
-    annotation(Dialog(group="Specification",
+  parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
+    Dialog(group="Specification",
       enable = (outletSpec == OutletSpecification.OutletTemperature and outletValueSpec ==ValueSpecification.Fixed)  or (processSpec == ProcessSpecification.OutletTemperature and processValueSpec ==ValueSpecification.Fixed)),
       HideResult = (not outletSpec == OutletSpecification.OutletTemperature or not outletValueSpec == ValueSpecification.Fixed) and (not processSpec == ProcessSpecification.OutletTemperature or not processValueSpec == ValueSpecification.Fixed));
-  parameter Real rhoRatio_fixed = 1 "Fixed compression ratio (rho_out/rho_in)"
-    annotation(Dialog(group="Specification",
+  parameter Real rhoRatio_fixed = 1 "Fixed compression ratio (rho_out/rho_in)" annotation(
+    Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.CompressionRatio),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.CompressionRatio);
-  parameter Medium.Density rho_out_fixed = Medium.density(Medium.setState_pTX(Medium.p_default, Medium.T_default, Medium.X_default)) "Fixed outlet density"
-    annotation(Dialog(group="Specification",
+  parameter Medium.Density rho_out_fixed = Medium.density(Medium.setState_pTX(Medium.p_default, Medium.T_default, Medium.X_default)) "Fixed outlet density" annotation(
+    Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletDensity),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletDensity);
-  parameter SI.SpecificVolume v_out_fixed = 1/rho_out_fixed "Fixed outlet specific volume"
-    annotation(Dialog(group="Specification",
+  parameter SI.SpecificVolume v_out_fixed = 1/rho_out_fixed "Fixed outlet specific volume" annotation(
+    Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificVolume),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificVolume);
   parameter ProcessSpecification processSpec =ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency      "Quantity used to define the process"
     annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification processValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter SI.Efficiency eta_pol_fixed = 1 "Fixed polytropic efficiency"
-    annotation(Dialog(group="Specification",
+  parameter SI.Efficiency eta_pol_fixed = 1 "Fixed polytropic efficiency" annotation(
+    Dialog(group="Specification",
       enable = processSpec == ProcessSpecification.PolytropicEfficiency and processValueSpec ==ValueSpecification.Fixed),
       HideResult = not processSpec == ProcessSpecification.PolytropicEfficiency or not processValueSpec == ValueSpecification.Fixed);
-  parameter Real n_fixed = Medium.isentropicExponent(Medium.setState_pTX(Medium.p_default, Medium.T_default, Medium.X_default))  "Fixed polytropic exponent"
-    annotation(Dialog(group="Specification",
+  parameter Real n_fixed = Medium.isentropicExponent(Medium.setState_pTX(Medium.p_default, Medium.T_default, Medium.X_default))  "Fixed polytropic exponent" annotation(
+    Dialog(group="Specification",
       enable = processSpec == ProcessSpecification.PolytropicExponent and processValueSpec ==ValueSpecification.Fixed),
       HideResult = not processSpec == ProcessSpecification.PolytropicExponent or not processValueSpec == ValueSpecification.Fixed);
-  parameter SI.Efficiency eta_is_fixed = 1 "Fixed isentropic efficiency"
-    annotation(Dialog(group="Specification",
+  parameter SI.Efficiency eta_is_fixed = 1 "Fixed isentropic efficiency" annotation(
+    Dialog(group="Specification",
       enable = processSpec == ProcessSpecification.IsentropicEfficiency and processValueSpec ==ValueSpecification.Fixed),
       HideResult = not processSpec == ProcessSpecification.IsentropicEfficiency or not processValueSpec == ValueSpecification.Fixed);
 
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed, p_out_fixed, T_out_fixed, rhoRatio_fixed, rho_out_fixed or v_out_fixed)"
-    annotation(Dialog(tab="Layout", group="Display parameters",
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed, p_out_fixed, T_out_fixed, rhoRatio_fixed, rho_out_fixed or v_out_fixed)" annotation(
+    Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and not outletSpec == OutletSpecification.Unspecified and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showProcessSpecification = true "= true to show the fixed process specification value (either eta_pol_fixed, n_fixed, eta_is_fixed, p_out_fixed or T_out_fixed)"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable = displayParameters and processValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean showPowerDirection = true "= true to show the actual power direction"
-    annotation(Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure (cycle process)"
-    annotation(Dialog(group = "Closed cycle (periodic) process",
+  parameter Boolean showProcessSpecification = true "= true to show the fixed process specification value (either eta_pol_fixed, n_fixed, eta_is_fixed, p_out_fixed or T_out_fixed)" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and processValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
+    Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure (cycle process)" annotation(
+    Dialog(group = "Closed cycle (periodic) process",
       enable = systemSpec == SystemSpecification.Cycle),
       HideResult = not systemSpec == SystemSpecification.Cycle);
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  and not outletSpec == OutletSpecification.Unspecified "Prescribed outlet specification [SI-units]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput processSpec_prescribed if processValueSpec ==ValueSpecification.Prescribed  "Prescribed process specification [SI-units]"
-    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  and not outletSpec == OutletSpecification.Unspecified "Prescribed outlet specification [SI-units]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput processSpec_prescribed if processValueSpec ==ValueSpecification.Prescribed  "Prescribed process specification [SI-units]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput P_in = P if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
 
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet temperature";
-  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
-  SI.SpecificVolume v_in = 1/rho_in "Inlet specific volume"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
+  Medium.Density rho_in = Medium.density(inlet.state) "Inlet density" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
+  SI.SpecificVolume v_in = 1/rho_in "Inlet specific volume" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
 
   Medium.IsentropicExponent gamma = Medium.isentropicExponent(inlet.state) "Isentropic exponent";
   Real R(final unit = "J/(kg.K)") = Modelica.Constants.R/Medium.molarMass(inlet.state) "Specific gas constant";
-  Medium.SpecificHeatCapacity cp = Medium.specificHeatCapacityCp(inlet.state) "Specific isobaric heat capacity"
-    annotation(HideResult = systemSpec == SystemSpecification.Cycle);
-  Medium.SpecificHeatCapacity cv = cp - R "Specific isochoric heat capacity"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
+  Medium.SpecificHeatCapacity cp = Medium.specificHeatCapacityCp(inlet.state) "Specific isobaric heat capacity" annotation(
+    HideResult = systemSpec == SystemSpecification.Cycle);
+  Medium.SpecificHeatCapacity cv = cp - R "Specific isochoric heat capacity" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
 
-  Medium.Temperature T_out "Outlet temperature"
-    annotation(HideResult=true);
+  Medium.Temperature T_out "Outlet temperature" annotation(
+    HideResult=true);
   SI.Temperature T_out_is "Isentropic outlet temperature";
-  Medium.Density rho_out "Outlet density"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
-  SI.SpecificVolume v_out = 1/rho_out "Outlet specific volume"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
+  Medium.Density rho_out "Outlet density" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
+  SI.SpecificVolume v_out = 1/rho_out "Outlet specific volume" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
 
   SI.TemperatureDifference dT = T_out - T_in "Temperature difference (T_out - T_in)";
   SI.TemperatureDifference dT_is = T_out_is - T_in "Isentropic temperature difference (T_out_is - T_in)";
-  SI.SpecificEnthalpy dh = cp*dT "Specific enthalpy difference (h_out - h_in)"
-    annotation(HideResult = systemSpec == SystemSpecification.Cycle);
-  SI.SpecificEnergy du = cv*dT "Specific internal energy difference (u2 - u1) for stationary flow representation of a polytropic cycle process"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
+  SI.SpecificEnthalpy dh = cp*dT "Specific enthalpy difference (h_out - h_in)" annotation(
+    HideResult = systemSpec == SystemSpecification.Cycle);
+  SI.SpecificEnergy du = cv*dT "Specific internal energy difference (u2 - u1) for stationary flow representation of a polytropic cycle process" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
 
   SI.Efficiency eta_is "Isentropic efficiency";
   SI.Efficiency eta_pol "Polytropic efficiency";
   Real n "Polytropic exponent";
 
-  SI.SpecificEnthalpy w_s = dh "Specific shaft work"
-    annotation(HideResult = systemSpec == SystemSpecification.Cycle); // More precisely dh = w_s + q
-  SI.SpecificEnthalpy w_s_is = cp*dT_is "Isentropic specific shaft work"
-    annotation(HideResult = systemSpec == SystemSpecification.Cycle);
-  SI.SpecificEnthalpy w_p = n_aux*R*dT "Specific pressure work"
-    annotation(HideResult = systemSpec == SystemSpecification.Cycle);
+  SI.SpecificEnthalpy w_s = dh "Specific shaft work" annotation(
+    HideResult = systemSpec == SystemSpecification.Cycle); // More precisely dh = w_s + q
+  SI.SpecificEnthalpy w_s_is = cp*dT_is "Isentropic specific shaft work" annotation(
+    HideResult = systemSpec == SystemSpecification.Cycle);
+  SI.SpecificEnthalpy w_p = n_aux*R*dT "Specific pressure work" annotation(
+    HideResult = systemSpec == SystemSpecification.Cycle);
 
   // Stationary-flow representation of a polytropic cycle process
-  SI.SpecificEnergy w_i = du "Specific internal work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow); // More precisely du = w_i + q
-  SI.SpecificEnergy w_i_net = du - w_amb "Net specific internal work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow); // More precisely du = w_i + q
-  SI.SpecificEnergy w_i_is = cv*dT_is "Specific isentropic internal work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_exp = 1/(n-1)*R*dT  "Specific expansion work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_amb = -p_inf*(v_out - v_in) "Specific ambient pressure work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
-  SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work"
-    annotation(HideResult = systemSpec == SystemSpecification.Flow);
+  SI.SpecificEnergy w_i = du "Specific internal work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow); // More precisely du = w_i + q
+  SI.SpecificEnergy w_i_net = du - w_amb "Net specific internal work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow); // More precisely du = w_i + q
+  SI.SpecificEnergy w_i_is = cv*dT_is "Specific isentropic internal work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
+  SI.SpecificEnergy w_exp = 1/(n-1)*R*dT  "Specific expansion work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
+  SI.SpecificEnergy w_amb = -p_inf*(v_out - v_in) "Specific ambient pressure work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
+  SI.SpecificEnergy w_exp_net = w_exp - w_amb  "Net specific expansion work" annotation(
+    HideResult = systemSpec == SystemSpecification.Flow);
 
   SI.SpecificEnthalpy w_f = w_s - w_p "Specific friction work"; // More precisely w_s - w_p = w_f + q or w_i - w_exp =  w_f + q
 
@@ -150,13 +150,13 @@ protected
   Real pRatio = p_out/p_in "Pressure ratio p_out/p_in";
   Real TRatio(start = 1) = T_out/T_in "Temperature ratio T_out/T_in";
   Real TRatio_is(start = 1) = T_out_is/T_in "Isentropic temperature ratio T_out_is/T_in";
-  Real rhoRatio = rho_out/rho_in "Compression ratio rho_out/rho_in"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
+  Real rhoRatio = rho_out/rho_in "Compression ratio rho_out/rho_in" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume));
   Real log_pRatio = log(pRatio) "=log(pRatio)"; //required to avoid implicit nonlinear equations
   Real log_TRatio = log(TRatio) "=log(TRatio)"; //required to avoid implicit nonlinear equations
   Real log_TRatio_is = log(TRatio_is) "=log(TRatio_is)"; //required to avoid implicit nonlinear equations
-  Real log_rhoRatio = log(rhoRatio) "=log(rhoRatio)"
-    annotation(HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume)); //required to avoid implicit nonlinear equations
+  Real log_rhoRatio = log(rhoRatio) "=log(rhoRatio)" annotation(
+    HideResult = not systemSpec == SystemSpecification.Cycle or not (outletSpec == OutletSpecification.CompressionRatio or outletSpec == OutletSpecification.OutletDensity or outletSpec == OutletSpecification.OutletSpecificVolume)); //required to avoid implicit nonlinear equations
   Real isCompression "=1.0 if p_out > p_in + eps"; //required to avoid implicit nonlinear equations
   Real isExpansion "=1.0 if p_out < p_in - eps"; //required to avoid implicit nonlinear equations
   constant Real eps = Modelica.Constants.eps;

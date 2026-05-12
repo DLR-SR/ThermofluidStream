@@ -5,10 +5,10 @@ partial model PartialIncompressibleFluid "Base class for adiabatic thermodynamic
   extends ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic;
   // unknowns - equations = 2
 
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level"
-    annotation(Dialog(group="Warnings"));
-  parameter Real relTolDensity = 1e-2 "Relative tolerance for densities rho_in, rho_out"
-    annotation(Dialog(group="Warnings"));
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
+    Dialog(group="Warnings"));
+  parameter Real relTolDensity = 1e-2 "Relative tolerance for densities rho_in, rho_out" annotation(
+    Dialog(group="Warnings"));
   final parameter String name = getInstanceName();
 
   Medium.Temperature T_in = Medium.temperature(state_in) "Inlet temperature";

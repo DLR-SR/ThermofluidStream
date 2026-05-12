@@ -4,8 +4,8 @@ partial model PartialAdiabatic "Base class for adiabatic thermodynamic models fo
 
   extends Modelica.Blocks.Icons.Block;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model (automatically inherited from enclosing component; not required to be configured; can be ignored)"
-    annotation(Dialog(enable=false));
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model (automatically inherited from enclosing component; not required to be configured; can be ignored)" annotation(
+    Dialog(enable=false));
   input Medium.ThermodynamicState state_in "Inlet state";
   input Medium.AbsolutePressure p_out "Outlet pressure";
   input SI.Efficiency eta_is "Isentropic efficiency";
@@ -14,10 +14,10 @@ partial model PartialAdiabatic "Base class for adiabatic thermodynamic models fo
   SI.SpecificEnthalpy w_t "Specific technical work";
   SI.SpecificEnthalpy w_t_is "Specific isentropic technical work";
 
-  Medium.AbsolutePressure p_in = Medium.pressure(state_in) "Inlet pressure"
-    annotation(HideResult=true);
-  Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(state_in) "Inlet mass fractions"
-    annotation(HideResult=true);
+  Medium.AbsolutePressure p_in = Medium.pressure(state_in) "Inlet pressure" annotation(
+    HideResult=true);
+  Medium.MassFraction Xi_in[Medium.nXi] = Medium.massFraction(state_in) "Inlet mass fractions" annotation(
+    HideResult=true);
 
 equation
   if p_out >= p_in then
