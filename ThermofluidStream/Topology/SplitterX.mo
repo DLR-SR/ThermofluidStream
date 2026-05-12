@@ -7,10 +7,10 @@ model SplitterX "Splitter with one inlet and three outlets"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -24,7 +24,7 @@ model SplitterX "Splitter with one inlet and three outlets"
     displayInstanceName=true,
     final N=3,
     final L=L,
-    final neglectInertance = neglectInertance,
+    final considerInertance = considerInertance,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
@@ -88,17 +88,17 @@ equation
           extent={{80,-20},{120,-60}},
           textColor={175,175,175},
           textString="C"),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{20,100},{40,80}},
           lineColor={238,46,47},
           fillColor={238,46,47},
           fillPattern=FillPattern.Solid),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{80,40},{100,20}},
           lineColor={238,46,47},
           fillColor={238,46,47},
           fillPattern=FillPattern.Solid),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{20,-80},{40,-100}},
           lineColor={238,46,47},
           fillColor={238,46,47},

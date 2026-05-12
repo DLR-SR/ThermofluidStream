@@ -8,10 +8,10 @@ model SplitterN "Splitter with one inlet and N outlets"
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
   parameter Integer N(min=1) = 1 "Number of outputs";
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
 
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "Inlet"
@@ -25,14 +25,14 @@ protected
   SI.Pressure r_mix "Inertial pressure of mixture";
 
 equation
-  if not neglectInertance then
+  if considerInertance then
     der(inlet.m_flow) * L = inlet.r - r_mix;
   else
     0 = inlet.r - r_mix;
   end if;
 
   for i in 1:N loop
-    if not neglectInertance then
+    if considerInertance then
       der(outlets[i].m_flow) * L = outlets[i].r - r_mix;
     else
       0 = outlets[i].r - r_mix;
@@ -69,7 +69,7 @@ equation
           extent={{120,-20},{80,-60}},
           textColor={175,175,175},
           textString="%N"),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{80,40},{100,20}},
           lineColor={238,46,47},
           fillColor={238,46,47},

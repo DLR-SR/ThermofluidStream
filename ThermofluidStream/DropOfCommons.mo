@@ -59,7 +59,7 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
         Polygon(
           points={{40,-90},{80,-90},{80,-70},{60,-70},{60,-30},{40,-30},{40,-90}},
           fillColor= {162,29,33},
-          fillPattern= if neglectInertance then FillPattern.Solid else FillPattern.None,
+          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid,
           pattern=LinePattern.None)}),      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>

@@ -14,10 +14,10 @@ the outlet the sink is connected to.
     annotation(Dialog(group="Pressure"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.AbsolutePressure p0_par = Medium.p_default "Pressure set value"
     annotation(Dialog(group="Pressure", enable = not pressureFromInput));
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -52,7 +52,7 @@ equation
   if not pressureFromInput then
     p0 = p0_par;
   end if;
-  if not neglectInertance then
+  if considerInertance then
     der(inlet.m_flow)*L = inlet.r - r;
   else
     0 = inlet.r - r;
@@ -103,7 +103,7 @@ equation
           color={255,255,255},
           thickness=0.5),
         Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{-100,40},{-80,20}},
           lineColor={238,46,47},
           fillColor={238,46,47},

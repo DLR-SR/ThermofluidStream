@@ -138,17 +138,12 @@ equation
 
   q = dh; //du = q + w_exp;
 
-  // noEvent(abs(P) < eps)
-  if heatFlowSignal == HeatFlowSignal.Input and specifyOutlet and noEvent(abs(dh) < eps) then // and neglectInternace
-    /*  
+  if heatFlowSignal == HeatFlowSignal.Input and specifyOutlet and noEvent(abs(dh) < eps) and not considerInertance then
     assert(noEvent(abs(Q_flow) < eps),
-      "In \"" + name +"\" the heat flow rate is not zero, but the specific enthalpy difference is, implying infinite mass flow rate. \n"
+      "In \"" + name +"\" the heat flow rate Q_flow is not zero, but the specific enthalpy difference dh is, implying infinite mass flow rate. \n"
       + "  The mass flow rate is set to zero. \n",
     assertionLevel);
-    m_flow = 0; 
-    One should only set m_flow = 0 for considerInertance = false. Since neglectInertance is not yet pushed to TFS.main, I can not use it here. Therefor calculating m_flow from Q_flow at dh < eps is not currently not supported   
-    */
-    Q_flow = m_flow*q;
+    m_flow = 0;
   elseif heatFlowSignal == HeatFlowSignal.Input and not specifyOutlet and noEvent(abs(m_flow) < eps) then
     assert(noEvent(abs(Q_flow) < eps),
       "In \"" + name +"\" the heat flow rate is not zero, but the mass flow rate is, implying infinite difference in specific enthalpy difference. \n"

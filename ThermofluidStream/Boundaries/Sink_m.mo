@@ -17,10 +17,10 @@ the outlet the sink is connected to.
     annotation(Dialog(group="Mass flow rate",
       enable = m_flowSpec ==ValueSpecification.Fixed),
       HideResult = not m_flowSpec == ValueSpecification.Fixed);
-  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
-    annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
-  parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
@@ -43,7 +43,7 @@ equation
     m_flow = m_flow_fixed;
   end if;
 
-  if not neglectInertance then
+  if considerInertance then
     der(inlet.m_flow)*L = inlet.r - r;
   else
     0 = inlet.r - r;
@@ -104,7 +104,7 @@ equation
   </p>
 
   <p>
-    Discontinuous mass flow rates require <code>neglectInertance = true</code>. 
+    Discontinuous mass flow rates require <code>considerInertance = false</code>. 
   </p>
 </html>", revisions="<html>
   <ul>

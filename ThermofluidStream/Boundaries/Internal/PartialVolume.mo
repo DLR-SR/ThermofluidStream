@@ -40,10 +40,10 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy and use_hstart));
   parameter Boolean enableFreeInlet = false "true, if inlet is free (volume creates no pressure boundary condition)"
     annotation(Dialog(tab="Advanced", enable = useInlet),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet"
-    annotation (Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter Real k_volume_damping(unit="1", min=0) = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflow"
@@ -115,7 +115,7 @@ equation
   assert(-m_flow_out > m_flow_assert, "Positive mass flow rate at Volume outlet", dropOfCommons.assertionLevel);
   assert(M > 0, "Negative mass inside the volume");
 
-  if not neglectInertance then
+  if considerInertance then
     der(m_flow_in)*L = r_in - r - r_damping;
     der(m_flow_out)*L = r_out - r_damping;
   else

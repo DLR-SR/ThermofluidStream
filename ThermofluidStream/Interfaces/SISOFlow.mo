@@ -9,10 +9,10 @@ partial model SISOFlow "Base Model with basic flow eqautions for SISO"
     annotation (choicesAllMatching=true, Documentation(info="<html>
     <p>Medium package used in the Component. Make sure it is the same as the components connected to both ports are using.</p>
       </html>"));
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=false, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter StateSelect m_flowStateSelect = StateSelect.default "State selection for mass flow rate"
     annotation(Dialog(tab="Advanced"));
   parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for mass flow rate"
@@ -61,7 +61,7 @@ initial equation
 equation
 
   inlet.m_flow + outlet.m_flow = 0;
-  if not neglectInertance then
+  if considerInertance then
     outlet.r = inlet.r + dr_corr - der(inlet.m_flow) * L;
   else
     outlet.r = inlet.r + dr_corr;
@@ -83,7 +83,7 @@ equation
 <p>If p_out should be lower the p_min, the remaining pressure drop is added on the difference in inertial pressure r, basically accelerating or decelerating the massflow. </p>
 <p>The component offers different initialization methods for the massflow, as well as several parameters used in the equations above. </p>
 <p>The clipping of the massflow can be turned off (this should be done by the modeler as a final modificator while extending to hide this option from the enduser).</p>
-</html>"), Icon(graphics={Ellipse(visible = neglectInertance,
+</html>"), Icon(graphics={Ellipse(visible = not considerInertance,
           extent={{80,40},{100,20}},
           lineColor={238,46,47},
           fillColor={238,46,47},

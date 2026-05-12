@@ -28,10 +28,10 @@ the inlet the source is connected to.
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.SpecificEnthalpy h0_par = Medium.h_default "Specific enthalpy set value"
     annotation(Dialog(group="Specific enthalpy", enable = setEnthalpy and not enthalpyFromInput));
-  parameter Boolean neglectInertance = dropOfCommons.neglectInertance "=true, if mass flow rate dynamics are neglected - advanced mode!"
-    annotation(Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance"
-    annotation(Dialog(tab="Advanced", enable = not neglectInertance), HideResult = neglectInertance);
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -123,7 +123,7 @@ equation
    if not enthalpyFromInput or not setEnthalpy then
      h0 = h0_par;
    end if;
-  if not neglectInertance then
+  if considerInertance then
     L*der(outlet.m_flow) = outlet.r - 0;
   else
     outlet.r = 0;
@@ -182,7 +182,7 @@ equation
           points={{12,80},{12,-80}},
           color={255,255,255},
           thickness=1),
-        Ellipse(visible = neglectInertance,
+        Ellipse(visible = not considerInertance,
           extent={{80,40},{100,20}},
           lineColor={238,46,47},
           fillColor={238,46,47},
