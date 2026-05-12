@@ -139,7 +139,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     This model demonstrates a comparison of different 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
     through an example compression using 
     <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a>.
   </p>
@@ -166,14 +166,14 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
       https://github.com/DLR-SR/ThermofluidStream/pull/294
     </a>.<br>
     As also shown in 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.AdiabaticProcess.CO2\">Examples.AdiabaticProcess.CO2</a>, 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticProcess.CO2\">Examples.AdiabaticProcess.CO2</a>, 
     <code>incompressibleFluid</code> approaches the same limit as the pressure ratio tends to zero, while 
     <code>isothermalReference</code> is not suitable for ideal gases.
   </p>
 
   <p>
     For more details about the underlying assumptions, see: <br>
-    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermoFluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
   </p>
 </html>", revisions="<html>
   <ul>

@@ -124,7 +124,7 @@ equation
 
   <p>
     This example uses the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model, which uses the outlet pressure as the setpoint. 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model, which uses the outlet pressure as the setpoint. 
     For perfect gas the outlet pressure can be calculated explicetly.
   </p> 
  
@@ -142,7 +142,7 @@ equation
   </ul>
 
   <p>
-    The <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
+    The <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
     a periodic closed-cycle process when the isentropic efficiency is equal to unity, or when the working fluid is an ideal gas with constant isentropic exponent.
     Otherwise, discrepancies arise because the isentropic efficiency is defined based on shaft work (i.e., changes in specific enthalpy) in the first case, 
     and based on net expansion work (i.e., changes in specific internal energy) in the second case.

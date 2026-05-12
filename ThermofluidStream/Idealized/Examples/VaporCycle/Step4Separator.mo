@@ -382,12 +382,12 @@ see User's Guide",
   <p>
     Since the flashChamber pressure is varying with time the inverse calculation of the mass flow rate in the upper loop 
     based on the mass flow rate in the lower loop requires <code>considerInertance = false</code>, also see 
-    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <p>
     Further documentation is available in the
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
   </p>
 </html>"));
 end Step4Separator;

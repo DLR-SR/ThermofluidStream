@@ -70,7 +70,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     Checks <code>cpSpec</code> (<code>ValueSpecification.Fixed</code> vs <code>ValueSpecification.State</code>) for 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">AdiabaticModels.PerfectGas</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">AdiabaticModels.PerfectGas</a>.
   </p>
 </html>", revisions="<html>
   <ul>

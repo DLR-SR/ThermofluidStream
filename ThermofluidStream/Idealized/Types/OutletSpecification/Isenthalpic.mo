@@ -4,6 +4,6 @@ type Isenthalpic = enumeration(
   RelativePressureLoss,
   OutletPressure) "Options for selecting the independent outlet variable in an isenthalpic steady-flow process"
 annotation(choices(__Dymola_radioButtons=true,
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Pressure loss",
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss "Relative pressure loss",
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure "Outlet pressure"));
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Pressure loss",
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss "Relative pressure loss",
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure "Outlet pressure"));

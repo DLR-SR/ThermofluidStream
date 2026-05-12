@@ -4,6 +4,6 @@ type Adiabatic = enumeration(
   PressureRatio,
   OutletPressure) "Options for selecting the independent outlet variable in an adiabatic steady-flow process"
 annotation(choices(__Dymola_radioButtons=true,
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Pressure difference",
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio "Pressure ratio",
-  choice = ThermoFluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure "Outlet pressure"));
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Pressure difference",
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio "Pressure ratio",
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure "Outlet pressure"));

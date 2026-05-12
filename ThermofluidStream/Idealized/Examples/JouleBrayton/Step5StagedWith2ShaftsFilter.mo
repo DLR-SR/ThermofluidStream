@@ -196,7 +196,7 @@ equation
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
   </p>
 </html>"));
 end Step5StagedWith2ShaftsFilter;

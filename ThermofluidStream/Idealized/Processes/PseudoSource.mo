@@ -116,29 +116,29 @@ equation
           extent={{-50,20},{50,-20}},
           textColor={28,108,200},
           textString="pTX"),
-        Text(visible = displayParameters and showPressure and pSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
+        Text(visible = displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
           textString="p_out = %p_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.Temperature,
+        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
           extent={{-150,-130},{150,-100}},
           textColor={0,0,0},
           textString="T_out = %T_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
           extent={{-150,-130},{150,-100}},
           textColor={0,0,0},
           textString="h_out = %h_out_fixed"),
-        Text(visible = displayParameters and showMassFractions and XiSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
+        Text(visible = displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-140},{150,-170}},
           textColor={0,0,0},
           textString="Xi_out = %Xi_out_fixed"),
-        Line(visible = pSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+        Line(visible = pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.Temperature,
+        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
           points={{100,0},{100,-100},{60,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
           points={{100,0},{100,-100},{20,-100}}, color={0,0,127}),
-        Line(visible = XiSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+        Line(visible = XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100},{-20,-100}}, color={0,0,127})}), Documentation(info="<html>
   <p>
     Artificial process to set the outlet state as parameters or as time-varying input signal:
@@ -150,7 +150,7 @@ equation
   </ul>
 
   <p>
-    See the example <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.PseudoSource\">Tests.Processes.PseudoSource</a>.
+    See the example <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.PseudoSource\">Tests.Processes.PseudoSource</a>.
   </p>
 </html>", revisions="<html>
   <ul>

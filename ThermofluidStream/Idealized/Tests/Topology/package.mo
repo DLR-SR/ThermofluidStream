@@ -5,7 +5,7 @@ package Topology
   annotation(Documentation(info="<html>
   <p>
     This package contains test models for the components of the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Topology\">Topology</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Topology</a> package.
   </p>
 </html>"));
 end Topology;

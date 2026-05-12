@@ -78,7 +78,7 @@ equation
   <p>Model of a free sink.</p>
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined model 
-    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is balanced.
   </p>
 

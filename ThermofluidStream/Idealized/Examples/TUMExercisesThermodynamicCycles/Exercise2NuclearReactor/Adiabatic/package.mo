@@ -15,7 +15,7 @@ package Adiabatic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </p>
   
   <p>
-    The final test model is provided in <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic.Step9FinalResults\">Exercise2NuclearReactor.Adiabatic.Step9FinalResults</a>.
+    The final test model is provided in <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic.Step9FinalResults\">Exercise2NuclearReactor.Adiabatic.Step9FinalResults</a>.
   </p>
    
   <p>
@@ -25,7 +25,7 @@ package Adiabatic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </p>
   
   <p>
-    In contrast, in the package <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.AdiabaticPseudoInversion\">Exercise2NuclearReactor.AdiabaticPseudoInversion</a>
+    In contrast, in the package <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.AdiabaticPseudoInversion\">Exercise2NuclearReactor.AdiabaticPseudoInversion</a>
     the same example nuclear reactor is solved with <code>pseudoInversion</code> \"controllers\". With this the implicit nonlinear equations can be \"avoided\". 
     Note that the introducted states also require suitable start values. Furthermore the time integration algorithm is also likely to be implicit and will likely solve implicit nonlinear equations aswell.
   </p>

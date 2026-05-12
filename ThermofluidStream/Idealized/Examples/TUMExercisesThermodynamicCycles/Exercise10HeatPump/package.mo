@@ -14,7 +14,7 @@ package Exercise10HeatPump "Exercise 8.10: Heat pump [TUM2019]"
     </ul>
   </p>
   <p>
-    See  <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPump.Inversion\">Exercise10HeatPump.Inversion</a> 
+    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPump.Inversion\">Exercise10HeatPump.Inversion</a> 
     for the problem description.
   </p>
 </html>"));

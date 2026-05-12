@@ -4,7 +4,7 @@ package Exercise7MixingPreheater "Exercise 8.7: Steam Power Plant with Feedwater
 
   annotation(Documentation(info="<html>
   <p>
-    This package contains an extension of <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> 
+    This package contains an extension of <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> 
     of a steam power plant by a mixing preheater. 
     The setups of the examples are identical. The examples differ by:
     <ul>
@@ -14,7 +14,7 @@ package Exercise7MixingPreheater "Exercise 8.7: Steam Power Plant with Feedwater
     </ul>
   </p>
   <p>
-    See  <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater.Inversion\">Exercise7MixingPreheater.Inversion</a> 
+    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater.Inversion\">Exercise7MixingPreheater.Inversion</a> 
     for the problem description.
   </p>
 </html>"));

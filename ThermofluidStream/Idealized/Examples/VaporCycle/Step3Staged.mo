@@ -163,7 +163,7 @@ equation
 
   <p>
     The orange energy flow connector represents the heat transfer between <code>condenser1</code> of the lower
-    cycle and <code>evaporator2</code> of the upper cycle, see <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.EnergyFlow\">UsersGuide.EnergyFlow</a>. 
+    cycle and <code>evaporator2</code> of the upper cycle, see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.EnergyFlow\">UsersGuide.EnergyFlow</a>. 
   </p>
 
   <ul>
@@ -184,7 +184,7 @@ equation
 
   <p>
     Further documentation is available in the
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
   </p>
 </html>"));
 end Step3Staged;

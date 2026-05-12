@@ -487,7 +487,7 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters.
   </p>
     
   <p>

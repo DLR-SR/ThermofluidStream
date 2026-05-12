@@ -84,7 +84,7 @@ equation
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2})),
     Documentation(info="<html>
   <p>
-   Simplification of the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.Adiabatic.PumpConstant\">PumpConstant</a> example.
+   Simplification of the <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Adiabatic.PumpConstant\">PumpConstant</a> example.
   </p>
 </html>", revisions="<html>
   <ul>

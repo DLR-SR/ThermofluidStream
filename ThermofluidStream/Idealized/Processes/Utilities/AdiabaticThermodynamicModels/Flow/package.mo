@@ -12,7 +12,7 @@ package Flow
 </html>", info="<html>
   <p>
     Package of adiabatic assumption models used in 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.BaseClasses.Adiabatic\">BaseClasses.Adiabatic</a>:
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.BaseClasses.Adiabatic\">BaseClasses.Adiabatic</a>:
   </p>
   
   <p>

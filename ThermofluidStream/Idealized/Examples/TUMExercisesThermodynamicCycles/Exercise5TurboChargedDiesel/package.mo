@@ -21,7 +21,7 @@ package Exercise5TurboChargedDiesel "Exercise 8.5: Turbocharged Diesel Engine [T
   </ul>
   
   <p>
-    See  <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.SimpleAir\">Exercise5TurboChargedDiesel.SimpleAir</a> 
+    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.SimpleAir\">Exercise5TurboChargedDiesel.SimpleAir</a> 
     for the problem description.
   </p>
 </html>"));

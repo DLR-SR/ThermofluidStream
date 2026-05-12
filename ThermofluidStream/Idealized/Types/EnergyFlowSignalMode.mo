@@ -4,6 +4,6 @@ type EnergyFlowSignalMode = enumeration(
   Output,
   Disabled) "Options for specifying the energy flow connector signal direction"
 annotation(choices(__Dymola_radioButtons=true,
-  choice = ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input "Input",
-  choice = ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Output "Output",
-  choice = ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Disabled"));
+  choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input "Input",
+  choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output "Output",
+  choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Disabled"));

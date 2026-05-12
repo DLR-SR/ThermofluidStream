@@ -136,19 +136,19 @@ equation
           extent={{-150,110},{150,70}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible = displayParameters and showPressure and pSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
+        Text(visible = displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-20},{150,-50}},
           textColor={0,0,0},
           textString="p_out = %p_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.Temperature,
+        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
           textString="T_out = %T_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
           textString="h_out = %h_out_fixed"),
-        Text(visible = displayParameters and showMassFractions and XiSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
+        Text(visible = displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-130}},
           textColor={0,0,0},
           textString="Xi_out = %Xi_out_fixed"),
@@ -157,13 +157,13 @@ equation
           color={28,108,200},
           smooth=Smooth.Bezier,
           thickness=0.5),
-        Line(visible = pSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+        Line(visible = pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.Temperature,
+        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
           points={{100,0},{100,-100},{60,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermoFluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
           points={{100,0},{100,-100},{20,-100}}, color={0,0,127}),
-        Line(visible = XiSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+        Line(visible = XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100},{-20,-100}}, color={0,0,127}),
         Ellipse(
           extent={{-98,58},{-62,22}},
@@ -194,14 +194,14 @@ equation
     Documentation(info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
-    with <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">Sink_free</a> to artificially close a loop.<br>
+    with <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> to artificially close a loop.<br>
     Cyclic loops without a loop breaker lead to algebraic equations which can make the system unsolvable. 
     The loop-breaker acts as both a source and a sink, defining a beginning (source) and an end (sink) in the loop, breaking the algebraic equations. 
  </p>
 
   <p>
     The model is locally underdetermined (1 equation missing) and therefore must be connected to an overdetermined one 
-    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) to ensure that the overall system balanced.
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) to ensure that the overall system balanced.
   </p>
   
   <p>

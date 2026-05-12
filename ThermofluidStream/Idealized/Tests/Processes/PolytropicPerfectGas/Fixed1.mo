@@ -960,7 +960,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for fixed parameters/boundary conditions (given mass flow rate).
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for fixed parameters/boundary conditions (given mass flow rate).
   </p>
 </html>"));
 end Fixed1;

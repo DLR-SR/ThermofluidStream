@@ -31,7 +31,7 @@ model DropOfCommons "Model for global parameters"
     missingInnerMessage="
 Your model is using an outer \"dropOfCommons\" component but
 an inner \"dropOfCommons\" component is not defined.
-Use ThermoFluidStream.DropOfCommons in your model
+Use ThermofluidStream.DropOfCommons in your model
 to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Ellipse(
           extent={{-80,-60},{80,-100}},

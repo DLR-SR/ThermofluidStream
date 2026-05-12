@@ -75,7 +75,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     Documentation(info="<html>
   <p>
     Applies a ramp in reduced pressure for constant reduced temperature to check the compressibility factors <code>Z_in, Z_out</code> and the corresponding warning
-    in <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>. 
+    in <a href=\"modelica://ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>. 
     The inlet and outlet states are equal. 
   </p>
 </html>", revisions="<html>

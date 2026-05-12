@@ -36,7 +36,7 @@ equation
           extent={{-150,80},{150,120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible=displayParameters and showMassFlowRate and m_flowSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
+        Text(visible=displayParameters and showMassFlowRate and m_flowSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
           textString="ṁ = %m_flow_fixed"),
@@ -86,7 +86,7 @@ equation
   <p>Model for specifying the mass flow rate.</p>
   <p>
     The model is locally overdetermined (one extra equation) and therefore must be connected to an underdetermined model 
-    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
     to ensure that the overall system balanced.
   </p>
 </html>", revisions="<html>

@@ -117,7 +117,7 @@ see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(info="<html>
   <p>
-   Simplification of the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.Adiabatic.Compressor\">Compressor</a> example.
+   Simplification of the <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Adiabatic.Compressor\">Compressor</a> example.
   </p>
 </html>", revisions="<html>
   <ul>

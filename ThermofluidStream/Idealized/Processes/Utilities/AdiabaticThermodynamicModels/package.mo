@@ -3,8 +3,8 @@ package AdiabaticThermodynamicModels
   annotation(Documentation(info="<html>
   <p>
     Package of adiabatic assumption models used in 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> and 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> and 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>.
   </p>
   
   <p>

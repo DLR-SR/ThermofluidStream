@@ -6,8 +6,8 @@ type PolytropicProcessSpecification = enumeration(
   OutletPressure,
   OutletTemperature) "Options for selecting the independent process variable in a polytropic steady-flow process"
 annotation(choices(__Dymola_radioButtons=true,
-  choice = ThermoFluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency "Polytropic efficiency",
-  choice = ThermoFluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent "Polytropic exponent",
-  choice = ThermoFluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency "Isentropic efficiency",
-  choice = ThermoFluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure "Outlet pressure",
-  choice = ThermoFluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature "Outlet temperature"));
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency "Polytropic efficiency",
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent "Polytropic exponent",
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency "Isentropic efficiency",
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure "Outlet pressure",
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature "Outlet temperature"));

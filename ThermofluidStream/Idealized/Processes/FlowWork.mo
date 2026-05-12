@@ -29,10 +29,10 @@ equation
   P_outlet = m_flow*w_flow;
 
   annotation(Icon(graphics={
-    Line(visible = boundary == ThermoFluidStream.Idealized.Types.FlowWorkBoundary.Outlet,
+    Line(visible = boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet,
       points={{100,0},{100,-100}},
       color={255,170,85}),
-    Line(visible = boundary == ThermoFluidStream.Idealized.Types.FlowWorkBoundary.Inlet,
+    Line(visible = boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet,
       points={{-100,0},{-100,-100}},
       color={255,170,85}),
     Rectangle(visible = 1.0 < 0.0,
@@ -78,7 +78,7 @@ equation
     This process is required to properly account for work when switching
     between an open-cycle and a closed-cycle perspective, and vice versa.
     See, for example,
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.Polytropic</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.Polytropic</a>.
   </p>
 
   <p>

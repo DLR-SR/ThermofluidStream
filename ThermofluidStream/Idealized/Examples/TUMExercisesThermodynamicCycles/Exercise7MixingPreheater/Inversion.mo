@@ -226,7 +226,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    Extension of the <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">example 6</a> of a steam power plant by a mixing preheater.
+    Extension of the <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">example 6</a> of a steam power plant by a mixing preheater.
   </p>
 
   <p>

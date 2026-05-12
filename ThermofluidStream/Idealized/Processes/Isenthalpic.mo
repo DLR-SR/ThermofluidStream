@@ -87,19 +87,19 @@ equation
   Xi_out = Xi_in;
 
   annotation(Icon(graphics={
-    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss,
+    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="ΔpLoss = %dpLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
+    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="prLoss = %prLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
+    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="p_out = %p_out_fixed"),
-    Line(visible = outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+    Line(visible = outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
       points={{100,0},{100,-100}},
       color={0,0,127}),
     Ellipse(visible = DynamicSelect(false, enforcePressureDrop and m_flow*dpLoss_set < 0),

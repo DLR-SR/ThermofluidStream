@@ -5,7 +5,7 @@ package PolytropicPerfectGas
   annotation(Documentation(info="<html>
   <p>
     These examples tests the
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> process model.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> process model.
   </p>
 </html>", revisions="<html>
   <ul>

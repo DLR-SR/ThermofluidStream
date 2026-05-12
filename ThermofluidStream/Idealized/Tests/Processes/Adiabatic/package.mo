@@ -12,7 +12,7 @@ package Adiabatic
 </html>", info="<html>
   <p>
     These examples demonstrate how the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> process model
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> process model
     can be used to model compressors, turbines, and pumps.
   </p>
 </html>"));

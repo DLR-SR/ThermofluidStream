@@ -37,7 +37,7 @@ m_flow_A * T_A + m_flow_B * T_B = (m_flow_A + m_flow_B) * T_mix;
   </p>
 
   <p>
-    Instead of using a nonlinear equation solver (e.g., <code><a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a></code>), 
+    Instead of using a nonlinear equation solver (e.g., <code><a href=\"modelica://ThermofluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a></code>), 
     the TFS approach uses the time integration solver to solve the \"nonlinear equation\".
   </p>
 
@@ -73,7 +73,7 @@ m_flow_A * T_A + m_flow_B * T_B = (m_flow_A + m_flow_B) * T_mix;
 
   <p>The advantages of this approach are:</p>
   <ul>
-    <li>Start values can be more explicitly defined than with, for example, <code><a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a></code>.</li>
+    <li>Start values can be more explicitly defined than with, for example, <code><a href=\"modelica://ThermofluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a></code>.</li>
     <li>The approach can handle limitations and resembles a model-based feed-forward control, instead of an explicit inversion <code>G⁻¹(s)</code>.</li>
   </ul>
 

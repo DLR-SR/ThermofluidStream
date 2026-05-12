@@ -219,7 +219,7 @@ equation
   <ul>
      <li>
       In this example the thermodynamic process is represented by the
-      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a>
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a>
       model.
     </li>
    
@@ -230,7 +230,7 @@ equation
 
     <li>
       It is based on the (periodic) closed-cycle
-      <a href=\"modelica://ThermoFluidStream.Idealized.Types.SystemModel\">SystemModel</a>.
+      <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a>.
     </li>
 
     <li>

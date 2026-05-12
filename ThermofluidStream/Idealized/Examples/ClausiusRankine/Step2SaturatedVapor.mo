@@ -113,7 +113,7 @@ equation
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));
 end Step2SaturatedVapor;

@@ -112,7 +112,7 @@ see User's Guide",
           pattern=LinePattern.None)}),
     Documentation(info="<html>
   <p>
-   Simplification of the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.Adiabatic.Pump\">Pump</a> example.
+   Simplification of the <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Adiabatic.Pump\">Pump</a> example.
   </p>
 </html>", revisions="<html>
   <ul>

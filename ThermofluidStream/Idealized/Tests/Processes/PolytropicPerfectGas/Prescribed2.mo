@@ -812,7 +812,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (unknown mass flow rate).
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (unknown mass flow rate).
   </p>
 
   <p>

@@ -317,7 +317,7 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.IsobaricCycle\">IsobaricCycle</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal not= Input</code>) defined by discontinuous inputs.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.IsobaricCycle\">IsobaricCycle</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal not= Input</code>) defined by discontinuous inputs.
   </p>
   
 </html>"));

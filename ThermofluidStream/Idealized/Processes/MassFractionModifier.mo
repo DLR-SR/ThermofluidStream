@@ -76,15 +76,15 @@ equation
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
           textString="X"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
+        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
           textString="ΔXi = %dXi_fixed"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
+        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
           textString="Xi_out = %Xi_out_fixed"),
-        Line(visible = outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Prescribed,
+        Line(visible = outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100}},
           color={0,0,127})}), Documentation(info="<html>
   <p>
@@ -106,7 +106,7 @@ equation
   </ul>
 
   <p>
-    See the example <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.MassFractionModifier.Working\">Tests.Processes.MassFractionModifier</a>.
+    See the example <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.MassFractionModifier.Working\">Tests.Processes.MassFractionModifier</a>.
   </p>
 </html>", revisions="<html>
   <ul>

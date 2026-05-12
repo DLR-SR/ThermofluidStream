@@ -4,7 +4,7 @@ package LoopBreaker
 
   annotation(Documentation(info="<html>
   <p>
-    Tests <a href=\"modelica://ThermoFluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a>.
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a>.
   </p>
 </html>", revisions="<html>
   <ul>
