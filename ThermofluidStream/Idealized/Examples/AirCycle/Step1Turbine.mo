@@ -12,12 +12,12 @@ model Step1Turbine
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   ThermofluidStream.Boundaries.Source airSource(
     redeclare package Medium = Medium,
@@ -25,7 +25,7 @@ model Step1Turbine
     T0_par=293.15) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Sources.Ramp pressure(

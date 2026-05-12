@@ -14,7 +14,7 @@ model Inversion
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Refrigerant,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=600000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -25,7 +25,7 @@ model Inversion
     annotation (Placement(transformation(extent={{140,80},{160,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Refrigerant,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
@@ -33,7 +33,7 @@ model Inversion
   ThermofluidStream.Idealized.Processes.Isobaric evaporator(
     redeclare package Medium = Refrigerant,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
@@ -43,7 +43,7 @@ model Inversion
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Refrigerant,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=1400000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -52,7 +52,7 @@ model Inversion
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Refrigerant,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -60,7 +60,7 @@ model Inversion
         origin={80,0})));
   ThermofluidStream.Idealized.Processes.Isenthalpic highPressureValve(
     redeclare package Medium = Refrigerant,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
 
     p_out_fixed=600000) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
@@ -108,7 +108,7 @@ model Inversion
   ThermofluidStream.Idealized.Processes.Isobaric waterHeater(
     redeclare package Medium = Water,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed(displayUnit="degC") = 317.15) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},

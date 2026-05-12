@@ -16,7 +16,7 @@ model Step9FinalResultsReversed
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -65,14 +65,14 @@ model Step9FinalResultsReversed
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{-70,-100},{-50,-80}})));
   Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{-30,-100},{-10,-80}})));
   Processes.Isobaric heatExchangerColdSide(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 780)                    annotation (Placement(transformation(extent={{-50,-110},{-70,-130}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
+    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(extent={{-50,-110},{-70,-130}})));
   Sources.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -118,7 +118,7 @@ model Step9FinalResultsReversed
         rotation=90,
         origin={90,-30})));
   Processes.Isobaric cooler1(
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     specifyOutlet=true,

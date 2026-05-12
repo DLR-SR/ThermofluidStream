@@ -23,7 +23,7 @@ model Warnings "Example - Loop breaker"
   ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaric(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,

@@ -35,7 +35,7 @@ model PolytropicFlow "Turbocharged diesel engine"
     p_out_fixed=8062000) annotation (Placement(transformation(extent={{20,-10},{0,-30}})));
   Processes.Isobaric combustion(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = 1700) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -50,14 +50,14 @@ model PolytropicFlow "Turbocharged diesel engine"
                       annotation (Placement(transformation(extent={{0,10},{20,30}})));
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas     "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=p2) annotation (Placement(transformation(extent={{-120,-46},{-100,-26}})));
   Processes.Isobaric cooler(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{-80,-46},{-60,-26}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -67,11 +67,11 @@ model PolytropicFlow "Turbocharged diesel engine"
   Modelica.Blocks.Sources.RealExpression realExpression(y=m_flow) annotation (Placement(transformation(extent={{-200,-110},{-180,-90}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas     "p*v = R*T, cp = const",
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
-    p_out_fixed=100000)                                                                                 annotation (Placement(transformation(extent={{-100,-90},{-120,-110}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{-100,-90},{-120,-110}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints
     annotation (Placement(transformation(extent={{-70,-76},{-30,-52}})));
   Modelica.Blocks.Sources.RealExpression pseudoSourcePower(y(
@@ -79,7 +79,7 @@ model PolytropicFlow "Turbocharged diesel engine"
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,-90},{-60,-110}})));
   ThermofluidStream.Utilities.showRealValue massFlowRate(
     description="m_flow",

@@ -17,7 +17,7 @@ model cpSpec "Test model to check cp specification"
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
     eta_fixed=eta,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Modelica.Blocks.Sources.LogFrequencySweep
@@ -36,7 +36,7 @@ model cpSpec "Test model to check cp specification"
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed, cpSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
     eta_fixed=eta,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{40,40},{60,60}})));
 equation

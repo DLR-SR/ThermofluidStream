@@ -13,7 +13,7 @@ model Step6Compressor1
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -62,26 +62,25 @@ model Step6Compressor1
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{-70,-100},{-50,-80}})));
   Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{-30,-100},{-10,-80}})));
   Processes.Isobaric heatExchangerColdSide(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 780)                    annotation (Placement(transformation(extent={{-50,-110},{-70,-130}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
+    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(extent={{-50,-110},{-70,-130}})));
   Sources.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={20,-90})));
   Processes.Adiabatic compressor1(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     redeclare package Medium = Medium,
     eta_fixed=0.96,
     p_out_fixed=7000000,
-    outlet(state(p(start=7000000), T(start=649.15))))
-                                   annotation (Placement(transformation(
+    outlet(state(p(start=7000000), T(start=649.15)))) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={40,80})));

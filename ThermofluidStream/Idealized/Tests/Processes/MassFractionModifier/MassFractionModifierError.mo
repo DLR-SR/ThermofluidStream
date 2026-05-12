@@ -26,7 +26,7 @@ model MassFractionModifierError "Example - MassFractionModifier"
     y_start=0) annotation (Placement(transformation(extent={{80,0},{60,20}})));
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition2(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
     dXi_fixed={-0.1}) annotation (Placement(transformation(extent={{-10,0},{10,20}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,

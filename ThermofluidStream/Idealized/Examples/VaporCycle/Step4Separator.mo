@@ -24,7 +24,7 @@ model Step4Separator
   ThermofluidStream.Idealized.Processes.Adiabatic compressor1(
     redeclare package Medium = Medium,
     eta_fixed=0.9,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -34,7 +34,7 @@ model Step4Separator
     annotation (Placement(transformation(extent={{120,100},{140,120}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
 
     p_out_fixed=p_Evaporator) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -43,7 +43,7 @@ model Step4Separator
   ThermofluidStream.Idealized.Processes.Isobaric evaporator(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_out_Evaporator) annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
   Sources.LoopBreaker loopBreaker1(
@@ -62,7 +62,7 @@ model Step4Separator
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
     eta_fixed=0.9,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=p_Condensor) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -70,12 +70,12 @@ model Step4Separator
         origin={50,40})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_out_Condensor) annotation (Placement(transformation(extent={{10,80},{-10,60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve2(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

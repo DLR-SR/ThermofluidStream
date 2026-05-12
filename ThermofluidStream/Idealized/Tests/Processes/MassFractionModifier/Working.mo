@@ -5,7 +5,7 @@ model Working "Example - Mass fraction modifier"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
     annotation (Placement(transformation(extent={{140,140},{160,160}})));
 
-  ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa, outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference) annotation (Placement(transformation(extent={{-10,100},{10,120}})));
+  ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa, outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference) annotation (Placement(transformation(extent={{-10,100},{10,120}})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa,
     pressureFromInput=true,
@@ -37,11 +37,11 @@ model Working "Example - Mass fraction modifier"
     pressureFromInput=true,
     temperatureFromInput=true)
                    annotation (Placement(transformation(extent={{-50,60},{-30,80}})));
-  ThermofluidStream.Idealized.Processes.MassFractionModifier composition1(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa, outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.OutletMassFractions) annotation (Placement(transformation(extent={{-10,60},{10,80}})));
+  ThermofluidStream.Idealized.Processes.MassFractionModifier composition1(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa, outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions) annotation (Placement(transformation(extent={{-10,60},{10,80}})));
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,60},{50,80}})));
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition2(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
     dXi_fixed={0.2}) annotation (Placement(transformation(extent={{-10,0},{10,20}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir,
@@ -58,7 +58,7 @@ model Working "Example - Mass fraction modifier"
     annotation (Placement(transformation(extent={{-50,-40},{-30,-20}})));
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition3(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.OutletMassFractions,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
     Xi_out_fixed={0.3}) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-40},{50,-20}})));
   Modelica.Blocks.Sources.Pulse massFractions(
@@ -74,7 +74,7 @@ model Working "Example - Mass fraction modifier"
     annotation (Placement(transformation(extent={{-50,-80},{-30,-60}})));
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition4(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
   ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
   ThermofluidStream.Boundaries.Source source5(
@@ -85,7 +85,7 @@ model Working "Example - Mass fraction modifier"
     annotation (Placement(transformation(extent={{-50,-120},{-30,-100}})));
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition5(
     redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.OutletMassFractions,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-120},{10,-100}})));
   ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-120},{50,-100}})));
   Modelica.Blocks.Sources.Pulse deltaMassFractions(

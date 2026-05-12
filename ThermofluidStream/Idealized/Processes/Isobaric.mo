@@ -4,7 +4,7 @@ model Isobaric "Isobaric process"
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
   import SystemSpecification = ThermofluidStream.Idealized.Types.SystemModel;
-  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric;
+  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
@@ -14,27 +14,29 @@ model Isobaric "Isobaric process"
     annotation (Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified"
     annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference      "Quantity used to define the outlet state"
-    annotation (Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation (
+    Dialog(group="Specification", enable=specifyOutlet),
+    Evaluate=true,
+    HideResult=not specifyOutlet);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
   parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.TemperatureDifference and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.TemperatureDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletTemperature  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
   parameter SI.SpecificEnthalpy dh_fixed(displayUnit="kJ/kg") = 0 "Fixed specific enthalpy difference (dh = h_out - h_in)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.SpecificEnthalpyDifference and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.SpecificEnthalpyDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.SpecificEnthalpyDifference or not specifyOutlet);
   parameter SI.SpecificEnthalpy h_out_fixed(displayUnit="kJ/kg") = Medium.h_default "Fixed outlet specific enthalpy"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificEnthalpy and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletSpecificEnthalpy  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificEnthalpy or not specifyOutlet);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)"
     annotation(Dialog(tab="Layout", group="Display parameters",
@@ -103,21 +105,21 @@ protected
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
   if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec == OutletSpecification.TemperatureDifference then
+    if outletSpec ==OutletSpecification.TemperatureDifference  then
       outletSpec_actual = dT_fixed;
     elseif outletSpec ==OutletSpecification.OutletTemperature then
       outletSpec_actual = T_out_fixed;
-    elseif outletSpec == OutletSpecification.SpecificEnthalpyDifference then
+    elseif outletSpec ==OutletSpecification.SpecificEnthalpyDifference  then
       outletSpec_actual = dh_fixed;
     else // OutletSpecification.OutletSpecificEnthalpy
       outletSpec_actual = h_out_fixed;
     end if;
   end if;
-  if outletSpec == OutletSpecification.TemperatureDifference then
+  if outletSpec ==OutletSpecification.TemperatureDifference  then
     dT = outletSpec_actual;
-  elseif outletSpec == OutletSpecification.OutletTemperature then
+  elseif outletSpec ==OutletSpecification.OutletTemperature  then
     T_out = outletSpec_actual;
-  elseif outletSpec == OutletSpecification.SpecificEnthalpyDifference then
+  elseif outletSpec ==OutletSpecification.SpecificEnthalpyDifference  then
     dh = outletSpec_actual;
   else // OutletSpecification.OutletSpecificEnthalpy
     h_out = outletSpec_actual;
@@ -126,7 +128,7 @@ equation
   p_out = p_in;
   Xi_out = Xi_in;
 
-  if specifyOutlet and (outletSpec == OutletSpecification.TemperatureDifference or outletSpec == OutletSpecification.OutletTemperature) then
+  if specifyOutlet and (outletSpec ==OutletSpecification.TemperatureDifference  or outletSpec ==OutletSpecification.OutletTemperature)  then
     h_out = Medium.specificEnthalpy(Medium.setState_pTX(p_out,T_out,Xi_out)); // OM Workaround
   else
     T_out = Medium.temperature(outlet.state);

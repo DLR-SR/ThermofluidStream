@@ -12,12 +12,12 @@ model Step2Recuparator
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-52,-16},{-32,4}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{68,-16},{88,4}})));
   ThermofluidStream.Boundaries.Source
                     airSource(
@@ -26,7 +26,7 @@ model Step2Recuparator
     T0_par=293.15) annotation (Placement(transformation(extent={{-92,-16},{-72,4}})));
   Processes.Isobaric combustion(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{28,-16},{48,4}})));
   Modelica.Blocks.Sources.Ramp outletPressure(

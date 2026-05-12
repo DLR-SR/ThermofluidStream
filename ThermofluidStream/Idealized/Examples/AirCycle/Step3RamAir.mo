@@ -33,7 +33,7 @@ model Step3RamAir
   Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-10,10},{10,-10}})));
   Processes.Isobaric heatExchangerSideB(
@@ -43,12 +43,12 @@ model Step3RamAir
   Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-52,-10},{-32,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   ThermofluidStream.Sensors.SingleSensorSelect inletSpecificEnthalpy(
     displayInstanceName=true,

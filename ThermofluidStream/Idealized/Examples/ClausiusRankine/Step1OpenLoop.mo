@@ -13,16 +13,16 @@ model Step1OpenLoop
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
     eta_fixed=0.6,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=300000) annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   Processes.Isobaric steamGenerator(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed=423.15) annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
   ThermofluidStream.Boundaries.Source waterSource(
     redeclare package Medium = Medium,

@@ -26,7 +26,7 @@ model Polytropic
   Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = 1700) annotation (Placement(transformation(extent={{-30,0},{-10,20}})));
   Processes.PolytropicPerfectGas
                            expansion(
@@ -38,7 +38,7 @@ model Polytropic
                       annotation (Placement(transformation(extent={{10,0},{30,20}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{50,0},{70,20}})));
   Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,

@@ -3,7 +3,7 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false, dp(start = dp_start));
 
   import SystemSpecification = ThermofluidStream.Idealized.Types.SystemModel;
-  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric;
+  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
@@ -13,19 +13,21 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     annotation (Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified"
     annotation (Dialog(group="Specification"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference      "Quantity used to define the outlet state"
-    annotation (Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation (
+    Dialog(group="Specification", enable=specifyOutlet),
+    Evaluate=true,
+    HideResult=not specifyOutlet);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
   parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.TemperatureDifference and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.TemperatureDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletTemperature  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
   parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (for nonlinear iteration)"
     annotation(Dialog(group="Nonlinear iteration (specifyOutlet == false and heatFlowSignal == Input)",
@@ -67,13 +69,13 @@ protected
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
   if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec == OutletSpecification.TemperatureDifference then
+    if outletSpec ==OutletSpecification.TemperatureDifference  then
       outletSpec_actual = dT_fixed;
     else // OutletSpecification.OutletTemperature
       outletSpec_actual = T_out_fixed;
     end if;
   end if;
-  if outletSpec == OutletSpecification.TemperatureDifference then
+  if outletSpec ==OutletSpecification.TemperatureDifference  then
     dT = outletSpec_actual;
   else //OutletSpecification.OutletTemperature
     T_out = outletSpec_actual;

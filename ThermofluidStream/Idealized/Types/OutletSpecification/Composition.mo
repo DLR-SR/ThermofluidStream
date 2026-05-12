@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Types.OutletSpecification.Flow;
+within ThermofluidStream.Idealized.Types.OutletSpecification;
 type Composition = enumeration(
   MassFractionsDifference,
   OutletMassFractions) "Options for specifying the outlet mass fractions in MassFractionModifier"

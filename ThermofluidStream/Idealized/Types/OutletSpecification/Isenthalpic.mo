@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Types.OutletSpecification.Flow;
+within ThermofluidStream.Idealized.Types.OutletSpecification;
 type Isenthalpic = enumeration(
   PressureLoss,
   RelativePressureLoss,

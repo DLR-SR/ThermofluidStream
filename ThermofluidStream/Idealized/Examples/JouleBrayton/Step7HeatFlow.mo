@@ -15,7 +15,7 @@ model Step7HeatFlow
     redeclare package Medium = Air,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     pr_fixed=2,
     p_out_fixed=1000000) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
@@ -33,7 +33,7 @@ model Step7HeatFlow
     T0_par=293.15) annotation (Placement(transformation(extent={{-156,-10},{-136,10}})));
   Processes.Isobaric firstCombustion(
     redeclare package Medium = Air,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flow_fixed=1) annotation (Placement(transformation(
@@ -44,19 +44,19 @@ model Step7HeatFlow
     redeclare package Medium = Air,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=2000000) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Processes.Isobaric secondCombustion(
     redeclare package Medium = Air,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Air,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
@@ -87,22 +87,22 @@ model Step7HeatFlow
     redeclare package Medium = Water,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     dT_fixed=10) annotation (Placement(transformation(extent={{-70,20},{-90,40}})));
   Processes.Isobaric coolerAirSide(
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-90,10},{-70,-10}})));
   Processes.Isobaric recuperatorB(
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.TemperatureDifference)     annotation (Placement(transformation(extent={{0,20},{-20,40}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference) annotation (Placement(transformation(extent={{0,20},{-20,40}})));
   Processes.Isobaric recuperatorA(
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,10},{0,-10}})));
   ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect(
     displayInstanceName=false,

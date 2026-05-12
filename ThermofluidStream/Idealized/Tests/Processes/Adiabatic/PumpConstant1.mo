@@ -17,7 +17,7 @@ model PumpConstant1 "Same as Pump1 but with inputs specified as parameters"
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference "rho = const, Version 2",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
 
     dp_fixed=100000,
     pr_fixed=2) annotation (Placement(transformation(extent={{-70,10},{-50,30}})));
@@ -48,7 +48,7 @@ model PumpConstant1 "Same as Pump1 but with inputs specified as parameters"
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
 
     dp_fixed=100000,
     pr_fixed=2) annotation (Placement(transformation(extent={{40,-30},{60,-50}})));

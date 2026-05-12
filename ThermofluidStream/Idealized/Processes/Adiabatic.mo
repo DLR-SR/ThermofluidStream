@@ -3,7 +3,7 @@ model Adiabatic "Adiabatic process"
 
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
-  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic;
+  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
   import PowerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
 
@@ -25,23 +25,25 @@ model Adiabatic "Adiabatic process"
     annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified"
     annotation (Dialog(group="Specification"),Evaluate=true,HideResult=true,choices(checkBox=true));
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureDifference      "Quantity used to define the outlet state"
-    annotation (Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult= not specifyOutlet);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation (
+    Dialog(group="Specification", enable=specifyOutlet),
+    Evaluate=true,
+    HideResult=not specifyOutlet);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
   parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)"
     annotation(Dialog(group="Specification",
-      enable = specifyOutlet and outletSpec == OutletSpecification.PressureDifference and outletValueSpec ==ValueSpecification.Fixed),
+      enable = specifyOutlet and outletSpec ==OutletSpecification.PressureDifference  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
   parameter Real pr_fixed = 1 "Fixed pressure ratio (pr = p_out/p_in)"
     annotation(Dialog(group="Specification",
-      enable = specifyOutlet and outletSpec == OutletSpecification.PressureRatio and outletValueSpec ==ValueSpecification.Fixed),
+      enable = specifyOutlet and outletSpec ==OutletSpecification.PressureRatio  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
     annotation(Dialog(group="Specification",
-      enable = specifyOutlet and outletSpec == OutletSpecification.OutletPressure and outletValueSpec ==ValueSpecification.Fixed),
+      enable = specifyOutlet and outletSpec ==OutletSpecification.OutletPressure  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed);
   parameter ValueSpecification etaSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation (Dialog(group="Efficiency"), Evaluate=true);
   parameter SI.Efficiency eta_fixed = 1 "Fixed isentropic efficiency"
@@ -109,17 +111,17 @@ initial equation
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
   if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec == OutletSpecification.PressureDifference then
+    if outletSpec ==OutletSpecification.PressureDifference  then
       outletSpec_actual = dp_fixed;
-    elseif outletSpec == OutletSpecification.PressureRatio then
+    elseif outletSpec ==OutletSpecification.PressureRatio  then
       outletSpec_actual = pr_fixed;
     else // OutletSpecification.OutletPressure
       outletSpec_actual = p_out_fixed;
     end if;
   end if;
-  if outletSpec == OutletSpecification.PressureDifference then
+  if outletSpec ==OutletSpecification.PressureDifference  then
     dp = outletSpec_actual;
-  elseif outletSpec == OutletSpecification.PressureRatio then
+  elseif outletSpec ==OutletSpecification.PressureRatio  then
     pr = outletSpec_actual;
   else // OutletSpecification.OutletPressure
     p_out = outletSpec_actual;

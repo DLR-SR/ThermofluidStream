@@ -13,7 +13,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,50},{-160,70}})));
   ThermofluidStream.Idealized.Processes.Isochoric dT(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     dT_fixed=20) annotation (Placement(transformation(extent={{-210,50},{-190,70}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation (Placement(transformation(extent={{240,100},{260,120}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -24,7 +24,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,50},{-60,70}})));
   ThermofluidStream.Idealized.Processes.Isochoric dT1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=20)  annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
   ThermofluidStream.Boundaries.Source source2(
@@ -37,7 +37,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -48,7 +48,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     dT_fixed=20) annotation (Placement(transformation(extent={{90,50},{110,70}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
@@ -60,7 +60,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.TemperatureDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{190,50},{210,70}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y=20)  annotation (Placement(transformation(extent={{240,20},{220,40}})));
@@ -72,7 +72,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-180,-30},{-160,-10}})));
   ThermofluidStream.Idealized.Processes.Isochoric T(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     dT_fixed=20,
     T_out_fixed=313.15) annotation (Placement(transformation(extent={{-210,-30},{-190,-10}})));
   ThermofluidStream.Boundaries.Source source6(
@@ -83,7 +83,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink6(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,-30},{-60,-10}})));
   ThermofluidStream.Idealized.Processes.Isochoric T1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,-30},{-90,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=313.15)
                                                                annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
@@ -97,7 +97,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -108,7 +108,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     dT_fixed=20,
     T_out_fixed=313.15) annotation (Placement(transformation(extent={{90,-30},{110,-10}})));
   ThermofluidStream.Boundaries.Source source9(
@@ -121,7 +121,7 @@ model Setpoint
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Cycle.Isochoric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation (Placement(transformation(extent={{190,-30},{210,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=313.15)

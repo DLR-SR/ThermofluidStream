@@ -11,7 +11,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
     annotation (Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump2(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=5800000) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -21,11 +21,11 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5000) annotation (Placement(transformation(extent={{50,50},{70,70}})));
   ThermofluidStream.Idealized.Processes.Isobaric steamBoiler(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
 
     T_out_fixed(displayUnit="K") = 723) annotation (Placement(transformation(
@@ -34,13 +34,13 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
         origin={-80,40})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-120},{-10,-100}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5)))
     annotation (Placement(transformation(extent={{-50,-140},{-30,-120}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=5800000) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -54,7 +54,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.710,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=300000) annotation (Placement(transformation(extent={{-30,50},{-10,70}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{10,70},{30,50}})));
@@ -69,7 +69,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
   ThermofluidStream.Idealized.Processes.Isobaric heatingNetwork(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed(displayUnit="K") = 323) annotation (Placement(transformation(extent={{10,-90},{-10,-70}})));
   ThermofluidStream.Utilities.showRealValue heatFlowRateHeatingNetwork(

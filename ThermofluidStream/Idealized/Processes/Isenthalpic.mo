@@ -2,25 +2,24 @@ within ThermofluidStream.Idealized.Processes;
 model Isenthalpic "Isenthalpic process"
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
-  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic;
+  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter Boolean enforcePressureDrop = true "Enforce pressure drop in flow direction (prevents non-physical isenthalpic pressure rise)"
     annotation(Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.PressureLoss      "Quantity used to define the outlet state"
-    annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter SI.PressureDifference dpLoss_fixed = 0 "Fixed pressure loss (dpLoss = p_in - p_out)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.PressureLoss),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.PressureLoss),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.PressureLoss);
   parameter Real prLoss_fixed = 0 "Fixed relative pressure loss (prLoss = dpLoss/p_in)"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.RelativePressureLoss),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.RelativePressureLoss),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.RelativePressureLoss);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure"
     annotation(Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletPressure),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletPressure),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletPressure);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)"
     annotation(Dialog(group="Warnings", enable = not enforcePressureDrop));
@@ -58,19 +57,19 @@ equation
 
   connect(outletSpec_actual, outletSpec_prescribed);
   if outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec == OutletSpecification.PressureLoss then
+    if outletSpec ==OutletSpecification.PressureLoss  then
       outletSpec_actual = dpLoss_fixed;
     end if;
-    if outletSpec == OutletSpecification.RelativePressureLoss then
+    if outletSpec ==OutletSpecification.RelativePressureLoss  then
       outletSpec_actual = prLoss_fixed;
     end if;
-    if outletSpec == OutletSpecification.OutletPressure then
+    if outletSpec ==OutletSpecification.OutletPressure  then
       outletSpec_actual = p_out_fixed;
     end if;
   end if;
-  if outletSpec == OutletSpecification.PressureLoss then
+  if outletSpec ==OutletSpecification.PressureLoss  then
     dpLoss_set = outletSpec_actual;
-  elseif outletSpec == OutletSpecification.RelativePressureLoss then
+  elseif outletSpec ==OutletSpecification.RelativePressureLoss  then
     prLoss_set = outletSpec_actual;
   else // OutletSpecification.OutletPressure
     p_out_set = outletSpec_actual;

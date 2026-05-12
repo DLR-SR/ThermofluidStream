@@ -14,18 +14,18 @@ model Inversion
 
   ThermofluidStream.Idealized.Processes.Adiabatic highPressurePump(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=2000000) annotation (Placement(transformation(extent={{-70,-30},{-90,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureTurbineStage(
     redeclare package Medium = Medium,
     eta_fixed=0.889,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5000) annotation (Placement(transformation(extent={{90,40},{110,60}})));
   ThermofluidStream.Idealized.Processes.Isobaric heater(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
 
     T_out_fixed=813.15) annotation (Placement(transformation(
@@ -34,7 +34,7 @@ model Inversion
         origin={-100,20})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{90,-30},{70,-10}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate(
     description="m_flow_36",
@@ -52,7 +52,7 @@ model Inversion
     annotation (Placement(transformation(extent={{100,-50},{80,-30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressurePump(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=1000000) annotation (Placement(transformation(extent={{50,-30},{30,-10}})));
   Topology.JunctionT2 mixingPreheater(
@@ -64,7 +64,7 @@ model Inversion
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     m_flow_0=1,
     eta_fixed=0.889,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=1000000) annotation (Placement(transformation(extent={{10,40},{30,60}})));
   ThermofluidStream.Topology.SplitterT2  splitter(displayInstanceName=false, redeclare package Medium = Medium)
                                                                                                               annotation (Placement(transformation(extent={{50,60},{70,40}})));

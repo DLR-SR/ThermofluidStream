@@ -30,7 +30,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.RelativePressureLoss,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
     prLoss_fixed=0.2) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
@@ -40,7 +40,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink6(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.RelativePressureLoss,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=0.2)
                                                                annotation (Placement(transformation(extent={{30,-40},{50,-20}})));
@@ -52,7 +52,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink10(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-30,-90},{-10,-70}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic p_out(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=80000) annotation (Placement(transformation(extent={{-60,-90},{-40,-70}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
@@ -62,7 +62,7 @@ model Setpoint
   ThermofluidStream.Boundaries.Sink_m sink11(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-90},{90,-70}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic p_out1(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{40,-90},{60,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=0.8e5)
                                                                annotation (Placement(transformation(extent={{30,-120},{50,-100}})));

@@ -2,13 +2,12 @@ within ThermofluidStream.Idealized.Processes;
 model MassFractionModifier "Mass fraction modifier"
   extends ThermofluidStream.Interfaces.SISOFlow(final clip_p_out=false);
 
-  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition;
+  import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Composition;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter OutletSpecification outletSpec =ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Composition.MassFractionsDifference      "Quantity used to define the outlet state"
-    annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference "Quantity used to define the outlet state" annotation (Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter ThermofluidStream.Types.MassFractionDifference dXi_fixed[Medium.nXi]=fill(0, Medium.nXi) "Fixed difference in mass fractions (dXi = Xi_out - Xi_in)" annotation (Dialog(group="Specification", enable=outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.MassFractionsDifference), HideResult=not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.MassFractionsDifference);
+  parameter ThermofluidStream.Types.MassFractionDifference dXi_fixed[Medium.nXi]=fill(0, Medium.nXi) "Fixed difference in mass fractions (dXi = Xi_out - Xi_in)" annotation (Dialog(group="Specification", enable=outletValueSpec == ValueSpecification.Fixed and outletSpec ==OutletSpecification.MassFractionsDifference),  HideResult=not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.MassFractionsDifference);
   parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions"
     annotation(Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletMassFractions),
@@ -34,14 +33,14 @@ equation
 
   connect(outletSpec_actual, outletSpec_prescribed);
   if outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec == OutletSpecification.MassFractionsDifference then
+    if outletSpec ==OutletSpecification.MassFractionsDifference  then
       outletSpec_actual = dXi_fixed;
     end if;
-    if outletSpec == OutletSpecification.OutletMassFractions then
+    if outletSpec ==OutletSpecification.OutletMassFractions  then
       outletSpec_actual = Xi_out_fixed;
     end if;
   end if;
-  if outletSpec == OutletSpecification.MassFractionsDifference then
+  if outletSpec ==OutletSpecification.MassFractionsDifference  then
     dXi = outletSpec_actual;
   else // OutletSpecification.OutletMassFractions
     Xi_out = outletSpec_actual;

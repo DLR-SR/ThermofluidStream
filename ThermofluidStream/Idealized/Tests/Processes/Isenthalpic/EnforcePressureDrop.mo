@@ -30,7 +30,7 @@ model EnforcePressureDrop
   Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.RelativePressureLoss,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   Modelica.Blocks.Sources.Pulse prLossPulse(
     amplitude=-0.2,
@@ -44,7 +44,7 @@ model EnforcePressureDrop
   Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-38,-80},{-18,-60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic pout(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-68,-80},{-48,-60}})));
   Modelica.Blocks.Sources.Pulse p_outPulse(
     amplitude=0.2e5,
@@ -68,7 +68,7 @@ model EnforcePressureDrop
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss1(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.RelativePressureLoss,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
@@ -78,7 +78,7 @@ model EnforcePressureDrop
   ThermofluidStream.Idealized.Processes.Isenthalpic pout1(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
 equation
   connect(source.outlet, dpLoss.inlet) annotation (Line(

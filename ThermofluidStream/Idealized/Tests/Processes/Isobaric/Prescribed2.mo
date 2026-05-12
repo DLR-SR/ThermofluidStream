@@ -81,7 +81,7 @@ model Prescribed2 "Example - Isobaric cycle process"
   ThermofluidStream.Idealized.Processes.Isobaric T_out1(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{-60,0},{-40,20}})));
   ThermofluidStream.Boundaries.Source source4(
@@ -93,7 +93,7 @@ model Prescribed2 "Example - Isobaric cycle process"
   ThermofluidStream.Idealized.Processes.Isobaric dh1(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{34,0},{54,20}})));
   ThermofluidStream.Boundaries.Source source5(
@@ -105,7 +105,7 @@ model Prescribed2 "Example - Isobaric cycle process"
   ThermofluidStream.Idealized.Processes.Isobaric h_out1(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{134,0},{154,20}})));
   Modelica.Blocks.Sources.RealExpression specificEnthalpyDifference(y=dh) annotation (Placement(transformation(extent={{84,-30},{64,-10}})));
@@ -130,7 +130,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{-60,-60},{-40,-80}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
@@ -143,7 +143,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.SpecificEnthalpyDifference,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{34,-60},{54,-80}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{64,-80},{84,-60}})));
@@ -156,7 +156,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletSpecificEnthalpy,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation (Placement(transformation(extent={{134,-60},{154,-80}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{164,-80},{184,-60}})));

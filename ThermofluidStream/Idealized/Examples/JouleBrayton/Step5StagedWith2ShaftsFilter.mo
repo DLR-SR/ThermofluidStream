@@ -13,7 +13,7 @@ model Step5StagedWith2ShaftsFilter
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pr_fixed=2,
     p_out_fixed=200000) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
@@ -34,7 +34,7 @@ model Step5StagedWith2ShaftsFilter
     T0_par=293.15) annotation (Placement(transformation(extent={{-156,-10},{-136,10}})));
   Processes.Isobaric firstCombustion(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   Modelica.Blocks.Sources.Ramp outletPressure(
@@ -53,26 +53,26 @@ model Step5StagedWith2ShaftsFilter
         origin={-38,44})));
   Processes.Isobaric cooler(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=2000000) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Processes.Isobaric secondCombustion(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=100000) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
   EnergyFlow.Components.Sum generatorPower(n_in=2) annotation (Placement(transformation(extent={{160,-40},{180,-20}})));

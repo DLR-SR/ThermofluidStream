@@ -12,13 +12,13 @@ model Step5Splitter
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=200000) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   ThermofluidStream.Boundaries.Source airSource(
     redeclare package Medium = Medium,
@@ -26,7 +26,7 @@ model Step5Splitter
     T0_par=293.15) annotation (Placement(transformation(extent={{-180,-10},{-160,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isobaric.OutletTemperature,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
@@ -38,7 +38,7 @@ model Step5Splitter
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Flow.Isenthalpic.OutletPressure,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{0,10},{20,-10}})));
