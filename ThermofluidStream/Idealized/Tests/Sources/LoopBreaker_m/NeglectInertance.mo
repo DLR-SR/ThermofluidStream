@@ -14,7 +14,7 @@ model NeglectInertance "Example - mass flow loop breaker"
   .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    neglectInertance=true,
+    considerInertance=false,
 
     p_out_fixed=100000,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-90,-10},{-110,10}})));
@@ -28,7 +28,7 @@ model NeglectInertance "Example - mass flow loop breaker"
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    neglectInertance=true,
+    considerInertance=false,
 
     p_out_fixed=100000) annotation(Placement(transformation(extent={{10,-10},{-10,10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
@@ -43,7 +43,7 @@ model NeglectInertance "Example - mass flow loop breaker"
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    neglectInertance=true,
+    considerInertance=false,
 
     p_out_fixed=100000) annotation(Placement(transformation(extent={{110,-10},{90,10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse4(

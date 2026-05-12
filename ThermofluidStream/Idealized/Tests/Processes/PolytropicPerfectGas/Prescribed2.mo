@@ -4,7 +4,7 @@ model Prescribed2
   extends ThermofluidStream.Idealized.Utilities.IconNeglectInertance;
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{286,194},{306,214}})));
 
   ThermofluidStream.Boundaries.Source source(

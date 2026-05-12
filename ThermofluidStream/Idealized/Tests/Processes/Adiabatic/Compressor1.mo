@@ -48,14 +48,14 @@ model Compressor1 "Forward and inverse calculation compressor test model"
     dp_nom=5000000) annotation(Placement(transformation(extent={{50,40},{70,60}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,-80},{40,-60}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,-80},{100,-60}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-80},{100,-60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,

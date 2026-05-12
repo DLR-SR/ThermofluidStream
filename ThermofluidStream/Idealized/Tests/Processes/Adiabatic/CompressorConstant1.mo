@@ -47,7 +47,7 @@ model CompressorConstant1 "Compressor model with the adiabatic process"
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,-80},{40,-60}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,-80},{100,-60}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-80},{100,-60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",

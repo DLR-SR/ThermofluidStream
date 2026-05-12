@@ -29,11 +29,11 @@ model Step4RamAirFlowInverse
   ThermofluidStream.Boundaries.Source
                                 coolingAirSource(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{50,40},{30,60}})));
   Sources.Sink_free coolingAirSink(redeclare package Medium = Medium,
-      neglectInertance=true) annotation(
+      considerInertance=false) annotation(
     Placement(transformation(extent={{-30,40},{-50,60}})));
   Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,

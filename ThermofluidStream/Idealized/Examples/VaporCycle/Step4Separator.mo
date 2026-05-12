@@ -30,7 +30,7 @@ model Step4Separator
         rotation=90,
         origin={50,-40})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{120,100},{140,120}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve1(
     redeclare package Medium = Medium,
@@ -51,7 +51,7 @@ model Step4Separator
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator,
     p_out_fixed=p_Evaporator,
-    neglectInertance=true,
+    considerInertance=false,
     showPressure=false,
     showThermalSpecification=false) annotation(Placement(transformation(extent={{20,-80},{40,-60}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
@@ -85,14 +85,14 @@ model Step4Separator
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    neglectInertance=true,
+    considerInertance=false,
     showPressure=false,
     showThermalSpecification=false) annotation(Placement(transformation(extent={{22,-4},{42,16}})));
   Modelica.Blocks.Sources.Ramp flashChamberPressureRamp(
     height=p_Condensor - p_Evaporator,
     duration=1,
     offset=p_Evaporator) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
-  Components.Separator flashChamber(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
+  Components.Separator flashChamber(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Sources.RealExpression h_SeperatorDew_(y=h_SeperatorDew) annotation(Placement(transformation(extent={{82,-22},
             {70,-10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQual_separatorLiqOut(

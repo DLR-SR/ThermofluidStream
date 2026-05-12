@@ -9,7 +9,7 @@ model Inversion
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true,
-    neglectInertance=true)annotation(
+    considerInertance=false)annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic highPressurePump(

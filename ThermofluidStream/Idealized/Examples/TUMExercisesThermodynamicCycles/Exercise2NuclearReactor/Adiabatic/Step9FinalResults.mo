@@ -9,7 +9,7 @@ model Step9FinalResults
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{-40,220},{-20,240}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,

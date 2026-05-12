@@ -61,7 +61,7 @@ model CompressorConstant "Compressor model with different adiabatic models (isen
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,80},{40,100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
@@ -95,7 +95,7 @@ model CompressorConstant "Compressor model with different adiabatic models (isen
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,-40},{100,-20}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-40},{100,-20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressorIdealGas2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
@@ -143,7 +143,7 @@ model CompressorConstant "Compressor model with different adiabatic models (isen
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,-160},{40,-140}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,-160},{100,-140}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-160},{100,-140}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressorPerfectGas2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",

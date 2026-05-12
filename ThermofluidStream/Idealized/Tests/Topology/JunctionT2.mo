@@ -8,7 +8,7 @@ model JunctionT2 "Example - JunctionT2 with different processes"
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{180,120},{200,140}})));
 
   ThermofluidStream.Boundaries.Source source(
@@ -70,39 +70,39 @@ model JunctionT2 "Example - JunctionT2 with different processes"
     T_out_fixed=288.15) annotation(Placement(transformation(extent={{150,70},{170,90}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-200,-50},{-180,-30}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{-30,-50},{-10,-30}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{-30,-50},{-10,-30}})));
   ThermofluidStream.Topology.SplitterT2 splitter3(
     displayInstanceName=true,
     redeclare package Medium = Medium,
-    neglectInertance=true) annotation(Placement(transformation(extent={{-170,-30},{-150,-50}})));
+    considerInertance=false) annotation(Placement(transformation(extent={{-170,-30},{-150,-50}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     m_flow_fixed=2) annotation(Placement(transformation(extent={{-150,-90},{-130,-70}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric5(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     dT_fixed=25,
     inlet(m_flow(start=1))) annotation(Placement(transformation(extent={{-130,-50},{-110,-30}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric6(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dT_fixed=-15) annotation(Placement(transformation(extent={{-110,-90},{-90,-70}})));
   ThermofluidStream.Idealized.Topology.JunctionT2 junction2(
-    neglectInertance=true,
+    considerInertance=false,
 
     displayInstanceName=true,
     redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-90,-30},{-70,-50}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric7(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     dT_fixed=10,

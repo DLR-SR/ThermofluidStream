@@ -21,7 +21,7 @@ model Inversion
         rotation=0,
         origin={-40,40})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Refrigerant,

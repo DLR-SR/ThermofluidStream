@@ -63,14 +63,14 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     dp_nom=5000000) annotation(Placement(transformation(extent={{50,140},{70,160}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,80},{40,100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
@@ -99,14 +99,14 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     enableFilter=true) annotation(Placement(transformation(extent={{50,20},{70,40}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{20,-50},{40,-30}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{80,-50},{100,-30}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-50},{100,-30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressorIdealGas2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
@@ -149,14 +149,14 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     enableFilter=true) annotation(Placement(transformation(extent={{110,-120},{130,-100}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{80,-200},{100,-180}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{140,-200},{160,-180}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{140,-200},{160,-180}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressorPerfectGas2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,

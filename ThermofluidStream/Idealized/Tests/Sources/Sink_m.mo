@@ -144,7 +144,7 @@ model Sink_m "Example - mass flow sink"
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{160,110},{180,130}})));
   .ThermofluidStream.Boundaries.Sink_m sink12(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{200,110},{220,130}})));
   Modelica.Blocks.Sources.Pulse p_pulse5(
     amplitude=1e5,

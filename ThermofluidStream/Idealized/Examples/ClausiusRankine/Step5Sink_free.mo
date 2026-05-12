@@ -10,7 +10,7 @@ model Step5Sink_free
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     L=0,
-    neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)annotation(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true)annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(

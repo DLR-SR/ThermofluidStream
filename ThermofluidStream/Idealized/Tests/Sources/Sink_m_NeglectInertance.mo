@@ -18,12 +18,12 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
     startTime=0.1) annotation(Placement(transformation(extent={{60,40},{40,60}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-30,40},{-10,60}})));
   .ThermofluidStream.Boundaries.Sink_m sink4(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,40},{30,60}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
     amplitude=1,
@@ -33,11 +33,11 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     pressureFromInput=true,
-    neglectInertance=true,
+    considerInertance=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
   .ThermofluidStream.Boundaries.Sink_m sink5(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-10},{30,10}})));
   Modelica.Blocks.Sources.Pulse p_pulse2(
     amplitude=1e5,
@@ -52,13 +52,13 @@ model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     pressureFromInput=true,
-    neglectInertance=true,
+    considerInertance=false,
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{-30,-60},{-10,-40}})));
   .ThermofluidStream.Boundaries.Sink_m sink9(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-60},{30,-40}})));
   Modelica.Blocks.Sources.Pulse p_pulse4(
     amplitude=1e5,

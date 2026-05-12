@@ -48,14 +48,14 @@ model Pump1 "Pump model with the adiabatic process"
     dp_nom=5000000) annotation(Placement(transformation(extent={{70,30},{90,50}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{38,-54},{58,-34}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{98,-54},{118,-34}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{98,-54},{118,-34}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pump2(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,

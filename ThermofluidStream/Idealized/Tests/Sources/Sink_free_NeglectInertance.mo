@@ -18,16 +18,16 @@ model Sink_free_NeglectInertance "Example - free sink"
     startTime=0.1) annotation(Placement(transformation(extent={{-200,-56},{-180,-36}})));
   ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-200,-16},{-180,4}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink10(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{-140,-16},{-120,4}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink10(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{-140,-16},{-120,4}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     pressureFromInput=true,
-    neglectInertance=true,
+    considerInertance=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,-16},{-20,4}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink11(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{20,-16},{40,4}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink11(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{20,-16},{40,4}})));
   Modelica.Blocks.Sources.Ramp p_ramp2(
     height=1e5,
     duration=1,
@@ -36,11 +36,11 @@ model Sink_free_NeglectInertance "Example - free sink"
   ThermofluidStream.Boundaries.Source source12(
     redeclare package Medium = Medium,
     pressureFromInput=true,
-    neglectInertance=true,
+    considerInertance=false,
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{120,-16},{140,4}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink12(redeclare package Medium = Medium, neglectInertance=true) annotation(Placement(transformation(extent={{180,-16},{200,4}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink12(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{180,-16},{200,4}})));
   Modelica.Blocks.Sources.Ramp p_ramp3(
     height=1e5,
     duration=1,
@@ -53,15 +53,15 @@ model Sink_free_NeglectInertance "Example - free sink"
     Placement(transformation(extent={{80,-40},{100,-20}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate10(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,-16},{-150,4}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate11(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,-16},{10,4}})));
   .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate12(
     redeclare package Medium = Medium,
-    neglectInertance=true,
+    considerInertance=false,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{150,-16},{170,4}})));
 equation
   connect(p_ramp2.y, source11.p0_var) annotation(Line(points={{-59,0},{-32,0}},   color={0,0,127}));
