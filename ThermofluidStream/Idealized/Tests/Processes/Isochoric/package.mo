@@ -4,7 +4,7 @@ package Isochoric
   annotation (Documentation(info="<html>
   <p>
     These examples demonstrate how the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isochoric\">Isochoric</a> process model
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process model
     can be used to model periodic heat transfer in a closed cycle system.
   </p>
 </html>", revisions="<html>

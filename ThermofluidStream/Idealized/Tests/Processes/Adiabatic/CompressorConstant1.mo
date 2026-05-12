@@ -99,7 +99,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
           textString="fine")}),
     Documentation(info="<html>
   <p>
-   Simplification of the <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Processes.Adiabatic.CompressorConstant\">CompressorConstant</a> example.
+   Simplification of the <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.Adiabatic.CompressorConstant\">CompressorConstant</a> example.
   </p>
 </html>", revisions="<html>
   <ul>

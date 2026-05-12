@@ -13,7 +13,7 @@ package Exercise8TwoStageRefrigerationCycle "Exercise 8.8: Two-Stage Refrigerati
     </ul>
   </p>
   <p>
-    See  <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.NeglectInertance\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> 
+    See  <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.NeglectInertance\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> 
     for the problem description.
   </p>
 </html>"));

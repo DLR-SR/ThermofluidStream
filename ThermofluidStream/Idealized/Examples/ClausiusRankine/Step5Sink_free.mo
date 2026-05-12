@@ -158,12 +158,12 @@ see User's Guide",
 
   <p>
     Furthermore, since the mass flow rate setpoint is non differentiable, <code>neglectInertance = true</code> is required, see 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));
 end Step5Sink_free;

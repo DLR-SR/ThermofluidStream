@@ -243,7 +243,7 @@ equation
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
   </p>
 </html>"));
 end Step7HeatFlow;

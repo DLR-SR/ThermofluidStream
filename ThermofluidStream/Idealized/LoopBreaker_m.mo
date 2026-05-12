@@ -205,7 +205,7 @@ equation
     Documentation(info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
-    with <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.Sink_free\">Sink_m</a> to artificially close a loop.<br>
+    with <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">Sink_m</a> to artificially close a loop.<br>
     Cyclic loops without a loop breaker lead to algebraic equations which can make the system unsolvable. 
     The loop-breaker acts as both a source and a sink, defining a beginning (source) and an end (sink) in the loop, breaking the algebraic equations. 
  </p>

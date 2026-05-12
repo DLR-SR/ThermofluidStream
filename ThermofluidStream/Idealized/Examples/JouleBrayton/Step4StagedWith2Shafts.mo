@@ -191,7 +191,7 @@ equation
   </p>
   
   <p>
-    For information on the energy flow connector, see <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.EnergyFlow\">UsersGuide.EnergyFlow</a>.
+    For information on the energy flow connector, see <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.EnergyFlow\">UsersGuide.EnergyFlow</a>.
   </p>
   
   <p>
@@ -201,7 +201,7 @@ equation
   
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
   </p>
 </html>"));
 end Step4StagedWith2Shafts;

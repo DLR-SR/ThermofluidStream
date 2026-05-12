@@ -17,8 +17,8 @@ package Inversion
 
   <ul>
     <li>
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.Inversion1\">Inversion1</a> and
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.PseudoInversion1\">PseudoInversion1</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a> and
+      <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.PseudoInversion1\">PseudoInversion1</a>
       demonstrate two alternative solution strategies:
       a full inversion approach, which relies on a nonlinear equation solver to iteratively solve the system equations,
       and a pseudo-inversion approach, which exploits the time integrator together with a feedback loop to resolve the nonlinear relation.
@@ -26,12 +26,12 @@ package Inversion
     </li>
 
     <li>
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.Inversion2\">Inversion2</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion2\">Inversion2</a>
       applies the same methodology as <code>Inversion1</code>, but uses a different iteration variable.
     </li>
 
     <li>
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.MediumInversion\">MediumInversion</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.MediumInversion\">MediumInversion</a>
       uses Modelica’s equation-based formulation to determine temperature and pressure from a given specific entropy
       and specific enthalpy. This results in two nonlinear equation systems of size one, which are solved by Dymola
       using a nonlinear solver.
@@ -40,11 +40,11 @@ package Inversion
 
   <p>
     The models
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.Inversion1\">Inversion1</a>,
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.Inversion2\">Inversion2</a>, and
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.PseudoInversion1\">PseudoInversion1</a>
+    <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion1\">Inversion1</a>,
+    <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.Inversion2\">Inversion2</a>, and
+    <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.PseudoInversion1\">PseudoInversion1</a>
     all extend the common base model
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Inversion.BaseClasses.PartialInverse\">PartialInverse</a>
+    <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse\">PartialInverse</a>
     located in the <code>BaseClasses</code> subpackage, which defines the underlying mixing problem.
   </p>
 </html>"));

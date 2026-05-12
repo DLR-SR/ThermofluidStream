@@ -20,21 +20,21 @@ package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
       <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium
       (ideal gas with temperature-dependent <code>cp</code>).
       For <code>SimpleAir</code>, the
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">PerfectGas</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas\">PerfectGas</a>
       or
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma\">IdealGas</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma\">IdealGas</a>
       <code>ThermodynamicModel</code> have to be used.
       For <code>DryAirNasa</code>, the
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">Universal</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">Universal</a>
       <code>ThermodynamicModel</code> is recommended.
     </li>
 
     <li>
       The process model:
       the
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Adiabatic\">Adiabatic</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>
       model uses the outlet pressure as the setpoint, whereas the
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>
       model uses the outlet specific volume/density as the setpoint.
       The latter introduces one implicit nonlinear equation and therefore requires suitable start values,
       since the medium function <code>Medium.setState_dsX</code> is not available, in contrast to the medium function <code>Medium.setState_psX</code>.
@@ -46,7 +46,7 @@ package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
   </ul>
 
   <p>
-    See  <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PerfectGasAdiabaticFlow\">Exercise3OttoEngine.SimpleAir1</a> 
+    See  <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PerfectGasAdiabaticFlow\">Exercise3OttoEngine.SimpleAir1</a> 
     for the problem description.
   </p>
 </html>"));

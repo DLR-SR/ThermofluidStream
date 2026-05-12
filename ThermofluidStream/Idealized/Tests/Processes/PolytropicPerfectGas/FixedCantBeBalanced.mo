@@ -46,7 +46,7 @@ model FixedCantBeBalanced "Example - Isochoric process"
   </ul>
 </html>", info="<html>
   <p>
-    Versions of <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> that can not be balanced.
+    Versions of <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> that can not be balanced.
   </p>
 </html>"));
 end FixedCantBeBalanced;

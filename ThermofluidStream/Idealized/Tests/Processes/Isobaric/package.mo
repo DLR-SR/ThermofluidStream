@@ -12,7 +12,7 @@ package Isobaric
 </html>", info="<html>
   <p>
     These examples demonstrate how the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isobaric\">Isobaric</a> process model
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process model
     can be used to model heating/cooling (open system, steady-flow, <code>systemSpec==Flow</code>) 
     or periodic heat transfer in a closed cycle system (<code>systemSpec==Cycle</code>), see section Advanced. 
   </p>

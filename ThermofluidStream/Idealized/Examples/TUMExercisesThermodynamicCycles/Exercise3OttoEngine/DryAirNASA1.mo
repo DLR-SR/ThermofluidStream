@@ -144,7 +144,7 @@ equation
 </html>", info="<html>
   <p>
     Example of an otto engine cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PerfectGasAdiabaticFlow\">Exercise3OttoEngine.SimpleAir1</a> (see for problem description).
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PerfectGasAdiabaticFlow\">Exercise3OttoEngine.SimpleAir1</a> (see for problem description).
   </p>
 
   <p>
@@ -156,13 +156,13 @@ equation
 
   <p>
     This example uses the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Adiabatic\">Adiabatic</a> model, which uses the outlet pressure as the setpoint. 
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model, which uses the outlet pressure as the setpoint. 
     The calculation of outlet pressure for given outlet density is achieved by the use of the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model.
     An implicit nonlinear equation is introduced, which requires suitable start values.
   </p> 
 
   <p>
-    The <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
+    The <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
     a periodic closed-cycle process when the isentropic efficiency is equal to unity, or when the working fluid is an ideal gas with constant isentropic exponent.
     Otherwise, discrepancies arise because the isentropic efficiency is defined based on shaft work (i.e., changes in specific enthalpy) in the first case, 
     and based on net expansion work (i.e., changes in specific internal energy) in the second case.

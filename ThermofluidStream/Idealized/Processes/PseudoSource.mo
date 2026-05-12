@@ -150,7 +150,7 @@ equation
   </ul>
 
   <p>
-    See the example <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Tests.Processes.PseudoSource\">Tests.Processes.PseudoSource</a>.
+    See the example <a href=\"modelica://ThermoFluidStream.Idealized.Tests.Processes.PseudoSource\">Tests.Processes.PseudoSource</a>.
   </p>
 </html>", revisions="<html>
   <ul>

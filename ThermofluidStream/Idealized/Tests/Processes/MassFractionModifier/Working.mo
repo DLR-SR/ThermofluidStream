@@ -190,7 +190,7 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model 
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model 
     to change the mass fractions while keeping pressure and temperature constant.
   </p>
 </html>"));

@@ -28,7 +28,7 @@ connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input c
 
   <p>
     SI.EnergyFlowRate input connector that is used for a vector of connectors,
-    for example <a href=\\\"modelica://ThermoFluidStreamPlus.Idealized.Sandbox.Components.MultiSum\">MultiSum</a>,
+    for example <a href=\\\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.Sum\">Sum</a>,
     and has therefore a different icon as EnergyFlowInput connector.
   </p>
 </html>

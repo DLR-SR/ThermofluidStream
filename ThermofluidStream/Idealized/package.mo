@@ -8,16 +8,16 @@ package Idealized "Package with idealized components"
   </p>
   <ul>
     <li>
-      Idealized <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes\">Processes</a>, e.g. adiabatic, isobaric, isenthalpic, isochoric
+      Idealized <a href=\"modelica://ThermoFluidStream.Idealized.Processes\">Processes</a>, e.g. adiabatic, isobaric, isenthalpic, isochoric
     </li>
     <li>
-      Idealized mass flow rate <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources\">Sources</a>
+      Idealized mass flow rate <a href=\"modelica://ThermoFluidStream.Idealized.Sources\">Sources</a>
     </li>
     <li>
-      Idealized heat and power transfer, see <a href=\"modelica://ThermoFluidStreamPlus.Idealized.EnergyFlow\">EnergyFlow</a>
+      Idealized heat and power transfer, see <a href=\"modelica://ThermoFluidStream.Idealized.EnergyFlow\">EnergyFlow</a>
     </li>
     <li>
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples\">Examples</a> of thermodynamic cycles:  
+      <a href=\"modelica://ThermoFluidStream.Idealized.Examples\">Examples</a> of thermodynamic cycles:  
       Clausius-Rankine (CR), Joule-Brayton (JB), vapor cycle (inverse CR), air cycle (inverse JB), closed cycles (otto, diesel), combi cycles;  
       both simple and advanced configurations (multi-stage, etc.)
     </li>

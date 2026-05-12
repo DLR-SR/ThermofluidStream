@@ -278,13 +278,13 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isobaric\">Isobaric</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal = Input</code>) defined by discontinuous inputs.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal = Input</code>) defined by discontinuous inputs.
   </p>
   
   <p>
     Calculating the mass flow rate <code>m_flow = Q_flow/q</code>, may cause the simulation to fail at <code>q = 0</code>, which occurs for all models in this example.<br>
     This can in principle be avoided.
-    See the <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isobaric\">Isobaric</a> (text layer) for further information.
+    See the <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isobaric\">Isobaric</a> (text layer) for further information.
   </p>
 </html>"));
 end Prescribed2;

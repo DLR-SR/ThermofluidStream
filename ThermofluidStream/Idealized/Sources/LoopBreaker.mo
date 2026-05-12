@@ -194,14 +194,14 @@ equation
     Documentation(info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
-    with <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.Sink_free\">Sink_free</a> to artificially close a loop.<br>
+    with <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">Sink_free</a> to artificially close a loop.<br>
     Cyclic loops without a loop breaker lead to algebraic equations which can make the system unsolvable. 
     The loop-breaker acts as both a source and a sink, defining a beginning (source) and an end (sink) in the loop, breaking the algebraic equations. 
  </p>
 
   <p>
     The model is locally underdetermined (1 equation missing) and therefore must be connected to an overdetermined one 
-    (e.g., <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) to ensure that the overall system balanced.
+    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) to ensure that the overall system balanced.
   </p>
   
   <p>

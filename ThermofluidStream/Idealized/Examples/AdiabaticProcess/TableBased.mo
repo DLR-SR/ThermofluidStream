@@ -85,7 +85,7 @@ equation
     Documentation(info="<html>
   <p>
     This model evaluates different 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
     based on an exemplary pressurization of a table based incompressible fluid
     (<a href=\"modelica://ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47\">Glycol47</a>).
   </p>
@@ -126,8 +126,8 @@ equation
 
   <p>
     For more details regarding the underlying assumptions, refer to: <br>
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.AdiabaticThermodynamicModels\">
-      ThermoFluidStreamPlus.Idealized.UsersGuide.AdiabaticThermodynamicModels
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">
+      ThermoFluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels
     </a>.
   </p>
 </html>", revisions="<html>

@@ -86,7 +86,7 @@ equation
   <p>Model for specifying the mass flow rate.</p>
   <p>
     The model is locally overdetermined (one extra equation) and therefore must be connected to an underdetermined model 
-    (e.g., <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.Sink_free\">Sink_free</a>) 
+    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
     to ensure that the overall system balanced.
   </p>
 </html>", revisions="<html>

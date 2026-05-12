@@ -30,7 +30,7 @@ package ClausiusRankine "Clausius Rancine Cycle using idealized state change com
 
   <p>
     If the mass flow rate setpoint is non differentiable <code>neglectInertance = true</code> is required, see 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 </html>"));
 end ClausiusRankine;

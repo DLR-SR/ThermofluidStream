@@ -202,12 +202,12 @@ equation
 </html>", info="<html>
   <p>
     Example of a turbocharged diesel engine cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> (see for problem description).
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> (see for problem description).
   </p>
 
   <p>
     In contrast to <code>PolytropicCycle</code> this example is based on the (steady-flow) open 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Types.SystemModel\">SystemModel</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Types.SystemModel\">SystemModel</a>.
   </p>
 </html>"));
 end PolytropicFlow;

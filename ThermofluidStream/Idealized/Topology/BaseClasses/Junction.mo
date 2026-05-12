@@ -11,8 +11,8 @@ partial model Junction "Partial junction"
 </html>"));
   parameter Specification free =ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A      "Free inlet"
     annotation(choices(__Dymola_radioButtons=true,
-    choice = ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.A "A",
-    choice = ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.B "B"),Evaluate=true);
+    choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "A",
+    choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B "B"),Evaluate=true);
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
@@ -129,7 +129,7 @@ equation
   </p>
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined component 
-    (e.g., <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
+    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is not underdetermined.
   </p>
 </html>"));

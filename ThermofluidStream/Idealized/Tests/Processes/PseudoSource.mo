@@ -263,7 +263,7 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.PseudoSource\">PseudoSource</a> model 
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PseudoSource\">PseudoSource</a> model 
     to set outlet pressure, temperature/specific enthalpy and mass fractions.
   </p>
 </html>"));

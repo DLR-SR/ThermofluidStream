@@ -37,30 +37,30 @@ equation
           extent={{-120,60},{-80,20}},
           textColor={175,175,175},
           textString="B"),
-        Text(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.A,
+        Text(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
           extent={{0,80},{80,50}},
           textColor={0,0,0},
           textString="free"),
-        Text(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.B,
+        Text(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
           extent={{-80,-20},{0,-50}},
           textColor={0,0,0},
           textString="free"),
-        Ellipse(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.A,
+        Ellipse(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
           extent={{22,118},{58,82}},
           pattern=LinePattern.None,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid),
-        Rectangle(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.A,
+        Rectangle(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
           extent={{24,102},{56,98}},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Ellipse(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.B,
+        Ellipse(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
           extent={{-118,-22},{-82,-58}},
           pattern=LinePattern.None,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid),
-        Rectangle(visible = free == ThermoFluidStreamPlus.Idealized.Topology.Types.FreeJunctionInlet.B,
+        Rectangle(visible = free == ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
           extent={{-116,-38},{-84,-42}},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
@@ -78,7 +78,7 @@ equation
   </p>
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined component 
-    (e.g., <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
+    (e.g., <a href=\"modelica://ThermoFluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is not underdetermined.
   </p>
 </html>"));

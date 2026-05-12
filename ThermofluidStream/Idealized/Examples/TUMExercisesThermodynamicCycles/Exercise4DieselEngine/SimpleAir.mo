@@ -142,7 +142,7 @@ equation
 
   <p>
     This example uses the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a> model, which uses the outlet density as the setpoint. 
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a> model, which uses the outlet density as the setpoint. 
     For perfect gas this does not yield an implicit nonlinear equations.
   </p> 
 
@@ -165,7 +165,7 @@ equation
   </p>
 
   <p>
-    The <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
+    The <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
     a periodic closed-cycle process when the isentropic efficiency is equal to unity, or when the working fluid is an ideal gas with constant isentropic exponent.
     Otherwise, discrepancies arise because the isentropic efficiency is defined based on shaft work (i.e., changes in specific enthalpy) in the first case, 
     and based on net expansion work (i.e., changes in specific internal energy) in the second case.

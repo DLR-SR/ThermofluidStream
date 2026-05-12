@@ -11,7 +11,7 @@ package MassFractionModifier
   </ul>
 </html>", info="<html>
   <p>
-    Test package of <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model.
+    Test package of <a href=\"modelica://ThermoFluidStream.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model.
   </p>
 </html>"));
 end MassFractionModifier;

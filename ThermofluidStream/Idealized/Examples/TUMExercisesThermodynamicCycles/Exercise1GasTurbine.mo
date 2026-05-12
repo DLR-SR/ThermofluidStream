@@ -252,7 +252,7 @@ equation
       The adiabatic thermodynamic model 
       (<code>FullMedium</code>, <code>IdealGasConstantGamma</code>, or <code>PerfectGas</code>), 
       see 
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.AdiabaticThermodynamicModels\">
+      <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">
         UsersGuide.AdiabaticThermodynamicModels
       </a>.
     </li>
@@ -268,7 +268,7 @@ equation
     <li>
       <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.ReferenceAir\">ReferenceAir</a> 
       (e.g. <code>ReferenceAir.Air_ph</code>) fails when used with the 
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">
+      <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium\">
         FullMedium
       </a> thermodynamic model, but works with the other formulations.
     </li>

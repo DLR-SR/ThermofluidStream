@@ -9,7 +9,7 @@ class IconNeglectInertance "Icon for neglect inertance = true"
           pattern=LinePattern.None)}), Documentation(info="<html>
   <p>
     Icon used for examples requiring <code>neglectInertance = true</code>, see
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 </html>"));
 end IconNeglectInertance;

@@ -5,7 +5,7 @@ package Isenthalpic
   annotation (Documentation(info="<html>
   <p>
     These examples demonstrate how the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isenthalpic\">Isenthalpic</a> process model
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isenthalpic\">Isenthalpic</a> process model
     can be used to model valves.
   </p>
 </html>", revisions="<html>

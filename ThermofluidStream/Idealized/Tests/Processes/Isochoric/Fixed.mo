@@ -135,7 +135,7 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Isochoric\">Isochoric</a> process defined by parameters.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process defined by parameters.
   </p>
 </html>"));
 end Fixed;

@@ -30,7 +30,7 @@ equation
   
   <p>
     The model assumes an incompressible fluid (<code>rho = const.</code>) to compute the adiabatic reversible reference process (which implies <code>T = const.</code>).
-    In contrast to <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid\">IncompressibleFluid1</a>, 
+    In contrast to <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid\">IncompressibleFluid1</a>, 
     it uses the medium model to calculate the outlet specific enthalpy of the isentropic process <code>h_out_is = h(p_out,T)</code>.
   </p>
 </html>"));

@@ -153,12 +153,12 @@ see User's Guide",
 
   <p>
     Since the compressor outlet pressure is varying with time this inverse calculation requires <code>neglectInertance = true</code>, also see 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.neglectInertance\">UsersGuide.neglectInertance</a>.
   </p>
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.AirCycle\">AirCycle</a> package.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
 </html>"));
 end Step4RamAirFlowInverse;

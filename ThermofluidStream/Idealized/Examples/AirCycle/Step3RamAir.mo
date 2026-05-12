@@ -135,7 +135,7 @@ equation
 
   <p>
     Further documentation is available in the 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.AirCycle\">AirCycle</a> package.
+    <a href=\"modelica://ThermoFluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
 </html>"));
 end Step3RamAir;

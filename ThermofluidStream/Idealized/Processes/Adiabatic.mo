@@ -10,15 +10,15 @@ model Adiabatic "Adiabatic process"
   replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium constrainedby ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.BaseClasses.PartialAdiabatic
     "Thermodynamic model used for adiabatic process calculation"
     annotation(Evaluate = true, choices(
-      choice(redeclare model ThermodynamicModel = ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
+      choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.FullMedium
         "h_out_is = h(p_out, s_in)"),
-      choice(redeclare model ThermodynamicModel = ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma
+      choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma
         "p*v = R*T, gamma = const"),
-      choice(redeclare model ThermodynamicModel = ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas
+      choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas
         "p*v = R*T, cp = const"),
-      choice(redeclare model ThermodynamicModel = ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid
+      choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IncompressibleFluid
         "rho = const: h_out_is = dp/rho_in + h_in"),
-      choice(redeclare model ThermodynamicModel = ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference
+      choice(redeclare model ThermodynamicModel = ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IsothermalReference
         "h_out_is = h(p_out, T_in)")));
 
   parameter PowerSignal powerSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Power signal configuration"
@@ -147,15 +147,15 @@ equation
           extent={{-150,-140},{150,-110}},
           textColor={0,0,0},
           textString="η = %eta_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStreamPlus.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureDifference and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
+        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureDifference and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
           textString="Δp = %dp_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStreamPlus.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
+        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.PressureRatio and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
           textString="pr = %pr_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStreamPlus.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
+        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Flow.Adiabatic.OutletPressure and outletValueSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
           textString="p_out = %p_out_fixed"),
@@ -165,22 +165,22 @@ equation
         Line(visible = etaSpec == ThermoFluidStreamPlus.Types.ValueSpecification.Prescribed,
           points={{100,0},{100,-100},{60,-100}},
           color={0,0,127}),
-        Polygon(visible = not specifyOutlet and not powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Polygon(visible = not specifyOutlet and not powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-          fillPattern = if not specifyOutlet and not powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillPattern = if not specifyOutlet and not powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           fillColor={238,46,47},
           pattern=LinePattern.None),
-        Ellipse(visible=specifyOutlet and powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Ellipse(visible=specifyOutlet and powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
-        Rectangle(visible=specifyOutlet and powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Rectangle(visible=specifyOutlet and powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-78,24},{-82,56}},fillColor={28,108,200},fillPattern=FillPattern.Solid,pattern=LinePattern.None),
-        Rectangle(visible=specifyOutlet and powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Rectangle(visible=specifyOutlet and powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None),
-        Text(visible = not specifyOutlet and not powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Text(visible = not specifyOutlet and not powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-150,100},{150,60}},
-          textString= if not specifyOutlet and not powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
+          textString= if not specifyOutlet and not powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
           textColor={238,46,47}),
-        Text(visible = enableFilter and not specifyOutlet and powerSignal == ThermoFluidStreamPlus.Idealized.Types.EnergyFlowSignalMode.Input,
+        Text(visible = enableFilter and not specifyOutlet and powerSignal == ThermoFluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-100,-70},{0,-100}},
           textColor={255,170,85},
           textString="filter"),
@@ -247,7 +247,7 @@ equation
   <p>
     Different assumptions can be used to calculate the adiabatic reversible
     reference process, see 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow\">Utilities.AdiabaticModels</a>:
+    <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow\">Utilities.AdiabaticModels</a>:
   </p>
   
   <ul>
@@ -260,7 +260,7 @@ equation
   <p>
     The power can optionally be an <code>EnergyFlowInput</code> or an
     <code>EnergyFlowOutput</code>; see
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.UsersGuide.EnergyFlow\">
+    <a href=\"modelica://ThermoFluidStream.Idealized.UsersGuide.EnergyFlow\">
       UsersGuide.EnergyFlow
     </a>
     for details.
@@ -290,7 +290,7 @@ equation
       <code>m_flow = P/dh</code>.
       To obtain an overall balanced system, a locally underdetermined component,
       such as
-      <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Sources.Sink_free\">
+      <a href=\"modelica://ThermoFluidStream.Idealized.Sources.Sink_free\">
         Sink_free
       </a>,
       must be connected.
