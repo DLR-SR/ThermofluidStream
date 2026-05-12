@@ -120,7 +120,7 @@ equation
     T_out = Medium.temperature(outlet.state);
   end if;
 
-  if not neglectInertance then
+  if considerInertance then
     L*der(outlet.m_flow) = outlet.r - 0;
   else
     outlet.r = 0;

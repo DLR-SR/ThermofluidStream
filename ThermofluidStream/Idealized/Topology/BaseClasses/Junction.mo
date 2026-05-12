@@ -68,7 +68,7 @@ protected
 
 equation
   m_flowA + m_flowB + outlet.m_flow = 0;
-  if not neglectInertance then
+  if considerInertance then
     der(m_flowA) * L = rA - rA2;
     der(m_flowB) * L = rB - rB2;
   else
@@ -87,7 +87,7 @@ equation
   wA = m_flowA_reg / (m_flowA_reg + m_flowB_reg);
   wB = m_flowB_reg / (m_flowA_reg + m_flowB_reg);
 
-  if not neglectInertance then
+  if considerInertance then
     der(outlet.m_flow) * L =  outlet.r - r_mix;
   else
    0 =  outlet.r - r_mix;
