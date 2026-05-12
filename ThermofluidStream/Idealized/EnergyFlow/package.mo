@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized;
 package EnergyFlow
   extends Modelica.Icons.Package;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
         Rectangle(
           extent={{-80,60},{0,-60}},
           lineColor={243,243,243},

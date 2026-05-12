@@ -1,6 +1,6 @@
 within ThermofluidStream.Idealized.EnergyFlow.Interfaces;
 connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input connector used for vector of connectors"
-  annotation (
+  annotation(
   defaultComponentName="u",
   Icon(graphics={Ellipse(
         extent={{-100,100},{100,-100}},

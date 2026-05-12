@@ -2,7 +2,7 @@ within ThermofluidStream;
 package Idealized "Package with idealized components"
   extends Modelica.Icons.Package;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This package includes:
   </p>

@@ -9,16 +9,16 @@ model Isobaric "Isobaric process"
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
   parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration"
-    annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true);
+    annotation(Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)"
-    annotation (Dialog(group="Specification"), Evaluate=true);
+    annotation(Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified"
-    annotation (Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation (
+    annotation(Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (
+  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
     Dialog(group="Specification", enable=specifyOutlet),
     Evaluate=true,
     HideResult=not specifyOutlet);
@@ -56,11 +56,11 @@ model Isobaric "Isobaric process"
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if systemSpec == SystemSpecification.Cycle "Power (mean net expansion work for systemSpec == Cycle), directed out of the system [W]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={-100,-110})));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={-100,-110})));
 
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet state temperature" annotation(
     HideResult=true);
@@ -171,7 +171,7 @@ equation
     P = 0;
   end if;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
         Ellipse(
           extent={{-56,54},{64,-66}},
           fillColor={215,215,215},

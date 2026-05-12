@@ -5,23 +5,23 @@ model Step3Turbine2
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{-200,180},{-180,200}})));
+    annotation(Placement(transformation(extent={{-200,180},{-180,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
+    T_out_fixed(displayUnit="K") = 1180) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-100,20})));
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=7000000,
-    T0_par(displayUnit="K") = 780) annotation (Placement(transformation(
+    T0_par(displayUnit="K") = 780) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-100,-12})));
@@ -32,14 +32,14 @@ model Step3Turbine2
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 1110,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    eta_is_fixed=0.94) annotation (Placement(transformation(
+    eta_is_fixed=0.94) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,80})));
-  Sources.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270,
+  Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270,
         origin={0,-40})));
-  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation (Placement(transformation(extent={{-140,10},{-120,30}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{30,90},{50,70}})));
+  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
+  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation(Placement(transformation(extent={{30,90},{50,70}})));
   Processes.PolytropicPerfectGas
                       turbine2(
     redeclare package Medium = Medium,
@@ -48,29 +48,29 @@ model Step3Turbine2
     p_out_fixed=5240000,
     T_out_fixed(displayUnit="K") = 1060,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-                                   annotation (Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
-  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{30,10},{50,-10}})));
+                                   annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
+  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{30,10},{50,-10}})));
 equation
-  connect(source.outlet, reactor.inlet) annotation (Line(
+  connect(source.outlet, reactor.inlet) annotation(Line(
       points={{-100,-2},{-100,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(reactor.outlet,turbine1. inlet) annotation (Line(
+  connect(reactor.outlet,turbine1. inlet) annotation(Line(
       points={{-100,30},{-100,100},{0,100},{0,90}},
       color={28,108,200},
       thickness=0.5));
-  connect(reactorHeatFlow.E_flow_out, reactor.Q_flow_in) annotation (Line(points={{-119,20},{-108,20}}, color={255,170,85}));
-  connect(turbine1.P_out, turbine1Losses.E_flow_in) annotation (Line(points={{7,80},{28,80}}, color={255,170,85}));
-  connect(turbine1.outlet, turbine2.inlet) annotation (Line(
+  connect(reactorHeatFlow.E_flow_out, reactor.Q_flow_in) annotation(Line(points={{-119,20},{-108,20}}, color={255,170,85}));
+  connect(turbine1.P_out, turbine1Losses.E_flow_in) annotation(Line(points={{7,80},{28,80}}, color={255,170,85}));
+  connect(turbine1.outlet, turbine2.inlet) annotation(Line(
       points={{0,70},{0,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.outlet, sink.inlet) annotation (Line(
+  connect(turbine2.outlet, sink.inlet) annotation(Line(
       points={{0,-10},{0,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation (Line(points={{7,0},{28,0}}, color={255,170,85}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation(Line(points={{7,0},{28,0}}, color={255,170,85}));
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-200},{200,200}}), graphics={
         Text(
           extent={{-100,6},{-94,0}},

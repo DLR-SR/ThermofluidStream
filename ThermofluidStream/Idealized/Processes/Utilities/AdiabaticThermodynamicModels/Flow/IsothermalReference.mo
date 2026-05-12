@@ -10,7 +10,7 @@ equation
   h_out_is = Medium.specificEnthalpy(Medium.setState_pTX(p_out,T_out_is,Xi_in)); // OM Workaround
   w_t_is = h_out_is - h_in;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

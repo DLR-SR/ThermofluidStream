@@ -4,10 +4,10 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
+    annotation(Placement(transformation(extent={{-100,80},{-80,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,
@@ -16,7 +16,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=350000) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+    p_out_fixed=350000) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.IdealGasConstantGamma "p*v = R*T, gamma = const",
@@ -24,24 +24,24 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=100000) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
+    p_out_fixed=100000) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
   ThermofluidStream.Boundaries.Source
                                 source(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-140,-10},{-120,10}})));
+    T0_par(displayUnit="K") = 300) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 1400) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
+    T_out_fixed(displayUnit="K") = 1400) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="eta",
     use_numberPort=false,
     number=losses.E_flow_out/combustion.Q_flow,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{100,-80},{120,-60}})));
-  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=5.8) annotation (Placement(transformation(
+    significantDigits=4) annotation(Placement(transformation(extent={{100,-80},{120,-60}})));
+  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=5.8) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={10,70})));
@@ -49,7 +49,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 320) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+    T_out_fixed(displayUnit="K") = 320) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow.PerfectGas "p*v = R*T, cp = const",
@@ -57,101 +57,101 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=1000000) annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
+    p_out_fixed=1000000) annotation(Placement(transformation(extent={{-20,-10},{0,10}})));
   ThermofluidStream.Utilities.showRealValue lowPressureCompressorOutletTemperature(
     description="T_2",
     use_numberPort=false,
     number=lowPressureCompressor.outlet.state.T,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-140,-80},{-120,-60}})));
   ThermofluidStream.Utilities.showRealValue highPressureCompressorOutletTemperature(
     description="T_4",
     use_numberPort=false,
     number=highPressureCompressor.outlet.state.T,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-100,-80},{-80,-60}})));
   ThermofluidStream.Utilities.showRealValue turbineOutletTemperature(
     description="T_7",
     use_numberPort=false,
     number=turbine.outlet.state.T,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-60,-80},{-40,-60}})));
   ThermofluidStream.Utilities.showRealValue recuperatorOutletTemperatureB(
     description="T_8",
     use_numberPort=false,
     number=recuperatorB.outlet.state.T,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-20,-80},{0,-60}})));
   ThermofluidStream.Utilities.showRealValue heatFlowRateRecuperator(
     description="Q_flow_45",
     use_numberPort=false,
     number=recuperatorA.Q_flow,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{20,-80},{40,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{20,-80},{40,-60}})));
   ThermofluidStream.Utilities.showRealValue heatFlowRateCombustion(
     description="Q_flow_56",
     use_numberPort=false,
     number=combustion.Q_flow,
     displayVariable=false,
-    significantDigits=4) annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{60,-80},{80,-60}})));
   Processes.Isobaric recuperatorA(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 750) annotation (Placement(transformation(extent={{20,10},{40,-10}})));
+    T_out_fixed(displayUnit="K") = 750) annotation(Placement(transformation(extent={{20,10},{40,-10}})));
   Processes.Isobaric recuperatorB(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
 
-    T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{40,20},{20,40}})));
-  EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.97) annotation (Placement(transformation(extent={{160,-40},{180,-20}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{120,-40},{140,-20}})));
+    T_out_fixed(displayUnit="K")) annotation(Placement(transformation(extent={{40,20},{20,40}})));
+  EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.97) annotation(Placement(transformation(extent={{160,-40},{180,-20}})));
+  EnergyFlow.Components.Sum shaftPower(n_in=3) annotation(Placement(transformation(extent={{120,-40},{140,-20}})));
 equation
   connect(source.outlet, lowPressureCompressor.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-120,0},{-100,0}},
       color={28,108,200},
       thickness=0.5));
   connect(lowPressureCompressor.outlet, cooler.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-80,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));
   connect(cooler.outlet, highPressureCompressor.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-40,0},{-20,0}},
       color={28,108,200},
       thickness=0.5));
   connect(combustion.outlet, turbine.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{80,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperatorB.outlet, sink.inlet) annotation (Line(
+  connect(recuperatorB.outlet, sink.inlet) annotation(Line(
       points={{20,30},{10,30},{10,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperatorB.inlet, turbine.outlet) annotation (Line(
+  connect(recuperatorB.inlet, turbine.outlet) annotation(Line(
       points={{40,30},{134,30},{134,0},{120,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperatorA.inlet, highPressureCompressor.outlet) annotation (Line(
+  connect(recuperatorA.inlet, highPressureCompressor.outlet) annotation(Line(
       points={{20,0},{0,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(recuperatorA.outlet, combustion.inlet) annotation (Line(
+  connect(recuperatorA.outlet, combustion.inlet) annotation(Line(
       points={{40,0},{60,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(shaftPower.E_flow_out, losses.E_flow_in) annotation (Line(points={{141.7,-30},{158,-30}},  color={255,170,85}));
-  connect(turbine.P_out, shaftPower.E_flow_in[1]) annotation (Line(points={{110,-7},{110,-32},{120,-32}},     color={255,170,85}));
-  connect(highPressureCompressor.P_out, shaftPower.E_flow_in[2]) annotation (Line(points={{-10,-7},{-10,-30},{120,-30}}, color={255,170,85}));
-  connect(lowPressureCompressor.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{-90,-7},{-90,-28},{120,-28}},     color={255,170,85}));
-  connect(recuperatorA.Q_flow_out, recuperatorB.Q_flow_in) annotation (Line(points={{30,7},{30,22}}, color={255,170,85}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  connect(shaftPower.E_flow_out, losses.E_flow_in) annotation(Line(points={{141.7,-30},{158,-30}},  color={255,170,85}));
+  connect(turbine.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{110,-7},{110,-32},{120,-32}},     color={255,170,85}));
+  connect(highPressureCompressor.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-10,-7},{-10,-30},{120,-30}}, color={255,170,85}));
+  connect(lowPressureCompressor.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-90,-7},{-90,-28},{120,-28}},     color={255,170,85}));
+  connect(recuperatorA.Q_flow_out, recuperatorB.Q_flow_in) annotation(Line(points={{30,7},{30,22}}, color={255,170,85}));
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-160,-100},{180,100}}), graphics={
         Text(
           extent={{-114,6},{-108,0}},

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized;
 package Components
   extends Modelica.Icons.VariantsPackage;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized;
 package Examples
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This package contains examples of thermodynamic cycles, including simple and advanced configurations (e.g., multi-stage):
   </p>

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
 package Exercise4DieselEngine "Exercise 8.4: Diesel Engine [TUM2019]"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This example package illustrates stationary-flow representations of closed-system Diesel
     (<code>s, p, s, v</code>) engine processes.

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes;
 package PolytropicPerfectGas
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     These examples tests the
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> process model.

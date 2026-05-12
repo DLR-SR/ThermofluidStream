@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.EnergyFlow;
 package Sources "Energy sources (power, heat flow rate)"
   extends Modelica.Icons.SourcesPackage;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

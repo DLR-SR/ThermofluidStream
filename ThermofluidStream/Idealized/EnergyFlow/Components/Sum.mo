@@ -2,12 +2,12 @@ within ThermofluidStream.Idealized.EnergyFlow.Components;
 block Sum "Sum of energy flow rates"
 
   parameter Integer n_in(min=0) = 0 "Number of input connections"
-    annotation (Dialog(connectorSizing=true), HideResult=true);
+    annotation(Dialog(connectorSizing=true), HideResult=true);
 
   Interfaces.EnergyFlowVectorInput E_flow_in[n_in]
-    annotation (Placement(transformation(extent={{-120,60},{-80,-60}}), iconTransformation(extent={{-120,60},{-80,-60}})));
+    annotation(Placement(transformation(extent={{-120,60},{-80,-60}}), iconTransformation(extent={{-120,60},{-80,-60}})));
   Interfaces.EnergyFlowOutput E_flow_out
-    annotation (Placement(transformation(extent={{100,-17},{134,17}})));
+    annotation(Placement(transformation(extent={{100,-17},{134,17}})));
 
 equation
   if size(E_flow_in, 1) > 0 then
@@ -16,7 +16,7 @@ equation
     E_flow_out = 0;
   end if;
 
-annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
+annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
           extent={{-88,6},{-22,-6}},
           lineColor={255,170,85},

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Sources;
 package LoopBreaker_m
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     Tests <a href=\"modelica://ThermoFluidStream.Idealized.LoopBreaker_m\">LoopBreaker_m</a>.
   </p>

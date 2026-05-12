@@ -4,7 +4,7 @@ model MediumInversion "Calculate (p,T) = f(h,s)"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
  Medium.BaseProperties medium(p(start=1e5),T(start=300)); //Different p.start, T.start might eventually let the simulation fail
  Medium.SpecificEntropy s = Medium.specificEntropy(medium.state);
@@ -14,7 +14,7 @@ equation
   //medium.T = 273.15+20;
   //medium.p = 1e5;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false), graphics={
                                      Text(
           extent={{-80,20},{80,0}},
           textColor={28,108,200},

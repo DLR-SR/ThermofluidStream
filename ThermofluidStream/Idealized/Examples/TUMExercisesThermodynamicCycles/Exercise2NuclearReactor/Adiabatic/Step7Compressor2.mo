@@ -6,17 +6,17 @@ model Step7Compressor2
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     neglectInertance=true,                            displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{-20,180},{0,200}})));
+    annotation(Placement(transformation(extent={{-20,180},{0,200}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
+    T_out_fixed(displayUnit="K") = 1180) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-100,20})));
@@ -27,7 +27,7 @@ model Step7Compressor2
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=7000000)) annotation (Placement(transformation(
+    p_out(start=7000000)) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,150})));
@@ -35,15 +35,15 @@ model Step7Compressor2
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
-    outputValue=true) annotation (Placement(transformation(
+    outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={30,110})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation (Placement(transformation(
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(Placement(transformation(
         extent={{-20,-12},{20,12}},
         rotation=180,
         origin={40,130})));
-  Modelica.Blocks.Sources.RealExpression turbine1OutletTemperature(y(unit="K") = 1110) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression turbine1OutletTemperature(y(unit="K") = 1110) annotation(Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={38,130})));
@@ -54,23 +54,23 @@ model Step7Compressor2
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5240000,
     eta_is(start=1),
-    h_out(start=Medium.h_default)) annotation (Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
+    h_out(start=Medium.h_default)) annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
   ThermofluidStream.Sensors.SingleSensorSelect temperatureSensor1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
-    outputValue=true) annotation (Placement(transformation(
+    outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={30,-40})));
-  Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation (Placement(transformation(extent={{28,-30},{48,-10}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation (Placement(transformation(extent={{60,-32},{20,-8}})));
+  Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation(Placement(transformation(extent={{28,-30},{48,-10}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{60,-32},{20,-8}})));
   Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=5240000)) annotation (Placement(transformation(
+    p_out(start=5240000)) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,-90})));
@@ -78,29 +78,29 @@ model Step7Compressor2
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
-    outputValue=true) annotation (Placement(transformation(
+    outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={30,-134})));
-  Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation (Placement(transformation(extent={{28,-122},{48,-102}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation (Placement(transformation(extent={{58,-124},{18,-100}})));
+  Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{28,-122},{48,-102}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation(Placement(transformation(extent={{58,-124},{18,-100}})));
   Processes.Isobaric heatExchangerHotSide(
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     h_out(start=Medium.h_default),
     redeclare package Medium = Medium,
     specifyOutlet=false,
-    T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{20,-180},{40,-160}})));
+    T_out_fixed(displayUnit="K")) annotation(Placement(transformation(extent={{20,-180},{40,-160}})));
   Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
-    T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{60,-180},{80,-160}})));
+    T_out_fixed(displayUnit="K") = 285) annotation(Placement(transformation(extent={{60,-180},{80,-160}})));
   Processes.Isobaric heatExchangerColdSide(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(extent={{40,-190},{20,-210}})));
-  Sources.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(
+    T_out_fixed(displayUnit="K") = 780) annotation(Placement(transformation(extent={{40,-190},{20,-210}})));
+  Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={148,26})));
@@ -111,18 +111,18 @@ model Step7Compressor2
 
     eta_fixed=0.96,
     p_out_fixed=7000000,
-    h_out(start=Medium.h_default)) annotation (Placement(transformation(
+    h_out(start=Medium.h_default)) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={160,150})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints3(y1(start=300))
-                                                                        annotation (Placement(transformation(extent={{212,158},{252,182}})));
-  Modelica.Blocks.Sources.RealExpression realExpression3(y(unit="K") = 376) annotation (Placement(transformation(extent={{242,160},{222,180}})));
+                                                                        annotation(Placement(transformation(extent={{212,158},{252,182}})));
+  Modelica.Blocks.Sources.RealExpression realExpression3(y(unit="K") = 376) annotation(Placement(transformation(extent={{242,160},{222,180}})));
   ThermofluidStream.Sensors.SingleSensorSelect temperatureSensor3(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
-    outputValue=true) annotation (Placement(transformation(
+    outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={180,170})));
@@ -132,135 +132,135 @@ model Step7Compressor2
     temperatureFromInput=true,
     T0_par(displayUnit="K"),
     T0_var(start=300),
-    p0_var(start=50e5))          annotation (Placement(transformation(
+    p0_var(start=50e5))          annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={160,120})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints4 annotation (Placement(transformation(extent={{108,86},{148,110}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation (Placement(transformation(extent={{138,88},{118,108}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints4 annotation(Placement(transformation(extent={{108,86},{148,110}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)   annotation(Placement(transformation(extent={{138,88},{118,108}})));
   Processes.Adiabatic compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     specifyOutlet=true,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
-    eta_is(start=1)) annotation (Placement(transformation(
+    eta_is(start=1)) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={148,0})));
-  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)   annotation (Placement(transformation(extent={{120,-42},{100,-22}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation (Placement(transformation(extent={{90,-44},{130,-20}})));
-  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation (Placement(transformation(extent={{-140,10},{-120,30}})));
-  EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation (Placement(transformation(extent={{60,-80},{40,-100}})));
-  EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation (Placement(transformation(extent={{100,-100},{80,-80}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{40,160},{60,140}})));
-  EnergyFlow.Components.Sum pseudoSink(n_in=2) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)   annotation(Placement(transformation(extent={{120,-42},{100,-22}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation(Placement(transformation(extent={{90,-44},{130,-20}})));
+  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
+  EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{40,-80},{60,-60}})));
+  EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{60,-80},{40,-100}})));
+  EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation(Placement(transformation(extent={{100,-100},{80,-80}})));
+  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation(Placement(transformation(extent={{40,160},{60,140}})));
+  EnergyFlow.Components.Sum pseudoSink(n_in=2) annotation(Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={90,130})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{30,10},{50,-10}})));
-  EnergyFlow.Components.Sum pseudoSink1(n_in=2) annotation (Placement(transformation(
+  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{30,10},{50,-10}})));
+  EnergyFlow.Components.Sum pseudoSink1(n_in=2) annotation(Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={80,-14})));
 equation
-  connect(reactor.outlet,turbine1. inlet) annotation (Line(
+  connect(reactor.outlet,turbine1. inlet) annotation(Line(
       points={{-100,30},{-100,170},{0,170},{0,160}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor.inlet, turbine1.outlet) annotation (Line(
+  connect(temperatureSensor.inlet, turbine1.outlet) annotation(Line(
       points={{20,110},{0,110},{0,140}},
       color={28,108,200},
       thickness=0.5));
-  connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation (Line(points={{19,130},{16,130},{16,140},{12,140}},
+  connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{19,130},{16,130},{16,140},{12,140}},
                                                                                                                         color={0,0,127}));
   connect(turbine1.outlet,turbine2. inlet)
-    annotation (Line(
+    annotation(Line(
       points={{0,140},{0,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.outlet, temperatureSensor1.inlet) annotation (Line(
+  connect(turbine2.outlet, temperatureSensor1.inlet) annotation(Line(
       points={{0,-10},{0,-40},{20,-40}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation (Line(points={{12,-6},{16,-6},{16,-20},{19,-20}}, color={0,0,127}));
-  connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation (Line(points={{49,-20},{56,-20}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation (Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
-  connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation (Line(points={{49,130},{56,130}},
+  connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation(Line(points={{12,-6},{16,-6},{16,-20},{19,-20}}, color={0,0,127}));
+  connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation(Line(points={{49,-20},{56,-20}}, color={0,0,127}));
+  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
+  connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,130},{56,130}},
                                                                                                               color={0,0,127}));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation (Line(points={{38.2,110},{70,110},{70,130},{62,130}},
+  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,110},{70,110},{70,130},{62,130}},
                                                                                                                                 color={0,0,127}));
   connect(turbine2.outlet,turbine3. inlet)
-    annotation (Line(
+    annotation(Line(
       points={{0,-10},{0,-80}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor2.inlet, turbine3.outlet) annotation (Line(
+  connect(temperatureSensor2.inlet, turbine3.outlet) annotation(Line(
       points={{20,-134},{0,-134},{0,-100}},
       color={28,108,200},
       thickness=0.5));
-  connect(inverseBlockConstraints2.y1, turbine3.outletSpec_prescribed) annotation (Line(points={{17,-112},{16,-112},{16,-100},{12,-100}}, color={0,0,127}));
-  connect(inverseBlockConstraints2.u2, turbine3OutletTemperature.y) annotation (Line(points={{54,-112},{49,-112}}, color={0,0,127}));
-  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation (Line(points={{38.2,-134},{72,-134},{72,-112},{60,-112}}, color={0,0,127}));
-  connect(heatExchangerHotSide.outlet, cooler2.inlet) annotation (Line(
+  connect(inverseBlockConstraints2.y1, turbine3.outletSpec_prescribed) annotation(Line(points={{17,-112},{16,-112},{16,-100},{12,-100}}, color={0,0,127}));
+  connect(inverseBlockConstraints2.u2, turbine3OutletTemperature.y) annotation(Line(points={{54,-112},{49,-112}}, color={0,0,127}));
+  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{38.2,-134},{72,-134},{72,-112},{60,-112}}, color={0,0,127}));
+  connect(heatExchangerHotSide.outlet, cooler2.inlet) annotation(Line(
       points={{40,-170},{60,-170}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerHotSide.inlet, turbine3.outlet) annotation (Line(
+  connect(heatExchangerHotSide.inlet, turbine3.outlet) annotation(Line(
       points={{20,-170},{0,-170},{0,-100}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerColdSide.outlet, reactor.inlet) annotation (Line(
+  connect(heatExchangerColdSide.outlet, reactor.inlet) annotation(Line(
       points={{20,-200},{-100,-200},{-100,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(heatExchangerColdSide.inlet, compressor1.outlet) annotation (Line(
+  connect(heatExchangerColdSide.inlet, compressor1.outlet) annotation(Line(
       points={{40,-200},{200,-200},{200,190},{160,190},{160,160}},
       color={28,108,200},
       thickness=0.5));
-  connect(source.outlet, compressor1.inlet) annotation (Line(
+  connect(source.outlet, compressor1.inlet) annotation(Line(
       points={{160,130},{160,140}},
       color={28,108,200},
       thickness=0.5));
-  connect(inverseBlockConstraints3.u2, realExpression3.y) annotation (Line(points={{216,170},{221,170}}, color={0,0,127}));
-  connect(compressor1.outlet, temperatureSensor3.inlet) annotation (Line(
+  connect(inverseBlockConstraints3.u2, realExpression3.y) annotation(Line(points={{216,170},{221,170}}, color={0,0,127}));
+  connect(compressor1.outlet, temperatureSensor3.inlet) annotation(Line(
       points={{160,160},{160,170},{170,170}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor3.value_out, inverseBlockConstraints3.u1) annotation (Line(points={{188.2,170},{210,170}}, color={0,0,127}));
-  connect(inverseBlockConstraints4.u2, realExpression1.y) annotation (Line(points={{112,98},{117,98}}, color={0,0,127}));
-  connect(source.p0_var, inverseBlockConstraints4.y1) annotation (Line(points={{166,118},{166,98},{149,98}}, color={0,0,127}));
-  connect(inverseBlockConstraints3.y1, source.T0_var) annotation (Line(points={{253,170},{258,170},{258,106},{160,106},{160,118}}, color={0,0,127}));
-  connect(sink.inlet, compressor2.outlet) annotation (Line(
+  connect(temperatureSensor3.value_out, inverseBlockConstraints3.u1) annotation(Line(points={{188.2,170},{210,170}}, color={0,0,127}));
+  connect(inverseBlockConstraints4.u2, realExpression1.y) annotation(Line(points={{112,98},{117,98}}, color={0,0,127}));
+  connect(source.p0_var, inverseBlockConstraints4.y1) annotation(Line(points={{166,118},{166,98},{149,98}}, color={0,0,127}));
+  connect(inverseBlockConstraints3.y1, source.T0_var) annotation(Line(points={{253,170},{258,170},{258,106},{160,106},{160,118}}, color={0,0,127}));
+  connect(sink.inlet, compressor2.outlet) annotation(Line(
       points={{148,16},{148,10}},
       color={28,108,200},
       thickness=0.5));
-  connect(cooler2.outlet, compressor2.inlet) annotation (Line(
+  connect(cooler2.outlet, compressor2.inlet) annotation(Line(
       points={{80,-170},{148,-170},{148,-10}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor2.outletSpec_prescribed, inverseBlockConstraints4.y1) annotation (Line(points={{136,10},{128,10},{128,80},{166,80},{166,98},{149,98}}, color={0,0,127}));
-  connect(inverseBlockConstraints5.u2, realExpression2.y) annotation (Line(points={{94,-32},{99,-32}}, color={0,0,127}));
-  connect(inverseBlockConstraints5.y1, compressor2.eta_prescribed) annotation (Line(points={{131,-32},{132,-32},{132,6},{136,6}}, color={0,0,127}));
-  connect(reactorHeatFlow.E_flow_out, reactor.Q_flow_in) annotation (Line(points={{-119,20},{-108,20}}, color={255,170,85}));
-  connect(generator.E_flow_out, turbine3ShaftLosses.E_flow_in) annotation (Line(points={{79,-90},{62,-90}}, color={255,170,85}));
-  connect(turbine3ShaftLosses.E_flow_out, turbine3HeatLosses.E_flow_in[1]) annotation (Line(points={{39,-90},{30,-90},{30,-71.5},{40,-71.5}},   color={255,170,85}));
-  connect(turbine3.P_out, turbine3HeatLosses.E_flow_in[2]) annotation (Line(points={{7,-90},{28,-90},{28,-68.5},{40,-68.5}},   color={255,170,85}));
-  connect(heatExchangerColdSide.Q_flow_out, heatExchangerHotSide.Q_flow_in) annotation (Line(points={{30,-193},{30,-178}}, color={255,170,85}));
-  connect(turbine1.P_out, turbine1Losses.E_flow_in) annotation (Line(points={{7,150},{38,150}}, color={255,170,85}));
-  connect(turbine1Losses.E_flow_out, pseudoSink.E_flow_in[1]) annotation (Line(points={{61,150},{88,150},{88,140},{91.5,140}},
+  connect(compressor2.outletSpec_prescribed, inverseBlockConstraints4.y1) annotation(Line(points={{136,10},{128,10},{128,80},{166,80},{166,98},{149,98}}, color={0,0,127}));
+  connect(inverseBlockConstraints5.u2, realExpression2.y) annotation(Line(points={{94,-32},{99,-32}}, color={0,0,127}));
+  connect(inverseBlockConstraints5.y1, compressor2.eta_prescribed) annotation(Line(points={{131,-32},{132,-32},{132,6},{136,6}}, color={0,0,127}));
+  connect(reactorHeatFlow.E_flow_out, reactor.Q_flow_in) annotation(Line(points={{-119,20},{-108,20}}, color={255,170,85}));
+  connect(generator.E_flow_out, turbine3ShaftLosses.E_flow_in) annotation(Line(points={{79,-90},{62,-90}}, color={255,170,85}));
+  connect(turbine3ShaftLosses.E_flow_out, turbine3HeatLosses.E_flow_in[1]) annotation(Line(points={{39,-90},{30,-90},{30,-71.5},{40,-71.5}},   color={255,170,85}));
+  connect(turbine3.P_out, turbine3HeatLosses.E_flow_in[2]) annotation(Line(points={{7,-90},{28,-90},{28,-68.5},{40,-68.5}},   color={255,170,85}));
+  connect(heatExchangerColdSide.Q_flow_out, heatExchangerHotSide.Q_flow_in) annotation(Line(points={{30,-193},{30,-178}}, color={255,170,85}));
+  connect(turbine1.P_out, turbine1Losses.E_flow_in) annotation(Line(points={{7,150},{38,150}}, color={255,170,85}));
+  connect(turbine1Losses.E_flow_out, pseudoSink.E_flow_in[1]) annotation(Line(points={{61,150},{88,150},{88,140},{91.5,140}},
                                                                                                                           color={255,170,85}));
-  connect(compressor1.P_out, pseudoSink.E_flow_in[2]) annotation (Line(points={{153,150},{92,150},{92,140},{88.5,140}},
+  connect(compressor1.P_out, pseudoSink.E_flow_in[2]) annotation(Line(points={{153,150},{92,150},{92,140},{88.5,140}},
                                                                                                                    color={255,170,85}));
-  connect(pseudoSink.E_flow_out, inverseBlockConstraints4.u1) annotation (Line(points={{90,118.3},{90,98},{106,98}},  color={255,170,85}));
-  connect(pseudoSink1.E_flow_out, inverseBlockConstraints5.u1) annotation (Line(points={{80,-25.7},{80,-32},{88,-32}},  color={255,170,85}));
-  connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation (Line(points={{7,0},{28,0}}, color={255,170,85}));
-  connect(turbine2Losses.E_flow_out, pseudoSink1.E_flow_in[1]) annotation (Line(points={{51,0},{78,0},{78,-4},{81.5,-4}},
+  connect(pseudoSink.E_flow_out, inverseBlockConstraints4.u1) annotation(Line(points={{90,118.3},{90,98},{106,98}},  color={255,170,85}));
+  connect(pseudoSink1.E_flow_out, inverseBlockConstraints5.u1) annotation(Line(points={{80,-25.7},{80,-32},{88,-32}},  color={255,170,85}));
+  connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation(Line(points={{7,0},{28,0}}, color={255,170,85}));
+  connect(turbine2Losses.E_flow_out, pseudoSink1.E_flow_in[1]) annotation(Line(points={{51,0},{78,0},{78,-4},{81.5,-4}},
                                                                                                                       color={255,170,85}));
-  connect(compressor2.P_out, pseudoSink1.E_flow_in[2]) annotation (Line(points={{141,0},{82,0},{82,-4},{78.5,-4}},
+  connect(compressor2.P_out, pseudoSink1.E_flow_in[2]) annotation(Line(points={{141,0},{82,0},{82,-4},{78.5,-4}},
                                                                                                                color={255,170,85}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-240},{200,200}}), graphics={
         Text(
           extent={{-100,6},{-94,0}},

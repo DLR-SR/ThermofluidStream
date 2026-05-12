@@ -6,7 +6,7 @@ partial model Junction "Partial junction"
   import Specification = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true, Documentation(info="<html>
+    annotation(choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
   parameter Specification free =ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A      "Free inlet" annotation(
@@ -14,9 +14,9 @@ partial model Junction "Partial junction"
     choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "A",
     choice = ThermoFluidStream.Idealized.Topology.Types.FreeJunctionInlet.B "B"),Evaluate=true);
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
-    annotation (Dialog(tab="Advanced"));
+    annotation(Dialog(tab="Advanced"));
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation (Dialog(tab="Advanced",
+    annotation(Dialog(tab="Advanced",
       enable = not neglectInertance),
       HideResult = neglectInertance);
   parameter Boolean neglectInertance = true "=true, if mass flow rate dynamics are neglected - advanced mode!" annotation(
@@ -40,7 +40,7 @@ partial model Junction "Partial junction"
   SI.MassFlowRate m_flowB_reg = max(m_flowB,m_flow_eps) "Regularized mass flow rate";
   Real dp_AB_rel "Relative difference in pressure at junction inlets";
   ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium) "Outlet"
-    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
+    annotation(Placement(transformation(extent={{80,-20},{120,20}})));
 
   Medium.SpecificEnthalpy h_mix "Outlet specific enthalpy";
   Medium.AbsolutePressure p_mix "Outlet (steady mass-flow) pressure";
@@ -104,7 +104,7 @@ equation
     "In \"" + name +"\" the inlet pressures differ beyond the specified tolerance.",
     assertionLevel);
 
-  annotation (defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation(defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(
           points={{-2,0},{100,0}},
           color={28,108,200},

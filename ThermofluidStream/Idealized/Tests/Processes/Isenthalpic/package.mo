@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes;
 package Isenthalpic
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     These examples demonstrate how the 
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isenthalpic\">Isenthalpic</a> process model

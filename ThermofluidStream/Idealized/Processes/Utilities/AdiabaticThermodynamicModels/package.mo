@@ -1,6 +1,6 @@
 within ThermofluidStream.Idealized.Processes.Utilities;
 package AdiabaticThermodynamicModels
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     Package of adiabatic assumption models used in 
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> and 

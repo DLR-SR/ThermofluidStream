@@ -28,7 +28,7 @@ equation
   T_out_is = T_in;
   w_t = h_out - h_in;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

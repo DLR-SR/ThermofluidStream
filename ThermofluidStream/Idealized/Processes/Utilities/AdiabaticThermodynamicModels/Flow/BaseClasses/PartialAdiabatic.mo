@@ -26,7 +26,7 @@ equation
     w_t = w_t_is*eta_is; // Turbine
   end if;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

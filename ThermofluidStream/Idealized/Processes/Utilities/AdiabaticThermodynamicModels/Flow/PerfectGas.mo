@@ -6,7 +6,7 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
-  parameter ValueSpecification cpSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation (Dialog(group="Assumptions"), Evaluate=true);
+  parameter ValueSpecification cpSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.SpecificHeatCapacity cp_fixed = 1000 "Constant specific heat capacity" annotation(
     Dialog(group="Assumptions",
       enable = cpSpec ==ValueSpecification.Fixed),
@@ -37,7 +37,7 @@ equation
   w_t = cp*(T_out - T_in);
   h_out = Medium.specificEnthalpy(Medium.setState_pTX(p_out, T_out, Xi_in)); // OM Workaround
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

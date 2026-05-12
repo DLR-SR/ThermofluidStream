@@ -4,12 +4,12 @@ model FlowWork "Process to consider flow work p*v (switching between open <-> cl
   import FlowWorkBoundary = ThermofluidStream.Idealized.Types.FlowWorkBoundary;
 
   parameter FlowWorkBoundary boundary =ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet      "Flow work to be considered"
-    annotation (Evaluate=true, HideResult=true);
+    annotation(Evaluate=true, HideResult=true);
 
   EnergyFlow.Interfaces.EnergyFlowOutput P_inlet_out = -P_inlet if boundary == FlowWorkBoundary.Inlet  "Flow work of the inlet flow (directed out of the system) [W]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={-100,-110})));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={-100,-110})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_outlet_out = -P_outlet if boundary == FlowWorkBoundary.Outlet  "Flow work of the outlet flow (directed out of the system) [W]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={100,-110})));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={100,-110})));
 
   Medium.SpecificEnergy w_flow "Flow work";
   SI.Power P_inlet "Flow work rate of the inlet flow";
@@ -28,7 +28,7 @@ equation
   P_inlet = -m_flow*w_flow;
   P_outlet = m_flow*w_flow;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
     Line(visible = boundary == ThermoFluidStream.Idealized.Types.FlowWorkBoundary.Outlet,
       points={{100,0},{100,-100}},
       color={255,170,85}),

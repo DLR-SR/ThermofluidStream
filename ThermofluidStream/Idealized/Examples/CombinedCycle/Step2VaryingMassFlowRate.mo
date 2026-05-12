@@ -5,20 +5,20 @@ model Step2VaryingMassFlowRate
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
   replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{180,80},{200,100}})));
+    annotation(Placement(transformation(extent={{180,80},{200,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic pump(
     redeclare package Medium = Water,
     eta_fixed=0.6,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=10000000) annotation (Placement(transformation(
+    p_out_fixed=10000000) annotation(Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={30,-40})));
@@ -27,7 +27,7 @@ model Step2VaryingMassFlowRate
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=10000) annotation (Placement(transformation(
+    p_out_fixed=10000) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={130,0})));
@@ -36,7 +36,7 @@ model Step2VaryingMassFlowRate
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=473.15) annotation (Placement(transformation(
+    T_out_fixed=473.15) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={12,0})));
@@ -44,113 +44,113 @@ model Step2VaryingMassFlowRate
     redeclare package Medium = Water,
     m_flow_in_par=1,
     p_out_fixed=10000,
-    T_out_fixed=293.15) annotation (Placement(transformation(extent={{90,-50},{70,-30}})));
+    T_out_fixed=293.15) annotation(Placement(transformation(extent={{90,-50},{70,-30}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Water,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=293.15) annotation (Placement(transformation(extent={{120,-50},{100,-30}})));
+    T_out_fixed=293.15) annotation(Placement(transformation(extent={{120,-50},{100,-30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Air,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=2000000) annotation (Placement(transformation(extent={{-140,50},{-120,30}})));
+    p_out_fixed=2000000) annotation(Placement(transformation(extent={{-140,50},{-120,30}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbineJB(
     redeclare package Medium = Air,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=100000) annotation (Placement(transformation(extent={{-60,50},{-40,30}})));
+    p_out_fixed=100000) annotation(Placement(transformation(extent={{-60,50},{-40,30}})));
   ThermofluidStream.Boundaries.Source
                     airSource(
     redeclare package Medium = Air,
     p0_par=100000,
-    T0_par=293.15) annotation (Placement(transformation(extent={{-180,30},{-160,50}})));
+    T0_par=293.15) annotation(Placement(transformation(extent={{-180,30},{-160,50}})));
   ThermofluidStream.Idealized.Processes.Isobaric combustion(
     redeclare package Medium = Air,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=1673.15) annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
+    T_out_fixed=1673.15) annotation(Placement(transformation(extent={{-100,30},{-80,50}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-30,-30})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerAirSide(
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    specifyOutlet=false) annotation (Placement(transformation(
+    specifyOutlet=false) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-30,0})));
   Modelica.Blocks.Sources.Ramp massFlowRateRamp(
     height=19,
     duration=10,
-    offset=1) annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
-  EnergyFlow.Components.Sum generatorPower(n_in=3) annotation (Placement(transformation(extent={{160,50},{180,70}})));
+    offset=1) annotation(Placement(transformation(extent={{-80,-60},{-60,-40}})));
+  EnergyFlow.Components.Sum generatorPower(n_in=3) annotation(Placement(transformation(extent={{160,50},{180,70}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="efficiency",
     use_numberPort=false,
     number=(generatorPower.E_flow_out - pump.P)/(combustion.Q_flow + Modelica.Constants.eps),
-    displayVariable=false) annotation (Placement(transformation(extent={{0,-100},{20,-80}})));
+    displayVariable=false) annotation(Placement(transformation(extent={{0,-100},{20,-80}})));
 equation
   connect(loopBreaker.inlet, cooler.outlet)
-    annotation (Line(
+    annotation(Line(
       points={{90,-40},{100,-40}},
       color={28,108,200},
       thickness=0.5));
   connect(pump.inlet, loopBreaker.outlet)
-    annotation (Line(
+    annotation(Line(
       points={{40,-40},{70,-40}},
       color={28,108,200},
       thickness=0.5));
   connect(pump.outlet, heatExchangerWaterSide.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{20,-40},{12,-40},{12,-10}},
       color={28,108,200},
       thickness=0.5));
   connect(turbineCR.outlet, cooler.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{130,-10},{130,-40},{120,-40}},
       color={28,108,200},
       thickness=0.5));
   connect(heatExchangerWaterSide.outlet, turbineCR.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{12,10},{12,30},{130,30},{130,10}},
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outlet,combustion. inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-120,40},{-100,40}},
       color={28,108,200},
       thickness=0.5));
   connect(combustion.outlet, turbineJB.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-80,40},{-60,40}},
       color={28,108,200},
       thickness=0.5));
   connect(airSource.outlet,compressor. inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-160,40},{-140,40}},
       color={28,108,200},
       thickness=0.5));
   connect(turbineJB.outlet, heatExchangerAirSide.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-40,40},{-30,40},{-30,10}},
       color={28,108,200},
       thickness=0.5));
   connect(heatExchangerAirSide.outlet,airSink. inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-30,-10},{-30,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateRamp.y, airSink.m_flow_prescribed) annotation (Line(points={{-59,-50},{-30,-50},{-30,-32}}, color={0,0,127}));
-  connect(heatExchangerWaterSide.Q_flow_out, heatExchangerAirSide.Q_flow_in) annotation (Line(points={{5,0},{-22,0}}, color={255,170,85}));
-  connect(compressor.P_out, generatorPower.E_flow_in[1]) annotation (Line(points={{-130,47},{-130,58},{160,58}},     color={255,170,85}));
-  connect(turbineJB.P_out, generatorPower.E_flow_in[2]) annotation (Line(points={{-50,47},{-50,60},{160,60}}, color={255,170,85}));
-  connect(turbineCR.P_out, generatorPower.E_flow_in[3]) annotation (Line(points={{137,0},{150,0},{150,62},{160,62}},     color={255,170,85}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  connect(massFlowRateRamp.y, airSink.m_flow_prescribed) annotation(Line(points={{-59,-50},{-30,-50},{-30,-32}}, color={0,0,127}));
+  connect(heatExchangerWaterSide.Q_flow_out, heatExchangerAirSide.Q_flow_in) annotation(Line(points={{5,0},{-22,0}}, color={255,170,85}));
+  connect(compressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-130,47},{-130,58},{160,58}},     color={255,170,85}));
+  connect(turbineJB.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{-50,47},{-50,60},{160,60}}, color={255,170,85}));
+  connect(turbineCR.P_out, generatorPower.E_flow_in[3]) annotation(Line(points={{137,0},{150,0},{150,62},{160,62}},     color={255,170,85}));
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-100},{200,100}}), graphics={
         Text(
           extent={{-154,46},{-148,40}},

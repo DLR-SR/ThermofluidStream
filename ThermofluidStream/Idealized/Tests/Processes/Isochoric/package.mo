@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes;
 package Isochoric
   extends Modelica.Icons.ExamplesPackage;
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     These examples demonstrate how the 
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process model

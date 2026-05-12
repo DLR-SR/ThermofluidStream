@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels.Flow;
 package BaseClasses "Package of partial models for assumption"
   extends Modelica.Icons.BasesPackage;
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

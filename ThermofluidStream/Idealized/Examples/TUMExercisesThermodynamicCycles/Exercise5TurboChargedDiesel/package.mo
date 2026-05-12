@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
 package Exercise5TurboChargedDiesel "Exercise 8.5: Turbocharged Diesel Engine [TUM2019]"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This package contains examples of a turbocharged diesel engine cycle. The setups of the examples are identical. The examples differ by:
   </p>

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Tests.Processes;
 package MassFractionModifier
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

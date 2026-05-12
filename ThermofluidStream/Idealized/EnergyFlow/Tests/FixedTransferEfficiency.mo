@@ -2,27 +2,27 @@ within ThermofluidStream.Idealized.EnergyFlow.Tests;
 model FixedTransferEfficiency
   extends Modelica.Icons.Example;
 
-  Components.FixedTransferEfficiency transfer annotation (Placement(transformation(extent={{-8,-8},{8,8}})));
+  Components.FixedTransferEfficiency transfer annotation(Placement(transformation(extent={{-8,-8},{8,8}})));
   Modelica.Blocks.Sources.SawTooth sawTooth(
     amplitude=1e6,
     period=0.3,
     offset=-0.3e6,
-    startTime=0.2) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+    startTime=0.2) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
   Components.FixedTransferEfficiency transfer1(outputDissipation=true)
-                                              annotation (Placement(transformation(extent={{-8,-28},{8,-12}})));
+                                              annotation(Placement(transformation(extent={{-8,-28},{8,-12}})));
   Components.FixedTransferEfficiency transfer2(eta=0,    outputDissipation=true)
-                                              annotation (Placement(transformation(extent={{-8,-48},{8,-32}})));
+                                              annotation(Placement(transformation(extent={{-8,-48},{8,-32}})));
   Modelica.Blocks.Sources.SawTooth sawTooth1(
     amplitude=1e6,
     period=0.3,
     offset=0,
-    startTime=0.2) annotation (Placement(transformation(extent={{-60,-50},{-40,-30}})));
+    startTime=0.2) annotation(Placement(transformation(extent={{-60,-50},{-40,-30}})));
 equation
-  connect(sawTooth.y, transfer.E_flow_in) annotation (Line(points={{-39,0},{-9.6,0}}, color={0,0,127}));
-  connect(transfer1.E_flow_in, sawTooth.y) annotation (Line(points={{-9.6,-20},{-20,-20},{-20,0},{-39,0}},
+  connect(sawTooth.y, transfer.E_flow_in) annotation(Line(points={{-39,0},{-9.6,0}}, color={0,0,127}));
+  connect(transfer1.E_flow_in, sawTooth.y) annotation(Line(points={{-9.6,-20},{-20,-20},{-20,0},{-39,0}},
                                                                                                    color={255,170,85}));
-  connect(sawTooth1.y, transfer2.E_flow_in) annotation (Line(points={{-39,-40},{-9.6,-40}}, color={0,0,127}));
-  annotation (Documentation(info="<html>
+  connect(sawTooth1.y, transfer2.E_flow_in) annotation(Line(points={{-39,-40},{-9.6,-40}}, color={0,0,127}));
+  annotation(Documentation(info="<html>
   <p>
     Test model for <code>FixedTransferEfficiency</code> model.
   </p>

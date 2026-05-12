@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized;
 package Topology
   extends Modelica.Icons.Package;
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
         Rectangle(
           lineColor={128,128,128},
           extent={{-100,-100},{100,100}},

@@ -4,64 +4,64 @@ model Step2Valve
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{80,80},{100,100}})));
+    annotation(Placement(transformation(extent={{80,80},{100,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-50,-10},{-30,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
-    p_out_fixed=100000) annotation (Placement(transformation(extent={{30,-10},{50,10}})));
+    p_out_fixed=100000) annotation(Placement(transformation(extent={{30,-10},{50,10}})));
   ThermofluidStream.Boundaries.Source airSource(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par=293.15) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
+    T0_par=293.15) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=293.15) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    T_out_fixed=293.15) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Sources.Ramp pressure(
     height=2e5,
     duration=1,
     offset=1e5 + 1)
-                annotation (Placement(transformation(extent={{-70,-50},{-50,-30}})));
+                annotation(Placement(transformation(extent={{-70,-50},{-50,-30}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformanceSpecific(
     description="COP",
     use_numberPort=false,
     number=(Medium.specificEnthalpy(airSink.inlet.state) - Medium.specificEnthalpy(airSource.outlet.state))/(compressor.dh),
     displayVariable=false) "=0 (for a valve)"
-                           annotation (Placement(transformation(extent={{0,-60},{20,-40}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
+                           annotation(Placement(transformation(extent={{0,-60},{20,-40}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
 equation
   connect(compressor.outlet, cooler.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-30,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
   connect(cooler.outlet, valve.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{10,0},{30,0}},
       color={28,108,200},
       thickness=0.5));
   connect(airSource.outlet, compressor.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-70,0},{-50,0}},
       color={28,108,200},
       thickness=0.5));
   connect(valve.outlet, airSink.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{50,0},{70,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outletSpec_prescribed, pressure.y) annotation (Line(points={{-30,-12},{-30,-40},{-49,-40}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
+  connect(compressor.outletSpec_prescribed, pressure.y) annotation(Line(points={{-30,-12},{-30,-40},{-49,-40}}, color={0,0,127}));
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
                                            graphics={Text(
           extent={{-60,60},{40,40}},
           textColor={28,108,200},

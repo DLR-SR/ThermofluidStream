@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.Topology;
 package BaseClasses
   extends Modelica.Icons.BasesPackage;
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

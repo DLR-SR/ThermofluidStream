@@ -1,6 +1,6 @@
 within ThermofluidStream.Idealized.EnergyFlow.Interfaces;
 connector EnergyFlowInput = input SI.EnergyFlowRate "'input SI.EnergyFlowRate' as connector"
-annotation (
+annotation(
   defaultComponentName="E_flow_in",
   Icon(graphics={
     Polygon(

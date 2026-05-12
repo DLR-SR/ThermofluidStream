@@ -7,7 +7,7 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
-  parameter ValueSpecification gammaSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation (Dialog(group="Assumptions"), Evaluate=true);
+  parameter ValueSpecification gammaSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.IsentropicExponent gamma_fixed = 1.4 "Fixed isentropic exponent" annotation(
     Dialog(group="Assumptions",
       enable = gammaSpec ==ValueSpecification.Fixed),
@@ -69,7 +69,7 @@ equation
   Z_in  = p_in*M/(rho_in*T_in*Modelica.Constants.R);
   Z_out = p_out*M/(rho_out*Medium.temperature(state_out)*Modelica.Constants.R);
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

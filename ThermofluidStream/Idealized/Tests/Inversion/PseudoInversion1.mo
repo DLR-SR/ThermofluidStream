@@ -4,18 +4,18 @@ model PseudoInversion1 "Example - Pseudo-inversion using a feedback control loop
   Modelica.Blocks.Continuous.Integrator integrator(
     k=5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=2) annotation (Placement(transformation(extent={{0,-30},{-20,-10}})));
-  Modelica.Blocks.Math.Feedback feedback annotation (Placement(transformation(extent={{40,-10},{20,-30}})));
+    y_start=2) annotation(Placement(transformation(extent={{0,-30},{-20,-10}})));
+  Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{40,-10},{20,-30}})));
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint1(y(
       unit="K",
-      displayUnit="degC") = 298.15) annotation (Placement(transformation(extent={{80,-30},{60,-10}})));
+      displayUnit="degC") = 298.15) annotation(Placement(transformation(extent={{80,-30},{60,-10}})));
 equation
-  connect(feedback.y, integrator.u) annotation (Line(points={{21,-20},{2,-20}}, color={0,0,127}));
+  connect(feedback.y, integrator.u) annotation(Line(points={{21,-20},{2,-20}}, color={0,0,127}));
   connect(integrator.y, massFlowRateB.m_flow_prescribed)
-    annotation (Line(points={{-21,-20},{-30,-20},{-30,2}}, color={0,0,127}));
-  connect(singleSensorSelect.value_out, feedback.u2) annotation (Line(points={{30,1.8},{30,-12}}, color={0,0,127}));
-  connect(feedback.u1, temperatureSetpoint1.y) annotation (Line(points={{38,-20},{59,-20}}, color={0,0,127}));
-  annotation (
+    annotation(Line(points={{-21,-20},{-30,-20},{-30,2}}, color={0,0,127}));
+  connect(singleSensorSelect.value_out, feedback.u2) annotation(Line(points={{30,1.8},{30,-12}}, color={0,0,127}));
+  connect(feedback.u1, temperatureSetpoint1.y) annotation(Line(points={{38,-20},{59,-20}}, color={0,0,127}));
+  annotation(
     Icon(coordinateSystem(preserveAspectRatio=false)),
     Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2}),                     graphics={Text(
           extent={{-80,-60},{80,-80}},

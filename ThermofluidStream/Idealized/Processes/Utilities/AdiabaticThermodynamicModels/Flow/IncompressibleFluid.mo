@@ -7,7 +7,7 @@ model IncompressibleFluid "Adiabatic process, incompressible fluid (rho = const)
 equation
   w_t_is = (p_out - p_in)/rho_in;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

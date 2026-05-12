@@ -80,9 +80,9 @@ model Adiabatic "Adiabatic process"
   Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]"
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
+    annotation(Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if powerSignal == PowerSignal.Output "Power (directed out of the system) [W]"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
 
   SI.Efficiency eta_is "Isentropic efficiency";
   SI.SpecificEnthalpy dh "Difference in specific enthalpy dh = h_out - h_in";
@@ -142,7 +142,7 @@ equation
   P = m_flow*dh;
   Xi_out = Xi_in;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
         Text(visible= displayParameters and showEfficiency and etaSpec == ThermoFluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-140},{150,-110}},
           textColor={0,0,0},

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized;
 package Processes
   extends Modelica.Icons.Package;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
          Ellipse(
           extent={{-60,54},{60,-66}},
           lineColor={28,108,200},

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
 package Exercise8TwoStageRefrigerationCycle "Exercise 8.8: Two-Stage Refrigeration Cycle [TUM2019]"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This package contains examples of a two stage vapor cycle.
     The setups of the examples are identical. The examples differ by:

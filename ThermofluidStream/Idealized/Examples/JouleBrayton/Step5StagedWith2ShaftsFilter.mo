@@ -4,10 +4,10 @@ model Step5StagedWith2ShaftsFilter
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
-    annotation (choicesAllMatching=true);
+    annotation(choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
-    annotation (Placement(transformation(extent={{140,80},{160,100}})));
+    annotation(Placement(transformation(extent={{140,80},{160,100}})));
 
   Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,
@@ -16,7 +16,7 @@ model Step5StagedWith2ShaftsFilter
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     pr_fixed=2,
-    p_out_fixed=200000) annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
+    p_out_fixed=200000) annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -26,28 +26,28 @@ model Step5StagedWith2ShaftsFilter
     dp_nom=2000000,
     eta_fixed=0.8,
     specifyOutlet=false,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.Boundaries.Source
                     airSource(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par=293.15) annotation (Placement(transformation(extent={{-156,-10},{-136,10}})));
+    T0_par=293.15) annotation(Placement(transformation(extent={{-156,-10},{-136,10}})));
   Processes.Isobaric firstCombustion(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=1673.15) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+    T_out_fixed=1673.15) annotation(Placement(transformation(extent={{10,-10},{30,10}})));
   Modelica.Blocks.Sources.Ramp outletPressure(
     height=18.98e5,
     duration=1,
     offset=1.0e5)
-                annotation (Placement(transformation(extent={{-150,-50},{-130,-30}})));
+                annotation(Placement(transformation(extent={{-150,-50},{-130,-30}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU recuperator(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     A=10,
-    k_NTU=200) annotation (Placement(transformation(extent={{-30,-4},{-10,16}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
+    k_NTU=200) annotation(Placement(transformation(extent={{-30,-4},{-10,16}})));
+  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-38,44})));
@@ -55,88 +55,88 @@ model Step5StagedWith2ShaftsFilter
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=293.15) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
+    T_out_fixed=293.15) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
   Processes.Adiabatic highPressureCompressor(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=2000000) annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+    p_out_fixed=2000000) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
   Processes.Isobaric secondCombustion(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed=1673.15) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    T_out_fixed=1673.15) annotation(Placement(transformation(extent={{90,-10},{110,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    p_out_fixed=100000) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
-  EnergyFlow.Components.Sum generatorPower(n_in=2) annotation (Placement(transformation(extent={{160,-40},{180,-20}})));
+    p_out_fixed=100000) annotation(Placement(transformation(extent={{130,-10},{150,10}})));
+  EnergyFlow.Components.Sum generatorPower(n_in=2) annotation(Placement(transformation(extent={{160,-40},{180,-20}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="efficiency",
     use_numberPort=false,
     number=generatorPower.E_flow_out/(firstCombustion.Q_flow + secondCombustion.Q_flow),
-    displayVariable=false) annotation (Placement(transformation(extent={{0,60},{20,80}})));
+    displayVariable=false) annotation(Placement(transformation(extent={{0,60},{20,80}})));
 equation
   connect(airSource.outlet, lowPressureCompressor.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-136,0},{-120,0}},
       color={28,108,200},
       thickness=0.5));
   connect(airSink.inlet, recuperator.outletB)
-    annotation (Line(
+    annotation(Line(
       points={{-38,34},{-38,12},{-30,12}},
       color={28,108,200},
       thickness=0.5));
   connect(lowPressureCompressor.outlet, cooler.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-100,0},{-90,0}},
       color={28,108,200},
       thickness=0.5));
   connect(cooler.outlet, highPressureCompressor.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-70,0},{-60,0}},
       color={28,108,200},
       thickness=0.5));
   connect(recuperator.outletA, firstCombustion.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{-10,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
   connect(highPressureCompressor.outlet, recuperator.inletA)
-    annotation (Line(
+    annotation(Line(
       points={{-40,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
   connect(firstCombustion.outlet, highPressureTurbine.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{30,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
   connect(highPressureTurbine.outlet, secondCombustion.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{70,0},{90,0}},
       color={28,108,200},
       thickness=0.5));
   connect(secondCombustion.outlet, lowPressureTurbine.inlet)
-    annotation (Line(
+    annotation(Line(
       points={{110,0},{130,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(lowPressureTurbine.outlet, recuperator.inletB) annotation (Line(
+  connect(lowPressureTurbine.outlet, recuperator.inletB) annotation(Line(
       points={{150,0},{158,0},{158,18},{-4,18},{-4,12},{-10,12}},
       color={28,108,200},
       thickness=0.5));
-  connect(outletPressure.y, lowPressureCompressor.outletSpec_prescribed) annotation (Line(points={{-129,-40},{-100,-40},{-100,-12}}, color={0,0,127}));
-  connect(highPressureCompressor.P_out, highPressureTurbine.P_in) annotation (Line(points={{-50,-7},{-50,-20},{60,-20},{60,-8}}, color={255,170,85}));
-  connect(lowPressureCompressor.P_out, generatorPower.E_flow_in[1]) annotation (Line(points={{-110,-7},{-110,-32},{160,-32},{160,-31.5}},
+  connect(outletPressure.y, lowPressureCompressor.outletSpec_prescribed) annotation(Line(points={{-129,-40},{-100,-40},{-100,-12}}, color={0,0,127}));
+  connect(highPressureCompressor.P_out, highPressureTurbine.P_in) annotation(Line(points={{-50,-7},{-50,-20},{60,-20},{60,-8}}, color={255,170,85}));
+  connect(lowPressureCompressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-110,-7},{-110,-32},{160,-32},{160,-31.5}},
                                                                                                                                     color={255,170,85}));
-  connect(lowPressureTurbine.P_out, generatorPower.E_flow_in[2]) annotation (Line(points={{140,-7},{140,-28.5},{160,-28.5}},   color={255,170,85}));
-  annotation (experiment(startTime=-1),Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  connect(lowPressureTurbine.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{140,-7},{140,-28.5},{160,-28.5}},   color={255,170,85}));
+  annotation(experiment(startTime=-1),Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-160,-100},{160,100}}), graphics={
         Text(
           extent={{-132,6},{-126,0}},

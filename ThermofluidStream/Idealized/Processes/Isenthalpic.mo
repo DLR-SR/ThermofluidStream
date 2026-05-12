@@ -7,8 +7,8 @@ model Isenthalpic "Isenthalpic process"
 
   parameter Boolean enforcePressureDrop = true "Enforce pressure drop in flow direction (prevents non-physical isenthalpic pressure rise)" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation (Dialog(group="Specification"), Evaluate=true);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation(Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(Dialog(group="Specification"), Evaluate=true);
   parameter SI.PressureDifference dpLoss_fixed = 0 "Fixed pressure loss (dpLoss = p_in - p_out)" annotation(
     Dialog(group="Specification",
       enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.PressureLoss),
@@ -86,7 +86,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermoFluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermoFluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},

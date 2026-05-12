@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples;
 package JouleBrayton "Joule Brayton Cycle using idealized state change components"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

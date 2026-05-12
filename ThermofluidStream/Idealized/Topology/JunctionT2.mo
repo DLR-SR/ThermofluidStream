@@ -3,9 +3,9 @@ model JunctionT2 "Junction T2, inlet A or B are free - Underdetermined (1 equati
 
   extends BaseClasses.Junction;
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
+    annotation(Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+    annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
 equation
 
   stateA = inletA.state;
@@ -15,7 +15,7 @@ equation
   m_flowA = inletA.m_flow;
   m_flowB = inletB.m_flow;
 
-  annotation (defaultComponentName = "junction",
+  annotation(defaultComponentName = "junction",
   Icon(graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-100},{150,-60}},

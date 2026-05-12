@@ -4,7 +4,7 @@ class UsersGuide "User's Guide"
 
 class AdiabaticThermodynamicModels
   extends Modelica.Icons.Information;
-    annotation (Documentation(info="<html>
+    annotation(Documentation(info="<html>
   <p>
     Various models from
     <a href=\"modelica://ThermoFluidStream.Idealized.Processes.Utilities.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a>
@@ -68,7 +68,7 @@ end AdiabaticThermodynamicModels;
 
 class BalancedModels
   extends Modelica.Icons.Information;
-    annotation (Documentation(info="<html>
+    annotation(Documentation(info="<html>
  <p>
     Some models are not balanced:
   </p>
@@ -130,7 +130,7 @@ end BalancedModels;
 
 class EnergyFlow
   extends Modelica.Icons.Information;
-    annotation (Documentation(info="<html>
+    annotation(Documentation(info="<html>
   <p>
     The energy flow connector is compatible with standard Modelica Real input and output connectors. 
     It was introduced to emphasize its physical meaning and to clearly differentiate power and heat flow from, for example, control signals.
@@ -155,7 +155,7 @@ end EnergyFlow;
 
 class neglectInertance
   extends Modelica.Icons.Information;
-    annotation (Documentation(info="<html>
+    annotation(Documentation(info="<html>
   <p>    
     Inverse calculations are supported, for example determining the mass flow rate from a specified temperature difference and heat flow.<br> 
     Such inverse calculations may require to remove the derivative of the mass flow rate <code>der(m_flow)</code>, refered to as <strong>neglectInertance</strong>.<br>
@@ -178,7 +178,7 @@ end neglectInertance;
 class References "References"
   extends Modelica.Icons.References;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
 <p>
 References for idealized processes.
 </p>
@@ -203,7 +203,7 @@ Initial version.
 </html>"));
 end References;
 
-  annotation (DocumentationClass=true, Documentation(info="<html>
+  annotation(DocumentationClass=true, Documentation(info="<html>
 <p>This package provides idealized state-change components, enabling the simulation of ideal thermodynamic processes such as isentropic, adiabatic, isenthalpic or isobaric state changes. It also allows users to prescribe mass flow rates and to combine components via ideal power flow connectors, facilitating heat exchange between components or the coupling of turbines and compressors. </p>
 </html>", revisions="<html>
   <ul>

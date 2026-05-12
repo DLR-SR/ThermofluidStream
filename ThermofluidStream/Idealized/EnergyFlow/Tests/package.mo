@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.EnergyFlow;
 package Tests
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <p>
     This package contains tests of the energy flow connector.
   </p>

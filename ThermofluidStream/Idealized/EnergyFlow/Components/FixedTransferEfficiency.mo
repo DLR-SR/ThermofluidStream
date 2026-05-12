@@ -9,7 +9,7 @@ model FixedTransferEfficiency "Model with fixed transfer efficiency"
     Placement(transformation(extent={{-140,-20},{-100,20}}), iconTransformation(extent={{-140,-20},{-100,20}})));
   Interfaces.EnergyFlowOutput E_flow_out annotation(
     Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
-  Interfaces.EnergyFlowOutput E_flow_dissipation_out = -E_flow_dissipation if outputDissipation "Dissipative energy flow rate" annotation (Placement(transformation(
+  Interfaces.EnergyFlowOutput E_flow_dissipation_out = -E_flow_dissipation if outputDissipation "Dissipative energy flow rate" annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-50}), iconTransformation(
@@ -33,7 +33,7 @@ equation
       end if;
     end if;
     // DynamicSelect(FillPattern.None, if abs(E_flow_dissipation) > Modelica.Constants.eps then FillPattern.Solid else FillPattern.None),
-  annotation (defaultComponentName="transfer",
+  annotation(defaultComponentName="transfer",
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Text(
           extent={{-150,65},{150,25}},

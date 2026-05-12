@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exer
 package Polytropic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(revisions="<html>
+  annotation(Documentation(revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -5,7 +5,7 @@ model MassFlowRate "Generic mass flow rate source - Overdetermined (1 equation)"
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation (Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation(Dialog(group="Specification"), Evaluate=true);
   parameter SI.MassFlowRate m_flow_fixed = 0 "Fixed mass flow rate" annotation(
     Dialog(group="Specification",
       enable = m_flowSpec ==ValueSpecification.Fixed),
@@ -31,7 +31,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation (Icon(graphics={
+  annotation(Icon(graphics={
         Text(visible=displayInstanceName,
           extent={{-150,80},{150,120}},
           textString="%name",
