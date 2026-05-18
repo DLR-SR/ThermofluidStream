@@ -1,6 +1,6 @@
 PolytropicCycle
 PolytropicFlow
-PerfectGasAdiabaticFlow
-DryAirNASA1
-DryAirNASA1PseudoInversion
+AdiabaticPerfectGas
+DryAirNASA
+DryAirNASAPseudoInversion
 BaseModel

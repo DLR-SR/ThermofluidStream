@@ -226,7 +226,7 @@ equation
     The three inputs are varied independently using pulse, sine, and ramp blocks.
   </p>
   <p>
-    The mass flow rate is treated as independent of the thermodynamic state.
+    The mass flow rate is treated independently of the thermodynamic state.
   </p> 
   <p>
     Note that the inlet and outlet of the loop breaker are independent of each other. 

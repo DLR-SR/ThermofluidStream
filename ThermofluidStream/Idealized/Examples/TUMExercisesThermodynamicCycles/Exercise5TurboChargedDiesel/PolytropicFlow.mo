@@ -200,13 +200,19 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of a turbocharged diesel engine cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> (see for problem description).
+    Example of a turbocharged Diesel engine cycle. See 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> for the problem description.
   </p>
 
   <p>
-    In contrast to <code>PolytropicCycle</code> this example is based on the (steady-flow) open 
-    <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a>.
+    This example makes use of the <code>systemSpec = Flow</code> <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a> for the Diesel engine.
   </p>
-</html>"));
+
+  <p>
+    Implicit nonlinear equations arise from the
+    <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
+    model, requiring appropriate start values for a successful solution.
+  </p>
+</html>
+"));
 end PolytropicFlow;

@@ -175,8 +175,9 @@ equation
     This condition can be enforced with <code>enforcePressureDrop</code>. 
     Then, a red circle highlights if the prescribed pressure loss would cause a pressure rise in flow direction and is clipped.
     If <code>not enforcePressureDrop</code>, violation only triggers an assert, which is also indicated on the icon layer.
+    For inverse calculations, it may be advantageous to set 
+    <code>enforcePressureDrop = false</code>, as this simplifies the equation system.
   </p>
-
 </html>", revisions="<html>
   <ul>
     <li>

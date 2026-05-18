@@ -216,30 +216,26 @@ equation
     </li>
   </ul>
 </html>", info="<html>
-  <ul>
-     <li>
-      In this example the thermodynamic process is represented by the
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a>
-      model.
-    </li>
-   
-    <li>
-      It employs the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a>
-      medium, modeled as an ideal gas with <code>R = 287 J/(kg·K)</code> and <code>κ = 1.40</code>.
-    </li>
+  <p>
+    Example of a turbocharged Diesel engine cycle.
+  </p>
 
-    <li>
-      It is based on the (periodic) closed-cycle
-      <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a>.
-    </li>
+  <p>
+    This example makes use of the <code>systemSpec = Cycle</code> <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a> for the Diesel engine.
+  </p>
 
-    <li>
-      Implicit nonlinear equations arise from the
-      <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
-      model, requiring appropriate start values for a successful solution.
-    </li>
-  </ul>
- 
+  <p>
+    When coupling models configured with <code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>, 
+    the <a href=\"modelica://ThermofluidStream.Idealized.Processes.FlowWork\">FlowWork</a> model is required, 
+    since flow work must be treated explicitly to ensure a consistent energy balance between both representations.
+  </p>
+
+  <p>
+    Implicit nonlinear equations arise from the
+    <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
+    model, requiring appropriate start values for a successful solution.
+  </p>
+  
   <h4>Problem description</h4>
   
   <p>
@@ -268,5 +264,6 @@ equation
     pressure. The turbine delivers its power completely to 
     the compressor via a lossless shaft.
   </p>
-</html>"));
+</html>
+"));
 end PolytropicCycle;

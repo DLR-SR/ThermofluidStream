@@ -266,5 +266,8 @@ equation
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PseudoSource\">PseudoSource</a> model 
     to set outlet pressure, temperature/specific enthalpy and mass fractions.
   </p>
+  <p>
+    The outlet of the pseudoSource is independent of its inlet. Suitable to integrate e.g. FMUs.
+  </p>
 </html>"));
 end PseudoSource;

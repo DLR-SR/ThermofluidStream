@@ -4,8 +4,7 @@ package AdiabaticThermodynamicModels
   annotation(Documentation(info="<html>
   <p>
     Package of adiabatic assumption models used in 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> and 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>.
   </p>
   
   <p>
@@ -14,7 +13,7 @@ package AdiabaticThermodynamicModels
   
   <ul>
     <li>Inlet state</li>
-    <li>Outlet pressure or outlet density</li>
+    <li>Outlet pressure</li>
     <li>Isentropic efficiency</li>
   </ul>
 </html>"));

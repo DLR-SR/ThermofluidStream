@@ -9,7 +9,7 @@ model CycleAmbientPressure "Example - Isobaric process"
   parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{140,140},{160,160}})));
+    Placement(transformation(extent={{140,80},{160,100}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -139,7 +139,8 @@ equation
       color={28,108,200},
       thickness=0.5));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-160},{160,160}})),
+        grid={2,2},
+        extent={{-160,-100},{160,100}})),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -149,7 +150,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    This example illustrates the influence of the ambient pressure on the power of a periodic isobaric closed-cycle process.<br>
+    This example illustrates the influence of the ambient pressure on the power (net expansion work flow rate) of a periodic isobaric closed-cycle process.<br>
     For <code>p = p_inf</code>, the net power is zero.<br> 
     For <code>p \\gt; p_inf</code> the net power is directed out of the system in case of a temperature increase (expansion) and into the system for a temperature decrease (compression). 
     For <code>p \\lt; p_inf</code> the net power is directed into of the system in case of a temperature increase (expansion) and out of the system for a temperature decrease (compression). 

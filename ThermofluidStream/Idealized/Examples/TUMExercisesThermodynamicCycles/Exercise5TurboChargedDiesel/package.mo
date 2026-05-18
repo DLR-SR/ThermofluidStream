@@ -4,24 +4,19 @@ package Exercise5TurboChargedDiesel "Exercise 8.5: Turbocharged Diesel Engine [T
 
   annotation(Documentation(info="<html>
   <p>
-    This package contains examples of a turbocharged diesel engine cycle. The setups of the examples are identical. The examples differ by:
+    This package contains examples of a turbocharged diesel engine cycle.
   </p>
 
-  <ul>
-    <li>
-      The medium model: 
-      <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
-      (perfect gas with constant <code>cp</code>) vs. 
-      <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium
-      (ideal gas with temperature-dependent <code>cp</code>).
-    </li>
-    <li>
-      The solution method: implicit nonlinear equations vs. <code>pseudoInversion<code> \"controllers\".
-    </li>
-  </ul>
-  
   <p>
-    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.SimpleAir\">Exercise5TurboChargedDiesel.SimpleAir</a> 
+    The examples use the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
+      model (perfect gas with constant <code>cp</code>) and the process model
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a>.
+      They differ by the system specification (<code>Cycle</code> and <code>Flow</code>) and by the solution method: implicit nonlinear equations vs. <code>pseudoInversion<code> \"controllers\".
+    </li>
+  </p>
+
+  <p>
+    See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> 
     for the problem description.
   </p>
 </html>"));

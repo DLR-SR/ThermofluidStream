@@ -8,7 +8,7 @@ model PartialFixed "Parameter definition"
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
   parameter Real pRatio=2  "Fixed pressure ratio (pRatio = p_out/p_in)";
   parameter SI.Efficiency eta_is=0.9 "Fixed isentropic efficiency";
-  parameter SI.MassFlowRate m_flow=0   "Fixed mass flow rate";
+  parameter SI.MassFlowRate m_flow=1   "Fixed mass flow rate";
 
   final parameter Medium.ThermodynamicState state_in = Medium.setState_pTX(p_in, T_in, Medium.X_default) "Inlet state";
   final parameter Medium.Density rho_in = Medium.density(state_in) "Inlet density";

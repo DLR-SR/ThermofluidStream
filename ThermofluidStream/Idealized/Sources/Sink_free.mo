@@ -22,7 +22,11 @@ the outlet the sink is connected to.
     HideResult=true);
 
 equation
-  r = inlet.r;
+  if considerInertance then
+    der(inlet.m_flow)*L = inlet.r - r;
+  else
+    0 = inlet.r - r;
+  end if;
   annotation(defaultComponentName="sink", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,150},{150,110}},
@@ -64,26 +68,30 @@ equation
           thickness=0.5),
         Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
         Ellipse(
-          extent={{-108,58},{-72,22}},
+          extent={{-108,78},{-72,42}},
           pattern=LinePattern.None,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-106,42},{-74,38}},
+          extent={{-106,60},{-74,56}},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None)}),      Diagram(
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-100,40},{-80,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid)}),      Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-  <p>Model of a free sink.</p>
+  <p>
+    Model of a free sink.
+  </p>
+
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined model 
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is balanced.
-  </p>
-
-  <p>
-    Note that the inertance <code>L</code> and the parameter <code>considerInertance</code> are provided for convenience, but they have no effect on the model.
   </p>
 </html>", revisions="<html>
   <ul>

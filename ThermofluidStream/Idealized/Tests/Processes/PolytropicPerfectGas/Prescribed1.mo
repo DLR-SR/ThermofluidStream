@@ -884,5 +884,9 @@ equation
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (given mass flow rate).
   </p>
+
+  <p>
+    <code>pRatio = 1</code> and/or <code>m_flow = 0</code> is supported.
+  </p>
 </html>"));
 end Prescribed1;

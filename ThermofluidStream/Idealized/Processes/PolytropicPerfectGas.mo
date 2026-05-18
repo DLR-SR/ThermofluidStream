@@ -309,6 +309,18 @@ equation
   Xi_out = Xi_in;
   h_out = h_in + dh;
 
+  // Old warning on icon layer. To be removed.
+  // Polygon(visible = powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
+  // and not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified
+  // and (outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed or processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed),
+//   points = {{0,58},{-20,18},{20,18},{0,58}},
+//   lineColor = {244,125,35},
+//   lineThickness=1),
+// Text(visible = powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and (outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed or processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed),
+//   extent = {{-10,42},{10,22}},
+//   textColor = {244,125,35},
+//   textString="!"),
+
   annotation(
       Documentation(info="<html>
   <p>
@@ -558,14 +570,6 @@ equation
           fillPattern = FillPattern.Solid,
           fillColor={238,46,47},
           pattern=LinePattern.None),
-        Polygon(visible = powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and (outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed or processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed),
-          points = {{0,58},{-20,18},{20,18},{0,58}},
-          lineColor = {244,125,35},
-          lineThickness=1),
-        Text(visible = powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and (outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed or processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed),
-          extent = {{-10,42},{10,22}},
-          textColor = {244,125,35},
-          textString="!"),
         Rectangle(visible = 1.0 < 0.0,
           extent={{-200,200},{200,-200}},
           lineColor={0,0,0},

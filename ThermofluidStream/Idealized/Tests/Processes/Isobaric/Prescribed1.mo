@@ -55,7 +55,7 @@ model Prescribed1 "Example - Isobaric cycle process"
     startTime=0.3) annotation(Placement(transformation(extent={{-280,-60},{-260,-40}})));
   Modelica.Blocks.Sources.RealExpression outletTemperature(y=T_out) annotation(Placement(transformation(extent={{-120,-70},{-100,-50}})));
   Modelica.Blocks.Sources.SawTooth massFlowRate(
-    amplitude=4,
+    amplitude=-2,
     period=1,
     offset=1,
     startTime=0.4) annotation(Placement(transformation(extent={{-280,-20},{-260,0}})));

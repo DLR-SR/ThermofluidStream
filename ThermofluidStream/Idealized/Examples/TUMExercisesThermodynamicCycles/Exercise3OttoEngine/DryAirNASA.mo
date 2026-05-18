@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine;
-model DryAirNASA1PseudoInversion
+model DryAirNASA
   extends ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.BaseModel(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa);
 
   ThermofluidStream.Idealized.Processes.Adiabatic compression(
@@ -25,7 +25,9 @@ model DryAirNASA1PseudoInversion
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{70,-38},{90,-18}})));
   Modelica.Blocks.Sources.RealExpression density1(y=d1) annotation(Placement(transformation(extent={{-20,40},{0,60}})));
-  Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-140,40},{-120,60}})));
+  Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-120,40},{-100,60}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(Placement(transformation(extent={{-80,38},{-40,62}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{20,38},{60,62}})));
   ThermofluidStream.Sensors.SingleSensorSelect sensorDensity1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
@@ -48,38 +50,25 @@ model DryAirNASA1PseudoInversion
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation(Placement(transformation(extent={{10,10},{-10,30}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{100,-70},{120,-50}})));
-  Modelica.Blocks.Continuous.Integrator integrator(
-    k=1e7,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=1e5)
-              annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
-  Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-108,40},{-88,60}})));
-  Modelica.Blocks.Math.Feedback feedback1
-                                        annotation(Placement(transformation(extent={{10,40},{30,60}})));
-  Modelica.Blocks.Continuous.Integrator integrator1(
-    k=1e7,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=1e5)
-              annotation(Placement(transformation(extent={{38,40},{58,60}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
     number=combustion.outlet.state.p,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-60,-100},{-40,-80}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
   ThermofluidStream.Utilities.showRealValue netWork(
     description="w_n",
     use_numberPort=false,
     number=shaftPower.E_flow_out/expansion.m_flow,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="eff",
     use_numberPort=false,
     number=shaftPower.E_flow_out/combustion.Q_flow,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{60,-100},{80,-80}})));
+  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{100,-70},{120,-50}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -96,14 +85,20 @@ equation
       points={{30,-28},{70,-28}},
       color={28,108,200},
       thickness=0.5));
+  connect(density2.y, inverseBlockConstraints.u1) annotation(Line(points={{-99,50},{-82,50}}, color={0,0,127}));
+  connect(density1.y, inverseBlockConstraints1.u1) annotation(Line(points={{1,50},{18,50}}, color={0,0,127}));
   connect(sensorDensity1.inlet, expansion.outlet) annotation(Line(
       points={{40,-16},{40,-28},{30,-28}},
       color={28,108,200},
       thickness=0.5));
+  connect(sensorDensity1.value_out, inverseBlockConstraints1.u2) annotation(Line(points={{40,2.2},{40,50},{24,50}}, color={0,0,127}));
+  connect(inverseBlockConstraints1.y2, expansion.outletSpec_prescribed) annotation(Line(points={{57,50},{54,50},{54,-46},{30,-46},{30,-40}}, color={0,0,127}));
   connect(sensorDensity2.inlet, compression.outlet) annotation(Line(
       points={{-60,-14},{-60,-28},{-70,-28}},
       color={28,108,200},
       thickness=0.5));
+  connect(sensorDensity2.value_out, inverseBlockConstraints.u2) annotation(Line(points={{-60,4.2},{-60,50},{-76,50}}, color={0,0,127}));
+  connect(inverseBlockConstraints.y1, compression.outletSpec_prescribed) annotation(Line(points={{-39,50},{-46,50},{-46,-46},{-70,-46},{-70,-40}}, color={0,0,127}));
   connect(gasExchange.outlet, loopBreaker.inlet) annotation(Line(
       points={{90,-28},{100,-28},{100,20},{10,20}},
       color={28,108,200},
@@ -114,18 +109,10 @@ equation
       thickness=0.5));
   connect(compression.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{-80,-35},{-80,-64},{100,-64},{100,-62.25}},color={255,170,85}));
   connect(expansion.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{20,-35},{20,-60.75},{100,-60.75}},color={255,170,85}));
-  connect(density2.y, feedback.u1) annotation(Line(points={{-119,50},{-106,50}}, color={0,0,127}));
-  connect(sensorDensity2.value_out, feedback.u2) annotation(Line(points={{-60,4.2},{-60,34},{-98,34},{-98,42}},                   color={0,0,127}));
-  connect(integrator.y, compression.outletSpec_prescribed) annotation(Line(points={{-59,50},{-48,50},{-48,-48},{-70,-48},{-70,-40}}, color={0,0,127}));
-  connect(feedback.y, integrator.u) annotation(Line(points={{-89,50},{-82,50}}, color={0,0,127}));
-  connect(density1.y, feedback1.u1) annotation(Line(points={{1,50},{12,50}}, color={0,0,127}));
-  connect(feedback1.y, integrator1.u) annotation(Line(points={{29,50},{36,50}}, color={0,0,127}));
-  connect(sensorDensity1.value_out, feedback1.u2) annotation(Line(points={{40,2.2},{40,34},{20,34},{20,42}},                 color={0,0,127}));
-  connect(integrator1.y, expansion.outletSpec_prescribed) annotation(Line(points={{59,50},{66,50},{66,-48},{30,-48},{30,-40}}, color={0,0,127}));
   connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{90,-39},{90,-59.25},{100,-59.25}}, color={255,170,85}));
   connect(combustion.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{-10,-39},{-10,-62},{100,-62},{100,-57.75}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{180,100}}), graphics={
+  annotation(Diagram(coordinateSystem(extent={{-140,-100},{140,100}}),
+                     graphics={
         Text(
           extent={{-100,-22},{-94,-28}},
           textColor={28,108,200},
@@ -155,31 +142,42 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an otto engine cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PerfectGasAdiabaticFlow\">Exercise3OttoEngine.SimpleAir1</a> (see for problem description).
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    for the problem description.
   </p>
 
   <p>
-    This example uses the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium
-    (ideal gas with temperature-dependent <code>cp</code>)
-    instead of the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
-    (perfect gas with constant <code>cp</code>).
+    This example makes use of the following components and settings:
+  </p>
+
+  <ul>
+    <li>
+      <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium (ideal gas with temperature-dependent <code>cp</code>)
+    </li>
+    <li>
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> process model (which is only available for <code>systemSpec = Flow</code>)
+    </li>
+  </ul>
+
+  <p>
+    The calculation of outlet pressure for given outlet density is achieved by the use of the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model.
+    An implicit nonlinear equation is introduced, which requires suitable start values.
+  </p> 
+
+  <p>
+    The <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model defines isentropic efficiency based on shaft work (i.e., changes in specific enthalpy), 
+    whereas for a closed-cycle process the isentropic efficiency is commonly defined based on the net expansion work (i.e., changes in specific internal energy).
+    In general both definitions are not equivalent and discrepancies can arise. 
+    The results will however be identical when the isentropic efficiency is equal to unity, or when the working fluid is an ideal gas with constant isentropic exponent.
   </p>
 
   <p>
-    This example uses the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model, which uses the outlet pressure as the setpoint. 
-    The calculation of outlet pressure for given outlet density is achieved by the use of a <code>pseudoInversion</code> \"controller\" instead of the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model.
-    With this the implicit nonlinear equation can be \"avoided\". 
-    Note that the introduced state of the controller requires a suitable start values and the time integration algorithm is likely to be implicit and will likely solve implicit nonlinear equations aswell.
+    This setup is based on the fact that the specific work of a thermodynamic cycle is given by the closed integral in the <code>p–v</code> diagram (pressure - specific volume).
+    Therefore, integrating with respect to volume, <code>p*dv</code> (boundary work as typically transferred in a piston–cylinder system),
+    and integrating with respect to pressure, <code>v*dp</code> (“artificial” shaft work of a dual stationary-flow process),
+    yield the same net cycle work, even though the individual contributions of each process step differ.
   </p>
 
-  <p>
-    The <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model should only be used to represent 
-    a periodic closed-cycle process when the isentropic efficiency is equal to unity, or when the working fluid is an ideal gas with constant isentropic exponent.
-    Otherwise, discrepancies arise because the isentropic efficiency is defined based on shaft work (i.e., changes in specific enthalpy) in the first case, 
-    and based on net expansion work (i.e., changes in specific internal energy) in the second case.
-  </p>
-
-</html>"));
-end DryAirNASA1PseudoInversion;
+</html>"),
+    Icon(coordinateSystem(grid={2,2})));
+end DryAirNASA;

@@ -909,5 +909,9 @@ equation
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for fixed parameters/boundary conditions (unknown mass flow rate).
   </p>
+
+  <p>
+    <code>pRatio = 0</code> and/or <code>m_flow = 0</code> is supported.
+  </p>
 </html>"));
 end Fixed2;

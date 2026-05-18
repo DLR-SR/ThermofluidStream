@@ -256,8 +256,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Examples of a two stage vapor cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.NeglectInertance\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> (see for problem description).
+    Examples of a two stage vapor cycle. See
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.NeglectInertance\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> for problem description.
   </p>
 
   <p>

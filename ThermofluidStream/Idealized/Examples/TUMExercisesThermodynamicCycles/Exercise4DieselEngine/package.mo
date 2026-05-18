@@ -9,32 +9,18 @@ package Exercise4DieselEngine "Exercise 8.4: Diesel Engine [TUM2019]"
     Here, <code>s</code> denotes an isentropic process (or more general an adiabatic process with isentropic efficiency),
     <code>v</code> denotes an isochoric process (constant specific volume/density),
     and <code>p</code> denotes an isobaric process.
-    <br>
-    The examples differ with respect to the following aspects:
+  </p>
+  
+  <p>
+    The examples use the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
+      model (perfect gas with constant <code>cp</code>) and differ with respect to the process model:
+      >a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> (<code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>) and
+      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>.
+    </li>
   </p>
 
-  <ul>
-    <li>
-      The medium model:
-      the
-      <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
-      (perfect gas with constant <code>cp</code>) versus the
-      <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.DryAirNasa\">DryAirNasa</a> medium
-      (ideal gas with temperature-dependent <code>cp</code>).
-      For <code>SimpleAir</code>, the
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas\">PerfectGas</a>
-      or
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma\">IdealGas</a>
-      <code>ThermodynamicModel</code> have to be used.
-      For <code>DryAirNasa</code>, the
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium\">Universal</a>
-      <code>ThermodynamicModel</code> is recommended.
-    </li>
-
-  </ul>
-
   <p>
-    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine.SimpleAir\">Exercise4DieselEngine.SimpleAir</a> 
+    See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine.PolytropicCycle\">Exercise4DieselEngine.PolytropicCycle</a> 
     for the problem description.
   </p>
 </html>"));

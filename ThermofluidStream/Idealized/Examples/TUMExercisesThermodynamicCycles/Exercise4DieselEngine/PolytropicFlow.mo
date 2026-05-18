@@ -1,6 +1,19 @@
-within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine;
+within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine;
 model PolytropicFlow
-  extends ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.BaseModel(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir);
+  extends Modelica.Icons.Example;
+
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir (T_max=2000)
+                                                                             constrainedby
+    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+    choicesAllMatching=true);
+  parameter Medium.AbsolutePressure p1=100000 "Pressure before compression";
+  parameter Medium.Temperature T1(displayUnit="K")=300 "Temperature before compression";
+  parameter Real compressionRatio = 23 "Compression ratio";
+  parameter Medium.Density rho1 = Medium.density_pT(p1,T1) "Density before compression";
+
+  parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+    Placement(transformation(extent={{80,80},{100,100}})));
 
   Processes.PolytropicPerfectGas
                            compression(
@@ -8,22 +21,20 @@ model PolytropicFlow
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    rhoRatio_fixed=compressionRatio,
-    rho_out_fixed=d2) annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
-  ThermofluidStream.Idealized.Processes.Isochoric combustion(
+    rhoRatio_fixed=compressionRatio)
+                     annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
+  Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = T3) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
+    T_out_fixed(displayUnit="K") = 1700) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
   Processes.PolytropicPerfectGas
                            expansion(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    rhoRatio_fixed=1/compressionRatio,
-    rho_out_fixed=d1,
-    processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency)
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
+    rho_out_fixed=rho1)
                      annotation(Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
@@ -32,29 +43,35 @@ model PolytropicFlow
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
-    m_flow_in_par=1,
+    m_flow_in_par=m_flow,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=T1) annotation(Placement(transformation(extent={{0,30},{-20,50}})));
+    T_out_fixed=T1) annotation(Placement(transformation(extent={{10,30},{-10,50}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
     number=combustion.outlet.state.p,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-60,-100},{-40,-80}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-68,-90},{-48,-70}})));
   ThermofluidStream.Utilities.showRealValue netWork(
     description="w_n",
     use_numberPort=false,
-    number=compression.w_exp + expansion.w_exp,
+    number=-shaftPower.E_flow_out/m_flow,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{-28,-90},{-8,-70}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="eff",
     use_numberPort=false,
     number=shaftPower.E_flow_out/combustion.Q_flow,
     displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{70,-40},{90,-20}})));
+    significantDigits=4) annotation(Placement(transformation(extent={{52,-90},{72,-70}})));
+  ThermofluidStream.Utilities.showRealValue exhaustTemperature(
+    description="T_4",
+    use_numberPort=false,
+    number=expansion.outlet.state.T,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{10,-90},{30,-70}})));
+  EnergyFlow.Components.Sum shaftPower(n_in=3) annotation(Placement(transformation(extent={{70,-50},{90,-30}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -73,20 +90,17 @@ equation
       thickness=0.5));
   connect(loopBreaker.outlet, compression.inlet) annotation(
     Line(
-      points={{-20,40},{-80,40},{-80,0},{-70,0}},
+      points={{-10,40},{-80,40},{-80,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));
   connect(gasExchange.outlet, loopBreaker.inlet) annotation(
     Line(
-      points={{70,0},{80,0},{80,40},{0,40}},
+      points={{70,0},{80,0},{80,40},{10,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-30},{70,-30},{70,-32.25}},
-                                                                                                              color={255,170,85}));
-  connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-34},{70,-34},{70,-30.75}},
-                                                                                                                  color={255,170,85}));
-  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-10,-11},{-10,-32},{70,-32},{70,-29.25}},color={255,170,85}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation (Line(points={{70,-11},{70,-14},{60,-14},{60,-27.75},{70,-27.75}}, color={255,170,85}));
+  connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-42},{70,-42}},      color={255,170,85}));
+  connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-40},{70,-40}},      color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-24},{50,-24},{50,-38},{70,-38}}, color={255,170,85}));
   annotation(Diagram(graphics={
         Text(
           extent={{-46,6},{-40,0}},
@@ -113,7 +127,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    Example of an Diesel engine cycle. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine.PolytropicCycle\">Exercise4DieselEngine.PolytropicCycle</a> 
     for the problem description.
   </p>
 

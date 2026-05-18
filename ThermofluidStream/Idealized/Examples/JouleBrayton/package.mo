@@ -12,7 +12,8 @@ package JouleBrayton "Joule Brayton Cycle using idealized state change component
 </html>", info="<html>
   <p>
     This example package illustrates, step by step, several configurations of the Joule cycle that can be modeled using idealized
-    state-change components, in particular <code>adiabatic</code> and <code>isobaric</code> processes.
+    state-change components, in particular <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>
+    and <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> processes.
   </p>
 
   <p>

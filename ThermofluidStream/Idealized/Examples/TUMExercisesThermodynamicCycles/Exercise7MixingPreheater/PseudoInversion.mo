@@ -221,8 +221,8 @@ equation
 </html>", info="<html>
   <p>
     Extension of the <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> of a steam power plant by a mixing preheater.
-    The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater.Inversion\">Exercise7MixingPreheater.Inversion</a> (see for problem description)..
+    See
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater.Inversion\">Exercise7MixingPreheater.Inversion</a> for problem description..
   </p>
 
   <p>

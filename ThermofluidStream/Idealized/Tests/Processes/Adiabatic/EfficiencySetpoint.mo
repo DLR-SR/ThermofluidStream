@@ -54,5 +54,9 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    Tests hiding the efficiency (<code>eta_fixed</code>) in vaiable browser.
+  </p>
 </html>"));
 end EfficiencySetpoint;

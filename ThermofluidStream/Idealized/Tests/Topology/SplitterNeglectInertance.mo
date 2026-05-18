@@ -201,7 +201,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    Non differentiable mass flow rates require <code>considerInertance = false</code>.
+    Splitter test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
   </p>
 </html>"));
 end SplitterNeglectInertance;

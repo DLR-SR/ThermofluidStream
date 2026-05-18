@@ -9,10 +9,10 @@ package Examples
 
   <ul>
     <li>
-      Clausius–Rankine (CR) cycle
+      Clausius–Rankine cycle
     </li>
     <li>
-      Joule–Brayton (JB) cycle
+      Joule–Brayton cycle
     </li>
     <li>
       Inverse Joule–Brayton (air) cycle
@@ -21,7 +21,7 @@ package Examples
       Inverse Clausius–Rankine (vapor) cycle
     </li>
     <li>
-      Closed-system cycles such as Otto and Diesel cycles
+      Stationary-flow representations of periodic closed-system cycles such as Otto and Diesel cycles
     </li>
     <li>
       Examples inspired by typical exercises from the lecture 

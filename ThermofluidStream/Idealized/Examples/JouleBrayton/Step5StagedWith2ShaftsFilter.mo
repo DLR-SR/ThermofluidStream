@@ -7,7 +7,7 @@ model Step5StagedWith2ShaftsFilter
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{140,80},{160,100}})));
+    Placement(transformation(extent={{160,80},{180,100}})));
 
   Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,
@@ -46,7 +46,8 @@ model Step5StagedWith2ShaftsFilter
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     A=10,
-    k_NTU=200) annotation(Placement(transformation(extent={{-30,-4},{-10,16}})));
+    k_NTU=200,
+    TC=0.01)   annotation(Placement(transformation(extent={{-30,-4},{-10,16}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -75,7 +76,7 @@ model Step5StagedWith2ShaftsFilter
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=100000) annotation(Placement(transformation(extent={{130,-10},{150,10}})));
-  EnergyFlow.Components.Sum generatorPower(n_in=2) annotation(Placement(transformation(extent={{160,-40},{180,-20}})));
+  EnergyFlow.Components.Sum generatorPower(n_in=2) annotation(Placement(transformation(extent={{150,-40},{170,-20}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
     description="efficiency",
     use_numberPort=false,
@@ -133,11 +134,11 @@ equation
       thickness=0.5));
   connect(outletPressure.y, lowPressureCompressor.outletSpec_prescribed) annotation(Line(points={{-129,-40},{-100,-40},{-100,-12}}, color={0,0,127}));
   connect(highPressureCompressor.P_out, highPressureTurbine.P_in) annotation(Line(points={{-50,-7},{-50,-20},{60,-20},{60,-8}}, color={255,170,85}));
-  connect(lowPressureCompressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-110,-7},{-110,-32},{160,-32},{160,-31.5}},
+  connect(lowPressureCompressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-110,-7},{-110,-32},{150,-32},{150,-31.5}},
                                                                                                                                     color={255,170,85}));
-  connect(lowPressureTurbine.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{140,-7},{140,-28.5},{160,-28.5}},   color={255,170,85}));
+  connect(lowPressureTurbine.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{140,-7},{140,-28.5},{150,-28.5}},   color={255,170,85}));
   annotation(experiment(startTime=-1),Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{160,100}}), graphics={
+          extent={{-180,-100},{180,100}}), graphics={
         Text(
           extent={{-132,6},{-126,0}},
           textColor={28,108,200},
@@ -187,8 +188,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In a fifth step, a filter is enabled for the <code>highPressureTurbine</code> to avoid an implicit nonlinear
-    equation and instead solve it using a “pseudo” controller. Note that the controller also requires
+    In a fifth step, a filter is added for the <code>highPressureTurbine</code> to avoid the implicit nonlinear
+    equation and instead solve it using a “pseudo” controller. Note that the filter also requires
     suitable start values. The controller time constant should be chosen sufficiently small so as not to
     interfere with the pressure ramp. The parameter <code>startTime = -1</code> allows the system to reach
     a steady state before <code>time = 0</code>.

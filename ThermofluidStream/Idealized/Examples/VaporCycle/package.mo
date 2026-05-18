@@ -14,7 +14,10 @@ package VaporCycle
     This example package illustrates, step by step, several configurations of a vapor compression cycle,
     based on the reverse Clausius–Rankine cycle, as commonly used in air conditioning systems.
     The models are constructed using idealized state-change components, specifically 
-    <code>adiabatic</code>, <code>isobaric</code>, and <code>isenthalpic</code> processes. 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>,
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> and
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isenthalpic\">Isenthalpic</a>
+    processes. 
     The cycle comprises four fundamental processes through which the working fluid (refrigerant) passes:
   </p>
 

@@ -97,8 +97,10 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In the first step an artificial <code>flowResistance</code> of 
-    <code>dp = 0.1 bar * m_flow^2/(kg/s)^2</code> is used to obtain a steady state mass flow rate of <code>1 kg/s</code> due to the 
+    In the first step the model is build consisting of a <code>pump</code>, a <code>steamGenerator</code> and a <code>turbine</code>. 
+  </p>
+  <p>
+    An artificial <code>flowResistance</code> of <code>dp = 0.1 bar * m_flow^2/(kg/s)^2</code> is used to obtain a steady state mass flow rate of <code>1 kg/s</code> due to the 
     pressure difference of <code>0.1 bar</code> between <code>turbine</code> and <code>sink</code>. (TFS library trick).
   </p>
 

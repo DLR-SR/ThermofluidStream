@@ -68,7 +68,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Supposed to create an error (Xi_out smaller 0).
+    Example to demonstrate that <code>Xi_out &lt; 0</code> creates an error.
   </p>
 </html>"));
 end MassFractionModifierError;

@@ -224,8 +224,9 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    JunctionT2 test model for differentiable mass flow rates. 
+    <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a> test model for differentiable mass flow rates.  
   </p>
+
   <p>
     The junction icon indicates whether the pressure balance is satisfied. Temporary violation may be accepted.
   </p>

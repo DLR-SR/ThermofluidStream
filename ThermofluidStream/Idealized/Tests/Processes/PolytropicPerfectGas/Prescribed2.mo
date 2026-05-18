@@ -816,8 +816,7 @@ equation
   </p>
 
   <p>
-    When the mass flow rate <code>m_flow</code> is calculated from time varying power <code>P</code> and time varying outlet state (specific enthalpy difference <code>dh</code>) 
-    <code>considerInertance = false</code> should be used. Otherwise the resulting mass flow rate has to be continuous, which is impractical, and can cause warnings or errors.
+    <code>pRatio = 1</code> and/or <code>m_flow = 0</code> is supported.
   </p>
 </html>
 "),        Diagram(graphics={

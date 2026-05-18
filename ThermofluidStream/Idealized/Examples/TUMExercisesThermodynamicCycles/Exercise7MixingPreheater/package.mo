@@ -4,9 +4,8 @@ package Exercise7MixingPreheater "Exercise 8.7: Steam Power Plant with Feedwater
 
   annotation(Documentation(info="<html>
   <p>
-    This package contains an extension of <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> 
-    of a steam power plant by a mixing preheater. 
-    The setups of the examples are identical. The examples differ by:
+    This package extend the steam power plant in <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> 
+    by a mixing preheater. The examples differ by:
     <ul>
       <li>
         The solution method: implicit nonlinear equations (<code>Inversion</code>) vs. <code>pseudoInversion<code> \"controllers\".

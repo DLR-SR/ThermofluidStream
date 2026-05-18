@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Examples.ClausiusRankine;
-model Step8VaporQualityInversion
+model Step9VaporQualityInversion
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
@@ -155,7 +155,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In the 8. step the superheating temperature difference is determined (depending on the pump pressure) to obtain a vapor quality of <code>0.95</code> at the turbine outlet. 
+    In the 9. step the superheating temperature difference is determined to obtain a vapor quality of <code>0.95</code> at the turbine outlet. 
     This yields implicit nonlinear equations, requiring suitable start values to be solvable.
   </p>
 
@@ -164,4 +164,4 @@ equation
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));
-end Step8VaporQualityInversion;
+end Step9VaporQualityInversion;

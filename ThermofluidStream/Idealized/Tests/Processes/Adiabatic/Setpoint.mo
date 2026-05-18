@@ -349,5 +349,9 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    Tests hiding the parameters (<code>dp_fixed</code>, <code>pr_fixed</code>, <code>p_out_fixed</code>) in the variable browser.
+  </p>
 </html>"));
 end Setpoint;

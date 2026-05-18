@@ -108,7 +108,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In the second step it is shown how saturated vapor state can be set and the pump pressure is varied lineraly with time.
+    In the second step it is shown how saturated vapor state can be set and the <code>pump</code> pressure is varied lineraly with time.
   </p>
 
   <p>

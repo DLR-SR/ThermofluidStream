@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.AdiabaticProcess;
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels;
 model CO2
   extends Modelica.Icons.Example;
 

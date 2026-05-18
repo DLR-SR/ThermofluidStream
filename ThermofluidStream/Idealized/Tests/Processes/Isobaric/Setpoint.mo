@@ -448,5 +448,9 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    Tests hiding the parameters (<code>dT_fixed</code>, <code>T_out_fixed</code>, etc.) in the variable browser.
+  </p>
 </html>"));
 end Setpoint;

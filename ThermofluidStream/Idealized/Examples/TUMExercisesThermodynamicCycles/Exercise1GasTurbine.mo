@@ -7,7 +7,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{-100,80},{-80,100}})));
+    Placement(transformation(extent={{160,80},{180,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureCompressor(
     redeclare package Medium = Medium,

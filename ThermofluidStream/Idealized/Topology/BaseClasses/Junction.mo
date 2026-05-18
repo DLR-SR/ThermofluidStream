@@ -9,10 +9,8 @@ partial model Junction "Partial junction"
     choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Specification free =ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A      "Free inlet" annotation(
-    choices(__Dymola_radioButtons=true,
-    choice = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "A",
-    choice = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B "B"),Evaluate=true);
+  parameter Specification free = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "Free inlet" annotation(
+    Evaluate=true);
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows" annotation(
     Dialog(tab="Advanced"));
   parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(

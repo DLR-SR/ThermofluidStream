@@ -2,7 +2,6 @@ within ThermofluidStream.Idealized.Tests.Inversion;
 model Inversion1 "Example - Inversion with non-linear equations solver and h as iteration variable"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(
     massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed),
-    junction(h_mix(start=Medium.h_default)),
     dropOfCommons(considerInertance=false));
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(
@@ -58,9 +57,8 @@ m_flow_B = - m_flow_A * (T_B - T_mix) / (T_A - T_mix)
   </pre></blockquote>
 
   <p>
-    Dymola uses the specific enthalpy of the mixture 
-    <code>junction.junctionN.h_mix</code> as the iteration variable and by default <code>h_mix = 0</code>, which can cause the simulation to fail.<br>
-    Using <code>junction(junctionN(h_mix(start=Medium.h_default)))</code> provides a suitable start value and allows Dymola to solve the nonlinear equation.
+    Dymola uses the mass flow rate
+    <code>junction.m_flowA</code> and the specific enthalpy of the mixture <code>junction.h_mix</code> as the iteration variable. Their default start values might not be appropriate, which can cause the simulation to fail.
   </p>
 </html>", revisions="<html>
   <ul>

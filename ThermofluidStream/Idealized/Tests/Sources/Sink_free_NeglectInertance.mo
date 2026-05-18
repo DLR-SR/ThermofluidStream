@@ -117,6 +117,10 @@ see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(info="<html>
   <p>
+    Test model for the <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> model.
+  </p>
+
+  <p>
     Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
 </html>", revisions="<html>

@@ -49,13 +49,13 @@ model Prescribed2 "Example - Isobaric cycle process"
     offset=293.15,
     startTime=0.2) annotation(Placement(transformation(extent={{-240,0},{-220,20}})));
   Modelica.Blocks.Sources.SawTooth temperatureDifference(
-    amplitude=-40,
+    amplitude=0,
     period=1,
-    offset=20,
+    offset=0,
     startTime=0.3) annotation(Placement(transformation(extent={{-240,-40},{-220,-20}})));
   Modelica.Blocks.Sources.RealExpression outletTemperature(y=T_out) annotation(Placement(transformation(extent={{-10,-30},{-30,-10}})));
   Modelica.Blocks.Sources.SawTooth massFlowRate(
-    amplitude=4,
+    amplitude=-2,
     period=1,
     offset=1,
     startTime=0.4) annotation(Placement(transformation(extent={{-240,-80},{-220,-60}})));
@@ -279,9 +279,8 @@ equation
   </p>
   
   <p>
-    Calculating the mass flow rate <code>m_flow = Q_flow/q</code>, may cause the simulation to fail at <code>q = 0</code>, which occurs for all models in this example.<br>
-    This can in principle be avoided.
-    See the <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> (text layer) for further information.
+    Calculating the mass flow rate <code>m_flow := Q_flow/q</code>, may cause the simulation to fail at <code>q = 0</code>, which occurs for all models in this example.<br>
+    This does however not happen in Dymola 2026x Refresh 1.
   </p>
 </html>"));
 end Prescribed2;

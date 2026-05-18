@@ -82,7 +82,7 @@ equation
     Documentation(info="<html>
   <p>
     In a first step, a simple air cycle consisting of a compressor, a cooler, and a turbine is build. 
-    The coefficient of performance COP is calculated based on the compressor pressure.
+    The coefficient of performance COP is calculated.
   </p>
 
   <p>

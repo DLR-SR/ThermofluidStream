@@ -144,7 +144,10 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    SplitterT1 test model for differentiable mass flow rates.
+    <a href=\"modelica://ThermofluidStream.Topology.SplitterT1\">SplitterT1</a> test model.<br>
+    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
+    Differentiable mass flow rates.
   </p>
-</html>"));
+</html>
+"));
 end SplitterT1;

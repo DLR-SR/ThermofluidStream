@@ -80,7 +80,17 @@ equation
 
   connect(energyFlowSource.E_flow, power.y) annotation(Line(points={{302,0},{319,0}},     color={0,0,127}));
   connect(massFlowRate1.y, massFlowRate.u) annotation(Line(points={{-359,-150},{-342,-150}}, color={0,0,127}));
-  annotation(experiment(StopTime=1.5), Diagram(coordinateSystem(extent={{-400,-200},{340,220}})),
+  annotation(experiment(StopTime=1.5), Diagram(coordinateSystem(extent={{-400,-200},{340,220}}), graphics={
+                                                                                                Text(
+          extent={{-378,196},{-326,182}},
+          textColor={238,46,47},
+          textString="Independent inputs"),
+                               Rectangle(extent={{-356,178},{-324,102}},lineColor={238,46,47}),
+                               Rectangle(extent={{-344,82},{-316,50}},  lineColor={238,46,47}),
+                               Rectangle(extent={{-348,-92},{-312,-126}},
+                                                                        lineColor={238,46,47}),
+                               Rectangle(extent={{-386,-132},{-354,-168}},
+                                                                        lineColor={238,46,47})}),
     Icon(coordinateSystem(extent={{-100,-100},{100,100}}, grid={2,2})),
     Documentation(revisions="<html>
   <ul>

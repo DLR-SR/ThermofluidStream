@@ -4,8 +4,7 @@ package Exercise8TwoStageRefrigerationCycle "Exercise 8.8: Two-Stage Refrigerati
 
   annotation(Documentation(info="<html>
   <p>
-    This package contains examples of a two stage vapor cycle.
-    The setups of the examples are identical. The examples differ by:
+    This package contains examples of a two stage vapor cycle. The examples differ by:
     <ul>
       <li>
         The solution method: implicit equation for mass flow rate, requiring (<code>NeglectInertance</code>) vs. pseudo \"controllers\" also working with <code>Inertance</code>.

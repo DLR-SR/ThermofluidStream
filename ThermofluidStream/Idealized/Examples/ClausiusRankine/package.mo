@@ -12,13 +12,14 @@ package ClausiusRankine "Clausius Rancine Cycle using idealized state change com
 </html>", info="<html>
   <p>
     This example illustrates, step by step, how the Clausius–Rankine cycle can be modeled using idealized state-change components, 
-    specifically <code>adiabatic</code> and </code>isobaric</code> processes.
+    specifically <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>
+    and <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> processes.
   </p>
 
   <p>
     The Clausius–Rankine cycle is a fundamental thermodynamic cycle that represents the operation of steam power plants. 
     It is widely applied in thermal power generation due to its efficiency, reliability, and suitability for large-scale energy production. 
-    The cycle converts heat into mechanical work using a working fluid, typically water or steam, which undergoes four principal processes:
+    The cycle converts heat into mechanical work using a working fluid, typically water (liquid and steam), which undergoes four principal processes:
   </p>
 
   <ul>

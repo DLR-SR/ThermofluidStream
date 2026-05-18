@@ -36,18 +36,19 @@ model Step2Recuparator
   ThermofluidStream.Utilities.showRealValue efficiencyExtensive(
     description="efficiency extensive",
     use_numberPort=false,
-    number=(-turbine.P - compressor.P)/(combustion.Q_flow),
+    number=-(turbine.P + compressor.P)/(combustion.Q_flow),
     displayVariable=false) annotation(Placement(transformation(extent={{0,60},{20,80}})));
   ThermofluidStream.Utilities.showRealValue efficiencySpecific(
     description="efficiency specific",
     use_numberPort=false,
-    number=(-turbine.dh - compressor.dh)/(combustion.dh),
+    number=-(turbine.dh + compressor.dh)/(combustion.dh),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU recuperator(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     A=10,
-    k_NTU=200) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
+    k_NTU=200,
+    TC=0.01)   annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -120,11 +121,14 @@ equation
 </html>", info="<html>
   <p>
     In a second step a recuperator is added which increases the efficiency.<br>
-    Note, that the recuperator requires a time constant that can interfere with the pressure ramp.
   </p>
 
   <p>
     There exists an optimum pressure ratio with maximum overall efficiency.
+  </p>
+
+  <p>
+    Note, that the recuperator requires a time constant that can interfere with the pressure ramp.
   </p>
 
   <p>

@@ -110,7 +110,7 @@ equation
         extent={{-140,-140},{140,140}})),
     Documentation(info="<html>
   <p>
-    Tests warnings.
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
   </p>
 </html>", revisions="<html>
   <ul>

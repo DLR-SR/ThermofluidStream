@@ -15,10 +15,9 @@ model BaseModel
   final parameter SI.SpecificVolume v2 = 1/d2 "Specific volume after compression";
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{160,80},{180,100}})));
+    Placement(transformation(extent={{80,80},{100,100}})));
 
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{180,100}})),
+  annotation(
     Documentation(revisions="<html>
   <ul>
     <li>

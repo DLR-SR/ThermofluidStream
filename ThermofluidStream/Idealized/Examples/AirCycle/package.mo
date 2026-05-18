@@ -13,8 +13,8 @@ package AirCycle
   <p>
     This example package illustrates, step by step, several configurations of an air-cycle refrigeration system
     based on the reverse Joule–Brayton cycle, as commonly used in aircraft Environmental Control Systems (ECS).
-    The models are built using idealized state-change components, in particular <code>adiabatic</code> and
-    <code>isobaric</code> processes.  The cycle consists of four fundamental processes through which the working fluid (air) passes:
+    The models are built using idealized state-change components, in particular <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>
+    and <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> processes. The cycle consists of four fundamental processes through which the working fluid (air) passes:
   </p>
 
   <ul>

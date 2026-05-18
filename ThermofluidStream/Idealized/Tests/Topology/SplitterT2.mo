@@ -7,7 +7,7 @@ model SplitterT2 "Example - SplitterT2"
     choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{120,112},{140,132}})));
+    Placement(transformation(extent={{120,100},{140,120}})));
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -144,7 +144,9 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    SplitterT2 test model for differentiable mass flow rates.
+    <a href=\"modelica://ThermofluidStream.Topology.SplitterT2\">SplitterT2</a> test model.<br>
+    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
+    Differentiable mass flow rates.
   </p>
 </html>"));
 end SplitterT2;

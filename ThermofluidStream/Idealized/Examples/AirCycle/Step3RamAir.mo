@@ -132,6 +132,10 @@ equation
   <p>
     In a third step, an additional cooling air stream is introduced, commonly referred to as ram air in aircraft applications.
   </p>
+  
+  <p>
+    Additionally sensors are added that provide the specific enthalpy at the inlet and outlet.
+  </p>
 
   <p>
     Further documentation is available in the 

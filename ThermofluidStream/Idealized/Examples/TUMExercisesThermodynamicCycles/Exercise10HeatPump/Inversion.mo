@@ -270,7 +270,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    Example  of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
+    Example of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
   </p>
 
   <p>
@@ -290,7 +290,7 @@ see User's Guide",
   </p>
 
   <p>
-    <strong>Low-pressure circuit:</strong> mass flow <code>ṁa</code>
+    Low-pressure circuit:
     <ul>
       <li>1 &rarr; 2: adiabatic throttling of the saturated liquid to <code>p2 = 1.00 bar</code> in the <code>lowPressureValve</code></li>
       <li>2 &rarr; 3: complete, isobaric evaporation with heat uptake from the environment in the <code>evaporator</code></li>
@@ -300,7 +300,7 @@ see User's Guide",
   </p>
 
   <p>
-    <strong>High-pressure circuit:
+    High-pressure circuit:
     <ul>
       <li>5 &rarr; 6: adiabatic compression of dry saturated vapor to <code>p6 = 14.0 bar</code> in the <code>highPressureCompressor</code>; isentropic compressor efficiency 
       <code>0.800</code></li>

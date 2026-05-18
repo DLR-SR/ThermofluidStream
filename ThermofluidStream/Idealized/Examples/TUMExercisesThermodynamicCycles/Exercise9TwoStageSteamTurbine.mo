@@ -204,7 +204,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example  of steam Rankine combined heat and power (CHP) cycle with a two-stage turbine and an extraction branch for district heating.
+    Example of a steam Rankine combined heat and power (CHP) cycle with a two-stage turbine and an extraction branch for district heating.
   </p>
 
   <h4>Problem description</h4>
@@ -227,7 +227,7 @@ equation
     After the <code>lowPressureTurbine</code>, the water is completely condensed in the 
     <code>condenser</code>. In the <code>heatingNetwork</code>, the steam condenses and the condensate is 
     subcooled to <code>T6 = 323 K</code>. The two mass flows are then pumped by the reversible adiabatic 
-    feedwater pumps <strong>pump1</strong> and <strong>pump2</strong> to the boiler pressure 
+    feedwater pumps <code>pump1</code> and <code>pump2</code> to the boiler pressure 
     <code>p7 = p8 = p1</code> and returned to the cycle via the <code>mixer</code>.
   </p>
 

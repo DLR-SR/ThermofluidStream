@@ -96,7 +96,6 @@ model Isobaric "Isobaric process"
     HideResult = systemSpec == SystemSpecification.Flow);
   SI.Power P "Power (mean net expansion work)" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
-
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual "Actual outlet specification [SI-units], required due to the conditional connector outletSpec_prescribed";
   SI.AbsolutePressure p = p_in "Pressure";
@@ -139,6 +138,7 @@ equation
   q = dh; //du = q + w_exp;
 
   if heatFlowSignal == HeatFlowSignal.Input and specifyOutlet and noEvent(abs(dh) < eps) and not considerInertance then
+    // This case does not seem to be activated in Dymola.
     assert(noEvent(abs(Q_flow) < eps),
       "In \"" + name +"\" the heat flow rate Q_flow is not zero, but the specific enthalpy difference dh is, implying infinite mass flow rate. \n"
       + "  The mass flow rate is set to zero. \n",
@@ -331,7 +331,7 @@ equation
 
 
   <p>
-    Assumptions for the isobaric process (open system, cyclic operation):
+    Assumptions for the isobaric process (closed system, cyclic operation):
   </p>
 
   <ul>

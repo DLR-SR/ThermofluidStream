@@ -5,7 +5,7 @@ package Exercise10HeatPump "Exercise 8.10: Heat pump [TUM2019]"
   annotation(Documentation(info="<html>
   <p>
     This package contains examples of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
-    The setups of the examples are identical. The examples differ by:
+    The examples differ by:
     <ul>
       <li>
         The solution method: implicit equation for mass flow rate <code>Inversion</code>, requiring (<code>considerInertance = false</code>) vs. <code>pseudoInversion</code> 

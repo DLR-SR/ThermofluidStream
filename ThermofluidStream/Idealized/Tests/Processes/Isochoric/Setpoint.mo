@@ -26,7 +26,7 @@ model Setpoint
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,50},{-90,70}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=20) annotation(Placement(transformation(extent={{-120,20},{-100,40}})));
+  Modelica.Blocks.Sources.RealExpression realExpression(y=20) annotation(Placement(transformation(extent={{-140,20},{-120,40}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -63,7 +63,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,50},{210,70}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=20) annotation(Placement(transformation(extent={{240,20},{220,40}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1(y=20) annotation(Placement(transformation(extent={{160,20},{180,40}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -86,7 +86,7 @@ model Setpoint
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-30},{-90,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y=313.15)
-                                                              annotation(Placement(transformation(extent={{-120,-60},{-100,-40}})));
+                                                              annotation(Placement(transformation(extent={{-140,-60},{-120,-40}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -125,13 +125,13 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out(start=100000)) annotation(Placement(transformation(extent={{190,-30},{210,-10}})));
   Modelica.Blocks.Sources.RealExpression realExpression3(y=313.15)
-                                                               annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
+                                                               annotation(Placement(transformation(extent={{160,-60},{180,-40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{-40,20},{-20,40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource1(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{60,20},{80,40}})));
-  EnergyFlow.Sources.FixedEnergyFlow energyFlowSource2(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{160,20},{180,40}})));
+  EnergyFlow.Sources.FixedEnergyFlow energyFlowSource2(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{240,20},{220,40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource3(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource4(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{60,-60},{80,-40}})));
-  EnergyFlow.Sources.FixedEnergyFlow energyFlowSource5(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{160,-60},{180,-40}})));
+  EnergyFlow.Sources.FixedEnergyFlow energyFlowSource5(E_flow(displayUnit="kW") = 20000) annotation(Placement(transformation(extent={{240,-60},{220,-40}})));
 equation
   connect(source.outlet,dT. inlet) annotation(Line(
       points={{-220,60},{-210,60}},
@@ -149,7 +149,7 @@ equation
       points={{-90,60},{-80,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(realExpression.y,dT1. outletSpec_prescribed) annotation(Line(points={{-99,30},{-90,30},{-90,48}},    color={0,0,127}));
+  connect(realExpression.y,dT1. outletSpec_prescribed) annotation(Line(points={{-119,30},{-110,30},{-110,48}}, color={0,0,127}));
   connect(source2.outlet,dT2. inlet) annotation(Line(
       points={{-20,60},{-10,60}},
       color={28,108,200},
@@ -174,7 +174,7 @@ equation
       points={{210,60},{220,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(realExpression1.y,dT4. outletSpec_prescribed) annotation(Line(points={{219,30},{210,30},{210,48}},    color={0,0,127}));
+  connect(realExpression1.y,dT4. outletSpec_prescribed) annotation(Line(points={{181,30},{190,30},{190,48}},    color={0,0,127}));
   connect(source5.outlet, T.inlet) annotation(Line(
       points={{-220,-20},{-210,-20}},
       color={28,108,200},
@@ -191,7 +191,8 @@ equation
       points={{-90,-20},{-80,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(realExpression2.y, T1.outletSpec_prescribed) annotation(Line(points={{-99,-50},{-90,-50},{-90,-32}}, color={0,0,127}));
+  connect(realExpression2.y, T1.outletSpec_prescribed) annotation(Line(points={{-119,-50},{-110,-50},{-110,-32}},
+                                                                                                               color={0,0,127}));
   connect(source7.outlet, T2.inlet) annotation(Line(
       points={{-20,-20},{-10,-20}},
       color={28,108,200},
@@ -216,13 +217,13 @@ equation
       points={{210,-20},{220,-20}},
       color={28,108,200},
       thickness=0.5));
-  connect(realExpression3.y, T4.outletSpec_prescribed) annotation(Line(points={{219,-50},{210,-50},{210,-32}}, color={0,0,127}));
+  connect(realExpression3.y, T4.outletSpec_prescribed) annotation(Line(points={{181,-50},{190,-50},{190,-32}}, color={0,0,127}));
   connect(energyFlowSource.E_flow_out, dT2.Q_flow_in) annotation(Line(points={{-19,30},{0,30},{0,52}}, color={255,170,85}));
   connect(energyFlowSource1.E_flow_out, dT3.Q_flow_in) annotation(Line(points={{81,30},{100,30},{100,52}}, color={255,170,85}));
-  connect(energyFlowSource2.E_flow_out, dT4.Q_flow_in) annotation(Line(points={{181,30},{200,30},{200,52}}, color={255,170,85}));
+  connect(energyFlowSource2.E_flow_out, dT4.Q_flow_in) annotation(Line(points={{219,30},{200,30},{200,52}}, color={255,170,85}));
   connect(energyFlowSource3.E_flow_out, T2.Q_flow_in) annotation(Line(points={{-19,-50},{0,-50},{0,-28}}, color={255,170,85}));
   connect(energyFlowSource4.E_flow_out, T3.Q_flow_in) annotation(Line(points={{81,-50},{100,-50},{100,-28}}, color={255,170,85}));
-  connect(energyFlowSource5.E_flow_out, T4.Q_flow_in) annotation(Line(points={{181,-50},{200,-50},{200,-28}}, color={255,170,85}));
+  connect(energyFlowSource5.E_flow_out, T4.Q_flow_in) annotation(Line(points={{219,-50},{200,-50},{200,-28}}, color={255,170,85}));
   annotation(Diagram(coordinateSystem(extent={{-260,-100},{260,100}})),
                                              Documentation(revisions="<html>
   <ul>
@@ -231,5 +232,9 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    Tests hiding the parameters (<code>dT_fixed</code>, <code>T_out_fixed</code>, etc.) in the variable browser.
+  </p>
 </html>"));
 end Setpoint;

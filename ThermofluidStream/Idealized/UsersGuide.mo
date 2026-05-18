@@ -9,10 +9,7 @@ class AdiabaticThermodynamicModels
   <p>
     Various models from
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a>
-    can be used to calculate the isentropic reference process required for an adiabatic process with a given isentropic efficiency
-    (<a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Processes.Adiabatic</a>
-    and
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>):
+    can be used to calculate the isentropic reference process required for an adiabatic process with a given isentropic efficiency, see <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Processes.Adiabatic</a>:
   </p>
 
   <ul>
@@ -28,7 +25,7 @@ class AdiabaticThermodynamicModels
     </li>
     <li>
       <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas\">PerfectGas</a> - 
-      assumes perfect gas (<code>p*v = R*T</code>, <code>cp = const</code>).
+      assumes perfect gas (<code>p*v = R*T</code>, <code>cp = const.</code>).
       Computes <code>h_out_is = h_in + cp*(T_out_is - T_in)</code>, where
       <code>T_out_is = T_in*(p_out/p_in)^((gamma-1)/gamma)</code>.
     </li>
@@ -45,16 +42,8 @@ class AdiabaticThermodynamicModels
   </ul>
 
   <p>
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> and
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticCycle\">AdiabaticCycle</a>
-    differ in that the former model sets the outlet pressure <code>p_out</code>, while the latter sets the outlet density <code>rho_out</code>.
-    For AdiabaticCycle, only FullMedium, IdealGasConstantGamma, and PerfectGas are appropriate,
-    since adiabatic compression or expansion of an incompressible fluid is not physically reasonable.
-  </p>
-
-  <p>
     The most suitable adiabatic thermodynamic model depends on the chosen media model.
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticProcess\">Examples.AdiabaticProcess</a>
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels\">Examples.AdiabaticThermodynamikModels</a>
     compares the results for different media models.
   </p>
 </html>", revisions="<html>
@@ -87,7 +76,7 @@ class BalancedModels
 
     <li>
       Overdetermined by one equation:
-      <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>
+      <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>,
       and
       <a href=\"modelica://ThermofluidStream.Idealized.Components.Separator\">Separator</a>.
     </li>
@@ -106,10 +95,11 @@ class BalancedModels
   </p>
 
   <ul>
-    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.JouleBrayton.Step3Staged\">Examples.JouleBrayton.Step3Staged</a>,</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle.Step5Splitter\">Examples.AirCycle.Step5Splitter</a>,</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle.Step6Junction\">Examples.AirCycle.Step6Junction</a>,</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.JouleBrayton.Step7HeatFlow\">Examples.JouleBrayton.Step7HeatFlow</a>,</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle.Step3Staged\">Examples.VaporCycle.Step3Staged</a>, or</li>
     <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle.Step4Separator\">Examples.VaporCycle.Step4Separator</a>,</li>
-    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle.Step7BootStrapCycle\">Examples.AirCycle.Step7BootStrapCycle</a> or</li> 
-    <li><a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic.Step7Compressor2\">Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Step7Compressor2</a>,</li>
   </ul>
 
   <p>
@@ -117,7 +107,7 @@ class BalancedModels
   </p>
   
   <ul>
-    <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Adiabatic.Compressor1\">Tests.Processes.Adiabatic.Compressor1</a> or</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Topology.SplitterT1\">Tests.Topology.SplitterT1</a>, or</li>
     <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Sources.Sink_free\">Tests.Sources.Sink_free</a>.</li>
   </ul>
 </html>", revisions="<html>
@@ -167,7 +157,7 @@ class InertanceNeglect
     Such inverse calculations may require removing the derivative of the mass flow
     rate <code>der(m_flow)</code>. This can be achieved by setting
     <code>considerInertance = false</code> for all affected models, e.g., via
-    <code>dropOfCommons.considerInertance</code>. See
+    <code>dropOfCommons.considerInertance</code>, see
     <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.<br>
 
     Setting <code>considerInertance = false</code> is intended for advanced use only.<br>

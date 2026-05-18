@@ -126,5 +126,9 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    Tests hiding the parameters (<code>dpLoss_fixed</code>, <code>prLoss_fixed</code>, etc.) in the variable browser.
+  </p>
 </html>"));
 end Setpoint;

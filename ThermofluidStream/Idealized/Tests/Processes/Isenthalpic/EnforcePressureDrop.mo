@@ -142,7 +142,29 @@ equation
   connect(firstOrder.y, sink1.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,20},{-20,20},{-20,0},{-28,0}}, color={0,0,127}));
   connect(firstOrder.y, sink2.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,-52},{-20,-52},{-20,-70},{-26,-70}}, color={0,0,127}));
   connect(firstOrder.y, sink5.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,-70},{72,-70}}, color={0,0,127}));
-  annotation(Documentation(info="", revisions="<html>
+  annotation(Documentation(info="<html>
+  <p>
+    Checks <code>enforcePressureDrop</code>:
+  </p>
+
+  <ul>
+    <li>
+      If <code>enforcePressureDrop = true</code>, the product of mass flow rate and pressure drop 
+      <code>m_flow*dp &gt;= 0</code> is enforced, independent of the setpoint.
+      If pressure clipping becomes active, this is indicated by a red circle in the icon layer.
+    </li>
+
+    <li>
+      If <code>enforcePressureDrop = false</code>, the pressure drop may violate the second law of thermodynamics.
+      In this case, a warning is issued and the condition is indicated in the icon layer.
+    </li>
+  </ul>
+
+  <p>
+    For inverse calculations, it may be advantageous to set 
+    <code>enforcePressureDrop = false</code>, as this simplifies the equation system.
+  </p>
+</html>",                           revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

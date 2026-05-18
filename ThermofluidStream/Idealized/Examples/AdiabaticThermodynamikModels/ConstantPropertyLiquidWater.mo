@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.AdiabaticProcess;
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels;
 model ConstantPropertyLiquidWater
   extends Modelica.Icons.Example;
 

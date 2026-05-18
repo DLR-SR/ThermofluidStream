@@ -16,7 +16,5 @@ package TUMExercisesThermodynamicCycles "Chapter 8: Thermodynamic Cycles [TUM201
     The implementations and solutions are entirely independent and were created by the author.
     This material is not affiliated with, endorsed by, or an official publication of TUM.
   </p>
-  <p>
-  </p>
 </html>"));
 end TUMExercisesThermodynamicCycles;

@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.AdiabaticProcess;
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels;
 model LiquidWater
   extends Modelica.Icons.Example;
 

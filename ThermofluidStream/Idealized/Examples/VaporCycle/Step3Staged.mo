@@ -158,7 +158,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In a third step, a second stage is added. The stages are coupled thermally coupled by an intermediate heat exchanger.
+    In a third step, a second stage is added. The stages are thermally coupled by an intermediate heat exchanger.
   </p>
 
   <p>
@@ -168,7 +168,7 @@ equation
 
   <ul>
     <li>
-      This configuration corresponds to the classic ascade heat exchanger:
+      This configuration corresponds to the classic cascade heat exchanger:
       <ul>
         <li>
           The lower (low-temperature) stage rejects heat in <code>condenser1</code>.

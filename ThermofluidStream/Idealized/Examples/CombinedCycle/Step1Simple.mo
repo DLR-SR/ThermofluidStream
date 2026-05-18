@@ -189,10 +189,6 @@ equation
   </p>
 
   <p>
-    The overall efficiency is increasing with pressure.
-  </p>
-
-  <p>
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.CombinedCycle\">CombinedCycle</a> package.
   </p>

@@ -1,15 +1,13 @@
 within ThermofluidStream.Idealized.Examples.ClausiusRankine;
-model Step6ClosedLoop
+model Step8ClosedLoopFiltered
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
@@ -42,6 +40,7 @@ model Step6ClosedLoop
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,
+    thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{0,-70},{-20,-50}})));
   Processes.Isobaric condenser(
     redeclare package Medium = Medium,
@@ -61,15 +60,19 @@ model Step6ClosedLoop
   Modelica.Blocks.Sources.Step massFlowRate(
     height=1,
     offset=1,
-    startTime=0.5) annotation(Placement(transformation(extent={{-60,-90},{-40,-70}})));
+    startTime=0.5) annotation(Placement(transformation(extent={{-72,-90},{-52,-70}})));
   Modelica.Blocks.Sources.Ramp pressure(
     height=99e5,
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(pressure.y))) annotation(
-    Placement(transformation(extent={{-50,-40},{-30,-20}})));
+    Placement(transformation(extent={{-60,-40},{-40,-20}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(pressure.y))) annotation(
     Placement(transformation(extent={{-20,-40},{0,-20}})));
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(
+    T=0.1,
+    initType=Modelica.Blocks.Types.Init.InitialState,
+    y_start=0) annotation(Placement(transformation(extent={{-40,-90},{-20,-70}})));
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -102,9 +105,10 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(pump.outletSpec_prescribed, pressure.y) annotation(Line(points={{-60,-12},{-60,-30},{-79,-30}}, color={0,0,127}));
-  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-29,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
+  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-39,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{1,-30},{10,-30},{10,-12}}, color={0,0,127}));
-  connect(massFlowRate.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-39,-80},{0,-80},{0,-72}}, color={0,0,127}));
+  connect(massFlowRate.y, firstOrder.u) annotation(Line(points={{-51,-80},{-42,-80}}, color={0,0,127}));
+  connect(firstOrder.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-19,-80},{0,-80},{0,-72}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-140,-100},{140,100}}), graphics={
         Text(
@@ -130,18 +134,7 @@ equation
         Text(
           extent={{84,6},{90,0}},
           textColor={28,108,200},
-          textString="6"),
-        Polygon(
-          points={{-140,40},{-100,40},{-100,60},{-120,60},{-120,100},{-140,100},{-140,40}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-110,90},{-30,70}},
-          textColor={238,46,47},
-          textString="requires considerInertance = false
-see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}),
+          textString="6")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -151,12 +144,8 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    In the sixth step a condenser is added and a loop breaker is used to close the loop.
-  </p>
-  
-  <p>
-    Since the mass flow rate setpoint is not differentiable, <code>considerInertance = false</code> is required, see 
-    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
+    In the 8. step a filter is applied for the mass flow rate to obtain a differentiable mass flow rate input signal.
+    For this reason <code>considerInertance = true</code> becomes possible.
   </p>
 
   <p>
@@ -164,4 +153,4 @@ see User's Guide",
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));
-end Step6ClosedLoop;
+end Step8ClosedLoopFiltered;

@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
-model Fixed "Example - Isochoric process"
+model FixedAdvanced "Example - Isochoric process"
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
@@ -8,7 +9,7 @@ model Fixed "Example - Isochoric process"
   parameter SI.MassFlowRate m_flow=1   "Mass flow rate";
   parameter Medium.AbsolutePressure p=200000 "Pressure (inlet = outlet)";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
-  parameter SI.TemperatureDifference dT=10   "Temperature difference";
+  parameter SI.TemperatureDifference dT=0    "Temperature difference";
   parameter SI.AbsolutePressure p_inf=100000   "Ambient pressure";
 
   final parameter Medium.Temperature T_out = T_in + dT "Outlet temperature";
@@ -102,11 +103,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{-70,30},{-50,50}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-420,-10},{-400,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-360,-10},{-340,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false)
+                                                                                         annotation(Placement(transformation(extent={{-360,-10},{-340,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT2(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -118,11 +122,14 @@ model Fixed "Example - Isochoric process"
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow=Q_flow) annotation(Placement(transformation(extent={{-420,-40},{-400,-20}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-320,-10},{-300,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-260,-10},{-240,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium, considerInertance=false)
+                                                                                         annotation(Placement(transformation(extent={{-260,-10},{-240,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out2(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
@@ -134,11 +141,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{-290,-10},{-270,10}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-200,-10},{-180,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, considerInertance=false)
+                                                                                         annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
@@ -150,11 +160,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{-170,-10},{-150,10}})));
   ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium, considerInertance=false)
+                                                                                         annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out2(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
@@ -241,11 +254,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{370,30},{390,50}})));
   ThermofluidStream.Boundaries.Source source13(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{20,-10},{40,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink13(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{80,-10},{100,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink13(redeclare package Medium = Medium, considerInertance=false)
+                                                                                          annotation(Placement(transformation(extent={{80,-10},{100,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dT2c(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -258,11 +274,14 @@ model Fixed "Example - Isochoric process"
                                                                     annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Boundaries.Source source14(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{120,-10},{140,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink14(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,-10},{200,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink14(redeclare package Medium = Medium, considerInertance=false)
+                                                                                          annotation(Placement(transformation(extent={{180,-10},{200,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric T_out2c(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
@@ -274,11 +293,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{150,-10},{170,10}})));
   ThermofluidStream.Boundaries.Source source15(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{240,-10},{260,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink15(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{300,-10},{320,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink15(redeclare package Medium = Medium, considerInertance=false)
+                                                                                          annotation(Placement(transformation(extent={{300,-10},{320,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric dh2c(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference,
@@ -290,11 +312,14 @@ model Fixed "Example - Isochoric process"
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{270,-10},{290,10}})));
   ThermofluidStream.Boundaries.Source source16(
     redeclare package Medium = Medium,
+    considerInertance=false,
     p0_par=p,
     T0_par=T_in)  annotation(Placement(transformation(extent={{340,-10},{360,10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink16(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{400,-10},{420,10}})));
+  ThermofluidStream.Idealized.Sources.Sink_free sink16(redeclare package Medium = Medium, considerInertance=false)
+                                                                                          annotation(Placement(transformation(extent={{400,-10},{420,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric h_out2c(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
@@ -476,7 +501,18 @@ equation
       thickness=0.5));
   connect(energyFlowSource1.E_flow_out, dT3c.Q_flow_in) annotation(Line(points={{41,-30},{220,-30},{220,-52}}, color={255,170,85}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-440,-100},{440,100}})),
+          extent={{-440,-100},{440,100}}), graphics={
+        Polygon(
+          points={{-380,-100},{-340,-100},{-340,-80},{-360,-80},{-360,-40},{-380,-40},{-380,-100}},
+          fillColor= {162,29,33},
+          fillPattern= FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-350,-48},{-270,-68}},
+          textColor={238,46,47},
+          textString="requires considerInertance = false
+see User's Guide",
+          horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -487,11 +523,11 @@ equation
 </html>", info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters in the case of <code>dT not= 0</code>
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters in the case of <code>dT = 0</code>.
   </p>
     
   <p>
-    For <code>dT = 0</code> (<code>q = 0</code>) see <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Isobaric.FixedAdvanced\">FixedAdvanced</a> 
+   Calculating the mass flow rate <code>m_flow := Q_flow/q</code> for <code>q = 0</code> is only supported for <code>considerInertance = false</code>.
   </p>
 </html>"));
-end Fixed;
+end FixedAdvanced;

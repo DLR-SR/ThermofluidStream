@@ -240,7 +240,7 @@ equation
           extent={{-240,-160},{240,160}})),
     Documentation(info="<html>
   <p>
-    Test model for <code>sink_free</code> with varying p,T,h and m_flow.
+    Test model for the <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> model with varying <code>p,T,h</code> and <code>m_flow</code>.
   </p>
 </html>", revisions="<html>
   <ul>

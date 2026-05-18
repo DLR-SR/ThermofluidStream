@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Sources;
-model Sink_m_NeglectInertance "Example - mass flow sink with neglect inertance"
+model Sink_m_InertanceNeglect "Example - mass flow sink with neglect inertance"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
@@ -110,6 +110,10 @@ see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
     Documentation(info="<html>
   <p>
+    Test model for the <a href=\"modelica://ThermofluidStream.Boundaries.Sink_m\">Sink_m</a> model.
+  </p>
+
+  <p>
     Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
 </html>", revisions="<html>
@@ -120,4 +124,4 @@ see User's Guide",
     </li>
   </ul>
 </html>"));
-end Sink_m_NeglectInertance;
+end Sink_m_InertanceNeglect;

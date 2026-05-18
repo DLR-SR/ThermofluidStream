@@ -1,57 +1,50 @@
 within ThermofluidStream.Idealized.Examples.ClausiusRankine;
 model Step5Sink_free
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(
-    L=0,
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{120,80},{140,100}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+    Placement(transformation(extent={{140,80},{160,100}})));
 
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=0.6,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{80,-10},{100,10}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.Isobaric boiler(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{0,-10},{20,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Boundaries.Source
-                   waterSource(
+                    waterSource(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  Sources.Sink_free waterSink(redeclare package Medium = Medium) annotation(
-    Placement(transformation(extent={{120,-10},{140,10}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-14,-40},{6,-20}})));
+    T0_par=293.15) annotation(Placement(transformation(extent={{-150,-10},{-130,10}})));
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Processes.Isobaric preheater(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
   Processes.Isobaric superheater(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
 
-    dT_fixed=50,
-    T_out_fixed=473.15) annotation(Placement(transformation(extent={{40,-10},{60,10}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-54,-40},{-34,-20}})));
-  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
-  Modelica.Blocks.Sources.Step massFlowRateStep(
-    height=1,
-    offset=1,
-    startTime=0.5) annotation(Placement(transformation(extent={{-120,-40},{-100,-20}})));
+    dT_fixed=50) annotation(Placement(transformation(extent={{10,-10},{30,10}})));
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-80,-40},{-60,-20}})));
+  Modelica.Blocks.Sources.Ramp outletPressure(
+    height=99e5,
+    duration=1,
+    offset=1e5) annotation(Placement(transformation(extent={{-130,-40},{-110,-20}})));
   ThermofluidStream.Utilities.showRealValue efficiencyExtensive(
     description="efficiency extensive",
     use_numberPort=false,
@@ -62,88 +55,74 @@ model Step5Sink_free
     use_numberPort=false,
     number=(-turbine.dh - pump.dh)/(superheater.outlet.state.h - preheater.inlet.state.h + Modelica.Constants.eps),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Modelica.Blocks.Sources.Ramp outletPressure(
-    height=99e5,
-    duration=1,
-    offset=1e5) annotation(Placement(transformation(extent={{-120,-80},{-100,-60}})));
+  Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+  Sources.Sink_free waterSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
 equation
+  connect(waterSource.outlet, pump.inlet) annotation(
+    Line(
+      points={{-130,0},{-110,0}},
+      color={28,108,200},
+      thickness=0.5));
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
-      points={{-50,0},{-40,0}},
+      points={{-90,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));
   connect(preheater.outlet, boiler.inlet) annotation(Line(
-      points={{-20,0},{0,0}},
+      points={{-50,0},{-30,0}},
       color={28,108,200},
       thickness=0.5));
   connect(boiler.outlet, superheater.inlet) annotation(Line(
-      points={{20,0},{40,0}},
+      points={{-10,0},{10,0}},
       color={28,108,200},
       thickness=0.5));
   connect(superheater.outlet, turbine.inlet) annotation(Line(
-      points={{60,0},{80,0}},
+      points={{30,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet,waterSink. inlet) annotation(
-    Line(
-      points={{100,0},{120,0}},
+  connect(pump.outletSpec_prescribed, outletPressure.y) annotation(Line(points={{-90,-12},{-90,-30},{-109,-30}},color={0,0,127}));
+  connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{-19,-30},{-10,-30},{-10,-12}},
+                                                                                                    color={0,0,127}));
+  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-59,-30},{-50,-30},{-50,-12}}, color={0,0,127}));
+  connect(turbine.outlet, massFlowRate.inlet) annotation (Line(
+      points={{70,0},{90,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(waterSource.outlet, massFlowRateSource.inlet) annotation(
-    Line(
-      points={{-120,0},{-100,0}},
+  connect(massFlowRate.outlet, waterSink.inlet) annotation (Line(
+      points={{110,0},{130,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(massFlowRateSource.outlet, pump.inlet) annotation(
-    Line(
-      points={{-80,0},{-70,0}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(massFlowRateStep.y, massFlowRateSource.m_flow_prescribed) annotation(Line(points={{-99,-30},{-90,-30},{-90,-8}}, color={0,0,127}));
-  connect(pump.outletSpec_prescribed, outletPressure.y) annotation(Line(points={{-50,-12},{-50,-70},{-99,-70}}, color={0,0,127}));
-  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-33,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
-  connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{7,-30},{20,-30},{20,-12}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+          extent={{-160,-100},{160,100}},
+        grid={2,2}),                       graphics={
         Text(
-          extent={{-114,6},{-108,0}},
+          extent={{-124,6},{-118,0}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-78,6},{-72,0}},
+          extent={{-84,6},{-78,0}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{-48,6},{-42,0}},
+          extent={{-44,6},{-38,0}},
           textColor={28,108,200},
           textString="3"),
         Text(
-          extent={{-14,6},{-8,0}},
+          extent={{-4,6},{2,0}},
           textColor={28,108,200},
           textString="4"),
         Text(
-          extent={{26,6},{32,0}},
+          extent={{36,6},{42,0}},
           textColor={28,108,200},
           textString="5"),
         Text(
-          extent={{66,6},{72,0}},
+          extent={{76,6},{82,0}},
           textColor={28,108,200},
           textString="6"),
         Text(
-          extent={{106,6},{112,0}},
+          extent={{116,6},{122,0}},
           textColor={28,108,200},
-          textString="7"),
-        Polygon(
-          points={{-140,40},{-100,40},{-100,60},{-120,60},{-120,100},{-140,100},{-140,40}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-110,90},{-30,70}},
-          textColor={238,46,47},
-          textString="requires considerInertance = false
-see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}),
+          textString="7")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -153,16 +132,21 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    In the fifth step the mass flow rate sink is replaced by a free sink and a mass flow rate flow set component.
+    In the fifth step, the mass flow rate sink is split into a <code>massFlowRate</code> component and a free sink.
   </p>
 
   <p>
-    Furthermore, since the mass flow rate setpoint is non differentiable, <code>considerInertance = false</code> is required, see 
-    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
+    The <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> model is locally underdetermined by one equation (it lacks the definition of the mass flow rate), which is indicated by a minus sign.<br> 
+    The <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a> model is overdetermined by one equation, which is indicated by a plus sign.<br>
+    Combining both models yields a balanced model. See also <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.BalancedModels\">UsersGuide.BalancedModels</a>.
   </p>
 
   <p>
-    Further documentation is available in the 
+    The position of the <code>massFlowRate</code> component within the loop is arbitrary.
+  </p>
+
+  <p>
+    Further documentation is available in the
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));

@@ -137,7 +137,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In the third step preheating, boiler and superheating are considered separately (and dew and bubble enthalpies are set). 
+    In the third step <code>preheater</code>, <code>boiler</code> and <code>superheater</code> are considered separately (and dew and bubble enthalpies are set). 
   </p>
 
   <p>

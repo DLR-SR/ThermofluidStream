@@ -19,8 +19,8 @@ package Polytropic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </p> 
  
   <p>
-    This package uses the <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> instead of the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>. This helps to avoid implicit nonlinear equations, as long as the inlet state is known.
+    This package uses the <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> model instead of the 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a> model. This helps to avoid implicit nonlinear equations, as long as the inlet state is known.
     Since the inlet state of <code>compressor1</code> is unknown, the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> block is still required.
   </p>
 

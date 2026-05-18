@@ -39,14 +39,14 @@ model Step3Staged
   ThermofluidStream.Utilities.showRealValue efficiencySpecific(
     description="efficiency specific",
     use_numberPort=false,
-    number=(-highPressureTurbine.dh - lowPressureTurbine.dh - highPressureCompressor.dh - lowPressureCompressor.dh)/(
-        firstCombustion.dh + secondCombustion.dh),
+    number=-(highPressureTurbine.dh + lowPressureTurbine.dh + highPressureCompressor.dh + lowPressureCompressor.dh)/(firstCombustion.dh + secondCombustion.dh),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   ThermofluidStream.HeatExchangers.CounterFlowNTU recuperator(
     redeclare package MediumA = Medium,
     redeclare package MediumB = Medium,
     A=10,
-    k_NTU=200) annotation(Placement(transformation(extent={{-30,-4},{-10,16}})));
+    k_NTU=200,
+    TC=0.01)   annotation(Placement(transformation(extent={{-30,-4},{-10,16}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -176,7 +176,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In a third step the compression is splitted into 2 stages with an intercooler and the expansion is likewise splitted into 2 stages with a second combusion. With this efficiency can be increased.
+    In a third step the compression is splitted into 2 stages with an intercooler and the expansion is likewise splitted into 2 stages with a second combustion. This increases the efficiency.
   </p>
 
   <p>

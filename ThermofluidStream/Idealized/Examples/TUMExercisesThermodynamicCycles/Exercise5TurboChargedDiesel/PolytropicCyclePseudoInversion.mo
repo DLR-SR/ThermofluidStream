@@ -221,14 +221,22 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of a turbocharged diesel engine cycle. The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> (see for problem description).
+    Example of a turbocharged Diesel engine cycle. See 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> for the problem description.
   </p>
 
   <p>
-    In contrast to <code>PolytropicCycle</code> this example uses <code>pseudoInversion</code> \"controllers\" instead of the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model.
-    With this the implicit nonlinear equations can be \"avoided\". 
-    Note that also the time integration algorithm requires suitable start values and is also likely to be implicit and will likely solve implicit nonlinear equations aswell.
+    This example makes use of the <code>systemSpec = Cycle</code> <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a> for the Diesel engine.
+  </p>
+
+  <p>
+    When coupling models configured with <code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>, 
+    the <a href=\"modelica://ThermofluidStream.Idealized.Processes.FlowWork\">FlowWork</a> model is required, 
+    since flow work must be treated explicitly to ensure a consistent energy balance between both representations.
+  </p>
+
+  <p>
+    A \"pseudo controller\" is used to avoid the implicit nonlinear equation.
   </p>
 </html>"));
 end PolytropicCyclePseudoInversion;

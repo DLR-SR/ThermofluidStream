@@ -275,8 +275,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example  of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building. The setup of this example is identical to
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPump.Inversion\">Exercise10HeatPump.Inversion</a> (see for problem description).
+    Example  of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building. See
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPump.Inversion\">Exercise10HeatPump.Inversion</a> for the problem description.
   </p>
 
   <p>

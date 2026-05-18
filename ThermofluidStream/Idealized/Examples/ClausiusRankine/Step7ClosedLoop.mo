@@ -1,25 +1,29 @@
 within ThermofluidStream.Idealized.Examples.ClausiusRankine;
-model Step9VaporQualityPseudoInversion
+model Step7ClosedLoop
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
 
   Processes.Adiabatic pump(
     redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=0.6,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.Isobaric boiler(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
@@ -30,8 +34,10 @@ model Step9VaporQualityPseudoInversion
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
   Processes.Isobaric superheater(
     redeclare package Medium = Medium,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,10},{40,-10}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
+
+    T_out_fixed=473.15,
+    dT_fixed=50) annotation(Placement(transformation(extent={{20,-10},{40,10}})));
   Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -46,38 +52,24 @@ model Step9VaporQualityPseudoInversion
     description="efficiency extensive",
     use_numberPort=false,
     number=(-turbine.P - pump.P)/(superheater.Q_flow + boiler.Q_flow + preheater.Q_flow + Modelica.Constants.eps),
-    displayVariable=false) annotation(Placement(transformation(extent={{-120,60},{-100,80}})));
+    displayVariable=false) annotation(Placement(transformation(extent={{0,60},{20,80}})));
   ThermofluidStream.Utilities.showRealValue efficiencySpecific(
     description="efficiency specific",
     use_numberPort=false,
     number=(-turbine.dh - pump.dh)/(superheater.outlet.state.h - preheater.inlet.state.h + Modelica.Constants.eps),
-    displayVariable=false) annotation(Placement(transformation(extent={{-120,40},{-100,60}})));
+    displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   Modelica.Blocks.Sources.Step massFlowRate(
     height=1,
     offset=1,
-    startTime=0.5) annotation(Placement(transformation(extent={{-80,-90},{-60,-70}})));
-  Modelica.Blocks.Sources.Ramp outletPressure(
-    height=90e5,
+    startTime=0.5) annotation(Placement(transformation(extent={{-60,-90},{-40,-70}})));
+  Modelica.Blocks.Sources.Ramp pressure(
+    height=99e5,
     duration=1,
-    offset=10e5,
-    startTime=0) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
-  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-20,-40},{0,-20}})));
-  ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQualitySensor(
-    redeclare package Medium = Medium,
-    quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg,
-    outputValue=true) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Sources.RealExpression vaporQualitySetpoint(y=0.95) annotation(
-    Placement(transformation(extent={{-60,40},{-40,60}})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(
-    T=0.1,
-    initType=Modelica.Blocks.Types.Init.InitialState,
-    y_start=0) annotation(Placement(transformation(extent={{-50,-90},{-30,-70}})));
-  Modelica.Blocks.Continuous.Integrator integrator(
-    k=50000,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=0) annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-30,60},{-10,40}})));
+    offset=1e5) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
+  Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(pressure.y))) annotation(
+    Placement(transformation(extent={{-50,-40},{-30,-20}})));
+  Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(pressure.y))) annotation(
+    Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -109,21 +101,11 @@ equation
       points={{-20,-60},{-110,-60},{-110,0},{-80,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine.outlet, vaporQualitySensor.inlet) annotation(
-    Line(
-      points={{80,0},{100,0}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(outletPressure.y, pump.outletSpec_prescribed) annotation(Line(points={{-79,-30},{-60,-30},{-60,-12}}, color={0,0,127}));
-  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-39,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
+  connect(pump.outletSpec_prescribed, pressure.y) annotation(Line(points={{-60,-12},{-60,-30},{-79,-30}}, color={0,0,127}));
+  connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-29,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{1,-30},{10,-30},{10,-12}}, color={0,0,127}));
-  connect(massFlowRate.y, firstOrder.u) annotation(Line(points={{-59,-80},{-52,-80}}, color={0,0,127}));
-  connect(firstOrder.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-29,-80},{0,-80},{0,-72}}, color={0,0,127}));
-  connect(vaporQualitySetpoint.y, feedback.u1) annotation(Line(points={{-39,50},{-28,50}}, color={0,0,127}));
-  connect(vaporQualitySensor.value_out, feedback.u2) annotation(Line(points={{118,0},{122,0},{122,74},{-20,74},{-20,58}}, color={0,0,127}));
-  connect(feedback.y, integrator.u) annotation(Line(points={{-11,50},{-2,50}}, color={0,0,127}));
-  connect(integrator.y, superheater.outletSpec_prescribed) annotation(Line(points={{21,50},{40,50},{40,12}}, color={0,0,127}));
-  annotation(experiment(startTime=-1), Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
+  connect(massFlowRate.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-39,-80},{0,-80},{0,-72}}, color={0,0,127}));
+  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-140,-100},{140,100}}), graphics={
         Text(
           extent={{8,-54},{14,-60}},
@@ -148,7 +130,18 @@ equation
         Text(
           extent={{84,6},{90,0}},
           textColor={28,108,200},
-          textString="6")}),
+          textString="6"),
+        Polygon(
+          points={{-140,40},{-100,40},{-100,60},{-120,60},{-120,100},{-140,100},{-140,40}},
+          fillColor= {162,29,33},
+          fillPattern= FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-110,90},{-30,70}},
+          textColor={238,46,47},
+          textString="requires considerInertance = false
+see User's Guide",
+          horizontalAlignment=TextAlignment.Left)}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -158,9 +151,18 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    In the 9. step the inversion (find superheating temperature difference such that the vapor quality at the turbine outlet is <code>0.95</code>)
-    is done by a pseudo \"controller\". With this one can avoid the implicit nonlinear equations. 
-    Note however, that also the time integration algorithm requires suitable start values and is also likely to be implicit and will likely solve implicit nonlinear equations aswell.
+    In the 7. step a condenser is added and a loop breaker is used to close the loop.
+  </p>
+
+  <p>
+    Inlet and outlet states of the loop breaker are independent of each other.  
+    The outlet state of the loop breaker is prescribed, while the user must ensure that the inlet state is consistent.  
+    Any deviation is indicated by a warning.
+  </p>
+
+  <p>
+    Since the mass flow rate setpoint is not differentiable, <code>considerInertance = false</code> is required, see 
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <p>
@@ -168,4 +170,4 @@ equation
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
 </html>"));
-end Step9VaporQualityPseudoInversion;
+end Step7ClosedLoop;

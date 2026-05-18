@@ -248,7 +248,7 @@ see User's Guide",
   </ul>
 </html>", info="<html>
   <p>
-    Non differentiable mass flow rates require <code>considerInertance = false</code>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a> test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
   </p>
 </html>"));
 end JunctionT2;
