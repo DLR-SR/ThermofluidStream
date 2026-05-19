@@ -277,11 +277,7 @@ equation
           extent={{0,0},{36,36}},
           textColor={191,0,0},
           textStyle={TextStyle.Bold},
-          textString = if abs(Q_flow) < 1e-8 then "0" else ""),
-        Ellipse(
-          extent={{-52,52},{52,-52}},
-          lineColor={28,108,200},
-          lineThickness=0.5)}),
+          textString = if abs(Q_flow) < 1e-8 then "0" else "")}),
     Documentation(info="<html>
   <p>
     Isobaric process (<code>p_in = p_out</code>) suitable for modeling both heating/cooling (open system, steady-flow, <code>systemSpec==Flow</code>) 

@@ -142,62 +142,9 @@ equation
   P = m_flow*dh;
   Xi_out = Xi_in;
 
-  annotation(Icon(graphics={
-        Text(visible= displayParameters and showEfficiency and etaSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
-          extent={{-150,-140},{150,-110}},
-          textColor={0,0,0},
-          textString="η = %eta_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
-          extent={{-150,-100},{150,-70}},
-          textColor={0,0,0},
-          textString="Δp = %dp_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
-          extent={{-150,-100},{150,-70}},
-          textColor={0,0,0},
-          textString="pRatio = %pr_fixed"),
-        Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
-          extent={{-150,-100},{150,-70}},
-          textColor={0,0,0},
-          textString="p_out = %p_out_fixed"),
-        Line(visible = specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100}},
-          color={0,0,127}),
-        Line(visible = etaSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100},{60,-100}},
-          color={0,0,127}),
-        Polygon(visible = not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-          fillPattern = if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
-          fillColor={238,46,47},
-          pattern=LinePattern.None),
-        Ellipse(visible=specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
-        Rectangle(visible=specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          extent={{-78,24},{-82,56}},fillColor={28,108,200},fillPattern=FillPattern.Solid,pattern=LinePattern.None),
-        Rectangle(visible=specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None),
-        Text(visible = not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          extent={{-150,100},{150,60}},
-          textString= if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
-          textColor={238,46,47}),
-        Polygon(visible=not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-          fillPattern = if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
-          fillColor={238,46,47},
-          pattern=LinePattern.None),
-        Text(visible = enableFilter and not specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-          extent={{-100,-70},{0,-100}},
-          textColor={255,170,85},
-          textString="filter"),
-        Rectangle(visible = 1.0 < 0.0,
-          extent={{-200,200},{200,-200}},
-          lineColor={0,0,0},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Text(visible=displayInstanceName,
-          extent={{-150,120},{150,80}},
-          textString="%name",
-          textColor=dropOfCommons.instanceNameColor),
+  annotation(
+    Icon(
+      graphics={
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -223,19 +170,69 @@ equation
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
           textString="s"),
-        Polygon(visible = showPowerDirection,
+        Text(
+          extent={{-150,120},{150,80}},
+          textString=if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(
+          extent={{-150,-140},{150,-110}},
+          textColor={0,0,0},
+          textString = if displayParameters and showEfficiency and etaSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "η = %eta_fixed" else ""),
+        Text(
+          extent={{-150,-100},{150,-70}},
+          textColor={0,0,0},
+          textString = if not displayParameters or not showOutletSpecification or not specifyOutlet or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference then "Δp = %dp_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio then "pRatio = %pr_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure then "p_out = %p_out_fixed"
+          else "error"),
+        Text(
+          extent={{-100,-70},{0,-100}},
+          textColor={255,170,85},
+          textString = if enableFilter and not specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "filter" else ""),
+        Line(
+          points = if specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if etaSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{60,-100}} else {{0,0}},
+          color={0,0,127}),
+        Polygon(
           origin={-40,-50},
           rotation = if P >= 0 then 90 else -90,
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
-          fillPattern = if abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
+          fillPattern = if showPowerDirection and abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
-        Text(visible = showPowerDirection,
+        Text(
           origin={-60,-70},
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
-          textString = if abs(P) < 1e-8 then "0" else "")}),
+          textString = if showPowerDirection and abs(P) < 1e-8 then "0" else ""),
+        Text(
+          extent={{-150,100},{150,60}},
+          textString= if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
+          textColor={238,46,47}),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-98,58},{-62,22}},
+          pattern=LinePattern.None,
+          fillColor={170,213,255},
+          fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None),
+        Rectangle(
+          extent={{-78,24},{-82,56}},
+          fillColor={28,108,200},
+          fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-96,42},{-64,38}},
+          fillColor={28,108,200},
+          fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None)}),
       Documentation(info="<html>
   <p>
     Adiabatic process suitable for modeling both hydraulic pumps and turbines (incompressible media) 
