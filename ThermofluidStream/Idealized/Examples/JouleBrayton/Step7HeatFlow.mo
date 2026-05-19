@@ -17,7 +17,7 @@ model Step7HeatFlow
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
-    pr_fixed=2,
+    pRatio_fixed=2,
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{-150,-10},{-130,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Air,

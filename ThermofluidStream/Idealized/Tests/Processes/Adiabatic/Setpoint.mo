@@ -71,7 +71,7 @@ model Setpoint
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000,
-    pr_fixed=2) annotation(Placement(transformation(extent={{-260,-10},{-240,10}})));
+    pRatio_fixed=2) annotation(Placement(transformation(extent={{-260,-10},{-240,10}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -111,7 +111,7 @@ model Setpoint
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000,
-    pr_fixed=2) annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+    pRatio_fixed=2) annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -136,7 +136,7 @@ model Setpoint
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     dp_fixed=100000,
-    pr_fixed=2,
+    pRatio_fixed=2,
     p_out_fixed=200000) annotation(Placement(transformation(extent={{-260,-90},{-240,-70}})));
   ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
@@ -180,7 +180,7 @@ model Setpoint
     dp_fixed=100000,
     p_out_fixed=200000,
     p_out(start=100000),
-    pr_fixed=2) annotation(Placement(transformation(extent={{40,-90},{60,-70}})));
+    pRatio_fixed=2) annotation(Placement(transformation(extent={{40,-90},{60,-70}})));
   ThermofluidStream.Boundaries.Source source14(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -437,7 +437,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Tests hiding the parameters (<code>dp_fixed</code>, <code>pr_fixed</code>, <code>p_out_fixed</code>) in the variable browser.
+    Tests hiding the parameters (<code>dp_fixed</code>, <code>pRatio_fixed</code>, <code>p_out_fixed</code>) in the variable browser.
   </p>
 </html>"));
 end Setpoint;

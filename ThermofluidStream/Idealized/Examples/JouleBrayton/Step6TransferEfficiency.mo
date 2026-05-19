@@ -15,7 +15,7 @@ model Step6TransferEfficiency
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    pr_fixed=2,
+    pRatio_fixed=2,
     p_out_fixed=200000) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Medium,

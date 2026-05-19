@@ -18,7 +18,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-120,160},{-100,180}})));
@@ -32,7 +32,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const: h_out_is = dp/rho_in + h_in",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-120,30},{-100,50}})));
@@ -65,7 +65,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-20,120},{0,100}})));
@@ -99,7 +99,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const: h_out_is = dp/rho_in + h_in",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-20,-20},{0,-40}})));
@@ -115,7 +115,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "h_out_is = h(p_out, T_in)",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
@@ -149,7 +149,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "h_out_is = h(p_out, T_in)",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    pr_fixed=pRatio,
+    pRatio_fixed=pRatio,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-20,-150},{0,-170}})));
