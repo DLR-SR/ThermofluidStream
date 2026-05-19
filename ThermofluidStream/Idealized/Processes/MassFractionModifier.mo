@@ -55,11 +55,9 @@ equation
   dp = 0;
   h_out = Medium.specificEnthalpy_pTX(p_out, T_in, Xi_out); // To be compatible with SISOFlow
 
-  annotation(defaultComponentName = "composition", Icon(graphics={
-        Text(visible=displayInstanceName,
-          extent={{-150,120},{150,80}},
-          textString="%name",
-          textColor=dropOfCommons.instanceNameColor),
+  annotation(defaultComponentName = "composition",
+    Icon(
+      graphics={
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -82,19 +80,22 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5),
         Text(
+          extent={{-150,120},{150,80}},
+          textString = if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
           textString="X"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference,
-          extent={{-150,-70},{150,-100}},
+        Text(
+          extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
-          textString="ΔXi = %dXi_fixed"),
-        Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
-          extent={{-150,-70},{150,-100}},
-          textColor={0,0,0},
-          textString="Xi_out = %Xi_out_fixed"),
-        Line(visible = outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100}},
+          textString = if not displayParameters or not showOutletSpecification or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.MassFractionsDifference then "ΔXi = %dXi_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions then "Xi_out = %Xi_out_fixed"
+          else "error"),
+        Line(
+          points = if outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
           color={0,0,127})}), Documentation(info="<html>
   <p>
     Process to achieve a change in composition. Further assumptions:
