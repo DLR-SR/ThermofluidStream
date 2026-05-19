@@ -1,15 +1,14 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater;
 model Inversion
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true,
-    considerInertance=false) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true)
+                             annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
 
   ThermofluidStream.Idealized.Processes.Adiabatic highPressurePump(
@@ -205,18 +204,7 @@ equation
         Text(
           extent={{114,-14},{120,-20}},
           textColor={28,108,200},
-          textString="8"),
-        Polygon(
-          points={{-160,60},{-120,60},{-120,80},{-140,80},{-140,120},{-160,120},{-160,60}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-130,110},{-50,90}},
-          textColor={238,46,47},
-          textString="requires considerInertance = false
-see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}),
+          textString="8")}),
     Documentation(revisions="<html>
   <ul>
     <li>
