@@ -88,65 +88,58 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation(Icon(graphics={
-    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss,
-      extent={{-150,-70},{150,-100}},
-      textColor={0,0,0},
-      textString="ΔpLoss = %dpLoss_fixed"),
-    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
-      extent={{-150,-70},{150,-100}},
-      textColor={0,0,0},
-      textString="prLoss = %prLoss_fixed"),
-    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
-      extent={{-150,-70},{150,-100}},
-      textColor={0,0,0},
-      textString="p_out = %p_out_fixed"),
-    Line(visible = outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-      points={{100,0},{100,-100}},
-      color={0,0,127}),
-    Ellipse(visible = DynamicSelect(false, enforcePressureDrop and m_flow*dpLoss_set < 0),
-      extent={{60,60},{80,80}},
-      lineColor={0,0,0},
-      fillColor = {238,46,47},
-      fillPattern=FillPattern.Solid),
-    Rectangle(visible = 1.0 < 0.0,
-      extent={{-200,200},{200,-200}},
-      lineColor={0,0,0},
-      fillColor={255,255,255},
-      fillPattern=FillPattern.Solid),
-    Text(visible=displayInstanceName,
-      extent={{-150,120},{150,80}},
-      textString="%name",
-      textColor=dropOfCommons.instanceNameColor),
-    Ellipse(
-      extent={{-56,54},{64,-66}},
-      lineColor={28,108,200},
-      lineThickness=0.5,
-      fillColor={215,215,215},
-      fillPattern=FillPattern.Solid,
-      pattern=LinePattern.None),
-    Line(
-      points={{-100,0},{100,0}},
-      color={28,108,200},
-      thickness=0.5),
-    Ellipse(
-      extent={{-60,60},{60,-60}},
-      lineColor={28,108,200},
-      lineThickness=0.5,
-      fillColor={255,255,255},
-      fillPattern=FillPattern.Solid),
-    Ellipse(
-      extent={{-50,50},{50,-50}},
-      lineColor={28,108,200},
-      lineThickness=0.5),
-    Text(
-      extent={{-20,20},{20,-20}},
-      textColor={28,108,200},
-      textString="h"),
-    Text(
-      extent={{-100,50},{100,-50}},
-      textColor={238,46,47},
-       textString = if m_flow*dpLoss < 0 then "dp" else "")}),
+  annotation(
+    Icon(
+      graphics={
+        Ellipse(
+          extent={{-56,54},{64,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Text(
+          extent={{-150,120},{150,80}},
+          textString=if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(
+          extent={{-20,20},{20,-20}},
+          textColor={28,108,200},
+          textString="h"),
+        Text(
+          extent={{-150,-100},{150,-70}},
+          textColor={0,0,0},
+          textString = if not displayParameters or not showOutletSpecification or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss then "ΔpLoss = %dpLoss_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss then "prLoss = %prLoss_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure then "p_out = %p_out_fixed"
+          else "error"),
+        Line(
+          points = if outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Ellipse(visible = DynamicSelect(false, enforcePressureDrop and m_flow*dpLoss_set < 0),
+          extent={{60,60},{80,80}},
+          lineColor={0,0,0},
+          fillColor = {238,46,47},
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{-100,50},{100,-50}},
+          textColor={238,46,47},
+          textString = if m_flow*dpLoss < 0 then "dp" else "")}),
     Documentation(info="<html>
   <p>
     Isenthalpic process (<code>h_in = h_out</code>) suitable for modeling a valve.
