@@ -11,7 +11,7 @@ package Adiabatic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </ul>
 </html>", info="<html>
   <p>
-    This Test package contains a sequence of steps for constructing a nuclear reactor.
+    This test package contains a sequence of steps for constructing a nuclear reactor.
   </p>
   
   <p>

@@ -1,15 +1,13 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic;
 model Step9FinalResults
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
                                                                               constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(  displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-40,220},{-20,240}})));
   Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -383,18 +381,7 @@ equation
         Text(
           extent={{112,168},{118,162}},
           textColor={28,108,200},
-          textString="10"),
-        Polygon(
-          points={{-220,180},{-180,180},{-180,200},{-200,200},{-200,240},{-220,240},{-220,180}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-190,230},{-110,210}},
-          textColor={238,46,47},
-          textString="requires considerInertance = false
-see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}),
+          textString="10")}),
     Documentation(revisions="<html>
   <ul>
     <li>
