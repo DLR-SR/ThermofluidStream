@@ -100,7 +100,7 @@ equation
   </p>
 
   <p>
-    <img src=\"modelica://ThermofluidStream/Resources/Idealized/Documentation/Examples.AdiabaticProcess.TableBased.svg\" width=\"500\">
+    <img src=\"modelica://ThermofluidStream/Resources/Docu/ThermofluidStream.Idealized.Examples.AdiabaticProcess.TableBased.svg\" width=\"500\">
   </p>
 
   <p>
@@ -117,7 +117,7 @@ equation
 
 
   <p>
-    <img src=\"modelica://ThermofluidStream/Resources/Idealized/Documentation/Examples.AdiabaticProcess.TableBasedEnthalpyOfTFalse.svg\" width=\"500\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.TableBasedEnthalpyOfTFalse.svg\" width=\"500\">
   </p>
 
   <p>

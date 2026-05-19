@@ -154,7 +154,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
   </p>
 
   <p>
-    <img src=\"modelica://ThermofluidStream/Resources/Idealized/Documentation/Examples.AdiabaticProcess.SimpleAir.png\" width=\"500\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.SimpleAir.png\" width=\"500\">
   </p>
 
   <p>

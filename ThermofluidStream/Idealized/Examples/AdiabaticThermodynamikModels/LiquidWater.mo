@@ -100,7 +100,7 @@ equation
   </p>
 
   <p>
-    <img src=\"modelica://ThermofluidStream/Resources/Idealized/Documentation/Examples.AdiabaticProcess.LiquidWater.png\" width=\"500\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.LiquidWater.png\" width=\"500\">
   </p>
 
   <p>

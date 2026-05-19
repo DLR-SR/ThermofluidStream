@@ -29,5 +29,5 @@ package Idealized "Package with idealized components"
       Initial version.
     </li>
   </ul>
-</html>"), Icon(graphics={Bitmap(extent={{-98,-98},{98,98}}, fileName="modelica://ThermofluidStream/Resources/Idealized/Pictures/Book_thermo.png")}));
+</html>"), Icon(graphics={Bitmap(extent={{-94,-92},{92,92}}, fileName="modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.png")}));
 end Idealized;
