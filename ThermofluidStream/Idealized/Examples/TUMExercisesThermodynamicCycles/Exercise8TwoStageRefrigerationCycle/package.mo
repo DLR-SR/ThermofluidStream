@@ -7,12 +7,12 @@ package Exercise8TwoStageRefrigerationCycle "Exercise 8.8: Two-Stage Refrigerati
     This package contains examples of a two stage vapor cycle. The examples differ by:
     <ul>
       <li>
-        The solution method: implicit equation for mass flow rate, requiring (<code>NeglectInertance</code>) vs. pseudo \"controllers\" also working with <code>Inertance</code>.
+        The solution method: Inversion vs. pseudo inversion \"controllers\".
       </li>
     </ul>
   </p>
   <p>
-    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.NeglectInertance\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> 
+    See  <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.Inversion\">Exercise8TwoStageRefrigerationCycle.Inversion</a> 
     for the problem description.
   </p>
 </html>"));
