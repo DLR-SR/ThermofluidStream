@@ -93,11 +93,9 @@ equation
   dh = h_out - h_in;
   dT = T_out - T_in;
 
-  annotation(defaultComponentName = "pseudoSource", Icon(graphics={
-        Text(visible=displayInstanceName,
-          extent={{-150,120},{150,80}},
-          textString="%name",
-          textColor=dropOfCommons.instanceNameColor),
+  annotation(defaultComponentName = "pseudoSource",
+    Icon(
+      graphics={
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -119,34 +117,42 @@ equation
           extent={{-50,50},{50,-50}},
           lineColor={28,108,200},
           lineThickness=0.5),
-        Text(visible = displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
+        Line(
+          points={{35.36,-35.36},{-35.36,35.36}},
+          color={28,108,200},
+          thickness=0.5),
+        Text(
+          extent={{-150,120},{150,80}},
+          textString = if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
-          textString="p_out = %p_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
+          textString = if displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "p_out = %p_out_fixed" else ""),
+        Text(
           extent={{-150,-130},{150,-100}},
           textColor={0,0,0},
-          textString="T_out = %T_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+          textString = if displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature then "T_out = %T_out_fixed" else ""),
+        Text(
           extent={{-150,-130},{150,-100}},
           textColor={0,0,0},
-          textString="h_out = %h_out_fixed"),
-        Text(visible = displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
+          textString = if displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy then "h_out = %h_out_fixed" else ""),
+        Text(
           extent={{-150,-140},{150,-170}},
           textColor={0,0,0},
-          textString="Xi_out = %Xi_out_fixed"),
-        Line(visible = pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
-          points={{100,0},{100,-100},{60,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
-          points={{100,0},{100,-100},{20,-100}}, color={0,0,127}),
-        Line(visible = XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100},{-20,-100}}, color={0,0,127}),
+          textString = if displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "Xi_out = %Xi_out_fixed" else ""),
         Line(
-          points={{34,-36},{-34,36}},
-          color={28,108,200},
-          thickness=0.5)}),
+          points = if pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature then {{100,0},{100,-100},{60,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy then {{100,0},{100,-100},{20,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{-20,-100}} else {{0,0}},
+          color={0,0,127})}),
     Documentation(info="<html>
   <p>
     Artificial process to set the outlet state as parameters or as time-varying input signal:
