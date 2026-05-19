@@ -4,7 +4,7 @@ package Exercise2NuclearReactor "Exercise 8.2: Nuclear Reactor [TUM2019]"
 
   annotation (Documentation(info="<html>
   <p>
-    This Test package contains a 3 sequences of steps for constructing a nuclear reactor.
+    This Test package contains 3 sequences of steps for constructing a nuclear reactor.
   </p>
   
   <ul>

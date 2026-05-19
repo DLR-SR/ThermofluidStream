@@ -23,6 +23,10 @@ package Adiabatic "Exercise 8.2: Nuclear Reactor [TUM2019]"
     <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model
     resulting in implicit nonlinear equations. These equations require suitable start values to be solvable.
   </p>
+
+  <p>
+    In <code>Dymola 2026x Refresh 1</code> the nonlinear solver always converges. In older Dymola versions (and potentially in OpenModelica) the nonlinear solver may only converge for <code>considerInertance = false</code> .
+  </p>
   
   <p>
     In contrast, in the package <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.AdiabaticPseudoInversion\">Exercise2NuclearReactor.AdiabaticPseudoInversion</a>

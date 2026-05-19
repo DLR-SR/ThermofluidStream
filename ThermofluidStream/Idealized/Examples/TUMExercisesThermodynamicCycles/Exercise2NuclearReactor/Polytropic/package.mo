@@ -25,8 +25,7 @@ package Polytropic "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </p>
 
   <p>
-    Theoretically <code>considerInertance = false</code> is not required, in practice the nonlinear solver only converges for <code>considerInertance = false</code>, see
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Polytropic.Step6Compressor1\">Exercise2NuclearReactor.Polytropic.Step6Compressor1</a>.
+    In <code>Dymola 2026x Refresh 1</code> the nonlinear solver converges. In older Dymola versions (and potentially in OpenModelica) the nonlinear solver may only converge for <code>considerInertance = false</code> .
   </p>
 
   <p>

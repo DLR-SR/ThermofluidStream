@@ -159,10 +159,12 @@ class InertanceNeglect
     <code>considerInertance = false</code> for all affected models, e.g., via
     <code>dropOfCommons.considerInertance</code>, see
     <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.<br>
+    Convergence may depend on the nonlinear solver, that is, it may depend on the software and the version used. 
+    Setting <code>considerInertance = false</code> can help with convergence.<br>
 
     Setting <code>considerInertance = false</code> is intended for advanced use only.<br>
 
-    Examples using <code>considerInertance = false</code> are marked with a red
+    Examples requiring <code>considerInertance = false</code> in <code>Dymola 2026x Refresh 1</code> are marked with a red
     <strong>L</strong>.<br>
 
     Components with <code>considerInertance = false</code> are highlighted by a red
