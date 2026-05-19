@@ -1,7 +1,6 @@
-within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPump;
-model Inversion
+within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
+model Exercise10HeatPump
   extends Modelica.Icons.Example;
-  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Refrigerant = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
@@ -20,8 +19,7 @@ model Inversion
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-40,40})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(
-    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(  displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Refrigerant,
@@ -249,18 +247,7 @@ equation
         Text(
           extent={{6,-34},{12,-40}},
           textColor={28,108,200},
-          textString="8"),
-        Polygon(
-          points={{-140,40},{-100,40},{-100,60},{-120,60},{-120,100},{-140,100},{-140,40}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-110,90},{-30,70}},
-          textColor={238,46,47},
-          textString="requires considerInertance = false
-see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}),
+          textString="8")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -271,10 +258,6 @@ see User's Guide",
 </html>", info="<html>
   <p>
     Example of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
-  </p>
-
-  <p>
-    This example solves for the mass flow rate and requires <code>considerInertance = false</code>.
   </p>
 
   <h4>Problem description</h4>
@@ -318,4 +301,4 @@ see User's Guide",
     All state changes are considered steady-state.
   </p>
 </html>"));
-end Inversion;
+end Exercise10HeatPump;
