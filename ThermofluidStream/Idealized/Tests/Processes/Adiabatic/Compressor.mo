@@ -11,44 +11,44 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-80,140},{-60,160}})));
-  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,140},{0,160}})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{-58,200},{-38,220}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressor(
+    T0_par=293.15) annotation(Placement(transformation(extent={{-100,160},{-80,180}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-40,160},{-20,180}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{160,180},{180,200}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic fullMedium(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{-50,140},{-30,160}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-70,160},{-50,180}})));
   Modelica.Blocks.Sources.Ramp pressureRatio(
     height=98.999,
     duration=0.9,
     offset=1.001,
     y(unit="1"))
-             annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
+             annotation(Placement(transformation(extent={{-160,0},{-140,20}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-80,20},{-60,40}})));
-  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,20},{0,40}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorIdealGas(
+    T0_par=293.15) annotation(Placement(transformation(extent={{-100,30},{-80,50}})));
+  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-40,30},{-20,50}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstantGamma(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-70,30},{-50,50}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{20,140},{40,160}})));
-  .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{80,140},{100,160}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressor1(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,160},{20,180}})));
+  .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{60,160},{80,180}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic fullMedium1(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -60,15 +60,15 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     enableFilter=true,
     TC=0.01,
     P_nom(displayUnit="kW") = 300000,
-    dp_nom=5000000) annotation (Placement(transformation(extent={{50,140},{70,160}})));
+    dp_nom=5000000) annotation (Placement(transformation(extent={{30,160},{50,180}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{20,80},{40,100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,80},{100,100}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,100},{20,120}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{60,100},{80,120}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic fullMedium2(
     redeclare package Medium = Medium,
     considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
@@ -76,14 +76,14 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{50,100},{70,80}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{30,120},{50,100}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{20,20},{40,40}})));
-  .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{80,20},{100,40}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorIdealGas1(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,30},{20,50}})));
+  .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{60,30},{80,50}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstantGamma1(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -96,44 +96,44 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     P_nom(displayUnit="kW") = 300000,
     dp_nom=5000000,
     p_out(start=100000),
-    enableFilter=true) annotation (Placement(transformation(extent={{50,20},{70,40}})));
+    enableFilter=true) annotation (Placement(transformation(extent={{30,30},{50,50}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
-    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{20,-50},{40,-30}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{80,-50},{100,-30}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorIdealGas2(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,-40},{20,-20}})));
+  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium)                          annotation(Placement(transformation(extent={{60,-40},{80,-20}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstantGamma2(
     redeclare package Medium = Medium,
-    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{50,-30},{70,-50}})));
-  ThermofluidStream.Boundaries.Source source2(
+    dp_fixed=100000) annotation (Placement(transformation(extent={{30,-20},{50,-40}})));
+  Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{-20,130},{0,150}})));
+  Modelica.Blocks.Math.Gain gain1(k=-1) annotation(Placement(transformation(extent={{-20,-10},{0,10}})));
+  Boundaries.Source                   source2(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-80,-160},{-60,-140}})));
-  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,-160},{0,-140}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorPerfectGas(
+    T0_par=293.15) annotation(Placement(transformation(extent={{-100,-100},{-80,-80}})));
+  Boundaries.Sink_m                    sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-40,-100},{-20,-80}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic perfetGas(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{-50,-140},{-30,-160}})));
-  ThermofluidStream.Boundaries.Source source7(
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-70,-100},{-50,-80}})));
+  Boundaries.Source                   source7(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{80,-120},{100,-100}})));
-  .ThermofluidStream.Boundaries.Sink_m sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{140,-120},{160,-100}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorPerfectGas1(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,-100},{20,-80}})));
+  Boundaries.Sink_m                    sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{60,-100},{80,-80}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic perfetGas1(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -146,162 +146,132 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     P_nom(displayUnit="kW") = 300000,
     dp_nom=5000000,
     p_out(start=100000),
-    enableFilter=true) annotation (Placement(transformation(extent={{110,-120},{130,-100}})));
-  ThermofluidStream.Boundaries.Source source8(
+    enableFilter=true) annotation (Placement(transformation(extent={{30,-100},{50,-80}})));
+  Boundaries.Source                   source8(
     redeclare package Medium = Medium,
-    considerInertance=false,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{80,-200},{100,-180}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{140,-200},{160,-180}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic compressorPerfectGas2(
+    T0_par=293.15) annotation(Placement(transformation(extent={{0,-170},{20,-150}})));
+  ThermofluidStream.Idealized.Sources.Sink_free  sink8(redeclare package Medium = Medium)                          annotation(Placement(transformation(extent={{60,-170},{80,-150}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic perfetGas2(
     redeclare package Medium = Medium,
-    considerInertance=false,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    dp_fixed=100000) annotation (Placement(transformation(extent={{110,-180},{130,-200}})));
-  Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{0,110},{20,130}})));
-  Modelica.Blocks.Math.Gain gain1(k=-1) annotation(Placement(transformation(extent={{0,-20},{20,0}})));
-  Modelica.Blocks.Math.Gain gain2(k=-1) annotation(Placement(transformation(extent={{20,-160},{40,-140}})));
+    dp_fixed=100000) annotation (Placement(transformation(extent={{30,-150},{50,-170}})));
+  Modelica.Blocks.Math.Gain gain2(k=-1) annotation(Placement(transformation(extent={{-20,-140},{0,-120}})));
 equation
-  connect(source.outlet, compressor.inlet) annotation(
+  connect(source.outlet,fullMedium. inlet) annotation(
     Line(
-      points={{-60,150},{-50,150}},
+      points={{-80,170},{-70,170}},
       color={28,108,200},
       thickness=0.5));
-  connect(source1.outlet, compressorIdealGas.inlet) annotation(Line(
-      points={{-60,30},{-50,30}},
+  connect(source1.outlet, idealGasConstantGamma.inlet) annotation (Line(
+      points={{-80,40},{-70,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.outlet, sink.inlet) annotation(
+  connect(fullMedium.outlet, sink.inlet) annotation(
     Line(
-      points={{-30,150},{-20,150}},
+      points={{-50,170},{-40,170}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorIdealGas.outlet, sink1.inlet) annotation(Line(
-      points={{-30,30},{-20,30}},
+  connect(idealGasConstantGamma.outlet, sink1.inlet) annotation (Line(
+      points={{-50,40},{-40,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(source3.outlet, compressor1.inlet) annotation(Line(
-      points={{40,150},{50,150}},
+  connect(source3.outlet,fullMedium1. inlet) annotation(Line(
+      points={{20,170},{30,170}},
       color={28,108,200},
       thickness=0.5));
-  connect(source4.outlet, compressor2.inlet) annotation(Line(
-      points={{40,90},{50,90}},
+  connect(source4.outlet,fullMedium2. inlet) annotation(Line(
+      points={{20,110},{30,110}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor1.outlet, sink3.inlet) annotation(Line(
-      points={{70,150},{80,150}},
+  connect(fullMedium1.outlet, sink3.inlet) annotation(Line(
+      points={{50,170},{60,170}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor2.outlet, sink4.inlet) annotation(Line(
-      points={{70,90},{80,90}},
+  connect(fullMedium2.outlet, sink4.inlet) annotation(Line(
+      points={{50,110},{60,110}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorIdealGas.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{-30,18},{-30,-20},{-110,-20},{-110,0},{-119,0}},    color={0,0,127}));
-  connect(compressor.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{-30,138},{-30,130},{-110,130},{-110,0},{-119,0}}, color={0,0,127}));
-  connect(compressor2.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{70,102},{70,110},{-110,110},{-110,0},{-119,0}}, color={0,0,127}));
-  connect(source5.outlet, compressorIdealGas1.inlet) annotation(Line(
-      points={{40,30},{50,30}},
+  connect(idealGasConstantGamma.outletSpec_prescribed, pressureRatio.y) annotation (Line(points={{-50,28},{-50,-10},{-130,-10},{-130,10},{-139,10}}, color={0,0,127}));
+  connect(fullMedium.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{-50,158},{-50,150},{-130,150},{-130,10},{-139,10}},
+                                                                                                                                        color={0,0,127}));
+  connect(fullMedium2.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{50,122},{50,130},{-130,130},{-130,10},{-139,10}},
+                                                                                                                                       color={0,0,127}));
+  connect(source5.outlet, idealGasConstantGamma1.inlet) annotation (Line(
+      points={{20,40},{30,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(source6.outlet, compressorIdealGas2.inlet) annotation(Line(
-      points={{40,-40},{50,-40}},
+  connect(source6.outlet, idealGasConstantGamma2.inlet) annotation (Line(
+      points={{20,-30},{30,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorIdealGas1.outlet, sink5.inlet) annotation(Line(
-      points={{70,30},{80,30}},
+  connect(idealGasConstantGamma1.outlet, sink5.inlet) annotation (Line(
+      points={{50,40},{60,40}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorIdealGas2.outlet, sink6.inlet) annotation(Line(
-      points={{70,-40},{80,-40}},
+  connect(idealGasConstantGamma2.outlet, sink6.inlet) annotation (Line(
+      points={{50,-30},{60,-30}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorIdealGas2.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{70,-28},{70,-20},{-110,-20},{-110,0},{-119,0}}, color={0,0,127}));
-  connect(source2.outlet,compressorPerfectGas. inlet) annotation(Line(
-      points={{-60,-150},{-50,-150}},
+  connect(idealGasConstantGamma2.outletSpec_prescribed, pressureRatio.y) annotation (Line(points={{50,-18},{50,-10},{-130,-10},{-130,10},{-139,10}}, color={0,0,127}));
+  connect(fullMedium1.P_in, gain.y) annotation(Line(points={{40,162},{40,140},{1,140}}, color={255,170,85}));
+  connect(fullMedium.P_out, gain.u) annotation(Line(points={{-60,163},{-60,140},{-22,140}},   color={255,170,85}));
+  connect(fullMedium2.P_in, gain.y) annotation(Line(points={{40,118},{40,140},{1,140}},color={255,170,85}));
+  connect(idealGasConstantGamma1.P_in, gain1.y) annotation (Line(points={{40,32},{40,0},{1,0}}, color={255,170,85}));
+  connect(idealGasConstantGamma2.P_in, gain1.y) annotation (Line(points={{40,-22},{40,0},{1,0}}, color={255,170,85}));
+  connect(idealGasConstantGamma.P_out, gain1.u) annotation (Line(points={{-60,33},{-60,0},{-22,0}}, color={255,170,85}));
+  connect(source2.outlet, perfetGas.inlet) annotation (Line(
+      points={{-80,-90},{-70,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorPerfectGas.outlet,sink2. inlet) annotation(Line(
-      points={{-30,-150},{-20,-150}},
+  connect(perfetGas.outlet, sink2.inlet) annotation (Line(
+      points={{-50,-90},{-40,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorPerfectGas.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{-30,-138},{-30,-128},{-110,-128},{-110,0},{-119,0}},   color={0,0,127}));
-  connect(source7.outlet,compressorPerfectGas1. inlet) annotation(Line(
-      points={{100,-110},{110,-110}},
+  connect(perfetGas.outletSpec_prescribed, pressureRatio.y) annotation (Line(points={{-50,-102},{-50,-140},{-130,-140},{-130,10},{-139,10}}, color={0,0,127}));
+  connect(source7.outlet, perfetGas1.inlet) annotation (Line(
+      points={{20,-90},{30,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(source8.outlet,compressorPerfectGas2. inlet) annotation(Line(
-      points={{100,-190},{110,-190}},
+  connect(source8.outlet, perfetGas2.inlet) annotation (Line(
+      points={{20,-160},{30,-160}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorPerfectGas1.outlet,sink7. inlet) annotation(Line(
-      points={{130,-110},{140,-110}},
+  connect(perfetGas1.outlet, sink7.inlet) annotation (Line(
+      points={{50,-90},{60,-90}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorPerfectGas2.outlet,sink8. inlet) annotation(Line(
-      points={{130,-190},{140,-190}},
+  connect(perfetGas2.outlet, sink8.inlet) annotation (Line(
+      points={{50,-160},{60,-160}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressorPerfectGas2.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{130,-178},{130,-128},{-110,-128},{-110,0},{-119,0}},
-                                                                                                                                            color={0,0,127}));
-  connect(compressor1.P_in, gain.y) annotation(Line(points={{60,142},{60,120},{21,120}},color={255,170,85}));
-  connect(compressor.P_out, gain.u) annotation(Line(points={{-40,143},{-40,120},{-2,120}},    color={255,170,85}));
-  connect(compressor2.P_in, gain.y) annotation(Line(points={{60,98},{60,120},{21,120}},color={255,170,85}));
-  connect(compressorIdealGas1.P_in, gain1.y) annotation(Line(points={{60,22},{60,-10},{21,-10}},color={255,170,85}));
-  connect(compressorIdealGas2.P_in, gain1.y) annotation(Line(points={{60,-32},{60,-10},{21,-10}},color={255,170,85}));
-  connect(compressorIdealGas.P_out, gain1.u) annotation(Line(points={{-40,23},{-40,-10},{-2,-10}},    color={255,170,85}));
-  connect(compressorPerfectGas.P_out, gain2.u) annotation(Line(points={{-40,-143},{-40,-132},{13,-132},{13,-150},{18,-150}},      color={255,170,85}));
-  connect(compressorPerfectGas1.P_in, gain2.y) annotation(Line(points={{120,-118},{120,-150},{41,-150}},color={255,170,85}));
-  connect(compressorPerfectGas2.P_in, gain2.y) annotation(Line(points={{120,-182},{120,-150},{41,-150}},color={255,170,85}));
+  connect(perfetGas2.outletSpec_prescribed, pressureRatio.y) annotation (Line(points={{50,-148},{50,-140},{-130,-140},{-130,10},{-139,10}}, color={0,0,127}));
+  connect(perfetGas1.P_in, gain2.y) annotation (Line(points={{40,-98},{40,-130},{1,-130}}, color={255,170,85}));
+  connect(perfetGas2.P_in, gain2.y) annotation (Line(points={{40,-152},{40,-130},{1,-130}}, color={255,170,85}));
+  connect(perfetGas.P_out, gain2.u) annotation (Line(points={{-60,-97},{-60,-130},{-22,-130}}, color={255,170,85}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
-        grid={2,2})),                                            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,-220},{200,220}},
-        grid={2,2}),
-        graphics={Text(
-          extent={{-156,158},{-96,138}},
-          textColor={28,108,200},
-          textString="Universal"),
-                  Text(
-          extent={{-198,-22},{-116,-40}},
-          textColor={28,108,200},
-          textString="IdealGas"),
-                  Text(
-          extent={{-182,-162},{-100,-180}},
-          textColor={28,108,200},
-          textString="PerfectGas"),
-        Polygon(
-          points={{-200,160},{-160,160},{-160,180},{-180,180},{-180,220},{-200,220},{-200,160}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
+        grid={2,2})),                                            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-200},{180,200}}),
+        graphics={
         Text(
-          extent={{-170,212},{-90,192}},
+          extent={{94,128},{174,108}},
           textColor={238,46,47},
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left),
         Polygon(
-          points={{98,75},{118,75},{118,85},{108,85},{108,105},{98,105},{98,75}},
+          points={{78,95},{98,95},{98,105},{88,105},{88,125},{78,125},{78,95}},
           fillColor={162,29,33},
           fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None),
-        Polygon(
-          points={{100,-55},{120,-55},{120,-45},{110,-45},{110,-25},{100,-25},{100,-55}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None),
-        Polygon(
-          points={{164,-212},{184,-212},{184,-202},{174,-202},{174,-182},{164,-182},{164,-212}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
           pattern=LinePattern.None)}),
     Documentation(info="<html>
   <p>
-    Forward and inverse calculations of different adiabatic models (Universal, Ideal Gas, Perfect Gas) for a compressor are demonstrated:
+    Forward and inverse calculations of different adiabatic models (<code>FullMedium</code>, <code>IdealGasConstantGamma</code>, <code>PerfectGas</code>) for a compressor are demonstrated:
   </p>
 
   <ul>
@@ -317,7 +287,7 @@ see User's Guide",
   </ul>
 
   <p>
-    The third formulation requires <code>considerInertance = false</code> if <code>p_out</code> is time-dependent.
+    <code>fullMedium2</code> requires <code>considerInertance = false</code> if <code>p_out</code> is time-dependent.
   </p>
 </html>", revisions="<html>
   <ul>
