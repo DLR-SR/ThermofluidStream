@@ -90,7 +90,7 @@ equation
   dh = h_out - h_in;
   dT = T_out - T_in;
 
-  annotation(defaultComponentName = "composition", Icon(graphics={
+  annotation(defaultComponentName = "pseudoSource", Icon(graphics={
         Text(visible=displayInstanceName,
           extent={{-150,120},{150,80}},
           textString="%name",
