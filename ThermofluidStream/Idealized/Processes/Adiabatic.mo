@@ -55,7 +55,7 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter SI.Power P_nom = 1 "Nominal power (influences filter time constant)" annotation(
+  parameter SI.Power P_nom(displayUnit="kW") = 1000 "Nominal power (influences filter time constant)" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
       HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
