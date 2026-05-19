@@ -90,92 +90,63 @@ equation
   Q_flow = m_flow*du;
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
 
-  annotation(Icon(graphics={
-     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference,
-       extent={{-150,-70},{150,-100}},
-       textColor={0,0,0},
-       textString="ΔT = %dT_fixed"),
-     Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
-       extent={{-150,-70},{150,-100}},
-       textColor={0,0,0},
-       textString="T_out = %T_out_fixed"),
-     Line(visible = specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-       points={{-100,0},{-100,-100}},
-       color={0,0,127}),
-     Ellipse(visible = specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-       extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
-     Rectangle(visible = specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-       extent={{-78,24},{-82,56}},fillColor={28,108,200},fillPattern=FillPattern.Solid,pattern=LinePattern.None),
-     Rectangle(visible = specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-       extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None),
-     Polygon(visible = not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-       points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-       fillPattern = if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
-       fillColor={238,46,47},
-       pattern=LinePattern.None),
-     Text(visible = not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-       extent={{-150,100},{150,60}},
-       textString= if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
-       textColor={238,46,47}),
-     Line(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-       points={{100,0},{100,-100}},
-       color={255,170,85}),
-     Ellipse(
-       extent={{-56,54},{64,-66}},
-       lineColor={28,108,200},
-       lineThickness=0.5,
-       fillColor={215,215,215},
-       fillPattern=FillPattern.Solid,
-       pattern=LinePattern.None),
-     Ellipse(
-       extent={{-60,60},{60,-60}},
-       lineColor={28,108,200},
-       lineThickness=0.5,
-       fillColor={255,255,255},
-       fillPattern=FillPattern.Solid),
-     Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-       extent={{-40,20},{40,-20}},
-       textColor={28,108,200},
-       textString="v-c"),
-     Rectangle(visible = 1.0 < 0.0,
-          extent={{-200,200},{200,-200}},
-          lineColor={0,0,0},
+  annotation(
+    Icon(
+      graphics={
+        Ellipse(
+          extent={{-56,54},{64,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
           fillColor={255,255,255},
-       fillPattern=FillPattern.Solid),
-     Ellipse(
-       extent={{-60,60},{60,-60}},
-       lineColor={28,108,200},
-       lineThickness=0.5,
-       fillColor={255,255,255},
-       fillPattern=FillPattern.None),
-     Ellipse(
-       extent={{-50,50},{50,-50}},
-       lineColor={28,108,200},
-       lineThickness=0.5),
-     Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-       extent={{-20,20},{20,-20}},
-       textColor={28,108,200},
-       textString="v"),
-     Text(visible=displayInstanceName,
-       extent={{-150,120},{150,80}},
-       textString="%name",
-       textColor=dropOfCommons.instanceNameColor),
-     Line(
-       points={{-100,0},{-60,0}},
-       color={28,108,200},
-       thickness=0.5),
-     Line(
-       points={{60,0},{100,0}},
-       color={28,108,200},
-       thickness=0.5),
-     Polygon(visible = showHeatFlowDirection,
+          fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Text(
+          extent={{-150,120},{150,80}},
+          textString = if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
+          extent={{-20,20},{20,-20}},
+          textColor={28,108,200},
+          textString="v"),
+        Text(
+          extent={{-40,20},{40,-20}},
+          textColor={28,108,200},
+          textString = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle then "v-c" else ""),
+        Text(
+          extent={{-150,-100},{150,-70}},
+          textColor={0,0,0},
+          textString = if not displayParameters or not showOutletSpecification or not specifyOutlet or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference then "ΔT = %dT_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature then "T_out = %T_out_fixed"
+          else "error"),
+        Line(
+          points = if specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{-100,0},{-100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow then {{100,0},{100,-100}} else {{0,0}},
+          color={255,170,85}),
+        Polygon(visible = showHeatFlowDirection,
           origin={-40,-50},
           rotation = if Q_flow >= 0 then 90 else -90,
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {191,0,0},
           fillPattern = if abs(Q_flow) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
-      Text(visible = showHeatFlowDirection,
+        Text(visible = showHeatFlowDirection,
           origin={-60,-70},
           extent={{0,0},{36,36}},
           textColor={191,0,0},
@@ -193,7 +164,31 @@ equation
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
-          textString = if abs(P) < 1e-8 then "0" else "")}),
+          textString = if abs(P) < 1e-8 then "0" else ""),
+        Text(
+          extent={{-150,100},{150,60}},
+          textString= if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
+          textColor={238,46,47}),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
+        Ellipse(
+          extent={{-98,58},{-62,22}},
+          pattern=LinePattern.None,
+          fillColor={170,213,255},
+          fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None),
+        Rectangle(
+          extent={{-78,24},{-82,56}},
+          fillColor={28,108,200},
+          fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-96,42},{-64,38}},
+          fillColor={28,108,200},
+          fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None)}),
     Documentation(info="<html>
   <p>
     Isochoric process (density <code>rho_in = rho_out</code>, specific volume <code>v_in = v_out</code>) mainly
