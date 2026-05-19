@@ -145,7 +145,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
 
   <p>
     Simulation time serves as a proxy for the pressure ratio, which starts at one and increases linearly 
-    to <code>pr = 2</code> at <code>time = 1</code>.
+    to <code>pRatio = 2</code> at <code>time = 1</code>.
   </p>
 
   <p>
@@ -161,7 +161,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     exponent (<code>idealGasConstGamma</code>) is the least restrictive, followed by constant isobaric heat 
     capacity (<code>perfectGas</code>) and constant density (<code>incompressibleFluid</code>). 
     Note that the second incompressible version, <code>isothermalReference</code>, is not suitable for 
-    ideal gases. For pressure ratios close to <code>pr=1</code>, all models are valid and consistent, except for <code>isothermalReference</code>.
+    ideal gases. For pressure ratios close to <code>pRatio=1</code>, all models are valid and consistent, except for <code>isothermalReference</code>.
   </p>
 
   <p>

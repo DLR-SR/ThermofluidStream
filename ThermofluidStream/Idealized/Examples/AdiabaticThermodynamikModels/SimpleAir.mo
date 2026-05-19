@@ -146,7 +146,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
 
   <p>
     Simulation time acts as a proxy for the pressure ratio, which starts at one and increases linearly 
-    to <code>pr = 2</code> at <code>time = 1</code>.
+    to <code>pRatio = 2</code> at <code>time = 1</code>.
   </p>
 
   <p>

@@ -67,7 +67,7 @@ model Setpoint
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{-230,-10},{-210,10}})));
   ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-170,-10},{-150,10}})));
-  ThermofluidStream.Idealized.Processes.Adiabatic pr(
+  ThermofluidStream.Idealized.Processes.Adiabatic pRatio(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     dp_fixed=100000,
@@ -248,11 +248,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(realExpression1.y, dp4.outletSpec_prescribed) annotation(Line(points={{229,50},{220,50},{220,68}},    color={0,0,127}));
-  connect(source5.outlet, pr.inlet) annotation(Line(
+  connect(source5.outlet, pRatio.inlet) annotation(Line(
       points={{-210,0},{-200,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(pr.outlet, sink5.inlet) annotation(Line(
+  connect(pRatio.outlet, sink5.inlet) annotation(Line(
       points={{-180,0},{-170,0}},
       color={28,108,200},
       thickness=0.5));

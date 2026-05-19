@@ -34,7 +34,7 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureDifference  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Real pr_fixed = 1 "Fixed pressure ratio (pr = p_out/p_in)" annotation(
+  parameter Real pr_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)" annotation(
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureRatio  and outletValueSpec ==ValueSpecification.Fixed),
       HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
@@ -86,7 +86,7 @@ model Adiabatic "Adiabatic process"
 
   SI.Efficiency eta_is "Isentropic efficiency";
   SI.SpecificEnthalpy dh "Difference in specific enthalpy dh = h_out - h_in";
-  Real pr = p_out/p_in "Pressure ratio";
+  Real pRatio = p_out/p_in "Pressure ratio";
   SI.Power P "Power (technical work flow rate)";
   SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)" annotation(
     HideResult = true);
@@ -120,7 +120,7 @@ equation
   if outletSpec ==OutletSpecification.PressureDifference  then
     dp = outletSpec_actual;
   elseif outletSpec ==OutletSpecification.PressureRatio  then
-    pr = outletSpec_actual;
+    pRatio = outletSpec_actual;
   else // OutletSpecification.OutletPressure
     p_out = outletSpec_actual;
   end if;
@@ -154,7 +154,7 @@ equation
         Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
-          textString="pr = %pr_fixed"),
+          textString="pRatio = %pr_fixed"),
         Text(visible= displayParameters and showOutletSpecification and specifyOutlet and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
@@ -240,7 +240,7 @@ equation
 
   <ul>
     <li>Pressure difference: <code>dp = p_out - p_in</code></li>
-    <li>Pressure ratio: <code>pr = p_out / p_in</code></li>
+    <li>Pressure ratio: <code>pRatio = p_out / p_in</code></li>
     <li>Outlet pressure: <code>p_out</code></li>
   </ul>
 
