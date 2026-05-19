@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
-model Specification "Example - Loop breaker"
+model Setpoints "Example - Loop breaker"
   extends Modelica.Icons.Example;
   .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
@@ -241,4 +241,4 @@ equation
     </li>
   </ul>
 </html>"));
-end Specification;
+end Setpoints;

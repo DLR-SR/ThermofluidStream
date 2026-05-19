@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
-model NeglectInertance "Example - Loop breaker"
+model InertanceNeglect "Example - Loop breaker"
   extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
@@ -124,4 +124,4 @@ see User's Guide",
     </li>
   </ul>
 </html>"));
-end NeglectInertance;
+end InertanceNeglect;

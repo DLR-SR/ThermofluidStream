@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
-model NeglectInertance "Example - mass flow loop breaker"
+model InertanceNeglect "Example - mass flow loop breaker"
   extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
@@ -100,4 +100,4 @@ see User's Guide",
     </li>
   </ul>
 </html>"));
-end NeglectInertance;
+end InertanceNeglect;
