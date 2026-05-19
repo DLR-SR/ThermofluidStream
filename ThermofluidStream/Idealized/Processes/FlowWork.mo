@@ -30,21 +30,6 @@ equation
   P_outlet = m_flow*w_flow;
 
   annotation(Icon(graphics={
-    Line(visible = boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet,
-      points={{100,0},{100,-100}},
-      color={255,170,85}),
-    Line(visible = boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet,
-      points={{-100,0},{-100,-100}},
-      color={255,170,85}),
-    Rectangle(visible = 1.0 < 0.0,
-          extent={{-200,200},{200,-200}},
-          lineColor={0,0,0},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-    Text(visible=displayInstanceName,
-      extent={{-150,120},{150,80}},
-      textString="%name",
-      textColor=dropOfCommons.instanceNameColor),
     Ellipse(
       extent={{-56,54},{64,-66}},
       lineColor={28,108,200},
@@ -62,14 +47,24 @@ equation
       lineThickness=0.5,
       fillColor={255,255,255},
       fillPattern=FillPattern.Solid),
+    Ellipse(
+      extent={{-50,50},{50,-50}},
+      lineColor={28,108,200},
+      lineThickness=0.5),
+    Text(
+      extent={{-150,120},{150,80}},
+      textString = if displayInstanceName then "%name" else "",
+      textColor=dropOfCommons.instanceNameColor),
     Text(
       extent={{-40,20},{40,-20}},
       textColor={28,108,200},
       textString="pv"),
-     Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5)}),
+    Line(
+      points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{100,0},{100,-100}} else {{0,0}},
+      color={255,170,85}),
+    Line(
+      points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet then {{-100,0},{-100,-100}} else {{0,0}},
+      color={255,170,85})}),
     Documentation(info="<html>
   <p>
     Process used to account for the flow work <code>w_flow = p*v</code>, which
