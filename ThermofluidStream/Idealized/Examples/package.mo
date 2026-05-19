@@ -23,11 +23,6 @@ package Examples
     <li>
       Stationary-flow representations of periodic closed-system cycles such as Otto and Diesel cycles
     </li>
-    <li>
-      Examples inspired by typical exercises from the lecture 
-      “Thermodynamics 1” at the Technical University of Munich (TUM) 
-      [chapter 8. thermodynamic cycles, <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.References\">TUM2019</a>].
-    </li>
   </ul>
 </html>", revisions="<html>
   <ul>

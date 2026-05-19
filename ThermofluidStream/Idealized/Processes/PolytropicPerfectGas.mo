@@ -62,7 +62,7 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
       enable = processSpec == ProcessSpecification.IsentropicEfficiency and processValueSpec ==ValueSpecification.Fixed),
       HideResult = not processSpec == ProcessSpecification.IsentropicEfficiency or not processValueSpec == ValueSpecification.Fixed);
 
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pRatio_fixed, p_out_fixed, T_out_fixed, rhoRatio_fixed, rho_out_fixed or v_out_fixed)" annotation(
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed, p_out_fixed, T_out_fixed, rhoRatio_fixed, rho_out_fixed or v_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and not outletSpec == OutletSpecification.Unspecified and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showProcessSpecification = true "= true to show the fixed process specification value (either eta_pol_fixed, n_fixed, eta_is_fixed, p_out_fixed or T_out_fixed)" annotation(
