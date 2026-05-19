@@ -1,14 +1,15 @@
 within ThermofluidStream.Idealized.Processes;
 model FlowWork "Process to consider flow work p*v (switching between open <-> closed cycle system)"
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
+
   import FlowWorkBoundary = ThermofluidStream.Idealized.Types.FlowWorkBoundary;
 
-  parameter FlowWorkBoundary boundary =ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet      "Flow work to be considered" annotation(
+  parameter FlowWorkBoundary boundary = ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet "Flow work to be considered" annotation(
     Evaluate=true, HideResult=true);
 
-  EnergyFlow.Interfaces.EnergyFlowOutput P_inlet_out = -P_inlet if boundary == FlowWorkBoundary.Inlet  "Flow work of the inlet flow (directed out of the system) [W]" annotation(
+  EnergyFlow.Interfaces.EnergyFlowOutput P_inlet_out = -P_inlet if boundary == FlowWorkBoundary.Inlet "Flow work of the inlet flow (directed out of the system) [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={-100,-110})));
-  EnergyFlow.Interfaces.EnergyFlowOutput P_outlet_out = -P_outlet if boundary == FlowWorkBoundary.Outlet  "Flow work of the outlet flow (directed out of the system) [W]" annotation(
+  EnergyFlow.Interfaces.EnergyFlowOutput P_outlet_out = -P_outlet if boundary == FlowWorkBoundary.Outlet "Flow work of the outlet flow (directed out of the system) [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={100,-110})));
 
   Medium.SpecificEnergy w_flow "Flow work";
@@ -64,7 +65,11 @@ equation
     Text(
       extent={{-40,20},{40,-20}},
       textColor={28,108,200},
-      textString="pv")}),
+      textString="pv"),
+     Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5)}),
     Documentation(info="<html>
   <p>
     Process used to account for the flow work <code>w_flow = p*v</code>, which
@@ -78,7 +83,7 @@ equation
     This process is required to properly account for work when switching
     between an open-cycle and a closed-cycle perspective, and vice versa.
     See, for example,
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TurboChargedEngine.PolytropicCycle\">Examples.TurboChargedEngine.PolytropicCycle</a>.
   </p>
 
   <p>

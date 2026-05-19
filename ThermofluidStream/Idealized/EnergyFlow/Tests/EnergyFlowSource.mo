@@ -16,7 +16,7 @@ equation
   connect(energyFlowSource1.E_flow_out, gain.u) annotation(Line(points={{1,-20},{18,-20}}, color={255,170,85}));
   annotation(Documentation(info="<html>
   <p>
-    Test model for energy flow <code>Sources</code>.
+    Test model for models from <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Sources\">EnergyFlow.Sources</a>.
   </p>
 </html>"));
 end EnergyFlowSource;

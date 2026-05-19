@@ -5,13 +5,14 @@ model MassFlowRate "Generic mass flow rate source - Overdetermined (1 equation)"
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation(Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification m_flowSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the mass flow rate" annotation(
+    Dialog(group="Specification"), Evaluate=true);
   parameter SI.MassFlowRate m_flow_fixed = 0 "Fixed mass flow rate" annotation(
     Dialog(group="Specification",
-      enable = m_flowSpec ==ValueSpecification.Fixed),
-      HideResult = not m_flowSpec == ValueSpecification.Fixed);
+      enable = m_flowSpec == ValueSpecification.Fixed),
+    HideResult = not m_flowSpec == ValueSpecification.Fixed);
   parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec == ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed mass flow rate [kg/s]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
@@ -21,7 +22,7 @@ protected
 
 equation
   connect(m_flow_actual, m_flow_prescribed);
-  if m_flowSpec ==ValueSpecification.Fixed  then
+  if m_flowSpec == ValueSpecification.Fixed  then
     m_flow_actual = m_flow_fixed;
   end if;
   m_flow = m_flow_actual;
@@ -31,7 +32,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation(Icon(graphics={
+  annotation(Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,80},{150,120}},
           textString="%name",
@@ -87,7 +88,7 @@ equation
   <p>
     The model is locally overdetermined (one extra equation) and therefore must be connected to an underdetermined model 
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
-    to ensure that the overall system balanced.
+    to ensure that the overall system remains balanced.
   </p>
 </html>", revisions="<html>
   <ul>

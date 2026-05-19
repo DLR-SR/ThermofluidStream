@@ -4,7 +4,7 @@ package Interfaces
 
   annotation(Documentation(info="<html>
   <p>
-    Package of the energy flow connector.
+    Package of the energy flow connectors.
   </p>
 </html>"));
 end Interfaces;

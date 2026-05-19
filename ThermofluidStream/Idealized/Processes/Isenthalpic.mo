@@ -7,19 +7,21 @@ model Isenthalpic "Isenthalpic process"
 
   parameter Boolean enforcePressureDrop = true "Enforce pressure drop in flow direction (prevents non-physical isenthalpic pressure rise)" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation(Dialog(group="Specification"), Evaluate=true);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(Dialog(group="Specification"), Evaluate=true);
+  parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation(
+    Dialog(group="Specification"), Evaluate=true);
+  parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
+    Dialog(group="Specification"), Evaluate=true);
   parameter SI.PressureDifference dpLoss_fixed = 0 "Fixed pressure loss (dpLoss = p_in - p_out)" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.PressureLoss),
-      HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.PressureLoss);
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.PressureLoss),
+    HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.PressureLoss);
   parameter Real prLoss_fixed = 0 "Fixed relative pressure loss (prLoss = dpLoss/p_in)" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.RelativePressureLoss),
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.RelativePressureLoss),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.RelativePressureLoss);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletPressure),
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletPressure),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletPressure);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
     Dialog(group="Warnings", enable = not enforcePressureDrop));
@@ -28,7 +30,7 @@ model Isenthalpic "Isenthalpic process"
   final parameter String name = getInstanceName();
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
-    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
 
   Real isDPLossSetAligned = sign(m_flow*dpLoss_set) "= 1.0, if set pressure loss is aligned with flow direction"; // Real to avoid events
   Real isDPLossAligned = sign(m_flow*dpLoss) "= 1.0, if pressure loss is aligned with flow direction"; // Real to avoid events
@@ -56,20 +58,20 @@ equation
     assertionLevel);
 
   connect(outletSpec_actual, outletSpec_prescribed);
-  if outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec ==OutletSpecification.PressureLoss  then
+  if outletValueSpec == ValueSpecification.Fixed  then
+    if outletSpec == OutletSpecification.PressureLoss  then
       outletSpec_actual = dpLoss_fixed;
     end if;
-    if outletSpec ==OutletSpecification.RelativePressureLoss  then
+    if outletSpec == OutletSpecification.RelativePressureLoss  then
       outletSpec_actual = prLoss_fixed;
     end if;
-    if outletSpec ==OutletSpecification.OutletPressure  then
+    if outletSpec == OutletSpecification.OutletPressure  then
       outletSpec_actual = p_out_fixed;
     end if;
   end if;
-  if outletSpec ==OutletSpecification.PressureLoss  then
+  if outletSpec == OutletSpecification.PressureLoss  then
     dpLoss_set = outletSpec_actual;
-  elseif outletSpec ==OutletSpecification.RelativePressureLoss  then
+  elseif outletSpec == OutletSpecification.RelativePressureLoss  then
     prLoss_set = outletSpec_actual;
   else // OutletSpecification.OutletPressure
     p_out_set = outletSpec_actual;
@@ -91,11 +93,11 @@ equation
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="ΔpLoss = %dpLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
+    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="prLoss = %prLoss_fixed"),
-    Text(visible= displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
+    Text(visible = displayParameters and showOutletSpecification and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
       extent={{-150,-70},{150,-100}},
       textColor={0,0,0},
       textString="p_out = %p_out_fixed"),
@@ -108,10 +110,10 @@ equation
       fillColor = {238,46,47},
       fillPattern=FillPattern.Solid),
     Rectangle(visible = 1.0 < 0.0,
-          extent={{-200,200},{200,-200}},
-          lineColor={0,0,0},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
+      extent={{-200,200},{200,-200}},
+      lineColor={0,0,0},
+      fillColor={255,255,255},
+      fillPattern=FillPattern.Solid),
     Text(visible=displayInstanceName,
       extent={{-150,120},{150,80}},
       textString="%name",
@@ -133,6 +135,10 @@ equation
       lineThickness=0.5,
       fillColor={255,255,255},
       fillPattern=FillPattern.Solid),
+    Ellipse(
+      extent={{-50,50},{50,-50}},
+      lineColor={28,108,200},
+      lineThickness=0.5),
     Text(
       extent={{-20,20},{20,-20}},
       textColor={28,108,200},
@@ -161,12 +167,27 @@ equation
   </p>
 
   <ul>
-    <li>Steady-state conditions: <code>dE_sys/dt = 0, dm_sys/dt = 0</code></li>
-    <li>No heat transfer: <code>Q_flow = 0</code></li>
-    <li>No external force or momentum acting on the system as a rigid body: <code>Wdot_external = 0</code></li>
-    <li>Rigid boundary: <code>Wdot_v = 0</code> (no boundary work)</li>
-    <li>Neglect difference in kinetic and potential energy of the fluid: <code>g*z_2 + 1/2*c_2^2 = g*z_1 + 1/2*c_1^2</code></li>
-    <li>No change in mass fractions: <code>X_in = X_out</code></li>
+    <li>
+      Steady-state conditions: <code>dE_sys/dt = 0, dm_sys/dt = 0</code>
+    </li>
+    <li>
+      No heat transfer: <code>Q_flow = 0</code>
+    </li>
+    <li>
+      No net external forces on the system: The control volume is not subject to acceleration as a rigid body, i.e. 
+      <code>\\sum F_external = 0</code>.
+    </li>
+    <li>
+      Rigid boundary,  no expansion work: <code>w_exp = 0</code>
+    </li>
+    <li>
+      Negligible kinetic and potential energy changes: Differences between inlet and outlet are neglected, i.e. 
+      <code>g*z_2 + 1/2*c_2^2 ≈ g*z_1 + 1/2*c_1^2</code>.
+    </li>
+    <li>
+      Constant composition: No change in species mass fractions across the control volume, i.e. 
+      <code>X_in = X_out</code>.
+    </li>
   </ul>
 
   <p>

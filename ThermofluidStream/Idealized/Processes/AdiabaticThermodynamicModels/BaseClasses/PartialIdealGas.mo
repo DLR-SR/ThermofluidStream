@@ -1,17 +1,17 @@
 within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialIdealGas "Base class for adiabatic thermodynamic models assuming an ideal gas (p*v = R*T)"
-  // unknowns - equations = 2
+  // unbalanced by unknowns - equations = 2
 
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic;
-  // unknowns - equations = 2
+  // unbalanced by unknowns - equations = 2
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
-  parameter ValueSpecification gammaSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
+  parameter ValueSpecification gammaSpec = ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.IsentropicExponent gamma_fixed = 1.4 "Fixed isentropic exponent" annotation(
     Dialog(group="Assumptions",
       enable = gammaSpec ==ValueSpecification.Fixed),
-      HideResult = not gammaSpec == ValueSpecification.Fixed);
+    HideResult = not gammaSpec == ValueSpecification.Fixed);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings"));
   parameter Real relTolZ = 0.05 "Relative tolerance of compressibility factor at inlet and outlet (tolerance for ideal gas behaviour)" annotation(
@@ -19,7 +19,7 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   parameter Real relTolGamma = 1e-2 "Relative tolerance for isentropic exponent gamma_in, gamma_out" annotation(
     Dialog(group="Warnings",
       enable = gammaSpec ==ValueSpecification.State),
-      HideResult = not gammaSpec == ValueSpecification.State);
+    HideResult = not gammaSpec == ValueSpecification.State);
   final parameter String name = getInstanceName();
 
   Medium.Temperature T_in = Medium.temperature(state_in) "Inlet temperature" annotation(
@@ -57,7 +57,7 @@ equation
   assert(noEvent(Z_out >= 1/(1 + relTolZ) and Z_out <= 1 + relTolZ),
     "In \"" + name + "\" the outlet state deviates from ideal gas behaviour beyond the specified tolerance.",
     assertionLevel);
-  if gammaSpec ==ValueSpecification.State  then
+  if gammaSpec == ValueSpecification.State  then
     assert(noEvent(delta_gamma_rel < relTolGamma),
       "In \"" + name +"\" the isentropic exponent varies between inlet and outlet beyond the specified tolerance.",
       assertionLevel);
@@ -66,7 +66,7 @@ equation
   gamma = if gammaSpec ==ValueSpecification.State  then gamma_in else gamma_fixed;
   T_out_is = T_in*(p_out/p_in)^((gamma - 1)/gamma);
 
-  Z_in  = p_in*M/(rho_in*T_in*Modelica.Constants.R);
+  Z_in = p_in*M/(rho_in*T_in*Modelica.Constants.R);
   Z_out = p_out*M/(rho_out*Medium.temperature(state_out)*Modelica.Constants.R);
 
   annotation(Documentation(revisions="<html>

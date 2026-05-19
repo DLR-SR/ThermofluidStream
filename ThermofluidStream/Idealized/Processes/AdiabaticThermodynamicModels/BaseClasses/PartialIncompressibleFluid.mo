@@ -1,9 +1,9 @@
 within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialIncompressibleFluid "Base class for adiabatic thermodynamic models assuming an incompressible fluid (rho = const)"
-  // unknowns - equations = 1
+  // unbalanced by unknowns - equations = 1
 
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic;
-  // unknowns - equations = 2
+  // unbalanced by unknowns - equations = 2
 
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings"));
@@ -48,7 +48,7 @@ equation
 
   <p>
     The model assumes an incompressible fluid (<code>rho = const</code>) to
-    compute the adiabatic reversible reference process (which implies <code>T = const</code>).
+    compute the adiabatic reversible reference process.
   </p>
 
 </html>"));

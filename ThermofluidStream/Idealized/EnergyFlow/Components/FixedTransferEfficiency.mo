@@ -5,19 +5,16 @@ model FixedTransferEfficiency "Model with fixed transfer efficiency"
   parameter Boolean outputDissipation = false "= true, if dissipation output connector is enabled" annotation(
     Evaluate=true, HideResult=true, choices(checkBox=true));
   Real direction = sign(E_flow_in) "= 1.0 if physical direction of power flow is from input to output, = -1.0 if opposite";
-  Interfaces.EnergyFlowInput E_flow_in annotation(
-    Placement(transformation(extent={{-140,-20},{-100,20}}), iconTransformation(extent={{-140,-20},{-100,20}})));
-  Interfaces.EnergyFlowOutput E_flow_out annotation(
-    Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
-  Interfaces.EnergyFlowOutput E_flow_dissipation_out = -E_flow_dissipation if outputDissipation "Dissipative energy flow rate" annotation(Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-50}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={0,-50})));
-
   SI.EnergyFlowRate E_flow_dissipation "Dissipative energy flow rate (into the system) <0";
+
+  Interfaces.EnergyFlowInput E_flow_in annotation(
+    Placement(transformation(extent={{-140,-20},{-100,20}})));
+  Interfaces.EnergyFlowOutput E_flow_out annotation(
+    Placement(transformation(extent={{100,-10},{120,10}})));
+  Interfaces.EnergyFlowOutput E_flow_dissipation_out = -E_flow_dissipation if outputDissipation "Dissipative energy flow rate" annotation(
+    Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-50})));
+
+
 equation
     if noEvent(E_flow_in >= 0) then
       E_flow_out = eta*E_flow_in;
@@ -29,7 +26,7 @@ equation
       else
         E_flow_out = 0;
         E_flow_dissipation = 0;
-        assert(false, "Problem not well defined for eta = 0 and E_flow_in < 0.",AssertionLevel.error);
+        assert(false, "Problem not well defined for eta = 0 and E_flow_in < 0.", AssertionLevel.error);
       end if;
     end if;
     // DynamicSelect(FillPattern.None, if abs(E_flow_dissipation) > Modelica.Constants.eps then FillPattern.Solid else FillPattern.None),

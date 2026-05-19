@@ -77,14 +77,6 @@ equation
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
         Line(
-          points={{-100,0},{-60,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-60,80},{-60,-80}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
           points={{-12,80},{-12,-80}},
           color={255,255,255},
           thickness=1),
@@ -97,8 +89,11 @@ equation
           extent={{-100,40},{-80,20}},
           fillColor={238,46,47},
           pattern=LinePattern.None,
-          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
-                                            Diagram(
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Line(
+          points={{-100,0},{0,0}},
+          color={28,108,200},
+          thickness=0.5)}),                 Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
   <p>

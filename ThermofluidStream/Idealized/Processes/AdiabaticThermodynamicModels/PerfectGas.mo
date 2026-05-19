@@ -2,19 +2,20 @@ within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
 
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas;
-  // unknowns - equations = 2
+  // unbalenced by unknowns - equations = 2
 
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
 
-  parameter ValueSpecification cpSpec=ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
+  parameter ValueSpecification cpSpec = ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(
+    Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.SpecificHeatCapacity cp_fixed = 1000 "Constant specific heat capacity" annotation(
     Dialog(group="Assumptions",
-      enable = cpSpec ==ValueSpecification.Fixed),
-      HideResult = not cpSpec == ValueSpecification.Fixed);
+      enable = cpSpec == ValueSpecification.Fixed),
+    HideResult = not cpSpec == ValueSpecification.Fixed);
   parameter Real relTolCp = 1e-2 "Relative tolerance between specific isobaric heat capacities cp_in, cp_out" annotation(
     Dialog(group="Warnings",
-      enable = cpSpec ==ValueSpecification.State),
-      HideResult = not cpSpec == ValueSpecification.State);
+      enable = cpSpec == ValueSpecification.State),
+    HideResult = not cpSpec == ValueSpecification.State);
 
   Medium.Temperature T_out "Outlet temperature";
 
@@ -27,7 +28,7 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
     HideResult = not cpSpec == ValueSpecification.State);
 
 equation
-  if cpSpec ==ValueSpecification.State  then
+  if cpSpec == ValueSpecification.State  then
     assert(noEvent(delta_cp_rel < relTolCp),
       "In \"" + name +"\" the specific isobaric heat capacity varies between inlet and outlet beyond the specified tolerance.",
       assertionLevel);

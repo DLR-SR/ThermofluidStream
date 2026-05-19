@@ -25,59 +25,59 @@ model Adiabatic "Adiabatic process"
   parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
-    Dialog(group="Specification"),Evaluate=true,HideResult=true,choices(checkBox=true));
+    Dialog(group="Specification"), Evaluate=true,HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
-    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter SI.PressureDifference dp_fixed = 0 "Fixed pressure difference (dp = p_out - p_in)" annotation(
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureDifference  and outletValueSpec ==ValueSpecification.Fixed),
-      HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
+    HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
   parameter Real pr_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)" annotation(
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureRatio  and outletValueSpec ==ValueSpecification.Fixed),
-      HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
+    HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.OutletPressure  and outletValueSpec ==ValueSpecification.Fixed),
-      HideResult = not specifyOutlet or not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed);
-  parameter ValueSpecification etaSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation(
+    HideResult = not specifyOutlet or not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed);
+  parameter ValueSpecification etaSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation(
     Dialog(group="Efficiency"), Evaluate=true);
   parameter SI.Efficiency eta_fixed = 1 "Fixed isentropic efficiency" annotation(
     Dialog(group="Efficiency",
       enable = etaSpec ==ValueSpecification.Fixed),
-      HideResult = not etaSpec == ValueSpecification.Fixed);
+    HideResult = not etaSpec == ValueSpecification.Fixed);
   parameter Boolean enableFilter = true "=true to enable a first order filter for the outlet pressure" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = not specifyOutlet and powerSignal == PowerSignal.Input), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 1 "Filter time constant" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
-      HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
+    HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
   parameter SI.Power P_nom(displayUnit="kW") = 1000 "Nominal power (influences filter time constant)" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
-      HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
+    HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
   parameter SI.PressureDifference dp_nom = 1e5 "Nominal pressure difference (influences filter time constant)" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
-      HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
+    HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
   parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (filter initialization)" annotation(
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
-      HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
+    HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
-      enable = displayParameters and specifyOutlet and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+      enable = displayParameters and specifyOutlet and outletValueSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showEfficiency = true "= true to show the fixed isentropic efficiency value eta_is_fixed" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec ==ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
+  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
@@ -108,25 +108,25 @@ initial equation
 
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
-  if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec ==OutletSpecification.PressureDifference  then
+  if specifyOutlet and outletValueSpec == ValueSpecification.Fixed  then
+    if outletSpec == OutletSpecification.PressureDifference  then
       outletSpec_actual = dp_fixed;
-    elseif outletSpec ==OutletSpecification.PressureRatio  then
+    elseif outletSpec == OutletSpecification.PressureRatio  then
       outletSpec_actual = pr_fixed;
     else // OutletSpecification.OutletPressure
       outletSpec_actual = p_out_fixed;
     end if;
   end if;
-  if outletSpec ==OutletSpecification.PressureDifference  then
+  if outletSpec == OutletSpecification.PressureDifference  then
     dp = outletSpec_actual;
-  elseif outletSpec ==OutletSpecification.PressureRatio  then
+  elseif outletSpec == OutletSpecification.PressureRatio  then
     pRatio = outletSpec_actual;
   else // OutletSpecification.OutletPressure
     p_out = outletSpec_actual;
   end if;
 
   connect(eta_actual, eta_prescribed);
-  if etaSpec ==ValueSpecification.Fixed  then
+  if etaSpec == ValueSpecification.Fixed  then
     eta_actual = eta_fixed;
   end if;
   eta_is = eta_actual;
@@ -180,6 +180,11 @@ equation
           extent={{-150,100},{150,60}},
           textString= if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
           textColor={238,46,47}),
+        Polygon(visible=not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
         Text(visible = enableFilter and not specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
           extent={{-100,-70},{0,-100}},
           textColor={255,170,85},
@@ -210,6 +215,10 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
         Text(
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
@@ -247,16 +256,9 @@ equation
   <p>
     Different assumptions can be used to calculate the adiabatic reversible
     reference process, see 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.Flow\">Utilities.AdiabaticModels</a>:
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">UsersGuide.AdiabaticThermodynamicModels</a>.
   </p>
   
-  <ul>
-    <li>Universal - based on <code>Medium.specificEntropy()</code></li>
-    <li>Ideal gas - <code>p*v = R*T, gamma = const.</code></li>
-    <li>Perfect gas - <code>p*v = R*T, gamma, cp = const.</code></li>
-    <li>Incompressible fluid - density <code>rho = const.</code></li>
-  </ul>  
-
   <p>
     The power can optionally be an <code>EnergyFlowInput</code> or an
     <code>EnergyFlowOutput</code>; see
@@ -287,7 +289,7 @@ equation
       This condition is indicated by a plus symbol on the icon layer.
       The mass flow rate is then computed from the given power <code>P</code> and specific enthalpy
       difference <code>dh</code>:
-      <code>m_flow = P/dh</code>.
+      <code>m_flow = P/dh</code>. In this case zero specific enthalpy difference <code>dh = 0</code> can cause the simulation to fail.
       To obtain an overall balanced system, a locally underdetermined component,
       such as
       <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">
@@ -301,7 +303,7 @@ equation
       the model is <strong>balanced</strong>.<br>
       In this case, the specific enthalpy difference <code>dh</code> is calculated from the given
       mass flow rate <code>m_flow</code> and power <code>P</code>:
-      <code>dh = P/m_flow</code>.
+      <code>dh = P/m_flow</code>. In this case, zero mass flow rate <code>m_flow = 0</code> can cause the simulation to fail.
       Determining the outlet pressure <code>p_out</code> from <code>dh</code> introduces one implicit
       nonlinear equation.
       This implicit equation can be avoided by enabling <code>enableFilter</code>.
@@ -326,16 +328,30 @@ equation
   </p>
 
   <ul>
-    <li>Steady-state conditions: <code>dE_sys/dt = 0, dm_sys/dt = 0</code></li>
-    <li>No heat transfer: <code>Q_flow = 0</code></li>
-    <li>Losses accounted for via isentropic efficiency: <code>eta_is</code></li>
     <li>
-        No net external forces on the system: The control volume is not subject to acceleration as a rigid body, i.e. 
-        <code>\\sum F_external = 0</code>.
-      </li>
-    <li>Rigid boundary: <code>Wdot_v = 0</code> (no boundary work)</li>
-    <li>Neglect difference in kinetic and potential energy of the fluid: <code>g*z_2 + 1/2*c_2^2 = g*z_1 + 1/2*c_1^2</code></li>
-    <li>No change in mass fractions: <code>X_in = X_out</code></li>
+      Steady-state conditions: <code>dE_sys/dt = 0, dm_sys/dt = 0</code>
+    </li>
+    <li>
+      No heat transfer: <code>Q_flow = 0</code>
+    </li>
+    <li>
+      Losses accounted for via isentropic efficiency: <code>eta_is</code>
+    </li>
+    <li>
+      No net external forces on the system: The control volume is not subject to acceleration as a rigid body, i.e. 
+      <code>\\sum F_external = 0</code>.
+    </li>
+    <li>
+      Rigid boundary,  no expansion work: <code>w_exp = 0</code>
+    </li>
+    <li>
+      Negligible kinetic and potential energy changes: Differences between inlet and outlet are neglected, i.e. 
+      <code>g*z_2 + 1/2*c_2^2 ≈ g*z_1 + 1/2*c_1^2</code>.
+    </li>
+    <li>
+      Constant composition: No change in species mass fractions across the control volume, i.e. 
+      <code>X_in = X_out</code>.
+    </li>
   </ul>  
 </html>", revisions="<html>
   <ul>

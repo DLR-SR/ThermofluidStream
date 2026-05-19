@@ -1,6 +1,6 @@
 within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses;
 partial model PartialAdiabatic "Base class for adiabatic thermodynamic models for given outlet pressure"
-  // unknowns - equations = 2
+  // unbalanced by unknowns - equations = 2
 
   extends Modelica.Blocks.Icons.Block;
 

@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model IncompressibleFluid "Adiabatic process, incompressible fluid (rho = const): h_out_is = dp/rho_in + h_in"
 
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIncompressibleFluid;
-  // unknowns - equations = 1
+  // unbalanced by unknowns - equations = 1
 
 equation
   w_t_is = (p_out - p_in)/rho_in;
@@ -26,7 +26,7 @@ equation
   </ul>
   
   <p>
-    The model assumes an incompressible fluid (<code>rho = const.</code>) to compute the adiabatic reversible reference process, which implies <code>T = const.</code> and <code>w_t_is = dp / rho</code>.
+    The model assumes an incompressible fluid (<code>rho = const.</code>) to compute the adiabatic reversible reference process, which implies <code>w_t_is = dp / rho</code>.
   </p>
 </html>"));
 end IncompressibleFluid;

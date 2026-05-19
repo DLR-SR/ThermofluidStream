@@ -7,53 +7,53 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
-  parameter ValueSpecification m_flowSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the inlet mass flow rate" annotation(Dialog(group="Mass flow rate"), Evaluate=true);
+  parameter ValueSpecification m_flowSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Method for specifying the value of the inlet mass flow rate" annotation(Dialog(group="Mass flow rate"), Evaluate=true);
   parameter SI.MassFlowRate m_flow_in_par = 0 "Fixed inlet mass flow rate" annotation(
     Dialog(group="Mass flow rate",
-      enable = m_flowSpec ==ValueSpecification.Fixed),
-      HideResult = not m_flowSpec == ValueSpecification.Fixed);
-  parameter ValueSpecification pSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet pressure is fixed or prescribed" annotation(Dialog(group="Pressure"), Evaluate=true);
+      enable = m_flowSpec == ValueSpecification.Fixed),
+    HideResult = not m_flowSpec == ValueSpecification.Fixed);
+  parameter ValueSpecification pSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet pressure is fixed or prescribed" annotation(Dialog(group="Pressure"), Evaluate=true);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
     Dialog(group="Pressure",
-      enable = pSpec ==ValueSpecification.Fixed),
-      HideResult = not pSpec == ValueSpecification.Fixed);
-  parameter ThermalSpecification thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature "Thermal quantity used to define the outlet state" annotation(Dialog(group="Thermal"), Evaluate=true);
-  parameter ValueSpecification thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet thermal quantity is fixed or prescribed" annotation(Dialog(group="Thermal"), Evaluate=true);
+      enable = pSpec == ValueSpecification.Fixed),
+    HideResult = not pSpec == ValueSpecification.Fixed);
+  parameter ThermalSpecification thermalSpec = ThermofluidStream.Types.ThermalSpecification.Temperature "Thermal quantity used to define the outlet state" annotation(Dialog(group="Thermal"), Evaluate=true);
+  parameter ValueSpecification thermalValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet thermal quantity is fixed or prescribed" annotation(Dialog(group="Thermal"), Evaluate=true);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
     Dialog(group="Thermal",
-      enable = thermalSpec ==ThermalSpecification.Temperature  and thermalValueSpec ==ValueSpecification.Fixed),
-      HideResult = not thermalSpec == ThermalSpecification.Temperature or not thermalValueSpec == ValueSpecification.Fixed);
+      enable = thermalSpec == ThermalSpecification.Temperature and thermalValueSpec == ValueSpecification.Fixed),
+    HideResult = not thermalSpec == ThermalSpecification.Temperature or not thermalValueSpec == ValueSpecification.Fixed);
   parameter Medium.SpecificEnthalpy h_out_fixed = Medium.h_default "Fixed outlet specific enthalpy" annotation(
     Dialog(group="Thermal",
-      enable = thermalSpec ==ThermalSpecification.SpecificEnthalpy  and thermalValueSpec ==ValueSpecification.Fixed),
-      HideResult = not thermalSpec == ThermalSpecification.SpecificEnthalpy or not thermalValueSpec == ValueSpecification.Fixed);
-  parameter ValueSpecification XiSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet mass fractions are fixed or prescribed" annotation(Dialog(group="Mass fractions"), Evaluate=true);
+      enable = thermalSpec == ThermalSpecification.SpecificEnthalpy and thermalValueSpec == ValueSpecification.Fixed),
+    HideResult = not thermalSpec == ThermalSpecification.SpecificEnthalpy or not thermalValueSpec == ValueSpecification.Fixed);
+  parameter ValueSpecification XiSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet mass fractions are fixed or prescribed" annotation(Dialog(group="Mass fractions"), Evaluate=true);
   parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions" annotation(
     Dialog(group="Mass fractions",
-      enable = XiSpec ==ValueSpecification.Fixed),
-      HideResult = not XiSpec == ValueSpecification.Fixed);
+      enable = XiSpec == ValueSpecification.Fixed),
+    HideResult = not XiSpec == ValueSpecification.Fixed);
   parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
-    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+    Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance" annotation(
     Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
-    Dialog(tab="Advanced",group="Accepted errors"));
+    Dialog(tab="Advanced", group="Accepted errors"));
   parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1e-5*Medium.p_default "Absolute tolerance for pressure p_in, p_out" annotation(
-    Dialog(tab="Advanced",group="Accepted errors"));
+    Dialog(tab="Advanced", group="Accepted errors"));
   parameter SI.SpecificEnthalpy tol_h = 10 "Absolute tolerance for specific enthalpy h_in, h_out" annotation(
-    Dialog(tab="Advanced",group="Accepted errors"));
+    Dialog(tab="Advanced", group="Accepted errors"));
   parameter SI.MassFlowRate tol_m_flow = 1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out" annotation(
-    Dialog(tab="Advanced",group="Accepted errors"));
+    Dialog(tab="Advanced", group="Accepted errors"));
   parameter Medium.MassFraction tol_Xi = 1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out" annotation(
-    Dialog(tab="Advanced",group="Accepted errors"));
+    Dialog(tab="Advanced", group="Accepted errors"));
   parameter Boolean showMassFlowRate = true "= true to show the fixed inlet mass flow rate value m_flow_in_fixed" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPressure = true "= true to show the fixed outlet pressure value p_out_fixed" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable=displayParameters and pSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable=displayParameters and pSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showThermalSpecification = true "= true to show the fixed outlet thermal specification value (either T_out_fixed or h_out_fixed)" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable=displayParameters and thermalValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable=displayParameters and thermalValueSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showMassFractions = false "= true to show the fixed outlet mass fraction values Xi_out_fixed" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and XiSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String name = getInstanceName();
 
   Modelica.Blocks.Interfaces.RealInput m_flow_in_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed inlet mass flow rate [kg/s]" annotation(
@@ -99,31 +99,31 @@ equation
   assert(noEvent(Modelica.Math.Vectors.norm(dXi) < tol_Xi), "Mass fraction mismatch in "+ name, assertionLevel);
 
   connect(m_flow_in_prescribed, m_flow_in);
-  if m_flowSpec ==ValueSpecification.Fixed  then
+  if m_flowSpec == ValueSpecification.Fixed then
     m_flow_in = m_flow_in_par;
   end if;
 
   connect(p_out_prescribed, p_out);
-  if pSpec ==ValueSpecification.Fixed  then
+  if pSpec == ValueSpecification.Fixed then
     p_out = p_out_fixed;
   end if;
 
   connect(T_out_prescribed, T_out);
-  if thermalValueSpec ==ValueSpecification.Fixed  and thermalSpec ==ThermalSpecification.Temperature  then
+  if thermalValueSpec == ValueSpecification.Fixed and thermalSpec == ThermalSpecification.Temperature then
     T_out = T_out_fixed;
   end if;
 
   connect(h_out_prescribed, h_out);
-  if thermalValueSpec ==ValueSpecification.Fixed  and thermalSpec ==ThermalSpecification.SpecificEnthalpy  then
+  if thermalValueSpec == ValueSpecification.Fixed and thermalSpec == ThermalSpecification.SpecificEnthalpy then
     h_out = h_out_fixed;
   end if;
 
   connect(Xi_out_prescribed, Xi_out);
-  if XiSpec ==ValueSpecification.Fixed  then
+  if XiSpec == ValueSpecification.Fixed then
     Xi_out = Xi_out_fixed;
   end if;
 
-  if thermalSpec ==ThermalSpecification.Temperature  then
+  if thermalSpec == ThermalSpecification.Temperature then
     outlet.state = Medium.setState_pTX(p_out,T_out,Xi_out);
     h_out = Medium.specificEnthalpy(outlet.state);
   else // ThermalSpecification.SpecificEnthalpy
@@ -144,7 +144,7 @@ equation
 
   inlet.m_flow = m_flow_in;
 
-  annotation(defaultComponentName="loopBreaker", Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  annotation(defaultComponentName="loopBreaker", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,110},{150,70}},
           textString="%name",
@@ -203,18 +203,19 @@ equation
     Documentation(info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
-    with <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_m</a> to artificially close a loop.<br>
-    Cyclic loops without a loop breaker lead to algebraic equations which can make the system unsolvable. 
+    with <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_m</a> to artificially close a loop.
+    Cyclic loops without a loop breaker lead to algebraic loops which can make the system unsolvable. 
     The loop-breaker acts as both a source and a sink, defining a beginning (source) and an end (sink) in the loop, breaking the algebraic equations. 
  </p>
  
   <p>
-    Ensure that the inlet state and the outlet state are equal.
-    The model only checks equality but does not enforce them, since this would create the algebraic loop.
+    Inlet and outlet states of the loop breaker are independent of each other.  
+    The outlet state of the loop breaker is prescribed, while the user must ensure that the inlet state is consistent.  
+    Any deviation is indicated by a warning.
   </p>
 
   <p>
-    Discontinuous mass flow rates require <code>considerInertance = false</code>. 
+    Discontinuous mass flow rates require <code>considerInertance = false</code>, see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>. 
   </p>
 
 </html>", revisions="<html>
@@ -225,5 +226,4 @@ equation
     </li>
   </ul>
 </html>"));
-
 end LoopBreaker_m;

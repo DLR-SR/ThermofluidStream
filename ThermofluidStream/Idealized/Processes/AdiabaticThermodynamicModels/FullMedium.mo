@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels;
 model FullMedium "Full medium model (entropy-based, no thermodynamic simplifications)"
 
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic;
-  // unknowns - equations = 2
+  // unbalenced by unknowns - equations = 2
 
   Medium.SpecificEntropy s_in = Medium.specificEntropy(state_in) "Inlet specific entropy";
   Medium.SpecificEnthalpy h_in = Medium.specificEnthalpy(state_in) "Inlet specific enthalpy";

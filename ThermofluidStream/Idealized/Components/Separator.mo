@@ -5,7 +5,7 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     choicesAllMatching=true);
 
   parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
-    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+    Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each component" annotation(
     Dialog(tab="Advanced", enable=considerInertance), HideResult = not considerInertance);
 
@@ -19,8 +19,8 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     Placement(transformation(extent={{120,-80},{80,-40}})));
   ThermofluidStream.Interfaces.Outlet outletLiquid(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{-80,-80},{-120,-40}})));
-  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium)
-                                           annotation(Placement(transformation(extent={{-120,40},{-80,80}})));
+  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium) annotation(
+    Placement(transformation(extent={{-120,40},{-80,80}})));
   ThermofluidStream.Interfaces.Outlet outletVapor(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{80,40},{120,80}})));
 
@@ -36,13 +36,15 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     L=L,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-50},{-10,-70}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(
+    Placement(transformation(extent={{10,-50},{-10,-70}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricHeatFlowPort1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,50},{10,70}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(
+    Placement(transformation(extent={{-10,50},{10,70}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(p))) annotation(
     Placement(transformation(extent={{40,30},{20,50}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(p))) annotation(
@@ -76,10 +78,14 @@ equation
       points={{10,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
-  connect(h_bubble.y, isobaricHeatFlowPort.outletSpec_prescribed) annotation(Line(points={{-19,-40},{-10,-40},{-10,-48}}, color={0,0,127}));
-  connect(h_dew.y, isobaricHeatFlowPort1.outletSpec_prescribed) annotation(Line(points={{19,40},{10,40},{10,48}}, color={0,0,127}));
-  connect(isobaricHeatFlowPort.Q_flow_out, isobaricHeatFlowPort1.Q_flow_in) annotation(Line(points={{0,-53},{0,52}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+  connect(h_bubble.y, isobaricHeatFlowPort.outletSpec_prescribed) annotation(
+    Line(points={{-19,-40},{-10,-40},{-10,-48}}, color={0,0,127}));
+  connect(h_dew.y, isobaricHeatFlowPort1.outletSpec_prescribed) annotation(
+    Line(points={{19,40},{10,40},{10,48}}, color={0,0,127}));
+  connect(isobaricHeatFlowPort.Q_flow_out, isobaricHeatFlowPort1.Q_flow_in) annotation(
+    Line(points={{0,-53},{0,52}}, color={255,170,85}));
+
+  annotation(Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -176,7 +182,7 @@ equation
   </p>
   
   <p>
-    The two mass flow rates are <code>not</code> independent.
+    The two mass flow rates are <strong>not</strong> independent.
     This model is locally overdetermined (one additional equation). Therefore, one of the two outlets must be connected to an underdetermined component 
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a> or 
     <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 

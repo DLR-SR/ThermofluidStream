@@ -31,11 +31,20 @@ annotation(
   </p> 
 
   <p>
-    Connector with pne input signal of type <code>SI.EnergyFlowRate</code> (e.g., heat flow rate or power).
+    Connector with one input signal of type <code>SI.EnergyFlowRate</code> (e.g., heat flow rate or power), see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.EnergyFlow\">UsersGuide.EnergyFlow</a>.
   </p>
 
   <p>
-    The connector is fully compatible with <code>Modelica.RealInput/Output</code>. It is introduced to improve the distinction between physical energy flow and, for example, control signal flow. 
-    The connector indicates the direction of information flow (in terms of solving a system of equation). It does <strong>not</strong> indicate the actual positive direction of energy flow.
+    The energy flow connector is compatible with standard Modelica Real input and output connectors. 
+    It was introduced to emphasize its physical meaning and to clearly differentiate power and heat flow from, for example, control signals.
+  </p>
+
+  <p>
+    The input and output connectors define the direction of information flow and must not be confused with the
+    physical positive direction of energy flow, which can be indicated next to the connector on the icon layer
+    during simulation.<br>
+    <code>EnergyFlowInput</code> is defined as energy flowing <strong>into</strong> the system.<br>
+    <code>EnergyFlowOutput</code> is defined as energy flowing <strong>out</strong> of the system.<br>
+    This definition allows inputs and outputs to be connected directly.
   </p>
 </html>"));

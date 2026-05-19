@@ -8,39 +8,35 @@ model Isobaric "Isobaric process"
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration" annotation(
+  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Flow      "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
+  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
     Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
+  parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
+  parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
   parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.TemperatureDifference  and specifyOutlet),
-      HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
+      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec == OutletSpecification.TemperatureDifference  and specifyOutlet),
+    HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletTemperature  and specifyOutlet),
-      HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletTemperature  and specifyOutlet),
+    HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
   parameter SI.SpecificEnthalpy dh_fixed(displayUnit="kJ/kg") = 0 "Fixed specific enthalpy difference (dh = h_out - h_in)" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.SpecificEnthalpyDifference  and specifyOutlet),
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.SpecificEnthalpyDifference  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.SpecificEnthalpyDifference or not specifyOutlet);
   parameter SI.SpecificEnthalpy h_out_fixed(displayUnit="kJ/kg") = Medium.h_default "Fixed outlet specific enthalpy" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletSpecificEnthalpy  and specifyOutlet),
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificEnthalpy  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificEnthalpy or not specifyOutlet);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
-      enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
+      enable = displayParameters and outletValueSpec == ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
@@ -49,18 +45,18 @@ model Isobaric "Isobaric process"
       HideResult = not heatFlowSignal == HeatFlowSignal.Input);
   parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure" annotation(
     Dialog(
-      enable =systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
-      HideResult = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow);
+      enable = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
+    HideResult = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow);
   final parameter String name = getInstanceName() "Instance name";
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
-    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if systemSpec == SystemSpecification.Cycle "Power (mean net expansion work for systemSpec == Cycle), directed out of the system [W]" annotation(
-    Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={-100,-110})));
+    Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={-100,-110})));
 
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet state temperature" annotation(
     HideResult=true);
@@ -96,6 +92,7 @@ model Isobaric "Isobaric process"
     HideResult = systemSpec == SystemSpecification.Flow);
   SI.Power P "Power (mean net expansion work)" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
+
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual "Actual outlet specification [SI-units], required due to the conditional connector outletSpec_prescribed";
   SI.AbsolutePressure p = p_in "Pressure";
@@ -207,6 +204,11 @@ equation
           extent={{-150,100},{150,60}},
           textString= if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
           textColor={238,46,47}),
+        Polygon(visible= not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
         Line(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
           points={{-100,0},{-100,-100}},
           color={255,170,85}),
@@ -255,6 +257,10 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.None),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
         Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent={{-20,20},{20,-20}},
           textColor={28,108,200},
@@ -271,7 +277,11 @@ equation
           extent={{0,0},{36,36}},
           textColor={191,0,0},
           textStyle={TextStyle.Bold},
-          textString = if abs(Q_flow) < 1e-8 then "0" else "")}),
+          textString = if abs(Q_flow) < 1e-8 then "0" else ""),
+        Ellipse(
+          extent={{-52,52},{52,-52}},
+          lineColor={28,108,200},
+          lineThickness=0.5)}),
     Documentation(info="<html>
   <p>
     Isobaric process (<code>p_in = p_out</code>) suitable for modeling both heating/cooling (open system, steady-flow, <code>systemSpec==Flow</code>) 
@@ -390,7 +400,7 @@ equation
       This condition is indicated by a plus symbol on the icon layer.
       The mass flow rate is then computed from the given heat flow rate <code>Q_flow</code> and specific enthalpy
       difference <code>dh</code>:
-      <code>m_flow = Q_flow/dh</code>.
+      <code>m_flow = Q_flow/dh</code>. In this case zero specific enthalpy difference <code>dh = 0</code> can cause the simulation to fail.
       To obtain an overall balanced system, a locally underdetermined component,
       such as
       <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">
@@ -404,7 +414,7 @@ equation
       the model is <strong>balanced</strong>.<br>
       In this case, the specific enthalpy difference <code>dh</code> is calculated from the given
       mass flow rate <code>m_flow</code> and heat flow rate <code>Q_flow</code>:
-      <code>dh = Q_flow/m_flow</code>.
+      <code>dh = Q_flow/m_flow</code>. In this case zero mass flow rate <code>m_flow = 0</code> can cause the simulation to fail.
     </li>
 
     <li>

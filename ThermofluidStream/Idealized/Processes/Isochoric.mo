@@ -7,39 +7,35 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter HeatFlowSignal heatFlowSignal =ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled      "Heat flow signal configuration" annotation(
+  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec =ThermofluidStream.Idealized.Types.SystemModel.Cycle      "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
+  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Cycle "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
     Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
-    Dialog(group="Specification"),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter OutletSpecification outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation(
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
-  parameter ValueSpecification outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
-    Dialog(group="Specification", enable=specifyOutlet),
-    Evaluate=true,
-    HideResult=not specifyOutlet);
+    Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
+  parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
+    Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter SI.TemperatureDifference dT_fixed = 0 "Fixed temperature difference (dT = T_out - T_in) (OM-Bug)" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.TemperatureDifference  and specifyOutlet),
-      HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
+      enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.TemperatureDifference and specifyOutlet),
+    HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.TemperatureDifference or not specifyOutlet);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
     Dialog(group="Specification",
-      enable = outletValueSpec ==ValueSpecification.Fixed  and outletSpec ==OutletSpecification.OutletTemperature  and specifyOutlet),
-      HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
+      enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
+    HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
   parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (for nonlinear iteration)" annotation(
     Dialog(group="Nonlinear iteration (specifyOutlet == false and heatFlowSignal == Input)",
       enable = not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input),
-      HideResult = specifyOutlet or not heatFlowSignal == HeatFlowSignal.Input);
+    HideResult = specifyOutlet or not heatFlowSignal == HeatFlowSignal.Input);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed or T_out_fixed)" annotation(
-    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
+    Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec == ValueSpecification.Fixed and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
-    Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={-100,-120})));
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-100,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]" annotation(
@@ -68,14 +64,14 @@ protected
 
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
-  if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed  then
-    if outletSpec ==OutletSpecification.TemperatureDifference  then
+  if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed then
+    if outletSpec == OutletSpecification.TemperatureDifference then
       outletSpec_actual = dT_fixed;
     else // OutletSpecification.OutletTemperature
       outletSpec_actual = T_out_fixed;
     end if;
   end if;
-  if outletSpec ==OutletSpecification.TemperatureDifference  then
+  if outletSpec == OutletSpecification.TemperatureDifference then
     dT = outletSpec_actual;
   else //OutletSpecification.OutletTemperature
     T_out = outletSpec_actual;
@@ -146,6 +142,16 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
        fillPattern=FillPattern.Solid),
+     Ellipse(
+       extent={{-60,60},{60,-60}},
+       lineColor={28,108,200},
+       lineThickness=0.5,
+       fillColor={255,255,255},
+       fillPattern=FillPattern.None),
+     Ellipse(
+       extent={{-50,50},{50,-50}},
+       lineColor={28,108,200},
+       lineThickness=0.5),
      Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
        extent={{-20,20},{20,-20}},
        textColor={28,108,200},
@@ -162,33 +168,27 @@ equation
        points={{60,0},{100,0}},
        color={28,108,200},
        thickness=0.5),
-     Ellipse(
-       extent={{-60,60},{60,-60}},
-       lineColor={28,108,200},
-       lineThickness=0.5,
-       fillColor={255,255,255},
-       fillPattern=FillPattern.None),
-     Polygon(visible = showEnergyFlowDirection,
+     Polygon(visible = showHeatFlowDirection,
           origin={-40,-50},
           rotation = if Q_flow >= 0 then 90 else -90,
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {191,0,0},
           fillPattern = if abs(Q_flow) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
-        Text(visible = showEnergyFlowDirection,
+      Text(visible = showHeatFlowDirection,
           origin={-60,-70},
           extent={{0,0},{36,36}},
           textColor={191,0,0},
           textStyle={TextStyle.Bold},
           textString = if abs(Q_flow) < 1e-8 then "0" else ""),
-        Polygon(visible = showEnergyFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
+        Polygon(visible = showHeatFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           origin={80,-118},
           rotation =  if P >= 0 then 90 else -90,
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
           fillPattern = if abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
-        Text(visible = showEnergyFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
+        Text(visible = showHeatFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           origin={62,-138},
           extent={{0,0},{36,36}},
           textColor={255,170,85},
@@ -196,9 +196,9 @@ equation
           textString = if abs(P) < 1e-8 then "0" else "")}),
     Documentation(info="<html>
   <p>
-    Isochoric process (density <code>rho_in = rho_out</code>, specific volume <code>v_in = v_out</code>) 
-    suitable for representing stationary-flow representations of isochoric periodic heat transfer in a closed cycle system. 
-    <code>Inlet</code> amd <code>Outlet</code> refer to the initial and final state of the process.
+    Isochoric process (density <code>rho_in = rho_out</code>, specific volume <code>v_in = v_out</code>) mainly
+    suitable for representing stationary-flow representations of isochoric periodic heat transfer in a closed cycle system (<code>systemSpec==Cycle</code>). 
+    <code>Inlet</code> amd <code>Outlet</code> refer to the initial and final state of the process. Alternatively it can be used to represent a pseudo stationary-flow isochoric process (<code>systemSpec==Flow</code>). 
   </p>
 
   <p>
@@ -278,15 +278,60 @@ equation
   </ol>
 
   <p>
-    Further assumptions for the isochoric process:
+    Assumptions for the isochoric process (closed system, cyclic operation, <code>systemSpec == Cycle</code>):
   </p>
 
   <ul>
-    <li>Steady-state conditions (for mean quantities): <code>dE_sys/dt = 0, dm_sys/dt = 0</code></li>
-    <li>No external force or momentum acting on the system as a rigid body: <code>Wdot_external = 0</code></li>
-    <li>Neglect difference in kinetic and potential energy of the fluid: <code>g*z_2 + 1/2*c_2^2 = g*z_1 + 1/2*c_1^2</code></li>
-    <li>No change in mass fractions: <code>X_in = X_out</code></li>
-  </ul>  
+    <li>
+      Cycle-averaged steady state: Over multiple consecutive cycles, the system satisfies 
+      <code>dE_sys/dt = 0</code> and <code>dm_sys/dt = 0</code>. 
+    </li>
+    <li>
+      The mass flow rate <code>m_flow</code> represents the cycle-averaged mass throughput of the system.
+    </li>
+    <li>
+      No net external forces on the system: The control volume is not subject to acceleration as a rigid body, i.e. 
+      <code>\\sum F_external = 0</code>.
+    </li>
+    <li>
+      No boundary work: <code>w_exp = p*dv = 0</code>.
+    </li>
+    <li>
+      Negligible kinetic and potential energy changes: Differences between inlet and outlet are neglected, i.e. 
+      <code>g*z_2 + 1/2*c_2^2 ≈ g*z_1 + 1/2*c_1^2</code>.
+    </li>
+    <li>
+      Constant composition: No change in species mass fractions across the control volume, i.e. 
+      <code>X_in = X_out</code>.
+    </li>
+  </ul>
+
+  <p>
+    Assumptions for the isochoric process (open system, steady-flow, <code>systemSpec == Flow</code>):
+  </p>
+
+  <ul>
+    <li>
+      Steady-state conditions: <code>dE_sys/dt = 0, dm_sys/dt = 0</code>
+    </li>
+    <li>
+      No net external forces on the system: The control volume is not subject to acceleration as a rigid body, i.e. 
+      <code>\\sum F_external = 0</code>.
+    </li>
+    <li>
+      Isochoric pressure work (pseudo shaft work): <code>w_p = v*dp</code>.
+    </li>
+    <li>
+      Negligible kinetic and potential energy changes: Differences between inlet and outlet are neglected, i.e. 
+      <code>g*z_2 + 1/2*c_2^2 ≈ g*z_1 + 1/2*c_1^2</code>.
+    </li>
+    <li>
+      Constant composition: No change in species mass fractions across the control volume, i.e. 
+      <code>X_in = X_out</code>.
+    </li>
+  </ul>
+
+ 
 </html>", revisions="<html>
   <ul>
     <li>

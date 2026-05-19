@@ -11,7 +11,7 @@ block Sum "Sum of energy flow rates"
 
 equation
   if size(E_flow_in, 1) > 0 then
-    E_flow_out =fill(1, n_in)*E_flow_in;
+    E_flow_out = fill(1, n_in)*E_flow_in;
   else
     E_flow_out = 0;
   end if;

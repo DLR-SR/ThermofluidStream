@@ -1,10 +1,13 @@
 within ThermofluidStream.Idealized.EnergyFlow.Sources;
 model FixedEnergyFlow "Fixed energy flow rate boundary condition"
   parameter SI.EnergyFlowRate E_flow "Fixed energy flow rate";
-  Interfaces.EnergyFlowOutput E_flow_out annotation(Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
+
+  Interfaces.EnergyFlowOutput E_flow_out annotation(
+    Placement(transformation(extent={{100,-10},{120,10}})));
 
 equation
   E_flow_out = E_flow;
+
   annotation(defaultComponentName = "energyFlowSource",
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={

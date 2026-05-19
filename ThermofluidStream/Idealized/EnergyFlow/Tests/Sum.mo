@@ -34,7 +34,7 @@ equation
     Line(points={{-19,-50},{20,-50},{20,-28.5}}, color={255,170,85}));
   annotation(Documentation(info="<html>
   <p>
-    Test model for (energy flow) <code>Sum</code> model.
+    Test model for the <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.Sum\">EnergyFlow.Components.Sum</a> model.
   </p>
 </html>"));
 end Sum;
