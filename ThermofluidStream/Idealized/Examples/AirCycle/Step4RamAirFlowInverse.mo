@@ -29,11 +29,12 @@ model Step4RamAirFlowInverse
   ThermofluidStream.Boundaries.Source
                                 coolingAirSource(
     redeclare package Medium = Medium,
-    considerInertance=false,
     p0_par=100000,
-    T0_par=293.15) annotation(Placement(transformation(extent={{50,40},{30,60}})));
-  Sources.Sink_free coolingAirSink(redeclare package Medium = Medium,
-      considerInertance=false) annotation(
+    T0_par=293.15,
+    considerInertance=false)
+                   annotation(Placement(transformation(extent={{50,40},{30,60}})));
+  Sources.Sink_free coolingAirSink(redeclare package Medium = Medium, considerInertance=false)
+                               annotation(
     Placement(transformation(extent={{-30,40},{-50,60}})));
   Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
@@ -43,6 +44,7 @@ model Step4RamAirFlowInverse
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-10,10},{10,-10}})));
   Processes.Isobaric heatExchangerSideB(
     redeclare package Medium = Medium,
+    considerInertance=false,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
