@@ -4,9 +4,8 @@ model InertanceNeglect "Example - mass flow loop breaker"
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,40},{140,60}})));
@@ -56,6 +55,7 @@ model InertanceNeglect "Example - mass flow loop breaker"
     duration=1,
     offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 20),
     startTime=0) annotation(Placement(transformation(extent={{60,-32},{80,-12}})));
+
 equation
   connect(h_const.y, loopBreaker4.h_out_prescribed) annotation(Line(points={{-19,-20},{-2,-20},{-2,-12}}, color={0,0,127}));
   connect(h_ramp_subcooling_superheating.y, loopBreaker9.h_out_prescribed) annotation(Line(points={{81,-22},{98,-22},{98,-12}}, color={0,0,127}));
@@ -75,8 +75,17 @@ equation
       thickness=0.5));
   connect(m_flow_pulse4.y, loopBreaker9.m_flow_in_prescribed) annotation(Line(points={{119,-20},{110,-20},{110,-12}},
                                                                                                              color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-80},{160,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-80},{160,100}}),
+      graphics={
         Polygon(
           points={{-160,40},{-120,40},{-120,60},{-140,60},{-140,100},{-160,100},{-160,40}},
           fillColor= {162,29,33},
@@ -88,11 +97,13 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

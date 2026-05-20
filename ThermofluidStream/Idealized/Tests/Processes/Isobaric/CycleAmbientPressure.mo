@@ -2,10 +2,9 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model CycleAmbientPressure "Example - Isobaric process"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
   parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
@@ -89,6 +88,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=-10,
     p_inf=50000) annotation(Placement(transformation(extent={{90,-40},{110,-20}})));
+
 equation
   connect(source.outlet, isobaricHeating.inlet) annotation(Line(
       points={{-130,30},{-120,30}},
@@ -138,22 +138,31 @@ equation
       points={{110,-30},{120,-30}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-        grid={2,2},
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
         extent={{-160,-100},{160,100}})),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates the influence of the ambient pressure on the power (net expansion work flow rate) of a periodic isobaric closed-cycle process.<br>
     For <code>p = p_inf</code>, the net power is zero.<br> 
     For <code>p \\gt; p_inf</code> the net power is directed out of the system in case of a temperature increase (expansion) and into the system for a temperature decrease (compression). 
     For <code>p \\lt; p_inf</code> the net power is directed into of the system in case of a temperature increase (expansion) and out of the system for a temperature decrease (compression). 
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end CycleAmbientPressure;

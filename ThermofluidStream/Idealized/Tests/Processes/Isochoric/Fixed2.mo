@@ -4,8 +4,7 @@ model Fixed2 "Example - Isochoric process"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
+      choicesAllMatching=true);
   parameter SI.MassFlowRate m_flow=0   "Mass flow rate";
   parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
@@ -68,6 +67,7 @@ model Fixed2 "Example - Isochoric process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
+
 equation
   connect(source.outlet, dT2c.inlet) annotation (Line(
       points={{-70,30},{-60,30}},
@@ -105,19 +105,21 @@ equation
   connect(energyFlowSource.E_flow_out, T_out2.Q_flow_in) annotation (Line(points={{-59,-70},{50,-70},{50,-38}}, color={255,170,85}));
   connect(dT2.Q_flow_in, energyFlowSource.E_flow_out) annotation (Line(points={{50,22},{50,0},{0,0},{0,-70},{-59,-70}}, color={255,170,85}));
   connect(dT2c.Q_flow_in, energyFlowSource.E_flow_out) annotation (Line(points={{-50,22},{-50,0},{0,0},{0,-70},{-59,-70}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2}),
-                                           graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
+        Text(
           extent={{-20,82},{20,60}},
           textColor={28,108,200},
           textString="fails for dT=0")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process defined by parameters (outlet state and heat flow rate given)
@@ -126,5 +128,13 @@ equation
   <p>
     <code>dT = 0</code> is not supported (<code>m_flow := Q_flow/du</code> fails for <code>du = 0</code>.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Fixed2;

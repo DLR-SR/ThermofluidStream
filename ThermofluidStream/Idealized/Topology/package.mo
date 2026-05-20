@@ -1,7 +1,9 @@
 within ThermofluidStream.Idealized;
 package Topology
   extends Modelica.Icons.Package;
-  annotation(Icon(graphics={
+  annotation(
+    Icon(
+      graphics={
         Rectangle(
           lineColor={128,128,128},
           extent={{-100,-100},{100,100}},
@@ -23,16 +25,19 @@ package Topology
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Documentation(revisions="<html>
+          lineThickness=0.5)}),
+    Documentation(
+      info="<html>
+  <p>
+    This package includes junctions that have to be used if the mass flow rate is set at one or both inlets.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    This package includes junctions that have to be used if the mass flow rate is set at one or both inlets.
-  </p>
 </html>"));
 end Topology;

@@ -4,7 +4,6 @@ model Fixed2
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{286,194},{306,214}})));
-
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=p_in,
@@ -615,6 +614,7 @@ model Fixed2
     n_fixed=n,
     eta_is_fixed=eta_is) annotation(Placement(transformation(extent={{190,20},{210,40}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow=P) annotation(Placement(transformation(extent={{-300,-10},{-280,10}})));
+
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation(Line(
       points={{-220,150},{-210,150}},
@@ -895,17 +895,18 @@ equation
   connect(v_out_n.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{-100,-98},{-100,-110},{-260,-110},{-260,0},{-279,0}}, color={255,170,85}));
   connect(v_out_eta_is.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{0,-98},{0,-110},{-260,-110},{-260,0},{-279,0}}, color={255,170,85}));
   connect(v_out_T_out.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{100,-98},{100,-110},{-260,-110},{-260,0},{-279,0}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-300,-180},{300,180}},
-        grid={2,2})),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-300,-180},{300,180}})),
+    Documentation(
+      info="<html>
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for fixed parameters/boundary conditions (unknown mass flow rate).
   </p>
@@ -913,5 +914,13 @@ equation
   <p>
     <code>pRatio = 0</code> and/or <code>m_flow = 0</code> is supported.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Fixed2;

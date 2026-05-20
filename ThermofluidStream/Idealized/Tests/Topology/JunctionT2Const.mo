@@ -4,7 +4,7 @@ model JunctionT2Const "Example - JunctionT2 with constant mass flow rate sources
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
@@ -111,6 +111,7 @@ model JunctionT2Const "Example - JunctionT2 with constant mass flow rate sources
     redeclare package Medium = Medium,
 
     m_flow_fixed=1.5) annotation(Placement(transformation(extent={{140,-80},{160,-60}})));
+
 equation
   connect(sourceB.outlet, flowResistanceB.inlet) annotation(Line(
       points={{-180,30},{-170,30}},
@@ -212,17 +213,18 @@ equation
       points={{70,-30},{120,-30},{120,-60}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}},
-        grid={2,2})),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-100},{200,100}})),
+    Documentation(
+      info="<html>
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a> test model for differentiable mass flow rates.  
   </p>
@@ -230,5 +232,13 @@ equation
   <p>
     The junction icon indicates whether the pressure balance is satisfied. Temporary violation may be accepted.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end JunctionT2Const;

@@ -4,7 +4,7 @@ model EnforcePressureDrop
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -80,6 +80,7 @@ model EnforcePressureDrop
     enforcePressureDrop=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{30,-80},{50,-60}})));
+
 equation
   connect(source.outlet, dpLoss.inlet) annotation(Line(
       points={{-80,70},{-70,70}},
@@ -142,7 +143,27 @@ equation
   connect(firstOrder.y, sink1.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,20},{-20,20},{-20,0},{-28,0}}, color={0,0,127}));
   connect(firstOrder.y, sink2.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,-52},{-20,-52},{-20,-70},{-26,-70}}, color={0,0,127}));
   connect(firstOrder.y, sink5.m_flow_prescribed) annotation(Line(points={{89,0},{80,0},{80,-70},{72,-70}}, color={0,0,127}));
-  annotation(Documentation(info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-120},{140,120}}),
+      graphics={
+        Text(
+          extent={{-94,110},{-34,92}},
+          textColor={28,108,200},
+          textString="enforcePressureDrop"),
+        Text(
+          extent={{2,110},{80,92}},
+          textColor={28,108,200},
+          textString="not enforcePressureDrop")}),
+    Documentation(
+      info="<html>
   <p>
     Checks <code>enforcePressureDrop</code>:
   </p>
@@ -164,18 +185,13 @@ equation
     For inverse calculations, it may be advantageous to set 
     <code>enforcePressureDrop = false</code>, as this simplifies the equation system.
   </p>
-</html>",                           revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>"), Diagram(coordinateSystem(extent={{-140,-120},{140,120}}), graphics={Text(
-          extent={{-94,110},{-34,92}},
-          textColor={28,108,200},
-          textString="enforcePressureDrop"), Text(
-          extent={{2,110},{80,92}},
-          textColor={28,108,200},
-          textString="not enforcePressureDrop")}));
+</html>"));
 end EnforcePressureDrop;

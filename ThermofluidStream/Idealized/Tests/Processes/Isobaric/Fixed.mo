@@ -320,6 +320,7 @@ model Fixed "Example - Isochoric process"
     p_inf=p_inf,
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{210,-50},{230,-70}})));
   Boundaries.Sink_m sink17(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{240,-70},{260,-50}})));
+
 equation
   connect(source.outlet, dT1.inlet) annotation(Line(
       points={{-400,40},{-390,40}},
@@ -475,16 +476,26 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(energyFlowSource1.E_flow_out, dT3c.Q_flow_in) annotation(Line(points={{41,-30},{220,-30},{220,-52}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-440,-100},{440,100}})),
-    Documentation(revisions="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-440,-100},{440,100}})),
+    Documentation(
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
+</html>",
+      info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters in the case of <code>dT not= 0</code>

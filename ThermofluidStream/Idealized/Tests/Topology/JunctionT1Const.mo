@@ -4,7 +4,7 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,72},{200,92}})));
@@ -111,6 +111,7 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
     redeclare package Medium = Medium,
 
     m_flow_fixed=1.5) annotation(Placement(transformation(extent={{150,-60},{170,-40}})));
+
 equation
   connect(sourceB.outlet, flowResistanceB.inlet) annotation(Line(
       points={{-170,30},{-160,30}},
@@ -212,16 +213,18 @@ equation
       points={{90,-30},{130,-30},{130,-40}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}})),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-100},{200,100}})),
+    Documentation(
+      info="<html>
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a> test model for differentiable mass flow rates. 
   </p>
@@ -229,5 +232,13 @@ equation
   <p>
     The junction icon indicates whether the pressure balance is satisfied. Temporary violation may be accepted.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end JunctionT1Const;

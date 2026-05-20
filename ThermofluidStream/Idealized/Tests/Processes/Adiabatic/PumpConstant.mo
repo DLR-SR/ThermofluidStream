@@ -4,9 +4,10 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
   parameter Real pRatio=2 "Pressure ratio (pRatio = p_out/p_in)";
+
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -210,6 +211,7 @@ model PumpConstant "Pump model with different adiabatic models (FullMedium, Inco
     P_nom(displayUnit="kW"),
     p_out(start=100000),
     enableFilter=false) annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
+
 equation
   connect(source.outlet,fullMedium. inlet) annotation(
     Line(
@@ -330,17 +332,26 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(isothermalReference3.P_in, gain2.y) annotation (Line(points={{90,-98},{90,-130},{-49,-130}},   color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false,
-        extent={{-100,-100},{100,100}},
-        grid={2,2})),                                            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-200},{160,200}})),
-    Documentation(info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-200},{160,200}})),
+    Documentation(
+      info="<html>
   <p>
     Modification of the 
     <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.Adiabatic.Pump\">Pump</a> example
     using a constant pressure ratio instead of a time-dependent one.<br>
     In this case, <code>considerInertance = false</code> is not required.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

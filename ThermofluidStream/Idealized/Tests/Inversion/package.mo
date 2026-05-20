@@ -2,14 +2,9 @@ within ThermofluidStream.Idealized.Tests;
 package Inversion
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This package contains examples of model inversion problems, i.e., determining the appropriate value of an input variable <code>X</code>
     such that a desired output <code>Y</code> is obtained.
@@ -47,5 +42,13 @@ package Inversion
     <a href=\"modelica://ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse\">PartialInverse</a>
     located in the <code>BaseClasses</code> subpackage, which defines the underlying mixing problem.
   </p>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Inversion;

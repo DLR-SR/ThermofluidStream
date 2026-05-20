@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Inversion;
 model PseudoInversion1 "Example - Pseudo-inversion using a feedback control loop"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed));
+
   Modelica.Blocks.Continuous.Integrator integrator(
     k=5,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
@@ -9,19 +10,28 @@ model PseudoInversion1 "Example - Pseudo-inversion using a feedback control loop
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint1(y(
       unit="K",
       displayUnit="degC") = 298.15) annotation(Placement(transformation(extent={{80,-30},{60,-10}})));
+
 equation
   connect(feedback.y, integrator.u) annotation(Line(points={{21,-20},{2,-20}}, color={0,0,127}));
   connect(integrator.y, massFlowRateB.m_flow_prescribed) annotation(
     Line(points={{-21,-20},{-30,-20},{-30,2}}, color={0,0,127}));
   connect(singleSensorSelect.value_out, feedback.u2) annotation(Line(points={{30,1.8},{30,-12}}, color={0,0,127}));
   connect(feedback.u1, temperatureSetpoint1.y) annotation(Line(points={{38,-20},{59,-20}}, color={0,0,127}));
+
   annotation(
-    Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2}),                     graphics={Text(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
+        Text(
           extent={{-80,-60},{80,-80}},
           textColor={28,108,200},
           textString="Find sourceB.m_flow such that T_mix = 25 °C")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example demonstrates the mixing of two fluid streams, A and B, assuming constant specific heat capacities <code>c_p</code>. 
     The mixing equation is:
@@ -89,7 +99,8 @@ m_flow_A * T_A + m_flow_B * T_B = (m_flow_A + m_flow_B) * T_mix;
     For design purposes, inversion is beneficial when only the quasi-stationary solution is sought.
     For dynamic simulations, especially with limitations, the model-based feed-forward approach can be very effective.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

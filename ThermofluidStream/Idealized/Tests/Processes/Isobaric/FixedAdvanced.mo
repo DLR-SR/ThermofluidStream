@@ -2,10 +2,10 @@ within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
 model FixedAdvanced "Example - Isochoric process"
   extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
+
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
+      choicesAllMatching=true);
   parameter SI.MassFlowRate m_flow=1   "Mass flow rate";
   parameter Medium.AbsolutePressure p=200000 "Pressure (inlet = outlet)";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
@@ -345,6 +345,7 @@ model FixedAdvanced "Example - Isochoric process"
     p_inf=p_inf,
     h_out_fixed=h_out) annotation(Placement(transformation(extent={{210,-50},{230,-70}})));
   Boundaries.Sink_m sink17(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{240,-70},{260,-50}})));
+
 equation
   connect(source.outlet, dT1.inlet) annotation(Line(
       points={{-400,40},{-390,40}},
@@ -500,8 +501,17 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(energyFlowSource1.E_flow_out, dT3c.Q_flow_in) annotation(Line(points={{41,-30},{220,-30},{220,-52}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-440,-100},{440,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-440,-100},{440,100}}),
+      graphics={
         Polygon(
           points={{-380,-100},{-340,-100},{-340,-80},{-360,-80},{-360,-40},{-380,-40},{-380,-100}},
           fillColor= {162,29,33},
@@ -513,14 +523,8 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by parameters in the case of <code>dT = 0</code>.
@@ -529,5 +533,13 @@ see User's Guide",
   <p>
    Calculating the mass flow rate <code>m_flow := Q_flow/q</code> for <code>q = 0</code> is only supported for <code>considerInertance = false</code>.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end FixedAdvanced;

@@ -4,7 +4,7 @@ model compressibilityFactor "Test model to check compressibility factor"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   parameter Real Tr = 1.1 "Reduced temperature";
   constant Medium.Temperature T_crit = 647.096 "Critical temperature";
   final parameter Medium.Temperature T=Tr*T_crit "Temperature";
@@ -12,6 +12,7 @@ model compressibilityFactor "Test model to check compressibility factor"
   constant SI.AbsolutePressure p_min = 1e5 "Minimum pressure (for T > T_crit)";
   final parameter Medium.AbsolutePressure p_sat = if Tr < 1 then Medium.saturationPressure(T) else p_min "Saturation pressure";
   final parameter Real pr_sat = p_sat/p_crit "Reduced saturation pressure";
+
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     pressureFromInput=true,
@@ -42,6 +43,7 @@ model compressibilityFactor "Test model to check compressibility factor"
     duration=1,
     offset=pr_sat) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
   Modelica.Blocks.Math.Gain pressure(k=p_crit) annotation(Placement(transformation(extent={{-50,-10},{-30,10}})));
+
 equation
   connect(source.outlet, idealGas.inlet) annotation(Line(
       points={{0,20},{10,20}},
@@ -63,22 +65,32 @@ equation
   connect(pressure.y, source.p0_var) annotation(Line(points={{-29,0},{-20.5,0},{-20.5,26},{-12,26}},
                                                                                   color={0,0,127}));
   connect(pressure.y, source1.p0_var) annotation(Line(points={{-29,0},{-20.5,0},{-20.5,-14},{-12,-14}},            color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2}),
-        graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={Text(
           extent={{-98,282},{102,262}},
           textColor={28,108,200},
           textString="Compare approach using entropy vs approach 
-assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect gas (p*v = R*T, cp = const). Check different media, e.g. Argon and CO2"), Text(
+assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect gas (p*v = R*T, cp = const). Check different media, e.g. Argon and CO2"),
+        Text(
           extent={{-26,248},{32,228}},
           textColor={0,140,72},
           textString="fine")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Applies a ramp in reduced pressure for constant reduced temperature to check the compressibility factors <code>Z_in, Z_out</code> and the corresponding warning
     in <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas\">AdiabaticModels.BaseClasses.PartialIdealGas</a>. 
     The inlet and outlet states are equal. 
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

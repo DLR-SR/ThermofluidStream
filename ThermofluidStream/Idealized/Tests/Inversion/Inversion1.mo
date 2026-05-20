@@ -4,20 +4,32 @@ model Inversion1 "Example - Inversion with non-linear equations solver and h as 
     massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed),
     dropOfCommons(considerInertance=false));
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
+
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(
       unit="K",
       displayUnit="degC") = 298.15) annotation(
     Placement(transformation(extent={{74,-40},{54,-20}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{20,-42},{-20,-18}})));
+
 equation
   connect(temperatureSetpoint.y, inverseBlockConstraints.u1) annotation(Line(points={{53,-30},{22,-30}},   color={0,0,127}));
   connect(inverseBlockConstraints.y2, massFlowRateB.m_flow_prescribed) annotation(Line(points={{-17,-30},{-12,-30},{-12,-8},{-30,
           -8},{-30,2}},                                                                                                             color={0,0,127}));
   connect(singleSensorSelect.value_out, inverseBlockConstraints.u2) annotation(Line(points={{30,1.8},{30,-10},{4,-10},{
           4,-30},{16,-30}},                                                                                                                  color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{100,140}}),
-        graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-120,-100},{100,140}}),
+      graphics={
+        Text(
           extent={{-84,-52},{76,-72}},
           textColor={28,108,200},
           textString="Find massFlowRateB such that T_mix = 25 °C"),
@@ -32,7 +44,8 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Mixing of two fluid streams, A and B. Assuming constant specific heat capacities <code>c_p</code>, the mixing equation is:
   </p>
@@ -60,7 +73,8 @@ m_flow_B = - m_flow_A * (T_B - T_mix) / (T_A - T_mix)
     Dymola uses the mass flow rate
     <code>junction.m_flowA</code> and the specific enthalpy of the mixture <code>junction.h_mix</code> as the iteration variable. Their default start values might not be appropriate, which can cause the simulation to fail.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

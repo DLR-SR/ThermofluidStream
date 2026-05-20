@@ -1,17 +1,17 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
 model Setpoints "Example - mass flow loop breaker"
   extends Modelica.Icons.Example;
-  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
+
+    replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
+
+  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
 
     p_out_fixed=100000,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-210,150},{-230,170}})));
-
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{160,60},{180,80}})));
 
@@ -120,6 +120,7 @@ model Setpoints "Example - mass flow loop breaker"
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-20,130},{-40,150}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-80,-50},{-100,-30}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{160,-50},{140,-30}})));
+
 equation
   connect(p_pulse.y, loopBreaker5.p_out_prescribed) annotation(Line(points={{-79,140},{-70,140},{-70,148}},
                                                                                                  color={0,0,127}));
@@ -173,9 +174,18 @@ equation
       thickness=0.5));
   connect(loopBreaker10.m_flow_in_prescribed, firstOrder2.y) annotation(Line(points={{130,-32},{130,-40},{139,-40}}, color={0,0,127}));
   connect(firstOrder2.u, m_flow_pulse5.y) annotation(Line(points={{162,-40},{179,-40}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-260,-200},{260,200}})),
-    Documentation(info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-260,-200},{260,200}})),
+    Documentation(
+      info="<html>
   <p>
     This example investigates the behavior of <code>LoopBreaker_m</code> for different inputs of mass flow rate, pressure, and specific enthalpy/temperature.
   </p>
@@ -190,7 +200,8 @@ equation
     To obtain a physically meaningful system, the user must ensure that the mass flow rate and thermodynamic state at inlet and outlet are consistent. 
     For numerical robustness, “equal” should be interpreted as “within a specified tolerance.”
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -4,8 +4,7 @@ model Prescribed "Example - Isochoric process"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
+      choicesAllMatching=true);
   SI.MassFlowRate m_flow = firstOrder.y "Mass flow rate";
   Medium.AbsolutePressure p_in = inletPressure.y "Inlet pressure";
   Medium.Temperature T_in = inletTemperature.y "Inlet temperature";
@@ -168,6 +167,7 @@ model Prescribed "Example - Isochoric process"
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{68,-80},{88,-60}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink9(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{98,-80},{118,-60}})));
+
 equation
   connect(source.outlet, dT1c.inlet) annotation (Line(
       points={{-72,130},{-62,130}},
@@ -296,22 +296,27 @@ equation
   connect(T_out2.Q_flow_in, energyFlowSource.E_flow_out) annotation (Line(points={{78,-78},{78,-110},{-121,-110}}, color={255,170,85}));
   connect(dT3.Q_flow_in, energyFlowSource.E_flow_out) annotation (Line(points={{78,22},{78,12},{-108,12},{-108,-110},{-121,-110}}, color={255,170,85}));
   connect(dT2.Q_flow_in, energyFlowSource.E_flow_out) annotation (Line(points={{78,72},{78,54},{-108,54},{-108,-110},{-121,-110}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-180,-180},{180,180}}), graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-180,-180},{180,180}}),
+      graphics={
+        Text(
           extent={{-140,180},{-40,160}},
           textColor={28,108,200},
-          textString="Closed cycle (periodic)"), Text(
+          textString="Closed cycle (periodic)"),
+        Text(
           extent={{40,180},{140,160}},
           textColor={28,108,200},
           textString="Open (steady-flow)")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates several variants of using the
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isochoric\">Isochoric</a>
@@ -322,5 +327,13 @@ equation
     If the heat flow rate is prescribed as an input, the solver may fail if conditions such as <code>dT = 0</code>, <code>m_flow = 0</code> and/or
     <code>P = 0</code> appear for extended periods of time.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Prescribed;

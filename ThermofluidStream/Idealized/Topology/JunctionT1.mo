@@ -1,11 +1,12 @@
 within ThermofluidStream.Idealized.Topology;
 model JunctionT1 "Junction T1, inlet A or B is free - Underdetermined (1 equation)"
+  extends BaseClasses.Junction(displayInstanceName=false);
 
-  extends BaseClasses.Junction(displayParameters=true, displayInstanceName=false);
   ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=-90, origin={0,100})));
   ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={0,-100})));
+
 equation
 
   stateA = inletA.state;
@@ -15,11 +16,13 @@ equation
   m_flowA = inletA.m_flow;
   m_flowB = inletB.m_flow;
 
-  annotation(defaultComponentName = "junction",
-  Icon(graphics={
-       Text(visible=displayInstanceName,
+  annotation(
+    defaultComponentName = "junction",
+    Icon(
+      graphics={
+        Text(
           extent={{-150,90},{150,60}},
-          textString="%name",
+          textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor,
           rotation=90,
           origin={-14,0}),
@@ -39,42 +42,36 @@ equation
           extent={{20,-80},{60,-120}},
           textColor={175,175,175},
           textString="B"),
-        Text(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
+        Text(
           extent={{0,80},{100,40}},
           textColor={0,0,0},
-          textString="free"),
-        Text(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
+          textString = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A then "free" else ""),
+        Text(
           extent={{0,-40},{100,-80}},
           textColor={0,0,0},
-          textString="free"),
-        Ellipse(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
+          textString = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B then "free" else ""),
+        Ellipse(
           extent={{-48,78},{-12,42}},
           pattern=LinePattern.None,
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid),
-        Rectangle(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A,
+          fillPattern = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A then FillPattern.Solid else FillPattern.None),
+        Rectangle(
           extent={{-46,62},{-14,58}},
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid,
+          fillPattern = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
-        Ellipse(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
+        Ellipse(
           extent={{-48,-42},{-12,-78}},
           pattern=LinePattern.None,
           fillColor={170,213,255},
-          fillPattern=FillPattern.Solid),
-        Rectangle(visible = free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B,
+          fillPattern = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B then FillPattern.Solid else FillPattern.None),
+        Rectangle(
           extent={{-46,-58},{-14,-62}},
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid,
+          fillPattern = if free == ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None)}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Model of an ideal junction that should be used when the mass flow rate is specified at one or both inlets. 
   </p>
@@ -83,5 +80,13 @@ equation
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is not underdetermined.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end JunctionT1;

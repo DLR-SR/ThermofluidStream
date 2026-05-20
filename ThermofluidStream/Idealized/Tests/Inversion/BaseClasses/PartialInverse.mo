@@ -4,7 +4,7 @@ model PartialInverse "Base model defining the mixing problem"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -36,6 +36,7 @@ model PartialInverse "Base model defining the mixing problem"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={30,10})));
+
 equation
   connect(junction.outlet, sink.inlet) annotation(
     Line(
@@ -62,17 +63,20 @@ equation
       points={{30,20},{30,50},{10,50}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)),
-    Documentation(revisions="<html>
+
+  annotation(
+    Documentation(
+      info="<html>
+  <p>
+    This model defines the mixing problem that is used to test the two inversion approaches.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    This model defines the mixing problem that is used to test the two inversion approaches.
-  </p>
 </html>"));
 end PartialInverse;

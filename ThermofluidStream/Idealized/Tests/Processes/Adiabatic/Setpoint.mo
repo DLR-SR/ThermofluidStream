@@ -3,7 +3,7 @@ model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -259,6 +259,7 @@ model Setpoint
                                                                                         annotation(Placement(transformation(extent={{220,-40},{240,-20}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource11(E_flow(displayUnit="kW") = 1000)
                                                                                         annotation(Placement(transformation(extent={{220,-120},{240,-100}})));
+
 equation
   connect(source.outlet, dp.inlet) annotation(Line(
       points={{-270,80},{-260,80}},
@@ -427,17 +428,28 @@ equation
   connect(energyFlowSource9.E_flow_out, dp5.P_in) annotation (Line(points={{241,50},{260,50},{260,72}}, color={255,170,85}));
   connect(energyFlowSource10.E_flow_out, pRatio5.P_in) annotation (Line(points={{241,-30},{260,-30},{260,-8}}, color={255,170,85}));
   connect(energyFlowSource11.E_flow_out, p_out5.P_in) annotation (Line(points={{241,-110},{260,-110},{260,-88}}, color={255,170,85}));
-  annotation(Diagram(coordinateSystem(extent={{-320,-140},{320,140}})),
-                                             Documentation(revisions="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-320,-140},{320,140}})),
+    Documentation(
+      info="<html>
+  <p>
+    Tests hiding the parameters (<code>dp_fixed</code>, <code>pr_fixed</code>, <code>p_out_fixed</code>) in the variable browser.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Tests hiding the parameters (<code>dp_fixed</code>, <code>pr_fixed</code>, <code>p_out_fixed</code>) in the variable browser.
-  </p>
 </html>"));
 end Setpoint;

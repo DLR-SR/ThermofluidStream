@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Tests.Processes;
 model PseudoSource "Example - PseudoSource"
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir   constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,140},{160,160}})));
@@ -153,6 +153,7 @@ model PseudoSource "Example - PseudoSource"
     XiSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     showMassFractions=true) annotation(Placement(transformation(extent={{-10,-130},{10,-110}})));
   ThermofluidStream.Boundaries.Sink_m sink6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{30,-130},{50,-110}})));
+
 equation
   connect(firstOrder.u, massFlowRate.y) annotation(Line(points={{82,120},{89,120}}, color={0,0,127}));
   connect(source.outlet, pseudoSource.inlet) annotation(Line(
@@ -248,19 +249,23 @@ equation
   connect(pseudoSource6.Xi_out_prescribed[1], massFractions1.y) annotation(Line(points={{-2,-132},{-2,-148},{80,-148},{80,-100},{99,-100}},
                                                                                                                                     color={0,0,127}));
   connect(specificEnthalpy.y, pseudoSource4.h_out_prescribed) annotation(Line(points={{99,-60},{2,-60},{2,-52}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-160},{160,160}}), graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-160},{160,160}}),
+      graphics={
+        Text(
           extent={{-160,160},{-100,140}},
           textColor={28,108,200},
           textString="Moist Air (nXi = 1)")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PseudoSource\">PseudoSource</a> model 
@@ -269,5 +274,13 @@ equation
   <p>
     The outlet of the pseudoSource is independent of its inlet. Suitable to integrate e.g. FMUs.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PseudoSource;

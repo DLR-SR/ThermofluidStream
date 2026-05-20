@@ -5,8 +5,9 @@ model Pump "Pump model with different adiabatic models (FullMedium, Incompressib
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
+
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -218,6 +219,7 @@ model Pump "Pump model with different adiabatic models (FullMedium, Incompressib
     P_nom(displayUnit="kW"),
     p_out(start=100000),
     enableFilter=false) annotation (Placement(transformation(extent={{110,-100},{130,-80}})));
+
 equation
   connect(source.outlet,fullMedium. inlet) annotation(
     Line(
@@ -340,10 +342,17 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(isothermalReference3.P_in, gain2.y) annotation (Line(points={{120,-98},{120,-130},{-19,-130}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false,
-        extent={{-100,-100},{100,100}},
-        grid={2,2})),                                            Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-200},{180,200}}),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-180,-200},{180,200}}),
+      graphics={
         Text(
           extent={{74,128},{154,108}},
           textColor={238,46,47},
@@ -355,7 +364,8 @@ see User's Guide",
           fillColor={162,29,33},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Forward and inverse calculations of different adiabatic models (<code>FullMedium</code>, <code>IncompressibleFluid</code>, <code>IsothermalReference</code>) for a pump are demonstrated:
   </p>
@@ -379,7 +389,8 @@ see User's Guide",
   <p>
     The calculation <code>m_flow := P/dh</code> fails for <code>dh = 0</code>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

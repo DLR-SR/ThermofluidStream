@@ -5,7 +5,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
@@ -123,6 +123,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={160,30})));
+
 equation
   connect(source.outlet, splitter1.inlet) annotation(Line(
       points={{-180,80},{-170,80}},
@@ -226,8 +227,17 @@ equation
   connect(temperatureRamp.y, isobaric6.outletSpec_prescribed) annotation(Line(points={{-99,-110},{-90,-110},{-90,-92}}, color={0,0,127}));
   connect(energyFlowSource.E_flow_out, isobaric7.Q_flow_in) annotation(Line(points={{-50,-79},{-50,-68}}, color={255,170,85}));
   connect(energyFlowSource1.E_flow_out, isobaric4.Q_flow_in) annotation(Line(points={{160,41},{160,52}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-140},{200,140}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-140},{200,140}}),
+      graphics={
         Polygon(
           points={{0,-60},{40,-60},{40,-40},{20,-40},{20,0},{0,0},{0,-60}},
           fillColor= {162,29,33},
@@ -239,16 +249,18 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(revisions="<html>
+    Documentation(
+      info="<html>
+  <p>
+    <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a> test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a> test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
-  </p>
 </html>"));
 end JunctionT1;

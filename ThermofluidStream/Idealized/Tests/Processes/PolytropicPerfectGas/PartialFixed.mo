@@ -33,16 +33,19 @@ model PartialFixed "Parameter definition"
   final parameter SI.SpecificEnthalpy w_t = cp*(T_out - T_in) "Fixed specific technical work";
   final parameter SI.Power P = m_flow*w_t "Fixed power";
 
-  annotation(Documentation(revisions="<html>
+  annotation(
+    Documentation(
+      info="<html>
+  <p>
+    Base class.
+  </p>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Base class.
-  </p>
 </html>"));
 end PartialFixed;

@@ -1,17 +1,16 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
 model Setpoints "Example - Loop breaker"
   extends Modelica.Icons.Example;
-  .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
-    redeclare package Medium = Medium,
 
+    replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
+
+  ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
+    redeclare package Medium = Medium,
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-160,140},{-180,160}})));
-
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{240,180},{260,200}})));
 
@@ -121,6 +120,7 @@ model Setpoints "Example - Loop breaker"
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-50,110},{-30,130}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-100,-60},{-80,-40}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{140,-60},{160,-40}})));
+
 equation
   connect(p_pulse.y, loopBreaker5.p_out_prescribed) annotation(Line(points={{-19,80},{10,80},{10,138}},color={0,0,127}));
   connect(p_ramp.y, loopBreaker6.p_out_prescribed) annotation(Line(points={{103,78},{112,78},{112,138}},
@@ -216,9 +216,18 @@ equation
   connect(firstOrder1.y, massFlowRateSource8.m_flow_prescribed) annotation(Line(points={{-79,-50},{-70,-50},{-70,-28}}, color={0,0,127}));
   connect(m_flow_pulse5.y, firstOrder2.u) annotation(Line(points={{133,-50},{138,-50}}, color={0,0,127}));
   connect(firstOrder2.y, massFlowRateSource10.m_flow_prescribed) annotation(Line(points={{161,-50},{170,-50},{170,-28}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-260,-200},{260,200}})),
-    Documentation(info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-260,-200},{260,200}})),
+    Documentation(
+      info="<html>
   <p>
     Tests different inputs of mass flow rate, pressure, and specific enthalpy/temperature.
   </p>
@@ -233,7 +242,8 @@ equation
     To obtain a physically meaningful system, the user must ensure that the mass flow rate and thermodynamic state at inlet and outlet are consistent. 
     For numerical robustness, “equal” should be interpreted as “within a specified tolerance.”
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

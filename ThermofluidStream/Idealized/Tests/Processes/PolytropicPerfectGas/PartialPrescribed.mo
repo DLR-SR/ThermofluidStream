@@ -62,8 +62,7 @@ model PartialPrescribed
   Modelica.Blocks.Sources.RealExpression outletSpecificVolume(y=v_out) annotation(Placement(transformation(extent={{-340,-50},{-320,-30}})));
   Modelica.Blocks.Sources.RealExpression polytropicEfficiency(y=eta_pol) annotation(Placement(transformation(extent={{-340,-70},{-320,-50}})));
   Modelica.Blocks.Sources.RealExpression polytropicExponent(y=n) annotation(Placement(transformation(extent={{-340,-90},{-320,-70}})));
-  Modelica.Blocks.Continuous.FirstOrder
-                                   massFlowRate(
+  Modelica.Blocks.Continuous.FirstOrder massFlowRate(
     k=1,
     T=0.01,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
@@ -76,30 +75,43 @@ model PartialPrescribed
     period=1,
     offset=1,
     startTime=0.05) annotation(Placement(transformation(extent={{-380,-160},{-360,-140}})));
+
 equation
 
   connect(energyFlowSource.E_flow, power.y) annotation(Line(points={{302,0},{319,0}},     color={0,0,127}));
   connect(massFlowRate1.y, massFlowRate.u) annotation(Line(points={{-359,-150},{-342,-150}}, color={0,0,127}));
-  annotation(experiment(StopTime=1.5), Diagram(coordinateSystem(extent={{-400,-200},{340,220}}), graphics={
-                                                                                                Text(
+
+  annotation(
+    Diagram(
+      coordinateSystem(
+        extent={{-400,-200},{340,220}}),
+      graphics={
+        Text(
           extent={{-378,196},{-326,182}},
           textColor={238,46,47},
           textString="Independent inputs"),
-                               Rectangle(extent={{-356,178},{-324,102}},lineColor={238,46,47}),
-                               Rectangle(extent={{-344,82},{-316,50}},  lineColor={238,46,47}),
-                               Rectangle(extent={{-348,-92},{-312,-126}},
-                                                                        lineColor={238,46,47}),
-                               Rectangle(extent={{-386,-132},{-354,-168}},
-                                                                        lineColor={238,46,47})}),
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, grid={2,2})),
-    Documentation(revisions="<html>
+        Rectangle(
+          extent={{-356,178},{-324,102}},
+          lineColor={238,46,47}),
+        Rectangle(
+          extent={{-344,82},{-316,50}},
+          lineColor={238,46,47}),
+        Rectangle(
+          extent={{-348,-92},{-312,-126}},
+          lineColor={238,46,47}),
+        Rectangle(
+          extent={{-386,-132},{-354,-168}},
+          lineColor={238,46,47})}),
+    Documentation(
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
+</html>",
+      info="<html>
   <p>
     Base class.
   </p>

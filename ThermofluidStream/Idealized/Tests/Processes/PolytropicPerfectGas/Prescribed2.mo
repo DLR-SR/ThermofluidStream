@@ -399,6 +399,7 @@ model Prescribed2
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
     processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{200,30},{220,50}})));
+
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation(Line(
       points={{-250,190},{-240,190}},
@@ -803,23 +804,15 @@ equation
   connect(v_out_eta_is.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{-10,-118},{-10,-142},{260,-142},{260,0},{279,0}}, color={255,170,85}));
   connect(v_out_T_out.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{100,-118},{100,-142},{260,-142},{260,0},{279,0}}, color={255,170,85}));
   connect(v_out_p_out.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{210,-118},{210,-142},{260,-142},{260,0},{279,0}}, color={255,170,85}));
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
-  <p>
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (unknown mass flow rate).
-  </p>
 
-  <p>
-    <code>pRatio = 1</code> and/or <code>m_flow = 0</code> is supported.
-  </p>
-</html>
-"),        Diagram(graphics={
+  annotation(
+    experiment(
+      StopTime=1.5,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Polygon(
           points={{-400,160},{-360,160},{-360,180},{-380,180},{-380,220},{-400,220},{-400,160}},
           fillColor= {162,29,33},
@@ -830,5 +823,23 @@ equation
           textColor={238,46,47},
           textString="requires considerInertance = false
 see User's Guide",
-          horizontalAlignment=TextAlignment.Left)}));
+          horizontalAlignment=TextAlignment.Left)}),
+    Documentation(
+      info="<html>
+  <p>
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (unknown mass flow rate).
+  </p>
+
+  <p>
+    <code>pRatio = 1</code> and/or <code>m_flow = 0</code> is supported.
+  </p>
+</html>
+",  revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end Prescribed2;

@@ -4,7 +4,7 @@ model Prescribed2 "Example - Isobaric cycle process"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   SI.MassFlowRate m_flow = massFlowRate.y "Mass flow rate";
   Medium.AbsolutePressure p = inletPressure.y "Pressure (inlet = outlet)";
   Medium.Temperature T_in = inletTemperature.y "Inlet temperature";
@@ -160,6 +160,7 @@ model Prescribed2 "Example - Isobaric cycle process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_inf=p_inf) annotation(Placement(transformation(extent={{134,-60},{154,-80}})));
   ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{164,-80},{184,-60}})));
+
 equation
   connect(source.outlet, dT1.inlet) annotation(Line(
       points={{-170,10},{-160,10}},
@@ -259,20 +260,26 @@ equation
   connect(source6.T0_var, inletTemperature.y) annotation(Line(points={{12,-70},{0,-70},{0,30},{-200,30},{-200,10},{-219,10}}, color={0,0,127}));
   connect(source7.p0_var, inletPressure.y) annotation(Line(points={{112,-64},{104,-64},{104,50},{-219,50}}, color={0,0,127}));
   connect(source7.T0_var, inletTemperature.y) annotation(Line(points={{112,-70},{100,-70},{100,30},{-200,30},{-200,10},{-219,10}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-260,-100},{260,100}},
-        grid={2,2}), graphics={Rectangle(extent={{-246,70},{-212,-88}}, lineColor={238,46,47}), Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-260,-100},{260,100}}),
+      graphics={
+        Rectangle(
+          extent={{-246,70},{-212,-88}},
+          lineColor={238,46,47}),
+        Text(
           extent={{-252,90},{-200,76}},
           textColor={238,46,47},
           textString="Independent inputs")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal = Input</code>) defined by discontinuous inputs.
@@ -282,5 +289,13 @@ equation
     Calculating the mass flow rate <code>m_flow := Q_flow/q</code>, may cause the simulation to fail at <code>q = 0</code>, which occurs for all models in this example.<br>
     This does however not happen in Dymola 2026x Refresh 1.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Prescribed2;

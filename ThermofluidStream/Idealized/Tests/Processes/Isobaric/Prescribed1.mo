@@ -4,7 +4,7 @@ model Prescribed1 "Example - Isobaric cycle process"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   SI.MassFlowRate m_flow = massFlowRate.y "Mass flow rate";
   Medium.AbsolutePressure p = inletPressure.y "Pressure (inlet = outlet)";
   Medium.Temperature T_in = inletTemperature.y "Inlet temperature";
@@ -177,6 +177,7 @@ model Prescribed1 "Example - Isobaric cycle process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     p_inf=p_inf) annotation(Placement(transformation(extent={{130,20},{150,0}})));
   Boundaries.Sink_m sink9(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{160,0},{180,20}})));
+
 equation
   connect(source.outlet,dT1. inlet) annotation(Line(
       points={{-210,-30},{-200,-30}},
@@ -301,24 +302,37 @@ equation
   connect(sink9.m_flow_prescribed, massFlowRate.y) annotation(Line(points={{172,10},{202,10},{202,-10},{-259,-10}}, color={0,0,127}));
   connect(source9.p0_var, inletPressure.y) annotation(Line(points={{108,16},{74,16},{74,70},{-259,70}}, color={0,0,127}));
   connect(source9.T0_var, inletTemperature.y) annotation(Line(points={{108,10},{70,10},{70,30},{-259,30}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-300,-120},{300,120}},
-        grid={2,2}), graphics={Rectangle(extent={{-286,88},{-252,-70}}, lineColor={238,46,47}), Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-300,-120},{300,120}}),
+      graphics={
+        Rectangle(
+          extent={{-286,88},{-252,-70}},
+          lineColor={238,46,47}),
+        Text(
           extent={{-292,104},{-240,90}},
           textColor={238,46,47},
           textString="Independent inputs")}),
-    Documentation(revisions="<html>
+    Documentation(
+      info="<html>
+  <p>
+    This example illustrates several variants of using the 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.IsobaricCycle\">IsobaricCycle</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal not= Input</code>) defined by discontinuous inputs.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    This example illustrates several variants of using the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.IsobaricCycle\">IsobaricCycle</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal not= Input</code>) defined by discontinuous inputs.
-  </p>
-  
 </html>"));
 end Prescribed1;

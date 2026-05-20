@@ -3,8 +3,7 @@ model PressureVessel
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
-
+      choicesAllMatching=true);
     parameter SI.Radius r = 1 "Radius (sphere)";
     final parameter SI.Area A = 4*r^2*Modelica.Constants.pi "Surface area";
     final parameter SI.Volume V = 4/3*r^3*Modelica.Constants.pi "Volume";
@@ -32,6 +31,7 @@ model PressureVessel
   ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,-10},{0,10}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=293.15) annotation(Placement(transformation(extent={{80,-30},{60,-10}})));
   Modelica.Blocks.Sources.RealExpression tankPressure(y=pressureTank.medium.p) annotation(Placement(transformation(extent={{-80,-40},{-60,-20}})));
+
 equation
   connect(source.outlet, compressor.inlet) annotation(Line(
       points={{-80,0},{-70,0}},
@@ -48,11 +48,20 @@ equation
 
   connect(fixedTemperature.port, pressureTank.heatPort) annotation(Line(points={{60,-20},{30,-20},{30,-8}}, color={191,0,0}));
   connect(tankPressure.y, compressor.outletSpec_prescribed) annotation(Line(points={{-59,-30},{-50,-30},{-50,-12}}, color={0,0,127}));
-  annotation(experiment(StopTime=100), Documentation(info="<html> 
+
+  annotation(
+    experiment(
+      StopTime=100,
+      Interval=0.1,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Documentation(
+      info="<html> 
   <p> 
     This model simulates a pressure tank that is continuously filled.
   </p> 
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

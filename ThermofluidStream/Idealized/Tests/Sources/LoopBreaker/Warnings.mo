@@ -1,21 +1,24 @@
 within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
 model Warnings "Example - Loop breaker"
   extends Modelica.Icons.Example;
-  .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
+
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
+  parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1 "Absolute tolerance for pressure p_in, p_out";
+  parameter SI.SpecificEnthalpy tol_h=500 "Absolute tolerance for specific enthalpy h_in, h_out";
+  parameter SI.MassFlowRate tol_m_flow=1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out";
+    parameter SI.MassFlowRate tol_Xi=1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out";
+
+  ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     tol_p=tol_p,
     tol_h=tol_h,
     tol_m_flow=tol_m_flow,
     tol_Xi=tol_Xi,
-
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{80,20},{100,40}})));
-
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir
-    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,120},{140,140}})));
 
@@ -43,9 +46,6 @@ model Warnings "Example - Loop breaker"
   Modelica.Blocks.Math.Gain gain(k=-tol_p) annotation(Placement(transformation(extent={{-100,-70},{-80,-50}})));
   Modelica.Blocks.Math.Gain gain1(k=tol_h) annotation(Placement(transformation(extent={{-100,-100},{-80,-80}})));
   Modelica.Blocks.Math.Gain gain2(k=tol_Xi) annotation(Placement(transformation(extent={{-100,-130},{-80,-110}})));
-  parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1 "Absolute tolerance for pressure p_in, p_out";
-  parameter SI.SpecificEnthalpy tol_h=500 "Absolute tolerance for specific enthalpy h_in, h_out";
-  parameter SI.MassFlowRate tol_m_flow=1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out";
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,20},{40,40}})));
   Modelica.Blocks.Math.Gain gain3(k=tol_m_flow) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep1(
@@ -63,7 +63,7 @@ model Warnings "Example - Loop breaker"
     wMax=10,
     startTime=0.4,
     duration=1) annotation(Placement(transformation(extent={{-140,-130},{-120,-110}})));
-  parameter SI.MassFlowRate tol_Xi=1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out";
+
 equation
   connect(loopBreaker.outlet, massFlowRateSource.inlet) annotation(Line(
       points={{100,30},{110,30}},
@@ -105,14 +105,23 @@ equation
   connect(gain3.y, massFlowRateSource1.m_flow_prescribed) annotation(Line(points={{-79,-30},{-60,-30},{-60,-8}}, color={0,0,127}));
   connect(gain1.y, isobaric.outletSpec_prescribed) annotation(Line(points={{-79,-90},{10,-90},{10,18}}, color={0,0,127}));
   connect(gain2.y, composition.outletSpec_prescribed[1]) annotation(Line(points={{-79,-120},{40,-120},{40,18}}, color={0,0,127}));
-  annotation(experiment(StopTime=2), Diagram(coordinateSystem(preserveAspectRatio=false,
-        grid={2,2},
+
+  annotation(
+    experiment(
+      StopTime=2,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
         extent={{-140,-140},{140,140}})),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Tests <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

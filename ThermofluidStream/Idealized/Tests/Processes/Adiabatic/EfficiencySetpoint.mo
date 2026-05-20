@@ -3,7 +3,7 @@ model EfficiencySetpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -27,6 +27,7 @@ model EfficiencySetpoint
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation(Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=0.7) annotation(Placement(transformation(extent={{0,-40},{20,-20}})));
+
 equation
   connect(source.outlet,compressor. inlet) annotation(
     Line(
@@ -47,16 +48,20 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(realExpression.y, compressor1.eta_prescribed) annotation(Line(points={{21,-30},{56,-30},{56,-12}}, color={0,0,127}));
-  annotation(                   Documentation(revisions="<html>
+
+  annotation(
+    Documentation(
+      info="<html>
+  <p>
+    Tests hiding the efficiency (<code>eta_fixed</code>) in vaiable browser.
+  </p>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Tests hiding the efficiency (<code>eta_fixed</code>) in vaiable browser.
-  </p>
 </html>"));
 end EfficiencySetpoint;

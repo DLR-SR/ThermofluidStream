@@ -4,7 +4,6 @@ model FixedCantBeBalanced "Example - Isochoric process"
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{160,120},{180,140}})));
-
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_T_out(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
@@ -36,17 +35,19 @@ model FixedCantBeBalanced "Example - Isochoric process"
     eta_pol_fixed=eta_pol,
     n_fixed=n,
     eta_is_fixed=eta_is) annotation(Placement(transformation(extent={{-10,-60},{10,-40}})));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2})),
-    Documentation(revisions="<html>
+  annotation(
+    Documentation(
+      info="<html>
+  <p>
+    Versions of <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> that can not be balanced.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Versions of <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> that can not be balanced.
-  </p>
 </html>"));
 end FixedCantBeBalanced;

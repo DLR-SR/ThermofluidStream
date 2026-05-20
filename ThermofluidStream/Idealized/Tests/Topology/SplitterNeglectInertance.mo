@@ -5,7 +5,7 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{100,-120},{120,-100}})));
@@ -97,6 +97,7 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{30,-70},{10,-50}})));
+
 equation
   connect(source3.outlet, splitter4.inlet) annotation(Line(
       points={{-100,70},{-90,70}},
@@ -179,8 +180,17 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(massFlowRateRampC4.y,massFlowRateC4. m_flow_prescribed) annotation(Line(points={{9,-60},{-40,-60},{-40,-72}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-140},{160,120}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-140},{160,120}}),
+      graphics={
         Polygon(
           points={{50,-80},{90,-80},{90,-60},{70,-60},{70,-20},{50,-20},{50,-80}},
           fillColor= {162,29,33},
@@ -192,16 +202,18 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(revisions="<html>
+    Documentation(
+      info="<html>
+  <p>
+    Splitter test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Splitter test model for non differentiable mass flow rates, which requires <code>considerInertance = false</code>.
-  </p>
 </html>"));
 end SplitterNeglectInertance;

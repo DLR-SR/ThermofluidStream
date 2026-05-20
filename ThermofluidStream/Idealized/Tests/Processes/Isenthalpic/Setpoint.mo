@@ -3,7 +3,7 @@ model Setpoint
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -66,6 +66,7 @@ model Setpoint
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{40,-90},{60,-70}})));
   Modelica.Blocks.Sources.RealExpression realExpression4(y=0.8e5)
                                                               annotation(Placement(transformation(extent={{30,-120},{50,-100}})));
+
 equation
   connect(source.outlet, dpLoss.inlet) annotation(Line(
       points={{-70,80},{-60,80}},
@@ -118,17 +119,28 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(realExpression4.y, p_out1.outletSpec_prescribed) annotation(Line(points={{51,-110},{60,-110},{60,-92}}, color={0,0,127}));
-  annotation(Diagram(coordinateSystem(extent={{-100,-140},{100,140}})),
-                                             Documentation(revisions="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-100,-140},{100,140}})),
+    Documentation(
+      info="<html>
+  <p>
+    Tests hiding the parameters (<code>dpLoss_fixed</code>, <code>prLoss_fixed</code>, etc.) in the variable browser.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Tests hiding the parameters (<code>dpLoss_fixed</code>, <code>prLoss_fixed</code>, etc.) in the variable browser.
-  </p>
 </html>"));
 end Setpoint;

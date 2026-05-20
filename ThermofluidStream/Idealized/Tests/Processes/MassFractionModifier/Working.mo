@@ -98,6 +98,7 @@ model Working "Example - Mass fraction modifier"
     period=0.3,
     offset=0.05,
     startTime=0.25) annotation(Placement(transformation(extent={{100,-140},{80,-120}})));
+
 equation
   connect(source.outlet, composition.inlet) annotation(Line(
       points={{-30,110},{-10,110}},
@@ -172,26 +173,39 @@ equation
   connect(source5.xi_var[1], massFractions.y) annotation(Line(points={{-42,-116},{-56,-116},{-56,4},{-65,4}}, color={0,0,127}));
   connect(deltaMassFractions.y, composition4.outletSpec_prescribed[1]) annotation(Line(points={{79,-90},{10,-90},{10,-82}}, color={0,0,127}));
   connect(massFractions1.y, composition5.outletSpec_prescribed[1]) annotation(Line(points={{79,-130},{10,-130},{10,-122}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-160},{160,160}}), graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-160},{160,160}}),
+      graphics={
+        Text(
           extent={{-160,120},{-100,100}},
           textColor={28,108,200},
-          textString="Dry Air (nXi = 0)"),           Text(
+          textString="Dry Air (nXi = 0)"),
+        Text(
           extent={{-160,20},{-100,0}},
           textColor={28,108,200},
           textString="Moist Air (nXi = 1)")}),
-    Documentation(revisions="<html>
+    Documentation(
+      info="<html>
+  <p>
+    This example illustrates several variants of using the 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model 
+    to change the mass fractions while keeping pressure and temperature constant.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    This example illustrates several variants of using the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.MassFractionModifier\">MassFractionModifier</a> model 
-    to change the mass fractions while keeping pressure and temperature constant.
-  </p>
 </html>"));
 end Working;

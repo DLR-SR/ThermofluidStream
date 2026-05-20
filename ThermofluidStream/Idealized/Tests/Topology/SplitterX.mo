@@ -4,7 +4,7 @@ model SplitterX "Example - SplitterX"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,140},{200,160}})));
@@ -82,6 +82,7 @@ model SplitterX "Example - SplitterX"
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{-34,-84},{-54,-64}})));
+
 equation
   connect(source.outlet, splitterX.inlet) annotation(Line(
       points={{-150,70},{-140,70}},
@@ -178,20 +179,30 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(massFlowRateC3.m_flow_prescribed, massFlowRateRampC3.y) annotation(Line(points={{-102,-82},{-102,-74},{-55,-74}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-180},{200,160}})),
-    Documentation(revisions="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-180},{200,160}})),
+    Documentation(
+      info="<html>
+  <p>
+    <a href=\"modelica://ThermofluidStream.Topology.SplitterX\">SplitterX</a> test model.<br> 
+    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
+    Differentiable mass flow rates.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    <a href=\"modelica://ThermofluidStream.Topology.SplitterX\">SplitterX</a> test model.<br> 
-    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
-    Differentiable mass flow rates.
-  </p>
 </html>"));
 end SplitterX;

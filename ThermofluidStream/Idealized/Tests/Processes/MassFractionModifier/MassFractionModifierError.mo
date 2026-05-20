@@ -4,7 +4,7 @@ model MassFractionModifierError "Example - MassFractionModifier"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.MoistAir constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,140},{160,160}})));
@@ -40,6 +40,7 @@ model MassFractionModifierError "Example - MassFractionModifier"
     period=0.3,
     offset=0.1,
     startTime=0.15) annotation(Placement(transformation(extent={{-80,-40},{-60,-20}})));
+
 equation
   connect(firstOrder.u, massFlowRate.y) annotation(Line(points={{82,10},{89,10}},   color={0,0,127}));
   connect(source2.outlet, composition2.inlet) annotation(Line(
@@ -54,21 +55,32 @@ equation
   connect(source2.p0_var, pressure.y) annotation(Line(points={{-42,16},{-48,16},{-48,50},{-59,50}}, color={0,0,127}));
   connect(source2.T0_var, temperature.y) annotation(Line(points={{-42,10},{-59,10}}, color={0,0,127}));
   connect(massFractions.y, source2.xi_var[1]) annotation(Line(points={{-59,-30},{-50,-30},{-50,4},{-42,4}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-160},{160,160}}), graphics={Text(
+
+  annotation(
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-160},{160,160}}),
+      graphics={
+        Text(
           extent={{-160,20},{-100,0}},
           textColor={28,108,200},
-          textString="Moist Air (nXi = 1)")}),
-    Documentation(revisions="<html>
+          textString="Moist Air (nXi = 1)"),
+        Text(
+          extent={{-80,100},{60,80}},
+          textColor={28,108,200},
+          textString="The simulation fails intentionally.")}),
+    Documentation(
+      info="<html>
+  <p>
+    Example to demonstrate that <code>Xi_out &lt; 0</code> creates an error.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Example to demonstrate that <code>Xi_out &lt; 0</code> creates an error.
-  </p>
 </html>"));
 end MassFractionModifierError;

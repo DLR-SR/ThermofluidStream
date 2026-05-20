@@ -417,6 +417,7 @@ model Prescribed1
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure,
     processValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{200,-170},{220,-150}})));
+
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation(Line(
       points={{-250,190},{-240,190}},
@@ -873,14 +874,15 @@ equation
   connect(source29.T0_var, inletTemperature.y) annotation(Line(points={{178,-60},{166,-60},{166,208},{-316,208},{-316,120},{-329,120}}, color={0,0,127}));
   connect(source30.p0_var, inletPressure.y) annotation(Line(points={{178,-104},{170,-104},{170,212},{-320,212},{-320,160},{-329,160}}, color={0,0,127}));
   connect(source30.T0_var, inletTemperature.y) annotation(Line(points={{178,-110},{166,-110},{166,208},{-316,208},{-316,120},{-329,120}}, color={0,0,127}));
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1.5,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Documentation(
+      info="<html>
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for time dependent (boundary) conditions (given mass flow rate).
   </p>
@@ -888,5 +890,13 @@ equation
   <p>
     <code>pRatio = 1</code> and/or <code>m_flow = 0</code> is supported.
   </p>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Prescribed1;

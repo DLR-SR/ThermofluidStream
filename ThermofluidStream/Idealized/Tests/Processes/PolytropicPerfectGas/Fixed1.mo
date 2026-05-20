@@ -663,6 +663,7 @@ model Fixed1
     n_fixed=n,
     eta_is_fixed=eta_is) annotation(Placement(transformation(extent={{190,-140},{210,-120}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow=P) annotation(Placement(transformation(extent={{-260,-170},{-240,-150}})));
+
 equation
   connect(source.outlet, dp_eta_pol.inlet) annotation(Line(
       points={{-220,150},{-210,150}},
@@ -948,17 +949,18 @@ equation
   connect(P_n.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{-100,-138},{-100,-160},{-239,-160}}, color={255,170,85}));
   connect(P_eta_is.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{0,-138},{0,-160},{-239,-160}}, color={255,170,85}));
   connect(P_p_out.P_in, energyFlowSource.E_flow_out) annotation(Line(points={{200,-138},{200,-160},{-239,-160}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-300,-180},{300,180}},
-        grid={2,2})),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-300,-180},{300,180}})),
+    Documentation(
+      info="<html>
   <p>
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> test for fixed parameters/boundary conditions (given mass flow rate).
   </p>
@@ -966,5 +968,13 @@ equation
   <p>
     <code>pRatio = 0</code> and/or <code>m_flow = 0</code> is supported.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Fixed1;

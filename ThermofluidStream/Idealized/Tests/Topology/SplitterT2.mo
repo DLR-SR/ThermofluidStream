@@ -4,7 +4,7 @@ model SplitterT2 "Example - SplitterT2"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,100},{140,120}})));
@@ -64,6 +64,7 @@ model SplitterT2 "Example - SplitterT2"
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{-100,-130},{-80,-110}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-70,-130},{-50,-110}})));
+
 equation
   connect(source.outlet, splitter1.inlet) annotation(Line(
       points={{-100,80},{-90,80}},
@@ -133,20 +134,30 @@ equation
   connect(m_flow_pulse2.y, firstOrder1.u) annotation(Line(points={{-79,-30},{-72,-30}}, color={0,0,127}));
   connect(m_flow_pulse1.y, firstOrder2.u) annotation(Line(points={{-79,-120},{-72,-120}}, color={0,0,127}));
   connect(firstOrder2.y, massFlowRateA2.m_flow_prescribed) annotation(Line(points={{-49,-120},{-40,-120},{-40,-108}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-140},{140,120}})),
-    Documentation(revisions="<html>
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-140},{140,120}})),
+    Documentation(
+      info="<html>
+  <p>
+    <a href=\"modelica://ThermofluidStream.Topology.SplitterT2\">SplitterT2</a> test model.<br>
+    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
+    Differentiable mass flow rates.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    <a href=\"modelica://ThermofluidStream.Topology.SplitterT2\">SplitterT2</a> test model.<br>
-    The model is not part of <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.<br>
-    Differentiable mass flow rates.
-  </p>
 </html>"));
 end SplitterT2;
