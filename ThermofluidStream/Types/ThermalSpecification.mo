@@ -4,4 +4,13 @@ type ThermalSpecification = enumeration(
   SpecificEnthalpy) "Specifies how the thermal state quantity is defined"
 annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Types.ThermalSpecification.Temperature "Temperature",
-  choice =ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy "Specific enthalpy"));
+  choice =ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy "Specific enthalpy"),
+  Documentation(
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));

@@ -44,6 +44,11 @@ equation
     Line(points={{-19,-50},{20,-50},{20,-28.5}}, color={255,170,85}));
 
   annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
     Documentation(
       info="<html>
   <p>

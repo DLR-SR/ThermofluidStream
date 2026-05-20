@@ -6,7 +6,7 @@ package Types
     Documentation(
       info="<html>
   <p>
-    Package of types for outlet setpoints for models in <a href=\"modelica://ThermofluidStream.Idealized.Processes\">Idealized.Processes</a>.
+    Package of types for models mainly in <a href=\"modelica://ThermofluidStream.Idealized.Processes\">Idealized.Processes</a>.
   </p>
   <p>
     Types are ordered alphabetically.

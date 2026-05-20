@@ -22,6 +22,11 @@ equation
   connect(sawTooth1.y, transfer2.E_flow_in) annotation(Line(points={{-39,-40},{-9.6,-40}}, color={0,0,127}));
 
   annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
     Documentation(
       info="<html>
   <p>

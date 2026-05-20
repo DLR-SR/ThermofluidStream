@@ -17,6 +17,11 @@ equation
   connect(energyFlowSource1.E_flow_out, gain.u) annotation(Line(points={{1,-20},{18,-20}}, color={255,170,85}));
 
   annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
     Documentation(
       info="<html>
   <p>

@@ -4,4 +4,13 @@ type ValueSpecification2 = enumeration(
   Fixed) "Specifies how the value of a quantity is defined (version 2)"
 annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Types.ValueSpecification2.State "State",
-  choice = ThermofluidStream.Types.ValueSpecification2.Fixed "Fixed"));
+  choice = ThermofluidStream.Types.ValueSpecification2.Fixed "Fixed"),
+  Documentation(
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
