@@ -151,14 +151,8 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In the 7. step a condenser is added and a loop breaker is used to close the loop.
   </p>
@@ -178,5 +172,13 @@ see User's Guide",
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step7ClosedLoop;

@@ -179,14 +179,8 @@ equation
           extent={{86,6},{92,0}},
           textColor={28,108,200},
           textString="8")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In a seventh step, <code>compressor1</code> and <code>turbine</code> are connected via energy flow connectors, 
     meaning the turbine drives the compressor. The pressurized air used to operate the air cycle can be 
@@ -203,5 +197,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step7BootStrapCycle;

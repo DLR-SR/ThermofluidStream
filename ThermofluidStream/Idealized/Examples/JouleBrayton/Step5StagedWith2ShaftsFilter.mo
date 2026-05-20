@@ -190,14 +190,7 @@ equation
           extent={{-38,18},{-32,12}},
           textColor={28,108,200},
           textString="10")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(info="<html>
   <p>
     In a fifth step, a filter is added for the <code>highPressureTurbine</code> to avoid the implicit nonlinear
     equation and instead solve it using a “pseudo” controller. Note that the filter also requires
@@ -210,5 +203,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.JouleBrayton\">JouleBrayton</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step5StagedWith2ShaftsFilter;

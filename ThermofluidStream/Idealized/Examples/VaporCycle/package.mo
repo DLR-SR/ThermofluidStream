@@ -2,14 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package VaporCycle
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This example package illustrates, step by step, several configurations of a vapor compression cycle,
     based on the reverse Clausius–Rankine cycle, as commonly used in air conditioning systems.
@@ -26,6 +21,14 @@ package VaporCycle
     <li>Condensation in a heat exchanger: isobaric cooling process</li>
     <li>Expansion in a <code>valve</code>: isenthalpic process</li>
     <li>Evaporation in a heat exchanger: isobaric heating process, closing the thermodynamic loop</li>
+  </ul>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
   </ul>
 </html>"));
 end VaporCycle;

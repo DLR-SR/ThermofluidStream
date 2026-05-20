@@ -65,6 +65,7 @@ model PolytropicFlow "Turbocharged diesel engine"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{0,-50},{-20,-70}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=2) annotation (Placement(transformation(extent={{120,30},{140,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum pseudoSource(n_in=2) annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
+
 equation
   connect(engineCompression.outlet, combustion.inlet) annotation(Line(
       points={{40,20},{20,20},{20,30}},
@@ -109,8 +110,17 @@ equation
                                                                                                                     color={255,170,85}));
   connect(engineCompression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{50,27},{50,38},{120,38},{120,41.5}},
                                                                                                                       color={255,170,85}));
-  annotation(Diagram(coordinateSystem(extent={{-160,-100},{160,100}}),
-                      graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-100},{160,100}}),
+      graphics={
         Text(
           extent={{-96,6},{-90,0}},
           textColor={28,108,200},
@@ -151,14 +161,9 @@ equation
         Text(
           extent={{-94,-54},{-88,-60}},
           textColor={28,108,200},
-          textString="8")}), Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+          textString="8")}),
+    Documentation(
+      info="<html>
   <p>
     Example of a turbocharged Diesel engine cycle.
   </p>
@@ -172,6 +177,13 @@ equation
     <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
     model, requiring appropriate start values for a successful solution.
   </p>
-</html>
-"));
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end PolytropicFlow;

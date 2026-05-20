@@ -185,14 +185,8 @@ equation
           extent={{86,6},{92,0}},
           textColor={28,108,200},
           textString="8")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In an eighth step, a filter is added for the compressor outlet pressure to avoid forming an implicit nonlinear equation.
     The introduced state also requires appropriate start values. Additionally, the time integration may be implicit 
@@ -207,5 +201,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step8BootStrapCycleFilter;

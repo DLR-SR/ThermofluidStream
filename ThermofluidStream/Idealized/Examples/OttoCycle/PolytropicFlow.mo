@@ -34,6 +34,7 @@ model PolytropicFlow
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=4) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -66,7 +67,15 @@ equation
                                                                                                                   color={255,170,85}));
   connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-10,-11},{-10,-32},{70,-32},{70,-29.25}},color={255,170,85}));
   connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation (Line(points={{70,-11},{70,-14},{60,-14},{60,-27.75},{70,-27.75}}, color={255,170,85}));
-  annotation(Diagram(graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-46,6},{-40,0}},
           textColor={28,108,200},
@@ -83,14 +92,8 @@ equation
           extent={{-80,46},{-74,40}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Example of an Otto cycle engine model.
   </p>
@@ -119,5 +122,13 @@ equation
     and integrating with respect to pressure, <code>v*dp</code> (“artificial” shaft work of a dual stationary-flow process),
     yield the same net cycle work, even though the individual contributions of each process step differ.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PolytropicFlow;

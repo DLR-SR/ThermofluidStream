@@ -2,14 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package ClausiusRankine "Clausius Rancine Cycle using idealized state change components"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+    info="<html>
   <p>
     This example illustrates, step by step, how the Clausius–Rankine cycle can be modeled using idealized state-change components, 
     specifically <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>
@@ -33,5 +28,13 @@ package ClausiusRankine "Clausius Rancine Cycle using idealized state change com
     If the mass flow rate setpoint is non differentiable <code>considerInertance = false</code> is required, see 
     <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end ClausiusRankine;

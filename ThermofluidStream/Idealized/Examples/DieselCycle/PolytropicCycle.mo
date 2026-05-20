@@ -34,6 +34,7 @@ model PolytropicCycle
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{10,30},{-10,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -63,7 +64,15 @@ equation
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-42},{40,-42}},      color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-40},{40,-40}},      color={255,170,85}));
   connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-30,-11},{-30,-38},{40,-38}},    color={255,170,85}));
-  annotation(Diagram(graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-46,6},{-40,0}},
           textColor={28,108,200},
@@ -80,14 +89,8 @@ equation
           extent={{-80,46},{-74,40}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Example of an Diesel engine cycle.
   </p>
@@ -107,6 +110,14 @@ equation
     <li>
       <code>systemSpec = Cycle</code>
       (<a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a>)
+    </li>
+  </ul>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
     </li>
   </ul>
 </html>"));

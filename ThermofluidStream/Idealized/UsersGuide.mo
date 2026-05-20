@@ -184,9 +184,16 @@ class InertanceNeglect
 </html>"));
 end InertanceNeglect;
 
-  annotation(DocumentationClass=true, Documentation(info="<html>
-<p>This package provides idealized state-change components, enabling the simulation of ideal thermodynamic processes such as isentropic, adiabatic, isenthalpic or isobaric state changes. It also allows users to prescribe mass flow rates and to combine components via ideal power flow connectors, facilitating heat exchange between components or the coupling of turbines and compressors. </p>
-</html>", revisions="<html>
+annotation(
+  DocumentationClass=true,
+  Documentation(
+    info="<html>
+  <p>
+    This package provides idealized state-change components, enabling the simulation of ideal thermodynamic processes such as isentropic, adiabatic, isenthalpic or isobaric state changes. 
+    It also allows users to prescribe mass flow rates and to combine components via ideal power flow connectors, facilitating heat exchange between components or the coupling of turbines and compressors. 
+  </p>
+</html>",
+  revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
@@ -194,5 +201,4 @@ end InertanceNeglect;
     </li>
   </ul>
 </html>"));
-
 end UsersGuide;

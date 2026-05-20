@@ -2,7 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package OttoCycle
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This example package illustrates stationary-flow representations of closed-system Otto
     (<code>s, v, s, v</code>) engine processes.
@@ -27,7 +29,8 @@ package OttoCycle
       (ideal gas with temperature-dependent <code>cp</code>).
     </li>
   </ul>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -2,7 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package AdiabaticThermodynamikModels
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation (Documentation(info="<html>
+  annotation (
+    Documentation(
+      info="<html>
   <p>
     This package contains examples that compare the models from
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">Processes.Utilities.AdiabaticThermodynamicModels</a> for different media models.
@@ -12,7 +14,8 @@ package AdiabaticThermodynamikModels
   <p>
     See <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">UsersGuide.AdiabaticThermodynamicModels</a> for more information.
   </p>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

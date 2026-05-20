@@ -155,14 +155,8 @@ equation
           extent={{84,6},{90,0}},
           textColor={28,108,200},
           textString="6")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In the 9. step the superheating temperature difference is determined to obtain a vapor quality of <code>0.95</code> at the turbine outlet. 
     This yields implicit nonlinear equations, requiring suitable start values to be solvable.
@@ -172,5 +166,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step9VaporQualityInversion;

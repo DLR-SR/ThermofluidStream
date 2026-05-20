@@ -131,14 +131,8 @@ equation
           extent={{116,6},{122,0}},
           textColor={28,108,200},
           textString="7")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In the fifth step, the mass flow rate sink is split into a <code>massFlowRate</code> component and a free sink.
   </p>
@@ -157,5 +151,13 @@ equation
     Further documentation is available in the
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step5Sink_free;

@@ -140,14 +140,8 @@ equation
           extent={{98,6},{104,0}},
           textColor={28,108,200},
           textString="6")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In a sixth step, a junction is introduced to recombine the flow from the turbine with the bypass valve.
   </p>
@@ -162,5 +156,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step6Junction;

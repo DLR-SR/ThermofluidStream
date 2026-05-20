@@ -136,14 +136,8 @@ equation
           extent={{112,6},{118,0}},
           textColor={28,108,200},
           textString="7")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In the third step <code>preheater</code>, <code>boiler</code> and <code>superheater</code> are considered separately (and dew and bubble enthalpies are set). 
   </p>
@@ -152,5 +146,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.ClausiusRankine\">ClausiusRankine</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step3Superheater;

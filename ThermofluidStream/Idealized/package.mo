@@ -2,7 +2,14 @@ within ThermofluidStream;
 package Idealized "Package with idealized components"
   extends Modelica.Icons.Package;
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Icon(
+      graphics={
+        Bitmap(
+          extent={{-94,-92},{92,92}},
+          fileName="modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.png")}),
+    Documentation(
+      info="<html>
   <p>
     This package includes:
   </p>
@@ -22,12 +29,13 @@ package Idealized "Package with idealized components"
       both simple and advanced configurations (multi-stage, etc.)
     </li>
   </ul>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>"), Icon(graphics={Bitmap(extent={{-94,-92},{92,92}}, fileName="modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.png")}));
+</html>"));
 end Idealized;

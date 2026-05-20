@@ -2,14 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package AirCycle
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This example package illustrates, step by step, several configurations of an air-cycle refrigeration system
     based on the reverse Joule–Brayton cycle, as commonly used in aircraft Environmental Control Systems (ECS).
@@ -22,6 +17,14 @@ package AirCycle
     <li>Heat rejection in a heat exchanger: isobaric cooling process</li>
     <li>Expansion in a <code>turbine</code> to produce work: adiabatic process with a specified isentropic efficiency</li>
     <li>Heat supply from the environment: isobaric heating process, artificially closing the thermodynamic loop</li>
+  </ul>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
   </ul>
 </html>"));
 end AirCycle;

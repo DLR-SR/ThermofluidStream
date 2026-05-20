@@ -143,7 +143,8 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
           extent={{-26,248},{32,228}},
           textColor={0,140,72},
           textString="fine")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     This model demonstrates a comparison of different 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
@@ -182,7 +183,8 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     For more details about the underlying assumptions, see: <br>
     <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

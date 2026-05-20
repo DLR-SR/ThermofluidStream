@@ -368,14 +368,8 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In a forth step, the intermediate heat exchanger is replaced by a <code>flashChamber</code> operating at an intermediate pressure level.
     The evaporator and condenser temperature and the cooling heat flow rate are set. The flashChamber pressure level is varied linearly over time between the lower and higher pressure level
@@ -399,5 +393,13 @@ see User's Guide",
     Further documentation is available in the
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step4Separator;

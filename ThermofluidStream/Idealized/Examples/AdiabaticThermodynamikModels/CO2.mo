@@ -133,7 +133,9 @@ equation
       Interval=0.01,
       Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,100}}),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-100},{160,100}}),
         graphics={Text(
           extent={{-98,282},{102,262}},
           textColor={28,108,200},
@@ -142,7 +144,8 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
           extent={{-26,248},{32,228}},
           textColor={0,140,72},
           textString="fine")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     This model compares different 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
@@ -176,7 +179,8 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
     <br>
     <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -86,7 +86,8 @@ equation
       Interval=0.01,
       Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     This model evaluates different 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
@@ -134,7 +135,8 @@ equation
       ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels
     </a>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

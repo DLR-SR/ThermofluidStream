@@ -89,14 +89,16 @@ equation
           extent={{-80,46},{-74,40}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
+    Documentation(
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
+</html>",
+      info="<html>
   <p>
     Example of an Otto cycle engine model.
   </p>

@@ -20,16 +20,18 @@ model BaseModel
     Placement(transformation(extent={{80,80},{100,100}})));
 
   annotation(
-    Documentation(revisions="<html>
+    Documentation(
+      info="<html>
+  <p>
+    Definition of parameters for the examples in this package.
+  </p>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>", info="<html>
-  <p>
-    Definition of parameters for the examples in this package.
-  </p>
 </html>"));
 end BaseModel;

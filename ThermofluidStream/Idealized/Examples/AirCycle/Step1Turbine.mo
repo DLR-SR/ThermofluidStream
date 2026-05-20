@@ -87,7 +87,8 @@ equation
           extent={{54,6},{60,0}},
           textColor={28,108,200},
           textString="4")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     In a first step, a simple air cycle consisting of a compressor, a cooler, and a turbine is build. 
     The coefficient of performance COP is calculated.
@@ -97,7 +98,8 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

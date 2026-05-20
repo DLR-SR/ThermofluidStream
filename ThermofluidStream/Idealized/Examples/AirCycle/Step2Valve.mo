@@ -90,14 +90,8 @@ equation
           extent={{54,6},{60,0}},
           textColor={28,108,200},
           textString="4")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     In a second step, the turbine is replaced by an isenthalpic valve. For an ideal gas, the temperature difference across the valve is zero. Therefore, no cooling is achieved and the cycle is not meaningful from a thermodynamic perspective.
   </p>
@@ -106,5 +100,13 @@ equation
     Further documentation is available in the 
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.AirCycle\">AirCycle</a> package.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Step2Valve;

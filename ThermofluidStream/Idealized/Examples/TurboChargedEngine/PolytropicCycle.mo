@@ -128,8 +128,17 @@ equation
       points={{90,60},{110,60},{110,-60},{0,-60}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Diagram(coordinateSystem(extent={{-160,-100},{160,100}}),
-                      graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-100},{160,100}}),
+      graphics={
         Text(
           extent={{-96,6},{-90,0}},
           textColor={28,108,200},
@@ -170,14 +179,9 @@ equation
         Text(
           extent={{-40,-54},{-34,-60}},
           textColor={28,108,200},
-          textString="7")}), Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+          textString="7")}),
+    Documentation(
+      info="<html>
   <p>
     Example of a turbocharged Diesel engine cycle.
   </p>
@@ -198,6 +202,13 @@ equation
     model, requiring appropriate start values for a successful solution.
   </p>
 
-</html>
-"));
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end PolytropicCycle;

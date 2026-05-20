@@ -75,6 +75,7 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
     y_start=1e5)
               annotation(Placement(transformation(extent={{10,-50},{30,-30}})));
   Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-20,-30},{0,-50}})));
+
 equation
   connect(engineCompression.outlet, combustion.inlet) annotation(Line(
       points={{40,20},{20,20},{20,30}},
@@ -132,8 +133,17 @@ equation
   connect(pseudoSourcePower.y, feedback.u1) annotation(Line(points={{-29,-40},{-18,-40}}, color={0,0,127}));
   connect(pseudoSource.E_flow_out, feedback.u2) annotation(Line(points={{-38.3,-20},{-10,-20},{-10,-32}}, color={255,170,85}));
   connect(feedback.y, integrator.u) annotation(Line(points={{-1,-40},{8,-40}},    color={0,0,127}));
-  annotation(Diagram(coordinateSystem(extent={{-160,-100},{160,100}}),
-                      graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-100},{160,100}}),
+      graphics={
         Text(
           extent={{-96,6},{-90,0}},
           textColor={28,108,200},
@@ -174,14 +184,9 @@ equation
         Text(
           extent={{-94,-54},{-88,-60}},
           textColor={28,108,200},
-          textString="8")}), Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+          textString="8")}),
+    Documentation(
+      info="<html>
   <p>
     Example of a turbocharged Diesel engine cycle.
   </p>
@@ -199,5 +204,13 @@ equation
   <p>
     A \"pseudo controller\" is used to avoid the implicit nonlinear equation.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PolytropicCyclePseudoInversion;

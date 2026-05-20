@@ -33,6 +33,7 @@ model PolytropicFlow
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{10,30},{-10,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{70,-50},{90,-30}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -62,7 +63,15 @@ equation
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-42},{70,-42}},      color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-40},{70,-40}},      color={255,170,85}));
   connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-24},{50,-24},{50,-38},{70,-38}}, color={255,170,85}));
-  annotation(Diagram(graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-46,6},{-40,0}},
           textColor={28,108,200},
@@ -79,14 +88,8 @@ equation
           extent={{-80,46},{-74,40}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Example of an Diesel engine cycle.
   </p>
@@ -115,5 +118,13 @@ equation
     and integrating with respect to pressure, <code>v*dp</code> (“artificial” shaft work of a dual stationary-flow process),
     yield the same net cycle work, even though the individual contributions of each process step differ.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PolytropicFlow;

@@ -2,7 +2,9 @@ within ThermofluidStream.Idealized.Examples;
 package TurboChargedEngine
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This package contains examples of a turbocharged diesel engine cycle.
   </p>
@@ -15,7 +17,8 @@ package TurboChargedEngine
     </li>
   </p>
 
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
