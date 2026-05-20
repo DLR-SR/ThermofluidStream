@@ -63,7 +63,16 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
           pattern=LinePattern.None)}),      Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de) and Tobias Reischl (tobias.reischl@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
+
+  <p>
+    <img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control
+  </p>
 </html>", info="<html>
 <p>The <strong>DropOfCommons</strong> defines global parameters and settings for simulation models. This model serves several purposes: </p>
 <ul>

@@ -190,5 +190,12 @@ equation
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
 </html>"));
 end Source;

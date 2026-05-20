@@ -10,4 +10,11 @@ annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent "Polytropic exponent",
   choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency "Isentropic efficiency",
   choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure "Outlet pressure",
-  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature "Outlet temperature"));
+  choice = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature "Outlet temperature"), Documentation(revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));

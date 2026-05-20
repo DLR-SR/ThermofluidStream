@@ -16,5 +16,12 @@ package AdiabaticThermodynamicModels
     <li>Outlet pressure</li>
     <li>Isentropic efficiency</li>
   </ul>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end AdiabaticThermodynamicModels;

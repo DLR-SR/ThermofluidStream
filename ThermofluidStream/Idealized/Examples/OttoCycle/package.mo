@@ -27,5 +27,12 @@ package OttoCycle
       (ideal gas with temperature-dependent <code>cp</code>).
     </li>
   </ul>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end OttoCycle;

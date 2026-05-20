@@ -1,5 +1,5 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-model Sink_free_InertanceNeglect "Example - free sink"
+within ThermofluidStream.Idealized.Tests.Sources.Sink_free;
+model InertanceNeglect "Example - free sink"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
@@ -131,4 +131,4 @@ see User's Guide",
     </li>
   </ul>
 </html>"));
-end Sink_free_InertanceNeglect;
+end InertanceNeglect;

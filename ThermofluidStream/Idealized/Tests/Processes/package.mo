@@ -7,5 +7,12 @@ package Processes
     This package contains test models for the components of the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes\">Idealized.Processes</a> package.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Processes;

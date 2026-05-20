@@ -46,4 +46,11 @@ annotation(
     <code>EnergyFlowOutput</code> is defined as energy flowing <strong>out</strong> of the system.<br>
     This definition allows inputs and outputs to be connected directly.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));

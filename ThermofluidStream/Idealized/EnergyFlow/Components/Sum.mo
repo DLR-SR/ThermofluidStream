@@ -49,5 +49,12 @@ annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Math.MultiSum\">Modelica.Blocks.Math.MultiSum</a>. See its documentation for further information.
   </p> 
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Sum;

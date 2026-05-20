@@ -1,5 +1,5 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-model Sink_m "Example - mass flow sink"
+within ThermofluidStream.Idealized.Tests.Sources.Sink_m;
+model Setpoints "Example - mass flow sink"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
@@ -233,4 +233,4 @@ equation
     </li>
   </ul>
 </html>"));
-end Sink_m;
+end Setpoints;

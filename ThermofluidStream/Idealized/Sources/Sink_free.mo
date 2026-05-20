@@ -10,6 +10,7 @@ model Sink_free "Sink (free) - Underdetermined (1 equation)"
     Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance" annotation(
     Dialog(tab="Advanced", enable = considerInertance), Evaluate = not considerInertance, HideResult = not considerInertance);
+
   ThermofluidStream.Interfaces.Inlet inlet(redeclare package Medium = Medium) annotation(
     Placement(transformation(extent={{-120,-20},{-80,20}})));
 
@@ -22,10 +23,13 @@ equation
   else
     0 = inlet.r - r;
   end if;
-  annotation(defaultComponentName="sink", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
-        Text(visible=displayInstanceName,
+
+  annotation(defaultComponentName="sink",
+    Icon(coordinateSystem(preserveAspectRatio=true),
+      graphics={
+        Text(
           extent={{-150,150},{150,110}},
-          textString="%name",
+          textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
         Text(
           extent={{-150,-100},{150,-130}},
@@ -57,7 +61,9 @@ equation
           points={{-28,80},{-28,-80}},
           color={255,255,255},
           thickness=0.5),
-        Line(points={{-44,80},{-44,-80}}, color={255,255,255}),
+        Line(
+          points={{-44,80},{-44,-80}},
+          color={255,255,255}),
         Ellipse(
           extent={{-108,78},{-72,42}},
           pattern=LinePattern.None,
@@ -72,8 +78,7 @@ equation
           extent={{-100,40},{-80,20}},
           fillColor={238,46,47},
           pattern=LinePattern.None,
-          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid)}),      Diagram(
-        coordinateSystem(preserveAspectRatio=true)),
+          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Documentation(info="<html>
   <p>
     Model of a free sink.

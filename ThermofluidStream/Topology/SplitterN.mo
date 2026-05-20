@@ -77,5 +77,12 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Generic splitter with one upstream connection and an array of <strong>N</strong> downstream connections. Use this model to parameterize the number of branches and avoid building large splitter trees manually. This is the recommended approach for scalable network templates.</p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter.
+    </li>
+  </ul>
 </html>"));
 end SplitterN;

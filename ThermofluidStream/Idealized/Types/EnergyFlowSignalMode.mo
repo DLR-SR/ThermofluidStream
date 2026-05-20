@@ -6,4 +6,11 @@ type EnergyFlowSignalMode = enumeration(
 annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input "Input",
   choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output "Output",
-  choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Disabled"));
+  choice = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Disabled"), Documentation(revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));

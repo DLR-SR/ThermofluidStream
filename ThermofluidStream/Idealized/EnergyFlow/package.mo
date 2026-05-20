@@ -34,5 +34,12 @@ package EnergyFlow
   <p>
     This package includes idealized energy flow (power and heat flow) transfer.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end EnergyFlow;

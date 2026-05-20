@@ -92,5 +92,12 @@ equation
 <p>Three-port splitter for branching a single flow path into two downstream branches. </p>
 <p>Use this model to create a clear, directed network structure when dividing mass flow into two parallel paths. </p>
 <p>The component is intended for steady (non-dynamic) topology definition within ThermoFluidStream networks.</p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
 </html>"));
 end SplitterT1;

@@ -8,4 +8,11 @@ annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Temperature difference",
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature "Outlet temperature",
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.SpecificEnthalpyDifference "Specific enthalpy difference",
-  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy "Outlet specific enthalpy"));
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy "Outlet specific enthalpy"), Documentation(revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));

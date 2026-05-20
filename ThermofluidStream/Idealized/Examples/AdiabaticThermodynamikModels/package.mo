@@ -12,5 +12,12 @@ package AdiabaticThermodynamikModels
   <p>
     See <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">UsersGuide.AdiabaticThermodynamicModels</a> for more information.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end AdiabaticThermodynamikModels;

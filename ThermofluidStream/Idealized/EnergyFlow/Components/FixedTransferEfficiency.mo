@@ -36,20 +36,20 @@ equation
           extent={{-150,65},{150,25}},
           textString="%name",
           textColor={0,0,255}),
-        Text(visible = outputDissipation,
+        Text(
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString="eta = %eta"),
-        Text(visible = not outputDissipation,
+          textString = if outputDissipation then "eta = %eta" else ""),
+        Text(
           extent={{-150,-20},{150,-50}},
           textColor={0,0,0},
-          textString="eta = %eta"),
+          textString = if not outputDissipation then "eta = %eta" else ""),
         Line(
           points={{-100,0},{100,0}},
           color={255,170,85},
           thickness=0.5),
-        Line(visible = outputDissipation,
-          points={{0,0},{0,-40}},
+        Line(
+          points = if outputDissipation then {{0,0},{0,-40}} else {{0,0}},
           color={255,170,85},
           thickness=0.5),
         Ellipse(

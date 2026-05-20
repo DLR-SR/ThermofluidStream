@@ -32,4 +32,11 @@ connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input c
     and has therefore a different icon as EnergyFlowInput connector.
   </p>
 </html>
-"));
+", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));

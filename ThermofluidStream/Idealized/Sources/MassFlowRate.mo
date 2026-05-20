@@ -14,7 +14,7 @@ model MassFlowRate "Generic mass flow rate source - Overdetermined (1 equation)"
   parameter Boolean showMassFlowRate = true "= true to show the fixed mass flow rate value m_flow_fixed" annotation(
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and m_flowSpec == ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
 
-  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec ==ValueSpecification.Prescribed  "Prescribed mass flow rate [kg/s]" annotation(
+  Modelica.Blocks.Interfaces.RealInput m_flow_prescribed(unit="kg/s") if m_flowSpec == ValueSpecification.Prescribed "Prescribed mass flow rate [kg/s]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
 
 protected
@@ -32,15 +32,17 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
-  annotation(Icon(coordinateSystem(preserveAspectRatio=true), graphics={
-        Text(visible=displayInstanceName,
+  annotation(
+    Icon(coordinateSystem(preserveAspectRatio=true),
+      graphics={
+        Text(
           extent={{-150,80},{150,120}},
-          textString="%name",
+          textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible=displayParameters and showMassFlowRate and m_flowSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
+        Text(
           extent={{-150,-70},{150,-100}},
           textColor={0,0,0},
-          textString="ṁ = %m_flow_fixed"),
+          textString = if displayParameters and showMassFlowRate and m_flowSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "ṁ = %m_flow_fixed" else ""),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},

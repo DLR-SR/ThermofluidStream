@@ -11,5 +11,12 @@ class IconInertanceNeglect "Icon for considerInertance = false"
     Icon used for examples requiring <code>considerInertance = false</code>, see
     <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end IconInertanceNeglect;

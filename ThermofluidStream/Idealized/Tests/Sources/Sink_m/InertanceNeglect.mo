@@ -1,5 +1,5 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-model Sink_m_InertanceNeglect "Example - mass flow sink with neglect inertance"
+within ThermofluidStream.Idealized.Tests.Sources.Sink_m;
+model InertanceNeglect "Example - mass flow sink with considerInertance=false"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
@@ -124,4 +124,4 @@ see User's Guide",
     </li>
   </ul>
 </html>"));
-end Sink_m_InertanceNeglect;
+end InertanceNeglect;

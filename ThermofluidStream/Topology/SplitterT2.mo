@@ -84,5 +84,12 @@ equation
     Documentation(info="<html>
 <p>Alternative three-port splitter for dividing one upstream stream into two downstream branches. </p>
 <p>This model provides the same functional topology role as SplitterT1 but with an alternative internal formulation. </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
 </html>"));
 end SplitterT2;

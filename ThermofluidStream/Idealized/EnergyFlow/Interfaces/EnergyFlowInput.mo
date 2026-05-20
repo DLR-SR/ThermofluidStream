@@ -1,14 +1,15 @@
 within ThermofluidStream.Idealized.EnergyFlow.Interfaces;
 connector EnergyFlowInput = input SI.EnergyFlowRate "'input SI.EnergyFlowRate' as connector"
 annotation(
-  defaultComponentName="E_flow_in",
-  Icon(graphics={
+defaultComponentName="E_flow_in",
+Icon(
+  graphics={
     Polygon(
       lineColor={255,170,85},
       fillColor={255,170,85},
       fillPattern=FillPattern.Solid,
       points={{-100.0,100.0},{100.0,0.0},{-100.0,-100.0}})},
-    coordinateSystem(extent={{-100.0,-100.0},{100.0,100.0}},
+  coordinateSystem(extent={{-100.0,-100.0},{100.0,100.0}},
       preserveAspectRatio=true,
       initialScale=0.2)),
   Diagram(
@@ -47,4 +48,11 @@ annotation(
     <code>EnergyFlowOutput</code> is defined as energy flowing <strong>out</strong> of the system.<br>
     This definition allows inputs and outputs to be connected directly.
   </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));

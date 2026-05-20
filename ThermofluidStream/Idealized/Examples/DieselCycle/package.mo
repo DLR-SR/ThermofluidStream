@@ -19,5 +19,12 @@ package DieselCycle "Exercise 8.4: Diesel Engine [TUM2019]"
     </li>
   </p>
 
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end DieselCycle;

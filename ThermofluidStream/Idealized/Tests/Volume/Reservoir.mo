@@ -41,5 +41,12 @@ equation
     This model represents a continuously filled reservoir. 
     At some point, the system may become non-physical, as the valve would need to raise the pressure, which is indicated by a warning. 
   </p> 
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Reservoir;

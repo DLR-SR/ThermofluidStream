@@ -7,13 +7,16 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
-  parameter ValueSpecification pSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet pressure is fixed or prescribed" annotation(Dialog(group="Pressure"), Evaluate=true);
+  parameter ValueSpecification pSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet pressure is fixed or prescribed" annotation(
+    Dialog(group="Pressure"), Evaluate=true);
   parameter Medium.AbsolutePressure p_out_fixed = Medium.p_default "Fixed outlet pressure" annotation(
     Dialog(group="Pressure",
       enable = pSpec ==ValueSpecification.Fixed),
     HideResult = not pSpec == ValueSpecification.Fixed);
-  parameter ThermalSpecification thermalSpec = ThermofluidStream.Types.ThermalSpecification.Temperature "Thermal quantity used to define the outlet state" annotation(Dialog(group="Thermal"), Evaluate=true);
-  parameter ValueSpecification thermalValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet thermal quantity is fixed or prescribed" annotation(Dialog(group="Thermal"), Evaluate=true);
+  parameter ThermalSpecification thermalSpec = ThermofluidStream.Types.ThermalSpecification.Temperature "Thermal quantity used to define the outlet state" annotation(
+    Dialog(group="Thermal"), Evaluate=true);
+  parameter ValueSpecification thermalValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet thermal quantity is fixed or prescribed" annotation(
+    Dialog(group="Thermal"), Evaluate=true);
   parameter Medium.Temperature T_out_fixed = Medium.T_default "Fixed outlet temperature" annotation(
     Dialog(group="Thermal",
       enable = thermalSpec ==ThermalSpecification.Temperature  and thermalValueSpec ==ValueSpecification.Fixed),
@@ -22,7 +25,8 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
     Dialog(group="Thermal",
       enable = thermalSpec ==ThermalSpecification.SpecificEnthalpy  and thermalValueSpec ==ValueSpecification.Fixed),
     HideResult = not thermalSpec == ThermalSpecification.SpecificEnthalpy or not thermalValueSpec == ValueSpecification.Fixed);
-  parameter ValueSpecification XiSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet mass fractions are fixed or prescribed" annotation(Dialog(group="Mass fractions"), Evaluate=true);
+  parameter ValueSpecification XiSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the outlet mass fractions are fixed or prescribed" annotation(
+    Dialog(group="Mass fractions"), Evaluate=true);
   parameter Medium.MassFraction Xi_out_fixed[Medium.nXi] = Medium.X_default[1:Medium.nXi] "Fixed outlet mass fractions" annotation(
     Dialog(group="Mass fractions",
       enable = XiSpec ==ValueSpecification.Fixed),
@@ -131,40 +135,46 @@ equation
   dm_flow = m_flow_out - m_flow_in;
   dXi = Xi_out - Xi_in;
 
-  annotation(defaultComponentName="loopBreaker", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
-        Text(visible=displayInstanceName,
+  annotation(defaultComponentName="loopBreaker",
+    Icon(coordinateSystem(preserveAspectRatio=true),
+      graphics={
+        Text(
           extent={{-150,110},{150,70}},
-          textString="%name",
+          textString= if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible = displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
+        Text(
           extent={{-150,-20},{150,-50}},
           textColor={0,0,0},
-          textString="p_out = %p_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
+          textString=if displayParameters and showPressure and pSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "p_out = %p_out_fixed" else ""),
+        Text(
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
-          textString="T_out = %T_out_fixed"),
-        Text(visible = displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
+          textString = if displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature then "T_out = %T_out_fixed" else ""),
+        Text(
           extent={{-150,-60},{150,-90}},
           textColor={0,0,0},
-          textString="h_out = %h_out_fixed"),
-        Text(visible = displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed,
+          textString = if displayParameters and showThermalSpecification and thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy then "h_out = %h_out_fixed" else ""),
+        Text(
           extent={{-150,-100},{150,-130}},
           textColor={0,0,0},
-          textString="Xi_out = %Xi_out_fixed"),
+          textString = if displayParameters and showMassFractions and XiSpec == ThermofluidStream.Types.ValueSpecification.Fixed then "Xi_out = %Xi_out_fixed" else ""),
         Line(
           points={{-100,0},{0,20},{102,0}},
           color={28,108,200},
           smooth=Smooth.Bezier,
           thickness=0.5),
-        Line(visible = pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature,
-          points={{100,0},{100,-100},{60,-100}}, color={0,0,127}),
-        Line(visible = thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
-          points={{100,0},{100,-100},{20,-100}}, color={0,0,127}),
-        Line(visible = XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed,
-          points={{100,0},{100,-100},{-20,-100}}, color={0,0,127}),
+        Line(
+          points = if pSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.Temperature then {{100,0},{100,-100},{60,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if thermalValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed and thermalSpec == ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy then {{100,0},{100,-100},{20,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{-20,-100}} else {{0,0}},
+          color={0,0,127}),
         Ellipse(
           extent={{-98,58},{-62,22}},
           pattern=LinePattern.None,

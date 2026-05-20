@@ -11,8 +11,8 @@ equation
   E_flow_out = E_flow;
 
   annotation(defaultComponentName = "energyFlowSource",
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-            100,100}}), graphics={
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
+      graphics={
         Text(
           extent={{-150,100},{150,60}},
           textString="%name",

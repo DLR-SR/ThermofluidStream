@@ -106,5 +106,12 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Multi-branch splitter for distributing one upstream stream into multiple downstream branches in an X-type topology. Use this component when you need a compact representation of a higher-order split without cascading several T-splitters.</p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
 </html>"));
 end SplitterX;

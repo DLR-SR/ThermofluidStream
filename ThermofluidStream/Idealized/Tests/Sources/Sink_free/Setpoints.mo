@@ -1,5 +1,5 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-model Sink_free "Example - free sink"
+within ThermofluidStream.Idealized.Tests.Sources.Sink_free;
+model Setpoints "Example - free sink"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
 
@@ -250,4 +250,4 @@ equation
     </li>
   </ul>
 </html>"));
-end Sink_free;
+end Setpoints;
