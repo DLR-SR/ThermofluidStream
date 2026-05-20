@@ -34,6 +34,7 @@ model PolytropicCycle
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=2) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -63,7 +64,15 @@ equation
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-31.5},{70,-31.5}},  color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-28},{70,-28},{70,-28.5}},
                                                                                                                   color={255,170,85}));
-  annotation(Diagram(graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-46,6},{-40,0}},
           textColor={28,108,200},

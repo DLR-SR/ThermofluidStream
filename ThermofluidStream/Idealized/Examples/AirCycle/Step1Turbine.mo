@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step1Turbine
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -39,6 +39,7 @@ model Step1Turbine
     number=(Medium.specificEnthalpy(airSink.inlet.state) - Medium.specificEnthalpy(airSource.outlet.state))/(compressor.dh + turbine.dh),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation(Placement(transformation(extent={{0,40},{20,60}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
+
 equation
   connect(compressor.outlet, cooler.inlet) annotation(
     Line(
@@ -61,8 +62,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outletSpec_prescribed, pressure.y) annotation(Line(points={{-30,-12},{-30,-40},{-49,-40}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-66,6},{-60,0}},
           textColor={28,108,200},

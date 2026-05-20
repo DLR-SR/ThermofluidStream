@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.VaporCycle;
 model Step1Simple
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
     redeclare package Medium = Medium,
@@ -55,6 +55,7 @@ model Step1Simple
     height=18e5,
     duration=1,
     offset=2e5) annotation(Placement(transformation(extent={{80,0},{60,20}})));
+
 equation
   connect(compressor.outlet, condensor.inlet) annotation(
     Line(
@@ -86,8 +87,15 @@ equation
           {0,-60},{0,-42}},                                                                      color={0,0,127}));
   connect(h_dew.y, loopBreaker.h_out_prescribed) annotation(Line(points={{-19,-60},{22,-60},{22,-42}}, color={0,0,127}));
   connect(compressor.outletSpec_prescribed, condensorPressure.y) annotation(Line(points={{52,10},{59,10}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{34,-24},{40,-30}},
           textColor={28,108,200},

@@ -6,6 +6,7 @@ model ConstantPropertyLiquidWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
+
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
@@ -50,6 +51,7 @@ model ConstantPropertyLiquidWater
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
+
 equation
   connect(source.outlet, fullMedium.inlet) annotation(Line(
       points={{-20,60},{-10,60}},
@@ -78,10 +80,13 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(isothermalReference.outletSpec_prescribed, pressureDifference.y) annotation(Line(points={{10,-62},{10,-70},{-60,-70},{-60,-20},{-69,-20}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false,
-        extent={{-100,-100},{100,100}},
-        grid={2,2})),                                            Diagram(coordinateSystem(preserveAspectRatio=false,
-        grid={2,2})),
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
   <p>
     This model evaluates different 

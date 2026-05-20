@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.JouleBrayton;
 model Step5StagedWith2ShaftsFilter
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{160,80},{180,100}})));
@@ -82,6 +82,7 @@ model Step5StagedWith2ShaftsFilter
     use_numberPort=false,
     number=generatorPower.E_flow_out/(firstCombustion.Q_flow + secondCombustion.Q_flow),
     displayVariable=false) annotation(Placement(transformation(extent={{0,60},{20,80}})));
+
 equation
   connect(airSource.outlet, lowPressureCompressor.inlet) annotation(
     Line(
@@ -137,8 +138,18 @@ equation
   connect(lowPressureCompressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-110,-7},{-110,-32},{150,-32},{150,-31.5}},
                                                                                                                                     color={255,170,85}));
   connect(lowPressureTurbine.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{140,-7},{140,-28.5},{150,-28.5}},   color={255,170,85}));
-  annotation(experiment(startTime=-1),Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-180,-100},{180,100}}), graphics={
+
+  annotation(
+    experiment(
+      StartTime=-1,
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-180,-100},{180,100}}),
+      graphics={
         Text(
           extent={{-132,6},{-126,0}},
           textColor={28,108,200},

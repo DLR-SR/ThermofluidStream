@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.JouleBrayton;
 model Step3Staged
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
@@ -73,6 +73,7 @@ model Step3Staged
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=100000) annotation(Placement(transformation(extent={{130,-10},{150,10}})));
+
 equation
   connect(airSource.outlet, lowPressureCompressor.inlet) annotation(
     Line(
@@ -125,8 +126,16 @@ equation
       thickness=0.5));
   connect(intermediatePressure.y, lowPressureCompressor.outletSpec_prescribed) annotation(Line(points={{-129,-40},{-100,-40},{-100,-12}}, color={0,0,127}));
   connect(highPressureTurbine.outletSpec_prescribed, intermediatePressure.y) annotation(Line(points={{70,-12},{70,-40},{-129,-40}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{160,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(extent={{-160,-100},{160,100}}),
+      graphics={
         Text(
           extent={{-132,6},{-126,0}},
           textColor={28,108,200},

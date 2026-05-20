@@ -3,9 +3,8 @@ model Step3Superheater
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
@@ -62,6 +61,7 @@ model Step3Superheater
     height=99e5,
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-110,-40},{-90,-20}})));
+
 equation
   connect(waterSource.outlet, pump.inlet) annotation(
     Line(
@@ -98,8 +98,16 @@ equation
   connect(outletPressure.y, pump.outletSpec_prescribed) annotation(Line(points={{-89,-30},{-80,-30},{-80,-12}}, color={0,0,127}));
   connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-49,-30},{-40,-30},{-40,-12}}, color={0,0,127}));
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{-9,-30},{0,-30},{0,-12}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{-114,6},{-108,0}},
           textColor={28,108,200},

@@ -3,12 +3,11 @@ model Step2VaryingMassFlowRate
   extends Modelica.Icons.Example;
 
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-  replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
+  replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
@@ -94,6 +93,7 @@ model Step2VaryingMassFlowRate
     use_numberPort=false,
     number=(generatorPower.E_flow_out - pump.P)/(combustion.Q_flow + Modelica.Constants.eps),
     displayVariable=false) annotation(Placement(transformation(extent={{0,-100},{20,-80}})));
+
 equation
   connect(loopBreaker.inlet, cooler.outlet) annotation(
     Line(
@@ -150,8 +150,17 @@ equation
   connect(compressor.P_out, generatorPower.E_flow_in[1]) annotation(Line(points={{-130,47},{-130,58},{160,58}},     color={255,170,85}));
   connect(turbineJB.P_out, generatorPower.E_flow_in[2]) annotation(Line(points={{-50,47},{-50,60},{160,60}}, color={255,170,85}));
   connect(turbineCR.P_out, generatorPower.E_flow_in[3]) annotation(Line(points={{137,0},{150,0},{150,62},{160,62}},     color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-100},{200,100}}),
+      graphics={
         Text(
           extent={{-154,46},{-148,40}},
           textColor={28,108,200},

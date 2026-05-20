@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step2Valve
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -39,6 +39,7 @@ model Step2Valve
     displayVariable=false) "=0 (for a valve)"
                           annotation(Placement(transformation(extent={{0,-60},{20,-40}})));
   Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
+
 equation
   connect(compressor.outlet, cooler.inlet) annotation(
     Line(
@@ -61,8 +62,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(compressor.outletSpec_prescribed, pressure.y) annotation(Line(points={{-30,-12},{-30,-40},{-49,-40}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-                                           graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={Text(
           extent={{-60,60},{40,40}},
           textColor={28,108,200},
           textString="This \"cooling cycle\" does not achieve any cooling."),

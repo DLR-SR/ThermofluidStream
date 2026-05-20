@@ -4,9 +4,8 @@ model Step6MassFlowRateStep
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     L=0,
@@ -66,6 +65,7 @@ model Step6MassFlowRateStep
     height=99e5,
     duration=1,
     offset=1e5) annotation(Placement(transformation(extent={{-120,-80},{-100,-60}})));
+
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -103,8 +103,16 @@ equation
   connect(pump.outletSpec_prescribed, outletPressure.y) annotation(Line(points={{-50,-12},{-50,-70},{-99,-70}}, color={0,0,127}));
   connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-33,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{7,-30},{20,-30},{20,-12}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{-114,6},{-108,0}},
           textColor={28,108,200},

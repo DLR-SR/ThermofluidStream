@@ -55,6 +55,7 @@ model Step6Junction
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation(Placement(transformation(extent={{110,-10},{130,10}})));
   Topology.JunctionT2 junction(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{70,10},{90,-10}})));
+
 equation
   connect(compressor.outlet, heatExchangerSideA.inlet) annotation(
     Line(
@@ -104,8 +105,17 @@ equation
       points={{-100,0},{-80,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-180,-100},{180,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-180,-100},{180,100}}),
+      graphics={
         Text(
           extent={{-90,6},{-84,0}},
           textColor={28,108,200},

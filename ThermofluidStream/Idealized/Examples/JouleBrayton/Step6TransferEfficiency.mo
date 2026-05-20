@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.JouleBrayton;
 model Step6TransferEfficiency
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
@@ -85,6 +85,7 @@ model Step6TransferEfficiency
   EnergyFlow.Components.FixedTransferEfficiency lowPressureShaft(eta=0.95) annotation(Placement(transformation(extent={{0,-50},{20,-30}})));
   EnergyFlow.Components.FixedTransferEfficiency generatorPower(eta=0.99) annotation(Placement(transformation(extent={{160,-40},{180,-20}})));
   EnergyFlow.Components.Sum lowPressurePower(n_in=2) annotation(Placement(transformation(extent={{130,-40},{150,-20}})));
+
 equation
   connect(airSource.outlet, lowPressureCompressor.inlet) annotation(
     Line(
@@ -144,8 +145,17 @@ equation
   connect(highPressureShaft.E_flow_out, highPressureTurbine.P_in) annotation(Line(points={{-9,-20},{40,-20},{40,-8}}, color={255,170,85}));
   connect(highPressureShaft.E_flow_in, highPressureCompressor.P_out) annotation(Line(points={{-32,-20},{-70,-20},{-70,-7}}, color={255,170,85}));
   connect(lowPressureShaft.E_flow_in, lowPressureCompressor.P_out) annotation(Line(points={{-2,-40},{-130,-40},{-130,-7}}, color={255,170,85}));
-  annotation(experiment(startTime=-1), Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}}), graphics={
+
+  annotation(
+    experiment(
+      StartTime=-1,
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(extent={{-200,-100},{200,100}}),
+      graphics={
         Text(
           extent={{-152,6},{-146,0}},
           textColor={28,108,200},

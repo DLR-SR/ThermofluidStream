@@ -3,9 +3,9 @@ model Step4Separator
   extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   parameter Medium.Temperature T_Evaporator=253.15   "Evaporator temperature";
   parameter Medium.Temperature T_Condensor=323.15   "Condensor temperature";
@@ -136,6 +136,7 @@ model Step4Separator
     quantity=ThermofluidStream.Sensors.Internal.Types.TwoPhaseQuantities.x_kgpkg) annotation(
     Placement(transformation(extent={{20,32},{40,12}})));
   EnergyFlow.Sources.FixedEnergyFlow energyFlowSource(E_flow(displayUnit="kW") = 10000) annotation(Placement(transformation(extent={{-40,-110},{-20,-90}})));
+
 equation
   connect(valve1.outlet, evaporator.inlet) annotation(Line(
       points={{-30,-50},{-30,-70},{-10,-70}},
@@ -221,8 +222,17 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(energyFlowSource.E_flow_out, evaporator.Q_flow_in) annotation(Line(points={{-19,-100},{0,-100},{0,-78}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-120},{140,120}}),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-120},{140,120}}),
+      graphics={
         Text(
           extent={{44,-54},{50,-60}},
           textColor={28,108,200},

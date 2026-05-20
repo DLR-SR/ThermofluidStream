@@ -3,9 +3,8 @@ model Step8ClosedLoopFiltered
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
@@ -73,6 +72,7 @@ model Step8ClosedLoopFiltered
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=0) annotation(Placement(transformation(extent={{-40,-90},{-20,-70}})));
+
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -109,8 +109,17 @@ equation
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{1,-30},{10,-30},{10,-12}}, color={0,0,127}));
   connect(massFlowRate.y, firstOrder.u) annotation(Line(points={{-51,-80},{-42,-80}}, color={0,0,127}));
   connect(firstOrder.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-19,-80},{0,-80},{0,-72}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{8,-54},{14,-60}},
           textColor={28,108,200},

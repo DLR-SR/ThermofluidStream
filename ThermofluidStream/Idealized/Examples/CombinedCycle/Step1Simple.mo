@@ -3,12 +3,11 @@ model Step1Simple
   extends Modelica.Icons.Example;
 
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-  replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
+  replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
@@ -86,6 +85,7 @@ model Step1Simple
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-30,0})));
+
 equation
   connect(loopBreaker.inlet, condenser.outlet) annotation(Line(
       points={{90,-40},{100,-40}},
@@ -134,8 +134,17 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(heatExchangerWaterSide.Q_flow_out, heatExchangerAirSide.Q_flow_in) annotation(Line(points={{5,0},{-22,0}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-100},{200,100}}),
+      graphics={
         Text(
           extent={{-154,46},{-148,40}},
           textColor={28,108,200},

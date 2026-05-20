@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.JouleBrayton;
 model Step1Simple
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -47,6 +47,7 @@ model Step1Simple
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={80,0})));
+
 equation
   connect(combustion.outlet, turbine.inlet) annotation(
     Line(
@@ -67,8 +68,15 @@ equation
       points={{50,0},{70,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-                                           graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-66,6},{-60,0}},
           textColor={28,108,200},

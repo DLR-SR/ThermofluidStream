@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.VaporCycle;
 model Step2Temperatures
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
   parameter Medium.Temperature T_Evaporator = 253.15 "Evaporator temperature";
 
   final parameter Medium.AbsolutePressure p_Evaporator = Medium.saturationPressure(T_Evaporator) "Evaporator pressure";
@@ -63,6 +63,7 @@ model Step2Temperatures
                                                           annotation(Placement(transformation(extent={{80,0},{60,20}})));
   Modelica.Blocks.Sources.RealExpression condenserOutletEnthalpy(y=Medium.bubbleEnthalpy(Medium.setSat_T(condensorTemperature.y)))
                                                                                   annotation(Placement(transformation(extent={{40,40},{20,60}})));
+
 equation
   connect(compressor.outlet, condensor.inlet) annotation(
     Line(
@@ -91,8 +92,15 @@ equation
       thickness=0.5));
   connect(condenserPressure.y, compressor.outletSpec_prescribed) annotation(Line(points={{59,10},{52,10}}, color={0,0,127}));
   connect(condenserOutletEnthalpy.y, condensor.outletSpec_prescribed) annotation(Line(points={{19,50},{-10,50},{-10,42}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{34,-24},{40,-30}},
           textColor={28,108,200},

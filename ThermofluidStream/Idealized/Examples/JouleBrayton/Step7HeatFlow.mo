@@ -4,10 +4,11 @@ model Step7HeatFlow
 
   replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
   replaceable package Water = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
+
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
 
@@ -109,6 +110,7 @@ model Step7HeatFlow
     redeclare package Medium = Air,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
     outputValue=true) annotation(Placement(transformation(extent={{-6,10},{-26,30}})));
+
 equation
   connect(airSource.outlet, lowPressureCompressor.inlet) annotation(
     Line(
@@ -181,8 +183,17 @@ equation
       thickness=0.5));
   connect(coolerAirSide.Q_flow_out, coolerWaterSide.Q_flow_in) annotation(Line(points={{-110,7},{-110,22}},
                                                                                                           color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-200,-100},{200,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-200,-100},{200,100}}),
+      graphics={
         Text(
           extent={{-162,6},{-156,0}},
           textColor={28,108,200},

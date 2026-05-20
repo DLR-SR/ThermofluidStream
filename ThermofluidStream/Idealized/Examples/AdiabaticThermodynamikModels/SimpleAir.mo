@@ -127,8 +127,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(fullMedium.outletSpec_prescribed, pressureRatio.y) annotation(Line(points={{-90,38},{-90,0},{-119,0}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,100}}),
-        graphics={Text(
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{160,100}}),
+      graphics={Text(
           extent={{-98,282},{102,262}},
           textColor={28,108,200},
           textString="Compare approach using entropy vs approach 

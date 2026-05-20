@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step3RamAir
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -60,6 +60,7 @@ model Step3RamAir
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.h_Jpkg,
     outputValue=false) annotation(Placement(transformation(extent={{62,12},{82,32}})));
+
 equation
   connect(airSource.outlet, compressor.inlet) annotation(Line(
       points={{-80,0},{-52,0}},
@@ -95,8 +96,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(heatExchangerSideA.Q_flow_out, heatExchangerSideB.Q_flow_in) annotation(Line(points={{0,7},{0,42}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-74,6},{-68,0}},
           textColor={28,108,200},

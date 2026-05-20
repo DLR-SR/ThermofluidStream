@@ -164,12 +164,14 @@ equation
           fillPattern=FillPattern.Solid),
         Ellipse(
           extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
+          lineColor={255,170,85},
           lineThickness=0.5),
         Text(
-          extent={{-20,20},{20,-20}},
+          extent={{-40,46},{40,-34}},
           textColor={28,108,200},
-          textString="s"),
+          textString="s",
+          verticalAlignment=TextAlignment.Center,
+          horizontalAlignment=TextAlignment.Left),
         Text(
           extent={{-150,120},{150,80}},
           textString=if displayInstanceName then "%name" else "",
@@ -232,7 +234,11 @@ equation
           extent={{-96,42},{-64,38}},
           fillColor={28,108,200},
           fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None)}),
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5)}),
       Documentation(info="<html>
   <p>
     Adiabatic process suitable for modeling both hydraulic pumps and turbines (incompressible media) 

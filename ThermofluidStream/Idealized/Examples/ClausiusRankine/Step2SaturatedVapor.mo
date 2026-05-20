@@ -3,9 +3,8 @@ model Step2SaturatedVapor
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
@@ -51,6 +50,7 @@ model Step2SaturatedVapor
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-30})));
+
 equation
   connect(pump.outlet, preheaterAndBoiler.inlet) annotation(Line(
       points={{-30,0},{-20,0}},
@@ -77,8 +77,15 @@ equation
       thickness=0.5));
   connect(outletPressure.y, pump.outletSpec_prescribed) annotation(Line(points={{-39,-30},{-30,-30},{-30,-12}}, color={0,0,127}));
   connect(h_dew.y, preheaterAndBoiler.outletSpec_prescribed) annotation(Line(points={{0,-19},{0,-12}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
-        graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-58,6},{-52,0}},
           textColor={28,108,200},

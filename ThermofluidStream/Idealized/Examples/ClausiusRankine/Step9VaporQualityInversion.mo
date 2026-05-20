@@ -3,9 +3,8 @@ model Step9VaporQualityInversion
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
@@ -74,6 +73,7 @@ model Step9VaporQualityInversion
     T=0.1,
     initType=Modelica.Blocks.Types.Init.InitialState,
     y_start=0) annotation(Placement(transformation(extent={{-50,-90},{-30,-70}})));
+
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -120,8 +120,17 @@ equation
   connect(superheater.outletSpec_prescribed, inverseBlockConstraints.y2) annotation(Line(points={{40,12},{40,24},{90,24},{90,50},{97,50}}, color={0,0,127}));
   connect(massFlowRate.y, firstOrder.u) annotation(Line(points={{-59,-80},{-52,-80}}, color={0,0,127}));
   connect(firstOrder.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-29,-80},{0,-80},{0,-72}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{8,-54},{14,-60}},
           textColor={28,108,200},

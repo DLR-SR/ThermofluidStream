@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step5Splitter
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
@@ -65,6 +65,7 @@ model Step5Splitter
     displayInstanceName=true,
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_Jps) annotation(Placement(transformation(extent={{90,-40},{110,-20}})));
+
 equation
   connect(compressor.outlet, heatExchangerSideA.inlet) annotation(
     Line(
@@ -118,8 +119,17 @@ equation
       points={{70,-30},{90,-30}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-180,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-180,-100},{140,100}}),
+      graphics={
         Text(
           extent={{-80,6},{-74,0}},
           textColor={28,108,200},

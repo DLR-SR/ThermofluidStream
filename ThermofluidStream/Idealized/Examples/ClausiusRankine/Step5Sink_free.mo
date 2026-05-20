@@ -3,9 +3,8 @@ model Step5Sink_free
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
@@ -57,6 +56,7 @@ model Step5Sink_free
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Sources.Sink_free waterSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
+
 equation
   connect(waterSource.outlet, pump.inlet) annotation(
     Line(
@@ -92,9 +92,17 @@ equation
       points={{110,0},{130,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-160,-100},{160,100}},
-        grid={2,2}),                       graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-160,-100},{160,100}}),
+      graphics={
         Text(
           extent={{-124,6},{-118,0}},
           textColor={28,108,200},

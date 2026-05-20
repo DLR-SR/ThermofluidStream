@@ -4,7 +4,7 @@ model Step1OpenLoop
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
      displayInstanceNames=true, displayParameters=true) annotation(
@@ -42,6 +42,7 @@ model Step1OpenLoop
     use_numberPort=false,
     number=(-turbine.P - pump.P)/(steamGenerator.Q_flow + Modelica.Constants.eps),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
+
 equation
   connect(pump.outlet, steamGenerator.inlet) annotation(Line(
       points={{-30,0},{-20,0}},
@@ -66,7 +67,14 @@ equation
       points={{30,0},{40,0}},
       color={28,108,200},
       thickness=0.5));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false),
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
         graphics={
         Text(
           extent={{-58,6},{-52,0}},

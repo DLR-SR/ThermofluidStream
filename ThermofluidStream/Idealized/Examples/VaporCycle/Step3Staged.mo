@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.VaporCycle;
 model Step3Staged
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   parameter Medium.Temperature T_Evaporator1 = 253.15 "Evaporator 1 temperature";
   parameter Medium.Temperature T_Condensor2 = 323.15 "Condensor 2 temperature";
@@ -93,6 +93,16 @@ model Step3Staged
     p_out_fixed=p_Evaporator2,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator2) annotation(Placement(transformation(extent={{10,10},{30,30}})));
+
+  Processes.Adiabatic                             compressor3(
+    redeclare package Medium = Medium,
+    eta_fixed=0.9,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
+
+    p_out_fixed=p_Condensor2) annotation(Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={82,50})));
 equation
   connect(compressor1.outlet, condensor1.inlet) annotation(
     Line(points = {{40, -34}, {40, -20}, {-10, -20}}, color = {28, 108, 200}, thickness = 0.5));
@@ -115,8 +125,10 @@ equation
   connect(evaporator2.outlet, loopBreaker2.inlet) annotation(
     Line(points = {{-10, 20}, {10, 20}}, color = {28, 108, 200}, thickness = 0.5));
   connect(condensor1.Q_flow_out, evaporator2.Q_flow_in) annotation(Line(points={{-20,-13},{-20,12}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{100,120}}),
-        graphics={
+
+  annotation(
+    Diagram(
+      graphics={
         Text(
           extent={{34,-64},{40,-70}},
           textColor={28,108,200},

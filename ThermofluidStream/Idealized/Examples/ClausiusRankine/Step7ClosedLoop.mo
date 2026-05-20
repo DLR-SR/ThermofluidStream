@@ -4,9 +4,8 @@ model Step7ClosedLoop
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
-                                                                              constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(
     considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
@@ -70,6 +69,7 @@ model Step7ClosedLoop
     Placement(transformation(extent={{-50,-40},{-30,-20}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(pressure.y))) annotation(
     Placement(transformation(extent={{-20,-40},{0,-20}})));
+
 equation
   connect(pump.outlet, preheater.inlet) annotation(
     Line(
@@ -105,8 +105,17 @@ equation
   connect(h_bubble.y, preheater.outletSpec_prescribed) annotation(Line(points={{-29,-30},{-20,-30},{-20,-12}}, color={0,0,127}));
   connect(h_dew.y, boiler.outletSpec_prescribed) annotation(Line(points={{1,-30},{10,-30},{10,-12}}, color={0,0,127}));
   connect(massFlowRate.y, loopBreaker.m_flow_in_prescribed) annotation(Line(points={{-39,-80},{0,-80},{0,-72}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{8,-54},{14,-60}},
           textColor={28,108,200},

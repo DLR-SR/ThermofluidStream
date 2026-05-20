@@ -2,9 +2,9 @@ within ThermofluidStream.Idealized.Examples.AirCycle;
 model Step7BootStrapCycle
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
+      choicesAllMatching=true);
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,80},{140,100}})));
@@ -75,6 +75,7 @@ model Step7BootStrapCycle
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,30})));
+
 equation
   connect(compressor.outlet, cooler.inlet) annotation(
     Line(
@@ -135,8 +136,17 @@ equation
       thickness=0.5));
   connect(airSink.m_flow_prescribed, massFlowRate.y) annotation(Line(points={{112,0},{121,0}}, color={0,0,127}));
   connect(turbine.P_out, compressor1.P_in) annotation(Line(points={{63,30},{8,30}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-140,-100},{140,100}}), graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{-92,6},{-86,0}},
           textColor={28,108,200},
