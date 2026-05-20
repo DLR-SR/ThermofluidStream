@@ -1,7 +1,9 @@
 within ThermofluidStream.Idealized.Processes;
 package AdiabaticThermodynamicModels
   extends Modelica.Icons.UtilitiesPackage;
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Package of adiabatic assumption models used in 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>.
@@ -16,7 +18,8 @@ package AdiabaticThermodynamicModels
     <li>Outlet pressure</li>
     <li>Isentropic efficiency</li>
   </ul>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

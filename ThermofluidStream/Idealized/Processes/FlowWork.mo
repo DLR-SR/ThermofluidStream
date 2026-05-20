@@ -29,43 +29,46 @@ equation
   P_inlet = -m_flow*w_flow;
   P_outlet = m_flow*w_flow;
 
-  annotation(Icon(graphics={
-    Ellipse(
-      extent={{-56,54},{64,-66}},
-      lineColor={28,108,200},
-      lineThickness=0.5,
-      fillColor={215,215,215},
-      fillPattern=FillPattern.Solid,
-      pattern=LinePattern.None),
-    Line(
-      points={{-100,0},{100,0}},
-      color={28,108,200},
-      thickness=0.5),
-    Ellipse(
-      extent={{-60,60},{60,-60}},
-      lineColor={28,108,200},
-      lineThickness=0.5,
-      fillColor={255,255,255},
-      fillPattern=FillPattern.Solid),
-    Ellipse(
-      extent={{-50,50},{50,-50}},
-      lineColor={28,108,200},
-      lineThickness=0.5),
-    Text(
-      extent={{-150,120},{150,80}},
-      textString = if displayInstanceName then "%name" else "",
-      textColor=dropOfCommons.instanceNameColor),
-    Text(
-      extent={{-40,20},{40,-20}},
-      textColor={28,108,200},
-      textString="pv"),
-    Line(
-      points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{100,0},{100,-100}} else {{0,0}},
-      color={255,170,85}),
-    Line(
-      points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet then {{-100,0},{-100,-100}} else {{0,0}},
-      color={255,170,85})}),
-    Documentation(info="<html>
+  annotation(
+    Icon(
+      graphics={
+        Ellipse(
+          extent={{-56,54},{64,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+      Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+      Text(
+        extent={{-150,120},{150,80}},
+        textString = if displayInstanceName then "%name" else "",
+        textColor=dropOfCommons.instanceNameColor),
+      Text(
+        extent={{-40,20},{40,-20}},
+        textColor={28,108,200},
+        textString="pv"),
+      Line(
+        points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{100,0},{100,-100}} else {{0,0}},
+        color={255,170,85}),
+      Line(
+        points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet then {{-100,0},{-100,-100}} else {{0,0}},
+        color={255,170,85})}),
+    Documentation(
+      info="<html>
   <p>
     Process used to account for the flow work <code>w_flow = p*v</code>, which
     represents the difference between the specific enthalpy <code>h</code> and
@@ -112,7 +115,8 @@ equation
     <code>(1)</code> a <strong>negative</strong> flow work contribution
     <code>-w_flow1 = -(pv)1</code> must be taken into account.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

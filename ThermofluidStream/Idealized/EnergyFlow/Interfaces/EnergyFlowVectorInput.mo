@@ -21,7 +21,8 @@ connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input c
         lineColor={255,170,85},
         fillColor={255,170,85},
         fillPattern=FillPattern.Solid)}),
-  Documentation(info="<html>
+  Documentation(
+    info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Interfaces.RealVectorInput\">RealVectorInput</a>.
   </p> 
@@ -32,7 +33,7 @@ connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input c
     and has therefore a different icon as EnergyFlowInput connector.
   </p>
 </html>
-", revisions="<html>
+",  revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

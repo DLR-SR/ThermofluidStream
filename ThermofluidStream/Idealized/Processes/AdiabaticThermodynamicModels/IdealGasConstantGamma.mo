@@ -12,14 +12,9 @@ equation
   w_t_is = h_out_is - h_in;
   w_t = h_out - h_in;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     The model calculates the outlet specific enthalpy based on:
   </p>
@@ -33,5 +28,13 @@ equation
   <p>
     The model assumes an ideal gas (<code>p*v = R*T</code>) with a constant isentropic exponent (<code>gamma = const.</code>).
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end IdealGasConstantGamma;

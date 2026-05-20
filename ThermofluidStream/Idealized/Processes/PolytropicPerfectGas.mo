@@ -310,9 +310,121 @@ equation
   Xi_out = Xi_in;
   h_out = h_in + dh;
 
-
   annotation(
-      Documentation(info="<html>
+    defaultComponentName = "junction",
+    Icon(
+      graphics={
+        Ellipse(
+          extent={{-56,54},{64,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5),
+        Text(
+          extent={{-150,120},{150,80}},
+          textString = if displayInstanceName then "%name" else "",
+          textColor=dropOfCommons.instanceNameColor),
+        Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
+          extent={{-20,20},{20,-20}},
+          textColor={28,108,200},
+          textString="n"),
+        Text(
+          extent= {{-40,20},{40,-20}},
+          textColor={28,108,200},
+          textString = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle then "n-c" else ""),
+        Text(
+          extent={{-150,-100},{150,-70}},
+          textColor={0,0,0},
+          textString = if not displayParameters or not showOutletSpecification or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified then ""
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference then "Δp = %dp_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio then "pRatio = %pRatio_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure then "p_out = %p_out_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature then "T_out = %T_out_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio then "rhoRatio = %rhoRatio_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity then "rho_out = %rho_out_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume then "v_out = %v_out_fixed"
+          else "error"),
+        Text(
+          extent={{-150,-140},{150,-110}},
+          textColor={0,0,0},
+          textString = if not displayParameters or not showProcessSpecification or not processValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
+          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency then "eta_pol = %eta_pol_fixed"
+          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent then "n = %n_fixed"
+          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency then "eta_is = %eta_is_fixed"
+          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure then "p_out = %p_out_fixed"
+          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature then "T_out = %T_out_fixed"
+          else "error"),
+        Line(
+          points = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
+          color={0,0,127}),
+        Line(
+          points = if processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{60,-100}} else {{0,0}},
+          color={0,0,127}),
+        Polygon(visible = showPowerDirection,
+          origin={-40,-50},
+          rotation = if P >= 0 then 90 else -90,
+          points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
+          fillColor = {255,170,85},
+          fillPattern = if abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None),
+        Text(visible = showPowerDirection,
+          origin={-60,-70},
+          extent={{0,0},{36,36}},
+          textColor={255,170,85},
+          textStyle={TextStyle.Bold},
+          textString = if abs(P) < 1e-8 then "0" else ""),
+        Text(
+          extent={{-150,100},{150,60}},
+          textColor={238,46,47},
+          textString = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
+          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
+          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
+          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
+          then "can't be balanced" else ""),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
+          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
+          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
+          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
+          then FillPattern.Solid else FillPattern.None),
+        Ellipse(
+          extent={{-98,58},{-62,22}},
+          pattern=LinePattern.None,
+          fillColor={170,213,255},
+          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
+          then FillPattern.Solid else FillPattern.None),
+        Rectangle(
+          extent={{-78,24},{-82,56}},
+          fillColor={28,108,200},
+          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
+          then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-96,42},{-64,38}},
+          fillColor={28,108,200},
+          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
+          then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None)}),
+    Documentation(
+      info="<html>
   <p>
     Polytropic process (<code>p*v^n = const.</code>) of a perfect gas (<code>p*v = R*T, cp = const.</code>) suitable for modeling
     compressors, blowers, fans, and turbines. The model can be used for a steady-flow open process or for a periodic closed cycle process.
@@ -470,122 +582,13 @@ equation
   <p>
     The heat flow rate can be accounted for as <code>P &rarr; P + Q_flow, w_s &rarr; w_s + q,  w_i &rarr; w_i + q, w_r &rarr; w_r + q</code>.
   </p> 
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
   </ul>
-</html>"), Icon(
-      graphics={
-        Ellipse(
-          extent={{-56,54},{64,-66}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None),
-        Line(
-          points={{-100,0},{100,0}},
-          color={28,108,200},
-          thickness=0.5),
-        Ellipse(
-          extent={{-60,60},{60,-60}},
-          lineColor={28,108,200},
-          lineThickness=0.5,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Text(
-          extent={{-150,120},{150,80}},
-          textString = if displayInstanceName then "%name" else "",
-          textColor=dropOfCommons.instanceNameColor),
-        Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent={{-20,20},{20,-20}},
-          textColor={28,108,200},
-          textString="n"),
-        Text(
-          extent= {{-40,20},{40,-20}},
-          textColor={28,108,200},
-          textString = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle then "n-c" else ""),
-        Text(
-          extent={{-150,-100},{150,-70}},
-          textColor={0,0,0},
-          textString = if not displayParameters or not showOutletSpecification or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified then ""
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference then "Δp = %dp_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio then "pRatio = %pRatio_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure then "p_out = %p_out_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature then "T_out = %T_out_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio then "rhoRatio = %rhoRatio_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity then "rho_out = %rho_out_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume then "v_out = %v_out_fixed"
-          else "error"),
-        Text(
-          extent={{-150,-140},{150,-110}},
-          textColor={0,0,0},
-          textString = if not displayParameters or not showProcessSpecification or not processValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
-          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency then "eta_pol = %eta_pol_fixed"
-          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicExponent then "n = %n_fixed"
-          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency then "eta_is = %eta_is_fixed"
-          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure then "p_out = %p_out_fixed"
-          elseif processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature then "T_out = %T_out_fixed"
-          else "error"),
-        Line(
-          points = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
-          color={0,0,127}),
-        Line(
-          points = if processValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{60,-100}} else {{0,0}},
-          color={0,0,127}),
-        Polygon(visible = showPowerDirection,
-          origin={-40,-50},
-          rotation = if P >= 0 then 90 else -90,
-          points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
-          fillColor = {255,170,85},
-          fillPattern = if abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None),
-        Text(visible = showPowerDirection,
-          origin={-60,-70},
-          extent={{0,0},{36,36}},
-          textColor={255,170,85},
-          textStyle={TextStyle.Bold},
-          textString = if abs(P) < 1e-8 then "0" else ""),
-        Text(
-          extent={{-150,100},{150,60}},
-          textColor={238,46,47},
-          textString = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
-          then "can't be balanced" else ""),
-        Polygon(
-          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-          fillColor={238,46,47},
-          pattern=LinePattern.None,
-          fillPattern = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
-          then FillPattern.Solid else FillPattern.None),
-        Ellipse(
-          extent={{-98,58},{-62,22}},
-          pattern=LinePattern.None,
-          fillColor={170,213,255},
-          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
-          then FillPattern.Solid else FillPattern.None),
-        Rectangle(
-          extent={{-78,24},{-82,56}},
-          fillColor={28,108,200},
-          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
-          then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None),
-        Rectangle(
-          extent={{-96,42},{-64,38}},
-          fillColor={28,108,200},
-          fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
-          then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None)}));
+</html>"));
 end PolytropicPerfectGas;

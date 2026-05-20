@@ -135,8 +135,11 @@ equation
   dm_flow = m_flow_out - m_flow_in;
   dXi = Xi_out - Xi_in;
 
-  annotation(defaultComponentName="loopBreaker",
-    Icon(coordinateSystem(preserveAspectRatio=true),
+  annotation(
+    defaultComponentName="loopBreaker",
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true),
       graphics={
         Text(
           extent={{-150,110},{150,70}},
@@ -201,7 +204,8 @@ equation
           extent={{-100,0},{100,-100}},
           textColor={238,46,47},
           textString= DynamicSelect("", if Modelica.Math.Vectors.norm(dXi) > tol_Xi then "dXi" else ""))}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
     with <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> to artificially close a loop.
@@ -219,7 +223,8 @@ equation
     The outlet state of the loop breaker is prescribed, while the user must ensure that the inlet state is consistent.  
     Any deviation is indicated by a warning.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

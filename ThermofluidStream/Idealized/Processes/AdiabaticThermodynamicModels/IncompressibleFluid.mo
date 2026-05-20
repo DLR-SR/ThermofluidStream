@@ -7,14 +7,9 @@ model IncompressibleFluid "Adiabatic process, incompressible fluid (rho = const)
 equation
   w_t_is = (p_out - p_in)/rho_in;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     The model calculates the outlet specific enthalpy based on:
   </p>
@@ -28,5 +23,13 @@ equation
   <p>
     The model assumes an incompressible fluid (<code>rho = const.</code>) to compute the adiabatic reversible reference process, which implies <code>w_t_is = dp / rho</code>.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end IncompressibleFluid;

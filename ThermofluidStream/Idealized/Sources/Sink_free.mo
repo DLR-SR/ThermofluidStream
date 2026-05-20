@@ -24,8 +24,11 @@ equation
     0 = inlet.r - r;
   end if;
 
-  annotation(defaultComponentName="sink",
-    Icon(coordinateSystem(preserveAspectRatio=true),
+  annotation(
+    defaultComponentName="sink",
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true),
       graphics={
         Text(
           extent={{-150,150},{150,110}},
@@ -79,7 +82,8 @@ equation
           fillColor={238,46,47},
           pattern=LinePattern.None,
           fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Model of a free sink.
   </p>
@@ -89,7 +93,8 @@ equation
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is balanced.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

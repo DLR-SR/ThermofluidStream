@@ -93,7 +93,8 @@ equation
   dh = h_out - h_in;
   dT = T_out - T_in;
 
-  annotation(defaultComponentName = "pseudoSource",
+  annotation(
+    defaultComponentName = "pseudoSource",
     Icon(
       graphics={
         Ellipse(
@@ -153,7 +154,8 @@ equation
         Line(
           points = if XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{-20,-100}} else {{0,0}},
           color={0,0,127})}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Artificial process to set the outlet state as parameters or as time-varying input signal:
   </p>   
@@ -166,7 +168,8 @@ equation
   <p>
     See the example <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.PseudoSource\">Tests.Processes.PseudoSource</a>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

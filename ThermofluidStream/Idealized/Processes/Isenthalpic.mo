@@ -140,7 +140,8 @@ equation
           extent={{-100,50},{100,-50}},
           textColor={238,46,47},
           textString = if m_flow*dpLoss < 0 then "dp" else "")}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Isenthalpic process (<code>h_in = h_out</code>) suitable for modeling a valve.
   </p>
@@ -192,7 +193,8 @@ equation
     For inverse calculations, it may be advantageous to set 
     <code>enforcePressureDrop = false</code>, as this simplifies the equation system.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

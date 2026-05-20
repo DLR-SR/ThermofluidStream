@@ -8,9 +8,13 @@ model FixedEnergyFlow "Fixed energy flow rate boundary condition"
 equation
   E_flow_out = E_flow;
 
-  annotation(defaultComponentName = "energyFlowSource",
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-            100,100}}), graphics={
+  annotation(
+    defaultComponentName = "energyFlowSource",
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
+      graphics={
         Text(
           extent={{-150,100},{150,60}},
           textString="%name",
@@ -49,7 +53,8 @@ equation
           fillColor = {255,170,85},
           fillPattern = if abs(E_flow) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow\">FixedHeatFlow</a>.
   </p> 
@@ -61,7 +66,8 @@ equation
     component to which the component FixedEnergyFlow is connected,
     if parameter E_flow is positive.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

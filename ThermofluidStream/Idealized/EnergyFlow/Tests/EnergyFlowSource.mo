@@ -16,11 +16,14 @@ equation
   connect(sine.y, energyFlowSource1.E_flow) annotation(Line(points={{-59,-20},{-22,-20}}, color={0,0,127}));
   connect(energyFlowSource1.E_flow_out, gain.u) annotation(Line(points={{1,-20},{18,-20}}, color={255,170,85}));
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Test model for models from <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Sources\">EnergyFlow.Sources</a>.
   </p>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -51,7 +51,6 @@ model Separator "Model of a phase separator for two-phase medium - Overdetermine
     Placement(transformation(extent={{-40,-50},{-20,-30}})));
 
 equation
-
   dp_AB_rel = abs(p_A - p_B)/max(p_A, p_B);
   isDPWithinTol = sign(relTol_dp_AB  - dp_AB_rel);
   assert(noEvent(dp_AB_rel  <= relTol_dp_AB),
@@ -85,7 +84,11 @@ equation
   connect(isobaricHeatFlowPort.Q_flow_out, isobaricHeatFlowPort1.Q_flow_in) annotation(
     Line(points={{0,-53},{0,52}}, color={255,170,85}));
 
-  annotation(Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation(
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true),
+      graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -175,8 +178,8 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None)}),
-     Diagram(coordinateSystem(preserveAspectRatio=false)),
-     Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Model of a stationary phase separator, for example used in a staged vapor cycle.
   </p>
@@ -193,7 +196,8 @@ equation
     The phase seperator is no loop-breaker. 
     When the phase separator is used inside a loop, a loop-breaker must still be included to break algebraic loops.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

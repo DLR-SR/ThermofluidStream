@@ -28,14 +28,9 @@ equation
   T_out_is = T_in;
   w_t = h_out - h_in;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Base model of an adiabatic process. The model is supposed to compute the outlet specific enthalpy based on:
   </p>
@@ -50,6 +45,13 @@ equation
     The model assumes an incompressible fluid (<code>rho = const</code>) to
     compute the adiabatic reversible reference process.
   </p>
-
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PartialIncompressibleFluid;

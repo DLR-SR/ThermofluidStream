@@ -38,14 +38,9 @@ equation
   w_t = cp*(T_out - T_in);
   h_out = Medium.specificEnthalpy(Medium.setState_pTX(p_out, T_out, Xi_in)); // OM Workaround
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     The model calculates the outlet specific enthalpy based on:
   </p>
@@ -59,5 +54,13 @@ equation
   <p>
     The model assumes a perfect gas (<code>p*v = R*T, cp = const.</code>).
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PerfectGas;

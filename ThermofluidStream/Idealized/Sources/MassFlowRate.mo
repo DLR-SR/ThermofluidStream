@@ -33,7 +33,7 @@ equation
   Xi_out = Xi_in;
 
   annotation(
-    Icon(coordinateSystem(preserveAspectRatio=true),
+    Icon(
       graphics={
         Text(
           extent={{-150,80},{150,120}},
@@ -85,14 +85,16 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None)}),
-        Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>Model for specifying the mass flow rate.</p>
   <p>
     The model is locally overdetermined (one extra equation) and therefore must be connected to an underdetermined model 
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
     to ensure that the overall system remains balanced.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

@@ -24,7 +24,8 @@ annotation(
       textColor={255,170,85},
       extent={{30.0,60.0},{30.0,110.0}},
       textString="%name")}),
-  Documentation(info="<html>
+      Documentation(
+        info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Interfaces.RealOutput\">Modelica.RealOutput</a>.
   </p> 
@@ -46,7 +47,8 @@ annotation(
     <code>EnergyFlowOutput</code> is defined as energy flowing <strong>out</strong> of the system.<br>
     This definition allows inputs and outputs to be connected directly.
   </p>
-</html>", revisions="<html>
+</html>",
+        revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

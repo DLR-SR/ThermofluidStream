@@ -69,14 +69,9 @@ equation
   Z_in = p_in*M/(rho_in*T_in*Modelica.Constants.R);
   Z_out = p_out*M/(rho_out*Medium.temperature(state_out)*Modelica.Constants.R);
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Base model of an adiabatic process. The model is supposed to compute the outlet specific enthalpy based on:
   </p>
@@ -90,6 +85,13 @@ equation
   <p>
     The model assumes ideal gas <code>p*v = R*T</code> and constant isentropic exponent <code>gamma = const.</code>.
   </p>
-
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PartialIdealGas;

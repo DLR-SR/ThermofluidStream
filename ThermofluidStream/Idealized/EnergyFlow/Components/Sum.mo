@@ -16,7 +16,12 @@ equation
     E_flow_out = 0;
   end if;
 
-annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
+  annotation(
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
+      graphics={
         Rectangle(
           extent={{-88,6},{-22,-6}},
           lineColor={255,170,85},
@@ -45,11 +50,13 @@ annotation(Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
-          textString = if abs(E_flow_out) < 1e-8 then "0" else "")}), Documentation(info="<html>
+          textString = if abs(E_flow_out) < 1e-8 then "0" else "")}),
+    Documentation(info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Math.MultiSum\">Modelica.Blocks.Math.MultiSum</a>. See its documentation for further information.
   </p> 
-</html>", revisions="<html>
+</html>",
+  revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

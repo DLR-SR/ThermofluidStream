@@ -43,11 +43,14 @@ equation
   connect(energyFlowSource5.E_flow_out, sum3.E_flow_in[2]) annotation(
     Line(points={{-19,-50},{20,-50},{20,-28.5}}, color={255,170,85}));
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Test model for the <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.Sum\">EnergyFlow.Components.Sum</a> model.
   </p>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

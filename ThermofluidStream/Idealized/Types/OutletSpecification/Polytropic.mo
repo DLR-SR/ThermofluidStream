@@ -16,7 +16,9 @@ annotation(choices(__Dymola_radioButtons=true,
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio "Compression ratio",
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity "Outlet density",
   choice = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletSpecificVolume "Outlet specific volume",
-  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified "Unspecified"), Documentation(revisions="<html>
+  choice = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified "Unspecified"),
+  Documentation(
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

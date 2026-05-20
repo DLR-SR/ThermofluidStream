@@ -55,7 +55,8 @@ equation
   dp = 0;
   h_out = Medium.specificEnthalpy_pTX(p_out, T_in, Xi_out); // To be compatible with SISOFlow
 
-  annotation(defaultComponentName = "composition",
+  annotation(
+    defaultComponentName = "composition",
     Icon(
       graphics={
         Ellipse(
@@ -96,7 +97,8 @@ equation
           else "error"),
         Line(
           points = if outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
-          color={0,0,127})}), Documentation(info="<html>
+          color={0,0,127})}),
+    Documentation(info="<html>
   <p>
     Process to achieve a change in composition. Further assumptions:
   </p>  
@@ -119,7 +121,8 @@ equation
   <p>
     See the example <a href=\"modelica://ThermofluidStream.Idealized.Tests.Processes.MassFractionModifier.Working\">Tests.Processes.MassFractionModifier</a>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

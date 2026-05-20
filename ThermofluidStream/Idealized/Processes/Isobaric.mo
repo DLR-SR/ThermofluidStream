@@ -261,7 +261,9 @@ equation
           extent={{-96,42},{-64,38}},
           fillColor={28,108,200},
           fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None)}),  Documentation(info="<html>
+          pattern=LinePattern.None)}),
+    Documentation(
+      info="<html>
   <p>
     Isobaric process (<code>p_in = p_out</code>) suitable for modeling both heating/cooling (open system, steady-flow, <code>systemSpec==Flow</code>) 
     or periodic heat transfer in a closed cycle system (<code>systemSpec==Cycle</code>), see section Advanced. 
@@ -407,7 +409,8 @@ equation
     </li>
   </ol>
 
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

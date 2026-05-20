@@ -26,14 +26,9 @@ equation
     w_t = w_t_is*eta_is; // Turbine
   end if;
 
-  annotation(Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Base model of an adiabatic process. The model is supposed to compute the outlet specific enthalpy based on:
   </p>
@@ -43,6 +38,13 @@ equation
     <li>Outlet pressure</li>
     <li>Isentropic efficiency</li>
   </ul>
-
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end PartialAdiabatic;

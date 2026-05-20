@@ -6,15 +6,13 @@ partial model Junction "Partial junction"
   import Specification = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true, Documentation(info="<html>
-<p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
-</html>"));
+    choicesAllMatching=true);
   parameter Specification free = ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.A "Free inlet" annotation(
     Evaluate=true);
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows" annotation(
     Dialog(tab="Advanced"));
   parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
-    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+    Dialog(tab="Advanced"), Evaluate=true, HideResult=true);
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet" annotation(
     Dialog(tab="Advanced", enable=considerInertance), HideResult = not considerInertance);
 
@@ -23,6 +21,10 @@ partial model Junction "Partial junction"
   parameter Real relTol_dp_AB = 1e-3 "Relative tolerance for inlet pressure difference pA, pB" annotation(
     Dialog(group="Warnings"));
   final parameter String name = getInstanceName();
+
+  ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium) "Outlet" annotation(
+    Placement(transformation(extent={{80,-20},{120,20}})));
+
 
   //Real equalInletPressures "= 1.0 if within tolerance, = -1.0 if tolerance is exceeded";
   Real isDPWithinTol "= 1.0 if pressure difference is within tolerance, = -1.0 if tolerance is exceeded";
@@ -33,16 +35,15 @@ partial model Junction "Partial junction"
 
   // Regularized mass flow rates (used for mixing of specific enthalpy and mass fractions
   // stream connector would be necessary to model reverse flow correctly)
-  SI.MassFlowRate m_flowA_reg = max(m_flowA,m_flow_eps) "Regularized mass flow rate";
-  SI.MassFlowRate m_flowB_reg = max(m_flowB,m_flow_eps) "Regularized mass flow rate";
+  SI.MassFlowRate m_flowA_reg = max(m_flowA, m_flow_eps) "Regularized mass flow rate";
+  SI.MassFlowRate m_flowB_reg = max(m_flowB, m_flow_eps) "Regularized mass flow rate";
   Real dp_AB_rel "Relative difference in pressure at junction inlets";
-  ThermofluidStream.Interfaces.Outlet outlet(redeclare package Medium = Medium) "Outlet" annotation(
-    Placement(transformation(extent={{80,-20},{120,20}})));
-
   Medium.SpecificEnthalpy h_mix "Outlet specific enthalpy";
   Medium.AbsolutePressure p_mix "Outlet (steady mass-flow) pressure";
   SI.Pressure r_mix "Outlet inertial pressure";
   Medium.MassFraction Xi_mix[Medium.nXi] "Outlet mass fractions";
+
+
 
 protected
   Medium.AbsolutePressure pA = Medium.pressure(stateA) "(Steady mass-flow) pressure at inlet A";
@@ -101,7 +102,11 @@ equation
     "In \"" + name +"\" the inlet pressures differ beyond the specified tolerance.",
     assertionLevel);
 
-  annotation(defaultComponentName = "junction", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation(
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true),
+      graphics={
         Line(
           points={{-2,0},{100,0}},
           color={28,108,200},
@@ -112,15 +117,7 @@ equation
           lineColor= DynamicSelect({28,108,200},{14 + 14*isDPWithinTol, 54 + 54*isDPWithinTol, 100 + 100*isDPWithinTol}),
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}),
-      Diagram(coordinateSystem(preserveAspectRatio=true)),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(info="<html>
   <p>
     Base model for ideal junction that should be used when the mass flow rate is specified at one or both inlets. 
   </p>
@@ -129,5 +126,13 @@ equation
     (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is not underdetermined.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Junction;

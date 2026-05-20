@@ -21,11 +21,14 @@ equation
   connect(transfer1.E_flow_in, sawTooth.y) annotation(Line(points={{-9.6,-20},{-20,-20},{-20,0},{-39,0}}, color={255,170,85}));
   connect(sawTooth1.y, transfer2.E_flow_in) annotation(Line(points={{-39,-40},{-9.6,-40}}, color={0,0,127}));
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     Test model for the <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency\">EnergyFlow.Components.FixedTransferEfficiency</a> model.
   </p>
-</html>", revisions="<html>
+</html>",
+    revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

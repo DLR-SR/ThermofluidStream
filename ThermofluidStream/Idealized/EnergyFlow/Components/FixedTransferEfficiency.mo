@@ -16,22 +16,28 @@ model FixedTransferEfficiency "Model with fixed transfer efficiency"
 
 
 equation
-    if noEvent(E_flow_in >= 0) then
-      E_flow_out = eta*E_flow_in;
-      E_flow_dissipation = -(1 - eta)*E_flow_in;
+  if noEvent(E_flow_in >= 0) then
+    E_flow_out = eta*E_flow_in;
+    E_flow_dissipation = -(1 - eta)*E_flow_in;
+  else
+    if noEvent(eta > 0) then
+      E_flow_out = 1/eta*E_flow_in;
+      E_flow_dissipation = (1 - eta)*E_flow_out;
     else
-      if noEvent(eta > 0) then
-        E_flow_out = 1/eta*E_flow_in;
-        E_flow_dissipation = (1 - eta)*E_flow_out;
-      else
-        E_flow_out = 0;
-        E_flow_dissipation = 0;
-        assert(false, "Problem not well defined for eta = 0 and E_flow_in < 0.", AssertionLevel.error);
-      end if;
+      E_flow_out = 0;
+      E_flow_dissipation = 0;
+      assert(false, "Problem not well defined for eta = 0 and E_flow_in < 0.", AssertionLevel.error);
     end if;
-    // DynamicSelect(FillPattern.None, if abs(E_flow_dissipation) > Modelica.Constants.eps then FillPattern.Solid else FillPattern.None),
-  annotation(defaultComponentName="transfer",
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
+  end if;
+  // DynamicSelect(FillPattern.None, if abs(E_flow_dissipation) > Modelica.Constants.eps then FillPattern.Solid else FillPattern.None),
+
+  annotation(
+    defaultComponentName="transfer",
+    Icon(
+      coordinateSystem(
+        preserveAspectRatio=true,
+        extent={{-100,-100},{100,100}}),
+      graphics={
         Text(
           extent={{-150,65},{150,25}},
           textString="%name",
@@ -95,14 +101,8 @@ equation
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
           textString= if abs(E_flow_dissipation) < 1e-8 then "0" else "")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     This model assumes a fixed transfer efficiency <code>eta</code> in the direction of the actual (positive) energy flow.
   </p>
@@ -115,5 +115,13 @@ equation
     Note that the case <code>eta = 0</code>, <code>E_flow_in &le; 0</code> 
     (which implies <code>E_flow_out = E_flow_dissipation</code>) is not well-defined.
   </p>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end FixedTransferEfficiency;

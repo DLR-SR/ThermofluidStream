@@ -2,7 +2,9 @@ within ThermofluidStream.Idealized;
 package EnergyFlow
   extends Modelica.Icons.Package;
 
-  annotation(Icon(graphics={
+  annotation(
+    Icon(
+      graphics={
         Rectangle(
           extent={{-80,60},{0,-60}},
           lineColor={243,243,243},
@@ -30,11 +32,14 @@ package EnergyFlow
         Line(
           points={{-56,0},{56,0}},
           color={255,170,85},
-          thickness=1)}), Documentation(info="<html>
+          thickness=1)}),
+    Documentation(
+      info="<html>
   <p>
     This package includes idealized energy flow (power and heat flow) transfer.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

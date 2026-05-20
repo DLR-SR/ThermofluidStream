@@ -26,7 +26,8 @@ Icon(
       textColor={255,170,85},
       extent={{-10.0,60.0},{-10.0,85.0}},
       textString="%name")}),
-  Documentation(info="<html>
+      Documentation(
+        info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Interfaces.RealInput\">Modelica.RealInput</a>.
   </p> 
@@ -48,7 +49,8 @@ Icon(
     <code>EnergyFlowOutput</code> is defined as energy flowing <strong>out</strong> of the system.<br>
     This definition allows inputs and outputs to be connected directly.
   </p>
-</html>", revisions="<html>
+</html>",
+        revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

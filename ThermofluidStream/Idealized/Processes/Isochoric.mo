@@ -189,7 +189,8 @@ equation
           fillColor={28,108,200},
           fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Isochoric process (density <code>rho_in = rho_out</code>, specific volume <code>v_in = v_out</code>) mainly
     suitable for representing stationary-flow representations of isochoric periodic heat transfer in a closed cycle system (<code>systemSpec==Cycle</code>). 
@@ -325,9 +326,8 @@ equation
       <code>X_in = X_out</code>.
     </li>
   </ul>
-
- 
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>

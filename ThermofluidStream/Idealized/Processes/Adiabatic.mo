@@ -233,7 +233,8 @@ equation
           fillColor={28,108,200},
           fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None)}),
-      Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Adiabatic process suitable for modeling both hydraulic pumps and turbines (incompressible media) 
     as well as compressors, blowers, fans, and turbines (compressible media) with a fixed isentropic efficiency 
@@ -350,7 +351,8 @@ equation
       <code>X_in = X_out</code>.
     </li>
   </ul>  
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
