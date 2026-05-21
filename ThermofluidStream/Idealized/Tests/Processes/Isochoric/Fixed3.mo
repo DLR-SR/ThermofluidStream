@@ -1,20 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.Isochoric;
 model Fixed3 "Example - Isochoric process"
   extends Modelica.Icons.Example;
-
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-      choicesAllMatching=true);
-  parameter SI.MassFlowRate m_flow=1 "Mass flow rate";
-  parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
-  parameter Medium.Temperature T_in=293.15 "Inlet temperature";
-  parameter SI.TemperatureDifference dT=20 "Temperature difference";
-  final parameter Medium.Temperature T_out=T_in + dT "Outlet temperature";
-  final parameter Medium.SpecificHeatCapacity cv = Medium.specificHeatCapacityCv(Medium.setState_pT(p_in, T_in));
-  final parameter SI.HeatFlowRate Q_flow = m_flow*cv*dT "Heat flow rate";
-
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{80,80},{100,100}})));
+  extends ThermofluidStream.Idealized.Tests.Processes.Isochoric.PartialFixed;
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -66,21 +53,11 @@ equation
   connect(energyFlowSource.E_flow_out, isochoricFlow.Q_flow_in) annotation (Line(points={{-59,-30},{50,-30},{50,-8}}, color={255,170,85}));
 
   annotation(
-    Diagram(
-      graphics={
-        Text(
-          extent={{-80,80},{60,60}},
-          textColor={28,108,200},
-          textString="The simulation fails for m_flow = 0.")}),
     Documentation(
       info="<html>
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process defined by parameters (mass flow rate and heat flow rate given)
-  </p>
-
-  <p>
-    <code>m_flow = 0</code> is not supported (<code>du := Q_flow/m_flow</code> fails for <code>m_flow = 0</code>.
   </p>
 </html>",
       revisions="<html>

@@ -25,6 +25,10 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
     HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
+    Dialog(group="Warnings",
+      enable = heatFlowSignal == HeatFlowSignal.Input),
+      HideResult = not heatFlowSignal == HeatFlowSignal.Input);
   parameter SI.PressureDifference dp_start = 0 "Pressure difference start value (for nonlinear iteration)" annotation(
     Dialog(group="Nonlinear iteration (specifyOutlet == false and heatFlowSignal == Input)",
       enable = not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input),
@@ -33,6 +37,7 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec == ValueSpecification.Fixed and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-100,-120})));
@@ -61,7 +66,9 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   SI.Power P "Power";
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual "Actual outlet specification [SI-units], required due to the conditional connector outletSpec_prescribed";
-
+  Medium.SpecificEnergy eps_du = Modelica.Constants.eps;
+  SI.MassFlowRate eps_m_flow = Modelica.Constants.eps;
+  SI.HeatFlowRate eps_Q_flow = Modelica.Constants.eps;
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
   if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed then
@@ -87,7 +94,17 @@ equation
     dp = Medium.pressure(Medium.setState_dTX(rho,T_out,Xi_out)) - p_in; // Required to 'force' Dymola to use dp(start = dp_start) as iteration variable
   end if;
 
-  Q_flow = m_flow*du;
+
+  if specifyOutlet and not heatFlowSignal == HeatFlowSignal.Input  then
+    Q_flow = m_flow*du;
+  elseif specifyOutlet then // and heatFlowSignal == HeatFlowSignal.Input
+    m_flow = Q_flow * du/(du^2 + eps_du^2);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(du) > eps_du), "The heat flow rate in "+name+" is non zero, but the difference in specific internal energy is zero, implying that the mass flow rate m_flow := Q_flow/du is infinite", assertionLevel);
+  else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
+    du = Q_flow * m_flow / (m_flow^2 + eps_m_flow^2);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+name+" is non zero, but the mass flow rate is zero, implying that the difference in specific internal energy du := Q_flow/m_flow is infinite", assertionLevel);
+  end if;
+
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
 
   annotation(

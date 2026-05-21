@@ -1,21 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.Isochoric;
 model Fixed1 "Example - Isochoric process"
   extends Modelica.Icons.Example;
-
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-      choicesAllMatching=true);
-  parameter SI.MassFlowRate m_flow=1   "Mass flow rate";
-  parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
-  parameter Medium.Temperature T_in=293.15 "Inlet temperature";
-  parameter SI.TemperatureDifference dT=20   "Temperature difference";
-  final parameter Medium.Temperature T_out=T_in + dT "Outlet temperature";
-  final parameter Medium.SpecificHeatCapacity cv = Medium.specificHeatCapacityCv(Medium.setState_pT(p_in, T_in));
-  final parameter SI.HeatFlowRate Q_flow = m_flow*cv*dT "Heat flow rate";
-
-
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
-    Placement(transformation(extent={{80,80},{100,100}})));
+  extends ThermofluidStream.Idealized.Tests.Processes.Isochoric.PartialFixed;
 
   ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
@@ -109,10 +95,6 @@ equation
   <p>
     This example illustrates several variants of using the 
     <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isochoric\">Isochoric</a> process defined by parameters (outlet state and mass flow rate given)
-  </p>
-
-  <p>
-    <code>m_flow = 0</code> and/or <code>dT = 0</code> are supported.
   </p>
 </html>",
       revisions="<html>
