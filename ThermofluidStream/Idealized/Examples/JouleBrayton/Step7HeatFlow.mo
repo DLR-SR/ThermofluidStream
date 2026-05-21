@@ -37,7 +37,7 @@ model Step7HeatFlow
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation(Placement(transformation(extent={{-20,-10},{0,10}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flow_fixed=1) annotation(Placement(transformation(
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flow_fixed=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-60,52})));
@@ -80,7 +80,7 @@ model Step7HeatFlow
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-80,30})));
-  Sources.Sink_free waterSink(redeclare package Medium = Water) annotation(Placement(transformation(
+  Boundaries.Sink_free waterSink(redeclare package Medium = Water) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-140,30})));

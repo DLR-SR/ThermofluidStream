@@ -10,7 +10,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-100,60},{-80,80}})));
-  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-40,60},{-20,80}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{100,100},{120,120}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic dpLoss(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-70,60},{-50,80}})));
   Modelica.Blocks.Sources.Step massFlowRateStep(
@@ -27,7 +27,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
-  Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
+  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.RelativePressureLoss,
@@ -41,7 +41,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-98,-80},{-78,-60}})));
-  Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-38,-80},{-18,-60}})));
+  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-38,-80},{-18,-60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic pout(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
@@ -55,7 +55,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{0,60},{20,80}})));
-  Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{60,60},{80,80}})));
+  .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{60,60},{80,80}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic dpLoss1(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
@@ -64,7 +64,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{0,-10},{20,10}})));
-  Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
+  .ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic prLoss1(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
@@ -74,7 +74,7 @@ model EnforcePressureDrop
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{0,-80},{20,-60}})));
-  Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{60,-80},{80,-60}})));
+  .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{60,-80},{80,-60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic pout1(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,

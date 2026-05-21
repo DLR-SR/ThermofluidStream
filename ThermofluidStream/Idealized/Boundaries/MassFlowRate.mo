@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Sources;
+within ThermofluidStream.Idealized.Boundaries;
 model MassFlowRate "Generic mass flow rate source - Overdetermined (1 equation)"
 
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = true);
@@ -90,7 +90,7 @@ equation
   <p>Model for specifying the mass flow rate.</p>
   <p>
     The model is locally overdetermined (one extra equation) and therefore must be connected to an underdetermined model 
-    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>) 
     to ensure that the overall system remains balanced.
   </p>
 </html>",

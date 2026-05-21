@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized;
-package Sources
+package Boundaries
   extends Modelica.Icons.SourcesPackage;
 
   annotation(
@@ -17,4 +17,4 @@ package Sources
     </li>
   </ul>
 </html>"));
-end Sources;
+end Boundaries;

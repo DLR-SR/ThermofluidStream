@@ -523,7 +523,7 @@ equation
       <code>m_flow = P/dh</code> or <code>m_flow = P/du</code>.
       To obtain an overall balanced system, a locally underdetermined component,
       such as
-      <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">
+      <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">
         Sink_free
       </a>,
       must be connected.

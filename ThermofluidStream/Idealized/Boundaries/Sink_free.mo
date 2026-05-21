@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Sources;
+within ThermofluidStream.Idealized.Boundaries;
 model Sink_free "Sink (free) - Underdetermined (1 equation)"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
@@ -90,7 +90,7 @@ equation
 
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined model 
-    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is balanced.
   </p>
 </html>",

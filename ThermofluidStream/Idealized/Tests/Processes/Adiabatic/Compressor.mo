@@ -68,7 +68,7 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{-20,100},{0,120}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{40,100},{60,120}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink4(redeclare package Medium = Medium, considerInertance=false) annotation (Placement(transformation(extent={{40,100},{60,120}})));
   ThermofluidStream.Idealized.Processes.Adiabatic fullMedium2(
     redeclare package Medium = Medium,
     considerInertance=false,
@@ -102,7 +102,7 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     p0_par=100000,
     temperatureFromInput=false,
     T0_par=293.15) annotation(Placement(transformation(extent={{-20,-40},{0,-20}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium)                          annotation(Placement(transformation(extent={{40,-40},{60,-20}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink6(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstantGamma2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
@@ -113,12 +113,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     dp_fixed=100000) annotation (Placement(transformation(extent={{10,-20},{30,-40}})));
   Modelica.Blocks.Math.Gain gain(k=-1) annotation(Placement(transformation(extent={{-40,130},{-20,150}})));
   Modelica.Blocks.Math.Gain gain1(k=-1) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
-  Boundaries.Source                   source2(
+  .ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-120,-100},{-100,-80}})));
-  Boundaries.Sink_m                    sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-60,-100},{-40,-80}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
+  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfetGas(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
@@ -127,12 +127,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{-90,-100},{-70,-80}})));
-  Boundaries.Source                   source7(
+  .ThermofluidStream.Boundaries.Source source7(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
-  Boundaries.Sink_m                    sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{40,-100},{60,-80}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{-20,-100},{0,-80}})));
+  .ThermofluidStream.Boundaries.Sink_m sink7(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{40,-100},{60,-80}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfetGas1(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
@@ -146,12 +146,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     P_nom(displayUnit="kW") = 300000,
     dp_nom=5000000,
     enableFilter=true) annotation (Placement(transformation(extent={{10,-100},{30,-80}})));
-  Boundaries.Source                   source8(
+  .ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-20,-170},{0,-150}})));
-  ThermofluidStream.Idealized.Sources.Sink_free  sink8(redeclare package Medium = Medium)                          annotation(Placement(transformation(extent={{40,-170},{60,-150}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{-20,-170},{0,-150}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink8(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,-170},{60,-150}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfetGas2(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
@@ -161,12 +161,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=100000) annotation (Placement(transformation(extent={{10,-150},{30,-170}})));
   Modelica.Blocks.Math.Gain gain2(k=-1) annotation(Placement(transformation(extent={{-40,-140},{-20,-120}})));
-  Boundaries.Source                   source9(
+  .ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{80,160},{100,180}})));
-  Boundaries.Sink_m                    sink9(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{140,160},{160,180}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{80,160},{100,180}})));
+  .ThermofluidStream.Boundaries.Sink_m sink9(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,160},{160,180}})));
   ThermofluidStream.Idealized.Processes.Adiabatic fullMedium3(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
@@ -179,13 +179,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     enableFilter=true,
     P_nom(displayUnit="kW"))
                     annotation (Placement(transformation(extent={{110,160},{130,180}})));
-  Boundaries.Source                   source10(
+  .ThermofluidStream.Boundaries.Source source10(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{80,30},{100,50}})));
-  Boundaries.Sink_m                    sink10(redeclare package Medium = Medium, m_flow_fixed=1)
-                                                                                                annotation(Placement(transformation(extent={{140,30},{160,50}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{80,30},{100,50}})));
+  .ThermofluidStream.Boundaries.Sink_m sink10(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,30},{160,50}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasConstantGamma3(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
@@ -198,13 +197,12 @@ model Compressor "Compressor model with different adiabatic models (isentropic, 
     P_nom(displayUnit="kW"),
     enableFilter=false)
                        annotation (Placement(transformation(extent={{110,30},{130,50}})));
-  Boundaries.Source                   source11(
+  .ThermofluidStream.Boundaries.Source source11(
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{80,-100},{100,-80}})));
-  Boundaries.Sink_m                    sink11(redeclare package Medium = Medium, m_flow_fixed=1)
-                                                                                                annotation(Placement(transformation(extent={{140,-100},{160,-80}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{80,-100},{100,-80}})));
+  .ThermofluidStream.Boundaries.Sink_m sink11(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,-100},{160,-80}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfetGas3(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",

@@ -31,11 +31,11 @@ model Step10VaporQualityPseudoInversion
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,10},{40,-10}})));
-  Sources.LoopBreaker_m loopBreaker(
+  Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{0,-70},{-20,-50}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{0,-70},{-20,-50}})));
   Processes.Isobaric condenser(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,

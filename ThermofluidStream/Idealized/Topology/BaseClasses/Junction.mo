@@ -123,7 +123,7 @@ equation
   </p>
   <p>
     The model is locally underdetermined (one equation missing) and therefore must be connected to an overdetermined component 
-    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">MassFlowRate</a>) 
     to ensure that the overall system is not underdetermined.
   </p>
 </html>",

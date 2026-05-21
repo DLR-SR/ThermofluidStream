@@ -187,8 +187,8 @@ equation
   <p>
     The two mass flow rates are <strong>not</strong> independent.
     This model is locally overdetermined (one additional equation). Therefore, one of the two outlets must be connected to an underdetermined component 
-    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a> or 
-    <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>) 
+    (e.g., <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker\">LoopBreaker</a> or 
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>) 
     to ensure that the overall system remains balanced.
   </p>
   

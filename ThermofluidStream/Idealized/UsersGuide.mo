@@ -67,8 +67,8 @@ class BalancedModels
   <ul>
     <li>
       Underdetermined by one equation:
-      <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>,
-      <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker\">LoopBreaker</a>,
+      <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>,
+      <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker\">LoopBreaker</a>,
       <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a>
       and
       <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a>.
@@ -76,7 +76,7 @@ class BalancedModels
 
     <li>
       Overdetermined by one equation:
-      <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a>,
+      <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">MassFlowRate</a>,
       and
       <a href=\"modelica://ThermofluidStream.Idealized.Components.Separator\">Separator</a>.
     </li>

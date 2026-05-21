@@ -46,14 +46,14 @@ model Step4Separator
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_out_Evaporator) annotation(Placement(transformation(extent={{-10,-80},{10,-60}})));
-  Sources.LoopBreaker loopBreaker1(
+  Boundaries.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator,
     p_out_fixed=p_Evaporator,
     considerInertance=false,
     showPressure=false,
-    showThermalSpecification=false) annotation(Placement(transformation(extent={{20,-80},{40,-60}})));
+    showThermalSpecification=false) annotation (Placement(transformation(extent={{20,-80},{40,-60}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
     description="COP",
     use_numberPort=false,
@@ -80,14 +80,14 @@ model Step4Separator
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-30,40})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
     pSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
     showPressure=false,
-    showThermalSpecification=false) annotation(Placement(transformation(extent={{22,-4},{42,16}})));
+    showThermalSpecification=false) annotation (Placement(transformation(extent={{22,-4},{42,16}})));
   Modelica.Blocks.Sources.Ramp flashChamberPressureRamp(
     height=p_Condensor - p_Evaporator,
     duration=1,

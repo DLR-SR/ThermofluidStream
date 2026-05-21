@@ -38,7 +38,7 @@ model Step2Valve
     number=(Medium.specificEnthalpy(airSink.inlet.state) - Medium.specificEnthalpy(airSource.outlet.state))/(compressor.dh),
     displayVariable=false) "=0 (for a valve)"
                           annotation(Placement(transformation(extent={{0,-60},{20,-40}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
 
 equation
   connect(compressor.outlet, cooler.inlet) annotation(

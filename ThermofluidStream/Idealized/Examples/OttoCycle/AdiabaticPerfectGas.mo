@@ -31,7 +31,7 @@ model AdiabaticPerfectGas
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   Modelica.Blocks.Sources.RealExpression outletPressure(y=Medium.pressure(combustion.outlet.state)*(compressionRatio)^(-gamma)) annotation(
     Placement(transformation(extent={{60,-40},{40,-20}})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,

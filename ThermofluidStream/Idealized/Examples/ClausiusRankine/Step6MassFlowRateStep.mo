@@ -32,8 +32,7 @@ model Step6MassFlowRateStep
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  Sources.Sink_free waterSink(redeclare package Medium = Medium) annotation(
-    Placement(transformation(extent={{120,-10},{140,10}})));
+  Boundaries.Sink_free waterSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,-10},{140,10}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-14,-40},{6,-20}})));
   Processes.Isobaric preheater(
     redeclare package Medium = Medium,
@@ -46,7 +45,7 @@ model Step6MassFlowRateStep
     dT_fixed=50,
     T_out_fixed=473.15) annotation(Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-54,-40},{-34,-20}})));
-  Sources.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-100,-10},{-80,10}})));
+  Boundaries.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
   Modelica.Blocks.Sources.Step massFlowRateStep(
     height=1,
     offset=1,

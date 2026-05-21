@@ -10,24 +10,24 @@ model InertanceNeglect "Example - Loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,100},{160,120}})));
 
-  .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     considerInertance=false,
 
     p_out_fixed=100000,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{-66,20},{-86,40}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{-66,20},{-86,40}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse(
     amplitude=1,
     period=0.3,
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker1(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
 
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{34,20},{14,40}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{34,20},{14,40}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
     amplitude=1,
     period=0.3,
@@ -35,13 +35,13 @@ model InertanceNeglect "Example - Loop breaker"
     startTime=0.1) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
   Modelica.Blocks.Sources.RealExpression h_const(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-6,-40},{14,-20}})));
-  .ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
 
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{146,20},{126,40}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{146,20},{126,40}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse4(
     amplitude=1,
     period=0.3,
@@ -52,18 +52,18 @@ model InertanceNeglect "Example - Loop breaker"
     duration=1,
     offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 20),
     startTime=0) annotation(Placement(transformation(extent={{106,-40},{126,-20}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-100,20},{-120,40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource1(
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-100,20},{-120,40}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource1(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{0,20},{-20,40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource2(
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{0,20},{-20,40}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{106,20},{86,40}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{106,20},{86,40}})));
 
 equation
   connect(loopBreaker.outlet, massFlowRateSource.inlet) annotation(Line(

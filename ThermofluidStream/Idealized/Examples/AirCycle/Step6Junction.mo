@@ -34,14 +34,14 @@ model Step6Junction
     use_numberPort=false,
     number=(inletEnthalpyFlowRate.value - outletEnthalpyFlowRate.value)/(compressor.P + turbine.P),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{140,-10},{160,10}})));
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{140,-10},{160,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{40,-40},{60,-20}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-10,10},{10,-10}})));
-  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-40},{30,-20}})));
+  Boundaries.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRateValveRamp(
     height=1,
     duration=1,
@@ -149,7 +149,7 @@ equation
   <p>
     To obtain a balanced system (number of equations = number of unknowns), one of the junction inlets 
     (either <code>A</code> or <code>B</code>) must remain free, comparable to a 
-    <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> boundary.
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a> boundary.
   </p>
 
   <p>

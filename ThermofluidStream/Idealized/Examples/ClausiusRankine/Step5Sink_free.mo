@@ -54,8 +54,8 @@ model Step5Sink_free
     use_numberPort=false,
     number=(-turbine.dh - pump.dh)/(superheater.outlet.state.h - preheater.inlet.state.h + Modelica.Constants.eps),
     displayVariable=false) annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-  Sources.Sink_free waterSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
+  Boundaries.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+  Boundaries.Sink_free waterSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,-10},{150,10}})));
 
 equation
   connect(waterSource.outlet, pump.inlet) annotation(
@@ -138,8 +138,8 @@ equation
   </p>
 
   <p>
-    The <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> model is locally underdetermined by one equation (it lacks the definition of the mass flow rate), which is indicated by a minus sign.<br> 
-    The <a href=\"modelica://ThermofluidStream.Idealized.Sources.MassFlowRate\">MassFlowRate</a> model is overdetermined by one equation, which is indicated by a plus sign.<br>
+    The <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a> model is locally underdetermined by one equation (it lacks the definition of the mass flow rate), which is indicated by a minus sign.<br> 
+    The <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">MassFlowRate</a> model is overdetermined by one equation, which is indicated by a plus sign.<br>
     Combining both models yields a balanced model. See also <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.BalancedModels\">UsersGuide.BalancedModels</a>.
   </p>
 

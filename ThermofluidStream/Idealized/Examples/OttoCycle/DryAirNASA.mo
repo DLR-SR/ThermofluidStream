@@ -46,7 +46,7 @@ model DryAirNASA
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-60,-4})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,

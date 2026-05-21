@@ -15,17 +15,17 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
     p0_par=100000,
     T0_par=293.15,
     considerInertance=false) annotation(Placement(transformation(extent={{-120,60},{-100,80}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkB3(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{-30,80},{-10,100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkA3(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-30,40},{-10,60}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkB3(redeclare package Medium = Medium, considerInertance=false) annotation (Placement(transformation(extent={{-30,80},{-10,100}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkA3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-30,40},{-10,60}})));
   ThermofluidStream.Topology.SplitterT1 splitter4(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     considerInertance=false) annotation(Placement(transformation(extent={{-90,80},{-70,60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-60,40},{-40,60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB2(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB2(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-60,100},{-40,80}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-60,100},{-40,80}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse3(
     amplitude=1,
     period=0.3,
@@ -42,17 +42,17 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
     p0_par=100000,
     T0_par=293.15,
     considerInertance=false) annotation(Placement(transformation(extent={{10,70},{30,90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sinkB1(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{100,70},{120,90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sinkA1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{100,30},{120,50}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sinkB1(redeclare package Medium = Medium, considerInertance=false) annotation (Placement(transformation(extent={{100,70},{120,90}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sinkA1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{100,30},{120,50}})));
   ThermofluidStream.Topology.SplitterT2 splitter1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     considerInertance=false) annotation(Placement(transformation(extent={{40,90},{60,70}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{70,30},{90,50}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB1(
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{70,30},{90,50}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB1(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{70,90},{90,70}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{70,90},{90,70}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse1(
     amplitude=1,
     period=0.3,
@@ -69,17 +69,17 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
     p0_par=100000,
     T0_par=293.15,
     considerInertance=false) annotation(Placement(transformation(extent={{-110,-90},{-90,-70}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sinkB2(redeclare package Medium = Medium, considerInertance=false) annotation(Placement(transformation(extent={{-20,-50},{0,-30}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sinkA2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-20,-120},{0,-100}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sinkB2(redeclare package Medium = Medium, considerInertance=false) annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sinkA2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
   ThermofluidStream.Topology.SplitterX splitterX1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     considerInertance=false) annotation(Placement(transformation(extent={{-80,-70},{-60,-90}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-50,-120},{-30,-100}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB4(
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-120},{-30,-100}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB4(
     redeclare package Medium = Medium,
     considerInertance=false,
-    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-50,-30},{-30,-50}})));
+    m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-30},{-30,-50}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse5(
     amplitude=1,
     period=0.3,
@@ -91,8 +91,8 @@ model SplitterNeglectInertance "Example - Splitter requiring considerInertance =
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{-100,-140},{-80,-120}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-70,-140},{-50,-120}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateC4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-50,-70},{-30,-90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sinkC4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-20,-90},{0,-70}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateC4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-50,-70},{-30,-90}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sinkC4(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-20,-90},{0,-70}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampC4(
     height=1,
     duration=1,

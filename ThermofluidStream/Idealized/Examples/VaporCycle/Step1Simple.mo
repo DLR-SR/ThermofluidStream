@@ -31,12 +31,12 @@ model Step1Simple
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-20,-40},{0,-20}})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{10,-40},{30,-20}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-40,-70},{-20,-50}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformanceSpecific(

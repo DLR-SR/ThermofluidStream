@@ -72,7 +72,7 @@ model SimpleAir
     p0_par=p_in,
     temperatureFromInput=false,
     T0_par=T_in) annotation(Placement(transformation(extent={{-140,40},{-120,60}})));
-  Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
+  .ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   Processes.Adiabatic fullMedium(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",

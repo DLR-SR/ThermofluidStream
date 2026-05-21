@@ -10,7 +10,7 @@ model Warnings "Example - Loop breaker"
   parameter SI.MassFlowRate tol_m_flow=1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out";
   parameter SI.MassFlowRate tol_Xi=1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out";
 
-  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     tol_p=tol_p,
@@ -19,7 +19,7 @@ model Warnings "Example - Loop breaker"
     tol_Xi=tol_Xi,
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{80,20},{100,40}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{80,20},{100,40}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,120},{140,140}})));
 
@@ -33,10 +33,10 @@ model Warnings "Example - Loop breaker"
     p0_par=100000,
     T0_par=293.15,
     setEnthalpy=false) annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateSource1(
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource1(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    m_flow_fixed=0) annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
+    m_flow_fixed=0) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   ThermofluidStream.Idealized.Topology.JunctionT2 junction(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{50,40},{70,20}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep(
     wMin=0.1,
@@ -114,7 +114,7 @@ equation
     Documentation(
       info="<html>
   <p>
-    Tests <a href=\"modelica://ThermofluidStream.Idealized.Sources.LoopBreaker_m\">LoopBreaker_m</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker_m\">LoopBreaker_m</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
   </p>
 </html>",
       revisions="<html>

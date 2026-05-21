@@ -13,7 +13,7 @@ model Setpoints "Example - free sink"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15)          annotation(Placement(transformation(extent={{-200,92},{-180,112}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,92},{-120,112}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-140,92},{-120,112}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse(
     amplitude=1,
     period=0.3,
@@ -32,32 +32,32 @@ model Setpoints "Example - free sink"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-200,50},{-180,70}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,50},{-120,70}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-140,50},{-120,70}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-200,-30},{-180,-10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-30},{-120,-10}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-140,-30},{-120,-10}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-200,-110},{-180,-90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink3(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-110},{-120,-90}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-140,-110},{-120,-90}})));
   ThermofluidStream.Boundaries.Source source4(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,50},{-20,70}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,50},{40,70}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink4(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,50},{40,70}})));
   ThermofluidStream.Boundaries.Source source5(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,-30},{40,-10}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink5(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,-110},{-20,-90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,-110},{40,-90}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink6(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-110},{40,-90}})));
   Modelica.Blocks.Sources.Pulse p_pulse(
     amplitude=1e5,
     period=0.4,
@@ -78,21 +78,21 @@ model Setpoints "Example - free sink"
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{120,50},{140,70}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,50},{200,70}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink7(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{180,50},{200,70}})));
   ThermofluidStream.Boundaries.Source source8(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{120,-30},{140,-10}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,-30},{200,-10}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink8(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{180,-30},{200,-10}})));
   ThermofluidStream.Boundaries.Source source9(
     redeclare package Medium = Medium,
     pressureFromInput=true,
     xiFromInput=false,
     setEnthalpy=true,
     enthalpyFromInput=true) annotation(Placement(transformation(extent={{120,-110},{140,-90}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink9(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,-110},{200,-90}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink9(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{180,-110},{200,-90}})));
   Modelica.Blocks.Sources.Pulse p_pulse1(
     amplitude=1e5,
     period=0.4,
@@ -123,16 +123,16 @@ model Setpoints "Example - free sink"
     f=1,
     offset=Medium.specificEnthalpy_pT(1e5, 273.15 + 120)) annotation(
     Placement(transformation(extent={{80,26},{100,46}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-170,92},{-150,112}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,50},{-150,70}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,-30},{-150,-10}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-170,-110},{-150,-90}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,50},{10,70}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,-30},{10,-10}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-10,-110},{10,-90}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{150,50},{170,70}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{150,-30},{170,-10}})));
-  ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate9(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{150,-110},{170,-90}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-170,92},{-150,112}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,50},{-150,70}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-30},{-150,-10}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-170,-110},{-150,-90}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate4(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate5(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate6(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate7(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{150,50},{170,70}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate8(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{150,-30},{170,-10}})));
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate9(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{150,-110},{170,-90}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-200,10},{-180,30}})));
 
 equation
@@ -248,7 +248,7 @@ equation
     Documentation(
       info="<html>
   <p>
-    Test model for the <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a> model with varying <code>p,T,h</code> and <code>m_flow</code>.
+    Test model for the <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a> model with varying <code>p,T,h</code> and <code>m_flow</code>.
   </p>
 </html>",
       revisions="<html>

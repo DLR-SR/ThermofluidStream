@@ -35,12 +35,12 @@ model Step8ClosedLoopFiltered
 
     T_out_fixed=473.15,
     dT_fixed=50) annotation(Placement(transformation(extent={{20,-10},{40,10}})));
-  Sources.LoopBreaker_m loopBreaker(
+  Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{0,-70},{-20,-50}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{0,-70},{-20,-50}})));
   Processes.Isobaric condenser(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,

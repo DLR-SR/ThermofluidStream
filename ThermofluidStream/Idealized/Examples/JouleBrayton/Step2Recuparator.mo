@@ -49,7 +49,7 @@ model Step2Recuparator
     A=10,
     k_NTU=200,
     TC=0.01)   annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,40})));

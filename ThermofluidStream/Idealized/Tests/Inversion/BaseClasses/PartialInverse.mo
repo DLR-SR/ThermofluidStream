@@ -14,7 +14,7 @@ model PartialInverse "Base model defining the mixing problem"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-80,40},{-60,60}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{40,40},{60,60}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{40,40},{60,60}})));
   ThermofluidStream.Idealized.Topology.JunctionT2 junction(
     displayInstanceName=true,
     displayParameters=true,
@@ -24,11 +24,11 @@ model PartialInverse "Base model defining the mixing problem"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=303.15) annotation(Placement(transformation(extent={{-80,0},{-60,20}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-40,0},{-20,20}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{-40,40},{-20,60}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   ThermofluidStream.Sensors.SingleSensorSelect singleSensorSelect(
     redeclare package Medium = Medium,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,

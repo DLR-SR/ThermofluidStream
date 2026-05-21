@@ -51,12 +51,12 @@ model Step3Staged
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_out_Evaporator1) annotation(Placement(transformation(extent={{-30,-80},{-10,-60}})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator1,
-    p_out_fixed=p_Evaporator1) annotation(Placement(transformation(extent={{10,-80},{30,-60}})));
+    p_out_fixed=p_Evaporator1) annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   ThermofluidStream.Utilities.showRealValue coefficientOfPerformance(
     description="COP",
     use_numberPort=false,
@@ -88,11 +88,11 @@ model Step3Staged
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     h_out_fixed=h_out_Evaporator2,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy) annotation(Placement(transformation(extent={{-30,10},{-10,30}})));
-  ThermofluidStream.Idealized.Sources.LoopBreaker loopBreaker2(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker2(
     redeclare package Medium = Medium,
     p_out_fixed=p_Evaporator2,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
-    h_out_fixed=h_out_Evaporator2) annotation(Placement(transformation(extent={{10,10},{30,30}})));
+    h_out_fixed=h_out_Evaporator2) annotation (Placement(transformation(extent={{10,10},{30,30}})));
 
   Processes.Adiabatic                             compressor3(
     redeclare package Medium = Medium,

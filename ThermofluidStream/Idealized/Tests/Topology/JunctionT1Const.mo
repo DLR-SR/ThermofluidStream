@@ -27,10 +27,10 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
     redeclare package Medium = Medium,
     p0_par=200000,
     T0_par=313.15) annotation(Placement(transformation(extent={{-190,20},{-170,40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-160,60},{-140,80}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-160,60},{-140,80}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,40},{-120,60}})));
   ThermofluidStream.Boundaries.Source sourceB1(
     redeclare package Medium = Medium,
@@ -52,65 +52,65 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
     redeclare package Medium = Medium,
     p0_par=200000,
     T0_par=313.15) annotation(Placement(transformation(extent={{-50,60},{-30,80}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,20},{0,40}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-20,20},{0,40}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction1(free=ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{0,40},{20,60}})));
   ThermofluidStream.Boundaries.Source sourceA2(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-190,-40},{-170,-20}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-110,-60},{-90,-40}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-110,-60},{-90,-40}})));
   ThermofluidStream.Boundaries.Source sourceB2(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=313.15) annotation(Placement(transformation(extent={{-190,-80},{-170,-60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA2(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA2(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-160,-40},{-140,-20}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-160,-40},{-140,-20}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-60},{-120,-40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB2(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB2(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-160,-80},{-140,-60}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-160,-80},{-140,-60}})));
   ThermofluidStream.Boundaries.Source sourceA3(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-50,-40},{-30,-20}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink3(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{30,-60},{50,-40}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{30,-60},{50,-40}})));
   ThermofluidStream.Boundaries.Source sourceB3(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=313.15) annotation(Placement(transformation(extent={{-50,-80},{-30,-60}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction3(free=ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{0,-60},{20,-40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB1(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB1(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,-80},{0,-60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA1(
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA1(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-20,-40},{0,-20}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   ThermofluidStream.Boundaries.Source sourceA4(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{70,-40},{90,-20}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{180,-60},{200,-40}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sink4(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{180,-60},{200,-40}})));
   ThermofluidStream.Boundaries.Source sourceB4(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=313.15) annotation(Placement(transformation(extent={{70,-80},{90,-60}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction4(free=ThermofluidStream.Idealized.Topology.Types.FreeJunctionInlet.B, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,-60},{140,-40}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB3(
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB3(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{100,-80},{120,-60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA4(
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{100,-80},{120,-60}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA4(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1.5) annotation(Placement(transformation(extent={{150,-60},{170,-40}})));
+    m_flow_fixed=1.5) annotation (Placement(transformation(extent={{150,-60},{170,-40}})));
 
 equation
   connect(sourceB.outlet, flowResistanceB.inlet) annotation(Line(

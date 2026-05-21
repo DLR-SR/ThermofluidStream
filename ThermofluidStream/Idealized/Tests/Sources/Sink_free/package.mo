@@ -6,7 +6,7 @@ package Sink_free "Sink_free tests"
     Documentation(
       info="<html>
   <p>
-    Tests <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_free</a>.
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>.
   </p>
 </html>",
     revisions="<html>

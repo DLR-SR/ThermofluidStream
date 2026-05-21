@@ -8,7 +8,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,140},{-220,160}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,140},{-160,160}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,140},{-160,160}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -26,7 +26,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,100},{-220,120}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,100},{-160,120}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,100},{-160,120}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -45,7 +45,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,60},{-220,80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,60},{-160,80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,60},{-160,80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -64,7 +64,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,20},{-220,40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink3(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,20},{-160,40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,20},{-160,40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -83,7 +83,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,-20},{-220,0}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink4(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,-20},{-160,0}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink4(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,-20},{-160,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -102,7 +102,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,-60},{-220,-40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink5(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,-60},{-160,-40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink5(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,-60},{-160,-40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -121,7 +121,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-240,-100},{-220,-80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink6(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-180,-100},{-160,-80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink6(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-180,-100},{-160,-80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_eta_pol(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -140,7 +140,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,140},{-120,160}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink7(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,140},{-60,160}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink7(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,140},{-60,160}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -159,7 +159,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,100},{-120,120}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink8(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,100},{-60,120}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink8(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,100},{-60,120}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -179,7 +179,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,60},{-120,80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink9(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,60},{-60,80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink9(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -199,7 +199,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,20},{-120,40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink10(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,20},{-60,40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink10(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -219,7 +219,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,-20},{-120,0}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink11(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,-20},{-60,0}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink11(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -239,7 +239,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,-60},{-120,-40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink12(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,-60},{-60,-40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink12(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -259,7 +259,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-140,-100},{-120,-80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink13(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,-100},{-60,-80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink13(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_n(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -279,7 +279,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,140},{-20,160}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink14(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,140},{40,160}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink14(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,140},{40,160}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -298,7 +298,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,100},{-20,120}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink15(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,100},{40,120}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink15(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,100},{40,120}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -318,7 +318,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,60},{-20,80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink16(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,60},{40,80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink16(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,60},{40,80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -338,7 +338,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,20},{-20,40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink17(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,20},{40,40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink17(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,20},{40,40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -358,7 +358,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,-20},{-20,0}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink18(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,-20},{40,0}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink18(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-20},{40,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -378,7 +378,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink19(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,-60},{40,-40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink19(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -398,7 +398,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{-40,-100},{-20,-80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink20(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink20(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_eta_is(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -418,7 +418,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,140},{80,160}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink21(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,140},{140,160}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink21(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,140},{140,160}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas dp_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -437,7 +437,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,100},{80,120}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink22(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,100},{140,120}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink22(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,100},{140,120}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas pRatio_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -457,7 +457,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,60},{80,80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink23(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,60},{140,80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink23(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,60},{140,80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas p_out_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -477,7 +477,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,-20},{80,0}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink25(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,-20},{140,0}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink25(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,-20},{140,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -497,7 +497,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,-60},{80,-40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink26(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,-60},{140,-40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink26(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,-60},{140,-40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -517,7 +517,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{60,-100},{80,-80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink27(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{120,-100},{140,-80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink27(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,-100},{140,-80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_T_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -537,7 +537,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{160,-20},{180,0}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink28(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{220,-20},{240,0}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink28(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{220,-20},{240,0}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rhoRatio_p_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -557,7 +557,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{160,-60},{180,-40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink29(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{220,-60},{240,-40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink29(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{220,-60},{240,-40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas rho_out_p_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -577,7 +577,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{160,-100},{180,-80}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink30(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{220,-100},{240,-80}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink30(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{220,-100},{240,-80}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas v_out_p_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -597,7 +597,7 @@ model Fixed2
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in)  annotation(Placement(transformation(extent={{160,20},{180,40}})));
-  ThermofluidStream.Idealized.Sources.Sink_free sink24(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{220,20},{240,40}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink24(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{220,20},{240,40}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas T_out_p_out(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,

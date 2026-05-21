@@ -18,7 +18,7 @@ package Idealized "Package with idealized components"
       Idealized <a href=\"modelica://ThermofluidStream.Idealized.Processes\">Processes</a>, e.g. adiabatic, isobaric, isenthalpic, isochoric
     </li>
     <li>
-      Idealized mass flow rate <a href=\"modelica://ThermofluidStream.Idealized.Sources\">Sources</a>
+      Idealized mass flow rate <a href=\"modelica://ThermofluidStream.Idealized.Boundaries\">Sources</a>
     </li>
     <li>
       Idealized heat and power transfer, see <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow\">EnergyFlow</a>

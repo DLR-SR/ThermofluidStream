@@ -34,25 +34,23 @@ model Step5Splitter
     use_numberPort=false,
     number=(inletEnthalpyFlowRate.value - (outlet1EnthalpyFlowRate.value + outlet2EnthalpyFlowRate.value))/(compressor.P + turbine.P),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Sources.Sink_free airSink(redeclare package Medium = Medium) annotation(
-    Placement(transformation(extent={{100,-10},{120,10}})));
+  Boundaries.Sink_free airSink(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{50,-40},{70,-20}})));
   ThermofluidStream.Topology.SplitterT2
                                      splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{0,10},{20,-10}})));
-  Sources.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
-  Sources.Sink_free airSink1(redeclare package Medium = Medium) annotation(
-    Placement(transformation(extent={{120,-40},{140,-20}})));
+  Boundaries.MassFlowRate massFlowRateValve(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
+  Boundaries.Sink_free airSink1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{120,-40},{140,-20}})));
   Modelica.Blocks.Sources.Ramp massFlowRateValveRamp(
     height=1,
     duration=1,
     offset=0) annotation(Placement(transformation(extent={{-30,-56},{-10,-36}})));
-  Sources.MassFlowRate massFlowRateIn(
+  Boundaries.MassFlowRate massFlowRateIn(
     redeclare package Medium = Medium,
 
-    m_flow_fixed=1) annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
+    m_flow_fixed=1) annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
   ThermofluidStream.Sensors.SingleFlowSensor inletEnthalpyFlowRate(
     displayInstanceName=true,
     redeclare package Medium = Medium,

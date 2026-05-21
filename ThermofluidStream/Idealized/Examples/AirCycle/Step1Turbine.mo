@@ -38,7 +38,7 @@ model Step1Turbine
     use_numberPort=false,
     number=(Medium.specificEnthalpy(airSink.inlet.state) - Medium.specificEnthalpy(airSource.outlet.state))/(compressor.dh + turbine.dh),
     displayVariable=false) "Warning: COP goes to infinity  for compressor.eta= turbine.eta = 1 and dp = 0 (no error of the model). " annotation(Placement(transformation(extent={{0,40},{20,60}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{70,-10},{90,10}})));
 
 equation
   connect(compressor.outlet, cooler.inlet) annotation(

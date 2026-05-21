@@ -13,45 +13,45 @@ model SplitterX "Example - SplitterX"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-170,60},{-150,80}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkB(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,100},{-60,120}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkB(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,100},{-60,120}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampB(
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{-130,122},{-110,142}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkA(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,30},{-60,50}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkA(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
   ThermofluidStream.Topology.SplitterX splitterX(displayInstanceName=true, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,80},{-120,60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,30},{-90,50}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,30},{-90,50}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampA(
     height=-3,
     duration=1,
     offset=2) annotation(Placement(transformation(extent={{-130,10},{-110,30}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,120},{-90,100}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,120},{-90,100}})));
   ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{10,60},{30,80}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkB1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{130,100},{150,120}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkB1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,100},{150,120}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRamp1(
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{10,90},{30,110}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkA1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{130,30},{150,50}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkA1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,30},{150,50}})));
   ThermofluidStream.Topology.SplitterX splitterX2(displayInstanceName=true, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{70,80},{90,60}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{100,30},{120,50}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{100,30},{120,50}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampA1(
     height=-2,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{80,10},{100,30}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{40,80},{60,60}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRate1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{40,80},{60,60}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-170,-100},{-150,-80}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkB2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,-68},{-60,-48}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkA2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,-140},{-60,-120}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkB2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,-68},{-60,-48}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkA2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,-140},{-60,-120}})));
   ThermofluidStream.Topology.SplitterX splitterX3(displayInstanceName=true, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-140,-80},{-120,-100}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateA2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-140},{-90,-120}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,-48},{-90,-68}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateA2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,-140},{-90,-120}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB2(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,-48},{-90,-68}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder1(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-130,-48},{-110,-28}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
     amplitude=1,
@@ -64,20 +64,20 @@ model SplitterX "Example - SplitterX"
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{-160,-160},{-140,-140}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder2(T=0.01, initType=Modelica.Blocks.Types.Init.InitialOutput) annotation(Placement(transformation(extent={{-130,-160},{-110,-140}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateC1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-110,80},{-90,60}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkC1(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-80,60},{-60,80}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateC1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-110,80},{-90,60}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkC1(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampC1(
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{-30,80},{-50,100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkC2(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{130,60},{150,80}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateB1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{100,120},{120,100}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkC2(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{130,60},{150,80}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateB1(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{100,120},{120,100}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampB1(
     height=1,
     duration=1,
     offset=1) annotation(Placement(transformation(extent={{80,122},{100,142}})));
-  .ThermofluidStream.Idealized.Sources.MassFlowRate massFlowRateC3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-112,-80},{-92,-100}})));
-  .ThermofluidStream.Idealized.Sources.Sink_free sinkC3(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-82,-100},{-62,-80}})));
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateC3(redeclare package Medium = Medium, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-112,-80},{-92,-100}})));
+  .ThermofluidStream.Idealized.Boundaries.Sink_free sinkC3(redeclare package Medium = Medium) annotation (Placement(transformation(extent={{-82,-100},{-62,-80}})));
   Modelica.Blocks.Sources.Ramp massFlowRateRampC3(
     height=1,
     duration=1,

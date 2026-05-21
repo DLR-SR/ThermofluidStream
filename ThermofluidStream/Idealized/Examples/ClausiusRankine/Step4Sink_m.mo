@@ -29,7 +29,7 @@ model Step4Sink_m
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
-  Boundaries.Sink_m waterSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{100,-10},{120,10}})));
+  .ThermofluidStream.Boundaries.Sink_m waterSink(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(outletPressure.y))) annotation(Placement(transformation(extent={{-30,-40},{-10,-20}})));
   Processes.Isobaric preheater(
     redeclare package Medium = Medium,

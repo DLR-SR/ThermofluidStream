@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Sources;
+within ThermofluidStream.Idealized.Boundaries;
 model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -219,7 +219,7 @@ equation
       info="<html>
   <p>
     Combination of <a href=\"modelica://ThermofluidStream.Boundaries.Source\">ThermofluidStream.Source</a>
-    with <a href=\"modelica://ThermofluidStream.Idealized.Sources.Sink_free\">Sink_m</a> to artificially close a loop.
+    with <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_m</a> to artificially close a loop.
     Cyclic loops without a loop breaker lead to algebraic loops which can make the system unsolvable. 
     The loop-breaker acts as both a source and a sink, defining a beginning (source) and an end (sink) in the loop, breaking the algebraic equations. 
  </p>

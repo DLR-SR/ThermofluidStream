@@ -10,26 +10,26 @@ model InertanceNeglect "Example - mass flow loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,40},{140,60}})));
 
-  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker1(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker1(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
 
     p_out_fixed=100000,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{-90,-10},{-110,10}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{-90,-10},{-110,10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse(
     amplitude=1,
     period=0.3,
     offset=1,
     startTime=0.1) annotation(Placement(transformation(extent={{-60,-30},{-80,-10}})));
-  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker4(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker4(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
 
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{10,-10},{-10,10}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{10,-10},{-10,10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse2(
     amplitude=1,
     period=0.3,
@@ -37,14 +37,14 @@ model InertanceNeglect "Example - mass flow loop breaker"
     startTime=0.1) annotation(Placement(transformation(extent={{40,-30},{20,-10}})));
   Modelica.Blocks.Sources.RealExpression h_const(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  .ThermofluidStream.Idealized.Sources.LoopBreaker_m loopBreaker9(
+  .ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker9(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     considerInertance=false,
 
-    p_out_fixed=100000) annotation(Placement(transformation(extent={{110,-10},{90,10}})));
+    p_out_fixed=100000) annotation (Placement(transformation(extent={{110,-10},{90,10}})));
   Modelica.Blocks.Sources.Pulse m_flow_pulse4(
     amplitude=1,
     period=0.3,

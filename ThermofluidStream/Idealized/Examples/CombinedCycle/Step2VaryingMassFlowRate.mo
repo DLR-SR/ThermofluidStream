@@ -39,11 +39,11 @@ model Step2VaryingMassFlowRate
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={12,0})));
-  Sources.LoopBreaker_m loopBreaker(
+  Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Water,
     m_flow_in_par=1,
     p_out_fixed=10000,
-    T_out_fixed=293.15) annotation(Placement(transformation(extent={{90,-50},{70,-30}})));
+    T_out_fixed=293.15) annotation (Placement(transformation(extent={{90,-50},{70,-30}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Water,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
@@ -72,7 +72,7 @@ model Step2VaryingMassFlowRate
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=1673.15) annotation(Placement(transformation(extent={{-100,30},{-80,50}})));
-  Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(
+  .ThermofluidStream.Boundaries.Sink_m airSink(redeclare package Medium = Air, m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-30,-30})));

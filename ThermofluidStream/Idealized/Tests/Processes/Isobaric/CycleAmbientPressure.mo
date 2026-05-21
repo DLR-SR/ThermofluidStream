@@ -14,7 +14,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-150,20},{-130,40}})));
-  Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-90,20},{-70,40}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{-90,20},{-70,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricHeating(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -27,7 +27,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,20},{-20,40}})));
-  Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{20,20},{40,40}})));
+  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{20,20},{40,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricHeating1(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -40,7 +40,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{60,20},{80,40}})));
-  Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{120,20},{140,40}})));
+  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{120,20},{140,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricHeating2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -53,7 +53,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-150,-40},{-130,-20}})));
-  Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{-90,-40},{-70,-20}})));
+  .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -66,7 +66,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{-40,-40},{-20,-20}})));
-  Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
+  .ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling1(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
@@ -79,7 +79,7 @@ model CycleAmbientPressure "Example - Isobaric process"
     redeclare package Medium = Medium,
     p0_par=100000,
     T0_par=293.15) annotation(Placement(transformation(extent={{60,-40},{80,-20}})));
-  Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation(Placement(transformation(extent={{120,-40},{140,-20}})));
+  .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{120,-40},{140,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling2(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
