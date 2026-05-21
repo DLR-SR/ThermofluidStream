@@ -6,9 +6,10 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
+  import Modelica.Constants.eps;
 
   parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true);
+    Dialog(group="Specification"), HideResult=true, Evaluate=true);
   parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Cycle "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
     Dialog(group="Specification"), Evaluate=true);
   parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
@@ -64,11 +65,16 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
 
   SI.HeatFlowRate Q_flow "Heat flow rate";
   SI.Power P "Power";
+
+  constant Medium.SpecificEnergy eps_du = Modelica.Constants.eps annotation(
+    HideResult=true);
+  constant SI.MassFlowRate eps_m_flow = Modelica.Constants.eps annotation(
+    HideResult=true);
+  constant SI.HeatFlowRate eps_Q_flow = Modelica.Constants.eps annotation(
+    HideResult=true);
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual "Actual outlet specification [SI-units], required due to the conditional connector outletSpec_prescribed";
-  Medium.SpecificEnergy eps_du = Modelica.Constants.eps;
-  SI.MassFlowRate eps_m_flow = Modelica.Constants.eps;
-  SI.HeatFlowRate eps_Q_flow = Modelica.Constants.eps;
+
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
   if specifyOutlet and outletValueSpec ==ValueSpecification.Fixed then
@@ -94,7 +100,6 @@ equation
     dp = Medium.pressure(Medium.setState_dTX(rho,T_out,Xi_out)) - p_in; // Required to 'force' Dymola to use dp(start = dp_start) as iteration variable
   end if;
 
-
   if specifyOutlet and not heatFlowSignal == HeatFlowSignal.Input  then
     Q_flow = m_flow*du;
   elseif specifyOutlet then // and heatFlowSignal == HeatFlowSignal.Input
@@ -106,6 +111,9 @@ equation
   end if;
 
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
+
+
+
 
   annotation(
     Icon(
@@ -189,6 +197,19 @@ equation
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillPattern = if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
+        Text(
+          extent={{-150,100},{150,60}},
+          textString = DynamicSelect("", if heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps then "infinite du"
+            elseif heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps then "infinte m_flow"
+            else ""),
+          textColor={238,46,47}),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = DynamicSelect(FillPattern.None, if heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps then FillPattern.Solid
+            elseif heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps then FillPattern.Solid
+            else FillPattern.None),
           fillColor={238,46,47},
           pattern=LinePattern.None),
         Ellipse(
