@@ -2,7 +2,7 @@ within ThermofluidStream.Idealized.Examples.DieselCycle;
 model AdiabaticPerfectGas
   extends ThermofluidStream.Idealized.Examples.DieselCycle.BaseModel;
 
-  final parameter Medium.Density rho2 = d1*compressionRatio "Density after compression";
+  final parameter Medium.Density rho2 = rho1*compressionRatio "Density after compression";
 
   final parameter SI.SpecificVolume v1 = 1/rho1 "Specific volume before compression";
   final parameter SI.SpecificVolume v2 = 1/rho2 "Specific volume after compression";

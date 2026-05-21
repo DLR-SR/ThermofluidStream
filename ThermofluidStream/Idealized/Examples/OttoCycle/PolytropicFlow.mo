@@ -7,8 +7,7 @@ model PolytropicFlow
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    rhoRatio_fixed=compressionRatio,
-    rho_out_fixed=d2) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
+    rhoRatio_fixed=compressionRatio) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
@@ -20,7 +19,6 @@ model PolytropicFlow
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
     rhoRatio_fixed=1/compressionRatio,
-    rho_out_fixed=d1,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,

@@ -24,8 +24,10 @@ model DryAirNASAPseudoInversion
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
-  Modelica.Blocks.Sources.RealExpression density1(y=d1) annotation(Placement(transformation(extent={{-20,40},{0,60}})));
-  Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-130,40},{-110,60}})));
+  Modelica.Blocks.Sources.RealExpression density1(y=rho1)
+                                                        annotation(Placement(transformation(extent={{-20,40},{0,60}})));
+  Modelica.Blocks.Sources.RealExpression density2(y=rho2)
+                                                        annotation(Placement(transformation(extent={{-130,40},{-110,60}})));
   ThermofluidStream.Sensors.SingleSensorSelect sensorDensity1(
     displayInstanceName=true,
     redeclare package Medium = Medium,

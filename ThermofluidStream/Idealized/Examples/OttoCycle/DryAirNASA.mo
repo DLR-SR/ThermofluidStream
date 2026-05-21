@@ -24,8 +24,10 @@ model DryAirNASA
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{70,-38},{90,-18}})));
-  Modelica.Blocks.Sources.RealExpression density1(y=d1) annotation(Placement(transformation(extent={{-20,40},{0,60}})));
-  Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-120,40},{-100,60}})));
+  Modelica.Blocks.Sources.RealExpression density1(y=rho1)
+                                                        annotation(Placement(transformation(extent={{-20,40},{0,60}})));
+  Modelica.Blocks.Sources.RealExpression density2(y=rho2)
+                                                        annotation(Placement(transformation(extent={{-120,40},{-100,60}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(Placement(transformation(extent={{-80,38},{-40,62}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{20,38},{60,62}})));
   ThermofluidStream.Sensors.SingleSensorSelect sensorDensity1(

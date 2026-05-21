@@ -5,10 +5,10 @@ model Fixed2 "Example - Isochoric process"
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
       choicesAllMatching=true);
-  parameter SI.MassFlowRate m_flow=0   "Mass flow rate";
+  parameter SI.MassFlowRate m_flow=1   "Mass flow rate";
   parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
-  parameter SI.TemperatureDifference dT=10   "Temperature difference";
+  parameter SI.TemperatureDifference dT=20   "Temperature difference";
   final parameter Medium.Temperature T_out=T_in + dT "Outlet temperature";
   final parameter Medium.SpecificHeatCapacity cv = Medium.specificHeatCapacityCv(Medium.setState_pT(p_in, T_in));
   final parameter SI.HeatFlowRate Q_flow = m_flow*cv*dT "Heat flow rate";
@@ -115,9 +115,9 @@ equation
     Diagram(
       graphics={
         Text(
-          extent={{-20,82},{20,60}},
+          extent={{-60,80},{60,60}},
           textColor={28,108,200},
-          textString="fails for dT=0")}),
+          textString="The simulation fails for dT = 0.")}),
     Documentation(
       info="<html>
   <p>

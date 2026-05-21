@@ -8,7 +8,7 @@ model Fixed1 "Example - Isochoric process"
   parameter SI.MassFlowRate m_flow=1   "Mass flow rate";
   parameter Medium.AbsolutePressure p_in=100000 "Inlet pressure";
   parameter Medium.Temperature T_in=293.15 "Inlet temperature";
-  parameter SI.TemperatureDifference dT=0    "Temperature difference";
+  parameter SI.TemperatureDifference dT=20   "Temperature difference";
   final parameter Medium.Temperature T_out=T_in + dT "Outlet temperature";
   final parameter Medium.SpecificHeatCapacity cv = Medium.specificHeatCapacityCv(Medium.setState_pT(p_in, T_in));
   final parameter SI.HeatFlowRate Q_flow = m_flow*cv*dT "Heat flow rate";
