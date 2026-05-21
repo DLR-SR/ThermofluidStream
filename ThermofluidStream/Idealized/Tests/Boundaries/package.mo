@@ -7,7 +7,7 @@ package Boundaries
       info="<html>
   <p>
     This package contains test models for the components of the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries\">Idealized.Sources</a> package.
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries\">Idealized.Boundaries</a> package.
   </p>
 </html>",
     revisions="<html>

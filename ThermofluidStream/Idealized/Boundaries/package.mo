@@ -6,7 +6,7 @@ package Boundaries
     Documentation(
       info="<html>
   <p>
-    This package includes idealized (mass flow rate) sources.
+    This package includes idealized (mass flow rate/free) boundaries.
   </p>
 </html>",
     revisions="<html>

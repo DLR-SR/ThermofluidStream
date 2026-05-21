@@ -108,7 +108,7 @@ class BalancedModels
   
   <ul>
     <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Topology.SplitterT1\">Tests.Topology.SplitterT1</a>, or</li>
-    <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Boundaries.Sink_free.Setpoints\">Tests.Sources.Sink_free.Setpoints</a>.</li>
+    <li><a href=\"modelica://ThermofluidStream.Idealized.Tests.Boundaries.Sink_free.Setpoints\">Tests.Boundaries.Sink_free.Setpoints</a>.</li>
   </ul>
 </html>", revisions="<html>
   <ul>
