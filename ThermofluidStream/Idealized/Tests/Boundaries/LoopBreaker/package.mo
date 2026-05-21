@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Sources;
+within ThermofluidStream.Idealized.Tests.Boundaries;
 package LoopBreaker
   extends Modelica.Icons.ExamplesPackage;
 

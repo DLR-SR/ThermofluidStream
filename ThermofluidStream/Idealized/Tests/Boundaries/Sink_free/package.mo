@@ -1,13 +1,12 @@
-within ThermofluidStream.Idealized.Tests;
-package Sources
+within ThermofluidStream.Idealized.Tests.Boundaries;
+package Sink_free "Sink_free tests"
   extends Modelica.Icons.ExamplesPackage;
 
   annotation(
     Documentation(
       info="<html>
   <p>
-    This package contains test models for the components of the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries\">Idealized.Sources</a> package.
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>.
   </p>
 </html>",
     revisions="<html>
@@ -18,4 +17,4 @@ package Sources
     </li>
   </ul>
 </html>"));
-end Sources;
+end Sink_free;

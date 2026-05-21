@@ -1,12 +1,13 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-package LoopBreaker_m
+within ThermofluidStream.Idealized.Tests;
+package Boundaries
   extends Modelica.Icons.ExamplesPackage;
 
   annotation(
     Documentation(
       info="<html>
   <p>
-    Tests <a href=\"modelica://ThermofluidStream.Idealized.LoopBreaker_m\">LoopBreaker_m</a>.
+    This package contains test models for the components of the 
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries\">Idealized.Sources</a> package.
   </p>
 </html>",
     revisions="<html>
@@ -17,4 +18,4 @@ package LoopBreaker_m
     </li>
   </ul>
 </html>"));
-end LoopBreaker_m;
+end Boundaries;

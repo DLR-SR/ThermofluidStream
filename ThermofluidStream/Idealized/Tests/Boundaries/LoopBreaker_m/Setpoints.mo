@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
+within ThermofluidStream.Idealized.Tests.Boundaries.LoopBreaker_m;
 model Setpoints "Example - mass flow loop breaker"
   extends Modelica.Icons.Example;
 

@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker_m;
+within ThermofluidStream.Idealized.Tests.Boundaries.LoopBreaker;
 model Warnings "Example - Loop breaker"
   extends Modelica.Icons.Example;
 
@@ -8,11 +8,10 @@ model Warnings "Example - Loop breaker"
   parameter SI.PressureDifference tol_p(displayUnit="Pa") = 1 "Absolute tolerance for pressure p_in, p_out";
   parameter SI.SpecificEnthalpy tol_h=500 "Absolute tolerance for specific enthalpy h_in, h_out";
   parameter SI.MassFlowRate tol_m_flow=1e-3 "Absolute tolerance for mass flow rate m_flow_in, m_flow_out";
-  parameter SI.MassFlowRate tol_Xi=1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out";
+    parameter SI.MassFlowRate tol_Xi=1e-5 "Absolute tolerance for mass fractions Xi_in, Xi_out";
 
-  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
-    m_flow_in_par=1,
     tol_p=tol_p,
     tol_h=tol_h,
     tol_m_flow=tol_m_flow,
@@ -23,6 +22,7 @@ model Warnings "Example - Loop breaker"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{120,120},{140,140}})));
 
+  .ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource(redeclare package Medium = Medium, m_flow_fixed=1) annotation (Placement(transformation(extent={{110,20},{130,40}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-40,20},{-20,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaric(
     redeclare package Medium = Medium,
@@ -49,22 +49,26 @@ model Warnings "Example - Loop breaker"
   ThermofluidStream.Idealized.Processes.MassFractionModifier composition(redeclare package Medium = Medium, outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,20},{40,40}})));
   Modelica.Blocks.Math.Gain gain3(k=tol_m_flow) annotation(Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep1(
-    wMin=0.1,
+    wMin=0.2,
     wMax=10,
     startTime=0.2,
     duration=1) annotation(Placement(transformation(extent={{-140,-70},{-120,-50}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep2(
-    wMin=0.1,
+    wMin=0.3,
     wMax=10,
     startTime=0.3,
     duration=1) annotation(Placement(transformation(extent={{-140,-100},{-120,-80}})));
   Modelica.Blocks.Sources.LogFrequencySweep logSweep3(
-    wMin=0.1,
+    wMin=0.4,
     wMax=10,
     startTime=0.4,
     duration=1) annotation(Placement(transformation(extent={{-140,-130},{-120,-110}})));
 
 equation
+  connect(loopBreaker.outlet, massFlowRateSource.inlet) annotation(Line(
+      points={{100,30},{110,30}},
+      color={28,108,200},
+      thickness=0.5));
   connect(source.outlet, massFlowRateSource1.inlet) annotation(Line(
       points={{-100,0},{-70,0}},
       color={28,108,200},
@@ -75,6 +79,10 @@ equation
       thickness=0.5));
   connect(junction.outlet, loopBreaker.inlet) annotation(Line(
       points={{70,30},{80,30}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(massFlowRateSource.outlet, isenthalpic.inlet) annotation(Line(
+      points={{130,30},{140,30},{140,70},{-60,70},{-60,30},{-40,30}},
       color={28,108,200},
       thickness=0.5));
   connect(isenthalpic.outlet, isobaric.inlet) annotation(Line(
@@ -97,10 +105,6 @@ equation
   connect(gain3.y, massFlowRateSource1.m_flow_prescribed) annotation(Line(points={{-79,-30},{-60,-30},{-60,-8}}, color={0,0,127}));
   connect(gain1.y, isobaric.outletSpec_prescribed) annotation(Line(points={{-79,-90},{10,-90},{10,18}}, color={0,0,127}));
   connect(gain2.y, composition.outletSpec_prescribed[1]) annotation(Line(points={{-79,-120},{40,-120},{40,18}}, color={0,0,127}));
-  connect(loopBreaker.outlet, isenthalpic.inlet) annotation(Line(
-      points={{100,30},{112,30},{112,72},{-52,72},{-52,30},{-40,30}},
-      color={28,108,200},
-      thickness=0.5));
 
   annotation(
     experiment(
@@ -114,7 +118,7 @@ equation
     Documentation(
       info="<html>
   <p>
-    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker_m\">LoopBreaker_m</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker\">LoopBreaker</a> warnings for non consistent inlet and outlet state (pressure, temperature, mass fractions, mass flow rate)
   </p>
 </html>",
       revisions="<html>

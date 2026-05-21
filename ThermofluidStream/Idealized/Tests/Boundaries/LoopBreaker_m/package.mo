@@ -1,12 +1,12 @@
-within ThermofluidStream.Idealized.Tests.Sources;
-package Sink_free "Sink_free tests"
+within ThermofluidStream.Idealized.Tests.Boundaries;
+package LoopBreaker_m
   extends Modelica.Icons.ExamplesPackage;
 
   annotation(
     Documentation(
       info="<html>
   <p>
-    Tests <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>.
+    Tests <a href=\"modelica://ThermofluidStream.Idealized.LoopBreaker_m\">LoopBreaker_m</a>.
   </p>
 </html>",
     revisions="<html>
@@ -17,4 +17,4 @@ package Sink_free "Sink_free tests"
     </li>
   </ul>
 </html>"));
-end Sink_free;
+end LoopBreaker_m;

@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Sources.LoopBreaker;
+within ThermofluidStream.Idealized.Tests.Boundaries.LoopBreaker;
 model Setpoints "Example - Loop breaker"
   extends Modelica.Icons.Example;
 
