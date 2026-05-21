@@ -34,7 +34,7 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureDifference  and outletValueSpec ==ValueSpecification.Fixed),
     HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureDifference or not outletValueSpec == ValueSpecification.Fixed);
-  parameter Real pr_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)" annotation(
+  parameter Real pRatio_fixed = 1 "Fixed pressure ratio (pRatio = p_out/p_in)" annotation(
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.PressureRatio  and outletValueSpec ==ValueSpecification.Fixed),
     HideResult = not specifyOutlet or not outletSpec == OutletSpecification.PressureRatio or not outletValueSpec == ValueSpecification.Fixed);
@@ -67,7 +67,7 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
     HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
-  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pr_fixed or p_out_fixed)" annotation(
+  parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pRatio_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and specifyOutlet and outletValueSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showEfficiency = true "= true to show the fixed isentropic efficiency value eta_is_fixed" annotation(
@@ -112,7 +112,7 @@ equation
     if outletSpec == OutletSpecification.PressureDifference  then
       outletSpec_actual = dp_fixed;
     elseif outletSpec == OutletSpecification.PressureRatio  then
-      outletSpec_actual = pr_fixed;
+      outletSpec_actual = pRatio_fixed;
     else // OutletSpecification.OutletPressure
       outletSpec_actual = p_out_fixed;
     end if;
@@ -183,7 +183,7 @@ equation
           textColor={0,0,0},
           textString = if not displayParameters or not showOutletSpecification or not specifyOutlet or not outletValueSpec == ThermofluidStream.Types.ValueSpecification.Fixed then ""
           elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference then "Δp = %dp_fixed"
-          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio then "pRatio = %pr_fixed"
+          elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio then "pRatio = %pRatio_fixed"
           elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure then "p_out = %p_out_fixed"
           else "error"),
         Text(
