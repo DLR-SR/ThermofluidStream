@@ -391,20 +391,6 @@ Medium model for water.
         rotation=180,
         origin={50,-20})));
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{162,142},{218,198}})));
-  Idealized.Processes.Adiabatic                   compressor2(
-    redeclare package Medium = Medium,
-    eta_fixed=0.9,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-
-    p_out_fixed=p_Condensor2) annotation(Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={32,72})));
-  Idealized.Processes.Isobaric                   evaporator2(
-    redeclare package Medium = Medium,
-    heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
-    h_out_fixed=h_out_Evaporator2,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy) annotation(Placement(transformation(extent={{-6,62},{14,82}})));
 equation
   connect(boiler.heatport_heat, heating_element.port)
     annotation (Line(points={{-72,10},{-90,10}}, color={191,0,0}));
