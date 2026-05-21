@@ -190,7 +190,7 @@ equation
           textString="%name",
           textColor = if displayInstanceName then dropOfCommons.instanceNameColor else ""),
         Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent={{-20,20},{20,-20}},
+          extent={{-30,30},{30,-30}},
           textColor={28,108,200},
           textString="p"),
         Text(

@@ -119,11 +119,11 @@ equation
           textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
         Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent={{-20,20},{20,-20}},
+          extent={{-30,30},{30,-30}},
           textColor={28,108,200},
           textString="v"),
         Text(
-          extent={{-40,20},{40,-20}},
+          extent={{-40,30},{40,-30}},
           textColor={28,108,200},
           textString = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle then "v-c" else ""),
         Text(

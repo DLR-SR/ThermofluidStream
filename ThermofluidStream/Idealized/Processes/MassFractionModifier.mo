@@ -85,7 +85,7 @@ equation
           textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
         Text(
-          extent={{-20,20},{20,-20}},
+          extent={{-30,30},{30,-30}},
           textColor={28,108,200},
           textString="X"),
         Text(

@@ -167,7 +167,7 @@ equation
           lineColor={28,108,200},
           lineThickness=0.5),
         Text(
-          extent={{-20,20},{20,-20}},
+          extent={{-30,30},{30,-30}},
           textColor={28,108,200},
           textString="s"),
         Text(
