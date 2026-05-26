@@ -20,7 +20,7 @@ Medium package used in the Test.
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    r=0.05,
+    r=0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
@@ -35,13 +35,13 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Processes.FlowResistance flowResistanceUncontrolled(
     redeclare package Medium = Medium,
-    r=0.05,
+    r=0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel)) annotation (Placement(transformation(extent={{20,10},{40,30}})));
   Processes.FlowResistance flowResistanceControlled(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    r=0.05,
+    r=0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=ThermofluidStream.Processes.Internal.Material.steel)) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Sources.Pulse pulse(
