@@ -27,8 +27,9 @@ model AdiabaticPerfectGas
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
-    pRatio_fixed=compressionRatio^(-gamma)) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed)
+                                            annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
@@ -42,6 +43,41 @@ model AdiabaticPerfectGas
     T_out_fixed=T1) annotation (Placement(transformation(extent={{10,30},{-10,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
 
+  ThermofluidStream.Utilities.showRealValue maximumPressure(
+    description="p_max",
+    use_numberPort=false,
+    number=combustion.outlet.state.p,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{-80,-100},{-60,-80}})));
+  ThermofluidStream.Utilities.showRealValue netWork(
+    description="w_n",
+    use_numberPort=false,
+    number=-shaftPower.E_flow_out/m_flow,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{-40,-100},{-20,-80}})));
+  ThermofluidStream.Utilities.showRealValue efficiency(
+    description="eff",
+    use_numberPort=false,
+    number=shaftPower.E_flow_out/combustion.Q_flow,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{40,-100},{60,-80}})));
+  ThermofluidStream.Utilities.showRealValue exhaustTemperature(
+    description="T_4",
+    use_numberPort=false,
+    number=expansion.outlet.state.T,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{0,-100},{20,-80}})));
+  Modelica.Blocks.Sources.RealExpression density1(y=rho1)
+                                                        annotation(Placement(transformation(extent={{-20,60},{0,80}})));
+  Sensors.SingleSensorSelect                   sensorDensity1(
+    displayInstanceName=true,
+    redeclare package Medium = Medium,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.rho_kgpm3,
+    outputValue=true) annotation(Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={38,22})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation (Placement(transformation(extent={{20,58},{60,82}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -72,6 +108,13 @@ equation
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-30},{70,-30}},      color={255,170,85}));
   connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-20},{60,-20},{60,-28},{70,-28}}, color={255,170,85}));
 
+  connect(density1.y, inverseBlockConstraints.u1) annotation (Line(points={{1,70},{18,70}}, color={0,0,127}));
+  connect(sensorDensity1.inlet, gasExchange.inlet) annotation (Line(
+      points={{38,12},{38,0},{50,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(sensorDensity1.value_out, inverseBlockConstraints.u2) annotation (Line(points={{38,30.2},{38,70},{24,70}}, color={0,0,127}));
+  connect(expansion.outletSpec_prescribed, inverseBlockConstraints.y2) annotation (Line(points={{30,-12},{30,-18},{46,-18},{46,70},{57,70}}, color={0,0,127}));
   annotation(
     experiment(
       StopTime=1,
@@ -89,7 +132,7 @@ equation
           textColor={28,108,200},
           textString="3"),
         Text(
-          extent={{34,6},{40,0}},
+          extent={{32,6},{38,0}},
           textColor={28,108,200},
           textString="4"),
         Text(
