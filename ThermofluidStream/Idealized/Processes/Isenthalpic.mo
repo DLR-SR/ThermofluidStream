@@ -48,11 +48,11 @@ protected
 
 equation
   if enforcePressureDrop then
-    assert(noEvent(m_flow*dpLoss_set >= 0),
+    assert(noEvent(m_flow*dpLoss_set >= -Modelica.Constants.eps),
       "In \"" + name + "\" the prescribed pressure loss would cause a pressure rise in flow direction and was clipped.",
       assertionLevel);
   end if;
-  assert(noEvent(m_flow*dpLoss >= 0),
+  assert(noEvent(m_flow*dpLoss >= -Modelica.Constants.eps),
     "In \"" + name +"\" the pressure rises in the direction of the flow. \n"
     + "  An isenthalpic pressure increase however violates the second law of thermodynamics.",
     assertionLevel);
