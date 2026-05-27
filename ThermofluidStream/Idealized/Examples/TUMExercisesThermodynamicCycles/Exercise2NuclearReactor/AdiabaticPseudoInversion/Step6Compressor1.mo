@@ -313,5 +313,10 @@ see User's Guide",
     This implies that the inverse calculation of the mass flow rate at <code>reactor</code> is only possible when
     <code>considerInertance = false</code>. This issue is resolved in the next step.
   </p>
+
+  <p>
+    See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor\">TUMExercisesThermodynamicCycles.Exercise2NuclearReactor</a> 
+    for the problem description.
+  </p>
 </html>"));
 end Step6Compressor1;

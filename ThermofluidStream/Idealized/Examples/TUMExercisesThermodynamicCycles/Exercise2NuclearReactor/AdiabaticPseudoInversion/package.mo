@@ -11,15 +11,18 @@ package AdiabaticPseudoInversion "Exercise 8.2: Nuclear Reactor [TUM2019]"
   </ul>
 </html>", info="<html>
   <p>
-    This example package contains a sequence of steps for constructing a nuclear reactor. The setup of this example is identical to
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic\">Exercise2NuclearReactor.Adiabatic</a> (see for problem description).
+    This example package contains a sequence of steps for constructing a nuclear reactor. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor\">TUMExercisesThermodynamicCycles.Exercise2NuclearReactor</a> 
+    for the problem description.
   </p>
+  
   <p>
     The final example model is provided in <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.AdiabaticPseudoInversion.Step9FinalResults\">Exercise2NuclearReactor.AdiabaticPseudoInversion.Step9FinalResults</a>.
-  </p>  
+  </p>
+  
   <p>
     This example package makes extensive use of <code>pseudoInversion</code> \"controllers\" to determine the solution.
   </p>
+
   <p>
     In contrast, in the package <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic\">Exercise2NuclearReactor.Adiabatic</a>
     the same example nuclear reactor is solved with the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model

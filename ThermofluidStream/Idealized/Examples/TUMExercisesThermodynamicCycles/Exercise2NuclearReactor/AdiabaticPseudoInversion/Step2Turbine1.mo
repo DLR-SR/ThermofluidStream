@@ -100,5 +100,10 @@ equation
       Initial version.
     </li>
   </ul>
+</html>", info="<html>
+  <p>
+    See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor\">TUMExercisesThermodynamicCycles.Exercise2NuclearReactor</a> 
+    for the problem description.
+  </p>
 </html>"));
 end Step2Turbine1;

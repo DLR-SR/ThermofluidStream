@@ -114,7 +114,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model. See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine\">TUMExercisesThermodynamicCycles.Exercise3OttoEngine</a> 
     for the problem description.
   </p>
 

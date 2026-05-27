@@ -123,7 +123,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Diesel engine cycle. See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine.PolytropicCycle\">Exercise4DieselEngine.PolytropicCycle</a> 
+    Example of an Diesel engine cycle. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine\">TUMExercisesThermodynamicCycles.Exercise4DieselEngine</a> 
     for the problem description.
   </p>
 

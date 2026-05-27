@@ -146,7 +146,7 @@ equation
     Example of a steam power plant.
   </p>
 
-  <h4>Problem description</h4>
+  <h4>English problem description</h4>
   
   <p>
     Saturated liquid water (<code>32.90 degC</code>, <code>50.0 mbar</code>, <code>84.316 kg/s</code>) 
@@ -162,5 +162,15 @@ equation
     The steam is then expanded in the steam <code>turbine</code> (isentropic efficiency 
     <code>eta_is = 0.889</code>), condensed in the isobaric <code>condenser</code> and returned to the pump, closing the cycle.
   </p>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlantA.svg\">
+  </div>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlantL1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlantL2.svg\">
+  </div>
+
 </html>"));
 end Exercise6SteamPowerPlant;

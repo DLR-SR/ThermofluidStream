@@ -257,7 +257,7 @@ equation
 </html>", info="<html>
   <p>
     Examples of a two stage vapor cycle. See
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle.Inversion\">Exercise8TwoStageRefrigerationCycle.NeglectInertance</a> for problem description.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle\">TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle</a> for problem description.
   </p>
 
   <p>

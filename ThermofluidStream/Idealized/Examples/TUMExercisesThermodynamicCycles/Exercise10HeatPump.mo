@@ -259,7 +259,7 @@ equation
     Example of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
   </p>
 
-  <h4>Problem description</h4>
+  <h4>English problem description</h4>
 
   <p>
     The system consists of a low-pressure circuit (states <code>1</code> to <code>4</code>) and a high-pressure circuit (states <code>5</code> to <code>8</code>). 
@@ -299,5 +299,17 @@ equation
   <p>
     All state changes are considered steady-state.
   </p>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpA1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpA2.svg\">
+  </div>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpL1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpL2.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpL3.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise10HeatPumpL4.svg\">
+  </div>
 </html>"));
 end Exercise10HeatPump;

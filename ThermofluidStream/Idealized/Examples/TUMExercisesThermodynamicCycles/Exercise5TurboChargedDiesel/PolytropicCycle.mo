@@ -214,7 +214,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of a turbocharged Diesel engine cycle.
+    Example of a turbocharged Diesel engine cycle. See 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel\">TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel</a> for the problem description.
   </p>
 
   <p>
@@ -232,35 +233,7 @@ equation
     <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
     model, requiring appropriate start values for a successful solution.
   </p>
-  
-  <h4>Problem description</h4>
-  
-  <p>
-    A stationary flow process with a diesel engine operating at a rotational speed of 
-    <code>n = 2000 rpm</code> is considered. The four-stroke engine with <code>z = 6</code> cylinders 
-    is equipped with a turbocharger and intercooler to increase power output.
-  </p>
-    
-  <p>
-    Ambient air  at state <code>1</code> 
-    (<code>300 K</code>, <code>1.00 bar</code>) is compressed in the reversible adiabatic 
-    <code>compressor</code> to <code>1.23 bar</code>, and then cooled isobarically in the 
-    <code>cooler</code> to <code>300 K</code>.
-  </p>
 
-  <p>
-    In the engine block, the air undergoes an idealized Diesel process: starting from the bottom dead 
-    center of the piston, it is first compressed isentropically to <code>80.62 bar</code> (<code>engineCompression</code>), 
-    then heated isobarically to <code>1700 K</code> (<code>combustion</code>), and finally expanded isentropically back 
-    to the bottom dead center (<code>engineExpansion</code>, state <code>6</code>). The maximum volume of a single cylinder at the bottom dead 
-    center is <code>2500 cm3</code>.
-  </p>
-
-  <p>
-    The exhaust gas from the diesel engine is throttled in the adiabatic <code>valve</code> and expanded in the adiabatic, frictional <code>turbine</code> to ambient 
-    pressure. The turbine delivers its power completely to 
-    the compressor via a lossless shaft.
-  </p>
 </html>
 "));
 end PolytropicCycle;

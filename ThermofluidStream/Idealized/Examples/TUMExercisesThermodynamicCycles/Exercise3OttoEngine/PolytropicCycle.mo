@@ -107,7 +107,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model.
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine\">TUMExercisesThermodynamicCycles.Exercise3OttoEngine</a> 
+    for the problem description.
   </p>
 
   <p>
@@ -126,19 +127,6 @@ equation
       <code>systemSpec = Cycle</code>
       (<a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a>)
     </li>
-  </ul>
-
-  <h4>Problem description</h4>
-
-  <p>
-    A four-stroke Otto engine can be represented by the following idealized thermodynamic cycle:
-  </p>
-
-  <ul>
-    <li><code>1 → 2</code>: Isentropic compression (T₁ = 300 K, p₁ = 1.00 bar, compression ratio φ = 10.0)</li>
-    <li><code>2 → 3</code>: Isochoric heat addition (combustion process, T₃ = 2200 K)</li>
-    <li><code>3 → 4</code>: Isentropic expansion (with V₄ = V₁)</li>
-    <li><code>4 → 1</code>: Isochoric heat rejection (in practice realized via gas exchange of the displaced volume)</li>
   </ul>
 </html>"));
 end PolytropicCycle;

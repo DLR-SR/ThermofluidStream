@@ -238,45 +238,14 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Examples of a two stage vapor cycle.
+    Examples of a two stage vapor cycle. See
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle\">TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle</a> for problem description.
   </p>
 
   <p>
     This example uses the 
     <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model
     resulting in implicit nonlinear equations. These equations require suitable start values to be solvable.
-  </p>
-
-  <h4>Problem description</h4>
-
-  <p>
-    A refrigeration system with two-stage compression operates as follows: The adiabatic <code>lowPressureCompressor</code>
-    draws dry saturated vapor (<a href=\"modelica://ThermofluidStream.Media.myMedia.R134a.R134a_ph\">R134a</a>) from the 
-    <code>evaporator</code> at <code>1.00 bar</code> and compresses it with an isentropic efficiency 
-    of <code>eta_is = 0.900</code> to <code>6.00 bar</code>.
-  </p>
-
-  <p>
-    The superheated vapor at state <code>2</code> is fed to the intermediate pressure <code>flashChamber</code>. 
-    Saturated vapor (state <code>5</code>) is drawn from the <code>flashChamber</code> and compressed in the <code>highPressureCompressor</code> to <code>14.0 bar</code>, 
-    reaching a superheated temperature of <code>335 K</code>.
-  </p>
-
-  <p>
-    After isobaric condensation and subsequent isobaric subcooling to <code>T7 = 300 K</code> in the 
-    <code>condenser</code>, the refrigerant is expanded adiabatically in the <code>highPressureValve</code> 
-    to the intermediate pressure and returned to the <code>flashChamber</code>.
-  </p>
-
-  <p>
-    Saturated liquid (state <code>3</code>) is withdrawn from the <code>flashChamber</code>, throttled adiabatically in the <code>lowPressureValve</code> to 
-    the evaporator pressure and completely evaporated in the <code>evaporator</code>, closing the loop. 
-  </p>
-  <p>
-    The system is sized to cool <code>75.0 kg</code> (specific heat capacity <code>2 kJ/(kg.K)</code>) in <code>15 min</code> by <code>40 K</code>.
-  </p>
-  <p>
-    The mechanic efficiencies of the compressors are <code>0.95</code>.
   </p>
 
 </html>"));

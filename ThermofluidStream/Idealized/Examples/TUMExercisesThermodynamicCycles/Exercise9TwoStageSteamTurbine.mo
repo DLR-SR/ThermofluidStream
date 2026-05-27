@@ -206,7 +206,7 @@ equation
     Example of a steam Rankine combined heat and power (CHP) cycle with a two-stage turbine and an extraction branch for district heating.
   </p>
 
-  <h4>Problem description</h4>
+  <h4>English problem description</h4>
 
   <p>
     A <code>steamBoiler</code> supplies steam at <code>p1 = 58.0 bar</code> and <code>T1 = 723 K</code>. 
@@ -235,6 +235,16 @@ equation
     and <code>mixer</code> operate isobarically. Kinetic and potential energies can be neglected, 
     and liquid water may be treated as incompressible.
   </p>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise9TwoStageSteamTurbineA.svg\">
+  </div>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise9TwoStageSteamTurbineL1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise9TwoStageSteamTurbineL2.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise9TwoStageSteamTurbineL3.svg\">
+  </div>
 </html>
 "));
 end Exercise9TwoStageSteamTurbine;

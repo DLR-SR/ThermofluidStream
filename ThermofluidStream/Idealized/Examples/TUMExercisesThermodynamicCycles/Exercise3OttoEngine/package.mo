@@ -28,9 +28,27 @@ package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
     </li>
   </ul>
 
+  <h4>English problem description</h4>
+
   <p>
-    See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
-    for the problem description.
+    A four-stroke Otto engine can be represented by the following idealized thermodynamic cycle:
   </p>
+
+  <ul>
+    <li><code>1 → 2</code>: Isentropic compression (T1 = 300 K, p1 = 1.00 bar, compression ratio phi = 10.0)</li>
+    <li><code>2 → 3</code>: Isochoric heat addition (combustion process, T3 = 2200 K)</li>
+    <li><code>3 → 4</code>: Isentropic expansion (with V4 = V1)</li>
+    <li><code>4 → 1</code>: Isochoric heat rejection (in practice realized via gas exchange of the displaced volume)</li>
+  </ul>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngineA.svg\">
+  </div>
+
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngineL1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngineL2.svg\">
+  </div>
+
 </html>"));
 end Exercise3OttoEngine;

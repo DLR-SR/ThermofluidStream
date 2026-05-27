@@ -219,7 +219,7 @@ equation
 </html>", info="<html>
   <p>
     Example of a turbocharged Diesel engine cycle. See 
-    <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel.PolytropicCycle\">Exercise5TurboChargedDiesel.PolytropicCycle</a> for the problem description.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel\">TUMExercisesThermodynamicCycles.Exercise5TurboChargedDiesel</a> for the problem description.
   </p>
 
   <p>

@@ -194,7 +194,7 @@ equation
   </ul>
 </html>", info="<html>
 
-  <h4>Problem Description</h4>
+  <h4>English problem description</h4>
 
   <p>
     A gas turbine features a two-stage compression with intercooling and a recuperator. 
@@ -221,7 +221,7 @@ equation
     <code>5.80 kg/s</code>, neglecting the contribution of the fuel mass flow.
   </p>
 
-  <h4>Possible Modifications</h4>
+  <h4>Possible modifications</h4>
 
   <p>
     The following aspects can be varied for further analysis:
@@ -274,6 +274,14 @@ equation
     </li>
   </ul>
 
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise1GasTurbineA.svg\">
+  </div>
+  
+  <div>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise1GasTurbineL1.svg\">
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise1GasTurbineL2.svg\">
+  </div>
 </html>
 "));
 end Exercise1GasTurbine;

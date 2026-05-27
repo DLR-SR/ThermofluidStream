@@ -210,7 +210,9 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Extension of the <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">example 6</a> of a steam power plant by a mixing preheater.
+    Extension of the <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">Exercise6SteamPowerPlant</a> of a steam power plant by a mixing preheater.
+    See
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise7MixingPreheater\">TUMExercisesThermodynamicCycles.Exercise7MixingPreheater</a> for problem description..
   </p>
 
   <p>
