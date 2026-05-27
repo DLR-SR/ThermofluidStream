@@ -38,11 +38,11 @@ model Inversion
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-50,-80},{-30,-60}})));
-  Sources.LoopBreaker loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     p_out_fixed=100000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-20,-80},{0,-60}})));
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   Modelica.Blocks.Sources.RealExpression h_dew(y=Medium.dewEnthalpy(Medium.setSat_p(1e5))) annotation(
     Placement(transformation(extent={{-70,-126},{-50,-106}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureCompressor(
@@ -72,12 +72,12 @@ model Inversion
         rotation=270,
         origin={-70,42})));
   ThermofluidStream.Idealized.Components.Separator flashChamber(redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
-  Sources.LoopBreaker loopBreaker1(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
 
     p_out_fixed=600000,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
-    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-12,-4},{8,16}})));
+    thermalValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{-12,-4},{8,16}})));
   Modelica.Blocks.Sources.RealExpression h_dew1(y=Medium.dewEnthalpy(Medium.setSat_p(6e5))) annotation(
     Placement(transformation(extent={{42,-30},{22,-10}})));
   ThermofluidStream.Sensors.TwoPhaseSensorSelect vaporQuality(
@@ -116,9 +116,9 @@ model Inversion
     displayVariable=false,
     significantDigits=3) annotation(Placement(transformation(extent={{70,-160},{90,-140}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(14e5))) annotation(Placement(transformation(extent={{0,80},{-20,100}})));
-  EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = m*c*dT/duration) annotation(Placement(transformation(extent={{-80,-100},{-60,-80}})));
-  EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.95) annotation(Placement(transformation(extent={{90,-10},{110,10}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=2) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = m*c*dT/duration) annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency losses(eta=0.95) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=2) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{92,34},{52,58}})));
   Modelica.Blocks.Sources.RealExpression temperature(y(

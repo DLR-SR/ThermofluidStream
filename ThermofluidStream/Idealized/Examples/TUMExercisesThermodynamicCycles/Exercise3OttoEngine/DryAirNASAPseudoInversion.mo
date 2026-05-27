@@ -8,22 +8,22 @@ model DryAirNASAPseudoInversion
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-80,-40},{-60,-20}})));
-  Processes.Isochoric combustion(
+  ThermofluidStream.Idealized.Processes.Isochoric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = T3) annotation(Placement(transformation(extent={{-20,-40},{0,-20}})));
+    T_out_fixed(displayUnit="K") = T3) annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
-  Processes.Isochoric gasExchange(
+  ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{80,-40},{100,-20}})));
+    T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
   Modelica.Blocks.Sources.RealExpression density1(y=d1) annotation(Placement(transformation(extent={{-20,40},{0,60}})));
   Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-130,40},{-110,60}})));
   ThermofluidStream.Sensors.SingleSensorSelect sensorDensity1(
@@ -42,13 +42,13 @@ model DryAirNASAPseudoInversion
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-6})));
-  Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=T1) annotation(Placement(transformation(extent={{20,8},{0,28}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{110,-70},{130,-50}})));
+    T_out_fixed=T1) annotation (Placement(transformation(extent={{20,8},{0,28}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=4) annotation (Placement(transformation(extent={{110,-70},{130,-50}})));
   Modelica.Blocks.Continuous.Integrator integrator(
     k=1e7,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
@@ -156,7 +156,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
     for the problem description.
   </p>
 

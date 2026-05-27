@@ -9,66 +9,64 @@ model Step5HeatExchanger
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-200,180},{-180,200}})));
-  Processes.Isobaric reactor(
+  ThermofluidStream.Idealized.Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 1180) annotation(Placement(transformation(
+    T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-100,20})));
-  Processes.PolytropicPerfectGas turbine1(
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine1(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     T_out_fixed(displayUnit="K") = 1110,
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.IsentropicEfficiency,
-    eta_is_fixed=0.94) annotation(Placement(transformation(
+    eta_is_fixed=0.94) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,80})));
-  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation(Placement(transformation(extent={{30,90},{50,70}})));
-  Processes.PolytropicPerfectGas
-                      turbine2(
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation (Placement(transformation(extent={{-140,10},{-120,30}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{30,90},{50,70}})));
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine2(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
     p_out_fixed=5240000,
     T_out_fixed(displayUnit="K") = 1060,
-    processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-                                  annotation(Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
-  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{30,10},{50,-10}})));
-  Processes.PolytropicPerfectGas turbine3(
+    processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature) annotation (Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{30,10},{50,-10}})));
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine3(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
-    T_out_fixed(displayUnit="K") = 844.5) annotation(Placement(transformation(
+    T_out_fixed(displayUnit="K") = 844.5) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,-50})));
-  EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{40,-40},{60,-20}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{60,-40},{40,-60}})));
-  EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation(Placement(transformation(extent={{100,-60},{80,-40}})));
-  Processes.Isobaric heatExchangerHotSide(
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation (Placement(transformation(extent={{60,-40},{40,-60}})));
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation (Placement(transformation(extent={{100,-60},{80,-40}})));
+  ThermofluidStream.Idealized.Processes.Isobaric heatExchangerHotSide(
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     redeclare package Medium = Medium,
     specifyOutlet=false,
-    T_out_fixed(displayUnit="K")) annotation(Placement(transformation(extent={{10,-100},{30,-80}})));
-  Processes.Isobaric cooler2(
+    T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{10,-100},{30,-80}})));
+  ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
-    T_out_fixed(displayUnit="K") = 285) annotation(Placement(transformation(extent={{50,-100},{70,-80}})));
-  Processes.Isobaric heatExchangerColdSide(
+    T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{50,-100},{70,-80}})));
+  ThermofluidStream.Idealized.Processes.Isobaric heatExchangerColdSide(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 780) annotation(Placement(transformation(extent={{30,-110},{10,-130}})));
-  Sources.Sink_free sink(redeclare package Medium = Medium) annotation(Placement(transformation(
+    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(extent={{30,-110},{10,-130}})));
+  ThermofluidStream.Idealized.Boundaries.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={100,-90})));

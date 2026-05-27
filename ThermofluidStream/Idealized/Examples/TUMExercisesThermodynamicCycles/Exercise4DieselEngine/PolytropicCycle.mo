@@ -15,37 +15,33 @@ model PolytropicCycle
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
 
-  Processes.PolytropicPerfectGas
-                           compression(
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas compression(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    rhoRatio_fixed=compressionRatio)
-                     annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
-  Processes.Isobaric combustion(
+    rhoRatio_fixed=compressionRatio) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
+  ThermofluidStream.Idealized.Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 1700) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Processes.PolytropicPerfectGas
-                           expansion(
+    T_out_fixed(displayUnit="K") = 1700) annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas expansion(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
-    rho_out_fixed=rho1)
-                     annotation(Placement(transformation(extent={{10,-10},{30,10}})));
+    rho_out_fixed=rho1) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
-  Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=m_flow,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=T1) annotation(Placement(transformation(extent={{10,30},{-10,50}})));
+    T_out_fixed=T1) annotation (Placement(transformation(extent={{10,30},{-10,50}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
@@ -70,7 +66,7 @@ model PolytropicCycle
     number=expansion.outlet.state.T,
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{10,-90},{30,-70}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=3) annotation(Placement(transformation(extent={{40,-50},{60,-30}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{40,-50},{60,-30}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(

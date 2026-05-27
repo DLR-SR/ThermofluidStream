@@ -9,23 +9,23 @@ model Step9FinalResults
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(  displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-40,220},{-20,240}})));
-  Processes.Isobaric reactor(
+  ThermofluidStream.Idealized.Processes.Isobaric reactor(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
-    T_out_fixed(displayUnit="K") = 1180) annotation(Placement(transformation(
+    T_out_fixed(displayUnit="K") = 1180) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={-160,50})));
-  Processes.Adiabatic turbine1(
+  ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=7000000)) annotation(Placement(transformation(
+    p_out(start=7000000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-80,180})));
@@ -45,14 +45,14 @@ model Step9FinalResults
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-42,160})));
-  Processes.Adiabatic turbine2(
+  ThermofluidStream.Idealized.Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5240000,
     eta_is(start=1),
-    h_out(start=Medium.h_default)) annotation(Placement(transformation(
+    h_out(start=Medium.h_default)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-80,30})));
@@ -66,12 +66,12 @@ model Step9FinalResults
         origin={-50,-10})));
   Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation(Placement(transformation(extent={{-52,0},{-32,20}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{-20,-2},{-60,22}})));
-  Processes.Adiabatic turbine3(
+  ThermofluidStream.Idealized.Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=5240000)) annotation(Placement(transformation(
+    p_out(start=5240000)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={-80,-60})));
@@ -85,30 +85,30 @@ model Step9FinalResults
         origin={-50,-104})));
   Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{-52,-92},{-32,-72}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation(Placement(transformation(extent={{-22,-94},{-62,-70}})));
-  Processes.Isobaric heatExchangerHotSide(
+  ThermofluidStream.Idealized.Processes.Isobaric heatExchangerHotSide(
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     h_out(start=Medium.h_default),
     redeclare package Medium = Medium,
     specifyOutlet=false,
-    T_out_fixed(displayUnit="K")) annotation(Placement(transformation(extent={{-60,-150},{-40,-130}})));
-  Processes.Isobaric cooler2(
+    T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{-60,-150},{-40,-130}})));
+  ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
-    T_out_fixed(displayUnit="K") = 285) annotation(Placement(transformation(extent={{10,-150},{30,-130}})));
-  Processes.Isobaric heatExchangerColdSide(
+    T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{10,-150},{30,-130}})));
+  ThermofluidStream.Idealized.Processes.Isobaric heatExchangerColdSide(
     redeclare package Medium = Medium,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 780) annotation(Placement(transformation(extent={{-40,-160},{-60,-180}})));
-  Processes.Adiabatic compressor1(
+    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(extent={{-40,-160},{-60,-180}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic compressor1(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     redeclare package Medium = Medium,
 
     eta_fixed=0.96,
     p_out_fixed=7000000,
-    h_out(start=Medium.h_default)) annotation(Placement(transformation(
+    h_out(start=Medium.h_default)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={80,180})));
@@ -126,34 +126,33 @@ model Step9FinalResults
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints4(y1(start=60e5))
                                                                        annotation(Placement(transformation(extent={{8,90},{48,114}})));
   Modelica.Blocks.Sources.RealExpression realExpression1(y(unit="W") = 0)  annotation(Placement(transformation(extent={{38,92},{18,112}})));
-  Processes.Adiabatic compressor2(
+  ThermofluidStream.Idealized.Processes.Adiabatic compressor2(
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
-    eta_is(start=1)) annotation(Placement(transformation(
+    eta_is(start=1)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={80,30})));
   Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)  annotation(Placement(transformation(extent={{40,-10},{20,10}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation(Placement(transformation(extent={{10,-12},{50,12}})));
-  Processes.Isobaric cooler1(
+  ThermofluidStream.Idealized.Processes.Isobaric cooler1(
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K"),
-    h_out(start=Medium.h_default)) annotation(Placement(transformation(
+    h_out(start=Medium.h_default)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={80,100})));
-  Sources.LoopBreaker loopBreaker1(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker1(
     redeclare package Medium = Medium,
     p_out_fixed=7000000,
-    T_out_fixed(displayUnit="K") = 780)
-                    annotation(Placement(transformation(
+    T_out_fixed(displayUnit="K") = 780) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-120,-170})));
@@ -215,17 +214,17 @@ model Step9FinalResults
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={98,158})));
-  EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation(Placement(transformation(extent={{-200,40},{-180,60}})));
-  EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation(Placement(transformation(extent={{-40,-50},{-20,-30}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation(Placement(transformation(extent={{-20,-50},{-40,-70}})));
-  EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation(Placement(transformation(extent={{20,-70},{0,-50}})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation(Placement(transformation(extent={{-30,190},{-10,170}})));
-  EnergyFlow.Components.Sum pseudoSink(n_in=2) annotation(Placement(transformation(
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation (Placement(transformation(extent={{-200,40},{-180,60}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation (Placement(transformation(extent={{-40,-50},{-20,-30}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation (Placement(transformation(extent={{-20,-50},{-40,-70}})));
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation (Placement(transformation(extent={{20,-70},{0,-50}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{-30,190},{-10,170}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum pseudoSink(n_in=2) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={10,140})));
-  EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation(Placement(transformation(extent={{-40,40},{-20,20}})));
-  EnergyFlow.Components.Sum pseudoSink1(n_in=2) annotation(Placement(transformation(
+  ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{-40,40},{-20,20}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum pseudoSink1(n_in=2) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={0,16})));

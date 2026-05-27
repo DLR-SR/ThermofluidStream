@@ -31,12 +31,12 @@ model AdiabaticPerfectGas
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   Modelica.Blocks.Sources.RealExpression outletPressure(y=Medium.pressure(combustion.outlet.state)*(compressionRatio)^(-gamma)) annotation(
     Placement(transformation(extent={{60,-40},{40,-20}})));
-  Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=T1) annotation(Placement(transformation(extent={{0,30},{-20,50}})));
+    T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
@@ -55,7 +55,7 @@ model AdiabaticPerfectGas
     number=shaftPower.E_flow_out/combustion.Q_flow,
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{80,-50},{100,-30}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=4) annotation (Placement(transformation(extent={{80,-50},{100,-30}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -114,7 +114,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
     for the problem description.
   </p>
 

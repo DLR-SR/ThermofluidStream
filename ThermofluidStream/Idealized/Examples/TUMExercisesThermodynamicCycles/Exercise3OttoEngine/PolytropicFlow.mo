@@ -2,40 +2,37 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exer
 model PolytropicFlow
   extends ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.BaseModel(redeclare package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir);
 
-  Processes.PolytropicPerfectGas
-                           compression(
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas compression(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
     rhoRatio_fixed=compressionRatio,
-    rho_out_fixed=d2) annotation(Placement(transformation(extent={{-70,-10},{-50,10}})));
+    rho_out_fixed=d2) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric combustion(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T3) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Processes.PolytropicPerfectGas
-                           expansion(
+  ThermofluidStream.Idealized.Processes.PolytropicPerfectGas expansion(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
     rhoRatio_fixed=1/compressionRatio,
     rho_out_fixed=d1,
-    processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency)
-                     annotation(Placement(transformation(extent={{10,-10},{30,10}})));
+    processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
-  Sources.LoopBreaker_m loopBreaker(
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
     m_flow_in_par=1,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
-    T_out_fixed=T1) annotation(Placement(transformation(extent={{0,30},{-20,50}})));
+    T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));
   ThermofluidStream.Utilities.showRealValue maximumPressure(
     description="p_max",
     use_numberPort=false,
@@ -54,7 +51,7 @@ model PolytropicFlow
     number=shaftPower.E_flow_out/combustion.Q_flow,
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
-  EnergyFlow.Components.Sum shaftPower(n_in=4) annotation(Placement(transformation(extent={{70,-40},{90,-20}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=4) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -113,7 +110,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
+    Example of an Otto cycle engine model. See <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine.PolytropicCycle\">Exercise3OttoEngine.PolytropicCycle</a> 
     for the problem description.
   </p>
 

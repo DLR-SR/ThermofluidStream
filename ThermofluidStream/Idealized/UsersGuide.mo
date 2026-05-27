@@ -184,6 +184,35 @@ class InertanceNeglect
 </html>"));
 end InertanceNeglect;
 
+class References "References"
+  extends Modelica.Icons.References;
+
+  annotation (Documentation(info="<html>
+<p>
+References for idealized processes.
+</p>
+
+<table border=\"0\" cellspacing=\"0\" cellpadding=\"2\">
+  <tr>
+  <td>[TUM2019]</td>
+    <td>T. Sattelmayer, J. Kaufmann, D. Heilbronn, M. Bruder,
+    <em>Thermodynamik I Übungsaufgaben</em>,
+      TU München, 2019.
+    </td>
+  </tr> 
+ 
+</table>
+</html>", revisions="<html>
+<ul>
+<li>
+2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+Initial version.
+</li>
+</ul>
+</html>"));
+end References;
+
+
 annotation(
   DocumentationClass=true,
   Documentation(

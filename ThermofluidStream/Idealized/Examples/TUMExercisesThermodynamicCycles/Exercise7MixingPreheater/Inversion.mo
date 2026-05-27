@@ -54,10 +54,7 @@ model Inversion
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{50,-30},{30,-10}})));
-  Topology.JunctionT2 mixingPreheater(
-    displayInstanceName=true,
-    redeclare package Medium = Medium)
-                          annotation(Placement(transformation(extent={{10,-30},{-10,-10}})));
+  ThermofluidStream.Idealized.Topology.JunctionT2 mixingPreheater(displayInstanceName=true, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{10,-30},{-10,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureTurbineStage(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
@@ -67,15 +64,14 @@ model Inversion
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{10,40},{30,60}})));
   ThermofluidStream.Topology.SplitterT2  splitter(displayInstanceName=false, redeclare package Medium = Medium)
                                                                                                              annotation(Placement(transformation(extent={{50,60},{70,40}})));
-  Sources.MassFlowRate massFlowRateSource(
+  ThermofluidStream.Idealized.Boundaries.MassFlowRate massFlowRateSource(
     redeclare package Medium = Medium,
     m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    outlet(m_flow(start=0))) annotation(Placement(transformation(extent={{30,10},{10,30}})));
-  Sources.LoopBreaker loopBreaker(
+    outlet(m_flow(start=0))) annotation (Placement(transformation(extent={{30,10},{10,30}})));
+  ThermofluidStream.Idealized.Boundaries.LoopBreaker loopBreaker(
     redeclare package Medium = Medium,
     p_out_fixed(displayUnit="bar") = 1000000,
-    T_out_fixed=403.15)
-                    annotation(Placement(transformation(
+    T_out_fixed=403.15) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-40,-20})));
@@ -106,7 +102,7 @@ model Inversion
     number=massFlowRateSource.m_flow/heater.m_flow,
     displayVariable=false,
     significantDigits=3) annotation(Placement(transformation(extent={{-10,-120},{10,-100}})));
-  EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = 288000000) annotation(Placement(transformation(extent={{-140,10},{-120,30}})));
+  ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow heatFlow(E_flow(displayUnit="MW") = 288000000) annotation (Placement(transformation(extent={{-140,10},{-120,30}})));
 equation
   connect(highPressurePump.outlet, heater.inlet) annotation(
     Line(
@@ -214,7 +210,7 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    Extension of the <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">example 6</a> of a steam power plant by a mixing preheater.
+    Extension of the <a href=\"modelica://ThermoFluidStreamPlus.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise6SteamPowerPlant\">example 6</a> of a steam power plant by a mixing preheater.
   </p>
 
   <p>

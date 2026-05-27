@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Adiabatic;
+within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.AdiabaticPseudoInversion;
 model Step4Turbine3
   extends Modelica.Icons.Example;
 
@@ -31,8 +31,7 @@ model Step4Turbine3
     eta_fixed=0.94,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=7000000)) annotation (Placement(transformation(
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,80})));
@@ -43,15 +42,11 @@ model Step4Turbine3
     outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
-        origin={30,40})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(Placement(transformation(
-        extent={{-20,-12},{20,12}},
-        rotation=180,
-        origin={40,60})));
+        origin={30,30})));
   Modelica.Blocks.Sources.RealExpression turbine1OutletTemperature(y(unit="K") = 1110) annotation(Placement(transformation(
-        extent={{10,10},{-10,-10}},
+        extent={{-10,10},{10,-10}},
         rotation=180,
-        origin={38,60})));
+        origin={86,58})));
   ThermofluidStream.Idealized.Boundaries.Sink_free sink(redeclare package Medium = Medium) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -61,9 +56,7 @@ model Step4Turbine3
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    p_out_fixed=5240000,
-    eta_is(start=1),
-    h_out(start=Medium.h_default)) annotation (Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
+    p_out_fixed=5240000) annotation (Placement(transformation(extent={{-10,10},{10,-10}}, rotation=270)));
   ThermofluidStream.Sensors.SingleSensorSelect temperatureSensor1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
@@ -71,15 +64,13 @@ model Step4Turbine3
     outputValue=true) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
-        origin={30,-40})));
-  Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation(Placement(transformation(extent={{28,-30},{48,-10}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{60,-32},{20,-8}})));
+        origin={30,-50})));
+  Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation(Placement(transformation(extent={{96,-34},{76,-14}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    p_out(start=5240000)) annotation (Placement(transformation(
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={0,-90})));
@@ -91,14 +82,31 @@ model Step4Turbine3
         extent={{-10,10},{10,-10}},
         rotation=0,
         origin={30,-134})));
-  Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{28,-122},{48,-102}})));
-  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation(Placement(transformation(extent={{58,-124},{18,-100}})));
+  Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{120,-124},{100,-104}})));
   ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow reactorHeatFlow(E_flow(displayUnit="MW") = 6000000) annotation (Placement(transformation(extent={{-140,10},{-120,30}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{40,90},{60,70}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{40,10},{60,-10}})));
   ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation (Placement(transformation(extent={{100,-100},{80,-80}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation (Placement(transformation(extent={{60,-80},{40,-100}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum turbine3HeatLosses(n_in=2) annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
+  Modelica.Blocks.Continuous.Integrator integrator(
+    k=1e6,
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=70e5)
+              annotation(Placement(transformation(extent={{40,48},{20,68}})));
+  Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{68,48},{48,68}})));
+  Modelica.Blocks.Continuous.Integrator integrator1(
+    k=-0.5,
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=1) annotation(Placement(transformation(extent={{40,-34},{20,-14}})));
+  Modelica.Blocks.Math.Feedback feedback1
+                                        annotation(Placement(transformation(extent={{70,-34},{50,-14}})));
+  Modelica.Blocks.Continuous.Integrator integrator2(
+    k=5e5,
+    initType=Modelica.Blocks.Types.Init.InitialOutput,
+    y_start=0) annotation(Placement(transformation(extent={{60,-124},{40,-104}})));
+  Modelica.Blocks.Math.Feedback feedback2
+                                        annotation(Placement(transformation(extent={{90,-124},{70,-104}})));
 equation
   connect(source.outlet, reactor.inlet) annotation(Line(
       points={{-100,-2},{-100,10}},
@@ -109,24 +117,18 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(temperatureSensor.inlet, turbine1.outlet) annotation(Line(
-      points={{20,40},{0,40},{0,70}},
+      points={{20,30},{0,30},{0,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(inverseBlockConstraints.y1, turbine1.outletSpec_prescribed) annotation(Line(points={{19,60},{16,60},{16,70},{12,70}}, color={0,0,127}));
   connect(turbine1.outlet,turbine2. inlet) annotation(
     Line(
       points={{0,70},{0,10}},
       color={28,108,200},
       thickness=0.5));
   connect(turbine2.outlet, temperatureSensor1.inlet) annotation(Line(
-      points={{0,-10},{0,-40},{20,-40}},
+      points={{0,-10},{0,-50},{20,-50}},
       color={28,108,200},
       thickness=0.5));
-  connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation(Line(points={{12,-6},{16,-6},{16,-20},{19,-20}}, color={0,0,127}));
-  connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation(Line(points={{49,-20},{56,-20}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
-  connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,60},{56,60}}, color={0,0,127}));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,40},{70,40},{70,60},{62,60}}, color={0,0,127}));
   connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
       points={{0,-10},{0,-80}},
@@ -136,9 +138,6 @@ equation
       points={{20,-134},{0,-134},{0,-100}},
       color={28,108,200},
       thickness=0.5));
-  connect(inverseBlockConstraints2.y1, turbine3.outletSpec_prescribed) annotation(Line(points={{17,-112},{16,-112},{16,-100},{12,-100}}, color={0,0,127}));
-  connect(inverseBlockConstraints2.u2, turbine3OutletTemperature.y) annotation(Line(points={{54,-112},{49,-112}}, color={0,0,127}));
-  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{38.2,-134},{72,-134},{72,-112},{60,-112}}, color={0,0,127}));
   connect(sink.inlet, turbine3.outlet) annotation(Line(
       points={{0,-152},{0,-100}},
       color={28,108,200},
@@ -148,8 +147,19 @@ equation
   connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation(Line(points={{7,0},{38,0}}, color={255,170,85}));
   connect(turbine3ShaftLosses.E_flow_in, generator.E_flow_out) annotation(Line(points={{62,-90},{79,-90}}, color={255,170,85}));
   connect(turbine3.P_out, turbine3HeatLosses.E_flow_in[1]) annotation(Line(points={{7,-90},{30,-90},{30,-71.5},{40,-71.5}},   color={255,170,85}));
-  connect(turbine3ShaftLosses.E_flow_out, turbine3HeatLosses.E_flow_in[2]) annotation(Line(points={{39,-90},{28,-90},{28,-68},{34,-68},{34,-68.5},{40,-68.5}},
-                                                                                                                                                color={255,170,85}));
+  connect(turbine3ShaftLosses.E_flow_out, turbine3HeatLosses.E_flow_in[2]) annotation(Line(points={{39,-90},{28,-90},{28,-68.5},{40,-68.5}},   color={255,170,85}));
+  connect(integrator.y, turbine1.outletSpec_prescribed) annotation(Line(points={{19,58},{16,58},{16,70},{12,70}}, color={0,0,127}));
+  connect(integrator.u, feedback.y) annotation(Line(points={{42,58},{49,58}}, color={0,0,127}));
+  connect(feedback.u1, turbine1OutletTemperature.y) annotation(Line(points={{66,58},{75,58}}, color={0,0,127}));
+  connect(feedback.u2, temperatureSensor.value_out) annotation(Line(points={{58,50},{58,30},{38.2,30}}, color={0,0,127}));
+  connect(integrator1.u, feedback1.y) annotation(Line(points={{42,-24},{51,-24}}, color={0,0,127}));
+  connect(temperatureSensor1.value_out, feedback1.u2) annotation(Line(points={{38.2,-50},{60,-50},{60,-32}}, color={0,0,127}));
+  connect(turbine2OutletTemperature.y, feedback1.u1) annotation(Line(points={{75,-24},{68,-24}}, color={0,0,127}));
+  connect(integrator1.y, turbine2.eta_prescribed) annotation(Line(points={{19,-24},{16,-24},{16,-6},{12,-6}}, color={0,0,127}));
+  connect(feedback2.u1, turbine3OutletTemperature.y) annotation(Line(points={{88,-114},{99,-114}}, color={0,0,127}));
+  connect(feedback2.y, integrator2.u) annotation(Line(points={{71,-114},{62,-114}}, color={0,0,127}));
+  connect(integrator2.y, turbine3.outletSpec_prescribed) annotation(Line(points={{39,-114},{28,-114},{28,-100},{12,-100}}, color={0,0,127}));
+  connect(feedback2.u2, temperatureSensor2.value_out) annotation(Line(points={{80,-122},{80,-134},{38.2,-134}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-200},{200,200}}), graphics={
         Text(
