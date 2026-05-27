@@ -54,6 +54,10 @@ equation
   inlet.m_flow = m_flow;
 
   annotation (defaultComponentName="sink", Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+        Line(
+          points={{-100,0},{0,0}},
+          color={28,108,200},
+          thickness=0.5),
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
@@ -91,7 +95,7 @@ equation
           pattern=LinePattern.None,
           fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
         Line(
-          points={{-100,0},{0,0}},
+          points={{-60,80},{-60,-80}},
           color={28,108,200},
           thickness=0.5)}),                 Diagram(
         coordinateSystem(preserveAspectRatio=true)),

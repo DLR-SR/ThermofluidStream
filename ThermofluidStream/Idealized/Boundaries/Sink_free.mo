@@ -73,7 +73,7 @@ equation
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-106,60},{-74,56}},
+          extent={{-106,62},{-74,58}},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
@@ -81,7 +81,11 @@ equation
           extent={{-100,40},{-80,20}},
           fillColor={238,46,47},
           pattern=LinePattern.None,
-          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid)}),
+          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid),
+        Line(
+          points={{-60,80},{-60,-80}},
+          color={28,108,200},
+          thickness=0.5)}),
     Documentation(
       info="<html>
   <p>
