@@ -1,11 +1,11 @@
-within ThermofluidStream.Idealized.Examples.TurboChargedEngine;
-model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
-  extends ThermofluidStream.Idealized.Examples.TurboChargedEngine.BaseModel;
+within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDieselEngine;
+model Flow "Turbocharged diesel engine"
+  extends ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDieselEngine.BaseModel;
 
   Medium.Density rho4 = Medium.density(engineCompression.outlet.state) "Density after compression";
-  SI.Volume V4 = m3/rho4 "Volume top dead center (total)";
-  SI.Volume V_h = V3-V4 "Engine displacement volume (total)";
-  SI.MassFlowRate m_flow = rho3*V_h*Modelica.Units.Conversions.to_Hz(w)/2 "Averaged mass flow rate";
+  SI.Volume V4 = m3/rho4 "Volume top dead center (per cylinder)";
+  SI.Volume V_h = V3-V4 "Engine displacement volume (per cylinder)";
+  SI.MassFlowRate m_flow = rho3*V_h*z*Modelica.Units.Conversions.to_Hz(w)/2 "Averaged mass flow rate (total)";
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
@@ -13,13 +13,11 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas engineCompression(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
-    rhoRatio_fixed=rhoRatio)
-                         annotation (Placement(transformation(extent={{60,30},{40,10}})));
+    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
+    p_out_fixed=p4)      annotation (Placement(transformation(extent={{60,30},{40,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric combustion(
     redeclare package Medium = Medium,
-    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T5)   annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -28,7 +26,7 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas engineExpansion(
     redeclare package Medium = Medium,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
-    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
+    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
     rho_out_fixed=rho3) annotation (Placement(transformation(extent={{40,50},{60,70}})));
   ThermofluidStream.Idealized.Processes.Adiabatic compressor(
@@ -55,27 +53,42 @@ model PolytropicCyclePseudoInversion "Turbocharged diesel engine"
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation (Placement(transformation(extent={{-60,-50},{-80,-70}})));
+  Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
+    Placement(transformation(extent={{-30,-42},{10,-18}})));
   Modelica.Blocks.Sources.RealExpression pseudoSourcePower(y(
-      unit="W") = 0) annotation(Placement(transformation(extent={{-50,-50},{-30,-30}})));
+      unit="W") = 0) annotation(Placement(transformation(extent={{0,-40},{-20,-20}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
     enforcePressureDrop=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
-    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{60,-50},{40,-70}})));
-  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=5) annotation (Placement(transformation(extent={{130,26},{150,46}})));
-  ThermofluidStream.Idealized.EnergyFlow.Components.Sum pseudoSource(n_in=2) annotation (Placement(transformation(extent={{-60,-30},{-40,-10}})));
-  ThermofluidStream.Idealized.Processes.FlowWork inletFlowWork(redeclare package Medium = Medium, boundary=ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet) annotation (Placement(transformation(extent={{90,30},{70,10}})));
-  ThermofluidStream.Idealized.Processes.FlowWork outletFlowWork(redeclare package Medium = Medium, boundary=ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={80,60})));
-  Modelica.Blocks.Continuous.Integrator integrator(
-    k=30,
-    initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=1e5)
-              annotation(Placement(transformation(extent={{10,-50},{30,-30}})));
-  Modelica.Blocks.Math.Feedback feedback annotation(Placement(transformation(extent={{-20,-30},{0,-50}})));
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{0,-50},{-20,-70}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=2) annotation (Placement(transformation(extent={{120,30},{140,50}})));
+  ThermofluidStream.Idealized.EnergyFlow.Components.Sum pseudoSource(n_in=2) annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
 
+  ThermofluidStream.Utilities.showRealValue massFlowRate1(
+    description="m_flow",
+    use_numberPort=false,
+    number=m_flow,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{-40,-100},{-20,-80}})));
+  ThermofluidStream.Utilities.showRealValue turbineWork(
+    description="P_TRB",
+    use_numberPort=false,
+    number=-compressor.P,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{0,-100},{20,-80}})));
+  ThermofluidStream.Utilities.showRealValue power(
+    description="P",
+    use_numberPort=false,
+    number=shaftPower.E_flow_out,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{38,-100},{58,-80}})));
+  ThermofluidStream.Utilities.showRealValue efficiency(
+    description="eff",
+    use_numberPort=false,
+    number=shaftPower.E_flow_out/combustion.Q_flow,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{80,-100},{100,-80}})));
 equation
   connect(engineCompression.outlet, combustion.inlet) annotation(Line(
       points={{40,20},{20,20},{20,30}},
@@ -99,40 +112,27 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(valve.outlet, turbine.inlet) annotation(Line(
-      points={{40,-60},{-60,-60}},
+      points={{-20,-60},{-60,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(compressor.P_out, pseudoSource.E_flow_in[1]) annotation(Line(points={{-70,-7},{-70,-21.5},{-60,-21.5}},     color={255,170,85}));
-  connect(turbine.P_out, pseudoSource.E_flow_in[2]) annotation(Line(points={{-70,-53},{-70,-18.5},{-60,-18.5}},    color={255,170,85}));
-  connect(inletFlowWork.outlet, engineCompression.inlet) annotation(Line(
-      points={{70,20},{60,20}},
+  connect(inverseBlockConstraints.y2, valve.outletSpec_prescribed) annotation(Line(points={{7,-30},{20,-30},{20,-44},{-20,-44},{-20,-48}},
+                                                                                                                                 color={0,0,127}));
+  connect(compressor.P_out, pseudoSource.E_flow_in[1]) annotation(Line(points={{-70,-7},{-70,-31.5},{-60,-31.5}},     color={255,170,85}));
+  connect(turbine.P_out, pseudoSource.E_flow_in[2]) annotation(Line(points={{-70,-53},{-70,-28.5},{-60,-28.5}},    color={255,170,85}));
+  connect(inverseBlockConstraints.u2, pseudoSourcePower.y) annotation(Line(points={{-26,-30},{-21,-30}}, color={0,0,127}));
+  connect(pseudoSource.E_flow_out, inverseBlockConstraints.u1) annotation(Line(points={{-38.3,-30},{-32,-30}}, color={255,170,85}));
+  connect(cooler.outlet, engineCompression.inlet) annotation(Line(
+      points={{-20,0},{80,0},{80,20},{60,20}},
       color={28,108,200},
       thickness=0.5));
-  connect(inletFlowWork.inlet, cooler.outlet) annotation(Line(
-      points={{90,20},{100,20},{100,0},{-20,0}},
+  connect(engineExpansion.outlet, valve.inlet) annotation(Line(
+      points={{60,60},{88,60},{88,-60},{0,-60}},
       color={28,108,200},
       thickness=0.5));
-  connect(engineExpansion.outlet, outletFlowWork.inlet) annotation(Line(
-      points={{60,60},{70,60}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(inletFlowWork.P_inlet_out, shaftPower.E_flow_in[1]) annotation(Line(points={{90,31},{90,32},{130,32},{130,33.6}},
-                                                                                                                          color={255,170,85}));
-  connect(engineCompression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{50,27},{50,34},{130,34},{130,34.8}},color={255,170,85}));
-  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{31,30},{36,30},{36,36},{130,36}},      color={255,170,85}));
-  connect(engineExpansion.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{50,53},{50,38},{130,38},{130,37.2}},
-                                                                                                                   color={255,170,85}));
-  connect(outletFlowWork.P_outlet_out, shaftPower.E_flow_in[5]) annotation(Line(points={{90,49},{90,40},{130,40},{130,38.4}},
-                                                                                                                        color={255,170,85}));
-  connect(outletFlowWork.outlet, valve.inlet) annotation(Line(
-      points={{90,60},{110,60},{110,-60},{60,-60}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(integrator.y, valve.outletSpec_prescribed) annotation(Line(points={{31,-40},{40,-40},{40,-48}},
-                                                                                                        color={0,0,127}));
-  connect(pseudoSourcePower.y, feedback.u1) annotation(Line(points={{-29,-40},{-18,-40}}, color={0,0,127}));
-  connect(pseudoSource.E_flow_out, feedback.u2) annotation(Line(points={{-38.3,-20},{-10,-20},{-10,-32}}, color={255,170,85}));
-  connect(feedback.y, integrator.u) annotation(Line(points={{-1,-40},{8,-40}},    color={0,0,127}));
+  connect(engineExpansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{50,53},{50,42},{120,42},{120,38.5}},
+                                                                                                                    color={255,170,85}));
+  connect(engineCompression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{50,27},{50,38},{120,38},{120,41.5}},
+                                                                                                                      color={255,170,85}));
 
   annotation(
     experiment(
@@ -149,7 +149,7 @@ equation
           textColor={28,108,200},
           textString="1"),
         Rectangle(
-          extent={{0,76},{120,2}},
+          extent={{0,76},{100,2}},
           lineColor={255,255,255},
           fillColor={200,200,200},
           fillPattern=FillPattern.Sphere),
@@ -170,7 +170,7 @@ equation
           textColor={28,108,200},
           textString="4"),
         Text(
-          extent={{20,66},{26,60}},
+          extent={{22,66},{28,60}},
           textColor={28,108,200},
           textString="5"),
         Text(
@@ -188,21 +188,18 @@ equation
     Documentation(
       info="<html>
   <p>
-    Example of a turbocharged Diesel engine cycle.
+    Example of a turbocharged Diesel engine cycle. See 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDieselEngine\">TUMExercisesThermodynamicCycles.Exercise5TurboChargedDieselEngine</a> for the problem description.
   </p>
 
   <p>
-    This example makes use of the <code>systemSpec = Cycle</code> <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a> for the Diesel engine.
+    This example makes use of the <code>systemSpec = Flow</code> <a href=\"modelica://ThermofluidStream.Idealized.Types.SystemModel\">SystemModel</a> for the Diesel engine.
   </p>
 
   <p>
-    When coupling models configured with <code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>, 
-    the <a href=\"modelica://ThermofluidStream.Idealized.Processes.FlowWork\">FlowWork</a> model is required, 
-    since flow work must be treated explicitly to ensure a consistent energy balance between both representations.
-  </p>
-
-  <p>
-    A \"pseudo controller\" is used to avoid the implicit nonlinear equation.
+    Implicit nonlinear equations arise from the
+    <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a>
+    model, requiring appropriate start values for a successful solution.
   </p>
 </html>",
       revisions="<html>
@@ -213,4 +210,4 @@ equation
     </li>
   </ul>
 </html>"));
-end PolytropicCyclePseudoInversion;
+end Flow;

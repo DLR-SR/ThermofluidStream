@@ -81,7 +81,7 @@ equation
     This process is required to properly account for work when switching
     between an open-cycle and a closed-cycle perspective, and vice versa.
     See, for example,
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TurboChargedEngine.PolytropicCycle\">Examples.TurboChargedEngine.PolytropicCycle</a>.
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise5TurboChargedDieselEngine.Cycle\">Examples.TurboChargedEngine.Cycle</a>.
   </p>
 
   <p>
