@@ -33,6 +33,24 @@ model PolytropicFlow
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=4) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
 
+  ThermofluidStream.Utilities.showRealValue maximumPressure(
+    description="p_max",
+    use_numberPort=false,
+    number=combustion.outlet.state.p,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
+  ThermofluidStream.Utilities.showRealValue netWork(
+    description="w_n",
+    use_numberPort=false,
+    number=compression.w_exp + expansion.w_exp,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
+  ThermofluidStream.Utilities.showRealValue efficiency(
+    description="eff",
+    use_numberPort=false,
+    number=shaftPower.E_flow_out/combustion.Q_flow,
+    displayVariable=false,
+    significantDigits=4) annotation(Placement(transformation(extent={{60,-100},{80,-80}})));
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
