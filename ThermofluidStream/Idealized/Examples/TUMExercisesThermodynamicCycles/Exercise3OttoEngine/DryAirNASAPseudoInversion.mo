@@ -24,8 +24,10 @@ model DryAirNASAPseudoInversion
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
-  Modelica.Blocks.Sources.RealExpression density1(y=d1) annotation(Placement(transformation(extent={{-20,40},{0,60}})));
-  Modelica.Blocks.Sources.RealExpression density2(y=d2) annotation(Placement(transformation(extent={{-130,40},{-110,60}})));
+  Modelica.Blocks.Sources.RealExpression density1(y=rho1)
+                                                        annotation(Placement(transformation(extent={{-20,40},{0,60}})));
+  Modelica.Blocks.Sources.RealExpression density2(y=rho2)
+                                                        annotation(Placement(transformation(extent={{-130,40},{-110,60}})));
   ThermofluidStream.Sensors.SingleSensorSelect sensorDensity1(
     displayInstanceName=true,
     redeclare package Medium = Medium,
@@ -62,24 +64,7 @@ model DryAirNASAPseudoInversion
     initType=Modelica.Blocks.Types.Init.InitialOutput,
     y_start=1e5)
               annotation(Placement(transformation(extent={{40,40},{60,60}})));
-  ThermofluidStream.Utilities.showRealValue maximumPressure(
-    description="p_max",
-    use_numberPort=false,
-    number=combustion.outlet.state.p,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-60,-100},{-40,-80}})));
-  ThermofluidStream.Utilities.showRealValue netWork(
-    description="w_n",
-    use_numberPort=false,
-    number=shaftPower.E_flow_out/expansion.m_flow,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-20,-100},{0,-80}})));
-  ThermofluidStream.Utilities.showRealValue efficiency(
-    description="eff",
-    use_numberPort=false,
-    number=shaftPower.E_flow_out/combustion.Q_flow,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -125,8 +110,17 @@ equation
   connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{100,-41},{100,-59.25},{110,-59.25}},
                                                                                                                   color={255,170,85}));
   connect(combustion.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{0,-41},{0,-62},{110,-62},{110,-57.75}},     color={255,170,85}));
-  annotation(Diagram(coordinateSystem(extent={{-140,-100},{140,100}}),
-                     graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-140,-100},{140,100}}),
+      graphics={
         Text(
           extent={{-90,-24},{-84,-30}},
           textColor={28,108,200},
@@ -147,14 +141,8 @@ equation
           extent={{104,-24},{110,-30}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Example of an Otto cycle engine model. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngine\">TUMExercisesThermodynamicCycles.Exercise3OttoEngine</a> 
     for the problem description.
@@ -193,6 +181,13 @@ equation
     yield the same net cycle work, even though the individual contributions of each process step differ.
   </p>
 
-</html>"),
-    Icon(coordinateSystem(grid={2,2})));
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end DryAirNASAPseudoInversion;

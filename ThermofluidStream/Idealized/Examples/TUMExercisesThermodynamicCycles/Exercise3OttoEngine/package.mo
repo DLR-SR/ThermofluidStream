@@ -2,7 +2,9 @@ within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
 package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
   extends Modelica.Icons.ExamplesPackage;
 
-  annotation(Documentation(info="<html>
+  annotation(
+    Documentation(
+      info="<html>
   <p>
     This example package illustrates stationary-flow representations of closed-system Otto
     (<code>s, v, s, v</code>) engine processes.
@@ -50,5 +52,13 @@ package Exercise3OttoEngine "Exercise 8.3: Otto Engine [TUM2019]"
     <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise3OttoEngineL2.svg\">
   </div>
 
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end Exercise3OttoEngine;
