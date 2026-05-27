@@ -46,7 +46,7 @@ model DryAirNASAPseudoInversion
         origin={-50,-6})));
   ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
-    m_flow_in_par=1,
+    m_flow_in_par=m_flow,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{20,8},{0,28}})));

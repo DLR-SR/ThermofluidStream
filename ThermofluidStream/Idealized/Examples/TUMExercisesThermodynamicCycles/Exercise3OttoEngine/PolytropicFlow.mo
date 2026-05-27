@@ -27,7 +27,7 @@ model PolytropicFlow
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
     redeclare package Medium = Medium,
-    m_flow_in_par=1,
+    m_flow_in_par=m_flow,
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{0,30},{-20,50}})));

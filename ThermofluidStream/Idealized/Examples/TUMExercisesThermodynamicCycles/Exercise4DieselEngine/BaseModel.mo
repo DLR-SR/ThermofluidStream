@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.DieselCycle;
+within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine;
 model BaseModel "Defines the parameters"
   extends Modelica.Icons.Example;
 
@@ -6,10 +6,9 @@ model BaseModel "Defines the parameters"
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
       choicesAllMatching=true);
   parameter Medium.AbsolutePressure p1=100000 "Pressure before compression";
-  parameter Medium.Temperature T1(displayUnit="degC")=293.15 "Temperature before compression";
-  parameter Real compressionRatio = 20 "Compression ratio";
-  parameter SI.Temperature T3=2273.15
-                                     "Temperature after combustion";
+  parameter Medium.Temperature T1(displayUnit="K")=300 "Temperature before compression";
+  parameter Real compressionRatio=23 "Compression ratio";
+  parameter SI.Temperature T3(displayUnit="K")=1700 "Temperature after combustion";
   parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
   final parameter Medium.Density rho1 = Medium.density_pT(p1,T1) "Density before compression";
 

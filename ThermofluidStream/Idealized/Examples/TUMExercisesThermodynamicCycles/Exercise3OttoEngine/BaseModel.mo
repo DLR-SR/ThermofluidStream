@@ -4,10 +4,11 @@ model BaseModel
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
-  parameter Medium.AbsolutePressure p1=100000   "Pressure before compression";
-  parameter Medium.Temperature T1(displayUnit="K")=300   "Temperature before compression";
+  parameter Medium.AbsolutePressure p1=100000 "Pressure before compression";
+  parameter Medium.Temperature T1(displayUnit="K")=300 "Temperature before compression";
   parameter Real compressionRatio = 10 "Compression ratio";
-  parameter Medium.Temperature T3(displayUnit="K")=2200   "Temperature after combustion";
+  parameter Medium.Temperature T3(displayUnit="K")=2200 "Temperature after combustion";
+  parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
 
   final parameter Medium.Density rho1 = Medium.density_pTX(p1,T1,Medium.X_default) "Density before compression";
   final parameter Medium.Density rho2 = rho1*compressionRatio "Density after compression";

@@ -1,21 +1,11 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine;
 model AdiabaticPerfectGas
-  extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine.BaseModel;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir constrainedby
-    ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
-  parameter Medium.AbsolutePressure p1=100000 "Pressure before compression";
-  parameter Medium.Temperature T1(displayUnit="K")=300 "Temperature before compression";
-  parameter Real compressionRatio = 23 "Compression ratio";
+  final parameter Medium.Density rho2 = rho1*compressionRatio "Density after compression";
 
-  parameter SI.MassFlowRate m_flow = 1 "Mass flow rate";
-
-  final parameter Medium.Density d1 = Medium.density_pT(p1,T1)  "Density before compression";
-  final parameter Medium.Density d2 = d1*compressionRatio "Density after compression";
-
-  final parameter SI.SpecificVolume v1 = 1/d1 "Specific volume before compression";
-  final parameter SI.SpecificVolume v2 = 1/d2 "Specific volume after compression";
+  final parameter SI.SpecificVolume v1 = 1/rho1 "Specific volume before compression";
+  final parameter SI.SpecificVolume v2 = 1/rho2 "Specific volume after compression";
 
   parameter Medium.IsentropicExponent gamma = 1.4 "Isentropic exponent";
   final parameter Medium.AbsolutePressure p2 = p1*(1/compressionRatio)^(-gamma) "Pressure after compression";
@@ -32,7 +22,7 @@ model AdiabaticPerfectGas
   ThermofluidStream.Idealized.Processes.Isobaric combustion(
     redeclare package Medium = Medium,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
-    T_out_fixed(displayUnit="K") = 1700) annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
+    T_out_fixed(displayUnit="K") = T3)   annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
@@ -50,31 +40,8 @@ model AdiabaticPerfectGas
     p_out_fixed=p1,
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.Temperature,
     T_out_fixed=T1) annotation (Placement(transformation(extent={{10,30},{-10,50}})));
-  ThermofluidStream.Utilities.showRealValue maximumPressure(
-    description="p_max",
-    use_numberPort=false,
-    number=combustion.outlet.state.p,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-78,-90},{-58,-70}})));
-  ThermofluidStream.Utilities.showRealValue netWork(
-    description="w_n",
-    use_numberPort=false,
-    number=shaftPower.E_flow_out/m_flow,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{-38,-90},{-18,-70}})));
-  ThermofluidStream.Utilities.showRealValue efficiency(
-    description="eff",
-    use_numberPort=false,
-    number=shaftPower.E_flow_out/combustion.Q_flow,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{42,-90},{62,-70}})));
-  ThermofluidStream.Utilities.showRealValue exhaustTemperature(
-    description="T_4",
-    use_numberPort=false,
-    number=expansion.outlet.state.T,
-    displayVariable=false,
-    significantDigits=4) annotation(Placement(transformation(extent={{0,-90},{20,-70}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=3) annotation (Placement(transformation(extent={{70,-40},{90,-20}})));
+
 equation
   connect(compression.outlet, combustion.inlet) annotation(
     Line(
@@ -104,8 +71,15 @@ equation
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-32},{70,-32}},      color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-30},{70,-30}},      color={255,170,85}));
   connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-20},{60,-20},{60,-28},{70,-28}}, color={255,170,85}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, grid={2,2}),
-                                           graphics={
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      graphics={
         Text(
           extent={{-46,6},{-40,0}},
           textColor={28,108,200},
@@ -122,14 +96,8 @@ equation
           extent={{-80,46},{-74,40}},
           textColor={28,108,200},
           textString="1")}),
-    Documentation(revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
-</html>", info="<html>
+    Documentation(
+      info="<html>
   <p>
     Example of an Diesel engine cycle. See <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise4DieselEngine\">TUMExercisesThermodynamicCycles.Exercise4DieselEngine</a> 
     for the problem description.
@@ -162,5 +130,13 @@ equation
     and integrating with respect to pressure, <code>v*dp</code> (“artificial” shaft work of a dual stationary-flow process),
     yield the same net cycle work, even though the individual contributions of each process step differ.
   </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 </html>"));
 end AdiabaticPerfectGas;
