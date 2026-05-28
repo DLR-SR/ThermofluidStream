@@ -10,16 +10,16 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   parameter ValueSpecification gammaSpec = ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isentropic exponent is fixed or obtained from the inlet state" annotation(Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.IsentropicExponent gamma_fixed = 1.4 "Fixed isentropic exponent" annotation(
     Dialog(group="Assumptions",
-      enable = gammaSpec ==ValueSpecification.Fixed),
-    HideResult = not gammaSpec == ValueSpecification.Fixed);
+      enable = gammaSpec == ThermofluidStream.Types.ValueSpecification2.Fixed),
+    HideResult = not gammaSpec == ThermofluidStream.Types.ValueSpecification2.Fixed);
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings"));
   parameter Real relTolZ = 0.05 "Relative tolerance of compressibility factor at inlet and outlet (tolerance for ideal gas behaviour)" annotation(
     Dialog(group="Warnings"));
   parameter Real relTolGamma = 1e-2 "Relative tolerance for isentropic exponent gamma_in, gamma_out" annotation(
     Dialog(group="Warnings",
-      enable = gammaSpec ==ValueSpecification.State),
-    HideResult = not gammaSpec == ValueSpecification.State);
+      enable = gammaSpec == ThermofluidStream.Types.ValueSpecification2.State),
+    HideResult = not gammaSpec == ThermofluidStream.Types.ValueSpecification2.State);
   final parameter String name = getInstanceName();
 
   Medium.Temperature T_in = Medium.temperature(state_in) "Inlet temperature" annotation(
@@ -31,7 +31,7 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   Medium.IsentropicExponent gamma_out = Medium.isentropicExponent(Medium.setState_phX(p_out,h_out,Xi_in)) "Isentropic exponent (outlet)";
 
   Real delta_gamma_rel = abs(gamma_out - gamma_in)/max(gamma_out,gamma_in) "Relative difference of isentropic exponents gamma_in, gamma_out" annotation(
-    HideResult = not gammaSpec == ValueSpecification.State);
+    HideResult = not gammaSpec == ThermofluidStream.Types.ValueSpecification2.State);
 
   Real Z_in  "Compressibility factor at inlet";
   Real Z_out "Compressibility factor at outlet";
@@ -48,7 +48,7 @@ partial model PartialIdealGas "Base class for adiabatic thermodynamic models ass
   Real isInletIdealGas = sign(Z_in - 1/(1 + relTolZ))*sign(1 + relTolZ - Z_in) "= 1.0 if Z_in within tolerance, = -1.0 if tolerance is exceeded"; // Real instead of Boolean to avoid events
   Real isOutletIdealGas = sign(Z_out - 1/(1 + relTolZ))*sign(1 + relTolZ - Z_out) "= 1.0 if Z_out within tolerance, = -1.0 if tolerance is exceeded"; // Real instead of Boolean to avoid events
   Real isGammaWithinTol = sign(relTolGamma - delta_gamma_rel) "= 1.0 if gamma within tolerance, = -1.0 if tolerance is exceeded" annotation(
-    HideResult = not gammaSpec == ValueSpecification.State);// Real instead of Boolean to avoid events
+    HideResult = not gammaSpec == ThermofluidStream.Types.ValueSpecification2.State);// Real instead of Boolean to avoid events
 
 equation
   assert(noEvent(Z_in >= 1/(1 + relTolZ) and Z_in <= 1 + relTolZ),
