@@ -9,8 +9,6 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   import ProcessSpecification = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
-    choicesAllMatching=true);
   parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
     Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
