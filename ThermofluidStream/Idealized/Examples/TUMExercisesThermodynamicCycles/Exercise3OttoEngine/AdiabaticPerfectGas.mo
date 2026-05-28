@@ -48,7 +48,7 @@ model AdiabaticPerfectGas
   ThermofluidStream.Utilities.showRealValue netWork(
     description="w_n",
     use_numberPort=false,
-    number=compression.w_exp + expansion.w_exp,
+    number=shaftPower.E_flow_out/m_flow,
     displayVariable=false,
     significantDigits=4) annotation(Placement(transformation(extent={{20,-100},{40,-80}})));
   ThermofluidStream.Utilities.showRealValue efficiency(
