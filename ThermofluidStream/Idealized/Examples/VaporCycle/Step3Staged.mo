@@ -78,6 +78,7 @@ model Step3Staged
     h_out_fixed=h_out_Condensor2) annotation(Placement(transformation(extent={{10,80},{-10,60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve2(
     redeclare package Medium = Medium,
+    enforcePressureDrop=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=p_Evaporator2) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -94,15 +95,6 @@ model Step3Staged
     thermalSpec=ThermofluidStream.Types.ThermalSpecification.SpecificEnthalpy,
     h_out_fixed=h_out_Evaporator2) annotation (Placement(transformation(extent={{10,10},{30,30}})));
 
-  Processes.Adiabatic                             compressor3(
-    redeclare package Medium = Medium,
-    eta_fixed=0.9,
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
-
-    p_out_fixed=p_Condensor2) annotation(Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={82,50})));
 equation
   connect(compressor1.outlet, condensor1.inlet) annotation(
     Line(points = {{40, -34}, {40, -20}, {-10, -20}}, color = {28, 108, 200}, thickness = 0.5));
