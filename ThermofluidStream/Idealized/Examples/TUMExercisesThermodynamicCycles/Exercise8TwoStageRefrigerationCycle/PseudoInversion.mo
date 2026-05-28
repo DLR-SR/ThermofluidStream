@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise8TwoStageRefrigerationCycle;
 model PseudoInversion
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglectOpenModelica;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
@@ -24,7 +25,8 @@ model PseudoInversion
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={18,-40})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(
+    considerInertance=false,                          displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Medium,
@@ -246,7 +248,18 @@ equation
         Text(
           extent={{-70,12},{-64,6}},
           textColor={28,108,200},
-          textString="8")}),
+          textString="8"),
+        Polygon(
+          points={{-140,80},{-100,80},{-100,100},{-120,100},{-120,140},{-140,140},{-140,80}},
+          fillColor={244,125,35},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-110,130},{-30,110}},
+          textColor={244,125,35},
+          horizontalAlignment=TextAlignment.Left,
+          textString="requires considerInertance = false in OpenModelica
+see User's Guide")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -264,6 +277,11 @@ equation
     This example uses <code>pseudoInversion</code> \"controllers\" instead of the <a href=\"modelica://Modelica.Blocks.Math.InverseBlockConstraints\">InverseBlockConstraints</a> model.
     With this the implicit nonlinear equations can be \"avoided\". 
     Note that also the time integration algorithm requires suitable start values and is also likely to be implicit and will likely solve implicit nonlinear equations aswell.
+  </p>
+
+  <p>
+    Index reduction requires <code>considerInertance = false</code> in Open Modelica,
+    see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 </html>"));
 end PseudoInversion;

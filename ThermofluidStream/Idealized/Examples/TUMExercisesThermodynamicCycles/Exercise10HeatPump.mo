@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles;
 model Exercise10HeatPump
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglectOpenModelica;
 
   replaceable package Refrigerant = ThermofluidStream.Media.myMedia.R134a.R134a_ph constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
@@ -19,7 +20,8 @@ model Exercise10HeatPump
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-40,40})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(  displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{140,80},{160,100}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic lowPressureValve(
     redeclare package Medium = Refrigerant,
@@ -246,7 +248,18 @@ equation
         Text(
           extent={{6,-34},{12,-40}},
           textColor={28,108,200},
-          textString="8")}),
+          textString="8"),
+        Polygon(
+          points={{-140,40},{-100,40},{-100,60},{-120,60},{-120,100},{-140,100},{-140,40}},
+          fillColor={244,125,35},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-110,90},{-30,70}},
+          textColor={244,125,35},
+          horizontalAlignment=TextAlignment.Left,
+          textString="requires considerInertance = false in OpenModelica
+see User's Guide")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -257,6 +270,11 @@ equation
 </html>", info="<html>
   <p>
     Example of a two-stage vapor-compression heat pump with an intermediate-pressure flash chamber to heat a residential building.
+  </p>
+
+  <p>
+    Index reduction requires <code>considerInertance = false</code> in Open Modelica,
+    see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <h4>English problem description</h4>

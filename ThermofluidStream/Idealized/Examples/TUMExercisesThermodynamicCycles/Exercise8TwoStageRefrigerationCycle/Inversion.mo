@@ -228,7 +228,15 @@ equation
         Text(
           extent={{-70,12},{-64,6}},
           textColor={28,108,200},
-          textString="8")}),
+          textString="8"),
+                      Polygon(
+          points={{-126,140},{-142,88},{-122,88},{-138,46},{-92,104},{-118,104},{-100,140},{-126,140}},
+          fillPattern = FillPattern.Solid,
+          fillColor={238,46,47},
+          pattern=LinePattern.None), Text(
+          extent={{-100,140},{-20,120}},
+          textColor={238,46,47},
+          textString="Fails in Open Modelica")}),
     Documentation(revisions="<html>
   <ul>
     <li>

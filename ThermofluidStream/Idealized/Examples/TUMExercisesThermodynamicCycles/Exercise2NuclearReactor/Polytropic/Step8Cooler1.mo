@@ -1,12 +1,14 @@
 within ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles.Exercise2NuclearReactor.Polytropic;
 model Step8Cooler1
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglectOpenModelica;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.He
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
     choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(  displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(
+    considerInertance=false,                            displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{-20,180},{0,200}})));
   ThermofluidStream.Idealized.Processes.Isobaric reactor(
     redeclare package Medium = Medium,
@@ -220,7 +222,18 @@ equation
         Text(
           extent={{-6,-114},{0,-120}},
           textColor={28,108,200},
-          textString="7")}),
+          textString="7"),
+        Polygon(
+          points={{-200,140},{-160,140},{-160,160},{-180,160},{-180,200},{-200,200},{-200,140}},
+          fillColor={244,125,35},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-170,190},{-90,170}},
+          textColor={244,125,35},
+          horizontalAlignment=TextAlignment.Left,
+          textString="requires considerInertance = false in OpenModelica
+see User's Guide")}),
     Documentation(revisions="<html>
   <ul>
     <li>
@@ -230,7 +243,8 @@ equation
   </ul>
 </html>", info="<html>
   <p>
-    The nonlinear solver only converges for <code>considerInertance = false</code>.
+    Index reduction requires <code>considerInertance = false</code> in Open Modelica,
+    see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 </html>"));
 end Step8Cooler1;

@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Examples.VaporCycle;
 model Step3Staged
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglectOpenModelica;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.R134a.R134a_ph
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
@@ -32,7 +33,7 @@ model Step3Staged
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,-44})));
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true, considerInertance = false) annotation(
     Placement(transformation(extent={{80,0},{100,20}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor1(
     redeclare package Medium = Medium,
@@ -119,7 +120,7 @@ equation
   connect(condensor1.Q_flow_out, evaporator2.Q_flow_in) annotation(Line(points={{-20,-13},{-20,12}}, color={255,170,85}));
 
   annotation(
-    Diagram(
+    Diagram(coordinateSystem(extent={{-120,-100},{120,120}}),
       graphics={
         Text(
           extent={{34,-64},{40,-70}},
@@ -152,7 +153,18 @@ equation
         Text(
           extent={{-40,26},{-34,20}},
           textColor={28,108,200},
-          textString="8")}),
+          textString="8"),
+        Polygon(
+          points={{-120,60},{-80,60},{-80,80},{-100,80},{-100,120},{-120,120},{-120,60}},
+          fillColor={244,125,35},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-90,110},{-10,90}},
+          textColor={244,125,35},
+          horizontalAlignment=TextAlignment.Left,
+          textString="requires considerInertance = false in OpenModelica
+see User's Guide")}),
     Documentation(
       info="<html>
   <p>
@@ -181,6 +193,11 @@ equation
   </ul>
 
   <p>
+    Index reduction requires <code>considerInertance = false</code> in Open Modelica,
+    see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
+  </p>
+
+  <p>
     Further documentation is available in the
     <a href=\"modelica://ThermofluidStream.Idealized.Examples.VaporCycle\">VaporCycle</a> package.
   </p>
@@ -192,5 +209,6 @@ equation
       Initial version.
     </li>
   </ul>
-</html>"));
+</html>"),
+    Icon(coordinateSystem(extent={{-120,-100},{120,120}})));
 end Step3Staged;

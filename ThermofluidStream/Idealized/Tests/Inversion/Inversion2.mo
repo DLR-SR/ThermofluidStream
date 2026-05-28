@@ -27,10 +27,6 @@ equation
     Diagram(
       graphics={
         Text(
-          extent={{-100,100},{-60,80}},
-          textColor={28,108,200},
-          textString="fails in OM"),
-        Text(
           extent={{-80,-60},{80,-80}},
           textColor={28,108,200},
           textString="Find sourceB.T such that T_mix = 25 °C")}),

@@ -242,10 +242,26 @@ equation
         Text(
           extent={{-128,36},{-122,30}},
           textColor={28,108,200},
-          textString="12")}),
+          textString="12"),
+        Polygon(
+          points={{-200,40},{-160,40},{-160,60},{-180,60},{-180,100},{-200,100},{-200,40}},
+          fillColor={244,125,35},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Text(
+          extent={{-170,90},{-90,70}},
+          textColor={244,125,35},
+          horizontalAlignment=TextAlignment.Left,
+          textString="requires considerInertance = false in OpenModelica
+see User's Guide")}),
     Documentation(info="<html>
   <p>
     In a seventh step, the heat exchangers are modeled differently.
+  </p>
+
+  <p>
+    Index reduction requires <code>considerInertance = false</code> in Open Modelica,
+    see <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">UsersGuide.InertanceNeglect</a>.
   </p>
 
   <p>

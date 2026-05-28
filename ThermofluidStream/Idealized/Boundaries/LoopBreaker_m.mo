@@ -199,6 +199,11 @@ equation
         Line(
           points = if XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{-20,-100}} else {{0,0}},
           color={0,0,127}),
+        Ellipse(
+          extent={{80,40},{100,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
         Text(
           extent={{-100,100},{100,0}},
           textColor={238,46,47},
