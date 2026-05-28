@@ -90,11 +90,6 @@ equation
   connect(P_n.processSpec_prescribed, polytropicExponent.y) annotation (Line(points={{-114,-172},{-114,-182},{-292,-182},{-292,-80},{-319,-80}}, color={0,0,127}));
   connect(P_eta_is.processSpec_prescribed, isentropicEfficiency.y) annotation (Line(points={{-4,-172},{-4,-186},{-296,-186},{-296,-110},{-319,-110}}, color={0,0,127}));
   annotation(
-    experiment(
-      StopTime=1.5,
-      Interval=0.01,
-      Tolerance=1e-6,
-      __Dymola_Algorithm="Dassl"),
     Documentation(
       info="<html>
   <p>
