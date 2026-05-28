@@ -93,10 +93,17 @@ model Isobaric "Isobaric process"
   SI.Power P "Power (mean net expansion work)" annotation(
     HideResult = systemSpec == SystemSpecification.Flow);
 
+  Real singularityRegime "=+1.0 for dh:=Q_flow/m_flow -> infty, =-1 for m_flow:=Q_flow/dh -> infty, =0.0 else";
+
+  constant Medium.SpecificEnergy eps_q = Modelica.Constants.eps "Regularization specific heat flow" annotation(
+    HideResult=true);
+  constant SI.MassFlowRate eps_m_flow = Modelica.Constants.eps "Regularization mass flow rate" annotation(
+    HideResult=true);
+  constant SI.HeatFlowRate eps_Q_flow = Modelica.Constants.eps "Regularization heat flow rate" annotation(
+    HideResult=true);
 protected
   Modelica.Blocks.Interfaces.RealInput outletSpec_actual "Actual outlet specification [SI-units], required due to the conditional connector outletSpec_prescribed";
   SI.AbsolutePressure p = p_in "Pressure";
-  constant Real eps = Modelica.Constants.eps;
 
 equation
   connect(outletSpec_actual, outletSpec_prescribed);
@@ -134,22 +141,22 @@ equation
 
   q = dh; //du = q + w_exp;
 
-  if heatFlowSignal == HeatFlowSignal.Input and specifyOutlet and noEvent(abs(dh) < eps) and not considerInertance then
-    // This case does not seem to be activated in Dymola.
-    assert(noEvent(abs(Q_flow) < eps),
-      "In \"" + name +"\" the heat flow rate Q_flow is not zero, but the specific enthalpy difference dh is, implying infinite mass flow rate. \n"
-      + "  The mass flow rate is set to zero. \n",
-    assertionLevel);
-    m_flow = 0;
-  elseif heatFlowSignal == HeatFlowSignal.Input and not specifyOutlet and noEvent(abs(m_flow) < eps) then
-    assert(noEvent(abs(Q_flow) < eps),
-      "In \"" + name +"\" the heat flow rate is not zero, but the mass flow rate is, implying infinite difference in specific enthalpy difference. \n"
-      + "  The specific enthalpy difference is set to zero.",
-    assertionLevel);
-    q = 0;
-  else
+  if specifyOutlet and not heatFlowSignal == HeatFlowSignal.Input  then
     Q_flow = m_flow*q;
+  elseif specifyOutlet then // and heatFlowSignal == HeatFlowSignal.Input
+    m_flow = Q_flow * q/(q^2 + eps_q^2);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(q) > eps_q), "The heat flow rate in "+name+" is non zero, but the specific heat flow is zero, implying that the mass flow rate m_flow := Q_flow/q is infinite.\n The result is regularized.", assertionLevel);
+  else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
+    q = Q_flow * m_flow / (m_flow^2 + eps_m_flow^2);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+name+" is non zero, but the mass flow rate is zero, implying that the specific heat flow q := Q_flow/m_flow is infinite. \n The result is regularized.", assertionLevel);
   end if;
+
+  singularityRegime =
+    if noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps_Q_flow and abs(m_flow) < eps_m_flow) then 1.0
+    elseif noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps_Q_flow and abs(q) < eps_q) then -1.0
+    else 0;
+
+
 
   if systemSpec == SystemSpecification.Cycle then
     w_exp = - p*(v_out - v_in);
@@ -245,6 +252,19 @@ equation
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillPattern = if not specifyOutlet and not heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
+        Text(
+          extent={{-150,100},{150,60}},
+          textString = DynamicSelect("", if singularityRegime > 0.5 then "infinite q"
+            elseif singularityRegime < -0.5 then "infinte m_flow"
+            else ""),
+          textColor={238,46,47}),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = DynamicSelect(FillPattern.None, if singularityRegime > 0.5 then FillPattern.Solid
+            elseif singularityRegime < -0.5 then FillPattern.Solid
+            else FillPattern.None),
           fillColor={238,46,47},
           pattern=LinePattern.None),
         Ellipse(

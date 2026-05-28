@@ -73,7 +73,7 @@ equation
   annotation(
     Diagram(
       coordinateSystem(
-        extent={{-160,-160},{160,140}}, grid={2,2})),
+        extent={{-160,-160},{160,140}})),
     Documentation(
       info="<html>
   <p>

@@ -6,7 +6,6 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import Modelica.Constants.eps;
 
   parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
     Dialog(group="Specification"), HideResult=true, Evaluate=true);
@@ -113,8 +112,8 @@ equation
   end if;
 
   singularityRegime =
-    if noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps) then 1.0
-    elseif noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps) then -1.0
+    if noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps_Q_flow and abs(m_flow) < eps_m_flow) then 1.0
+    elseif noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps_Q_flow and abs(du) < eps_du) then -1.0
     else 0;
 
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
