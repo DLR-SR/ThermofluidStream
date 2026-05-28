@@ -158,8 +158,6 @@ equation
           lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>This model should only be used as a switch, i.e. it should either direct the flow completely in one or the other direction. This requires the input being either zero or one. All values in between will result in less mass flow and/ or a higher pressure drop, depending on the system up- or downstream of the switch, which in most cases is an undesired behaviour. </p>
-<p>If e.g. a bypass shall be controlled, use the newly created ThreeWayValve which allows for splitting the flow continuously between zero and one.</p>
-<p><br>To do: ask why input has to be between 0 and (1-l) -&gt; Tested it and limiting the input (at lower as well as upper limit) leads to different results. Therefore it is not recommended. However, in some cases, pressure fluctuations might be induced, when reaching 1 (or 0) as input. This occured in the fuel cell AirSupply, but not in the simple test case.</p>
+<p>New, improved version of the Switch: The ThreeWayValve model should be used e.g. if the split ratio of the two flows it separates, shall be controlled. The Switch had large pressure drops for inputs between 0 and 1, while this is now fixed in the new model (by using different valve models inside). The parameters maybe need to be adjusted.</p>
 </html>"));
 end ThreeWayValve;
