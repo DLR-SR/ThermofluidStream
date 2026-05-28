@@ -194,8 +194,8 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
-          textString="%name",
-          textColor = if displayInstanceName then dropOfCommons.instanceNameColor else ""),
+          textString = if displayInstanceName then "%name" else "",
+          textColor = dropOfCommons.instanceNameColor),
         Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent={{-30,30},{30,-30}},
           textColor={28,108,200},
