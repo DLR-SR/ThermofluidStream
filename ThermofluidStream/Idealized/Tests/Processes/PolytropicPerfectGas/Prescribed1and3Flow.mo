@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
-model Prescribed1
+model Prescribed1and3Flow
   extends ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas.PartialPrescribed;
   extends Modelica.Icons.Example;
 
@@ -900,4 +900,4 @@ equation
     </li>
   </ul>
 </html>"));
-end Prescribed1;
+end Prescribed1and3Flow;

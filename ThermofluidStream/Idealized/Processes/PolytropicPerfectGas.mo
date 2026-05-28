@@ -241,6 +241,7 @@ equation
     else sign(-P - eps);
 
   // Isentropic efficiency
+  // isentropic efficiency for stationary flow and periodic closed cycle models are equivalent in the case of constant isentropic coefficient kappa (using w_i and w_s)
   if processSpec == ProcessSpecification.IsentropicEfficiency then
     if noEvent(isCompression > 0) then
       w_s*eta_is = w_s_is;
