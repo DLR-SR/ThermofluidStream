@@ -141,7 +141,7 @@ equation
     Documentation(
       info="<html>
   <p>
-    This example checks if warnings are issued correctly.
+    This example checks if warnings are issued correctly in the case of outlet state and heat flow rate given.
   </p>
 </html>",
       revisions="<html>

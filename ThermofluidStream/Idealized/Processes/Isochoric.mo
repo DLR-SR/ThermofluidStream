@@ -66,6 +66,8 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   SI.HeatFlowRate Q_flow "Heat flow rate";
   SI.Power P "Power";
 
+  Real singularityRegime "=+1.0 for du:=Q_flow/m_flow -> infty, =-1 for m_flow:=Q_flow/du -> infty, =0.0 else";
+
   constant Medium.SpecificEnergy eps_du = Modelica.Constants.eps annotation(
     HideResult=true);
   constant SI.MassFlowRate eps_m_flow = Modelica.Constants.eps annotation(
@@ -104,16 +106,18 @@ equation
     Q_flow = m_flow*du;
   elseif specifyOutlet then // and heatFlowSignal == HeatFlowSignal.Input
     m_flow = Q_flow * du/(du^2 + eps_du^2);
-    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(du) > eps_du), "The heat flow rate in "+name+" is non zero, but the difference in specific internal energy is zero, implying that the mass flow rate m_flow := Q_flow/du is infinite", assertionLevel);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(du) > eps_du), "The heat flow rate in "+name+" is non zero, but the difference in specific internal energy is zero, implying that the mass flow rate m_flow := Q_flow/du is infinite.\n The result is regularized.", assertionLevel);
   else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
     du = Q_flow * m_flow / (m_flow^2 + eps_m_flow^2);
-    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+name+" is non zero, but the mass flow rate is zero, implying that the difference in specific internal energy du := Q_flow/m_flow is infinite", assertionLevel);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+name+" is non zero, but the mass flow rate is zero, implying that the difference in specific internal energy du := Q_flow/m_flow is infinite. \n The result is regularized.", assertionLevel);
   end if;
 
+  singularityRegime =
+    if noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps) then 1.0
+    elseif noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps) then -1.0
+    else 0;
+
   P = if systemSpec == SystemSpecification.Flow then m_flow*w_p else 0;
-
-
-
 
   annotation(
     Icon(
@@ -201,14 +205,14 @@ equation
           pattern=LinePattern.None),
         Text(
           extent={{-150,100},{150,60}},
-          textString = DynamicSelect("", if heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps then "infinite du"
-            elseif heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps then "infinte m_flow"
+          textString = DynamicSelect("", if singularityRegime > 0.5 then "infinite du"
+            elseif singularityRegime < -0.5 then "infinte m_flow"
             else ""),
           textColor={238,46,47}),
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
-          fillPattern = DynamicSelect(FillPattern.None, if heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(Q_flow) > eps and abs(m_flow) < eps then FillPattern.Solid
-            elseif heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps and abs(du) < eps then FillPattern.Solid
+          fillPattern = DynamicSelect(FillPattern.None, if singularityRegime > 0.5 then FillPattern.Solid
+            elseif singularityRegime < -0.5 then FillPattern.Solid
             else FillPattern.None),
           fillColor={238,46,47},
           pattern=LinePattern.None),
