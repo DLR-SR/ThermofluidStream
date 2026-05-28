@@ -67,6 +67,10 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Outlet pressure filter (for specifyOutlet == false and powerSignal == Input)",
       enable = enableFilter and not specifyOutlet and powerSignal == PowerSignal.Input),
     HideResult = not enableFilter or specifyOutlet or not powerSignal == PowerSignal.Input);
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
+    Dialog(group="Warnings",
+      enable = powerSignal == PowerSignal.Input),
+      HideResult = not powerSignal == PowerSignal.Input);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pRatio_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and specifyOutlet and outletValueSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
@@ -74,10 +78,11 @@ model Adiabatic "Adiabatic process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
+  final parameter String name = getInstanceName() "Instance name";
 
-  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
+  Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
-  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed  "Prescribed isentropic efficiency [-]" annotation(
+  Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed "Prescribed isentropic efficiency [-]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={60,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput P_in = P_in_internal if powerSignal == PowerSignal.Input "Power (dircted into the system) [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
@@ -90,6 +95,16 @@ model Adiabatic "Adiabatic process"
   SI.Power P "Power (technical work flow rate)";
   SI.Power P_in_internal "Power directed into the system (calculated based on the outlet pressure)" annotation(
     HideResult = true);
+
+  Real singularityRegime "=+1.0 for dh:=P/m_flow -> infty, =-1 for m_flow:=P/dh -> infty, =0.0 else";
+
+  constant Medium.SpecificEnergy eps_dh = Modelica.Constants.eps annotation(
+    HideResult=true);
+  constant SI.MassFlowRate eps_m_flow = Modelica.Constants.eps annotation(
+    HideResult=true);
+  constant SI.HeatFlowRate eps_P = Modelica.Constants.eps annotation(
+    HideResult=true);
+
 
   final ThermodynamicModel adiabaticModel(
     redeclare final package Medium = Medium,
@@ -139,8 +154,22 @@ equation
 
   dh = h_out - h_in;
   h_out = adiabaticModel.h_out;
-  P = m_flow*dh;
   Xi_out = Xi_in;
+
+  if specifyOutlet and not powerSignal == PowerSignal.Input  then
+    P = m_flow*dh;
+  elseif specifyOutlet then // and powerSignal == PowerSignal.Input
+    m_flow = P * dh/(dh^2 + eps_dh^2);
+    assert(noEvent(abs(P) < eps_P or abs(dh) > eps_dh), "The power in "+name+" is non zero, but the difference in specific enthalpy is zero, implying that the mass flow rate m_flow := P/dh is infinite.\n The result is regularized.", assertionLevel);
+  else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
+    dh = P * m_flow / (m_flow^2 + eps_m_flow^2);
+    assert(noEvent(abs(P) < eps_P or abs(m_flow) > eps_m_flow), "The power in "+name+" is non zero, but the mass flow rate is zero, implying that the difference in specific enthalpy dh := P/m_flow is infinite. \n The result is regularized.", assertionLevel);
+  end if;
+
+  singularityRegime =
+    if noEvent(powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and not specifyOutlet and abs(P) > eps_P and abs(m_flow) < eps_m_flow) then 1.0
+    elseif noEvent(powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(P) > eps_P and abs(dh) < eps_dh) then -1.0
+    else 0;
 
   annotation(
     Icon(
@@ -216,6 +245,19 @@ equation
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillPattern = if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          fillColor={238,46,47},
+          pattern=LinePattern.None),
+        Text(
+          extent={{-150,100},{150,60}},
+          textString = DynamicSelect("", if singularityRegime > 0.5 then "infinite dh"
+            elseif singularityRegime < -0.5 then "infinte m_flow"
+            else ""),
+          textColor={238,46,47}),
+        Polygon(
+          points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
+          fillPattern = DynamicSelect(FillPattern.None, if singularityRegime > 0.5 then FillPattern.Solid
+            elseif singularityRegime < -0.5 then FillPattern.Solid
+            else FillPattern.None),
           fillColor={238,46,47},
           pattern=LinePattern.None),
         Ellipse(

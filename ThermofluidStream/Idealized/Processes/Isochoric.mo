@@ -26,7 +26,7 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
     HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
-  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
+  parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings",
       enable = heatFlowSignal == HeatFlowSignal.Input),
       HideResult = not heatFlowSignal == HeatFlowSignal.Input);

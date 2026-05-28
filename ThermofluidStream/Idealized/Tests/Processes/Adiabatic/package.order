@@ -1,3 +1,6 @@
+Fixed1
+Fixed2
+Fixed3
 Compressor
 CompressorConstant
 Pump
@@ -7,3 +10,4 @@ cpSpec
 compressibilityFactor
 EfficiencySetpoint
 Setpoint
+PartialFixed
