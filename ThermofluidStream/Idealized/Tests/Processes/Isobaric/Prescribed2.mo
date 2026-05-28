@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Processes.Isobaric;
-model Prescribed2 "Example - Isobaric cycle process"
+model Prescribed2 "Example - Isobaric process"
   extends Modelica.Icons.Example;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
@@ -282,13 +282,8 @@ equation
       info="<html>
   <p>
     This example illustrates several variants of using the 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process (<code>specifyOutlet = true</code> and <code>heatFlowSignal = Input</code>) defined by discontinuous inputs.
-  </p>
-  
-  <p>
-    Calculating the mass flow rate <code>m_flow := Q_flow/q</code>, may cause the simulation to fail at <code>q = 0</code>, which occurs for all models in this example.<br>
-    This does however not happen in Dymola 2026x Refresh 1.
-  </p>
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Isobaric\">Isobaric</a> process for heat transfer defined by time varying inputs (outlet state and heat flow rate given).
+  </p>   
 </html>",
       revisions="<html>
   <ul>
