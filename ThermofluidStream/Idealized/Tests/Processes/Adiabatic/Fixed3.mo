@@ -13,7 +13,9 @@ model Fixed3 "Example - adiabatic process"
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
-    eta_fixed=eta_is) annotation (Placement(transformation(extent={{30,30},{50,50}})));
+    eta_fixed=eta_is,
+    TC=0.2,
+    P_nom=81000)      annotation (Placement(transformation(extent={{30,30},{50,50}})));
 
   EnergyFlow.Sources.PrescribedEnergyFlow
                                      energyFlowSource                annotation(Placement(transformation(extent={{-50,-10},{-30,10}})));

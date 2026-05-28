@@ -156,7 +156,9 @@ equation
   h_out = adiabaticModel.h_out;
   Xi_out = Xi_in;
 
-  if specifyOutlet and not powerSignal == PowerSignal.Input  then
+  if not specifyOutlet and powerSignal == PowerSignal.Input and enableFilter then
+    P = m_flow*dh;
+  elseif specifyOutlet and not powerSignal == PowerSignal.Input  then
     P = m_flow*dh;
   elseif specifyOutlet then // and powerSignal == PowerSignal.Input
     m_flow = P * dh/(dh^2 + eps_dh^2);
