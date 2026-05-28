@@ -1,6 +1,6 @@
 within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model PartialFixed "Parameter definition"
-  extends Modelica.Icons.Example;
+
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium annotation(
     choicesAllMatching = true);

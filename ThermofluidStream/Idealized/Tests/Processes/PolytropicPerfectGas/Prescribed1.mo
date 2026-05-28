@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas;
 model Prescribed1
   extends ThermofluidStream.Idealized.Tests.Processes.PolytropicPerfectGas.PartialPrescribed;
+  extends Modelica.Icons.Example;
 
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
     Placement(transformation(extent={{286,194},{306,214}})));
