@@ -167,6 +167,9 @@ class InertanceNeglect
     Examples requiring <code>considerInertance = false</code> in <code>Dymola 2026x Refresh 1</code> are marked with a red
     <strong>L</strong>.<br>
 
+    Examples not requiring <code>considerInertance = false</code> in <code>Dymola 2026x Refresh 1</code> but requiring 
+    <code>considerInertance = false</code> in <code>Open Modelica v1.26.3</code> are marked with an orange <strong>L</strong>.<br>
+
     Components with <code>considerInertance = false</code> are highlighted by a red
     dot in the graphical layer.<br>
 

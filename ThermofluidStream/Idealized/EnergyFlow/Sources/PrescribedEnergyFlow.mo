@@ -53,17 +53,17 @@ equation
           color={255,170,85},
           thickness=0.5),
         Polygon(origin={128,-26},
-          rotation = if E_flow >= 0 then 0 else 180,
+          rotation = DynamicSelect(0, if E_flow >= 0 then 0 else 180),
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
-          fillPattern = if abs(E_flow_out) >= 1e-8 then FillPattern.Solid else FillPattern.None,
+          fillPattern = DynamicSelect(FillPattern.None, if abs(E_flow_out) >= 1e-8 then FillPattern.Solid else FillPattern.None),
           pattern=LinePattern.None),
         Text(
           origin={100,-44},
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
-          textString= if abs(E_flow_out) < 1e-8 then "0" else "")}),
+          textString= DynamicSelect("", if abs(E_flow_out) < 1e-8 then "0" else ""))}),
     Documentation(
       info="<html>
    <p>

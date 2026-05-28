@@ -40,17 +40,17 @@ equation
           textColor={0,0,0},
           textString="+"),
         Polygon(origin={108,-32},
-          rotation = if E_flow_out >= 0 then 0 else 180,
+          rotation = DynamicSelect(0, if E_flow_out >= 0 then 0 else 180),
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
-          fillPattern = if abs(E_flow_out) >= 1e-8 then FillPattern.Solid else FillPattern.None,
+          fillPattern = DynamicSelect(FillPattern.None, if abs(E_flow_out) >= 1e-8 then FillPattern.Solid else FillPattern.None),
           pattern=LinePattern.None),
         Text(
           origin={98,-48},
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
-          textString = if abs(E_flow_out) < 1e-8 then "0" else "")}),
+          textString = DynamicSelect("", if abs(E_flow_out) < 1e-8 then "0" else ""))}),
     Documentation(info="<html>
   <p>
     Model 'inspired' by <a href=\"modelica://Modelica.Blocks.Math.MultiSum\">Modelica.Blocks.Math.MultiSum</a>. See its documentation for further information.

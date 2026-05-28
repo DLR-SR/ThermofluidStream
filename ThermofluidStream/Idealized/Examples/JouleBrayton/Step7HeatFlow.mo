@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Examples.JouleBrayton;
 model Step7HeatFlow
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglectOpenModelica;
 
   replaceable package Air = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
@@ -9,7 +10,7 @@ model Step7HeatFlow
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
       choicesAllMatching=true);
 
-  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true, considerInertance = true) annotation(
     Placement(transformation(extent={{180,80},{200,100}})));
 
   Processes.Adiabatic lowPressureCompressor(
@@ -75,12 +76,12 @@ model Step7HeatFlow
                     waterSource(
     redeclare package Medium = Water,
     p0_par=100000,
-    T0_par=293.15) annotation(
+    T0_par=293.15, considerInertance = false) annotation(
     Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-80,30})));
-  Boundaries.Sink_free waterSink(redeclare package Medium = Water) annotation (Placement(transformation(
+  Boundaries.Sink_free waterSink(redeclare package Medium = Water, considerInertance = false) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-140,30})));
@@ -89,7 +90,7 @@ model Step7HeatFlow
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
-    dT_fixed=10) annotation(Placement(transformation(extent={{-100,20},{-120,40}})));
+    dT_fixed=10, considerInertance = false) annotation(Placement(transformation(extent={{-100,20},{-120,40}})));
   Processes.Isobaric coolerAirSide(
     redeclare package Medium = Air,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,

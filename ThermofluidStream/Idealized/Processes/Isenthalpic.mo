@@ -139,7 +139,7 @@ equation
         Text(
           extent={{-100,50},{100,-50}},
           textColor={238,46,47},
-          textString = if m_flow*dpLoss < 0 then "dp" else "")}),
+          textString = DynamicSelect("",if m_flow*dpLoss < 0 then "dp" else ""))}),
     Documentation(
       info="<html>
   <p>
