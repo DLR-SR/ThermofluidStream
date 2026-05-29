@@ -42,9 +42,9 @@ model DifferenceSensor_Tp "Sensor for Temperature and pressure difference"
     annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
-    annotation (Placement(transformation(extent={{-120,40},{-80,80}})));
+    annotation (Placement(transformation(extent={{-120,20},{-80,60}})));
   Interfaces.Inlet inletB(redeclare package Medium=MediumB)
-    annotation (Placement(transformation(extent={{-120,-80},{-80,-40}})));
+    annotation (Placement(transformation(extent={{-120,-60},{-80,-20}})));
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature difference output connector"
     annotation (Placement(transformation(extent={{100,30},{120,50}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure difference output connector"
@@ -147,19 +147,11 @@ equation
           textString="%pressureUnit",
           horizontalAlignment=TextAlignment.Left),
         Line(
-          points={{-100,-60},{-80,-60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-100,60},{-80,60}},
-          color={28,108,200},
-          thickness=0.5),
-        Line(
-          points={{-108,-30},{-92,-30}},
+          points={{-108,-10},{-92,-10}},
           color={28,108,200},
           thickness=0.5),
         Ellipse(
-          extent={{-110,100},{-90,80}},
+          extent={{-110,80},{-90,60}},
           lineColor={28,108,200},
           lineThickness=0.5),
         Line(visible=outputTemperature,
@@ -169,17 +161,17 @@ equation
           points={{80,-40},{100,-40}},
           color={0,0,127}),
         Line(
-          points={{-108,90},{-92,90}},
+          points={{-108,70},{-92,70}},
           color={28,108,200},
           thickness=0.5),
         Line(
           points={{-8,0},{8,0}},
           color={28,108,200},
           thickness=0.5,
-          origin={-100,90},
+          origin={-100,70},
           rotation=90),
         Ellipse(
-          extent={{-110,-20},{-90,-40}},
+          extent={{-110,0},{-90,-20}},
           lineColor={28,108,200},
           lineThickness=0.5)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
