@@ -6,45 +6,32 @@ model PCV "Pressure and pressure-drop control valve"
 
 
   parameter Mode mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.pressure_drop "Valve mode";
-  parameter Boolean pressureFromInput = false "if true, pressure input connector is enabled";
-    annotation(Dialog(group="Pressure setpoint"), Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean pressureFromInput = false "if true, pressure input connector is enabled"
+    annotation(Dialog(group="Pressure setpoint"));
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
     annotation(Dialog(group="Pressure setpoint",enable=not pressureFromInput));
-
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization mass flow"
     annotation(Dialog(tab="Advanced"));
-
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90, origin={0,-120})));
-
   constant SI.Pressure eps = 1;
-
 protected
   Modelica.Blocks.Interfaces.RealInput pressure_set(unit="Pa") "Internal pressure connector [Pa]";
   SI.Pressure dp_raw "Not normalized desired dp";
-
 equation
   connect(pressure_set_var, pressure_set);
   if not pressureFromInput then
     pressure_set = pressure_set_par;
   end if;
-
-  // normalize dp: upper limit=0: because valve should not create pressure.
-  // if reversed flow condition, dp is set to 0, such that the valve will also not create pressure in this condition.
-  // for the flow-direction-normalization regstep is used in a way, that dp=0 for m_flow = 0 (m_flow - m_flow_reg).
-  // the motherclass will further normalize dp, such that p_out >= dp_min.
   dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg, min(0, dp_raw), 0, m_flow_reg);
-
   if mode ==Mode.pressure_drop then
     dp_raw = -pressure_set;
   else
     dp_raw = pressure_set - p_in;
   end if;
-
   h_out = h_in;
   Xi_out = Xi_in;
-
-  annotation(
+    annotation(Dialog(group="Pressure setpoint"), choices(checkBox=true),
     Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,140},{150,100}},
@@ -101,4 +88,11 @@ equation
 <p>The pressure difference <code>dp</code> is normalized, such that it cannot create pressure and it is zero for zero or negative mass flow.</p>
 <p>If the desired pressure drop or outlet pressure, i.e. the target pressure drop in either case, can&apos;t be reached, a red dot shows up on the icon.</p>
 </html>"));
+
+
+  // normalize dp: upper limit=0: because valve should not create pressure.
+  // if reversed flow condition, dp is set to 0, such that the valve will also not create pressure in this condition.
+  // for the flow-direction-normalization regstep is used in a way, that dp=0 for m_flow = 0 (m_flow - m_flow_reg).
+  // the motherclass will further normalize dp, such that p_out >= dp_min.
+
 end PCV;
