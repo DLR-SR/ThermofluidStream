@@ -405,12 +405,12 @@ equation
   connect(conductionElement.heatPort, fixedTemperature.port) annotation (Line(points={{0,-24},{0,-47},{3.88578e-16,-47},{3.88578e-16,-70}},
                                                                                                                    color={191,0,0}));
   connect(differenceSensor_Tp.inletA, source.outlet) annotation (Line(
-      points={{-4,46},{-18,46},{-18,74},{-80,74}},
+      points={{-4,44},{-18,44},{-18,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensor_Tp.inletB, conductionElement.inlet)
     annotation (Line(
-      points={{-4,34},{-14,34},{-14,-14},{-10,-14}},
+      points={{-4,36},{-14,36},{-14,-14},{-10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect.inletA, flowResistance.outlet) annotation (
@@ -519,12 +519,12 @@ equation
       thickness=0.5));
   connect(differenceSensor_Tp1.inletA, source.outlet)
     annotation (Line(
-      points={{-4,24},{-18,24},{-18,74},{-80,74}},
+      points={{-4,22},{-18,22},{-18,74},{-80,74}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensor_Tp1.inletB, conductionElement.inlet)
     annotation (Line(
-      points={{-4,12},{-14,12},{-14,-14},{-10,-14}},
+      points={{-4,14},{-14,14},{-14,-14},{-10,-14}},
       color={28,108,200},
       thickness=0.5));
   connect(differenceSensorSelect3.inletA, flowResistance.outlet)

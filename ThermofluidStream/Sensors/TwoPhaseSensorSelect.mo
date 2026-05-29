@@ -11,7 +11,7 @@ model TwoPhaseSensorSelect "Selectable Sensor for two phase medium"
       Documentation(info="<html>
 <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected. </p>
 </html>"));
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter Quantities quantity "Measured quantity";
 
   final parameter String quantityString=
@@ -37,9 +37,9 @@ model TwoPhaseSensorSelect "Selectable Sensor for two phase medium"
     annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-20, -20},{20, 20}}, origin={-100,0})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getTwoPhaseUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{70,-10},{90,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
   output Real value(unit=Internal.getTwoPhaseUnit(quantity)) "Computed value of the selected quantity [variable]";
 
@@ -68,38 +68,32 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="sensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,80},{150,40}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,24},{66,-36}},
+          extent={{-74,24},{86,-36}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(
-          points={{-100,0},{0,0}},
-          color={28,108,200},
-          thickness=0.5),
         Rectangle(
-          extent={{-60,30},{60,-30}},
+          extent={{-80,30},{80,-30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,30},{60,-30}},
+          extent={{-80,26},{80,-26}},
           textColor={28,108,200},
-          textString=DynamicSelect("value", String(
-              value,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,-70},{150,-40}},
           textColor={0,0,0},
           textString=quantityString),
         Line(visible=outputValue,
-          points={{60,0},{78,0}},
+          points={{80,0},{100,0}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>

@@ -12,7 +12,7 @@ model SingleFlowSensor "Flow rate sensor"
         <p>Medium Model for the sensor. Make sure it is the same as for all lines the sensors input is connected.</p>
         </html>"));
 
-  parameter Integer digits(min=0) = 1 "Number of displayed digits";
+  parameter Integer digits(final min=0) = 3 "Number of significant digits to be displayed";
   parameter Quantities quantity "Measured quantity";
 
   final parameter String quantityString=
@@ -39,14 +39,11 @@ model SingleFlowSensor "Flow rate sensor"
     annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
 
   Interfaces.Inlet inlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
-        iconTransformation(extent={{-120,-20},{-80,20}})));
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Interfaces.Outlet outlet(redeclare package Medium=Medium)
-    annotation (Placement(transformation(extent={{80,-20},{120,20}}),
-        iconTransformation(extent={{80,-20},{120,20}})));
+    annotation (Placement(transformation(extent={{80,-20},{120,20}})));
   Modelica.Blocks.Interfaces.RealOutput value_out(unit=Internal.getFlowUnit(quantity)) = value if outputValue "Sensor output connector"
-    annotation (Placement(transformation(extent={{70,50},{90,70}}),
-        iconTransformation(extent={{70,50},{90,70}})));
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 
   output Real value(unit=Internal.getFlowUnit(quantity));
 
@@ -79,13 +76,13 @@ equation
     value = direct_value;
   end if;
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
+  annotation (defaultComponentName ="flowSensor",Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible=displayInstanceName,
           extent={{-150,-25},{150,-65}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
         Rectangle(
-          extent={{-54,84},{66,24}},
+          extent={{-74,84},{86,24}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
@@ -102,22 +99,20 @@ equation
           fillPattern=FillPattern.Solid,
           lineThickness=0.5),
         Rectangle(
-          extent={{-60,90},{60,30}},
+          extent={{-80,90},{80,30}},
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-60,90},{60,30}},
+          extent={{-80,86},{80,34}},
           textColor={28,108,200},
-          textString=DynamicSelect("value", String(
-              value,
-              format="1."+String(digits)+"f"))),
+          textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
           textString=quantityString),
         Line(visible=outputValue,
-          points={{60,60},{78,60}},
+          points={{80,60},{100,60}},
           color={0,0,127})}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
