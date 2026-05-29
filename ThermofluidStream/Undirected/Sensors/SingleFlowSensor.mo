@@ -17,8 +17,6 @@ model SingleFlowSensor "Flow sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in J/(K.s)"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in J/(K.s)"
     else "error";
-  parameter Boolean adaptDisplay = false "=false, for standard display, =true if display is adapted"
-    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true, choices(checkBox=true));
 
   parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum Density"
     annotation(Dialog(tab="Advanced", group="Regularization"));
@@ -79,23 +77,14 @@ equation
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Text(visible = not outputValue or (outputValue and not adaptDisplay),
+        Text(
           extent={{-80,86},{80,34}},
           textColor={28,108,200},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
-        Text(visible = not adaptDisplay,
+        Text(
           extent={{-150,130},{150,100}},
           textColor={0,0,0},
           textString=quantityString),
-        Text(visible = adaptDisplay and not outputValue,
-          horizontalAlignment=TextAlignment.Left,
-          extent={{90,75},{250,45}},
-          textColor={0,0,0},
-          textString=quantityString),
-        Text(visible = adaptDisplay and outputValue,
-          extent={{-80,75},{80,45}},
-          textColor={0,0,0},
-          textString=" "+quantityString+" "),
         Line(points={{0,30},{0,0}},    color={0,0,0}),
         Ellipse(
           extent={{-6,6},{6,-6}},
