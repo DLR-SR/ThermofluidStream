@@ -187,15 +187,15 @@ equation
         Line(points={{0,-70},{0,-100}},color={0,0,0}),
         Text(
           extent={{-80,86},{80,38}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
           extent={{-80,34},{80,-14}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(
           extent={{-80,-18},{80,-66}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" m ", " "+String(m_flow,significantDigits=digits)+" ")),
         Line(
           points={{-100,-100},{100,-100}},

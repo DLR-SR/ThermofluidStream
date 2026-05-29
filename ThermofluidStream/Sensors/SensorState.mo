@@ -36,7 +36,7 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-80,15},{80,-15}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=" state "),
         Line(
           points={{80,0},{100,0}},

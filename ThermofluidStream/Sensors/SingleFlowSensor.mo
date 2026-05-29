@@ -107,7 +107,7 @@ equation
           fillPattern=FillPattern.Solid),
         Text(visible = not outputValue or (outputValue and not adaptDisplay),
           extent={{-80,86},{80,34}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" 0.0 ", " "+String(value,significantDigits=digits)+" ")),
         Text(visible = not adaptDisplay,
           extent={{-150,130},{150,100}},

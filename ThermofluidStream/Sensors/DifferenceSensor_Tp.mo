@@ -120,11 +120,11 @@ equation
           fillPattern=FillPattern.Solid),
         Text(
           extent={{-80,56},{80,6}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" T ", " "+String(T,significantDigits=digits)+" ")),
         Text(
           extent={{-80,-6},{80,-56}},
-          textColor={0,0,0},
+          textColor={28,108,200},
           textString=DynamicSelect(" p ", " "+String(p,significantDigits=digits)+" ")),
         Text(visible= not outputTemperature,
           extent={{90,46},{150,16}},
