@@ -5,7 +5,7 @@ model PCV "Pressure and pressure-drop control valve"
   import Mode = ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode;
 
 
-  parameter Mode mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.pressure_drop "Valve mode";
+  parameter Mode mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.drop "Valve mode";
   parameter Boolean pressureFromInput = false "if true, pressure input connector is enabled"
     annotation(Dialog(group="Pressure setpoint"));
   parameter SI.AbsolutePressure pressure_set_par = 0 "Setpoint for pressure / pressure difference"
@@ -26,7 +26,7 @@ equation
     pressure_set = pressure_set_par;
   end if;
   dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg, min(0, dp_raw), 0, m_flow_reg);
-  if mode ==Mode.pressure_drop then
+  if mode ==Mode.outlet then
     dp_raw = -pressure_set;
   else
     dp_raw = pressure_set - p_in;
