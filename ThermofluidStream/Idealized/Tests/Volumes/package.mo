@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Tests;
-package Volume
+package Volumes
   extends Modelica.Icons.ExamplesPackage;
 
   annotation(
@@ -17,4 +17,4 @@ package Volume
     </li>
   </ul>
 </html>"));
-end Volume;
+end Volumes;

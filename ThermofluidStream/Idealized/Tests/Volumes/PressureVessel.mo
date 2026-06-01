@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Volume;
+within ThermofluidStream.Idealized.Tests.Volumes;
 model PressureVessel
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2

@@ -1,6 +1,7 @@
 within ThermofluidStream.Idealized.Tests.Inversion;
 model PseudoInversion1 "Example - Pseudo-inversion using a feedback control loop"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed));
+  extends Modelica.Icons.Example;
 
   Modelica.Blocks.Continuous.Integrator integrator(
     k=5,

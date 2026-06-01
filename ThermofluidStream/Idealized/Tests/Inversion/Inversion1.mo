@@ -3,6 +3,7 @@ model Inversion1 "Example - Inversion with non-linear equations solver and h as 
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(
     massFlowRateB(m_flowSpec=ThermofluidStream.Types.ValueSpecification.Prescribed),
     dropOfCommons(considerInertance=false));
+  extends Modelica.Icons.Example;
   extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   Modelica.Blocks.Sources.RealExpression temperatureSetpoint(y(

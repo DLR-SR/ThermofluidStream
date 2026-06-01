@@ -1,7 +1,5 @@
 within ThermofluidStream.Idealized.Tests.Inversion.BaseClasses;
 model PartialInverse "Base model defining the mixing problem"
-  extends Modelica.Icons.Example;
-
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa constrainedby
     ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model" annotation(
       choicesAllMatching=true);

@@ -3,6 +3,7 @@ model Inversion2 "Example - Inversion with temperature as iteration variable"
   extends ThermofluidStream.Idealized.Tests.Inversion.BaseClasses.PartialInverse(
     sourceB(temperatureFromInput=true, T0_var(start=Medium.T_default)),
     junction(h_mix(start=Medium.specificEnthalpy_pT(1e5, 273.15 + 20))));
+  extends Modelica.Icons.Example;
 
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints annotation(
     Placement(transformation(extent={{-40,-44},{0,-20}})));
