@@ -26,7 +26,7 @@ equation
     pressure_set = pressure_set_par;
   end if;
   dp = ThermofluidStream.Undirected.Internal.regStep(m_flow - m_flow_reg, min(0, dp_raw), 0, m_flow_reg);
-  if mode ==Mode.outlet then
+  if mode == Mode.drop then
     dp_raw = -pressure_set;
   else
     dp_raw = pressure_set - p_in;
