@@ -1,5 +1,5 @@
 within ThermofluidStream.FlowControl;
-model ThreeWayValve
+model ThreeWayValve "to control e.g. bypass flows"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -45,7 +45,7 @@ model ThreeWayValve
   Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-120})));
 
-  BasicControlValve basicControlValve(
+  BasicControlValve basicControlValveB(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     final invertInput=invertInput,
@@ -55,13 +55,12 @@ model ThreeWayValve
     Cvs_US=Cvs_US,
     Cvs_UK=Cvs_UK,
     m_flow_ref_set=m_flow_ref_set,
-    k_min=k_min)
-    annotation (Placement(transformation(
+    k_min=k_min) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-      origin={0,40})));
+        origin={0,40})));
 
-  BasicControlValve basicControlValve1(
+  BasicControlValve basicControlValveA(
     displayInstanceName=true,
     redeclare package Medium = Medium,
     final invertInput=not
@@ -105,25 +104,25 @@ equation
       points={{-100,0},{-10,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(splitterT2_1.outletA, basicControlValve.inlet) annotation (Line(
+  connect(splitterT2_1.outletA, basicControlValveB.inlet) annotation (Line(
       points={{0,10},{0,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(basicControlValve.outlet, outletB) annotation (Line(
+  connect(basicControlValveB.outlet, outletB) annotation (Line(
       points={{6.66134e-16,50},{0,50},{0,100}},
       color={28,108,200},
       thickness=0.5));
 
-  connect(u, basicControlValve.u_in) annotation (Line(points={{0,-120},{0,-20},{-20,-20},{-20,40},{-8,40}}, color={0,0,127}));
-  connect(splitterT2_1.outletB, basicControlValve1.inlet) annotation (Line(
+  connect(u, basicControlValveB.u_in) annotation (Line(points={{0,-120},{0,-20},{-20,-20},{-20,40},{-8,40}}, color={0,0,127}));
+  connect(splitterT2_1.outletB,basicControlValveA. inlet) annotation (Line(
       points={{10,0},{30,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(basicControlValve1.outlet, outletA) annotation (Line(
+  connect(basicControlValveA.outlet, outletA) annotation (Line(
       points={{50,0},{100,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(u, basicControlValve1.u_in) annotation (Line(points={{0,-120},{0,-20},{40,-20},{40,-8}}, color={0,0,127}));
+  connect(u,basicControlValveA. u_in) annotation (Line(points={{0,-120},{0,-20},{40,-20},{40,-8}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Text(visible= displayInstanceName,
           extent={{-150,-60},{150,-100}},
@@ -158,6 +157,6 @@ equation
           lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>New, improved version of the Switch: The ThreeWayValve model should be used e.g. if the split ratio of the two flows it separates, shall be controlled. The Switch had large pressure drops for inputs between 0 and 1, while this is now fixed in the new model (by using different valve models inside). The parameters maybe need to be adjusted.</p>
+<p>New, improved version of the Switch: The ThreeWayValve model should be used e.g. if the split ratio of the two flows it separates, shall be controlled. The Switch had large pressure drops for inputs between 0 and 1, while this is now fixed in the new model (by using different valve models inside). The parameters may need to be adjusted.</p>
 </html>"));
 end ThreeWayValve;
