@@ -219,8 +219,15 @@ equation
   connect(h_pulse2.y, source12.h0_var) annotation(Line(points={{131,94},{150,94},{150,120},{158,120}}, color={0,0,127}));
   connect(sink12.m_flow_prescribed, firstOrder2.y) annotation(Line(points={{202,120},{209,120}}, color={0,0,127}));
   connect(firstOrder2.u, m_flow_pulse5.y) annotation(Line(points={{232,120},{249,120}}, color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-280,-160},{280,160}})),
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-280,-160},{280,160}})),
     Documentation(info="<html>
   <p>
     Test model for the <a href=\"modelica://ThermofluidStream.Boundaries.Sink_m\">Sink_m</a> model, with varying <code>p,T,h</code> and <code>m_flow</code>.

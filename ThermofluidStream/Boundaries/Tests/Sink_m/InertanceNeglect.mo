@@ -2,6 +2,7 @@ within ThermofluidStream.Boundaries.Tests.Sink_m;
 model InertanceNeglect "Example - mass flow sink with considerInertance=false"
   import ThermofluidStream;
   extends Modelica.Icons.Example;
+  extends ThermofluidStream.Idealized.Utilities.IconInertanceNeglect;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
                                                                               constrainedby
@@ -90,13 +91,16 @@ equation
   connect(p_pulse4.y, source9.p0_var) annotation(Line(points={{-49,-44},{-22,-44}},color={0,0,127}));
   connect(h_pulse1.y, source9.h0_var) annotation(Line(points={{-49,-80},{-34.5,-80},{-34.5,-50},{-22,-50}},
                                                                                                      color={0,0,127}));
-  annotation(Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-        Polygon(
-          points={{-100,-100},{-20,-100},{-20,-60},{-60,-60},{-60,20},{-100,20},{-100,-100}},
-          fillColor= {162,29,33},
-          fillPattern= FillPattern.Solid,
-          pattern=LinePattern.None)}),                           Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-100,-120},{100,120}}), graphics={
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Diagram(
+      coordinateSystem(
+        extent={{-100,-120},{100,120}}),
+      graphics={
         Polygon(
           points={{-80,60},{-40,60},{-40,80},{-60,80},{-60,120},{-80,120},{-80,60}},
           fillColor= {162,29,33},
@@ -108,7 +112,8 @@ equation
           textString="requires considerInertance = false
 see User's Guide",
           horizontalAlignment=TextAlignment.Left)}),
-    Documentation(info="<html>
+    Documentation(
+      info="<html>
   <p>
     Test model for the <a href=\"modelica://ThermofluidStream.Boundaries.Sink_m\">Sink_m</a> model.
   </p>
@@ -116,7 +121,8 @@ see User's Guide",
   <p>
     Non differentiable mass flow rates require <code>considerInertance = false</code>.
   </p>
-</html>", revisions="<html>
+</html>",
+      revisions="<html>
   <ul>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
