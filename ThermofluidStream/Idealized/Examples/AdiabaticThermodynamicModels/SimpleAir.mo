@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels;
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamicModels;
 model SimpleAir
   extends Modelica.Icons.Example;
 
@@ -174,7 +174,7 @@ assuming ideal gas (p*v = R*T) with gamma = const vs approach assuming perfect g
       https://github.com/DLR-SR/ThermofluidStream/pull/294
     </a>.<br>
     As also shown in 
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels.CO2\">Examples.AdiabaticProcess.CO2</a>, 
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticThermodynamicModels.CO2\">Examples.AdiabaticProcess.CO2</a>, 
     <code>incompressibleFluid</code> approaches the same limit as the pressure ratio tends to zero, while 
     <code>isothermalReference</code> is not suitable for ideal gases.
   </p>

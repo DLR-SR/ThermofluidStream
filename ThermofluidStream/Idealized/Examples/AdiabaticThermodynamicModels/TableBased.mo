@@ -1,8 +1,8 @@
-within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels;
-model LiquidWater
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamicModels;
+model TableBased
   extends Modelica.Icons.Example;
 
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47 (enthalpyOfT=false)
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
     choicesAllMatching=true);
   parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
@@ -10,7 +10,7 @@ model LiquidWater
     redeclare package Medium = Medium,
     p0_par=100000,
     temperatureFromInput=false,
-    T0_par=293.15) annotation(Placement(transformation(extent={{-40,50},{-20,70}})));
+    T0_par=298.15) annotation(Placement(transformation(extent={{-40,50},{-20,70}})));
   .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,50},{40,70}})));
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
   ThermofluidStream.Idealized.Processes.Adiabatic fullMedium(
@@ -89,38 +89,51 @@ equation
     Documentation(
       info="<html>
   <p>
-    This model compares various 
-    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
-    using an exemplary pressurization of liquid water 
-    (<a href=\"modelica://ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater\">TwoPhaseWater</a>).
+    This model evaluates different 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a>
+    based on an exemplary pressurization of a table based incompressible fluid
+    (<a href=\"modelica://ThermofluidStream.Media.myMedia.Incompressible.Examples.Glycol47\">Glycol47</a>).
   </p>
 
   <p>
-    Simulation time serves as a proxy for the pressure difference, which increases linearly from 
-    zero to <code>dp = 100 bar</code> at <code>time = 1</code>.
+    Simulation time represents the applied pressure difference, which increases linearly 
+    from zero to <code>dp = 100 bar</code> at <code>time = 1</code>.
   </p>
 
   <p>
-    The following figure displays the resulting power:
+    The figure below shows the resulting power:
   </p>
 
   <p>
-    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.LiquidWater.png\" width=\"500\">
+    <img src=\"modelica://ThermofluidStream/Resources/Docu/ThermofluidStream.Idealized.Examples.AdiabaticProcess.TableBased.svg\" width=\"500\">
   </p>
 
   <p>
-    The <code>fullMedium</code> model serves as the reference. Among the approximations:
-    <code>incompressibleFluid</code> (<code>h_out_is = dp/rho + h_in</code>) performs better than the
-    <code>isothermalReference</code> (<code>h_out_is = h(p_out, T_in)</code>).<br>
-    Note that for <code>fullMedium</code>, the power does not vanish as the pressure difference approaches zero. 
-    In this specific limit, both <code>incompressibleFluid</code> and <code>isothermalReference</code> 
-    demonstrate superior numerical behavior.
+    The <code>isothermalReference</code> (<code>h_out_is = h(p_out, T_in)</code>) and 
+    <code>fullMedium</code> (<code>h_out_is = h(p_out, s_in)</code>) formulations 
+    yield zero power because without modification, in the <a href=\"modelica://ThermofluidStream.Media.myMedia.Incompressible.TableBased\">TableBased</a> medium model, 
+    enthalpy is defined as a function of temperature only (<code>Medium.enthalpyOfT = true</code>), 
+    thereby neglecting the pressure-dependent flow work term <code>dp/rho</code>.
   </p>
 
   <p>
-    For further information regarding the underlying assumptions, please refer to: 
-    <br>
-    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
+    Setting <code>Medium.enthalpyOfT = false</code>, the pressure dependence of enthalpy is accounted for, and the flow work contribution is included, yielding the following results:
+  </p>
+
+
+  <p>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.TableBasedEnthalpyOfTFalse.svg\" width=\"500\">
+  </p>
+
+  <p>
+    In this case, <code>isothermalReference</code> and <code>incompressibleFluid</code> yield identical results, while <code>fullMedium</code> differs by only 0.3%.
+  </p>
+
+  <p>
+    For more details regarding the underlying assumptions, refer to: <br>
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">
+      ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels
+    </a>.
   </p>
 </html>",
       revisions="<html>
@@ -131,4 +144,4 @@ equation
     </li>
   </ul>
 </html>"));
-end LiquidWater;
+end TableBased;

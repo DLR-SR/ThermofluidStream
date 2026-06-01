@@ -43,7 +43,7 @@ class AdiabaticThermodynamicModels
 
   <p>
     The most suitable adiabatic thermodynamic model depends on the chosen media model.
-    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticThermodynamikModels\">Examples.AdiabaticThermodynamikModels</a>
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.AdiabaticThermodynamicModels\">Examples.AdiabaticThermodynamicModels</a>
     compares the results for different media models.
   </p>
 </html>", revisions="<html>

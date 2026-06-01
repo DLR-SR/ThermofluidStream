@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Examples;
-package AdiabaticThermodynamikModels
+package AdiabaticThermodynamicModels
   extends Modelica.Icons.ExamplesPackage;
 
   annotation (
@@ -23,4 +23,4 @@ package AdiabaticThermodynamikModels
     </li>
   </ul>
 </html>"));
-end AdiabaticThermodynamikModels;
+end AdiabaticThermodynamicModels;
