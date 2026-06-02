@@ -8,7 +8,6 @@ model ThreeWayValve "to control e.g. bypass flows"
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation(choicesAllMatching=true);
 
-
   replaceable function valveCharacteristics =
       Internal.ControlValve.linearCharacteristics
     constrainedby Internal.ControlValve.partialValveCharacteristics "Select valve characteristics"
@@ -86,6 +85,8 @@ model ThreeWayValve "to control e.g. bypass flows"
 
   // for dynamic select of graphics only
   Real u2 = (if not invertInput then u else 1-u);
+  Real x_coord = 57 * cos(u2*Modelica.Constants.pi/2);
+  Real y_coord = 57 * sin(u2*Modelica.Constants.pi/2);
 protected
   constant Real delta(unit="1") = 0.1;
 
@@ -142,19 +143,36 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(
-          points=DynamicSelect({{-100,0},{100,0}}, if u2>=1-delta then {{-100,0},{0,0}} else {{-100,0},{100,0}}),
+          points={{-100,0},{0,0}},
           color={28,108,200},
-          thickness=0.5),
+          thickness=2),
         Line(
-          points=DynamicSelect({{0,0},{0,100}}, if u2<=delta then {{0,0},{0,0}} else {{0,0},{0,100}}),
+          points={{0,60},{0,100}},
           color={28,108,200},
-          thickness=0.5),
+          thickness=2),
+        Line(
+          points={{60,0},{100,0}},
+          color={28,108,200},
+          thickness=2),
+        Line(
+          points={{0,0},{x_coord,y_coord}},
+          color={28,108,200},
+          thickness=2,
+          arrow={Arrow.None,Arrow.Open}),
         Ellipse(
           extent={{-6,6},{6,-6}},
           lineColor={28,108,200},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Diagram(
+          lineThickness=0.5),
+        Line(
+          points={{0,60},{0,52}},
+          color={28,108,200},
+          thickness=1),
+        Line(
+          points={{52,0},{60,0}},
+          color={28,108,200},
+          thickness=1)}),       Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>New, improved version of the Switch: The ThreeWayValve model should be used e.g. if the split ratio of the two flows it separates, shall be controlled. The Switch had large pressure drops for inputs between 0 and 1, while this is now fixed in the new model (by using different valve models inside). The parameters may need to be adjusted.</p>

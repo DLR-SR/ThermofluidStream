@@ -95,10 +95,10 @@ equation
       points={{80,0},{70,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(mFlowSensor.value_out, massFlowControl.u_m) annotation (Line(points={{68,-6},{74,-6},{74,-40},{9.6,-40}}, color={0,0,127}));
+  connect(mFlowSensor.value_out, massFlowControl.u_m) annotation (Line(points={{71,-6},{74,-6},{74,-40},{9.6,-40}}, color={0,0,127}));
   connect(mFlowSet.y, massFlowControl.u_s) annotation (Line(points={{29,-60},{0,-60},{0,-49.6}}, color={0,0,127}));
-  connect(massFlowControl.y, threeWayValve.u) annotation (Line(points={{0,-31.2},{0,-12}}, color={0,0,127}));
   connect(firstOrder.y, source.p0_var) annotation (Line(points={{-73.4,6},{-62,6}}, color={0,0,127}));
+  connect(massFlowControl.y, threeWayValve.u) annotation (Line(points={{0,-31.2},{0,-12}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{100,100}})),
     experiment(StopTime=10, Tolerance=1e-6, Interval=0.01, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
