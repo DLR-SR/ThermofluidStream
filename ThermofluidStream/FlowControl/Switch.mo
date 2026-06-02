@@ -2,6 +2,7 @@ within ThermofluidStream.FlowControl;
 model Switch
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+  extends Modelica.Icons.ObsoleteModel;
 
   replaceable package Medium = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation(choicesAllMatching=true);
@@ -129,7 +130,7 @@ equation
           lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>This model should only be used as a switch, i.e. it should either direct the flow completely in one or the other direction. This requires the input being either zero or one. All values in between will result in less mass flow and/ or a higher pressure drop, depending on the system up- or downstream of the switch, which in most cases is an undesired behaviour. </p>
-<p>If e.g. a bypass shall be controlled, use the newly created ThreeWayValve which allows for splitting the flow continuously between zero and one.</p>
+<p>&lt;&lt;CAUTION: This model will be removed from the library in the next major release!&gt;&gt;</p>
+<p>This model should only be used as a switch, i.e. it should either direct the flow completely in one or the other direction. This requires the input being either zero or one. All values in between will result in less mass flow and/ or a higher pressure drop, depending on the system up- or downstream of the switch, which in most cases is an undesired behaviour. If e.g. a bypass shall be controlled, use the newly created ThreeWayValve which allows for splitting the flow continuously between zero and one.</p>
 </html>"));
 end Switch;
