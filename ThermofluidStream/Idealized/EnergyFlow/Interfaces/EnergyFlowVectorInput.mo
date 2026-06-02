@@ -1,7 +1,7 @@
 within ThermofluidStream.Idealized.EnergyFlow.Interfaces;
 connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input connector used for vector of connectors"
   annotation(
-  defaultComponentName="u",
+  defaultComponentName="E_flow_in",
   Icon(graphics={Ellipse(
         extent={{-100,100},{100,-100}},
         lineColor={255,170,85},
@@ -29,7 +29,7 @@ connector EnergyFlowVectorInput = input SI.EnergyFlowRate "SI.EnergyFlow input c
 
   <p>
     SI.EnergyFlowRate input connector that is used for a vector of connectors,
-    for example <a href=\\\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.Sum\">Sum</a>,
+    for example <a href=\"modelica://ThermofluidStream.Idealized.EnergyFlow.Components.Sum\">Sum</a>,
     and has therefore a different icon as EnergyFlowInput connector.
   </p>
 </html>

@@ -291,23 +291,38 @@ see User's Guide")}),
 
   <p>
     Low-pressure circuit:
-    <ul>
-      <li>1 &rarr; 2: adiabatic throttling of the saturated liquid to <code>p2 = 1.00 bar</code> in the <code>lowPressureValve</code></li>
-      <li>2 &rarr; 3: complete, isobaric evaporation with heat uptake from the environment in the <code>evaporator</code></li>
-      <li>3 &rarr; 4: adiabatic compression of dry saturated vapor to <code>p4 = 6.00bar</code> in the <code>lowPressureCompressor</code>; isentropic compressor efficiency 
-      <code>0.800</code></li>
-    </ul>
   </p>
+  
+  <ul>
+    <li>
+      1 &rarr; 2: adiabatic throttling of the saturated liquid to <code>p2 = 1.00 bar</code> in the <code>lowPressureValve</code>
+    </li>
+    <li>
+      2 &rarr; 3: complete, isobaric evaporation with heat uptake from the environment in the <code>evaporator</code>
+    </li>
+    <li>
+      3 &rarr; 4: adiabatic compression of dry saturated vapor to <code>p4 = 6.00bar</code> in the <code>lowPressureCompressor</code>; isentropic compressor efficiency 
+      <code>0.800</code>
+    </li>
+  </ul>
+  
 
   <p>
     High-pressure circuit:
-    <ul>
-      <li>5 &rarr; 6: adiabatic compression of dry saturated vapor to <code>p6 = 14.0 bar</code> in the <code>highPressureCompressor</code>; isentropic compressor efficiency 
-      <code>0.800</code></li>
-      <li>6 &rarr; 7: complete, isobaric condensation with heat transfer to the heating water in the <code>condenser</code></li>
-      <li>7 &rarr; 8: adiabatic throttling to <code>p8 = 6.00bar</code> in the <code>highPressureValve</code></li>
-    </ul>
   </p>
+  <ul>
+    <li>
+      5 &rarr; 6: adiabatic compression of dry saturated vapor to <code>p6 = 14.0 bar</code> in the <code>highPressureCompressor</code>; isentropic compressor efficiency 
+    <code>0.800</code>
+    </li>
+    <li>
+      6 &rarr; 7: complete, isobaric condensation with heat transfer to the heating water in the <code>condenser</code>
+    </li>
+    <li>
+      7 &rarr; 8: adiabatic throttling to <code>p8 = 6.00bar</code> in the <code>highPressureValve</code>
+    </li>
+  </ul>
+
 
   <p>
     In the externally adiabatic <code>waterHeater</code>, the heating water mass flow (<code>200 g/s</code>, <code>cW = 4.18 kJ/(kg·K)</code>) is heated from <code>20.0 degC</code> 

@@ -6,12 +6,13 @@ package Exercise8TwoStageRefrigerationCycle "Exercise 8.8: Two-Stage Refrigerati
   annotation(Documentation(info="<html>
   <p>
     This package contains examples of a two stage vapor cycle. The examples differ by:
-    <ul>
-      <li>
-        The solution method: Inversion vs. pseudo inversion \"controllers\".
-      </li>
-    </ul>
   </p>
+  <ul>
+    <li>
+      The solution method: Inversion vs. pseudo inversion \"controllers\".
+    </li>
+  </ul>
+  
 
  <h4>English problem description</h4>
 

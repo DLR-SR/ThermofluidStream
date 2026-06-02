@@ -15,10 +15,9 @@ package Exercise4DieselEngine "Exercise 8.4: Diesel Engine [TUM2019]"
   
   <p>
     The examples use the <a href=\"modelica://ThermofluidStream.Media.myMedia.Air.SimpleAir\">SimpleAir</a> medium
-      model (perfect gas with constant <code>cp</code>) and differ with respect to the process model:
-      >a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> (<code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>) and
-      <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>.
-    </li>
+    model (perfect gas with constant <code>cp</code>) and differ with respect to the process model:
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.PolytropicPerfectGas\">PolytropicPerfectGas</a> (<code>systemSpec = Cycle</code> and <code>systemSpec = Flow</code>) and
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.Adiabatic\">Adiabatic</a>.
   </p>
 
  <h4>English problem description</h4>
