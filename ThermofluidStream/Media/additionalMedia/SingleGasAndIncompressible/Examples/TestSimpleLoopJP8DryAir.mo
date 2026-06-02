@@ -102,16 +102,16 @@ equation
     connect(feedback2.u1, refFlow_setPoint2.y)
       annotation (Line(points={{-30,-140},{-45,-140}}, color={0,0,127}));
     connect(differenceSensor_Tp.inletA, conductionElement.inlet) annotation (Line(
-        points={{28,-96},{-4,-96},{-4,-70},{0,-70}},
+        points={{28,-94},{-4,-94},{-4,-70},{0,-70}},
         color={28,108,200},
         thickness=0.5));
     connect(differenceSensor_Tp.inletB, conductionElement.outlet) annotation (
         Line(
-        points={{28,-84},{26,-84},{26,-70},{20,-70}},
+        points={{28,-86},{26,-86},{26,-70},{20,-70}},
         color={28,108,200},
         thickness=0.5));
-    connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{46,-94},
-            {56,-94},{56,-111},{-3,-111}}, color={0,0,127}));
+    connect(differenceSensor_Tp.T_out, gain.u) annotation (Line(points={{49,-94},{56,-94},{56,-111},{-3,-111}},
+                                           color={0,0,127}));
     connect(feedback2.u2, gain.y) annotation (Line(points={{-22,-132},{-22,-111},
             {-14.5,-111}}, color={0,0,127}));
     connect(multiSensor_Tpm2.outlet, reservoir.inlet) annotation (Line(
