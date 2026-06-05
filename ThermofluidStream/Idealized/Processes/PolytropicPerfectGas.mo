@@ -310,7 +310,7 @@ equation
   h_out = h_in + dh;
 
   annotation(
-    defaultComponentName = "junction",
+    defaultComponentName = "polytropic",
     Icon(
       graphics={
         Ellipse(
