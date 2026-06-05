@@ -14,7 +14,7 @@ model JunctionN "Junction with N inlets and one outlet"
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation(Dialog(tab="Advanced"));
+    annotation (Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "Vector of N inlets"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
