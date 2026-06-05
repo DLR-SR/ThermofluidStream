@@ -14,7 +14,10 @@ model JunctionN "Junction with N inlets and one outlet"
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
+parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
 
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "Vector of N inlets"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
