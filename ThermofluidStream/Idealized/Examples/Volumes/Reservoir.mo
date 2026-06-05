@@ -1,4 +1,4 @@
-within ThermofluidStream.Idealized.Tests.Volumes;
+within ThermofluidStream.Idealized.Examples.Volumes;
 model Reservoir
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater

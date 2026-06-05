@@ -190,6 +190,14 @@ equation
     Documentation(info="<html>
 <p>Source of a Thermofluid Stream. The state can be given as fix values or as a real signal. </p>
 <p>Before its inertance the source has an inertial pressure of 0 by definition.</p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
 </html>", revisions="<html>
   <ul>
     <li>

@@ -102,5 +102,17 @@ equation
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Generic junction with an array of <strong>N</strong> upstream connections and one downstream connection. Use this model for parameterized merge structures.</p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    The model is not suitable for the parameter <code>considerInertance</code>; see
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>
+    and compare with
+    <a href=\"modelica://ThermofluidStream.Idealized.Topology\">Idealized.Topology</a>.
+    In a future version, the Idealized junction models may be integrated into this model.
+  </p>
 </html>"));
 end JunctionN;

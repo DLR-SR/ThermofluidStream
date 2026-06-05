@@ -112,6 +112,14 @@ equation
     Documentation(info="<html>
 <p>Sink for a thermofluid stream. The pressure can be set or given by a real signal via input connector.</p>
 <p>The inertial pressure after the sinks inertance is by definition the difference between the input pressure and the set pressure. The sink therefore acts by definition as the origin of the energy to accelerate the stream. </p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
 </html>", revisions="<html>
   <ul>
     <li>

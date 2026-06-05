@@ -108,8 +108,12 @@ equation
     The outlet pressure is not a boundary condition.
   </p>
 
+  <h5>
+    considerInertance
+  </h5>
+
   <p>
-    Discontinuous mass flow rates require <code>considerInertance = false</code>. 
+    Discontinuous mass flow rates require <code>considerInertance = false</code>, also refer to <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
   </p>
 </html>", revisions="<html>
   <ul>

@@ -221,6 +221,28 @@ equation
 <p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampened out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
 <p>Due to stability reasons, mass-flows in the wrong direction (fluid entering the outlet or exiting the inlet) is considered to have the enthalpy and mass-fractions of the medium in the volume. This results in a stable steady-state solution, since this method effectiveley removes the parts of the energy and mass-fraction differential equations, that are associated with mass-flows. </p>
 <p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states preferred by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+
+  <h5>
+    enableFreeInlet
+  </h5>
+  
+  <p>
+    The parameter <code>enableFreeInlet</code> removes the pressure boundary condition at the inlet. The inlet can then be coupled, for example, to the
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">Idealized.Boundaries.MassFlowRate</a> model.
+    The user must ensure that the resulting system remains physically consistent when the pressure boundary condition is removed.
+    For examples, see
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.Volumes\">Idealized.Examples.Volumes</a>.
+    Also refer to
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.BalancedModels\">Idealized.UsersGuide.BalancedModels</a>.
+  </p>
 </html>", revisions="<html>
   <ul>
     <li>

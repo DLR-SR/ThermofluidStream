@@ -1,5 +1,5 @@
-within ThermofluidStream.Idealized.Tests.Volumes;
-model PressureVessel
+within ThermofluidStream.Idealized.Examples.Volumes;
+model Volume
   extends Modelica.Icons.Example;
   replaceable package Medium = ThermofluidStream.Media.myMedia.IdealGases.SingleGases.CO2
     constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
@@ -69,4 +69,4 @@ equation
     </li>
   </ul>
 </html>"));
-end PressureVessel;
+end Volume;
