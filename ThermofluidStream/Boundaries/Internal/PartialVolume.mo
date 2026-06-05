@@ -125,7 +125,6 @@ equation
 
   if not enableFreeInlet then
     r + p_in = medium.p;
-  else
   end if;
 
   der(M) = m_flow_in + m_flow_out;
