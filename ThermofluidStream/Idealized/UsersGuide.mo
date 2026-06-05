@@ -159,8 +159,9 @@ class InertanceNeglect
     <code>considerInertance = false</code> for all affected models, e.g., via
     <code>dropOfCommons.considerInertance</code>, see
     <a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.<br>
-    Convergence may depend on the nonlinear solver, that is, it may depend on the software and the version used. 
-    Setting <code>considerInertance = false</code> can help with convergence.<br>
+    
+    Index reduction and/or convergence may depend on the algorithm/nonlinear solver, that is, it may depend on the software and the version used. 
+    Setting <code>considerInertance = false</code> can help achieve index reduction and convergence.<br>
 
     Setting <code>considerInertance = false</code> is intended for advanced use only.<br>
 
@@ -173,9 +174,9 @@ class InertanceNeglect
     Components with <code>considerInertance = false</code> are highlighted by a red
     dot in the graphical layer.<br>
 
-    Various approaches for inverse calculations are documented in the
-    <a href=\"modelica://ThermofluidStream.Idealized.Tests.Inversion\">Inversion</a>
-    package.
+    Various approaches for inverse calculations are used in
+    <a href=\"modelica://ThermofluidStream.Idealized.Tests.Inversion\">Idealized.Tests.Inversion</a> and
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.TUMExercisesThermodynamicCycles\">Idealized.Examples.TUMExercisesThermodynamicCycles</a>.
   </p>
 </html>", revisions="<html>
   <ul>

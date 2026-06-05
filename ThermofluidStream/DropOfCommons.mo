@@ -1,7 +1,7 @@
 within ThermofluidStream;
 model DropOfCommons "Model for global parameters"
 
-  parameter Boolean considerInertance = true "=true, if transient momentum (inertance) term is considered; disable only for advanced use"  annotation(
+  parameter Boolean considerInertance = true "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
     Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
     annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
@@ -78,6 +78,10 @@ to specify system properties.",
 <p style=\"margin-left: 40px;\"><strong><span style=\"font-family: Courier New;\">inner</span></strong> ThermofluidStream.DropOfCommons dropOfCommons </p>
 <p>Note, it must be an <strong>inner</strong> declaration with instance name <strong>dropOfCommons</strong> so that all components of a ThermofluidStream model can reference it. When dragging the &quot;DropOfCommons&quot; object from the package browser into the diagram layer, this declaration is automatically generated (defined via annotations in the model). </p>
 <p>All flow, density, pressure, and visualization parameters in a simulation model are resolved relative to the settings in this dropOfCommons instance. Adjusting these parameters allows controlling global simulation behavior, visualization preferences, and regularization methods consistently across all components. </p>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to  <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
 </html>",
   revisions="<html>
   <ul>
