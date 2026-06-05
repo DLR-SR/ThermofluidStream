@@ -35,8 +35,8 @@ partial model Junction "Partial junction"
 
   // Regularized mass flow rates (used for mixing of specific enthalpy and mass fractions
   // stream connector would be necessary to model reverse flow correctly)
-  SI.MassFlowRate m_flowA_reg = max(m_flowA, m_flow_eps) "Regularized mass flow rate";
-  SI.MassFlowRate m_flowB_reg = max(m_flowB, m_flow_eps) "Regularized mass flow rate";
+  SI.MassFlowRate m_flowA_reg = abs(m_flowA) + m_flow_eps "Regularized mass flow rate";
+  SI.MassFlowRate m_flowB_reg = abs(m_flowB) + m_flow_eps "Regularized mass flow rate";
   Real dp_AB_rel "Relative difference in pressure at junction inlets";
   Medium.SpecificEnthalpy h_mix "Outlet specific enthalpy";
   Medium.AbsolutePressure p_mix "Outlet (steady mass-flow) pressure";
