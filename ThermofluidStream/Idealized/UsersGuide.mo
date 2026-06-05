@@ -69,9 +69,9 @@ class BalancedModels
       Underdetermined by one equation:
       <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.Sink_free\">Sink_free</a>,
       <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.LoopBreaker\">LoopBreaker</a>,
-      <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a>
-      and
-      <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a>.
+      <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT1\">JunctionT1</a> and
+      <a href=\"modelica://ThermofluidStream.Idealized.Topology.JunctionT2\">JunctionT2</a>,
+      and models extending <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolume\">PartialVolume</a> for <code>enableFreeInlet = true</code>.
     </li>
 
     <li>
