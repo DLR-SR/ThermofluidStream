@@ -35,7 +35,7 @@ model gammaSpec "Test model to check gamma specification"
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,40},{90,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic idealGasFixed(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma (gammaSpec=ThermofluidStream.Types.ThermodynamicValueSpecification.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,

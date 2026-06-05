@@ -4,18 +4,18 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
   extends ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialIdealGas;
   // unbalenced by unknowns - equations = 2
 
-  import ValueSpecification = ThermofluidStream.Types.ValueSpecification2;
+  import ThermodynamicValueSpecification = ThermofluidStream.Types.ThermodynamicValueSpecification;
 
-  parameter ValueSpecification cpSpec = ThermofluidStream.Types.ValueSpecification2.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(
+  parameter ThermodynamicValueSpecification cpSpec = ThermofluidStream.Types.ThermodynamicValueSpecification.State "Specifies whether the isobaric heat capacity is fixed or obtained from the inlet state" annotation(
     Dialog(group="Assumptions"), Evaluate=true);
   parameter Medium.SpecificHeatCapacity cp_fixed = 1000 "Constant specific heat capacity" annotation(
     Dialog(group="Assumptions",
-      enable = cpSpec == ValueSpecification.Fixed),
-    HideResult = not cpSpec == ValueSpecification.Fixed);
+      enable = cpSpec == ThermodynamicValueSpecification.Fixed),
+    HideResult = not cpSpec == ThermodynamicValueSpecification.Fixed);
   parameter Real relTolCp = 1e-2 "Relative tolerance between specific isobaric heat capacities cp_in, cp_out" annotation(
     Dialog(group="Warnings",
-      enable = cpSpec == ValueSpecification.State),
-    HideResult = not cpSpec == ValueSpecification.State);
+      enable = cpSpec == ThermodynamicValueSpecification.State),
+    HideResult = not cpSpec == ThermodynamicValueSpecification.State);
 
   Medium.Temperature T_out "Outlet temperature";
 
@@ -23,17 +23,17 @@ model PerfectGas "Adiabatic process, perfect gas (p*v = R*T, cp = const.)"
   Medium.SpecificHeatCapacity cp_in = Medium.specificHeatCapacityCp(state_in) "Specific isobaric heat capacity (inlet)";
   Medium.SpecificHeatCapacity cp_out = Medium.specificHeatCapacityCp(Medium.setState_phX(p_out,h_out,Xi_in)) "Specific isobaric heat capacity (outlet)";
   Real delta_cp_rel = abs(cp_out - cp_in)/max(cp_out,cp_in) "Relative difference of specific heat capacities cp_in, cp_out" annotation(
-    HideResult = not cpSpec == ValueSpecification.State);
+    HideResult = not cpSpec == ThermodynamicValueSpecification.State);
   Real isCpWithinTol = sign(relTolCp - delta_cp_rel) "= 1.0 if within tolerance, = -1.0 if tolerance is exceeded" annotation(
-    HideResult = not cpSpec == ValueSpecification.State);
+    HideResult = not cpSpec == ThermodynamicValueSpecification.State);
 
 equation
-  if cpSpec == ValueSpecification.State  then
+  if cpSpec == ThermodynamicValueSpecification.State  then
     assert(noEvent(delta_cp_rel < relTolCp),
       "In \"" + name +"\" the specific isobaric heat capacity varies between inlet and outlet beyond the specified tolerance.",
       assertionLevel);
   end if;
-  cp = if cpSpec ==ValueSpecification.State  then cp_in else cp_fixed;
+  cp = if cpSpec == ThermodynamicValueSpecification.State  then cp_in else cp_fixed;
   w_t_is = cp*(T_out_is - T_in);
   w_t = cp*(T_out - T_in);
   h_out = Medium.specificEnthalpy(Medium.setState_pTX(p_out, T_out, Xi_in)); // OM Workaround

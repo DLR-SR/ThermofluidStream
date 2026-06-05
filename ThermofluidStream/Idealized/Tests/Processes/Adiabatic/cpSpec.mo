@@ -16,7 +16,7 @@ model cpSpec "Test model to check cp specification"
   inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{-142,110},{-122,130}})));
   ThermofluidStream.Idealized.Processes.Adiabatic pefectGasState(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas (gammaSpec=ThermofluidStream.Types.ThermodynamicValueSpecification.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -35,7 +35,7 @@ model cpSpec "Test model to check cp specification"
   ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{70,40},{90,60}})));
   ThermofluidStream.Idealized.Processes.Adiabatic perfectGasFixed(
     redeclare package Medium = Medium,
-    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas (gammaSpec=ThermofluidStream.Types.ValueSpecification2.Fixed, cpSpec=ThermofluidStream.Types.ValueSpecification2.Fixed),
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas (gammaSpec=ThermofluidStream.Types.ThermodynamicValueSpecification.Fixed, cpSpec=ThermofluidStream.Types.ThermodynamicValueSpecification.Fixed),
     eta_fixed=eta,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureRatio,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
