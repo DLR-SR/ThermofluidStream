@@ -14,10 +14,7 @@ model JunctionN "Junction with N inlets and one outlet"
   parameter SI.MassFlowRate m_flow_eps = dropOfCommons.m_flow_reg "Regularization threshold for small mass flows"
     annotation (Dialog(tab="Advanced"));
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
-    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
-parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
+    annotation(Dialog(tab="Advanced"));
 
   Interfaces.Inlet inlets[N](redeclare package Medium = Medium) "Vector of N inlets"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
@@ -63,11 +60,7 @@ equation
     w[i] = (abs(inlets[i].m_flow)+m_flow_eps) / (sum(abs(inlets.m_flow))+N*m_flow_eps);
     w2[i] = ((abs(inlets[i].m_flow) + m_flow_eps)/rho[i]) / (sum((abs(inlets.m_flow) + m_flow_eps*ones(N))./rho));
   end for;
-  if considerInertance then
-    der(outlet.m_flow) * L =  outlet.r - r_mix;
-  else
-    0 = outlet.r - r_mix;
-  end if;
+  der(outlet.m_flow) * L =  outlet.r - r_mix;
 
   if not assumeConstantDensity then
     p_mix = sum(w2.*p);
