@@ -243,7 +243,7 @@ equation
                    points={{-18,74},{170,-46},{-18,-158},{-18,74}})}),
        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,
                100}})),Documentation( revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024

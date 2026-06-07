@@ -316,7 +316,7 @@ equation
 <p>The fundamental idea of the model is based on work by Hans Ellstroem (https://www.researchgate.net/profile/Soeren-Steinkellner/publication/312590863_MODELLING_AND_SIMULATION_OF_FUEL_SYSTEMS_IN_MILITARY_AIRCRAFTS/links/5884927e4585150dde47b6aa/MODELLING-AND-SIMULATION-OF-FUEL-SYSTEMS-IN-MILITARY-AIRCRAFTS.pdf).</p>
 <p><span style=\"color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions.</span></p>
 </html>", revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024

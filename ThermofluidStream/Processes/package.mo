@@ -4,7 +4,7 @@ package Processes "Process model package"
 
   annotation (
     Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 
 </html>", info="<html>
 <p>This package contains models implementing processes. Here, the thermodynamic state of one or more fluid streams is changed by exchanging heat or work with the streams, or by delaying the state.</p>

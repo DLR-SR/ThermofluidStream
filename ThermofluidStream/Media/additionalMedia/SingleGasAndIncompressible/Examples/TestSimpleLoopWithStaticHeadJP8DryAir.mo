@@ -216,7 +216,7 @@ equation
        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-180,-180},{260,
                100}})),
        experiment(StopTime=30, __Dymola_Algorithm="Dassl"),Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024

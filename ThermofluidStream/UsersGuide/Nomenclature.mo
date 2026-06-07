@@ -55,6 +55,6 @@ Nomenclature used in this library.
 
 </html>",
       revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2026, DLR e.V.</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2026, DLR e.V.</p>
 </html>"));
 end Nomenclature;

@@ -57,7 +57,7 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
           fillPattern=FillPattern.Solid)}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>", info="<html>
 <p>The <strong>DropOfCommons</strong> defines global parameters and settings for simulation models. This model serves several purposes: </p>
 <ul>

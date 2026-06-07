@@ -249,7 +249,7 @@ partial package PartialSingleGasAndIncompressible
 <p>The intended use for this media is in systems where the properties of the mix of the media is not very important to get absolutely correct, but where both of the substances of the mix can occur at any physical location </p>
 <p>in the system, but then mostly in pure or nearly pure form. </p>
 </html>",  revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024

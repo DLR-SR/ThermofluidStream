@@ -23,6 +23,6 @@ annotation (Icon(graphics={
                       Documentation(info="<html>
 <p>This package contains several types of heat exchangers with different model approaches.</p>
 </html>", revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>"));
 end HeatExchangers;

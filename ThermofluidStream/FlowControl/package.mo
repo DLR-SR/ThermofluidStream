@@ -3,7 +3,7 @@ package FlowControl "Package for flow control components"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
+<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
 </html>", info="<html>
 <p>The package includes physical valves, as well as flow-control valves, that are not physical models, but rather numerical boundaries on the flow.</p>
 </html>"), Icon(graphics={
