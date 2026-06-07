@@ -13,5 +13,8 @@ annotation (Documentation(revisions="<html>
     </td>
   </tr>
 </table>
+</html>", info = "<html>
+<p>This package contains utility models, functions, types, and icons to support the development and visualization of ThermofluidStream models.
+ It provides reusable components for handling common tasks such as displaying values, managing initialization methods, and defining custom units and types.</p>
 </html>"));
 end Utilities;
