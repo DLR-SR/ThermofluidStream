@@ -1,5 +1,5 @@
 within ThermofluidStream;
-package Utilities
+package Utilities "Package for utility functions, models, units, types, and icons"
   extends Modelica.Icons.UtilitiesPackage;
 
 annotation (Documentation(revisions="<html>
