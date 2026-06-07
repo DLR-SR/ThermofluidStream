@@ -13,6 +13,8 @@ package Types  "Constants and types with choices, especially to build menus"
     </td>
   </tr>
 </table>
+</html>", info = "<html><p>This package provides types and enumerations used throughout the ThermofluidStream library. 
+Its primary purpose is to standardize units and choices, particularly for building menus and user interfaces in Modelica models.</p>
 </html>"));
 
 end Types;
