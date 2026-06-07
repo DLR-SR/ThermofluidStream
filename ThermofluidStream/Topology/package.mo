@@ -1,5 +1,5 @@
 within ThermofluidStream;
-package Topology
+package Topology "Package for junction and splitter components"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(revisions="<html>
