@@ -1,5 +1,5 @@
 within ThermofluidStream;
-package HeatExchangers
+package HeatExchangers "Package for heat exchange components"
   extends Modelica.Icons.Package;
 
 annotation (Icon(graphics={
