@@ -14,6 +14,6 @@ extends Modelica.Icons.SourcesPackage;
   </tr>
 </table>
 </html>", info="<html>
-<p>The boundaries are Sorces and Sinks, as well as Volumes, that are conceptually a source and a sink with extra equations and act as loop breakers in closes cycles, and therefore are also boundaries.</p>
+<p>The boundaries are Sources and Sinks, as well as Volumes. Volumes are conceptually a source and a sink with extra equations and act as loop breakers in closes cycles, and therefore are also boundaries.</p>
 </html>"));
 end Boundaries;
