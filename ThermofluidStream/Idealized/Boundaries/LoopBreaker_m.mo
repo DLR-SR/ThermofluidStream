@@ -88,7 +88,7 @@ model LoopBreaker_m "Loop breaker model with mass flow rate setpoint"
   SI.Pressure dp "Pressure difference";
   SI.SpecificEnthalpy dh "Enthalpy difference";
   SI.MassFlowRate dm_flow "Mass flow rate difference";
-  ThermofluidStream.Types.MassFractionDifference dXi[Medium.nXi](each nominal=0.0) "Mass fraction difference";
+  ThermofluidStream.Units.MassFractionDifference dXi[Medium.nXi](each nominal=0.0) "Mass fraction difference";
 
 protected
   Modelica.Blocks.Interfaces.RealInput m_flow_in(unit="kg/s") "Inlet mass flow rate [kg/s], required due to the conditional connector p_out_prescribed";

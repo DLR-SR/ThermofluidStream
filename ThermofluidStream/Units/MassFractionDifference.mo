@@ -1,10 +1,10 @@
-within ThermofluidStream.Types;
-type MassFractionDifference = Real (
+within ThermofluidStream.Units;
+type MassFractionDifference = Real(
   quantity="MassFractionDifference",
   final unit="kg/kg",
   final min=-1,
   final max=1,
-  nominal=0) "Type for difference in mass fraction with medium specific attributes"
+  nominal=1) "Type for difference in mass fraction with medium specific attributes"
 annotation(
 Documentation(
   info="<html>

@@ -82,7 +82,7 @@ model LoopBreaker "Loop breaker model - Underdetermined (1 equation)"
   SI.MassFlowRate dm_flow "Mass flow rate difference";
   SI.Pressure dp "Pressure difference";
   SI.SpecificEnthalpy dh "Specific enthalpy difference";
-  ThermofluidStream.Types.MassFractionDifference dXi[Medium.nXi] "Mass fraction difference";
+  ThermofluidStream.Units.MassFractionDifference dXi[Medium.nXi] "Mass fraction difference";
 
 protected
   Modelica.Blocks.Interfaces.RealInput p_out(unit="Pa") "Outlet pressure [Pa], required due to the conditional connector p_out_prescribed";
