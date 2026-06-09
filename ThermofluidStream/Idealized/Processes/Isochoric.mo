@@ -40,13 +40,13 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
-    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={-100,-120})));
+    Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
   EnergyFlow.Interfaces.EnergyFlowInput Q_flow_in = Q_flow if heatFlowSignal == HeatFlowSignal.Input "Heat flow rate, dircted into the system [W]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-80})));
   EnergyFlow.Interfaces.EnergyFlowOutput Q_flow_out = -Q_flow if heatFlowSignal == HeatFlowSignal.Output "Heat flow rate, directed out of the system [W]" annotation(
     Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={0,-70})));
   EnergyFlow.Interfaces.EnergyFlowOutput P_out = -P if systemSpec == SystemSpecification.Flow "Power, directed out of the system [W]" annotation(
-    Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={100,-110})));
+    Placement(transformation(extent={{-10,-10},{10,10}}, rotation=270, origin={-100,-110})));
 
   Medium.Temperature T_in = Medium.temperature(inlet.state) "Inlet state temperature" annotation(
     HideResult=true);
@@ -162,10 +162,10 @@ equation
           elseif outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature then "T_out = %T_out_fixed"
           else "error"),
         Line(
-          points = if specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{-100,0},{-100,-100}} else {{0,0}},
+          points = if specifyOutlet and outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
           color={0,0,127}),
         Line(
-          points = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow then {{100,0},{100,-100}} else {{0,0}},
+          points = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow then {{-100,0},{-100,-100}} else {{0,0}},
           color={255,170,85}),
         Polygon(visible = showHeatFlowDirection,
           origin={-40,-50},
@@ -181,14 +181,14 @@ equation
           textStyle={TextStyle.Bold},
           textString = DynamicSelect("", if abs(Q_flow) < 1e-8 then "0" else "")),
         Polygon(visible = showHeatFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          origin={80,-118},
+          origin={-80,-118},
           rotation = DynamicSelect(90, if P >= 0 then 90 else -90),
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
           fillPattern = if abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Text(visible = showHeatFlowDirection and systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          origin={62,-138},
+          origin={-92,-138},
           extent={{0,0},{36,36}},
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
