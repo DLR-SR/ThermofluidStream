@@ -5,8 +5,6 @@ model Isenthalpic "Isenthalpic process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter Boolean enforcePressureDrop = true "Enforce pressure drop in flow direction (prevents non-physical isenthalpic pressure rise)" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -23,6 +21,8 @@ model Isenthalpic "Isenthalpic process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletPressure),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletPressure);
+  parameter Boolean enforcePressureDrop = true "= true, if pressure drop in flow direction is enforced; use =false to simplify equations" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
     Dialog(group="Warnings", enable = not enforcePressureDrop));
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dpLoss_fixed, prLoss_fixed or p_out_fixed)" annotation(

@@ -9,10 +9,6 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   import ProcessSpecification = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
-    Dialog(group="Specification"), Evaluate=true);
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification"), Evaluate=true);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -60,7 +56,10 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
     Dialog(group="Specification",
       enable = processSpec == ProcessSpecification.IsentropicEfficiency and processValueSpec == ValueSpecification.Fixed),
       HideResult = not processSpec == ProcessSpecification.IsentropicEfficiency or not processValueSpec == ValueSpecification.Fixed);
-
+  parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true);
+  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true);
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dp_fixed, pRatio_fixed, p_out_fixed, T_out_fixed, rhoRatio_fixed, rho_out_fixed or v_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and not outletSpec == OutletSpecification.Unspecified and outletValueSpec == ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));

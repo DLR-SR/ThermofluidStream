@@ -8,12 +8,6 @@ model Isobaric "Isobaric process"
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
-    Dialog(group="Specification"), Evaluate=true);
-  parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -34,6 +28,13 @@ model Isobaric "Isobaric process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletSpecificEnthalpy  and specifyOutlet),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletSpecificEnthalpy or not specifyOutlet);
+  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true);
+  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Flow "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true);
+  parameter Boolean specifyOutlet = true "= true to specify the outlet state is specified" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
+
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dT_fixed, T_out_fixed,  dh_fixed, h_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters",
       enable = displayParameters and outletValueSpec == ValueSpecification.Fixed  and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));

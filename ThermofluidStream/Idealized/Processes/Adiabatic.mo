@@ -22,10 +22,6 @@ model Adiabatic "Adiabatic process"
       choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference
         "h_out_is = h(p_out, T_in)")));
 
-  parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true);
-  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
-    Dialog(group="Specification"), Evaluate=true,HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -42,6 +38,10 @@ model Adiabatic "Adiabatic process"
     Dialog(group="Specification",
       enable = specifyOutlet and outletSpec ==OutletSpecification.OutletPressure  and outletValueSpec ==ValueSpecification.Fixed),
     HideResult = not specifyOutlet or not outletSpec == OutletSpecification.OutletPressure or not outletValueSpec == ValueSpecification.Fixed);
+  parameter PowerSignal powerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Power signal configuration" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true);
+  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true,HideResult=true, choices(checkBox=true));
   parameter ValueSpecification etaSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the isentropic efficiency is fixed or prescribed" annotation(
     Dialog(group="Efficiency"), Evaluate=true);
   parameter SI.Efficiency eta_fixed = 1 "Fixed isentropic efficiency" annotation(

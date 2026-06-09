@@ -7,12 +7,6 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
 
-  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
-    Dialog(group="Specification"), HideResult=true, Evaluate=true);
-  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Cycle "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
-    Dialog(group="Specification"), Evaluate=true);
-  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
-    Dialog(group="Specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -25,6 +19,12 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed and outletSpec == OutletSpecification.OutletTemperature and specifyOutlet),
     HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletTemperature or not specifyOutlet);
+  parameter HeatFlowSignal heatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Disabled "Heat flow signal configuration" annotation(
+    Dialog(group="Advanced specification"), HideResult=true, Evaluate=true);
+  parameter SystemSpecification systemSpec = ThermofluidStream.Idealized.Types.SystemModel.Cycle "Select whether the system is steady-flow (open) or a closed cycle (periodic)" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true);
+  parameter Boolean specifyOutlet = true "= true, if the outlet state is explicitly specified" annotation(
+    Dialog(group="Advanced specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level" annotation(
     Dialog(group="Warnings",
       enable = heatFlowSignal == HeatFlowSignal.Input),
