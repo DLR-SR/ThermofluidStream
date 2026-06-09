@@ -1,6 +1,5 @@
 UsersGuide
 Examples
-Tests
 Boundaries
 Topology
 Processes
@@ -8,3 +7,4 @@ Components
 EnergyFlow
 Types
 Utilities
+Tests
