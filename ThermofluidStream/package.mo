@@ -6,8 +6,8 @@ package ThermofluidStream "Library for the modeling of thermofluid streams"
 
   annotation (
     version = "1.3.0",
-	versionDate = "2026-04-30",
-	dateModified = "2026-04-30",
+ versionDate = "2026-04-30",
+ dateModified = "2026-04-30",
     uses(
       Modelica(version="4.1.0"),
       Complex(version="4.1.0")),

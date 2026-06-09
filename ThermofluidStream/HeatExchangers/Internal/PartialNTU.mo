@@ -227,7 +227,18 @@ flow regularization close to zero:
   </li>
 </ul>
 
-  <h5>Heat exchanger time constant</h5>
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    The parameter <code>considerInertance</code> is currently not included in the model; see
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+
+  <h5>
+    Heat exchanger time constant
+  </h5>
 
   <p>
     The model approximates the transient behavior of the heat exchanger with a first-order ordinary differential equation.<br>

@@ -1,9 +1,10 @@
 within ThermofluidStream;
 model DropOfCommons "Model for global parameters"
 
+  parameter Boolean considerInertance = true "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Utilities.Units.Inertance L = 0.01 "Inertance of the flow"
-      annotation(Dialog(tab="Advanced"));
-
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter SI.MassFlowRate m_flow_reg = 0.01
     "Regularization threshold of mass flow rate"
     annotation(Dialog(group="Regularization"));
@@ -25,13 +26,17 @@ model DropOfCommons "Model for global parameters"
   parameter Boolean displayColor = false "= true, if pressure drop is displayed in color" annotation(Dialog(group="Layout"),Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter Integer instanceNameColor[3] = {28,108,200} "Color of the component name"; // Default Color: {28,108,200}
 
-  annotation (defaultComponentName="dropOfCommons",
+  annotation (
+    defaultComponentName="dropOfCommons",
     defaultComponentPrefixes="inner",
     missingInnerMessage="
 Your model is using an outer \"dropOfCommons\" component but
 an inner \"dropOfCommons\" component is not defined.
-Use ThermoFluidStream.DropOfCommons in your model
-to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+Use ThermofluidStream.DropOfCommons in your model
+to specify system properties.",
+    Icon(
+      coordinateSystem(preserveAspectRatio=true),
+      graphics={
         Ellipse(
           extent={{-80,-60},{80,-100}},
           fillColor={175,175,175},
@@ -54,11 +59,14 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
           pattern=LinePattern.None,
           smooth=Smooth.Bezier,
           fillColor={19,76,141},
-          fillPattern=FillPattern.Solid)}), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
-    Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
-</html>", info="<html>
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{40,-90},{80,-90},{80,-70},{60,-70},{60,-30},{40,-30},{40,-90}},
+          fillColor= {162,29,33},
+          fillPattern= if considerInertance then FillPattern.None else FillPattern.Solid,
+          pattern=LinePattern.None)}),
+    Documentation(
+      info="<html>
 <p>The <strong>DropOfCommons</strong> defines global parameters and settings for simulation models. This model serves several purposes: </p>
 <ul>
 <li>It provides <strong>default physical constants</strong> (e.g., gravity acceleration) and flow properties (e.g., inertance) that are used by all components in the model.</li>
@@ -70,5 +78,21 @@ to specify system properties.",Icon(coordinateSystem(preserveAspectRatio=false),
 <p style=\"margin-left: 40px;\"><strong><span style=\"font-family: Courier New;\">inner</span></strong> ThermofluidStream.DropOfCommons dropOfCommons </p>
 <p>Note, it must be an <strong>inner</strong> declaration with instance name <strong>dropOfCommons</strong> so that all components of a ThermofluidStream model can reference it. When dragging the &quot;DropOfCommons&quot; object from the package browser into the diagram layer, this declaration is automatically generated (defined via annotations in the model). </p>
 <p>All flow, density, pressure, and visualization parameters in a simulation model are resolved relative to the settings in this dropOfCommons instance. Adjusting these parameters allows controlling global simulation behavior, visualization preferences, and regularization methods consistently across all components. </p>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to  <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+</html>",
+  revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de) and Tobias Reischl (tobias.reischl@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
+
+  <p>
+    <img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control
+  </p>
 </html>"));
 end DropOfCommons;

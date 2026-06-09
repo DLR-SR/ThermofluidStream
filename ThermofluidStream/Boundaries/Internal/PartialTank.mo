@@ -315,6 +315,25 @@ equation
 <p>Since there is no formula to compute density_derp_h for this volume, an upper bound has to be set in the parameter density_derp_h_set. Alternativeley the derivative can be taken from the media model for all the media that implement the corresponding formula by setting density_derp_h_from_media=true (default:false)</p>
 <p>The fundamental idea of the model is based on work by Hans Ellstroem (https://www.researchgate.net/profile/Soeren-Steinkellner/publication/312590863_MODELLING_AND_SIMULATION_OF_FUEL_SYSTEMS_IN_MILITARY_AIRCRAFTS/links/5884927e4585150dde47b6aa/MODELLING-AND-SIMULATION-OF-FUEL-SYSTEMS-IN-MILITARY-AIRCRAFTS.pdf).</p>
 <p><span style=\"color: #ff5500;\">Beware: This is a new addition to the library. It may be subject to design reconsiderations in future versions.</span></p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    The parameter <code>considerInertance</code> is currently not included in the model; see
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+
+  <h5>
+    enableFreeInlet
+  </h5>
+
+  <p>
+    The parameter <code>enableFreeInlet</code> is currently not included in the model; see
+    <a href=\"modelica://ThermofluidStream.Boundaries.Internal.PartialVolume\">PartialVolume</a>.
+  </p>
+
 </html>", revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
