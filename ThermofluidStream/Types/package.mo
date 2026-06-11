@@ -17,4 +17,21 @@ package Types  "Constants and types with choices, especially to build menus"
 Its primary purpose is to standardize units and choices, particularly for building menus and user interfaces in Modelica models.</p>
 </html>"));
 
+  annotation (Documentation(
+    info="<html>
+  <p>
+    Package of types.
+  </p>
+  <p>
+    Types are ordered alphabetically.
+  </p>
+</html>",
+    revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
 end Types;

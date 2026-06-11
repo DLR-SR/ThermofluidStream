@@ -38,9 +38,12 @@ inlets and outlets the volume is connected to.
     annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Medium.SpecificEnthalpy h_start = Medium.h_default "Initial specific enthalpy set value"
     annotation(Dialog(tab= "Initialization",group="Specific enthalpy", enable=initialize_energy and use_hstart));
-
-  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
+  parameter Boolean enableFreeInlet = false "true, if inlet is free (volume creates no pressure boundary condition)"
+    annotation(Dialog(tab="Advanced", enable = useInlet),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L = dropOfCommons.L "Inertance of inlet/outlet" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   parameter Real k_volume_damping(unit="1", min=0) = dropOfCommons.k_volume_damping "Damping factor multiplicator"
     annotation(Dialog(tab="Advanced", group="Damping"));
   parameter SI.MassFlowRate m_flow_assert(max=0) = -dropOfCommons.m_flow_reg "Assertion threshold for negative massflow"
@@ -112,10 +115,17 @@ equation
   assert(-m_flow_out > m_flow_assert, "Positive mass flow rate at Volume outlet", dropOfCommons.assertionLevel);
   assert(M > 0, "Negative mass inside the volume");
 
-  der(m_flow_in)*L = r_in - r - r_damping;
-  der(m_flow_out)*L = r_out - r_damping;
+  if considerInertance then
+    der(m_flow_in)*L = r_in - r - r_damping;
+    der(m_flow_out)*L = r_out - r_damping;
+  else
+    0 = r_in - r - r_damping;
+    0 = r_out - r_damping;
+  end if;
 
-  r + p_in = medium.p;
+  if not enableFreeInlet then
+    r + p_in = medium.p;
+  end if;
 
   der(M) = m_flow_in + m_flow_out;
   der(U_med) = W_v + Q_flow + h_in*m_flow_in + h_out*m_flow_out;
@@ -190,12 +200,56 @@ equation
         Line(visible=useOutlet,
           points={{60,0},{100,0}},
           color={28,108,200},
-          thickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
+          thickness=0.5),
+        Ellipse(
+          extent={{-100,40},{-80,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if useInlet and not considerInertance then FillPattern.Solid else FillPattern.None),
+        Ellipse(
+          extent={{80,40},{100,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if useOutlet and not considerInertance then FillPattern.Solid else FillPattern.None),
+        Ellipse(visible = enableFreeInlet,
+          extent={{-98,58},{-62,22}},pattern=LinePattern.None,fillColor={170,213,255},fillPattern=FillPattern.Solid),
+        Rectangle(visible = enableFreeInlet,
+          extent={{-96,42},{-64,38}}, fillColor={28,108,200}, fillPattern=FillPattern.Solid, pattern=LinePattern.None)}),                                                                               Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>This is the partial parent class for all unidirectional volumes with only one inlet and outlet. It is partial and is missing one equation for its volume or the medium pressure and one the volume work performed.</p>
 <p>Conceptually a volume is a sink and a source. It therefore defines the level of inertial pressure r in a closed loop and acts as a loop breaker.</p>
 <p>Volumes implement a damping term on the change of the stored mass to dampen out fast, otherwise undamped oscillations that appear when connecting volumes directly to other volumes or other boundaries (source, sink, boundary_fore, boundary_rear). With the damping term these oscillations will be still very fast, but dampened out, so a stiff solver might be able to handle them well. Damping is enabled by default and can be disabled by setting Advanced.k_volume_damping=0. </p>
 <p>Due to stability reasons, mass-flows in the wrong direction (fluid entering the outlet or exiting the inlet) is considered to have the enthalpy and mass-fractions of the medium in the volume. This results in a stable steady-state solution, since this method effectiveley removes the parts of the energy and mass-fraction differential equations, that are associated with mass-flows. </p>
 <p>Per default the Volume has the two states energy and mass (U_med and M) and one state for each mass, as well as one state for each substance of the fluid (except the first one). These will be enforced to be states of the simulation, which can result in nonlinear systems of size one or two, but works very reliable. To get rid of these systems the modeler can enable the flag &apos;usePreferredMediumStates&apos; in the &apos;Advanced&apos; tab. Then the volume uses the states preferred by the medium object, rather then the default ones, which can improve the nonlinear systems most of the time, but also might lead to larger nonlinear systems (e.g. in the Test &apos;VolumesDirectCoupling&apos;).</p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+
+  <h5>
+    enableFreeInlet
+  </h5>
+  
+  <p>
+    The parameter <code>enableFreeInlet</code> removes the pressure boundary condition at the inlet. The inlet can then be coupled, for example, to the
+    <a href=\"modelica://ThermofluidStream.Idealized.Boundaries.MassFlowRate\">Idealized.Boundaries.MassFlowRate</a> model.
+    The user must ensure that the resulting system remains physically consistent when the pressure boundary condition is removed.
+    For examples, see
+    <a href=\"modelica://ThermofluidStream.Idealized.Examples.Volumes\">Idealized.Examples.Volumes</a>.
+    Also refer to
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.BalancedModels\">Idealized.UsersGuide.BalancedModels</a>.
+  </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.<br>
+      Added the <code>enableFreeInlet</code> parameter, including conditional visual highlighting on the icon layer when it is set to true.<br>
+    </li>
+  </ul>
 </html>"));
 end PartialVolume;

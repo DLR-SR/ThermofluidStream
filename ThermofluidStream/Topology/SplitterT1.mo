@@ -7,8 +7,11 @@ model SplitterT1 "Splitter with one inlet and two outlets"
     annotation (choicesAllMatching=true, Documentation(info="<html>
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
-  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
+  parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet" annotation(
+    Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
+
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
@@ -25,6 +28,7 @@ model SplitterT1 "Splitter with one inlet and two outlets"
     displayInstanceName=true,
     final N=2,
     final L=L,
+    final considerInertance = considerInertance,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
 
@@ -72,11 +76,28 @@ equation
         Text(
           extent={{-60,-80},{-20,-120}},
           textColor={175,175,175},
-          textString="B")}),
+          textString="B"),
+        Ellipse(
+          extent={{20,100},{40,80}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid),
+        Ellipse(
+          extent={{22,-80},{42,-100}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Three-port splitter for branching a single flow path into two downstream branches. </p>
 <p>Use this model to create a clear, directed network structure when dividing mass flow into two parallel paths. </p>
 <p>The component is intended for steady (non-dynamic) topology definition within ThermoFluidStream networks.</p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter, including conditional visual highlighting on the icon layer when it is set to false.
+    </li>
+  </ul>
 </html>"));
 end SplitterT1;
