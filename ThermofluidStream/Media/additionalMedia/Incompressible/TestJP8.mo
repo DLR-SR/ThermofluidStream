@@ -24,13 +24,13 @@ equation
        __DLR_experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
        Documentation(info="<html>
 <p>Density</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_density.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_density.png\"/></p>
 <p>Heat capacity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_specHeat.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_specHeat.png\"/></p>
 <p>Dynamic viscosity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_dynVis.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_dynVis.png\"/></p>
 <p>Thermal conductivity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestJP8_thermCond.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestJP8_thermCond.png\"/></p>
 </html>",    revisions="<html>
 <p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
