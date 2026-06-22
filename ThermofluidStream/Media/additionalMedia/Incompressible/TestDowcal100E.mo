@@ -23,12 +23,12 @@ equation
        experiment(StopTime=225, __Dymola_Algorithm="Dassl"),
        Documentation(info="<html>
 <p>Density</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_density_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100E_density_T.png\"/></p>
 <p>Heat capacity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_specHeat_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100E_specHeat_T.png\"/></p>
 <p>Dynamic viscosity (about half of Dowcal100)</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_dynVis_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100E_dynVis_T.png\"/></p>
 <p>Thermal conductivity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100E_thermCond.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100E_thermCond.png\"/></p>
 </html>"));
 end TestDowcal100E;
