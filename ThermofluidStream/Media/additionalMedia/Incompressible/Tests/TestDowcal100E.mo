@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.Incompressible;
+within ThermofluidStream.Media.additionalMedia.Incompressible.Tests;
 model TestDowcal100E "Test Dowcal100E Medium model"
      extends Modelica.Icons.Example;
      package Medium =

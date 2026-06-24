@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.Incompressible;
+within ThermofluidStream.Media.additionalMedia.Incompressible.Tests;
 model TestJP8 "Test JP8 Medium model"
      extends Modelica.Icons.Example;
      package Medium =

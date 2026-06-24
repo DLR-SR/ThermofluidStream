@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.Incompressible;
+within ThermofluidStream.Media.additionalMedia.Incompressible.Tests;
 model TestLiqLoopJP8 "Test of medium JP8 for a liquid loop"
   extends Modelica.Icons.Example;
   replaceable package SecondaryMedium = ThermofluidStream.Media.XRGMedia.CO2_ph constrainedby
