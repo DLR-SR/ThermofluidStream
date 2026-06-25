@@ -1,5 +1,5 @@
 within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible;
-package Examples "Test package for mixture of gas and incompressible additional media"
+package Tests "Test package for mixture of gas and incompressible additional media"
   extends Modelica.Icons.ExamplesPackage;
 
   annotation (Documentation(info="<html>
@@ -9,4 +9,4 @@ package Examples "Test package for mixture of gas and incompressible additional 
 </ul>
 </html>
 "));
-end Examples;
+end Tests;

@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Examples;
+within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Tests;
 model TestSimpleLoopJP8DryAir "Test of a simple cooling loop using JP8DryAir"
   extends Modelica.Icons.Example;
 

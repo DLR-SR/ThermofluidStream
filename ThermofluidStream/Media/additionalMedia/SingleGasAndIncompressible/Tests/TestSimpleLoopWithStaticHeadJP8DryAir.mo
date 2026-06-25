@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Examples;
+within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Tests;
 model TestSimpleLoopWithStaticHeadJP8DryAir "Test of a cooling loop with static head using JP8DryAir"
   extends Modelica.Icons.Example;
 
@@ -212,7 +212,7 @@ equation
   </p>
   <p>
     This model extends
-    <a href=\"modelica://ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Examples.TestSimpleLoopJP8DryAir\">TestSimpleLoopJP8DryAir</a>
+    <a href=\"modelica://ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Tests.TestSimpleLoopJP8DryAir\">TestSimpleLoopJP8DryAir</a>
     by adding static head components to simulate pressure changes due to acceleration.
     The acceleration profile is sinusoidal along the x axis with a period of 60s and an amplitude of 9 m/s².
   </p>

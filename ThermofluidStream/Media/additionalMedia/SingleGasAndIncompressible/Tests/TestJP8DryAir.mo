@@ -1,4 +1,4 @@
-within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Examples;
+within ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Tests;
 model TestJP8DryAir "Test JP8DryAir Medium model"
   extends Modelica.Icons.Example;
   package Medium = ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.JP8DryAir "Jet fuel medium model";
