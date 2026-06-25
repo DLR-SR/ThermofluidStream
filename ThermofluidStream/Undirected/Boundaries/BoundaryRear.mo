@@ -35,8 +35,8 @@ model BoundaryRear "Generic Boundary model (may act as source or sink)"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayTemperature = true "= true, if temperature T0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayT = displayTemperature and not temperatureFromInput and not setEnthalpy
@@ -46,19 +46,11 @@ model BoundaryRear "Generic Boundary model (may act as source or sink)"
       "p = %p0_par"
     elseif displayT then
       "T = %T0_par"
-    elseif displayInertance then
-      "L = %L"
     else "";
   final parameter String displayPos2=
     if displayP and displayT then
       "T = %T0_par"
-    elseif  displayInertance and (displayP or displayT) then
-      "L = %L"
     else "";
-  final parameter String displayPos3=
-    if displayP and  displayT and displayInertance then
-      "L = %L"
-    else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
@@ -81,6 +73,11 @@ protected
   Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fractions connector";
 
   SI.Pressure r "Inertial pressure";
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
 
 equation
   connect(T0_var, T0);
@@ -123,10 +120,6 @@ equation
           extent={{-150,-130},{150,-160}},
           textColor={0,0,0},
           textString=displayPos2),
-        Text(visible=displayParameters,
-          extent={{-150,-170},{150,-200}},
-          textColor={0,0,0},
-          textString=displayPos3),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},
