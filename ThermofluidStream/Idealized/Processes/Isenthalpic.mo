@@ -24,7 +24,7 @@ model Isenthalpic "Isenthalpic process"
   parameter Boolean enforcePressureDrop = false "= true, if pressure drop in flow direction is enforced; use =false for inverse calculations" annotation(
     Dialog(group="Advanced specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
-    Dialog(group="Warnings", enable = not enforcePressureDrop));
+    Dialog(group="Warnings"));
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dpLoss_fixed, prLoss_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
   final parameter String name = getInstanceName();
