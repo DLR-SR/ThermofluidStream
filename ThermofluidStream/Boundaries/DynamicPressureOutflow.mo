@@ -25,8 +25,8 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayOutletVelocity = true "= true, if outlet velocity v_out_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayA = displayParameters and displayInletArea  and not areaFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean dv_out = displayParameters and displayOutletVelocity and not velocityFromInput

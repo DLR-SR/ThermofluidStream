@@ -25,8 +25,8 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayOutletArea = true "= true, if outlet cross section area A_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean dv_in = displayParameters and not velocityFromInput and displayInletVelocity "Display inlet velocity"
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayA = displayParameters and displayOutletArea and not areaFromInput "Display outlet cross section area"

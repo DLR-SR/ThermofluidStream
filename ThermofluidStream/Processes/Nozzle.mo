@@ -22,8 +22,8 @@ model Nozzle "Model for dynamic pressure difference"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayOutletArea = true "= true, if outlet area A_out is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "=true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean dA_in = displayParameters and displayInletArea and not area_in_FromInput "Display inlet area"
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean dA_out = displayParameters and displayOutletArea and not area_out_FromInput "Display outlet area"
