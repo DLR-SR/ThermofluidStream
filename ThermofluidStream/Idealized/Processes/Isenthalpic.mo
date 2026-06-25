@@ -21,7 +21,7 @@ model Isenthalpic "Isenthalpic process"
     Dialog(group="Specification",
       enable = outletValueSpec == ValueSpecification.Fixed  and outletSpec == OutletSpecification.OutletPressure),
       HideResult = not outletValueSpec == ValueSpecification.Fixed or not outletSpec == OutletSpecification.OutletPressure);
-  parameter Boolean enforcePressureDrop = true "= true, if pressure drop in flow direction is enforced; use =false to simplify equations" annotation(
+  parameter Boolean enforcePressureDrop = false "= true, if pressure drop in flow direction is enforced; use =false for inverse calculations" annotation(
     Dialog(group="Advanced specification"), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter AssertionLevel assertionLevel = AssertionLevel.warning "Assertion level (pressure drop)" annotation(
     Dialog(group="Warnings", enable = not enforcePressureDrop));
