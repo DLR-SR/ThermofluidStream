@@ -28,12 +28,6 @@ the outlet the sink is connected to.
   final parameter String displayPos1=
     if displayP then
       "p = %p0_par"
-    elseif displayInertance then
-      "L = %L"
-    else "";
-  final parameter String displayPos2=
-    if displayP and displayInertance then
-      "L = %L"
     else "";
   //-----------------------------------------------------------------
 
@@ -73,10 +67,6 @@ equation
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
           textString=displayPos1),
-        Text(visible=displayParameters,
-          extent={{-150,-130},{150,-160}},
-          textColor={0,0,0},
-          textString=displayPos2),
         Rectangle(
           extent={{-56,76},{4,-84}},
           lineColor={28,108,200},
