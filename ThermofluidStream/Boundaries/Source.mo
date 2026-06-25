@@ -61,8 +61,6 @@ the inlet the source is connected to.
       "h = %h0_par"
     elseif displayXi then
       "Xi = %Xi0_par"
-    elseif displayInertance then
-      "L = %L"
     else "";
   final parameter String displayPos2=
     if displayP and displayT then
@@ -71,19 +69,11 @@ the inlet the source is connected to.
       "h = %h0_par"
     elseif displayXi and (displayP or displayT or displayH)  then
       "Xi = %Xi0_par"
-    elseif  displayInertance and (displayP or displayT or displayH or displayXi) then
-      "L = %L"
     else "";
   final parameter String displayPos3=
     if displayXi and displayP and (displayT or displayH)  then
       "Xi = %Xi0_par"
-    elseif  displayInertance and not displayPos2 == "L = %L" and not displayPos1 == "L = %L" then
-      "L = %L"
     else "";
-  final parameter String displayPos4=
-    if displayP and  (displayT or displayH) and displayXi  and displayInertance then
-      "L = %L"
-    else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
@@ -152,10 +142,6 @@ equation
           extent={{-150,-170},{150,-200}},
           textColor={0,0,0},
           textString=displayPos3),
-        Text(visible=displayParameters,
-          extent={{-150,-240},{150,-210}},
-          textColor={0,0,0},
-          textString=displayPos4),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},
