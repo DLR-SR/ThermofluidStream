@@ -70,6 +70,11 @@ protected
   SI.Velocity v_mean "Mean velocity";
   SI.Velocity delta_v "Velocity difference";
 
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
+
 equation
 
    connect(A_var, A);

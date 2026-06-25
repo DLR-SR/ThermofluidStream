@@ -47,6 +47,11 @@ protected
   SI.Pressure r "Inertial pressure";
   Medium.AbsolutePressure p = Medium.pressure(inlet.state) "Steady state pressure";
 
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
+
 equation
   connect(p0_var, p0);
   if not pressureFromInput then

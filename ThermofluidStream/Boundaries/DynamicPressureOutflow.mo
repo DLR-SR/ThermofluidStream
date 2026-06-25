@@ -74,6 +74,11 @@ protected
   Medium.Density rho_out "Outlet density";
   Medium.Density rho_mean "Mean density";
 
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
+
 equation
    connect(A_var, A);
    if not areaFromInput then

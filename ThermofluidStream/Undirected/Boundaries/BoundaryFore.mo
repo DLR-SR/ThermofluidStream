@@ -83,6 +83,11 @@ protected
 
   SI.Pressure r "Inertial pressure";
 
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
+
 equation
   connect(T0_var, T0);
   if not temperatureFromInput or setEnthalpy then

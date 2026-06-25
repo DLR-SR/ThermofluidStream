@@ -76,6 +76,12 @@ protected
   SI.Velocity v_in "Inlet velocity";
   SI.Velocity v_out "Outlet velocity";
   //Medium.Density rho_mean;
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
+
 equation
 
    connect(A_in_var, A_in_internal);
