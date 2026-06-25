@@ -38,18 +38,10 @@ model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
       compressibilityString
     elseif displayA then
       "A_out = %A_par"
-    elseif displayInertance then
-      "L = %L"
     else "" annotation(Evaluate=true, HideResult=true);
   final parameter String displayPos2=
     if displayCompressibilityApproach and displayA then
       "A_out = %A_par"
-    elseif displayInertance and not displayPos1 == "L = %L" then
-      "L = %L"
-    else "" annotation(Evaluate=true, HideResult=true);
-  final parameter String displayPos3=
-    if displayCompressibilityApproach and displayA and displayInertance then
-      "L = %L"
     else "" annotation(Evaluate=true, HideResult=true);
   //----------------------------------------------------------------
 
@@ -126,10 +118,6 @@ equation
           extent={{-150,-140},{150,-170}},
           textColor={0,0,0},
           textString=displayPos2),
-        Text(visible=displayParameters,
-          extent={{-150,-180},{150,-210}},
-          textColor={0,0,0},
-          textString=displayPos3),
         Text(visible=dv_in,
           extent={{-210,-45},{-10,-75}},
           textColor={0,0,0},
