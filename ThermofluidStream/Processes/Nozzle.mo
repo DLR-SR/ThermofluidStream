@@ -45,18 +45,10 @@ model Nozzle "Model for dynamic pressure difference"
       compressibilityString
     elseif displayA then
       AreaString
-    elseif displayInertance then
-      "L = %L_value"
     else "" annotation(Evaluate=true, HideResult=true);
   final parameter String displayPos2=
     if displayCompressibilityApproach and displayA then
       AreaString
-    elseif displayInertance and not displayPos1 == "L = %L" then
-      "L = %L_value"
-    else "" annotation(Evaluate=true, HideResult=true);
-  final parameter String displayPos3=
-    if displayCompressibilityApproach and displayA and displayInertance then
-      "L = %L_value"
     else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
@@ -121,10 +113,6 @@ equation
           extent={{-150,-110},{150,-140}},
           textColor={0,0,0},
           textString=displayPos2),
-        Text(visible=displayParameters,
-          extent={{-150,-150},{150,-180}},
-          textColor={0,0,0},
-          textString=displayPos3),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
