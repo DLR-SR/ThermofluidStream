@@ -41,8 +41,8 @@ the inlet the source is connected to.
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not xiFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
   // parameter Boolean displayTemperatureOrEnthalpy = true "= true, if temperature T0_par or specific enthalpy h0_par is displayed"
   //  annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayT = displayTemperature and not temperatureFromInput and not setEnthalpy
@@ -102,6 +102,11 @@ protected
   Modelica.Blocks.Interfaces.RealInput T0(unit = "K") "Internal temperature connector";
   Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
   Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fractions connector";
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
 
 equation
    connect(T0_var, T0);
