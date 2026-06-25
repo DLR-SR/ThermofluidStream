@@ -46,19 +46,11 @@ model BoundaryFore "Generic Boundary model (may act as source or sink)"
       "p = %p0_par"
     elseif displayT then
       "T = %T0_par"
-    elseif displayInertance then
-      "L = %L"
     else "";
   final parameter String displayPos2=
     if displayP and displayT then
       "T = %T0_par"
-    elseif  displayInertance and (displayP or displayT) then
-      "L = %L"
     else "";
-  final parameter String displayPos3=
-    if displayP and  displayT and displayInertance then
-      "L = %L"
-    else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
@@ -129,10 +121,6 @@ equation
           extent={{-150,-130},{150,-160}},
           textColor={0,0,0},
           textString=displayPos2),
-        Text(visible=displayParameters,
-          extent={{-150,-170},{150,-200}},
-          textColor={0,0,0},
-          textString=displayPos3),
         Rectangle(
           extent={{4,76},{-60,-84}},
           lineColor={28,108,200},
