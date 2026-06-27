@@ -65,6 +65,15 @@ are the same but please be aware that without knowledge of the flow-direction, l
 are more likely to occur. Hence, only use these components when needed.
 </p>
 </html>", revisions="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2026, DLR e.V.</p>
+<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+  <tr>
+    <td valign=\"middle\">
+      <img width=\"72\" src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
+    </td>
+    <td valign=\"middle\">
+      <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>
+    </td>
+  </tr>
+</table>
 </html>"));
 end Rules;
