@@ -3,6 +3,12 @@ package Types  "Constants and types with choices, especially to build menus"
   extends Modelica.Icons.TypesPackage;
     annotation(
     Documentation(revisions = "<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
   <tr>
     <td valign=\"middle\">
@@ -15,23 +21,8 @@ package Types  "Constants and types with choices, especially to build menus"
 </table>
 </html>", info = "<html><p>This package provides types and enumerations used throughout the ThermofluidStream library. 
 Its primary purpose is to standardize units and choices, particularly for building menus and user interfaces in Modelica models.</p>
-</html>"));
-
-  annotation (Documentation(
-    info="<html>
-  <p>
-    Package of types.
-  </p>
-  <p>
-    Types are ordered alphabetically.
-  </p>
-</html>",
-    revisions="<html>
-  <ul>
-    <li>
-      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
-      Initial version.
-    </li>
-  </ul>
+<p>
+  Types are ordered alphabetically.
+</p>
 </html>"));
 end Types;
