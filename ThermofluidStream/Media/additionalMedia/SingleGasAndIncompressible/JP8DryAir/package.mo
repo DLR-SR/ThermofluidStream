@@ -23,7 +23,7 @@ package JP8DryAir "Jet propulsion JP8 combined with dry air"
 <p>A discussion of the approximation by linear combination of fuel and air flowing in a pipe can be found in </p>
 <p>https://www.diva-portal.org/smash/record.jsf?pid=diva2&percnt;3A17182&amp;dswid=6825.</p>
 </html>", revisions="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024

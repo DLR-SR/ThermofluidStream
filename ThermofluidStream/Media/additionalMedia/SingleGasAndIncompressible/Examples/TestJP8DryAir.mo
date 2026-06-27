@@ -41,7 +41,7 @@ equation
 <p>Thermal conductivity</p>
 <p><img src=\"modelica://SAABdefinedMedia/TestJP8_thermCond.png\"/></p>
 </html>",    revisions="<html>
-<p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+<p><img src=\"modelica:/ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
 Simulation and Thermal Analysis,
 Vehicle Systems,
 SAAB Aerosystems, 2024
