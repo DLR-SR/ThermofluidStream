@@ -96,11 +96,11 @@ public
 equation
   assert(
     inletB.m_flow > m_flow_assert,
-    "Negative mass flow rate at inlet B",
+    "In \"" + instanceName + "\": Negative mass flow rate at inlet B",
     dropOfCommons.assertionLevel);
   assert(
     inletA.m_flow > m_flow_assert,
-    "Negative massflow at inlet A",
+    "In \"" + instanceName + "\": Negative massflow at inlet A",
     dropOfCommons.assertionLevel);
 
   //Summary record
