@@ -58,7 +58,6 @@ model CyclePseudoInversion "Turbocharged diesel engine"
       unit="W") = 0) annotation(Placement(transformation(extent={{-50,-50},{-30,-30}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve(
     redeclare package Medium = Medium,
-    enforcePressureDrop=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{60,-50},{40,-70}})));
   ThermofluidStream.Idealized.EnergyFlow.Components.Sum shaftPower(n_in=5) annotation (Placement(transformation(extent={{130,26},{150,46}})));

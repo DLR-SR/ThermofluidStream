@@ -79,7 +79,6 @@ model Step3Staged
     h_out_fixed=h_out_Condensor2) annotation(Placement(transformation(extent={{10,80},{-10,60}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic valve2(
     redeclare package Medium = Medium,
-    enforcePressureDrop=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.OutletPressure,
     p_out_fixed=p_Evaporator2) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
