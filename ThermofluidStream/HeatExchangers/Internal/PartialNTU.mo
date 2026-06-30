@@ -14,7 +14,7 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation (Dialog(tab="Advanced"));
   parameter SI.MassFlowRate m_flow_reg=dropOfCommons.m_flow_reg "Nominal mass flow rate for regularization"
     annotation (Dialog(tab="Advanced", group="Regularization parameters"));
-  parameter SI.Time TC=0.01 "Heat exchanger time constant (increase as recommended in the documentation)";
+  parameter SI.Time TC(start = 1) "Heat exchanger time constant";
 
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayArea = true "= true, if the heat transfer area A is displayed"
@@ -255,9 +255,9 @@ flow regularization close to zero:
     <code>U</code> is the internal energy, <code>T</code> is the temperature and <code>H_flow = m_flow*h</code> is the enthalpy flow rate.
   </p>
   <p>
-    <strong>The default time constant <code>TC = 0.01</code> is not realistic and will be updated in the next major release.</strong> 
+    <strong>The time constant <code>TC</code> has no default binding and should be set for each heat exchanger. Its start value is <code>1 s</code>.</strong>
     For example a heat exchanger with a mass of <code>10 kg</code> and mass flow rates of <code>0.5 kg/s</code> of air on both sides has a time constant in the magnitude of about <code>10 s</code>.    
-    The default time constant can also lead to a stiff system, and thereby increase simulation time.
+    A time constant that is too small can lead to a stiff system, and thereby increase simulation time.
   </p>
   <p>
     Note that the time constant also avoids algebraic loops and may also be beneficial from a numerical point of view.
