@@ -29,25 +29,6 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={-100,-60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{-120,-80},{-80,-40}})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={100,-60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{80,-80},{120,-40}})));
-  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
-        extent={{20,-20},{-20,20}},
-        rotation=0,
-        origin={100,60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
-  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
-        extent={{20,-20},{-20,20}},
-        rotation=0,
-        origin={-100,60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,80},{-120,40}}, rotation=if crossFlow then -90 else 0)));
-
-
-
   SI.TemperatureDifference Delta_T_max "Maximum temperature difference";
 
   MediumA.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
@@ -64,7 +45,32 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
 
 protected
-  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
+  SI.Pressure inletA_r
+    "Inertial pressure at inlet A";
+  SI.Pressure inletB_r
+    "Inertial pressure at inlet B";
+  SI.Pressure outletA_r
+    "Inertial pressure at outlet A";
+  SI.Pressure outletB_r
+    "Inertial pressure at outlet B";
+
+  SI.MassFlowRate inletA_m_flow
+    "Mass flow rate at inlet A";
+  SI.MassFlowRate inletB_m_flow
+    "Mass flow rate at inlet B";
+  SI.MassFlowRate outletA_m_flow
+    "Mass flow rate at outlet A";
+  SI.MassFlowRate outletB_m_flow
+    "Mass flow rate at outlet B";
+
+  MediumA.ThermodynamicState inletA_state
+    "Thermodynamic state at inlet A";
+  MediumB.ThermodynamicState inletB_state
+    "Thermodynamic state at inlet B";
+  MediumA.ThermodynamicState outletA_state
+    "Thermodynamic state at outlet A";
+  MediumB.ThermodynamicState outletB_state
+      "Thermodynamic state at outlet B";
 
   MediumA.AbsolutePressure p_A=MediumA.pressure(inletA.state) "Inlet A pressure";
   MediumB.AbsolutePressure p_B=MediumB.pressure(inletB.state) "Inlet B pressure";
