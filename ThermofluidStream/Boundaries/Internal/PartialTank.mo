@@ -1,5 +1,7 @@
 within ThermofluidStream.Boundaries.Internal;
 partial model PartialTank "Partial Tank model for media that are partial gas and incompressible liquid"
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
   replaceable package Medium =
       ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.PartialSingleGasAndIncompressible
     "Medium model" annotation (
@@ -90,9 +92,7 @@ inlets and outlets the volume is connected to.
 Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
 
 
-
 protected
-  outer DropOfCommons dropOfCommons;
   outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
 
   Medium.AbsolutePressure p_in[N_inlets] = Medium.pressure(inlet.state);
@@ -142,19 +142,19 @@ initial equation
   if initialize_Xi then
     medium.Xi = Xi_0;
   elseif initialize_LiquidMass then
-    assert(V-M_liq_start/liquidDensity > 0,"Initial liquid mass is larger then the tank can contain",level = AssertionLevel.error);
+    assert(V-M_liq_start/liquidDensity > 0,"In \"" + instanceName + "\": Initial liquid mass is larger then the tank can contain",level = AssertionLevel.error);
       medium.Xi={(V-M_liq_start/liquidDensity)*gasDensity/((V-M_liq_start/liquidDensity)*gasDensity+M_liq_start),M_liq_start/((V-M_liq_start/liquidDensity)*gasDensity+M_liq_start)};
   end if;
 
 equation
   for i in 1:N_inlets loop
-    assert(m_flow_in[i] > m_flow_assert, "Negative massflow at tank inlet", dropOfCommons.assertionLevel);
+    assert(m_flow_in[i] > m_flow_assert, "In \"" + instanceName + "\": Negative massflow at tank inlet", dropOfCommons.assertionLevel);
   end for;
     for i in 1:M_outlets loop
-    assert(-m_flow_out[i] > m_flow_assert, "Positive massflow at tank outlet", dropOfCommons.assertionLevel);
+    assert(-m_flow_out[i] > m_flow_assert, "In \"" + instanceName + "\": Positive massflow at tank outlet", dropOfCommons.assertionLevel);
   end for;
 
-  assert(M > 0, "Tanks might not become empty");
+  assert(M > 0, "In \"" + instanceName + "\": Tanks might not become empty");
 
   der(inlet.m_flow)*L = inlet.r - r - r_damping*ones(N_inlets);
   der(outlet.m_flow)*L = outlet.r - r_damping*ones(M_outlets);

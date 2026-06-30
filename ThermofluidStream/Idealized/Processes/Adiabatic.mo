@@ -78,7 +78,6 @@ model Adiabatic "Adiabatic process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
@@ -162,10 +161,10 @@ equation
     P = m_flow*dh;
   elseif specifyOutlet then // and powerSignal == PowerSignal.Input
     m_flow = P * dh/(dh^2 + eps_dh^2);
-    assert(noEvent(abs(P) < eps_P or abs(dh) > eps_dh), "The power in "+name+" is non zero, but the difference in specific enthalpy is zero, implying that the mass flow rate m_flow := P/dh is infinite.\n The result is regularized.", assertionLevel);
+    assert(noEvent(abs(P) < eps_P or abs(dh) > eps_dh), "The power in "+instanceName+" is non zero, but the difference in specific enthalpy is zero, implying that the mass flow rate m_flow := P/dh is infinite.\n The result is regularized.", assertionLevel);
   else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
     dh = P * m_flow / (m_flow^2 + eps_m_flow^2);
-    assert(noEvent(abs(P) < eps_P or abs(m_flow) > eps_m_flow), "The power in "+name+" is non zero, but the mass flow rate is zero, implying that the difference in specific enthalpy dh := P/m_flow is infinite. \n The result is regularized.", assertionLevel);
+    assert(noEvent(abs(P) < eps_P or abs(m_flow) > eps_m_flow), "The power in "+instanceName+" is non zero, but the mass flow rate is zero, implying that the difference in specific enthalpy dh := P/m_flow is infinite. \n The result is regularized.", assertionLevel);
   end if;
 
   singularityRegime =

@@ -32,9 +32,9 @@ protected
 
 equation
   for i in 1:Medium.nXi loop
-    assert(noEvent(Xi_out[i] >= 0), "Xi_out[i] must not be negative.", AssertionLevel.error);
+  assert(noEvent(Xi_out[i] >= 0), "In \"" + instanceName + "\": Xi_out[i] must not be negative.", AssertionLevel.error);
   end for;
-  assert(noEvent(sum(Xi_out) <= 1), "sum(Xi_out) may not exceed one.", AssertionLevel.error);
+  assert(noEvent(sum(Xi_out) <= 1), "In \"" + instanceName + "\": sum(Xi_out) may not exceed one.", AssertionLevel.error);
 
   connect(outletSpec_actual, outletSpec_prescribed);
   if outletValueSpec == ValueSpecification.Fixed  then

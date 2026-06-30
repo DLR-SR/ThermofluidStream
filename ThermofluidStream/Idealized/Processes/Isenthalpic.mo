@@ -27,7 +27,6 @@ model Isenthalpic "Isenthalpic process"
     Dialog(group="Warnings", enable = not enforcePressureDrop));
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dpLoss_fixed, prLoss_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  final parameter String name = getInstanceName();
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
@@ -49,12 +48,11 @@ protected
 equation
   if enforcePressureDrop then
     assert(noEvent(m_flow*dpLoss_set >= -Modelica.Constants.eps),
-      "In \"" + name + "\" the prescribed pressure loss would cause a pressure rise in flow direction and was clipped.",
-      assertionLevel);
+      "In \"" + instanceName + "\" the prescribed pressure loss would cause a pressure rise in flow direction and was clipped.", assertionLevel);
   end if;
   assert(noEvent(m_flow*dpLoss >= -Modelica.Constants.eps),
-    "In \"" + name +"\" the pressure rises in the direction of the flow. \n"
-    + "  An isenthalpic pressure increase however violates the second law of thermodynamics.",
+    "In \"" + instanceName +"\" the pressure rises in the direction of the flow. \n"
+    + " An isenthalpic pressure increase however violates the second law of thermodynamics.",
     assertionLevel);
 
   connect(outletSpec_actual, outletSpec_prescribed);
@@ -114,7 +112,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
-          textString=if displayInstanceName then "%name" else "",
+          textString=if displayInstanceName then "%instanceName" else "",
           textColor=dropOfCommons.instanceNameColor),
         Text(
           extent={{-30,30},{30,-30}},
