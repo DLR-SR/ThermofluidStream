@@ -246,12 +246,12 @@ package Dowcal100 "Concentration 60 volume%, ethylene glycol-based mixed with wa
 <p>The data in the Dowcal100 media is taken from https://www.dow.com/en-us/market/mkt-building-construction/sub-build-heating-cooling-refrigeration/heat-transfer-fluid-selection-calculator.html in Jan 2024.</p>
 <p>&quot;An ethylene glycol-based heat transfer fluid used in various industrial applications, highly recommended for heating applications&quot;</p>
 <p>Density</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_density_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100_density_T.png\"/></p>
 <p>Heat capacity</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_specHeat_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100_specHeat_T.png\"/></p>
 <p>Dynamic viscosity (double the viscosity od Dowcal100E)</p>
-<p><img src=\"modelica://SAABdefinedMedia/TestDowcal100_dynVis_T.png\"/></p>
+<p><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100_dynVis_T.png\"/></p>
 <p>Thermal conductivity</p>
-<p><br><img src=\"modelica://SAABdefinedMedia/TestDowcal100_thermCond_T.png\"/></p>
+<p><br><img src=\"modelica://ThermofluidStream/Media/additionalMedia/Resources/TestDowcal100_thermCond_T.png\"/></p>
 </html>"));
 end Dowcal100;
