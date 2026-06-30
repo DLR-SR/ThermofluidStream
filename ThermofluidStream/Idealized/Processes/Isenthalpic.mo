@@ -196,6 +196,11 @@ equation
       revisions="<html>
   <ul>
     <li>
+      06/2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      The default value of <code>enforcePressureDrop</code> was changed from <code>true</code> to <code>false</code> to improve numerical robustness in inverse calculations. 
+      Models that require the previous behavior must now explicitly set <code>enforcePressureDrop=true</code>.
+    </li>
+    <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
