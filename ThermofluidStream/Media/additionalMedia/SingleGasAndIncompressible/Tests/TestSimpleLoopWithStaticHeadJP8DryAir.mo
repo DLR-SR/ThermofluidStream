@@ -189,19 +189,19 @@ equation
     Documentation(revisions="<html>
   <ul>
     <li>
-      <p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
-        Simulation and Thermal Analysis,
-        Vehicle Systems,
-        SAAB Aerosystems, 2024
-     </p>
+      06/2026, by Corentin Lepais (corentin.lepais@dlr.de):<br>
+      Improve documentation and graphic layer. Change heat in-flow from 40W to 40000W to make sure the loop reaches the setpoint. 
     </li>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Introduced new version of <code>dp_tau_const_isentrop</code> pump function.
     </li>
     <li>
-      06/2026, by Corentin Lepais (corentin.lepais@dlr.de):<br>
-      Improve documentation and graphic layer. Change heat in-flow from 40W to 40000W to make sure the loop reaches the setpoint. 
+      <p><img src=\"modelica://ThermofluidStream/Resources/saab_logo.png\"/>Author: Ingela Lind, M Sc, Ph D, Technical Fellow,
+        Simulation and Thermal Analysis,
+        Vehicle Systems,
+        SAAB Aerosystems, 2024
+     </p>
     </li>
   </ul>
 </html>", info="<html>
