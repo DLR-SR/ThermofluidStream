@@ -93,7 +93,6 @@ Real normAcc[3]=Modelica.Math.Vectors.normalize(acceleration.a);
 
 
 protected
-  outer DropOfCommons dropOfCommons;
   outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
 
   Medium.AbsolutePressure p_in[N_inlets] = Medium.pressure(inlet.state);
