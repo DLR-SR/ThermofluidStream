@@ -70,7 +70,9 @@ model CrossFlowNTU
   ThermofluidStream.HeatExchangers.CrossFlowNTU crossFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
-    A=10) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    A=10,
+    TC=10)
+          annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumA,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
