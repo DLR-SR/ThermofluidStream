@@ -15,7 +15,9 @@ extends Modelica.Icons.Example;
   ThermofluidStream.HeatExchangers.CounterFlowNTU heatExchange_CounterFlowNTU(
     redeclare package MediumA = Medium_air,
     redeclare package MediumB = Medium_liquid,
-    A=10) annotation (Placement(transformation(extent={{80,4},{100,24}})));
+    A=10,
+    TC=10)
+          annotation (Placement(transformation(extent={{80,4},{100,24}})));
   Boundaries.VolumeFlex flexVolume(
     redeclare package Medium = Medium_liquid,
     V_ref=0.02,
@@ -253,8 +255,8 @@ equation
     annotation (Line(points={{-139,-50},{-122,-50}}, color={0,0,127}));
   connect(gain1.y, feedback.u1)
     annotation (Line(points={{-99,-50},{-88,-50}},   color={0,0,127}));
-  connect(multiSensor_Tpm3.m_flow_out, feedback.u2) annotation (Line(points={{-68.2,16},{-80,16},{-80,-42}},
-                                  color={0,0,127}));
+  connect(multiSensor_Tpm3.m_flow_out, feedback.u2) annotation (Line(points={{-71,16},
+          {-80,16},{-80,-42}},    color={0,0,127}));
   connect(PI.y, speed.w_ref)
     annotation (Line(points={{-39,-50},{-30,-50},{-30,-30}},
                                                    color={0,0,127}));

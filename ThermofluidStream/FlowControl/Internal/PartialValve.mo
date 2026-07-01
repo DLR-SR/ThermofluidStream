@@ -28,7 +28,7 @@ protected
 
 equation
   //Inversion of input signal, actuation has to be between 0 and 1
-  assert(u_in <=1 and u_in >=0, "Actuator signal out of valid range [0,1]", level = AssertionLevel.warning);
+  assert(u_in <=1 and u_in >=0, "In \"" + instanceName + "\": Actuator signal out of valid range [0,1]", level = AssertionLevel.warning);
   if invertInput then
       u = max(0, min(1, 1-u_in));
   else
