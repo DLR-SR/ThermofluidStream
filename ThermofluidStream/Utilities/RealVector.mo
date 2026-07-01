@@ -1,5 +1,6 @@
 within ThermofluidStream.Utilities;
 block RealVector "Set output vector signal to a time varying Real expression"
+  extends Modelica.Icons.ObsoleteModel;
 
   parameter Integer N = 1 "Size of signal";
 
@@ -7,7 +8,9 @@ block RealVector "Set output vector signal to a time varying Real expression"
     annotation (Dialog(group="Time varying output vector"), Placement(
         transformation(extent={{100,-10},{120,10}})));
 
-  annotation (Icon(coordinateSystem(
+  annotation(
+    obsolete = "Deprecated: Unused model that falls outside current library design. Scheduled for removal in v2.0.0.",
+    Icon(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
