@@ -29,25 +29,6 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
     annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
-  ThermofluidStream.Interfaces.Inlet inletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={-100,-60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{-120,-80},{-80,-40}})));
-  ThermofluidStream.Interfaces.Outlet outletA(redeclare package Medium = MediumA) annotation (Placement(transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=0,
-        origin={100,-60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{80,-80},{120,-40}})));
-  ThermofluidStream.Interfaces.Inlet inletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
-        extent={{20,-20},{-20,20}},
-        rotation=0,
-        origin={100,60}), iconTransformation(extent=if crossFlow then {{-120,-20},{-80,20}} else {{120,80},{80,40}}, rotation=if crossFlow then -90 else 0)));
-  ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = MediumB) annotation (Placement(transformation(
-        extent={{20,-20},{-20,20}},
-        rotation=0,
-        origin={-100,60}), iconTransformation(extent=if crossFlow then {{80,-20},{120,20}} else {{-80,80},{-120,40}}, rotation=if crossFlow then -90 else 0)));
-
-
-
   SI.TemperatureDifference Delta_T_max "Maximum temperature difference";
 
   MediumA.SpecificEnthalpy dh_A "Specific enthalpy difference medium A";
@@ -64,13 +45,38 @@ partial model PartialNTU "Partial heat exchanger model using the epsilon-NTU met
   ThermofluidStream.HeatExchangers.Internal.DiscretizedHEXSummary summary "Summary record of quantities";
 
 protected
-  parameter Boolean crossFlow=false "Selection whether HEX is in crossflow or counterflow configuration";
+  SI.Pressure inletA_r
+    "Inertial pressure at inlet A";
+  SI.Pressure inletB_r
+    "Inertial pressure at inlet B";
+  SI.Pressure outletA_r
+    "Inertial pressure at outlet A";
+  SI.Pressure outletB_r
+    "Inertial pressure at outlet B";
 
-  MediumA.AbsolutePressure p_A=MediumA.pressure(inletA.state) "Inlet A pressure";
-  MediumB.AbsolutePressure p_B=MediumB.pressure(inletB.state) "Inlet B pressure";
+  SI.MassFlowRate inletA_m_flow
+    "Mass flow rate at inlet A";
+  SI.MassFlowRate inletB_m_flow
+    "Mass flow rate at inlet B";
+  SI.MassFlowRate outletA_m_flow
+    "Mass flow rate at outlet A";
+  SI.MassFlowRate outletB_m_flow
+    "Mass flow rate at outlet B";
 
-  MediumA.MassFraction Xi_A[MediumA.nXi]=MediumA.massFraction(inletA.state) "Inlet A mass fractions";
-  MediumB.MassFraction Xi_B[MediumB.nXi]=MediumB.massFraction(inletB.state) "Inlet B mass fractions";
+  MediumA.ThermodynamicState inletA_state
+    "Thermodynamic state at inlet A";
+  MediumB.ThermodynamicState inletB_state
+    "Thermodynamic state at inlet B";
+  MediumA.ThermodynamicState outletA_state
+    "Thermodynamic state at outlet A";
+  MediumB.ThermodynamicState outletB_state
+      "Thermodynamic state at outlet B";
+
+  MediumA.AbsolutePressure p_A=MediumA.pressure(inletA_state) "Inlet A pressure";
+  MediumB.AbsolutePressure p_B=MediumB.pressure(inletB_state) "Inlet B pressure";
+
+  MediumA.MassFraction Xi_A[MediumA.nXi]=MediumA.massFraction(inletA_state) "Inlet A mass fractions";
+  MediumB.MassFraction Xi_B[MediumB.nXi]=MediumB.massFraction(inletB_state) "Inlet B mass fractions";
 
   //Inlet and outlet specific enthalpies and enthalpy differences
   MediumA.SpecificEnthalpy h_in_A "Specific enthalpy at inlet A";
@@ -91,13 +97,13 @@ protected
   SI.SpecificHeatCapacityAtConstantPressure cp_A "Specific heat capacity of Medium A";
   SI.SpecificHeatCapacityAtConstantPressure cp_B "Specific heat capacity of Medium B";
 
-  SI.MassFlowRate m_flow_A=inletA.m_flow "Mass flow rate on side A";
-  SI.MassFlowRate m_flow_B=inletB.m_flow "Mass flow rate on side B";
+  SI.MassFlowRate m_flow_A=inletA_m_flow "Mass flow rate on side A";
+  SI.MassFlowRate m_flow_B=inletB_m_flow "Mass flow rate on side B";
 
-  MediumA.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA.state) "Inlet A specific heat capacity";
-  MediumA.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA.state) "Outlet A specific heat capacity";
-  MediumB.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB.state) "Inlet B specific heat capacity";
-  MediumB.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB.state) "Outlet B specific heat capacity";
+  MediumA.SpecificHeatCapacity cpA_in=MediumA.specificHeatCapacityCp(inletA_state) "Inlet A specific heat capacity";
+  MediumA.SpecificHeatCapacity cpA_out=MediumA.specificHeatCapacityCp(outletA_state) "Outlet A specific heat capacity";
+  MediumB.SpecificHeatCapacity cpB_in=MediumB.specificHeatCapacityCp(inletB_state) "Inlet B specific heat capacity";
+  MediumB.SpecificHeatCapacity cpB_out=MediumB.specificHeatCapacityCp(outletB_state) "Outlet B specific heat capacity";
 
   constant Real eps(unit="kg/s") = Modelica.Constants.eps "Mass flow rate regularization";
 
@@ -107,25 +113,25 @@ initial equation
 
 equation
   //Balance Equations
-  inletA.m_flow + outletA.m_flow= 0;
-  inletB.m_flow + outletB.m_flow = 0;
-  inletA.r - outletA.r = der(inletA.m_flow)*L;
-  inletB.r - outletB.r = der(inletB.m_flow)*L;
+  inletA_m_flow + outletA_m_flow = 0;
+  inletB_m_flow + outletB_m_flow = 0;
+  inletA_r - outletA_r = der(inletA_m_flow)*L;
+  inletB_r - outletB_r = der(inletB_m_flow)*L;
 
   //Specific heat capacities
   cp_A = (cpA_in + cpA_out)/2;
   cp_B = (cpB_in + cpB_out)/2;
 
   //Heat capacity rates
-  C_A = (abs(inletA.m_flow) + eps)*cp_A;
-  C_B = (abs(inletB.m_flow) + eps)*cp_B;
+  C_A = (abs(inletA_m_flow) + eps)*cp_A;
+  C_B = (abs(inletB_m_flow) + eps)*cp_B;
 
   //Inlet temperatures and enthalpies
-  T_in_MediumA = MediumA.temperature(inletA.state);
-  T_in_MediumB = MediumB.temperature(inletB.state);
+  T_in_MediumA = MediumA.temperature(inletA_state);
+  T_in_MediumB = MediumB.temperature(inletB_state);
 
-  h_in_A = MediumA.specificEnthalpy(inletA.state);
-  h_in_B = MediumB.specificEnthalpy(inletB.state);
+  h_in_A = MediumA.specificEnthalpy(inletA_state);
+  h_in_B = MediumB.specificEnthalpy(inletB_state);
 
   //Finding minimum heat capacity rate
   if noEvent(C_A > C_B) then
@@ -154,7 +160,7 @@ equation
   if noEvent(C_A < C_B) then
 
     //No heat is transferred, if both mass flow rates are smaller than regularization mass flow rate
-    if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
+    if noEvent(inletA_m_flow < m_flow_reg) and noEvent(inletB_m_flow < m_flow_reg) then
       dh_A = 0;
     else
       dh_A = Delta_T_max*cp_A*effectiveness;
@@ -169,7 +175,7 @@ equation
   else
 
     //No heat is transferred, if both mass flow rates are smaller than regularization mass flow rate
-    if noEvent(inletA.m_flow < m_flow_reg) and noEvent(inletB.m_flow < m_flow_reg) then
+    if noEvent(inletA_m_flow < m_flow_reg) and noEvent(inletB_m_flow < m_flow_reg) then
       dh_B = 0;
     else
       dh_B = -Delta_T_max*cp_B*effectiveness;
@@ -185,20 +191,20 @@ equation
   der(h_out_A)*TC = h_in_A - dh_A - h_out_A;
   der(h_out_B)*TC = h_in_B - dh_B - h_out_B;
 
-  outletA.state = MediumA.setState_phX(
+  outletA_state = MediumA.setState_phX(
     p_A,
     h_out_A,
     Xi_A);
-  outletB.state = MediumB.setState_phX(
+  outletB_state = MediumB.setState_phX(
     p_B,
     h_out_B,
     Xi_B);
 
   //Summary record
-  summary.Tin_B = MediumB.temperature(inletB.state);
-  summary.Tin_A = MediumA.temperature(inletA.state);
-  summary.Tout_B = MediumB.temperature(outletB.state);
-  summary.Tout_A = MediumA.temperature(outletA.state);
+  summary.Tin_B = MediumB.temperature(inletB_state);
+  summary.Tin_A = MediumA.temperature(inletA_state);
+  summary.Tout_B = MediumB.temperature(outletB_state);
+  summary.Tout_A = MediumA.temperature(outletA_state);
   summary.hin_A = h_in_A;
   summary.hout_A = h_out_A;
   summary.hin_B = h_in_B;

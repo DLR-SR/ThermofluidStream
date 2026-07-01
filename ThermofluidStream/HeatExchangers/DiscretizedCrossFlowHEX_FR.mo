@@ -1,7 +1,7 @@
 within ThermofluidStream.HeatExchangers;
 model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-phase working fluid with pressure drop"
 
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,crossFlow=true);
+  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells);
 
   parameter Real k1_A=1e2 "Linear flow resistance coefficient at side A"
     annotation (Dialog(group="Flow resistance coefficients"));
@@ -11,6 +11,42 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
     annotation (Dialog(group="Flow resistance coefficients"));
   parameter Real k2_B=1e2 "Quadratic flow resistance coefficient at side B"
     annotation (Dialog(group="Flow resistance coefficients"));
+
+  Interfaces.Inlet inletB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{-120,40},{-80,80}}),
+      iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=180,
+        origin={-100,-60})));
+
+  Interfaces.Outlet outletB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{80,40},{120,80}}),
+      iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=180,
+        origin={100,-60})));
+
+  Interfaces.Inlet inletA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{120,-80},{80,-40}}),
+      iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=90,
+        origin={0,100})));
+
+  Interfaces.Outlet outletA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{-80,-80},{-120,-40}}),
+      iconTransformation(
+        extent={{20,-20},{-20,20}},
+        rotation=90,
+        origin={0,-100})));
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
@@ -34,7 +70,7 @@ model DiscretizedCrossFlowHEX_FR "Discretized Heat Exchanger for single- or two-
 
   Topology.JunctionN junctionN(
     redeclare package Medium = MediumA,
-    N=nCells) annotation (Placement(transformation(extent={{-60,-70},{-80,-50}})));
+    N=nCells) annotation (Placement(transformation(extent={{-52,-70},{-72,-50}})));
   Topology.SplitterN splitterN(
     redeclare package Medium = MediumA,
     N=nCells) annotation (Placement(transformation(extent={{60,-70},{40,-50}})));
@@ -51,10 +87,26 @@ initial equation
   end if;
 
 equation
+  inletA.state = inletA_state;
+  inletA.m_flow = inletA_m_flow;
+  inletA.r = inletA_r;
+
+  inletB.state = inletB_state;
+  inletB.m_flow = inletB_m_flow;
+  inletB.r = inletB_r;
+
+  outletA.state = outletA_state;
+  outletA.m_flow = outletA_m_flow;
+  outletA.r = outletA_r;
+
+  outletB.state = outletB_state;
+  outletB.m_flow = outletB_m_flow;
+  outletB.r = outletB_r;
+
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(inletB, thermalElementB[1].inlet) annotation (Line(
-      points={{-100,60},{-56,60},{-56,60},{-10,60}},
+      points={{-100,60},{-10,60}},
       color={28,108,200},
       thickness=0.5));
   connect(thermalElementB.outlet, flowResistanceB.inlet) annotation (Line(
@@ -65,7 +117,7 @@ equation
     connect(flowResistanceB[i].outlet, thermalElementB[i + 1].inlet);
   end for;
   connect(flowResistanceB[nCells].outlet, outletB) annotation (Line(
-      points={{60,60},{-34,60},{-34,60},{100,60}},
+      points={{60,60},{100,60}},
       color={28,108,200},
       thickness=0.5));
 
@@ -73,7 +125,7 @@ equation
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{4.44089e-16,50},{4.44089e-16,40},{0,40},{0,10}},   color={191,0,0}));
 
   connect(inletA, splitterN.inlet) annotation (Line(
-      points={{100,-60},{80,-60},{80,-60},{60,-60}},
+      points={{100,-60},{60,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(splitterN.outlets, thermalElementA.inlet) annotation (Line(
@@ -85,11 +137,11 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistanceA.outlet, junctionN.inlets) annotation (Line(
-      points={{-40,-60},{-60,-60}},
+      points={{-40,-60},{-52,-60}},
       color={28,108,200},
       thickness=0.5));
   connect(junctionN.outlet, outletA) annotation (Line(
-      points={{-80,-60},{-50,-60},{-50,-60},{-100,-60}},
+      points={{-72,-60},{-100,-60}},
       color={28,108,200},
       thickness=0.5));
   annotation (Icon(graphics={
@@ -102,23 +154,23 @@ equation
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-66,54},{-54,42}},
+          extent={{40,-54},{52,-66}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-40,54},{-28,42}},
+          extent={{14,-54},{26,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-12,54},{0,42}},
+          extent={{-12,-54},{0,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,54},{28,42}},
+          extent={{-40,-54},{-28,-66}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{42,54},{54,42}},
+          extent={{-66,-54},{-54,-66}},
           textColor={28,108,200},
           textString="1"),
         Text(
@@ -126,7 +178,7 @@ equation
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,0},{120,-40}},
+          extent={{-80,0},{-120,-40}},
           textColor={175,175,175},
           textString="B")}), Documentation(info="<html>
 <p>

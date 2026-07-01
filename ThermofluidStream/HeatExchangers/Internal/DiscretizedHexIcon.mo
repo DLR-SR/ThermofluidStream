@@ -38,23 +38,23 @@ model DiscretizedHexIcon
         Line(points={{18,-34},{8,-44},{8,-74}},   color={28,108,200}),
         Line(points={{44,-34},{34,-44},{34,-74}}, color={28,108,200}),
         Text(
-          extent={{-66,-54},{-54,-66}},
+          extent={{42,54},{54,42}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{40,-54},{52,-66}},
+          extent={{-66,54},{-54,42}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{14,-54},{26,-66}},
+          extent={{-38,54},{-26,42}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{-12,-54},{0,-66}},
+          extent={{-10,54},{2,42}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-40,-54},{-28,-66}},
+          extent={{18,54},{30,42}},
           textColor={28,108,200},
           textString="..."),
         Polygon(points={{-72,34},{62,34},{62,64},{-72,64},{-62,74},{72,74},{72,44},{62,34},{62,64},{72,74},{-62,74},{-72,64},{-72,34}}, lineColor={28,108,200}),
