@@ -60,7 +60,7 @@ model CounterFlowNTU
   ThermofluidStream.HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
-    A=10) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
+    A=10, TC=10) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,

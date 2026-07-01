@@ -48,7 +48,6 @@ model Isobaric "Isobaric process"
     Dialog(
       enable = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
     HideResult = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow);
-  final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
@@ -146,10 +145,10 @@ equation
     Q_flow = m_flow*q;
   elseif specifyOutlet then // and heatFlowSignal == HeatFlowSignal.Input
     m_flow = Q_flow * q/(q^2 + eps_q^2);
-    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(q) > eps_q), "The heat flow rate in "+name+" is non zero, but the specific heat flow is zero, implying that the mass flow rate m_flow := Q_flow/q is infinite.\n The result is regularized.", assertionLevel);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(q) > eps_q), "The heat flow rate in "+instanceName+" is non zero, but the specific heat flow is zero, implying that the mass flow rate m_flow := Q_flow/q is infinite.\n The result is regularized.", assertionLevel);
   else // not specifyOutlet and heatFlowSignal == HeatFlowSignal.Input
     q = Q_flow * m_flow / (m_flow^2 + eps_m_flow^2);
-    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+name+" is non zero, but the mass flow rate is zero, implying that the specific heat flow q := Q_flow/m_flow is infinite. \n The result is regularized.", assertionLevel);
+    assert(noEvent(abs(Q_flow) < eps_Q_flow or abs(m_flow) > eps_m_flow), "The heat flow rate in "+instanceName+" is non zero, but the mass flow rate is zero, implying that the specific heat flow q := Q_flow/m_flow is infinite. \n The result is regularized.", assertionLevel);
   end if;
 
   singularityRegime =
@@ -195,7 +194,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
-          textString = if displayInstanceName then "%name" else "",
+          textString = if displayInstanceName then "%instanceName" else "",
           textColor = dropOfCommons.instanceNameColor),
         Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent={{-30,30},{30,-30}},

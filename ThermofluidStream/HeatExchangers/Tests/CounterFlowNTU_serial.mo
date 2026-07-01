@@ -52,11 +52,15 @@ model CounterFlowNTU_serial
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
-    A=10) annotation (Placement(transformation(extent={{-38,-8},{-18,12}})));
+    A=10,
+    TC=10)
+          annotation (Placement(transformation(extent={{-38,-8},{-18,12}})));
   HeatExchangers.CounterFlowNTU counterFlowNTU1(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
-    A=10) annotation (Placement(transformation(extent={{18,-8},{38,12}})));
+    A=10,
+    TC=10)
+          annotation (Placement(transformation(extent={{18,-8},{38,12}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm4(
     redeclare package Medium = MediumB,
     outputMassFlowRate=false,

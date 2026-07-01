@@ -111,9 +111,9 @@ initial equation
   end if;
 
 equation
-  assert(m_flow_in > m_flow_assert, "Negative mass flow rate at Volume inlet", dropOfCommons.assertionLevel);
-  assert(-m_flow_out > m_flow_assert, "Positive mass flow rate at Volume outlet", dropOfCommons.assertionLevel);
-  assert(M > 0, "Negative mass inside the volume");
+  assert(m_flow_in > m_flow_assert, "In \"" + instanceName + "\": Negative mass flow rate at Volume inlet", dropOfCommons.assertionLevel);
+  assert(-m_flow_out > m_flow_assert, "In \"" + instanceName + "\": Positive mass flow rate at Volume outlet", dropOfCommons.assertionLevel);
+  assert(M > 0, "In \"" + instanceName + "\": Negative mass inside the volume");
 
   if considerInertance then
     der(m_flow_in)*L = r_in - r - r_damping;

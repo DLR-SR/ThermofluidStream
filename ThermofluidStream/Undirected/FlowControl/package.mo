@@ -3,8 +3,16 @@ package FlowControl "Package for undirected flow control components"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
-
+<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+  <tr>
+    <td valign=\"middle\">
+      <img width=\"72\" src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
+    </td>
+    <td valign=\"middle\">
+      <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>
+    </td>
+  </tr>
+</table>
 </html>", info="<html>
 <p>Undirected implementation of the flow control components. </p><p>These include physical Valves, as well as fow-control valves, that are not physical models, but rather numerical boundaries on the flow.</p>
 </html>"), Icon(graphics={
@@ -25,15 +33,13 @@ annotation (Documentation(revisions="<html>
           points={{-20,40},{0,0},{20,40},{-20,40}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else {255,255,255}),
+          fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-20,20},{0,-20},{20,20},{-20,20}},
           lineColor={28,108,200},
           lineThickness=0.5,
-          fillColor=DynamicSelect({255,255,255}, if invertInput == true then
-                  {28,108,200} else {255,255,255}),
+          fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           origin={0,-20},
           rotation=180)}));

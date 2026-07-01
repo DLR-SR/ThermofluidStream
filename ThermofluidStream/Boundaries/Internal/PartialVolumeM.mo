@@ -104,11 +104,11 @@ initial equation
   end if;
 
 equation
-  assert(m_flow_in > m_flow_assert, "Negative mass flow rate at volume inlet", dropOfCommons.assertionLevel);
+  assert(m_flow_in > m_flow_assert, "In \"" + instanceName + "\": Negative mass flow rate at volume inlet", dropOfCommons.assertionLevel);
   for i in 1:M_outlets loop
-    assert(-m_flow_out[i] > m_flow_assert, "Positive mass flow rate at volume outlet", dropOfCommons.assertionLevel);
+    assert(-m_flow_out[i] > m_flow_assert, "In \"" + instanceName + "\": Positive mass flow rate at volume outlet", dropOfCommons.assertionLevel);
   end for;
-  assert(M > 0, "Negative mass inside volume");
+  assert(M > 0, "In \"" + instanceName + "\": Negative mass inside volume");
 
   der(inlet.m_flow)*L = inlet.r - r - r_damping;
   der(outlet.m_flow)*L = outlet.r - r_damping*ones(M_outlets);

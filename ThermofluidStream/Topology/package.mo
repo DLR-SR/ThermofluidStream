@@ -1,10 +1,18 @@
 within ThermofluidStream;
-package Topology
+package Topology "Package for junction and splitter components"
   extends Modelica.Icons.Package;
 
 annotation (Documentation(revisions="<html>
-<p><img src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\"/>(c) 2020-2021, DLR, Institute of System Dynamics and Control</p>
-
+<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+  <tr>
+    <td valign=\"middle\">
+      <img width=\"72\" src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
+    </td>
+    <td valign=\"middle\">
+      <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>
+    </td>
+  </tr>
+</table>
 </html>", info="<html>
 <p>This package provides dedicated splitter and junction models for building directed ThermoFluidStream network topologies. </p>
 <p>The library explicitly recommends composing branches and merges using these elements rather than splitting flows purely via connector equations (except for sensor-only use cases). </p><p>Using dedicated topology components is also a key structural difference compared to the Modelica Standard Library approach, improving robustness and clarity of network formulation.</p><p>(Reference: <a href=\"https://doi.org/10.3390/electronics11223790\">https://doi.org/10.3390/electronics11223790</a>)</p>
