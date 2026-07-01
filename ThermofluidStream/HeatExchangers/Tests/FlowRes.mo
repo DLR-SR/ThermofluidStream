@@ -286,7 +286,7 @@ model FlowRes
     redeclare model ConductionElementB = Internal.ConductionElementHEX_twoPhase,
     initializeMassFlow=true,
     nCells=nCells,
-    k_wall=150) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    k_wall=150) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={124,42})));
   Processes.FlowResistance flowResistanceA(
@@ -415,7 +415,7 @@ model FlowRes
     nCells=nCells,
     k_wall=150)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{10,-10},{-10,10}},
         rotation=90,
         origin={106,-72})));
   Processes.FlowResistance flowResistanceA1(
