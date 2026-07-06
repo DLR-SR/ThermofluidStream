@@ -74,7 +74,7 @@ model PseudoInversion
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_K,
     outputValue=true,
     filter_output=true,
-    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.InitialOutput,
     value_0=273.15 + 130) annotation(
     Placement(transformation(
         extent={{-10,-10},{10,10}},

@@ -30,7 +30,7 @@ extends Modelica.Icons.Example;
         origin={-90,0})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium_liquid,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.02,
     l=100,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
@@ -129,7 +129,7 @@ extends Modelica.Icons.Example;
   ThermofluidStream.Utilities.Icons.DLRLogo dLRLogo annotation (Placement(transformation(extent={{10,-2},{46,34}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium_air,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e5))

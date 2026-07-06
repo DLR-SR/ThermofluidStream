@@ -63,7 +63,7 @@ model CounterFlowNTU
     A=10, TC=10) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -71,7 +71,7 @@ model CounterFlowNTU
     annotation (Placement(transformation(extent={{102,10},{82,30}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumA,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

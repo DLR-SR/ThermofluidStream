@@ -52,7 +52,7 @@ model PhaseSeperator
     startTime=0) annotation (Placement(transformation(extent={{-120,-16},{-100,4}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
@@ -60,7 +60,7 @@ model PhaseSeperator
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
@@ -68,7 +68,7 @@ model PhaseSeperator
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
@@ -76,7 +76,7 @@ model PhaseSeperator
     annotation (Placement(transformation(extent={{30,10},{50,30}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,

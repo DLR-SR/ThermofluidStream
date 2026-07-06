@@ -25,7 +25,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={10,-100})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -62,7 +62,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={30,100})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -92,7 +92,7 @@ model BoilerEspresso "Test for the espresso boiler"
         origin={-10,100})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (

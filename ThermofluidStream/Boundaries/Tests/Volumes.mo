@@ -59,7 +59,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-48,-120},{-28,-100}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -67,7 +67,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{20,-90},{40,-70}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -85,7 +85,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -93,7 +93,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -101,7 +101,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -127,7 +127,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{50,60},{70,80}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -135,7 +135,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,80},{-20,100}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -143,7 +143,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,40},{-20,60}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -175,7 +175,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{50,-200},{70,-180}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -183,7 +183,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,-160},{-20,-140}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -222,7 +222,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-12,110},{8,130}})));
   Processes.FlowResistance flowResistance10(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -230,7 +230,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{20,110},{40,130}})));
   Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -256,7 +256,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{50,160},{70,180}})));
   Processes.FlowResistance flowResistance12(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -264,7 +264,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,180},{-20,200}})));
   Processes.FlowResistance flowResistance13(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -272,7 +272,7 @@ Medium package used in the Test of the MixVolumes.
     annotation (Placement(transformation(extent={{-40,140},{-20,160}})));
   Processes.FlowResistance flowResistance14(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (

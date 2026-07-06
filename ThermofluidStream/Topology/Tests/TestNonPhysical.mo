@@ -174,7 +174,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{186,34},{166,54}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -184,7 +184,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{-50,70},{-30,90}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -194,7 +194,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -204,7 +204,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{-50,-30},{-30,-10}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -214,7 +214,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{-50,-80},{-30,-60}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -224,7 +224,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{120,70},{140,90}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -234,7 +234,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{120,20},{140,40}})));
   Processes.FlowResistance flowResistance10(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,
@@ -244,7 +244,7 @@ model TestNonPhysical
     annotation (Placement(transformation(extent={{120,-30},{140,-10}})));
   Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     computeL=false,

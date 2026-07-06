@@ -24,7 +24,7 @@ model Test_SplitterY
     T0_par=293.15) annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
@@ -32,7 +32,7 @@ model Test_SplitterY
     r=1e-2) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   FlowResistance                             flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=1,

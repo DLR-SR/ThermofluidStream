@@ -12,7 +12,7 @@ model Test_SuddenExpansion
 
   ThermofluidStream.Processes.Pipes.SuddenExpansion suddenExpansion(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     d_1=1e-2,
     d_2=2e-2) annotation (Placement(transformation(extent={{-12,-10},{8,10}})));
   ThermofluidStream.Boundaries.Source source(

@@ -15,12 +15,12 @@ partial model SISOFlow_nonConstArea "SISOFlow considering dynamic effects due to
     annotation(Dialog(tab = "Advanced"));
   parameter StateSelect m_flowStateSelect = StateSelect.default "State select for m_flow"
     annotation(Dialog(tab = "Advanced"));
-  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for m_flow"
+  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for m_flow"
     annotation(Dialog(tab = "Initialization", group = "Mass flow"), choicesAllMatching = true);
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for m_flow"
-    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = (initM_flow == InitializationMethods.state)));
+    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = (initM_flow == InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration m_acceleraton_0 = 0 "Initial value for der(m_flow)"
-    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = (initM_flow == InitializationMethods.derivative)));
+    annotation(Dialog(tab = "Initialization", group = "Mass flow", enable = (initM_flow == InitializationMethods.InitialDerivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "If false, set dr_corr to zero"
     annotation(Dialog(tab = "Advanced"));
@@ -49,11 +49,11 @@ protected
   Medium.SpecificEnthalpy h_out "Outlet specific enthaply";
   Medium.MassFraction Xi_out[Medium.nXi] "Outlet mass fractions";
 initial equation
-  if initM_flow == InitializationMethods.state then
+  if initM_flow == InitializationMethods.InitialState then
     m_flow = m_flow_0;
-  elseif initM_flow == InitializationMethods.derivative then
+  elseif initM_flow == InitializationMethods.InitialDerivative then
     der(m_flow) = m_acceleraton_0;
-  elseif initM_flow == InitializationMethods.steadyState then
+  elseif initM_flow == InitializationMethods.SteadyState then
     der(m_flow) = 0;
   end if;
 equation

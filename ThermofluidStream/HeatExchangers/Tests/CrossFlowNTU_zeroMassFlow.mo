@@ -78,7 +78,7 @@ model CrossFlowNTU_zeroMassFlow
     annotation (Placement(transformation(extent={{162,-10},{142,10}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumA,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.005,
     l=0.5,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -86,7 +86,7 @@ model CrossFlowNTU_zeroMassFlow
     annotation (Placement(transformation(extent={{-102,-10},{-82,10}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.005,
     l=0.5,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (

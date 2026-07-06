@@ -18,7 +18,7 @@ model TestSensors "Test for the undirected sensors"
 
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=100,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -65,7 +65,7 @@ model TestSensors "Test for the undirected sensors"
     redeclare package Medium = Medium) annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=100,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -100,7 +100,7 @@ model TestSensors "Test for the undirected sensors"
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.p_bar,
     filter_output=true,
-    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.InitialOutput,
     value_0=1) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
   SingleFlowSensor singleFlowSensor1(
     redeclare package Medium = Medium,
@@ -140,7 +140,7 @@ model TestSensors "Test for the undirected sensors"
     p0_par=100000) annotation (Placement(transformation(extent={{86,-40},{106,-20}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=100,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

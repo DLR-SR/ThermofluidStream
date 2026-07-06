@@ -379,7 +379,7 @@ model TestDiscretizedHEXvsDir
     annotation (Placement(transformation(extent={{-84,-178},{-64,-158}})));
   ThermofluidStream.Processes.FlowResistance flowResistanceB2(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     m_flow_0=0.3,
     r=0.05,
     l=1,

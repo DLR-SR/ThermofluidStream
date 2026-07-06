@@ -15,7 +15,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{70,-88},{90,-68}})));
   ThermofluidStream.FlowControl.PCV pCV(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=2,
     pressure_set_par(displayUnit="Pa") = 20000) annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
   ThermofluidStream.Boundaries.VolumeFlex
@@ -35,7 +35,7 @@ Medium package used in the Test.
   ThermofluidStream.FlowControl.PCV pCV1(
     redeclare package Medium = Medium,
     L=10,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet,
     pressure_set_par=150000) annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
   ThermofluidStream.Boundaries.VolumeFlex
@@ -80,7 +80,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   ThermofluidStream.FlowControl.PCV pCV2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=10,
     pressure_set_par(displayUnit="Pa") = 20000) annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   ThermofluidStream.Boundaries.Source source1(redeclare package Medium = Medium, p0_par=200000)
@@ -97,7 +97,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{10,10},{30,30}})));
   ThermofluidStream.FlowControl.PCV pCV3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=10,
     pressureFromInput=true,
     pressure_set_par(displayUnit="Pa")) annotation (Placement(transformation(extent={{-20,10},{0,30}})));
@@ -115,7 +115,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{10,50},{30,70}})));
   ThermofluidStream.FlowControl.PCV pCV4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=10,
     mode=ThermofluidStream.FlowControl.Internal.Types.PressureControlValveMode.outlet,
     pressureFromInput=true,

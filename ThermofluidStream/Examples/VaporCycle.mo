@@ -97,7 +97,7 @@ model VaporCycle
     annotation (Placement(transformation(extent={{36,66},{56,86}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = SecondaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (

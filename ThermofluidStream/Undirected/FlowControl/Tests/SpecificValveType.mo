@@ -20,7 +20,7 @@ Medium package used in the Test.
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,50},{-96,70}})));
   FlowControl.SpecificValveType slideValve(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     redeclare record ZetaValueRecord =
         ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes.Kvs,
@@ -53,7 +53,7 @@ Medium package used in the Test.
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,-10},{-96,10}})));
   FlowControl.SpecificValveType slideValveInverse(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=true,
     redeclare record ZetaValueRecord =
         ThermofluidStream.FlowControl.Internal.Curves.SlideValveZetaCurve,

@@ -14,7 +14,7 @@ model Test_Diffusor
             {40,10}})));
   ThermofluidStream.Processes.Pipes.Diffuser diffuser(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=dropOfCommons.m_flow_reg,
     d_1=0.505,
     d_2=1.009,

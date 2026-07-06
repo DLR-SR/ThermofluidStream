@@ -27,7 +27,7 @@ replaceable package Medium = Media.myMedia.Water.ConstantPropertyLiquidWater
         origin={-20,70})));
   FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (

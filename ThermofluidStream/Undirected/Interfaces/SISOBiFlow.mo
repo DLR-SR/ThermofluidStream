@@ -13,12 +13,12 @@ partial model SISOBiFlow "Base Model with basic flow eqautions for SISO"
     annotation(Dialog(tab="Advanced"));
   parameter StateSelect m_flowStateSelect = StateSelect.default "State select for mass flow rate"
     annotation(Dialog(tab="Advanced"));
-  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for mass flow rate"
+  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for mass flow rate"
     annotation(Dialog(tab= "Initialization"));
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for mass flow rate"
-    annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.state)));
+    annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.InitialState)));
   parameter Utilities.Units.MassFlowAcceleration m_acceleration_0 = 0 "Initial value for der(m_flow)"
-    annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.derivative)));
+    annotation(Dialog(tab= "Initialization", enable=(initM_flow == InitializationMethods.InitialDerivative)));
   parameter SI.MassFlowRate m_flow_reg = dropOfCommons.m_flow_reg "Regularization threshold of mass flow rate"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   // no default value to require the modeler to think about it; use final to suppress this option to user
@@ -61,11 +61,11 @@ protected
   Medium.MassFraction Xi_fore_out[Medium.nXi] "Mass fractions of medium exiting";
 
 initial equation
-  if initM_flow == InitializationMethods.state then
+  if initM_flow == InitializationMethods.InitialState then
     m_flow = m_flow_0;
-  elseif initM_flow == InitializationMethods.derivative then
+  elseif initM_flow == InitializationMethods.InitialDerivative then
     der(m_flow) = m_acceleration_0;
-  elseif initM_flow == InitializationMethods.steadyState then
+  elseif initM_flow == InitializationMethods.SteadyState then
     der(m_flow) = 0;
   end if;
 

@@ -20,7 +20,7 @@ model ReverseHeatPump
 
   Processes.Compressor compressor(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     omega_from_input=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
@@ -63,7 +63,7 @@ model ReverseHeatPump
 
   FlowControl.BasicControlValve valveCompressorOutletCooling(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
         FlowControl.Internal.ControlValve.linearCharacteristics,
@@ -72,7 +72,7 @@ model ReverseHeatPump
         origin={-26,40})));
   FlowControl.BasicControlValve valveCompressorOutletHeating(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -87,7 +87,7 @@ model ReverseHeatPump
         origin={70,40})));
   FlowControl.BasicControlValve valveCompressorInletHeating(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -98,7 +98,7 @@ model ReverseHeatPump
         origin={-70,-6})));
   FlowControl.BasicControlValve valveCompressorInletCooling(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -129,7 +129,7 @@ model ReverseHeatPump
         origin={82,144})));
   Undirected.Processes.FlowResistance flowResistance1(
     redeclare package Medium = SecondaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -166,7 +166,7 @@ model ReverseHeatPump
         origin={70,14})));
   Undirected.FlowControl.BasicControlValve TEVcooling(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -189,7 +189,7 @@ model ReverseHeatPump
         origin={-70,40})));
   Undirected.FlowControl.BasicControlValve TEVheating(
     redeclare package Medium = RefrigerantMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.m_flow_set,
     redeclare function valveCharacteristics =
@@ -200,7 +200,7 @@ model ReverseHeatPump
         origin={-40,180})));
   Undirected.Processes.FlowResistance flowResistance(
     redeclare package Medium = SecondaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

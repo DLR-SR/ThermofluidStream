@@ -31,7 +31,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Boundaries.DynamicPressureInflow dynamicPressure(
     displayInstanceName=false,
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     assumeConstantDensity=false,
     velocityFromInput=false,
@@ -62,10 +62,10 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.Turbine turbine(
     redeclare package Medium = Medium,
     L=5e2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     omega_from_input=false,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_0=0,
     initPhi=true,
     phi_0=0,
@@ -145,7 +145,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Boundaries.DynamicPressureInflow dynamicPressure1(
     displayInstanceName=false,
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     assumeConstantDensity=false,
     velocityFromInput=false,
@@ -163,10 +163,10 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
   Processes.Turbine turbine1(
     redeclare package Medium = Medium,
     L=5e2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     omega_from_input=false,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_0=0,
     initPhi=true,
     phi_0=0,

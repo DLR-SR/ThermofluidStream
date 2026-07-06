@@ -17,7 +17,7 @@ Medium model for the test. Can be anything.
     annotation (Placement(transformation(extent={{30,30},{50,50}})));
   FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=100,
     l(displayUnit="mm") = 0.008,
     redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -54,7 +54,7 @@ Medium model for the test. Can be anything.
     annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
   FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=100,
     l(displayUnit="mm") = 0.008,
     redeclare function pLoss = Internal.FlowResistance.linearQuadraticPressureLoss (

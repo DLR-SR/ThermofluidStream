@@ -104,7 +104,7 @@ model Recuperator
     annotation (Placement(transformation(extent={{44,-48},{24,-28}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.2,
     massFlow_set_par=0.2) annotation (Placement(transformation(extent={{-76,-2},{-56,18}})));
 equation

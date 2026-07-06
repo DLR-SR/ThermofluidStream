@@ -4,7 +4,7 @@ model TestFlowResistance "Test for the undirected flow resistance"
 
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Media.myMedia.Air.SimpleAir,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=1,
     redeclare function pLoss =
@@ -31,7 +31,7 @@ model TestFlowResistance "Test for the undirected flow resistance"
     annotation (Placement(transformation(extent={{60,-6},{48,6}})));
   FlowResistance flowResistance1(
     redeclare package Medium = Media.myMedia.Air.SimpleAir,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=1,
     redeclare function pLoss =

@@ -8,7 +8,7 @@ model TestSimpleLoopWithStaticHeadJP8DryAir "Test of a cooling loop with static 
 
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = TertiaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),

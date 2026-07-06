@@ -66,9 +66,9 @@ package Types "Types used in the Sensor Package"
   end MassFlowUnit;
 
   type InitializationModelSensor = enumeration(
-      steadyState
+      SteadyState
       "Steady state initialization (derivatives of states are zero)",
-      state
+      InitialOutput
       "Initialization with initial output state") "Initialization modes for sensor lowpass";
    annotation (Documentation(info="<html>
 <p>

@@ -77,7 +77,7 @@ model TestConnectors "Test for the connectors"
     annotation (Placement(transformation(extent={{30,-40},{50,-20}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     r=0.01,
     l=1,
@@ -86,7 +86,7 @@ model TestConnectors "Test for the connectors"
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     r=0.01,
     l=1,
@@ -127,14 +127,14 @@ model TestConnectors "Test for the connectors"
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-40,-78},{-20,-58}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
-    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     l=5,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(extent={{20,-78},{40,-58}})));
   Processes.FlowResistance flowResistance4(
-    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     l=5,
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,

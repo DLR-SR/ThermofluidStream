@@ -17,10 +17,10 @@ model SingleSensorX "Sensor for mass fraction"
     annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+  parameter InitMode init=InitMode.SteadyState "Initialization mode for sensor output"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter Real[Medium.nX] value_0(each unit="kg/kg") = Medium.X_default "Start value of mass fraction output"
-    annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.InitialOutput));
 
   parameter Integer row(min=1, max=Medium.nX) = 1 "Row of meassured mass fraction";
 
@@ -39,7 +39,7 @@ protected
   Real direct_value[Medium.nX](each unit="kg/kg");
 
 initial equation
-  if filter_output and init==InitMode.steadyState then
+  if filter_output and init==InitMode.SteadyState then
     value= direct_value;
   elseif filter_output then
     value = value_0;

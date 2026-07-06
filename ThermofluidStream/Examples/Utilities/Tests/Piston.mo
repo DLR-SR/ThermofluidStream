@@ -73,7 +73,7 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=1e-3,
     r=0.1,
@@ -84,7 +84,7 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=1e-3,
     r=0.1,
@@ -95,7 +95,7 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=1e-3,
     r=0.1,
@@ -106,7 +106,7 @@ model Piston "Test for Piston model"
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=1e-3,
     r=0.1,

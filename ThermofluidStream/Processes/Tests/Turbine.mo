@@ -32,7 +32,7 @@ Medium model for the test. Should be an ideal gas or close to that.
     redeclare package Medium = Medium,
     L=1e6,
     omega_from_input=true,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=1e-5,
     redeclare function dp_tau_turbine =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=1e6))
@@ -48,8 +48,8 @@ Medium model for the test. Should be an ideal gas or close to that.
     L=1e5,
     omega_from_input=false,
     J_p=1,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_0=-1,
     initPhi=true,
     redeclare function dp_tau_turbine =

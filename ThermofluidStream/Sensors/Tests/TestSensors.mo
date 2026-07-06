@@ -35,7 +35,7 @@ model TestSensors "Test model for all sensors."
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium1,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.015,
     l=2,
     L_value=1000,
@@ -46,7 +46,7 @@ model TestSensors "Test model for all sensors."
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium2,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.015,
     l=2,
     L_value=100000,
@@ -98,7 +98,7 @@ model TestSensors "Test model for all sensors."
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.v_m3pkg,
     outputValue=true,
     filter_output=true,
-    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state,
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.InitialOutput,
     value_0=1) annotation (Placement(transformation(extent={{-74,8},{-54,28}})));
   SingleSensorSelect singleSensorSelect12(redeclare package Medium = Medium2,
       quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.cv_JpkgK)
@@ -192,7 +192,7 @@ model TestSensors "Test model for all sensors."
     outputValue=true,
     quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_m3ps,
     filter_output=true,
-    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state) annotation (Placement(transformation(extent={{44,44},{64,64}})));
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.InitialOutput) annotation (Placement(transformation(extent={{44,44},{64,64}})));
   SingleFlowSensor singleFlowSensor4(
     redeclare package Medium = Medium1,
     digits=5,
@@ -267,7 +267,7 @@ model TestSensors "Test model for all sensors."
     temperatureUnit="degC",
     pressureUnit="bar",
     filter_output=true,
-    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.state) annotation (Placement(transformation(extent={{-4,8},{16,28}})));
+    init=ThermofluidStream.Sensors.Internal.Types.InitializationModelSensor.InitialOutput) annotation (Placement(transformation(extent={{-4,8},{16,28}})));
   DifferenceSensorSelect differenceSensorSelect3(
     redeclare package MediumA = Medium1,
     redeclare package MediumB = Medium1,
@@ -288,7 +288,7 @@ model TestSensors "Test model for all sensors."
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium3,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.015,
     l=2,
     L_value=100000,

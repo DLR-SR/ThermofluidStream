@@ -18,14 +18,14 @@ partial model SISOFlowAdvanced "Advanced model for SISOFlow"
   parameter ThermofluidStream.Utilities.Units.Inertance L=dropOfCommons.L "Inertance" annotation (Dialog(tab="Advanced", enable=not setFlow));
   parameter StateSelect m_flowStateSelect = StateSelect.default "State selection for mass flow rate"
     annotation(Dialog(tab="Advanced"));
-  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for mass flow rate"
+  parameter InitializationMethods initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for mass flow rate"
     annotation(Dialog(tab= "Initialization", group="Mass flow rate", enable= not setFlow));
   parameter SI.MassFlowRate m_flow_0 = 0 "Initial value for mass flow rate"
-    annotation(Dialog(tab= "Initialization", group="Mass flow rate", enable= (not setFlow and initM_flow == InitializationMethods.state)));
+    annotation(Dialog(tab= "Initialization", group="Mass flow rate", enable= (not setFlow and initM_flow == InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration m_acceleration_0=0 "Initial value for derivative of mass flow rate" annotation (Dialog(
       tab="Initialization",
       group="Mass flow rate",
-      enable=(not setFlow and initM_flow == InitializationMethods.derivative)));
+      enable=(not setFlow and initM_flow == InitializationMethods.InitialDerivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter Boolean clip_p_out "= false, if dr_corr=0 (correction of inertial pressure difference)"
     annotation(Dialog(tab="Advanced", enable = not setFlow));
@@ -54,11 +54,11 @@ protected
 
 initial equation
   if not setFlow then
-    if initM_flow == InitializationMethods.state then
+    if initM_flow == InitializationMethods.InitialState then
       m_flow = m_flow_0;
-    elseif initM_flow == InitializationMethods.derivative then
+    elseif initM_flow == InitializationMethods.InitialDerivative then
       der(m_flow) = m_acceleration_0;
-    elseif initM_flow == InitializationMethods.steadyState then
+    elseif initM_flow == InitializationMethods.SteadyState then
       der(m_flow) = 0;
     end if;
   end if;

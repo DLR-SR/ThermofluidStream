@@ -16,12 +16,12 @@ model EdgedBend "Pressure drop due to edged bend using Modelica.Fluid.Dissipatio
   //Initialization
   parameter StateSelect dpStateSelect = StateSelect.default "State select for pressure difference dp"
     annotation(Dialog(tab = "Advanced"));
-  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for pressure difference dp"
+  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for pressure difference dp"
     annotation(Dialog(tab = "Initialization", group = "Pressure difference"),choicesAllMatching = true);
   parameter SI.Pressure dp_0 = 0 "Initial value for pressure difference dp"
-    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.state)));
+    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration dp_acceleraton_0 = 0 "Initial value for der(dp)"
-    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
+    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialDerivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   //Advanced
   parameter ThermofluidStream.Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"

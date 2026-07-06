@@ -12,7 +12,7 @@ model Test_EdgedOrifice
 
   ThermofluidStream.Processes.Pipes.EdgedOrifice edgedOrifice(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     d_1=1e-2,
     d_0=0.5e-2,
     l_0=0.1)  annotation (Placement(transformation(extent={{-10,-10},{10,10}})));

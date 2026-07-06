@@ -20,7 +20,7 @@ Medium package used in the Test.
   Boundaries.BoundaryFore boundary_fore(redeclare package Medium = Medium, p0_par=200000)
     annotation (Placement(transformation(extent={{52,-10},{72,10}})));
   FlowControl.CheckValve checkValve(redeclare package Medium = Medium, L=1e-4,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)
     annotation (Placement(transformation(extent={{-22,-10},{-2,10}})));
   Modelica.Blocks.Sources.Pulse pulse(
     amplitude=2e5,

@@ -21,7 +21,7 @@ model CentrifugalPumpCharacteristics "Test model for CentrifugalPump"
 
   ThermofluidStream.Processes.CentrifugalPump coefficients(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     dataFromMeasurements=false,
     redeclare ThermofluidStream.Processes.Internal.CentrifugalPump.Coefficients.Wilo.Stratos25slash1to4 coefficients(rho_ref=rho),
     redeclare ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Wilo.Stratos25slash1to4 measurements,
@@ -38,7 +38,7 @@ model CentrifugalPumpCharacteristics "Test model for CentrifugalPump"
   Boundaries.Sink  sink1(redeclare package Medium = Medium, pressureFromInput=true) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   ThermofluidStream.Processes.CentrifugalPump measurements(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     dataFromMeasurements=true,
     redeclare ThermofluidStream.Processes.Internal.CentrifugalPump.Coefficients.Wilo.Stratos25slash1to4 coefficients(rho_ref=rho),
     redeclare ThermofluidStream.Processes.Internal.CentrifugalPump.Measurements.Wilo.Stratos25slash1to4 measurements(rho_ref=rho),
