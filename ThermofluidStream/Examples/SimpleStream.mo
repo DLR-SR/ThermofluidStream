@@ -25,14 +25,14 @@ model SimpleStream "Simple pneumatic network"
     annotation (Placement(transformation(extent={{-120,-10},{-100,10}})));
   Processes.FlowResistance pipe1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,10},{40,30}})));
   Processes.FlowResistance pipe2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=100,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)

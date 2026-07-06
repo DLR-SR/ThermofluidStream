@@ -9,12 +9,12 @@ model SuddenContraction "Pressure drop due to contraction using Modelica.Fluid.D
   parameter SI.Length d_2 "Outlet diameter"
     annotation(Dialog(group="Geometry"));
   //Initialization
-  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for pressure difference dp"
+  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for pressure difference dp"
     annotation(Dialog(tab = "Initialization", group = "dp"), choicesAllMatching = true);
   parameter SI.Pressure dp_0 = 0 "Initial value for pressure difference dp"
-    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.state)));
+    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration dp_acceleraton_0 = 0 "Initial value for der(dp)"
-    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
+    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialDerivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   //Advanced
   parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimal density"

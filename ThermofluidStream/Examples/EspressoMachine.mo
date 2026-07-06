@@ -18,7 +18,7 @@ Medium model for water.
     annotation (Placement(transformation(extent={{-80,-10},{-40,30}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -52,7 +52,7 @@ Medium model for water.
         origin={-30,70})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -94,7 +94,7 @@ Medium model for water.
         origin={-140,-120})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     computeL=true,
@@ -124,7 +124,7 @@ Medium model for water.
         origin={110,-50})));
   FlowControl.TanValve tanValve2(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     relativeLeakiness=1e-7)
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
@@ -172,7 +172,7 @@ Medium model for water.
         origin={-20,-20})));
   Processes.Pump pump(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_from_input=true,
     omegaStateSelect=StateSelect.never,
     redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
@@ -214,7 +214,7 @@ Medium model for water.
         k_p_input=1e6,
         k_fric_input=0),
     enableOutput=false,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     initPhi=false,
     omegaStateSelect=StateSelect.default,
     omega_from_input=true) annotation (Placement(transformation(
@@ -305,7 +305,7 @@ Medium model for water.
         origin={-88,70})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Water,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.003,
     l=0.3,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -376,7 +376,7 @@ Medium model for water.
         origin={110,-140})));
   Utilities.CupSink Tasse1(
     redeclare package Medium = Water, flowResistance(
-      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state))
+      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState))
     annotation (Placement(transformation(
         extent={{20,-20},{-20,20}},
         rotation=0,

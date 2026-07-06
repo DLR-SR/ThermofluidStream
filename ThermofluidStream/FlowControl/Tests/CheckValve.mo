@@ -20,7 +20,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{52,-10},{72,10}})));
   ThermofluidStream.FlowControl.CheckValve checkValve(redeclare package Medium=Medium, L=
         1e-4,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)
     annotation (Placement(transformation(extent={{-22,-10},{-2,10}})));
   Modelica.Blocks.Sources.Pulse pulse(
     amplitude=2e5,

@@ -33,7 +33,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     redeclare package Medium = Medium,
     L=100000,
     omega_from_input=true,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,40},{10,20}})));
 
@@ -43,8 +43,8 @@ Medium model for the test. Should be incompressible or with low compressibility.
     redeclare package Medium = Medium,
     L=1000000,
     omega_from_input=false,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     initPhi=true,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -60,7 +60,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     redeclare package Medium = Medium,
     L=10000,
     omega_from_input=true,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     enableAccessHeatPort=true,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =false, k_p_input=1e7)) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
@@ -73,8 +73,8 @@ Medium model for the test. Should be incompressible or with low compressibility.
     enableOutput=true,
     outputQuantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs,
     J_p=10,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     initPhi=true,
     phi_0=-1745.3292519943,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
@@ -93,7 +93,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     enableOutput=true,
     outputQuantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.V_flow_lpMin,
     J_p=10,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     phi_0=-1745.3292519943,
     redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =true, omega_D(displayUnit="rad/s") = 100))

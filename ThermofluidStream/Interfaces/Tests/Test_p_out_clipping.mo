@@ -20,7 +20,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   Processes.FlowResistance flowResistance(redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=100,
     r=1,
     l=1,
@@ -31,9 +31,9 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Processes.Fan fan(redeclare package Medium = Medium,
     L=1000,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=100,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_0=1,
     initPhi=true,
     redeclare function dp_tau_fan =
@@ -43,7 +43,7 @@ Medium package used in the Test.
     L=1000,
     m_flowStateSelect=StateSelect.prefer,
     Kvs(displayUnit="m3/s") = 3600,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=10)
     annotation (Placement(transformation(extent={{-10,-20},{10,0}})));
   FlowControl.SpecificValveType specificValveType(redeclare package Medium = Medium,
@@ -51,13 +51,13 @@ Medium package used in the Test.
     m_flowStateSelect=StateSelect.prefer,
     invertInput=true,
     Kvs(displayUnit="m3/s") = 3600,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=100)
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   FlowControl.TanValve tanValve(redeclare package Medium = Medium,
     L=100000,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=1,
     m_flow_ref=1)
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
@@ -67,7 +67,7 @@ Medium package used in the Test.
   Processes.Nozzle nozzle(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=100,
     A_out=0.1,
     L_value=100,

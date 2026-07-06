@@ -75,7 +75,7 @@ model CrossFlowNTU
           annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumA,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -83,7 +83,7 @@ model CrossFlowNTU
     annotation (Placement(transformation(extent={{-92,-10},{-72,10}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

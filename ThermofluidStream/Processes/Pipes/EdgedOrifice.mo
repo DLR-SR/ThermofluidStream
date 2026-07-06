@@ -13,12 +13,12 @@ model EdgedOrifice "Pressure drop due to sharp edged orifice using Modelica.Flui
 
   // parameter Fluid_HTWG.Types.DarcyFrictionFactor lambda_fric=0.02 "Darcy fricition factor at vena contraction";
   //Initalization
-  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for dp"
+  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for dp"
     annotation(Dialog(tab = "Initialization", group = "dp"),choicesAllMatching = true);
   parameter SI.Pressure dp_0 = 0 "Initial value for dp" annotation (
-    Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.state)));
+    Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration dp_acceleraton_0 = 0 "Initial value for der(dp)"
-    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
+    annotation(Dialog(tab = "Initialization", group = "dp", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialDerivative)));
   parameter SI.Pressure dp_smooth = 1 "Start linearisation for decreasing pressure loss"
     annotation(Dialog(tab = "Initialization"));
   //Advanced

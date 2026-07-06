@@ -25,7 +25,7 @@ Medium model for the test. Can be anything.
   tf.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.SteadyState,
     computeL=true,
     r=0.1,
     l=100,
@@ -36,7 +36,7 @@ Medium model for the test. Can be anything.
   tf.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialDerivative,
     m_acceleration_0=1,
     computeL=false,
     L_value=1000,
@@ -49,7 +49,7 @@ Medium model for the test. Can be anything.
   tf.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=30000,
     r=0.075,
@@ -66,7 +66,7 @@ Medium model for the test. Can be anything.
   tf.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     computeL=false,
     L_value=30000,
     r=0.075,

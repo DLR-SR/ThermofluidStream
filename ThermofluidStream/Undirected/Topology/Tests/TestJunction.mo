@@ -32,14 +32,14 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{-134,-8},{-114,12}})));
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,50},{-26,70}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
@@ -52,14 +52,14 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{0,10},{20,30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,10},{46,30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
@@ -90,14 +90,14 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{-66,-70},{-46,-50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance8(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,-30},{-26,-10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
@@ -108,14 +108,14 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{0,-70},{20,-50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance10(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,-70},{46,-50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
@@ -140,21 +140,21 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{94,-50},{74,-30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{-136,30},{-116,50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss = pLoss)
     annotation (Placement(transformation(extent={{-136,-50},{-116,-30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss =
@@ -163,7 +163,7 @@ model TestJunction "Test for the undirected junction"
     annotation (Placement(transformation(extent={{116,-50},{136,-30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance7(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=1,
     redeclare function pLoss =

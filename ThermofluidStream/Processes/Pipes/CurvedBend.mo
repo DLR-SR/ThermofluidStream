@@ -18,12 +18,12 @@ model CurvedBend "Pressure drop due to curved bend using Modelica.Fluid.Dissipat
   //Initialization
   parameter StateSelect dpStateSelect = StateSelect.default "State select for dp"
     annotation(Dialog(tab = "Advanced"));
-  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for dp"
+  parameter ThermofluidStream.Utilities.Types.InitializationMethods initdp = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for dp"
     annotation(Dialog(tab = "Initialization", group = "dp"),choicesAllMatching = true);
   parameter SI.Pressure dp_0 = 0 "Initial value for dp"
-    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.state)));
+    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)));
   parameter ThermofluidStream.Utilities.Units.MassFlowAcceleration dp_acceleraton_0 = 0 "Initial value for der(dp)"
-    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.derivative)));
+    annotation(Dialog(tab = "Initialization", group = "Pressure difference", enable = (initdp == ThermofluidStream.Utilities.Types.InitializationMethods.InitialDerivative)));
   // no default value to require the modeler to think about it; use final to suppress this option to user
   parameter ThermofluidStream.Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
     annotation(Dialog(tab = "Advanced", enable = not computeL));

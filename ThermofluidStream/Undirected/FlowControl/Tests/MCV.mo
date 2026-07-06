@@ -26,7 +26,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=true,
     massFlow_set_par=0.1,
@@ -45,7 +45,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{0,0},{20,
@@ -73,7 +73,7 @@ Medium package used in the Test.
         origin={70,-20})));
   ThermofluidStream.Undirected.FlowControl.MCV mCV2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,10},
@@ -107,7 +107,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,10},
@@ -140,7 +140,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,10},
@@ -170,7 +170,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     setpointFromInput=true,
     massFlow_set_par=0.1,
@@ -260,7 +260,7 @@ Medium package used in the Test.
             178}})));
   ThermofluidStream.Undirected.FlowControl.MCV mCV6(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=false,
     massFlow_set_par=1,
@@ -284,7 +284,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV7(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=false,
     massFlow_set_par=1,
@@ -302,7 +302,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV8(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=false,
     massFlow_set_par=1,
@@ -334,7 +334,7 @@ Medium package used in the Test.
   ThermofluidStream.Undirected.FlowControl.MCV
                                     mCV9(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=false,
     massFlow_set_par=1,

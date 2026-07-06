@@ -34,12 +34,12 @@ model DifferenceSensor_Tp "Sensor for Temperature and pressure difference"
     annotation(Dialog(group="Output", enable=outputTemperature or outputPressure),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure) and filter_output));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+  parameter InitMode init=InitMode.SteadyState "Initialization mode for sensor output"
     annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure) and filter_output));
   parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature difference output"
-    annotation(Dialog(group="Output", enable=outputTemperature and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputTemperature and filter_output and init==InitMode.InitialOutput));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure difference output"
-    annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.InitialOutput));
 
   Interfaces.Inlet inletA(redeclare package Medium=MediumA)
     annotation (Placement(transformation(extent={{-120,20},{-80,60}})));
@@ -63,7 +63,7 @@ protected
   Real TB; //unit intentional not given to avoid warning
 
 initial equation
-  if filter_output and init==InitMode.steadyState then
+  if filter_output and init==InitMode.SteadyState then
     p=direct_p;
     T=direct_T;
   elseif filter_output then

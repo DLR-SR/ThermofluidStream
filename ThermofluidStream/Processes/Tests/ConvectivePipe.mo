@@ -8,7 +8,7 @@ model ConvectivePipe
 
   ThermalConvectionPipe thermalConvection(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.003,
     l=6.65)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}})));

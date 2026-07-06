@@ -71,7 +71,7 @@ model SimpleEngine "Simple steam engine"
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Water,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.015,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -80,7 +80,7 @@ model SimpleEngine "Simple steam engine"
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Water,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.015,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -89,7 +89,7 @@ model SimpleEngine "Simple steam engine"
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Water,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.015,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -98,7 +98,7 @@ model SimpleEngine "Simple steam engine"
   Processes.FlowResistance flowResistance6(
     redeclare package Medium = Water,
     m_flowStateSelect=StateSelect.prefer,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.015,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

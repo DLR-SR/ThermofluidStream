@@ -36,10 +36,10 @@ model SingleSensorSelect "Selectable sensor"
     annotation(Dialog(group="Output", enable=outputValue),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+  parameter InitMode init=InitMode.SteadyState "Initialization mode for sensor output"
     annotation(Dialog(group="Output", enable=outputValue and filter_output));
   parameter Real value_0(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity)) = 0 "Start value of sensor output"
-    annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputValue and filter_output and init==InitMode.InitialOutput));
 
 
 
@@ -60,7 +60,7 @@ protected
   Real direct_value(unit=ThermofluidStream.Sensors.Internal.getUnit(quantity));
 
 initial equation
-  if filter_output and init==InitMode.steadyState then
+  if filter_output and init==InitMode.SteadyState then
     value= direct_value;
   elseif filter_output then
     value = value_0;

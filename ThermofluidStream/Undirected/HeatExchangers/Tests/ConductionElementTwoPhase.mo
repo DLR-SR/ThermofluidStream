@@ -25,7 +25,7 @@ model ConductionElementTwoPhase
     h0_par=450e3) annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

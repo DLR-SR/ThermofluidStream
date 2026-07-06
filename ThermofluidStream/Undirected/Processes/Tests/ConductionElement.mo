@@ -15,7 +15,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     V(displayUnit="l") = 0.001,
     A=35,
@@ -43,7 +43,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement1(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     V(displayUnit="l") = 0.001,
     A=35,
     U=500,
@@ -69,7 +69,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement2(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     V(displayUnit="l") = 0.001,
     enforce_global_energy_conservation=true,
@@ -94,7 +94,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement3(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     V(displayUnit="l") = 0.001,
     A=35,
@@ -118,7 +118,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement4(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     V(displayUnit="l") = 0.001,
     enforce_global_energy_conservation=true,
@@ -143,7 +143,7 @@ meant for liquids with low compressablility.
   ThermofluidStream.Undirected.Processes.ConductionElement conductionElement5(
     redeclare package Medium = Medium,
     L=0.2,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     V(displayUnit="l") = 0.001,
     A=35,

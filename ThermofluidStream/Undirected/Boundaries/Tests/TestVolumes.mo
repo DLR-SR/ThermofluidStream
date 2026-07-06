@@ -43,7 +43,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-146,-90},{-126,-70}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -51,7 +51,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -100,7 +100,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-148,0},{-128,20}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -108,7 +108,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.01,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -142,7 +142,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{142,40},{162,60}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -150,7 +150,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{46,60},{66,80}})));
   ThermofluidStream.Processes.FlowResistance flowResistance6(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -175,7 +175,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{160,-80},{140,-60}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -183,7 +183,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{46,-30},{66,-10}})));
   Processes.FlowResistance flowResistance7(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -191,7 +191,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{46,-70},{66,-50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance8(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -199,7 +199,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{116,40},{136,60}})));
   Processes.FlowResistance flowResistance9(
     redeclare package Medium = MediumMix,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -217,7 +217,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-110,-100},{-90,-120}})));
   Processes.FlowResistance flowResistance10(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -226,7 +226,7 @@ Medium package used in the Test.
   BoundaryFore boundary_fore2(redeclare package Medium = Medium, p0_par=100000) annotation (Placement(transformation(extent={{-44,-120},{-24,-100}})));
   Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

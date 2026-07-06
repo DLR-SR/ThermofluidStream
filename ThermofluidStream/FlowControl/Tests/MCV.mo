@@ -21,7 +21,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,20},{70,40}})));
   ThermofluidStream.FlowControl.MCV mCV(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     setpointFromInput=true,
     massFlow_set_par=0.1,
@@ -44,7 +44,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.FlowControl.MCV mCV1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -72,7 +72,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
   ThermofluidStream.FlowControl.MCV mCV2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
@@ -103,7 +103,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,-70},{70,-50}})));
   ThermofluidStream.FlowControl.MCV mCV3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
@@ -131,7 +131,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,-100},{70,-80}})));
   ThermofluidStream.FlowControl.MCV mCV4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     massFlow_set_par=0.1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
@@ -162,7 +162,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{50,60},{70,80}})));
   ThermofluidStream.FlowControl.MCV mCV5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.volume_flow,
     setpointFromInput=true,
     massFlow_set_par=0.1,
@@ -202,7 +202,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{52,130},{72,150}})));
   ThermofluidStream.FlowControl.MCV mCV6(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     mode=ThermofluidStream.FlowControl.Internal.Types.MassflowControlValveMode.mass_flow,
     massFlow_set_par=1,
     volumeFlow_set_par=1) annotation (Placement(transformation(extent={{-8,130},

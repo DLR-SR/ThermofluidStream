@@ -53,7 +53,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{-126,20},{-106,40}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -61,7 +61,7 @@ Medium package used in the Test.
     annotation (Placement(transformation(extent={{68,26},{88,46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

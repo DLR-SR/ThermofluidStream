@@ -108,12 +108,12 @@ model FlowRes
     annotation (Placement(transformation(extent={{-98,76},{-78,96}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     massFlow_set_par=0.2) annotation (Placement(transformation(extent={{-68,38},{-48,58}})));
   FlowControl.MCV mCV1(
     redeclare package Medium = MediumAir,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     massFlow_set_par=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -209,12 +209,12 @@ model FlowRes
     annotation (Placement(transformation(extent={{-96,-26},{-76,-6}})));
   FlowControl.MCV mCV2(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     massFlow_set_par=0.2) annotation (Placement(transformation(extent={{-66,-62},{-46,-42}})));
   FlowControl.MCV mCV3(
     redeclare package Medium = MediumAir,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     massFlow_set_par=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -299,7 +299,7 @@ model FlowRes
     annotation (Placement(transformation(extent={{62,32},{82,52}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     m_flow_0=0.3,
     r=0.05,
     l=1,
@@ -428,7 +428,7 @@ model FlowRes
     annotation (Placement(transformation(extent={{44,-82},{64,-62}})));
   Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     m_flow_0=0.3,
     r=0.05,
     l=1,

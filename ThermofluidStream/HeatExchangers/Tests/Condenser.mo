@@ -93,7 +93,7 @@ model Condenser
 
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     m_flow_0=0.3,
     r=0.05,
     l=1,

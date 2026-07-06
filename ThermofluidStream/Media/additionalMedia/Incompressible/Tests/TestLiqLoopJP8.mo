@@ -23,7 +23,7 @@ model TestLiqLoopJP8 "Test of medium JP8 for a liquid loop"
 
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = TertiaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
@@ -55,7 +55,7 @@ model TestLiqLoopJP8 "Test of medium JP8 for a liquid loop"
     annotation (Placement(transformation(extent={{40,80},{60,100}})));
   ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium = SecondaryMedium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),

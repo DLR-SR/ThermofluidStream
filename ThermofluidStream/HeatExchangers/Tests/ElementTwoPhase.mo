@@ -22,7 +22,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{50,70},{70,90}})));
   FlowControl.MCV mCV(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.1,
     massFlow_set_par=0.1)
     annotation (Placement(transformation(extent={{20,70},{40,90}})));
@@ -50,7 +50,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
   FlowControl.MCV mCV1(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.1,
     massFlow_set_par=0.1)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
@@ -88,7 +88,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{50,40},{70,60}})));
   FlowControl.MCV mCV2(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.1,
     massFlow_set_par=0.1)
     annotation (Placement(transformation(extent={{20,40},{40,60}})));
@@ -116,7 +116,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{50,-90},{70,-70}})));
   FlowControl.MCV mCV3(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.1,
     massFlow_set_par=0.1)
     annotation (Placement(transformation(extent={{20,-90},{40,-70}})));
@@ -139,7 +139,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{-40,70},{-20,90}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)
@@ -152,7 +152,7 @@ model ElementTwoPhase
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarPressureLoss)

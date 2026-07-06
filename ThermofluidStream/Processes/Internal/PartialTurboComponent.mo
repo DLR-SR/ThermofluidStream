@@ -23,12 +23,12 @@ partial model PartialTurboComponent "Partial model of turbo component"
     annotation(Dialog(tab="Advanced", group="Regularization"));
   parameter StateSelect omegaStateSelect = if omega_from_input then StateSelect.default else StateSelect.prefer "State select for angular velocity"
     annotation(Dialog(tab="Advanced"));
-  parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.none "Initialization method for angular velocity"
+  parameter InitializationMethods initOmega = ThermofluidStream.Utilities.Types.InitializationMethods.NoInit "Initialization method for angular velocity"
     annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=not omega_from_input));
   parameter SI.AngularVelocity omega_0 = 0 "Initial value for angular velocity"
-    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.state)));
+    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.InitialState)));
   parameter SI.AngularAcceleration omega_dot_0 = 0 "Initial value for der(omega)"
-    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.derivative)));
+    annotation(Dialog(tab= "Initialization", group="Angular velocity", enable=(initOmega == InitializationMethods.InitialDerivative)));
   parameter Boolean initPhi = false "= true, if angle is initialized"
     annotation(Dialog(tab= "Initialization", group="Angle", enable=not omega_from_input),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Angle phi_0 = 0 "Initial value for angle"
@@ -75,11 +75,11 @@ protected
 
 
 initial equation
-  if initOmega == InitializationMethods.state then
+  if initOmega == InitializationMethods.InitialState then
     omega = omega_0;
-  elseif initM_flow == InitializationMethods.derivative then
+  elseif initM_flow == InitializationMethods.InitialDerivative then
     der(omega) = omega_dot_0;
-  elseif initM_flow == InitializationMethods.steadyState then
+  elseif initM_flow == InitializationMethods.SteadyState then
     der(omega) = 0;
   end if;
 

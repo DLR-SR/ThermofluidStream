@@ -20,7 +20,7 @@ Medium package used in the Test.
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,50},{-96,70}})));
   FlowControl.BasicControlValve valveLinear(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=5,
     redeclare function valveCharacteristics =
@@ -54,7 +54,7 @@ Medium package used in the Test.
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,-10},{-96,10}})));
   FlowControl.BasicControlValve valveParabolic(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=false,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=5,
@@ -77,7 +77,7 @@ Medium package used in the Test.
     T0_par(displayUnit="K") = 300) annotation (Placement(transformation(extent={{-116,-70},{-96,-50}})));
   FlowControl.BasicControlValve valveEqualPercentage(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs=5,
     redeclare function valveCharacteristics =

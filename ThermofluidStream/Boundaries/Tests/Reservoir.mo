@@ -23,7 +23,7 @@ model Reservoir "Test for Reservoir"
     height_0(displayUnit="m") = 0.05)
     annotation (Placement(transformation(extent={{-10,10},{10,30}})));
   Processes.Pump pump(redeclare package Medium=Medium,
-    initM_flow= ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow= ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_from_input=true,
     redeclare function dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
@@ -62,7 +62,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-78,32},{-58,52}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -70,7 +70,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-46,-66},{-26,-46}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (

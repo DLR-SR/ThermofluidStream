@@ -62,14 +62,14 @@ public
     annotation(Dialog(group="Output", enable=outputTemperature or outputPressure or outputMassFlowRate),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Time TC = 0.1 "Time constant of sensor output filter (PT1)"
     annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure or outputMassFlowRate) and filter_output));
-  parameter InitMode init=InitMode.steadyState "Initialization mode for sensor output"
+  parameter InitMode init=InitMode.SteadyState "Initialization mode for sensor output"
     annotation(Dialog(group="Output", enable=(outputTemperature or outputPressure or outputMassFlowRate) and filter_output));
   parameter Real T_0(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = 0 "Start value for temperature output"
-    annotation(Dialog(group="Output", enable=outputTemperature and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputTemperature and filter_output and init==InitMode.InitialOutput));
   parameter Real p_0(final quantity="Pressure", final unit=pressureUnit) = 0 "Start value for pressure output"
-    annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputPressure and filter_output and init==InitMode.InitialOutput));
   parameter Real m_flow_0(final quantity="MassFlowRate", final unit=massFlowUnit) = 0 "Start value for mass flow rate output"
-    annotation(Dialog(group="Output", enable=outputMassFlowRate and filter_output and init==InitMode.state));
+    annotation(Dialog(group="Output", enable=outputMassFlowRate and filter_output and init==InitMode.InitialOutput));
 
 
   Modelica.Blocks.Interfaces.RealOutput T_out(final quantity="ThermodynamicTemperature", final unit=temperatureUnit) = T if outputTemperature "Temperature output connector"
@@ -89,7 +89,7 @@ protected
   Real direct_m_flow; // unit intentionally not set to avoid Warning
 
 initial equation
-  if filter_output and init==InitMode.steadyState then
+  if filter_output and init==InitMode.SteadyState then
     p=direct_p;
     T=direct_T;
     m_flow=direct_m_flow;

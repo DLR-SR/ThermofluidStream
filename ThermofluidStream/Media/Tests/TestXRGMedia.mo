@@ -80,7 +80,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
         origin={-52,42})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = XRGMedia.CO2_ph,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.002,
     l=50,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
@@ -99,7 +99,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
         origin={76,6})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = XRGMedia.R134a_ph,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.005,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
@@ -162,7 +162,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
     m_flow_ref_set=1)
     annotation (Placement(transformation(extent={{-4,-18},{16,-38}})));
   Processes.ConductionElement conductionElement1(redeclare package Medium =
-        XRGMedia.R245fa_ph, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+        XRGMedia.R245fa_ph, initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -177,7 +177,7 @@ model TestXRGMedia "Test for five XRG Media with various components"
   Modelica.Blocks.Sources.Constant const(k=6300) annotation (Placement(transformation(extent={{-128,52},{-108,72}})));
   Processes.FlowResistance flowResistance8(
     redeclare package Medium = XRGMedia.R134a_ph,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.02,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)

@@ -33,7 +33,7 @@ package Tests
       h0_par=1000) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
     ThermofluidStream.Processes.FlowResistance flowResistance(
       redeclare package Medium = Medium,
-      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
       r(displayUnit="mm") = 0.01,
       l=10,
       redeclare function pLoss =
@@ -65,7 +65,7 @@ package Tests
       annotation (Placement(transformation(extent={{-28,60},{-8,80}})));
     ThermofluidStream.Processes.FlowResistance flowResistance1(
       redeclare package Medium = Medium,
-      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+      initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
       r(displayUnit="mm") = 0.01,
       l=10,
       redeclare function pLoss =

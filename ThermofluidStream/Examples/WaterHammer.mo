@@ -26,7 +26,7 @@ model WaterHammer "Pump water by using dynamic pressures"
 
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.025,
     l=25,
     redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
@@ -49,7 +49,7 @@ model WaterHammer "Pump water by using dynamic pressures"
     redeclare package Medium = Medium) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.FlowControl.CheckValve checkValve(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state)
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState)
     annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},

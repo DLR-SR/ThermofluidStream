@@ -57,7 +57,7 @@ model Inversion
   ThermofluidStream.Idealized.Topology.JunctionT2 mixingPreheater(displayInstanceName=true, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{10,-30},{-10,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureTurbineStage(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.NoInit,
     m_flow_0=1,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,

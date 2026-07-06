@@ -21,7 +21,7 @@ model Test_EdgedBend
     T0_par=293.15) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Processes.Pipes.EdgedBend edgedBend(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     d=1e-2,
     delta=1.5707963267949,
     ks=1e-6)       annotation (Placement(transformation(extent={{-10,-10},{10,10}})));

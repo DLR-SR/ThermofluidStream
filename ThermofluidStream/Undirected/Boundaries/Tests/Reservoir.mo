@@ -26,7 +26,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-66,-42},{-46,-22}})));
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss =
@@ -35,7 +35,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss =
@@ -63,7 +63,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-66,58},{-46,78}})));
   ThermofluidStream.Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss =
@@ -72,7 +72,7 @@ model Reservoir "Test for Reservoir"
     annotation (Placement(transformation(extent={{-32,20},{-12,40}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.1,
     l=10,
     redeclare function pLoss =

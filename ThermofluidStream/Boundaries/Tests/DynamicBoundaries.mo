@@ -18,7 +18,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
   Sink sink(redeclare package Medium=Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
@@ -38,7 +38,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
   Sink sink1(redeclare package Medium=Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{60,-50},{80,-30}})));
   Processes.FlowResistance flowResistance1(redeclare package Medium=Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     r(displayUnit="mm") = 0.005,
     l=10,
@@ -76,7 +76,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     annotation (Placement(transformation(extent={{60,50},{80,70}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.005,
     l=10,
     computeL=false,
@@ -108,7 +108,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     annotation (Placement(transformation(extent={{60,-70},{80,-50}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     r(displayUnit="mm") = 0.005,
     l=10,
@@ -133,7 +133,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     annotation (Placement(transformation(extent={{60,-90},{80,-70}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=1,
     r(displayUnit="mm") = 0.005,
     l=10,
@@ -158,7 +158,7 @@ model DynamicBoundaries "Test for DynamicInflow and Outflow"
     annotation (Placement(transformation(extent={{60,-30},{80,-10}})));
   Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=-1,
     r(displayUnit="mm") = 0.005,
     l=10,

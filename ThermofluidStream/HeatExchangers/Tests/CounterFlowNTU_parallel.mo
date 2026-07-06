@@ -128,7 +128,7 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(extent={{-136,10},{-156,30}})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumB,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -136,7 +136,7 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(extent={{20,22},{0,42}})));
   Processes.FlowResistance flowResistanceB1(
     redeclare package Medium = MediumB,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -144,7 +144,7 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(extent={{12,-2},{-8,18}})));
   Processes.FlowResistance flowResistanceA2(
     redeclare package Medium = MediumA,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -152,7 +152,7 @@ model CounterFlowNTU_parallel
     annotation (Placement(transformation(extent={{-78,34},{-58,54}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumA,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r=0.05,
     l=1,
     redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (

@@ -41,12 +41,12 @@ model HeatPump
   Processes.Compressor compressor(
     redeclare package Medium = Medium,
     L=1e6,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0,
     omega_from_input=false,
     enableOutput=true,
     outputQuantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps,
-    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     initPhi=true,
     redeclare function dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
@@ -60,7 +60,7 @@ model HeatPump
   FlowControl.BasicControlValve controlValve(
     redeclare package Medium = Medium,
     L=5000,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     invertInput=true,
     flowCoefficient=ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypesBasic.Kvs,
     Kvs(displayUnit="m3/s") = 0.18,
@@ -108,14 +108,14 @@ model HeatPump
         origin={-40,-120})));
   Processes.Fan fan(
     redeclare package Medium = Air,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_from_input=true,
     redeclare function dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
     annotation (Placement(transformation(extent={{-60,98},{-40,78}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     omega_from_input=true,
     redeclare function dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100)) annotation (

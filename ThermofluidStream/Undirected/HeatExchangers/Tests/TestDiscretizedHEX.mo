@@ -50,7 +50,7 @@ model TestDiscretizedHEX
     annotation (Placement(transformation(extent={{18,22},{38,42}})));
   Processes.FlowResistance flowResistanceA(
     redeclare package Medium = MediumAir,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=1,
     r=0.05,
     l=1,
@@ -78,7 +78,7 @@ model TestDiscretizedHEX
         origin={-4,16})));
   Processes.FlowResistance flowResistanceB(
     redeclare package Medium = MediumRefrigerant,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     m_flow_0=0.3,
     r=0.05,
     l=1,

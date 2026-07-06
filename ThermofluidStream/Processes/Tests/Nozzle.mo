@@ -17,7 +17,7 @@ Medium model for the test. Can be anything.
     A_out=0.01) annotation (Placement(transformation(extent={{10,10},{30,30}})));
   FlowResistance flowResistance(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=10,
     redeclare function pLoss = Internal.FlowResistance.laminarTurbulentPressureLoss (
@@ -33,7 +33,7 @@ Medium model for the test. Can be anything.
     A_out=0.00015) annotation (Placement(transformation(extent={{10,-30},{30,-10}})));
   FlowResistance flowResistance1(
     redeclare package Medium = Medium,
-    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
+    initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.InitialState,
     r(displayUnit="mm") = 0.01,
     l=10,
     redeclare function pLoss =
