@@ -52,7 +52,7 @@ model MCV "Flow rate control valve"
   Medium.Density rho_in = Medium.density(inlet.state) "Inlet density";
   SI.VolumeFlowRate V_flow = m_flow/rho_in "Inlet volume flow rate";
 
-  constant SI.Pressure eps = 1;
+  constant SI.Pressure eps = 1 "Threshold for visual warning";
 
 protected
   SI.MassFlowRate m_flow_set "Setpoint mass flow rate";
