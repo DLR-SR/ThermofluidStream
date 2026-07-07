@@ -7,8 +7,6 @@ partial model PartialTurboComponent "Partial model of turbo component"
 
   parameter Boolean omega_from_input = false "= true, if omega input connector is enabled"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean enableAccessHeatPort = false "= true, if heatPort is enabled"
-    annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.MomentOfInertia J_p = 5e-4 "Moment of inertia"
     annotation(Dialog(group="Parameters", enable=not omega_from_input));
   parameter Boolean enableOutput = false "= true, if selectable quantity output connector is enabled"
@@ -38,8 +36,6 @@ partial model PartialTurboComponent "Partial model of turbo component"
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Modelica.Blocks.Interfaces.RealInput omega_input(unit = "rad/s") = omega if omega_from_input "Angular velocity input connector [rad/s]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}}, origin={0,-120}, rotation=90)));
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatport(Q_flow = Q_t) if enableAccessHeatPort "HeatPort"
-    annotation (Placement(transformation(extent={{-70,-110},{-50,-90}})));
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Quantity output connector"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={60,-110})));
 
@@ -58,7 +54,6 @@ function getQuantity = Sensors.Internal.getFlowQuantity (
       </html>"));
 
   SI.Power W_t "Power (technichal work flow rate)";
-  SI.Power Q_t "Heat flow rate";
   SI.Torque tau_st "Steady-state torque";
 
 protected
@@ -97,12 +92,9 @@ equation
   W_t = tau_st*omega;
   dh = (m_flow*W_t)/(m_flow^2 + (m_flow_reg)^2);
   if noEvent(W_t >= 0) then
-    // if work is given to fluid, dump access heat to port
-    Q_t = W_t - m_flow*dh;
     tau_normalized = tau_st;
   else
     // if work is taken from fluid, reduce tau, so that the work can be taken from the fluid
-    Q_t = 0;
     tau_normalized = dh*m_flow/(noEvent(if abs(omega)>omega_reg then omega else (if omega < 0 then -omega_reg else omega_reg)));
   end if;
 
@@ -137,7 +129,6 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Line(visible=enableAccessHeatPort, points={{-60,-100},{-60,-68},{-38,-46}}, color={191,0,0}),
         Line(
           visible=enableOutput,
           points={{60,-100},{60,-68},{38,-46}},
@@ -145,11 +136,11 @@ equation
         Line(visible=omega_from_input,
           points={{0,-100},{0,-60}},
           color={0,0,127}),
-      Rectangle(visible=not omega_from_input,
-        lineColor={64,64,64},
-        fillColor={191,191,191},
-        fillPattern=FillPattern.HorizontalCylinder,
-        extent={{-100.0,-10.0},{-50.0,10.0}},
+        Rectangle(visible=not omega_from_input,
+          lineColor={64,64,64},
+          fillColor={191,191,191},
+          fillPattern=FillPattern.HorizontalCylinder,
+          extent={{-100.0,-10.0},{-50.0,10.0}},
           rotation=90),
         Ellipse(
           extent={{-60,60},{60,-60}},
@@ -159,7 +150,7 @@ equation
           fillPattern=FillPattern.Solid)}),
           Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work, an optional heatport to dump heat that the fluid cannot take on, and an optional output for a measureable quantity.</p>
+<p>This model has an inlet and an outlet, representing a single fluid stream, as well as a flange to exchange mechanical work. And also an optional output for a measureable quantity.</p>
 <p>The component does the following:</p>
 <ol>
 <li>Compute the pressure differential and the moment on the flange, that would result in static operation from characteristic curves (static moment). These curves differ for different components.</li>
@@ -171,7 +162,6 @@ equation
 <ul>
 <li>The optional output might be useful for simplifying the overall model in a control loop, since no additional sensor is required. </li>
 <li>If one wants to prescribe a speed of the component, instead of being interested in the omega dynamics, enable omegaFromInput.</li>
-<li>The heatport is only of interest, if the overall energy of the system must be conserved.</li>
 </ul>
 </html>"));
 end PartialTurboComponent;
