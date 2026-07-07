@@ -14,7 +14,7 @@ model PCV "Pressure and pressure-drop control valve"
     annotation(Dialog(tab="Advanced"));
   Modelica.Blocks.Interfaces.RealInput pressure_set_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90, origin={0,-120})));
-  constant SI.Pressure eps = 1;
+  constant SI.Pressure eps = 1 "Threshold for visual warning";
 
   SI.Pressure dp_raw "Not normalized desired dp";
 
