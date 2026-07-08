@@ -29,7 +29,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{-30,-80},{-10,-60}})));
@@ -38,7 +38,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
@@ -66,7 +66,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{-32,20},{-12,40}})));
@@ -75,7 +75,7 @@ model Reservoir "Test for Reservoir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=100))
     annotation (Placement(transformation(extent={{30,20},{50,40}})));

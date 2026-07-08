@@ -34,7 +34,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
+    redeclare model dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,40},{10,20}})));
 
   Modelica.Blocks.Sources.Constant pump_speed_rad_s(k=800)
@@ -46,7 +46,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
+    redeclare model dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   tf.Processes.Tests.Power powerSource1(P=8000, tau_max=150)
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
@@ -62,7 +62,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     enableAccessHeatPort=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
+    redeclare model dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =false, k_p_input=1e7)) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Modelica.Blocks.Sources.Constant pump2_speed_rad_s(k=3200)
     annotation (Placement(transformation(extent={{40,-70},{20,-50}})));
@@ -77,7 +77,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare model dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input=0.0006,
         k_p_input=1e8)) annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
@@ -95,7 +95,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     J_p=10,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
+    redeclare model dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =true, omega_D(displayUnit="rad/s") = 100))
     "Design point: V_flow=100L/min at 100rad/s with a pressure increase of 5 bar"
     annotation (Placement(transformation(extent={{-10,90},{10,70}})));

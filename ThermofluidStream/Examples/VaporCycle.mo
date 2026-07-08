@@ -87,7 +87,7 @@ model VaporCycle
     redeclare package Medium = SecondaryMedium,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-66,56},{-46,76}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm(
@@ -100,7 +100,7 @@ model VaporCycle
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{82,-68},{62,-48}})));
   Sensors.MultiSensor_Tpm multiSensor_Tpm1(
@@ -211,7 +211,7 @@ model VaporCycle
   Processes.Compressor compressor(
     redeclare package Medium = RefrigerantMedium,
     omega_from_input=true,
-    redeclare function dp_tau_compressor =
+    redeclare model dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         kappaFromMedia=false,
         kappa_fixed=1.13,

@@ -15,7 +15,7 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.25,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,-70},{-10,-50}})));
   Boundaries.Source source2_1(
@@ -49,7 +49,7 @@ model VenturiPump "Pumping of liquid water using the venturi effect"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=0.1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,

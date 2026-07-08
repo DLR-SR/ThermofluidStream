@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
-function dp_tau_centrifugal "Model of a centrifugal pump"
+model dp_tau_centrifugal "Model of a centrifugal pump"
 
 
   extends partial_dp_tau;
@@ -41,7 +41,6 @@ function dp_tau_centrifugal "Model of a centrifugal pump"
   input Real Re_mod_min(unit="1") = 1e2 "Minimum modified Reynolds number"
     annotation(Dialog(tab="Advanced", enable=true));
   input String name = getInstanceName() "Hack to access the instance name";
-protected
   Real alpha(unit="1") = TDH_D/TDH_D_ref "Pressure scaling factor";
   Real beta(unit="1") = omega_D/omega_D_ref "Speed scaling factor";
   Real gamma(unit="1") = V_flow_D/V_flow_D_ref "Flow scaling factor";
@@ -51,7 +50,6 @@ protected
   SI.KinematicViscosity nu_in = mu_in* ( if useLegacyReynolds then 1 else v_in) "Inlet kinematic viscosity";
   SI.SpecificVolume v_ref = 1/rho_ref "Reference specific volume";
 
-  SI.Power W_t "Power (technical work flow rate)";
   SI.Length TDH "Total dynamic head";
   SI.VolumeFlowRate V_flow "Volume flow rate";
 

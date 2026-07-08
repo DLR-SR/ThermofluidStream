@@ -8,12 +8,12 @@ model TestJunction "Test for the undirected junction"
 <p>This is the replaceable package that determines the medium of the Test. </p>
 </html>"));
 
-  replaceable function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+  replaceable model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
     material=ThermofluidStream.Processes.Internal.Material.wood)
     constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
-    "Pressure loss function for all Flow resistances"
+    "Pressure loss model for all Flow resistances"
     annotation(choicesAllMatching = true, Documentation(info="<html>
-<p>This is the pressure loss function used for all resistances except the two on the outlets of the right two cases.</p>
+<p>This is the pressure loss model used for all resistances except the two on the outlets of the right two cases.</p>
 </html>"));
 
   ThermofluidStream.Boundaries.Source source(redeclare package Medium=Medium,
@@ -35,14 +35,14 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,50},{-26,70}})));
   ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,10},{-26,30}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium, p0_par=2000000)
@@ -55,14 +55,14 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,10},{46,30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,50},{46,70}})));
   ThermofluidStream.Topology.JunctionT1 junctionT1_1(redeclare package Medium=Medium,
     assumeConstantDensity=false,
@@ -93,14 +93,14 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,-30},{-26,-10}})));
   ThermofluidStream.Processes.FlowResistance flowResistance9(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-46,-70},{-26,-50}})));
   ThermofluidStream.Boundaries.Source source7(redeclare package Medium = Medium, p0_par=2000000)
     annotation (Placement(transformation(extent={{0,-30},{20,-10}})));
@@ -111,14 +111,14 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,-70},{46,-50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance11(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{26,-30},{46,-10}})));
   ThermofluidStream.Boundaries.Sink sink8(redeclare package Medium = Medium,
       p0_par=100000)
@@ -143,21 +143,21 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-136,30},{-116,50}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss = pLoss)
+    redeclare model pLoss = pLoss)
     annotation (Placement(transformation(extent={{-136,-50},{-116,-30}})));
   ThermofluidStream.Processes.FlowResistance flowResistance6(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1000))
     annotation (Placement(transformation(extent={{116,-50},{136,-30}})));
@@ -166,7 +166,7 @@ model TestJunction "Test for the undirected junction"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.1,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
          k=1000))
     annotation (Placement(transformation(extent={{116,30},{136,50}})));

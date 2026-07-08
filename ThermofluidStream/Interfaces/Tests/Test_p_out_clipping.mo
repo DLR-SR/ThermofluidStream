@@ -26,7 +26,7 @@ Medium package used in the Test.
     l=1,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=100, k2=50))
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Processes.Fan fan(redeclare package Medium = Medium,
@@ -36,7 +36,7 @@ Medium package used in the Test.
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=1,
     initPhi=true,
-    redeclare function dp_tau_fan =
+    redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop)
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
   FlowControl.BasicControlValve basicControlValve(redeclare package Medium = Medium,

@@ -29,7 +29,7 @@ Medium model for the test. Can be anything.
     computeL=true,
     r=0.1,
     l=100,
-    redeclare function pLoss = tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1000,
       k2=100))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
@@ -42,7 +42,7 @@ Medium model for the test. Can be anything.
     L_value=1000,
     r=0.02,
     l=100,
-    redeclare function pLoss =
+    redeclare model pLoss =
         tf.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
@@ -54,7 +54,7 @@ Medium model for the test. Can be anything.
     L_value=30000,
     r=0.075,
     l=10,
-    redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 
@@ -71,7 +71,7 @@ Medium model for the test. Can be anything.
     L_value=30000,
     r=0.075,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));

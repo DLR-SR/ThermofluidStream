@@ -40,7 +40,7 @@ model Tank_fillingClosedTank
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=false,
@@ -72,7 +72,7 @@ model Tank_fillingClosedTank
   Processes.FlowResistance flowResistance3(redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{34,-10},{54,10}})));

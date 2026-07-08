@@ -11,14 +11,14 @@ model TestSimpleLoopJP8DryAir "Test of a simple cooling loop using JP8DryAir"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
     pressureDropUnit=ThermofluidStream.Types.PressureUnit.kPa)
     annotation (Placement(transformation(extent={{60,30},{40,50}})));
 
   ThermofluidStream.Processes.Pump pump(
     redeclare package Medium = TertiaryMedium,
     omega_from_input=true,
-    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
+    redeclare model dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
           useLegacyReynolds=false)) annotation (Placement(transformation(extent={{60,-20},{80,0}})));
 
   ThermofluidStream.Processes.ConductionElement conductionElement(

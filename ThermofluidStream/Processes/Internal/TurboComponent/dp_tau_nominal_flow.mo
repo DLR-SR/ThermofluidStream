@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
-function dp_tau_nominal_flow "Pump model with the nominal massflow model"
+model dp_tau_nominal_flow "Pump model with the nominal massflow model"
   extends partial_dp_tau;
 
   input Boolean parametrizeByDesignPoint= false "= true, if pump characteristic curve is computed from one design point"
@@ -22,7 +22,6 @@ function dp_tau_nominal_flow "Pump model with the nominal massflow model"
   input Real k_fric_input(unit="N.s/(m2)") = 1e-2 "Linear friction factor"
     annotation(Dialog(group="Direct Parameters", enable=not parametrizeByDesignPoint));
 
-protected
   SI.SpecificVolume v_in = 1/max(rho_min, Medium.density(state_in)) "Inlet specific volume";
 
   SI.VolumeFlowRate V_flow_nominal "Nominal volume flow rate";

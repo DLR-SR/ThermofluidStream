@@ -1,16 +1,16 @@
 within ThermofluidStream.Processes;
 model Fan "Fan using ideal gas assumptions"
-  extends Internal.PartialTurboComponent(redeclare function dp_tau=dp_tau_fan);
+  extends Internal.PartialTurboComponent(redeclare model dp_tau=dp_tau_fan);
 
-  replaceable function dp_tau_fan = Internal.TurboComponent.pleaseSelect_dp_tau
+  replaceable model dp_tau_fan = Internal.TurboComponent.pleaseSelect_dp_tau
     constrainedby Internal.TurboComponent.partial_dp_tau(
       redeclare package Medium = Medium) "Fan characteristic curve"
       annotation(choices(
-        choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
+        choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select model",
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
         Documentation(info="<html>
 <p>
-Selectable function to choose between different fan models.
+Selectable model to choose between different fan models.
 </p>
 </html>"));
 

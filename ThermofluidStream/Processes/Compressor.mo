@@ -1,19 +1,19 @@
 within ThermofluidStream.Processes;
 model Compressor "Compressor using ideal gas assumptions"
 
-  extends Internal.PartialTurboComponent(redeclare function dp_tau =
+  extends Internal.PartialTurboComponent(redeclare model dp_tau =
         dp_tau_compressor);
 
-  replaceable function dp_tau_compressor =
+  replaceable model dp_tau_compressor =
       Internal.TurboComponent.pleaseSelect_dp_tau
     constrainedby Internal.TurboComponent.partial_dp_tau(
       redeclare package Medium = Medium) "Compressor characteristic curve"
     annotation(choices(
-        choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
+        choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select model",
         choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop "Fixed isentropic efficiency"),
       Documentation(info="<html>
 <p>
-Selectable function to choose between different compressor models.
+Selectable model to choose between different compressor models.
 </p>
 </html>"));
 

@@ -1,16 +1,16 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function pleaseSelectPressureLoss "Please select pressure loss function"
+model pleaseSelectPressureLoss "Please select pressure loss model"
   extends Internal.FlowResistance.partialPressureLoss;
 
 algorithm
-  assert(false, "Please select pressure loss function");
+  assert(false, "Please select pressure loss model");
 
   pressureLoss :=0;
 
   annotation (Documentation(info="<html>
 <p>
-Pressure loss function without actual equations with an always failing assert to
-output a meaningful error, when the user forgot to select a function. This should
+Pressure loss model without actual equations with an always failing assert to
+output a meaningful error, when the user forgot to select a model. This should
 be used as a default.
 </p>
 </html>"));

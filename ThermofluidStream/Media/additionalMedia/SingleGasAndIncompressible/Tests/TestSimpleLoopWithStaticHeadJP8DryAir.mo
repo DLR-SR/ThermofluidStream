@@ -11,14 +11,14 @@ model TestSimpleLoopWithStaticHeadJP8DryAir "Test of a cooling loop with static 
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
     pressureDropUnit=ThermofluidStream.Types.PressureUnit.kPa)
     annotation (Placement(transformation(extent={{0,50},{-20,70}})));
 
   ThermofluidStream.Processes.Pump pump(
     redeclare package Medium = TertiaryMedium,
     omega_from_input=true,
-    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
+    redeclare model dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
           useLegacyReynolds=false)) annotation (Placement(transformation(extent={{70,-30},{90,-10}})));
 
   ThermofluidStream.Processes.ConductionElement conductionElement(

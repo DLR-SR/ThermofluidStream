@@ -7,7 +7,7 @@ model TestFlowResistance "Test for the undirected flow resistance"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         .ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Boundaries.BoundaryRear boundary_rear(
@@ -34,7 +34,7 @@ model TestFlowResistance "Test for the undirected flow resistance"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.01,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Boundaries.BoundaryRear boundary_rear1(

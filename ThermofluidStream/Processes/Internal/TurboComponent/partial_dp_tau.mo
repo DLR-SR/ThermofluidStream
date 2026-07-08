@@ -1,7 +1,6 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
-partial function partial_dp_tau "Compute dp and tau_st of a TurboComponent from the current state"
+partial model partial_dp_tau "Compute dp and tau_st of a TurboComponent from the current state"
 
-  extends Modelica.Icons.Function;
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
@@ -19,8 +18,8 @@ Medium model needet to compute properties from the inlet_state.
   output SI.Pressure dp "Pressure difference";
   output SI.Torque tau_st "Steady state torque";
 
-  annotation(Inline=true, Documentation(info="<html>
-<p>This function computes the pressure differential and the moment needed for static operation of a partialTurboComponent in its current state. </p>
-<p>By changing this function the partialTurboComponent implements different kinds of turbo components like fans, pumps, compressors, turbines, etc.</p>
+  annotation(Documentation(info="<html>
+<p>This model computes the pressure differential and the moment needed for static operation of a partialTurboComponent in its current state. </p>
+<p>By changing this model the partialTurboComponent implements different kinds of turbo components like fans, pumps, compressors, turbines, etc.</p>
 </html>"));
 end partial_dp_tau;

@@ -38,7 +38,7 @@ model Tank_selfDraining
   Processes.FlowResistance flowResistance3(redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{-56,10},{-36,30}})));
@@ -51,7 +51,7 @@ model Tank_selfDraining
     redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{-52,-22},{-32,-2}})));
@@ -59,7 +59,7 @@ model Tank_selfDraining
     redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{30,-54},{50,-34}})));
@@ -67,7 +67,7 @@ model Tank_selfDraining
     redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{26,-34},{46,-14}})));

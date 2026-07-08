@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function zetaPressureLoss "Pressure loss coefficient function"
+model zetaPressureLoss "Pressure loss coefficient model"
   extends Internal.FlowResistance.partialPressureLoss;
 
   input Real zeta( unit = "1") "Pressure loss coefficient (dp = zeta*rho/2*v^2)"
@@ -10,7 +10,6 @@ function zetaPressureLoss "Pressure loss coefficient function"
   input SI.Area A = Modelica.Constants.pi*r*r "Cross-sectional area"
     annotation(Dialog(group="Cross-sectional area", enable = not fromGeometry));
 
-protected
   SI.Area A_zeta "Cross-sectional area";
 
 algorithm

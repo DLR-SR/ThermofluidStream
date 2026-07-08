@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function referencePressureLoss "Pressure loss function based on reference values"
+model referencePressureLoss "Pressure loss model based on reference values"
   extends Internal.FlowResistance.partialPressureLoss;
 
   input SI.Pressure dp_ref "Reference pressure loss"
@@ -24,7 +24,7 @@ algorithm
 
   annotation (Documentation(info="<html>
 <p>
-This function calculates the pressure drop according a reference pressure
+This model calculates the pressure drop according a reference pressure
 drop at a reference mass flow rate and reference density.
 </p>
 <blockquote><pre>

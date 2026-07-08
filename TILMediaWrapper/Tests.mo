@@ -36,7 +36,7 @@ package Tests
       initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
       r(displayUnit="mm") = 0.01,
       l=10,
-      redeclare function pLoss =
+      redeclare model pLoss =
           ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=100, k2=100))
       annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
     Modelica.Blocks.Sources.Ramp ramp(
@@ -68,7 +68,7 @@ package Tests
       initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
       r(displayUnit="mm") = 0.01,
       l=10,
-      redeclare function pLoss =
+      redeclare model pLoss =
           ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (                       k=1000, k2=1000))
       annotation (Placement(transformation(extent={{-12,30},{8,50}})));
     ThermofluidStream.Boundaries.PhaseSeparator phaseSeparator(

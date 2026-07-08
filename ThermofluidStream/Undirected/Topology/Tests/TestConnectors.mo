@@ -81,7 +81,7 @@ model TestConnectors "Test for the connectors"
     computeL=false,
     r=0.01,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         .ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
   Processes.FlowResistance flowResistance2(
@@ -90,7 +90,7 @@ model TestConnectors "Test for the connectors"
     computeL=false,
     r=0.01,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         .ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
   Boundaries.BoundaryRear boundary_rear4(redeclare package Medium = Medium, p0_par=100000)
@@ -123,20 +123,20 @@ model TestConnectors "Test for the connectors"
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.005,
     l=5,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-40,-78},{-20,-58}})));
   ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(extent={{20,-78},{40,-58}})));
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium, initM_flow = ThermofluidStream.Utilities.Types.InitializationMethods.state,
     l=5,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
   r(displayUnit="mm") = 0.005)
     annotation (Placement(transformation(

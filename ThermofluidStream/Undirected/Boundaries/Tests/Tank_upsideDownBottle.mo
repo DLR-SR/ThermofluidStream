@@ -54,7 +54,7 @@ model Tank_upsideDownBottle
   redeclare package Medium = Medium,
     r=0.03,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{0,-80},{-20,-60}})));
@@ -62,7 +62,7 @@ model Tank_upsideDownBottle
   redeclare package Medium = Medium,
     r=0.01,
     l=0.02,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1)) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},

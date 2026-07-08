@@ -119,7 +119,7 @@ meant for liquids with low compressablility.
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.003,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
         Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
 equation

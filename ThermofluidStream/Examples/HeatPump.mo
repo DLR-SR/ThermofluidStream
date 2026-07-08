@@ -48,7 +48,7 @@ model HeatPump
     outputQuantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.m_flow_kgps,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
-    redeclare function dp_tau_compressor =
+    redeclare model dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=200,
         m_flow_ref=1e-2,
@@ -88,7 +88,7 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -100,7 +100,7 @@ model HeatPump
     l=0.5,
     L_value=100,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.galvanizedIron))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -110,14 +110,14 @@ model HeatPump
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
-    redeclare function dp_tau_fan =
+    redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100))
     annotation (Placement(transformation(extent={{-60,98},{-40,78}})));
   Processes.Fan fan1(
     redeclare package Medium = Air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
-    redeclare function dp_tau_fan =
+    redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=100)) annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},

@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function linearQuadraticPressureLoss "Linear-quadratic pressure loss function"
+model linearQuadraticPressureLoss "Linear-quadratic pressure loss model"
   extends Internal.FlowResistance.partialPressureLoss;
 
   input Real k(unit="Pa.s/kg") = 0 "Linear resistance coefficient"

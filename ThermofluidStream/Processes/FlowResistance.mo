@@ -7,37 +7,37 @@ model FlowResistance "Flow resistance model"
   import Modelica.Constants.pi "Constant Pi";
   import ThermofluidStream.Processes.Internal.ShapeOfResistance "Shape of cross sectional area";
 
-  replaceable function pLoss = Internal.FlowResistance.pleaseSelectPressureLoss
-    constrainedby Internal.FlowResistance.partialPressureLoss "Pressure loss function"
+  replaceable model pLoss = Internal.FlowResistance.pleaseSelectPressureLoss
+    constrainedby Internal.FlowResistance.partialPressureLoss "Pressure loss model"
     annotation (
       choices(
         choice(
-          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
-          "No function selected"),
+          redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
+          "No model selected"),
         choice(
-          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
+          redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss
           "Linear-quadratic"),
         choice(
-          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss
+          redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss
           "Laminar (Hagen-Poiseuille)"),
         choice(
-          redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
+          redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss
           "Laminar-turbulent (Cheng2008)"),
         choice(
-          redeclare function pLoss =
+          redeclare model pLoss =
             ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland
           "Laminar-turbulent (Haaland1983)"),
         choice(
-          redeclare function pLoss =
+          redeclare model pLoss =
             ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss
           "Fixed pressure loss coefficient"),
         choice(
-          redeclare function pLoss =
+          redeclare model pLoss =
             ThermofluidStream.Processes.Internal.FlowResistance.referencePressureLoss
           "Use reference point (dp, m_flow, d)_ref")),
       Documentation(info="<html>
 <p>
-This function computes the pressure loss of the fluid depending on the massflow,
+This model computes the pressure loss of the fluid depending on the massflow,
 some medium properties and the geometry of the pipe.
 </p>
 </html>"));
@@ -85,12 +85,19 @@ some medium properties and the geometry of the pipe.
   final parameter SI.Area areaHydraulic= pi*D_h*D_h*1/4 "Hydraulic cross-sectional area";
   Real phi(unit = "1", min=0, max=1) "Normalized pressure for coloring the flow resistance";
 
+  pLoss pressureLoss(
+    m_flow=m_flow,
+    rho=rho_in,
+    mu=mu_in,
+    r=D_h/2,
+    l=l);
+
 protected
   Medium.Density rho_in = max(rho_min, Medium.density(inlet.state)) "Inlet density";
   Medium.DynamicViscosity mu_in = Medium.dynamicViscosity(inlet.state) "Inlet dynamic viscosity";
 
 equation
-  dp = -pLoss(m_flow, rho_in, mu_in, D_h/2, l);
+  dp = -pressureLoss.pressureLoss;
   h_out = h_in;
   Xi_out = Xi_in;
   phi = if dropOfCommons.displayColor then
@@ -153,7 +160,7 @@ equation
           textColor={0,0,0},
           textString=DynamicSelect(if true then "dp in bar" else "", "dp = " + String(-dp/1e5, significantDigits=pressureDropSignificantDigits)+ " bar"))}),  Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Implementation of a flow resistance pipe with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). </p>
+<p>Implementation of a flow resistance pipe with different selectable flow resistance models (laminar, laminar-turbulent, linear-quadratic). </p>
 <p>The pressure drop can be displayed with the coloring (<code>displayColor</code> in the <strong>DropOfCommons</strong>). The parameter <code>dp_ref_color</code> can be adjusted depending on expected pressure drop and intensity of coloring. Coloring ranges from 0 to 100 &percnt; red, with 100 &percnt; red at <code>dp = dp_ref_color</code>.</p>
 <p><code>dp_ref_color</code> needs to be defined according to the use case.</p>
 </html>"));

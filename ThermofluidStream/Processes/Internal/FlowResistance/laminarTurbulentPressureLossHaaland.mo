@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function laminarTurbulentPressureLossHaaland "Pressure loss function (Haaland 1983) for laminar, transient and turbulent flow regimes"
+model laminarTurbulentPressureLossHaaland "Pressure loss model (Haaland 1983) for laminar, transient and turbulent flow regimes"
   extends Internal.FlowResistance.partialPressureLoss;
 
   import Modelica.Constants.pi;
@@ -17,7 +17,6 @@ function laminarTurbulentPressureLossHaaland "Pressure loss function (Haaland 19
   input ThermofluidStream.Processes.Internal.Material material = ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation (Dialog(enable=true));
 
-protected
   SI.Length ks "Surface roughness";
 
   SI.Length diameter=r*2 "Diameter";

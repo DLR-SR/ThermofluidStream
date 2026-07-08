@@ -198,7 +198,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{28,70},{48,90}})));
   Processes.FlowResistance flowResistance(
@@ -207,7 +207,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{30,30},{50,50}})));
   Processes.FlowResistance flowResistance1(
@@ -216,7 +216,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{28,0},{48,20}})));
   Processes.FlowResistance flowResistance2(
@@ -225,7 +225,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -236,7 +236,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
@@ -247,7 +247,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,

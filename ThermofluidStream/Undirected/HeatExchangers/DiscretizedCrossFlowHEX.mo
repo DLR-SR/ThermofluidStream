@@ -7,7 +7,7 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
     redeclare package Medium = MediumA,
     each r(each displayUnit="mm") = 0.025,
     each l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50)) annotation (Placement(transformation(extent={{-20,-70},{-40,-50}})));
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (each k=50)) annotation (Placement(transformation(extent={{-20,-70},{-40,-50}})));
   Topology.JunctionMN junctionMN(
     redeclare package Medium = MediumA,
     N=1,

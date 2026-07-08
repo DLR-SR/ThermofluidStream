@@ -26,14 +26,14 @@ model TestLiqLoopJP8DryAir "Test of medium JP8DryAir for a liquid loop"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
     pressureDropUnit=ThermofluidStream.Types.PressureUnit.kPa,
     pressureDropSignificantDigits=2) annotation (Placement(transformation(extent={{60,56},{40,76}})));
 
   ThermofluidStream.Processes.Pump pump(
     redeclare package Medium = TertiaryMedium,
     omega_from_input=true,
-    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
+    redeclare model dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
           useLegacyReynolds=false)) annotation (Placement(transformation(extent={{40,-20},{60,0}})));
 
   ThermofluidStream.Processes.ConductionElement conductionElement(
@@ -58,7 +58,7 @@ model TestLiqLoopJP8DryAir "Test of medium JP8DryAir for a liquid loop"
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e4),
     pressureDropUnit=ThermofluidStream.Types.PressureUnit.bar,
     pressureDropSignificantDigits=3) annotation (Placement(transformation(extent={{-140,80},{-120,100}})));
 
