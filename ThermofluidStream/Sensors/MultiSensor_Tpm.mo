@@ -53,7 +53,7 @@ model MultiSensor_Tpm "Sensor for temperature, pressure and mass flow rate"
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
   Modelica.Blocks.Interfaces.RealOutput p_out(final quantity="Pressure", final unit=pressureUnit) = p if outputPressure "Pressure output connector"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput m_flow_out(unit="kg/s") = m_flow if outputMassFlowRate "Mass flow rate output connector"
+  Modelica.Blocks.Interfaces.RealOutput m_flow_out(final quantity="MassFlowRate", final unit=massFlowUnit) = m_flow if outputMassFlowRate "Mass flow rate output connector"
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
 
   output Real p(final quantity="Pressure", final unit=pressureUnit);
