@@ -20,7 +20,7 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
   ThermofluidStream.Processes.FlowResistance flowResistanceB(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=1e5) "Linear-quadratic",
     l=1,
     r=1) annotation(Placement(transformation(extent={{-160,20},{-140,40}})));
   ThermofluidStream.Boundaries.Source sourceB(
@@ -45,7 +45,7 @@ model JunctionT1Const "Example - JunctionT1 with constant mass flow rate sources
                        flowResistanceA(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=1e5) "Linear-quadratic",
     l=1,
     r=1)                                                                                       annotation(Placement(transformation(extent={{-20,60},{0,80}})));
   ThermofluidStream.Boundaries.Source sourceA1(

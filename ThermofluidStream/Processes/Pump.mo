@@ -1,23 +1,23 @@
 within ThermofluidStream.Processes;
 model Pump "A simple pump model"
 
-  extends Internal.PartialTurboComponent(redeclare function dp_tau =
+  extends Internal.PartialTurboComponent(redeclare model dp_tau =
         dp_tau_pump);
 
   parameter Real max_rel_volume(min=0, max=1, unit="1") = 0.05 "Maximum relative volume change (checking incompressibility approach)"
     annotation(Dialog(tab="Advanced"));
 
-  replaceable function dp_tau_pump =
+  replaceable model dp_tau_pump =
       Internal.TurboComponent.pleaseSelect_dp_tau
     constrainedby Internal.TurboComponent.partial_dp_tau(
       redeclare package Medium = Medium) "Pump characteristic curve"
     annotation(choices(
-       choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select function",
+       choice=ThermofluidStream.Processes.Internal.TurboComponent.pleaseSelect_dp_tau "Please select model",
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal "Centrifugal Pump",
        choice=ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow "Nominal Flow Pump"),
     Documentation(info="<html>
 <p>
-Selectable function to choose between different pump models.
+Selectable model to choose between different pump models.
 </p>
 </html>"));
 
@@ -45,7 +45,7 @@ equation
 <p>It can be chosen between</p>
 <ul>
 <li>Nominal-flow pump, where a nominal flow is computed and the difference between it and the actual flow is linearly producing a pressure</li>
-<li>Centrifugal pump, which implements the equations of a scalable centrifugal pump. Please note that the function uses by default a legacy 
+<li>Centrifugal pump, which implements the equations of a scalable centrifugal pump. Please note that the model uses by default a legacy
 implementation to ensure backward compatibility. The legacy formulation is retained to support existing models but is considered deprecated and 
 its use will trigger a warning at runtime. Users are strongly encouraged to migrate to the updated implementation, as the legacy version will be removed in the next major release.
 Please see <a href=\"modelica://ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal\">dp_tau_centrifugal</a> documentation for more information</li>

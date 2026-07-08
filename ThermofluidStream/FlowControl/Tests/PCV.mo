@@ -48,7 +48,7 @@ Medium package used in the Test.
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.02,
     l=3,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{10,-50},{30,-30}})));
   ThermofluidStream.Boundaries.VolumeFlex
@@ -63,7 +63,7 @@ Medium package used in the Test.
     redeclare package Medium = Medium,
     r(displayUnit="mm") = 0.02,
     l=3,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{10,-20},{30,0}})));
   ThermofluidStream.Boundaries.Source source(redeclare package Medium = Medium, p0_par=100000)
@@ -75,7 +75,7 @@ Medium package used in the Test.
     m_flow_0=10,
     r(displayUnit="mm") = 0.02,
     l=3,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   ThermofluidStream.FlowControl.PCV pCV2(
@@ -92,7 +92,7 @@ Medium package used in the Test.
     m_flow_0=10,
     r(displayUnit="mm") = 0.02,
     l=3,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{10,10},{30,30}})));
   ThermofluidStream.FlowControl.PCV pCV3(
@@ -110,7 +110,7 @@ Medium package used in the Test.
     m_flow_0=10,
     r(displayUnit="mm") = 0.02,
     l=3,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{10,50},{30,70}})));
   ThermofluidStream.FlowControl.PCV pCV4(

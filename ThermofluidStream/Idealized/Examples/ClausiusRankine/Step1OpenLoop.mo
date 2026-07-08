@@ -33,7 +33,7 @@ model Step1OpenLoop
   ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k2=
             0.1e5),
     l=10,
     r=1) annotation(Placement(transformation(extent={{40,-10},{60,10}})));

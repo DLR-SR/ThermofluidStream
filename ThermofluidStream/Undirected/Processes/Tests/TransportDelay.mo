@@ -20,7 +20,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,30},{10,50}})));
@@ -62,7 +62,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=100,
     l(displayUnit="mm") = 0.008,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));

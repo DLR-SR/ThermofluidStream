@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.TurboComponent;
-function dp_tau_const_isentrop "Compressor model with parameter characteristic curve and constant isentropic efficiency"
+model dp_tau_const_isentrop "Compressor model with parameter characteristic curve and constant isentropic efficiency"
   extends partial_dp_tau;
 
   import R_m = Modelica.Constants.R "General gas constant";
@@ -22,7 +22,6 @@ function dp_tau_const_isentrop "Compressor model with parameter characteristic c
     annotation(Dialog(group = "Isentropic exponent", enable = not kappaFromMedia));
 
 
-protected
   Medium.AbsolutePressure p_in = Medium.pressure(state_in) "Inlet pressure";
   SI.Temperature T_in = Medium.temperature(state_in) "Inlet temperature";
   Real kappa(unit="1") = if kappaFromMedia then Medium.isentropicExponent(state_in) else kappa_fixed "Inlet isentropic coefficient";

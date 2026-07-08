@@ -21,7 +21,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=3e8,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -55,7 +55,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -98,7 +98,7 @@ Medium model for water.
     r(displayUnit="mm") = 0.003,
     l=0.3,
     computeL=true,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -175,7 +175,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_from_input=true,
     omegaStateSelect=StateSelect.never,
-    redeclare function dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare model dp_tau_pump = Processes.Internal.TurboComponent.dp_tau_nominal_flow (
       k_fric_input=0))
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -207,7 +207,7 @@ Medium model for water.
     pressureUnit="bar") annotation (Placement(transformation(extent={{126,-106},{146,-86}})));
   Processes.Pump pump1(
     J_p=1e-3,redeclare package Medium = Water,
-    redeclare function dp_tau_pump =
+    redeclare model dp_tau_pump =
         Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input(displayUnit="m3") = 0.1,
@@ -308,7 +308,7 @@ Medium model for water.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.003,
     l=0.3,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e7,
       k2=0))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -385,7 +385,7 @@ Medium model for water.
     redeclare package Medium = Water,
     r(displayUnit="mm") = 0.003,
     l=0.2,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e4))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,

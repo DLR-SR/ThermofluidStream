@@ -33,7 +33,7 @@ extends Modelica.Icons.Example;
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.02,
     l=100,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{70,30},{90,50}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm multiSensor_Tpm1(
     displayInstanceName=false,
@@ -132,7 +132,7 @@ extends Modelica.Icons.Example;
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r=0.05,
     l=1,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e5))
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=1e5))
     annotation (Placement(transformation(extent={{130,-52},{150,-32}})));
   Modelica.Blocks.Sources.Sine w_sine(
     amplitude=Modelica.Units.Conversions.from_rpm(400),

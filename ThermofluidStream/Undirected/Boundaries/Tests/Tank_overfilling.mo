@@ -22,7 +22,7 @@ extends Modelica.Icons.Example;
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=true,
@@ -34,7 +34,7 @@ extends Modelica.Icons.Example;
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=true,
@@ -89,7 +89,7 @@ extends Modelica.Icons.Example;
     redeclare package Medium = Medium,
     r=0.03/1.4,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
           zeta=1))
     annotation (Placement(transformation(extent={{-46,-24},{-66,-4}})));

@@ -27,7 +27,7 @@ model Test_Junction
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=dropOfCommons.m_flow_reg,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=1,
     r=1e-2) annotation (Placement(transformation(extent={{20,-10},{40,10}})));
@@ -35,7 +35,7 @@ model Test_Junction
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=0,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss,
     l=1,
     r=1e-2) annotation (Placement(transformation(extent={{-44,20},{-24,40}})));
 equation

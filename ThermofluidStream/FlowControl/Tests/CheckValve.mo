@@ -30,7 +30,7 @@ Medium package used in the Test.
   Processes.FlowResistance flowResistance(redeclare package Medium=Medium,
     r=0.1,
     l=10,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 equation
   connect(checkValve.inlet, source.outlet) annotation (Line(

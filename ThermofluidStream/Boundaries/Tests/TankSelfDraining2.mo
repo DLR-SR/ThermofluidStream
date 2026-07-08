@@ -21,7 +21,7 @@ model TankSelfDraining2
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=false,
@@ -53,7 +53,7 @@ model TankSelfDraining2
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=false,
@@ -65,7 +65,7 @@ model TankSelfDraining2
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=false,
@@ -88,7 +88,7 @@ model TankSelfDraining2
     l=1,
     shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
     r=0.03,
-    redeclare function pLoss =
+    redeclare model pLoss =
         Processes.Internal.FlowResistance.zetaPressureLoss (
         zeta=1,
         fromGeometry=false,

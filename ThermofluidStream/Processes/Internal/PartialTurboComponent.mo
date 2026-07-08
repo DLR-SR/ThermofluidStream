@@ -43,12 +43,21 @@ partial model PartialTurboComponent "Partial model of turbo component"
   Modelica.Blocks.Interfaces.RealOutput output_val(unit=Sensors.Internal.getFlowUnit(outputQuantity)) = getQuantity(inlet.state, m_flow, outputQuantity, rho_min) if enableOutput "Quantity output connector"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,origin={60,-110})));
 
-  replaceable function dp_tau = TurboComponent.pleaseSelect_dp_tau
+  replaceable model dp_tau = TurboComponent.pleaseSelect_dp_tau
     constrainedby TurboComponent.partial_dp_tau(redeclare package Medium=Medium)  "Component characteristic curve"
       annotation(choicesAllMatching=true,
         Documentation(info="<html>
-<p>This functions computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
+<p>This model computes the pressure difference over the component, as well as the moment that leads to stationary operation in the current state. </p>
 </html>"));
+
+  dp_tau characteristic(
+    redeclare package Medium=Medium,
+    m_flow=m_flow,
+    omega=omega,
+    state_in=inlet.state,
+    m_flow_norm=m_flow_reg,
+    omega_norm=omega_reg,
+    rho_min=rho_min);
 
 function getQuantity = Sensors.Internal.getFlowQuantity (
   redeclare package Medium = Medium) "Function to compute a selectable quantity"
@@ -89,7 +98,7 @@ initial equation
 
 equation
   // Compute pressure difference dp, and steady-state torque tau_st
-  (dp, tau_st) = dp_tau(m_flow, omega, inlet.state, m_flow_reg, omega_reg, rho_min);
+  dp = characteristic.dp; tau_st = characteristic.tau_st;
   h_out = h_in + dh;
   Xi_out = Xi_in;
 

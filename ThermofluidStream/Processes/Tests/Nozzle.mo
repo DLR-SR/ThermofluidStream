@@ -20,7 +20,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=10,
-    redeclare function pLoss = Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare model pLoss = Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,10},{-10,30}})));
   Boundaries.Source source(redeclare package Medium = Medium, p0_par=110000)
@@ -36,7 +36,7 @@ Medium model for the test. Can be anything.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     r(displayUnit="mm") = 0.01,
     l=10,
-    redeclare function pLoss =
+    redeclare model pLoss =
       Internal.FlowResistance.laminarTurbulentPressureLoss (
         material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-30,-30},{-10,-10}})));

@@ -35,7 +35,7 @@ Medium model for the test. Should be an ideal gas or close to that.
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=-1,
-    redeclare function dp_tau_compressor = tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+    redeclare model dp_tau_compressor = tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=3000,
       skew=1,
       m_flow_ref=1))
@@ -51,7 +51,7 @@ Medium model for the test. Should be an ideal gas or close to that.
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     omega_0=-150,
     initPhi=true,
-    redeclare function dp_tau_compressor =
+    redeclare model dp_tau_compressor =
         tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (
   omega_ref=500,
         skew=1,

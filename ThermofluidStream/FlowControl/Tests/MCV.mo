@@ -32,7 +32,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -54,7 +54,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
   Modelica.Blocks.Sources.Pulse pulse1(
@@ -82,7 +82,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   Modelica.Blocks.Sources.Trapezoid trapezoid(
@@ -113,7 +113,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
   Modelica.Blocks.Sources.Pulse pulse3(
@@ -141,7 +141,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
   Modelica.Blocks.Sources.Trapezoid trapezoid1(
@@ -173,7 +173,7 @@ Medium package used in the Test.
     l=10,
     L_value=0.01,
     computeL=false,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss)
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
   Modelica.Blocks.Sources.Pulse pulse5(

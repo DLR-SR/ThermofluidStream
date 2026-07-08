@@ -20,7 +20,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-200,40},{-180,60}})));
@@ -41,7 +41,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-200,-60},{-180,-40}})));
@@ -57,7 +57,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-20,40},{0,60}})));
@@ -77,7 +77,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{-20,-40},{0,-60}})));
@@ -98,7 +98,7 @@ the inlet the source is connected to.
   Processes.FlowResistance flowResistance4(
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
+    redeclare model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (k=0, k2=1e5) "Linear-quadratic",
     l=10,
     r=0.01)
          annotation (Placement(transformation(extent={{160,40},{180,60}})));

@@ -56,7 +56,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
@@ -64,7 +64,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
   Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
@@ -72,7 +72,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{30,10},{50,30}})));
   Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
@@ -80,7 +80,7 @@ model PhaseSeperator
     r(displayUnit="cm") = 0.05,
     l=1,
     computeL=false,
-    redeclare function pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
+    redeclare model pLoss = Processes.Internal.FlowResistance.linearQuadraticPressureLoss(k=5000))
     annotation (Placement(transformation(extent={{30,-30},{50,-10}})));
   Sensors.TwoPhaseSensorSelect twoPhaseSensorSelect4(
     redeclare package Medium = Medium,

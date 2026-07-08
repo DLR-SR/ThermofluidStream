@@ -49,7 +49,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     omega_from_input=false,
     initPhi=false,
-    redeclare function dp_tau_compressor =
+    redeclare model dp_tau_compressor =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=2500,
         skew=1,
@@ -69,7 +69,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     omega_0=0,
     initPhi=true,
     phi_0=0,
-    redeclare function dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+    redeclare model dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.36,
         skew=-0.2,
@@ -100,7 +100,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         extent={{10,10},{-10,-10}},
         rotation=270,
         origin={-60,-30})));
-  Processes.Fan fan(redeclare package Medium = Medium,     redeclare function dp_tau_fan =
+  Processes.Fan fan(redeclare package Medium = Medium,     redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=500,
         skew=1,
@@ -114,7 +114,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     r=r,
     l=20,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
             ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
@@ -123,7 +123,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     r=r,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
+    redeclare model pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
     computeL=false,
     L_value=0) annotation (Placement(transformation(extent={{-80,-110},{-100,-130}})));
   Boundaries.Source bleedInlet1(
@@ -170,7 +170,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     omega_0=0,
     initPhi=true,
     phi_0=0,
-    redeclare function dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
+    redeclare model dp_tau_turbine = Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=Modelica.Constants.inf,
         m_flow_ref=0.3658,
         skew=-0.2,
@@ -191,7 +191,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
         extent={{-10,10},{10,-10}},
         rotation=270,
         origin={58,0})));
-  Processes.Fan fan1(redeclare package Medium = Medium,     redeclare function dp_tau_fan =
+  Processes.Fan fan1(redeclare package Medium = Medium,     redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
         omega_ref=1000,
         skew=1,
@@ -204,7 +204,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     r=r,
     l=20,
-    redeclare function pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
+    redeclare model pLoss = Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (material=
             ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
@@ -213,7 +213,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     r=r,
     l=1,
-    redeclare function pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
+    redeclare model pLoss = Processes.Internal.FlowResistance.zetaPressureLoss (zeta=1),
     computeL=false,
     L_value=0) annotation (Placement(transformation(extent={{80,-110},{100,-130}})));
 equation

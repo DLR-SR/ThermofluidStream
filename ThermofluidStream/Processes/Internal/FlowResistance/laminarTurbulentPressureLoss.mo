@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-function laminarTurbulentPressureLoss "Pressure loss function (Cheng 2008) for laminar, transient and turbulent flow regimes"
+model laminarTurbulentPressureLoss "Pressure loss model (Cheng 2008) for laminar, transient and turbulent flow regimes"
   extends Internal.FlowResistance.partialPressureLoss;
   import Modelica.Constants.pi;
 
@@ -8,7 +8,6 @@ function laminarTurbulentPressureLoss "Pressure loss function (Cheng 2008) for l
   input ThermofluidStream.Processes.Internal.Material material=ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation (Dialog(enable=true));
 
-protected
   constant SI.ReynoldsNumber R_laminar_DarcyWeisbach_min = 500 "Minimal Reynolds number to use the general equation. Laminar flow before";
   SI.Length ks "Surface roughness";
 

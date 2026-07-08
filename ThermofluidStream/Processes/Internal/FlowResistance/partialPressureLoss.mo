@@ -1,6 +1,5 @@
 within ThermofluidStream.Processes.Internal.FlowResistance;
-partial function partialPressureLoss "Partial pressure loss function"
-  extends Modelica.Icons.Function;
+partial model partialPressureLoss "Partial pressure loss model"
 
   input SI.MassFlowRate m_flow "Mass flow rate";
   input SI.Density rho "Density";
@@ -10,8 +9,7 @@ partial function partialPressureLoss "Partial pressure loss function"
 
   output SI.PressureDifference pressureLoss "pressure loss (dp)";
 
-  annotation(Inline=true, smoothOrder=100,
-    Documentation(info="<html>
+  annotation(Documentation(info="<html>
 <p>Interface definition for a pressure loss in a pipe. Inputs are information about flow condition and the medium as well as the geometry of the pipe, output is the pressure drop.</p>
 </html>"));
 end partialPressureLoss;

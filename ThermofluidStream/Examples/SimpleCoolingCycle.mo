@@ -27,7 +27,7 @@ extends Modelica.Icons.Example;
   ThermofluidStream.Processes.Pump pump(
     redeclare package Medium = Medium_liquid,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
+    redeclare model dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-20,10},{-40,30}})));
   ThermofluidStream.Processes.ThermalConvectionPipe thermalConvectionPipe(
     redeclare package Medium = Medium_liquid,
@@ -40,7 +40,7 @@ extends Modelica.Icons.Example;
     redeclare package Medium = Medium_liquid,
     r=0.05,
     l=1,
-    redeclare function pLoss =
+    redeclare model pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1e5))
     annotation (Placement(transformation(extent={{80,70},{100,90}})));
@@ -97,7 +97,7 @@ extends Modelica.Icons.Example;
   ThermofluidStream.Processes.Fan fan(
     redeclare package Medium = Medium_air,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_fan =
+    redeclare model dp_tau_fan =
         Processes.Internal.TurboComponent.dp_tau_const_isentrop (
       omega_ref=100))
     annotation (Placement(transformation(extent={{140,-2},{160,18}})));

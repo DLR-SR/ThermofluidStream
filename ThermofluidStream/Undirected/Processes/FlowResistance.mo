@@ -6,11 +6,11 @@ model FlowResistance "Flow resistance model"
 
   parameter SI.Radius r(min=0) "Radius";
   parameter SI.Length l(min=0) "Length";
-  replaceable function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
+  replaceable model pLoss = ThermofluidStream.Processes.Internal.FlowResistance.pleaseSelectPressureLoss
     constrainedby ThermofluidStream.Processes.Internal.FlowResistance.partialPressureLoss
-    "Pressure loss function"
+    "Pressure loss model"
     annotation(choicesAllMatching=true, Documentation(info="<html>
-<p>Pressure loss function used in the flow resistance.</p>
+<p>Pressure loss model used in the flow resistance.</p>
 </html>"));
 
   parameter Boolean computeL = true "= true, if inertance L is computed from the geometry"
@@ -19,6 +19,19 @@ model FlowResistance "Flow resistance model"
     annotation(Dialog(tab="Advanced",group="Inertance", enable=not computeL));
   parameter Medium.Density rho_min = dropOfCommons.rho_min "Minium inlet density"
     annotation(Dialog(tab="Advanced"));
+
+  pLoss pressureLoss_fore(
+    m_flow=m_flow,
+    rho=rho_rear_in,
+    mu=mu_rear_in,
+    r=r,
+    l=l);
+  pLoss pressureLoss_rear(
+    m_flow=-m_flow,
+    rho=rho_fore_in,
+    mu=mu_fore_in,
+    r=r,
+    l=l);
 
 protected
   Medium.Density rho_rear_in = max(rho_min, Medium.density(rear.state_forwards)) "Inlet density of rear port";
@@ -29,12 +42,12 @@ protected
 
 equation
   //Forwards model
-  dp_fore = -pLoss(m_flow, rho_rear_in, mu_rear_in, r, l);
+  dp_fore = -pressureLoss_fore.pressureLoss;
   h_fore_out = h_rear_in;
   Xi_fore_out = Xi_rear_in;
 
   //Rearwards model
-  dp_rear = -pLoss(-m_flow, rho_fore_in, mu_fore_in, r, l);
+  dp_rear = -pressureLoss_rear.pressureLoss;
   h_rear_out = h_fore_in;
   Xi_rear_out = Xi_fore_in;
 
@@ -79,6 +92,6 @@ equation
           origin={0,25},
           rotation=180)}), Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
-<p>Undirected implementation of the FlowResistance with different selectable flow resistance functions (laminar, laminar-turbulent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
+<p>Undirected implementation of the FlowResistance with different selectable flow resistance models (laminar, laminar-turbulent, linear-quadratic). The output pressure can be clipped to a certain value.</p>
 </html>"));
 end FlowResistance;

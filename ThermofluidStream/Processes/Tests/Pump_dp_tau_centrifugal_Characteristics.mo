@@ -42,7 +42,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
+    redeclare model dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (
         useLegacyReynolds=false,
         TDH_D=TDH_D,
         V_flow_D=V_flow_D,
@@ -76,7 +76,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_pump = Internal.TurboComponent.dp_tau_centrifugal (
+    redeclare model dp_tau_pump = Internal.TurboComponent.dp_tau_centrifugal (
         TDH_D=TDH_D,
         V_flow_D=V_flow_D,
         omega_D=omega_D)) annotation (Placement(transformation(extent={{-70,-30},{-50,-50}})));
