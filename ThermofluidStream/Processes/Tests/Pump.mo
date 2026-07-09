@@ -56,14 +56,15 @@ Medium model for the test. Should be incompressible or with low compressibility.
   tf.Topology.JunctionN junctionN(N=4, redeclare package Medium = Medium,
     L=0)
     annotation (Placement(transformation(extent={{60,20},{80,40}})));
-  tf.Processes.Pump pump_directParamWithHeatPort(
+  tf.Processes.Pump pump_directParam(
     redeclare package Medium = Medium,
     L=10000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    enableAccessHeatPort=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
-          =false, k_p_input=1e7)) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+    redeclare function dp_tau_pump =
+        tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+          parametrizeByDesignPoint=false, k_p_input=1e7))
+    annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Modelica.Blocks.Sources.Constant pump2_speed_rad_s(k=3200)
     annotation (Placement(transformation(extent={{40,-70},{20,-50}})));
   tf.Processes.Pump pump_directParamPowerIn(
@@ -84,8 +85,6 @@ Medium model for the test. Should be incompressible or with low compressibility.
   tf.Processes.Tests.Power powerSource2(P=5000, tau_max=150)
     annotation (Placement(transformation(extent={{-40,-120},{-20,-100}})));
 
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
-        283.15) annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
   tf.Processes.Pump pump_designPointOmega100(
     redeclare package Medium = Medium,
     L=10000,
@@ -133,7 +132,7 @@ equation
       points={{-10,30},{-52,30},{-52,30.75}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump_directParamWithHeatPort.omega_input, pump2_speed_rad_s.y)
+  connect(pump_directParam.omega_input, pump2_speed_rad_s.y)
     annotation (Line(points={{0,-52},{0,-60},{19,-60}}, color={0,0,127}));
   connect(powerSource2.flange, pump_directParamPowerIn.flange)
     annotation (Line(points={{-22.4,-110},{0,-110},{0,-100}}, color={0,0,0}));
@@ -141,7 +140,7 @@ equation
       points={{-10,0},{-44,0},{-44,30.25},{-52,30.25}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump_directParamWithHeatPort.inlet, splitterN.outlets[2]) annotation (Line(
+  connect(pump_directParam.inlet, splitterN.outlets[2]) annotation (Line(
       points={{-10,-40},{-46,-40},{-46,29.75},{-52,29.75}},
       color={28,108,200},
       thickness=0.5));
@@ -153,7 +152,7 @@ equation
       points={{10,-90},{52,-90},{52,29.25},{60,29.25}},
       color={28,108,200},
       thickness=0.5));
-  connect(pump_directParamWithHeatPort.outlet, junctionN.inlets[2]) annotation (Line(
+  connect(pump_directParam.outlet, junctionN.inlets[2]) annotation (Line(
       points={{10,-40},{48,-40},{48,29.75},{60,29.75}},
       color={28,108,200},
       thickness=0.5));
@@ -167,8 +166,6 @@ equation
       points={{10,30},{60,30},{60,30.75}},
       color={28,108,200},
       thickness=0.5));
-  connect(fixedTemperature.port, pump_directParamWithHeatPort.heatport)
-    annotation (Line(points={{-20,-60},{-6,-60},{-6,-50}}, color={191,0,0}));
   connect(pump4_speed_rad_s.y, pump_designPointOmega100.omega_input)
     annotation (Line(points={{-19,100},{0,100},{0,92}}, color={0,0,127}));
   connect(source1.outlet, pump_designPointOmega100.inlet)
