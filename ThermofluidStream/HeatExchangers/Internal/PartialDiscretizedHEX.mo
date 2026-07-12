@@ -99,11 +99,11 @@ public
 
 equation
   assert(
-    inletB.m_flow > m_flow_assert,
+    inletB_m_flow > m_flow_assert,
     "In \"" + instanceName + "\": Negative mass flow rate at inlet B",
     dropOfCommons.assertionLevel);
   assert(
-    inletA.m_flow > m_flow_assert,
+    inletA_m_flow > m_flow_assert,
     "In \"" + instanceName + "\": Negative massflow at inlet A",
     dropOfCommons.assertionLevel);
 
@@ -157,7 +157,7 @@ don&apos;t break it. The quasi-stationary mass assumption also implies that for
 exchanger will (slightly) violate the conservation of energy. Furthermore, the
 conduction elements change their behavior for reversed mass-flow, therefore, this
 model asserts for negative mass-flow with the level
-&quot;<a href=\"ThermofluidStream.DropOfCommons\">DropOfCommons</a>.assertionLevel&quot;.
+&quot;<a href=\"modelica://ThermofluidStream.DropOfCommons\">DropOfCommons</a>.assertionLevel&quot;.
 </p>
 <p>
 The parameters <code>A</code> (heat transferring area), <code>k_wall</code> (heat
