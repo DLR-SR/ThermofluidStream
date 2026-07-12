@@ -112,7 +112,7 @@ equation
           lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
-          textString=if displayInstanceName then "%instanceName" else "",
+          textString=if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
         Text(
           extent={{-30,30},{30,-30}},
