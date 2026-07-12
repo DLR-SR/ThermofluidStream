@@ -2,38 +2,37 @@ within ThermofluidStream.Processes.Tests;
 model Flow_Resistance "Test for flow resistance"
   extends Modelica.Icons.Example;
 
-  import tf = ThermofluidStream;
-  replaceable package Medium = tf.Media.myMedia.Air.SimpleAir "Medium model"
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir "Medium model"
     annotation (Documentation(info="<html>
 <p>
 Medium model for the test. Can be anything.
 </p>
 </html>"));
 
-  tf.Boundaries.Source source(
+  ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  tf.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
+  ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-10},{40,10}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
+  inner ThermofluidStream.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
     displayColor=true)
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
 
-  tf.Processes.FlowResistance flowResistance(
+  ThermofluidStream.Processes.FlowResistance flowResistance(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.steadyState,
     computeL=true,
     r=0.1,
     l=100,
-    redeclare function pLoss = tf.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.linearQuadraticPressureLoss (
       k=1000,
       k2=100))
     annotation (Placement(transformation(extent={{-10,20},{10,40}})));
-  tf.Processes.FlowResistance flowResistance1(
+  ThermofluidStream.Processes.FlowResistance flowResistance1(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.derivative,
@@ -43,10 +42,10 @@ Medium model for the test. Can be anything.
     r=0.02,
     l=100,
     redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarPressureLoss)
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarPressureLoss)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
-  tf.Processes.FlowResistance flowResistance2(
+  ThermofluidStream.Processes.FlowResistance flowResistance2(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -54,16 +53,16 @@ Medium model for the test. Can be anything.
     L_value=30000,
     r=0.075,
     l=10,
-    redeclare function pLoss = tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
+    redeclare function pLoss = ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLoss (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 
-  tf.Boundaries.Source source1(
+  ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
-  tf.Processes.FlowResistance flowResistance3(
+  ThermofluidStream.Processes.FlowResistance flowResistance3(
     redeclare package Medium = Medium,
     m_flowStateSelect=StateSelect.prefer,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
@@ -72,25 +71,25 @@ Medium model for the test. Can be anything.
     r=0.075,
     l=10,
     redeclare function pLoss =
-        tf.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland (
+        ThermofluidStream.Processes.Internal.FlowResistance.laminarTurbulentPressureLossHaaland (
       material=ThermofluidStream.Processes.Internal.Material.steel))
     annotation (Placement(transformation(extent={{-10,-70},{10,-50}})));
 
-  tf.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
+  ThermofluidStream.Boundaries.Sink sink1(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
-  tf.Boundaries.Source source2(
+  ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-  tf.Boundaries.Sink sink2(redeclare package Medium = Medium, p0_par=100000)
+  ThermofluidStream.Boundaries.Sink sink2(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  tf.Boundaries.Source source3(
+  ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     T0_par(displayUnit="K") = 300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
-  tf.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
+  ThermofluidStream.Boundaries.Sink sink3(redeclare package Medium = Medium, p0_par=100000)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
 equation
   connect(source1.outlet, flowResistance3.inlet) annotation (Line(

@@ -2,9 +2,8 @@ within ThermofluidStream.Processes.Tests;
 model Pump "Test for pumps"
   extends Modelica.Icons.Example;
 
-  import tf = ThermofluidStream;
-  replaceable package Medium = tf.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
-    constrainedby tf.Media.myMedia.Interfaces.PartialMedium "Medium model"
+  replaceable package Medium = ThermofluidStream.Media.myMedia.CompressibleLiquids.LinearWater_pT_Ambient
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model"
     annotation (
       choicesAllMatching=true,
       Documentation(info="<html>
@@ -13,18 +12,18 @@ Medium model for the test. Should be incompressible or with low compressibility.
 </p>
 </html>"));
 
-  tf.Boundaries.Source source(
+  ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     T0_par=300,
     p0_par=100000)
     annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
-  tf.Boundaries.Sink sink(
+  ThermofluidStream.Boundaries.Sink sink(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     p0_par=350000)
     annotation (Placement(transformation(extent={{96,20},{116,40}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1)
+  inner ThermofluidStream.DropOfCommons dropOfCommons(L=1)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-50})));
@@ -34,7 +33,7 @@ Medium model for the test. Should be incompressible or with low compressibility.
     L=100000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
+    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,40},{10,20}})));
 
   Modelica.Blocks.Sources.Constant pump_speed_rad_s(k=800)
@@ -46,27 +45,27 @@ Medium model for the test. Should be incompressible or with low compressibility.
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
+    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_centrifugal (useLegacyReynolds=false))
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  tf.Processes.Tests.Power powerSource1(P=8000, tau_max=150)
+  ThermofluidStream.Processes.Tests.Power powerSource1(P=8000, tau_max=150)
     annotation (Placement(transformation(extent={{-40,-30},{-20,-10}})));
-  tf.Topology.SplitterN splitterN(N=4, redeclare package Medium = Medium,
+  ThermofluidStream.Topology.SplitterN splitterN(N=4, redeclare package Medium = Medium,
     L=0)
     annotation (Placement(transformation(extent={{-72,20},{-52,40}})));
-  tf.Topology.JunctionN junctionN(N=4, redeclare package Medium = Medium,
+  ThermofluidStream.Topology.JunctionN junctionN(N=4, redeclare package Medium = Medium,
     L=0)
     annotation (Placement(transformation(extent={{60,20},{80,40}})));
-  tf.Processes.Pump pump_directParamWithHeatPort(
+  ThermofluidStream.Processes.Pump pump_directParamWithHeatPort(
     redeclare package Medium = Medium,
     L=10000,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     enableAccessHeatPort=true,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
+    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =false, k_p_input=1e7)) annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
   Modelica.Blocks.Sources.Constant pump2_speed_rad_s(k=3200)
     annotation (Placement(transformation(extent={{40,-70},{20,-50}})));
-  tf.Processes.Pump pump_directParamPowerIn(
+  ThermofluidStream.Processes.Pump pump_directParamPowerIn(
     redeclare package Medium = Medium,
     L=10000,
     omega_from_input=false,
@@ -77,16 +76,16 @@ Medium model for the test. Should be incompressible or with low compressibility.
     initOmega=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     initPhi=true,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
+    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow (
         parametrizeByDesignPoint=false,
         V_r_input=0.0006,
         k_p_input=1e8)) annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
-  tf.Processes.Tests.Power powerSource2(P=5000, tau_max=150)
+  ThermofluidStream.Processes.Tests.Power powerSource2(P=5000, tau_max=150)
     annotation (Placement(transformation(extent={{-40,-120},{-20,-100}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature(T=
         283.15) annotation (Placement(transformation(extent={{-40,-70},{-20,-50}})));
-  tf.Processes.Pump pump_designPointOmega100(
+  ThermofluidStream.Processes.Pump pump_designPointOmega100(
     redeclare package Medium = Medium,
     L=10000,
     omega_from_input=true,
@@ -95,18 +94,18 @@ Medium model for the test. Should be incompressible or with low compressibility.
     J_p=10,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     phi_0=-1745.3292519943,
-    redeclare function dp_tau_pump = tf.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
+    redeclare function dp_tau_pump = ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_nominal_flow (parametrizeByDesignPoint
           =true, omega_D(displayUnit="rad/s") = 100))
     "Design point: V_flow=100L/min at 100rad/s with a pressure increase of 5 bar"
     annotation (Placement(transformation(extent={{-10,90},{10,70}})));
   Modelica.Blocks.Sources.Constant pump4_speed_rad_s(k=100)
     annotation (Placement(transformation(extent={{-40,90},{-20,110}})));
-  tf.Boundaries.Source source1(
+  ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     T0_par=300,
     p0_par=100000)
     annotation (Placement(transformation(extent={{-100,70},{-80,90}})));
-  tf.Boundaries.Sink sink1(
+  ThermofluidStream.Boundaries.Sink sink1(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     p0_par=600000)

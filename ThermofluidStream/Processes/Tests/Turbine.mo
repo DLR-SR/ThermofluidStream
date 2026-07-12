@@ -2,8 +2,6 @@ within ThermofluidStream.Processes.Tests;
 model Turbine "Test for turbines"
   extends Modelica.Icons.Example;
 
-  import tf = ThermofluidStream;
-
   replaceable package Medium = ThermofluidStream.Media.myMedia.Air.SimpleAir "Medium model"
     annotation (Documentation(info="<html>
 <p>
@@ -11,39 +9,39 @@ Medium model for the test. Should be an ideal gas or close to that.
 </p>
 </html>"));
 
-  tf.Boundaries.Source source(
+  ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     T0_par=300,
     p0_par=300000)
     annotation (Placement(transformation(extent={{-100,6},{-80,26}})));
-  tf.Boundaries.Sink sink(
+  ThermofluidStream.Boundaries.Sink sink(
     redeclare package Medium = Medium,
     pressureFromInput=false,
     p0_par=100000)
     annotation (Placement(transformation(extent={{86,6},{106,26}})));
 
-  inner tf.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
+  inner ThermofluidStream.DropOfCommons dropOfCommons(L=1, assertionLevel = AssertionLevel.warning,
     displayParameters=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={68,-78})));
 
-  tf.Processes.Turbine turbine(
+  ThermofluidStream.Processes.Turbine turbine(
     redeclare package Medium = Medium,
     L=1e6,
     omega_from_input=true,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.state,
     m_flow_0=1e-5,
     redeclare function dp_tau_turbine =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=1e6))
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=1e6))
     annotation (Placement(transformation(extent={{-6,10},{14,30}})));
   Modelica.Blocks.Sources.Constant const(k=1000)
     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
-  tf.Topology.SplitterN splitterN(N=2, redeclare package Medium = Medium)
+  ThermofluidStream.Topology.SplitterN splitterN(N=2, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-66,6},{-46,26}})));
-  tf.Topology.JunctionN junctionN(N=2, redeclare package Medium = Medium)
+  ThermofluidStream.Topology.JunctionN junctionN(N=2, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{46,6},{66,26}})));
-  tf.Processes.Turbine turbine1(
+  ThermofluidStream.Processes.Turbine turbine1(
     redeclare package Medium = Medium,
     L=1e5,
     omega_from_input=false,
@@ -53,7 +51,7 @@ Medium model for the test. Should be an ideal gas or close to that.
     omega_0=-1,
     initPhi=true,
     redeclare function dp_tau_turbine =
-        tf.Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=1e6, eta=1))
+        ThermofluidStream.Processes.Internal.TurboComponent.dp_tau_const_isentrop (omega_ref=1e6, eta=1))
     annotation (Placement(transformation(extent={{-8,-38},{12,-18}})));
   Modelica.Mechanics.Rotational.Sources.LinearSpeedDependentTorque
     linearSpeedDependentTorque(
