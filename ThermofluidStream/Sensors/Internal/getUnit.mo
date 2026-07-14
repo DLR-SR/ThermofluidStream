@@ -24,8 +24,12 @@ algorithm
     unit :="bar";
   elseif quantity == Types.Quantities.h_Jpkg then
     unit :="J/kg";
+  elseif quantity == Types.Quantities.h_kJpkg then
+    unit :="kJ/kg";
   elseif quantity == Types.Quantities.s_JpkgK then
     unit :="J/(kg.K)";
+  elseif quantity == Types.Quantities.s_kJpkgK then
+    unit :="kJ/(kg.K)";
   elseif quantity == Types.Quantities.rho_kgpm3 then
     unit :="kg/m3";
   elseif quantity == Types.Quantities.v_m3pkg then
@@ -38,8 +42,12 @@ algorithm
     unit :="J/(kg.K)";
   elseif quantity == Types.Quantities.kappa_1 then
     unit :="1";
+  elseif quantity == Types.Quantities.MM_gpmol then
+    unit := "(g/mol)";
   elseif quantity == Types.Quantities.MM_kgpmol then
     unit := "(kg/mol)";
+  elseif quantity == Types.Quantities.MM_kgpkmol then
+    unit := "(kg/kmol)";
   else
     unit :="";
   end if;

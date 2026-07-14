@@ -32,8 +32,12 @@ equation
     value = Modelica.Units.Conversions.to_bar(Medium.pressure(state) + r);
   elseif quantity == Types.Quantities.h_Jpkg then
     value = Medium.specificEnthalpy(state);
+  elseif quantity == Types.Quantities.h_kJpkg then
+    value = Medium.specificEnthalpy(state)*1e-3;
   elseif quantity == Types.Quantities.s_JpkgK then
     value = Medium.specificEntropy(state);
+  elseif quantity == Types.Quantities.s_kJpkgK then
+    value = Medium.specificEntropy(state)*1e-3;
   elseif quantity == Types.Quantities.rho_kgpm3 then
     value = Medium.density(state);
   elseif quantity == Types.Quantities.v_m3pkg then
@@ -46,8 +50,12 @@ equation
     value = Medium.specificHeatCapacityCp(state);
   elseif quantity == Types.Quantities.kappa_1 then
     value = Medium.isentropicExponent(state);
+  elseif quantity == Types.Quantities.MM_gpmol then
+    value = Medium.molarMass(state)*1000;
   elseif quantity == Types.Quantities.MM_kgpmol then
     value = Medium.molarMass(state);
+  elseif quantity == Types.Quantities.MM_kgpkmol then
+    value = Medium.molarMass(state)*1000;
   else
     value = 0;
   end if;
