@@ -19,7 +19,7 @@ model SingleFlowSensor "Flow sensor"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_JpKs then "S_flow in W/K"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kWpK then "S_flow in kW/K"
     elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_MWpK then "S_flow in MW/K"
-    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in J/(K.s)"
+    elseif quantity == ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.Cp_flow_JpKs then "Cp_flow in W/K"
     else "error";
 
   parameter Medium.Density rho_min = dropOfCommons.rho_min "Minimum Density"
