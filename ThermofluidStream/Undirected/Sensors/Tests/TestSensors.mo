@@ -160,13 +160,13 @@ model TestSensors "Test for the undirected sensors"
     annotation (Placement(transformation(extent={{26,-40},{46,-20}})));
   SingleSensorSelect sensor1(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.s_kJpkgK)
     annotation (Placement(transformation(extent={{90,-40},{110,-20}})));
-  SingleFlowSensor flowSensor(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps)
+  SingleFlowSensor flowSensor(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)
     annotation (Placement(transformation(extent={{-104,-40},{-84,-20}})));
-  SingleFlowSensor flowSensor1(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kJpKs)
+  SingleFlowSensor flowSensor1(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kWpK)
     annotation (Placement(transformation(extent={{-28,-40},{-8,-20}})));
-  SingleFlowSensor flowSensor2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps)
+  SingleFlowSensor flowSensor2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)
     annotation (Placement(transformation(extent={{-44,50},{-24,70}})));
-  SingleFlowSensor flowSensor3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps)
+  SingleFlowSensor flowSensor3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)
     annotation (Placement(transformation(extent={{-44,-10},{-24,10}})));
 equation
   connect(step.y, boundary_fore.p0_var)

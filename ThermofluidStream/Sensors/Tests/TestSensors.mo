@@ -335,25 +335,23 @@ model TestSensors "Test model for all sensors."
   SingleFlowSensor singleFlowSensor6(
     redeclare package Medium = Medium1,
     outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kJps)
-                                                                                     annotation (Placement(transformation(extent={{80,80},
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)  annotation (Placement(transformation(extent={{80,80},
             {100,100}})));
   SingleFlowSensor singleFlowSensor7(
     redeclare package Medium = Medium1,
     outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kJpKs)
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kWpK)
                                                                                      annotation (Placement(transformation(extent={{66,60},
             {86,80}})));
   SingleFlowSensor singleFlowSensor8(
     redeclare package Medium = Medium1,
     outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_MJps)
-                                                                                     annotation (Placement(transformation(extent={{108,80},
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_MW)  annotation (Placement(transformation(extent={{108,80},
             {128,100}})));
   SingleFlowSensor singleFlowSensor9(
     redeclare package Medium = Medium1,
     outputValue=true,
-    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_MJpKs)
+    quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_MWpK)
                                                                                      annotation (Placement(transformation(extent={{94,60},
             {114,80}})));
 equation
