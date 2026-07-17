@@ -164,9 +164,9 @@ model TestSensors "Test for the undirected sensors"
     annotation (Placement(transformation(extent={{-104,-40},{-84,-20}})));
   SingleFlowSensor flowSensor1(redeclare package Medium = Medium2, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_kWpK)
     annotation (Placement(transformation(extent={{-28,-40},{-8,-20}})));
-  SingleFlowSensor flowSensor2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)
+  SingleFlowSensor flowSensor2(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_MW)
     annotation (Placement(transformation(extent={{-44,50},{-24,70}})));
-  SingleFlowSensor flowSensor3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.H_flow_kW)
+  SingleFlowSensor flowSensor3(redeclare package Medium = Medium, quantity=ThermofluidStream.Sensors.Internal.Types.MassFlowQuantities.S_flow_MWpK)
     annotation (Placement(transformation(extent={{-44,-10},{-24,10}})));
 equation
   connect(step.y, boundary_fore.p0_var)
