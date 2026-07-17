@@ -36,7 +36,6 @@ package Types "Types used in the Sensor Package"
       cv_JpkgK "Specific isochoric heatcapacity (J/(kg.K))",
       kappa_1 "Isentropic Exponent (1))",
       a_mps "Velocity of sound (m/s)",
-      MM_gpmol "Molar Mass (g/mol)",
       MM_kgpmol "Molar Mass (kg/mol)",
       MM_kgpkmol "Molar Mass (kg/kmol)",
       r_Pa "Inertial pressure (Pa)",

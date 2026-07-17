@@ -50,8 +50,6 @@ equation
     value = Medium.specificHeatCapacityCp(state);
   elseif quantity == Types.Quantities.kappa_1 then
     value = Medium.isentropicExponent(state);
-  elseif quantity == Types.Quantities.MM_gpmol then
-    value = Medium.molarMass(state)*1000;
   elseif quantity == Types.Quantities.MM_kgpmol then
     value = Medium.molarMass(state);
   elseif quantity == Types.Quantities.MM_kgpkmol then

@@ -42,8 +42,6 @@ algorithm
     unit :="J/(kg.K)";
   elseif quantity == Types.Quantities.kappa_1 then
     unit :="1";
-  elseif quantity == Types.Quantities.MM_gpmol then
-    unit := "(g/mol)";
   elseif quantity == Types.Quantities.MM_kgpmol then
     unit := "(kg/mol)";
   elseif quantity == Types.Quantities.MM_kgpkmol then

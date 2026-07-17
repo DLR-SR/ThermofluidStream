@@ -332,11 +332,6 @@ model TestSensors "Test model for all sensors."
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_kgpkmol)
     annotation (Placement(transformation(extent={{-78,152},{-98,172}})));
-  SingleSensorSelect singleSensorSelect19(
-    redeclare package Medium = Medium1,
-    digits=2,
-    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.MM_gpmol)
-    annotation (Placement(transformation(extent={{-78,164},{-98,184}})));
   SingleFlowSensor singleFlowSensor6(
     redeclare package Medium = Medium1,
     outputValue=true,
@@ -633,11 +628,6 @@ equation
   connect(singleSensorSelect18.inlet, source.outlet)
     annotation (Line(
       points={{-78,162},{-70,162},{-70,90},{-116,90}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(singleSensorSelect19.inlet, source.outlet)
-    annotation (Line(
-      points={{-78,174},{-70,174},{-70,90},{-116,90}},
       color={28,108,200},
       thickness=0.5));
   connect(singleFlowSensor1.outlet, singleFlowSensor6.inlet)
