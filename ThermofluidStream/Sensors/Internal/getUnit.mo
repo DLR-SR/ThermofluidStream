@@ -45,7 +45,7 @@ algorithm
   elseif quantity == Types.Quantities.MM_kgpmol then
     unit := "kg/mol";
   elseif quantity == Types.Quantities.MM_kgpkmol then
-    unit := "(kg/kmol)";
+    unit := "kg/kmol";
   else
     unit :="";
   end if;
