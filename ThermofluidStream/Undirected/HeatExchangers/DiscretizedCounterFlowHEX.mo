@@ -142,66 +142,82 @@ equation
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_B > 0),
           points={{50,40},{60,44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_B > 0),
           points={{50,48},{60,44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_A > 0),
           points={{-50,-48},{-60,-44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_A > 0),
           points={{-50,-40},{-60,-44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_B > 0),
           points={{50,60},{60,64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_B > 0),
           points={{50,68},{60,64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_A > 0),
           points={{-50,-68},{-60,-64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(true, m_flow_A > 0),
           points={{-50,-60},{-60,-64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_B < 0),
           points={{-50,40},{-60,44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_B < 0),
           points={{-50,48},{-60,44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_B < 0),
           points={{-50,60},{-60,64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_B < 0),
           points={{-50,68},{-60,64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_A < 0),
           points={{50,-40},{60,-44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_A < 0),
           points={{50,-48},{60,-44}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_A < 0),
           points={{50,-60},{60,-64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
+          visible=DynamicSelect(false, m_flow_A < 0),
           points={{50,-68},{60,-64}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5)}),  Documentation(info="<html>

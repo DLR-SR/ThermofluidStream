@@ -1,6 +1,7 @@
 PartialConductionElementHEX
 ConductionElementHEX
 ConductionElementHEX_twoPhase
+DiscretizedHexIcon
 DiscretizedHEXSummary
 calculateEfficiency
 PartialDiscretizedHEX
