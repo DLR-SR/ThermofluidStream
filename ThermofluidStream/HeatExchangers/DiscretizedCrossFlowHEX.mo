@@ -10,7 +10,7 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
       iconTransformation(
         extent={{20,-20},{-20,20}},
         rotation=180,
-        origin={-100,-60})));
+        origin={-100,0})));
 
   Interfaces.Outlet outletB(
     redeclare package Medium = MediumB)
@@ -19,7 +19,7 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
       iconTransformation(
         extent={{20,-20},{-20,20}},
         rotation=180,
-        origin={100,-60})));
+        origin={100,0})));
 
   Interfaces.Inlet inletA(
     redeclare package Medium = MediumA)
@@ -124,38 +124,159 @@ equation
           extent={{-150,160},{150,120}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Line(
-          points={{0,78},{0,100}},
-          color={28,108,200},
-          thickness=0.5),
-        Text(
-          extent={{40,-54},{52,-66}},
-          textColor={28,108,200},
-          textString="N"),
-        Text(
-          extent={{-12,-54},{0,-66}},
-          textColor={28,108,200},
-          textString="..."),
-        Text(
-          extent={{14,-54},{26,-66}},
-          textColor={28,108,200},
-          textString="..."),
-        Text(
-          extent={{-40,-54},{-28,-66}},
-          textColor={28,108,200},
-          textString="2"),
-        Text(
-          extent={{-66,-54},{-54,-66}},
-          textColor={28,108,200},
-          textString="1"),
         Text(
           extent={{-60,120},{-20,80}},
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{-120,0},{-80,-40}},
+          extent={{-120,60},{-80,20}},
           textColor={175,175,175},
-          textString="B")}), Documentation(info="<html>
+          textString="B"),
+        Line(
+          points={{0,60},{0,100}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-56,54},{64,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{0,0},{0,-100}},
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points={{-100,0},{100,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-60,60},{60,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{0,18},{0,56}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{-48,6},{52,6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{-48,-6},{52,-6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{28,18},{28,42}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{-28,18},{-28,44}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-25,24},
+          rotation=270),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-31,24},
+          rotation=270),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={3,24},
+          rotation=270),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-3,24},
+          rotation=270),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={31,24},
+          rotation=270),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={25,24},
+          rotation=270),
+        Line(
+          points={{-28,-50},{-28,-24}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-25,-44},
+          rotation=270),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-31,-44},
+          rotation=270),
+        Line(
+          points={{0,-50},{0,-12}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={-3,-44},
+          rotation=270),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={3,-44},
+          rotation=270),
+        Line(
+          points={{28,-50},{28,-26}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{6,3},{-5,-2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={25,-44},
+          rotation=270),
+        Line(
+          points={{6,-3},{-5,2}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5,
+          origin={31,-44},
+          rotation=270),
+        Line(
+          points={{42,2},{52,6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{42,10},{52,6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{42,-10},{52,-6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5),
+        Line(
+          points={{42,-2},{52,-6}},
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          thickness=0.5)}),  Documentation(info="<html>
 <p>The cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>Side A splits the fluid stream into nCells substreams that are parallel. The flow-resistance is chosen to be very small and only ensures numerical stability of the parallel streams. By default, it is a linear-quadratic flow resistance, so the massflows through each of the parallel streams is the same. If exchanged for flow-resistance that depends on media properties (e.g. a laminar-turbulent) the mass-flow on the paths will be different. For side B the elements are serial and numbered 1 to nCells in the flow direction. The elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a cross-flow configuration. </p>
 <p>The conduction elements are computing a heat transfer coefficient between their heatport and the fluid contained. They are replaceable with a choice between a single-phase and a two-phase version, both can be further parametrized. Although the single-phase version works for two-phase media (not the other way around), using the two-phase one for two-phase media enables to set different heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state of the medium. </p>
