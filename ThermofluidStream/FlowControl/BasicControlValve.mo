@@ -19,7 +19,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
   parameter Real Cvs_US =  0 "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK =  0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+  parameter Real Cvs_UK =  0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open, deprecated; use Kvs or Cvs_US instead)"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
   parameter SI.MassFlowRate m_flow_ref_set =  0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
@@ -32,7 +32,7 @@ protected
     else m_flow_ref_set/rho_ref "Reference volume flow";
 
 initial equation
-
+  assert(flowCoefficient <> FlowCoeffType.Cvs_UK, "Cvs_UK is deprecated and will be removed in TFS 2.0. Use Kvs or Cvs_US instead.", level=AssertionLevel.warning);
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "In \"" + instanceName + "\": Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
