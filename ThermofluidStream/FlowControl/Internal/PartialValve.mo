@@ -5,7 +5,7 @@ partial model PartialValve "Partial implementation of a physical valve"
 
   parameter Boolean invertInput = false "= true, if input u_in is inverted"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
+  parameter Real k_min(unit="1", min = Modelica.Constants.eps, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control input signal []"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=270,origin={0,80})));
