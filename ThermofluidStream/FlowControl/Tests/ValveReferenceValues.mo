@@ -413,15 +413,41 @@ equation
       thickness=0.5));
   connect(reference1.u_in, ramp.y)
     annotation (Line(points={{0,-32},{0,2},{159,2}}, color={0,0,127}));
-  annotation (Diagram(coordinateSystem(extent={{-180,-200},{180,220}})),
+  annotation (Diagram(coordinateSystem(extent={{-180,-200},{180,220}}, grid={2,
+            2})),
     experiment(
       StopTime=20,
       Interval=0.02,
    Tolerance=1e-6,
       __Dymola_Algorithm="Dassl"),
-    Icon(coordinateSystem(extent={{-180,-200},{180,220}})),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
-<p>Test for the BasicControlValve.</p>
-<p>Owner: <a href=\"mailto:niels.weber@dlr.de\">Niels Weber</a></p>
+<p>
+This test model verifies the safeguards for the reference values
+<code>dp_ref</code> and <code>rho_ref</code> in
+<code>BasicControlValve</code> and <code>SpecificValveType</code>.
+</p>
+<p>
+When a valve is parameterized using <code>Kvs</code>,
+<code>Cvs_US</code>, or <code>Cvs_UK</code>, the reference values must
+remain at their defaults:
+</p>
+<ul>
+<li><code>dp_ref = 1 bar</code></li>
+<li><code>rho_ref = 1000 kg/m3</code></li>
+</ul>
+<p>
+The model contains correctly parameterized reference valves as well as
+valves with modified reference values. The latter use
+<code>assertionLevel = AssertionLevel.warning</code>, allowing the
+simulation to continue while demonstrating the corresponding assertion
+messages.
+</p>
+<p>
+The test verifies that modifying <code>dp_ref</code> or
+<code>rho_ref</code> for standardized flow coefficients is detected,
+while valves using the default reference values do not trigger these
+assertions.
+</p>
 </html>"));
 end ValveReferenceValues;
