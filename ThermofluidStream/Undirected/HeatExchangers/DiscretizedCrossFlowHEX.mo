@@ -404,23 +404,23 @@ equation
           rotation=90),
         Text(
           extent={{-58,10},{-38,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="1"),
         Text(
           extent={{-34,10},{-14,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="2"),
         Text(
           extent={{-10,10},{10,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="3"),
         Text(
           extent={{14,10},{34,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="..."),
         Text(
           extent={{38,10},{58,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="N")}),   Documentation(info="<html>
 <p>The undirected cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>Side A splits the fluid stream into nCells substreams that are parallel. The flow-resistance is chosen to be very small and only ensures numerical stability of the parallel streams. By default, it is a linear-quadratic flow resistance, so the mass flow through each of the parallel streams is the same. If exchanged for flow-resistance that depends on media properties (e.g. a laminar-turbulent) the mass flow on the paths will be different. For side B the elements are serial and numbered 1 to nCells in the flow direction. The elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a cross-flow configuration. </p>

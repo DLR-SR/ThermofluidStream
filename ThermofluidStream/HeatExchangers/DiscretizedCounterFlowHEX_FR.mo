@@ -219,23 +219,23 @@ equation
           thickness=0.5),
         Text(
           extent={{-58,12},{-38,-8}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="1"),
         Text(
           extent={{-34,12},{-14,-8}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="2"),
         Text(
           extent={{-10,12},{10,-8}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="3"),
         Text(
           extent={{14,12},{34,-8}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="..."),
         Text(
           extent={{38,12},{58,-8}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="N")}), Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. This model differs from DiscretizedCounterFlowHEX by introducing flow-resistances after each control volume, but otherwise is the same, therefore consider the documentation of DiscretizedCounterFlowHEX. </p>
 <p>The flowResistances are parametrized by the parameters in the group laminar-turbulent flowRes.</p>

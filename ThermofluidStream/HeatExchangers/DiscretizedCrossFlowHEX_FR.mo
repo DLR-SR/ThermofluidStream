@@ -304,23 +304,23 @@ equation
           thickness=0.5),
         Text(
           extent={{-58,10},{-38,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="1"),
         Text(
           extent={{-34,10},{-14,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="2"),
         Text(
           extent={{-10,10},{10,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="3"),
         Text(
           extent={{14,10},{34,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="..."),
         Text(
           extent={{38,10},{58,-10}},
-          textColor={215,215,215},
+          textColor={0,0,0},
           textString="N")}), Documentation(info="<html>
 <p>
 The cross-flow discretized heat exchanger uses a number of conduction elements
