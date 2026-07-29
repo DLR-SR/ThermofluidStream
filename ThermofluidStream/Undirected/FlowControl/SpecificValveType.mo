@@ -24,6 +24,8 @@ model SpecificValveType "Specific technical valve types"
   //Set valve data as parameter
   parameter SI.Diameter d_valve = 0 "Flow diameter"
     annotation (Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
+  parameter AssertionLevel assertionLevel=AssertionLevel.error "Assertion level for invalid reference values"
+    annotation(Dialog(tab="Advanced"), HideResult=true);
 
 protected
   constant ZetaValueRecord valveData;
@@ -48,6 +50,25 @@ protected
     else m_flow_ref_set/rho_ref "Reference volume flow rate";
 
 initial equation
+  if flowCoefficient == FlowCoeffType.Kvs or
+     flowCoefficient == FlowCoeffType.Cvs_US or
+     flowCoefficient == FlowCoeffType.Cvs_UK then
+    assert(
+      abs(dp_ref/1e5 - 1) <= Modelica.Constants.eps,
+      "In \"" + getInstanceName()
+      + "\": dp_ref must remain at its default value of 1 bar when using "
+      + "Kvs, Cvs_US, or Cvs_UK. Modifying dp_ref leads to incorrect "
+      + "model behavior. Remove the dp_ref modifier.",
+      level=assertionLevel);
+
+    assert(
+      abs(rho_ref/1000 - 1) <= Modelica.Constants.eps,
+      "In \"" + getInstanceName()
+      + "\": rho_ref must remain at its default value of 1000 kg/m3 when "
+      + "using Kvs, Cvs_US, or Cvs_UK. Modifying rho_ref leads to incorrect "
+      + "model behavior. Remove the rho_ref modifier.",
+      level=assertionLevel);
+  end if;
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 shall not be used", level=AssertionLevel.error);
@@ -115,5 +136,20 @@ equation
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate or a flow-diameter can be set. </p>
 <p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>
+<h5>Reference values for standardized flow coefficients</h5>
+<p>When using <code>Kvs</code>, <code>Cvs_US</code>, or <code>Cvs_UK</code>, the default values <code>dp_ref = 1 bar</code> and <code>rho_ref = 1000 kg/m3</code> must not be modified. </p>
+<p>Changing these reference values currently leads to incorrect model behavior. The assertion level can be configured using <code>assertionLevel</code>. 
+<h5>Reference values for standardized flow coefficients</h5>
+<p>
+When using <code>Kvs</code>, <code>Cvs_US</code>, or
+<code>Cvs_UK</code>, the default values
+<code>dp_ref = 1 bar</code> and
+<code>rho_ref = 1000 kg/m3</code> must not be modified.
+</p>
+<p>
+Changing these reference values currently leads to incorrect model
+behavior. The assertion level can be configured using
+<code>assertionLevel</code>. To test this behavior, a test model has been setup in <a href=\"modelica://ThermofluidStream.Undirected.FlowControl.Tests.ValveReferenceValues_Undirected\">ValveReferenceValues_Undirected</a>. </p>
+</p> 
 </html>"));
 end SpecificValveType;
