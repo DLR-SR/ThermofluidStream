@@ -149,5 +149,17 @@ equation
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate or a flow-diameter can be set. </p>
 <p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>
+<h5>Reference values for standardized flow coefficients</h5>
+<p>
+When using <code>Kvs</code>, <code>Cvs_US</code>, or
+<code>Cvs_UK</code>, the default values
+<code>dp_ref = 1 bar</code> and
+<code>rho_ref = 1000 kg/m3</code> must not be modified.
+</p>
+<p>
+Changing these reference values currently leads to incorrect model
+behavior. The assertion level can be configured using
+<code>assertionLevel</code>. To test this behavior, a test model has been setup in Tests.ValveReferenceValues.
+</p> 
 </html>"));
 end SpecificValveType;
