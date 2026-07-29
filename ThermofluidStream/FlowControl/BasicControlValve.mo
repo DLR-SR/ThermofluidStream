@@ -34,8 +34,6 @@ protected
     else m_flow_ref_set/rho_ref "Reference volume flow";
 
 initial equation
-
-  assert(flowCoefficient <> FlowCoeffType.Cvs_UK, "Cvs_UK is deprecated and will be removed in TFS 2.0. Use Kvs or Cvs_US instead.", level=AssertionLevel.warning);
   if flowCoefficient == FlowCoeffType.Kvs or
      flowCoefficient == FlowCoeffType.Cvs_US or
      flowCoefficient == FlowCoeffType.Cvs_UK then
