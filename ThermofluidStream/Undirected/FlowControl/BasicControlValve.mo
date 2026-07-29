@@ -27,6 +27,8 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
   parameter SI.MassFlowRate m_flow_ref_set = 0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter AssertionLevel assertionLevel=AssertionLevel.error "Assertion level for invalid reference values"
+    annotation(Dialog(tab="Advanced"));
 
 protected
   final parameter SI.VolumeFlowRate V_flow_ref=
@@ -36,7 +38,36 @@ protected
     else m_flow_ref_set/rho_ref "Reference volume flow rate";
 
 initial equation
-  assert(flowCoefficient <> FlowCoeffType.Cvs_UK, "Cvs_UK is deprecated and will be removed in TFS 2.0. Use Kvs or Cvs_US instead.", level=AssertionLevel.warning);
+    assert(
+    flowCoefficient <> FlowCoeffType.Cvs_UK,
+    "\n"
+    + "===============================================================================\n"
+    + "              ThermoFluidStream WARNING - DEPRECATED BEHAVIOR\n"
+    + "===============================================================================\n"
+    + "The flow coefficient type Cvs_UK is selected.\n"
+    + "This parameterization is DEPRECATED and will be REMOVED in v2.0.\n"
+    + "Action required: Use Kvs or Cvs_US instead.\n"
+    + "Component: " + getInstanceName() + "\n"
+    + "===============================================================================\n",
+    level=AssertionLevel.warning);
+
+  if flowCoefficient <> FlowCoeffType.m_flow_set then
+    assert(
+      abs(dp_ref/1e5 - 1) <= Modelica.Constants.eps,
+      "In \"" + getInstanceName()
+      + "\": dp_ref must remain at its default value of 1 bar when "
+      + "m_flow_ref_set is not used. Modifying dp_ref leads to incorrect "
+      + "model behavior. Remove the dp_ref modifier.",
+      level=assertionLevel);
+
+    assert(
+      abs(rho_ref/1000 - 1) <= Modelica.Constants.eps,
+      "In \"" + getInstanceName()
+      + "\": rho_ref must remain at its default value of 1000 kg/m3 when "
+      + "m_flow_ref_set is not used. Modifying rho_ref leads to incorrect "
+      + "model behavior. Remove the rho_ref modifier.",
+      level=assertionLevel);
+  end if;
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);

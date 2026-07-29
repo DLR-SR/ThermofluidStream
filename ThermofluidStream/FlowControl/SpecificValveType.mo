@@ -47,7 +47,18 @@ protected
 
 
 initial equation
-  assert(flowCoefficient <> FlowCoeffType.Cvs_UK, "Cvs_UK is deprecated and will be removed in TFS 2.0. Use Kvs or Cvs_US instead.", level=AssertionLevel.warning);
+  assert(
+  flowCoefficient <> FlowCoeffType.Cvs_UK,
+  "\n"
+  + "===============================================================================\n"
+  + "             ThermoFluidStream WARNING - DEPRECATED PARAMETERIZATION\n"
+  + "===============================================================================\n"
+  + "The flow coefficient type Cvs_UK is selected.\n"
+  + "This option is DEPRECATED and will be REMOVED in ThermoFluidStream 2.0.\n"
+  + "Action required: Use Kvs or Cvs_US instead.\n"
+  + "Component: " + getInstanceName() + "\n"
+  + "===============================================================================\n",
+  level=AssertionLevel.warning);
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "In \"" + instanceName + "\": Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
@@ -114,5 +125,18 @@ equation
 <p><br>The technical type of the valve can be chosen (e.g. sliding valve). The characteristic curve is then set accordingly from a table for the zeta (flow resistance) values dependent on the valve opening.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate or a flow-diameter can be set. </p>
 <p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>
+
+<h5>Reference values for standardized flow coefficients</h5>
+<p>
+When using <code>Kvs</code>, <code>Cvs_US</code>, or
+<code>Cvs_UK</code>, the default values
+<code>dp_ref = 1 bar</code> and
+<code>rho_ref = 1000 kg/m3</code> must not be modified.
+</p>
+<p>
+Changing these reference values currently leads to incorrect model
+behavior. The assertion level can be configured using
+<code>assertionLevel</code>. To test this behavior, a test model has been setup in Tests.ValveReferenceValues.
+</p>
 </html>"));
 end SpecificValveType;
