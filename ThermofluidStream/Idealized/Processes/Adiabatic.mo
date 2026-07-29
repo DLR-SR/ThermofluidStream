@@ -6,6 +6,7 @@ model Adiabatic "Adiabatic process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
   import PowerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
+  import DisplayIconType = ThermofluidStream.Idealized.Types.dpIconType;
 
   replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium
     constrainedby ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic
@@ -78,7 +79,10 @@ model Adiabatic "Adiabatic process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-
+  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.dpIconType.Compression
+    "Defines default display icon" annotation (Dialog(
+      tab="Layout",
+      group="Display parameters"), Evaluate=true);
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed "Prescribed isentropic efficiency [-]" annotation(
@@ -192,14 +196,6 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Text(
-          extent={{-30,30},{30,-30}},
-          textColor={28,108,200},
-          textString="s"),
         Text(
           extent={{-150,120},{150,80}},
           textString=if displayInstanceName then "%name" else "",
@@ -275,6 +271,34 @@ equation
           extent={{-96,42},{-64,38}},
           fillColor={28,108,200},
           fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp > 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp > 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
+          lineColor={28,108,200},
+          fillColor={215,236,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp > 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp > 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
           pattern=LinePattern.None)}),
     Documentation(
       info="<html>

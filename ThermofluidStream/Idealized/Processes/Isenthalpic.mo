@@ -106,18 +106,10 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
           textString=if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
-        Text(
-          extent={{-30,30},{30,-30}},
-          textColor={28,108,200},
-          textString="h"),
         Text(
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
@@ -134,6 +126,48 @@ equation
           lineColor={0,0,0},
           fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-30,42},{-8,-42}},
+          lineColor={28,108,200},
+          pattern=LinePattern.None,
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=8),
+        Rectangle(
+          extent={{-44,42},{-8,-42}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{8,42},{32,-42}},
+          lineColor={28,108,200},
+          pattern=LinePattern.None,
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=8),
+        Rectangle(
+          extent={{8,42},{44,-42}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-4,44},{4,12}},
+          lineColor={28,108,200},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent={{-4,-12},{4,-44}},
+          lineColor={28,108,200},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
         Text(
           extent={{-100,50},{100,-50}},
           textColor={238,46,47},

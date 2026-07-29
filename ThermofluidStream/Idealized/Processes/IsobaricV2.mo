@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Processes;
-model Isobaric "Isobaric process"
+model IsobaricV2 "Isobaric process"
 
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
@@ -161,8 +161,6 @@ equation
     elseif noEvent(heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and specifyOutlet and abs(Q_flow) > eps_Q_flow and abs(q) < eps_q) then -1.0
     else 0;
 
-
-
   if systemSpec == SystemSpecification.Cycle then
     w_exp = - p*(v_out - v_in);
     w_amb = - p_inf*(v_out - v_in);
@@ -292,14 +290,14 @@ equation
         Rectangle(
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{2,42},{42,-42}} else {{-2,42},{-42,-42}}, if dT > 0 then {{2,42},{42,-42}} else {{-2,42},{-42,-42}}),
           lineColor={28,108,200},
-          fillColor={255,200,170},
+          fillColor={255,151,110},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{20,42},{42,-42}} else {{-20,42},{-42,-42}}, if dT > 0 then {{20,42},{42,-42}} else {{-20,42},{-42,-42}}),
           lineColor={28,108,200},
-          fillColor={255,180,140},
+          fillColor={217,0,0},
           fillPattern=FillPattern.Solid,
           radius=30,
           pattern=LinePattern.None),
@@ -475,4 +473,4 @@ equation
     </li>
   </ul>
 </html>"));
-end Isobaric;
+end IsobaricV2;

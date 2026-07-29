@@ -1,5 +1,5 @@
 within ThermofluidStream.Idealized.Processes;
-model PolytropicPerfectGas "Polytropic process, perfect gas"
+model PolytropicPerfectGastEST "Polytropic process, perfect gas"
 
   extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out = false);
 
@@ -317,12 +317,6 @@ equation
     defaultComponentName = "polytropic",
     Icon(
       graphics={
-        Rectangle(
-          extent={{100,80},{130,52}},
-          lineColor={28,108,200},
-          fillColor={170,213,255},
-          fillPattern=FillPattern.Solid,
-          radius=5),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -421,34 +415,6 @@ equation
           then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp > 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
-          lineColor={28,108,200},
-          fillColor={235,246,255},
-          fillPattern=FillPattern.Solid,
-          radius=20,
-          pattern=LinePattern.None),
-        Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp > 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
-          lineColor={28,108,200},
-          fillColor={237,235,252},
-          fillPattern=FillPattern.Solid,
-          radius=20,
-          pattern=LinePattern.None),
-        Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp > 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
-          lineColor={28,108,200},
-          fillColor={239,213,255},
-          fillPattern=FillPattern.Solid,
-          radius=20,
-          pattern=LinePattern.None),
-        Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp > 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
-          lineColor={28,108,200},
-          fillColor={240,184,229},
-          fillPattern=FillPattern.Solid,
-          radius=30,
-          pattern=LinePattern.None),
-        Rectangle(
           extent={{60,80},{90,50}},
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -472,12 +438,6 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{100,80},{130,60}},
-          lineColor={28,108,200},
-          fillColor={235,246,255},
-          fillPattern=FillPattern.Solid,
-          radius=5),
-        Rectangle(
           extent={{74,52},{78,38}},
           lineColor={28,108,200},
           fillColor={28,108,200},
@@ -497,7 +457,29 @@ equation
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
-          radius=5)}),
+          radius=5),
+        Rectangle(
+          extent={{-42,40},{40,-42}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20),
+        Rectangle(
+          extent={{-42,40},{40,-20}},
+          lineColor={28,108,200},
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid,
+          radius=20),
+        Rectangle(
+          extent={{-6,-28},{2,-56}},
+          lineColor={28,108,200},
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-12,-36},{-2,-20},{8,-36},{-12,-36}},
+          lineColor={28,108,200},
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid)}),
     Documentation(
       info="<html>
   <p>
@@ -666,4 +648,4 @@ equation
     </li>
   </ul>
 </html>"));
-end PolytropicPerfectGas;
+end PolytropicPerfectGastEST;

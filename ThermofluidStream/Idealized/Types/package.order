@@ -3,3 +3,5 @@ EnergyFlowSignalMode
 OutletSpecification
 PolytropicProcessSpecification
 SystemModel
+dpIconType
+dTIconType

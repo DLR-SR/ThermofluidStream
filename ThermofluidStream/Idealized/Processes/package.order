@@ -7,3 +7,5 @@ PseudoSource
 Isochoric
 FlowWork
 AdiabaticThermodynamicModels
+PolytropicPerfectGasTest
+IsobaricV2

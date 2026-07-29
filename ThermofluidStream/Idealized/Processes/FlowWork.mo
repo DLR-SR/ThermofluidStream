@@ -49,24 +49,30 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-      Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
       Text(
         extent={{-150,120},{150,80}},
         textString = if displayInstanceName then "%name" else "",
         textColor=dropOfCommons.instanceNameColor),
-      Text(
-        extent={{-40,30},{40,-30}},
-        textColor={28,108,200},
-        textString="pv"),
       Line(
         points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{100,0},{100,-100}} else {{0,0}},
         color={255,170,85}),
       Line(
         points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet then {{-100,0},{-100,-100}} else {{0,0}},
-        color={255,170,85})}),
+        color={255,170,85}),
+        Rectangle(
+          extent=DynamicSelect(if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-40,42},{40,-42}} else {{40,42},{-40,-42}}, if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-40,42},{40,-42}} else {{40,42},{-40,-42}}),
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          extent=DynamicSelect(if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}, if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}),
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=10,
+          pattern=LinePattern.None)}),
     Documentation(
       info="<html>
   <p>
