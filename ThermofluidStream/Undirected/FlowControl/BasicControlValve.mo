@@ -27,8 +27,6 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
   parameter SI.MassFlowRate m_flow_ref_set = 0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
-  parameter AssertionLevel assertionLevel=AssertionLevel.error "Assertion level for invalid reference values"
-    annotation(Dialog(tab="Advanced"));
 
 protected
   final parameter SI.VolumeFlowRate V_flow_ref=
@@ -127,17 +125,5 @@ equation
 <p>The three standard curve characteristics (linear, parabolic, equal-percentage) are implemented and can be chosen.</p>
 <p><br>To conclude the parameterization, a flow coefficient has to be set. Most data sheets of valves deliver a corresponding &quot;KVs (CVs)&quot;-Value. Otherwise a nominal mass-flow rate can be set. </p>
 <p>For incompressible flow, the reference values for density (1g/cm3) and pressure (1bar) should be unchanged.</p>
-<h5>Reference values for standardized flow coefficients</h5>
-<p>
-When using <code>Kvs</code>, <code>Cvs_US</code>, or
-<code>Cvs_UK</code>, the default values
-<code>dp_ref = 1 bar</code> and
-<code>rho_ref = 1000 kg/m3</code> must not be modified.
-</p>
-<p>
-Changing these reference values currently leads to incorrect model
-behavior. The assertion level can be configured using
-<code>assertionLevel</code>. To test this behavior, a test model has been setup in Tests.ValveReferenceValues.
-</p>
 </html>"));
 end BasicControlValve;
