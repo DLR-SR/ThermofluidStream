@@ -1,8 +1,8 @@
 PartialConductionElementHEX
 ConductionElementHEX
 ConductionElementHEX_twoPhase
-DiscretizedHexIcon
 DiscretizedHEXSummary
+DiscretizedHexIcon
 calculateEfficiency
 PartialDiscretizedHEX
 PartialNTU

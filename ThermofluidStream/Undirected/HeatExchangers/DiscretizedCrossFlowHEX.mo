@@ -155,23 +155,23 @@ equation
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
         Line(
-          points={{0,18},{0,56}},
+          points={{0,26},{0,58}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-48,6},{52,6}},
+          points={{-50,16},{50,16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-48,-6},{52,-6}},
+          points={{-50,-16},{50,-16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{28,18},{28,42}},
+          points={{28,26},{28,50}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
-          points={{-28,18},{-28,44}},
+          points={{-28,26},{-28,50}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -179,45 +179,45 @@ equation
           points={{6,-3},{-5,2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={-25,24},
+          origin={-25,32},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,3},{-5,-2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={-31,24},
+          origin={-31,32},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,-3},{-5,2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={3,24},
+          origin={3,32},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,3},{-5,-2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={-3,24},
+          origin={-3,32},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,-3},{-5,2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={31,24},
+          origin={31,32},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,3},{-5,-2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={25,24},
+          origin={25,32},
           rotation=270),
         Line(
-          points={{-28,-50},{-28,-24}},
+          points={{-28,-50},{-28,-26}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -235,7 +235,7 @@ equation
           origin={-31,-44},
           rotation=270),
         Line(
-          points={{0,-50},{0,-12}},
+          points={{0,-58},{0,-26}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -243,14 +243,14 @@ equation
           points={{6,3},{-5,-2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={-3,-44},
+          origin={-3,-52},
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_A > 0),
           points={{6,-3},{-5,2}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
-          origin={3,-44},
+          origin={3,-52},
           rotation=270),
         Line(
           points={{28,-50},{28,-26}},
@@ -272,22 +272,22 @@ equation
           rotation=270),
         Line(
           visible=DynamicSelect(true, m_flow_B > 0),
-          points={{42,2},{52,6}},
+          points={{40,12},{50,16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           visible=DynamicSelect(true, m_flow_B > 0),
-          points={{42,10},{52,6}},
+          points={{40,20},{50,16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           visible=DynamicSelect(true, m_flow_B > 0),
-          points={{42,-10},{52,-6}},
+          points={{40,-20},{50,-16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           visible=DynamicSelect(true, m_flow_B > 0),
-          points={{42,-2},{52,-6}},
+          points={{40,-12},{50,-16}},
           color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
@@ -401,7 +401,27 @@ equation
           color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
           thickness=0.5,
           origin={25,-32},
-          rotation=90)}),      Documentation(info="<html>
+          rotation=90),
+        Text(
+          extent={{-58,10},{-38,-10}},
+          textColor={215,215,215},
+          textString="1"),
+        Text(
+          extent={{-34,10},{-14,-10}},
+          textColor={215,215,215},
+          textString="2"),
+        Text(
+          extent={{-10,10},{10,-10}},
+          textColor={215,215,215},
+          textString="3"),
+        Text(
+          extent={{14,10},{34,-10}},
+          textColor={215,215,215},
+          textString="..."),
+        Text(
+          extent={{38,10},{58,-10}},
+          textColor={215,215,215},
+          textString="N")}),   Documentation(info="<html>
 <p>The undirected cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>Side A splits the fluid stream into nCells substreams that are parallel. The flow-resistance is chosen to be very small and only ensures numerical stability of the parallel streams. By default, it is a linear-quadratic flow resistance, so the mass flow through each of the parallel streams is the same. If exchanged for flow-resistance that depends on media properties (e.g. a laminar-turbulent) the mass flow on the paths will be different. For side B the elements are serial and numbered 1 to nCells in the flow direction. The elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a cross-flow configuration. </p>
 <p>The conduction elements are computing a heat transfer coefficient between their heatport and the fluid contained. They are replaceable with a choice between a single-phase and a two-phase version, both can be further parametrized. Although the single-phase version works for two-phase media (not the other way around), using the two-phase one for two-phase media enables to set different heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state of the medium. </p>

@@ -1,7 +1,9 @@
 within ThermofluidStream.HeatExchangers.Internal;
 model DiscretizedHexIcon
-
-  annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
+  extends Modelica.Icons.ObsoleteModel;
+  annotation (
+        obsolete="Obsolete icon for discretized HX",
+              Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
         Rectangle(
           extent={{-70,66},{84,-86}},
           lineColor={215,215,215},
@@ -132,19 +134,5 @@ model DiscretizedHexIcon
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None,
           origin={54,-22},
-          rotation=180),
-      Rectangle(
-        extent={{-125.158,16.2634},{125.158,-16.2634}},
-        lineColor={215,215,215},
-        fillColor={238,46,47},
-        fillPattern=FillPattern.Solid,
-        rotation=45,
-          origin={-1.32786e-05,1.00005}),
-      Rectangle(
-        extent={{-123.744,17.6777},{123.744,-17.6777}},
-        lineColor={215,215,215},
-        fillColor={238,46,47},
-        fillPattern=FillPattern.Solid,
-        rotation=315,
-          origin={-1.00011,0.000128538})}),                          Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}})));
+          rotation=180)}),                                           Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}})));
 end DiscretizedHexIcon;
