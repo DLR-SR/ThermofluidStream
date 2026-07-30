@@ -18,8 +18,8 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     T0_par=473.15,
     p0_par=220000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{-4,-130},{-24,-110}})));
-  ThermofluidStream.Boundaries.Sink packDischarge(redeclare package Medium = Medium, p0_par=80000) annotation (
-      Placement(transformation(
+  ThermofluidStream.Boundaries.Sink bleedOutlet(redeclare package Medium = Medium, p0_par=80000) annotation (Placement(
+        transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-130,100})));
@@ -27,7 +27,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     T0_par=238.65,
     p0_par=37600,
-    Xi0_par={0}) annotation (Placement(transformation(extent={{-160,40},{-140,60}})));
+    Xi0_par={0}) annotation (Placement(transformation(extent={{-160,60},{-140,80}})));
   ThermofluidStream.Boundaries.DynamicPressureInflow dynamicPressure(
     displayInstanceName=false,
     redeclare package Medium = Medium,
@@ -37,7 +37,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     velocityFromInput=false,
     v_in_par=155,
     A_par=r^2*Modelica.Constants.pi,
-    displayOutletArea=false) annotation (Placement(transformation(extent={{-120,40},{-100,60}})));
+    displayOutletArea=false) annotation (Placement(transformation(extent={{-120,60},{-100,80}})));
   ThermofluidStream.Boundaries.Sink ramOutlet(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -132,7 +132,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     T0_par=473.15,
     p0_par=220000,
     Xi0_par={0}) annotation (Placement(transformation(extent={{4,-130},{24,-110}})));
-  ThermofluidStream.Boundaries.Sink packDischarge1(redeclare package Medium = Medium, p0_par=80000)
+  ThermofluidStream.Boundaries.Sink bleedOutlet1(redeclare package Medium = Medium, p0_par=80000)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -141,7 +141,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     T0_par=238.65,
     p0_par=37600,
-    Xi0_par={0}) annotation (Placement(transformation(extent={{160,40},{140,60}})));
+    Xi0_par={0}) annotation (Placement(transformation(extent={{160,60},{140,80}})));
   ThermofluidStream.Boundaries.DynamicPressureInflow dynamicPressure1(
     displayInstanceName=false,
     redeclare package Medium = Medium,
@@ -151,7 +151,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     velocityFromInput=false,
     v_in_par=155,
     A_par=r^2*Modelica.Constants.pi,
-    displayOutletArea=false) annotation (Placement(transformation(extent={{126,40},{106,60}})));
+    displayOutletArea=false) annotation (Placement(transformation(extent={{126,60},{106,80}})));
   ThermofluidStream.Boundaries.Sink ramOutlet1(
     redeclare package Medium = Medium,
     pressureFromInput=false,
@@ -241,22 +241,22 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     redeclare package Medium = Medium,
     digits=2,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{-90,50},{-70,70}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{-90,70},{-70,90}})));
   ThermofluidStream.Sensors.MultiSensor_Tpm ramInletSensor1(
     redeclare package Medium = Medium,
     digits=2,
     temperatureUnit="degC",
-    pressureUnit="bar") annotation (Placement(transformation(extent={{92,50},{72,70}})));
+    pressureUnit="bar") annotation (Placement(transformation(extent={{92,70},{72,90}})));
   ThermofluidStream.Utilities.showRealValue CoolingPower_kW(
     description="Cooling Power [kW]",
     use_numberPort=false,
-    number=-turbine.m_flow*1.005*(packDischarge.inlet.state.T - bleedInlet.outlet.state.T),
-    significantDigits=3) annotation (Placement(transformation(extent={{-160,-40},{-100,-20}})));
+    number=turbine.m_flow*1.005*(bleedInlet.outlet.state.T - bleedOutlet.inlet.state.T),
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-2},{-98,18}})));
   ThermofluidStream.Utilities.showRealValue CoolingPower_kW1(
     description="Cooling Power [kW]",
     use_numberPort=false,
-    number=-turbine1.m_flow*1.005*(packDischarge1.inlet.state.T - bleedInlet1.outlet.state.T),
-    significantDigits=3) annotation (Placement(transformation(extent={{100,-40},{160,-20}})));
+    number=turbine1.m_flow*1.005*(bleedInlet1.outlet.state.T - bleedOutlet1.inlet.state.T),
+    significantDigits=3) annotation (Placement(transformation(extent={{98,0},{158,20}})));
   Sensors.SingleSensorSelect sensorMainHXRam(
     redeclare package Medium = Medium,
     digits=3,
@@ -287,10 +287,55 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     digits=2,
     quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
     annotation (Placement(transformation(extent={{46,20},{26,40}})));
+  Sensors.SingleSensorSelect sensorCompressor(
+    redeclare package Medium = Medium,
+    digits=3,
+    quantity=ThermofluidStream.Sensors.Internal.Types.Quantities.T_C)
+    annotation (Placement(transformation(extent={{-48,10},{-28,30}})));
+  ThermofluidStream.Utilities.showRealValue fanPr(
+    description="Fan Pressure Ratio",
+    use_numberPort=false,
+    number=fan.p_out/fan.p_in,
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-62},{-98,-42}})));
+  ThermofluidStream.Utilities.showRealValue fan1Pr(
+    description="Fan1 Pressure Ratio",
+    use_numberPort=false,
+    number=fan1.p_out/fan1.p_in,
+    significantDigits=3) annotation (Placement(transformation(extent={{98,-40},{158,-20}})));
+  ThermofluidStream.Utilities.showRealValue cmpPr(
+    description="Compressor Pressure Ratio",
+    use_numberPort=false,
+    number=compressor.p_out/compressor.p_in,
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-20},{-98,0}})));
+  ThermofluidStream.Utilities.showRealValue turbinePr(
+    description="Turbine Pressure Ratio",
+    use_numberPort=false,
+    number=turbine.p_out/turbine.p_in,
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-40},{-98,-20}})));
+  ThermofluidStream.Utilities.showRealValue turbine1Pr(
+    description="Turbine1 Pressure Ratio",
+    use_numberPort=false,
+    number=turbine1.p_out/turbine1.p_in,
+    significantDigits=3) annotation (Placement(transformation(extent={{98,-20},{158,0}})));
+  ThermofluidStream.Utilities.showRealValue hexEffectiveness(
+    description="Heat Exchanger Effectiveness",
+    use_numberPort=false,
+    number=hex.effectiveness,
+    significantDigits=3) annotation (Placement(transformation(extent={{98,-60},{158,-40}})));
+  ThermofluidStream.Utilities.showRealValue mainHexEffectiveness(
+    description="Main Heat Exchanger Effectiveness",
+    use_numberPort=false,
+    number=mainHex.effectiveness,
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-80},{-98,-60}})));
+  ThermofluidStream.Utilities.showRealValue primaryHexEffectiveness(
+    description="Primary Heat Exchanger Effectiveness",
+    use_numberPort=false,
+    number=primaryHex.effectiveness,
+    significantDigits=3) annotation (Placement(transformation(extent={{-158,-100},{-98,-80}})));
 equation
   connect(ramInlet.outlet, dynamicPressure.inlet)
     annotation (Line(
-      points={{-140,50},{-120,50}},
+      points={{-140,70},{-120,70}},
       color={28,108,200},
       thickness=0.5));
   connect(pipe.outlet, fan.inlet)
@@ -343,7 +388,7 @@ equation
       thickness=0.5));
   connect(ramInlet1.outlet, dynamicPressure1.inlet)
     annotation (Line(
-      points={{140,50},{126,50}},
+      points={{140,70},{126,70}},
       color={28,108,200},
       thickness=0.5));
   connect(hex.outletA, pipe1.inlet)
@@ -367,7 +412,7 @@ equation
       points={{-140,-120},{-130,-120}},
       color={28,108,200},
       thickness=0.5));
-  connect(packDischarge.inlet, packDischargeSensor.outlet)
+  connect(bleedOutlet.inlet, packDischargeSensor.outlet)
     annotation (Line(
       points={{-120,100},{-100,100}},
       color={28,108,200},
@@ -382,7 +427,7 @@ equation
       points={{52,70},{52,100},{82,100}},
       color={28,108,200},
       thickness=0.5));
-  connect(packDischargeSensor1.outlet, packDischarge1.inlet)
+  connect(packDischargeSensor1.outlet, bleedOutlet1.inlet)
     annotation (Line(
       points={{102,100},{120,100}},
       color={28,108,200},
@@ -409,22 +454,22 @@ equation
       thickness=0.5));
   connect(dynamicPressure.outlet, ramInletSensor.inlet)
     annotation (Line(
-      points={{-100,50},{-90,50}},
+      points={{-100,70},{-90,70}},
       color={28,108,200},
       thickness=0.5));
   connect(ramInletSensor.outlet, mainHex.inletB)
     annotation (Line(
-      points={{-70,50},{-66,50},{-66,44}},
+      points={{-70,70},{-66,70},{-66,44}},
       color={28,108,200},
       thickness=0.5));
   connect(dynamicPressure1.outlet, ramInletSensor1.inlet)
     annotation (Line(
-      points={{106,50},{92,50}},
+      points={{106,70},{92,70}},
       color={28,108,200},
       thickness=0.5));
   connect(ramInletSensor1.outlet, hex.inletA)
     annotation (Line(
-      points={{72,50},{64,50},{64,10}},
+      points={{72,70},{64,70},{64,10}},
       color={28,108,200},
       thickness=0.5));
   connect(sensorMainHXRam.inlet, mainHex.outletB)
@@ -457,6 +502,11 @@ equation
       points={{52,10},{52,30},{46,30}},
       color={28,108,200},
       thickness=0.5));
+  connect(sensorCompressor.inlet, compressor.outlet)
+    annotation (Line(
+      points={{-48,20},{-54,20},{-54,16}},
+      color={28,108,200},
+      thickness=0.5));
   annotation (
     experiment(
       StopTime=100,
@@ -465,42 +515,34 @@ equation
     Icon(coordinateSystem(extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-140},{160,140}}), graphics={
         Text(
-          extent={{-158,0},{-96,-20}},
+          extent={{-158,40},{-96,20}},
           textColor={28,108,200},
           textString="three wheel bootstrap"),
         Rectangle(
-          extent={{18,80},{98,-96}},
+          extent={{18,92},{98,-96}},
           lineColor={28,108,200},
           fillColor={239,248,255},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{102,0},{158,-20}},
+          extent={{102,40},{158,20}},
           textColor={28,108,200},
           textString="simple cycle"),
         Rectangle(
-          extent={{-94,80},{-20,-96}},
+          extent={{-94,92},{-20,-96}},
           lineColor={28,108,200},
           fillColor={239,248,255},
           fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
-<p>
-Simple implementation of a <strong>bootstrap air cycle</strong> used in aircraft environmental control systems (ECS).
-</p>
-<p>
-Two configurations are implemented: a <strong>three-wheel bootstrap cycle</strong> on the left and a <strong>simple cycle</strong> on the right.
-</p>
-
-<p>
-<strong>Boundary Conditions:</strong>
-</p>
+<p>Simple implementation of a <b>bootstrap air cycle</b> used in aircraft environmental control systems (ECS). </p>
+<p>In this example, all bypasses, such as temperature control valves, and dehumidification components are not considered. Consequently, the two bleed sinks do not correspond to real ECS pack outlets.</p>
+<p>Two configurations are implemented: a <b>three-wheel bootstrap cycle</b> on the left and a <b>simple cycle</b> on the right. </p>
+<p><b>Boundary Conditions:</b> </p>
 <ul>
-<li><strong>Ram Air Inlet</strong> (T = -34.5 °C, p = 0.376 bar): Static ambient conditions at <strong>25,000 ft</strong> in <strong>ISA0</strong> atmosphere.</li>
-<li><strong>Bleed Air Inlet</strong> (T = 200 °C, p = 2.2 bar): Typical engine bleed air conditions. In conventional ECS packs, bleed air is the source of fresh air for the cabin.</li>
-<li><strong>Pack Discharge</strong> (p = 0.8 bar): Typical cabin pressure in cruise.</li>
-<li><strong>Dynamic Pressure Inflow</strong> (v = 155 m/s): Aircraft true airspeed in cruise. This component accounts for dynamic effects due to the aircraft's speed.</li>
+<li><b>Ram Air Inlet</b> (T = -34.5 &deg;C, p = 0.376 bar): Static ambient conditions at <b>25000 ft</b> in <b>ISA0</b> atmosphere.</li>
+<li><b>Bleed Air Inlet</b> (T = 200 &deg;C, p = 2.2 bar): Typical engine bleed air conditions. In conventional ECS packs, bleed air is the source of fresh air for the cabin.</li>
+<li><b>Bleed Air Outlet</b> (p = 0.8 bar): Typical cabin pressure at cruise.</li>
+<li><b>Dynamic Pressure Inflow</b> (v = 155 m/s): Aircraft true airspeed at cruise. This component accounts for dynamic effects due to the aircraft&apos;s speed.</li>
 </ul>
-<p>
-Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Meißner</a>
-</p>
+<p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a> </p>
 </html>", revisions=""));
 end SimpleAirCycle;
