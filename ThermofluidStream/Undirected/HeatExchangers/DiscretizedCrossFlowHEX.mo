@@ -403,23 +403,15 @@ equation
           origin={25,-32},
           rotation=90),
         Text(
-          extent={{-58,10},{-38,-10}},
+          extent={{-40,10},{-20,-10}},
           textColor={0,0,0},
           textString="1"),
         Text(
-          extent={{-34,10},{-14,-10}},
-          textColor={0,0,0},
-          textString="2"),
-        Text(
-          extent={{-10,10},{10,-10}},
-          textColor={0,0,0},
-          textString="3"),
-        Text(
-          extent={{14,10},{34,-10}},
+          extent={{-16,16},{16,-12}},
           textColor={0,0,0},
           textString="..."),
         Text(
-          extent={{38,10},{58,-10}},
+          extent={{18,10},{38,-10}},
           textColor={0,0,0},
           textString="N")}),   Documentation(info="<html>
 <p>The undirected cross-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>

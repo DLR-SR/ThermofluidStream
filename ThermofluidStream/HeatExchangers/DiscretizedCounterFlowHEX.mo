@@ -76,11 +76,13 @@ equation
   end for;
 
   annotation (Icon(graphics={
-        Text(visible=displayInstanceName,
+        Text(
+          visible=displayInstanceName,
           extent={{-150,140},{150,100}},
           textString="%name",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible=d1A,
+        Text(
+          visible=d1A,
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
           textString="A = %A"),
@@ -106,101 +108,115 @@ equation
           radius=6),
         Line(
           points={{60,52},{-60,52}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{60,36},{-60,36}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{60,-44},{-60,-44}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{60,-60},{-60,-60}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,32},{60,36}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,40},{60,36}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-48},{-60,-44}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-40},{-60,-44}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,48},{60,52}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,56},{60,52}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-64},{-60,-60}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-56},{-60,-60}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{60,20},{-60,20}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,24},{60,20}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{50,16},{60,20}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A < summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-24},{-60,-28}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{60,-28},{-60,-28}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
         Line(
           points={{-50,-32},{-60,-28}},
-          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B then {238,46,47} else {21,85,157}),
+          color=DynamicSelect({215,215,215}, if summary.Tin_A > summary.Tin_B
+               then {238,46,47} else {21,85,157}),
           thickness=0.5),
-        Polygon(points={{-70,28},{62,28},{62,60},{-70,60},{-60,70},{70,70},{70,
-              38},{62,28},{62,60},{70,70},{-60,70},{-70,60},{-70,28}},                                                                               lineColor={215,215,
-              215}),
+        Polygon(points={{-70,28},{62,28},{62,60},{-70,60},{-60,70},{70,70},{70,38},
+              {62,28},{62,60},{70,70},{-60,70},{-70,60},{-70,28}}, lineColor={215,
+              215,215}),
         Polygon(points={{-70,12},{62,12},{62,44},{70,54},{70,20},{62,12},{62,44},
-              {62,44},{-70,44},{-70,12}},                                                                                                            lineColor={215,215,
-              215}),
+              {62,44},{-70,44},{-70,12}}, lineColor={215,215,215}),
         Line(points={{-36,70},{-46,60},{-46,12}}, color={215,215,215}),
         Line(points={{-16,70},{-26,60},{-26,12}}, color={215,215,215}),
-        Line(points={{4,70},{-6,60},{-6,12}},     color={215,215,215}),
-        Line(points={{26,70},{16,60},{16,12}},    color={215,215,215}),
-        Line(points={{48,70},{38,60},{38,12}},    color={215,215,215}),
+        Line(points={{4,70},{-6,60},{-6,12}}, color={215,215,215}),
+        Line(points={{26,70},{16,60},{16,12}}, color={215,215,215}),
+        Line(points={{48,70},{38,60},{38,12}}, color={215,215,215}),
         Polygon(points={{-70,-52},{62,-52},{62,-20},{-70,-20},{-60,-10},{70,-10},
-              {70,-42},{62,-52},{62,-20},{70,-10},{-60,-10},{-70,-20},{-70,-52}},                                                                    lineColor={215,215,
-              215}),
-        Polygon(points={{-70,-68},{62,-68},{62,-36},{70,-26},{70,-60},{62,-68},
-              {62,-36},{62,-36},{-70,-36},{-70,-68}},                                                                                                lineColor={215,215,
-              215}),
-        Line(points={{-36,-10},{-46,-20},{-46,-68}},
-                                                  color={215,215,215}),
-        Line(points={{-16,-10},{-26,-20},{-26,-68}},
-                                                  color={215,215,215}),
-        Line(points={{4,-10},{-6,-20},{-6,-68}},  color={215,215,215}),
+              {70,-42},{62,-52},{62,-20},{70,-10},{-60,-10},{-70,-20},{-70,-52}},
+            lineColor={215,215,215}),
+        Polygon(points={{-70,-68},{62,-68},{62,-36},{70,-26},{70,-60},{62,-68},{
+              62,-36},{62,-36},{-70,-36},{-70,-68}}, lineColor={215,215,215}),
+        Line(points={{-36,-10},{-46,-20},{-46,-68}}, color={215,215,215}),
+        Line(points={{-16,-10},{-26,-20},{-26,-68}}, color={215,215,215}),
+        Line(points={{4,-10},{-6,-20},{-6,-68}}, color={215,215,215}),
         Line(points={{26,-10},{16,-20},{16,-68}}, color={215,215,215}),
         Line(points={{48,-10},{38,-20},{38,-68}}, color={215,215,215})}),
-                             Documentation(info="<html>
+      Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells in the flow direction and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>
 <p>The conduction elements are computing a heat transfer coefficient between their heatport and the fluid contained. They are replaceable with a choice between a single-phase and a two-phase version, both can be further parametrized. Although the single-phase version works for two-phase media (not the other way around), using the two-phase one for two-phase media enables to set different heat transfer coefficients depending on the phase (liquid/gaseous/2-phase) state of the medium. </p>
