@@ -533,15 +533,15 @@ equation
           fillColor={239,248,255},
           fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
-<p>Simple implementation of a <b>bootstrap air cycle</b> used in aircraft environmental control systems (ECS). </p>
+<p>Simple implementation of a <strong>bootstrap air cycle</strong> used in aircraft environmental control systems (ECS). </p>
 <p>In this example, all bypasses, such as temperature control valves, and dehumidification components are not considered. Consequently, the two bleed sinks do not correspond to real ECS pack outlets.</p>
-<p>Two configurations are implemented: a <b>three-wheel bootstrap cycle</b> on the left and a <b>simple cycle</b> on the right. </p>
-<p><b>Boundary Conditions:</b> </p>
+<p>Two configurations are implemented: a <strong>three-wheel bootstrap cycle</strong> on the left and a <strong>simple cycle</strong> on the right. </p>
+<p><strong>Boundary Conditions:</strong> </p>
 <ul>
-<li><b>Ram Air Inlet</b> (T = -34.5 &deg;C, p = 0.376 bar): Static ambient conditions at <b>25000 ft</b> in <b>ISA0</b> atmosphere.</li>
-<li><b>Bleed Air Inlet</b> (T = 200 &deg;C, p = 2.2 bar): Typical engine bleed air conditions. In conventional ECS packs, bleed air is the source of fresh air for the cabin.</li>
-<li><b>Bleed Air Outlet</b> (p = 0.8 bar): Typical cabin pressure at cruise.</li>
-<li><b>Dynamic Pressure Inflow</b> (v = 155 m/s): Aircraft true airspeed at cruise. This component accounts for dynamic effects due to the aircraft&apos;s speed.</li>
+<li><strong>Ram Air Inlet</strong> (T = -34.5 &deg;C, p = 0.376 bar): Static ambient conditions at <strong>25000 ft</strong> in <strong>ISA0</strong> atmosphere.</li>
+<li><strong>Bleed Air Inlet</strong> (T = 200 &deg;C, p = 2.2 bar): Typical engine bleed air conditions. In conventional ECS packs, bleed air is the source of fresh air for the cabin.</li>
+<li><strong>Bleed Air Outlet</strong> (p = 0.8 bar): Typical cabin pressure at cruise.</li>
+<li><strong>Dynamic Pressure Inflow</strong> (v = 155 m/s): Aircraft true airspeed at cruise. This component accounts for dynamic effects due to the aircraft&apos;s speed.</li>
 </ul>
 <p>Owner: <a href=\"mailto:michael.meissner@dlr.de\">Michael Mei&szlig;ner</a> </p>
 </html>", revisions=""));
