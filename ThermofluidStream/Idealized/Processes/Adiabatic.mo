@@ -299,6 +299,38 @@ equation
           fillColor={158,208,255},
           fillPattern=FillPattern.Solid,
           radius=30,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{-40,44},{8,-44}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{-16,38},{24,-38}},
+          lineColor={28,108,200},
+          fillColor={215,236,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{4,30},{40,-30}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{24,22},{48,-22}},
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
           pattern=LinePattern.None)}),
     Documentation(
       info="<html>

@@ -317,12 +317,6 @@ equation
     defaultComponentName = "polytropic",
     Icon(
       graphics={
-        Rectangle(
-          extent={{100,80},{130,52}},
-          lineColor={28,108,200},
-          fillColor={170,213,255},
-          fillPattern=FillPattern.Solid,
-          radius=5),
         Ellipse(
           extent={{-56,54},{64,-66}},
           lineColor={28,108,200},
@@ -385,14 +379,6 @@ equation
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
           textString = DynamicSelect("", if abs(P) < 1e-8 then "0" else "")),
-        Text(
-          extent={{-150,100},{150,60}},
-          textColor={238,46,47},
-          textString = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
-          then "can't be balanced" else ""),
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillColor={238,46,47},
@@ -421,6 +407,7 @@ equation
           then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Rectangle(
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp > 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -428,77 +415,121 @@ equation
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp > 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
           lineColor={28,108,200},
-          fillColor={237,235,252},
+          fillColor={215,236,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp > 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
           lineColor={28,108,200},
-          fillColor={239,213,255},
+          fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
           extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp > 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
           lineColor={28,108,200},
-          fillColor={240,184,229},
+          fillColor={158,208,255},
           fillPattern=FillPattern.Solid,
           radius=30,
           pattern=LinePattern.None),
         Rectangle(
-          extent={{60,80},{90,50}},
+          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
+                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, dp < 0),
+          extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
-          radius=5),
+          radius=20,
+          pattern=LinePattern.Solid),
         Rectangle(
-          extent={{60,40},{90,60}},
-          lineColor={255,255,255},
-          fillColor={255,255,255},
+          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
+                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, dp < 0),
+          extent={{-40,40},{40,-16}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Dash),
+        Rectangle(
+          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
+                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, dp > 0),
+          extent={{-40,40},{40,-40}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Dash),
+        Rectangle(
+          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
+                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, dp > 0),
+          extent={{-40,40},{40,-16}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Solid),
+        Rectangle(
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
+          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dp > 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
+          lineColor={28,108,200},
+          fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
-        Line(points={{60,62},{60,56}}, color={28,108,200}),
-        Line(points={{90,62},{90,56}}, color={28,108,200}),
-        Line(
-          points={{0,20},{0,-6}},
-          color={28,108,200},
-          origin={68,60},
-          rotation=-90),
         Polygon(
-          points={{70,50},{76,60},{82,50},{70,50}},
+          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
+          points=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dp > 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
           lineColor={28,108,200},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
+        Text(
+          extent={{50,-30},{90,-70}},
+          textColor={28,108,200},
+          textString="n"),
         Rectangle(
-          extent={{100,80},{130,60}},
+          visible=1<0,
+          extent={{-40,44},{8,-44}},
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
-          radius=5),
+          radius=20,
+          pattern=LinePattern.None),
         Rectangle(
-          extent={{74,52},{78,38}},
+          visible=1<0,
+          extent={{-16,38},{24,-38}},
           lineColor={28,108,200},
-          fillColor={28,108,200},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{140,80},{170,52}},
-          lineColor={28,108,200},
-          fillColor={235,246,255},
+          fillColor={215,236,255},
           fillPattern=FillPattern.Solid,
-          radius=5),
+          radius=20,
+          pattern=LinePattern.None),
         Rectangle(
-          extent={{180,80},{210,52}},
+          visible=1<0,
+          extent={{4,30},{40,-30}},
           lineColor={28,108,200},
-          radius=5),
-        Rectangle(
-          extent={{180,80},{210,60}},
-          lineColor={28,108,200},
-          fillColor={235,246,255},
+          fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
-          radius=5)}),
-    Documentation(
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{24,22},{48,-22}},
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
+          pattern=LinePattern.None)}
+        // Expansion: äußeres Rechteck (solid)
+
+// Expansion: inneres Rechteck (dashed)
+
+// Compression: äußeres Rechteck (dashed)
+
+// Compression: inneres Rechteck (solid)
+),  Documentation(
       info="<html>
   <p>
     Polytropic process (<code>p*v^n = const.</code>) of a perfect gas (<code>p*v = R*T, cp = const.</code>) suitable for modeling

@@ -228,6 +228,20 @@ equation
           fillColor={255,197,170},
           fillPattern=FillPattern.Solid,
           radius=20),
+        Rectangle(
+          visible=1<0,
+          extent={{-44,42},{-4,-42}},
+          lineColor={85,170,255},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20),
+        Rectangle(
+          visible=1<0,
+          extent={{4,42},{44,-42}},
+          lineColor={85,170,255},
+          fillColor={255,197,170},
+          fillPattern=FillPattern.Solid,
+          radius=20),
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillPattern = DynamicSelect(FillPattern.None, if singularityRegime > 0.5 then FillPattern.Solid

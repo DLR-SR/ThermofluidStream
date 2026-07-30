@@ -69,10 +69,24 @@ equation
         Rectangle(
           extent=DynamicSelect(if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}, if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}),
           lineColor={28,108,200},
-          fillColor={185,221,255},
+          fillColor={215,236,255},
           fillPattern=FillPattern.Solid,
-          radius=10,
-          pattern=LinePattern.None)}),
+          radius=10),
+        Rectangle(
+          visible=1<0,
+          extent={{-40,42},{40,-42}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{-52,14},{-26,-14}},
+          lineColor={28,108,200},
+          fillColor={215,236,255},
+          fillPattern=FillPattern.Solid,
+          radius=10)}),
     Documentation(
       info="<html>
   <p>
