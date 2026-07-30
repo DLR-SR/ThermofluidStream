@@ -102,7 +102,7 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{100,100}})),
     experiment(StopTime=10, Tolerance=1e-6, Interval=0.01, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
-<p>Test for the switches.</p>
-<p>Owner: Michael Mei&szlig;ner</p>
+<p>Test for the three-way valve component.</p>
+<p>Owner: Niclas Dotzauer</p>
 </html>"));
 end ThreeWayValve;

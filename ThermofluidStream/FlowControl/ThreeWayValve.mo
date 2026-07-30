@@ -1,5 +1,5 @@
 within ThermofluidStream.FlowControl;
-model ThreeWayValve "to control e.g. bypass flows"
+model ThreeWayValve "Three-way valve for continuously controlling complementary branch openings"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -27,8 +27,7 @@ model ThreeWayValve "to control e.g. bypass flows"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
   parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
 
-  parameter SI.Pressure p_ref = 1e5 "Reference pressure";
-  parameter Boolean invertInput = false "=true, if input single is inverted" annotation (Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean invertInput = false "=true, if the control input is inverted" annotation (Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean initializeOneMassflowSplit = false "= true, if mass flow rate ratio is initialized"
     annotation(Dialog(tab="Initialization"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter ThermofluidStream.Utilities.Units.Inertance L = dropOfCommons.L "Inertance"
@@ -41,7 +40,7 @@ model ThreeWayValve "to control e.g. bypass flows"
   ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium=Medium)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,100})));
 
-  Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Flow split"
+  Modelica.Blocks.Interfaces.RealInput u(min=0, max=1, unit="1") "Control signal for valve openings"
     annotation (Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={0,-120})));
 
   BasicControlValve basicControlValveB(
