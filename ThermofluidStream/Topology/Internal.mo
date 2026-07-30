@@ -35,7 +35,7 @@ package Internal
     ThermofluidStream.Interfaces.Outlet outletB(redeclare package Medium = Medium)
       annotation (Placement(transformation(extent={{80,-20},{120,20}})));
 
-    Modelica.Blocks.Interfaces.RealInput splitRatio(min=0, max=1) annotation (Placement(transformation(
+    Modelica.Blocks.Interfaces.RealInput splitRatio annotation (Placement(transformation(
           extent={{-20,-20},{20,20}},
           rotation=90,
           origin={0,-30})));

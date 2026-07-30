@@ -14,9 +14,10 @@ model DynamicSplitterN "Splitter with 1 inlet and N outlets, taking dynamic pres
   parameter SI.Area A_out[N] "Cross section area of outlets";
   parameter SI.Area A_splitter = 0.1 "Internal cross section area"
     annotation (Dialog(tab="Advanced"));
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
-
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "inlet"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
       iconTransformation(extent={{-120,-20},{-80,20}})));
@@ -25,17 +26,20 @@ model DynamicSplitterN "Splitter with 1 inlet and N outlets, taking dynamic pres
       iconTransformation(extent={{80,-20},{120,20}})));
   Processes.Nozzle nozzle_in(
     redeclare package Medium = Medium,
+    final considerInertance=considerInertance,
     A_in=A_in,
     A_out=A_splitter,
     final assumeConstantDensity=assumeConstantDensity,
     final L_value=L/3)
       annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   SplitterN splitterN(redeclare package Medium = Medium,
+    final considerInertance=considerInertance,
     final N = N,
     final L = L/3)
       annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Processes.Nozzle nozzle_out[N](
     redeclare package Medium = Medium,
+    final considerInertance=considerInertance,
     A_out=A_out,
     each A_in=A_splitter/N,
     each final assumeConstantDensity=assumeConstantDensity,
@@ -81,10 +85,22 @@ equation
         Ellipse(
           extent={{-20,20},{20,-20}},
           lineThickness=0.5,
-          lineColor={170,255,170})}),
+          lineColor={170,255,170}),
+        Ellipse(
+          extent={{80,40},{100,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
       Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Dynamic variant of the generic splitter with one upstream connection and <strong>N</strong> downstream connections. This model accounts for dynamic pressure/momentum effects and is suitable for transient analyses where inertial behavior in branching nodes is relevant. Be aware that dynamic formulations can increase model stiffness and nonlinear complexity.</p>
 <p>In general the component has two non-linear equation systems of size 1. This can be resolved by setting Advanced-&gt;assumeConstantDensity=true (default: false).</p>
+
+  <h5>
+    considerInertance
+  </h5>
+  <p>
+    For the parameter <code>considerInertance</code>, refer to  <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
 </html>"));
 end DynamicSplitterN;

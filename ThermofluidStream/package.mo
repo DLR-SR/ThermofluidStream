@@ -6,8 +6,8 @@ package ThermofluidStream "Library for the modeling of thermofluid streams"
 
   annotation (
     version = "1.3.0",
-    versionDate = "2026-04-30",
-    dateModified = "2026-04-30",
+ versionDate = "2026-04-30",
+ dateModified = "2026-04-30",
     uses(
       Modelica(version="4.1.0"),
       Complex(version="4.1.0")),
@@ -53,7 +53,7 @@ For copyright and license, see
 <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
   <tr>
     <td valign=\"middle\">
-      <img width=\"72\" src=\"modelica:/ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
+      <img width=\"72\" src=\"modelica://ThermofluidStream/Resources/dlr_logo.png\" alt=\"Logo DLR\">
     </td>
     <td valign=\"middle\">
       <strong>Copyright &copy; Deutsches Zentrum f&uuml;r Luft- und Raumfahrt e.V. (DLR)</strong>

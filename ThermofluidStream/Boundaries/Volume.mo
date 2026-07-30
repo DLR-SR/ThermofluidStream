@@ -10,7 +10,7 @@ model Volume "Volume of fixed size, closed to the ambient"
     annotation(Dialog(enable = ((k_volume_damping > 0) and not density_derp_h_from_media), tab="Advanced", group="Damping"));
 
 equation
-  assert(abs(density_derp_h) > 1e-12, "The simple Volume model should not be used with (nearly) incompressible media. Consider using the FlexVolume instead.", dropOfCommons.assertionLevel);
+  assert(abs(density_derp_h) > 1e-12, "In \"" + instanceName + "\": the simple Volume model should not be used with " + "(nearly) incompressible media. Consider using FlexVolume instead.", dropOfCommons.assertionLevel);
 
   if density_derp_h_from_media then
     density_derp_h = Medium.density_derp_h(medium.state);

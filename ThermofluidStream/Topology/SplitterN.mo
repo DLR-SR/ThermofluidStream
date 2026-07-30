@@ -8,8 +8,11 @@ model SplitterN "Splitter with one inlet and N outlets"
 <p>Medium package used in the Component. Make sure it is the same one as all the components connected to all fluid ports are using. </p>
 </html>"));
   parameter Integer N(min=1) = 1 "Number of outputs";
+  parameter Boolean considerInertance = dropOfCommons.considerInertance "=true, if transient momentum (inertance) term is considered; disable only for advanced use" annotation(
+    Dialog(tab="Advanced"),Evaluate=true, HideResult=true);
   parameter Utilities.Units.Inertance L=dropOfCommons.L "Inertance of each inlet/outlet"
-    annotation (Dialog(tab="Advanced"));
+    annotation(Dialog(tab="Advanced", enable = considerInertance), HideResult = not considerInertance);
+
 
   Interfaces.Inlet inlet(redeclare package Medium = Medium) "Inlet"
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}}),
@@ -22,10 +25,18 @@ protected
   SI.Pressure r_mix "Inertial pressure of mixture";
 
 equation
-  der(inlet.m_flow) * L = inlet.r - r_mix;
+  if considerInertance then
+    der(inlet.m_flow) * L = inlet.r - r_mix;
+  else
+    0 = inlet.r - r_mix;
+  end if;
 
   for i in 1:N loop
-    der(outlets[i].m_flow) * L = outlets[i].r - r_mix;
+    if considerInertance then
+      der(outlets[i].m_flow) * L = outlets[i].r - r_mix;
+    else
+      0 = outlets[i].r - r_mix;
+    end if;
     outlets[i].state = inlet.state;
   end for;
 
@@ -57,9 +68,29 @@ equation
         Text(
           extent={{120,-20},{80,-60}},
           textColor={175,175,175},
-          textString="%N")}),
+          textString="%N"),
+        Ellipse(
+          extent={{80,40},{100,20}},
+          fillColor={238,46,47},
+          pattern=LinePattern.None,
+          fillPattern=if considerInertance then FillPattern.None else FillPattern.Solid)}),
     Diagram(coordinateSystem(preserveAspectRatio=true)),
     Documentation(info="<html>
 <p>Generic splitter with one upstream connection and an array of <strong>N</strong> downstream connections. Use this model to parameterize the number of branches and avoid building large splitter trees manually. This is the recommended approach for scalable network templates.</p>
+
+  <h5>
+    considerInertance
+  </h5>
+
+  <p>
+    For the parameter <code>considerInertance</code>, refer to  <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.InertanceNeglect\">Idealized.UsersGuide.InertanceNeglect</a>.
+  </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      Mai 2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Added the <code>considerInertance</code> parameter.
+    </li>
+  </ul>
 </html>"));
 end SplitterN;

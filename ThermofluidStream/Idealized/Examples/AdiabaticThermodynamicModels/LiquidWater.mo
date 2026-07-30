@@ -1,0 +1,134 @@
+within ThermofluidStream.Idealized.Examples.AdiabaticThermodynamicModels;
+model LiquidWater
+  extends Modelica.Icons.Example;
+
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater
+    constrainedby ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium" annotation(
+    choicesAllMatching=true);
+  parameter SI.Efficiency eta = 0.8 "Isentropic efficiency";
+  ThermofluidStream.Boundaries.Source source(
+    redeclare package Medium = Medium,
+    p0_par=100000,
+    temperatureFromInput=false,
+    T0_par=293.15) annotation(Placement(transformation(extent={{-40,50},{-20,70}})));
+  .ThermofluidStream.Boundaries.Sink_m sink(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,50},{40,70}})));
+  inner ThermofluidStream.DropOfCommons dropOfCommons(displayInstanceNames=true, displayParameters=true) annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic fullMedium(
+    redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
+    eta_fixed=eta,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,50},{10,70}})));
+  Modelica.Blocks.Sources.Ramp pressureDifference(
+    height=100e5,
+    duration=1,
+    offset=0) annotation(Placement(transformation(extent={{-90,-30},{-70,-10}})));
+  ThermofluidStream.Boundaries.Source source1(
+    redeclare package Medium = Medium,
+    p0_par=100000,
+    temperatureFromInput=false,
+    T0_par=293.15) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
+  .ThermofluidStream.Boundaries.Sink_m sink1(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-10},{40,10}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic incompressibleFluid(
+    redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IncompressibleFluid "rho = const, Version 1",
+    eta_fixed=eta,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+  ThermofluidStream.Boundaries.Source source2(
+    redeclare package Medium = Medium,
+    p0_par=100000,
+    temperatureFromInput=false,
+    T0_par=293.15) annotation(Placement(transformation(extent={{-40,-60},{-20,-40}})));
+  .ThermofluidStream.Boundaries.Sink_m sink2(redeclare package Medium = Medium, m_flow_fixed=1) annotation(Placement(transformation(extent={{20,-60},{40,-40}})));
+  ThermofluidStream.Idealized.Processes.Adiabatic isothermalReference(
+    redeclare package Medium = Medium,
+    redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference "rho = const, Version 2",
+    eta_fixed=eta,
+    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
+    outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
+    dp_fixed=100000) annotation (Placement(transformation(extent={{-10,-60},{10,-40}})));
+
+equation
+  connect(source.outlet, fullMedium.inlet) annotation(Line(
+      points={{-20,60},{-10,60}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(source1.outlet, incompressibleFluid.inlet) annotation(Line(
+      points={{-20,0},{-10,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(fullMedium.outlet, sink.inlet) annotation(Line(
+      points={{10,60},{20,60}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(incompressibleFluid.outlet, sink1.inlet) annotation(Line(
+      points={{10,0},{20,0}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(incompressibleFluid.outletSpec_prescribed, pressureDifference.y) annotation(Line(points={{10,-12},{10,-20},{-69,-20}}, color={0,0,127}));
+  connect(fullMedium.outletSpec_prescribed, pressureDifference.y) annotation(Line(points={{10,48},{10,32},{-60,32},{-60,-20},{-69,-20}}, color={0,0,127}));
+  connect(source2.outlet, isothermalReference.inlet) annotation(Line(
+      points={{-20,-50},{-10,-50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(isothermalReference.outlet, sink2.inlet) annotation(Line(
+      points={{10,-50},{20,-50}},
+      color={28,108,200},
+      thickness=0.5));
+  connect(isothermalReference.outletSpec_prescribed, pressureDifference.y) annotation(Line(points={{10,-62},{10,-70},{-60,-70},{-60,-20},{-69,-20}}, color={0,0,127}));
+
+  annotation(
+    experiment(
+      StopTime=1,
+      Interval=0.01,
+      Tolerance=1e-6,
+      __Dymola_Algorithm="Dassl"),
+    Documentation(
+      info="<html>
+  <p>
+    This model compares various 
+    <a href=\"modelica://ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels\">AdiabaticThermodynamicModels</a> 
+    using an exemplary pressurization of liquid water 
+    (<a href=\"modelica://ThermofluidStream.Media.myMedia.Examples.TwoPhaseWater\">TwoPhaseWater</a>).
+  </p>
+
+  <p>
+    Simulation time serves as a proxy for the pressure difference, which increases linearly from 
+    zero to <code>dp = 100 bar</code> at <code>time = 1</code>.
+  </p>
+
+  <p>
+    The following figure displays the resulting power:
+  </p>
+
+  <p>
+    <img src=\"modelica://ThermofluidStream/Resources/Doku/ThermofluidStream.Idealized.Examples.AdiabaticProcess.LiquidWater.png\" width=\"500\">
+  </p>
+
+  <p>
+    The <code>fullMedium</code> model serves as the reference. Among the approximations:
+    <code>incompressibleFluid</code> (<code>h_out_is = dp/rho + h_in</code>) performs better than the
+    <code>isothermalReference</code> (<code>h_out_is = h(p_out, T_in)</code>).<br>
+    Note that for <code>fullMedium</code>, the power does not vanish as the pressure difference approaches zero. 
+    In this specific limit, both <code>incompressibleFluid</code> and <code>isothermalReference</code> 
+    demonstrate superior numerical behavior.
+  </p>
+
+  <p>
+    For further information regarding the underlying assumptions, please refer to: 
+    <br>
+    <a href=\"modelica://ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels\">ThermofluidStream.Idealized.UsersGuide.AdiabaticThermodynamicModels</a>.
+  </p>
+</html>",
+      revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
+end LiquidWater;

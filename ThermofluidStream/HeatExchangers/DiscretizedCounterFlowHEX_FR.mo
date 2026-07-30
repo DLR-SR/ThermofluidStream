@@ -12,6 +12,30 @@ model DiscretizedCounterFlowHEX_FR "Discretized Heat Exchanger for single- or tw
   parameter Real k2_B=1e2 "Quadratic flow resistance coefficient at side B"
     annotation (Dialog(group="Flow resistance coefficients"));
 
+  Interfaces.Inlet inletB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{-120,40},{-80,80}}),
+      iconTransformation(extent={{-120,40},{-80,80}})));
+
+  Interfaces.Outlet outletB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{80,40},{120,80}}),
+      iconTransformation(extent={{80,40},{120,80}})));
+
+  Interfaces.Inlet inletA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{120,-80},{80,-40}}),
+      iconTransformation(extent={{120,-80},{80,-40}})));
+
+  Interfaces.Outlet outletA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{-80,-80},{-120,-40}}),
+      iconTransformation(extent={{-80,-80},{-120,-40}})));
+
   Processes.FlowResistance flowResistanceB[nCells](
     redeclare package Medium = MediumB,
     each r=1,
@@ -39,6 +63,22 @@ initial equation
   end if;
 
 equation
+  inletA.state = inletA_state;
+  inletA.m_flow = inletA_m_flow;
+  inletA.r = inletA_r;
+
+  inletB.state = inletB_state;
+  inletB.m_flow = inletB_m_flow;
+  inletB.r = inletB_r;
+
+  outletA.state = outletA_state;
+  outletA.m_flow = outletA_m_flow;
+  outletA.r = outletA_r;
+
+  outletB.state = outletB_state;
+  outletB.m_flow = outletB_m_flow;
+  outletB.r = outletB_r;
+
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-100,60},{-56,60},{-56,60},{-10,60}},
@@ -86,23 +126,23 @@ equation
           textColor={0,0,0},
           textString="A = %A"),
         Text(
-          extent={{-66,54},{-54,42}},
+          extent={{40,-54},{52,-66}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-40,54},{-28,42}},
+          extent={{14,-54},{26,-66}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{-12,54},{0,42}},
+          extent={{-12,-54},{0,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,54},{28,42}},
+          extent={{-40,-54},{-28,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{42,54},{54,42}},
+          extent={{-66,-54},{-54,-66}},
           textColor={28,108,200},
           textString="N"),
         Text(

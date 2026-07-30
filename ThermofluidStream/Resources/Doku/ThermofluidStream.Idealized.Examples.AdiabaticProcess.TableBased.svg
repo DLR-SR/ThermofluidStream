@@ -1,0 +1,1392 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1096.1194 722.42297"
+   version="1.1"
+   id="svg132"
+   sodipodi:docname="Examples.AdiabaticProcess.TableBased3.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   inkscape:export-filename="TableBased.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   width="1096.1194"
+   height="722.42297"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs132">
+    <clipPath
+       id="clipArea1-0">
+      <rect
+         x="55"
+         y="15"
+         width="1039"
+         height="707"
+         id="rect126-9" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview132"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.2181208"
+     inkscape:cx="421.1405"
+     inkscape:cy="468.34435"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="3829"
+     inkscape:window-y="225"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg132" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,15 55,722"
+     id="polyline1"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="106.9,15 106.9,722"
+     id="polyline2"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="158.8,15 158.8,722"
+     id="polyline3"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="210.7,15 210.7,722"
+     id="polyline4"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="262.6,15 262.6,722"
+     id="polyline5"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="314.5,15 314.5,722"
+     id="polyline6"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="366.4,15 366.4,722"
+     id="polyline7"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="418.3,15 418.3,722"
+     id="polyline8"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="470.2,15 470.2,722"
+     id="polyline9"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="522.1,15 522.1,722"
+     id="polyline10"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="574,15 574,722"
+     id="polyline11"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="625.9,15 625.9,722"
+     id="polyline12"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="677.8,15 677.8,722"
+     id="polyline13"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="729.7,15 729.7,722"
+     id="polyline14"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="781.6,15 781.6,722"
+     id="polyline15"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="833.5,15 833.5,722"
+     id="polyline16"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="885.4,15 885.4,722"
+     id="polyline17"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="937.3,15 937.3,722"
+     id="polyline18"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="989.2,15 989.2,722"
+     id="polyline19"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1041.1,15 1041.1,722"
+     id="polyline20"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1093,15 1093,722"
+     id="polyline21"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,722 1093,722"
+     id="polyline22"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,694.808 1093,694.808"
+     id="polyline23"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,667.615 1093,667.615"
+     id="polyline24"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,640.423 1093,640.423"
+     id="polyline25"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,613.231 1093,613.231"
+     id="polyline26"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,586.038 1093,586.038"
+     id="polyline27"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,558.846 1093,558.846"
+     id="polyline28"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,531.654 1093,531.654"
+     id="polyline29"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,504.462 1093,504.462"
+     id="polyline30"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,477.269 1093,477.269"
+     id="polyline31"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,450.077 1093,450.077"
+     id="polyline32"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,422.885 1093,422.885"
+     id="polyline33"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,395.692 1093,395.692"
+     id="polyline34"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,368.5 1093,368.5"
+     id="polyline35"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,341.308 1093,341.308"
+     id="polyline36"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,314.115 1093,314.115"
+     id="polyline37"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,286.923 1093,286.923"
+     id="polyline38"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,259.731 1093,259.731"
+     id="polyline39"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,232.538 1093,232.538"
+     id="polyline40"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,205.346 1093,205.346"
+     id="polyline41"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,178.154 1093,178.154"
+     id="polyline42"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,150.962 1093,150.962"
+     id="polyline43"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,123.769 1093,123.769"
+     id="polyline44"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,96.5769 1093,96.5769"
+     id="polyline45"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,69.3846 1093,69.3846"
+     id="polyline46"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,42.1923 1093,42.1923"
+     id="polyline47"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#e2e4e3"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,15 1093,15"
+     id="polyline48"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#b4b6ba"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,694.808 1093,694.808"
+     id="polyline49"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,722 1093,722"
+     id="polyline50"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1093,722 1093,15"
+     id="polyline51"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1093,15 55,15"
+     id="polyline52"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,15 55,722"
+     id="polyline53"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,722 55,725"
+     id="polyline54"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="106.9,722 106.9,725"
+     id="polyline55"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="158.8,722 158.8,725"
+     id="polyline56"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="210.7,722 210.7,725"
+     id="polyline57"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="262.6,722 262.6,725"
+     id="polyline58"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="314.5,722 314.5,725"
+     id="polyline59"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="366.4,722 366.4,725"
+     id="polyline60"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="418.3,722 418.3,725"
+     id="polyline61"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="470.2,722 470.2,725"
+     id="polyline62"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="522.1,722 522.1,725"
+     id="polyline63"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="574,722 574,725"
+     id="polyline64"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="625.9,722 625.9,725"
+     id="polyline65"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="677.8,722 677.8,725"
+     id="polyline66"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="729.7,722 729.7,725"
+     id="polyline67"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="781.6,722 781.6,725"
+     id="polyline68"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="833.5,722 833.5,725"
+     id="polyline69"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="885.4,722 885.4,725"
+     id="polyline70"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="937.3,722 937.3,725"
+     id="polyline71"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="989.2,722 989.2,725"
+     id="polyline72"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1041.1,722 1041.1,725"
+     id="polyline73"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1093,722 1093,725"
+     id="polyline74"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="55,722 55,726.8"
+     id="polyline75"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="51"
+     y="719.25"
+     id="text75">0.0</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="158.8,722 158.8,726.8"
+     id="polyline76"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="154.8"
+     y="719.25"
+     id="text76">0.1</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="262.6,722 262.6,726.8"
+     id="polyline77"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="258.60001"
+     y="719.25"
+     id="text77">0.2</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="366.4,722 366.4,726.8"
+     id="polyline78"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="362.39999"
+     y="719.25"
+     id="text78">0.3</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="470.2,722 470.2,726.8"
+     id="polyline79"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="466.20001"
+     y="719.25"
+     id="text79">0.4</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="574,722 574,726.8"
+     id="polyline80"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="570"
+     y="719.25"
+     id="text80">0.5</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="677.8,722 677.8,726.8"
+     id="polyline81"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="673.79999"
+     y="719.25"
+     id="text81">0.6</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="781.6,722 781.6,726.8"
+     id="polyline82"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="777.59998"
+     y="719.25"
+     id="text82">0.7</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="885.4,722 885.4,726.8"
+     id="polyline83"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="881.40002"
+     y="719.25"
+     id="text83">0.8</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="989.2,722 989.2,726.8"
+     id="polyline84"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="985.20001"
+     y="719.25"
+     id="text84">0.9</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="1093,722 1093,726.8"
+     id="polyline85"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     x="1089"
+     y="719.25"
+     id="text85">1.0</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,722 55,722"
+     id="polyline86"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,694.808 55,694.808"
+     id="polyline87"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,667.615 55,667.615"
+     id="polyline88"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,640.423 55,640.423"
+     id="polyline89"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,613.231 55,613.231"
+     id="polyline90"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,586.038 55,586.038"
+     id="polyline91"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,558.846 55,558.846"
+     id="polyline92"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,531.654 55,531.654"
+     id="polyline93"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,504.462 55,504.462"
+     id="polyline94"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,477.269 55,477.269"
+     id="polyline95"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,450.077 55,450.077"
+     id="polyline96"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,422.885 55,422.885"
+     id="polyline97"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,395.692 55,395.692"
+     id="polyline98"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,368.5 55,368.5"
+     id="polyline99"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,341.308 55,341.308"
+     id="polyline100"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,314.115 55,314.115"
+     id="polyline101"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,286.923 55,286.923"
+     id="polyline102"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,259.731 55,259.731"
+     id="polyline103"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,232.538 55,232.538"
+     id="polyline104"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,205.346 55,205.346"
+     id="polyline105"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,178.154 55,178.154"
+     id="polyline106"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,150.962 55,150.962"
+     id="polyline107"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,123.769 55,123.769"
+     id="polyline108"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,96.5769 55,96.5769"
+     id="polyline109"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,69.3846 55,69.3846"
+     id="polyline110"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,42.1923 55,42.1923"
+     id="polyline111"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="52,15 55,15"
+     id="polyline112"
+     transform="translate(-4,-14.75)" />
+  <rect
+     fill="none"
+     stroke="none"
+     stroke-dasharray="none"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     x="0"
+     y="674.05798"
+     width="45"
+     height="12"
+     id="rect112" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,694.808 55,694.808"
+     id="polyline113"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#d943b4"
+     stroke-width="1"
+     stroke-opacity="1"
+     clip-path="url(#clipArea1-0)"
+     points="55,694.808 57.076,693.504 59.152,692.199 61.228,690.895 63.304,689.591 65.38,688.287 67.456,686.983 69.532,685.679 71.608,684.375 73.684,683.071 75.76,681.767 77.836,680.463 79.912,679.158 81.988,677.854 84.064,676.55 86.14,675.246 88.216,673.942 90.292,672.638 92.368,671.334 94.444,670.03 96.52,668.726 98.596,667.422 100.672,666.117 102.748,664.813 104.824,663.509 106.9,662.205 108.976,660.901 111.052,659.597 113.128,658.293 115.204,656.989 117.28,655.685 119.356,654.38 121.432,653.076 123.508,651.772 125.584,650.468 127.66,649.164 129.736,647.86 131.812,646.556 133.888,645.252 135.964,643.948 138.04,642.644 140.116,641.339 142.192,640.035 144.268,638.731 146.344,637.427 148.42,636.123 150.496,634.819 152.572,633.515 154.648,632.211 156.724,630.907 158.8,629.603 160.876,628.298 162.952,626.994 165.028,625.69 167.104,624.386 169.18,623.082 171.256,621.778 173.332,620.474 175.408,619.17 177.484,617.866 179.56,616.561 181.636,615.257 183.712,613.953 185.788,612.649 187.864,611.345 189.94,610.041 192.016,608.737 194.092,607.433 196.168,606.129 198.244,604.825 200.32,603.52 202.396,602.216 204.472,600.912 206.548,599.608 208.624,598.304 210.7,597 212.776,595.696 214.852,594.392 216.928,593.088 219.004,591.784 221.08,590.479 223.156,589.175 225.232,587.871 227.308,586.567 229.384,585.263 231.46,583.959 233.536,582.655 235.612,581.351 237.688,580.047 239.764,578.742 241.84,577.438 243.916,576.134 245.992,574.83 248.068,573.526 250.144,572.222 252.22,570.918 254.296,569.614 256.372,568.31 258.448,567.006 260.524,565.701 262.6,564.397 264.676,563.093 266.752,561.789 268.828,560.485 270.904,559.181 272.98,557.877 275.056,556.573 277.132,555.269 279.208,553.965 281.284,552.66 283.36,551.356 285.436,550.052 287.512,548.748 289.588,547.444 291.664,546.14 293.74,544.836 295.816,543.532 297.892,542.228 299.968,540.924 302.044,539.619 304.12,538.315 306.196,537.011 308.272,535.707 310.348,534.403 312.424,533.099 314.5,531.795 316.576,530.491 318.652,529.187 320.728,527.882 322.804,526.578 324.88,525.274 326.956,523.97 329.032,522.666 331.108,521.362 333.184,520.058 335.26,518.754 337.336,517.45 339.412,516.146 341.488,514.841 343.564,513.537 345.64,512.233 347.716,510.929 349.792,509.625 351.868,508.321 353.944,507.017 356.02,505.713 358.096,504.409 360.172,503.104 362.248,501.8 364.324,500.496 366.4,499.192 368.476,497.888 370.552,496.584 372.628,495.28 374.704,493.976 376.78,492.672 378.856,491.368 380.932,490.063 383.008,488.759 385.084,487.455 387.16,486.151 389.236,484.847 391.312,483.543 393.388,482.239 395.464,480.935 397.54,479.631 399.616,478.327 401.692,477.022 403.768,475.718 405.844,474.414 407.92,473.11 409.996,471.806 412.072,470.502 414.148,469.198 416.224,467.894 418.3,466.59 420.376,465.285 422.452,463.981 424.528,462.677 426.604,461.373 428.68,460.069 430.756,458.765 432.832,457.461 434.908,456.157 436.984,454.853 439.06,453.549 441.136,452.244 443.212,450.94 445.288,449.636 447.364,448.332 449.44,447.028 451.516,445.724 453.592,444.42 455.668,443.116 457.744,441.812 459.82,440.508 461.896,439.203 463.972,437.899 466.048,436.595 468.124,435.291 470.2,433.987 472.276,432.683 474.352,431.379 476.428,430.075 478.504,428.771 480.58,427.467 482.656,426.162 484.732,424.858 486.808,423.554 488.884,422.25 490.96,420.946 493.036,419.642 495.112,418.338 497.188,417.034 499.264,415.73 501.34,414.425 503.416,413.121 505.492,411.817 507.568,410.513 509.644,409.209 511.72,407.905 513.796,406.601 515.872,405.297 517.948,403.993 520.024,402.689 522.1,401.384 524.176,400.08 526.252,398.776 528.328,397.472 530.404,396.168 532.48,394.864 534.556,393.56 536.632,392.256 538.708,390.952 540.784,389.648 542.86,388.343 544.936,387.039 547.012,385.735 549.088,384.431 551.164,383.127 553.24,381.823 555.316,380.519 557.392,379.215 559.468,377.911 561.544,376.606 563.62,375.302 565.696,373.998 567.772,372.694 569.848,371.39 571.924,370.086 574,368.782 576.076,367.478 578.152,366.174 580.228,364.87 582.304,363.565 584.38,362.261 586.456,360.957 588.532,359.653 590.608,358.349 592.684,357.045 594.76,355.741 596.836,354.437 598.912,353.133 600.988,351.829 603.064,350.524 605.14,349.22 607.216,347.916 609.292,346.612 611.368,345.308 613.444,344.004 615.52,342.7 617.596,341.396 619.672,340.092 621.748,338.787 623.824,337.483 625.9,336.179 627.976,334.875 630.052,333.571 632.128,332.267 634.204,330.963 636.28,329.659 638.356,328.355 640.432,327.051 642.508,325.746 644.584,324.442 646.66,323.138 648.736,321.834 650.812,320.53 652.888,319.226 654.964,317.922 657.04,316.618 659.116,315.314 661.192,314.01 663.268,312.705 665.344,311.401 667.42,310.097 669.496,308.793 671.572,307.489 673.648,306.185 675.724,304.881 677.8,303.577 679.876,302.273 681.952,300.968 684.028,299.664 686.104,298.36 688.18,297.056 690.256,295.752 692.332,294.448 694.408,293.144 696.484,291.84 698.56,290.536 700.636,289.232 702.712,287.927 704.788,286.623 706.864,285.319 708.94,284.015 711.016,282.711 713.092,281.407 715.168,280.103 717.244,278.799 719.32,277.495 721.396,276.191 723.472,274.886 725.548,273.582 727.624,272.278 729.7,270.974 731.776,269.67 733.852,268.366 735.928,267.062 738.004,265.758 740.08,264.454 742.156,263.149 744.232,261.845 746.308,260.541 748.384,259.237 750.46,257.933 752.536,256.629 754.612,255.325 756.688,254.021 758.764,252.717 760.84,251.413 762.916,250.108 764.992,248.804 767.068,247.5 769.144,246.196 771.22,244.892 773.296,243.588 775.372,242.284 777.448,240.98 779.524,239.676 781.6,238.372 783.676,237.067 785.752,235.763 787.828,234.459 789.904,233.155 791.98,231.851 794.056,230.547 796.132,229.243 798.208,227.939 800.284,226.635 802.36,225.33 804.436,224.026 806.512,222.722 808.588,221.418 810.664,220.114 812.74,218.81 814.816,217.506 816.892,216.202 818.968,214.898 821.044,213.594 823.12,212.289 825.196,210.985 827.272,209.681 829.348,208.377 831.424,207.073 833.5,205.769 835.576,204.465 837.652,203.161 839.728,201.857 841.804,200.553 843.88,199.248 845.956,197.944 848.032,196.64 850.108,195.336 852.184,194.032 854.26,192.728 856.336,191.424 858.412,190.12 860.488,188.816 862.564,187.512 864.64,186.207 866.716,184.903 868.792,183.599 870.868,182.295 872.944,180.991 875.02,179.687 877.096,178.383 879.172,177.079 881.248,175.775 883.324,174.47 885.4,173.166 887.476,171.862 889.552,170.558 891.628,169.254 893.704,167.95 895.78,166.646 897.856,165.342 899.932,164.038 902.008,162.734 904.084,161.429 906.16,160.125 908.236,158.821 910.312,157.517 912.388,156.213 914.464,154.909 916.54,153.605 918.616,152.301 920.692,150.997 922.768,149.692 924.844,148.388 926.92,147.084 928.996,145.78 931.072,144.476 933.148,143.172 935.224,141.868 937.3,140.564 939.376,139.26 941.452,137.956 943.528,136.651 945.604,135.347 947.68,134.043 949.756,132.739 951.832,131.435 953.908,130.131 955.984,128.827 958.06,127.523 960.136,126.219 962.212,124.915 964.288,123.61 966.364,122.306 968.44,121.002 970.516,119.698 972.592,118.394 974.668,117.09 976.744,115.786 978.82,114.482 980.896,113.178 982.972,111.873 985.048,110.569 987.124,109.265 989.2,107.961 991.276,106.657 993.352,105.353 995.428,104.049 997.504,102.745 999.58,101.441 1001.66,100.137 1003.73,98.8325 1005.81,97.5284 1007.88,96.2243 1009.96,94.9202 1012.04,93.616 1014.11,92.3119 1016.19,91.0079 1018.26,89.7037 1020.34,88.3996 1022.42,87.0955 1024.49,85.7915 1026.57,84.4873 1028.64,83.1832 1030.72,81.8791 1032.8,80.575 1034.87,79.2709 1036.95,77.9668 1039.02,76.6627 1041.1,75.3586 1043.18,74.0545 1045.25,72.7504 1047.33,71.4463 1049.4,70.1422 1051.48,68.8381 1053.56,67.534 1055.63,66.2299 1057.71,64.9258 1059.78,63.6217 1061.86,62.3176 1063.94,61.0135 1066.01,59.7094 1068.09,58.4052 1070.16,57.1012 1072.24,55.7971 1074.32,54.4929 1076.39,53.1888 1078.47,51.8848 1080.54,50.5807 1082.62,49.2765 1084.7,47.9724 1086.77,46.6683 1088.85,45.3642 1090.92,44.0601 1093,42.756 1093,42.756"
+     id="polyline127-8"
+     style="stroke:#1c6cc8;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+     transform="translate(-6,-14.75)"
+     inkscape:transform-center-x="153.16883"
+     inkscape:transform-center-y="16.834759" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="680.05798"
+     id="text113">0</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,640.423 55,640.423"
+     id="polyline114"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="625.67297"
+     id="text114">1</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,586.038 55,586.038"
+     id="polyline115"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="571.28802"
+     id="text115">2</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,531.654 55,531.654"
+     id="polyline116"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="516.90399"
+     id="text116">3</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,477.269 55,477.269"
+     id="polyline117"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="462.51901"
+     id="text117">4</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,422.885 55,422.885"
+     id="polyline118"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="408.13501"
+     id="text118">5</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,368.5 55,368.5"
+     id="polyline119"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="353.75"
+     id="text119">6</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,314.115 55,314.115"
+     id="polyline120"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="299.36499"
+     id="text120">7</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,259.731 55,259.731"
+     id="polyline121"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="244.98099"
+     id="text121">8</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,205.346 55,205.346"
+     id="polyline122"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="190.59599"
+     id="text122">9</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,150.962 55,150.962"
+     id="polyline123"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="136.21201"
+     id="text123">10</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,96.5769 55,96.5769"
+     id="polyline124"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="81.826897"
+     id="text124">11</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.5"
+     stroke-opacity="1"
+     points="50.2,42.1923 55,42.1923"
+     id="polyline125"
+     transform="translate(-4,-14.75)" />
+  <text
+     fill="#000000"
+     font-size="11px"
+     font-family="Arial"
+     text-anchor="end"
+     dominant-baseline="central"
+     x="45"
+     y="27.442299"
+     id="text125">12</text>
+  <text
+     fill="#000000"
+     font-size="11"
+     font-family="Arial"
+     text-anchor="middle"
+     dominant-baseline="central"
+     transform="rotate(-90)"
+     id="text126"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+     x="-353.75"
+     y="18">[kW]</text>
+  <clipPath
+     id="clipArea1">
+    <rect
+       x="55"
+       y="15"
+       width="1039"
+       height="707"
+       id="rect126" />
+  </clipPath>
+  <polyline
+     fill="none"
+     stroke="#1c6cc8"
+     stroke-width="1"
+     stroke-opacity="1"
+     clip-path="url(#clipArea1)"
+     points="55,694.808 57.076,694.808 59.152,694.808 61.228,694.808 63.304,694.808 65.38,694.808 67.456,694.808 69.532,694.808 71.608,694.808 73.684,694.808 75.76,694.808 77.836,694.808 79.912,694.808 81.988,694.808 84.064,694.808 86.14,694.808 88.216,694.808 90.292,694.808 92.368,694.808 94.444,694.808 96.52,694.808 98.596,694.808 100.672,694.808 102.748,694.808 104.824,694.808 106.9,694.808 108.976,694.808 111.052,694.808 113.128,694.808 115.204,694.808 117.28,694.808 119.356,694.808 121.432,694.808 123.508,694.808 125.584,694.808 127.66,694.808 129.736,694.808 131.812,694.808 133.888,694.808 135.964,694.808 138.04,694.808 140.116,694.808 142.192,694.808 144.268,694.808 146.344,694.808 148.42,694.808 150.496,694.808 152.572,694.808 154.648,694.808 156.724,694.808 158.8,694.808 160.876,694.808 162.952,694.808 165.028,694.808 167.104,694.808 169.18,694.808 171.256,694.808 173.332,694.808 175.408,694.808 177.484,694.808 179.56,694.808 181.636,694.808 183.712,694.808 185.788,694.808 187.864,694.808 189.94,694.808 192.016,694.808 194.092,694.808 196.168,694.808 198.244,694.808 200.32,694.808 202.396,694.808 204.472,694.808 206.548,694.808 208.624,694.808 210.7,694.808 212.776,694.808 214.852,694.808 216.928,694.808 219.004,694.808 221.08,694.808 223.156,694.808 225.232,694.808 227.308,694.808 229.384,694.808 231.46,694.808 233.536,694.808 235.612,694.808 237.688,694.808 239.764,694.808 241.84,694.808 243.916,694.808 245.992,694.808 248.068,694.808 250.144,694.808 252.22,694.808 254.296,694.808 256.372,694.808 258.448,694.808 260.524,694.808 262.6,694.808 264.676,694.808 266.752,694.808 268.828,694.808 270.904,694.808 272.98,694.808 275.056,694.808 277.132,694.808 279.208,694.808 281.284,694.808 283.36,694.808 285.436,694.808 287.512,694.808 289.588,694.808 291.664,694.808 293.74,694.808 295.816,694.808 297.892,694.808 299.968,694.808 302.044,694.808 304.12,694.808 306.196,694.808 308.272,694.808 310.348,694.808 312.424,694.808 314.5,694.808 316.576,694.808 318.652,694.808 320.728,694.808 322.804,694.808 324.88,694.808 326.956,694.808 329.032,694.808 331.108,694.808 333.184,694.808 335.26,694.808 337.336,694.808 339.412,694.808 341.488,694.808 343.564,694.808 345.64,694.808 347.716,694.808 349.792,694.808 351.868,694.808 353.944,694.808 356.02,694.808 358.096,694.808 360.172,694.808 362.248,694.808 364.324,694.808 366.4,694.808 368.476,694.808 370.552,694.808 372.628,694.808 374.704,694.808 376.78,694.808 378.856,694.808 380.932,694.808 383.008,694.808 385.084,694.808 387.16,694.808 389.236,694.808 391.312,694.808 393.388,694.808 395.464,694.808 397.54,694.808 399.616,694.808 401.692,694.808 403.768,694.808 405.844,694.808 407.92,694.808 409.996,694.808 412.072,694.808 414.148,694.808 416.224,694.808 418.3,694.808 420.376,694.808 422.452,694.808 424.528,694.808 426.604,694.808 428.68,694.808 430.756,694.808 432.832,694.808 434.908,694.808 436.984,694.808 439.06,694.808 441.136,694.808 443.212,694.808 445.288,694.808 447.364,694.808 449.44,694.808 451.516,694.808 453.592,694.808 455.668,694.808 457.744,694.808 459.82,694.808 461.896,694.808 463.972,694.808 466.048,694.808 468.124,694.808 470.2,694.808 472.276,694.808 474.352,694.808 476.428,694.808 478.504,694.808 480.58,694.808 482.656,694.808 484.732,694.808 486.808,694.808 488.884,694.808 490.96,694.808 493.036,694.808 495.112,694.808 497.188,694.808 499.264,694.808 501.34,694.808 503.416,694.808 505.492,694.808 507.568,694.808 509.644,694.808 511.72,694.808 513.796,694.808 515.872,694.808 517.948,694.808 520.024,694.808 522.1,694.808 524.176,694.808 526.252,694.808 528.328,694.808 530.404,694.808 532.48,694.808 534.556,694.808 536.632,694.808 538.708,694.808 540.784,694.808 542.86,694.808 544.936,694.808 547.012,694.808 549.088,694.808 551.164,694.808 553.24,694.808 555.316,694.808 557.392,694.808 559.468,694.808 561.544,694.808 563.62,694.808 565.696,694.808 567.772,694.808 569.848,694.808 571.924,694.808 574,694.808 576.076,694.808 578.152,694.808 580.228,694.808 582.304,694.808 584.38,694.808 586.456,694.808 588.532,694.808 590.608,694.808 592.684,694.808 594.76,694.808 596.836,694.808 598.912,694.808 600.988,694.808 603.064,694.808 605.14,694.808 607.216,694.808 609.292,694.808 611.368,694.808 613.444,694.808 615.52,694.808 617.596,694.808 619.672,694.808 621.748,694.808 623.824,694.808 625.9,694.808 627.976,694.808 630.052,694.808 632.128,694.808 634.204,694.808 636.28,694.808 638.356,694.808 640.432,694.808 642.508,694.808 644.584,694.808 646.66,694.808 648.736,694.808 650.812,694.808 652.888,694.808 654.964,694.808 657.04,694.808 659.116,694.808 661.192,694.808 663.268,694.808 665.344,694.808 667.42,694.808 669.496,694.808 671.572,694.808 673.648,694.808 675.724,694.808 677.8,694.808 679.876,694.808 681.952,694.808 684.028,694.808 686.104,694.808 688.18,694.808 690.256,694.808 692.332,694.808 694.408,694.808 696.484,694.808 698.56,694.808 700.636,694.808 702.712,694.808 704.788,694.808 706.864,694.808 708.94,694.808 711.016,694.808 713.092,694.808 715.168,694.808 717.244,694.808 719.32,694.808 721.396,694.808 723.472,694.808 725.548,694.808 727.624,694.808 729.7,694.808 731.776,694.808 733.852,694.808 735.928,694.808 738.004,694.808 740.08,694.808 742.156,694.808 744.232,694.808 746.308,694.808 748.384,694.808 750.46,694.808 752.536,694.808 754.612,694.808 756.688,694.808 758.764,694.808 760.84,694.808 762.916,694.808 764.992,694.808 767.068,694.808 769.144,694.808 771.22,694.808 773.296,694.808 775.372,694.808 777.448,694.808 779.524,694.808 781.6,694.808 783.676,694.808 785.752,694.808 787.828,694.808 789.904,694.808 791.98,694.808 794.056,694.808 796.132,694.808 798.208,694.808 800.284,694.808 802.36,694.808 804.436,694.808 806.512,694.808 808.588,694.808 810.664,694.808 812.74,694.808 814.816,694.808 816.892,694.808 818.968,694.808 821.044,694.808 823.12,694.808 825.196,694.808 827.272,694.808 829.348,694.808 831.424,694.808 833.5,694.808 835.576,694.808 837.652,694.808 839.728,694.808 841.804,694.808 843.88,694.808 845.956,694.808 848.032,694.808 850.108,694.808 852.184,694.808 854.26,694.808 856.336,694.808 858.412,694.808 860.488,694.808 862.564,694.808 864.64,694.808 866.716,694.808 868.792,694.808 870.868,694.808 872.944,694.808 875.02,694.808 877.096,694.808 879.172,694.808 881.248,694.808 883.324,694.808 885.4,694.808 887.476,694.808 889.552,694.808 891.628,694.808 893.704,694.808 895.78,694.808 897.856,694.808 899.932,694.808 902.008,694.808 904.084,694.808 906.16,694.808 908.236,694.808 910.312,694.808 912.388,694.808 914.464,694.808 916.54,694.808 918.616,694.808 920.692,694.808 922.768,694.808 924.844,694.808 926.92,694.808 928.996,694.808 931.072,694.808 933.148,694.808 935.224,694.808 937.3,694.808 939.376,694.808 941.452,694.808 943.528,694.808 945.604,694.808 947.68,694.808 949.756,694.808 951.832,694.808 953.908,694.808 955.984,694.808 958.06,694.808 960.136,694.808 962.212,694.808 964.288,694.808 966.364,694.808 968.44,694.808 970.516,694.808 972.592,694.808 974.668,694.808 976.744,694.808 978.82,694.808 980.896,694.808 982.972,694.808 985.048,694.808 987.124,694.808 989.2,694.808 991.276,694.808 993.352,694.808 995.428,694.808 997.504,694.808 999.58,694.808 1001.66,694.808 1003.73,694.808 1005.81,694.808 1007.88,694.808 1009.96,694.808 1012.04,694.808 1014.11,694.808 1016.19,694.808 1018.26,694.808 1020.34,694.808 1022.42,694.808 1024.49,694.808 1026.57,694.808 1028.64,694.808 1030.72,694.808 1032.8,694.808 1034.87,694.808 1036.95,694.808 1039.02,694.808 1041.1,694.808 1043.18,694.808 1045.25,694.808 1047.33,694.808 1049.4,694.808 1051.48,694.808 1053.56,694.808 1055.63,694.808 1057.71,694.808 1059.78,694.808 1061.86,694.808 1063.94,694.808 1066.01,694.808 1068.09,694.808 1070.16,694.808 1072.24,694.808 1074.32,694.808 1076.39,694.808 1078.47,694.808 1080.54,694.808 1082.62,694.808 1084.7,694.808 1086.77,694.808 1088.85,694.808 1090.92,694.808 1093,694.808 1093,694.808"
+     id="polyline126"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#d943b4"
+     stroke-width="1"
+     stroke-opacity="1"
+     clip-path="url(#clipArea1)"
+     points="55,694.808 57.076,693.504 59.152,692.199 61.228,690.895 63.304,689.591 65.38,688.287 67.456,686.983 69.532,685.679 71.608,684.375 73.684,683.071 75.76,681.767 77.836,680.463 79.912,679.158 81.988,677.854 84.064,676.55 86.14,675.246 88.216,673.942 90.292,672.638 92.368,671.334 94.444,670.03 96.52,668.726 98.596,667.422 100.672,666.117 102.748,664.813 104.824,663.509 106.9,662.205 108.976,660.901 111.052,659.597 113.128,658.293 115.204,656.989 117.28,655.685 119.356,654.38 121.432,653.076 123.508,651.772 125.584,650.468 127.66,649.164 129.736,647.86 131.812,646.556 133.888,645.252 135.964,643.948 138.04,642.644 140.116,641.339 142.192,640.035 144.268,638.731 146.344,637.427 148.42,636.123 150.496,634.819 152.572,633.515 154.648,632.211 156.724,630.907 158.8,629.603 160.876,628.298 162.952,626.994 165.028,625.69 167.104,624.386 169.18,623.082 171.256,621.778 173.332,620.474 175.408,619.17 177.484,617.866 179.56,616.561 181.636,615.257 183.712,613.953 185.788,612.649 187.864,611.345 189.94,610.041 192.016,608.737 194.092,607.433 196.168,606.129 198.244,604.825 200.32,603.52 202.396,602.216 204.472,600.912 206.548,599.608 208.624,598.304 210.7,597 212.776,595.696 214.852,594.392 216.928,593.088 219.004,591.784 221.08,590.479 223.156,589.175 225.232,587.871 227.308,586.567 229.384,585.263 231.46,583.959 233.536,582.655 235.612,581.351 237.688,580.047 239.764,578.742 241.84,577.438 243.916,576.134 245.992,574.83 248.068,573.526 250.144,572.222 252.22,570.918 254.296,569.614 256.372,568.31 258.448,567.006 260.524,565.701 262.6,564.397 264.676,563.093 266.752,561.789 268.828,560.485 270.904,559.181 272.98,557.877 275.056,556.573 277.132,555.269 279.208,553.965 281.284,552.66 283.36,551.356 285.436,550.052 287.512,548.748 289.588,547.444 291.664,546.14 293.74,544.836 295.816,543.532 297.892,542.228 299.968,540.924 302.044,539.619 304.12,538.315 306.196,537.011 308.272,535.707 310.348,534.403 312.424,533.099 314.5,531.795 316.576,530.491 318.652,529.187 320.728,527.882 322.804,526.578 324.88,525.274 326.956,523.97 329.032,522.666 331.108,521.362 333.184,520.058 335.26,518.754 337.336,517.45 339.412,516.146 341.488,514.841 343.564,513.537 345.64,512.233 347.716,510.929 349.792,509.625 351.868,508.321 353.944,507.017 356.02,505.713 358.096,504.409 360.172,503.104 362.248,501.8 364.324,500.496 366.4,499.192 368.476,497.888 370.552,496.584 372.628,495.28 374.704,493.976 376.78,492.672 378.856,491.368 380.932,490.063 383.008,488.759 385.084,487.455 387.16,486.151 389.236,484.847 391.312,483.543 393.388,482.239 395.464,480.935 397.54,479.631 399.616,478.327 401.692,477.022 403.768,475.718 405.844,474.414 407.92,473.11 409.996,471.806 412.072,470.502 414.148,469.198 416.224,467.894 418.3,466.59 420.376,465.285 422.452,463.981 424.528,462.677 426.604,461.373 428.68,460.069 430.756,458.765 432.832,457.461 434.908,456.157 436.984,454.853 439.06,453.549 441.136,452.244 443.212,450.94 445.288,449.636 447.364,448.332 449.44,447.028 451.516,445.724 453.592,444.42 455.668,443.116 457.744,441.812 459.82,440.508 461.896,439.203 463.972,437.899 466.048,436.595 468.124,435.291 470.2,433.987 472.276,432.683 474.352,431.379 476.428,430.075 478.504,428.771 480.58,427.467 482.656,426.162 484.732,424.858 486.808,423.554 488.884,422.25 490.96,420.946 493.036,419.642 495.112,418.338 497.188,417.034 499.264,415.73 501.34,414.425 503.416,413.121 505.492,411.817 507.568,410.513 509.644,409.209 511.72,407.905 513.796,406.601 515.872,405.297 517.948,403.993 520.024,402.689 522.1,401.384 524.176,400.08 526.252,398.776 528.328,397.472 530.404,396.168 532.48,394.864 534.556,393.56 536.632,392.256 538.708,390.952 540.784,389.648 542.86,388.343 544.936,387.039 547.012,385.735 549.088,384.431 551.164,383.127 553.24,381.823 555.316,380.519 557.392,379.215 559.468,377.911 561.544,376.606 563.62,375.302 565.696,373.998 567.772,372.694 569.848,371.39 571.924,370.086 574,368.782 576.076,367.478 578.152,366.174 580.228,364.87 582.304,363.565 584.38,362.261 586.456,360.957 588.532,359.653 590.608,358.349 592.684,357.045 594.76,355.741 596.836,354.437 598.912,353.133 600.988,351.829 603.064,350.524 605.14,349.22 607.216,347.916 609.292,346.612 611.368,345.308 613.444,344.004 615.52,342.7 617.596,341.396 619.672,340.092 621.748,338.787 623.824,337.483 625.9,336.179 627.976,334.875 630.052,333.571 632.128,332.267 634.204,330.963 636.28,329.659 638.356,328.355 640.432,327.051 642.508,325.746 644.584,324.442 646.66,323.138 648.736,321.834 650.812,320.53 652.888,319.226 654.964,317.922 657.04,316.618 659.116,315.314 661.192,314.01 663.268,312.705 665.344,311.401 667.42,310.097 669.496,308.793 671.572,307.489 673.648,306.185 675.724,304.881 677.8,303.577 679.876,302.273 681.952,300.968 684.028,299.664 686.104,298.36 688.18,297.056 690.256,295.752 692.332,294.448 694.408,293.144 696.484,291.84 698.56,290.536 700.636,289.232 702.712,287.927 704.788,286.623 706.864,285.319 708.94,284.015 711.016,282.711 713.092,281.407 715.168,280.103 717.244,278.799 719.32,277.495 721.396,276.191 723.472,274.886 725.548,273.582 727.624,272.278 729.7,270.974 731.776,269.67 733.852,268.366 735.928,267.062 738.004,265.758 740.08,264.454 742.156,263.149 744.232,261.845 746.308,260.541 748.384,259.237 750.46,257.933 752.536,256.629 754.612,255.325 756.688,254.021 758.764,252.717 760.84,251.413 762.916,250.108 764.992,248.804 767.068,247.5 769.144,246.196 771.22,244.892 773.296,243.588 775.372,242.284 777.448,240.98 779.524,239.676 781.6,238.372 783.676,237.067 785.752,235.763 787.828,234.459 789.904,233.155 791.98,231.851 794.056,230.547 796.132,229.243 798.208,227.939 800.284,226.635 802.36,225.33 804.436,224.026 806.512,222.722 808.588,221.418 810.664,220.114 812.74,218.81 814.816,217.506 816.892,216.202 818.968,214.898 821.044,213.594 823.12,212.289 825.196,210.985 827.272,209.681 829.348,208.377 831.424,207.073 833.5,205.769 835.576,204.465 837.652,203.161 839.728,201.857 841.804,200.553 843.88,199.248 845.956,197.944 848.032,196.64 850.108,195.336 852.184,194.032 854.26,192.728 856.336,191.424 858.412,190.12 860.488,188.816 862.564,187.512 864.64,186.207 866.716,184.903 868.792,183.599 870.868,182.295 872.944,180.991 875.02,179.687 877.096,178.383 879.172,177.079 881.248,175.775 883.324,174.47 885.4,173.166 887.476,171.862 889.552,170.558 891.628,169.254 893.704,167.95 895.78,166.646 897.856,165.342 899.932,164.038 902.008,162.734 904.084,161.429 906.16,160.125 908.236,158.821 910.312,157.517 912.388,156.213 914.464,154.909 916.54,153.605 918.616,152.301 920.692,150.997 922.768,149.692 924.844,148.388 926.92,147.084 928.996,145.78 931.072,144.476 933.148,143.172 935.224,141.868 937.3,140.564 939.376,139.26 941.452,137.956 943.528,136.651 945.604,135.347 947.68,134.043 949.756,132.739 951.832,131.435 953.908,130.131 955.984,128.827 958.06,127.523 960.136,126.219 962.212,124.915 964.288,123.61 966.364,122.306 968.44,121.002 970.516,119.698 972.592,118.394 974.668,117.09 976.744,115.786 978.82,114.482 980.896,113.178 982.972,111.873 985.048,110.569 987.124,109.265 989.2,107.961 991.276,106.657 993.352,105.353 995.428,104.049 997.504,102.745 999.58,101.441 1001.66,100.137 1003.73,98.8325 1005.81,97.5284 1007.88,96.2243 1009.96,94.9202 1012.04,93.616 1014.11,92.3119 1016.19,91.0079 1018.26,89.7037 1020.34,88.3996 1022.42,87.0955 1024.49,85.7915 1026.57,84.4873 1028.64,83.1832 1030.72,81.8791 1032.8,80.575 1034.87,79.2709 1036.95,77.9668 1039.02,76.6627 1041.1,75.3586 1043.18,74.0545 1045.25,72.7504 1047.33,71.4463 1049.4,70.1422 1051.48,68.8381 1053.56,67.534 1055.63,66.2299 1057.71,64.9258 1059.78,63.6217 1061.86,62.3176 1063.94,61.0135 1066.01,59.7094 1068.09,58.4052 1070.16,57.1012 1072.24,55.7971 1074.32,54.4929 1076.39,53.1888 1078.47,51.8848 1080.54,50.5807 1082.62,49.2765 1084.7,47.9724 1086.77,46.6683 1088.85,45.3642 1090.92,44.0601 1093,42.756 1093,42.756"
+     id="polyline127"
+     style="stroke-width:5;stroke-dasharray:5, 5;stroke-dashoffset:0"
+     transform="translate(-6,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="1"
+     stroke-opacity="1"
+     clip-path="url(#clipArea1)"
+     points="55,694.808 57.076,694.808 59.152,694.808 61.228,694.808 63.304,694.808 65.38,694.808 67.456,694.808 69.532,694.808 71.608,694.808 73.684,694.808 75.76,694.808 77.836,694.808 79.912,694.808 81.988,694.808 84.064,694.808 86.14,694.808 88.216,694.808 90.292,694.808 92.368,694.808 94.444,694.808 96.52,694.808 98.596,694.808 100.672,694.808 102.748,694.808 104.824,694.808 106.9,694.808 108.976,694.808 111.052,694.808 113.128,694.808 115.204,694.808 117.28,694.808 119.356,694.808 121.432,694.808 123.508,694.808 125.584,694.808 127.66,694.808 129.736,694.808 131.812,694.808 133.888,694.808 135.964,694.808 138.04,694.808 140.116,694.808 142.192,694.808 144.268,694.808 146.344,694.808 148.42,694.808 150.496,694.808 152.572,694.808 154.648,694.808 156.724,694.808 158.8,694.808 160.876,694.808 162.952,694.808 165.028,694.808 167.104,694.808 169.18,694.808 171.256,694.808 173.332,694.808 175.408,694.808 177.484,694.808 179.56,694.808 181.636,694.808 183.712,694.808 185.788,694.808 187.864,694.808 189.94,694.808 192.016,694.808 194.092,694.808 196.168,694.808 198.244,694.808 200.32,694.808 202.396,694.808 204.472,694.808 206.548,694.808 208.624,694.808 210.7,694.808 212.776,694.808 214.852,694.808 216.928,694.808 219.004,694.808 221.08,694.808 223.156,694.808 225.232,694.808 227.308,694.808 229.384,694.808 231.46,694.808 233.536,694.808 235.612,694.808 237.688,694.808 239.764,694.808 241.84,694.808 243.916,694.808 245.992,694.808 248.068,694.808 250.144,694.808 252.22,694.808 254.296,694.808 256.372,694.808 258.448,694.808 260.524,694.808 262.6,694.808 264.676,694.808 266.752,694.808 268.828,694.808 270.904,694.808 272.98,694.808 275.056,694.808 277.132,694.808 279.208,694.808 281.284,694.808 283.36,694.808 285.436,694.808 287.512,694.808 289.588,694.808 291.664,694.808 293.74,694.808 295.816,694.808 297.892,694.808 299.968,694.808 302.044,694.808 304.12,694.808 306.196,694.808 308.272,694.808 310.348,694.808 312.424,694.808 314.5,694.808 316.576,694.808 318.652,694.808 320.728,694.808 322.804,694.808 324.88,694.808 326.956,694.808 329.032,694.808 331.108,694.808 333.184,694.808 335.26,694.808 337.336,694.808 339.412,694.808 341.488,694.808 343.564,694.808 345.64,694.808 347.716,694.808 349.792,694.808 351.868,694.808 353.944,694.808 356.02,694.808 358.096,694.808 360.172,694.808 362.248,694.808 364.324,694.808 366.4,694.808 368.476,694.808 370.552,694.808 372.628,694.808 374.704,694.808 376.78,694.808 378.856,694.808 380.932,694.808 383.008,694.808 385.084,694.808 387.16,694.808 389.236,694.808 391.312,694.808 393.388,694.808 395.464,694.808 397.54,694.808 399.616,694.808 401.692,694.808 403.768,694.808 405.844,694.808 407.92,694.808 409.996,694.808 412.072,694.808 414.148,694.808 416.224,694.808 418.3,694.808 420.376,694.808 422.452,694.808 424.528,694.808 426.604,694.808 428.68,694.808 430.756,694.808 432.832,694.808 434.908,694.808 436.984,694.808 439.06,694.808 441.136,694.808 443.212,694.808 445.288,694.808 447.364,694.808 449.44,694.808 451.516,694.808 453.592,694.808 455.668,694.808 457.744,694.808 459.82,694.808 461.896,694.808 463.972,694.808 466.048,694.808 468.124,694.808 470.2,694.808 472.276,694.808 474.352,694.808 476.428,694.808 478.504,694.808 480.58,694.808 482.656,694.808 484.732,694.808 486.808,694.808 488.884,694.808 490.96,694.808 493.036,694.808 495.112,694.808 497.188,694.808 499.264,694.808 501.34,694.808 503.416,694.808 505.492,694.808 507.568,694.808 509.644,694.808 511.72,694.808 513.796,694.808 515.872,694.808 517.948,694.808 520.024,694.808 522.1,694.808 524.176,694.808 526.252,694.808 528.328,694.808 530.404,694.808 532.48,694.808 534.556,694.808 536.632,694.808 538.708,694.808 540.784,694.808 542.86,694.808 544.936,694.808 547.012,694.808 549.088,694.808 551.164,694.808 553.24,694.808 555.316,694.808 557.392,694.808 559.468,694.808 561.544,694.808 563.62,694.808 565.696,694.808 567.772,694.808 569.848,694.808 571.924,694.808 574,694.808 576.076,694.808 578.152,694.808 580.228,694.808 582.304,694.808 584.38,694.808 586.456,694.808 588.532,694.808 590.608,694.808 592.684,694.808 594.76,694.808 596.836,694.808 598.912,694.808 600.988,694.808 603.064,694.808 605.14,694.808 607.216,694.808 609.292,694.808 611.368,694.808 613.444,694.808 615.52,694.808 617.596,694.808 619.672,694.808 621.748,694.808 623.824,694.808 625.9,694.808 627.976,694.808 630.052,694.808 632.128,694.808 634.204,694.808 636.28,694.808 638.356,694.808 640.432,694.808 642.508,694.808 644.584,694.808 646.66,694.808 648.736,694.808 650.812,694.808 652.888,694.808 654.964,694.808 657.04,694.808 659.116,694.808 661.192,694.808 663.268,694.808 665.344,694.808 667.42,694.808 669.496,694.808 671.572,694.808 673.648,694.808 675.724,694.808 677.8,694.808 679.876,694.808 681.952,694.808 684.028,694.808 686.104,694.808 688.18,694.808 690.256,694.808 692.332,694.808 694.408,694.808 696.484,694.808 698.56,694.808 700.636,694.808 702.712,694.808 704.788,694.808 706.864,694.808 708.94,694.808 711.016,694.808 713.092,694.808 715.168,694.808 717.244,694.808 719.32,694.808 721.396,694.808 723.472,694.808 725.548,694.808 727.624,694.808 729.7,694.808 731.776,694.808 733.852,694.808 735.928,694.808 738.004,694.808 740.08,694.808 742.156,694.808 744.232,694.808 746.308,694.808 748.384,694.808 750.46,694.808 752.536,694.808 754.612,694.808 756.688,694.808 758.764,694.808 760.84,694.808 762.916,694.808 764.992,694.808 767.068,694.808 769.144,694.808 771.22,694.808 773.296,694.808 775.372,694.808 777.448,694.808 779.524,694.808 781.6,694.808 783.676,694.808 785.752,694.808 787.828,694.808 789.904,694.808 791.98,694.808 794.056,694.808 796.132,694.808 798.208,694.808 800.284,694.808 802.36,694.808 804.436,694.808 806.512,694.808 808.588,694.808 810.664,694.808 812.74,694.808 814.816,694.808 816.892,694.808 818.968,694.808 821.044,694.808 823.12,694.808 825.196,694.808 827.272,694.808 829.348,694.808 831.424,694.808 833.5,694.808 835.576,694.808 837.652,694.808 839.728,694.808 841.804,694.808 843.88,694.808 845.956,694.808 848.032,694.808 850.108,694.808 852.184,694.808 854.26,694.808 856.336,694.808 858.412,694.808 860.488,694.808 862.564,694.808 864.64,694.808 866.716,694.808 868.792,694.808 870.868,694.808 872.944,694.808 875.02,694.808 877.096,694.808 879.172,694.808 881.248,694.808 883.324,694.808 885.4,694.808 887.476,694.808 889.552,694.808 891.628,694.808 893.704,694.808 895.78,694.808 897.856,694.808 899.932,694.808 902.008,694.808 904.084,694.808 906.16,694.808 908.236,694.808 910.312,694.808 912.388,694.808 914.464,694.808 916.54,694.808 918.616,694.808 920.692,694.808 922.768,694.808 924.844,694.808 926.92,694.808 928.996,694.808 931.072,694.808 933.148,694.808 935.224,694.808 937.3,694.808 939.376,694.808 941.452,694.808 943.528,694.808 945.604,694.808 947.68,694.808 949.756,694.808 951.832,694.808 953.908,694.808 955.984,694.808 958.06,694.808 960.136,694.808 962.212,694.808 964.288,694.808 966.364,694.808 968.44,694.808 970.516,694.808 972.592,694.808 974.668,694.808 976.744,694.808 978.82,694.808 980.896,694.808 982.972,694.808 985.048,694.808 987.124,694.808 989.2,694.808 991.276,694.808 993.352,694.808 995.428,694.808 997.504,694.808 999.58,694.808 1001.66,694.808 1003.73,694.808 1005.81,694.808 1007.88,694.808 1009.96,694.808 1012.04,694.808 1014.11,694.808 1016.19,694.808 1018.26,694.808 1020.34,694.808 1022.42,694.808 1024.49,694.808 1026.57,694.808 1028.64,694.808 1030.72,694.808 1032.8,694.808 1034.87,694.808 1036.95,694.808 1039.02,694.808 1041.1,694.808 1043.18,694.808 1045.25,694.808 1047.33,694.808 1049.4,694.808 1051.48,694.808 1053.56,694.808 1055.63,694.808 1057.71,694.808 1059.78,694.808 1061.86,694.808 1063.94,694.808 1066.01,694.808 1068.09,694.808 1070.16,694.808 1072.24,694.808 1074.32,694.808 1076.39,694.808 1078.47,694.808 1080.54,694.808 1082.62,694.808 1084.7,694.808 1086.77,694.808 1088.85,694.808 1090.92,694.808 1093,694.808 1093,694.808"
+     id="polyline128"
+     style="stroke-width:5;stroke-dasharray:none"
+     transform="translate(-4,-14.75)" />
+  <polyline
+     fill="none"
+     stroke="#1c6cc8"
+     stroke-width="1"
+     stroke-opacity="1"
+     points="62,26 92,26"
+     id="polyline130"
+     transform="translate(-2.9738292,28.6346)"
+     style="stroke-width:5;stroke-dasharray:none" />
+  <text
+     fill="#000000"
+     font-size="11"
+     font-family="Arial"
+     text-anchor="start"
+     dominant-baseline="central"
+     x="103.39652"
+     y="57.381264"
+     id="text130"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">fullMedium.P</text>
+  <polyline
+     fill="none"
+     stroke="#d943b4"
+     stroke-width="1"
+     stroke-opacity="1"
+     points="62,42 92,42"
+     id="polyline131"
+     transform="translate(-5.8471074,67.019)"
+     style="stroke-width:5;stroke-dasharray:5, 5;stroke-dashoffset:0" />
+  <text
+     fill="#000000"
+     font-size="11"
+     font-family="Arial"
+     text-anchor="start"
+     dominant-baseline="central"
+     x="100.49406"
+     y="108.44535"
+     id="text131"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">incompressibleFluid.P</text>
+  <polyline
+     fill="none"
+     stroke="#000000"
+     stroke-width="1"
+     stroke-opacity="1"
+     points="62,59 92,59"
+     id="polyline132"
+     transform="translate(-4.4104683,104.404)"
+     style="stroke-width:5;stroke-dasharray:none" />
+  <text
+     fill="rgb(0,0,0)"
+     font-size="11"
+     font-family="Arial"
+     text-anchor="start"
+     dominant-baseline="central"
+     x="101.90758"
+     y="166.15067"
+     id="text132"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;dominant-baseline:central;text-anchor:start;fill:#000000">isothermalReference.P</text>
+</svg>

@@ -35,6 +35,7 @@ model DynamicJunctionNM "Splitter/Junction with N inlets and M outlets, taking d
         origin={-20,0})));
   DynamicSplitterN dynamicSplitterN(redeclare package Medium = Medium,
     final N=M,
+    final considerInertance=true,
     final L=L,
     final assumeConstantDensity=assumeConstantDensity,
     final A_splitter=A_splitter,

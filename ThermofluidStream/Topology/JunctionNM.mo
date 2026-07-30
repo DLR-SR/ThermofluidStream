@@ -24,7 +24,8 @@ model JunctionNM "Junction with N inlets and M outlets"
       iconTransformation(extent={{-20,-20},{20,20}},rotation=0,origin={100,0})));
   SplitterN splitterN(
     final N=M,
-    redeclare package Medium = Medium, final L=L)
+    redeclare package Medium = Medium,
+    final considerInertance=true,      final L=L)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

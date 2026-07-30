@@ -3,6 +3,30 @@ model DiscretizedCounterFlowHEX "Discretized heat exchanger for single- or two-p
 
   extends Internal.PartialDiscretizedHEX;
 
+  Interfaces.Rear rearA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{120,-80},{80,-40}}),
+      iconTransformation(extent={{120,-80},{80,-40}})));
+
+  Interfaces.Fore foreA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{-80,-80},{-120,-40}}),
+      iconTransformation(extent={{-80,-80},{-120,-40}})));
+
+  Interfaces.Rear rearB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{-120,40},{-80,80}}),
+      iconTransformation(extent={{-120,40},{-80,80}})));
+
+  Interfaces.Fore foreB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{80,40},{120,80}}),
+      iconTransformation(extent={{80,40},{120,80}})));
+
 initial equation
   if initializeMassFlow then
     rearA.m_flow = m_flow_0_A;
@@ -10,6 +34,33 @@ initial equation
   end if;
 
 equation
+  m_flow_A = rearA.m_flow;
+  m_flow_B = rearB.m_flow;
+
+  stateA_in =
+    if noEvent(rearA.m_flow) > 0 then
+      rearA.state_forwards
+    else
+      foreA.state_rearwards;
+
+  stateA_out =
+    if noEvent(rearA.m_flow) > 0 then
+      foreA.state_forwards
+    else
+      rearA.state_rearwards;
+
+  stateB_in =
+    if noEvent(rearB.m_flow) > 0 then
+      rearB.state_forwards
+    else
+      foreB.state_rearwards;
+
+  stateB_out =
+    if noEvent(rearB.m_flow) > 0 then
+      foreB.state_forwards
+    else
+      rearB.state_rearwards;
+
   //Connecting equations (to interconnect pipes)
   //Fluid side B
   connect(rearB, thermalElementB[1].rear) annotation (Line(points={{-100,60},{-10,60}}, color={28,108,200}));
@@ -45,23 +96,23 @@ equation
           textColor={0,0,0},
           textString="A = %A"),
         Text(
-          extent={{-66,54},{-54,42}},
+          extent={{40,-54},{52,-66}},
           textColor={28,108,200},
           textString="1"),
         Text(
-          extent={{-40,54},{-28,42}},
+          extent={{14,-54},{26,-66}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{-12,54},{0,42}},
+          extent={{-12,-54},{0,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,54},{28,42}},
+          extent={{-40,-54},{-28,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{42,54},{54,42}},
+          extent={{-66,-54},{-54,-66}},
           textColor={28,108,200},
           textString="N"),
         Text(

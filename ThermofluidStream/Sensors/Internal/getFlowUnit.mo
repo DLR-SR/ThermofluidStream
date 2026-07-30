@@ -7,9 +7,13 @@ function getFlowUnit "Returns unit of input flow-quantity"
 
 algorithm
   if quantity == Types.MassFlowQuantities.Cp_flow_JpKs then
-    unit :="J/(K.s)";
+    unit :="W/K";
   elseif quantity == Types.MassFlowQuantities.H_flow_Jps then
-    unit :="J/s";
+    unit :="W";
+  elseif quantity == Types.MassFlowQuantities.H_flow_kW then
+    unit :="kW";
+  elseif quantity == Types.MassFlowQuantities.H_flow_MW then
+    unit :="MW";
   elseif quantity == Types.MassFlowQuantities.m_flow_kgps then
     unit :="kg/s";
   elseif quantity == Types.MassFlowQuantities.V_flow_m3ps then
@@ -17,7 +21,11 @@ algorithm
   elseif quantity == Types.MassFlowQuantities.V_flow_lpMin then
     unit :="l/min";
   elseif quantity == Types.MassFlowQuantities.S_flow_JpKs then
-    unit :="J/(K.s)";
+    unit := "W/K";
+  elseif quantity == Types.MassFlowQuantities.S_flow_kWpK then
+    unit :="kW/K";
+  elseif quantity == Types.MassFlowQuantities.S_flow_MWpK then
+    unit :="MW/K";
   else
     unit :="";
   end if;

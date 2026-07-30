@@ -1,0 +1,34 @@
+within ThermofluidStream.Idealized;
+package Processes
+  extends Modelica.Icons.Package;
+
+  annotation(Icon(graphics={
+         Ellipse(
+          extent={{-60,54},{60,-66}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={215,215,215},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(
+          points={{-94,0},{94,0}},
+          color={28,108,200},
+          thickness=0.5),
+        Ellipse(
+          extent={{-64,60},{56,-60}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}), Documentation(info="<html>
+  <p>
+    Package of idealized processes.
+  </p>
+</html>", revisions="<html>
+  <ul>
+    <li>
+      2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      Initial version.
+    </li>
+  </ul>
+</html>"));
+end Processes;

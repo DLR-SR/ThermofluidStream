@@ -53,7 +53,7 @@ initial equation
   end if;
 
 equation
-  assert(noEvent(inlet.m_flow > m_flow_assert), "Negative mass flow rate at inlet", dropOfCommons.assertionLevel);
+  assert(noEvent(inlet.m_flow > m_flow_assert), "In \"" + instanceName + "\": Negative mass flow rate at inlet", dropOfCommons.assertionLevel);
 
   //mass is assumed to be quasisationary-> this violates the conservation of mass since m_flow_in = -m_flow_out. see documentation/information
   M = V*rho;

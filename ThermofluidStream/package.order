@@ -2,6 +2,7 @@ UsersGuide
 Examples
 Interfaces
 Boundaries
+Idealized
 Topology
 Processes
 HeatExchangers
@@ -11,4 +12,5 @@ Undirected
 Utilities
 Media
 Types
+Units
 DropOfCommons

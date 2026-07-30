@@ -84,6 +84,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     A=2,
     k_NTU=200,
     L=1,
+    TC=10,
     displaykNTU=false) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=270,
@@ -94,6 +95,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     A=3,
     k_NTU=200,
     L=1,
+    TC=10,
     displaykNTU=false) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=270,
@@ -183,6 +185,7 @@ model SimpleAirCycle "Basic bootstrap cooling cycle"
     A=5,
     k_NTU=200,
     L=1,
+    TC=10,
     displaykNTU=false)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},

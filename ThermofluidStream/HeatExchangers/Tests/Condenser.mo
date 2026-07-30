@@ -79,7 +79,7 @@ model Condenser
     redeclare package MediumB = MediumRefrigerant,
     initializeMassFlow=true,
     k_wall=150,
-    nCells=20) annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    nCells=20) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={4,10})));
   Processes.FlowResistance flowResistanceA(

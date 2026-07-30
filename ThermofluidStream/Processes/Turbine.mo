@@ -25,7 +25,7 @@ protected
 
 equation
   // test for ideal gas
-  assert(abs(R_in- R_in)/R_in < max_rel_R, "Medium in turbine is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
+  assert(abs(R_in- R_in)/R_in < max_rel_R, "In \"" + instanceName + "\": Medium in turbine is assumed to be ideal gas, but check failed", dropOfCommons.assertionLevel);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=true), graphics={
         Line(

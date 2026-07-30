@@ -30,7 +30,7 @@ initial equation
   height = height_0;
 
 equation
-  assert(height > height_min, "Reservoir fill height must be greater than height_min", dropOfCommons.assertionLevel);
+  assert(height > height_min, "In \"" + instanceName + "\": Reservoir fill height must be greater than height_min", dropOfCommons.assertionLevel);
 
   density_derp_h = 1/(height*g);
 

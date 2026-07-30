@@ -23,6 +23,10 @@ algorithm
     value := m_flow * Medium.specificHeatCapacityCp(state);
   elseif quantity == Types.MassFlowQuantities.H_flow_Jps then
     value := m_flow * Medium.specificEnthalpy(state);
+  elseif quantity == Types.MassFlowQuantities.H_flow_kW then
+    value := m_flow * Medium.specificEnthalpy(state)*1e-3;
+  elseif quantity == Types.MassFlowQuantities.H_flow_MW then
+    value := m_flow * Medium.specificEnthalpy(state)*1e-6;
   elseif quantity == Types.MassFlowQuantities.m_flow_kgps then
     value := m_flow;
   elseif quantity == Types.MassFlowQuantities.m_flow_gps then
@@ -33,6 +37,10 @@ algorithm
     value := m_flow / max(rho_min, Medium.density(state))*m3ps_to_lpMin;
   elseif quantity == Types.MassFlowQuantities.S_flow_JpKs then
     value := m_flow * Medium.specificEntropy(state);
+  elseif quantity == Types.MassFlowQuantities.S_flow_kWpK then
+    value := m_flow * Medium.specificEntropy(state)*1e-3;
+  elseif quantity == Types.MassFlowQuantities.S_flow_MWpK then
+    value := m_flow * Medium.specificEntropy(state)*1e-6;
   else
     value :=0;
   end if;

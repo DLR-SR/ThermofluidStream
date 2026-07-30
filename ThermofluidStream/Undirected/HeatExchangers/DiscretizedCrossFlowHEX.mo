@@ -1,7 +1,31 @@
 within ThermofluidStream.Undirected.HeatExchangers;
 model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-phase working fluid without pressure drop"
 
-  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells,final crossFlow=true);
+  extends Internal.PartialDiscretizedHEX(nCellsParallel=nCells);
+
+  Interfaces.Rear rearA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{120,-80},{80,-40}}),
+      iconTransformation(extent={{-20,80},{20,120}})));
+
+  Interfaces.Fore foreA(
+    redeclare package Medium = MediumA)
+    annotation (Placement(
+      transformation(extent={{-80,-80},{-120,-40}}),
+      iconTransformation(extent={{-20,-80},{20,-120}})));
+
+  Interfaces.Rear rearB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{-120,40},{-80,80}}),
+      iconTransformation(extent={{-80,-80},{-120,-40}})));
+
+  Interfaces.Fore foreB(
+    redeclare package Medium = MediumB)
+    annotation (Placement(
+      transformation(extent={{80,40},{120,80}}),
+      iconTransformation(extent={{120,-80},{80,-40}})));
 
   Processes.FlowResistance flowResistanceA[nCells](
     redeclare package Medium = MediumA,
@@ -29,6 +53,33 @@ initial equation
   end if;
 
 equation
+  m_flow_A = rearA.m_flow;
+  m_flow_B = rearB.m_flow;
+
+  stateA_in =
+    if noEvent(rearA.m_flow) > 0 then
+      rearA.state_forwards
+    else
+      foreA.state_rearwards;
+
+  stateA_out =
+    if noEvent(rearA.m_flow) > 0 then
+      foreA.state_forwards
+    else
+      rearA.state_rearwards;
+
+  stateB_in =
+    if noEvent(rearB.m_flow) > 0 then
+      rearB.state_forwards
+    else
+      foreB.state_rearwards;
+
+  stateB_out =
+    if noEvent(rearB.m_flow) > 0 then
+      foreB.state_forwards
+    else
+      rearB.state_rearwards;
+
   //Connecting equations (to interconnect pipes)
 
   //Fluid side B
@@ -75,23 +126,23 @@ equation
           color={28,108,200},
           thickness=0.5),
         Text(
-          extent={{-66,54},{-54,42}},
+          extent={{40,-54},{52,-66}},
           textColor={28,108,200},
           textString="N"),
         Text(
-          extent={{-40,54},{-28,42}},
+          extent={{14,-54},{26,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{-12,34},{0,22}},
+          extent={{-12,-54},{0,-66}},
           textColor={28,108,200},
           textString="..."),
         Text(
-          extent={{16,54},{28,42}},
+          extent={{-40,-54},{-28,-66}},
           textColor={28,108,200},
           textString="2"),
         Text(
-          extent={{42,54},{54,42}},
+          extent={{-66,-54},{-54,-66}},
           textColor={28,108,200},
           textString="1"),
         Text(
@@ -99,7 +150,7 @@ equation
           textColor={175,175,175},
           textString="A"),
         Text(
-          extent={{80,0},{120,-40}},
+          extent={{-120,0},{-80,-40}},
           textColor={175,175,175},
           textString="B"),
        Line(

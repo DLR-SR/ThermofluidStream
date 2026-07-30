@@ -62,7 +62,9 @@ model CounterFlowNTU_zeroMassFlow
   HeatExchangers.CounterFlowNTU counterFlowNTU(
     redeclare package MediumA = MediumA,
     redeclare package MediumB = MediumB,
-    A=10) annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
+    A=10,
+    TC=10)
+          annotation (Placement(transformation(extent={{-10,-8},{10,12}})));
   Modelica.Blocks.Sources.RealExpression p_out_B(y=if time < 1000 then sourceB.p0_par*0.9 else sourceB.p0_par)
     "if time < 1000 then sourceB.p0 else sourceB.p0*0.999999"
     annotation (Placement(transformation(extent={{-158,10},{-138,30}})));
