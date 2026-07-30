@@ -215,7 +215,23 @@ equation
         Line(points={{-16,-10},{-26,-20},{-26,-68}}, color={215,215,215}),
         Line(points={{4,-10},{-6,-20},{-6,-68}}, color={215,215,215}),
         Line(points={{26,-10},{16,-20},{16,-68}}, color={215,215,215}),
-        Line(points={{48,-10},{38,-20},{38,-68}}, color={215,215,215})}),
+        Line(points={{48,-10},{38,-20},{38,-68}}, color={215,215,215}),
+        Text(
+          extent={{-100,-80},{-80,-100}},
+          textColor={175,175,175},
+          textString="N"),
+        Text(
+          extent={{-100,100},{-80,80}},
+          textColor={175,175,175},
+          textString="1"),
+        Text(
+          extent={{80,100},{100,80}},
+          textColor={175,175,175},
+          textString="N"),
+        Text(
+          extent={{80,-80},{100,-100}},
+          textColor={175,175,175},
+          textString="1")}),
       Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells in the flow direction and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>

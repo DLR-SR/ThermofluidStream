@@ -327,7 +327,23 @@ equation
         Line(points={{-16,70},{-26,60},{-26,12}}, color={215,215,215}),
         Line(points={{4,70},{-6,60},{-6,12}}, color={215,215,215}),
         Line(points={{26,70},{16,60},{16,12}}, color={215,215,215}),
-        Line(points={{48,70},{38,60},{38,12}}, color={215,215,215})}),
+        Line(points={{48,70},{38,60},{38,12}}, color={215,215,215}),
+        Text(
+          extent={{-100,-80},{-80,-100}},
+          textColor={175,175,175},
+          textString="N"),
+        Text(
+          extent={{-100,100},{-80,80}},
+          textColor={175,175,175},
+          textString="1"),
+        Text(
+          extent={{80,100},{100,80}},
+          textColor={175,175,175},
+          textString="N"),
+        Text(
+          extent={{80,-80},{100,-100}},
+          textColor={175,175,175},
+          textString="1")}),
       Documentation(info="<html>
 <p>The undirected counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
 <p>For each side the elements are numbered 1 to nCells from rear to fore and the elements&apos; heatports are connected via a thermal conductor that models the wall. The connections are ordered to result in a counter-flow configuration. </p>
