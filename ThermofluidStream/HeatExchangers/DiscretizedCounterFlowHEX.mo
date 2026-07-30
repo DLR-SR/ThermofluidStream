@@ -218,19 +218,19 @@ equation
         Line(points={{48,-10},{38,-20},{38,-68}}, color={215,215,215}),
         Text(
           extent={{-100,-80},{-80,-100}},
-          textColor={175,175,175},
+          textColor={0,0,0},
           textString="N"),
         Text(
           extent={{-100,100},{-80,80}},
-          textColor={175,175,175},
+          textColor={0,0,0},
           textString="1"),
         Text(
           extent={{80,100},{100,80}},
-          textColor={175,175,175},
+          textColor={0,0,0},
           textString="N"),
         Text(
           extent={{80,-80},{100,-100}},
-          textColor={175,175,175},
+          textColor={0,0,0},
           textString="1")}),
       Documentation(info="<html>
 <p>The counter-flow discretized heat exchanger uses a number of conduction elements (which is set by the parameter nCells) as discrete control volumes to exchange heat between two fluid streams. </p>
