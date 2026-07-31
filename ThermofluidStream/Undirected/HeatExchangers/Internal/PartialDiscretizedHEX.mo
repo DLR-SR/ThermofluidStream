@@ -1,7 +1,6 @@
 within ThermofluidStream.Undirected.HeatExchangers.Internal;
 partial model PartialDiscretizedHEX "Base class for undirected discretized heat exchangers"
 
-  extends ThermofluidStream.HeatExchangers.Internal.DiscretizedHexIcon;
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
   replaceable package MediumA = ThermofluidStream.Media.myMedia.Interfaces.PartialMedium "Medium model side A"
