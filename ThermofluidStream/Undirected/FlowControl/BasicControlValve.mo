@@ -49,23 +49,6 @@ initial equation
     + "===============================================================================\n",
     level=AssertionLevel.warning);
 
-  if flowCoefficient <> FlowCoeffType.m_flow_set then
-    assert(
-      abs(dp_ref/1e5 - 1) <= Modelica.Constants.eps,
-      "In \"" + getInstanceName()
-      + "\": dp_ref must remain at its default value of 1 bar when "
-      + "m_flow_ref_set is not used. Modifying dp_ref leads to incorrect "
-      + "model behavior. Remove the dp_ref modifier.",
-      level=assertionLevel);
-
-    assert(
-      abs(rho_ref/1000 - 1) <= Modelica.Constants.eps,
-      "In \"" + getInstanceName()
-      + "\": rho_ref must remain at its default value of 1000 kg/m3 when "
-      + "m_flow_ref_set is not used. Modifying rho_ref leads to incorrect "
-      + "model behavior. Remove the rho_ref modifier.",
-      level=assertionLevel);
-  end if;
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
