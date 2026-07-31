@@ -1,6 +1,7 @@
 within ThermofluidStream.FlowControl.Tests;
 model Switch "Test for Switches"
   extends Modelica.Icons.Example;
+  extends Modelica.Icons.ObsoleteModel;
 
   replaceable package Medium = Media.myMedia.Air.SimpleAir
     constrainedby Media.myMedia.Interfaces.PartialMedium "Medium package"
@@ -171,7 +172,7 @@ equation
   annotation (Diagram(coordinateSystem(extent={{-120,-100},{100,100}})),
     experiment(StopTime=10, Tolerance=1e-6, Interval=0.01, __Dymola_Algorithm="Dassl"),
     Documentation(info="<html>
+<p>&lt;&lt;CAUTION: This model will be removed from the library in the next major release!&gt;&gt;</p>
 <p>Test for the switches.</p>
-<p>Owner: Michael Mei&szlig;ner</p>
 </html>"));
 end Switch;

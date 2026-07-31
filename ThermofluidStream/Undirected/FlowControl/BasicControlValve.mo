@@ -23,7 +23,7 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
   parameter Real Cvs_US = 0 "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK = 0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+  parameter Real Cvs_UK = 0 "Cvs-value (UK [gal/min]) from data sheet (valve fully open, deprecated; use Kvs or Cvs_US instead)"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
   parameter SI.MassFlowRate m_flow_ref_set = 0 "Reference mass flow rate"
     annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
@@ -55,6 +55,19 @@ initial equation
       + "model behavior. Remove the rho_ref modifier.",
       level=assertionLevel);
   end if;
+    assert(
+    flowCoefficient <> FlowCoeffType.Cvs_UK,
+    "\n"
+    + "===============================================================================\n"
+    + "              ThermoFluidStream WARNING - DEPRECATED BEHAVIOR\n"
+    + "===============================================================================\n"
+    + "The flow coefficient type Cvs_UK is selected.\n"
+    + "This parameterization is DEPRECATED and will be REMOVED in v2.0.\n"
+    + "Action required: Use Kvs or Cvs_US instead.\n"
+    + "Component: " + getInstanceName() + "\n"
+    + "===============================================================================\n",
+    level=AssertionLevel.warning);
+
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
     assert(Kvs > 0, "Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
