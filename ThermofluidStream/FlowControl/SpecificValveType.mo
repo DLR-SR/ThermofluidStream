@@ -131,6 +131,5 @@ When using <code>Kvs</code>, <code>Cvs_US</code>, or
 Changing these reference values currently leads to incorrect model
 behavior. The assertion level can be configured using
 <code>assertionLevel</code>.To test this behavior, a test model has been setup in <a href=\"modelica://ThermofluidStream.FlowControl.Tests.ValveReferenceValues\">ValveReferenceValues</a>.
-</p>
 </html>"));
 end SpecificValveType;
