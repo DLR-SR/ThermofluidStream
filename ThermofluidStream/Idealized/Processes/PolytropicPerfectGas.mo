@@ -439,8 +439,8 @@ equation
           radius=30,
           pattern=LinePattern.None),
         Rectangle(
-          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
-                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, dp < 0),
+          visible=
+          DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dp < 0),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -448,8 +448,8 @@ equation
           radius=20,
           pattern=LinePattern.Solid),
         Rectangle(
-          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
-                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, dp < 0),
+          visible=
+          DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dpIconType.Expansion, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dp < 0),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
@@ -457,8 +457,8 @@ equation
           radius=20,
           pattern=LinePattern.Dash),
         Rectangle(
-          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
-                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, dp > 0),
+          visible=
+          DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dp > 0),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -466,8 +466,8 @@ equation
           radius=20,
           pattern=LinePattern.Dash),
         Rectangle(
-          visible=systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and
-                  DynamicSelect(IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, dp > 0),
+          visible=
+          DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dp > 0),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
