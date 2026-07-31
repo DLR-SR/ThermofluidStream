@@ -124,6 +124,6 @@ When using <code>Kvs</code>, <code>Cvs_US</code>, or
 <p>
 Changing these reference values currently leads to incorrect model
 behavior. The assertion level can be configured using
-<code>assertionLevel</code>. To test this behavior, a test model has been setup in <a href=\"modelica://ThermofluidStream.Undirected.FlowControl.Tests.ValveReferenceValues_Undirected\">ValveReferenceValues_Undirected</a>.
+<code>assertionLevel</code>. To test this behavior, a test model has been setup in <a href=\"modelica://ThermofluidStream.Undirected.FlowControl.Tests.ValveReferenceValues_Undirected\">ValveReferenceValues_Undirected</a></p>.
 </html>"));
 end BasicControlValve;
