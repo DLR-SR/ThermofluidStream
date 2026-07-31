@@ -1,7 +1,7 @@
 within ThermofluidStream.FlowControl;
 model SpecificValveType "Specific technical valve types"
 
-  extends ThermofluidStream.FlowControl.Internal.PartialValve;
+  extends ThermofluidStream.FlowControl.Internal.PartialValve (final enable_dp_rho_ref = flowCoefficient==FlowCoeffType.m_flow_set);
 
   import FlowCoeffType = ThermofluidStream.FlowControl.Internal.Types.FlowCoefficientTypes;
 
