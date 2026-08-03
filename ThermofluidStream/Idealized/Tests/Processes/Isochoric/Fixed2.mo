@@ -28,7 +28,7 @@ model Fixed2 "Example - Isochoric process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  .ThermofluidStream.Boundaries.Source source1(
+  ThermofluidStream.Boundaries.Source source1(
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in) annotation (Placement(transformation(extent={{10,20},{30,40}})));
@@ -41,7 +41,7 @@ model Fixed2 "Example - Isochoric process"
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
     dT_fixed=dT,
     T_out_fixed=T_out) annotation (Placement(transformation(extent={{40,20},{60,40}})));
-  .ThermofluidStream.Boundaries.Source source3(
+  ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
     p0_par=p_in,
     T0_par=T_in) annotation (Placement(transformation(extent={{10,-40},{30,-20}})));
