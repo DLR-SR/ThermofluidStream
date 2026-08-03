@@ -37,7 +37,6 @@ model Icons
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
-    IconType=ThermofluidStream.Idealized.Types.dpIconType.Compression,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,20},{-70,40}})));
   ThermofluidStream.Boundaries.Source source1(
@@ -65,8 +64,7 @@ model Icons
     annotation (Placement(transformation(extent={{-140,-10},{-120,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric  isobaric(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
-    redeclare package Medium = Medium,
-    IconType=ThermofluidStream.Idealized.Types.dTIconType.Heating)
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
   ThermofluidStream.Boundaries.Source source2(
     redeclare package Medium = Medium,
@@ -214,27 +212,25 @@ model Icons
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    IconType=ThermofluidStream.Idealized.Types.dpIconType.Compression,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric  isobaric1(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
-    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    IconType=ThermofluidStream.Idealized.Types.dTIconType.Heating)
+    systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle)
     annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas polytropic2(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    IconType=ThermofluidStream.Idealized.Types.dpIconType.Expansion,
+    iconType=ThermofluidStream.Idealized.Types.dpIconType.Expansion,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{10,20},{30,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric  isobaric2(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-    IconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
+    iconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic adiabatic1(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -246,13 +242,13 @@ model Icons
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
-    IconType=ThermofluidStream.Idealized.Types.dpIconType.Expansion,
+    iconType=ThermofluidStream.Idealized.Types.dpIconType.Expansion,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   ThermofluidStream.Idealized.Processes.Isobaric  isobaric3(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
-    IconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
+    iconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
   ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic1(
     dpLoss_fixed=10000,

@@ -49,10 +49,12 @@ model Isobaric "Isobaric process"
     Dialog(
       enable = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
     HideResult = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow);
-  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.dTIconType.Heating
+  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.dTIconType.Heating
     "Defines default display icon" annotation (Dialog(
       tab="Layout",
       group="Display parameters"), Evaluate=true);
+  final parameter Boolean iconIsCycle = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle "if true, close system" annotation (Evaluate=true);
+  final parameter Boolean iconIsHeating = iconType == ThermofluidStream.Idealized.Types.dTIconType.Heating "if true, default icon is compression" annotation (Evaluate=true);
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
@@ -276,32 +278,32 @@ equation
           fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Rectangle(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}, if dT > 0 then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}),
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsHeating then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}, if dT > 0 then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}, if dT > 0 then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}),
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsHeating then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}, if dT > 0 then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,223,213},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}, if dT > 0 then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}),
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsHeating then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}, if dT > 0 then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,200,170},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}, if dT > 0 then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}),
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsHeating then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}, if dT > 0 then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,180,140},
           fillPattern=FillPattern.Solid,
@@ -309,7 +311,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible=
-          DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dTIconType.Cooling, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dT < 0),
+          DynamicSelect(iconIsCycle and not iconIsHeating, iconIsCycle and dT < 0),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={255,200,170},
@@ -317,7 +319,7 @@ equation
           radius=20,
           pattern=LinePattern.Dash),
         Rectangle(
-          visible=DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dTIconType.Cooling, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dT < 0),
+          visible=DynamicSelect(iconIsCycle and not iconIsHeating, iconIsCycle and dT < 0),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
@@ -325,7 +327,7 @@ equation
           radius=20,
           pattern=LinePattern.Solid),
         Rectangle(
-          visible=DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dT > 0),
+          visible=DynamicSelect(iconIsCycle and iconIsHeating, iconIsCycle and dT > 0),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={255,200,170},
@@ -333,7 +335,7 @@ equation
           radius=20,
           pattern=LinePattern.Solid),
         Rectangle(
-          visible=DynamicSelect(systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating, systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle and dT > 0),
+          visible=DynamicSelect(iconIsCycle and iconIsHeating, iconIsCycle and dT > 0),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
@@ -341,14 +343,14 @@ equation
           radius=20,
           pattern=LinePattern.Dash),
         Rectangle(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Cooling then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dT < 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
+          visible = iconIsCycle,
+          extent=DynamicSelect(if not iconIsHeating then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dT < 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
           lineColor={28,108,200},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
         Polygon(
-          visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle,
-          points=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Cooling then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dT < 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
+          visible = iconIsCycle,
+          points=DynamicSelect(if not iconIsHeating then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dT < 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
           lineColor={28,108,200},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
