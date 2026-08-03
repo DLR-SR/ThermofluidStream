@@ -76,18 +76,10 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
           textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
-        Text(
-          extent={{-30,30},{30,-30}},
-          textColor={28,108,200},
-          textString="X"),
         Text(
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
@@ -97,7 +89,56 @@ equation
           else "error"),
         Line(
           points = if outletValueSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100}} else {{0,0}},
-          color={0,0,127})}),
+          color={0,0,127}),
+        Rectangle(
+          extent={{-44,42},{-4,-42}},
+          lineColor={170,213,255},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20),
+        Rectangle(
+          extent={{4,42},{44,-42}},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          lineColor={170,213,255}),
+        Polygon(
+          points={{-24,20},{-24,16},{-18,6},{-26,0},{-34,6},{-26,16},{-24,20}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-16,2},{-16,-2},{-10,-12},{-18,-18},{-26,-12},{-18,-2},{-16,
+              2}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{24,36},{24,32},{30,22},{22,16},{14,22},{22,32},{24,36}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{32,18},{32,14},{38,4},{30,-2},{22,4},{30,14},{32,18}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{16,6},{16,2},{22,-8},{14,-14},{6,-8},{14,2},{16,6}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{36,-12},{36,-16},{42,-26},{34,-32},{26,-26},{34,-16},{36,-12}},
+          lineColor={170,213,255},
+          smooth=Smooth.Bezier,
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid)}),
     Documentation(info="<html>
   <p>
     Process to achieve a change in composition. Further assumptions:

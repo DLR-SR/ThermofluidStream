@@ -8,6 +8,7 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic;
   import ProcessSpecification = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
+  import DisplayIconType = ThermofluidStream.Idealized.Types.dpIconType;
 
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification"), Evaluate=true);
@@ -70,8 +71,13 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   parameter SI.AbsolutePressure p_inf = 1e5 "Ambient pressure (cycle process)" annotation(
     Dialog(group = "Closed cycle (periodic) process",
       enable = systemSpec == SystemSpecification.Cycle),
-      HideResult = not systemSpec == SystemSpecification.Cycle);
-
+    HideResult = not systemSpec == SystemSpecification.Cycle);
+  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.dpIconType.Compression
+    "Defines default display icon" annotation (Dialog(
+      tab="Layout",
+      group="Display parameters"), Evaluate=true);
+  final parameter Boolean iconIsCycle = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle "if true, close system" annotation (Evaluate=true);
+  final parameter Boolean iconIsCompression = iconType == ThermofluidStream.Idealized.Types.dpIconType.Compression "if true, default icon is compression" annotation (Evaluate=true);
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec == ValueSpecification.Prescribed  and not outletSpec == OutletSpecification.Unspecified "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput processSpec_prescribed if processValueSpec == ValueSpecification.Prescribed  "Prescribed process specification [SI-units]" annotation(
@@ -329,22 +335,10 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
           textString = if displayInstanceName then "%name" else "",
           textColor=dropOfCommons.instanceNameColor),
-        Text(visible = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow,
-          extent={{-30,30},{30,-30}},
-          textColor={28,108,200},
-          textString="n"),
-        Text(
-          extent= {{-40,30},{40,-30}},
-          textColor={28,108,200},
-          textString = if systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle then "n-c" else ""),
         Text(
           extent={{-150,-100},{150,-70}},
           textColor={0,0,0},
@@ -386,14 +380,6 @@ equation
           textColor={255,170,85},
           textStyle={TextStyle.Bold},
           textString = DynamicSelect("", if abs(P) < 1e-8 then "0" else "")),
-        Text(
-          extent={{-150,100},{150,60}},
-          textColor={238,46,47},
-          textString = if (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or (outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletTemperature)
-          or ((outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureRatio or outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure) and processSpec == ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.OutletPressure)
-          then "can't be balanced" else ""),
         Polygon(
           points={{-6,44},{-22,-8},{-2,-8},{-18,-50},{28,8},{2,8},{20,44},{-6,44}},
           fillColor={238,46,47},
@@ -420,8 +406,131 @@ equation
           fillColor={28,108,200},
           fillPattern = if not outletSpec == ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.Unspecified and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input
           then FillPattern.Solid else FillPattern.None,
-          pattern=LinePattern.None)}),
-    Documentation(
+          pattern=LinePattern.None),
+        Rectangle(
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsCompression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp > 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsCompression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp > 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
+          lineColor={28,108,200},
+          fillColor={215,236,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsCompression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp > 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible = not iconIsCycle,
+          extent=DynamicSelect(if iconIsCompression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp > 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=
+          DynamicSelect(iconIsCycle and not iconIsCompression, iconIsCycle and dp < 0),
+          extent={{-40,40},{40,-40}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Solid),
+        Rectangle(
+          visible=
+          DynamicSelect(iconIsCycle and not iconIsCompression, iconIsCycle and dp < 0),
+          extent={{-40,40},{40,-16}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Dash),
+        Rectangle(
+          visible=
+          DynamicSelect(iconIsCycle and iconIsCompression, iconIsCycle and dp > 0),
+          extent={{-40,40},{40,-40}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Dash),
+        Rectangle(
+          visible=
+          DynamicSelect(iconIsCycle and iconIsCompression, iconIsCycle and dp > 0),
+          extent={{-40,40},{40,-16}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.Solid),
+        Rectangle(
+          visible = iconIsCycle,
+          extent=DynamicSelect(if iconIsCompression then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dp > 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
+          lineColor={28,108,200},
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          visible = iconIsCycle,
+          points=DynamicSelect(if iconIsCompression then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dp > 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
+          lineColor={28,108,200},
+          fillColor={28,108,200},
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{50,-30},{90,-70}},
+          textColor={28,108,200},
+          textString="n"),
+        Rectangle(
+          visible=1<0,
+          extent={{-40,44},{8,-44}},
+          lineColor={28,108,200},
+          fillColor={235,246,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{-16,38},{24,-38}},
+          lineColor={28,108,200},
+          fillColor={215,236,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{4,30},{40,-30}},
+          lineColor={28,108,200},
+          fillColor={185,221,255},
+          fillPattern=FillPattern.Solid,
+          radius=20,
+          pattern=LinePattern.None),
+        Rectangle(
+          visible=1<0,
+          extent={{24,22},{48,-22}},
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
+          pattern=LinePattern.None)}
+        // Expansion: äußeres Rechteck (solid)
+
+// Expansion: inneres Rechteck (dashed)
+
+// Compression: äußeres Rechteck (dashed)
+
+// Compression: inneres Rechteck (solid)
+),  Documentation(
       info="<html>
   <p>
     Polytropic process (<code>p*v^n = const.</code>) of a perfect gas (<code>p*v = R*T, cp = const.</code>) suitable for modeling

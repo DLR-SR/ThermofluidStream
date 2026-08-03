@@ -114,14 +114,6 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-50,50},{50,-50}},
-          lineColor={28,108,200},
-          lineThickness=0.5),
-        Line(
-          points={{35.36,-35.36},{-35.36,35.36}},
-          color={28,108,200},
-          thickness=0.5),
         Text(
           extent={{-150,120},{150,80}},
           textString = if displayInstanceName then "%name" else "",
@@ -153,7 +145,26 @@ equation
           color={0,0,127}),
         Line(
           points = if XiSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{-20,-100}} else {{0,0}},
-          color={0,0,127})}),
+          color={0,0,127}),
+        Ellipse(
+          extent={{-50,50},{50,-50}},
+          lineColor={28,108,200},
+          lineThickness=0.5,
+          fillColor={170,213,255},
+          fillPattern=FillPattern.Solid,
+          pattern=LinePattern.None),
+        Line(points={{0,54},{0,-52}},   color={255,255,255},
+          thickness=1),
+        Line(points={{14,50},{14,-50}}, color={255,255,255},
+          thickness=0.5),
+        Line(points={{28,46},{28,-48}}, color={255,255,255}),
+        Polygon(
+          points={{-12,-52},{-12,52},{-32,44},{-50,24},{-54,-10},{-38,-40},{-12,
+              -52}},
+          lineColor={255,255,255},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid)}),
     Documentation(
       info="<html>
   <p>
