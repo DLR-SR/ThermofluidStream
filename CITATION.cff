@@ -39,7 +39,7 @@ authors:
     given-names: "Niclas"
     affiliation: "DLR Institute of System Architectures in Aeronautics"
 
-version: "1.3.0"
-date-released: "2026-04-30"
+version: "1.4.0"
+date-released: "2026-08"
 license: "BSD-3-Clause"
 repository-code: "https://github.com/DLR-SR/ThermofluidStream"
