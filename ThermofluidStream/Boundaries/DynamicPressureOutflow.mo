@@ -25,8 +25,8 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean displayOutletVelocity = true "= true, if outlet velocity v_out_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayA = displayParameters and displayInletArea  and not areaFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean dv_out = displayParameters and displayOutletVelocity and not velocityFromInput
@@ -38,20 +38,11 @@ model DynamicPressureOutflow "Extension of (p) sink to (p,velocity)"
       compressibilityString
     elseif displayA then
       "A_in = %A_par"
-    elseif displayInertance then
-      "L = %L"
     else ""
     annotation(Evaluate=true, HideResult=true);
   final parameter String displayPos2=
     if displayCompressibilityApproach and displayA then
       "A_in = %A_par"
-    elseif displayInertance and not displayPos1 == "L = %L" then
-      "L = %L"
-    else ""
-    annotation(Evaluate=true, HideResult=true);
-  final parameter String displayPos3=
-    if displayCompressibilityApproach and displayA and displayInertance then
-      "L = %L"
     else ""
     annotation(Evaluate=true, HideResult=true);
   //----------------------------------------------------------------
@@ -73,6 +64,11 @@ protected
   Medium.Density rho_in =  Medium.density(inlet.state) "Inlet density";
   Medium.Density rho_out "Outlet density";
   Medium.Density rho_mean "Mean density";
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
 
 equation
    connect(A_var, A);
@@ -123,10 +119,6 @@ equation
           extent={{-150,-140},{150,-170}},
           textColor={0,0,0},
           textString=displayPos2),
-        Text(visible=displayParameters,
-          extent={{-150,-180},{150,-210}},
-          textColor={0,0,0},
-          textString=displayPos3),
         Text(visible=dv_out,
           extent={{210,-45},{15,-75}},
           textColor={0,0,0},
