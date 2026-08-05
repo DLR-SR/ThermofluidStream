@@ -5,6 +5,8 @@ partial model PartialValve "Partial implementation of a physical valve"
 
   parameter Boolean invertInput = false "= true, if input u_in is inverted"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean enable_dp_rho_ref "Enables/ hides showing dp_ref and rho_ref"
+    annotation (HideResult=true);
   parameter Real k_min(unit="1", min = 1e-5, max = 1) = 0.03 "Remaining flow at actuation signal u = 0";
 
   Modelica.Blocks.Interfaces.RealInput u_in(unit="1") "Valve control input signal []"
@@ -13,9 +15,9 @@ partial model PartialValve "Partial implementation of a physical valve"
   Real u(unit="1") "Actuation input for flow calculation";
   parameter SI.PressureDifference dp_ref=1e5
     "Reference pressure difference"
-    annotation (Dialog(tab="Advanced", group="Reference values"));
+    annotation (Dialog(tab="Advanced", group="Reference values", enable = enable_dp_rho_ref));
   parameter Medium.Density rho_ref=1000 "Reference density"
-    annotation (Dialog(tab="Advanced", group="Reference values"));
+    annotation (Dialog(tab="Advanced", group="Reference values", enable = enable_dp_rho_ref));
 
 protected
   final constant Real secondsPerHour(final unit="s/h") = 3600 "Unit conversion parameter";
