@@ -31,12 +31,12 @@
   <defs
      id="defs5773" />
   <sodipodi:namedview
-     inkscape:current-layer="svg5769"
+     inkscape:current-layer="layer2"
      inkscape:window-maximized="1"
      inkscape:window-y="225"
      inkscape:window-x="3829"
-     inkscape:cy="-4.7499999"
-     inkscape:cx="489.49999"
+     inkscape:cy="-4.7499998"
+     inkscape:cx="489.49998"
      inkscape:zoom="2.0000001"
      showgrid="false"
      id="namedview5771"
@@ -60,21 +60,22 @@
      id="layer1"
      inkscape:groupmode="layer"
      transform="translate(-335.42323,-49.449709)" />
-  <rect
-     style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:36.1323;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
-     id="rect12"
-     width="679.68176"
-     height="303.03674"
-     x="18.066141"
-     y="18.066141"
-     rx="0"
-     ry="0" />
   <g
      inkscape:label="foreground"
      id="layer2"
      inkscape:groupmode="layer"
      transform="translate(-335.42323,-49.449709)"
      style="display:inline">
+    <rect
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:36.1323;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+       id="rect12"
+       width="679.68176"
+       height="303.03674"
+       x="18.066141"
+       y="18.066141"
+       rx="0"
+       ry="0"
+       transform="translate(335.42323,49.449709)" />
     <g
        id="g12"
        inkscape:label="all">
