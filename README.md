@@ -7,19 +7,20 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ## News
 
-30.04.2026: Release of TFS 1.3.0 (Minor Release); 
-Release 1.3.0 Highlights
+August 2026: Release of TFS 1.4.0 (Minor Release)
 
-- Updated dependencies to **Modelica Standard Library 4.1.0** and **Complex 4.1.0**.
-- Added new **`CentrifugalPump`** model with characteristic-based parameterization and test models.
-- Added **`StaticHead`** and **`TankCuboid`** components.
-- Improved **OpenModelica/OMEdit compatibility**, especially for `CentrifugalPump` and `SingleSensorSelect`.
-- Improved **pressure-drop visualization** for `FlowResistance` and valve components.
-- Extended **incompressible media** with additional thermodynamic properties.
-- Improved **moist-air media functions**, including `isentropicExponent` and `specificEntropy`.
-- Fixed Reynolds-number calculation in **`dp_tau_centrifugal`**.
-- Improved NTU heat exchanger documentation and simplified `PartialNTU`.
-- Added and updated **Dymola** and **Modelon Impact** metadata.
+### Release 1.4.0 Highlights
+
+- Added the new **`ThermofluidStream.Idealized`** package for simplified thermodynamic process and cycle modeling.
+- Added the new **`ThreeWayValve`** model based on `BasicControlValve`; the previous `Switch` model is now obsolete.
+- Substantially improved the **sensor package**, including icons, connector placement, dynamic value displays, numerical formatting and selectable display units.
+- Improved **valve diagnostics and validation**, including unreachable-set-point indicators and checks for invalid `dp_ref` and `rho_ref` modifications.
+- Deprecated the **`Cvs_UK`** flow-coefficient option while retaining it for compatibility.
+- Improved **heat-exchanger** connector handling, icons, assertions and OpenModelica compatibility.
+- Improved graphical rendering and cross-tool compatibility of **idealized thermodynamic processes**.
+- Updated the **`SimpleAirCycle`** example and several media, pump and heat-exchanger examples.
+- Changed the default value of **`Idealized.Processes.Isenthalpic.enforcePressureDrop`** from `true` to `false` to improve numerical robustness.
+- Added and updated regression tests and fixed several issues in sensors, valves, heat exchangers, documentation and graphical annotations.
 
 
 ## Highlights

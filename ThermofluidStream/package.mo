@@ -5,13 +5,14 @@ package ThermofluidStream "Library for the modeling of thermofluid streams"
   import Modelica.Units.SI;
 
   annotation (
-    version = "1.3.0",
- versionDate = "2026-04-30",
- dateModified = "2026-04-30",
+    version = "1.4.0",
+    versionDate = "2026-08",
+    dateModified = "2026-08",
     uses(
       Modelica(version="4.1.0"),
       Complex(version="4.1.0")),
     conversion(
+      noneFromVersion="1.3.0",
       noneFromVersion="1.2.0",
       from(
         version="1.0.0",
