@@ -19,6 +19,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
         origin={-50,-20})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -34,6 +35,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
         origin={-80,40})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{10,-120},{-10,-100}})));
   Modelica.Blocks.Sources.RealExpression h_bubble(y=Medium.bubbleEnthalpy(Medium.setSat_p(0.05e5))) annotation(
@@ -52,6 +54,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
         origin={-80,10})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.710,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -67,6 +70,7 @@ model Exercise9TwoStageSteamTurbine "Exercise 8.9: Two-Stage Steam Turbine with 
         origin={-60,60})));
   ThermofluidStream.Idealized.Processes.Isobaric heatingNetwork(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
