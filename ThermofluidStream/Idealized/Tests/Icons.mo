@@ -1,6 +1,10 @@
 within ThermofluidStream.Idealized.Tests;
 model Icons
   extends Modelica.Icons.Example;
+  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
+    constrainedby Media.myMedia.Interfaces.PartialMedium annotation (
+      choicesAllMatching=true);
+
   ThermofluidStream.Idealized.Processes.Adiabatic adiabatic(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
@@ -12,9 +16,6 @@ model Icons
     p0_par=100000,
     T0_par=293.15)
     annotation (Placement(transformation(extent={{-100,80},{-80,100}})));
-  replaceable package Medium = ThermofluidStream.Media.myMedia.Air.DryAirNasa
-    constrainedby Media.myMedia.Interfaces.PartialMedium annotation (
-      choicesAllMatching=true);
   ThermofluidStream.Boundaries.Sink sink(redeclare package Medium = Medium,
       p0_par=100000)
     annotation (Placement(transformation(extent={{80,80},{100,100}})));
@@ -86,10 +87,10 @@ model Icons
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     IconType=ThermofluidStream.Idealized.Types.dTIconType.Heating)
-    annotation (Placement(transformation(extent={{-60,-242},{-40,-222}})));
+    annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
   ThermofluidStream.Boundaries.Sink sink6(redeclare package Medium = Medium,
       p0_par=100000)
-    annotation (Placement(transformation(extent={{80,-242},{100,-222}})));
+    annotation (Placement(transformation(extent={{80,-120},{100,-100}})));
   ThermofluidStream.Processes.FlowResistance flowResistance5(
     redeclare function pLoss =
         ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
@@ -99,42 +100,17 @@ model Icons
     r=0.1,
     redeclare package Medium = Medium,
     computeL=false)
-    annotation (Placement(transformation(extent={{50,-242},{70,-222}})));
+    annotation (Placement(transformation(extent={{50,-120},{70,-100}})));
   ThermofluidStream.Boundaries.Source source6(
     redeclare package Medium = Medium,
     p0_par=110000,
     T0_par=293.15)
-    annotation (Placement(transformation(extent={{-100,-242},{-80,-222}})));
+    annotation (Placement(transformation(extent={{-100,-120},{-80,-100}})));
   Modelica.Blocks.Sources.Step step3(
     height=20,
     offset=-10,
     startTime=1)
-    annotation (Placement(transformation(extent={{-140,-272},{-120,-252}})));
-  ThermofluidStream.Idealized.Processes.FlowWork flowWork(boundary=
-        ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet, redeclare
-      package Medium = Medium)
-    annotation (Placement(transformation(extent={{-60,-302},{-40,-282}})));
-  ThermofluidStream.Boundaries.Source source7(
-    redeclare package Medium = Medium,
-    p0_par=110000,
-    T0_par=293.15)
-    annotation (Placement(transformation(extent={{-100,-302},{-80,-282}})));
-  ThermofluidStream.Idealized.Processes.FlowWork flowWork1(redeclare package
-      Medium = Medium, boundary=ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet)
-    annotation (Placement(transformation(extent={{-20,-302},{0,-282}})));
-  ThermofluidStream.Boundaries.Sink sink7(redeclare package Medium = Medium,
-      p0_par=100000)
-    annotation (Placement(transformation(extent={{80,-302},{100,-282}})));
-  ThermofluidStream.Processes.FlowResistance flowResistance6(
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
-          zeta=100) "Fixed pressure loss coefficient",
-    l=10,
-    shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
-    r=0.1,
-    redeclare package Medium = Medium,
-    computeL=false)
-    annotation (Placement(transformation(extent={{20,-302},{40,-282}})));
+    annotation (Placement(transformation(extent={{-140,-150},{-120,-130}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas polytropic1(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
@@ -181,7 +157,7 @@ model Icons
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
     IconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
-    annotation (Placement(transformation(extent={{-20,-242},{0,-222}})));
+    annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
 equation
   connect(adiabatic.inlet, source.outlet) annotation (Line(
       points={{-60,90},{-80,90}},
@@ -214,31 +190,15 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, sink6.inlet) annotation (Line(
-      points={{70,-232},{80,-232}},
+      points={{70,-110},{80,-110}},
       color={28,108,200},
       thickness=0.5));
   connect(source6.outlet, isochoric.inlet) annotation (Line(
-      points={{-80,-232},{-60,-232}},
+      points={{-80,-110},{-60,-110}},
       color={28,108,200},
       thickness=0.5));
-  connect(step3.y, isochoric.outletSpec_prescribed) annotation (Line(points={{-119,-262},{-40,-262},{-40,-244}},
+  connect(step3.y, isochoric.outletSpec_prescribed) annotation (Line(points={{-119,-140},{-40,-140},{-40,-122}},
                                             color={0,0,127}));
-  connect(source7.outlet, flowWork.inlet) annotation (Line(
-      points={{-80,-292},{-60,-292}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowWork.outlet, flowWork1.inlet) annotation (Line(
-      points={{-40,-292},{-20,-292}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance6.outlet, sink7.inlet) annotation (Line(
-      points={{40,-292},{80,-292}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowWork1.outlet, flowResistance6.inlet) annotation (Line(
-      points={{0,-292},{20,-292}},
-      color={28,108,200},
-      thickness=0.5));
   connect(polytropic1.outletSpec_prescribed, step1.y)
     annotation (Line(points={{0,18},{0,0},{-119,0}}, color={0,0,127}));
   connect(step2.y, isobaric1.outletSpec_prescribed)
@@ -294,15 +254,15 @@ equation
   connect(isobaric3.outletSpec_prescribed, step2.y) annotation (Line(points={{
           -40,-42},{-40,-60},{-119,-60}}, color={0,0,127}));
   connect(isochoric.outlet, isochoric1.inlet) annotation (Line(
-      points={{-40,-232},{-20,-232}},
+      points={{-40,-110},{-20,-110}},
       color={28,108,200},
       thickness=0.5));
   connect(isochoric1.outlet, flowResistance5.inlet) annotation (Line(
-      points={{0,-232},{50,-232}},
+      points={{0,-110},{50,-110}},
       color={28,108,200},
       thickness=0.5));
   connect(isochoric1.outletSpec_prescribed, step3.y)
-    annotation (Line(points={{0,-244},{0,-262},{-119,-262}}, color={0,0,127}));
+    annotation (Line(points={{0,-122},{0,-140},{-119,-140}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),                                  Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-140,-300},{100,
