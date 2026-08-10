@@ -11,11 +11,10 @@ model Icons2
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  ThermofluidStream.Boundaries.Source source1(
+  ThermofluidStream.Boundaries.Source source(
     redeclare package Medium = Medium,
     p0_par=100000,
-    T0_par=293.15)
-    annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
+    T0_par=293.15) annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas polytropic1(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     dp_fixed=10000,
@@ -46,7 +45,7 @@ model Icons2
   inner DropOfCommons dropOfCommons annotation (Placement(transformation(extent={{80,80},{100,100}})));
 
 equation
-  connect(polytropic.inlet, source1.outlet) annotation (Line(
+  connect(polytropic.inlet, source.outlet) annotation (Line(
       points={{-60,0},{-70,0}},
       color={28,108,200},
       thickness=0.5));
