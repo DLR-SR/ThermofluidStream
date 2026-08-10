@@ -20,6 +20,7 @@ model Step9FinalResults
         origin={-160,50})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
@@ -47,6 +48,7 @@ model Step9FinalResults
         origin={-42,160})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -68,6 +70,7 @@ model Step9FinalResults
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{-20,-2},{-60,22}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -86,6 +89,7 @@ model Step9FinalResults
   Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{-52,-92},{-32,-72}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation(Placement(transformation(extent={{-22,-94},{-62,-70}})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerHotSide(
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     h_out(start=Medium.h_default),
     redeclare package Medium = Medium,
@@ -93,6 +97,7 @@ model Step9FinalResults
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{-60,-150},{-40,-130}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{10,-150},{30,-130}})));
@@ -140,6 +145,7 @@ model Step9FinalResults
   Modelica.Blocks.Sources.RealExpression realExpression2(y(unit="W") = 0)  annotation(Placement(transformation(extent={{40,-10},{20,10}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints5 annotation(Placement(transformation(extent={{10,-12},{50,12}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler1(
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
@@ -250,10 +256,10 @@ equation
       thickness=0.5));
   connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation(Line(points={{-68,24},{-64,24},{-64,10},{-61,10}}, color={0,0,127}));
   connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation(Line(points={{-31,10},{-24,10}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{-41.8,-10},{-10,-10},{-10,10},{-18,10}},color={0,0,127}));
+  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{-39,-10},{-10,-10},{-10,10},{-18,10}},  color={0,0,127}));
   connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{-31,160},{-24,160}},
                                                                                                               color={0,0,127}));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{-41.8,140},{-10,140},{-10,160},{-18,160}},
+  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{-39,140},{-10,140},{-10,160},{-18,160}},
                                                                                                                                 color={0,0,127}));
   connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
@@ -266,7 +272,7 @@ equation
       thickness=0.5));
   connect(inverseBlockConstraints2.y1, turbine3.outletSpec_prescribed) annotation(Line(points={{-63,-82},{-64,-82},{-64,-70},{-68,-70}}, color={0,0,127}));
   connect(inverseBlockConstraints2.u2, turbine3OutletTemperature.y) annotation(Line(points={{-26,-82},{-31,-82}}, color={0,0,127}));
-  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{-41.8,-104},{-8,-104},{-8,-82},{-20,-82}}, color={0,0,127}));
+  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{-39,-104},{-8,-104},{-8,-82},{-20,-82}},   color={0,0,127}));
   connect(heatExchangerHotSide.outlet, cooler2.inlet) annotation(Line(
       points={{-40,-140},{10,-140}},
       color={28,108,200},
@@ -284,7 +290,7 @@ equation
       points={{80,190},{80,208},{90,208}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor3.value_out, inverseBlockConstraints3.u1) annotation(Line(points={{108.2,208},{130,208}}, color={0,0,127}));
+  connect(temperatureSensor3.value_out, inverseBlockConstraints3.u1) annotation(Line(points={{111,208},{130,208}},   color={0,0,127}));
   connect(inverseBlockConstraints4.u2, realExpression1.y) annotation(Line(points={{12,102},{17,102}}, color={0,0,127}));
   connect(cooler2.outlet, compressor2.inlet) annotation(Line(
       points={{30,-140},{80,-140},{80,20}},

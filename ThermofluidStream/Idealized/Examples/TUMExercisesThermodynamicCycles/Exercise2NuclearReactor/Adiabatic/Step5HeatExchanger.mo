@@ -22,6 +22,7 @@ model Step5HeatExchanger
         origin={-100,20})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
@@ -49,6 +50,7 @@ model Step5HeatExchanger
         origin={38,60})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -67,6 +69,7 @@ model Step5HeatExchanger
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints1 annotation(Placement(transformation(extent={{60,-32},{20,-8}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
@@ -85,6 +88,7 @@ model Step5HeatExchanger
   Modelica.Blocks.Sources.RealExpression turbine3OutletTemperature(y(unit="K") = 844.5) annotation(Placement(transformation(extent={{28,-122},{48,-102}})));
   Modelica.Blocks.Math.InverseBlockConstraints inverseBlockConstraints2 annotation(Placement(transformation(extent={{58,-124},{18,-100}})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerHotSide(
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     h_out(start=Medium.h_default),
     redeclare package Medium = Medium,
@@ -92,6 +96,7 @@ model Step5HeatExchanger
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{20,-180},{40,-160}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{60,-180},{80,-160}})));
@@ -138,9 +143,9 @@ equation
       thickness=0.5));
   connect(turbine2.eta_prescribed, inverseBlockConstraints1.y1) annotation(Line(points={{12,-6},{16,-6},{16,-20},{19,-20}}, color={0,0,127}));
   connect(turbine2OutletTemperature.y, inverseBlockConstraints1.u2) annotation(Line(points={{49,-20},{56,-20}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{38.2,-40},{70,-40},{70,-20},{62,-20}}, color={0,0,127}));
+  connect(temperatureSensor1.value_out, inverseBlockConstraints1.u1) annotation(Line(points={{41,-40},{70,-40},{70,-20},{62,-20}},   color={0,0,127}));
   connect(turbine1OutletTemperature.y, inverseBlockConstraints.u2) annotation(Line(points={{49,60},{56,60}}, color={0,0,127}));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{38.2,40},{70,40},{70,60},{62,60}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{41,40},{70,40},{70,60},{62,60}},   color={0,0,127}));
   connect(turbine2.outlet,turbine3. inlet) annotation(
     Line(
       points={{0,-10},{0,-80}},
@@ -152,7 +157,7 @@ equation
       thickness=0.5));
   connect(inverseBlockConstraints2.y1, turbine3.outletSpec_prescribed) annotation(Line(points={{17,-112},{16,-112},{16,-100},{12,-100}}, color={0,0,127}));
   connect(inverseBlockConstraints2.u2, turbine3OutletTemperature.y) annotation(Line(points={{54,-112},{49,-112}}, color={0,0,127}));
-  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{38.2,-134},{72,-134},{72,-112},{60,-112}}, color={0,0,127}));
+  connect(temperatureSensor2.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{41,-134},{72,-134},{72,-112},{60,-112}},   color={0,0,127}));
   connect(cooler2.outlet, sink.inlet) annotation(Line(
       points={{80,-170},{100,-170}},
       color={28,108,200},
