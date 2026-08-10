@@ -82,10 +82,8 @@ model Icons
   ThermofluidStream.Idealized.Boundaries.Sink_free sink2(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
-  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(
-    dpLoss_fixed=10000,
-               redeclare package Medium = Medium,
-    IconType=ThermofluidStream.Idealized.Types.mflowIconType.NegativeMflow)
+  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic(dpLoss_fixed=10000,
+               redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
   ThermofluidStream.Boundaries.Source source3(
     redeclare package Medium = Medium,
@@ -250,10 +248,8 @@ model Icons
     redeclare package Medium = Medium,
     iconType=ThermofluidStream.Idealized.Types.dTIconType.Cooling)
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic1(
-    dpLoss_fixed=10000,
-    redeclare package Medium = Medium,
-    IconType=ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow)
+  ThermofluidStream.Idealized.Processes.Isenthalpic isenthalpic1(dpLoss_fixed=10000,
+    redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-20,-100},{0,-80}})));
   ThermofluidStream.Idealized.Processes.Isochoric isochoric1(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
