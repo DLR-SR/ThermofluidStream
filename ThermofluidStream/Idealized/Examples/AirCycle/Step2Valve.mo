@@ -24,6 +24,7 @@ model Step2Valve
     T0_par=293.15) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
