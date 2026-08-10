@@ -18,6 +18,7 @@ model Inversion
     p_out_fixed=2000000) annotation(Placement(transformation(extent={{-70,-30},{-90,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureTurbineStage(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5000) annotation(Placement(transformation(extent={{90,40},{110,60}})));
@@ -33,6 +34,7 @@ model Inversion
         origin={-100,20})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{90,-30},{70,-10}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate(
@@ -59,6 +61,7 @@ model Inversion
     redeclare package Medium = Medium,
     initM_flow=ThermofluidStream.Utilities.Types.InitializationMethods.none,
     m_flow_0=1,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{10,40},{30,60}})));
@@ -156,7 +159,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(temperatureSensor.value_out, inverseBlockConstraints.u2) annotation(
-    Line(points={{6.2,-40},{10,-40},{10,-72},{-6,-72}}, color={0,0,127}));
+    Line(points={{9,-40},{10,-40},{10,-72},{-6,-72}},   color={0,0,127}));
   connect(inverseBlockConstraints.y2, massFlowRateSource.m_flow_prescribed) annotation(
     Line(points={{27,-72},{20,-72},{20,12}}, color={0,0,127}));
   connect(mixingTemperature.y, inverseBlockConstraints.u1) annotation(
