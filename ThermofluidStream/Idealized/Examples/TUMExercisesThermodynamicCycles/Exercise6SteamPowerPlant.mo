@@ -22,6 +22,7 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium "Based on Medium.specificEntropy()",
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=p_Condensor) annotation (Placement(transformation(
@@ -43,6 +44,7 @@ model Exercise6SteamPowerPlant "Exercise 8.6: Steam Power Plant [TUM2019]"
     h_out_fixed=h_bubble) annotation (Placement(transformation(extent={{20,-20},{0,0}})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
 
     h_out_fixed=h_bubble) annotation(Placement(transformation(
