@@ -25,6 +25,7 @@ model Flow "Turbocharged diesel engine"
         origin={20,40})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas engineExpansion(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
@@ -38,6 +39,7 @@ model Flow "Turbocharged diesel engine"
     p_out_fixed=p2) annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   ThermofluidStream.Boundaries.Source source(
@@ -49,6 +51,7 @@ model Flow "Turbocharged diesel engine"
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
