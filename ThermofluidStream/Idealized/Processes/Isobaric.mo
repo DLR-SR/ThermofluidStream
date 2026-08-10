@@ -174,54 +174,6 @@ equation
     P = 0;
   end if;
 
-
-//         Rectangle(
-//           visible = isCycle,
-//           extent=DynamicSelect(if not iconIsHeating then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dT < 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
-//           lineColor={28,108,200},
-//           fillColor={28,108,200},
-//           fillPattern=FillPattern.Solid),
-// Polygon(
-//           visible = isCycle,
-//           points=DynamicSelect(if not iconIsHeating then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dT < 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
-//           lineColor={28,108,200},
-//           fillColor={28,108,200},
-//           fillPattern=FillPattern.Solid),
-//   Rectangle(
-//           visible=
-//           DynamicSelect(isCycle and not iconIsHeating, isCycle and dh < 0),
-//           extent={{-40,40},{40,-40}},
-//           lineColor={28,108,200},
-//           fillColor={255,200,170},
-//           fillPattern=FillPattern.Solid,
-//           radius=20,
-//           pattern=LinePattern.Dash),
-//         Rectangle(
-//           visible=DynamicSelect(isCycle and not iconIsHeating, isCycle and dh < 0),
-//           extent={{-40,40},{40,-16}},
-//           lineColor={28,108,200},
-//           fillColor={185,221,255},
-//           fillPattern=FillPattern.Solid,
-//           radius=20,
-//           pattern=LinePattern.Solid),
-//         Rectangle(
-//           visible=DynamicSelect(isCycle and iconIsHeating, isCycle and dh >= 0),
-//           extent={{-40,40},{40,-40}},
-//           lineColor={28,108,200},
-//           fillColor={255,200,170},
-//           fillPattern=FillPattern.Solid,
-//           radius=20,
-//           pattern=LinePattern.Solid),
-//         Rectangle(
-//           visible=DynamicSelect(isCycle and iconIsHeating, isCycle and dh >= 0),
-//           extent={{-40,40},{40,-16}},
-//           lineColor={28,108,200},
-//           fillColor={185,221,255},
-//           fillPattern=FillPattern.Solid,
-//           radius=20,
-//           pattern=LinePattern.Dash),
-
-
   annotation(
     Icon(
       graphics={
@@ -362,11 +314,11 @@ equation
           fillPattern=FillPattern.Solid,
           radius=20),
         Polygon(visible = showHeatFlowDirection,
-          origin = DynamicSelect({24,-50}, if Q_flow >= 0 then {24,-50} else {-24,-50}),
-          rotation = DynamicSelect(90, if Q_flow >= 0 then 90 else -90),
+          origin = DynamicSelect(if iconIsHeating then {24,-50} else {-24,-50}, if Q_flow >= 0 then {24,-50} else {-24,-50}),
+          rotation = DynamicSelect(if iconIsHeating then 90 else -90, if Q_flow >= 0 then 90 else -90),
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {191,0,0},
-          fillPattern = DynamicSelect(FillPattern.None, if abs(Q_flow) >= 1e-8 then FillPattern.Solid else FillPattern.None),
+          fillPattern = DynamicSelect(FillPattern.Solid, if abs(Q_flow) >= 1e-8 then FillPattern.Solid else FillPattern.None),
           pattern=LinePattern.None),
         Rectangle(
           visible = 1<0,
