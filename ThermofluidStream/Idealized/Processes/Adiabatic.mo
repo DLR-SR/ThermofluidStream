@@ -221,19 +221,6 @@ equation
         Line(
           points = if etaSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{60,-100}} else {{0,0}},
           color={0,0,127}),
-        Polygon(
-          origin = DynamicSelect({40,-50}, if P >= 0 then {40,-50} else {-40,-50}),
-          rotation = DynamicSelect(90, if P >= 0 then 90 else -90),
-          points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
-          fillColor = {255,170,85},
-          fillPattern = DynamicSelect(FillPattern.None, if showPowerDirection and abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None),
-          pattern=LinePattern.None),
-        Text(
-          origin={-60,-70},
-          extent={{0,0},{36,36}},
-          textColor={255,170,85},
-          textStyle={TextStyle.Bold},
-          textString = DynamicSelect("", if showPowerDirection and abs(P) < 1e-8 then "0" else "")),
         Text(
           extent={{-150,100},{150,60}},
           textString= if not specifyOutlet and not powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then "can't be balanced" else "",
@@ -299,6 +286,19 @@ equation
           fillPattern=FillPattern.Solid,
           radius=30,
           pattern=LinePattern.None),
+        Polygon(visible = showPowerDirection,
+          origin = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {40,-50} else {-40,-50}, if P >= 0 then {40,-50} else {-40,-50}),
+          rotation = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then 90 else -90, if P >= 0 then 90 else -90),
+          points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
+          fillColor = {255,170,85},
+          fillPattern = DynamicSelect(FillPattern.Solid, if showPowerDirection and abs(P) >= 1e-8 then FillPattern.Solid else FillPattern.None),
+          pattern=LinePattern.None),
+        Text(
+          origin={-60,-70},
+          extent={{0,0},{36,36}},
+          textColor={255,170,85},
+          textStyle={TextStyle.Bold},
+          textString = DynamicSelect("", if showPowerDirection and abs(P) < 1e-8 then "0" else "")),
         Rectangle(
           visible=1<0,
           extent={{-40,44},{8,-44}},
