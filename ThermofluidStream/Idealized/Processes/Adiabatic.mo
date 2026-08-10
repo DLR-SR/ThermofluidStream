@@ -82,7 +82,6 @@ model Adiabatic "Adiabatic process"
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
 
-
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed "Prescribed isentropic efficiency [-]" annotation(
@@ -324,14 +323,6 @@ equation
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
-        Rectangle(
-          visible=1<0,
-          extent={{24,22},{48,-22}},
-          lineColor={28,108,200},
-          fillColor={158,208,255},
-          fillPattern=FillPattern.Solid,
-          radius=30,
-          pattern=LinePattern.None),
         Line(
           points = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-30,52},{56,20}} else {{-56,20},{30,52}}, if dp >= 0 then {{-30,52},{56,20}} else {{-56,20},{30,52}}),
           color={28,108,200},
@@ -339,7 +330,15 @@ equation
         Line(
           points = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}, if dp >= 0 then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}),
           color={28,108,200},
-          thickness=0.5)}),
+          thickness=0.5),
+        Rectangle(
+          visible=1<0,
+          extent={{24,22},{48,-22}},
+          lineColor={28,108,200},
+          fillColor={158,208,255},
+          fillPattern=FillPattern.Solid,
+          radius=30,
+          pattern=LinePattern.None)}),
     Documentation(
       info="<html>
   <p>
