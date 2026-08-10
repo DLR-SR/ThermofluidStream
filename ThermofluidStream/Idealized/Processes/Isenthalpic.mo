@@ -86,6 +86,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+  //
   annotation(
     Icon(
       graphics={
@@ -127,28 +128,28 @@ equation
           fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent=DynamicSelect({{-30,42},{-8,-42}}, if m_flow*dpLoss < 0 then {{30,42},{8,-42}} else {{-30,42},{-8,-42}}),
+          extent=DynamicSelect({{-30,42},{-8,-42}}, if dpLoss >= 0 then {{-30,42},{-8,-42}} else {{30,42},{8,-42}}),
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=8),
         Rectangle(
-          extent=DynamicSelect({{-44,42},{-8,-42}}, if m_flow*dpLoss < 0 then {{44,42},{8,-42}} else {{-44,42},{-8,-42}}),
+          extent=DynamicSelect({{-44,42},{-8,-42}}, if dpLoss >= 0 then {{-44,42},{-8,-42}} else {{44,42},{8,-42}}),
           lineColor={28,108,200},
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect({{8,42},{32,-42}}, if m_flow*dpLoss < 0 then {{-8,42},{-32,-42}} else {{8,42},{32,-42}}),
+          extent=DynamicSelect({{8,42},{32,-42}}, if dpLoss >= 0 then {{8,42},{32,-42}} else {{-8,42},{-32,-42}}),
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=8),
         Rectangle(
-          extent=DynamicSelect({{8,42},{44,-42}}, if m_flow*dpLoss < 0 then {{-8,42},{-44,-42}} else {{8,42},{44,-42}}),
+          extent=DynamicSelect({{8,42},{44,-42}}, if dpLoss >= 0 then {{8,42},{44,-42}} else {{-8,42},{-44,-42}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
