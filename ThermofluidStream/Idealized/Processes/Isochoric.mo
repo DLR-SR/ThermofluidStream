@@ -388,6 +388,10 @@ equation
       revisions="<html>
   <ul>
     <li>
+      2026-08, by Silvan Keim (silvan.keim@dlr.de):<br>
+      Improved icon.
+    </li>
+    <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.
     </li>
