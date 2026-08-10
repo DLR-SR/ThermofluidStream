@@ -6,8 +6,10 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.Icons.HeatTransfer;
+  import IconType = ThermofluidStream.Idealized.Types.Icons.HeatTransfer;
 
+  parameter IconType iconType = ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating "Defines the initial icon prior to simulation" annotation(
+    Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -38,7 +40,6 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec == ValueSpecification.Fixed and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating "Defines default display icon" annotation (Dialog(tab="Layout", group="Display parameters"), Evaluate=true);
   final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
@@ -201,13 +202,13 @@ equation
           fillPattern = if specifyOutlet and heatFlowSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{-44,42},{-4,-42}} else {{44,42},{4,-42}}, if dT > 0 then {{-44,42},{-4,-42}} else {{44,42},{4,-42}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating then {{-44,42},{-4,-42}} else {{44,42},{4,-42}}, if du >= 0 then {{-44,42},{-4,-42}} else {{44,42},{4,-42}}),
           lineColor={85,170,255},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=20),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dTIconType.Heating then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}, if dT > 0 then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}, if du >= 0 then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}),
           lineColor={85,170,255},
           fillColor={255,197,170},
           fillPattern=FillPattern.Solid,
