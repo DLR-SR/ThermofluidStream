@@ -7,7 +7,7 @@ model Isobaric "Isobaric process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.dTIconType;
+  import DisplayIconType = ThermofluidStream.Idealized.Types.Icons.HeatTransfer;
 
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult=not specifyOutlet);
@@ -49,12 +49,10 @@ model Isobaric "Isobaric process"
     Dialog(
       enable = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle),
     HideResult = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Flow);
-  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.dTIconType.Heating
-    "Defines default display icon" annotation (Dialog(
-      tab="Layout",
-      group="Display parameters"), Evaluate=true);
+  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating "Defines default display icon" annotation (Dialog(tab="Layout", group="Display parameters"), Evaluate=true);
   final parameter Boolean iconIsCycle = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle "if true, close system" annotation (Evaluate=true);
-  final parameter Boolean iconIsHeating = iconType == ThermofluidStream.Idealized.Types.dTIconType.Heating "if true, default icon is compression" annotation (Evaluate=true);
+  final parameter Boolean iconIsHeating = iconType ==ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating
+                                                                                                           "if true, default icon is compression" annotation (Evaluate=true);
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));

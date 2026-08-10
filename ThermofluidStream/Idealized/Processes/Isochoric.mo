@@ -6,7 +6,7 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric;
   import HeatFlowSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.dTIconType;
+  import DisplayIconType = ThermofluidStream.Idealized.Types.Icons.HeatTransfer;
 
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.TemperatureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
@@ -38,10 +38,7 @@ model Isochoric "Stationary flow representation of isochoric cycle process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec == ValueSpecification.Fixed and specifyOutlet), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showHeatFlowDirection = true "= true to show the actual heat flow direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.dTIconType.Heating
-    "Defines default display icon" annotation (Dialog(
-      tab="Layout",
-      group="Display parameters"), Evaluate=true);
+  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Heating "Defines default display icon" annotation (Dialog(tab="Layout", group="Display parameters"), Evaluate=true);
   final parameter String name = getInstanceName() "Instance name";
 
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(

@@ -6,7 +6,7 @@ model Adiabatic "Adiabatic process"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
   import PowerSignal = ThermofluidStream.Idealized.Types.EnergyFlowSignalMode;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.dpIconType;
+  import IconType = ThermofluidStream.Idealized.Types.Icons.PressureChange;
 
   replaceable model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.FullMedium
     constrainedby ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.BaseClasses.PartialAdiabatic
@@ -23,6 +23,8 @@ model Adiabatic "Adiabatic process"
       choice(redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IsothermalReference
         "h_out_is = h(p_out, T_in)")));
 
+  parameter IconType iconType = ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression "Defines the initial icon prior to simulation" annotation(
+    Dialog(group="Specification"), Evaluate=true, HideResult=true);
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification", enable=specifyOutlet), Evaluate=true, HideResult = not specifyOutlet);
   parameter ValueSpecification outletValueSpec = ThermofluidStream.Types.ValueSpecification.Fixed "Specifies whether the quantity is fixed or prescribed" annotation(
@@ -79,10 +81,8 @@ model Adiabatic "Adiabatic process"
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and etaSpec == ValueSpecification.Fixed), Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter Boolean showPowerDirection = true "= true to show the actual power direction" annotation(
     Dialog(tab="Layout", group="Display parameters", enable=displayParameters), Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.dpIconType.Compression
-    "Defines default display icon" annotation (Dialog(
-      tab="Layout",
-      group="Display parameters"), Evaluate=true);
+
+
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if specifyOutlet and outletValueSpec == ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}}, rotation=90, origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput eta_prescribed if etaSpec == ValueSpecification.Prescribed "Prescribed isentropic efficiency [-]" annotation(
@@ -223,7 +223,7 @@ equation
           points = if etaSpec == ThermofluidStream.Types.ValueSpecification.Prescribed then {{100,0},{100,-100},{60,-100}} else {{0,0}},
           color={0,0,127}),
         Polygon(
-          origin={-40,-50},
+          origin = DynamicSelect({40,-50}, if P >= 0 then {40,-50} else {-40,-50}),
           rotation = DynamicSelect(90, if P >= 0 then 90 else -90),
           points={{-18,3},{4,3},{4,10},{18,0},{4,-10},{4,-3},{-18,-3},{-18,3}},
           fillColor = {255,170,85},
@@ -273,28 +273,28 @@ equation
           fillPattern = if specifyOutlet and powerSignal == ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input then FillPattern.Solid else FillPattern.None,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp > 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp >= 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp > 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp >= 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
           lineColor={28,108,200},
           fillColor={215,236,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp > 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp >= 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
           lineColor={28,108,200},
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.dpIconType.Compression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp > 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
+          extent=DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp >= 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
           lineColor={28,108,200},
           fillColor={158,208,255},
           fillPattern=FillPattern.Solid,
@@ -331,7 +331,15 @@ equation
           fillColor={158,208,255},
           fillPattern=FillPattern.Solid,
           radius=30,
-          pattern=LinePattern.None)}),
+          pattern=LinePattern.None),
+        Line(
+          points = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-30,52},{56,20}} else {{-56,20},{30,52}}, if dp >= 0 then {{-30,52},{56,20}} else {{-56,20},{30,52}}),
+          color={28,108,200},
+          thickness=0.5),
+        Line(
+          points = DynamicSelect(if iconType == ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}, if dp >= 0 then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}),
+          color={28,108,200},
+          thickness=0.5)}),
     Documentation(
       info="<html>
   <p>

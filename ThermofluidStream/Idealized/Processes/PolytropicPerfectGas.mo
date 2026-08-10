@@ -8,7 +8,7 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic;
   import ProcessSpecification = ThermofluidStream.Idealized.Types.PolytropicProcessSpecification;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.dpIconType;
+  import DisplayIconType = ThermofluidStream.Idealized.Types.Icons.PressureChange;
 
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.PressureDifference "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification"), Evaluate=true);
@@ -72,12 +72,10 @@ model PolytropicPerfectGas "Polytropic process, perfect gas"
     Dialog(group = "Closed cycle (periodic) process",
       enable = systemSpec == SystemSpecification.Cycle),
     HideResult = not systemSpec == SystemSpecification.Cycle);
-  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.dpIconType.Compression
-    "Defines default display icon" annotation (Dialog(
-      tab="Layout",
-      group="Display parameters"), Evaluate=true);
+  parameter DisplayIconType iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression "Defines default display icon" annotation (Dialog(tab="Layout", group="Display parameters"), Evaluate=true);
   final parameter Boolean iconIsCycle = systemSpec == ThermofluidStream.Idealized.Types.SystemModel.Cycle "if true, close system" annotation (Evaluate=true);
-  final parameter Boolean iconIsCompression = iconType == ThermofluidStream.Idealized.Types.dpIconType.Compression "if true, default icon is compression" annotation (Evaluate=true);
+  final parameter Boolean iconIsCompression = iconType ==ThermofluidStream.Idealized.Types.Icons.PressureChange.Compression
+                                                                                                                   "if true, default icon is compression" annotation (Evaluate=true);
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec == ValueSpecification.Prescribed  and not outletSpec == OutletSpecification.Unspecified "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
   Modelica.Blocks.Interfaces.RealInput processSpec_prescribed if processValueSpec == ValueSpecification.Prescribed  "Prescribed process specification [SI-units]" annotation(
