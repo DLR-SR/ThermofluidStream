@@ -15,12 +15,14 @@ model DryAirNASAPseudoInversion
     T_out_fixed(displayUnit="K") = T3) annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     specifyOutlet=true,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
@@ -118,16 +120,15 @@ equation
   connect(compression.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{-70,-37},{-70,-64},{110,-64},{110,-62.25}},color={255,170,85}));
   connect(expansion.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{30,-37},{30,-60.75},{110,-60.75}},color={255,170,85}));
   connect(density2.y, feedback.u1) annotation(Line(points={{-109,50},{-98,50}},  color={0,0,127}));
-  connect(sensorDensity2.value_out, feedback.u2) annotation(Line(points={{-50,2.2},{-50,32},{-90,32},{-90,42}},                   color={0,0,127}));
+  connect(sensorDensity2.value_out, feedback.u2) annotation(Line(points={{-50,5},{-50,32},{-90,32},{-90,42}},                     color={0,0,127}));
   connect(integrator.y, compression.outletSpec_prescribed) annotation(Line(points={{-49,50},{-40,50},{-40,-50},{-60,-50},{-60,-42}}, color={0,0,127}));
   connect(feedback.y, integrator.u) annotation(Line(points={{-81,50},{-72,50}}, color={0,0,127}));
   connect(density1.y, feedback1.u1) annotation(Line(points={{1,50},{12,50}}, color={0,0,127}));
   connect(feedback1.y, integrator1.u) annotation(Line(points={{29,50},{38,50}}, color={0,0,127}));
-  connect(sensorDensity1.value_out, feedback1.u2) annotation(Line(points={{50,0.2},{50,32},{20,32},{20,42}},                 color={0,0,127}));
+  connect(sensorDensity1.value_out, feedback1.u2) annotation(Line(points={{50,3},{50,32},{20,32},{20,42}},                   color={0,0,127}));
   connect(integrator1.y, expansion.outletSpec_prescribed) annotation(Line(points={{61,50},{70,50},{70,-50},{40,-50},{40,-42}}, color={0,0,127}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{100,-41},{100,-59.25},{110,-59.25}},
-                                                                                                                  color={255,170,85}));
-  connect(combustion.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{0,-41},{0,-62},{110,-62},{110,-57.75}},     color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{80,-41},{80,-59.25},{110,-59.25}}, color={255,170,85}));
+  connect(combustion.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{-20,-41},{-20,-62},{110,-62},{110,-57.75}}, color={255,170,85}));
 
   annotation(
     experiment(
