@@ -109,8 +109,7 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-16,2},{-16,-2},{-10,-12},{-18,-18},{-26,-12},{-18,-2},{-16,
-              2}},
+          points={{-16,2},{-16,-2},{-10,-12},{-18,-18},{-26,-12},{-18,-2},{-16,2}},
           lineColor={170,213,255},
           smooth=Smooth.Bezier,
           fillColor={28,108,200},

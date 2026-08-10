@@ -82,29 +82,6 @@ model Icons
   ThermofluidStream.Idealized.Boundaries.Sink_free sink2(redeclare package
       Medium = Medium)
     annotation (Placement(transformation(extent={{80,-40},{100,-20}})));
-  ThermofluidStream.Idealized.Processes.MassFractionModifier composition(
-    outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Composition.OutletMassFractions,
-    Xi_out_fixed=Medium.X_default[1:Medium.nXi],
-    redeclare package Medium = Medium)
-    annotation (Placement(transformation(extent={{-60,-162},{-40,-142}})));
-  ThermofluidStream.Boundaries.Sink sink4(redeclare package Medium = Medium,
-      p0_par=100000)
-    annotation (Placement(transformation(extent={{80,-162},{100,-142}})));
-  ThermofluidStream.Processes.FlowResistance flowResistance3(
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
-          zeta=100) "Fixed pressure loss coefficient",
-    l=10,
-    shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
-    r=0.1,
-    redeclare package Medium = Medium,
-    computeL=false)
-    annotation (Placement(transformation(extent={{-20,-162},{0,-142}})));
-  ThermofluidStream.Boundaries.Source source4(
-    redeclare package Medium = Medium,
-    p0_par=110000,
-    T0_par=293.15)
-    annotation (Placement(transformation(extent={{-100,-162},{-80,-142}})));
   ThermofluidStream.Idealized.Processes.Isochoric isochoric(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
@@ -234,18 +211,6 @@ equation
     annotation (Line(points={{-119,-60},{-70,-60},{-70,-42}},color={0,0,127}));
   connect(massFlowRate.outlet, sink2.inlet) annotation (Line(
       points={{70,-30},{80,-30}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance3.outlet, sink4.inlet) annotation (Line(
-      points={{0,-152},{80,-152}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(composition.outlet, flowResistance3.inlet) annotation (Line(
-      points={{-40,-152},{-20,-152}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(source4.outlet, composition.inlet) annotation (Line(
-      points={{-80,-152},{-60,-152}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, sink6.inlet) annotation (Line(
