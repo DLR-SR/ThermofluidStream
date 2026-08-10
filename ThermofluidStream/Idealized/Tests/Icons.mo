@@ -105,27 +105,6 @@ model Icons
     p0_par=110000,
     T0_par=293.15)
     annotation (Placement(transformation(extent={{-100,-162},{-80,-142}})));
-  ThermofluidStream.Idealized.Processes.PseudoSource pseudoSource(redeclare
-      package Medium = Medium)
-    annotation (Placement(transformation(extent={{-60,-202},{-40,-182}})));
-  ThermofluidStream.Boundaries.Sink sink5(redeclare package Medium = Medium,
-      p0_par=100000)
-    annotation (Placement(transformation(extent={{80,-202},{100,-182}})));
-  ThermofluidStream.Processes.FlowResistance flowResistance4(
-    redeclare function pLoss =
-        ThermofluidStream.Processes.Internal.FlowResistance.zetaPressureLoss (
-          zeta=100) "Fixed pressure loss coefficient",
-    l=10,
-    shape=ThermofluidStream.Processes.Internal.ShapeOfResistance.circular,
-    r=0.1,
-    redeclare package Medium = Medium,
-    computeL=false)
-    annotation (Placement(transformation(extent={{-20,-202},{0,-182}})));
-  ThermofluidStream.Boundaries.Source source5(
-    redeclare package Medium = Medium,
-    p0_par=110000,
-    T0_par=293.15)
-    annotation (Placement(transformation(extent={{-100,-202},{-80,-182}})));
   ThermofluidStream.Idealized.Processes.Isochoric isochoric(
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     redeclare package Medium = Medium,
@@ -267,18 +246,6 @@ equation
       thickness=0.5));
   connect(source4.outlet, composition.inlet) annotation (Line(
       points={{-80,-152},{-60,-152}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(flowResistance4.outlet, sink5.inlet) annotation (Line(
-      points={{0,-192},{80,-192}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(pseudoSource.outlet, flowResistance4.inlet) annotation (Line(
-      points={{-40,-192},{-20,-192}},
-      color={28,108,200},
-      thickness=0.5));
-  connect(source5.outlet, pseudoSource.inlet) annotation (Line(
-      points={{-80,-192},{-60,-192}},
       color={28,108,200},
       thickness=0.5));
   connect(flowResistance5.outlet, sink6.inlet) annotation (Line(
