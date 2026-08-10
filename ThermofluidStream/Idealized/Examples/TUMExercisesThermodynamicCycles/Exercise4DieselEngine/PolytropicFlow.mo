@@ -17,12 +17,14 @@ model PolytropicFlow
     T_out_fixed(displayUnit="K") = T3)   annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas expansion(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
     rho_out_fixed=rho1) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
@@ -86,7 +88,7 @@ equation
       thickness=0.5));
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-42},{70,-42}},      color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-40},{70,-40}},      color={255,170,85}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-24},{50,-24},{50,-38},{70,-38}}, color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{50,-11},{50,-24},{50,-24},{50,-38},{70,-38}}, color={255,170,85}));
 
   annotation(
     experiment(

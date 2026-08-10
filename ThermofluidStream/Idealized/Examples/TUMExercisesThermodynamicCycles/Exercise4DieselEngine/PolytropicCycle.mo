@@ -18,12 +18,14 @@ model PolytropicCycle
     T_out_fixed(displayUnit="K") = T3)   annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas expansion(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletDensity,
     rho_out_fixed=rho1) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
   ThermofluidStream.Idealized.Boundaries.LoopBreaker_m loopBreaker(
