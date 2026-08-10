@@ -27,6 +27,7 @@ model Step2Turbine1
         origin={-100,-12})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
@@ -76,7 +77,7 @@ equation
   connect(reactorHeatFlow.E_flow_out, reactor.Q_flow_in) annotation(Line(points={{-119,20},{-108,20}}, color={255,170,85}));
   connect(turbine1.P_out, turbine1Losses.E_flow_in) annotation(Line(points={{7,80},{38,80}}, color={255,170,85}));
   connect(turbine1OutletTemperature.y, feedback.u1) annotation(Line(points={{93,56},{86,56}}, color={0,0,127}));
-  connect(feedback.u2, temperatureSensor.value_out) annotation(Line(points={{78,48},{78,38},{38.2,38}}, color={0,0,127}));
+  connect(feedback.u2, temperatureSensor.value_out) annotation(Line(points={{78,48},{78,38},{41,38}},   color={0,0,127}));
   connect(feedback.y, integrator.u) annotation(Line(points={{69,56},{62,56}}, color={0,0,127}));
   connect(integrator.y, turbine1.outletSpec_prescribed) annotation(Line(points={{39,56},{28,56},{28,70},{12,70}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,

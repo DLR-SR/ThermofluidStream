@@ -27,6 +27,7 @@ model Step3Turbine2
         origin={-100,-12})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
@@ -49,6 +50,7 @@ model Step3Turbine2
         origin={0,-110})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -112,11 +114,11 @@ equation
   connect(turbine2.P_out, turbine2Losses.E_flow_in) annotation(Line(points={{7,0},{38,0}}, color={255,170,85}));
   connect(integrator.y, turbine1.outletSpec_prescribed) annotation(Line(points={{33,58},{24,58},{24,70},{12,70}}, color={0,0,127}));
   connect(feedback.y, integrator.u) annotation(Line(points={{63,58},{56,58}}, color={0,0,127}));
-  connect(temperatureSensor.value_out, feedback.u2) annotation(Line(points={{38.2,30},{72,30},{72,50}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, feedback.u2) annotation(Line(points={{41,30},{72,30},{72,50}},   color={0,0,127}));
   connect(turbine1OutletTemperature.y, feedback.u1) annotation(Line(points={{87,58},{80,58}}, color={0,0,127}));
   connect(integrator1.u, feedback1.y) annotation(Line(points={{62,-22},{71,-22}}, color={0,0,127}));
   connect(feedback1.u1, turbine2OutletTemperature.y) annotation(Line(points={{88,-22},{99,-22}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, feedback1.u2) annotation(Line(points={{38.2,-40},{80,-40},{80,-30}}, color={0,0,127}));
+  connect(temperatureSensor1.value_out, feedback1.u2) annotation(Line(points={{41,-40},{80,-40},{80,-30}},   color={0,0,127}));
   connect(integrator1.y, turbine2.eta_prescribed) annotation(Line(points={{39,-22},{26,-22},{26,-6},{12,-6}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-200},{200,200}}), graphics={
