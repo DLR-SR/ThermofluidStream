@@ -117,7 +117,10 @@ thermofluid components, energy-flow models, idealized thermodynamic processes,
 topology models, utilities, examples and tests for conceptual thermodynamic
 system analysis.
 </p>
-
+<p>
+Dynamic icons for visibility in Dymola and OpenModelica.
+</p>
+  
 <h5>Three-way valve</h5>
 <p>
 A new <code>ThreeWayValve</code> based on <code>BasicControlValve</code>
@@ -126,7 +129,7 @@ has been added. It provides parameterization similar to the previous
 position. The previous <code>Switch</code> model remains available but is
 marked obsolete.
 </p>
-
+  
 <h4>Improvements and fixes</h4>
 
 <h5>Sensors</h5>
@@ -183,13 +186,6 @@ marked obsolete.
 <h5>Idealized processes and examples</h5>
 <ul>
   <li>
-    Improved process icons and dynamic icon visibility in Dymola and
-    OpenModelica.
-  </li>
-  <li>
-    Corrected instance-name displays of isenthalpic and isobaric processes.
-  </li>
-  <li>
     Updated media, pump and heat-exchanger examples.
   </li>
   <li>
@@ -202,7 +198,7 @@ marked obsolete.
 
 <h5>Isenthalpic pressure-drop enforcement</h5>
 <p>
-The default value of
+Only for the ones using the idealized package before: The default value of
 <code>ThermofluidStream.Idealized.Processes.Isenthalpic.enforcePressureDrop</code>
 has changed from <code>true</code> to <code>false</code> to improve numerical
 robustness. Models requiring the previous behavior must explicitly set:
