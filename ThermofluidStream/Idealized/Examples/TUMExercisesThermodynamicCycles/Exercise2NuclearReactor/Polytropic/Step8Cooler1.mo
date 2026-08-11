@@ -21,6 +21,7 @@ model Step8Cooler1
         origin={-140,0})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -34,6 +35,7 @@ model Step8Cooler1
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine1Losses(eta=0.95) annotation (Placement(transformation(extent={{-50,102},{-30,82}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletPressure,
     p_out_fixed=5240000,
@@ -45,6 +47,7 @@ model Step8Cooler1
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine2Losses(eta=0.95) annotation (Placement(transformation(extent={{-50,10},{-30,-10}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas turbine3(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.OutletTemperature,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -56,12 +59,14 @@ model Step8Cooler1
   ThermofluidStream.Idealized.EnergyFlow.Components.FixedTransferEfficiency turbine3ShaftLosses(eta=0.95) annotation (Placement(transformation(extent={{-20,-70},{-40,-90}})));
   ThermofluidStream.Idealized.EnergyFlow.Sources.FixedEnergyFlow generator(E_flow(displayUnit="MW") = -3015000) annotation (Placement(transformation(extent={{20,-90},{0,-70}})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerHotSide(
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     redeclare package Medium = Medium,
     specifyOutlet=false,
     T_out_fixed(displayUnit="K")) annotation (Placement(transformation(extent={{-70,-130},{-50,-110}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     specifyOutlet=true,
     T_out_fixed(displayUnit="K") = 285) annotation (Placement(transformation(extent={{-30,-130},{-10,-110}})));
@@ -172,7 +177,7 @@ equation
       points={{40,102},{40,112},{50,112}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{68.2,112},{78,112}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, inverseBlockConstraints2.u1) annotation(Line(points={{71,112},{78,112}},   color={0,0,127}));
   connect(inverseBlockConstraints1.u2, realExpression.y) annotation(Line(points={{-6,40},{1,40}}, color={0,0,127}));
   connect(source.p0_var, inverseBlockConstraints1.y1) annotation(Line(points={{46,60},{46,40},{31,40}}, color={0,0,127}));
   connect(inverseBlockConstraints2.y1, source.T0_var) annotation(Line(points={{121,112},{130,112},{130,36},{40,36},{40,60}}, color={0,0,127}));

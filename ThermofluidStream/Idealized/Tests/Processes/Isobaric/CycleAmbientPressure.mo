@@ -53,6 +53,7 @@ model CycleAmbientPressure "Example - Isobaric process"
   .ThermofluidStream.Boundaries.Sink_m sink3(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -65,6 +66,7 @@ model CycleAmbientPressure "Example - Isobaric process"
   .ThermofluidStream.Boundaries.Sink_m sink4(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,
@@ -77,6 +79,7 @@ model CycleAmbientPressure "Example - Isobaric process"
   .ThermofluidStream.Boundaries.Sink_m sink5(redeclare package Medium = Medium, m_flow_fixed=m_flow) annotation (Placement(transformation(extent={{120,-40},{140,-20}})));
   ThermofluidStream.Idealized.Processes.Isobaric isobaricCooling2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Cycle,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Fixed,

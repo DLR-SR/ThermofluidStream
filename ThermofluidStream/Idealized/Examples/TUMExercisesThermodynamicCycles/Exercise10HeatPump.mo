@@ -51,6 +51,7 @@ model Exercise10HeatPump
         origin={60,40})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Refrigerant,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,

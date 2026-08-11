@@ -60,6 +60,7 @@ model Inversion
         origin={20,40})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     T_out_fixed(displayUnit="K") = 300) annotation(Placement(transformation(extent={{-18,80},{-38,60}})));
@@ -193,7 +194,7 @@ equation
       points={{32,70},{-18,70}},
       color={28,108,200},
       thickness=0.5));
-  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{50.2,70},{98,70},{98,46},{94,46}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, inverseBlockConstraints.u1) annotation(Line(points={{53,70},{98,70},{98,46},{94,46}},   color={0,0,127}));
   connect(temperature.y, inverseBlockConstraints.u2) annotation(Line(points={{81,46},{88,46}}, color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-140,-180},{120,140}}),
                                      graphics={

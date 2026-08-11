@@ -27,6 +27,7 @@ model Step4Turbine3
         origin={-100,-12})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.94,
     specifyOutlet=true,
@@ -53,6 +54,7 @@ model Step4Turbine3
         origin={0,-162})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     etaSpec=ThermofluidStream.Types.ValueSpecification.Prescribed,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -68,6 +70,7 @@ model Step4Turbine3
   Modelica.Blocks.Sources.RealExpression turbine2OutletTemperature(y(unit="K") = 1060) annotation(Placement(transformation(extent={{96,-34},{76,-14}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine3(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(
@@ -151,15 +154,15 @@ equation
   connect(integrator.y, turbine1.outletSpec_prescribed) annotation(Line(points={{19,58},{16,58},{16,70},{12,70}}, color={0,0,127}));
   connect(integrator.u, feedback.y) annotation(Line(points={{42,58},{49,58}}, color={0,0,127}));
   connect(feedback.u1, turbine1OutletTemperature.y) annotation(Line(points={{66,58},{75,58}}, color={0,0,127}));
-  connect(feedback.u2, temperatureSensor.value_out) annotation(Line(points={{58,50},{58,30},{38.2,30}}, color={0,0,127}));
+  connect(feedback.u2, temperatureSensor.value_out) annotation(Line(points={{58,50},{58,30},{41,30}},   color={0,0,127}));
   connect(integrator1.u, feedback1.y) annotation(Line(points={{42,-24},{51,-24}}, color={0,0,127}));
-  connect(temperatureSensor1.value_out, feedback1.u2) annotation(Line(points={{38.2,-50},{60,-50},{60,-32}}, color={0,0,127}));
+  connect(temperatureSensor1.value_out, feedback1.u2) annotation(Line(points={{41,-50},{60,-50},{60,-32}},   color={0,0,127}));
   connect(turbine2OutletTemperature.y, feedback1.u1) annotation(Line(points={{75,-24},{68,-24}}, color={0,0,127}));
   connect(integrator1.y, turbine2.eta_prescribed) annotation(Line(points={{19,-24},{16,-24},{16,-6},{12,-6}}, color={0,0,127}));
   connect(feedback2.u1, turbine3OutletTemperature.y) annotation(Line(points={{88,-114},{99,-114}}, color={0,0,127}));
   connect(feedback2.y, integrator2.u) annotation(Line(points={{71,-114},{62,-114}}, color={0,0,127}));
   connect(integrator2.y, turbine3.outletSpec_prescribed) annotation(Line(points={{39,-114},{28,-114},{28,-100},{12,-100}}, color={0,0,127}));
-  connect(feedback2.u2, temperatureSensor2.value_out) annotation(Line(points={{80,-122},{80,-134},{38.2,-134}}, color={0,0,127}));
+  connect(feedback2.u2, temperatureSensor2.value_out) annotation(Line(points={{80,-122},{80,-134},{41,-134}},   color={0,0,127}));
   annotation(Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-200,-200},{200,200}}), graphics={
         Text(

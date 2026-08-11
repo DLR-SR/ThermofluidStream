@@ -153,14 +153,19 @@ equation
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
-        Line(points={{0,54},{0,-52}},   color={255,255,255},
+        Line(
+          points={{0,54},{0,-52}},
+          color={255,255,255},
           thickness=1),
-        Line(points={{14,50},{14,-50}}, color={255,255,255},
+        Line(
+          points={{14,50},{14,-50}},
+          color={255,255,255},
           thickness=0.5),
-        Line(points={{28,46},{28,-48}}, color={255,255,255}),
+        Line(
+          points={{28,46},{28,-48}},
+          color={255,255,255}),
         Polygon(
-          points={{-12,-52},{-12,52},{-32,44},{-50,24},{-54,-10},{-38,-40},{-12,
-              -52}},
+          points={{-12,-52},{-12,52},{-32,44},{-50,24},{-54,-10},{-38,-40},{-12,-52}},
           lineColor={255,255,255},
           lineThickness=0.5,
           fillColor={255,255,255},
@@ -182,6 +187,10 @@ equation
 </html>",
       revisions="<html>
   <ul>
+    <li>
+      2026-08, by Silvan Keim (silvan.keim@dlr.de):<br>
+      Improved icon.
+    </li>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.

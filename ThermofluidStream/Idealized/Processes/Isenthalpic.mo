@@ -4,7 +4,6 @@ model Isenthalpic "Isenthalpic process"
 
   import OutletSpecification = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic;
   import ValueSpecification = ThermofluidStream.Types.ValueSpecification;
-  import DisplayIconType = ThermofluidStream.Idealized.Types.mflowIconType;
 
   parameter OutletSpecification outletSpec = ThermofluidStream.Idealized.Types.OutletSpecification.Isenthalpic.PressureLoss "Quantity used to define the outlet state" annotation(
     Dialog(group="Specification"), Evaluate=true);
@@ -28,10 +27,7 @@ model Isenthalpic "Isenthalpic process"
     Dialog(group="Warnings"));
   parameter Boolean showOutletSpecification = true "= true to show the fixed outlet specification value (either dpLoss_fixed, prLoss_fixed or p_out_fixed)" annotation(
     Dialog(tab="Layout", group="Display parameters", enable = displayParameters and outletValueSpec ==ValueSpecification.Fixed),  Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter DisplayIconType IconType=ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow
-    "Defines default display icon" annotation (Dialog(
-      tab="Layout",
-      group="Display parameters"), Evaluate=true);
+
   Modelica.Blocks.Interfaces.RealInput outletSpec_prescribed if outletValueSpec ==ValueSpecification.Prescribed  "Prescribed outlet specification [SI-units]" annotation(
     Placement(transformation(extent={{-20,-20},{20,20}},rotation=90,origin={100,-120})));
 
@@ -90,6 +86,7 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
 
+  //
   annotation(
     Icon(
       graphics={
@@ -131,28 +128,28 @@ equation
           fillColor = {238,46,47},
           fillPattern=FillPattern.Solid),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow then {{-30,42},{-8,-42}} else {{30,42},{8,-42}}, if m_flow*dpLoss < 0 then {{30,42},{8,-42}} else {{-30,42},{-8,-42}}),
+          extent=DynamicSelect({{-30,42},{-8,-42}}, if dpLoss >= 0 then {{-30,42},{-8,-42}} else {{30,42},{8,-42}}),
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=8),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow then {{-44,42},{-8,-42}} else {{44,42},{8,-42}}, if m_flow*dpLoss < 0 then {{44,42},{8,-42}} else {{-44,42},{-8,-42}}),
+          extent=DynamicSelect({{-44,42},{-8,-42}}, if dpLoss >= 0 then {{-44,42},{-8,-42}} else {{44,42},{8,-42}}),
           lineColor={28,108,200},
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
           radius=20,
           pattern=LinePattern.None),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow then {{8,42},{32,-42}} else {{-8,42},{-32,-42}}, if m_flow*dpLoss < 0 then {{-8,42},{-32,-42}} else {{8,42},{32,-42}}),
+          extent=DynamicSelect({{8,42},{32,-42}}, if dpLoss >= 0 then {{8,42},{32,-42}} else {{-8,42},{-32,-42}}),
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=8),
         Rectangle(
-          extent=DynamicSelect(if IconType == ThermofluidStream.Idealized.Types.mflowIconType.PositiveMflow then {{8,42},{44,-42}} else {{-8,42},{-44,-42}}, if m_flow*dpLoss < 0 then {{-8,42},{-44,-42}} else {{8,42},{44,-42}}),
+          extent=DynamicSelect({{8,42},{44,-42}}, if dpLoss >= 0 then {{8,42},{44,-42}} else {{-8,42},{-44,-42}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
@@ -264,7 +261,11 @@ equation
       revisions="<html>
   <ul>
     <li>
-      06/2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
+      2026-08, by Silvan Keim (silvan.keim@dlr.de):<br>
+      Improved icon.
+    </li>
+    <li>
+      2026-06, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       The default value of <code>enforcePressureDrop</code> was changed from <code>true</code> to <code>false</code> to improve numerical robustness in inverse calculations. 
       Models that require the previous behavior must now explicitly set <code>enforcePressureDrop=true</code>.
     </li>

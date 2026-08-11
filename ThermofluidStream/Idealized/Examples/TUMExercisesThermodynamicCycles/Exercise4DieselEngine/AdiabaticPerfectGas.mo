@@ -26,12 +26,14 @@ model AdiabaticPerfectGas
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.PressureDifference,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed)
                                             annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
@@ -106,14 +108,14 @@ equation
       thickness=0.5));
   connect(expansion.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{20,-7},{20,-32},{70,-32}},      color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-30},{70,-30}},      color={255,170,85}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{70,-11},{70,-20},{60,-20},{60,-28},{70,-28}}, color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[3]) annotation (Line(points={{50,-11},{50,-20},{60,-20},{60,-28},{70,-28}}, color={255,170,85}));
 
   connect(density1.y, inverseBlockConstraints.u1) annotation (Line(points={{1,70},{18,70}}, color={0,0,127}));
   connect(sensorDensity1.inlet, gasExchange.inlet) annotation (Line(
       points={{38,12},{38,0},{50,0}},
       color={28,108,200},
       thickness=0.5));
-  connect(sensorDensity1.value_out, inverseBlockConstraints.u2) annotation (Line(points={{38,30.2},{38,70},{24,70}}, color={0,0,127}));
+  connect(sensorDensity1.value_out, inverseBlockConstraints.u2) annotation (Line(points={{38,33},{38,70},{24,70}},   color={0,0,127}));
   connect(expansion.outletSpec_prescribed, inverseBlockConstraints.y2) annotation (Line(points={{30,-12},{30,-18},{46,-18},{46,70},{57,70}}, color={0,0,127}));
   annotation(
     experiment(

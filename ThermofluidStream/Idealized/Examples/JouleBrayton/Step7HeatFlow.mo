@@ -23,6 +23,7 @@ model Step7HeatFlow
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{-150,-10},{-130,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     eta_fixed=0.8,
     specifyOutlet=false,
@@ -56,6 +57,7 @@ model Step7HeatFlow
     T_out_fixed=1673.15) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -93,11 +95,13 @@ model Step7HeatFlow
     dT_fixed=10, considerInertance = false) annotation(Placement(transformation(extent={{-100,20},{-120,40}})));
   Processes.Isobaric coolerAirSide(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-120,10},{-100,-10}})));
   Processes.Isobaric recuperatorB(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference) annotation(Placement(transformation(extent={{-30,20},{-50,40}})));
@@ -163,7 +167,7 @@ equation
       points={{-60,42},{-60,30},{-50,30}},
       color={28,108,200},
       thickness=0.5));
-  connect(singleSensorSelect.value_out, recuperatorA.outletSpec_prescribed) annotation(Line(points={{-24.2,20},{-30,20},{-30,12}},
+  connect(singleSensorSelect.value_out, recuperatorA.outletSpec_prescribed) annotation(Line(points={{-27,20},{-30,20},{-30,12}},
                                                                                                                              color={0,0,127}));
   connect(lowPressureTurbine.outlet, recuperatorB.inlet) annotation(Line(
       points={{120,0},{130,0},{130,30},{-30,30}},

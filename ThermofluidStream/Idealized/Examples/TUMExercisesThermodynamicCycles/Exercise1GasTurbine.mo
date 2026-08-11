@@ -20,6 +20,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.IdealGasConstantGamma "p*v = R*T, gamma = const",
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.9,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
@@ -47,6 +48,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
         origin={10,70})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed(displayUnit="K") = 320) annotation(Placement(transformation(extent={{-60,-10},{-40,10}})));
@@ -102,6 +104,7 @@ model Exercise1GasTurbine "Exercise 8.1: Gas Turbine Cycle with Intercooling and
     T_out_fixed(displayUnit="K") = 750) annotation (Placement(transformation(extent={{20,10},{40,-10}})));
   ThermofluidStream.Idealized.Processes.Isobaric recuperatorB(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,

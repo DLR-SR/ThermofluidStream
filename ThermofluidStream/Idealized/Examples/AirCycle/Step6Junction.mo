@@ -17,6 +17,7 @@ model Step6Junction
     p_out_fixed=200000) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{20,-10},{40,10}})));
@@ -26,6 +27,7 @@ model Step6Junction
     T0_par=293.15) annotation(Placement(transformation(extent={{-150,-10},{-130,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerSideA(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
