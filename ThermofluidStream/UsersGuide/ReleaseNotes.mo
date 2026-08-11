@@ -183,7 +183,7 @@ marked obsolete.
   </li>
 </ul>
 
-<h5>Idealized processes and examples</h5>
+<h5>Test and examples</h5>
 <ul>
   <li>
     Updated media, pump and heat-exchanger examples.
