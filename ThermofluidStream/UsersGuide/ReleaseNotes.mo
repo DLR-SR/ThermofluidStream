@@ -1,11 +1,12 @@
 within ThermofluidStream.UsersGuide;
 package ReleaseNotes "Release notes"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
 class VersionManagement "Version Management"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
 <h4>Version management</h4>
 
 <p>
@@ -13,7 +14,6 @@ The ThermofluidStream library uses semantic versioning following the convention:
 </p>
 
 <blockquote><strong><code>MAJOR.MINOR.PATCH</code></strong></blockquote>
-
 <ul>
   <li>
     <strong>MAJOR</strong> versions may contain incompatible changes that require users
@@ -36,9 +36,9 @@ should be updated, especially <code>version</code>, <code>versionDate</code>,
 </p>
 
 <blockquote><pre>
-annotation(version      = &quot;1.3.0&quot;,
-           versionDate  = &quot;2026-04-30&quot;,
-           dateModified = &quot;2026-04-30&quot;,
+annotation(version      = &quot;1.4.0&quot;,
+           versionDate  = &quot;YYYY-MM-DD&quot;,
+           dateModified = &quot;YYYY-MM-DD&quot;,
            revisionId   = &quot;$F&#8203;ormat:%h %ci$&quot;)
 </pre></blockquote>
 
@@ -48,23 +48,209 @@ the released version represents when the library is exported from a Git tag.
 </p>
 
 <h4>Recommended release procedure</h4>
-
 <ol>
   <li>Update the release notes.</li>
   <li>Update the top-level package annotation to the new version.</li>
   <li>Update tool-specific metadata, for example Dymola or Modelon Impact metadata, if present.</li>
   <li>Run the regression tests and tool checks.</li>
-  <li>Create and push the Git tag, for example <code>v1.3.0</code>.</li>
+  <li>Create and push the Git tag, for example <code>v1.4.0</code>.</li>
   <li>Create the GitHub release from the tag.</li>
 </ol>
 
 </html>"));
 end VersionManagement;
 
-class Version_1_3_0 "Version 1.3.0 (April 30, 2026)"
-  extends Modelica.Icons.ReleaseNotes;
+class Version_1_4_0 "Version 1.4.0 (August 2026)"
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
+<p>
+Version 1.4.0 is a minor release of the DLR Thermofluid Stream Library.
+It introduces the new <code>ThermofluidStream.Idealized</code> package,
+new flow-control functionality and major improvements to sensors, valves,
+heat exchangers and examples.
+</p>
+
+<p>
+No conversion script is required. Existing models may nevertheless require
+parameter adjustments because of changed defaults and new validation checks.
+</p>
+
+<h4>Highlights</h4>
+<ul>
+  <li>
+    Added the new
+    <a href=\"modelica://ThermofluidStream.Idealized\">ThermofluidStream.Idealized</a>
+    package for simplified thermodynamic process and cycle modeling.
+  </li>
+  <li>
+    Added
+    <a href=\"modelica://ThermofluidStream.FlowControl.ThreeWayValve\">ThreeWayValve</a>;
+    the previous
+    <a href=\"modelica://ThermofluidStream.FlowControl.Switch\">Switch</a>
+    model is now obsolete.
+  </li>
+  <li>
+    Substantially improved sensor icons, connector placement, dynamic value
+    displays, numerical formatting and selectable display units.
+  </li>
+  <li>
+    Improved valve diagnostics and added validation of standardized
+    flow-coefficient reference values.
+  </li>
+  <li>
+    Improved heat-exchanger icons, assertions and OpenModelica compatibility.
+  </li>
+  <li>
+    Updated the <code>SimpleAirCycle</code> example and several media,
+    pump and heat-exchanger examples.
+  </li>
+</ul>
+
+<h4>New functionality</h4>
+
+<h5>Idealized thermodynamic modeling</h5>
+<p>
+The new <code>ThermofluidStream.Idealized</code> package provides boundaries,
+thermofluid components, energy-flow models, idealized thermodynamic processes,
+topology models, utilities, examples and tests for conceptual thermodynamic
+system analysis.
+</p>
+<p>
+Dynamic icons for visibility in Dymola and OpenModelica.
+</p>
+  
+<h5>Three-way valve</h5>
+<p>
+A new <code>ThreeWayValve</code> based on <code>BasicControlValve</code>
+has been added. It provides parameterization similar to the previous
+<code>Switch</code> model and includes a graphical indication of the valve
+position. The previous <code>Switch</code> model remains available but is
+marked obsolete.
+</p>
+  
+<h4>Improvements and fixes</h4>
+
+<h5>Sensors</h5>
+<ul>
+  <li>
+    Improved icons, connector placement, numerical formatting and dynamic
+    measurement-value displays.
+  </li>
+  <li>
+    Added display units for specific enthalpy, specific entropy, molar mass,
+    enthalpy flow and entropy flow.
+  </li>
+  <li>
+    Corrected the mass-flow output unit in <code>MultiSensor_Tpm</code>.
+  </li>
+</ul>
+
+<h5>Flow control</h5>
+<ul>
+  <li>
+    Added visual indications to <code>MCV</code> and <code>PCV</code>
+    when the requested set point cannot be reached.
+  </li>
+  <li>
+    Assertion messages now identify the affected component instance.
+  </li>
+  <li>
+    Deprecated the <code>Cvs_UK</code> flow-coefficient option while
+    retaining it for compatibility.
+  </li>
+  <li>
+    Added validation of <code>dp_ref</code> and <code>rho_ref</code>
+    when standardized flow coefficients are used.
+  </li>
+  <li>
+    Improved valve icon compatibility with OpenModelica.
+  </li>
+</ul>
+
+<h5>Heat exchangers</h5>
+<ul>
+  <li>
+    Improved connector handling and OpenModelica compatibility of
+    discretized heat exchangers.
+  </li>
+  <li>
+    Redesigned counter-flow and cross-flow heat-exchanger icons.
+  </li>
+  <li>
+    Corrected mass-flow assertions in <code>PartialDiscretizedHEX</code>.
+  </li>
+</ul>
+
+<h5>Test and examples</h5>
+<ul>
+  <li>
+    Updated media, pump and heat-exchanger examples.
+  </li>
+  <li>
+    Updated <code>SimpleAirCycle</code> for a regional-aircraft cruise
+    operating point and added additional sensor and cooling-power displays.
+  </li>
+</ul>
+
+<h4>Migration notes</h4>
+
+<h5>Isenthalpic pressure-drop enforcement</h5>
+<p>
+Only for the ones using the idealized package before: The default value of
+<code>ThermofluidStream.Idealized.Processes.Isenthalpic.enforcePressureDrop</code>
+has changed from <code>true</code> to <code>false</code> to improve numerical
+robustness. Models requiring the previous behavior must explicitly set:
+</p>
+
+<blockquote><pre>
+enforcePressureDrop = true
+</pre></blockquote>
+
+<h5>Valve reference values</h5>
+<p>
+When using <code>Kvs</code>, <code>Cvs_US</code> or <code>Cvs_UK</code>,
+the following reference values must not be modified:
+</p>
+
+<ul>
+  <li><code>dp_ref = 1 bar</code></li>
+  <li><code>rho_ref = 1000 kg/m3</code></li>
+</ul>
+
+<p>
+New assertions detect modified reference values because these currently lead
+to incorrect model behavior. Reducing the corresponding assertion level to a
+warning does not correct an invalid parameterization.
+</p>
+
+<h5>Deprecated and obsolete functionality</h5>
+<ul>
+  <li>
+    <code>ThermofluidStream.FlowControl.Switch</code> is obsolete;
+    use <code>ThreeWayValve</code>.
+  </li>
+  <li>
+    <code>ThermofluidStream.Utilities.RealVector</code> is obsolete.
+  </li>
+  <li>
+    The <code>Cvs_UK</code> flow-coefficient option is deprecated.
+  </li>
+</ul>
+
+<p>
+These elements have not been removed, so existing models remain loadable.
+</p>
+
+</html>"));
+end Version_1_4_0;
+
+class Version_1_3_0 "Version 1.3.0 (April 30, 2026)"
+extends Modelica.Icons.ReleaseNotes;
+
+annotation (Documentation(info="<html>
+
 <p>
 Version 1.3.0 is a minor release of the DLR Thermofluid Stream Library.
 No conversion script is required. Simulation results may nevertheless be affected
@@ -72,7 +258,6 @@ by corrected equations, improved regularization and updated media functions.
 </p>
 
 <h4>Short overview</h4>
-
 <ul>
   <li>New centrifugal pump model with characteristic-based parameterization.</li>
   <li>New static head and tank-related components.</li>
@@ -233,30 +418,31 @@ by corrected equations, improved regularization and updated media functions.
 </ul>
 
 <h4>Further updates</h4>
-
 <ul>
   <li>Added Dymola library browser support.</li>
   <li>Added Modelon Impact metadata.</li>
   <li>Updated README files, examples, documentation assets and example graphics.</li>
   <li>Excluded an intentionally failing model from regression testing.</li>
-  <li>Updated the required Modelica Standard Library version from 4.0.0 to 4.1.0.
-  No Modelica conversion script is expected to be required for this dependency update,
-  but simulation results may change due to fixes and changes in the Modelica Standard Library.</li>
+  <li>
+    Updated the required Modelica Standard Library version from 4.0.0 to 4.1.0.
+    No Modelica conversion script is expected to be required for this dependency update,
+    but simulation results may change due to fixes and changes in the Modelica Standard Library.
+  </li>
 </ul>
 
 </html>"));
 end Version_1_3_0;
 
 class Version_1_2_0 "Version 1.2.0 (November 18, 2024)"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
 <p>
 Version 1.2.0 of the DLR Thermofluid Stream Library.
 </p>
 
 <h4>Improvements of the library</h4>
-
 <ul>
   <li>
     Velocity of sound can be measured with
@@ -282,7 +468,6 @@ Version 1.2.0 of the DLR Thermofluid Stream Library.
 </ul>
 
 <h4>Further updates</h4>
-
 <ul>
   <li>
     Added <code>TILMediaWrapper</code> to repository. Interface for the usage of TILMedia in the TFS.
@@ -297,9 +482,10 @@ Version 1.2.0 of the DLR Thermofluid Stream Library.
 end Version_1_2_0;
 
 class Version_1_1_0 "Version 1.1.0 (October 6, 2023)"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
 <p>
 Version 1.1.0 of the DLR Thermofluid Stream Library.
 </p>
@@ -361,9 +547,10 @@ Version 1.1.0 of the DLR Thermofluid Stream Library.
 end Version_1_1_0;
 
 class Version_1_0_0 "Version 1.0.0 (December 2, 2022)"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
 <p>
 Version 1.0.0 of the DLR Thermofluid Stream Library.
 </p>
@@ -379,9 +566,10 @@ Version 1.0.0 of the DLR Thermofluid Stream Library.
 end Version_1_0_0;
 
 class Version_0_5_0 "Version 0.5.0 (November 10, 2022)"
-  extends Modelica.Icons.ReleaseNotes;
+extends Modelica.Icons.ReleaseNotes;
 
-  annotation (Documentation(info="<html>
+annotation (Documentation(info="<html>
+
 <p>
 Version 0.5.0 of the DLR Thermofluid Stream Library.
 </p>
@@ -395,6 +583,7 @@ Version 0.5.0 of the DLR Thermofluid Stream Library.
 end Version_0_5_0;
 
 annotation (Documentation(info="<html>
+
 <p>
 This section summarizes the changes that have been performed on the
 DLR Thermofluid Stream Library. Versioning and release handling are described in
@@ -403,8 +592,12 @@ DLR Thermofluid Stream Library. Versioning and release handling are described in
 
 <ul>
   <li>
+    <a href=\"modelica://ThermofluidStream.UsersGuide.ReleaseNotes.Version_1_4_0\">Version 1.4.0</a>
+    — August 2026
+  </li>
+  <li>
     <a href=\"modelica://ThermofluidStream.UsersGuide.ReleaseNotes.Version_1_3_0\">Version 1.3.0</a>
-    — April 29, 2026
+    — April 30, 2026
   </li>
   <li>
     <a href=\"modelica://ThermofluidStream.UsersGuide.ReleaseNotes.Version_1_2_0\">Version 1.2.0</a>
