@@ -411,7 +411,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsCompression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if dp >= 0 then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
+          extent=DynamicSelect(if iconIsCompression then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-40,44},{8,-44}} else {{40,44},{-8,-44}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
@@ -419,7 +419,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsCompression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if dp >= 0 then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
+          extent=DynamicSelect(if iconIsCompression then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-16,38},{24,-38}} else {{16,38},{-24,-38}}),
           lineColor={28,108,200},
           fillColor={215,236,255},
           fillPattern=FillPattern.Solid,
@@ -427,7 +427,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsCompression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if dp >= 0 then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
+          extent=DynamicSelect(if iconIsCompression then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{4,30},{40,-30}} else {{-4,30},{-40,-30}}),
           lineColor={28,108,200},
           fillColor={185,221,255},
           fillPattern=FillPattern.Solid,
@@ -435,14 +435,14 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsCompression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if dp >= 0 then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
+          extent=DynamicSelect(if iconIsCompression then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{24,22},{48,-22}} else {{-24,22},{-48,-22}}),
           lineColor={28,108,200},
           fillColor={158,208,255},
           fillPattern=FillPattern.Solid,
           radius=30,
           pattern=LinePattern.None),
         Rectangle(
-          visible= DynamicSelect(isCycle and not iconIsCompression, isCycle and dp < 0),
+          visible= DynamicSelect(isCycle and not iconIsCompression, isCycle and not ((iconIsCompression and dp >= 0) or dp > 0)),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -451,7 +451,7 @@ equation
           pattern=LinePattern.Solid),
         Rectangle(
           visible=
-          DynamicSelect(isCycle and not iconIsCompression, isCycle and dp < 0),
+          DynamicSelect(isCycle and not iconIsCompression, isCycle and not ((iconIsCompression and dp >= 0) or dp > 0)),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
@@ -460,7 +460,7 @@ equation
           pattern=LinePattern.Dash),
         Rectangle(
           visible=
-          DynamicSelect(isCycle and iconIsCompression, isCycle and dp >= 0),
+          DynamicSelect(isCycle and iconIsCompression, isCycle and ((iconIsCompression and dp >= 0) or dp > 0)),
           extent={{-40,40},{40,-40}},
           lineColor={28,108,200},
           fillColor={235,246,255},
@@ -469,7 +469,7 @@ equation
           pattern=LinePattern.Dash),
         Rectangle(
           visible=
-          DynamicSelect(isCycle and iconIsCompression, isCycle and dp >= 0),
+          DynamicSelect(isCycle and iconIsCompression, isCycle and ((iconIsCompression and dp >= 0) or dp > 0)),
           extent={{-40,40},{40,-16}},
           lineColor={28,108,200},
           fillColor={185,221,255},
@@ -478,13 +478,13 @@ equation
           pattern=LinePattern.Solid),
         Rectangle(
           visible = isCycle,
-          extent=DynamicSelect(if iconIsCompression then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if dp >= 0 then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
+          extent=DynamicSelect(if iconIsCompression then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-4,-26},{4,-50}} else {{-4,-30},{4,-6}}),
           lineColor={28,108,200},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
         Polygon(
           visible = isCycle,
-          points=DynamicSelect(if iconIsCompression then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if dp >= 0 then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
+          points=DynamicSelect(if iconIsCompression then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-10,-32},{0,-16},{10,-32},{-10,-32}} else {{-10,-24},{0,-40},{10,-24},{-10,-24}}),
           lineColor={28,108,200},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
@@ -494,12 +494,12 @@ equation
           textString="n"),
         Line(
           visible = not isCycle,
-          points = DynamicSelect(if iconIsCompression then {{-30,52},{56,20}} else {{-56,20},{30,52}}, if dp >= 0 then {{-30,52},{56,20}} else {{-56,20},{30,52}}),
+          points = DynamicSelect(if iconIsCompression then {{-30,52},{56,20}} else {{-56,20},{30,52}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-30,52},{56,20}} else {{-56,20},{30,52}}),
           color={28,108,200},
           thickness=0.5),
         Line(
           visible = not isCycle,
-          points = DynamicSelect(if iconIsCompression then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}, if dp >= 0 then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}),
+          points = DynamicSelect(if iconIsCompression then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}, if ((iconIsCompression and dp >= 0) or dp > 0) then {{-30,-52},{56,-20}} else {{-56,-20},{30,-52}}),
           color={28,108,200},
           thickness=0.5),
         Rectangle(
