@@ -109,8 +109,7 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-16,2},{-16,-2},{-10,-12},{-18,-18},{-26,-12},{-18,-2},{-16,
-              2}},
+          points={{-16,2},{-16,-2},{-10,-12},{-18,-18},{-26,-12},{-18,-2},{-16,2}},
           lineColor={170,213,255},
           smooth=Smooth.Bezier,
           fillColor={28,108,200},
@@ -165,6 +164,10 @@ equation
 </html>",
       revisions="<html>
   <ul>
+    <li>
+      2026-08, by Silvan Keim (silvan.keim@dlr.de):<br>
+      Improved icon.
+    </li>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.

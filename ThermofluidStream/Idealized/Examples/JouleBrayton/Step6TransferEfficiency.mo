@@ -19,6 +19,7 @@ model Step6TransferEfficiency
     p_out_fixed=200000) annotation(Placement(transformation(extent={{-140,-10},{-120,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     enableFilter=true,
     TC=0.01,
@@ -54,6 +55,7 @@ model Step6TransferEfficiency
         origin={-58,44})));
   Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -71,6 +73,7 @@ model Step6TransferEfficiency
     T_out_fixed=1673.15) annotation(Placement(transformation(extent={{70,-10},{90,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,

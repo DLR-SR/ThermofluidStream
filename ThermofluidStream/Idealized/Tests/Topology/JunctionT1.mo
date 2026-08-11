@@ -33,6 +33,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
     dT_fixed=10) annotation(Placement(transformation(extent={{-110,70},{-90,90}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric1(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     dT_fixed=-20) annotation(Placement(transformation(extent={{-110,30},{-90,50}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction(
@@ -56,6 +57,7 @@ model JunctionT1 "Example - JunctionT1 with different processes"
     inlet(m_flow(start=1))) annotation(Placement(transformation(extent={{90,70},{110,90}})));
   .ThermofluidStream.Idealized.Processes.Isobaric isobaric3(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
     dT_fixed=-15) annotation(Placement(transformation(extent={{90,30},{110,50}})));
   ThermofluidStream.Idealized.Topology.JunctionT1 junction1(

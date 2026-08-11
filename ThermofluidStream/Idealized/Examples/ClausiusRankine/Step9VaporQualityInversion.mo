@@ -16,6 +16,7 @@ model Step9VaporQualityInversion
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{-80,-10},{-60,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{60,-10},{80,10}})));
@@ -38,6 +39,7 @@ model Step9VaporQualityInversion
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{0,-70},{-20,-50}})));
   Processes.Isobaric condenser(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{40,-70},{20,-50}})));
@@ -111,7 +113,7 @@ equation
       color={28,108,200},
       thickness=0.5));
   connect(vaporQualitySensor.value_out, inverseBlockConstraints.u2) annotation(
-    Line(points={{118,0},{124,0},{124,22},{74,22},{74,50},{64,50}}, color={0,0,127}));
+    Line(points={{121,0},{124,0},{124,22},{74,22},{74,50},{64,50}}, color={0,0,127}));
   connect(vaporQualitySetpoint.y, inverseBlockConstraints.u1) annotation(
     Line(points={{51,50},{58,50}}, color={0,0,127}));
   connect(outletPressure.y, pump.outletSpec_prescribed) annotation(Line(points={{-79,-30},{-60,-30},{-60,-12}}, color={0,0,127}));

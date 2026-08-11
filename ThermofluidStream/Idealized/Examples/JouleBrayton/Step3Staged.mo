@@ -18,6 +18,7 @@ model Step3Staged
     p_out_fixed=200000) annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
   Processes.Adiabatic highPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
@@ -53,6 +54,7 @@ model Step3Staged
         origin={-38,44})));
   Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-90,-10},{-70,10}})));
@@ -69,6 +71,7 @@ model Step3Staged
     T_out_fixed=1673.15) annotation(Placement(transformation(extent={{90,-10},{110,10}})));
   Processes.Adiabatic lowPressureTurbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
 

@@ -21,6 +21,7 @@ model Step8BootStrapCycleFilter
     T0_par=293.15) annotation(Placement(transformation(extent={{-116,-10},{-96,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{-40,-10},{-20,10}})));
@@ -51,6 +52,7 @@ model Step8BootStrapCycleFilter
   ThermofluidStream.Topology.SplitterT1 splitter(displayInstanceName=false, redeclare package Medium = Medium) annotation(Placement(transformation(extent={{-10,-10},{10,10}})));
   ThermofluidStream.Idealized.Processes.Isobaric cooler2(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.TemperatureDifference,
 
     dT_fixed=-50) annotation(Placement(transformation(extent={{20,50},{40,70}})));
@@ -58,6 +60,7 @@ model Step8BootStrapCycleFilter
     displayInstanceName=true,
     displayParameters=true,
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=0.7,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,

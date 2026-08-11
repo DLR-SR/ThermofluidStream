@@ -20,12 +20,14 @@ model AdiabaticPerfectGas
   ThermofluidStream.Idealized.Processes.Adiabatic expansion(
     redeclare package Medium = Medium,
     redeclare model ThermodynamicModel = ThermofluidStream.Idealized.Processes.AdiabaticThermodynamicModels.PerfectGas "p*v = R*T, cp = const",
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     eta_fixed=1,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
@@ -87,8 +89,8 @@ equation
   connect(compression.P_out, shaftPower.E_flow_in[1]) annotation(Line(points={{-60,-7},{-60,-48},{80,-48},{80,-42.25}},
                                                                                                                   color={255,170,85}));
   connect(expansion.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{20,-7},{20,-40.75},{80,-40.75}},color={255,170,85}));
-  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-10,-11},{-10,-44},{80,-44},{80,-39.25}},  color={255,170,85}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{70,-11},{70,-37.75},{80,-37.75}}, color={255,170,85}));
+  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-30,-11},{-30,-44},{80,-44},{80,-39.25}},  color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation(Line(points={{50,-11},{50,-37.75},{80,-37.75}}, color={255,170,85}));
 
   annotation(
     experiment(

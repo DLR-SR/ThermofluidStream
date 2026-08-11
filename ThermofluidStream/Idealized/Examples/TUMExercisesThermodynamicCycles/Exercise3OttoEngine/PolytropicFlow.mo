@@ -15,6 +15,7 @@ model PolytropicFlow
     T_out_fixed(displayUnit="K") = T3) annotation(Placement(transformation(extent={{-30,-10},{-10,10}})));
   ThermofluidStream.Idealized.Processes.PolytropicPerfectGas expansion(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     powerSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Output,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Polytropic.CompressionRatio,
@@ -22,6 +23,7 @@ model PolytropicFlow
     processSpec=ThermofluidStream.Idealized.Types.PolytropicProcessSpecification.PolytropicEfficiency) annotation (Placement(transformation(extent={{10,-10},{30,10}})));
   ThermofluidStream.Idealized.Processes.Isochoric gasExchange(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     systemSpec=ThermofluidStream.Idealized.Types.SystemModel.Flow,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isochoric.OutletTemperature,
     T_out_fixed(displayUnit="K") = T1) annotation(Placement(transformation(extent={{50,-10},{70,10}})));
@@ -81,8 +83,8 @@ equation
                                                                                                               color={255,170,85}));
   connect(compression.P_out, shaftPower.E_flow_in[2]) annotation(Line(points={{-60,-7},{-60,-34},{70,-34},{70,-30.75}},
                                                                                                                   color={255,170,85}));
-  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-10,-11},{-10,-32},{70,-32},{70,-29.25}},color={255,170,85}));
-  connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation (Line(points={{70,-11},{70,-14},{60,-14},{60,-27.75},{70,-27.75}}, color={255,170,85}));
+  connect(combustion.P_out, shaftPower.E_flow_in[3]) annotation(Line(points={{-30,-11},{-30,-32},{70,-32},{70,-29.25}},color={255,170,85}));
+  connect(gasExchange.P_out, shaftPower.E_flow_in[4]) annotation (Line(points={{50,-11},{50,-14},{60,-14},{60,-27.75},{70,-27.75}}, color={255,170,85}));
 
   annotation(
     experiment(

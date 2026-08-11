@@ -23,6 +23,7 @@ model Step1Simple
         origin={30,-40})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbineCR(
     redeclare package Medium = Water,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=10000) annotation(Placement(transformation(
@@ -45,6 +46,7 @@ model Step1Simple
     T_out_fixed=293.15) annotation (Placement(transformation(extent={{90,-50},{70,-30}})));
   ThermofluidStream.Idealized.Processes.Isobaric condenser(
     redeclare package Medium = Water,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletTemperature,
 
     T_out_fixed=293.15) annotation(Placement(transformation(extent={{120,-50},{100,-30}})));
@@ -61,6 +63,7 @@ model Step1Simple
     p_out_fixed=2000000) annotation(Placement(transformation(extent={{-140,30},{-120,50}})));
   ThermofluidStream.Idealized.Processes.Adiabatic turbineJB(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{-60,30},{-40,50}})));
@@ -80,6 +83,7 @@ model Step1Simple
         origin={-30,-30})));
   ThermofluidStream.Idealized.Processes.Isobaric heatExchangerAirSide(
     redeclare package Medium = Air,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     heatFlowSignal=ThermofluidStream.Idealized.Types.EnergyFlowSignalMode.Input,
     specifyOutlet=false) annotation(Placement(transformation(
         extent={{-10,10},{10,-10}},

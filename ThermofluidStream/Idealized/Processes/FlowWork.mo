@@ -4,7 +4,7 @@ model FlowWork "Process to consider flow work p*v (switching between open <-> cl
 
   import FlowWorkBoundary = ThermofluidStream.Idealized.Types.FlowWorkBoundary;
 
-  parameter FlowWorkBoundary boundary = ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet "Flow work to be considered" annotation(
+  parameter FlowWorkBoundary boundary=ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet    "Flow work to be considered" annotation(
     Evaluate=true, HideResult=true);
 
   EnergyFlow.Interfaces.EnergyFlowOutput P_inlet_out = -P_inlet if boundary == FlowWorkBoundary.Inlet "Flow work of the inlet flow (directed out of the system) [W]" annotation(
@@ -29,6 +29,10 @@ equation
   P_inlet = -m_flow*w_flow;
   P_outlet = m_flow*w_flow;
 
+
+  // dunkel 185,221,255
+  // mittel 215,236,255
+  // hell 235,246,255
   annotation(
     Icon(
       graphics={
@@ -59,34 +63,50 @@ equation
       Line(
         points = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Inlet then {{-100,0},{-100,-100}} else {{0,0}},
         color={255,170,85}),
-        Rectangle(
-          extent=DynamicSelect(if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-40,42},{40,-42}} else {{40,42},{-40,-42}}, if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-40,42},{40,-42}} else {{40,42},{-40,-42}}),
-          lineColor={28,108,200},
-          fillColor={235,246,255},
-          fillPattern=FillPattern.Solid,
-          radius=20,
-          pattern=LinePattern.None),
-        Rectangle(
-          extent=DynamicSelect(if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}, if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{-52,14},{-26,-14}} else {{52,14},{26,-14}}),
-          lineColor={28,108,200},
-          fillColor={215,236,255},
-          fillPattern=FillPattern.Solid,
-          radius=10),
-        Rectangle(
-          visible=1<0,
-          extent={{-40,42},{40,-42}},
-          lineColor={28,108,200},
-          fillColor={235,246,255},
-          fillPattern=FillPattern.Solid,
-          radius=20,
-          pattern=LinePattern.None),
-        Rectangle(
-          visible=1<0,
-          extent={{-52,14},{-26,-14}},
-          lineColor={28,108,200},
-          fillColor={215,236,255},
-          fillPattern=FillPattern.Solid,
-          radius=10)}),
+      Rectangle(
+        extent = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{40,42},{-40,-42}} else {{-40,42},{40,-42}},
+        lineColor={28,108,200},
+        fillColor={235,246,255},
+        fillPattern=FillPattern.Solid,
+        radius=20),
+      Rectangle(
+        extent = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{52,14},{26,-14}} else {{-52,14},{-26,-14}},
+        lineColor={28,108,200},
+        fillColor={185,221,255},
+        fillPattern=FillPattern.Solid,
+        radius=10),
+      Rectangle(
+        extent = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {{42,4},{66,-4}} else {{-76,4},{-52,-4}},
+        lineColor={28,108,200},
+        fillColor={28,108,200},
+        fillPattern=FillPattern.Solid),
+      Polygon(
+        points={{-10,-8},{0,8},{10,-8},{-10,-8}},
+        lineColor={28,108,200},
+        fillColor={28,108,200},
+        fillPattern=FillPattern.Solid,
+        rotation=270,
+        origin = if boundary == ThermofluidStream.Idealized.Types.FlowWorkBoundary.Outlet then {70,0} else {-48,0}),
+      Rectangle(
+        visible=1<0,
+        extent={{-40,42},{40,-42}},
+        lineColor={28,108,200},
+        fillColor={235,246,255},
+        fillPattern=FillPattern.Solid,
+        radius=20,
+        pattern=LinePattern.None),
+      Rectangle(
+        visible=1<0,
+        extent={{-52,14},{-26,-14}},
+        lineColor={28,108,200},
+        fillColor={215,236,255},
+        fillPattern=FillPattern.Solid,
+        radius=10),
+      Rectangle(
+        extent={{-186,-38},{-186,-38}},
+        lineColor={28,108,200},
+        fillColor={28,108,200},
+        fillPattern=FillPattern.Solid)}),
     Documentation(
       info="<html>
   <p>
@@ -138,6 +158,10 @@ equation
 </html>",
       revisions="<html>
   <ul>
+    <li>
+      2026-08, by Silvan Keim (silvan.keim@dlr.de):<br>
+      Improved icon.
+    </li>
     <li>
       2026, by Raphael Gebhart (raphael.gebhart@dlr.de):<br>
       Initial version.

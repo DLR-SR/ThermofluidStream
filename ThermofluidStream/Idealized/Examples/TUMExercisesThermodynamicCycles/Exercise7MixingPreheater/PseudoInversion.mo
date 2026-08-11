@@ -16,6 +16,7 @@ model PseudoInversion
     p_out_fixed=2000000) annotation(Placement(transformation(extent={{-90,-30},{-110,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic lowPressureTurbineStage(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=5000) annotation(Placement(transformation(extent={{90,40},{110,60}})));
@@ -31,6 +32,7 @@ model PseudoInversion
         origin={-120,20})));
   ThermofluidStream.Idealized.Processes.Isobaric condensor(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.HeatTransfer.Cooling,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Isobaric.OutletSpecificEnthalpy,
     outletValueSpec=ThermofluidStream.Types.ValueSpecification.Prescribed) annotation(Placement(transformation(extent={{90,-30},{70,-10}})));
   ThermofluidStream.Utilities.showRealValue MassFlowRate(
@@ -55,6 +57,7 @@ model PseudoInversion
   ThermofluidStream.Idealized.Topology.JunctionT2 mixingPreheater(displayInstanceName=true, redeclare package Medium = Medium) annotation (Placement(transformation(extent={{10,-30},{-10,-10}})));
   ThermofluidStream.Idealized.Processes.Adiabatic highPressureTurbineStage(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.889,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=1000000) annotation(Placement(transformation(extent={{10,40},{30,60}})));
@@ -161,7 +164,7 @@ equation
       thickness=0.5));
   connect(h_bubble.y, condensor.outletSpec_prescribed) annotation(Line(points={{79,-40},{70,-40},{70,-32}}, color={0,0,127}));
   connect(mixingTemperature.y, feedback.u1) annotation(Line(points={{-39,-70},{-28,-70}}, color={0,0,127}));
-  connect(temperatureSensor.value_out, feedback.u2) annotation(Line(points={{-20,-48.2},{-20,-62}}, color={0,0,127}));
+  connect(temperatureSensor.value_out, feedback.u2) annotation(Line(points={{-20,-51},{-20,-62}},   color={0,0,127}));
   connect(feedback.y, integrator.u) annotation(Line(points={{-11,-70},{-6,-70}}, color={0,0,127}));
   connect(integrator.y, massFlowRateSource.m_flow_prescribed) annotation(Line(points={{17,-70},{20,-70},{20,12}},                   color={0,0,127}));
   connect(heatFlow.E_flow_out, heater.Q_flow_in) annotation(Line(points={{-139,20},{-128,20}}, color={255,170,85}));

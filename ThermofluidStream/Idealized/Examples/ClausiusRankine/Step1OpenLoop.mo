@@ -17,6 +17,7 @@ model Step1OpenLoop
     p_out_fixed=300000) annotation(Placement(transformation(extent={{-50,-10},{-30,10}})));
   Processes.Adiabatic turbine(
     redeclare package Medium = Medium,
+    iconType=ThermofluidStream.Idealized.Types.Icons.PressureChange.Expansion,
     eta_fixed=0.8,
     outletSpec=ThermofluidStream.Idealized.Types.OutletSpecification.Adiabatic.OutletPressure,
     p_out_fixed=100000) annotation(Placement(transformation(extent={{10,-10},{30,10}})));
