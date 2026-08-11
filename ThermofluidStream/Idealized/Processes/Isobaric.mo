@@ -269,7 +269,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}, if dh >= 0 then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}),
+          extent=DynamicSelect(if iconIsHeating then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{-44,40},{40,-40}} else {{44,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
@@ -277,7 +277,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}, if dh >= 0 then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}),
+          extent=DynamicSelect(if iconIsHeating then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{-18,40},{40,-40}} else {{18,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,223,213},
           fillPattern=FillPattern.Solid,
@@ -285,7 +285,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}, if dh >= 0 then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}),
+          extent=DynamicSelect(if iconIsHeating then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{2,40},{40,-40}} else {{-2,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,200,170},
           fillPattern=FillPattern.Solid,
@@ -293,7 +293,7 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = not isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}, if dh >= 0 then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}),
+          extent=DynamicSelect(if iconIsHeating then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{20,40},{40,-40}} else {{-20,40},{-40,-40}}),
           lineColor={28,108,200},
           fillColor={255,180,140},
           fillPattern=FillPattern.Solid,
@@ -301,14 +301,14 @@ equation
           pattern=LinePattern.None),
         Rectangle(
           visible = isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{-44,32},{-4,-32}} else {{44,32},{4,-32}}, if dh >= 0 then {{-44,32},{-4,-32}} else {{44,32},{4,-32}}),
+          extent=DynamicSelect(if iconIsHeating then {{-44,32},{-4,-32}} else {{44,32},{4,-32}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{-44,32},{-4,-32}} else {{44,32},{4,-32}}),
           lineColor={85,170,255},
           fillColor={235,246,255},
           fillPattern=FillPattern.Solid,
           radius=20),
         Rectangle(
           visible = isCycle,
-          extent=DynamicSelect(if iconIsHeating then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}, if dh >= 0 then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}),
+          extent=DynamicSelect(if iconIsHeating then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}, if ((iconIsHeating and dh >= 0) or dh > 0) then {{4,42},{44,-42}} else {{-4,42},{-44,-42}}),
           lineColor={85,170,255},
           fillColor={255,197,170},
           fillPattern=FillPattern.Solid,
