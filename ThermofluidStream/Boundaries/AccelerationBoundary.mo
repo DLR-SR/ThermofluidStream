@@ -1,8 +1,11 @@
 within ThermofluidStream.Boundaries;
 model AccelerationBoundary "Sets and broadcasts acceleration vector, default is
   fixed in negative z-direction with length of DropOfCommons.g"
-  SI.Acceleration a[3];
+
+  extends ThermofluidStream.Utilities.DropOfCommonsPlus;
+
   parameter Boolean setFromInputs = false annotation (choices(checkBox=true), Evaluate=true);
+
   SI.Acceleration ax = 0
   annotation(Dialog(group="Time varying output signal",enable=not setFromInputs));
   SI.Acceleration ay = 0
@@ -15,14 +18,23 @@ model AccelerationBoundary "Sets and broadcasts acceleration vector, default is
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealInput uz if setFromInputs
     annotation (Placement(transformation(extent={{-120,-80},{-80,-40}})));
+
+  output SI.Acceleration a[3];
+
 protected
-  outer ThermofluidStream.DropOfCommons dropOfCommons;
+  Modelica.Blocks.Interfaces.RealInput ax_int annotation(HideResult=true);
+  Modelica.Blocks.Interfaces.RealInput ay_int annotation(HideResult=true);
+  Modelica.Blocks.Interfaces.RealInput az_int annotation(HideResult=true);
+
 equation
-  connect(ux,a[1]);
-  connect(uy,a[2]);
-  connect(uz,a[3]);
+  a={ax_int,ay_int,az_int};
+  connect(ax_int,ux);
+  connect(ay_int,uy);
+  connect(az_int,uz);
   if not setFromInputs then
-    a={ax,ay,az};
+    ax_int = ax;
+    ay_int = ay;
+    az_int = az;
   end if;
   annotation (defaultComponentName="acceleration",
     defaultComponentPrefixes="inner",
