@@ -1,7 +1,11 @@
 within ThermofluidStream.Undirected.Processes;
 model StaticHead "Static head model"
-  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=
-        true);
+  extends ThermofluidStream.Undirected.Interfaces.SISOBiFlow(final clip_p_out=true);
+
+protected 
+  outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
+
+public 
   parameter SI.Length forePosition[3]
     "Coordinates for the position the static head is computed from" annotation (Dialog(group="Geometry",
         enable=true));
@@ -10,21 +14,19 @@ model StaticHead "Static head model"
         enable=true));
 
   parameter ThermofluidStream.Utilities.Units.Inertance L_value=dropOfCommons.L
-    "Inertance of pipe" annotation (Dialog(tab="Advanced", enable=not computeL));
+    "Inertance of pipe" annotation (Dialog(tab="Advanced"));
 
   parameter Medium.Density rho_min=dropOfCommons.rho_min
     "Minimal input density" annotation (Dialog(tab="Advanced"));
 
-    SI.Length staticHead_forwards "static head in m";
-    SI.Pressure staticHead_forwards_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
-    SI.Length staticHead_rearwards "static head in m";
-    SI.Pressure staticHead_rearwards_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
- parameter Boolean displayPositions=true "show positions in icon";
+  parameter Boolean displayPositions=true "show positions in icon";
 
-protected
-    outer ThermofluidStream.Boundaries.AccelerationBoundary acceleration;
+  SI.Length staticHead_forwards "static head in m";
+  SI.Pressure staticHead_forwards_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
+  SI.Length staticHead_rearwards "static head in m";
+  SI.Pressure staticHead_rearwards_Pa_relative "static head measured i Pa, taking current acceleration and limitations into account";
 
-equation
+equation 
 
   //forwards model
   dp_fore = (forePosition - rearPosition)*acceleration.a*Medium.density(rear.state_forwards);
