@@ -21,19 +21,13 @@ the outlet the sink is connected to.
   // ------ Parameter Display Configuration  ------------------------
   parameter Boolean displayPressure = true "= true, if pressure p0_par is displayed"
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not pressureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter String displayPos1=
     if displayP then
       "p = %p0_par"
-    elseif displayInertance then
-      "L = %L"
-    else "";
-  final parameter String displayPos2=
-    if displayP and displayInertance then
-      "L = %L"
     else "";
   //-----------------------------------------------------------------
 
@@ -46,6 +40,11 @@ protected
   Modelica.Blocks.Interfaces.RealInput p0(unit="Pa") "Internal pressure connector";
   SI.Pressure r "Inertial pressure";
   Medium.AbsolutePressure p = Medium.pressure(inlet.state) "Steady state pressure";
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
 
 equation
   connect(p0_var, p0);
@@ -68,10 +67,6 @@ equation
           extent={{-150,-90},{150,-120}},
           textColor={0,0,0},
           textString=displayPos1),
-        Text(visible=displayParameters,
-          extent={{-150,-130},{150,-160}},
-          textColor={0,0,0},
-          textString=displayPos2),
         Rectangle(
           extent={{-56,76},{4,-84}},
           lineColor={28,108,200},
