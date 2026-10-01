@@ -39,7 +39,7 @@ model DynamicSplitterN "Splitter with 1 inlet and N outlets, taking dynamic pres
       annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Processes.Nozzle nozzle_out[N](
     redeclare package Medium = Medium,
-    final considerInertance=considerInertance,
+    each final considerInertance=considerInertance,
     A_out=A_out,
     each A_in=A_splitter/N,
     each final assumeConstantDensity=assumeConstantDensity,
