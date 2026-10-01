@@ -7,11 +7,11 @@ model Nozzle "Model for dynamic pressure difference"
   parameter Boolean area_in_FromInput = false "= true, if input connector for inlet cross section area is enabled"
     annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A_in = 1 "Inlet cross-sectional area"
-    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
+    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not area_in_FromInput));
   parameter Boolean area_out_FromInput = false "= true, if input connector for outlet cross section area is enabled"
     annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Area A_out = 1 "Outlet cross-sectional area"
-    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not areaFromInput));
+    annotation(Dialog(group="Nozzle / Diffusor definition", enable=not area_out_FromInput));
   parameter ThermofluidStream.Utilities.Units.Inertance L_value = dropOfCommons.L "Inertance"
     annotation(Dialog(tab="Advanced"));
 
