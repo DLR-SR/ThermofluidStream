@@ -73,9 +73,9 @@ equation
   DP_straight = -dp_straight;
   DP_branching = -dp_branching;
 
-  assert(inlet.m_flow >= 0, "Negative mass flow rate at splitter inlet!", AssertionLevel.warning);
-  assert(outlet_straight.m_flow <= 0, "Positiv mass flow rate at splitter outletA!", AssertionLevel.warning);
-  assert(outlet_branching.m_flow <= 0, "Positiv mass flow rate at splitter outletB!", AssertionLevel.warning);
+  assert(noEvent(inlet.m_flow >= 0), "Negative mass flow rate at splitter inlet!", AssertionLevel.warning);
+  assert(noEvent(outlet_straight.m_flow <= 0), "Positiv mass flow rate at splitter outletA!", AssertionLevel.warning);
+  assert(noEvent(outlet_branching.m_flow <= 0), "Positiv mass flow rate at splitter outletB!", AssertionLevel.warning);
   annotation (
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)),
     Icon(graphics={

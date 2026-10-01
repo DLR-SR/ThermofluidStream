@@ -81,9 +81,9 @@ equation
   K_b1.u2 = {alpha_deg, 60, 90};
   K_s1.u2 = {alpha_deg, 60, 90};
   Q_rel_bc = abs(inlet_branching.m_flow/rho_branching)/abs(outlet.m_flow/rho_out);
-  assert(outlet.m_flow <= 0, "Positiv mass flow at junction outlet!", AssertionLevel.warning);
-  assert(inlet_straight.m_flow >= 0, "Negativ mass flow at straight inlet!", AssertionLevel.warning);
-  assert(inlet_branching.m_flow >= 0, "Negativ mass flow at branching inlet!", AssertionLevel.warning);
+  assert(noEvent(outlet.m_flow <= 0), "Positiv mass flow at junction outlet!", AssertionLevel.warning);
+  assert(noEvent(inlet_straight.m_flow >= 0), "Negativ mass flow at straight inlet!", AssertionLevel.warning);
+  assert(noEvent(inlet_branching.m_flow >= 0), "Negativ mass flow at branching inlet!", AssertionLevel.warning);
   annotation (
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)),
     Icon(graphics={

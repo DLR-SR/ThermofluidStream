@@ -36,7 +36,7 @@ algorithm
     ks :=ks_input;
   end if;
 
-  assert(ks <r, "Surface roughness shall be smaller than pipe radius");
+  assert(noEvent(ks <r), "Surface roughness shall be smaller than pipe radius");
 
   u :=m_flow/(r^2*pi*rho);
   // add eps to Re to avoid 0^0 error in computation of lambda_aux for Re=0 (-> a=1).

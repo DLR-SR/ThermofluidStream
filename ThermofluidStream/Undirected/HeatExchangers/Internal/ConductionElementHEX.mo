@@ -10,7 +10,7 @@ model ConductionElementHEX "ConductionElement for single-phase fluids"
   constant Real Re_exp = 0.8 "Reynolds-exponent for heat transfer calculation";
 
 initial equation
-  assert(init <> Processes.Internal.InitializationMethodsCondElement.port, "This initialization will lead to large nonlinear equation systems. Please choose 'T0', 'h0', 'rear' or 'fore'.");
+  assert(noEvent(init <> Processes.Internal.InitializationMethodsCondElement.port), "This initialization will lead to large nonlinear equation systems. Please choose 'T0', 'h0', 'rear' or 'fore'.");
 
 equation
   //Estimation of heat transfer coefficient

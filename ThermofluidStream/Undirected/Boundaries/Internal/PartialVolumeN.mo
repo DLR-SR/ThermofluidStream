@@ -85,7 +85,7 @@ protected
   SI.Pressure r_damping = d*der(M) "Inertial pressure damping";
 
 initial equation
-  assert(M > 0, "Negative mass at volume");
+  assert(noEvent(M > 0), "Negative mass at volume");
 
   if initialize_pressure then
     medium.p=p_start;
@@ -104,7 +104,7 @@ initial equation
   end if;
 
 equation
-  assert(M > 0, "Negative mass at volume");
+  assert(noEvent(M > 0), "Negative mass at volume");
 
   der(rear.m_flow)*L = rear.r - r_rear - r_damping*ones(N_rear);
   der(fore.m_flow)*L = fore.r - r_fore - r_damping*ones(N_fore);
