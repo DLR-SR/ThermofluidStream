@@ -12,9 +12,9 @@ model TestJP8DryAir "Test JP8DryAir Medium model"
   Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
   Medium.SpecificInternalEnergy u=Medium.specificInternalEnergy(medium.state);
   Medium.SpecificInternalEnergy h=Medium.specificEnthalpy(medium.state);
-  Medium.Density d=Medium.density(medium.state);
-  Medium.Density dG=Medium.SingleGas.density(medium.state);
-  Medium.Density dL=Medium.Incompressible.density(medium.state);
+  Medium.Density d=Medium.density(medium.state); 
+  Medium.Density dG=Medium.SingleGas.density_pT(medium.state.p,medium.state.T);
+  Medium.Density dL=Medium.Incompressible.density_pTX(medium.state.p,medium.state.T,medium.state.X);
   Real n=Medium.nS;
   Real nXi=Medium.nXi;
 
