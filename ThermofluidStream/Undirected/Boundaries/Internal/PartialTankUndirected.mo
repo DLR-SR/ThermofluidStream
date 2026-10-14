@@ -219,7 +219,7 @@ initial equation
     medium.Xi = Xi_0;
   elseif initialize_LiquidMass then
     assert(
-      V - M_liq_start/liquidDensity > 0,
+      noEvent(V - M_liq_start/liquidDensity > 0),
       "Initial liquid mass is larger then the tank can contain",
       level=AssertionLevel.error);
     medium.Xi = {(V - M_liq_start/liquidDensity)*gasDensity/((V - M_liq_start/
@@ -230,18 +230,18 @@ initial equation
 equation
   for i in 1:N_inlets loop
     assert(
-      m_flow_in[i] > m_flow_assert,
+      noEvent(m_flow_in[i] > m_flow_assert),
       "Negative massflow at tank inlet",
       dropOfCommons.assertionLevel);
   end for;
   for i in 1:N_outlets loop
     assert(
-      -m_flow_out[i] > m_flow_assert,
+      noEvent(-m_flow_out[i] > m_flow_assert),
       "Positive massflow at tank outlet",
       dropOfCommons.assertionLevel);
   end for;
 
-  assert(M > 0, "Tanks might not become empty");
+  assert(noEvent(M > 0), "Tanks might not become empty");
 
   der(inlet.m_flow)*L = inlet.r - r - r_damping*ones(N_inlets);
   der(outlet.m_flow)*L = outlet.r - r_damping*ones(N_outlets);

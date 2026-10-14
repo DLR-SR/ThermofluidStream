@@ -29,33 +29,33 @@ initial equation
 
   //check that all inlet and outlet positions are within the tank geometry
    for i in 1:N_inlets loop
-   assert(tankCenter[1]-xLength/2<=inletPositions[i,1] and inletPositions[i,1] <= tankCenter[1]+xLength/2, "Inlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[2]-yLength/2<=inletPositions[i,2] and inletPositions[i,2] <= tankCenter[2]+yLength/2,"Inlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[3]-zLength/2<=inletPositions[i,3] and inletPositions[i,3] <= tankCenter[3]+zLength/2,"Inlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[1]-xLength/2<=inletPositions[i,1] and inletPositions[i,1] <= tankCenter[1]+xLength/2), "Inlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[2]-yLength/2<=inletPositions[i,2] and inletPositions[i,2] <= tankCenter[2]+yLength/2),"Inlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[3]-zLength/2<=inletPositions[i,3] and inletPositions[i,3] <= tankCenter[3]+zLength/2),"Inlet outside tank geometry",level = AssertionLevel.error);
    end for;
 
    for i in 1:N_outlets loop
-   assert(tankCenter[1]-xLength/2<=outletPositions[i,1] and outletPositions[i,1] <= tankCenter[1]+xLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[2]-yLength/2<=outletPositions[i,2] and outletPositions[i,2] <= tankCenter[2]+yLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[3]-zLength/2<=outletPositions[i,3] and outletPositions[i,3] <= tankCenter[3]+zLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[1]-xLength/2<=outletPositions[i,1] and outletPositions[i,1] <= tankCenter[1]+xLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[2]-yLength/2<=outletPositions[i,2] and outletPositions[i,2] <= tankCenter[2]+yLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[3]-zLength/2<=outletPositions[i,3] and outletPositions[i,3] <= tankCenter[3]+zLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
    end for;
 
       for i in 1:N_rears loop
-   assert(tankCenter[1]-xLength/2<=rearPositions[i,1] and rearPositions[i,1] <= tankCenter[1]+xLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[2]-yLength/2<=rearPositions[i,2] and rearPositions[i,2] <= tankCenter[2]+yLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[3]-zLength/2<=rearPositions[i,3] and rearPositions[i,3] <= tankCenter[3]+zLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[1]-xLength/2<=rearPositions[i,1] and rearPositions[i,1] <= tankCenter[1]+xLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[2]-yLength/2<=rearPositions[i,2] and rearPositions[i,2] <= tankCenter[2]+yLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[3]-zLength/2<=rearPositions[i,3] and rearPositions[i,3] <= tankCenter[3]+zLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
       end for;
          for i in 1:N_fores loop
-   assert(tankCenter[1]-xLength/2<=forePositions[i,1] and forePositions[i,1] <= tankCenter[1]+xLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[2]-yLength/2<=forePositions[i,2] and forePositions[i,2] <= tankCenter[2]+yLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
-   assert(tankCenter[3]-zLength/2<=forePositions[i,3] and forePositions[i,3] <= tankCenter[3]+zLength/2,"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[1]-xLength/2<=forePositions[i,1] and forePositions[i,1] <= tankCenter[1]+xLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[2]-yLength/2<=forePositions[i,2] and forePositions[i,2] <= tankCenter[2]+yLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
+   assert(noEvent(tankCenter[3]-zLength/2<=forePositions[i,3] and forePositions[i,3] <= tankCenter[3]+zLength/2),"Outlet outside tank geometry",level = AssertionLevel.error);
    end for;
 equation
   V_ref =xLength*yLength*zLength;
 
-  assert((Modelica.Math.Vectors.length(normAcc)>0.99 and Modelica.Math.Vectors.length(normAcc)<1.01),"Acceleration vector is not normalized",level = AssertionLevel.error);
-  assert(-eps_geometry <= normAcc[2] and normAcc[2] <= eps_geometry,"Acceleration in y-direction not supported by squareBlockGeometry",level=AssertionLevel.warning);
-  assert(V_liquid<=V_ref,"Trying to fit more liquid into tank than it holds",level=AssertionLevel.warning);
+  assert(noEvent((Modelica.Math.Vectors.length(normAcc)>0.99 and Modelica.Math.Vectors.length(normAcc)<1.01)),"Acceleration vector is not normalized",level = AssertionLevel.error);
+  assert(noEvent(-eps_geometry <= normAcc[2] and normAcc[2] <= eps_geometry),"Acceleration in y-direction not supported by squareBlockGeometry",level=AssertionLevel.warning);
+  assert(noEvent(V_liquid<=V_ref),"Trying to fit more liquid into tank than it holds",level=AssertionLevel.warning);
 
   centreOfMass =tankCenter;//constant in first implementation
 

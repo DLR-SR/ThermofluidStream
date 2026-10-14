@@ -55,7 +55,7 @@ equation
     -m_flow);
   h_out = h_in;
   Xi_out = Xi_in;
-  assert(m_flow < 0 and Re > 3.3e3 or m_flow > 0 and Re > 1e4, "Reynoldsnumber is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
+  assert(noEvent(m_flow < 0 and Re > 3.3e3 or m_flow > 0 and Re > 1e4), "Reynoldsnumber is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
     Documentation(info="<html>
 <p>

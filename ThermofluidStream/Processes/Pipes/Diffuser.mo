@@ -83,7 +83,7 @@ equation
   dp = -DP;
   h_out = h_in;
   Xi_out = Xi_in;
-  assert(m_flow > 0, "Model can not handle negative mass flow through component!", AssertionLevel.warning);
+  assert(noEvent(m_flow > 0), "Model can not handle negative mass flow through component!", AssertionLevel.warning);
   annotation (
     Documentation(info="<html>
 <p>

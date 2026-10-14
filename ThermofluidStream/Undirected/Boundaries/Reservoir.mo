@@ -31,7 +31,7 @@ initial equation
   height = height_0;
 
 equation
-  assert(height > height_min, "Tank level must be greater than height_min", dropOfCommons.assertionLevel);
+  assert(noEvent(height > height_min), "Tank level must be greater than height_min", dropOfCommons.assertionLevel);
 
   density_derp_h = 1/(height*g);
 

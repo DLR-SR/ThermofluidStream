@@ -72,11 +72,11 @@ package Internal
     splitRatioLim = min(1-eps, max(eps, if invert then 1-splitRatio else splitRatio));
 
   equation
-    assert(P_A < P_thresh,
+    assert(noEvent(P_A < P_thresh),
       "Splitter enforces mass flow constraint by artificially increasing pressure on outlet A",
       AssertionLevel.warning);
 
-    assert(P_B < P_thresh,
+    assert(noEvent(P_B < P_thresh),
       "Splitter enforces mass flow constraint by artificially increasing pressure on outlet B",
       AssertionLevel.warning);
 
