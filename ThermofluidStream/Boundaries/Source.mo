@@ -41,8 +41,8 @@ the inlet the source is connected to.
     annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not xiFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
   // parameter Boolean displayTemperatureOrEnthalpy = true "= true, if temperature T0_par or specific enthalpy h0_par is displayed"
   //  annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters and not temperatureFromInput),Evaluate=true, HideResult=true, choices(checkBox=true));
-  parameter Boolean displayInertance = false "= true, if inertance L is displayed"
-    annotation(Dialog(tab="Layout",group="Display parameters",enable=displayParameters),Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter Boolean displayInertance = false "DEPRECATED: =true will cause a warning, no longer has any other effect and will be removed in the next major release v2.0.0"
+    annotation(Dialog(tab="Layout",group="Display parameters"),Evaluate=true, HideResult=true);
   final parameter Boolean displayP = displayPressure and not pressureFromInput
     annotation(Evaluate=true, HideResult=true);
   final parameter Boolean displayT = displayTemperature and not temperatureFromInput and not setEnthalpy
@@ -61,8 +61,6 @@ the inlet the source is connected to.
       "h = %h0_par"
     elseif displayXi then
       "Xi = %Xi0_par"
-    elseif displayInertance then
-      "L = %L"
     else "";
   final parameter String displayPos2=
     if displayP and displayT then
@@ -71,19 +69,11 @@ the inlet the source is connected to.
       "h = %h0_par"
     elseif displayXi and (displayP or displayT or displayH)  then
       "Xi = %Xi0_par"
-    elseif  displayInertance and (displayP or displayT or displayH or displayXi) then
-      "L = %L"
     else "";
   final parameter String displayPos3=
     if displayXi and displayP and (displayT or displayH)  then
       "Xi = %Xi0_par"
-    elseif  displayInertance and not displayPos2 == "L = %L" and not displayPos1 == "L = %L" then
-      "L = %L"
     else "";
-  final parameter String displayPos4=
-    if displayP and  (displayT or displayH) and displayXi  and displayInertance then
-      "L = %L"
-    else "" annotation(Evaluate=true, HideResult=true);
   //-----------------------------------------------------------------
 
   Modelica.Blocks.Interfaces.RealInput p0_var(unit="Pa") if pressureFromInput "Pressure input connector [Pa]"
@@ -102,6 +92,11 @@ protected
   Modelica.Blocks.Interfaces.RealInput T0(unit = "K") "Internal temperature connector";
   Modelica.Blocks.Interfaces.RealInput h0(unit = "J/kg") "Internal enthalpy connector";
   Modelica.Blocks.Interfaces.RealInput Xi0[Medium.nXi](each unit = "kg/kg") "Internal mass fractions connector";
+
+initial equation
+  assert(not displayInertance,
+    "Parameter displayInertance is deprecated and has no effect. It will be removed in the next major release. Please remove modifier.",
+    level=AssertionLevel.warning);
 
 equation
    connect(T0_var, T0);
@@ -147,10 +142,6 @@ equation
           extent={{-150,-170},{150,-200}},
           textColor={0,0,0},
           textString=displayPos3),
-        Text(visible=displayParameters,
-          extent={{-150,-240},{150,-210}},
-          textColor={0,0,0},
-          textString=displayPos4),
         Rectangle(
           extent={{0,76},{64,-84}},
           lineColor={28,108,200},
