@@ -7,6 +7,12 @@ The DLR Thermofluid Stream Library is a free open-source library for the robust 
 
 ## News
 
+October 2026: Release of TFS 1.4.1 (Patch Release)
+
+### Release 1.4.1 Highlights
+Fix some bugs in **`DynamicSplitterN`**, **`StaticHead`**, **`AccelerationBoundary`**, **`Nozzle`** and test model **`TestJP8DryAir`** to ensure full compatibility with OpenModelica.
+
+
 August 2026: Release of TFS 1.4.0 (Minor Release)
 
 ### Release 1.4.0 Highlights
