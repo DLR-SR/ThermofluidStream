@@ -60,6 +60,93 @@ the released version represents when the library is exported from a Git tag.
 </html>"));
 end VersionManagement;
 
+class Version_1_4_1 "Version 1.4.1 (October 16, 2026)"
+extends Modelica.Icons.ReleaseNotes;
+
+annotation (Documentation(info="<html>
+
+<p>
+Version 1.4.1 is a patch release of the DLR ThermofluidStream Library to improve OpenModelica compatibility and guaranteeing that all
+models of the library can be run with OpenModelica.
+It fixes stale annotation references in
+<a href=\"modelica://ThermofluidStream.Processes.Nozzle\">Processes.Nozzle</a>,
+adds a missing <code>each</code> qualifier in
+<a href=\"modelica://ThermofluidStream.Topology.DynamicSplitterN\">DynamicSplitterN</a>
+and improves OpenModelica compatibility of
+<a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>,
+<a href=\"modelica://ThermofluidStream.Undirected.Processes.StaticHead\">StaticHead</a>
+and a medium test.
+</p>
+
+<p>
+No conversion script is required, since no parameter names or defaults
+have changed in this release.
+</p>
+
+<h4>Improvements and fixes</h4>
+
+<h5>Processes</h5>
+<ul>
+  <li>
+    Fixed stale annotation references in
+    <a href=\"modelica://ThermofluidStream.Processes.Nozzle\">Processes.Nozzle</a>:
+    the dialog <code>enable</code> modifiers of <code>A_in</code> and
+    <code>A_out</code> still referred to the removed parameter
+    <code>areaFromInput</code> and now correctly use
+    <code>area_in_fromInput</code> and <code>area_out_fromInput</code>.
+  </li>
+</ul>
+
+<h5>Static head</h5>
+<ul>
+  <li>
+    Updated
+    <a href=\"modelica://ThermofluidStream.Processes.StaticHead\">Processes/StaticHead</a>
+    and
+    <a href=\"modelica://ThermofluidStream.Undirected.Processes.StaticHead\">Undirected/StaticHead</a>:
+    removed the <code>enable = not computeL</code> modifier, extended
+    <code>DropOfCommonsPlus</code> and reorganized the text layer to match
+    the Modelica specification.
+  </li>
+</ul>
+
+<h5>Topology</h5>
+<ul>
+  <li>
+    Added the missing <code>each</code> qualifier in
+    <a href=\"modelica://ThermofluidStream.Topology.DynamicSplitterN\">DynamicSplitterN</a>,
+    which caused an error when simulating with OpenModelica.
+  </li>
+</ul>
+
+<h5>Boundaries</h5>
+<ul>
+  <li>
+    Updated
+    <a href=\"modelica://ThermofluidStream.Boundaries.AccelerationBoundary\">AccelerationBoundary</a>:
+    added internal connectors for setting the acceleration vectors and
+    reworked the conditional connections depending on whether real inputs
+    or parameters are used, to ensure OpenModelica compatibility.
+  </li>
+</ul>
+
+<h5>Media</h5>
+<ul>
+  <li>
+    Replaced the function <code>density</code> by <code>density_pTX</code> in
+    <a href=\"modelica://ThermofluidStream.Media.additionalMedia.SingleGasAndIncompressible.Tests.TestJP8DryAir\">SingleGasAndIncompressible.Tests.TestJP8DryAir</a>
+    for OpenModelica compatibility.
+  </li>
+</ul>
+
+<p>
+These changes do not alter any model interface or remove functionality,
+so existing models remain loadable without modification.
+</p>
+
+</html>"));
+end Version_1_4_1;
+
 class Version_1_4_0 "Version 1.4.0 (August 2026)"
 extends Modelica.Icons.ReleaseNotes;
 
