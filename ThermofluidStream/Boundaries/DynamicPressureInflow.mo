@@ -1,10 +1,16 @@
 within ThermofluidStream.Boundaries;
 model DynamicPressureInflow "Extension of (p,T) source to (p,T,velocity)"
 
-  extends Interfaces.SISOFlow(final clip_p_out=true);
+  extends ThermofluidStream.Interfaces.SISOFlow(clip_p_out=true,dp(start=dp_start),p_out(start=p_start),outlet(state(p(start=p_start),T(start=T_start))));
 
   parameter Boolean assumeConstantDensity=true "= true, if incompressibility is assumed (use '= false' for Ma > 0.3)"
     annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+  parameter SI.PressureDifference dp_start = 0 "Start value for pressure difference for solving nonlinear equation system"
+    annotation(Dialog(group="Numerics",enable = not assumeConstantDensity));
+  parameter SI.Pressure p_start = Medium.p_default "Start value for outlet pressure for solving nonlinear equation system"
+    annotation(Dialog(group="Numerics",enable= not assumeConstantDensity));
+  parameter SI.Temperature T_start = Medium.T_default "Start value for outlet temperature for solving nonlinear equation system"
+    annotation(Dialog(group="Numerics",enable= not assumeConstantDensity));
   parameter Boolean velocityFromInput = false "= true, if input connector for outlet velocity is enabled"
     annotation(Dialog(group="Nozzle / Diffusor definition"),Evaluate=true, HideResult=true, choices(checkBox=true));
   parameter SI.Velocity v_in_par = 0 "Inlet velocity"
