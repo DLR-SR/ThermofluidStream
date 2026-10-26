@@ -60,9 +60,9 @@ algorithm
   mu := (mu_in + mu_out)/2;
   rho := (rho_in + rho_out)/2;
 equation
-  assert(ks_internal < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
-  assert(5 <= delta*180/pi and delta*180/pi <= 180, "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
-  assert(0.49 <= R/d and R/d <= 15, "Realative curvatue R/d should be between boundaries 0.5 <= R/d <= 15. If ratio is greater deiviations have to be accapted.", AssertionLevel.warning);
+  assert(noEvent(ks_internal < d/2), "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
+  assert(noEvent(5 <= delta*180/pi and delta*180/pi <= 180), "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
+  assert(noEvent(0.49 <= R/d and R/d <= 15), "Realative curvatue R/d should be between boundaries 0.5 <= R/d <= 15. If ratio is greater deiviations have to be accapted.", AssertionLevel.warning);
   -dp = Modelica.Fluid.Dissipation.PressureLoss.Bend.dp_curvedOverall_DP(
     In_con,
     In_var,

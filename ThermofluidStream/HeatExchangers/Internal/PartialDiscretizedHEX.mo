@@ -98,11 +98,11 @@ public
 
 equation
   assert(
-    inletB_m_flow > m_flow_assert,
+    noEvent(inletB_m_flow > m_flow_assert),
     "In \"" + instanceName + "\": Negative mass flow rate at inlet B",
     dropOfCommons.assertionLevel);
   assert(
-    inletA_m_flow > m_flow_assert,
+    noEvent(inletA_m_flow > m_flow_assert),
     "In \"" + instanceName + "\": Negative massflow at inlet A",
     dropOfCommons.assertionLevel);
 

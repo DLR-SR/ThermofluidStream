@@ -52,11 +52,11 @@ initial equation
   if flowCoefficient == FlowCoeffType.Kvs or
      flowCoefficient == FlowCoeffType.Cvs_US or
      flowCoefficient == FlowCoeffType.Cvs_UK then
-     assert(abs(dp_ref/1e5 - 1) <= Modelica.Constants.eps, "In \"" + instanceName + "\": dp_ref must remain at its default value of 1 bar when using Kvs, Cvs_US, or Cvs_UK. Remove the dp_ref modifier.", level=assertionLevel);
-     assert(abs(rho_ref/1000 - 1) <= Modelica.Constants.eps, "In \"" + instanceName + "\": rho_ref must remain at its default value of 1000 kg/m3 when using Kvs, Cvs_US, or Cvs_UK. Remove the rho_ref modifier.", level=assertionLevel);
+     assert(noEvent(abs(dp_ref/1e5 - 1) <= Modelica.Constants.eps), "In \"" + instanceName + "\": dp_ref must remain at its default value of 1 bar when using Kvs, Cvs_US, or Cvs_UK. Remove the dp_ref modifier.", level=assertionLevel);
+     assert(noEvent(abs(rho_ref/1000 - 1) <= Modelica.Constants.eps), "In \"" + instanceName + "\": rho_ref must remain at its default value of 1000 kg/m3 when using Kvs, Cvs_US, or Cvs_UK. Remove the rho_ref modifier.", level=assertionLevel);
   end if;
   assert(
-  flowCoefficient <> FlowCoeffType.Cvs_UK,
+  noEvent(flowCoefficient <> FlowCoeffType.Cvs_UK),
   "\n"
   + "===============================================================================\n"
   + "             ThermoFluidStream WARNING - DEPRECATED PARAMETERIZATION\n"
@@ -69,15 +69,15 @@ initial equation
   level=AssertionLevel.warning);
   //this if clause shall ensure that valid parameters have been entered
   if flowCoefficient == FlowCoeffType.Kvs then
-    assert(Kvs > 0, "In \"" + instanceName + "\": Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+    assert(noEvent(Kvs > 0), "In \"" + instanceName + "\": Invalid coefficient for Kvs. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   elseif flowCoefficient == FlowCoeffType.Cvs_US then
-    assert(Cvs_US > 0, "In \"" + instanceName + "\": Invalid coefficient for Cvs_US. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+    assert(noEvent(Cvs_US > 0), "In \"" + instanceName + "\": Invalid coefficient for Cvs_US. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   elseif flowCoefficient == FlowCoeffType.Cvs_UK then
-    assert(Cvs_UK > 0, "In \"" + instanceName + "\": Invalid coefficient for Cvs_UK. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+    assert(noEvent(Cvs_UK > 0), "In \"" + instanceName + "\": Invalid coefficient for Cvs_UK. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   elseif flowCoefficient == FlowCoeffType.m_flow_set then
-    assert(m_flow_ref_set > 0, "In \"" + instanceName + "\": Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+    assert(noEvent(m_flow_ref_set > 0), "In \"" + instanceName + "\": Invalid coefficient for m_flow_ref_set. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   else
-    assert(d_valve > 0, "In \"" + instanceName + "\": Invalid coefficient for d_valve. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
+    assert(noEvent(d_valve > 0), "In \"" + instanceName + "\": Invalid coefficient for d_valve. Default value 0 (or negative value) shall not be used", level=AssertionLevel.error);
   end if;
 
   //Calculate reference mass flow rate from reference volume flow rate

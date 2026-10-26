@@ -62,8 +62,8 @@ equation
     m_flow);
   h_out = h_in;
   Xi_out = Xi_in;
-  assert(Re > 1e3, "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
-  assert(0.0149 <= l_0/d_0 and l_0/d_0 <= 15, "Ratio of vena length l_0 and perimeter at vena is outside valid range. Simulation results might be incorrect!", AssertionLevel.warning);
+  assert(noEvent(Re > 1e3), "Reynolds number is below valid flow regime. Simulation results might be incorrect!", AssertionLevel.warning);
+  assert(noEvent(0.0149 <= l_0/d_0 and l_0/d_0 <= 15), "Ratio of vena length l_0 and perimeter at vena is outside valid range. Simulation results might be incorrect!", AssertionLevel.warning);
   annotation (
     Documentation(info="<html>
 <p>

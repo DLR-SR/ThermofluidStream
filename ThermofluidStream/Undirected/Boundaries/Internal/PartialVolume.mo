@@ -112,7 +112,7 @@ initial equation
   end if;
 
 equation
-  assert(M > 0, "Volumes might not become empty");
+  assert(noEvent(M > 0), "Volumes might not become empty");
 
   der(m_flow_rear)*L = r_rear_port - r_rear_intern - r_damping;
   der(m_flow_fore)*L = r_fore_port - r_fore_intern - r_damping;

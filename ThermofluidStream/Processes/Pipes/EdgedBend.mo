@@ -62,8 +62,8 @@ equation
     In_con,
     In_var,
     m_flow);
-  assert(ks_internal < d/2, "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
-  assert(5 <= delta*180/pi and delta*180/pi <= 180, "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
+  assert(noEvent(ks_internal < d/2), "Parameter roughness of pipe ks must be less than radius of pipe d/2.");
+  assert(noEvent(5 <= delta*180/pi and delta*180/pi <= 180), "Parameter angle of pipe bend must between boundaries 5° < delta < 180°.");
   h_out = h_in;
   Xi_out = Xi_in;
   annotation (
