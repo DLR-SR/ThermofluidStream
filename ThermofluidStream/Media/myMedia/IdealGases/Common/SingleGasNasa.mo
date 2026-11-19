@@ -282,7 +282,7 @@ Temperature T (= " + String(T) + " K) is not in the allowed range
   redeclare function extends density_derp_h
     "Returns the partial derivative of density with respect to pressure at constant enthalpy"
   algorithm
-    ddph := specificHeatCapacityCp(state)/(state.T*data.R_s*data.R_s);
+    ddph := 1/(state.T*data.R_s);
     annotation(Inline=true,smoothOrder=2);
   end density_derp_h;
 
