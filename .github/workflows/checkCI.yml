@@ -7,22 +7,21 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 5
       - name: Setup python environment
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: "3.12"
       - name: Install python packages
         run: |
           pip install --disable-pip-version-check --user pytidylib
-          pip install --disable-pip-version-check --user futures
       - name: Build html tidy
         run: |
           git clone --branch 5.8.0 --depth=1 https://github.com/htacg/tidy-html5.git
           pushd tidy-html5
-          cmake .
+          cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
           make
           sudo make install
           popd
@@ -44,7 +43,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 5
       - name: Get moparser
@@ -62,13 +61,13 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 5
       - name: Setup python environment
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: "3.12"
       - name: Check deprecated Text.lineColor annotation
         run: |
           echo "::add-matcher::./.github/check_deprecated_line_color.json"
